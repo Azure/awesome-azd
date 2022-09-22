@@ -15,28 +15,37 @@
 ## 2. Content
 
 ### 2.1 Articles
+ * [The Azure Developer CLI - A Walkthrough](https://dev.to/lechnerc77/the-azure-developer-cli-a-walk-through-22fm) - _Christian Lechner_ - Sep 2022
+ * _[link to submission issue]_
 
 ### 2.2 Videos
-
-### 2.3 Tutorials
+ * [Azure Developer CLI - #QuickGlance Playlist](https://www.youtube.com/watch?v=eLiD3E7tPYo&list=PLmZLSvJAm8FbFq2XhqaPZgIzl6kewz1HD) - 
+ * [Azure Developer CLI - on Azure CosmosDB TV](https://www.youtube.com/watch?v=LjI-WZtunqA) - Aug 2022
+ * _[link to submission issue]_
 
 
 ## 3. Templates
 
-### 3.1 Microsoft 
-
+### 3.1 Microsoft
+* [Azure-Samples/todo-csharp-cosmos-sql](https://github.com/Azure-Samples/todo-csharp-cosmos-sql) - complete ToDo application.
+* [tonybaloney/django-on-azure](https://github.com/tonybaloney/django-on-azure) - Django + PostgreSQL + Azure App Service
+* [bradygaster](https://github.com/bradygaster/RockPaperOrleans) - distributed .NET game
+ * _[link to submission issue]_
 
 ### 3.2 Community
+ * _[link to submission issue]_
 
 ---
 
 ## 4. Projects
+ * _[link to submission issue]_
 
 ---
 
 ## 5. Showcase
 
-Currently, azd templates can be discovered using the [azd-templates](https://github.com/topics/azd-templates) topic on Github. We are currently planning a hosted gallery page that will make these templates easier to browse and search, with the option to _contribute_ your own, to help the community.
+* Currently, azd templates can be discovered using the [azd-templates](https://github.com/topics/azd-templates) topic on Github. 
+* We plan a hosted gallery page **on this repo** that will make these templates easier to browse and search, with the option to _contribute_ your own, to help the community.
 
 
 

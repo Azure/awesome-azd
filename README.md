@@ -1,14 +1,46 @@
-# Project
+# Awesome AZD ![Awesome Badge](https://awesome.re/badge-flat2.svg)
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+## 1. Introduction
 
-As the maintainer of this project, please make a few updates:
+| [Azure Developer CLI Templates](https://github.com/topics/azd-templates) | 
+|:---|
+| The Azure Developer CLI (azd) Preview is an open-source tool that accelerates the time it takes for you to get started on Azure - with a set of developer-friendly commands that map to key stages in your workflow (code, build, deploy, monitor).|
+| ![Azure Developer CLI Templates](https://raw.githubusercontent.com/github/explore/a8036e684c6a96e4656252a806f21d332bc4d4e1/topics/azd-templates/azd-templates.png) |
+| [**azd** Overview](https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/overview?tabs=nodejs)   - [**azd** Quickstart](https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/get-started?tabs=bare-metal%2Cwindows&pivots=programming-language-nodejs)-  [**azd** Reference](https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/reference)|
+|[**azd-templates** on Github](https://github.com/topics/azd-templates)|
+| |
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+
+
+## 2. Content
+
+### 2.1 Articles
+
+### 2.2 Videos
+
+### 2.3 Tutorials
+
+
+## 3. Templates
+
+### 3.1 Microsoft 
+
+
+### 3.2 Community
+
+---
+
+## 4. Projects
+
+---
+
+## 5. Showcase
+
+Currently, azd templates can be discovered using the [azd-templates](https://github.com/topics/azd-templates) topic on Github. We are currently planning a hosted gallery page that will make these templates easier to browse and search, with the option to _contribute_ your own, to help the community.
+
+
+
+---
 
 ## Contributing
 

@@ -18,7 +18,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="https://learn.microsoft.com/azure/developer/azure-developer-cli/make-azd-compatible?pivots=azd-create">
-            Create azd-template 🆙
+            Create azd-template 🗺
           </Link>
         </div>
       </div>

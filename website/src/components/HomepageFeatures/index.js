@@ -9,8 +9,7 @@ const FeatureList = [
     link: "/gallery",
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Explore the <a href="https://github.com/azure/awesome-azd">azd-templates</a> topic on GitHub <b>or</b> check out the <a href="/gallery">Gallery</a> to find templates using richer filters and search capability.
       </>
     ),
   },
@@ -20,8 +19,7 @@ const FeatureList = [
     link: "https://learn.microsoft.com/azure/developer/azure-developer-cli/make-azd-compatible?pivots=azd-create",
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Have an existing project that you want to migrate, to use azd templates? <a href="https://learn.microsoft.com/azure/developer/azure-developer-cli/make-azd-compatible?pivots=azd-convert"> Convert a sample </a> <b>or</b> <a href="https://learn.microsoft.com/azure/developer/azure-developer-cli/make-azd-compatible?pivots=azd-create">create a new template!</a>
       </>
     ),
   },
@@ -31,8 +29,7 @@ const FeatureList = [
     link: "https://github.com/Azure/awesome-azd/issues/new/choose",
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Consider sharing your template in our <a href="/gallery">Gallery</a> to help the community. Just <a href="https://github.com/Azure/awesome-azd/issues/new/choose">fill in the issue </a> and we'll do the rest!
       </>
     ),
   },

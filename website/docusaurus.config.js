@@ -96,7 +96,7 @@ const config = {
           {
             type: 'html',
             position: 'right',
-            value: '<button><a href="https://github.com/topics/azd-templates"> azd-templates </a></button>',
+            value: '<button><a href="https://learn.microsoft.com/azure/architecture/browse/"> Browse Architectures </a></button>',
           },
         ],
       },
@@ -110,10 +110,16 @@ const config = {
           { label: `azd Docs`, to: 'https://learn.microsoft.com/azure/developer/azure-developer-cli/' },
           { label: `azd Quickstart`, to: 'https://learn.microsoft.com/azure/developer/azure-developer-cli/' },
           { label: `azd Create`, to: 'https://learn.microsoft.com/azure/developer/azure-developer-cli/make-azd-compatible?pivots=azd-create' },
-          { label: `azd Reference`, to: 'https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/reference' },
-          
+          { label: `azd Reference`, to: 'https://learn.microsoft.com/azure/developer/azure-developer-cli/reference' },  
+          {
+            label: 'Privacy Statement ',
+            to: 'https://privacy.microsoft.com/privacystatement',
+          },
+          { 
+           label: `Copyright © ${new Date().getFullYear()} Microsoft`,
+           to: 'https://microsoft.com'
+          },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Microsoft - 💙 Built with Docusaurus`,
       },
 
       // CONFIG: the prism-react-renderer to highlight code blocks, add magic comments (influence code highlighting)

@@ -1,51 +1,167 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
+
+// CONFIG: Set for use in themeConfig: prism
+//    Pick: https://github.com/FormidableLabs/prism-react-renderer/tree/master/src/themes
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
+// USAGE: Config object can be accessed via React context as `{siteConfig}`
+//   See: https://docusaurus.io/docs/configuration#custom-configurations
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
-  url: 'https://your-docusaurus-test-site.com',
+
+  // CONFIG: Add Custom Fields - globally reference them from siteConfig
+  //    See: https://docusaurus.io/docs/deployment#using-environment-variables
+  customFields: {
+    description: "Azure Developer CLI (azd) templates are idiomatic application templates created using the `azd` conventions so that you can use `azd` to get started on Azure.",
+  },
+
+  // CONFIG: Landing Pages uses this (also globally via siteConfig)
+  title: 'Awesome Azure Dev CLI',
+  tagline: 'Discover - Create - Contribute',
+
+  // CONIFIG: Used for GitHub Pages
+  url: 'https://azure.github.io/awesome-azd',
   baseUrl: '/',
+  favicon: 'img/favicon.ico',
+  organizationName: 'azure', 
+  projectName: 'awesome-azd',
+  deploymentBranch: 'gh-pages',
+
+  // CONFIG: Early detection for site health
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
-
-  // Even if you don't use internalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
+  // CONFIG: Localization if supporting multiple languages
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
   },
 
+  // CONFIG: theme = set properties for UI like navbar, footer, docs, copyright etc.
+  //    See: https://docusaurus.io/docs/api/docusaurus-config#themeConfig
+  themeConfig:
+    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    ({
+      // CONFIG: sidebar
+      //    See:
+      docs :{
+        sidebar: {
+          hideable: true,
+          autoCollapseCategories: true,
+        },
+      },
+
+      // CONFIG: default theme color mode
+      //    See:
+      colorMode: {
+        defaultMode: 'light',
+        disableSwitch: false,
+        respectPrefersColorScheme: true,
+      },
+
+      // CONFIG: navbar logo, items, style, stickiness
+      //    See: https://docusaurus.io/docs/next/api/themes/configuration#navbar
+      navbar: {
+        title: 'awesome-azd',
+        logo: {
+          alt: 'Awesome Azd logo',
+          src: 'img/logo.png',
+          href: 'https://learn.microsoft.com/azure/developer/azure-developer-cli/',
+          target: '_self',
+          width: 32,
+          height: 32,
+        },
+
+        style: 'primary',
+
+        items: [
+          // FIXME: TEMPORARILY DISABLE DOCS, BLOG
+          //{ label: "Tutorial", position: "left", type: "doc", docId: "intro",},
+          //{ to: '/blog', label: 'Blog', position: 'left'},
+          
+          {to: '/', label: 'Home', position: 'left'},
+          {to: '/gallery', label: 'Gallery', position: 'left'},
+
+          // CONFIG: 
+          // Make sure you have class defined in src/css/custom.css
+          { 
+            href: 'https://github.com/azure/awesome-azd',
+            position: 'right',
+            className: 'header-github-link',
+            'aria-label': 'GitHub repository',
+          },
+          {
+            type: 'html',
+            position: 'right',
+            value: '<button><a href="https://github.com/topics/azd-templates"> azd-templates </a></button>',
+          },
+        ],
+      },
+
+      // CONFIG: 
+      //    See:
+      footer: {
+        style: "light",
+        links: [
+          { label: `azd-templates`, to: 'https://github.com/azure/awesome-azd' },
+          { label: `azd Docs`, to: 'https://learn.microsoft.com/azure/developer/azure-developer-cli/' },
+          { label: `azd Quickstart`, to: 'https://learn.microsoft.com/azure/developer/azure-developer-cli/' },
+          { label: `azd Create`, to: 'https://learn.microsoft.com/azure/developer/azure-developer-cli/make-azd-compatible?pivots=azd-create' },
+          { label: `azd Reference`, to: 'https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/reference' },
+          
+        ],
+        copyright: `Copyright © ${new Date().getFullYear()} Microsoft - 💙 Built with Docusaurus`,
+      },
+
+      // CONFIG: the prism-react-renderer to highlight code blocks, add magic comments (influence code highlighting)
+      // Change: 'theme' and `darkTheme` constants at top of this config file
+      //    See: https://docusaurus.io/docs/next/api/themes/configuration#codeblock-theme
+      //    See: https://docusaurus.io/docs/next/markdown-features/code-blocks#custom-magic-comments
+      //    For additional languages e.g., 'csharp','java','js','typescript','python', 'rust', 'html','css', 'go', 'dart'
+      //    See: https://docusaurus.io/docs/next/markdown-features/code-blocks#supported-languages 
+      //    See: https://prismjs.com/#supported-languagescshar
+      prism: {
+        theme: lightCodeTheme,
+        darkTheme: darkCodeTheme,
+      },
+
+      // CONFIG: Use sparingly to drive attention to a specific call-to-action or new feature
+      //    See: https://docusaurus.io/docs/next/api/themes/configuration#announcement-bar
+      announcementBar: {
+        id: 'Join us for #Hacktoberfest ' ,
+        content:
+          '<b> Join us for ✨ #Hacktoberfest | Give  us a 🌟 <a href="https://www.linkedin.com/in/nityan/recent-activity/posts/"><b> on Github</b></a> ',
+        backgroundColor: '#000010',
+        textColor: '#ffffff',
+        isCloseable: false,
+      },
+
+    }),
+
+
+  // CONFIG: Set presets for chosen theme
   presets: [
     [
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
-        docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        },
+
+        // CONFIG: docs = collections of pages, tutorials, documentation
+        //    See: https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-docs
+        // FIXME: TEMPORARILY DISABLE DOCS
+        // docs: { sidebarPath: require.resolve("./sidebars.js"), },
+        docs: false,
+
+        // CONFIG: blog = timestamped pages, tags, site feed 
+        //    See: https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog
+        // FIXME: TEMPORARILY DISABLE BLOG
+        blog: false,
+
+        // CONFIG: theme = currently using `classic`
+        //    See: https://docusaurus.io/docs/api/themes/@docusaurus/theme-classic
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -53,80 +169,6 @@ const config = {
     ],
   ],
 
-  themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
-      navbar: {
-        title: 'My Site',
-        logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
-        },
-        items: [
-          {
-            type: 'doc',
-            docId: 'intro',
-            position: 'left',
-            label: 'Tutorial',
-          },
-          {to: '/blog', label: 'Blog', position: 'left'},
-          {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
-            position: 'right',
-          },
-        ],
-      },
-      footer: {
-        style: 'dark',
-        links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Tutorial',
-                to: '/docs/intro',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
-              },
-            ],
-          },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
-      },
-      prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
-      },
-    }),
 };
 
 module.exports = config;

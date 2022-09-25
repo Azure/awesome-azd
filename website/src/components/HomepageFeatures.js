@@ -1,7 +1,15 @@
 import React from 'react';
-import clsx from 'clsx';
 import styles from './styles.module.css';
+import Feature from '@site/src/components/Feature';
 
+/**
+ * Fixed data that is rendered as a 'Feature' component on Homepage
+ * Each element requires the following pieces of data:
+ *  Svg = path to an svg that is rendered here within an <img> tag
+ *  title = the short title given to feature component
+ *  description = the 1-2 sentence description shown below title in Feature card
+ *  link = the link associated with title and image (for redirection)
+ */
 const FeatureList = [
   {
     title: 'Discover Templates',
@@ -35,22 +43,11 @@ const FeatureList = [
   },
 ];
 
-function Feature({Svg, title, description, link}) {
-  return (
-    <div className={clsx('col col--4')}>
-      <a href={link} target="_blank">
-        <div className="text--center">
-          <img width="150px" height="150px" src={Svg} alt={title} />
-        </div>
-      </a>
-      <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
-        <p>{description}</p>
-      </div>
-    </div>
-  );
-}
 
+/**
+ * Component that renders FeaturesList data in a container
+ * with each data item represented as a Feature in a responsive grid
+ */
 export default function HomepageFeatures() {
   return (
     <section className={styles.features}>

@@ -84,6 +84,7 @@ const config = {
           
           {to: '/', label: 'Home', position: 'left'},
           {to: '/gallery', label: 'Gallery', position: 'left'},
+          { label: "Contribute", position: "left", type: "doc", docId: "intro",},
 
           // CONFIG: 
           // Make sure you have class defined in src/css/custom.css
@@ -159,7 +160,10 @@ const config = {
         //    See: https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-docs
         // FIXME: TEMPORARILY DISABLE DOCS
         // docs: { sidebarPath: require.resolve("./sidebars.js"), },
-        docs: false,
+        // docs: false,
+        docs: { 
+          sidebarPath: require.resolve("./sidebars.js"), 
+        },
 
         // CONFIG: blog = timestamped pages, tags, site feed 
         //    See: https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog

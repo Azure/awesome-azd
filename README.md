@@ -46,10 +46,14 @@
 
 Currently, azd templates can be discovered using the [azd-templates](https://github.com/topics/azd-templates) topic on Github. We're working on adding a **hosted gallery** to this repo to simplify the process.
 
-| Here's a sneak peek of the landing page |
+| Here's a look at the site: |
 |:---|
+| Landing Page |
 |![](./website/static/img/home-screen.png)|
-| |
+| Gallery Page - Search & Filter  |
+|![](./website/static/img/gallery-screen.png) |
+| Contributor Guide |
+|![](./website/static/img/contrib-guide.png) |
 
 ---
 

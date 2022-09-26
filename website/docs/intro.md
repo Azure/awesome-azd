@@ -72,12 +72,20 @@ The Azure Developer CLI (azd) tool helps you with the process of _creating_ the 
 
 ## How to: _contribute_ azd templates?
 
-:::info 🚧 IN-PLANNING. Watch for updates.
-The current plan is to create _custom issue templates_ with the required metadata defined, for inclusion in the gallery. Check back for updates.
+:::info TWO WAYS TO CONTRIBUTE
+
+You can contribute azd-templates in two contexts:
+ * **For an existing request** - matches a `helpwanted` tag
+ * **For your own projects** - you provide the architecture diagram and tags.
+
+We manage contributions using custom issue templates 
+ * Pre-defined issues for existing requests
+ * Custom issue template for defining new projects
 :::
 
-The proposed contribution process:
- - Use custom issue and submit your template details
+The contribution process:
+ - Use custom issue and submit your template details **for new templates**
+ - Reply to custom issue and submit requesed details **for existing requests**
  - Share the custom issue with others to get upvotes
  - Use the issues thread to provide requested updates
 

@@ -64,9 +64,11 @@
  function ShowcaseCard({user}: {user: User}) {
    return (
      <li key={user.title} className="card shadow--md">
-       <div className={clsx('card__image', styles.showcaseCardImage)}>
-         <Image img={user.preview} alt={user.title} />
-       </div>
+       <Link href={user.source}>
+        <div className={clsx('card__image', styles.showcaseCardImage)}>
+          <Image img={user.preview} alt={user.title} />
+        </div>
+       </Link>
        <div className="card__body">
          <div className={clsx(styles.showcaseCardHeader)}>
            <h4 className={styles.showcaseCardTitle}>

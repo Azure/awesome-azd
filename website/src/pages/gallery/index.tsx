@@ -336,7 +336,7 @@
            <div className="container margin-top--lg">
              <h2 className={styles.showcaseHeader}>
                <Translate id="showcase.usersList.allUsers">
-                All Templates
+                Other Templates
               </Translate>
              </h2>
              <ul className={styles.showcaseList}>

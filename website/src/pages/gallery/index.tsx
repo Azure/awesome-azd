@@ -45,7 +45,7 @@
  
  const TITLE = 'Awesome AZD Templates';
  const DESCRIPTION = 'A community-contributed templates gallery';
- const ADD_URL = 'https://github.com/Azure/awesome-azd/issues/new/choose'
+ const ADD_URL = 'https://github.com/Azure/awesome-azd/issues/new?assignees=nitya%2C+savannahostrowski&labels=new-contribution&template=---contribute-your-azd-template.md&title=%5Bazd-template%5D+New+azd-template+Contribution+to+Gallery'
 
  type UserState = {
    scrollTopPosition: number;
@@ -137,7 +137,7 @@
          target="_blank"
          rel="noreferrer">
          <Translate id="showcase.header.button">
-           Add Your Project! 🙏 
+           Contribute Your Template! 🙏 
          </Translate>
        </a>
      </section>

@@ -149,7 +149,7 @@ const config = {
     }),
 
   // CONFIG: plugins
-  //    See: https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-ideal-image
+  //    See
   plugins: [
     [
       '@docusaurus/plugin-ideal-image',

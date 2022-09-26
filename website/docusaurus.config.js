@@ -140,7 +140,7 @@ const config = {
       announcementBar: {
         id: 'Join us for #Hacktoberfest ' ,
         content:
-          '<b> Join us for ✨ #Hacktoberfest | Give  us a 🌟 <a href="https://www.linkedin.com/in/nityan/recent-activity/posts/"><b> on Github</b></a> ',
+          '<b> Join us for ✨ #Hacktoberfest | Give  us a 🌟 <a href="https://github.com/azure/awesome-azd/"><b> on Github</b></a> ',
         backgroundColor: '#000010',
         textColor: '#ffffff',
         isCloseable: false,

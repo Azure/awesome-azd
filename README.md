@@ -37,14 +37,15 @@
 
 ---
 
+## 4. Projects
+ * _[link to submission issue]_
+
+---
+
 ## 5. Contribute to Gallery
  * This repository is also associated with a [live website](https://aka.ms/awesome-azd) that makes azd-templates searchable and discoverable (by various filter tags).
   * Read [this document](GALLERY.md) for an overview of how this is setup
   * Use [this issue](https://github.com/Azure/awesome-azd/issues/new?assignees=nitya%2C+savannahostrowski&labels=new-contribution&template=---contribute-your-azd-template.md&title=%5Bazd-template%5D+New+azd-template+Contribution+to+Gallery) to contribute your template to the showcase.
-
----
-## 4. Projects
- * _[link to submission issue]_
 
 ---
 

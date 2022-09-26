@@ -62,13 +62,15 @@ export type TagType =
 | 'dotnet'
 | 'java'
 | 'python'
+| 'django'
+| 'reactjs'
+| 'nodejs'
 | 'appservice'
 | 'cosmosdb'
 | 'monitor'
 | 'keyvault'
 | 'aca'
 | 'mongodb'
-| 'reactjs'
 | 'iothub'
 | 'iotedge'
 | 'signalR'
@@ -76,6 +78,12 @@ export type TagType =
 | 'blobstorage'
 | 'HDinsight'
 | 'azuredb-postgreSQL'
+| 'azuresql'
+| 'webapps'
+| 'terraform'
+| 'swa'
+| 'dapr'
+| 'servicebus'
 ;
 
 
@@ -125,69 +133,79 @@ export const Tags: {[type in TagType]: Tag} = {
     javascript: {
         label: 'JavaScript',
         description: 'Template contains JavaScript app code',
-        color: 'black',
+        color: 'cyan',
     },
     typescript: {
         label: 'TypeScript',
         description: 'Template contains TypeScript app code',
-        color: 'black',
+        color: 'cyan',
     },
     bicep: {
         label: 'Bicep',
         description: 'Template contains Bicep Lang infra code',
-        color: 'black',
+        color: 'cyan',
     },
     csharp: {
         label: 'C#',
         description: 'Template contains C# app code',
-        color: 'black',
+        color: 'cyan',
     },
     dotnet: {
         label: '.NET',
         description: 'Template contains .NET app code',
-        color: 'black',
+        color: 'cyan',
     },
     java: {
         label: 'Java',
         description: 'Template contains Java app code',
-        color: 'black',
+        color: 'cyan',
     },
     python: {
         label: 'Python',
         description: 'Template contains Python app code',
-        color: 'black',
+        color: 'cyan',
+    },
+    django: {
+        label: 'Django',
+        description: 'Template contains Django web app code',
+        color: 'cyan',
     },
     reactjs: {
          label: 'React.js',
          description: 'Template architecture uses React.js',
-         color: 'black',
+         color: 'cyan',
      },
+     nodejs: {
+          label: 'Node.js',
+          description: 'Template architecture uses Node.js',
+          color: 'cyan',
+      },
 
     // ---- Azure + Third Party Services
     appservice: {
         label: 'Azure App Service',
         description: 'Template architecture uses Azure App Service',
-        color: 'navy',
+        color: 'hotpink',
     },
     monitor: {
         label: 'Azure Monitor',
         description: 'Template architecture uses  Azure App Service',
-        color: 'darkgray',
+        color: 'hotpink',
     },
     keyvault: {
         label: 'Azure Key Vault',
         description: 'Template architecture uses Azure Key Vault',
-        color: 'cyan',
+        color: 'hotpink',
     },
     aca: {
         label: 'Azure Container Apps',
         description: 'Template architecture uses Azure Container Apps',
-        color: 'blue',
+        color: 'hotpink',
     },
    mongodb: {
         label: 'MongoDB',
         description: 'Template architecture uses MongoDB',
-        color: 'darkgreen',
+        color: 'orange',
     },
     cosmosdb: {
         label: 'CosmosDB',
@@ -223,15 +241,41 @@ export const Tags: {[type in TagType]: Tag} = {
         label: 'Azure Blob Storage',
         description: 'Template architecture uses Azure Blob Storage',
         color: 'hotpink',
+    },    
+    webapps: {
+        label: 'Web Apps',
+        description: 'Template architecture uses Web Apps',
+        color: 'hotpink',
+    }, 
+    azuresql: {
+        label: 'Azure SQL',
+        description: 'Template architecture uses Azure SQL',
+        color: 'hotpink',
     },
     "azuredb-postgreSQL": {
         label: 'Azure DB For PostgreSQL',
         description: 'Template architecture uses Azure DB for PostgreSQL',
         color: 'hotpink',
     },
-
-
-
-
-
+    terraform: {
+        label: 'Terraform',
+        description: 'Template architecture uses Terraform',
+        color: 'hotpink',
+    },
+    swa: {
+        label: 'Azure Static Web Apps',
+        description: 'Template architecture uses Azure Static Web Apps',
+        color: 'hotpink',
+    },
+    dapr: {
+        label: 'Dapr',
+        description: 'Template architecture uses Distributed Application Runtime (dapr)',
+        color: 'hotpink',
+    },
+    servicebus: {
+        label: 'Azure Service Bus',
+        description: 'Template architecture uses Azure Service Bus',
+        color: 'hotpink',
+    },
 };
+

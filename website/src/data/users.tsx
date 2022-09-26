@@ -7,7 +7,7 @@
 
 /* eslint-disable global-require */
 
-import {sortBy} from '@site/src/utils/jsUtils';
+import {sortBy} from '../utils/jsUtils';
 import {TagType, User, Tags} from './tags';
 
 /*
@@ -125,6 +125,66 @@ const Users: User[] = [
     author: 'Azure Dev',
     source: 'https://github.com/Azure-Samples/todo-python-mongo-aca',
     tags: ['bicep','python','javascript','aca','cosmosdb','monitor','keyvault', 'mongodb','reactjs'],
+  },
+  {
+    title: 'ToDo Application - C# AzureSQL AppService ',
+    description:
+      'A complete sample To Do application that demonstrates how to build an Azure solution using C#, Azure SQL for storage, and Azure Monitor for monitoring and logging.',
+      preview: require('./images/todo-python.png'),
+    website: 'https://github.com/Azure/azure-dev',
+    author: 'Azure Dev',
+    source: 'https://github.com/Azure-Samples/todo-csharp-sql',
+    tags: ['bicep','csharp','javascript','appservice','azuresql','monitor','keyvault', 'mongodb','reactjs'],
+  },
+  {
+    title: 'ToDo Application - React Python Mongo AppService',
+    description:
+      'Complete React.js ToDo application,  Python (FastAPI) for the API, Azure Cosmos DB API for MongoDB for storage, and Azure Monitor for monitoring and logging',
+      preview: require('./images/todo-python.png'),
+    website: 'https://github.com/Azure/azure-dev',
+    author: 'Azure Dev',
+    source: 'https://github.com/Azure-Samples/todo-python-mongo',
+    tags: ['bicep','python','javascript','appservice','cosmosdb','monitor','keyvault', 'mongodb','reactjs'],
+  },
+  {
+    title: 'ToDo Application - React Node.js Mongo ACA',
+    description:
+      'Complete React.js ToDo application,  Node.js for the API, Azure Cosmos DB API for MongoDB for storage, and Azure Monitor for monitoring and logging',
+      preview: require('./images/todo-node-aca.png'),
+    website: 'https://github.com/Azure/azure-dev',
+    author: 'Azure Dev',
+    source: 'https://github.com/Azure-Samples/todo-nodejs-mongo-aca',
+    tags: ['bicep','nodejs','javascript','appservice','cosmosdb','monitor','keyvault', 'mongodb','reactjs', 'aca'],
+  },
+  {
+    title: 'ToDo Application - React Python Mongo Terraform',
+    description:
+      'Complete ToDo appliction with Terraform as the IaC provider, React.js for the Web application, Python (FastAPI) for the API, Azure Cosmos DB API for MongoDB for storage, and Azure Monitor for monitoring and logging',
+      preview: require('./images/todo-python-terraform.png'),
+    website: 'https://github.com/Azure/azure-dev',
+    author: 'Azure Dev',
+    source: 'https://github.com/Azure-Samples/todo-python-mongo-terraform',
+    tags: ['bicep','python','javascript','cosmosdb','monitor','keyvault', 'mongodb','reactjs', 'terraform', 'appservice'],
+  },
+  {
+    title: 'Microservices App - Dapr PubSub Node.js ACA ServiceBus',
+    description:
+      'A complete microservice application featuring Dapr Pub-Sub, deployed to Azure Container Apps and Azure Service Bus Topics with dead-lettering support.',
+      preview: require('./images/test.png'),
+    website: 'https://github.com/Azure/azure-dev',
+    author: 'Azure Dev',
+    source: 'https://github.com/Azure-Samples/todo-python-mongo-terraform',
+    tags: ['bicep','javascript', 'nodejs', 'aca', 'dapr','servicebus'],
+  },
+  {
+    title: 'PyCon Workshop - Django On Azure',
+    description:
+      'Deploy your Django web application with Microsoft Azure, for scale, using a cloud architecture with integrated monitoring,',
+      preview: require('./images/pycon-django.png'),
+    website: 'https://github.com/tonybaloney',
+    author: 'Anthony Shaw',
+    source: 'https://github.com/tonybaloney/django-on-azure',
+    tags: ['django','python', 'azuresql', 'webapps'],
   },
 
 

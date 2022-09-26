@@ -74,8 +74,8 @@ const Users: User[] = [
     description:
       'Complete React.js ToDo application, C# for the API, Azure Cosmos DB SQL API for storage, and Azure Monitor for monitoring and logging',
       preview: require('./images/todo-csharp.png'),
-    website: 'https://github.com/danieljurek',
-    author: 'Daniel Jurek',
+    website: 'https://github.com/Azure/azure-dev',
+    author: 'Azure Dev',
     source: 'https://github.com/Azure-Samples/todo-csharp-cosmos-sql',
     tags: ['featured','csharp','javascript','appservice','cosmosdb','monitor','keyvault','reactjs'],
   },
@@ -121,8 +121,8 @@ const Users: User[] = [
     description:
       'Complete React.js ToDo application,  Python (FastAPI) for the API, Azure Cosmos DB API for MongoDB for storage, and Azure Monitor for monitoring and logging',
       preview: require('./images/todo-python-aca.png'),
-    website: 'https://github.com/danieljurek',
-    author: 'Daniel Jurek',
+    website: 'https://github.com/Azure/azure-dev',
+    author: 'Azure Dev',
     source: 'https://github.com/Azure-Samples/todo-python-mongo-aca',
     tags: ['bicep','python','javascript','aca','cosmosdb','monitor','keyvault', 'mongodb','reactjs'],
   },

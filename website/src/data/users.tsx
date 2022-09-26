@@ -98,9 +98,9 @@ const Users: User[] = [
     description:
       'Use Azure SignalR to update cloud applications in real-time. The service sends real-time IoT data to connected web and mobile clients',
       preview: require('./images/real-time-iot.png'),
-    website: 'https://learn.microsoft.com/azure/architecture/example-scenario/iot/real-time-iot-updates-cloud-apps',
-    author: 'Azure Arch Center',
-    source: 'https://github.com/Azure/awesome-azd/issues/new/choose/',
+    website: 'https://github.com/Azure/awesome-azd/issues/14',
+    author: 'Submit A Template',
+    source: 'https://learn.microsoft.com/azure/architecture/example-scenario/iot/real-time-iot-updates-cloud-apps',
     tags: ['helpwanted', 'signalR', 'iotedge', 'iothub', 'functions'],
   },
   {
@@ -108,9 +108,9 @@ const Users: User[] = [
     description:
       'Build secure and scalable e-commerce solutions that meet customer and business demands by using Azure Database for PostgreSQL',
       preview: require('./images/retail-db-postgresql.png'),
-    website: 'https://learn.microsoft.com/azure/architecture/solution-ideas/articles/retail-and-ecommerce-using-azure-database-for-postgresql',
-    author: 'Azure Arch Center',
-    source: 'https://github.com/Azure/awesome-azd/issues/new/choose/',
+    website: 'https://github.com/Azure/awesome-azd/issues/15',
+    author: 'Submit A Template',
+    source: 'https://learn.microsoft.com/azure/architecture/solution-ideas/articles/retail-and-ecommerce-using-azure-database-for-postgresql',
     tags: ['helpwanted', 'appservice','blobstorage','HDinsight','azuredb-postgreSQL'],
   },
 

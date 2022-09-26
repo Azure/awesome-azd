@@ -296,7 +296,7 @@
                  <h2>
                   <div className={styles.helpText}>
                     <Translate id="showcase.favoritesList.title">
-                        ✨ Contribute Templates ✨
+                        ✨ Requested Templates ✨
                     </Translate>
                   </div>
                  </h2>

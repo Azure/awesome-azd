@@ -97,10 +97,11 @@ const config = {
           {
             type: 'html',
             position: 'right',
-            value: '<button><a href="https://learn.microsoft.com/azure/architecture/browse/"> Browse Architectures </a></button>',
+            value: '<a href="https://learn.microsoft.com/azure/architecture/browse/"> <button>Browse Architectures</button></a>',
           },
         ],
       },
+
 
       // CONFIG: 
       //    See:
@@ -140,13 +141,17 @@ const config = {
       announcementBar: {
         id: 'Join us for #Hacktoberfest ' ,
         content:
-          '<b> Join us for ✨ #Hacktoberfest | Give  us a 🌟 <a href="https://github.com/azure/awesome-azd/"><b> on Github</b></a>',
+          'Join us for ✨ <a href="https://aka.ms/azd-oct-2022/hacktober"> <b>#Hacktoberfest</b></a> | Give  us a 🌟 <a href="https://github.com/azure/awesome-azd/"><b> on Github</b></a>',
         backgroundColor: '#000010',
         textColor: '#ffffff',
         isCloseable: false,
       },
 
     }),
+
+
+    
+
 
   // CONFIG: plugins
   //    See

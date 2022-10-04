@@ -106,7 +106,7 @@ export const Tags: {[type in TagType]: Tag} = {
         label: ' ♥️ Featured',
         description:
         'This tag is used for admin-curated templates that represent high-quality (community) or official (Microsoft) azd templates.',
-        color: '#ffd60a', //'#e9669e',
+        color: 'red', //'#e9669e',
     },
 
     // Use for templates that were valid once, but either
@@ -114,7 +114,7 @@ export const Tags: {[type in TagType]: Tag} = {
     deprecated: {
         label: '❌ Deprecated',
         description: 'This tag is used when a previously approved template is no longer relevant (e.g., out of date, not refreshed in XX months etc.)',
-        color: '#ff0000',
+        color: 'red',
     },
 
     // Use for templates that were valid once, but either
@@ -122,7 +122,7 @@ export const Tags: {[type in TagType]: Tag} = {
     helpwanted: {
         label: '🙏🏽 Help Wanted',
         description: 'This tag is used when there is a request for azd templates for a specific architecture. The title will link to arch, the button to a custom-issue for PR',
-        color: '#ff0000',
+        color: 'red',
     },
 
 
@@ -138,11 +138,6 @@ export const Tags: {[type in TagType]: Tag} = {
     typescript: {
         label: 'TypeScript',
         description: 'Template contains TypeScript app code',
-        color: 'cyan',
-    },
-    bicep: {
-        label: 'Bicep',
-        description: 'Template contains Bicep Lang infra code',
         color: 'cyan',
     },
     csharp: {
@@ -181,7 +176,26 @@ export const Tags: {[type in TagType]: Tag} = {
           color: 'cyan',
       },
 
-    // ---- Azure + Third Party Services
+    // ---- Templating Options
+    bicep: {
+        label: 'Bicep',
+        description: 'Template contains Bicep Lang infra code',
+        color: 'yellow',
+    },
+    terraform: {
+        label: 'Terraform',
+        description: 'Template architecture uses Terraform',
+        color: 'yellow',
+    },
+
+    // ---- 3rd Party Services
+   mongodb: {
+    label: 'MongoDB',
+    description: 'Template architecture uses MongoDB',
+    color: 'hotpink',
+},
+
+    // ---- Azure Services
     appservice: {
         label: 'Azure App Service',
         description: 'Template architecture uses Azure App Service',
@@ -201,11 +215,6 @@ export const Tags: {[type in TagType]: Tag} = {
         label: 'Azure Container Apps',
         description: 'Template architecture uses Azure Container Apps',
         color: 'hotpink',
-    },
-   mongodb: {
-        label: 'MongoDB',
-        description: 'Template architecture uses MongoDB',
-        color: 'orange',
     },
     cosmosdb: {
         label: 'CosmosDB',
@@ -255,11 +264,6 @@ export const Tags: {[type in TagType]: Tag} = {
     "azuredb-postgreSQL": {
         label: 'Azure DB For PostgreSQL',
         description: 'Template architecture uses Azure DB for PostgreSQL',
-        color: 'hotpink',
-    },
-    terraform: {
-        label: 'Terraform',
-        description: 'Template architecture uses Terraform',
         color: 'hotpink',
     },
     swa: {

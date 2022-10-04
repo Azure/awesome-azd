@@ -133,59 +133,59 @@ export const Tags: {[type in TagType]: Tag} = {
     javascript: {
         label: 'JavaScript',
         description: 'Template contains JavaScript app code',
-        color: 'cyan',
+        color: '#1e90ff',
     },
     typescript: {
         label: 'TypeScript',
         description: 'Template contains TypeScript app code',
-        color: 'cyan',
+        color: '#1e90ff',
     },
     csharp: {
         label: 'C#',
         description: 'Template contains C# app code',
-        color: 'cyan',
+        color: '#1e90ff',
     },
     dotnet: {
         label: '.NET',
         description: 'Template contains .NET app code',
-        color: 'cyan',
+        color: '#1e90ff',
     },
     java: {
         label: 'Java',
         description: 'Template contains Java app code',
-        color: 'cyan',
+        color: '#1e90ff',
     },
     python: {
         label: 'Python',
         description: 'Template contains Python app code',
-        color: 'cyan',
+        color: '#1e90ff',
     },
     django: {
         label: 'Django',
         description: 'Template contains Django web app code',
-        color: 'cyan',
+        color: '#1e90ff',
     },
     reactjs: {
          label: 'React.js',
          description: 'Template architecture uses React.js',
-         color: 'cyan',
+         color: '#1e90ff',
      },
      nodejs: {
           label: 'Node.js',
           description: 'Template architecture uses Node.js',
-          color: 'cyan',
+          color: '#1e90ff',
       },
 
     // ---- Templating Options
     bicep: {
         label: 'Bicep',
-        description: 'Template contains Bicep Lang infra code',
-        color: 'yellow',
+        description: 'Template uses Bicep for Infra as Code',
+        color: '#66ff00',
     },
     terraform: {
         label: 'Terraform',
-        description: 'Template architecture uses Terraform',
-        color: 'yellow',
+        description: 'Template uses Terraform for Infra as Code',
+        color: '#66ff00',
     },
 
     // ---- 3rd Party Services

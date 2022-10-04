@@ -19,7 +19,7 @@ jobs:
     steps:
       - template: /eng/common/pipelines/templates/steps/policheck.yml
         parameters:
-          ExclusionDataBaseFileName: AzDevPoliCheckExclusion
+          ExclusionDataBaseFileName: AwesomeAzdPoliCheckExclusion
           PublishAnalysisLogs: false
 
   - job: CGScan
@@ -35,7 +35,7 @@ jobs:
 
       - pwsh: npm install && npm run build
         displayName: Build site
-      
+
       - task: ComponentGovernanceComponentDetection@0
 
   - job: GenerateNoticeTxt

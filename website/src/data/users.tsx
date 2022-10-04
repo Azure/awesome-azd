@@ -173,7 +173,7 @@ const Users: User[] = [
       preview: require('./images/test.png'),
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
-    source: 'https://github.com/Azure-Samples/todo-python-mongo-terraform',
+    source: 'https://github.com/Azure-Samples/pubsub-dapr-nodejs-servicebus',
     tags: ['bicep','javascript', 'nodejs', 'aca', 'dapr','servicebus'],
   },
   {

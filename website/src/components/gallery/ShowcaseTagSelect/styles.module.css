@@ -29,7 +29,7 @@
   input:checked + .checkboxLabel {
     opacity: 0.9;
     background-color: var(--site-color-checkbox-checked-bg);
-    border: 2px solid var(--ifm-color-primary-darkest);
+    border: 4px solid var(--ifm-color-primary-darkest);
   }
   
   input:checked + .checkboxLabel:hover {

@@ -13,12 +13,15 @@ function HomepageHeader() {
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
         <h1 className="hero__title">{siteConfig.title}</h1>
+        <iframe width="773" height="435" src="https://www.youtube.com/embed/VTk-FhJyo7s" title="Introducing the Azure Developer CLI (azd) | Azure Friday" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        </iframe>
+
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
             to="/gallery">
-            Discover Templates 🔍
+            Request a Template 📫
           </Link>
         </div>
       </div>

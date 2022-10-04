@@ -10,30 +10,30 @@
  import Layout from '@theme/Layout';
  import clsx from 'clsx';
  
- import FavoriteIcon from './../../components/svgIcons/FavoriteIcon';
+ import FavoriteIcon from '../components/svgIcons/FavoriteIcon';
 
  import ShowcaseTagSelect, {
    readSearchTags,
- } from './../../components/gallery/ShowcaseTagSelect';
+ } from '../components/gallery/ShowcaseTagSelect';
 
  import ShowcaseFilterToggle, {
    type Operator,
    readOperator,
- } from './../../components/gallery/ShowcaseFilterToggle';
+ } from '../components/gallery/ShowcaseFilterToggle';
 
- import ShowcaseCard from '../../components/gallery/ShowcaseCard';
- import ShowcaseTooltip from '../../components/gallery/ShowcaseTooltip';
+ import ShowcaseCard from '../components/gallery/ShowcaseCard';
+ import ShowcaseTooltip from '../components/gallery/ShowcaseTooltip';
 
  import {
    Tags,
    type User,
    type TagType,
- } from '../../data/tags';
+ } from '../data/tags';
 
  import {
    sortedUsers,
    TagList,
- } from '../../data/users';
+ } from '../data/users';
  
  
  import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';

@@ -69,7 +69,7 @@ const config = {
         logo: {
           alt: 'Awesome Azd logo',
           src: 'img/logo.png',
-          href: 'https://learn.microsoft.com/azure/developer/azure-developer-cli/',
+          href: '/',
           target: '_self',
           width: 32,
           height: 32,
@@ -82,22 +82,26 @@ const config = {
           //{ label: "Tutorial", position: "left", type: "doc", docId: "intro",},
           //{ to: '/blog', label: 'Blog', position: 'left'},
           
-          {to: '/', label: 'Home', position: 'left'},
-          {to: '/gallery', label: 'Gallery', position: 'left'},
+          {to: '/about', label: 'About', position: 'left'},
           { label: "Contribute", position: "left", type: "doc", docId: "intro",},
 
           // CONFIG: 
           // Make sure you have class defined in src/css/custom.css
+          {
+            type: 'html',
+            position: 'right',
+            value: '<a href="https://learn.microsoft.com/azure/architecture/browse/"> <button>View Architectures</button></a>',
+          },
+          {
+            type: 'html',
+            position: 'right',
+            value: '<a href="/https://learn.microsoft.com/azure/developer/azure-developer-cli/"> <button>View Docs</button></a>',
+          },
           { 
             href: 'https://github.com/azure/awesome-azd',
             position: 'right',
             className: 'header-github-link',
             'aria-label': 'GitHub repository',
-          },
-          {
-            type: 'html',
-            position: 'right',
-            value: '<a href="https://learn.microsoft.com/azure/architecture/browse/"> <button>Browse Architectures</button></a>',
           },
         ],
       },

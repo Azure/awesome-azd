@@ -8,7 +8,7 @@
  import React, {useState, useEffect, useCallback} from 'react';
  import {useHistory, useLocation} from '@docusaurus/router';
  
- import {prepareUserState} from '@site/src/pages/gallery/index';
+ import {prepareUserState} from '@site/src/pages/index';
  
  import styles from './styles.module.css';
  import clsx from 'clsx';

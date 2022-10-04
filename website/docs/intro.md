@@ -36,7 +36,7 @@ With `azd-templates`, the path from "code to cloud" is just 3 steps:
 Today, you can look at the [azd-templates topic on GitHub](https://github.com/azure/awesome-azd) to see tagged template repositories. However, this approach does not easily let you _search_ for templates based on the services configured, or give you a visual sense of the _architecture_ enabled .
 
 ### Using This Gallery
-This is the challenge we are hoping to solve with the [Gallery](/gallery) site shown in this project. Each template is associated with the following:
+This is the challenge we are hoping to solve with the [Gallery](/) site shown in this project. Each template is associated with the following:
  - architecture diagram
  - template repository
  - publication date

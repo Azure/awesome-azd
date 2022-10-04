@@ -14,10 +14,10 @@ const FeatureList = [
   {
     title: 'Discover Templates',
     Svg: '/img/home-discover.svg',
-    link: "/gallery",
+    link: "/",
     description: (
       <>
-        Explore the <a href="https://github.com/azure/awesome-azd">azd-templates</a> topic on GitHub <b>or</b> check out the <a href="/gallery">Gallery</a> to find templates using richer filters and search capability.
+        Explore the <a href="https://github.com/azure/awesome-azd">azd-templates</a> topic on GitHub <b>or</b> check out the <a href="/">Gallery</a> to find templates using richer filters and search capability.
       </>
     ),
   },

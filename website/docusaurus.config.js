@@ -95,7 +95,7 @@ const config = {
           {
             type: 'html',
             position: 'right',
-            value: '<a href="/https://learn.microsoft.com/azure/developer/azure-developer-cli/"> <button>View Docs</button></a>',
+            value: '<a href="https://learn.microsoft.com/azure/developer/azure-developer-cli/"> <button>View Docs</button></a>',
           },
           { 
             href: 'https://github.com/azure/awesome-azd',

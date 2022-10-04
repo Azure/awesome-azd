@@ -13,7 +13,7 @@ import Feature from '@site/src/components/Feature';
 const FeatureList = [
   {
     title: 'Discover Templates',
-    Svg: '/img/home-discover.svg',
+    Svg: 'img/home-discover.svg',
     link: "/",
     description: (
       <>
@@ -23,7 +23,7 @@ const FeatureList = [
   },
   {
     title: 'Create Your Own',
-    Svg: '/img/home-create.svg',
+    Svg: 'img/home-create.svg',
     link: "https://learn.microsoft.com/azure/developer/azure-developer-cli/make-azd-compatible?pivots=azd-create",
     description: (
       <>
@@ -33,7 +33,7 @@ const FeatureList = [
   },
   {
     title: 'Contribute To Gallery',
-    Svg: '/img/home-contribute.svg',
+    Svg: 'img/home-contribute.svg',
     link: "https://github.com/Azure/awesome-azd/issues/new/choose",
     description: (
       <>

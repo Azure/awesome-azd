@@ -23,8 +23,8 @@ const config = {
   tagline: 'Discover - Create - Contribute',
 
   // CONIFIG: Used for GitHub Pages
-  url: 'https://azure.github.io/awesome-azd',
-  baseUrl: '/',
+  url: 'https://azure.github.io',
+  baseUrl: '/awesome-azd/',
   favicon: 'img/favicon.ico',
   organizationName: 'azure', 
   projectName: 'awesome-azd',

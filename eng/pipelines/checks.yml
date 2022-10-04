@@ -34,6 +34,7 @@ jobs:
       - checkout: self
 
       - pwsh: npm install && npm run build
+        workingDirectory: website/
         displayName: Build site
 
       - task: ComponentGovernanceComponentDetection@0

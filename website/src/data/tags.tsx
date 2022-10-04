@@ -84,6 +84,7 @@ export type TagType =
 | 'swa'
 | 'dapr'
 | 'servicebus'
+| 'vnets'
 ;
 
 
@@ -279,6 +280,11 @@ export const Tags: {[type in TagType]: Tag} = {
     servicebus: {
         label: 'Azure Service Bus',
         description: 'Template architecture uses Azure Service Bus',
+        color: 'hotpink',
+    },
+    vnets: {
+        label: 'Virtual Networks (VNET)',
+        description: 'Template architecture uses Virtual Networks',
         color: 'hotpink',
     },
 };

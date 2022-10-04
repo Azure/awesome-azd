@@ -113,6 +113,16 @@ const Users: User[] = [
     source: 'https://learn.microsoft.com/azure/architecture/solution-ideas/articles/retail-and-ecommerce-using-azure-database-for-postgresql',
     tags: ['helpwanted', 'appservice','blobstorage','HDinsight','azuredb-postgreSQL'],
   },
+  {
+    title: 'PyCon Workshop - Django On Azure',
+    description:
+      'Deploy your Django web application with Microsoft Azure, for scale, using a cloud architecture with integrated monitoring,',
+      preview: require('./images/pycon-django.png'),
+    website: 'https://github.com/tonybaloney',
+    author: 'Anthony Shaw',
+    source: 'https://github.com/tonybaloney/django-on-azure',
+    tags: ['django','python', 'azuresql', 'webapps','vnets','featured'],
+  },
 
   
   //------- EVERYTHING ELSE
@@ -175,16 +185,6 @@ const Users: User[] = [
     author: 'Azure Dev',
     source: 'https://github.com/Azure-Samples/pubsub-dapr-nodejs-servicebus',
     tags: ['bicep','javascript', 'nodejs', 'aca', 'dapr','servicebus'],
-  },
-  {
-    title: 'PyCon Workshop - Django On Azure',
-    description:
-      'Deploy your Django web application with Microsoft Azure, for scale, using a cloud architecture with integrated monitoring,',
-      preview: require('./images/pycon-django.png'),
-    website: 'https://github.com/tonybaloney',
-    author: 'Anthony Shaw',
-    source: 'https://github.com/tonybaloney/django-on-azure',
-    tags: ['django','python', 'azuresql', 'webapps'],
   },
 
 

@@ -9,6 +9,9 @@ steps:
   - pwsh: |
       azcopy copy "https://azuresdkartifacts.blob.core.windows.net/policheck/${{ parameters.ExclusionDataBaseFileName }}.mdb?${{ parameters.PoliCheckBlobSAS }}" `
       "$(Build.BinariesDirectory)"
+
+      # Output downloaded files
+      Get-ChildItem $(Build.BinariesDirectory) | Select-Object -Property Mode,Length,Name
     displayName: 'Download PoliCheck Exclusion Database'
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-policheck.PoliCheck@2

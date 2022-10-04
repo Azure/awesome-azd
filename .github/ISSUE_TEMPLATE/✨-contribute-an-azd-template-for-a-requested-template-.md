@@ -1,8 +1,9 @@
 ---
-name: "✋ [Submit Template For Request] TEMPLATE-NAME-HERE"
-about: This template is customized for a specific HelpWanted template request
-title: ''
-labels: requested-contribution
+name: "✨ Contribute an azd template for a requested template!"
+about: Have you picked up an idea from the requested awesome-azd templates? Use this
+  issue to contribute it!
+title: "[New azd-template] <your-template-name>"
+labels: new-contribution, requested-contribution
 assignees: nitya, savannahostrowski
 
 ---

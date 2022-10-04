@@ -1,7 +1,7 @@
 ---
-name: "\U0001F4F2 [Contribute New Template] TEMPLATE-NAME-HERE"
-about: Use this custom issue to contribute a new azd-template based on your project
-title: "[azd-template] New azd-template Contribution to Gallery"
+name: "\U0001F4F2Contribute an azd template!"
+about: Have you built an azd template? Use this issue to contribute it to awesome-azd!
+title: "[New azd-template] <your-template-name>"
 labels: new-contribution
 assignees: nitya, savannahostrowski
 

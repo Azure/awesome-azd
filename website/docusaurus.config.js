@@ -113,13 +113,14 @@ const config = {
         style: "light",
         links: [
           { label: `azd-templates`, to: 'https://github.com/azure/awesome-azd' },
-          { label: `azd Docs`, to: 'https://learn.microsoft.com/azure/developer/azure-developer-cli/' },
-          { label: `azd Quickstart`, to: 'https://learn.microsoft.com/azure/developer/azure-developer-cli/' },
-          { label: `azd Create`, to: 'https://learn.microsoft.com/azure/developer/azure-developer-cli/make-azd-compatible?pivots=azd-create' },
           { label: `azd Reference`, to: 'https://learn.microsoft.com/azure/developer/azure-developer-cli/reference' },  
           {
             label: 'Privacy Statement ',
             to: 'https://privacy.microsoft.com/privacystatement',
+          }, 
+          {
+            label: 'Built With Docusaurus ',
+            to: 'https://docusaurus.io',
           },
           { 
            label: `Copyright © ${new Date().getFullYear()} Microsoft`,

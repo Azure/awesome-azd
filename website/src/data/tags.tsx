@@ -53,7 +53,7 @@ export type User = {
   // NN: Updated TagType to suit Static Web Apps
 export type TagType =
 | 'featured'
-| 'deprecated'
+//| 'deprecated'
 | 'helpwanted'
 | 'bicep'
 | 'typescript'
@@ -112,11 +112,13 @@ export const Tags: {[type in TagType]: Tag} = {
 
     // Use for templates that were valid once, but either
     //  don't work now or have not been updated in XX time
+    /*
     deprecated: {
         label: '❌ Deprecated',
         description: 'This tag is used when a previously approved template is no longer relevant (e.g., out of date, not refreshed in XX months etc.)',
         color: 'red',
     },
+    */
 
     // Use for templates that were valid once, but either
     //  don't work now or have not been updated in XX time

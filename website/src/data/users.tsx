@@ -104,7 +104,7 @@ const Users: User[] = [
     tags: ['helpwanted', 'signalR', 'iotedge', 'iothub', 'functions'],
   },
   {
-    title: 'Retail/E-Comerce using Azure DB for PostgreSQL',
+    title: 'Retail/E-Commerce using Azure DB for PostgreSQL',
     description:
       'Build secure and scalable e-commerce solutions that meet customer and business demands by using Azure Database for PostgreSQL',
       preview: require('./images/retail-db-postgresql.png'),

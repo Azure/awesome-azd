@@ -174,7 +174,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
     source: 'https://github.com/Azure-Samples/todo-python-mongo-terraform',
-    tags: ['bicep','python','javascript','cosmosdb','monitor','keyvault', 'mongodb','reactjs', 'terraform', 'appservice'],
+    tags: ['python','javascript','cosmosdb','monitor','keyvault', 'mongodb','reactjs', 'terraform', 'appservice'],
   },
   {
     title: 'Microservices App - Dapr PubSub Node.js ACA ServiceBus',

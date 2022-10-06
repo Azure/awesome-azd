@@ -77,7 +77,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
     source: 'https://github.com/Azure-Samples/todo-csharp-cosmos-sql',
-    tags: ['featured','csharp','javascript','appservice','cosmosdb','monitor','keyvault','reactjs'],
+    tags: ['featured','csharp','dotnet','javascript','appservice','cosmosdb','monitor','keyvault','reactjs'],
   },
   {
     title: 'Rock, Paper, Orleans (RPO) - Distributed .NET',
@@ -87,7 +87,7 @@ const Users: User[] = [
     website: 'https://rockpaperorleans.net/',
     author: 'Brady Gaster',
     source: 'https://github.com/bradygaster/RockPaperOrleans',
-    tags: ['featured', 'csharp','dotnet','cosmosdb', 'aca'],
+    tags: ['featured','csharp','dotnet','cosmosdb', 'aca'],
   },
 
 
@@ -144,7 +144,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
     source: 'https://github.com/Azure-Samples/todo-csharp-sql',
-    tags: ['bicep','csharp','javascript','appservice','azuresql','monitor','keyvault', 'mongodb','reactjs'],
+    tags: ['bicep','csharp','dotnet','javascript','appservice','azuresql','monitor','keyvault', 'mongodb','reactjs'],
   },
   {
     title: 'ToDo Application - React Python Mongo AppService',

@@ -48,7 +48,7 @@ _Used as default image for template card - must be representative of solution be
     website: 'https://github.com/danieljurek',
     author: 'Daniel Jurek',
     source: 'https://github.com/Azure-Samples/todo-csharp-cosmos-sql',
-    tags: ['featured','csharp','javascript','appservice','cosmosdb','monitor','keyvault','reactjs'],
+    tags: ['featured','csharp','dotnet','javascript','appservice','cosmosdb','monitor','keyvault','reactjs'],
   },
 ```
 ---

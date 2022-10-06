@@ -23,7 +23,10 @@ _The name to be shown in the grey button on the card - will be linked profile we
 ## 3. Template Repo
 _The GitHub repo containing template being contributed - must be valid, complete, and match this architecture_
 
-## 4. Additional Tags (`optional`)
+## 4. Link to PR where you made your repo `azd` compatible
+_To allow us to provide feedback on your template, please include a link to the PR where you added `azd` compatibility_
+
+## 5. Additional Tags (`optional`)
 _Don't see a relevant standard tag for your template? Request these tags be added, and then used for your template. These could be new languages, services, or application domains_.
 
 ---

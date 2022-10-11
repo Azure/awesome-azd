@@ -85,6 +85,11 @@ export type TagType =
 | 'dapr'
 | 'servicebus'
 | 'vnets'
+| 'fastapi'
+| 'fhir'
+| 'ahds'
+| 'appinsights'
+| 'loganalytics'
 ;
 
 
@@ -196,9 +201,34 @@ export const Tags: {[type in TagType]: Tag} = {
     label: 'MongoDB',
     description: 'Template architecture uses MongoDB',
     color: 'hotpink',
-},
+    },
+    fastapi: {
+    label: 'FastAPI',
+    description: 'Template architecture uses FastAPI web framework',
+    color: 'hotpink',
+    },
+    fhir: {
+    label: 'FHIR Service',
+    description: 'Template architecture uses Fast Healthcare Interoperability Resources (FHIR)',
+    color: 'hotpink',
+    },
 
     // ---- Azure Services
+    ahds: {
+        label: 'Azure Health Data Service',
+        description: 'Template architecture uses Azure Health Data Services workspace',
+        color: 'hotpink',
+    },
+    appinsights: {
+        label: 'Azure App Insights',
+        description: 'Template architecture uses Azure App Insights',
+        color: 'hotpink',
+    },
+    loganalytics: {
+        label: 'Azure Log Analytics',
+        description: 'Template architecture uses Azure Log Analytics',
+        color: 'hotpink',
+    },
     appservice: {
         label: 'Azure App Service',
         description: 'Template architecture uses Azure App Service',

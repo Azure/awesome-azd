@@ -104,7 +104,7 @@ const config = {
       footer: {
         style: "light",
         links: [
-          { label: `azd-templates`, to: 'https://github.com/azure/awesome-azd' },
+          { label: `azd-templates`, to: 'https://github.com/topics/azd-templates' },
           { label: `azd Reference`, to: 'https://learn.microsoft.com/azure/developer/azure-developer-cli/reference' },  
           {
             label: 'Privacy Statement ',

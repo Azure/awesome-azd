@@ -26,7 +26,10 @@ _The name to be shown in the grey button on the card - will be linked profile we
 ## 5. Template Repo
 _The GitHub repo containing the template being contributed - must be a valid, complete template_
 
-## 6. Standard Tags
+## 6. Link to PR where you made your repo `azd` compatible
+_To allow us to provide feedback on your template, please include a link to the PR where you added `azd` compatibility_
+
+## 7. Standard Tags
 _One or more tags representing the template. Look at the currently available tags on the Gallery page and pick at least 1 tag for programming language used, and 1 tag for Azure services integrated_
 
 ## 7. Additional Tags (`optional`)

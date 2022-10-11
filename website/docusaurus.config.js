@@ -87,16 +87,8 @@ const config = {
 
           // CONFIG: 
           // Make sure you have class defined in src/css/custom.css
-          {
-            type: 'html',
-            position: 'right',
-            value: '<a href="https://learn.microsoft.com/azure/architecture/browse/"> <button>View Architectures</button></a>',
-          },
-          {
-            type: 'html',
-            position: 'right',
-            value: '<a href="https://learn.microsoft.com/azure/developer/azure-developer-cli/"> <button>View Docs</button></a>',
-          },
+          {to: 'https://learn.microsoft.com/azure/architecture/browse/', label: 'Architectures', position: 'right'},
+          {to: 'https://learn.microsoft.com/azure/developer/azure-developer-cli/', label: 'Docs', position: 'right'},
           { 
             href: 'https://github.com/azure/awesome-azd',
             position: 'right',

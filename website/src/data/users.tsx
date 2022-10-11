@@ -77,7 +77,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
     source: 'https://github.com/Azure-Samples/todo-csharp-cosmos-sql',
-    tags: ['featured','csharp','javascript','appservice','cosmosdb','monitor','keyvault','reactjs'],
+    tags: ['featured','csharp','dotnet','typescript','javascript','appservice','cosmosdb','monitor','keyvault','reactjs'],
   },
   {
     title: 'Rock, Paper, Orleans (RPO) - Distributed .NET',
@@ -87,7 +87,7 @@ const Users: User[] = [
     website: 'https://rockpaperorleans.net/',
     author: 'Brady Gaster',
     source: 'https://github.com/bradygaster/RockPaperOrleans',
-    tags: ['featured', 'csharp','dotnet','cosmosdb', 'aca'],
+    tags: ['featured','csharp','dotnet','cosmosdb', 'aca'],
   },
 
 
@@ -134,7 +134,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
     source: 'https://github.com/Azure-Samples/todo-python-mongo-aca',
-    tags: ['bicep','python','javascript','aca','cosmosdb','monitor','keyvault', 'mongodb','reactjs'],
+    tags: ['bicep','python','typescript','javascript','aca','cosmosdb','monitor','keyvault', 'mongodb','reactjs'],
   },
   {
     title: 'ToDo Application - C# AzureSQL AppService ',
@@ -144,7 +144,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
     source: 'https://github.com/Azure-Samples/todo-csharp-sql',
-    tags: ['bicep','csharp','javascript','appservice','azuresql','monitor','keyvault', 'mongodb','reactjs'],
+    tags: ['bicep','csharp','dotnet','typescript','javascript','appservice','azuresql','monitor','keyvault', 'mongodb','reactjs'],
   },
   {
     title: 'ToDo Application - React Python Mongo AppService',
@@ -154,7 +154,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
     source: 'https://github.com/Azure-Samples/todo-python-mongo',
-    tags: ['bicep','python','javascript','appservice','cosmosdb','monitor','keyvault', 'mongodb','reactjs'],
+    tags: ['bicep','python','typescript','javascript','appservice','cosmosdb','monitor','keyvault', 'mongodb','reactjs'],
   },
   {
     title: 'ToDo Application - React Node.js Mongo ACA',
@@ -164,7 +164,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
     source: 'https://github.com/Azure-Samples/todo-nodejs-mongo-aca',
-    tags: ['bicep','nodejs','javascript','appservice','cosmosdb','monitor','keyvault', 'mongodb','reactjs', 'aca'],
+    tags: ['bicep','nodejs','typescript','javascript','appservice','cosmosdb','monitor','keyvault', 'mongodb','reactjs', 'aca'],
   },
   {
     title: 'ToDo Application - React Python Mongo Terraform',
@@ -174,7 +174,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
     source: 'https://github.com/Azure-Samples/todo-python-mongo-terraform',
-    tags: ['python','javascript','cosmosdb','monitor','keyvault', 'mongodb','reactjs', 'terraform', 'appservice'],
+    tags: ['python','typescript','javascript','cosmosdb','monitor','keyvault', 'mongodb','reactjs', 'terraform', 'appservice'],
   },
   {
     title: 'Microservices App - Dapr PubSub Node.js ACA ServiceBus',

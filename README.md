@@ -17,7 +17,10 @@ _Getting started? Click the image below to check out an Azure Friday episode all
 **[Submit a new resource!](https://github.com/Azure/awesome-azd/issues/new?assignees=nitya%2C+savannahostrowski&labels=awesome-readme&template=%E2%9A%99%EF%B8%8F-submit-a-new-resource.md&title=%5BResource%5D)**
 
 ### 2.1 Articles
- * [The Azure Developer CLI - A Walkthrough](https://dev.to/lechnerc77/the-azure-developer-cli-a-walk-through-22fm) - _Christian Lechner_ - Sep 2022
+ * [Azure Developer CLI - A Walkthrough](https://dev.to/lechnerc77/the-azure-developer-cli-a-walk-through-22fm) - [_Christian Lechner_](https://github.com/lechnerc77) - Sep 2022
+ * [Azure Developer CLI - The new infrastructure setup](https://dev.to/lechnerc77/azure-developer-cli-the-new-infrastructure-setup-4caj) - [_Christian Lechner_](https://github.com/lechnerc77) - Oct 2022
+  * [Azure Developer CLI - How does it know that?](https://dev.to/lechnerc77/azure-developer-cli-how-does-it-know-that-1ngl) - [_Christian Lechner_](https://github.com/lechnerc77) - Oct 2022
+  * [Azure Developer CLI - Compatibility journey for an Azure Functions Project](https://dev.to/lechnerc77/the-azure-developer-cli-compatibility-journey-for-an-azure-functions-project-3mc1) - [_Christian Lechner_](https://github.com/lechnerc77) - Oct 2022
 
 ### 2.2 Videos
  * [Azure Developer CLI - #QuickGlance Playlist](https://www.youtube.com/watch?v=eLiD3E7tPYo&list=PLmZLSvJAm8FbFq2XhqaPZgIzl6kewz1HD) - 

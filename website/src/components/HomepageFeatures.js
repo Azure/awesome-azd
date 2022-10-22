@@ -17,7 +17,7 @@ const FeatureList = [
     link: "/",
     description: (
       <>
-        Explore the <a href="https://github.com/azure/awesome-azd">azd-templates</a> topic on GitHub <b>or</b> check out the <a href="/">Gallery</a> to find templates using richer filters and search capability.
+        Explore the <a href="https://github.com/azure/">azd-templates</a> topic on GitHub <b>or</b> check out the <a href="/awesome-azd">Gallery</a> to find templates using richer filters and search capability.
       </>
     ),
   },
@@ -37,7 +37,7 @@ const FeatureList = [
     link: "https://github.com/Azure/awesome-azd/issues/new/choose",
     description: (
       <>
-        Consider sharing your template in our <a href="/gallery">Gallery</a> to help the community. Just <a href="https://github.com/Azure/awesome-azd/issues/new/choose">fill in the issue </a> and we'll do the rest!
+        Consider sharing your template in our <a href="/awesome-azd">Gallery</a> to help the community. Just <a href="https://github.com/Azure/awesome-azd/issues/new/choose">fill in the issue </a> and we'll do the rest!
       </>
     ),
   },

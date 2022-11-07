@@ -29,7 +29,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
     source: 'https://github.com/Azure-Samples/todo-csharp-cosmos-sql',
-    tags: ['featured','csharp','dotnet','typescript','javascript','appservice','cosmosdb','monitor','keyvault','reactjs'],
+    tags: ['featured','csharp','dotnet','typescript','javascript','appservice','cosmosdb','monitor','keyvault','reactjs', 'bicep'],
   },
   {
     title: 'Rock, Paper, Orleans (RPO) - Distributed .NET',
@@ -39,7 +39,7 @@ const Users: User[] = [
     website: 'https://rockpaperorleans.net/',
     author: 'Brady Gaster',
     source: 'https://github.com/bradygaster/RockPaperOrleans',
-    tags: ['featured','csharp','dotnet','cosmosdb', 'aca'],
+    tags: ['featured','csharp','dotnet','cosmosdb', 'aca', 'bicep'],
   },
   {
     title: 'PyCon Workshop - Django On Azure',
@@ -49,7 +49,7 @@ const Users: User[] = [
     website: 'https://github.com/tonybaloney',
     author: 'Anthony Shaw',
     source: 'https://github.com/tonybaloney/django-on-azure',
-    tags: ['featured', 'django','python', 'azuresql', 'webapps','vnets'],
+    tags: ['featured', 'django','python', 'azuresql', 'webapps','vnets', 'bicep'],
   },
   {
     title: 'ToDo Application - React Node.js Mongo',
@@ -82,7 +82,7 @@ const Users: User[] = [
     tags: ['featured','bicep','swa','functions','python','typescript','javascript','cosmosdb','monitor','keyvault', 'mongodb','reactjs', 'appservice', 'fastapi'],
   },
   {
-    title: 'ToDo Application - React Python Mongo Terraform',
+    title: 'ToDo Application - React Python MongoDB Terraform',
     description:
       'Complete ToDo appliction with Terraform as the IaC provider, React.js for the Web application, Python (FastAPI) for the API, Azure Cosmos DB API for MongoDB for storage, and Azure Monitor for monitoring and logging',
       preview: require('./images/todo-python-terraform.png'),
@@ -92,7 +92,7 @@ const Users: User[] = [
     tags: ['featured','python','typescript','javascript','cosmosdb','monitor','keyvault', 'mongodb','reactjs', 'terraform', 'appservice', 'fastapi'],
   },
   {
-    title: 'ToDo Application - React Node.js Mongo Terraform',
+    title: 'ToDo Application - React Node.js MongoDB Terraform',
     description:
       'Complete ToDo appliction with Terraform as the IaC provider, React.js for the Web application, Node.js for the API, Azure Cosmos DB API for MongoDB for storage, and Azure Monitor for monitoring and logging',
       preview: require('./images/todo-nodejs-mongo-terraform.png'),
@@ -102,7 +102,7 @@ const Users: User[] = [
     tags: ['featured','nodejs','typescript','javascript','cosmosdb','monitor','keyvault', 'mongodb','reactjs', 'terraform', 'appservice'],
   },
   {
-    title: 'ToDo Application - React Python Mongo AppService',
+    title: 'ToDo Application - React Python MongoDB AppService',
     description:
       'Complete React.js ToDo application,  Python (FastAPI) for the API, Azure Cosmos DB API for MongoDB for storage, and Azure Monitor for monitoring and logging',
       preview: require('./images/todo-python.png'),
@@ -112,7 +112,7 @@ const Users: User[] = [
     tags: ['featured','bicep','python','typescript','javascript','appservice','cosmosdb','monitor','keyvault', 'mongodb','reactjs', 'fastapi'],
   },
   {
-    title: 'ToDo Application - React Node.js Mongo ACA',
+    title: 'ToDo Application - React Node.js MongoDB ACA',
     description:
       'Complete React.js ToDo application,  Node.js for the API, Azure Cosmos DB API for MongoDB for storage, and Azure Monitor for monitoring and logging',
       preview: require('./images/todo-node-aca.png'),
@@ -122,7 +122,7 @@ const Users: User[] = [
     tags: ['featured','bicep','nodejs','typescript','javascript','appservice','cosmosdb','monitor','keyvault', 'mongodb','reactjs', 'aca'],
   },
   {
-    title: 'ToDo Application - React Python Mongo ACA',
+    title: 'ToDo Application - React Python MongoDB ACA',
     description:
       'Complete React.js ToDo application,  Python (FastAPI) for the API, Azure Cosmos DB API for MongoDB for storage, and Azure Monitor for monitoring and logging',
       preview: require('./images/todo-python-aca.png'),
@@ -140,6 +140,26 @@ const Users: User[] = [
     author: 'Azure Dev',
     source: 'https://github.com/Azure-Samples/todo-csharp-sql',
     tags: ['featured', 'bicep','csharp','dotnet','typescript','javascript','appservice','azuresql','monitor','keyvault', 'mongodb','reactjs'],
+  },
+  {
+    title: 'ToDo Application - Java MongoDB AppService ',
+    description:
+      'A complete sample To Do application that demonstrates how to build an Azure solution using  React.js for the Web application, Java for the API, Azure Cosmos DB API for MongoDB for storage, and Azure Monitor for monitoring and logging.',
+      preview: require('./images/todo-java-mongo.png'),
+    website: 'https://github.com/Azure/azure-dev',
+    author: 'Azure Dev',
+    source: 'https://github.com/Azure-Samples/todo-java-mongo',
+    tags: ['featured', 'bicep','java','typescript','appservice','cosmosdb','keyvault','monitor', 'mongodb','reactjs'],
+  },
+  {
+    title: 'ToDo Application - Java MongoDB AppService ACA',
+    description:
+      'A complete sample To Do application that demonstrates how to build an Azure solution using  React.js for the Web application, Java for the API, Azure Cosmos DB API for MongoDB for storage, and Azure Monitor for monitoring and logging. Deployed to Azure Container Apps.',
+      preview: require('./images/todo-java-mongo-aca.png'),
+    website: 'https://github.com/Azure/azure-dev',
+    author: 'Azure Dev',
+    source: 'https://github.com/Azure-Samples/todo-java-mongo-aca',
+    tags: ['featured', 'bicep','java','typescript','appservice','cosmosdb','keyvault','monitor', 'mongodb','reactjs'],
   },
   {
     title: 'Azure Health Data Services Toolkit Azure Function Quickstart',

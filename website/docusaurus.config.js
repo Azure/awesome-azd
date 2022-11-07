@@ -136,9 +136,9 @@ const config = {
       // CONFIG: Use sparingly to drive attention to a specific call-to-action or new feature
       //    See: https://docusaurus.io/docs/next/api/themes/configuration#announcement-bar
       announcementBar: {
-        id: 'Join us for #Hacktoberfest ' ,
+        id: 'Latest News for AZD' ,
         content:
-          'Join us for ✨ <a href="https://aka.ms/azd-oct-2022/hacktober"> <b>#Hacktoberfest</b></a> | Give  us a 🌟 <a href="https://github.com/azure/awesome-azd/"><b> on Github</b></a>',
+          'AZD Release Notes - <a href="https://aka.ms/awesome-azd/release-link"> <b>🆕 This Month</b></a> | Give  us a 🌟 <a href="https://github.com/azure/awesome-azd/"><b> on Github</b></a>',
         backgroundColor: '#000010',
         textColor: '#ffffff',
         isCloseable: false,

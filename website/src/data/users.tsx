@@ -29,7 +29,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
     source: 'https://github.com/Azure-Samples/todo-csharp-cosmos-sql',
-    tags: ['featured','csharp','dotnet','typescript','javascript','appservice','cosmosdb','monitor','keyvault','reactjs'],
+    tags: ['featured','csharp','dotnet','typescript','javascript','appservice','cosmosdb','monitor','keyvault','reactjs', 'bicep'],
   },
   {
     title: 'Rock, Paper, Orleans (RPO) - Distributed .NET',
@@ -39,7 +39,7 @@ const Users: User[] = [
     website: 'https://rockpaperorleans.net/',
     author: 'Brady Gaster',
     source: 'https://github.com/bradygaster/RockPaperOrleans',
-    tags: ['featured','csharp','dotnet','cosmosdb', 'aca'],
+    tags: ['featured','csharp','dotnet','cosmosdb', 'aca', 'bicep'],
   },
   {
     title: 'PyCon Workshop - Django On Azure',
@@ -49,7 +49,7 @@ const Users: User[] = [
     website: 'https://github.com/tonybaloney',
     author: 'Anthony Shaw',
     source: 'https://github.com/tonybaloney/django-on-azure',
-    tags: ['featured', 'django','python', 'azuresql', 'webapps','vnets'],
+    tags: ['featured', 'django','python', 'azuresql', 'webapps','vnets', 'bicep'],
   },
   {
     title: 'ToDo Application - React Node.js Mongo',

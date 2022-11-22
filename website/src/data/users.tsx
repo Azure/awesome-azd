@@ -234,7 +234,7 @@ const Users: User[] = [
     description:
       'A restaurants review web app that uses whitenoise for static assets and PostGreSQL for the database. Ready for deployment on App Service with a PostGreSQL Flexible Server inside a VNet.',
       preview: require('./images/msdocs-django-postgresql-sample-app-azd.png'),
-    website: 'https://github.com/pamelafox',
+    website: 'https://github.com/Azure-Samples',
     author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/msdocs-django-postgresql-sample-app',
     tags: ['python','django', 'webapps', 'azuredb-postgreSQL', 'appservice','vnets'],

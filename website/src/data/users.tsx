@@ -230,9 +230,9 @@ const Users: User[] = [
 
   //-------  ALL OTHER TEMPLATES go here, can be searched for by name
   {
-    title: 'Python (Django) Web App with PostGreSQL',
+    title: 'Python (Django) Web App with PostgreSQL',
     description:
-      'A restaurants review web app that uses whitenoise for static assets and PostGreSQL for the database. Ready for deployment on App Service with a PostGreSQL Flexible Server inside a VNet.',
+      'A restaurants review web app that uses whitenoise for static assets and PostgreSQL for the database. Ready for deployment on App Service with a PostgreSQL Flexible Server inside a VNet.',
       preview: require('./images/msdocs-django-postgresql-sample-app.png'),
     website: 'https://github.com/Azure-Samples',
     author: 'Azure Content Team',

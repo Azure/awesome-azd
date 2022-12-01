@@ -90,6 +90,9 @@ export type TagType =
 | 'ahds'
 | 'appinsights'
 | 'loganalytics'
+| 'cognitivesearch'
+| 'openai'
+| 'azureai'
 ;
 
 
@@ -317,6 +320,21 @@ export const Tags: {[type in TagType]: Tag} = {
     vnets: {
         label: 'Virtual Networks (VNET)',
         description: 'Template architecture uses Virtual Networks',
+        color: 'hotpink',
+    },
+    cognitivesearch: {
+        label: 'Azure Cognitive Search',
+        description: 'Template architecture uses Azure Cognitive Search',
+        color: 'hotpink',
+    },
+    openai: {
+        label: 'Azure OpenAI Service',
+        description: 'Template architecture uses Azure OpenAI Service',
+        color: 'hotpink',
+    },
+    azureai: {
+        label: 'Azure AI Service',
+        description: 'Template architecture uses Azure AI Service',
         color: 'hotpink',
     },
 };

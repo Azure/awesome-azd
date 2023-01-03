@@ -93,6 +93,7 @@ export type TagType =
 | 'cognitivesearch'
 | 'openai'
 | 'azureai'
+| 'flask'
 ;
 
 
@@ -213,6 +214,11 @@ export const Tags: {[type in TagType]: Tag} = {
     fhir: {
     label: 'FHIR Service',
     description: 'Template architecture uses Fast Healthcare Interoperability Resources (FHIR)',
+    color: 'hotpink',
+    },
+    flask:{
+    label: 'Flask',
+    description: 'Template architecture uses Flask web framework',
     color: 'hotpink',
     },
 

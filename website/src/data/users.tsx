@@ -49,7 +49,7 @@ const Users: User[] = [
     website: 'https://github.com/tonybaloney',
     author: 'Anthony Shaw',
     source: 'https://github.com/tonybaloney/django-on-azure',
-    tags: ['featured', 'django','python', 'azuresql', 'webapps','vnets', 'bicep'],
+    tags: ['featured', 'django','python', 'azuredb-postgreSQL', 'webapps','vnets', 'bicep'],
   },
   {
     title: 'ToDo Application - React Node.js Mongo',

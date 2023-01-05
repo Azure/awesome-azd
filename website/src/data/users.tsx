@@ -259,6 +259,16 @@ const Users: User[] = [
     source: 'https://github.com/Azure-Samples/summarization-python-openai',
     tags: ['featured','python', 'blobstorage', 'cognitivesearch', 'openai','azureai'],
   },
+  {
+    title: 'SAP Cloud SDK on Azure App Service Quickstart (TypeScript)',
+    description:
+      'This repos serves as quick-start project showcasing SAP Cloud SDK for JavaScript OData consumption running on Azure App Services. Its primary purpose is to set you up for success for your SAP extension project on Azure and reduce the lead time to your first successful deployment as much as possible with developer friendly commands.',
+      preview: require('./images/app-service-javascript-sap-cloud-sdk-quickstart.png'),
+    website: ['https://github.com/MartinPankraz','https://github.com/lechnerc77]'],
+    author: ['Martin Pankraz','Christian Lechner'],
+    source: 'https://github.com/Azure-Samples/app-service-javascript-sap-cloud-sdk-quickstart',
+    tags: ['typescript','nodejs', 'bicep', 'webapps', 'keyvault','appinsights','featured','nestjs','sap','sapcloudsdk'],
+  },
 
 
 

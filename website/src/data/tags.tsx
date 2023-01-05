@@ -44,8 +44,8 @@ export type User = {
     title: string;
     description: string;
     preview: string;
-    website: string;
-    author: string;
+    website: string | string[];
+    author: string | string[];
     source: string | null;
     tags: TagType[];
 };
@@ -94,6 +94,9 @@ export type TagType =
 | 'openai'
 | 'azureai'
 | 'flask'
+| 'sap'
+| 'sapcloudsdk'
+| 'nestjs'
 ;
 
 
@@ -219,6 +222,21 @@ export const Tags: {[type in TagType]: Tag} = {
     flask:{
     label: 'Flask',
     description: 'Template architecture uses Flask web framework',
+    color: 'hotpink',
+    },
+    nestjs:{
+    label: 'NestJS',
+    description: 'Template architecture uses NestJS framework',
+    color: 'hotpink',
+    },
+    sap:{
+    label: 'SAP',
+    description: 'Template architecture uses Systems Applications and Products in data processing (SAP)',
+    color: 'hotpink',
+    },
+    sapcloudsdk:{
+    label: 'SAP Cloud SDK',
+    description: 'Template architecture uses SAP Cloud SDK',
     color: 'hotpink',
     },
 

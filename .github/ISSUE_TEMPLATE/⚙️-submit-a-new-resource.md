@@ -10,7 +10,7 @@ assignees: nitya, savannahostrowski
 ## 1. Name of resource
 
 ## 2. Resource author
-_Who created this resource?_.
+_Who created this resource? (so we can credit them!)_.
 
 ## 3. What section should this resource be included in?
 _Is the resource an article? A video? Something else?_.

@@ -10,9 +10,9 @@ title: "Contributor Guide"
 The [custom issues](https://github.com/Azure/awesome-azd/issues/new/choose) page shows the different ways in which _anyone_ can contribute to make this project successful for _everyone_. 
 
 ### Submit a Template Idea
-There are ample ways to combine languages with Azure services and tools to create applications, so if you cannot find a template with architecture that works for you-- you can submit a request for that template. 
+There are many ways to combine languages with Azure services and tools to create applications, so if you cannot find a template with architecture that works for you-- you can submit a request for that template.
 
-Keep in mind, a template can be used far beyond it's original purpose. For example, a [ToDo Application in C# with Azure SQL and App Service](https://github.com/Azure-Samples/todo-csharp-sql) can be modified and used to create a grocery list application. 
+Keep in mind, a template are made to be adaptable. You can use a template's architecture and swap out the source code. For example, if you want to create a grocery list making applciation using Azure SQL and Azure App service, you can use the [ToDo Application in C# with Azure SQL and App Service](https://github.com/Azure-Samples/todo-csharp-sql) template and swap out the source code. 
 
 ### Contribute a Template
 Our template gallery will be at its best when our community is involved in creating and contributing new templates. 
@@ -25,7 +25,7 @@ If you would like to contribute a template but are not sure where to start, [mak
 3.  Update azure.yaml 
 
 ### Submit a Resource
-Did you write or find an article that helped you get started with azd? Or maybe you created or found a video that showed you how to create an azd template? Whatever the resource might be, we would love for you to share it with our community! So, use this issue to submit content you think should be included in `awesome-azd/README.md`
+Did you write or find an article that helped you get started with `azd`? Or maybe you created or found a video that showed you how to create an azd template? Whatever the resource might be, we would love for you to share it with our community! So, use this issue to submit content you think should be included in `awesome-azd/README.md`
 
 ## Other Ways To Help 
 Other than these, we always welcome feedback through:

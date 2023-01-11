@@ -33,4 +33,4 @@ Other than these, we always welcome feedback through:
  - **feature requests**: for improvements to our awesome-azd site
 
 ## Next Steps
-- Visit our [FAQ](/website/docs/1-faq/1-azd.md)
+- Visit our [FAQ](./1-faq/1-azd.md)

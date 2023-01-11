@@ -10,12 +10,19 @@ title: "Contributor Guide"
 The [custom issues](https://github.com/Azure/awesome-azd/issues/new/choose) page shows the different ways in which _anyone_ can contribute to make this project successful for _everyone_. 
 
 ### Submit a Template Idea
-There are copious ways to combine languages with Azure services and tools to create applications, so if you cannot find a template combining the tools that work for you-- you can submit a request for that template. 
+There are ample ways to combine languages with Azure services and tools to create applications, so if you cannot find a template with architecture that works for you-- you can submit a request for that template. 
 
 Keep in mind, a template can be used far beyond it's original purpose. For example, a [ToDo Application in C# with Azure SQL and App Service](https://github.com/Azure-Samples/todo-csharp-sql) can be modified and used to create a grocery list application. 
 
 ### Contribute a Template
-Our template gallery will be at its best when our community is involved in creating new templates. 
+Our template gallery will be at its best when our community is involved in creating and contributing new templates. 
+
+We welcome contributions of [requested templates](https://github.com/Azure/awesome-azd/issues?q=is%3Aopen+is%3Aissue+label%3Arequested-contribution) as well as any others, subject to review. 
+
+If you would like to contribute a template but are not sure where to start, [making an existing project azd compatible](https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/make-azd-compatible) is a great first step. Doing so consists of three main steps:
+1.  Set up a new environment (with `azd init`)
+2.  Add Bicep files
+3.  Update azure.yaml 
 
 ### Submit a Resource
 Did you write or find an article that helped you get started with azd? Or maybe you created or found a video that showed you how to create an azd template? Whatever the resource might be, we would love for you to share it with our community! So, use this issue to submit content you think should be included in `awesome-azd/README.md`

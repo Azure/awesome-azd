@@ -95,6 +95,8 @@ export type TagType =
 | 'azureai'
 | 'flask'
 | 'apim'
+| 'spring'
+| 'thymeleaf'
 ;
 
 
@@ -220,6 +222,16 @@ export const Tags: {[type in TagType]: Tag} = {
     flask:{
     label: 'Flask',
     description: 'Template architecture uses Flask web framework',
+    color: 'hotpink',
+    },
+    spring:{
+    label: 'Spring',
+    description: 'Template architecture uses Spring framework',
+    color: 'hotpink',
+    },
+    thymeleaf:{
+    label: 'Thymeleaf',
+    description: 'Template architecture uses Thymeleaf template engine',
     color: 'hotpink',
     },
 

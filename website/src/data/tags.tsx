@@ -94,6 +94,7 @@ export type TagType =
 | 'openai'
 | 'azureai'
 | 'flask'
+| 'apim'
 | 'sap'
 | 'sapcloudsdk'
 | 'nestjs'
@@ -359,6 +360,11 @@ export const Tags: {[type in TagType]: Tag} = {
     azureai: {
         label: 'Azure AI Service',
         description: 'Template architecture uses Azure AI Service',
+        color: 'hotpink',
+    },
+    apim: {
+        label: 'Azure API Management',
+        description: 'Template architecture uses Azure API Management',
         color: 'hotpink',
     },
 };

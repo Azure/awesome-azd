@@ -245,7 +245,7 @@ const Users: User[] = [
       'A restaurants review web app with a PostGreSQL database, written in the Python Flask framework plus SQL-Alchemy plus Alembic for database interactions. Ready for deployment on App Service with a PostGreSQL Flexible Server inside a VNet.',
       preview: require('./images/msdocs-flask-postgresql-sample-app.png'),
     website: 'https://github.com/Azure-Samples',
-    author: 'Azure samples',
+    author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/msdocs-flask-postgresql-sample-app',
     tags: ['python','webapps', 'azuredb-postgreSQL', 'appservice','vnets','flask'],
   },
@@ -260,6 +260,17 @@ const Users: User[] = [
     tags: ['featured','python', 'blobstorage', 'cognitivesearch', 'openai','azureai'],
   },
   {
+    title: 'FastAPI with API Management',
+    description:
+      'A FastAPI app deployed as a secured Azure Function with an API Management Policy in front, set up such that API calls require a subscription key but auto-generated documentation is publicly viewable. Project also includes 100% test coverage with Pytest plus a development workflow with ruff, isort, and black.',
+      preview: require('./images/fastapi-azure-function-apim.png'),
+    website: 'https://github.com/pamelafox',
+    author: 'Pamela Fox',
+    source: 'https://github.com/pamelafox/fastapi-azure-function-apim',
+    tags: ['python', 'fastapi', 'functions', 'apim'],
+  },
+
+  {
     title: 'SAP Cloud SDK on Azure App Service Quickstart (TypeScript)',
     description:
       'This repos serves as quick-start project showcasing SAP Cloud SDK for JavaScript OData consumption running on Azure App Services. Its primary purpose is to set you up for success for your SAP extension project on Azure and reduce the lead time to your first successful deployment as much as possible with developer friendly commands.',
@@ -271,7 +282,7 @@ const Users: User[] = [
   },
 
 
-
+\
 
   /*
   Pro Tip: add your site in alphabetical order.

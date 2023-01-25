@@ -60,6 +60,26 @@
      </>
    );
  }
+
+ function ShowcaseAuthors({user}: {user: User}) {
+  const authors = user.author;
+
+  if (authors.length > 1){
+    return authors.map((oneauthor) => <li>{oneauthor}</li>);
+  }
+
+  return authors;
+ }
+
+ function ShowcaseWebsites({user}: {user: User}) {
+    const websites = user.website;
+
+    if (websites.length > 1){
+      return websites.map((oneweb) => <li>{oneweb}</li>);
+    }
+
+    return websites;
+ }
  
  function ShowcaseCard({user}: {user: User}) {
    return (
@@ -81,15 +101,16 @@
            )}
            {user.source && (
              <Link
-               href={user.website}
+               href={<ShowcaseWebsites user={user}/>}
                className={clsx(
                  'button button--secondary button--sm',
                  styles.showcaseCardSrcBtn,
                )}>
                <Translate id="showcase.card.sourceLink">
-                {user.author}
+                {<ShowcaseAuthors user={user} />}
                </Translate>
              </Link>
+             
            )}
          </div>
          <p className={styles.showcaseCardBody}>{user.description}</p>

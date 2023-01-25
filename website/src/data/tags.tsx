@@ -44,8 +44,8 @@ export type User = {
     title: string;
     description: string;
     preview: string;
-    website: string | string[];
-    author: string | string[];
+    website: string[];
+    author: string[];
     source: string | null;
     tags: TagType[];
 };

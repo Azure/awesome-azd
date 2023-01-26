@@ -269,6 +269,16 @@ const Users: User[] = [
     source: 'https://github.com/pamelafox/fastapi-azure-function-apim',
     tags: ['python', 'fastapi', 'functions', 'apim'],
   },
+  {
+    title: 'Spring PetClinic - Java Spring MySQL',
+    description:
+      'Spring PetClinic application using a set of Azure solutions. Azure App Service for app hosting, Azure Database for MySQL for storage, Azure Key Vault for securing secret and Azure Application Insights for monitoring and logging.',
+      preview: require('./images/spring-petclinic-java-mysql.png'),
+    website: 'https://github.com/wangmingliang-ms',
+    author: 'Miller Wang',
+    source: 'https://github.com/Azure-Samples/spring-petclinic-java-mysql',
+    tags: ['java', 'appservice', 'azuresql', 'monitor','keyvault','appinsights','bicep','spring','thymeleaf'],
+  },
 
 
 

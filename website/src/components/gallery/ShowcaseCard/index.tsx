@@ -60,6 +60,44 @@
      </>
    );
  }
+
+ function ShowcaseMultipleWebsites(authorName:string, websiteLink:string) {
+  return <li>
+          <a className="dropdown__link" href={websiteLink}>{authorName}</a>
+        </li>;
+ }
+ 
+ function ShowcaseMultipleAuthorsDropdown({user}: {user: User}) {
+  const authors = user.author;
+  const websites = user.website;
+
+  if (authors.includes("|")){
+    var multiWebsites = websites.split("|"); 
+    var multiAuthors = authors.split("|"); 
+    const links = [];
+
+    return (
+      <div className="dropdown dropdown--right dropdown--hoverable">
+        <button className={clsx(
+                 'button button--secondary button--sm',
+                 styles.showcaseCardSrcBtn,
+               )}>Author</button>
+        <ul className="dropdown__menu">
+          {multiWebsites.map((value, index) => {
+            return ShowcaseMultipleWebsites(multiAuthors[index], multiWebsites[index])
+          })}
+        </ul>
+      </div>
+    )    
+  }
+
+    return <div>
+    <a className={clsx(
+                 'button button--secondary button--sm',
+                 styles.showcaseCardSrcBtn,
+               )} href={websites}>{authors}</a>
+  </div>
+ }
  
  function ShowcaseCard({user}: {user: User}) {
    return (
@@ -80,16 +118,7 @@
              <FavoriteIcon svgClass={styles.svgIconFavorite} size="small" />
            )}
            {user.source && (
-             <Link
-               href={user.website}
-               className={clsx(
-                 'button button--secondary button--sm',
-                 styles.showcaseCardSrcBtn,
-               )}>
-               <Translate id="showcase.card.sourceLink">
-                {user.author}
-               </Translate>
-             </Link>
+             <ShowcaseMultipleAuthorsDropdown user={user}/>   
            )}
          </div>
          <p className={styles.showcaseCardBody}>{user.description}</p>

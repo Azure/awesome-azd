@@ -61,24 +61,42 @@
    );
  }
 
- function ShowcaseAuthors({user}: {user: User}) {
+ function ShowcaseMultipleWebsites(authorName:string, websiteLink:string) {
+  return <li>
+          <a className="dropdown__link" href={websiteLink}>{authorName}</a>
+        </li>;
+ }
+ 
+ function ShowcaseMultipleAuthorsDropdown({user}: {user: User}) {
   const authors = user.author;
+  const websites = user.website;
 
-  if (authors.length > 1){
-    return authors.map((oneauthor) => <li>{oneauthor}</li>);
+  if (authors.includes("|")){
+    var multiWebsites = websites.split("|"); 
+    var multiAuthors = authors.split("|"); 
+    const links = [];
+
+    return (
+      <div className="dropdown dropdown--right dropdown--hoverable">
+        <button className={clsx(
+                 'button button--secondary button--sm',
+                 styles.showcaseCardSrcBtn,
+               )}>Author</button>
+        <ul className="dropdown__menu">
+          {multiWebsites.map((value, index) => {
+            return ShowcaseMultipleWebsites(multiAuthors[index], multiWebsites[index])
+          })}
+        </ul>
+      </div>
+    )    
   }
 
-  return authors;
- }
-
- function ShowcaseWebsites({user}: {user: User}) {
-    const websites = user.website;
-
-    if (websites.length > 1){
-      return websites.map((oneweb) => <li>{oneweb}</li>);
-    }
-
-    return websites;
+    return <div>
+    <a className={clsx(
+                 'button button--secondary button--sm',
+                 styles.showcaseCardSrcBtn,
+               )} href={websites}>{authors}</a>
+  </div>
  }
  
  function ShowcaseCard({user}: {user: User}) {
@@ -100,17 +118,7 @@
              <FavoriteIcon svgClass={styles.svgIconFavorite} size="small" />
            )}
            {user.source && (
-             <Link
-               href={<ShowcaseWebsites user={user}/>}
-               className={clsx(
-                 'button button--secondary button--sm',
-                 styles.showcaseCardSrcBtn,
-               )}>
-               <Translate id="showcase.card.sourceLink">
-                {<ShowcaseAuthors user={user} />}
-               </Translate>
-             </Link>
-             
+             <ShowcaseMultipleAuthorsDropdown user={user}/>   
            )}
          </div>
          <p className={styles.showcaseCardBody}>{user.description}</p>

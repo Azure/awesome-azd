@@ -95,6 +95,8 @@ export type TagType =
 | 'azureai'
 | 'flask'
 | 'apim'
+| 'spring'
+| 'thymeleaf'
 | 'sap'
 | 'sapcloudsdk'
 | 'nestjs'
@@ -238,6 +240,16 @@ export const Tags: {[type in TagType]: Tag} = {
     sapcloudsdk:{
     label: 'SAP Cloud SDK',
     description: 'Template architecture uses SAP Cloud SDK',
+    color: 'hotpink',
+    },
+    spring:{
+    label: 'Spring',
+    description: 'Template architecture uses Spring framework',
+    color: 'hotpink',
+    },
+    thymeleaf:{
+    label: 'Thymeleaf',
+    description: 'Template architecture uses Thymeleaf template engine',
     color: 'hotpink',
     },
 

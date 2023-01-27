@@ -270,6 +270,16 @@ const Users: User[] = [
     tags: ['python', 'fastapi', 'functions', 'apim'],
   },
   {
+    title: 'Spring PetClinic - Java Spring MySQL',
+    description:
+      'Spring PetClinic application using a set of Azure solutions. Azure App Service for app hosting, Azure Database for MySQL for storage, Azure Key Vault for securing secret and Azure Application Insights for monitoring and logging.',
+      preview: require('./images/spring-petclinic-java-mysql.png'),
+    website: 'https://github.com/wangmingliang-ms',
+    author: 'Miller Wang',
+    source: 'https://github.com/Azure-Samples/spring-petclinic-java-mysql',
+    tags: ['java', 'appservice', 'azuresql', 'monitor','keyvault','appinsights','bicep','spring','thymeleaf'],
+  },
+  {
     title: 'SAP Cloud SDK on Azure App Service Quickstart (TypeScript)',
     description:
       'This repos serves as quick-start project showcasing SAP Cloud SDK for JavaScript OData consumption running on Azure App Services. Its primary purpose is to set you up for success for your SAP extension project on Azure and reduce the lead time to your first successful deployment as much as possible with developer friendly commands.',

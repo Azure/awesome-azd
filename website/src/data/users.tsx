@@ -240,9 +240,9 @@ const Users: User[] = [
     tags: ['python','django', 'webapps', 'azuredb-postgreSQL', 'appservice','vnets'],
   },
   {
-    title: 'Python (Flask) Web App with PostGreSQL',
+    title: 'Python (Flask) Web App with PostgreSQL',
     description:
-      'A restaurants review web app with a PostGreSQL database, written in the Python Flask framework plus SQL-Alchemy plus Alembic for database interactions. Ready for deployment on App Service with a PostGreSQL Flexible Server inside a VNet.',
+      'A restaurants review web app with a PostgreSQL database, written in the Python Flask framework plus SQL-Alchemy plus Alembic for database interactions. Ready for deployment on App Service with a PostgreSQL Flexible Server inside a VNet.',
       preview: require('./images/msdocs-flask-postgresql-sample-app.png'),
     website: 'https://github.com/Azure-Samples',
     author: 'Azure Content Team',

@@ -13,8 +13,8 @@ trigger:
 jobs:
   - job: PoliCheck
     pool:
-      name: azsdk-pool-mms-win-2019-general
-      vmImage: MMS2019
+      name: azsdk-pool-mms-win-2022-general
+      vmImage: windows-2022
     timeoutInMinutes: 120
     steps:
       - template: /eng/common/pipelines/templates/steps/policheck.yml
@@ -24,8 +24,8 @@ jobs:
 
   - job: CGScan
     pool:
-      name: azsdk-pool-mms-win-2019-general
-      vmImage: MMS2019
+      name: azsdk-pool-mms-win-2022-general
+      vmImage: windows-2022
 
     variables:
       CLI_VERSION: 1.0.0-alpha.1

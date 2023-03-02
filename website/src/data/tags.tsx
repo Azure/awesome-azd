@@ -100,6 +100,7 @@ export type TagType =
 | 'sap'
 | 'sapcloudsdk'
 | 'nestjs'
+| 'dataverse'
 ;
 
 
@@ -250,6 +251,11 @@ export const Tags: {[type in TagType]: Tag} = {
     thymeleaf:{
     label: 'Thymeleaf',
     description: 'Template architecture uses Thymeleaf template engine',
+    color: 'hotpink',
+    },
+    dataverse:{
+    label: 'Dataverse',
+    description: 'Template architecture uses Microsoft Dataverse',
     color: 'hotpink',
     },
 

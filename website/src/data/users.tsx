@@ -289,6 +289,16 @@ const Users: User[] = [
     source: 'https://github.com/Azure-Samples/app-service-javascript-sap-cloud-sdk-quickstart',
     tags: ['typescript','nodejs', 'bicep', 'webapps', 'keyvault','appinsights','featured','nestjs','sap','sapcloudsdk'],
   },
+  {
+    title: 'Service Bus messages processing to Dataverse',
+    description:
+      'Starter solution to process Service Bus messages to Dataverse, C# for the Azure Functions app processing the messages, Azure Service Bus for the reception of the messages, and Azure Monitor for monitoring and logging.',
+      preview: require('./images/servicebus-csharp-function-dataverse.png'),
+    website: 'https://github.com/rpothin',
+    author: 'Raphael Pothin',
+    source: 'https://github.com/rpothin/servicebus-csharp-function-dataverse',
+    tags: ['csharp','functions', 'servicebus','monitor','keyvault','dataverse'],
+  },
 
 
   /*

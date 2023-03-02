@@ -289,6 +289,16 @@ const Users: User[] = [
     source: 'https://github.com/Azure-Samples/app-service-javascript-sap-cloud-sdk-quickstart',
     tags: ['typescript','nodejs', 'bicep', 'webapps', 'keyvault','appinsights','featured','nestjs','sap','sapcloudsdk'],
   },
+  {
+    title: 'Simple Flask AZD',
+    description:
+      'A tiny, no-frills, template to deploy Python\'s Flask web framework to Azure App Service in the free tier.',
+      preview: require('./images/simple-flask-azd.png'),
+    website: 'https://github.com/tonybaloney',
+    author: 'Anthony Shaw',
+    source: 'https://github.com/tonybaloney/simple-flask-azd',
+    tags: ['python'],
+  },
 
 
   /*

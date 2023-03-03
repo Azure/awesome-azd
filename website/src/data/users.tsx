@@ -290,6 +290,16 @@ const Users: User[] = [
     tags: ['typescript','nodejs', 'bicep', 'webapps', 'keyvault','appinsights','featured','nestjs','sap','sapcloudsdk'],
   },
   {
+    title: 'Service Bus messages processing to Dataverse',
+    description:
+      'Starter solution to process Service Bus messages to Dataverse, C# for the Azure Functions app processing the messages, Azure Service Bus for the reception of the messages, and Azure Monitor for monitoring and logging.',
+      preview: require('./images/servicebus-csharp-function-dataverse.jpg'),
+    website: 'https://github.com/rpothin',
+    author: 'Raphael Pothin',
+    source: 'https://github.com/rpothin/servicebus-csharp-function-dataverse',
+    tags: ['csharp','functions', 'servicebus','monitor','keyvault','dataverse'],
+  },
+  {
     title: 'Simple Flask AZD',
     description:
       'A tiny, no-frills, template to deploy Python\'s Flask web framework to Azure App Service in the free tier.',

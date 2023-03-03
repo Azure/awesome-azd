@@ -293,7 +293,7 @@ const Users: User[] = [
     title: 'Service Bus messages processing to Dataverse',
     description:
       'Starter solution to process Service Bus messages to Dataverse, C# for the Azure Functions app processing the messages, Azure Service Bus for the reception of the messages, and Azure Monitor for monitoring and logging.',
-      preview: require('./images/servicebus-csharp-function-dataverse.png'),
+      preview: require('./images/servicebus-csharp-function-dataverse.jpg'),
     website: 'https://github.com/rpothin',
     author: 'Raphael Pothin',
     source: 'https://github.com/rpothin/servicebus-csharp-function-dataverse',

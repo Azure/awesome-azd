@@ -369,37 +369,6 @@ const Users: User[] = [
     source: 'https://github.com/Azure-Samples/svc-invoke-dapr-csharp',
     tags: ['dapr','csharp']
   },
-  {
-    title: 'Pubsub Dapr NodeJS ServiceBus',
-    description:
-      'A complete microservice application featuring Dapr Pub-Sub, deployed to Azure Container Apps and Azure Service Bus Topics with dead-lettering support.',
-      preview: require('./images/test.png'),
-      website: 'https://github.com/Azure-Samples',
-      author: 'Azure Content Team',
-    source: 'https://github.com/Azure-Samples/pubsub-dapr-nodejs-servicebus',
-    tags: ['dapr','nodejs','pubsub','servicebus']
-  },
-  {
-    title: 'Pubsub Dapr Python ServiceBus',
-    description:
-      'A complete microservice application featuring Dapr Pub-Sub, deployed to Azure Container Apps and Azure Service Bus Topics with dead-lettering support.',
-      preview: require('./images/test.png'),
-      website: 'https://github.com/Azure-Samples',
-      author: 'Azure Content Team',
-    source: 'https://github.com/Azure-Samples/pubsub-dapr-python-servicebus',
-    tags: ['dapr','python','pubsub','servicebus']
-  },
-  {
-    title: 'Pubsub Dapr Csharp ServiceBus',
-    description:
-      'A complete microservice application featuring Dapr Pub-Sub, deployed to Azure Container Apps and Azure Service Bus Topics with dead-lettering support.',
-      preview: require('./images/test.png'),
-      website: 'https://github.com/Azure-Samples',
-      author: 'Azure Content Team',
-    source: 'https://github.com/Azure-Samples/pubsub-dapr-csharp-servicebus',
-    tags: ['dapr','csharp','pubsub','servicebus']
-  },
-
 
   /*
   Pro Tip: add your site in alphabetical order.

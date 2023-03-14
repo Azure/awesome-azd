@@ -309,6 +309,96 @@ const Users: User[] = [
     source: 'https://github.com/tonybaloney/simple-flask-azd',
     tags: ['python'],
   },
+  {
+    title: 'Bindings Dapr Csharp Cron PostgreSQL',
+    description:
+      'Create microservice to demonstrate Dapr\'s bindings API to work with external systems as inputs and outputs. The service listens to input binding events from a system CRON and then outputs the contents of local data to a postgreSQL output binding.',
+      preview: require('./images/bindings-dapr-cron-postgres.png'),
+      website: 'https://github.com/Azure-Samples',
+      author: 'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/bindings-dapr-csharp-cron-postgres',
+    tags: ['dapr','csharp','azuredb-postgreSQL','dotnet']
+  },
+  {
+    title: 'Bindings Dapr Python Cron PostgreSQL',
+    description:
+      'Create a microservice app to demonstrate Dapr\'s bindings API to work with external systems as inputs and outputs. The service listens to input binding events from a system CRON and then outputs the contents of local data to a postgreSQL output binding.',
+      preview: require('./images/bindings-dapr-cron-postgres.png'),
+      website: 'https://github.com/Azure-Samples',
+      author: 'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/bindings-dapr-python-cron-postgres',
+    tags: ['dapr','python','azuredb-postgreSQL']
+  },
+  {
+    title: 'Bindings Dapr Node.js Cron PostgreSQL',
+    description:
+      'Create a microservice app to demonstrate Dapr\'s bindings API to work with external systems as inputs and outputs. The service listens to input binding events from a system CRON and then outputs the contents of local data to a postgreSQL output binding.',
+      preview: require('./images/bindings-dapr-cron-postgres.png'),
+      website: 'https://github.com/Azure-Samples',
+      author: 'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/bindings-dapr-nodejs-cron-postgres',
+    tags: ['dapr','nodejs','azuredb-postgreSQL','javascript']
+  },
+  {
+    title: 'Service Invoke Dapr Node.js',
+    description:
+      'Create two microservices that communicate using Dapr\'s Service Invocation API. The Service Invocation API enables your applications to communicate reliably and securely by leveraging auto-mTLS and built-in retries.',
+      preview: require('./images/svc-invoke-dapr.png'),
+      website: 'https://github.com/Azure-Samples',
+      author: 'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/svc-invoke-dapr-nodejs',
+    tags: ['dapr','nodejs']
+  },
+  {
+    title: 'Service Invoke Dapr Python',
+    description:
+      'Create two microservices that communicate using Dapr\'s Service Invocation API. The Service Invocation API enables your applications to communicate reliably and securely by leveraging auto-mTLS and built-in retries.',
+      preview: require('./images/svc-invoke-dapr.png'),
+      website: 'https://github.com/Azure-Samples',
+      author: 'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/svc-invoke-dapr-python',
+    tags: ['dapr','python']
+  },
+  {
+    title: 'Service Invoke Dapr Csharp',
+    description:
+      'Create two microservices that communicate using Dapr\'s Service Invocation API. The Service Invocation API enables your applications to communicate reliably and securely by leveraging auto-mTLS and built-in retries.',
+      preview: require('./images/svc-invoke-dapr.png'),
+      website: 'https://github.com/Azure-Samples',
+      author: 'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/svc-invoke-dapr-csharp',
+    tags: ['dapr','csharp']
+  },
+  {
+    title: 'Pubsub Dapr NodeJS ServiceBus',
+    description:
+      'A complete microservice application featuring Dapr Pub-Sub, deployed to Azure Container Apps and Azure Service Bus Topics with dead-lettering support.',
+      preview: require('./images/test.png'),
+      website: 'https://github.com/Azure-Samples',
+      author: 'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/pubsub-dapr-nodejs-servicebus',
+    tags: ['dapr','nodejs','pubsub','servicebus']
+  },
+  {
+    title: 'Pubsub Dapr Python ServiceBus',
+    description:
+      'A complete microservice application featuring Dapr Pub-Sub, deployed to Azure Container Apps and Azure Service Bus Topics with dead-lettering support.',
+      preview: require('./images/test.png'),
+      website: 'https://github.com/Azure-Samples',
+      author: 'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/pubsub-dapr-python-servicebus',
+    tags: ['dapr','python','pubsub','servicebus']
+  },
+  {
+    title: 'Pubsub Dapr Csharp ServiceBus',
+    description:
+      'A complete microservice application featuring Dapr Pub-Sub, deployed to Azure Container Apps and Azure Service Bus Topics with dead-lettering support.',
+      preview: require('./images/test.png'),
+      website: 'https://github.com/Azure-Samples',
+      author: 'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/pubsub-dapr-csharp-servicebus',
+    tags: ['dapr','csharp','pubsub','servicebus']
+  },
 
 
   /*

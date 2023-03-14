@@ -101,6 +101,7 @@ export type TagType =
 | 'sapcloudsdk'
 | 'nestjs'
 | 'dataverse'
+| 'pubsub'
 ;
 
 
@@ -354,6 +355,11 @@ export const Tags: {[type in TagType]: Tag} = {
         label: 'Dapr',
         description: 'Template architecture uses Distributed Application Runtime (dapr)',
         color: 'hotpink',
+    },
+    pubsub:{
+    label: 'Dapr\'s Pub-Sub',
+    description: 'Template architecture uses Distributed Application Runtime (dapr)\'s Publish and Subscribe',
+    color: 'hotpink',
     },
     servicebus: {
         label: 'Azure Service Bus',

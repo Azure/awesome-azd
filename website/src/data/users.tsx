@@ -234,7 +234,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/pubsub-dapr-csharp-servicebus',
-    tags: ['bicep','csharp', 'dotnet', 'aca', 'dapr','servicebus','azurecontainerapp'],
+    tags: ['bicep','csharp', 'dotnet', 'aca', 'dapr','servicebus','azurecontainerapps'],
   },
   {
     title: 'Microservices App - Dapr PubSub Python ACA ServiceBus',
@@ -244,7 +244,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/pubsub-dapr-python-servicebus',
-    tags: ['bicep','python', 'aca', 'dapr','servicebus','azurecontainerapp'],
+    tags: ['bicep','python', 'aca', 'dapr','servicebus','azurecontainerapps'],
   },
   {
     title: 'Microservices App - Dapr PubSub Node.js ACA ServiceBus',
@@ -254,7 +254,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/pubsub-dapr-nodejs-servicebus',
-    tags: ['bicep','javascript', 'nodejs', 'aca', 'dapr','servicebus','azurecontainerapp'],
+    tags: ['bicep','javascript', 'nodejs', 'aca', 'dapr','servicebus','azurecontainerapps'],
   },
   {
     title: 'Microservices App - Dapr Bindings Cron C# ACA PostgreSQL',
@@ -264,7 +264,7 @@ const Users: User[] = [
       website: 'https://github.com/Azure-Samples',
       author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/bindings-dapr-csharp-cron-postgres',
-    tags: ['dapr','csharp','azuredb-postgreSQL','dotnet','azurecontainerapp']
+    tags: ['dapr','csharp','azuredb-postgreSQL','dotnet','azurecontainerapps']
   },
   {
     title: 'Microservices App - Dapr Bindings Cron Python ACA PostgreSQL',
@@ -274,7 +274,7 @@ const Users: User[] = [
       website: 'https://github.com/Azure-Samples',
       author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/bindings-dapr-python-cron-postgres',
-    tags: ['dapr','python','azuredb-postgreSQL','azurecontainerapp']
+    tags: ['dapr','python','azuredb-postgreSQL','azurecontainerapps']
   },
   {
     title: 'Microservices App - Dapr Bindings Cron Node.js ACA PostgreSQL',
@@ -284,7 +284,7 @@ const Users: User[] = [
       website: 'https://github.com/Azure-Samples',
       author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/bindings-dapr-nodejs-cron-postgres',
-    tags: ['dapr','nodejs','azuredb-postgreSQL','javascript','azurecontainerapp']
+    tags: ['dapr','nodejs','azuredb-postgreSQL','javascript','azurecontainerapps']
   },
   {
     title: 'Microservices App - Dapr Service Invoke Node.js ACA',
@@ -294,7 +294,7 @@ const Users: User[] = [
       website: 'https://github.com/Azure-Samples',
       author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/svc-invoke-dapr-nodejs',
-    tags: ['dapr','nodejs','azurecontainerapp']
+    tags: ['dapr','nodejs','azurecontainerapps']
   },
   {
     title: 'Microservices App - Dapr Service Invoke Python ACA',
@@ -304,7 +304,7 @@ const Users: User[] = [
       website: 'https://github.com/Azure-Samples',
       author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/svc-invoke-dapr-python',
-    tags: ['dapr','python','azurecontainerapp']
+    tags: ['dapr','python','azurecontainerapps']
   },
   {
     title: 'Microservices App - Dapr Service Invoke C# ACA',
@@ -314,7 +314,7 @@ const Users: User[] = [
       website: 'https://github.com/Azure-Samples',
       author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/svc-invoke-dapr-csharp',
-    tags: ['dapr','csharp','azurecontainerapp']
+    tags: ['dapr','csharp','azurecontainerapps']
   },
 
   //-------  ALL OTHER TEMPLATES go here, can be searched for by name

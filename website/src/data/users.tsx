@@ -310,7 +310,7 @@ const Users: User[] = [
     tags: ['python'],
   },
   {
-    title: 'Bindings Dapr Csharp Cron PostgreSQL',
+    title: 'Bindings Dapr C# Cron PostgreSQL',
     description:
       'Create microservice to demonstrate Dapr\'s bindings API to work with external systems as inputs and outputs. The service listens to input binding events from a system CRON and then outputs the contents of local data to a postgreSQL output binding.',
       preview: require('./images/bindings-dapr-cron-postgres.png'),
@@ -360,7 +360,7 @@ const Users: User[] = [
     tags: ['dapr','python']
   },
   {
-    title: 'Service Invoke Dapr Csharp',
+    title: 'Service Invoke Dapr C#',
     description:
       'Create two microservices that communicate using Dapr\'s Service Invocation API. The Service Invocation API enables your applications to communicate reliably and securely by leveraging auto-mTLS and built-in retries.',
       preview: require('./images/svc-invoke-dapr.png'),

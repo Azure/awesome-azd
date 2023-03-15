@@ -340,7 +340,7 @@ const Users: User[] = [
     tags: ['dapr','nodejs','azuredb-postgreSQL','javascript']
   },
   {
-    title: 'Service Invoke Dapr Node.js',
+    title: 'Microservices App - Dapr Service Invoke Node.js ACA',
     description:
       'Create two microservices that communicate using Dapr\'s Service Invocation API. The Service Invocation API enables your applications to communicate reliably and securely by leveraging auto-mTLS and built-in retries.',
       preview: require('./images/svc-invoke-dapr.png'),
@@ -350,7 +350,7 @@ const Users: User[] = [
     tags: ['dapr','nodejs']
   },
   {
-    title: 'Service Invoke Dapr Python',
+    title: 'Microservices App - Dapr Service Invoke Python ACA',
     description:
       'Create two microservices that communicate using Dapr\'s Service Invocation API. The Service Invocation API enables your applications to communicate reliably and securely by leveraging auto-mTLS and built-in retries.',
       preview: require('./images/svc-invoke-dapr.png'),
@@ -360,7 +360,7 @@ const Users: User[] = [
     tags: ['dapr','python']
   },
   {
-    title: 'Service Invoke Dapr C#',
+    title: 'Microservices App - Dapr Service Invoke C# ACA',
     description:
       'Create two microservices that communicate using Dapr\'s Service Invocation API. The Service Invocation API enables your applications to communicate reliably and securely by leveraging auto-mTLS and built-in retries.',
       preview: require('./images/svc-invoke-dapr.png'),

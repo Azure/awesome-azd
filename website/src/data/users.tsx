@@ -408,6 +408,16 @@ const Users: User[] = [
     source: 'https://github.com/Azure-Samples/azure-search-openai-demo',
     tags: ['openai','chatgpt','cognitivesearch','python','typescript','bicep','nodejs'],
   },
+  {
+    title: 'Flask API on Azure Container Apps',
+    description:
+      'A simple JSON API using the Python Flask framework, designed for deployment on Azure Container Apps.',
+      preview: require('./images/simple-flask-api-container.png'),
+    website: 'https://github.com/pamelafox',
+    author: 'Pamela Fox',
+    source: 'https://github.com/pamelafox/simple-flask-api-container',
+    tags: ['python', 'bicep', 'azurecontainerapps', 'flask'],
+  },
 
 
   /*

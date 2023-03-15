@@ -161,16 +161,6 @@ const Users: User[] = [
     source: 'https://github.com/Azure-Samples/todo-java-mongo-aca',
     tags: ['featured', 'bicep','java','typescript','appservice','cosmosdb','keyvault','monitor', 'mongodb','reactjs'],
   },
-  {
-    title: 'Azure Health Data Services Toolkit Azure Function Quickstart',
-    description:
-      'This quickstart will walk you through creating a simple custom operation on top of the FHIR Service using Azure Functions. We will cover everything from deploying infrastructure, debugging locally, and deploying to Azure',
-      preview: require('./images/test.png'),
-    website: 'https://github.com/Azure/azure-dev',
-    author: 'Azure Dev',
-    source: 'https://github.com/Azure-Samples/azure-health-data-services-toolkit-fhir-function-quickstart',
-    tags: ['featured', 'bicep','csharp','dotnet','ahds', 'fhir','appinsights','loganalytics', 'functions'],
-  },
 
   //-------  REQUESTED TEMPLATES have 'helpwanted' as a tag
 
@@ -198,14 +188,24 @@ const Users: User[] = [
 
   //-------  ALL OTHER AZURE-SAMPLES HERE - how many do we want to feature?
   {
+    title: 'Azure Health Data Services Toolkit Azure Function Quickstart',
+    description:
+      'This quickstart will walk you through creating a simple custom operation on top of the FHIR Service using Azure Functions. We will cover everything from deploying infrastructure, debugging locally, and deploying to Azure',
+      preview: require('./images/test.png'),
+    website: 'https://github.com/Azure/azure-dev',
+    author: 'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/azure-health-data-services-toolkit-fhir-function-quickstart',
+    tags: ['featured', 'bicep','csharp','dotnet','ahds', 'fhir','appinsights','loganalytics', 'functions'],
+  },
+  {
     title: 'Microservices App - Dapr PubSub C# ACA ServiceBus',
     description:
       'A complete microservice application featuring Dapr Pub-Sub, deployed to Azure Container Apps and Azure Service Bus Topics with dead-lettering support.',
       preview: require('./images/test.png'),
     website: 'https://github.com/Azure/azure-dev',
-    author: 'Azure Dev',
+    author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/pubsub-dapr-csharp-servicebus',
-    tags: ['bicep','csharp', 'dotnet', 'aca', 'dapr','servicebus'],
+    tags: ['bicep','csharp', 'dotnet', 'aca', 'dapr','servicebus','azurecontainerapp'],
   },
   {
     title: 'Microservices App - Dapr PubSub Python ACA ServiceBus',
@@ -213,9 +213,9 @@ const Users: User[] = [
       'A complete microservice application featuring Dapr Pub-Sub, deployed to Azure Container Apps and Azure Service Bus Topics with dead-lettering support.',
       preview: require('./images/test.png'),
     website: 'https://github.com/Azure/azure-dev',
-    author: 'Azure Dev',
+    author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/pubsub-dapr-python-servicebus',
-    tags: ['bicep','python', 'aca', 'dapr','servicebus'],
+    tags: ['bicep','python', 'aca', 'dapr','servicebus','azurecontainerapp'],
   },
   {
     title: 'Microservices App - Dapr PubSub Node.js ACA ServiceBus',
@@ -223,12 +223,10 @@ const Users: User[] = [
       'A complete microservice application featuring Dapr Pub-Sub, deployed to Azure Container Apps and Azure Service Bus Topics with dead-lettering support.',
       preview: require('./images/test.png'),
     website: 'https://github.com/Azure/azure-dev',
-    author: 'Azure Dev',
+    author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/pubsub-dapr-nodejs-servicebus',
-    tags: ['bicep','javascript', 'nodejs', 'aca', 'dapr','servicebus'],
+    tags: ['bicep','javascript', 'nodejs', 'aca', 'dapr','servicebus','azurecontainerapp'],
   },
-
-  //-------  ALL OTHER TEMPLATES go here, can be searched for by name
   {
     title: 'Python (Django) Web App with PostgreSQL',
     description:
@@ -249,6 +247,69 @@ const Users: User[] = [
     source: 'https://github.com/Azure-Samples/msdocs-flask-postgresql-sample-app',
     tags: ['python','webapps', 'azuredb-postgreSQL', 'appservice','vnets','flask'],
   },
+  
+  {
+    title: 'Microservices App - Dapr Bindings Cron C# ACA PostgreSQL',
+    description:
+      'Create microservice to demonstrate Dapr\'s bindings API to work with external systems as inputs and outputs. The service listens to input binding events from a system CRON and then outputs the contents of local data to a postgreSQL output binding.',
+      preview: require('./images/bindings-dapr-cron-postgres.png'),
+      website: 'https://github.com/Azure-Samples',
+      author: 'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/bindings-dapr-csharp-cron-postgres',
+    tags: ['dapr','csharp','azuredb-postgreSQL','dotnet','azurecontainerapp']
+  },
+  {
+    title: 'Microservices App - Dapr Bindings Cron Python ACA PostgreSQL',
+    description:
+      'Create a microservice app to demonstrate Dapr\'s bindings API to work with external systems as inputs and outputs. The service listens to input binding events from a system CRON and then outputs the contents of local data to a postgreSQL output binding.',
+      preview: require('./images/bindings-dapr-cron-postgres.png'),
+      website: 'https://github.com/Azure-Samples',
+      author: 'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/bindings-dapr-python-cron-postgres',
+    tags: ['dapr','python','azuredb-postgreSQL','azurecontainerapp']
+  },
+  {
+    title: 'Microservices App - Dapr Bindings Cron Node.js ACA PostgreSQL',
+    description:
+      'Create a microservice app to demonstrate Dapr\'s bindings API to work with external systems as inputs and outputs. The service listens to input binding events from a system CRON and then outputs the contents of local data to a postgreSQL output binding.',
+      preview: require('./images/bindings-dapr-cron-postgres.png'),
+      website: 'https://github.com/Azure-Samples',
+      author: 'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/bindings-dapr-nodejs-cron-postgres',
+    tags: ['dapr','nodejs','azuredb-postgreSQL','javascript','azurecontainerapp']
+  },
+  {
+    title: 'Microservices App - Dapr Service Invoke Node.js ACA',
+    description:
+      'Create two microservices that communicate using Dapr\'s Service Invocation API. The Service Invocation API enables your applications to communicate reliably and securely by leveraging auto-mTLS and built-in retries.',
+      preview: require('./images/svc-invoke-dapr.png'),
+      website: 'https://github.com/Azure-Samples',
+      author: 'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/svc-invoke-dapr-nodejs',
+    tags: ['dapr','nodejs','azurecontainerapp']
+  },
+  {
+    title: 'Microservices App - Dapr Service Invoke Python ACA',
+    description:
+      'Create two microservices that communicate using Dapr\'s Service Invocation API. The Service Invocation API enables your applications to communicate reliably and securely by leveraging auto-mTLS and built-in retries.',
+      preview: require('./images/svc-invoke-dapr.png'),
+      website: 'https://github.com/Azure-Samples',
+      author: 'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/svc-invoke-dapr-python',
+    tags: ['dapr','python','azurecontainerapp']
+  },
+  {
+    title: 'Microservices App - Dapr Service Invoke C# ACA',
+    description:
+      'Create two microservices that communicate using Dapr\'s Service Invocation API. The Service Invocation API enables your applications to communicate reliably and securely by leveraging auto-mTLS and built-in retries.',
+      preview: require('./images/svc-invoke-dapr.png'),
+      website: 'https://github.com/Azure-Samples',
+      author: 'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/svc-invoke-dapr-csharp',
+    tags: ['dapr','csharp','azurecontainerapp']
+  },
+
+  //-------  ALL OTHER TEMPLATES go here, can be searched for by name
   {
     title: 'OpenAI Query based Summarization',
     description:
@@ -308,66 +369,6 @@ const Users: User[] = [
     author: 'Anthony Shaw',
     source: 'https://github.com/tonybaloney/simple-flask-azd',
     tags: ['python'],
-  },
-  {
-    title: 'Microservices App - Dapr Bindings Cron C# ACA PostgreSQL',
-    description:
-      'Create microservice to demonstrate Dapr\'s bindings API to work with external systems as inputs and outputs. The service listens to input binding events from a system CRON and then outputs the contents of local data to a postgreSQL output binding.',
-      preview: require('./images/bindings-dapr-cron-postgres.png'),
-      website: 'https://github.com/Azure-Samples',
-      author: 'Azure Content Team',
-    source: 'https://github.com/Azure-Samples/bindings-dapr-csharp-cron-postgres',
-    tags: ['dapr','csharp','azuredb-postgreSQL','dotnet']
-  },
-  {
-    title: 'Microservices App - Dapr Bindings Cron Python ACA PostgreSQL',
-    description:
-      'Create a microservice app to demonstrate Dapr\'s bindings API to work with external systems as inputs and outputs. The service listens to input binding events from a system CRON and then outputs the contents of local data to a postgreSQL output binding.',
-      preview: require('./images/bindings-dapr-cron-postgres.png'),
-      website: 'https://github.com/Azure-Samples',
-      author: 'Azure Content Team',
-    source: 'https://github.com/Azure-Samples/bindings-dapr-python-cron-postgres',
-    tags: ['dapr','python','azuredb-postgreSQL']
-  },
-  {
-    title: 'Microservices App - Dapr Bindings Cron Node.js ACA PostgreSQL,
-    description:
-      'Create a microservice app to demonstrate Dapr\'s bindings API to work with external systems as inputs and outputs. The service listens to input binding events from a system CRON and then outputs the contents of local data to a postgreSQL output binding.',
-      preview: require('./images/bindings-dapr-cron-postgres.png'),
-      website: 'https://github.com/Azure-Samples',
-      author: 'Azure Content Team',
-    source: 'https://github.com/Azure-Samples/bindings-dapr-nodejs-cron-postgres',
-    tags: ['dapr','nodejs','azuredb-postgreSQL','javascript']
-  },
-  {
-    title: 'Microservices App - Dapr Service Invoke Node.js ACA',
-    description:
-      'Create two microservices that communicate using Dapr\'s Service Invocation API. The Service Invocation API enables your applications to communicate reliably and securely by leveraging auto-mTLS and built-in retries.',
-      preview: require('./images/svc-invoke-dapr.png'),
-      website: 'https://github.com/Azure-Samples',
-      author: 'Azure Content Team',
-    source: 'https://github.com/Azure-Samples/svc-invoke-dapr-nodejs',
-    tags: ['dapr','nodejs']
-  },
-  {
-    title: 'Microservices App - Dapr Service Invoke Python ACA',
-    description:
-      'Create two microservices that communicate using Dapr\'s Service Invocation API. The Service Invocation API enables your applications to communicate reliably and securely by leveraging auto-mTLS and built-in retries.',
-      preview: require('./images/svc-invoke-dapr.png'),
-      website: 'https://github.com/Azure-Samples',
-      author: 'Azure Content Team',
-    source: 'https://github.com/Azure-Samples/svc-invoke-dapr-python',
-    tags: ['dapr','python']
-  },
-  {
-    title: 'Microservices App - Dapr Service Invoke C# ACA',
-    description:
-      'Create two microservices that communicate using Dapr\'s Service Invocation API. The Service Invocation API enables your applications to communicate reliably and securely by leveraging auto-mTLS and built-in retries.',
-      preview: require('./images/svc-invoke-dapr.png'),
-      website: 'https://github.com/Azure-Samples',
-      author: 'Azure Content Team',
-    source: 'https://github.com/Azure-Samples/svc-invoke-dapr-csharp',
-    tags: ['dapr','csharp']
   },
 
   /*

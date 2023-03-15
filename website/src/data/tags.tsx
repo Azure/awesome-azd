@@ -101,6 +101,7 @@ export type TagType =
 | 'sapcloudsdk'
 | 'nestjs'
 | 'dataverse'
+| 'azurecontainerapp'
 ;
 
 
@@ -383,6 +384,11 @@ export const Tags: {[type in TagType]: Tag} = {
     apim: {
         label: 'Azure API Management',
         description: 'Template architecture uses Azure API Management',
+        color: 'hotpink',
+    },
+    azurecontainerapp: {
+        label: 'Azure Container App',
+        description: 'Template architecture uses Azure Container App',
         color: 'hotpink',
     },
 };

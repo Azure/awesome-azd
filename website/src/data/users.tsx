@@ -320,7 +320,7 @@ const Users: User[] = [
     tags: ['python'],
   },
   {
-    title: 'Function C# AI Textsummarize',
+    title: 'Function App - C# AI Text Summarize',
     description:
       'This sample shows how to take text documents as a input via BlobTrigger, does Text Summarization processing using the AI Congnitive Language service, and then outputs to another text document using BlobOutput binding.',
       preview: require('./images/test.png'),

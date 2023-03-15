@@ -162,15 +162,25 @@ const Users: User[] = [
     tags: ['featured', 'bicep','java','typescript','appservice','cosmosdb','keyvault','monitor', 'mongodb','reactjs'],
   },
   {
+    title: 'ToDo Application - React C# SQL SWA MongoDB Functions',
+    description:
+      'A complete ToDo application that includes everything you need to build, deploy, and monitor an Azure solution. This application uses the Azure Developer CLI (azd) to get you up and running on Azure quickly, React.js for the Web application, C# isolated Azure Functions for the API, Azure SQL for DB, and Azure Monitor for monitoring and logging.',
+      preview: require('./images/todo-csharp-sql-swa-func.png'),
+    website: 'https://github.com/Azure/azure-dev',
+    author: 'Azure Dev',
+    source: 'https://github.com/Azure-Samples/todo-csharp-sql-swa-func',
+    tags: ['featured','bicep','swa','functions','csharp','typescript','javascript','monitor','keyvault', 'reactjs', 'appservice', 'azuresql'],
+  },
+  {
     title: 'Azure Health Data Services Toolkit Azure Function Quickstart',
     description:
-      'This quickstart will walk you through creating a simple custom operation on top of the FHIR Service using Azure Functions. We will cover everything from deploying infrastructure, debugging locally, and deploying to Azure',
+      'This quickstart will walk you through creating a simple custom operation on top of the FHIR Service using Azure Functions. We will cover everything from deploying infrastructure, debugging locally, and deploying to Azure.',
       preview: require('./images/test.png'),
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
     source: 'https://github.com/Azure-Samples/azure-health-data-services-toolkit-fhir-function-quickstart',
     tags: ['featured', 'bicep','csharp','dotnet','ahds', 'fhir','appinsights','loganalytics', 'functions'],
-  },
+  },  
 
   //-------  REQUESTED TEMPLATES have 'helpwanted' as a tag
 
@@ -308,6 +318,26 @@ const Users: User[] = [
     author: 'Anthony Shaw',
     source: 'https://github.com/tonybaloney/simple-flask-azd',
     tags: ['python'],
+  },
+  {
+    title: 'Function App - C# AI Text Summarize',
+    description:
+      'This sample shows how to take text documents as a input via BlobTrigger, does Text Summarization processing using the AI Congnitive Language service, and then outputs to another text document using BlobOutput binding.',
+      preview: require('./images/test.png'),
+    website: 'https://github.com/paulyuk',
+    author: 'Paul Yuknewicz',
+    source: 'https://github.com/Azure-Samples/function-csharp-ai-textsummarize',
+    tags: ['functions','csharp','dotnet','azureai', 'bicep'],
+  },
+  {
+    title: 'Function App - Python AI Text Summarize',
+    description:
+      'This sample shows how to take text documents as a input via BlobTrigger, does Text Summarization processing using the AI Congnitive Language service, and then outputs to another text document using BlobOutput binding. Uses Azure Functions Python v2 programming model.',
+      preview: require('./images/test.png'),
+    website: 'https://github.com/paulyuk',
+    author: 'Paul Yuknewicz',
+    source: 'https://github.com/Azure-Samples/function-python-ai-textsummarize',
+    tags: ['functions','python','azureai', 'bicep'],
   },
 
 

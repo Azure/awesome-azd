@@ -101,6 +101,7 @@ export type TagType =
 | 'sapcloudsdk'
 | 'nestjs'
 | 'dataverse'
+| 'chatgpt'
 ;
 
 
@@ -256,6 +257,11 @@ export const Tags: {[type in TagType]: Tag} = {
     dataverse:{
     label: 'Dataverse',
     description: 'Template architecture uses Microsoft Dataverse',
+    color: 'hotpink',
+    },
+    chatgpt:{
+    label: 'ChatGPT',
+    description: 'Template architecture uses ChatGPT model',
     color: 'hotpink',
     },
 

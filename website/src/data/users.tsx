@@ -330,7 +330,7 @@ const Users: User[] = [
     tags: ['functions','csharp','dotnet','azureai', 'bicep'],
   },
   {
-    title: 'Function Python AI Textsummarize',
+    title: 'Function App - Python AI Text Summarize',
     description:
       'This sample shows how to take text documents as a input via BlobTrigger, does Text Summarization processing using the AI Congnitive Language service, and then outputs to another text document using BlobOutput binding. Uses Azure Functions Python v2 programming model.',
       preview: require('./images/test.png'),

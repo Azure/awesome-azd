@@ -398,6 +398,16 @@ const Users: User[] = [
     source: 'https://github.com/Azure-Samples/function-python-ai-textsummarize',
     tags: ['functions','python','azureai', 'bicep'],
   },
+  {
+    title: 'ChatGPT and Enterprise data with Azure OpenAI and Cognitive Search',
+    description:
+      'Demonstration of how to leverage Azure OpenAI and Cognitive Search to enable Information Search and Discovery over organizational content.',
+      preview: require('./images/azure-search-openai-demo.png'),
+    website: 'https://github.com/Azure-Samples',
+    author: 'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/azure-search-openai-demo',
+    tags: ['openai','chatgpt','cognitivesearch','python','typescript','bicep','nodejs'],
+  },
 
 
   /*

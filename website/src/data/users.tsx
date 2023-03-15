@@ -259,7 +259,7 @@ const Users: User[] = [
   {
     title: 'Microservices App - Dapr Bindings Cron C# ACA PostgreSQL',
     description:
-      'Create microservice to demonstrate Dapr\'s bindings API to work with external systems as inputs and outputs. The service listens to input binding events from a system CRON and then outputs the contents of local data to a postgreSQL output binding.',
+      'Create microservice to demonstrate Dapr\'s bindings API to work with external systems as inputs and outputs. The service listens to input binding events from a system CRON and then outputs the contents of local data to a PostgreSQL output binding.',
       preview: require('./images/bindings-dapr-cron-postgres.png'),
       website: 'https://github.com/Azure-Samples',
       author: 'Azure Content Team',

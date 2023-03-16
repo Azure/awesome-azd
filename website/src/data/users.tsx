@@ -234,7 +234,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/pubsub-dapr-csharp-servicebus',
-    tags: ['bicep','csharp', 'dotnet', 'aca', 'dapr','servicebus','azurecontainerapps'],
+    tags: ['bicep','csharp', 'dotnet', 'aca', 'dapr','servicebus','aca'],
   },
   {
     title: 'Microservices App - Dapr PubSub Python ACA ServiceBus',
@@ -244,7 +244,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/pubsub-dapr-python-servicebus',
-    tags: ['bicep','python', 'aca', 'dapr','servicebus','azurecontainerapps'],
+    tags: ['bicep','python', 'aca', 'dapr','servicebus','aca'],
   },
   {
     title: 'Microservices App - Dapr PubSub Node.js ACA ServiceBus',
@@ -254,7 +254,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/pubsub-dapr-nodejs-servicebus',
-    tags: ['bicep','javascript', 'nodejs', 'aca', 'dapr','servicebus','azurecontainerapps'],
+    tags: ['bicep','javascript', 'nodejs', 'aca', 'dapr','servicebus','aca'],
   },
   {
     title: 'Microservices App - Dapr Bindings Cron C# ACA PostgreSQL',
@@ -264,7 +264,7 @@ const Users: User[] = [
       website: 'https://github.com/Azure-Samples',
       author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/bindings-dapr-csharp-cron-postgres',
-    tags: ['dapr','csharp','azuredb-postgreSQL','dotnet','azurecontainerapps']
+    tags: ['dapr','csharp','azuredb-postgreSQL','dotnet','aca']
   },
   {
     title: 'Microservices App - Dapr Bindings Cron Python ACA PostgreSQL',
@@ -274,7 +274,7 @@ const Users: User[] = [
       website: 'https://github.com/Azure-Samples',
       author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/bindings-dapr-python-cron-postgres',
-    tags: ['dapr','python','azuredb-postgreSQL','azurecontainerapps']
+    tags: ['dapr','python','azuredb-postgreSQL','aca']
   },
   {
     title: 'Microservices App - Dapr Bindings Cron Node.js ACA PostgreSQL',
@@ -284,7 +284,7 @@ const Users: User[] = [
       website: 'https://github.com/Azure-Samples',
       author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/bindings-dapr-nodejs-cron-postgres',
-    tags: ['dapr','nodejs','azuredb-postgreSQL','javascript','azurecontainerapps']
+    tags: ['dapr','nodejs','azuredb-postgreSQL','javascript','aca']
   },
   {
     title: 'Microservices App - Dapr Service Invoke Node.js ACA',
@@ -294,7 +294,7 @@ const Users: User[] = [
       website: 'https://github.com/Azure-Samples',
       author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/svc-invoke-dapr-nodejs',
-    tags: ['dapr','nodejs','azurecontainerapps']
+    tags: ['dapr','nodejs','aca']
   },
   {
     title: 'Microservices App - Dapr Service Invoke Python ACA',
@@ -304,7 +304,7 @@ const Users: User[] = [
       website: 'https://github.com/Azure-Samples',
       author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/svc-invoke-dapr-python',
-    tags: ['dapr','python','azurecontainerapps']
+    tags: ['dapr','python','aca']
   },
   {
     title: 'Microservices App - Dapr Service Invoke C# ACA',
@@ -314,7 +314,7 @@ const Users: User[] = [
       website: 'https://github.com/Azure-Samples',
       author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/svc-invoke-dapr-csharp',
-    tags: ['dapr','csharp','azurecontainerapps']
+    tags: ['dapr','csharp','aca']
   },
 
   //-------  ALL OTHER TEMPLATES go here, can be searched for by name
@@ -419,17 +419,17 @@ const Users: User[] = [
     tags: ['python', 'fastapi', 'functions'],
   },
   {
-    title: 'Flask container with CDN',
+    title: 'Flask Container with CDN',
     description:
       'A simple photos website written with Python Flask and Bootstrap. Can be run locally with Docker and then deployed to Azure Container Apps with an Azure CDN in front.',
       preview: require('./images/flask-gallery-container-app.png'),
     website: 'https://github.com/pamelafox',
     author: 'Pamela Fox',
     source: 'https://github.com/pamelafox/flask-gallery-container-app',
-    tags: ['python', 'flask', 'webapps', 'aca'],
+    tags: ['python', 'flask', 'webapps', 'aca','azurecdn'],
   },
   {
-    title: 'Flask surveys container app',
+    title: 'Flask Surveys Container App',
     description:
       'A survey app written with the Python Flask framework which uses Flask-SQLAlchemy with a PostgreSQL database. Can be developed locally with Docker Compose and then deployed to Azure Container Apps (using KeyVault SDK for Flask secrets).',
       preview: require('./images/flask-surveys-container-app.png'),

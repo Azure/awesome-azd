@@ -171,6 +171,16 @@ const Users: User[] = [
     source: 'https://github.com/Azure-Samples/todo-csharp-sql-swa-func',
     tags: ['featured','bicep','swa','functions','csharp','typescript','javascript','monitor','keyvault', 'reactjs', 'appservice', 'azuresql'],
   },
+  {
+    title: 'ToDo Application - React Node.js MongoDB AKS',
+    description:
+      'A complete ToDo application that includes everything you need to build, deploy, and monitor an Azure solution. This application uses the Azure Developer CLI (azd) to get you up and running on Azure quickly using React.js for the Web application, node.js for the API and Azure Cosmos DB API for MongoDB for storage.',
+      preview: require('./images/todo-nodejs-mongo-aks.png'),
+    website: 'https://github.com/Azure/azure-dev',
+    author: 'Azure Dev',
+    source: 'https://github.com/azure-samples/todo-nodejs-mongo-aks',
+    tags: ['featured','bicep','nodejs','typescript','javascript','mongodb','monitor','keyvault', 'reactjs', 'appservice','cosmosdb','aks'],
+  },
 
   //-------  REQUESTED TEMPLATES have 'helpwanted' as a tag
   {
@@ -234,7 +244,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/pubsub-dapr-csharp-servicebus',
-    tags: ['bicep','csharp', 'dotnet', 'aca', 'dapr','servicebus','azurecontainerapps'],
+    tags: ['bicep','csharp', 'dotnet', 'aca', 'dapr','servicebus','aca'],
   },
   {
     title: 'Microservices App - Dapr PubSub Python ACA ServiceBus',
@@ -244,7 +254,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/pubsub-dapr-python-servicebus',
-    tags: ['bicep','python', 'aca', 'dapr','servicebus','azurecontainerapps'],
+    tags: ['bicep','python', 'aca', 'dapr','servicebus','aca'],
   },
   {
     title: 'Microservices App - Dapr PubSub Node.js ACA ServiceBus',
@@ -254,7 +264,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/pubsub-dapr-nodejs-servicebus',
-    tags: ['bicep','javascript', 'nodejs', 'aca', 'dapr','servicebus','azurecontainerapps'],
+    tags: ['bicep','javascript', 'nodejs', 'aca', 'dapr','servicebus','aca'],
   },
   {
     title: 'Microservices App - Dapr Bindings Cron C# ACA PostgreSQL',
@@ -264,7 +274,7 @@ const Users: User[] = [
       website: 'https://github.com/Azure-Samples',
       author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/bindings-dapr-csharp-cron-postgres',
-    tags: ['dapr','csharp','azuredb-postgreSQL','dotnet','azurecontainerapps']
+    tags: ['dapr','csharp','azuredb-postgreSQL','dotnet','aca']
   },
   {
     title: 'Microservices App - Dapr Bindings Cron Python ACA PostgreSQL',
@@ -274,7 +284,7 @@ const Users: User[] = [
       website: 'https://github.com/Azure-Samples',
       author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/bindings-dapr-python-cron-postgres',
-    tags: ['dapr','python','azuredb-postgreSQL','azurecontainerapps']
+    tags: ['dapr','python','azuredb-postgreSQL','aca']
   },
   {
     title: 'Microservices App - Dapr Bindings Cron Node.js ACA PostgreSQL',
@@ -284,7 +294,7 @@ const Users: User[] = [
       website: 'https://github.com/Azure-Samples',
       author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/bindings-dapr-nodejs-cron-postgres',
-    tags: ['dapr','nodejs','azuredb-postgreSQL','javascript','azurecontainerapps']
+    tags: ['dapr','nodejs','azuredb-postgreSQL','javascript','aca']
   },
   {
     title: 'Microservices App - Dapr Service Invoke Node.js ACA',
@@ -294,7 +304,7 @@ const Users: User[] = [
       website: 'https://github.com/Azure-Samples',
       author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/svc-invoke-dapr-nodejs',
-    tags: ['dapr','nodejs','azurecontainerapps']
+    tags: ['dapr','nodejs','aca']
   },
   {
     title: 'Microservices App - Dapr Service Invoke Python ACA',
@@ -304,7 +314,7 @@ const Users: User[] = [
       website: 'https://github.com/Azure-Samples',
       author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/svc-invoke-dapr-python',
-    tags: ['dapr','python','azurecontainerapps']
+    tags: ['dapr','python','aca']
   },
   {
     title: 'Microservices App - Dapr Service Invoke C# ACA',
@@ -314,7 +324,7 @@ const Users: User[] = [
       website: 'https://github.com/Azure-Samples',
       author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/svc-invoke-dapr-csharp',
-    tags: ['dapr','csharp','azurecontainerapps']
+    tags: ['dapr','csharp','aca']
   },
 
   //-------  ALL OTHER TEMPLATES go here, can be searched for by name
@@ -407,6 +417,16 @@ const Users: User[] = [
     author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/azure-search-openai-demo',
     tags: ['openai','chatgpt','cognitivesearch','python','typescript','bicep','nodejs'],
+  },
+  {
+    title: 'Flask API on Azure Container Apps',
+    description:
+      'A simple JSON API using the Python Flask framework, designed for deployment on Azure Container Apps.',
+      preview: require('./images/simple-flask-api-container.png'),
+    website: 'https://github.com/pamelafox',
+    author: 'Pamela Fox',
+    source: 'https://github.com/pamelafox/simple-flask-api-container',
+    tags: ['python', 'bicep', 'aca', 'flask'],
   },
 
 

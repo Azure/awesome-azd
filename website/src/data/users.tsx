@@ -408,6 +408,16 @@ const Users: User[] = [
     source: 'https://github.com/Azure-Samples/azure-search-openai-demo',
     tags: ['openai','chatgpt','cognitivesearch','python','typescript','bicep','nodejs'],
   },
+  {
+    title: 'FastAPI on Azure Functions',
+    description:
+      'A simple FastAPI app deployed to Azure Functions. Can also be run and debugged locally with the Azure Functions Core Tool emulator.',
+      preview: require('./images/fastapi-on-azure-functions.png'),
+    website: 'https://github.com/Azure-Samples',
+    author: 'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/fastapi-on-azure-functions',
+    tags: ['python', 'fastapi', 'functions'],
+  },
 
 
   /*

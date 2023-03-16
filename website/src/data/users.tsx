@@ -422,7 +422,7 @@ const Users: User[] = [
     title: 'Flask Container with CDN',
     description:
       'A simple photos website written with Python Flask and Bootstrap. Can be run locally with Docker and then deployed to Azure Container Apps with an Azure CDN in front.',
-      preview: require('./images/flask-gallery-container-app.png'),
+      preview: require('./images/flask-cdn-container-app.png'),
     website: 'https://github.com/pamelafox',
     author: 'Pamela Fox',
     source: 'https://github.com/pamelafox/flask-gallery-container-app',
@@ -457,6 +457,16 @@ const Users: User[] = [
     author: 'Pamela Fox',
     source: 'https://github.com/pamelafox/fastapi-azure-function-apim',
     tags: ['python', 'fastapi', 'functions', 'apim'],
+  },
+  {
+    title: 'Flask Chart API on ACA and CDN',
+    description:
+      'A Charts API that renders PNGs of bar and pie charts, built with Python Flask, APIFlask, and matplotlib. Can be run locally with Docker and then deployed to Azure Container Apps with an Azure CDN in front.',
+      preview: require('./images/flask-cdn-container-app'),
+    website: 'https://github.com/pamelafox',
+    author: 'Pamela Fox',
+    source: 'https://github.com/pamelafox/flask-charts-api-container-app',
+    tags: ['python', 'flask', 'webapps', 'aca','azurecdn'],
   },
 
 

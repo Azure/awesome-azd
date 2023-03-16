@@ -418,6 +418,26 @@ const Users: User[] = [
     source: 'https://github.com/Azure-Samples/fastapi-on-azure-functions',
     tags: ['python', 'fastapi', 'functions'],
   },
+  {
+    title: 'Flask container with CDN',
+    description:
+      'A simple photos website written with Python Flask and Bootstrap. Can be run locally with Docker and then deployed to Azure Container Apps with an Azure CDN in front.',
+      preview: require('./images/flask-gallery-container-app.png'),
+    website: 'https://github.com/pamelafox',
+    author: 'Pamela Fox',
+    source: 'https://github.com/pamelafox/flask-gallery-container-app',
+    tags: ['python', 'flask', 'webapps', 'aca'],
+  },
+  {
+    title: 'Flask surveys container app',
+    description:
+      'A survey app written with the Python Flask framework which uses Flask-SQLAlchemy with a PostgreSQL database. Can be developed locally with Docker Compose and then deployed to Azure Container Apps (using KeyVault SDK for Flask secrets).',
+      preview: require('./images/flask-surveys-container-app.png'),
+    website: 'https://github.com/pamelafox',
+    author: 'Pamela Fox',
+    source: 'https://github.com/pamelafox/flask-surveys-container-app',
+    tags: ['python', 'flask', 'keyvault', 'aca','webapps','azuredb-postgreSQL'],
+  },
 
 
   /*

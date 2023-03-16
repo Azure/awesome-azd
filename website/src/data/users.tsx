@@ -171,6 +171,16 @@ const Users: User[] = [
     source: 'https://github.com/Azure-Samples/todo-csharp-sql-swa-func',
     tags: ['featured','bicep','swa','functions','csharp','typescript','javascript','monitor','keyvault', 'reactjs', 'appservice', 'azuresql'],
   },
+  {
+    title: 'ToDo Application - React Node.js MongoDB AKS',
+    description:
+      'A complete ToDo application that includes everything you need to build, deploy, and monitor an Azure solution. This application uses the Azure Developer CLI (azd) to get you up and running on Azure quickly using React.js for the Web application, node.js for the API and Azure Cosmos DB API for MongoDB for storage.',
+      preview: require('./images/todo-nodejs-mongo-aks.png'),
+    website: 'https://github.com/Azure/azure-dev',
+    author: 'Azure Dev',
+    source: 'https://github.com/azure-samples/todo-nodejs-mongo-aks',
+    tags: ['featured','bicep','nodejs','typescript','javascript','mongodb','monitor','keyvault', 'reactjs', 'appservice','cosmosdb','aks'],
+  },
 
   //-------  REQUESTED TEMPLATES have 'helpwanted' as a tag
   {
@@ -437,6 +447,16 @@ const Users: User[] = [
     author: 'Pamela Fox',
     source: 'https://github.com/pamelafox/flask-surveys-container-app',
     tags: ['python', 'flask', 'keyvault', 'aca','webapps','azuredb-postgreSQL'],
+  },
+  {
+    title: 'Flask API on Azure Container Apps',
+    description:
+      'A simple JSON API using the Python Flask framework, designed for deployment on Azure Container Apps.',
+      preview: require('./images/simple-flask-api-container.png'),
+    website: 'https://github.com/pamelafox',
+    author: 'Pamela Fox',
+    source: 'https://github.com/pamelafox/simple-flask-api-container',
+    tags: ['python', 'bicep', 'aca', 'flask'],
   },
 
 

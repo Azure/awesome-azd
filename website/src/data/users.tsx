@@ -326,6 +326,26 @@ const Users: User[] = [
     source: 'https://github.com/Azure-Samples/svc-invoke-dapr-csharp',
     tags: ['dapr','csharp','aca']
   },
+  {
+    title: 'ChatGPT and Enterprise data with Azure OpenAI and Cognitive Search',
+    description:
+      'Demonstration of how to leverage Azure OpenAI and Cognitive Search to enable Information Search and Discovery over organizational content.',
+      preview: require('./images/azure-search-openai-demo.png'),
+    website: 'https://github.com/Azure-Samples',
+    author: 'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/azure-search-openai-demo',
+    tags: ['openai','chatgpt','cognitivesearch','python','typescript','bicep','nodejs'],
+  },
+  {
+    title: 'FastAPI on Azure Functions',
+    description:
+      'A simple FastAPI app deployed to Azure Functions. Can also be run and debugged locally with the Azure Functions Core Tool emulator.',
+      preview: require('./images/fastapi-on-azure-functions.png'),
+    website: 'https://github.com/Azure-Samples',
+    author: 'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/fastapi-on-azure-functions',
+    tags: ['python', 'fastapi', 'functions'],
+  },
 
   //-------  ALL OTHER TEMPLATES go here, can be searched for by name
   {
@@ -337,16 +357,6 @@ const Users: User[] = [
     author: 'Arun Chandrasekhar',
     source: 'https://github.com/Azure-Samples/summarization-python-openai',
     tags: ['featured','python', 'blobstorage', 'cognitivesearch', 'openai','azureai'],
-  },
-  {
-    title: 'FastAPI with API Management',
-    description:
-      'A FastAPI app deployed as a secured Azure Function with an API Management Policy in front, set up such that API calls require a subscription key but auto-generated documentation is publicly viewable. Project also includes 100% test coverage with Pytest plus a development workflow with ruff, isort, and black.',
-      preview: require('./images/fastapi-azure-function-apim.png'),
-    website: 'https://github.com/pamelafox',
-    author: 'Pamela Fox',
-    source: 'https://github.com/pamelafox/fastapi-azure-function-apim',
-    tags: ['python', 'fastapi', 'functions', 'apim'],
   },
   {
     title: 'Spring PetClinic - Java Spring MySQL',
@@ -409,14 +419,24 @@ const Users: User[] = [
     tags: ['functions','python','azureai', 'bicep'],
   },
   {
-    title: 'ChatGPT and Enterprise data with Azure OpenAI and Cognitive Search',
+    title: 'Flask Container with CDN',
     description:
-      'Demonstration of how to leverage Azure OpenAI and Cognitive Search to enable Information Search and Discovery over organizational content.',
-      preview: require('./images/azure-search-openai-demo.png'),
-    website: 'https://github.com/Azure-Samples',
-    author: 'Azure Content Team',
-    source: 'https://github.com/Azure-Samples/azure-search-openai-demo',
-    tags: ['openai','chatgpt','cognitivesearch','python','typescript','bicep','nodejs'],
+      'A simple photos website written with Python Flask and Bootstrap. Can be run locally with Docker and then deployed to Azure Container Apps with an Azure CDN in front.',
+      preview: require('./images/flask-cdn-container-app.png'),
+    website: 'https://github.com/pamelafox',
+    author: 'Pamela Fox',
+    source: 'https://github.com/pamelafox/flask-gallery-container-app',
+    tags: ['python', 'flask', 'webapps', 'aca','azurecdn'],
+  },
+  {
+    title: 'Flask Surveys Container App',
+    description:
+      'A survey app written with the Python Flask framework which uses Flask-SQLAlchemy with a PostgreSQL database. Can be developed locally with Docker Compose and then deployed to Azure Container Apps (using KeyVault SDK for Flask secrets).',
+      preview: require('./images/flask-surveys-container-app.png'),
+    website: 'https://github.com/pamelafox',
+    author: 'Pamela Fox',
+    source: 'https://github.com/pamelafox/flask-surveys-container-app',
+    tags: ['python', 'flask', 'keyvault', 'aca','webapps','azuredb-postgreSQL'],
   },
   {
     title: 'Flask API on Azure Container Apps',
@@ -427,6 +447,26 @@ const Users: User[] = [
     author: 'Pamela Fox',
     source: 'https://github.com/pamelafox/simple-flask-api-container',
     tags: ['python', 'bicep', 'aca', 'flask'],
+  },
+  {
+    title: 'FastAPI with API Management',
+    description:
+      'A FastAPI app deployed as a secured Azure Function with an API Management Policy in front, set up such that API calls require a subscription key but auto-generated documentation is publicly viewable. Project also includes 100% test coverage with Pytest plus a development workflow with ruff, isort, and black.',
+      preview: require('./images/fastapi-azure-function-apim.png'),
+    website: 'https://github.com/pamelafox',
+    author: 'Pamela Fox',
+    source: 'https://github.com/pamelafox/fastapi-azure-function-apim',
+    tags: ['python', 'fastapi', 'functions', 'apim'],
+  },
+  {
+    title: 'Flask Chart API on ACA and CDN',
+    description:
+      'A Charts API that renders PNGs of bar and pie charts, built with Python Flask, APIFlask, and matplotlib. Can be run locally with Docker and then deployed to Azure Container Apps with an Azure CDN in front.',
+      preview: require('./images/flask-cdn-container-app.png'),
+    website: 'https://github.com/pamelafox',
+    author: 'Pamela Fox',
+    source: 'https://github.com/pamelafox/flask-charts-api-container-app',
+    tags: ['python', 'flask', 'webapps', 'aca','azurecdn'],
   },
 
 

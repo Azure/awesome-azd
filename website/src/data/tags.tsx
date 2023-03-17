@@ -103,6 +103,7 @@ export type TagType =
 | 'dataverse'
 | 'chatgpt'
 | 'aks'
+| 'azurecdn'
 ;
 
 
@@ -395,6 +396,11 @@ export const Tags: {[type in TagType]: Tag} = {
     aks: {
         label: 'Azure Kubernetes Service',
         description: 'Template architecture uses Azure Kubernetes Service',
+        color: 'hotpink',
+    },
+    azurecdn: {
+        label: 'Azure Content Delivery Network',
+        description: 'Template architecture uses Azure Content Delivery Network',
         color: 'hotpink',
     },
 };

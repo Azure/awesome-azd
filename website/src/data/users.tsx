@@ -468,6 +468,16 @@ const Users: User[] = [
     source: 'https://github.com/pamelafox/flask-charts-api-container-app',
     tags: ['python', 'flask', 'webapps', 'aca','azurecdn'],
   },
+  {
+    title: 'Jupyter Notebooks Web App on Azure Container Apps',
+    description:
+      'A web application used for hosting, sharing, and interacting with Jupyter Notebooks via Mercury, hosted on Azure Container Apps.',
+      preview: require('./images/jupyter-mercury-aca.png'),
+    website: 'https://github.com/savannahostrowski',
+    author: 'Savannah Ostrowski',
+    source: 'https://github.com/savannahostrowski/jupyter-mercury-aca',
+    tags: ['python', 'bicep', 'webapps', 'aca','jupyter','datascience'],
+  },
 
 
   /*

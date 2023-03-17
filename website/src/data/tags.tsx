@@ -104,6 +104,8 @@ export type TagType =
 | 'chatgpt'
 | 'aks'
 | 'azurecdn'
+| 'jupyter'
+| 'datascience'
 ;
 
 
@@ -266,6 +268,11 @@ export const Tags: {[type in TagType]: Tag} = {
     description: 'Template architecture uses ChatGPT model',
     color: 'hotpink',
     },
+    jupyter:{
+    label: 'Jupyter Notebooks',
+    description: 'Template architecture uses Jupyter Notebooks',
+    color: 'hotpink',
+    },
 
     // ---- Azure Services
     ahds: {
@@ -401,6 +408,13 @@ export const Tags: {[type in TagType]: Tag} = {
     azurecdn: {
         label: 'Azure Content Delivery Network',
         description: 'Template architecture uses Azure Content Delivery Network',
+        color: 'hotpink',
+    },
+
+    // For Topics
+    datascience:{
+        label: 'Data Science',
+        description: 'Template architecture involves Data Science',
         color: 'hotpink',
     },
 };

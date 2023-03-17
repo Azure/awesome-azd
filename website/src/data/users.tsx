@@ -462,7 +462,7 @@ const Users: User[] = [
     title: 'Flask Chart API on ACA and CDN',
     description:
       'A Charts API that renders PNGs of bar and pie charts, built with Python Flask, APIFlask, and matplotlib. Can be run locally with Docker and then deployed to Azure Container Apps with an Azure CDN in front.',
-      preview: require('./images/flask-cdn-container-app'),
+      preview: require('./images/flask-cdn-container-app.png'),
     website: 'https://github.com/pamelafox',
     author: 'Pamela Fox',
     source: 'https://github.com/pamelafox/flask-charts-api-container-app',

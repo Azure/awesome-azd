@@ -469,6 +469,16 @@ const Users: User[] = [
     tags: ['python', 'flask', 'webapps', 'aca','azurecdn'],
   },
   {
+    title: 'Static Maps API Function and CDN',
+    description:
+      'A FastAPI app that renders map images for the given location. Deployed as a secured Azure function with an Azure CDN in front for caching.',
+      preview: require('./images/staticmaps-function.png'),
+    website: 'https://github.com/pamelafox',
+    author: 'Pamela Fox',
+    source: 'https://github.com/pamelafox/staticmaps-function',
+    tags: ['python', 'functions', 'fastapi', 'monitor','azurecdn'],
+  },
+  {
     title: 'Jupyter Notebooks Web App on Azure Container Apps',
     description:
       'A web application used for hosting, sharing, and interacting with Jupyter Notebooks via Mercury, hosted on Azure Container Apps.',

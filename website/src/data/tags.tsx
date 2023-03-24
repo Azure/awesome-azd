@@ -165,7 +165,7 @@ export const Tags: {[type in TagType]: Tag} = {
     },
     dotnetCsharp: {
         label: '.NET/C#',
-        description: 'Template contains .NET and C# app code',
+        description: 'Template contains .NET and/or C# app code',
         color: '#1e90ff',
     },
     java: {

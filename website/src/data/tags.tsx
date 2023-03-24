@@ -58,8 +58,7 @@ export type TagType =
 | 'bicep'
 | 'typescript'
 | 'javascript'
-| 'csharp'
-| 'dotnet'
+| 'dotnetCsharp'
 | 'java'
 | 'python'
 | 'django'
@@ -164,14 +163,9 @@ export const Tags: {[type in TagType]: Tag} = {
         description: 'Template contains TypeScript app code',
         color: '#1e90ff',
     },
-    csharp: {
-        label: 'C#',
-        description: 'Template contains C# app code',
-        color: '#1e90ff',
-    },
-    dotnet: {
-        label: '.NET',
-        description: 'Template contains .NET app code',
+    dotnetCsharp: {
+        label: '.NET/C#',
+        description: 'Template contains .NET and/or C# app code',
         color: '#1e90ff',
     },
     java: {

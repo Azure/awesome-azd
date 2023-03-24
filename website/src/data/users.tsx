@@ -29,7 +29,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
     source: 'https://github.com/Azure-Samples/todo-csharp-cosmos-sql',
-    tags: ['featured','csharp','dotnet','typescript','javascript','appservice','cosmosdb','monitor','keyvault','reactjs', 'bicep'],
+    tags: ['featured','dotnetCsharp','typescript','javascript','appservice','cosmosdb','monitor','keyvault','reactjs', 'bicep'],
   },
   {
     title: 'Rock, Paper, Orleans (RPO) - Distributed .NET',
@@ -39,7 +39,7 @@ const Users: User[] = [
     website: 'https://rockpaperorleans.net/',
     author: 'Brady Gaster',
     source: 'https://github.com/bradygaster/RockPaperOrleans',
-    tags: ['featured','csharp','dotnet','cosmosdb', 'aca', 'bicep'],
+    tags: ['featured','dotnetCsharp','cosmosdb', 'aca', 'bicep'],
   },
   {
     title: 'PyCon Workshop - Django On Azure',
@@ -139,7 +139,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
     source: 'https://github.com/Azure-Samples/todo-csharp-sql',
-    tags: ['featured', 'bicep','csharp','dotnet','typescript','javascript','appservice','azuresql','monitor','keyvault', 'mongodb','reactjs'],
+    tags: ['featured', 'bicep','dotnetCsharp','typescript','javascript','appservice','azuresql','monitor','keyvault', 'mongodb','reactjs'],
   },
   {
     title: 'ToDo Application - Java MongoDB AppService ',
@@ -169,7 +169,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
     source: 'https://github.com/Azure-Samples/todo-csharp-sql-swa-func',
-    tags: ['featured','bicep','swa','functions','csharp','typescript','javascript','monitor','keyvault', 'reactjs', 'appservice', 'azuresql'],
+    tags: ['featured','bicep','swa','functions','dotnetCsharp','typescript','javascript','monitor','keyvault', 'reactjs', 'appservice', 'azuresql'],
   },
   {
     title: 'ToDo Application - React Node.js MongoDB AKS',
@@ -214,7 +214,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/azure-health-data-services-toolkit-fhir-function-quickstart',
-    tags: ['featured', 'bicep','csharp','dotnet','ahds', 'fhir','appinsights','loganalytics', 'functions'],
+    tags: ['featured', 'bicep','dotnetCsharp','ahds', 'fhir','appinsights','loganalytics', 'functions'],
   },
   {
     title: 'Python (Django) Web App with PostgreSQL',
@@ -244,7 +244,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/pubsub-dapr-csharp-servicebus',
-    tags: ['bicep','csharp', 'dotnet', 'aca', 'dapr','servicebus','aca'],
+    tags: ['bicep','dotnetCsharp', 'aca', 'dapr','servicebus','aca'],
   },
   {
     title: 'Microservices App - Dapr PubSub Python ACA ServiceBus',
@@ -274,7 +274,7 @@ const Users: User[] = [
       website: 'https://github.com/Azure-Samples',
       author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/bindings-dapr-csharp-cron-postgres',
-    tags: ['dapr','csharp','azuredb-postgreSQL','dotnet','aca']
+    tags: ['dapr','dotnetCsharp','azuredb-postgreSQL','aca']
   },
   {
     title: 'Microservices App - Dapr Bindings Cron Python ACA PostgreSQL',
@@ -324,7 +324,7 @@ const Users: User[] = [
       website: 'https://github.com/Azure-Samples',
       author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/svc-invoke-dapr-csharp',
-    tags: ['dapr','csharp','aca']
+    tags: ['dapr','dotnetCsharp','aca']
   },
   {
     title: 'ChatGPT and Enterprise data with Azure OpenAI and Cognitive Search',
@@ -386,7 +386,7 @@ const Users: User[] = [
     website: 'https://github.com/rpothin',
     author: 'Raphael Pothin',
     source: 'https://github.com/rpothin/servicebus-csharp-function-dataverse',
-    tags: ['csharp','functions', 'servicebus','monitor','keyvault','dataverse'],
+    tags: ['dotnetCsharp','functions', 'servicebus','monitor','keyvault','dataverse'],
   },
   {
     title: 'Simple Flask AZD',
@@ -406,7 +406,7 @@ const Users: User[] = [
     website: 'https://github.com/paulyuk',
     author: 'Paul Yuknewicz',
     source: 'https://github.com/Azure-Samples/function-csharp-ai-textsummarize',
-    tags: ['functions','csharp','dotnet','azureai', 'bicep'],
+    tags: ['functions','dotnetCsharp','azureai', 'bicep'],
   },
   {
     title: 'Function App - Python AI Text Summarize',

@@ -489,9 +489,9 @@ const Users: User[] = [
     tags: ['python', 'bicep', 'webapps', 'aca','jupyter','datascience'],
   },
   {
-    title: 'Python (Django) on App Service with PostgreSQL and Key Vault',
+    title: 'Python (Django) Web App with PostgreSQL and Key Vault',
     description:
-      'A Python Django app with PostgreSQL flexible server database. Database access is restricted to Azure IPs, and all administrative secrets are stored in Key Vault.',
+      'A Python Django app on App Service with a PostgreSQL flexible server database. Database access is restricted to Azure IPs, and all administrative secrets are stored in Key Vault.',
       preview: require('./images/django-quiz-app.png'),
     website: 'https://github.com/pamelafox',
     author: 'Pamela Fox',

@@ -498,6 +498,16 @@ const Users: User[] = [
     source: 'https://github.com/pamelafox/django-quiz-app',
     tags: ['python', 'django', 'webapps', 'appservice', 'bicep', 'azuredb-postgreSQL', 'keyvault'],
   },
+  {
+    title: 'Reliable web app pattern for .NET',
+    description: 'A multi-region enterprise web app with a 99.9% SLO and a focus on 12-factor apps and the well-architected framework. The sample app creates a concert booking application.',
+    preview: require('./images/reliable-web-app-pattern.png'),
+    website: 'https://github.com/Azure-Samples',
+    author: 'Azure Content Team',
+    source: 'https://github.com/Azure/reliable-web-app-pattern-dotnet',
+    tags: ['dotnetCsharp', 'bicep', 'appservice', 'keyvault', 'frontdoor', 'azuresql', 'appinsights', 'blobstorage', 'webapps', 'enterprisepatterns']
+
+  },
 
   /*
   Pro Tip: add your site in alphabetical order.

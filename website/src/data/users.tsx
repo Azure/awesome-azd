@@ -498,11 +498,16 @@ const Users: User[] = [
     source: 'https://github.com/pamelafox/django-quiz-app',
     tags: ['python', 'django', 'webapps', 'appservice', 'bicep', 'azuredb-postgreSQL', 'keyvault'],
   },
-
-  /*
-  Pro Tip: add your site in alphabetical order.
-  Appending your site here (at the end) is more likely to produce Git conflicts.
-   */
+  {
+    title: 'FastAPI on Azure Container Apps',
+    description:
+      'A simple JSON API using the Python FastAPI app framework, designed for deployment on Azure Container Apps. Includes auto-configuration of gunicorn with uvicorn worker count based on CPUs available.',
+      preview: require('./images/fastapi-aca.png'),
+    website: 'https://github.com/pamelafox',
+    author: 'Pamela Fox',
+    source: 'https://github.com/pamelafox/simple-fastapi-container',
+    tags: ['python', 'fastapi', 'bicep', 'aca'],
+  },
 ];
 // *************** CARD DATA ENDS HERE *******************
 

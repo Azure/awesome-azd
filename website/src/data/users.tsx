@@ -502,7 +502,7 @@ const Users: User[] = [
     title: 'FastAPI on Azure Container Apps',
     description:
       'A simple JSON API using the Python FastAPI app framework, designed for deployment on Azure Container Apps. Includes auto-configuration of gunicorn with uvicorn worker count based on CPUs available.',
-      preview: require('./images/fastapi-aca.png'),
+      preview: require('./images/simple-fastapi-container.png'),
     website: 'https://github.com/pamelafox',
     author: 'Pamela Fox',
     source: 'https://github.com/pamelafox/simple-fastapi-container',

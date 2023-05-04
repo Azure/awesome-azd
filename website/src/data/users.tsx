@@ -227,6 +227,16 @@ const Users: User[] = [
     tags: ['python','django', 'webapps', 'azuredb-postgreSQL', 'appservice','vnets'],
   },
   {
+    title: 'Python (Django) Web App with PostgreSQL via Azure Container Apps',
+    description:
+      'A space tourism web app that uses PostgreSQL for the database. The web app is containerize and deploy with Azure Container Apps with secrets managed by Azure Key Vault',
+      preview: require('./images/simple-flask-api-container.png'),
+    website: 'https://github.com/Azure-Samples',
+    author: 'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/azure-django-postgres-aca',
+    tags: ['python','django', 'aca', 'azuredb-postgreSQL'],
+  },
+  {
     title: 'Python (Flask) Web App with PostgreSQL',
     description:
       'A restaurants review web app with a PostgreSQL database, written in the Python Flask framework plus SQL-Alchemy plus Alembic for database interactions. Ready for deployment on App Service with a PostgreSQL Flexible Server inside a VNet.',

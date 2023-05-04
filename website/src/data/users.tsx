@@ -42,9 +42,9 @@ const Users: User[] = [
     tags: ['featured','dotnetCsharp','cosmosdb', 'aca', 'bicep'],
   },
   {
-    title: 'PyCon Workshop - Django On Azure',
+    title: 'Scalable Django on Azure App Service',
     description:
-      'Deploy your Django web application with Microsoft Azure, for scale, using a cloud architecture with integrated monitoring,',
+      'Deploy your Django web application with Microsoft Azure, for scale, using a cloud architecture with integrated monitoring and load testing.',
       preview: require('./images/pycon-django.png'),
     website: 'https://github.com/tonybaloney',
     author: 'Anthony Shaw',
@@ -217,7 +217,7 @@ const Users: User[] = [
     tags: ['featured', 'bicep','dotnetCsharp','ahds', 'fhir','appinsights','loganalytics', 'functions'],
   },
   {
-    title: 'Python (Django) Web App with PostgreSQL',
+    title: 'Python (Django) Web App with PostgreSQL in VNet',
     description:
       'A restaurants review web app that uses whitenoise for static assets and PostgreSQL for the database. Ready for deployment on App Service with a PostgreSQL Flexible Server inside a VNet.',
       preview: require('./images/msdocs-django-postgresql-sample-app.png'),
@@ -237,7 +237,7 @@ const Users: User[] = [
     tags: ['python','django', 'aca', 'azuredb-postgreSQL'],
   },
   {
-    title: 'Python (Flask) Web App with PostgreSQL',
+    title: 'Python (Flask) Web App with PostgreSQL in VNet',
     description:
       'A restaurants review web app with a PostgreSQL database, written in the Python Flask framework plus SQL-Alchemy plus Alembic for database interactions. Ready for deployment on App Service with a PostgreSQL Flexible Server inside a VNet.',
       preview: require('./images/msdocs-flask-postgresql-sample-app.png'),
@@ -406,7 +406,7 @@ const Users: User[] = [
     website: 'https://github.com/tonybaloney',
     author: 'Anthony Shaw',
     source: 'https://github.com/tonybaloney/simple-flask-azd',
-    tags: ['python'],
+    tags: ['python', 'appservice', 'flask'],
   },
   {
     title: 'Function App - C# AI Text Summarize',
@@ -498,7 +498,16 @@ const Users: User[] = [
     source: 'https://github.com/savannahostrowski/jupyter-mercury-aca',
     tags: ['python', 'bicep', 'webapps', 'aca','jupyter','datascience'],
   },
-
+  {
+    title: 'Python (Django) Web App with PostgreSQL and Key Vault',
+    description:
+      'A Python Django app on App Service with a PostgreSQL flexible server database. Database access is restricted to Azure IPs, and all administrative secrets are stored in Key Vault.',
+      preview: require('./images/django-quiz-app.png'),
+    website: 'https://github.com/pamelafox',
+    author: 'Pamela Fox',
+    source: 'https://github.com/pamelafox/django-quiz-app',
+    tags: ['python', 'django', 'webapps', 'appservice', 'bicep', 'azuredb-postgreSQL', 'keyvault'],
+  },
 
   /*
   Pro Tip: add your site in alphabetical order.

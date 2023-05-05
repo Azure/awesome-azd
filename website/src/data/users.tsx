@@ -29,7 +29,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
     source: 'https://github.com/Azure-Samples/todo-csharp-cosmos-sql',
-    tags: ['featured','dotnetCsharp','typescript','javascript','appservice','cosmosdb','monitor','keyvault','reactjs', 'bicep'],
+    tags: ['featured','dotnetCsharp','typescript','javascript','appservice','cosmosdb','mongodb','monitor','keyvault','reactjs', 'bicep'],
   },
   {
     title: 'Rock, Paper, Orleans (RPO) - Distributed .NET',
@@ -89,7 +89,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
     source: 'https://github.com/Azure-Samples/todo-python-mongo-terraform',
-    tags: ['featured','python','typescript','javascript','cosmosdb','monitor','keyvault', 'mongodb','reactjs', 'terraform', 'appservice', 'fastapi'],
+    tags: ['featured','python','typescript','javascript','cosmosdb','mongodb','monitor','keyvault', 'mongodb','reactjs', 'terraform', 'appservice', 'fastapi'],
   },
   {
     title: 'React Web App with Node.js API and MongoDB',
@@ -99,7 +99,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
     source: 'https://github.com/Azure-Samples/todo-nodejs-mongo-terraform',
-    tags: ['featured','nodejs','typescript','javascript','cosmosdb','monitor','keyvault', 'mongodb','reactjs', 'terraform', 'appservice'],
+    tags: ['featured','nodejs','typescript','javascript','cosmosdb','mongodb','monitor','keyvault', 'mongodb','reactjs', 'terraform', 'appservice'],
   },
   {
     title: 'React Web App with Python API and MongoDB',

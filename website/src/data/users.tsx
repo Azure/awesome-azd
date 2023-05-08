@@ -22,14 +22,14 @@ const Users: User[] = [
   //------- FEATURED TEMPLATES have 'featured' as a tag
 
   {
-    title: 'ToDo Application - React C# CosmosDB SQL',
+    title: 'React Web App with C# API and MongoDB',
     description:
-      'Complete React.js ToDo application, C# for the API, Azure Cosmos DB SQL API for storage, and Azure Monitor for monitoring and logging',
+      'A blueprint for getting a React web app with a C# API and a MongoDB database on Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly.',
       preview: require('./images/todo-csharp.png'),
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
     source: 'https://github.com/Azure-Samples/todo-csharp-cosmos-sql',
-    tags: ['featured','dotnetCsharp','typescript','javascript','appservice','cosmosdb','monitor','keyvault','reactjs', 'bicep'],
+    tags: ['featured','dotnetCsharp','typescript','javascript','appservice','cosmosdb','mongodb','monitor','keyvault','reactjs', 'bicep'],
   },
   {
     title: 'Rock, Paper, Orleans (RPO) - Distributed .NET',
@@ -52,9 +52,9 @@ const Users: User[] = [
     tags: ['featured', 'django','python', 'azuredb-postgreSQL', 'webapps','vnets', 'bicep'],
   },
   {
-    title: 'ToDo Application - React Node.js Mongo',
+    title: 'React Web App with Node.js API and MongoDB',
     description:
-      'Complete ToDo app with Bicep as the IaC provider, React.js for the Web application, Node.js for the API, Azure Cosmos DB API for MongoDB for storage, and Azure Monitor for monitoring and logging',
+      'A blueprint for getting a React web app with a Node.js API and a MongoDB database on Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly. This architecture is for hosting web apps and APIs without worrying about the infrastructure.',
       preview: require('./images/todo-nodejs-mongo.png'),
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
@@ -62,9 +62,9 @@ const Users: User[] = [
     tags: ['featured','bicep','nodejs','typescript','javascript','appservice','cosmosdb','monitor','keyvault', 'mongodb','reactjs'],
   },
   {
-    title: 'ToDo Application - React Node.js SWA MongoDB Functions',
+    title: 'Static React Web App + Functions with Node.js API and MongoDB',
     description:
-      'A ToDo Application with React.js for the Web application, Node.js for the API, Azure Cosmos DB API for MongoDB for storage, and Azure Monitor for monitoring and logging. Azure Static Web Apps to host frontend, Azure Functions for API backend',
+      'A blueprint for getting a React web app with a Node.js API and a MongoDB database on Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly. This architecture is for hosting static web apps with serverless logic and functionality.',
       preview: require('./images/todo-nodejs-mongo-swa-func.png'),
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
@@ -72,9 +72,9 @@ const Users: User[] = [
     tags: ['featured','bicep','swa','functions','nodejs','typescript','javascript','cosmosdb','monitor','keyvault', 'mongodb','reactjs', 'appservice'],
   },
   {
-    title: 'ToDo Application - React Python SWA MongoDB Functions',
+    title: 'Static React Web App + Functions with Python API and MongoDB',
     description:
-      'A ToDo Application with React.js for the Web application, Python for the API, Azure Cosmos DB API for MongoDB for storage, and Azure Monitor for monitoring and logging. Azure Static Web Apps to host frontend, Azure Functions for API backend',
+      'A blueprint for getting a React.js web app with Python (FastAPI) API and a MongoDB API in Cosmos database onto Azure. The frontend, currently a ToDo application, is designed as a placeholder that can easily be removed and replaced with your own frontend code. This architecture is for hosting static web apps with serverless logic and functionality.',
       preview: require('./images/todo-python-mongo-swa-func.png'),
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
@@ -82,29 +82,29 @@ const Users: User[] = [
     tags: ['featured','bicep','swa','functions','python','typescript','javascript','cosmosdb','monitor','keyvault', 'mongodb','reactjs', 'appservice', 'fastapi'],
   },
   {
-    title: 'ToDo Application - React Python MongoDB Terraform',
+    title: 'React Web App with Python API and MongoDB',
     description:
-      'Complete ToDo appliction with Terraform as the IaC provider, React.js for the Web application, Python (FastAPI) for the API, Azure Cosmos DB API for MongoDB for storage, and Azure Monitor for monitoring and logging',
+      'A blueprint for getting a React.js web app with Python (FastAPI) API and a MongoDB API in Cosmos database onto Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Terraform) to get up and running quickly. This architecture is for hosting web apps and APIs without worrying about the infrastructure.',
       preview: require('./images/todo-python-terraform.png'),
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
     source: 'https://github.com/Azure-Samples/todo-python-mongo-terraform',
-    tags: ['featured','python','typescript','javascript','cosmosdb','monitor','keyvault', 'mongodb','reactjs', 'terraform', 'appservice', 'fastapi'],
+    tags: ['featured','python','typescript','javascript','cosmosdb','mongodb','monitor','keyvault', 'mongodb','reactjs', 'terraform', 'appservice', 'fastapi'],
   },
   {
-    title: 'ToDo Application - React Node.js MongoDB Terraform',
+    title: 'React Web App with Node.js API and MongoDB',
     description:
-      'Complete ToDo appliction with Terraform as the IaC provider, React.js for the Web application, Node.js for the API, Azure Cosmos DB API for MongoDB for storage, and Azure Monitor for monitoring and logging',
+      'A blueprint for getting a React web app with a Node.js API and a MongoDB database on Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Terraform) to get up and running quickly. This architecture is for hosting web apps and APIs without worrying about the infrastructure.',
       preview: require('./images/todo-nodejs-mongo-terraform.png'),
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
     source: 'https://github.com/Azure-Samples/todo-nodejs-mongo-terraform',
-    tags: ['featured','nodejs','typescript','javascript','cosmosdb','monitor','keyvault', 'mongodb','reactjs', 'terraform', 'appservice'],
+    tags: ['featured','nodejs','typescript','javascript','cosmosdb','mongodb','monitor','keyvault', 'mongodb','reactjs', 'terraform', 'appservice'],
   },
   {
-    title: 'ToDo Application - React Python MongoDB AppService',
+    title: 'React Web App with Python API and MongoDB',
     description:
-      'Complete React.js ToDo application,  Python (FastAPI) for the API, Azure Cosmos DB API for MongoDB for storage, and Azure Monitor for monitoring and logging',
+      'A blueprint for getting a React.js web app with Python (FastAPI) API and a MongoDB API in Cosmos database onto Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly. This architecture is for hosting web apps and APIs without worrying about the infrastructure.',
       preview: require('./images/todo-python.png'),
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
@@ -112,9 +112,9 @@ const Users: User[] = [
     tags: ['featured','bicep','python','typescript','javascript','appservice','cosmosdb','monitor','keyvault', 'mongodb','reactjs', 'fastapi'],
   },
   {
-    title: 'ToDo Application - React Node.js MongoDB ACA',
+    title: 'Containerized React Web App with Node.js API and MongoDB',
     description:
-      'Complete React.js ToDo application,  Node.js for the API, Azure Cosmos DB API for MongoDB for storage, and Azure Monitor for monitoring and logging',
+      'A blueprint for getting a React web app with a Node.js API and a MongoDB database onto Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly. This architecture is for running containerized apps or microservices on a serverless platform   This architecture is for running containerized microservices without managing the servers.',
       preview: require('./images/todo-node-aca.png'),
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
@@ -122,9 +122,9 @@ const Users: User[] = [
     tags: ['featured','bicep','nodejs','typescript','javascript','appservice','cosmosdb','monitor','keyvault', 'mongodb','reactjs', 'aca'],
   },
   {
-    title: 'ToDo Application - React Python MongoDB ACA',
+    title: 'Containerized React Web App with Python API and MongoDB',
     description:
-      'Complete React.js ToDo application,  Python (FastAPI) for the API, Azure Cosmos DB API for MongoDB for storage, and Azure Monitor for monitoring and logging',
+      'A blueprint for getting a React.js web app with Python (FastAPI) API and a MongoDB API in Cosmos database onto Azure. The frontend, currently a ToDo application, is designed as a placeholder that can easily be removed and replaced with your own frontend code. This architecture is for running containerized apps or microservices on a serverless platform.',
       preview: require('./images/todo-python-aca.png'),
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
@@ -132,9 +132,9 @@ const Users: User[] = [
     tags: ['featured', 'bicep','python','typescript','javascript','aca','cosmosdb','monitor','keyvault', 'mongodb','reactjs', 'fastapi'],
   },
   {
-    title: 'ToDo Application - C# AzureSQL AppService ',
+    title: 'React Web App with C# API and SQL Database ',
     description:
-      'A complete sample To Do application that demonstrates how to build an Azure solution using C#, Azure SQL for storage, and Azure Monitor for monitoring and logging.',
+      'A blueprint for getting a React web app with a C# API and a SQL database on Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly.',
       preview: require('./images/todo-csharp-sql.png'),
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
@@ -142,9 +142,9 @@ const Users: User[] = [
     tags: ['featured', 'bicep','dotnetCsharp','typescript','javascript','appservice','azuresql','monitor','keyvault', 'mongodb','reactjs'],
   },
   {
-    title: 'ToDo Application - Java MongoDB AppService ',
+    title: 'React Web App with Java API and MongoDB ',
     description:
-      'A complete sample To Do application that demonstrates how to build an Azure solution using  React.js for the Web application, Java for the API, Azure Cosmos DB API for MongoDB for storage, and Azure Monitor for monitoring and logging.',
+      'A blueprint for getting a React.js web app with a Java API and a MongoDB database on Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly. This architecture is for hosting web apps and APIs without worrying about the infrastructure.',
       preview: require('./images/todo-java-mongo.png'),
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
@@ -152,9 +152,9 @@ const Users: User[] = [
     tags: ['featured', 'bicep','java','typescript','appservice','cosmosdb','keyvault','monitor', 'mongodb','reactjs'],
   },
   {
-    title: 'ToDo Application - Java MongoDB AppService ACA',
+    title: 'Containerized React Web App with Java API and MongoDB',
     description:
-      'A complete sample To Do application that demonstrates how to build an Azure solution using  React.js for the Web application, Java for the API, Azure Cosmos DB API for MongoDB for storage, and Azure Monitor for monitoring and logging. Deployed to Azure Container Apps.',
+      'A blueprint for getting a React web app with a Java API and a MongoDB database on Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly. This architecture is for running containerized apps or microservices on a serverless platform.',
       preview: require('./images/todo-java-mongo-aca.png'),
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
@@ -162,9 +162,9 @@ const Users: User[] = [
     tags: ['featured', 'bicep','java','typescript','appservice','cosmosdb','keyvault','monitor', 'mongodb','reactjs'],
   },
   {
-    title: 'ToDo Application - React C# SQL SWA MongoDB Functions',
+    title: 'Static React Web App + Functions with C# API and SQL Database',
     description:
-      'A complete ToDo application that includes everything you need to build, deploy, and monitor an Azure solution. This application uses the Azure Developer CLI (azd) to get you up and running on Azure quickly, React.js for the Web application, C# isolated Azure Functions for the API, Azure SQL for DB, and Azure Monitor for monitoring and logging.',
+      'A blueprint for getting a React web app with a C# API and a SQL database on Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly. This architecture is for hosting static web apps with serverless logic and functionality.',
       preview: require('./images/todo-csharp-sql-swa-func.png'),
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
@@ -172,13 +172,13 @@ const Users: User[] = [
     tags: ['featured','bicep','swa','functions','dotnetCsharp','typescript','javascript','monitor','keyvault', 'reactjs', 'appservice', 'azuresql'],
   },
   {
-    title: 'ToDo Application - React Node.js MongoDB AKS',
+    title: 'Kubernetes React Web App with Node.js API and MongoDB',
     description:
-      'A complete ToDo application that includes everything you need to build, deploy, and monitor an Azure solution. This application uses the Azure Developer CLI (azd) to get you up and running on Azure quickly using React.js for the Web application, node.js for the API and Azure Cosmos DB API for MongoDB for storage.',
+      'A blueprint for getting a React.js web app with a Node.js API and a MongoDB database on Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly. This architecture is for running Kubernetes clusters without setting up the control plane.',
       preview: require('./images/todo-nodejs-mongo-aks.png'),
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Dev',
-    source: 'https://github.com/azure-samples/todo-nodejs-mongo-aks',
+    source: 'https://github.com/Azure-Samples/todo-nodejs-mongo-aks',
     tags: ['featured','bicep','nodejs','typescript','javascript','mongodb','monitor','keyvault', 'reactjs', 'appservice','cosmosdb','aks'],
   },
 
@@ -497,6 +497,15 @@ const Users: User[] = [
     author: 'Pamela Fox',
     source: 'https://github.com/pamelafox/django-quiz-app',
     tags: ['python', 'django', 'webapps', 'appservice', 'bicep', 'azuredb-postgreSQL', 'keyvault'],
+  },
+  {
+    title: 'Reliable Web App Pattern for .NET',
+    description: 'A multi-region enterprise web app with a 99.9% SLO and a focus on 12-factor apps and the well-architected framework. The sample app creates a concert booking application.',
+    preview: require('./images/reliable-web-app-for-dotnet.png'),
+    website: 'https://github.com/Azure',
+    author: 'Azure Content Team',
+    source: 'https://github.com/Azure/reliable-web-app-pattern-dotnet',
+    tags: ['dotnetCsharp', 'bicep', 'appservice', 'keyvault', 'frontdoor', 'azuresql', 'appinsights', 'blobstorage', 'webapps', 'enterprisepatterns']
   },
   {
     title: 'FastAPI on Azure Container Apps',

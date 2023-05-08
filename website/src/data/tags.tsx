@@ -103,6 +103,8 @@ export type TagType =
 | 'chatgpt'
 | 'aks'
 | 'azurecdn'
+| 'frontdoor'
+| 'enterprisepatterns'
 | 'jupyter'
 | 'datascience'
 ;
@@ -404,6 +406,11 @@ export const Tags: {[type in TagType]: Tag} = {
         description: 'Template architecture uses Azure Content Delivery Network',
         color: 'hotpink',
     },
+    frontdoor: {
+        label: 'Azure Front Door',
+        description: 'Template architecture uses Azure Front Door',
+        color: 'hotpink',
+    },
 
     // For Topics
     datascience:{
@@ -411,5 +418,10 @@ export const Tags: {[type in TagType]: Tag} = {
         description: 'Template architecture involves Data Science',
         color: 'hotpink',
     },
+    enterprisepatterns: {
+        label: 'Enterprise App Patterns',
+        description: 'Template architecture involves Enterprise Application Patterns',
+        color: 'hotpink',
+    }
 };
 

@@ -506,13 +506,17 @@ const Users: User[] = [
     author: 'Azure Content Team',
     source: 'https://github.com/Azure/reliable-web-app-pattern-dotnet',
     tags: ['dotnetCsharp', 'bicep', 'appservice', 'keyvault', 'frontdoor', 'azuresql', 'appinsights', 'blobstorage', 'webapps', 'enterprisepatterns']
-
   },
-
-  /*
-  Pro Tip: add your site in alphabetical order.
-  Appending your site here (at the end) is more likely to produce Git conflicts.
-   */
+  {
+    title: 'FastAPI on Azure Container Apps',
+    description:
+      'A simple JSON API using the Python FastAPI app framework, designed for deployment on Azure Container Apps. Includes auto-configuration of gunicorn with uvicorn worker count based on CPUs available.',
+      preview: require('./images/simple-fastapi-container.png'),
+    website: 'https://github.com/pamelafox',
+    author: 'Pamela Fox',
+    source: 'https://github.com/pamelafox/simple-fastapi-container',
+    tags: ['python', 'fastapi', 'bicep', 'aca'],
+  },
 ];
 // *************** CARD DATA ENDS HERE *******************
 

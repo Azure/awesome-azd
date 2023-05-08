@@ -499,10 +499,10 @@ const Users: User[] = [
     tags: ['python', 'django', 'webapps', 'appservice', 'bicep', 'azuredb-postgreSQL', 'keyvault'],
   },
   {
-    title: 'Reliable web app pattern for .NET',
+    title: 'Reliable Web App Pattern for .NET',
     description: 'A multi-region enterprise web app with a 99.9% SLO and a focus on 12-factor apps and the well-architected framework. The sample app creates a concert booking application.',
     preview: require('./images/reliable-web-app-for-dotnet.png'),
-    website: 'https://github.com/Azure-Samples',
+    website: 'https://github.com/Azure',
     author: 'Azure Content Team',
     source: 'https://github.com/Azure/reliable-web-app-pattern-dotnet',
     tags: ['dotnetCsharp', 'bicep', 'appservice', 'keyvault', 'frontdoor', 'azuresql', 'appinsights', 'blobstorage', 'webapps', 'enterprisepatterns']

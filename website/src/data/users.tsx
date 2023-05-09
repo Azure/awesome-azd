@@ -181,28 +181,6 @@ const Users: User[] = [
     source: 'https://github.com/Azure-Samples/todo-nodejs-mongo-aks',
     tags: ['featured','bicep','nodejs','typescript','javascript','mongodb','monitor','keyvault', 'reactjs', 'appservice','cosmosdb','aks'],
   },
-
-  //-------  REQUESTED TEMPLATES have 'helpwanted' as a tag
-  {
-    title: 'Real-Time IoT Updates',
-    description:
-      'Use Azure SignalR to update cloud applications in real-time. The service sends real-time IoT data to connected web and mobile clients',
-      preview: require('./images/real-time-iot.png'),
-    website: 'https://github.com/Azure/awesome-azd/issues/14',
-    author: 'Submit A Template',
-    source: 'https://learn.microsoft.com/azure/architecture/example-scenario/iot/real-time-iot-updates-cloud-apps',
-    tags: ['helpwanted', 'signalR', 'iotedge', 'iothub', 'functions'],
-  },
-  {
-    title: 'Retail/E-Commerce using Azure DB for PostgreSQL',
-    description:
-      'Build secure and scalable e-commerce solutions that meet customer and business demands by using Azure Database for PostgreSQL',
-      preview: require('./images/retail-db-postgresql.png'),
-    website: 'https://github.com/Azure/awesome-azd/issues/15',
-    author: 'Submit A Template',
-    source: 'https://learn.microsoft.com/azure/architecture/solution-ideas/articles/retail-and-ecommerce-using-azure-database-for-postgresql',
-    tags: ['helpwanted', 'appservice','blobstorage','HDinsight','azuredb-postgreSQL'],
-  },
   
 
   //-------  ALL OTHER AZURE-SAMPLES HERE - how many do we want to feature?

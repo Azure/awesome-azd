@@ -286,29 +286,6 @@
 
          <>
 
-          <div className={styles.showcaseHelpWanted}>
-             <div className="container">
-               <div
-                 className={clsx(
-                   'margin-bottom--md',
-                   styles.showcaseFavoriteHeader,
-                 )}>
-                 <h2>
-                  <div className={styles.helpText}>
-                    <Translate id="showcase.favoritesList.title">
-                        ✨ Requested Templates ✨
-                    </Translate>
-                  </div>
-                 </h2>
-               </div>
-               <ul className={clsx('container', styles.showcaseList)}>
-                 {helpWanted.map((user) => (
-                   <ShowcaseCard key={user.title} user={user} />
-                 ))}
-               </ul>
-             </div>
-           </div>
-
            <div className={styles.showcaseFavorite}>
              <div className="container">
                <div

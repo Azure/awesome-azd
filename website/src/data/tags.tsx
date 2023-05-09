@@ -70,12 +70,9 @@ export type TagType =
 | 'keyvault'
 | 'aca'
 | 'mongodb'
-| 'iothub'
-| 'iotedge'
 | 'signalR'
 | 'functions'
 | 'blobstorage'
-| 'HDinsight'
 | 'azuredb-postgreSQL'
 | 'azuresql'
 | 'webapps'
@@ -311,29 +308,14 @@ export const Tags: {[type in TagType]: Tag} = {
         description: 'Template architecture uses Azure CosmosDB',
         color: 'hotpink',
     },
-    iothub: {
-        label: 'Azure IoT Hub',
-        description: 'Template architecture uses Azure IoT Hub',
-        color: 'hotpink',
-    },
     signalR: {
         label: 'Azure SignalR',
         description: 'Template architecture uses Azure SignalR',
         color: 'hotpink',
     },
-    iotedge: {
-        label: 'Azure IoT Edge',
-        description: 'Template architecture uses Azure IoT Edge',
-        color: 'hotpink',
-    },
     functions: {
         label: 'Azure Functions',
         description: 'Template architecture uses Azure Functions',
-        color: 'hotpink',
-    },
-    HDinsight: {
-        label: 'Azure HDInsight',
-        description: 'Template architecture uses Azure HD Insight',
         color: 'hotpink',
     },
     blobstorage: {

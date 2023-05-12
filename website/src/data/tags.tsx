@@ -64,6 +64,10 @@ export type TagType =
 | 'django'
 | 'reactjs'
 | 'nodejs'
+| 'kubernetes'
+| 'keda'
+| 'grafana'
+| 'prometheus'
 | 'appservice'
 | 'cosmosdb'
 | 'monitor'
@@ -267,6 +271,16 @@ export const Tags: {[type in TagType]: Tag} = {
     description: 'Template architecture uses Jupyter Notebooks',
     color: 'hotpink',
     },
+    keda: {
+        label: 'KEDA',
+        description: 'Template architecture uses Kubernetes Event Driven Autoscaling (KEDA)',
+        color: 'hotpink',
+    },
+    kubernetes: {
+        label: 'Kubernetes',
+        description: 'Template architecture uses Kubernetes',
+        color: 'hotpink',
+    },
 
     // ---- Azure Services
     ahds: {
@@ -394,6 +408,17 @@ export const Tags: {[type in TagType]: Tag} = {
         description: 'Template architecture uses Azure Front Door',
         color: 'hotpink',
     },
+    grafana: {
+        label: 'Grafana',
+        description: 'Template architecture uses Azure Managed Grafana',
+        color: 'hotpink',
+    },
+    prometheus: {
+        label: 'Prometheus',
+        description: 'Template architecture uses Azure Monitor managed service for Prometheus',
+        color: 'hotpink',
+    },
+
     azurespringapps:{
         label: 'Azure Spring Apps',
         description: 'Template architecture uses Azure Spring Apps',

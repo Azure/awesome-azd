@@ -509,11 +509,21 @@ const Users: User[] = [
     title: 'FastAPI on Azure Container Apps',
     description:
       'A simple JSON API using the Python FastAPI app framework, designed for deployment on Azure Container Apps. Includes auto-configuration of gunicorn with uvicorn worker count based on CPUs available.',
-      preview: require('./images/simple-fastapi-container.png'),
+    preview: require('./images/simple-fastapi-container.png'),
     website: 'https://github.com/pamelafox',
     author: 'Pamela Fox',
     source: 'https://github.com/pamelafox/simple-fastapi-container',
     tags: ['python', 'fastapi', 'bicep', 'aca'],
+  },
+  {
+    title: 'Containerized Apps on Azure Kubernetes Service',
+    description:
+      'A base Azure Kubernetes Service template with placeholders to include the application source code (no application source code included) and Kubernetes manifest files.',
+    preview: require('./images/basic-aks-template.png'),
+    website: 'https://github.com/sabbour/',
+    author: 'Ahmed Sabbour',
+    source: 'https://github.com/sabbour/aks-app-template',
+    tags: ['bicep', 'aks', 'kubernetes', 'keda', 'grafana', 'prometheus']
   },
 ];
 // *************** CARD DATA ENDS HERE *******************

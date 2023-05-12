@@ -387,7 +387,7 @@ const Users: User[] = [
     author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/ASA-Samples-Event-Driven-Application',
     tags: ['java', 'servicebus', 'monitor','keyvault','azurespringapps','bicep','spring'],
-  }
+  },
   {
     title: 'SAP Cloud SDK on Azure App Service Quickstart (TypeScript)',
     description:

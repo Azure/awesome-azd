@@ -276,6 +276,11 @@ export const Tags: {[type in TagType]: Tag} = {
         description: 'Template architecture uses Kubernetes Event Driven Autoscaling (KEDA)',
         color: 'hotpink',
     },
+    kubernetes: {
+        label: 'Kubernetes',
+        description: 'Template architecture uses Kubernetes',
+        color: 'hotpink',
+    },
 
     // ---- Azure Services
     ahds: {

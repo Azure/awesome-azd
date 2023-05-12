@@ -516,15 +516,15 @@ const Users: User[] = [
     tags: ['python', 'fastapi', 'bicep', 'aca'],
   },
   {
-    title: 'Containerized Apps on Azure Kubernetes Service (AKS)',
-    description: "This template deploys a base Azure Kubernetes Service (AKS) template with placeholders to include the application's source code and Kubernetes manifest files.",
+    title: 'Containerized Apps on Azure Kubernetes Service',
+    description:
+      'A base Azure Kubernetes Service template with placeholders to include the application source code (no application source code included) and Kubernetes manifest files.',
     preview: require('./images/basic-aks-template.png'),
     website: 'https://github.com/sabbour/',
     author: 'Ahmed Sabbour',
     source: 'https://github.com/sabbour/aks-app-template',
     tags: ['bicep', 'aks', 'kubernetes', 'keda', 'grafana', 'prometheus']
-
-  }
+  },
 ];
 // *************** CARD DATA ENDS HERE *******************
 

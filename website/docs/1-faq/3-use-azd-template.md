@@ -8,5 +8,5 @@ With `azd-templates`, the path from "code to cloud" is just 3 steps:
  - Customization = modify app code or config
 
 :::tip READ THE DOCS
-Learn more about [about getting Started with azd](https://aka.ms/azd)
+Learn more about [about getting started with azd](https://aka.ms/azd)
 :::

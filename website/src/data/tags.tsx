@@ -104,6 +104,7 @@ export type TagType =
 | 'enterprisepatterns'
 | 'jupyter'
 | 'datascience'
+| 'azurespringapps'
 ;
 
 
@@ -393,7 +394,11 @@ export const Tags: {[type in TagType]: Tag} = {
         description: 'Template architecture uses Azure Front Door',
         color: 'hotpink',
     },
-
+    azurespringapps:{
+        label: 'Azure Spring Apps',
+        description: 'Template architecture uses Azure Spring Apps',
+        color: 'hotpink',
+    },
     // For Topics
     datascience:{
         label: 'Data Science',

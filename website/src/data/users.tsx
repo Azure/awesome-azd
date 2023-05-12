@@ -357,6 +357,16 @@ const Users: User[] = [
     tags: ['java', 'appservice', 'azuresql', 'monitor','keyvault','appinsights','bicep','spring','thymeleaf'],
   },
   {
+    title: 'Event Driven Java Application with Azure Service Bus on Azure Spring Apps',
+    description:
+      'A complete event-driven application that includes everything you need to build, deploy, and monitor an Azure solution. ',
+      preview: require('./images/event-driven-spring-apps.png'),
+    website: 'https://github.com/Azure-Samples/',
+    author: 'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/ASA-Samples-Event-Driven-Application',
+    tags: ['java', 'servicebus', 'monitor','keyvault','azurespringapps','bicep','spring'],
+  },
+  {
     title: 'SAP Cloud SDK on Azure App Service Quickstart (TypeScript)',
     description:
       'This repos serves as quick-start project showcasing SAP Cloud SDK for JavaScript OData consumption running on Azure App Services. Its primary purpose is to set you up for success for your SAP extension project on Azure and reduce the lead time to your first successful deployment as much as possible with developer friendly commands.',

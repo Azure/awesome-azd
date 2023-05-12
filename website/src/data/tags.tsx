@@ -429,6 +429,7 @@ export const Tags: {[type in TagType]: Tag} = {
         label: 'Prometheus',
         description: 'Template architecture uses Azure Monitor managed service for Prometheus',
         color: 'hotpink',
+    },
 
     // For Topics
     datascience:{

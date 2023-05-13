@@ -5,7 +5,7 @@ about: Can't find a template? Have an idea? Submit it so that someone can pick i
   up and contribute it!
 title: "[Idea] <your-template-name>"
 labels: requested-contribution
-assignees: nitya, savannahostrowski
+assignees: gkulin
 
 ---
 

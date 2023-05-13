@@ -45,7 +45,7 @@
  
  const TITLE = 'Awesome AZD Templates';
  const DESCRIPTION = 'A community-contributed templates gallery';
- const ADD_URL = 'https://github.com/Azure/awesome-azd/issues/new?assignees=nitya%2C+savannahostrowski&labels=new-contribution&template=%F0%9F%93%B2contribute-an-azd-template-.md&title=%5BNew+azd-template%5D+%3Cyour-template-name%3E'
+ const ADD_URL = 'https://aka.ms/awesome-azd-contribute'
 
  type UserState = {
    scrollTopPosition: number;

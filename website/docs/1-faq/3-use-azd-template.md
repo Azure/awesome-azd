@@ -7,9 +7,6 @@ With `azd-templates`, the path from "code to cloud" is just 3 steps:
  - Deployment = `azd up` to deploy it
  - Customization = modify app code or config
 
-![Recommended azd workflow](https://learn.microsoft.com/azure/developer/azure-developer-cli/media/overview/workflow.png)
-
-
 :::tip READ THE DOCS
-Learn more about [about Getting Started with azd](https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/get-started?tabs=bare-metal%2Cwindows&pivots=programming-language-nodejs)
+Learn more about [about getting started with azd](https://aka.ms/azd)
 :::

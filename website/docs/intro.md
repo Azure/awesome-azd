@@ -4,7 +4,7 @@ title: "Contributor Guide"
 ---
 
 ## We ♥️ Contributions!
-`awesome-azd` is a community-friendly resource to help developer discover, create, and share, _azd-template_ resources for streamlining your application development and CI/CD pipelines. It is an _open-source_ effort open for contributions in many ways. 
+`awesome-azd` is a community-friendly resource to help developer discover, create, and share, open-source `azd` templates and supporting resources for streamlining your application development and CI/CD pipelines.
 
 ## Our Custom Issues
 The [custom issues](https://github.com/Azure/awesome-azd/issues/new/choose) page shows the different ways in which _anyone_ can contribute to make this project successful for _everyone_. 

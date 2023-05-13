@@ -4,7 +4,7 @@ name: "⚙️ Submit a new resource"
 about: 'Have a great resource you''d like to add to the README? '
 title: "[Resource]"
 labels: awesome-readme
-assignees: nitya, savannahostrowski
+assignees: gkulin
 
 ---
 ## 1. Name of resource

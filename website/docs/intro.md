@@ -9,7 +9,7 @@ title: "Contributor Guide"
 ## Our Custom Issues
 The [custom issues](https://github.com/Azure/awesome-azd/issues/new/choose) page shows the different ways in which _anyone_ can contribute to make this project successful for _everyone_. 
 
-### [Submit a Template Idea](hhttps://github.com/Azure/awesome-azd/compare)
+### [Submit a Template Idea](https://github.com/Azure/awesome-azd/compare)
 There are many ways to combine languages with Azure services and tools to create applications, so if you cannot find a template with architecture that works for you-- you can submit a request for that template.
 
 Keep in mind, templates are made to be flexible and extensible. You can use a template's architecture and swap out the source code. For example, if you want to create a grocery list making application using Azure SQL and Azure App service, you can use the [React Web App with C# API and SQL Database on Azure](https://github.com/Azure-Samples/todo-csharp-sql) template and swap out the source code. 

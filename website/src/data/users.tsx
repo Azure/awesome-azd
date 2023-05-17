@@ -210,10 +210,6 @@ const Users: User[] = [
     tags: ['featured', 'bicep','python','openai', 'chatgpt', 'ai']
   },
 
-
-
-  
-
   //-------  ALL OTHER AZURE-SAMPLES HERE - how many do we want to feature?
   {
     title: 'Azure Health Data Services Toolkit Azure Function Quickstart',

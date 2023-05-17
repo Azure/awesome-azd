@@ -109,6 +109,8 @@ export type TagType =
 | 'jupyter'
 | 'datascience'
 | 'azurespringapps'
+| 'rediscache'
+| 'ai'
 ;
 
 
@@ -424,6 +426,11 @@ export const Tags: {[type in TagType]: Tag} = {
         description: 'Template architecture uses Azure Spring Apps',
         color: 'hotpink',
     },
+    rediscache: {
+        label: 'Azure Redis Cache',
+        description: 'Template architecture uses Azure Redis Cache',
+        color: 'hotpink',
+    },
     // For Topics
     datascience:{
         label: 'Data Science',
@@ -433,6 +440,11 @@ export const Tags: {[type in TagType]: Tag} = {
     enterprisepatterns: {
         label: 'Enterprise App Patterns',
         description: 'Template architecture involves Enterprise Application Patterns',
+        color: 'hotpink',
+    },
+    ai: {
+        label: 'Artificial Intelligence',
+        description: 'Template architecture involves Artificial Intelligence',
         color: 'hotpink',
     }
 };

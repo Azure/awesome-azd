@@ -206,7 +206,7 @@ const Users: User[] = [
     website:'https://github.com/Azure-Samples',
     author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/chatgpt-quickstart',
-    tags: ['featured', 'bicep','python','openai', 'chatgpt', 'ai']
+    tags: ['featured', 'bicep','python','openai', 'chatgpt', 'ai', 'flask', 'aca']
   },
 
   //-------  ALL OTHER AZURE-SAMPLES HERE - how many do we want to feature?

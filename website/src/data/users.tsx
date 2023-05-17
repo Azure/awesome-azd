@@ -200,9 +200,9 @@ const Users: User[] = [
     tags: ['featured', 'bicep','dotnetCsharp','aks', 'kubernetes','aca','cosmosdb','cognitivesearch', 'openai', 'chatgpt', 'rediscache', 'ai'],
   },
   {
-    title: 'BYO-Chat Application using Azure OpenAI',
-    description: 'This repository shows you the basic code of how to use the OpenAI SDK for Python to build your own chat application with Azure OpenAI',
-    preview: require('./images/byochat-azureopenai.png'),
+    title: 'Simple Chat Application using Azure OpenAI',
+    description: 'A sample chat app that uses Python and the Flask framework to stream ChatGPT completions as server-sent events to a simple frontend.',
+    preview: require('./images/simplechat-azureopenai.png'),
     website:'https://github.com/Azure-Samples',
     author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/chatgpt-quickstart',

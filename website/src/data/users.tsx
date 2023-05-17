@@ -202,7 +202,6 @@ const Users: User[] = [
   {
     title: 'BYO-Chat Application using Azure OpenAI',
     description: 'This repository shows you the basic code of how to use the OpenAI SDK for Python to build your own chat application with Azure OpenAI',
-    //TODO: must update
     preview: require('./images/byochat-azureopenai.png'),
     website:'https://github.com/Azure-Samples',
     author: 'Azure Content Team',

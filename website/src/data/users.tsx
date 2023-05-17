@@ -191,7 +191,7 @@ const Users: User[] = [
     tags: ['featured', 'bicep','python','aca','cosmosdb','monitor', 'fastapi', 'ai'],
   }, 
   {
-    title: 'ChatGPT + Enterprise data with Azure OpenAI and Cognitive Search',
+    title: 'ChatGPT + Enterprise Data with Azure OpenAI and Cognitive Search',
     description: 'A sample app for the Retrieval-Augmented Generation pattern running in Azure, using Azure Cognitive Search for retrieval and Azure OpenAI large language models to power ChatGPT-style and Q&A experiences.',
     preview: require('./images/chatgpt-enterprise-dotnet.png'),
     website:'https://github.com/Azure-Samples',

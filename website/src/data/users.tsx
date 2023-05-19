@@ -198,7 +198,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure-Samples',
     author: 'JavaScript Advocacy Team, Natalia Venditto',
     source: 'https://github.com/Azure-Samples/contoso-real-estate',
-    tags: ['bicep', 'javascript', 'swa', 'aca', 'keyvault', 'blobstorage', 'azuredb-postgreSQL', 'cosmosdb', 'apim']
+    tags: ['bicep', 'javascript', 'swa', 'aca', 'keyvault', 'blobstorage', 'azuredb-postgreSQL', 'cosmosdb', 'apim', 'enterprisepatterns']
   },
   
 

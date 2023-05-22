@@ -196,7 +196,7 @@ const Users: User[] = [
     description: 'A reference architecture and components for building enterprise-grade modern composable frontends (or micro-frontends) and cloud-native applications. It is a collection of best practices, architecture patterns, and functional components that can be used to build and deploy modern JavaScript applications to Azure.',
     preview: require('./images/enterprise-grade-reference-architecture-for-javascript.png'),
     website: 'https://github.com/Azure-Samples',
-    author: 'JavaScript Advocacy Team, Natalia Venditto',
+    author: 'JavaScript Advocacy Team|Natalia Venditto',
     source: 'https://github.com/Azure-Samples/contoso-real-estate',
     tags: ['bicep', 'javascript', 'swa', 'aca', 'keyvault', 'blobstorage', 'azuredb-postgreSQL', 'cosmosdb', 'apim', 'enterprisepatterns']
   },

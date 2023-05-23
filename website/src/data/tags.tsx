@@ -109,6 +109,9 @@ export type TagType =
 | 'jupyter'
 | 'datascience'
 | 'azurespringapps'
+| 'rediscache'
+| 'php'
+| 'agw'
 ;
 
 
@@ -191,12 +194,17 @@ export const Tags: {[type in TagType]: Tag} = {
          label: 'React.js',
          description: 'Template architecture uses React.js',
          color: '#1e90ff',
-     },
-     nodejs: {
-          label: 'Node.js',
-          description: 'Template architecture uses Node.js',
-          color: '#1e90ff',
-      },
+    },
+    nodejs: {
+        label: 'Node.js',
+        description: 'Template architecture uses Node.js',
+        color: '#1e90ff',
+    },
+    php: {
+        label: 'PHP',
+        description: 'Template architecture uses PHP',
+        color: '#1e90ff',
+    },
 
     // ---- Templating Options
     bicep: {
@@ -424,6 +432,17 @@ export const Tags: {[type in TagType]: Tag} = {
         description: 'Template architecture uses Azure Spring Apps',
         color: 'hotpink',
     },
+    rediscache: {
+        label: 'Azure Redis Cache',
+        description: 'Template architecture uses Azure Redis Cache',
+        color: 'hotpink',
+    },
+    agw: {
+        label: 'Azure Application Gateway',
+        description: 'Template architecture uses Azure Application Gateway',
+        color: '#1e90ff',
+    },
+
     // For Topics
     datascience:{
         label: 'Data Science',

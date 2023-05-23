@@ -182,6 +182,35 @@ const Users: User[] = [
     tags: ['featured','bicep','nodejs','typescript','javascript','mongodb','monitor','keyvault', 'reactjs', 'appservice','cosmosdb','aks'],
   },
   {
+    title: 'ChatGPT Plugin using Python (FastAPI)',
+    description: 'This is a quickstart for creating a ChatGPT Plugin using Python and Azure.',
+    preview: require('./images/chatgpt-plugin-python.png'),
+    website:'https://github.com/Azure-Samples',
+    author:'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/openai-plugin-fastapi',
+    tags: ['featured', 'bicep','python','aca','cosmosdb','monitor', 'fastapi', 'ai'],
+  }, 
+  {
+    title: 'ChatGPT + Enterprise Data with Azure OpenAI and Cognitive Search',
+    description: 'A sample app for the Retrieval-Augmented Generation pattern running in Azure, using Azure Cognitive Search for retrieval and Azure OpenAI large language models to power ChatGPT-style and Q&A experiences.',
+    preview: require('./images/chatgpt-enterprise-dotnet.png'),
+    website:'https://github.com/Azure-Samples',
+    author:'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/azure-search-openai-demo-csharp/',
+    tags: ['featured', 'bicep','dotnetCsharp','aks', 'kubernetes','aca','cosmosdb','cognitivesearch', 'openai', 'chatgpt', 'rediscache', 'ai'],
+  },
+  {
+    title: 'Simple Chat Application using Azure OpenAI',
+    description: 'A sample chat app that uses Python and the Flask framework to stream ChatGPT completions as server-sent events to a simple frontend.',
+    preview: require('./images/simplechat-azureopenai.png'),
+    website:'https://github.com/Azure-Samples',
+    author: 'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/chatgpt-quickstart',
+    tags: ['featured', 'bicep','python','openai', 'chatgpt', 'ai', 'flask', 'aca']
+  },
+
+  //-------  ALL OTHER AZURE-SAMPLES HERE - how many do we want to feature?
+  {
     title: 'Azure Health Data Services Toolkit Azure Function Quickstart',
     description:
       'This quickstart will walk you through creating a simple custom operation on top of the FHIR Service using Azure Functions. We will cover everything from deploying infrastructure, debugging locally, and deploying to Azure.',
@@ -332,7 +361,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure-Samples',
     author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/azure-search-openai-demo',
-    tags: ['openai','chatgpt','cognitivesearch','python','typescript','bicep','nodejs'],
+    tags: ['openai','chatgpt','cognitivesearch','python','typescript','bicep','nodejs', 'ai'],
   },
   {
     title: 'FastAPI on Azure Functions',
@@ -414,7 +443,7 @@ const Users: User[] = [
     website: 'https://github.com/paulyuk',
     author: 'Paul Yuknewicz',
     source: 'https://github.com/Azure-Samples/function-csharp-ai-textsummarize',
-    tags: ['functions','dotnetCsharp','azureai', 'bicep'],
+    tags: ['functions','dotnetCsharp','azureai', 'bicep', 'ai'],
   },
   {
     title: 'Function App - Python AI Text Summarize',
@@ -424,7 +453,7 @@ const Users: User[] = [
     website: 'https://github.com/paulyuk',
     author: 'Paul Yuknewicz',
     source: 'https://github.com/Azure-Samples/function-python-ai-textsummarize',
-    tags: ['functions','python','azureai', 'bicep'],
+    tags: ['functions','python','azureai', 'bicep', 'ai'],
   },
   {
     title: 'Flask Container with CDN',

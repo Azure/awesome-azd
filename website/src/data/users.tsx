@@ -218,8 +218,21 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/azure-health-data-services-toolkit-fhir-function-quickstart',
-    tags: ['featured', 'bicep','dotnetCsharp','ahds', 'fhir','appinsights','loganalytics', 'functions'],
+    tags: ['bicep','dotnetCsharp','ahds', 'fhir','appinsights','loganalytics', 'functions'],
   },
+  {
+    title: 'Enterprise-Grade Reference Architecture for JavaScript',
+    description: 'A reference architecture and components for building enterprise-grade modern composable frontends (or micro-frontends) and cloud-native applications. It is a collection of best practices, architecture patterns, and functional components that can be used to build and deploy modern JavaScript applications to Azure.',
+    preview: require('./images/enterprise-grade-reference-architecture-for-javascript.png'),
+    website: 'https://github.com/Azure-Samples',
+    author: 'JavaScript Advocacy Team|Natalia Venditto',
+    source: 'https://github.com/Azure-Samples/contoso-real-estate',
+    tags: ['bicep', 'javascript', 'swa', 'aca', 'keyvault', 'blobstorage', 'azuredb-postgreSQL', 'cosmosdb', 'apim', 'enterprisepatterns']
+  },
+  
+
+  //-------  ALL OTHER AZURE-SAMPLES HERE - how many do we want to feature?
+
   {
     title: 'Python (Django) Web App with PostgreSQL in VNet',
     description:

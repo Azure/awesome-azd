@@ -22,6 +22,16 @@ const Users: User[] = [
   //------- FEATURED TEMPLATES have 'featured' as a tag
 
   {
+    title: 'WordPress with Azure Container Apps',
+    description:
+      'A blueprint to easily and quickly create and deploy your first scalable and secure WordPress site to Azure, leveraging Azure Container Apps with Azure Database for MariaDb.',
+      preview: require('./images/apptemplate-wordpress-on-ACA.png'),
+    website: 'https://github.com/kpantos',
+    author: 'Konstantinos Pantos',
+    source: 'https://github.com/Azure-Samples/apptemplate-wordpress-on-ACA',
+    tags: ['featured','php','javascript','aca','agw','rediscache','monitor','keyvault', 'bicep'],
+  },  
+  {
     title: 'React Web App with C# API and MongoDB',
     description:
       'A blueprint for getting a React web app with a C# API and a MongoDB database on Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly.',

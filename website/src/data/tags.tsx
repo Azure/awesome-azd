@@ -110,6 +110,7 @@ export type TagType =
 | 'datascience'
 | 'azurespringapps'
 | 'rediscache'
+| 'ai'
 | 'php'
 | 'agw'
 ;
@@ -440,7 +441,7 @@ export const Tags: {[type in TagType]: Tag} = {
     agw: {
         label: 'Azure Application Gateway',
         description: 'Template architecture uses Azure Application Gateway',
-        color: '#1e90ff',
+        color: 'hotpink',
     },
 
     // For Topics
@@ -452,6 +453,11 @@ export const Tags: {[type in TagType]: Tag} = {
     enterprisepatterns: {
         label: 'Enterprise App Patterns',
         description: 'Template architecture involves Enterprise Application Patterns',
+        color: 'hotpink',
+    },
+    ai: {
+        label: 'Artificial Intelligence',
+        description: 'Template architecture involves Artificial Intelligence',
         color: 'hotpink',
     }
 };

@@ -191,7 +191,33 @@ const Users: User[] = [
     source: 'https://github.com/Azure-Samples/todo-nodejs-mongo-aks',
     tags: ['featured','bicep','nodejs','typescript','javascript','mongodb','monitor','keyvault', 'reactjs', 'appservice','cosmosdb','aks'],
   },
-  
+  {
+    title: 'ChatGPT Plugin using Python (FastAPI)',
+    description: 'This is a quickstart for creating a ChatGPT Plugin using Python and Azure.',
+    preview: require('./images/chatgpt-plugin-python.png'),
+    website:'https://github.com/Azure-Samples',
+    author:'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/openai-plugin-fastapi',
+    tags: ['featured', 'bicep','python','aca','cosmosdb','monitor', 'fastapi', 'ai'],
+  }, 
+  {
+    title: 'ChatGPT + Enterprise Data with Azure OpenAI and Cognitive Search',
+    description: 'A sample app for the Retrieval-Augmented Generation pattern running in Azure, using Azure Cognitive Search for retrieval and Azure OpenAI large language models to power ChatGPT-style and Q&A experiences.',
+    preview: require('./images/chatgpt-enterprise-dotnet.png'),
+    website:'https://github.com/Azure-Samples',
+    author:'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/azure-search-openai-demo-csharp/',
+    tags: ['featured', 'bicep','dotnetCsharp','aks', 'kubernetes','aca','cosmosdb','cognitivesearch', 'openai', 'chatgpt', 'rediscache', 'ai'],
+  },
+  {
+    title: 'Simple Chat Application using Azure OpenAI',
+    description: 'A sample chat app that uses Python and the Flask framework to stream ChatGPT completions as server-sent events to a simple frontend.',
+    preview: require('./images/simplechat-azureopenai.png'),
+    website:'https://github.com/Azure-Samples',
+    author: 'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/chatgpt-quickstart',
+    tags: ['featured', 'bicep','python','openai', 'chatgpt', 'ai', 'flask', 'aca']
+  },
 
   //-------  ALL OTHER AZURE-SAMPLES HERE - how many do we want to feature?
   {
@@ -202,8 +228,21 @@ const Users: User[] = [
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/azure-health-data-services-toolkit-fhir-function-quickstart',
-    tags: ['featured', 'bicep','dotnetCsharp','ahds', 'fhir','appinsights','loganalytics', 'functions'],
+    tags: ['bicep','dotnetCsharp','ahds', 'fhir','appinsights','loganalytics', 'functions'],
   },
+  {
+    title: 'Enterprise-Grade Reference Architecture for JavaScript',
+    description: 'A reference architecture and components for building enterprise-grade modern composable frontends (or micro-frontends) and cloud-native applications. It is a collection of best practices, architecture patterns, and functional components that can be used to build and deploy modern JavaScript applications to Azure.',
+    preview: require('./images/enterprise-grade-reference-architecture-for-javascript.png'),
+    website: 'https://github.com/Azure-Samples|https://github.com/anfibiacreativa',
+    author: 'JavaScript Advocacy Team|Natalia Venditto',
+    source: 'https://github.com/Azure-Samples/contoso-real-estate',
+    tags: ['bicep', 'javascript', 'swa', 'aca', 'keyvault', 'blobstorage', 'azuredb-postgreSQL', 'cosmosdb', 'apim', 'enterprisepatterns']
+  },
+  
+
+  //-------  ALL OTHER AZURE-SAMPLES HERE - how many do we want to feature?
+
   {
     title: 'Python (Django) Web App with PostgreSQL in VNet',
     description:
@@ -332,7 +371,7 @@ const Users: User[] = [
     website: 'https://github.com/Azure-Samples',
     author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/azure-search-openai-demo',
-    tags: ['openai','chatgpt','cognitivesearch','python','typescript','bicep','nodejs'],
+    tags: ['openai','chatgpt','cognitivesearch','python','typescript','bicep','nodejs', 'ai'],
   },
   {
     title: 'FastAPI on Azure Functions',
@@ -414,7 +453,7 @@ const Users: User[] = [
     website: 'https://github.com/paulyuk',
     author: 'Paul Yuknewicz',
     source: 'https://github.com/Azure-Samples/function-csharp-ai-textsummarize',
-    tags: ['functions','dotnetCsharp','azureai', 'bicep'],
+    tags: ['functions','dotnetCsharp','azureai', 'bicep', 'ai'],
   },
   {
     title: 'Function App - Python AI Text Summarize',
@@ -424,7 +463,7 @@ const Users: User[] = [
     website: 'https://github.com/paulyuk',
     author: 'Paul Yuknewicz',
     source: 'https://github.com/Azure-Samples/function-python-ai-textsummarize',
-    tags: ['functions','python','azureai', 'bicep'],
+    tags: ['functions','python','azureai', 'bicep', 'ai'],
   },
   {
     title: 'Flask Container with CDN',

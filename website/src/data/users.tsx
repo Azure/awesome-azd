@@ -574,6 +574,17 @@ const Users: User[] = [
     source: 'https://github.com/sabbour/aks-app-template',
     tags: ['bicep', 'aks', 'kubernetes', 'keda', 'grafana', 'prometheus']
   },
+  {
+    title: 'React Component Toolkit with ChatGPT and OpenAI ',
+    description:
+      'A sample demo for building and testing react components and includes a set of unique features including AI component generation and automatic conversion to Azure APIM Widgets',
+    preview: require('./images/react-component-toolkit-openai.png'),
+    website: 'https://github.com/Azure-Samples',
+    author: 'Jenny Chen',
+    source: 'https://github.com/Azure-Samples/react-component-toolkit-openai-demo',
+    tags: ['bicep', 'openai', 'chatgpt', 'ai', 'apim', 'reactjs', 'typescript', 'javascript']
+  },
+  
 ];
 // *************** CARD DATA ENDS HERE *******************
 

@@ -386,16 +386,6 @@ const Users: User[] = [
 
   //-------  ALL OTHER TEMPLATES go here, can be searched for by name
   {
-    title: 'OpenAI Query based Summarization',
-    description:
-      'This repository contains a Python Notebook that shows you how easy it is to deploy and use Azure OpenAI along with Azure Cognitive Search, Azure Storage and Visual Studio Code to make sense of large amounts of data.',
-      preview: require('./images/summarization-python-openai.png'),
-    website: 'https://www.linkedin.com/in/rcarun/',
-    author: 'Arun Chandrasekhar',
-    source: 'https://github.com/Azure-Samples/summarization-python-openai',
-    tags: ['featured','python', 'blobstorage', 'cognitivesearch', 'openai','azureai'],
-  },
-  {
     title: 'Spring PetClinic - Java Spring MySQL',
     description:
       'Spring PetClinic application using a set of Azure solutions. Azure App Service for app hosting, Azure Database for MySQL for storage, Azure Key Vault for securing secret and Azure Application Insights for monitoring and logging.',

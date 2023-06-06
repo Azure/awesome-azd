@@ -391,7 +391,7 @@ const Users: User[] = [
       website: 'https://github.com/Azure-Samples',
       author: 'Paul Yuknewicz',
     source: 'https://github.com/Azure-Samples/function-csharp-ai-textsummarize',
-    tags: ['functions', 'cognitivesearch', 'dotnetCsharp']
+    tags: ['functions', 'cognitivesearch', 'dotnetCsharp', 'ai']
   },
   {
     title: 'Azure Functions - Text Summarization using AI Cognitive Language Service (Python v2 Function)',
@@ -401,7 +401,7 @@ const Users: User[] = [
       website: 'https://github.com/Azure-Samples',
       author: 'Paul Yuknewicz',
     source: 'https://github.com/Azure-Samples/function-python-ai-textsummarize',
-    tags: ['functions', 'cognitivesearch', 'python']
+    tags: ['functions', 'cognitivesearch', 'python', 'ai']
   },
   {
     title: 'Azure Functions - Chat using ChatGPT (Node.js JavaScript Function)',
@@ -411,7 +411,7 @@ const Users: User[] = [
       website: 'https://github.com/Azure-Samples',
       author: 'Paul Yuknewicz',
     source: 'https://github.com/Azure-Samples/function-javascript-ai-openai-chatgpt',
-    tags: ['functions', 'openai', 'chatgpt', 'javascript']
+    tags: ['functions', 'openai', 'chatgpt', 'javascript', 'ai']
   },
   {
     title: 'Azure Functions - Chat using ChatGPT (.NET C# v4 Isolated Function)',
@@ -421,7 +421,7 @@ const Users: User[] = [
       website: 'https://github.com/Azure-Samples',
       author: 'Paul Yuknewicz',
     source: 'https://github.com/Azure-Samples/function-csharp-ai-openai-chatgpt',
-    tags: ['functions','openai', 'chatgpt', 'dotnetCsharp']
+    tags: ['functions','openai', 'chatgpt', 'dotnetCsharp', 'ai']
   },
   {
     title: 'Azure Functions - Chat using ChatGPT (Python v2 Function)',
@@ -431,7 +431,7 @@ const Users: User[] = [
       website: 'https://github.com/Azure-Samples',
       author: 'Paul Yuknewicz',
     source: 'https://github.com/Azure-Samples/function-python-ai-openai-chatgpt',
-    tags: ['functions','openai', 'chatgpt', 'python']
+    tags: ['functions','openai', 'chatgpt', 'python', 'ai']
   },
   {
     title: 'Azure Functions - LangChain with Azure OpenAI and ChatGPT (Python v2 Function)',

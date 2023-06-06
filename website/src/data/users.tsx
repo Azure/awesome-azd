@@ -369,7 +369,7 @@ const Users: User[] = [
       'Demonstrate event-driven communication between microservices by leveraging the pub/sub messaging architecture using Dapr for a Java application running in an AKS cluster.',
       preview: require('./images/dapr-pubsub-java-aks-diagram.png'),
       website: 'https://github.com/Azure-Samples',
-      author: 'Azure Content Team',
+      author: 'Mahmut Canga',
     source: 'https://github.com/Azure-Samples/pubsub-dapr-aks-java',
     tags: ['dapr','java','aks']
   },

@@ -277,7 +277,7 @@ const Users: User[] = [
     title: 'Microservices App - Dapr PubSub C# ACA ServiceBus',
     description:
       'A complete microservice application featuring Dapr Pub-Sub, deployed to Azure Container Apps and Azure Service Bus Topics with dead-lettering support.',
-      preview: require('./images/test.png'),
+      preview: require('./images/pubsub-dapr-servicebus.png'),
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/pubsub-dapr-csharp-servicebus',
@@ -287,7 +287,7 @@ const Users: User[] = [
     title: 'Microservices App - Dapr PubSub Python ACA ServiceBus',
     description:
       'A complete microservice application featuring Dapr Pub-Sub, deployed to Azure Container Apps and Azure Service Bus Topics with dead-lettering support.',
-      preview: require('./images/test.png'),
+      preview: require('./images/pubsub-dapr-servicebus.png'),
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/pubsub-dapr-python-servicebus',
@@ -297,7 +297,7 @@ const Users: User[] = [
     title: 'Microservices App - Dapr PubSub Node.js ACA ServiceBus',
     description:
       'A complete microservice application featuring Dapr Pub-Sub, deployed to Azure Container Apps and Azure Service Bus Topics with dead-lettering support.',
-      preview: require('./images/test.png'),
+      preview: require('./images/pubsub-dapr-servicebus.png'),
     website: 'https://github.com/Azure/azure-dev',
     author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/pubsub-dapr-nodejs-servicebus',
@@ -362,6 +362,16 @@ const Users: User[] = [
       author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/svc-invoke-dapr-csharp',
     tags: ['dapr','dotnetCsharp','aca']
+  },
+  {
+    title: 'Microservices App - Dapr PubSub Java AKS',
+    description:
+      'Demonstrate event-driven communication between microservices by leveraging the pub/sub messaging architecture using Dapr for a Java application running in an AKS cluster.',
+      preview: require('./images/dapr-pubsub-java-aks-diagram.png'),
+      website: 'https://github.com/Azure-Samples',
+      author: 'Azure Content Team',
+    source: 'https://github.com/Azure-Samples/pubsub-dapr-aks-java',
+    tags: ['dapr','java','aks']
   },
   {
     title: 'ChatGPT and Enterprise data with Azure OpenAI and Cognitive Search',

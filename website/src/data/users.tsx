@@ -364,6 +364,16 @@ const Users: User[] = [
     tags: ['dapr','dotnetCsharp','aca']
   },
   {
+    title: 'Microservices App - Dapr Albums ACA',
+    description:
+      'Create two Dapr-enabled microservices - album viewer (Node.js) and the album API (C#) and have them communicate using Dapr in an Azure Container Apps environment.',
+      preview: require('./images/dapr-albums-diagram.png'),
+      website: 'https://github.com/Azure-Samples',
+      author: 'Paul Yuknewicz',
+    source: 'https://github.com/Azure-Samples/containerapps-dapralbums',
+    tags: ['dapr','dotnetCsharp', 'aca', "nodejs"]
+  },
+  {
     title: 'Microservices App - Dapr PubSub Java AKS',
     description:
       'Demonstrate event-driven communication between microservices by leveraging the pub/sub messaging architecture using Dapr for a Java application running in an AKS cluster.',
@@ -372,6 +382,66 @@ const Users: User[] = [
       author: 'Mahmut Canga',
     source: 'https://github.com/Azure-Samples/pubsub-dapr-aks-java',
     tags: ['dapr','java','aks']
+  },
+  {
+    title: 'Azure Functions - Text Summarization using AI Cognitive Language Service (C#-Isolated)',
+    description:
+      'This sample shows how to take text documents as a input via BlobTrigger, does Text Summarization processing using the AI Congnitive Language service, and then outputs to another text document using BlobOutput binding.',
+      preview: require('./images/test.png'),
+      website: 'https://github.com/Azure-Samples',
+      author: 'Paul Yuknewicz',
+    source: 'https://github.com/Azure-Samples/function-csharp-ai-textsummarize',
+    tags: ['functions', 'cognitivesearch', 'dotnetCsharp']
+  },
+  {
+    title: 'Azure Functions - Text Summarization using AI Cognitive Language Service (Python v2 Function)',
+    description:
+      'This sample shows how to take text documents as a input via BlobTrigger, does Text Summarization processing using the AI Congnitive Language service, and then outputs to another text document using BlobOutput binding.',
+      preview: require('./images/test.png'),
+      website: 'https://github.com/Azure-Samples',
+      author: 'Paul Yuknewicz',
+    source: 'https://github.com/Azure-Samples/function-python-ai-textsummarize',
+    tags: ['functions', 'cognitivesearch', 'python']
+  },
+  {
+    title: 'Azure Functions - Chat using ChatGPT (Node.js JavaScript Function)',
+    description:
+      'This sample shows how to take a ChatGPT prompt as HTTP Get or Post input, calculates the completions using OpenAI ChatGPT service, and then returns the output plus caches in a Blob state store.',
+      preview: require('./images/test.png'),
+      website: 'https://github.com/Azure-Samples',
+      author: 'Paul Yuknewicz',
+    source: 'https://github.com/Azure-Samples/function-javascript-ai-openai-chatgpt',
+    tags: ['functions', 'openai', 'chatgpt', 'javascript']
+  },
+  {
+    title: 'Azure Functions - Chat using ChatGPT (.NET C# v4 Isolated Function)',
+    description:
+      'This sample shows how to take a ChatGPT prompt as HTTP Get or Post input, calculates the completions using OpenAI ChatGPT service, and then returns the output plus caches in a Blob state store.',
+      preview: require('./images/test.png'),
+      website: 'https://github.com/Azure-Samples',
+      author: 'Paul Yuknewicz',
+    source: 'https://github.com/Azure-Samples/function-csharp-ai-openai-chatgpt',
+    tags: ['functions','openai', 'chatgpt', 'dotnetCsharp']
+  },
+  {
+    title: 'Azure Functions - Chat using ChatGPT (Python v2 Function)',
+    description:
+      'This sample shows how to take a ChatGPT prompt as HTTP Get or Post input, calculates the completions using OpenAI ChatGPT service, and then returns the output plus caches in a Blob state store.',
+      preview: require('./images/test.png'),
+      website: 'https://github.com/Azure-Samples',
+      author: 'Paul Yuknewicz',
+    source: 'https://github.com/Azure-Samples/function-python-ai-openai-chatgpt',
+    tags: ['functions','openai', 'chatgpt', 'python']
+  },
+  {
+    title: 'Azure Functions - LangChain with Azure OpenAI and ChatGPT (Python v2 Function)',
+    description:
+      'This sample shows how to take a human prompt as HTTP Get or Post input, calculates the completions using chains of human input and templates. This is a starting point that can be used for more sophisticated chains.',
+      preview: require('./images/test.png'),
+      website: 'https://github.com/Azure-Samples',
+      author: 'Paul Yuknewicz',
+    source: 'https://github.com/Azure-Samples/function-python-ai-langchain',
+    tags: ['functions','ai', 'python']
   },
   {
     title: 'ChatGPT and Enterprise data with Azure OpenAI and Cognitive Search',

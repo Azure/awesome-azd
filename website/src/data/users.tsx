@@ -574,7 +574,16 @@ const Users: User[] = [
     source: 'https://github.com/Azure-Samples/react-component-toolkit-openai-demo',
     tags: ['bicep', 'openai', 'chatgpt', 'ai', 'apim', 'reactjs', 'typescript', 'javascript']
   },
-  
+  {
+    title: 'Python (Flask) Web App with PostgreSQL',
+    description:
+      'A Python Flask app on App Service with a PostgreSQL flexible server database. Database access is restricted to Azure IPs, and admin password is generated randomly',
+    preview: require('./images/flask-db-quiz-example.png'),
+    website: 'https://github.com/pamelafox',
+    author: 'Pamela Fox',
+    source: 'https://github.com/pamelafox/flask-db-quiz-example'
+    tags: ['python', 'flask', 'bicep', 'appservice', 'webapps', 'azuredb-postgreSQL']
+  },
 ];
 // *************** CARD DATA ENDS HERE *******************
 

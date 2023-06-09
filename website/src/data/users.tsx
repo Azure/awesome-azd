@@ -581,7 +581,7 @@ const Users: User[] = [
     preview: require('./images/flask-db-quiz-example.png'),
     website: 'https://github.com/pamelafox',
     author: 'Pamela Fox',
-    source: 'https://github.com/pamelafox/flask-db-quiz-example'
+    source: 'https://github.com/pamelafox/flask-db-quiz-example',
     tags: ['python', 'flask', 'bicep', 'appservice', 'webapps', 'azuredb-postgreSQL']
   },
 ];

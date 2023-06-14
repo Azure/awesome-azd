@@ -218,7 +218,15 @@ const Users: User[] = [
     source: 'https://github.com/Azure-Samples/chatgpt-quickstart',
     tags: ['featured', 'bicep','python','openai', 'chatgpt', 'ai', 'flask', 'aca']
   },
-
+  {
+    title: 'Spring ChatGPT Application using Azure OpenAI on Azure Spring Apps',
+    description: 'A sample that uses Java Spring framework to build ChatGPT-style application running in Azure Spring Apps.',
+    preview: require('./images/asa-chatgpt.png'),
+    website:'https://github.com/Azure-Samples',
+    author: 'Yi Liu',
+    source: 'https://github.com/Azure-Samples/spring-chatgpt-sample',
+    tags: ['featured', 'bicep','java','openai', 'chatgpt', 'ai', 'blobstorage', 'azurespringapps']
+  },
   //-------  ALL OTHER AZURE-SAMPLES HERE - how many do we want to feature?
   {
     title: 'Azure Health Data Services Toolkit Azure Function Quickstart',

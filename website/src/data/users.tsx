@@ -406,6 +406,16 @@ const Users: User[] = [
     tags: ['java', 'servicebus', 'monitor','keyvault','azurespringapps','bicep','spring'],
   },
   {
+    title: 'Hello world Java Application on Azure Spring Apps',
+    description:
+        'A complete hello-world application that includes everything you need to build, deploy, and run an Azure Spring Apps solution. ',
+    preview: require('./images/asa-helloworld.png'),
+    website: 'https://github.com/spring-guides/',
+    author: 'Yi Liu',
+    source: 'https://github.com/spring-guides/gs-spring-boot-for-azure',
+    tags: ['java', 'azurespringapps', 'webapps', 'bicep', 'spring'],
+  },
+  {
     title: 'SAP Cloud SDK on Azure App Service Quickstart (TypeScript)',
     description:
       'This repos serves as quick-start project showcasing SAP Cloud SDK for JavaScript OData consumption running on Azure App Services. Its primary purpose is to set you up for success for your SAP extension project on Azure and reduce the lead time to your first successful deployment as much as possible with developer friendly commands.',

@@ -192,6 +192,16 @@ const Users: User[] = [
     tags: ['featured','bicep','nodejs','typescript','javascript','mongodb','monitor','keyvault', 'reactjs', 'appservice','cosmosdb','aks'],
   },
   {
+    title: 'Static React Web App with Java API and PostgreSQL',
+    description:
+        'A blueprint for getting a React web app with a Java API and a Azure Database for PostgreSQL - Flexible Server on Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly. This architecture is for hosting web apps and APIs without worrying about the infrastructure.',
+    preview: require('./images/todo-java-postgres-asa.png'),
+    website: 'https://github.com/Azure-Samples/',
+    author: 'Yi Liu',
+    source: 'https://github.com/Azure-Samples/ASA-Samples-Web-Application',
+    tags: ['featured','bicep','java','nodejs','spring','webapps','azurespringapps','azuredb-postgreSQL'],
+  },
+  {
     title: 'ChatGPT Plugin using Python (FastAPI)',
     description: 'This is a quickstart for creating a ChatGPT Plugin using Python and Azure.',
     preview: require('./images/chatgpt-plugin-python.png'),

@@ -11,7 +11,7 @@ import {sortBy} from '../utils/jsUtils';
 import {TagType, User, Tags} from './tags';
 
 // *** ADDING DATA TO AZD GALLERY ****/
-// Currently using Custom Issues on Repo 
+// Currently using Custom Issues on Repo
 // TODO: Define acceptable process for PR-based contributions
 
 // *************** CARD DATA STARTS HERE ***********************
@@ -30,7 +30,7 @@ const Users: User[] = [
     author: 'Konstantinos Pantos',
     source: 'https://github.com/Azure-Samples/apptemplate-wordpress-on-ACA',
     tags: ['featured','php','javascript','aca','agw','rediscache','monitor','keyvault', 'bicep'],
-  },  
+  },
   {
     title: 'React Web App with C# API and MongoDB',
     description:
@@ -199,7 +199,7 @@ const Users: User[] = [
     author:'Azure Content Team',
     source: 'https://github.com/Azure-Samples/openai-plugin-fastapi',
     tags: ['featured', 'bicep','python','aca','cosmosdb','monitor', 'fastapi', 'ai'],
-  }, 
+  },
   {
     title: 'ChatGPT + Enterprise Data with Azure OpenAI and Cognitive Search',
     description: 'A sample app for the Retrieval-Augmented Generation pattern running in Azure, using Azure Cognitive Search for retrieval and Azure OpenAI large language models to power ChatGPT-style and Q&A experiences.',
@@ -239,7 +239,7 @@ const Users: User[] = [
     source: 'https://github.com/Azure-Samples/contoso-real-estate',
     tags: ['bicep', 'javascript', 'swa', 'aca', 'keyvault', 'blobstorage', 'azuredb-postgreSQL', 'cosmosdb', 'apim', 'enterprisepatterns']
   },
-  
+
 
   //-------  ALL OTHER AZURE-SAMPLES HERE - how many do we want to feature?
 
@@ -583,6 +583,16 @@ const Users: User[] = [
     author: 'Pamela Fox',
     source: 'https://github.com/pamelafox/flask-db-quiz-example',
     tags: ['python', 'flask', 'bicep', 'appservice', 'webapps', 'azuredb-postgreSQL']
+  },
+  {
+    title: 'FastAPI, htmx, TailwindCSS on App Service',
+    description:
+      'A sample web app using FastAPI, htmx, and TailwindCSS that demonstrates dynamic design. Does not require a database provision.',
+      preview: require('./images/fastapi-apps-loganalytics.png'),
+    website: 'https://github.com/tataraba',
+    author: 'Mario Munoz',
+    source: 'https://github.com/tataraba/musicbinder-azd',
+    tags: ['fastapi','python', 'appservice', 'webapps','loganalytics', 'bicep'],
   },
 ];
 // *************** CARD DATA ENDS HERE *******************

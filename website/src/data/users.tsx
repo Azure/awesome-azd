@@ -11,7 +11,7 @@ import {sortBy} from '../utils/jsUtils';
 import {TagType, User, Tags} from './tags';
 
 // *** ADDING DATA TO AZD GALLERY ****/
-// Currently using Custom Issues on Repo 
+// Currently using Custom Issues on Repo
 // TODO: Define acceptable process for PR-based contributions
 
 // *************** CARD DATA STARTS HERE ***********************
@@ -30,7 +30,7 @@ const Users: User[] = [
     author: 'Konstantinos Pantos',
     source: 'https://github.com/Azure-Samples/apptemplate-wordpress-on-ACA',
     tags: ['featured','php','javascript','aca','agw','rediscache','monitor','keyvault', 'bicep'],
-  },  
+  },
   {
     title: 'React Web App with C# API and MongoDB',
     description:
@@ -199,7 +199,7 @@ const Users: User[] = [
     author:'Azure Content Team',
     source: 'https://github.com/Azure-Samples/openai-plugin-fastapi',
     tags: ['featured', 'bicep','python','aca','cosmosdb','monitor', 'fastapi', 'ai'],
-  }, 
+  },
   {
     title: 'ChatGPT + Enterprise Data with Azure OpenAI and Cognitive Search',
     description: 'A sample app for the Retrieval-Augmented Generation pattern running in Azure, using Azure Cognitive Search for retrieval and Azure OpenAI large language models to power ChatGPT-style and Q&A experiences.',
@@ -217,6 +217,16 @@ const Users: User[] = [
     author: 'Azure Content Team',
     source: 'https://github.com/Azure-Samples/chatgpt-quickstart',
     tags: ['featured', 'bicep','python','openai', 'chatgpt', 'ai', 'flask', 'aca']
+  },
+  {
+    title: 'Logic Apps Standard to connect with Dataverse',
+    description:
+      'An sample to show how to use azd to create Logic Apps Standard resource along with VNet for locking down Storage Account. 1 sample worflow that shows how to use use provisioned connection and App Settings to call Dataverse API. The Logic Apps also can be called only with Bearer token using OAuth rather than the default SAS Key.',
+    preview: require('./images/logicapps-dataverse.png'),
+    website: 'https://github.com/rajyraman/azd-logicapps-dataverse',
+    author: 'Natraj Yegnaraman',
+    source: 'https://github.com/rajyraman/azd-logicapps-dataverse',
+    tags: ['dataverse', 'powerapps', 'bicep', 'appservice', 'logicapps']
   },
 
   //-------  ALL OTHER AZURE-SAMPLES HERE - how many do we want to feature?
@@ -239,7 +249,8 @@ const Users: User[] = [
     source: 'https://github.com/Azure-Samples/contoso-real-estate',
     tags: ['bicep', 'javascript', 'swa', 'aca', 'keyvault', 'blobstorage', 'azuredb-postgreSQL', 'cosmosdb', 'apim', 'enterprisepatterns']
   },
-  
+
+
 
   //-------  ALL OTHER AZURE-SAMPLES HERE - how many do we want to feature?
 

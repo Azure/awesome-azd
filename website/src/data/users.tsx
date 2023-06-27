@@ -594,6 +594,16 @@ const Users: User[] = [
     source: 'https://github.com/jsburckhardt/docusaurus-aca',
     tags: ['javascript', 'aca', 'bicep']
   },
+  {
+    title: 'DotNet Function App with Service Bus',
+    description:
+      'A sample that uses a C# Function App with native Service Bus bindings to both add and react to Queued Messages',
+    preview: require('./images/servicebus-dotnet-functionapp.png'),
+    website: 'https://github.com/gordonby',
+    author: 'Gordon Byers',
+    source: 'https://github.com/Gordonby/servicebus-dotnet-functionapp',
+    tags: ['dotnetCsharp', 'functions', 'bicep', 'servicebus']
+  },
 ];
 // *************** CARD DATA ENDS HERE *******************
 

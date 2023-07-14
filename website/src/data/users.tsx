@@ -604,6 +604,16 @@ const Users: User[] = [
     source: 'https://github.com/Gordonby/servicebus-dotnet-functionapp',
     tags: ['dotnetCsharp', 'functions', 'bicep', 'servicebus']
   },
+  {
+    title: 'Docusaurus with Azure Container Apps',
+    description:
+      'A blueprint to easily and quickly create and deploy your product documentation in Docusaurus using Azure Container Apps.',
+    preview: require('./images/docusaurus-aca-template.png'),
+    website: 'https://github.com/jsburckhardt',
+    author: 'Juan Burckhardt',
+    source: 'https://github.com/jsburckhardt/docusaurus-aca',
+    tags: ['javascript', 'aca', 'bicep']
+  },
 ];
 // *************** CARD DATA ENDS HERE *******************
 

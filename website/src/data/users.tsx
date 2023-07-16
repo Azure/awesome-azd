@@ -584,6 +584,17 @@ const Users: User[] = [
     source: 'https://github.com/pamelafox/flask-db-quiz-example',
     tags: ['python', 'flask', 'bicep', 'appservice', 'webapps', 'azuredb-postgreSQL']
   },
+
+  {
+    title: 'Azure OpenAI with Azure Bot and Custom API calling, behind a firewall',
+    description:
+      'A Teams Chatbot running behind a Firewall that leverages OpenAI to call private APIs',
+    preview: require('./images/locked-down-bot-openai.png'),
+    website: 'https://github.com/graemefoster',
+    author: 'Graeme Foster',
+    source: 'https://github.com/graemefoster/LockedDownChatBot',
+    tags: ['openai', 'gpt', 'dotnet', 'appservice', 'bot', 'teams', 'cosmos', 'private']
+  },
 ];
 // *************** CARD DATA ENDS HERE *******************
 

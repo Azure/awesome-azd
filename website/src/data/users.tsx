@@ -584,6 +584,16 @@ const Users: User[] = [
     source: 'https://github.com/pamelafox/flask-db-quiz-example',
     tags: ['python', 'flask', 'bicep', 'appservice', 'webapps', 'azuredb-postgreSQL']
   },
+  {
+    title: 'Azure API Management with Azure OpenAI',
+    description:
+      'Unleash the power of Azure OpenAI to your application developers in a secure & manageable way with Azure API Management',
+    preview: require('./images/apim-openai.png'),
+    website: 'https://github.com/pascalvanderheiden',
+    author: 'Pascal van der Heiden',
+    source: 'https://github.com/pascalvanderheiden/ais-apim-openai',
+    tags: ['apim', 'openai', 'bicep', 'appinsights', 'keyvault', 'monitor', 'enterprisepatterns']
+  },
 ];
 // *************** CARD DATA ENDS HERE *******************
 

@@ -10,7 +10,7 @@
 import {sortBy} from '../utils/jsUtils';
 import {TagType, User, Tags} from './tags';
 
-// *** ADDING DATA TO AZD GALLERY ****/
+// *** ADDING DATA TO AZD GALLERY ****/https://github.com/Azure/awesome-azd/pull/167/conflict?name=website%252Fsrc%252Fdata%252Fusers.tsx&ancestor_oid=e08f0fdded72098ef01c2ec479cc63fb8cef8f13&base_oid=bbaa1899095b259965d13975cce608593f8e00b2&head_oid=325dee89e6daffe9e86100deb2fa91d5637e8a9d
 // Currently using Custom Issues on Repo
 // TODO: Define acceptable process for PR-based contributions
 
@@ -583,16 +583,6 @@ const Users: User[] = [
     author: 'Pamela Fox',
     source: 'https://github.com/pamelafox/flask-db-quiz-example',
     tags: ['python', 'flask', 'bicep', 'appservice', 'webapps', 'azuredb-postgreSQL']
-  },
-  {
-    title: 'Docusaurus with Azure Container Apps',
-    description:
-      'A blueprint to easily and quickly create and deploy your product documentation in Docusaurus using Azure Container Apps.',
-    preview: require('./images/docusaurus-aca-template.png'),
-    website: 'https://github.com/jsburckhardt',
-    author: 'Juan Burckhardt',
-    source: 'https://github.com/jsburckhardt/docusaurus-aca',
-    tags: ['javascript', 'aca', 'bicep']
   },
   {
     title: 'DotNet Function App with Service Bus',

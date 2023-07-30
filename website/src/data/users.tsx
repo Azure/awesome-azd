@@ -10,7 +10,7 @@
 import {sortBy} from '../utils/jsUtils';
 import {TagType, User, Tags} from './tags';
 
-// *** ADDING DATA TO AZD GALLERY ****/https://github.com/Azure/awesome-azd/pull/167/conflict?name=website%252Fsrc%252Fdata%252Fusers.tsx&ancestor_oid=e08f0fdded72098ef01c2ec479cc63fb8cef8f13&base_oid=bbaa1899095b259965d13975cce608593f8e00b2&head_oid=325dee89e6daffe9e86100deb2fa91d5637e8a9d
+// *** ADDING DATA TO AZD GALLERY ***
 // Currently using Custom Issues on Repo
 // TODO: Define acceptable process for PR-based contributions
 

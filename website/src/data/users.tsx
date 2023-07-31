@@ -11,7 +11,7 @@ import {sortBy} from '../utils/jsUtils';
 import {TagType, User, Tags} from './tags';
 
 // *** ADDING DATA TO AZD GALLERY ****/
-// Currently using Custom Issues on Repo 
+// Currently using Custom Issues on Repo
 // TODO: Define acceptable process for PR-based contributions
 
 // *************** CARD DATA STARTS HERE ***********************
@@ -30,7 +30,7 @@ const Users: User[] = [
     author: 'Konstantinos Pantos',
     source: 'https://github.com/Azure-Samples/apptemplate-wordpress-on-ACA',
     tags: ['featured','php','javascript','aca','agw','rediscache','monitor','keyvault', 'bicep'],
-  },  
+  },
   {
     title: 'React Web App with C# API and MongoDB',
     description:
@@ -192,6 +192,16 @@ const Users: User[] = [
     tags: ['featured','bicep','nodejs','typescript','javascript','mongodb','monitor','keyvault', 'reactjs', 'appservice','cosmosdb','aks'],
   },
   {
+    title: 'Static React Web App with Java API and PostgreSQL',
+    description:
+        'A blueprint for getting a React web app with a Java API and a Azure Database for PostgreSQL - Flexible Server on Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly. This architecture is for hosting web apps and APIs without worrying about the infrastructure.',
+    preview: require('./images/todo-java-postgres-asa.png'),
+    website: 'https://github.com/Azure-Samples/',
+    author: 'Yi Liu',
+    source: 'https://github.com/Azure-Samples/ASA-Samples-Web-Application',
+    tags: ['featured','bicep','java','nodejs','spring','webapps','azurespringapps','azuredb-postgreSQL'],
+  },
+  {
     title: 'ChatGPT Plugin using Python (FastAPI)',
     description: 'This is a quickstart for creating a ChatGPT Plugin using Python and Azure.',
     preview: require('./images/chatgpt-plugin-python.png'),
@@ -199,7 +209,7 @@ const Users: User[] = [
     author:'Azure Content Team',
     source: 'https://github.com/Azure-Samples/openai-plugin-fastapi',
     tags: ['featured', 'bicep','python','aca','cosmosdb','monitor', 'fastapi', 'ai'],
-  }, 
+  },
   {
     title: 'ChatGPT + Enterprise Data with Azure OpenAI and Cognitive Search',
     description: 'A sample app for the Retrieval-Augmented Generation pattern running in Azure, using Azure Cognitive Search for retrieval and Azure OpenAI large language models to power ChatGPT-style and Q&A experiences.',
@@ -218,18 +228,16 @@ const Users: User[] = [
     source: 'https://github.com/Azure-Samples/chatgpt-quickstart',
     tags: ['featured', 'bicep','python','openai', 'chatgpt', 'ai', 'flask', 'aca']
   },
-
-  //-------  ALL OTHER AZURE-SAMPLES HERE - how many do we want to feature?
   {
-    title: 'Azure Health Data Services Toolkit Azure Function Quickstart',
-    description:
-      'This quickstart will walk you through creating a simple custom operation on top of the FHIR Service using Azure Functions. We will cover everything from deploying infrastructure, debugging locally, and deploying to Azure.',
-      preview: require('./images/test.png'),
-    website: 'https://github.com/Azure/azure-dev',
-    author: 'Azure Content Team',
-    source: 'https://github.com/Azure-Samples/azure-health-data-services-toolkit-fhir-function-quickstart',
-    tags: ['bicep','dotnetCsharp','ahds', 'fhir','appinsights','loganalytics', 'functions'],
+    title: 'Spring ChatGPT Application using Azure OpenAI on Azure Spring Apps',
+    description: 'A sample that uses Java Spring framework to build ChatGPT-style application running in Azure Spring Apps.',
+    preview: require('./images/asa-chatgpt.png'),
+    website:'https://github.com/Azure-Samples',
+    author: 'Yi Liu',
+    source: 'https://github.com/Azure-Samples/spring-chatgpt-sample',
+    tags: ['featured', 'bicep','java','openai', 'chatgpt', 'ai', 'blobstorage', 'azurespringapps']
   },
+  //-------  ALL OTHER AZURE-SAMPLES HERE - how many do we want to feature?
   {
     title: 'Enterprise-Grade Reference Architecture for JavaScript',
     description: 'A reference architecture and components for building enterprise-grade modern composable frontends (or micro-frontends) and cloud-native applications. It is a collection of best practices, architecture patterns, and functional components that can be used to build and deploy modern JavaScript applications to Azure.',
@@ -239,7 +247,7 @@ const Users: User[] = [
     source: 'https://github.com/Azure-Samples/contoso-real-estate',
     tags: ['bicep', 'javascript', 'swa', 'aca', 'keyvault', 'blobstorage', 'azuredb-postgreSQL', 'cosmosdb', 'apim', 'enterprisepatterns']
   },
-  
+
 
   //-------  ALL OTHER AZURE-SAMPLES HERE - how many do we want to feature?
 
@@ -584,7 +592,26 @@ const Users: User[] = [
     source: 'https://github.com/pamelafox/flask-db-quiz-example',
     tags: ['python', 'flask', 'bicep', 'appservice', 'webapps', 'azuredb-postgreSQL']
   },
-
+  {
+    title: 'DotNet Function App with Service Bus',
+    description:
+      'A sample that uses a C# Function App with native Service Bus bindings to both add and react to Queued Messages',
+    preview: require('./images/servicebus-dotnet-functionapp.png'),
+    website: 'https://github.com/gordonby',
+    author: 'Gordon Byers',
+    source: 'https://github.com/Gordonby/servicebus-dotnet-functionapp',
+    tags: ['dotnetCsharp', 'functions', 'bicep', 'servicebus']
+  },
+  {
+    title: 'FastAPI, htmx, TailwindCSS on App Service',
+    description:
+      'A sample web app using FastAPI, htmx, and TailwindCSS that demonstrates dynamic design. Does not require a database provision.',
+      preview: require('./images/fastapi-apps-loganalytics.png'),
+    website: 'https://github.com/tataraba',
+    author: 'Mario Munoz',
+    source: 'https://github.com/tataraba/musicbinder-azd',
+    tags: ['fastapi','python', 'appservice', 'webapps','loganalytics', 'bicep'],
+  },
   {
     title: 'Azure OpenAI with Azure Bot and Custom API calling, behind a firewall',
     description:

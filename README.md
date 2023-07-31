@@ -1,5 +1,7 @@
 # Awesome `azd` ![Awesome Badge](https://awesome.re/badge-flat2.svg)
 
+View this site here: [aka.ms/awesome-azd](https://aka.ms/awesome-azd)
+
 ## 1. Introduction
 _Getting started? Click the image below to check out an Azure Friday episode all about the Azure Developer CLI (`azd`)._
 

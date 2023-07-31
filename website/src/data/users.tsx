@@ -620,7 +620,7 @@ const Users: User[] = [
     website: 'https://github.com/graemefoster',
     author: 'Graeme Foster',
     source: 'https://github.com/graemefoster/LockedDownChatBot',
-    tags: ['openai', 'gpt', 'dotnet', 'appservice', 'bot', 'teams', 'cosmos', 'private']
+    tags: ['openai', 'chatgpt', 'dotnetCsharp', 'appservice', 'bot', 'teams', 'cosmos', 'private']
   },
 ];
 // *************** CARD DATA ENDS HERE *******************

@@ -113,6 +113,7 @@ export type TagType =
 | 'ai'
 | 'php'
 | 'agw'
+| 'streamlit'
 ;
 
 

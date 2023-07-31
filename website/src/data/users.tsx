@@ -446,6 +446,16 @@ const Users: User[] = [
     tags: ['python', 'appservice', 'flask'],
   },
   {
+    title: 'Simple Streamlit AZD',
+    description:
+      'A tiny, no-frills, template to deploy Python\'s Streamlit web framework to Azure App Service in the free tier.',
+      preview: require('./images/simple-flask-azd.png'),
+    website: 'https://github.com/MiguelElGallo/simple-streamlit-azd',
+    author: 'Miguel P. Z.',
+    source: 'https://github.com/MiguelElGallo/simple-streamlit-azd',
+    tags: ['python', 'appservice', 'streamlit'],
+  },
+  {
     title: 'Function App - C# AI Text Summarize',
     description:
       'This sample shows how to take text documents as a input via BlobTrigger, does Text Summarization processing using the AI Congnitive Language service, and then outputs to another text document using BlobOutput binding.',

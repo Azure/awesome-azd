@@ -10,7 +10,8 @@
 import {sortBy} from '../utils/jsUtils';
 import {TagType, User, Tags} from './tags';
 
-// *** ADDING DATA TO AZD GALLERY ***
+// *** ADDING DATA TO AZD GALLERY ****/
+
 // Currently using Custom Issues on Repo
 // TODO: Define acceptable process for PR-based contributions
 
@@ -192,6 +193,16 @@ const Users: User[] = [
     tags: ['featured','bicep','nodejs','typescript','javascript','mongodb','monitor','keyvault', 'reactjs', 'appservice','cosmosdb','aks'],
   },
   {
+    title: 'Static React Web App with Java API and PostgreSQL',
+    description:
+        'A blueprint for getting a React web app with a Java API and a Azure Database for PostgreSQL - Flexible Server on Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly. This architecture is for hosting web apps and APIs without worrying about the infrastructure.',
+    preview: require('./images/todo-java-postgres-asa.png'),
+    website: 'https://github.com/Azure-Samples/',
+    author: 'Yi Liu',
+    source: 'https://github.com/Azure-Samples/ASA-Samples-Web-Application',
+    tags: ['featured','bicep','java','nodejs','spring','webapps','azurespringapps','azuredb-postgreSQL'],
+  },
+  {
     title: 'ChatGPT Plugin using Python (FastAPI)',
     description: 'This is a quickstart for creating a ChatGPT Plugin using Python and Azure.',
     preview: require('./images/chatgpt-plugin-python.png'),
@@ -218,18 +229,16 @@ const Users: User[] = [
     source: 'https://github.com/Azure-Samples/chatgpt-quickstart',
     tags: ['featured', 'bicep','python','openai', 'chatgpt', 'ai', 'flask', 'aca']
   },
-
-  //-------  ALL OTHER AZURE-SAMPLES HERE - how many do we want to feature?
   {
-    title: 'Azure Health Data Services Toolkit Azure Function Quickstart',
-    description:
-      'This quickstart will walk you through creating a simple custom operation on top of the FHIR Service using Azure Functions. We will cover everything from deploying infrastructure, debugging locally, and deploying to Azure.',
-      preview: require('./images/test.png'),
-    website: 'https://github.com/Azure/azure-dev',
-    author: 'Azure Content Team',
-    source: 'https://github.com/Azure-Samples/azure-health-data-services-toolkit-fhir-function-quickstart',
-    tags: ['bicep','dotnetCsharp','ahds', 'fhir','appinsights','loganalytics', 'functions'],
+    title: 'Spring ChatGPT Application using Azure OpenAI on Azure Spring Apps',
+    description: 'A sample that uses Java Spring framework to build ChatGPT-style application running in Azure Spring Apps.',
+    preview: require('./images/asa-chatgpt.png'),
+    website:'https://github.com/Azure-Samples',
+    author: 'Yi Liu',
+    source: 'https://github.com/Azure-Samples/spring-chatgpt-sample',
+    tags: ['featured', 'bicep','java','openai', 'chatgpt', 'ai', 'blobstorage', 'azurespringapps']
   },
+  //-------  ALL OTHER AZURE-SAMPLES HERE - how many do we want to feature?
   {
     title: 'Enterprise-Grade Reference Architecture for JavaScript',
     description: 'A reference architecture and components for building enterprise-grade modern composable frontends (or micro-frontends) and cloud-native applications. It is a collection of best practices, architecture patterns, and functional components that can be used to build and deploy modern JavaScript applications to Azure.',
@@ -603,6 +612,16 @@ const Users: User[] = [
     author: 'Juan Burckhardt',
     source: 'https://github.com/jsburckhardt/docusaurus-aca',
     tags: ['javascript', 'aca', 'bicep']
+  },
+  {
+    title: 'FastAPI, htmx, TailwindCSS on App Service',
+    description:
+      'A sample web app using FastAPI, htmx, and TailwindCSS that demonstrates dynamic design. Does not require a database provision.',
+      preview: require('./images/fastapi-apps-loganalytics.png'),
+    website: 'https://github.com/tataraba',
+    author: 'Mario Munoz',
+    source: 'https://github.com/tataraba/musicbinder-azd',
+    tags: ['fastapi','python', 'appservice', 'webapps','loganalytics', 'bicep'],
   },
 ];
 // *************** CARD DATA ENDS HERE *******************

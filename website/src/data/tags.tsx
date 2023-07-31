@@ -291,7 +291,11 @@ export const Tags: {[type in TagType]: Tag} = {
         description: 'Template architecture uses Kubernetes',
         color: 'hotpink',
     },
-
+    streamlit: {
+        label: 'Streamlit',
+        description: 'Template architecture uses Streamlit library',
+        color: 'hotpink',
+    },
     // ---- Azure Services
     ahds: {
         label: 'Azure Health Data Service',

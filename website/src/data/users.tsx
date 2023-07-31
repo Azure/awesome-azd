@@ -239,16 +239,6 @@ const Users: User[] = [
   },
   //-------  ALL OTHER AZURE-SAMPLES HERE - how many do we want to feature?
   {
-    title: 'Azure Health Data Services Toolkit Azure Function Quickstart',
-    description:
-      'This quickstart will walk you through creating a simple custom operation on top of the FHIR Service using Azure Functions. We will cover everything from deploying infrastructure, debugging locally, and deploying to Azure.',
-      preview: require('./images/test.png'),
-    website: 'https://github.com/Azure/azure-dev',
-    author: 'Azure Content Team',
-    source: 'https://github.com/Azure-Samples/azure-health-data-services-toolkit-fhir-function-quickstart',
-    tags: ['bicep','dotnetCsharp','ahds', 'fhir','appinsights','loganalytics', 'functions'],
-  },
-  {
     title: 'Enterprise-Grade Reference Architecture for JavaScript',
     description: 'A reference architecture and components for building enterprise-grade modern composable frontends (or micro-frontends) and cloud-native applications. It is a collection of best practices, architecture patterns, and functional components that can be used to build and deploy modern JavaScript applications to Azure.',
     preview: require('./images/enterprise-grade-reference-architecture-for-javascript.png'),

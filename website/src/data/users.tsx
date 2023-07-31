@@ -446,7 +446,7 @@ const Users: User[] = [
     tags: ['python', 'appservice', 'flask'],
   },
   {
-    title: 'Simple Streamlit AZD',
+    title: 'Simple Streamlit',
     description:
       'A tiny, no-frills, template to deploy Python\'s Streamlit web framework to Azure App Service in the free tier.',
       preview: require('./images/simple-flask-azd.png'),

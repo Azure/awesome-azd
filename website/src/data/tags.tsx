@@ -113,6 +113,7 @@ export type TagType =
 | 'ai'
 | 'php'
 | 'agw'
+| 'bot'
 ;
 
 
@@ -458,6 +459,11 @@ export const Tags: {[type in TagType]: Tag} = {
     ai: {
         label: 'Artificial Intelligence',
         description: 'Template architecture involves Artificial Intelligence',
+        color: 'hotpink',
+    },
+    bot: {
+        label: 'Bot Service',
+        description: 'Template architecture involves Bot Service',
         color: 'hotpink',
     }
 };

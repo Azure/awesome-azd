@@ -126,7 +126,7 @@
    );
  }
  
- function ShowcaseHeader() {
+ function ShowcaseTemplateSearch() {
    return (
      <section className="margin-top--lg margin-bottom--lg text--center">
        <h1>{TITLE}</h1>
@@ -214,6 +214,19 @@
      </section>
    );
  }
+
+ function ShowcaseFilterAndCard() {
+  return (
+    <section className="container margin-top--l margin-bottom--lg" style={{ display: 'flex' }}>
+      <div className="left" style={{ flex: 1 }}>
+        <ShowcaseFilters /> 
+      </div>
+      <div className="right" style={{ flex: 1 }}>
+        <ShowcaseCards />
+      </div>
+    </section>
+  );
+}
  
  const featuredUsers = sortedUsers.filter((user) =>
    user.tags.includes('featured'),
@@ -348,9 +361,8 @@
    return (
      <Layout title={TITLE} description={DESCRIPTION}>
        <main className="margin-vert--lg">
-         <ShowcaseHeader />
-         <ShowcaseFilters />
-         <ShowcaseCards />
+         <ShowcaseTemplateSearch />
+         <ShowcaseFilterAndCard />
        </main>
      </Layout>
    );

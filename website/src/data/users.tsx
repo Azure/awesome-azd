@@ -19,12 +19,7 @@ import templates from '../../static/templates.json'
 // Add your site to this list
 // prettier-ignore
 
-const Users: User[] = templates.map((template) => {
-  const user = template as User
-  user.preview = require('@site/static' + user.preview)
-
-  return user
-})
+const Users: User[] = templates as User[]
 
 export const TagList = Object.keys(Tags) as TagType[];
 function sortUsers() {

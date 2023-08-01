@@ -217,11 +217,17 @@
 
  function ShowcaseFilterAndCard() {
   return (
-    <section className="container margin-top--l margin-bottom--lg" style={{ display: 'flex' }}>
-      <div className="left" style={{ flex: 1 }}>
+    <section className={styles.filterAndCard}>
+      <div className={clsx(
+      'container margin-top--lg margin-bottom--lg text--center',
+      styles.filter,
+    )}>
         <ShowcaseFilters /> 
       </div>
-      <div className="right" style={{ flex: 1 }}>
+      <div className={clsx(
+      'container margin-top--lg margin-bottom--lg text--center',
+      styles.card,
+    )}>
         <ShowcaseCards />
       </div>
     </section>
@@ -356,7 +362,7 @@
      </section>
    );
  }
- 
+
  export default function Showcase(): JSX.Element {
    return (
      <Layout title={TITLE} description={DESCRIPTION}>

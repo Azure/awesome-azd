@@ -110,3 +110,25 @@
 .svgIconFavorite {
   margin-left: 1rem;
 }
+
+.filterAndCard {
+  display: flex;
+  flex-direction: row;
+  padding: 0 2rem;
+}
+
+.filter {
+  flex-basis: 20%;
+  overflow: auto;
+}
+
+.card {
+  flex-basis: 80%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 996px) {
+  .filterAndCard {
+    flex-direction: column;
+  }
+}

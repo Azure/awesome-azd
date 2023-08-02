@@ -114,17 +114,16 @@
 .filterAndCard {
   display: flex;
   flex-direction: row;
-  padding: 0 2rem;
 }
 
 .filter {
   flex-basis: 20%;
-  min-width: 16rem;
+  min-width: 15rem;
 }
 
 .card {
   flex-basis: 80%;
-  min-width: 16rem;
+  min-width: 15rem;
 }
 
 @media screen and (max-width: 996px) {

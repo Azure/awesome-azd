@@ -219,13 +219,13 @@
   return (
     <section className={styles.filterAndCard}>
       <div className={clsx(
-      'container margin-top--lg margin-bottom--lg text--center',
+      'container margin-top--l margin-bottom--lg',
       styles.filter,
     )}>
         <ShowcaseFilters /> 
       </div>
       <div className={clsx(
-      'container margin-top--lg margin-bottom--lg text--center',
+      'container margin-top--l margin-bottom--lg',
       styles.card,
     )}>
         <ShowcaseCards />

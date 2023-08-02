@@ -119,16 +119,20 @@
 
 .filter {
   flex-basis: 20%;
-  overflow: auto;
+  min-width: 16rem;
 }
 
 .card {
   flex-basis: 80%;
-  overflow: auto;
+  min-width: 16rem;
 }
 
 @media screen and (max-width: 996px) {
   .filterAndCard {
     flex-direction: column;
+  }
+
+  .filter {
+    max-width: 100%;
   }
 }

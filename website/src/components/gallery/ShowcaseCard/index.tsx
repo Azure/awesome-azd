@@ -24,6 +24,7 @@
    TagList,
  } from '../../../data/users';
  import {sortBy} from '@site/src/utils/jsUtils';
+import { Card } from '@fluentui/react-components';
  
  const TagComp = React.forwardRef<HTMLLIElement, Tag>(
    ({label, color, description}, ref) => (
@@ -101,7 +102,7 @@
  
  function ShowcaseCard({user}: {user: User}) {
    return (
-     <li key={user.title} className="card shadow--md">
+     <Card key={user.title} className="card shadow--md">
        <Link href={user.source}>
         <div className={clsx('card__image', styles.showcaseCardImage)}>
           <Image img={user.preview} alt={user.title} />
@@ -126,7 +127,7 @@
        <ul className={clsx('card__footer', styles.cardFooter)}>
          <ShowcaseCardTag tags={user.tags} />
        </ul>
-     </li>
+     </Card>
    );
  }
  

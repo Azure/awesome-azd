@@ -1,5 +1,7 @@
 # Awesome `azd` ![Awesome Badge](https://awesome.re/badge-flat2.svg)
 
+View this site here: [aka.ms/awesome-azd](https://aka.ms/awesome-azd)
+
 ## 1. Introduction
 _Getting started? Click the image below to check out an Azure Friday episode all about the Azure Developer CLI (`azd`)._
 
@@ -14,7 +16,7 @@ _Getting started? Click the image below to check out an Azure Friday episode all
 |[**azd-templates** on Github](https://github.com/topics/azd-templates)|
 
 ## 2. Content
-**[Submit a new resource!](https://github.com/Azure/awesome-azd/issues/new?assignees=nitya%2C+savannahostrowski&labels=awesome-readme&template=%E2%9A%99%EF%B8%8F-submit-a-new-resource.md&title=%5BResource%5D)**
+**[Submit a new resource!](https://github.com/Azure/awesome-azd/issues/new?assignees=gkulin&labels=awesome-readme&template=%E2%9A%99%EF%B8%8F-submit-a-new-resource.md&title=%5BResource%5D)**
 
 ### 2.1 Articles
  * [Azure Developer CLI - A Walkthrough](https://dev.to/lechnerc77/the-azure-developer-cli-a-walk-through-22fm) - [_Christian Lechner_](https://github.com/lechnerc77) - Sep 2022
@@ -28,7 +30,7 @@ _Getting started? Click the image below to check out an Azure Friday episode all
 
 
 ## 3. Templates
-**[Submit a template for the gallery!](https://github.com/Azure/awesome-azd/issues/new?assignees=nitya%2C+savannahostrowski&labels=new-contribution&template=%F0%9F%93%B2contribute-an-azd-template-.md&title=%5BNew+azd-template%5D+%3Cyour-template-name%3E)**
+**[Submit a template for the gallery!](https://github.com/Azure/awesome-azd/issues/new?assignees=gkulin&labels=new-contribution&template=%F0%9F%93%B2contribute-an-azd-template-.md&title=%5BNew+azd-template%5D+%3Cyour-template-name%3E)**
 
 ### 3.1 Microsoft
 * [Azure-Samples/todo-csharp-cosmos-sql](https://github.com/Azure-Samples/todo-csharp-cosmos-sql) - complete ToDo application.
@@ -42,7 +44,7 @@ _Getting started? Click the image below to check out an Azure Friday episode all
 ## 4. Contribute to Gallery
  * This repository is also associated with a [live website](https://aka.ms/awesome-azd) that makes azd-templates searchable and discoverable (by various filter tags).
   * Read [this document](GALLERY.md) for an overview of how this is setup
-  * Use [this issue](https://github.com/Azure/awesome-azd/issues/new?assignees=nitya%2C+savannahostrowski&labels=new-contribution&template=%F0%9F%93%B2contribute-an-azd-template-.md&title=%5BNew+azd-template%5D+%3Cyour-template-name%3E) to contribute your template to the showcase.
+  * Use [this issue](https://github.com/Azure/awesome-azd/issues/new?assignees=gkulin&labels=new-contribution&template=%F0%9F%93%B2contribute-an-azd-template-.md&title=%5BNew+azd-template%5D+%3Cyour-template-name%3E) to contribute your template to the showcase.
 
 ---
 

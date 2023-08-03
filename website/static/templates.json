@@ -1041,7 +1041,7 @@
             "ai",
             "dotnetCsharp",
             "appservice",
-            "bot",
+            "azurebot",
             "agw"
         ]
     }

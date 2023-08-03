@@ -113,7 +113,7 @@ export type TagType =
 | 'ai'
 | 'php'
 | 'agw'
-| 'bot'
+| 'azurebot'
 ;
 
 
@@ -444,6 +444,11 @@ export const Tags: {[type in TagType]: Tag} = {
         description: 'Template architecture uses Azure Application Gateway',
         color: 'hotpink',
     },
+    azurebot: {
+        label: 'Azure AI Bot Service',
+        description: 'Template architecture uses Azure AI Bot Service',
+        color: 'hotpink',
+    },
 
     // For Topics
     datascience:{
@@ -461,10 +466,5 @@ export const Tags: {[type in TagType]: Tag} = {
         description: 'Template architecture involves Artificial Intelligence',
         color: 'hotpink',
     },
-    bot: {
-        label: 'Bot Service',
-        description: 'Template architecture involves Bot Service',
-        color: 'hotpink',
-    }
 };
 

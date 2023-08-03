@@ -1028,5 +1028,20 @@
             "loganalytics",
             "bicep"
         ]
+    },
+    {
+        "title": "Logic Apps Standard to connect with Dataverse",
+        "description": "An sample to show how to use azd to create Logic Apps Standard resource along with VNet for locking down Storage Account. 1 sample worflow that shows how to use use provisioned connection and App Settings to call Dataverse API. The Logic Apps also can be called only with Bearer token using OAuth rather than the default SAS Key.",
+        "preview": "./templates/images/logicapps-dataverse.png",
+        "website": "https://github.com/rajyraman",
+        "author": "Natraj Yegnaraman",
+        "source": "https://github.com/rajyraman/azd-logicapps-dataverse",
+        "tags": [
+            "dataverse",
+            "powerapps",
+            "bicep",
+            "appservice",
+            "logicapps"
+        ]
     }
 ]

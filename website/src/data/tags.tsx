@@ -465,6 +465,6 @@ export const Tags: {[type in TagType]: Tag} = {
         label: 'Artificial Intelligence',
         description: 'Template architecture involves Artificial Intelligence',
         color: 'hotpink',
-    },
+    }
 };
 

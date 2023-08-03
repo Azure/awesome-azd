@@ -16,17 +16,12 @@ Fill this out if you want your template to be added to the awesome-azd gallery!
 
 - [ ] In the PR comment, if you can also add a link to the PR where you made your repo `azd` compatible this will allow us to provide feedback on your template and speed up the review process.
 
-
 # If you are submitting a resource to be added to the awesome-azd README:
 - [] Name of resource
 - [] Resource author - who created this resource? (so we can credit them!)
 - [] What section should this resource be included in? -Is the resource an article? A video? Something else?
 
-
-# If you are requesting a template:
-- [] Template Description
-- [] Azure Services (`optional`) - If there are specific azure services you'd like the template to use, please specify them here.
-
 <!-- Once submitted, the issue will be reviewed - we plan to do reviews on a rolling basis at regular intervals. The process will include verifying all information required for the template gallery is provided and the template works (i.e., successfully deploys to Azure with `azd up`). 
  * If we have questions or enhancements, we will add comments in issue thread (**issue stays open**)
  * If the contribution is approved, we'll merge the PR to update the gallery (**issue will then be closed**) -->
+ 

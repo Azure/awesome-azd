@@ -1028,5 +1028,25 @@
             "loganalytics",
             "bicep"
         ]
+    },
+    {
+        "title": "Azure Container Apps landing Zone Accelerator",
+        "description": "An architectural guidance with reference architecture and implementation to deploy containerized applications to Azure Container Apps in a secured footprint.",
+        "preview": "./templates/images/apptemplate-wordpress-on-ACA.png",
+        "website": "https://github.com/Azure",
+        "author": "Microsoft",
+        "source": "https://github.com/Azure/aca-landing-zone-accelerator",
+        "tags": [
+            "featured",
+            "bicep",
+            "aca",
+            "agw",
+            "java",
+            "monitor",
+            "terraform",
+            "keyvault",
+            "loganalytics",
+            "keda"
+        ]
     }
 ]

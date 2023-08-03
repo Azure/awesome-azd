@@ -113,6 +113,8 @@ export type TagType =
 | 'ai'
 | 'php'
 | 'agw'
+| 'logicapps'
+| 'powerapps'
 ;
 
 
@@ -268,6 +270,11 @@ export const Tags: {[type in TagType]: Tag} = {
     dataverse:{
     label: 'Dataverse',
     description: 'Template architecture uses Microsoft Dataverse',
+    color: 'hotpink',
+    },
+    powerapps:{
+    label: 'Power Apps',
+    description: 'Template architecture uses Microsoft Power Apps',
     color: 'hotpink',
     },
     chatgpt:{
@@ -436,6 +443,11 @@ export const Tags: {[type in TagType]: Tag} = {
     rediscache: {
         label: 'Azure Redis Cache',
         description: 'Template architecture uses Azure Redis Cache',
+        color: 'hotpink',
+    },
+    logicapps: {
+        label: 'Azure Logic Apps',
+        description: 'Template architecture uses Azure Logic Apps',
         color: 'hotpink',
     },
     agw: {

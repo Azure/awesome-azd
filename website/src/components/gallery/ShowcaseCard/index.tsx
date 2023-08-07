@@ -9,7 +9,6 @@
  import clsx from 'clsx';
  import Image from '@theme/IdealImage';
  import Link from '@docusaurus/Link';
- import Translate from '@docusaurus/Translate';
  
  import styles from './styles.module.css';
  import FavoriteIcon from './../../svgIcons/FavoriteIcon';
@@ -24,8 +23,9 @@
    TagList,
  } from '../../../data/users';
  import {sortBy} from '@site/src/utils/jsUtils';
-import { Card } from '@fluentui/react-components';
- 
+ import useBaseUrl from '@docusaurus/useBaseUrl';
+import { Card, shorthands,makeStyles, CardHeader, Body1, Caption1 } from '@fluentui/react-components';
+
  const TagComp = React.forwardRef<HTMLLIElement, Tag>(
    ({label, color, description}, ref) => (
      <li ref={ref} className={styles.tag} title={description}>
@@ -100,9 +100,32 @@ import { Card } from '@fluentui/react-components';
   </div>
  }
  
+ const useStyles = makeStyles({
+  card: {
+    ...shorthands.margin("auto"),
+    width: "350px",
+    height: "368px",
+    maxWidth: "100%",
+    maxHeight: "100%",
+  },
+});
+
  function ShowcaseCard({user}: {user: User}) {
+  const styles = useStyles();
    return (
-     <Card key={user.title} className="card shadow--md">
+     <Card key={user.title} className={styles.card}>
+      <CardHeader className='card__header'
+        header={
+            <div className='header-inner'>
+            <img
+            src={useBaseUrl('/img/microsoft.png')}
+            alt="Microsoft Logo"
+            style={{width: '16px', height: '16px',float: 'left', marginRight: '8px'}}
+          />
+            <p className="text-wrapper">MICROSOFT AUTHORED</p>
+          </div>
+        }
+      />
        <Link href={user.source}>
         <div className={clsx('card__image', styles.showcaseCardImage)}>
           <Image img={user.preview} alt={user.title} />

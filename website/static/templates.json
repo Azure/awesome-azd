@@ -1058,5 +1058,18 @@
             "enterprisepatterns",
             "keyvault"
         ]
+    },
+    {
+      "title": "Docusaurus with Azure Container Apps",
+      "description": "A blueprint to easily and quickly create and deploy your product documentation in Docusaurus using Azure Container Apps.",
+      "preview": "./templates/images/docusaurus-aca-template.png",
+      "website": "https://github.com/jsburckhardt",
+      "author": "Juan Burckhardt",
+      "source": "https://github.com/jsburckhardt/docusaurus-aca",
+      "tags": [
+            "javascript",
+            "aca",
+            "bicep"
+        ]
     }
 ]

@@ -97,23 +97,3 @@
     margin-left: 6px;
     margin-right: 6px;
   }
-
-  .card{
-    width: 350px;
-    height: 368px;
-  }
-
-  .card__header{
-    display: flex;
-    width: 350px;
-    height: 48px;
-    padding: 16px;
-    border-radius: 8px 8px 0px 0px;
-    border: 0px 0px 1px 0px;
-  }
-  
-  .card__header .header-inner {
-    width: 318px;
-    height: 16px;
-    justify-content:center;
-  }

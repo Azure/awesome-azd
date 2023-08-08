@@ -7,12 +7,12 @@
 
  import React from 'react';
  import clsx from 'clsx';
- import Image from '@theme/IdealImage';
  import Link from '@docusaurus/Link';
  
  import styles from './styles.module.css';
  import FavoriteIcon from './../../svgIcons/FavoriteIcon';
  import Tooltip from '../ShowcaseTooltip';
+ import { Tag as TagUI } from "@fluentui/react-tags-preview";
  import {
    Tag,
    Tags,
@@ -24,7 +24,7 @@
  } from '../../../data/users';
  import {sortBy} from '@site/src/utils/jsUtils';
  import useBaseUrl from '@docusaurus/useBaseUrl';
-import { Card, shorthands,makeStyles, CardHeader, Body1, Caption1 } from '@fluentui/react-components';
+import { Card, shorthands,makeStyles, CardHeader } from '@fluentui/react-components';
 
  const TagComp = React.forwardRef<HTMLLIElement, Tag>(
    ({label, color, description}, ref) => (
@@ -49,55 +49,50 @@ import { Card, shorthands,makeStyles, CardHeader, Body1, Caption1 } from '@fluen
          const id = `showcase_card_tag_${tagObject.tag}`;
  
          return (
-           <Tooltip
+           <TagUI
              key={index}
              text={tagObject.description}
              anchorEl="#__docusaurus"
              id={id}>
              <TagComp key={index} {...tagObject} />
-           </Tooltip>
+           </TagUI>
          );
        })}
      </>
    );
  }
 
- function ShowcaseMultipleWebsites(authorName:string, websiteLink:string) {
-  return <li>
-          <a className="dropdown__link" href={websiteLink}>{authorName}</a>
-        </li>;
+ function ShowcaseMultipleWebsites(authorName:string, websiteLink:string, length:number, i:number) {
+  if (i!=length-1){
+    return <a className={styles.cardAuthor} 
+      href={websiteLink}>{authorName}, </a>}
+  else{
+    return <a className={styles.cardAuthor} 
+      href={websiteLink}>{authorName}</a>
+      }
  }
  
  function ShowcaseMultipleAuthorsDropdown({user}: {user: User}) {
   const authors = user.author;
   const websites = user.website;
+  let i=0;
 
-  if (authors.includes("|")){
-    var multiWebsites = websites.split("|"); 
-    var multiAuthors = authors.split("|"); 
-    const links = [];
+  if (authors.includes(", ")){
+    var multiWebsites = websites.split(", "); 
+    var multiAuthors = authors.split(", "); 
 
     return (
-      <div className="dropdown dropdown--right dropdown--hoverable">
-        <button className={clsx(
-                 'button button--secondary button--sm',
-                 styles.showcaseCardSrcBtn,
-               )}>Author</button>
-        <ul className="dropdown__menu">
-          {multiWebsites.map((value, index) => {
-            return ShowcaseMultipleWebsites(multiAuthors[index], multiWebsites[index])
+        <div style={{display:'-webkit-box',overflow: 'hidden',WebkitLineClamp:'1',WebkitBoxOrient:'vertical'}}>
+            {multiWebsites.map((value, index) => {
+            return ShowcaseMultipleWebsites(multiAuthors[index], multiWebsites[index],multiWebsites.length,i++)
           })}
-        </ul>
-      </div>
+        </div>
     )    
   }
 
-    return <div>
-    <a className={clsx(
-                 'button button--secondary button--sm',
-                 styles.showcaseCardSrcBtn,
-               )} href={websites}>{authors}</a>
-  </div>
+    return <Link className={styles.cardAuthor}>
+    {authors}
+    </Link>
  }
  
  const useStyles = makeStyles({
@@ -108,50 +103,96 @@ import { Card, shorthands,makeStyles, CardHeader, Body1, Caption1 } from '@fluen
     maxWidth: "100%",
     maxHeight: "100%",
   },
+  text:{
+    color:'#606060',
+    fontSize:'10px',
+    fontFamily:'"Segoe UI-Semibold", Helvetica',
+  },
+  cardTitle:{
+    verticalAlign: 'middle',
+    fontSize: '16px',
+    fontFamily:'"Segoe UI-Bold", Helvetica;',
+    color: '#6656d1',
+  },
+  cardTextBy:{
+    fontSize: '12px',
+    fontFamily:'"Segoe UI-Regular", Helvetica;',
+    color: '#707070',
+  },
+  cardAuthor:{
+    fontSize: '12px',
+    fontFamily:'"Segoe UI-Regular", Helvetica;',
+    color: '#6656d1',
+  },
+  cardDescription:{
+    fontSize: '14px',
+    fontFamily:'"Segoe UI-Regular", Helvetica;',
+    color: '#707070',
+  },
+  cardTag:{
+    fontSize: '14px',
+    fontFamily:'"Segoe UI-Regular", Helvetica;',
+    color: '#707070',
+  },
+
 });
 
  function ShowcaseCard({user}: {user: User}) {
   const styles = useStyles();
    return (
      <Card key={user.title} className={styles.card}>
-      <CardHeader className='card__header'
+      <CardHeader
         header={
-            <div className='header-inner'>
-            <img
-            src={useBaseUrl('/img/microsoft.png')}
-            alt="Microsoft Logo"
-            style={{width: '16px', height: '16px',float: 'left', marginRight: '8px'}}
-          />
-            <p className="text-wrapper">MICROSOFT AUTHORED</p>
+            <div>
+              <img
+              src={useBaseUrl('/img/Microsoft.svg')}
+              alt="Microsoft Logo"
+              height={16}
+              style={{float:'left',margin:'5px 0px'}}
+              />
+              <div className={styles.text} style={{float:'left',color:'#606060',margin:'5px 3px'}}>MICROSOFT AUTHORED</div>
+              <div className={styles.text} style={{float:'right',color:'#F7630C',margin:'5px 3px'}}>POPULAR</div>
+              <img
+              src={useBaseUrl('/img/Fire.svg')}
+              alt='Fire'
+              height={16}
+              style={{float:'right',margin:'5px 0px'}}
+              />
+              <div className={styles.text} style={{float:'right',color:'#11910D',margin:'5px 3px'}}>NEW</div>
+              <img
+              src={useBaseUrl('/img/Sparkle.svg')}
+              alt="Star"
+              height={16}
+              style={{float:'right',margin:'5px 0px'}}
+              />
           </div>
         }
       />
-       <Link href={user.source}>
-        <div className={clsx('card__image', styles.showcaseCardImage)}>
-          <Image img={user.preview} alt={user.title} />
+      <div>
+        <Link href={user.source} className={styles.cardTitle}>{user.title}</Link>
+        <div style={{verticalAlign: 'middle', display:'flex'}}>
+          <div className={styles.cardTextBy}>by</div>
+          {/* TODO: Multiple Author 
+          {user.source && (
+               
+          )} */}
+          <Link href={user.website} className={styles.cardAuthor} style={{padding:'0px 3px'}}><ShowcaseMultipleAuthorsDropdown user={user}/></Link>
         </div>
-       </Link>
-       <div className="card__body">
-         <div className={clsx(styles.showcaseCardHeader)}>
-           <h4 className={styles.showcaseCardTitle}>
-             <Link href={user.source} className={styles.showcaseCardLink}>
-               {user.title}
-             </Link>
-           </h4>
-           {user.tags.includes('featured') && (
-             <FavoriteIcon svgClass={styles.svgIconFavorite} size="small" />
-           )}
-           {user.source && (
-             <ShowcaseMultipleAuthorsDropdown user={user}/>   
-           )}
-         </div>
-         <p className={styles.showcaseCardBody}>{user.description}</p>
-       </div>
-       <ul className={clsx('card__footer', styles.cardFooter)}>
-         <ShowcaseCardTag tags={user.tags} />
-       </ul>
+        <div className={styles.cardDescription} style={{paddingTop:'10px',overflow: 'hidden',display:'-webkit-box',WebkitLineClamp:'3',WebkitBoxOrient:'vertical'}}>{user.description}</div>
+        <div style={{paddingTop:'10px'}}><ShowcaseCardTag tags={user.tags}/></div>
+      </div>
      </Card>
    );
  }
+
+// Will be moved to Card Panel in future
+// <div className="card__body">
+//   <div className={clsx(styles.showcaseCardHeader)}>
+    // {user.source && (
+    //   <ShowcaseMultipleAuthorsDropdown user={user}/>   
+    // )}
+// <ul className={clsx('card__footer', styles.cardFooter)}>
+//   <ShowcaseCardTag tags={user.tags} />
+// </ul>
  
  export default React.memo(ShowcaseCard);

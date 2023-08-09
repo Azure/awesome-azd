@@ -53,7 +53,6 @@ export type User = {
   // NN: Updated TagType to suit Static Web Apps
 export type TagType =
 | 'featured'
-//| 'deprecated'
 | 'helpwanted'
 | 'bicep'
 | 'typescript'
@@ -132,7 +131,7 @@ export const Tags: {[type in TagType]: Tag} = {
 
     // Use for validated templates of high-quality 
     featured: {
-        label: ' ♥️ Featured',
+        label: 'Featured',
         description:
         'This tag is used for admin-curated templates that represent high-quality (community) or official (Microsoft) azd templates.',
         color: 'red', //'#e9669e',
@@ -151,7 +150,7 @@ export const Tags: {[type in TagType]: Tag} = {
     // Use for templates that were valid once, but either
     //  don't work now or have not been updated in XX time
     helpwanted: {
-        label: '🙏🏽 Help Wanted',
+        label: 'Help Wanted',
         description: 'This tag is used when there is a request for azd templates for a specific architecture. The title will link to arch, the button to a custom-issue for PR',
         color: 'red',
     },

@@ -10,9 +10,8 @@
  import Link from '@docusaurus/Link';
  
  import styles from './styles.module.css';
- import FavoriteIcon from './../../svgIcons/FavoriteIcon';
- import Tooltip from '../ShowcaseTooltip';
- import { Tag as TagUI } from "@fluentui/react-tags-preview";
+ import { Tag as TagFluentUI, TagGroup } from "@fluentui/react-tags-preview";
+ import { Button } from "@fluentui/react-components";
  import {
    Tag,
    Tags,
@@ -24,16 +23,15 @@
  } from '../../../data/users';
  import {sortBy} from '@site/src/utils/jsUtils';
  import useBaseUrl from '@docusaurus/useBaseUrl';
-import { Card, shorthands,makeStyles, CardHeader } from '@fluentui/react-components';
+import { Card, shorthands,makeStyles, CardHeader, CardFooter } from '@fluentui/react-components';
 
- const TagComp = React.forwardRef<HTMLLIElement, Tag>(
-   ({label, color, description}, ref) => (
-     <li ref={ref} className={styles.tag} title={description}>
-       <span className={styles.textLabel}>{label.toLowerCase()}</span>
-       <span className={styles.colorLabel} style={{backgroundColor: color}} />
-     </li>
-   ),
- );
+const TagComp = React.forwardRef<HTMLLIElement, Tag>(
+  ({label, description}, ref) => (
+      <TagFluentUI title={description} ref={ref} style={{height:'20px'}}>
+        {label.toLowerCase()}
+      </TagFluentUI>
+  )
+);
  
  function ShowcaseCardTag({tags}: {tags: TagType[]}) {
    const tagObjects = tags.map((tag) => ({tag, ...Tags[tag]}));
@@ -49,13 +47,9 @@ import { Card, shorthands,makeStyles, CardHeader } from '@fluentui/react-compone
          const id = `showcase_card_tag_${tagObject.tag}`;
  
          return (
-           <TagUI
-             key={index}
-             text={tagObject.description}
-             anchorEl="#__docusaurus"
-             id={id}>
+           <div>
              <TagComp key={index} {...tagObject} />
-           </TagUI>
+           </div>
          );
        })}
      </>
@@ -64,11 +58,11 @@ import { Card, shorthands,makeStyles, CardHeader } from '@fluentui/react-compone
 
  function ShowcaseMultipleWebsites(authorName:string, websiteLink:string, length:number, i:number) {
   if (i!=length-1){
-    return <a className={styles.cardAuthor} 
-      href={websiteLink}>{authorName}, </a>}
+    return <Link className={styles.cardAuthor} 
+      href={websiteLink}>{authorName}, </Link>}
   else{
-    return <a className={styles.cardAuthor} 
-      href={websiteLink}>{authorName}</a>
+    return <Link className={styles.cardAuthor} 
+      href={websiteLink}>{authorName}</Link>
       }
  }
  
@@ -90,7 +84,7 @@ import { Card, shorthands,makeStyles, CardHeader } from '@fluentui/react-compone
     )    
   }
 
-    return <Link className={styles.cardAuthor}>
+    return <Link className={styles.cardAuthor} href={websites}>
     {authors}
     </Link>
  }
@@ -130,15 +124,31 @@ import { Card, shorthands,makeStyles, CardHeader } from '@fluentui/react-compone
     color: '#707070',
   },
   cardTag:{
-    fontSize: '14px',
-    fontFamily:'"Segoe UI-Regular", Helvetica;',
-    color: '#707070',
+    fontSize: '10px',
+    fontFamily:'"Segoe UI-Semibold", Helvetica;',
+    color: '#606060',
   },
-
+  cardFooterQuickUse:{
+    fontSize: '10px',
+    fontFamily:'"Segoe UI-Semibold", Helvetica;',
+    color: '#424242',
+    height:'14px',
+    width:'46px',
+  },
+  cardFooterTemplatePath:{
+    fontSize: '11px',
+    fontFamily:'"Consolas-Regular", Helvetica;',
+    color: '#606060',
+    whiteSpace: 'nowrap',
+    textAlign: 'left',
+    width:'236px',
+  },
 });
 
  function ShowcaseCard({user}: {user: User}) {
   const styles = useStyles();
+  const source = user.source;
+  let azdInitCommand = "azd init -t "+source.replace("https://github.com/","");
    return (
      <Card key={user.title} className={styles.card}>
       <CardHeader
@@ -168,19 +178,36 @@ import { Card, shorthands,makeStyles, CardHeader } from '@fluentui/react-compone
           </div>
         }
       />
-      <div>
-        <Link href={user.source} className={styles.cardTitle}>{user.title}</Link>
+      <div style={{display:'flex',flexDirection:'column',position:'relative',maxHeight:'inherit'}}>
+        <Link href={source} className={styles.cardTitle} style={{paddingTop:'16px'}}>{user.title}</Link>
         <div style={{verticalAlign: 'middle', display:'flex'}}>
           <div className={styles.cardTextBy}>by</div>
-          {/* TODO: Multiple Author 
-          {user.source && (
-               
-          )} */}
-          <Link href={user.website} className={styles.cardAuthor} style={{padding:'0px 3px'}}><ShowcaseMultipleAuthorsDropdown user={user}/></Link>
+          <div className={styles.cardAuthor} style={{padding:'0px 3px'}}>
+            <ShowcaseMultipleAuthorsDropdown user={user}/>
+          </div>
         </div>
         <div className={styles.cardDescription} style={{paddingTop:'10px',overflow: 'hidden',display:'-webkit-box',WebkitLineClamp:'3',WebkitBoxOrient:'vertical'}}>{user.description}</div>
-        <div style={{paddingTop:'10px'}}><ShowcaseCardTag tags={user.tags}/></div>
+        <div style={{paddingTop:'10px',flex:'auto', maxHeight:'inherit'}}> 
+          <TagGroup className={styles.cardTag} style={{display:'flex',flexFlow:'row wrap',maxHeight:'inherit',position:'absolute',bottom:'6px'}} >
+            <ShowcaseCardTag tags={user.tags}/>
+          </TagGroup>
+        </div> 
       </div>
+      <CardFooter>
+        <div className={styles.cardFooterQuickUse}>Quick Use</div>
+        <Button className={styles.cardFooterTemplatePath}>
+          {azdInitCommand}
+        </Button>
+        <Button style={{height:'20px',width:'20px',float:'right'}} onClick={() => {
+          navigator.clipboard.writeText(azdInitCommand);}}>
+            <img
+                src={useBaseUrl('/img/Copy.svg')}
+                alt="Copy"
+                height={20}
+                />
+        </Button>
+      </CardFooter>
+
      </Card>
    );
  }
@@ -188,9 +215,6 @@ import { Card, shorthands,makeStyles, CardHeader } from '@fluentui/react-compone
 // Will be moved to Card Panel in future
 // <div className="card__body">
 //   <div className={clsx(styles.showcaseCardHeader)}>
-    // {user.source && (
-    //   <ShowcaseMultipleAuthorsDropdown user={user}/>   
-    // )}
 // <ul className={clsx('card__footer', styles.cardFooter)}>
 //   <ShowcaseCardTag tags={user.tags} />
 // </ul>

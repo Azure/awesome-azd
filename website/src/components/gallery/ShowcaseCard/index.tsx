@@ -11,7 +11,6 @@
  
  import styles from './styles.module.css';
  import { Tag as TagFluentUI, TagGroup } from "@fluentui/react-tags-preview";
- import { Button } from "@fluentui/react-components";
  import {
    Tag,
    Tags,
@@ -23,11 +22,11 @@
  } from '../../../data/users';
  import {sortBy} from '@site/src/utils/jsUtils';
  import useBaseUrl from '@docusaurus/useBaseUrl';
-import { Card, shorthands,makeStyles, CardHeader, CardFooter } from '@fluentui/react-components';
+import { Card, shorthands,makeStyles, CardHeader, CardFooter,Button } from '@fluentui/react-components';
 
 const TagComp = React.forwardRef<HTMLLIElement, Tag>(
   ({label, description}, ref) => (
-      <TagFluentUI title={description} ref={ref} style={{height:'20px'}}>
+      <TagFluentUI title={description} ref={ref} style={{height:'20px',alignContent:'center'}}>
         {label.toLowerCase()}
       </TagFluentUI>
   )
@@ -66,7 +65,7 @@ const TagComp = React.forwardRef<HTMLLIElement, Tag>(
       }
  }
  
- function ShowcaseMultipleAuthorsDropdown({user}: {user: User}) {
+ function ShowcaseMultipleAuthors({user}: {user: User}) {
   const authors = user.author;
   const websites = user.website;
   let i=0;
@@ -139,9 +138,6 @@ const TagComp = React.forwardRef<HTMLLIElement, Tag>(
     fontSize: '11px',
     fontFamily:'"Consolas-Regular", Helvetica;',
     color: '#606060',
-    whiteSpace: 'nowrap',
-    textAlign: 'left',
-    width:'236px',
   },
 });
 
@@ -183,27 +179,25 @@ const TagComp = React.forwardRef<HTMLLIElement, Tag>(
         <div style={{verticalAlign: 'middle', display:'flex'}}>
           <div className={styles.cardTextBy}>by</div>
           <div className={styles.cardAuthor} style={{padding:'0px 3px'}}>
-            <ShowcaseMultipleAuthorsDropdown user={user}/>
+            <ShowcaseMultipleAuthors user={user}/>
           </div>
         </div>
         <div className={styles.cardDescription} style={{paddingTop:'10px',overflow: 'hidden',display:'-webkit-box',WebkitLineClamp:'3',WebkitBoxOrient:'vertical'}}>{user.description}</div>
-        <div style={{paddingTop:'10px',flex:'auto', maxHeight:'inherit'}}> 
-          <TagGroup className={styles.cardTag} style={{display:'flex',flexFlow:'row wrap',maxHeight:'inherit',position:'absolute',bottom:'6px'}} >
+        <div style={{paddingTop:'10px'}}> 
+          <TagGroup className={styles.cardTag} style={{flexFlow:'wrap',position:'absolute',bottom:'6px',paddingTop:'10px'}} >
             <ShowcaseCardTag tags={user.tags}/>
           </TagGroup>
         </div> 
       </div>
       <CardFooter>
-        <div className={styles.cardFooterQuickUse}>Quick Use</div>
-        <Button className={styles.cardFooterTemplatePath}>
+        <div className={styles.cardFooterQuickUse} style={{float:'left'}}>Quick Use</div>
+        <Button className={styles.cardFooterTemplatePath} style={{float:'left'}}>
           {azdInitCommand}
         </Button>
-        <Button style={{height:'20px',width:'20px',float:'right'}} onClick={() => {
-          navigator.clipboard.writeText(azdInitCommand);}}>
+        <Button onClick={() => {navigator.clipboard.writeText(azdInitCommand);}}>
             <img
                 src={useBaseUrl('/img/Copy.svg')}
                 alt="Copy"
-                height={20}
                 />
         </Button>
       </CardFooter>

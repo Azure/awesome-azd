@@ -23,6 +23,7 @@
 
  import ShowcaseCard from '../components/gallery/ShowcaseCard';
  import ShowcaseTooltip from '../components/gallery/ShowcaseTooltip';
+ import { FluentProvider,teamsLightTheme } from '@fluentui/react-components';
 
  import {
    Tags,
@@ -365,11 +366,13 @@
 
  export default function Showcase(): JSX.Element {
    return (
+    <FluentProvider theme={teamsLightTheme}>
      <Layout title={TITLE} description={DESCRIPTION}>
        <main className="margin-vert--lg">
          <ShowcaseTemplateSearch />
          <ShowcaseFilterAndCard />
        </main>
      </Layout>
+     </FluentProvider>
    );
  }

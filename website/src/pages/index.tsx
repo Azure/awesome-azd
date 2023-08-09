@@ -126,7 +126,7 @@
    );
  }
  
- function ShowcaseHeader() {
+ function ShowcaseTemplateSearch() {
    return (
      <section className="margin-top--lg margin-bottom--lg text--center">
        <h1>{TITLE}</h1>
@@ -214,6 +214,25 @@
      </section>
    );
  }
+
+ function ShowcaseFilterAndCard() {
+  return (
+    <section className={styles.filterAndCard}>
+      <div className={clsx(
+      'container margin-top--l margin-bottom--lg',
+      styles.filter,
+    )}>
+        <ShowcaseFilters /> 
+      </div>
+      <div className={clsx(
+      'container margin-top--l margin-bottom--lg',
+      styles.card,
+    )}>
+        <ShowcaseCards />
+      </div>
+    </section>
+  );
+}
  
  const featuredUsers = sortedUsers.filter((user) =>
    user.tags.includes('featured'),
@@ -343,14 +362,13 @@
      </section>
    );
  }
- 
+
  export default function Showcase(): JSX.Element {
    return (
      <Layout title={TITLE} description={DESCRIPTION}>
        <main className="margin-vert--lg">
-         <ShowcaseHeader />
-         <ShowcaseFilters />
-         <ShowcaseCards />
+         <ShowcaseTemplateSearch />
+         <ShowcaseFilterAndCard />
        </main>
      </Layout>
    );

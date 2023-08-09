@@ -132,18 +132,6 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
-
-      // CONFIG: Use sparingly to drive attention to a specific call-to-action or new feature
-      //    See: https://docusaurus.io/docs/next/api/themes/configuration#announcement-bar
-      announcementBar: {
-        id: 'Latest News for AZD' ,
-        content:
-          'AZD Release Notes - <a href="https://aka.ms/awesome-azd/release-link"> <b>🆕 This Month</b></a> | Give  us a 🌟 <a href="https://github.com/azure/awesome-azd/"><b> on Github</b></a>',
-        backgroundColor: '#000010',
-        textColor: '#ffffff',
-        isCloseable: false,
-      },
-
     }),
 
 

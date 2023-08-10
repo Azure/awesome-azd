@@ -26,7 +26,7 @@ import { Card, shorthands,makeStyles, CardHeader, CardFooter,Button } from '@flu
 
 const TagComp = React.forwardRef<HTMLLIElement, Tag>(
   ({label, description}, ref) => (
-      <TagFluentUI title={description} ref={ref} style={{height:'20px',alignContent:'center'}}>
+      <TagFluentUI title={description} ref={ref} style={{height:'20px',alignContent:'center',marginTop:'3px'}}>
         {label.toLowerCase()}
       </TagFluentUI>
   )
@@ -131,10 +131,8 @@ const TagComp = React.forwardRef<HTMLLIElement, Tag>(
     fontSize: '10px',
     fontFamily:'"Segoe UI-Semibold", Helvetica;',
     color: '#424242',
-    height:'14px',
-    width:'46px',
   },
-  cardFooterTemplatePath:{
+cardFooterAzdCommand:{
     fontSize: '11px',
     fontFamily:'"Consolas-Regular", Helvetica;',
     color: '#606060',
@@ -184,21 +182,24 @@ const TagComp = React.forwardRef<HTMLLIElement, Tag>(
         </div>
         <div className={styles.cardDescription} style={{paddingTop:'10px',overflow: 'hidden',display:'-webkit-box',WebkitLineClamp:'3',WebkitBoxOrient:'vertical'}}>{user.description}</div>
         <div style={{paddingTop:'10px'}}> 
-          <TagGroup className={styles.cardTag} style={{flexFlow:'wrap',position:'absolute',bottom:'6px',paddingTop:'10px'}} >
+          <TagGroup className={styles.cardTag} style={{flexFlow:'wrap',position:'absolute',bottom:'0px',height:'75px',overflow:'hidden'}} >
             <ShowcaseCardTag tags={user.tags}/>
           </TagGroup>
         </div> 
       </div>
-      <CardFooter>
-        <div className={styles.cardFooterQuickUse} style={{float:'left'}}>Quick Use</div>
-        <Button className={styles.cardFooterTemplatePath} style={{float:'left'}}>
-          {azdInitCommand}
+      <CardFooter style={{alignItems:'center'}}>
+        <div className={styles.cardFooterQuickUse}>Quick Use</div>
+        <Button style={{padding:'0px'}} onClick={() => {navigator.clipboard.writeText(azdInitCommand);}}>
+          <div style={{height:'19px',width:'178px'}} className={styles.cardFooterAzdCommand}>
+            {azdInitCommand}
+          </div>
         </Button>
-        <Button onClick={() => {navigator.clipboard.writeText(azdInitCommand);}}>
+        <Button style={{minWidth:'auto',padding:'0px'}} onClick={() => {navigator.clipboard.writeText(azdInitCommand);}}>
             <img
                 src={useBaseUrl('/img/Copy.svg')}
+                height={20}
                 alt="Copy"
-                />
+            />
         </Button>
       </CardFooter>
 

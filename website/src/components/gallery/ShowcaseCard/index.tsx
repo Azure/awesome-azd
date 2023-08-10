@@ -6,7 +6,6 @@
  */
 
  import React from 'react';
- import clsx from 'clsx';
  import Link from '@docusaurus/Link';
  
  import styles from './styles.module.css';
@@ -22,12 +21,12 @@
  } from '../../../data/users';
  import {sortBy} from '@site/src/utils/jsUtils';
  import useBaseUrl from '@docusaurus/useBaseUrl';
-import { Card, shorthands,makeStyles, CardHeader, CardFooter,Button } from '@fluentui/react-components';
+import { Card, shorthands,makeStyles, CardHeader, CardFooter,Button, OverflowItem, Overflow, useOverflowMenu} from '@fluentui/react-components';
 
 const TagComp = React.forwardRef<HTMLLIElement, Tag>(
   ({label, description}, ref) => (
-      <TagFluentUI title={description} ref={ref} style={{height:'20px',alignContent:'center',marginTop:'3px'}}>
-        {label.toLowerCase()}
+      <TagFluentUI size="extra-small" title={description} ref={ref} style={{height:'20px',alignContent:'center',marginTop:'3px'}}>
+        {label}
       </TagFluentUI>
   )
 );
@@ -111,11 +110,14 @@ const TagComp = React.forwardRef<HTMLLIElement, Tag>(
     fontSize: '12px',
     fontFamily:'"Segoe UI-Regular", Helvetica;',
     color: '#707070',
+    paddingTop:'2px'
   },
   cardAuthor:{
     fontSize: '12px',
     fontFamily:'"Segoe UI-Regular", Helvetica;',
     color: '#6656d1',
+    paddingTop:'2px',
+    paddingLeft:'3px'
   },
   cardDescription:{
     fontSize: '14px',
@@ -187,14 +189,14 @@ cardFooterAzdCommand:{
           </TagGroup>
         </div> 
       </div>
-      <CardFooter style={{alignItems:'center'}}>
-        <div className={styles.cardFooterQuickUse}>Quick Use</div>
+      <CardFooter style={{alignItems:'center', width:'100%'}}>
+        <div className={styles.cardFooterQuickUse} style={{whiteSpace:'nowrap'}}>Quick Use</div>
         <Button style={{padding:'0px'}} onClick={() => {navigator.clipboard.writeText(azdInitCommand);}}>
-          <div style={{height:'19px',width:'178px'}} className={styles.cardFooterAzdCommand}>
+          <div style={{whiteSpace:'nowrap',overflow:'hidden',paddingLeft:'3px'}} className={styles.cardFooterAzdCommand}>
             {azdInitCommand}
           </div>
         </Button>
-        <Button style={{minWidth:'auto',padding:'0px'}} onClick={() => {navigator.clipboard.writeText(azdInitCommand);}}>
+        <Button style={{minWidth:'20px',padding:'0px',minHeight:'20px'}} onClick={() => {navigator.clipboard.writeText(azdInitCommand);}}>
             <img
                 src={useBaseUrl('/img/Copy.svg')}
                 height={20}
@@ -206,12 +208,5 @@ cardFooterAzdCommand:{
      </Card>
    );
  }
-
-// Will be moved to Card Panel in future
-// <div className="card__body">
-//   <div className={clsx(styles.showcaseCardHeader)}>
-// <ul className={clsx('card__footer', styles.cardFooter)}>
-//   <ShowcaseCardTag tags={user.tags} />
-// </ul>
  
  export default React.memo(ShowcaseCard);

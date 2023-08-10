@@ -1030,18 +1030,61 @@
         ]
     },
     {
-        "title": "Hello world Java Application on Azure Spring Apps",
-        "description": "A complete hello-world application that includes everything you need to build, deploy, and run an Azure Spring Apps solution.",
-        "preview": "./templates/images/asa-helloworld.png",
-        "website": "https://github.com/spring-guides/",
-        "author": "Yi Liu",
-        "source": "https://github.com/spring-guides/gs-spring-boot-for-azure",
+        "title": "Simple Streamlit",
+        "description": "A tiny, no-frills, template to deploy Python's Streamlit web framework to Azure App Service in the free tier.",
+        "preview": "./templates/images/simple-flask-azd.png",
+        "website": "https://github.com/MiguelElGallo",
+        "author": "Miguel P. Z.",
+        "source": "https://github.com/MiguelElGallo/simple-streamlit-azd",
         "tags": [
-            "java",
-            "azurespringapps",
-            "webapps",
+            "python",
+            "appservice",
+            "streamlit"
+        ]
+    },
+    {
+        "title": "Azure API Management with Azure OpenAI",
+        "description": "Unleash the power of Azure OpenAI to your application developers in a secure & manageable way with Azure API Management.",
+        "preview": "./templates/images/apim-openai.png",
+        "website": "https://github.com/pascalvanderheiden",
+        "author": "Pascal van der Heiden",
+        "source": "https://github.com/pascalvanderheiden/ais-apim-openai",
+        "tags": [
             "bicep",
-            "spring"
+            "apim",
+            "openai",
+            "appinsights",
+            "monitor",
+            "enterprisepatterns",
+            "keyvault"
+        ]
+    },
+    {
+      "title": "Docusaurus with Azure Container Apps",
+      "description": "A blueprint to easily and quickly create and deploy your product documentation in Docusaurus using Azure Container Apps.",
+      "preview": "./templates/images/docusaurus-aca-template.png",
+      "website": "https://github.com/jsburckhardt",
+      "author": "Juan Burckhardt",
+      "source": "https://github.com/jsburckhardt/docusaurus-aca",
+      "tags": [
+            "javascript",
+            "aca",
+            "bicep"
+        ]
+    },
+    {
+      "title": "Hello world Java Application on Azure Spring Apps",
+      "description": "A complete hello-world application that includes everything you need to build, deploy, and run an Azure Spring Apps solution.",
+      "preview": "./templates/images/asa-helloworld.png",
+      "website": "https://github.com/spring-guides/",
+      "author": "Yi Liu",
+      "source": "https://github.com/spring-guides/gs-spring-boot-for-azure",
+      "tags": [
+          "java",
+          "azurespringapps",
+          "webapps",
+          "bicep",
+          "spring"
         ]
     }
 ]

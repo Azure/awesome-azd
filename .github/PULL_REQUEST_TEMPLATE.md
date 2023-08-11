@@ -3,6 +3,9 @@ Please fill out this template! There are three different types of contributions,
 # If you are submitting a new `azd` template to the gallery
 Fill this out if you want your template to be added to the awesome-azd gallery!
 
+### Your template repository
+Place your template repository link here:
+
 <!-- Please ensure that your PR includes the following metadata! All fields are mandatory unless explicitly marked as optional -->
 
 - [ ] Added an entry to https://github.com/Azure/awesome-azd/blob/main/website/src/data/users.tsx that includes:

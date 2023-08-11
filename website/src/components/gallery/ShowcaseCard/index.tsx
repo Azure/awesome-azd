@@ -21,7 +21,7 @@
  } from '../../../data/users';
  import {sortBy} from '@site/src/utils/jsUtils';
  import useBaseUrl from '@docusaurus/useBaseUrl';
-import { Card, shorthands,makeStyles, CardHeader, CardFooter,Button, OverflowItem, Overflow, useOverflowMenu} from '@fluentui/react-components';
+import { Card, shorthands,makeStyles, CardHeader, CardFooter,Button} from '@fluentui/react-components';
 
 const TagComp = React.forwardRef<HTMLLIElement, Tag>(
   ({label, description}, ref) => (
@@ -110,13 +110,11 @@ const TagComp = React.forwardRef<HTMLLIElement, Tag>(
     fontSize: '12px',
     fontFamily:'"Segoe UI-Regular", Helvetica;',
     color: '#707070',
-    paddingTop:'2px'
   },
   cardAuthor:{
     fontSize: '12px',
     fontFamily:'"Segoe UI-Regular", Helvetica;',
     color: '#6656d1',
-    paddingTop:'2px',
     paddingLeft:'3px'
   },
   cardDescription:{
@@ -143,6 +141,7 @@ cardFooterAzdCommand:{
 
  function ShowcaseCard({user}: {user: User}) {
   const styles = useStyles();
+  const author = user.author;
   const source = user.source;
   let azdInitCommand = "azd init -t "+source.replace("https://github.com/","");
    return (
@@ -150,13 +149,27 @@ cardFooterAzdCommand:{
       <CardHeader
         header={
             <div>
-              <img
-              src={useBaseUrl('/img/Microsoft.svg')}
-              alt="Microsoft Logo"
-              height={16}
-              style={{float:'left',margin:'5px 0px'}}
-              />
-              <div className={styles.text} style={{float:'left',color:'#606060',margin:'5px 3px'}}>MICROSOFT AUTHORED</div>
+              {(author.includes("Azure Dev")|| author.includes("Azure Content Team")) ?
+                <>
+                <img
+                src={useBaseUrl('/img/Microsoft.svg')}
+                alt="Microsoft Logo"
+                height={16}
+                style={{float:'left',margin:'5px 0px'}}
+                />
+                <div className={styles.text} style={{float:'left',color:'#606060',margin:'5px 3px'}}>MICROSOFT AUTHORED</div>
+                </> : 
+                <>
+                <img
+                src={useBaseUrl('/img/Community.svg')}
+                alt="Community"
+                height={16}
+                style={{float:'left',margin:'5px 0px'}}
+                />
+                <div className={styles.text} style={{float:'left',color:'#606060',margin:'5px 3px'}}>COMMUNITY AUTHORED</div>
+                </>
+
+              }
               <div className={styles.text} style={{float:'right',color:'#F7630C',margin:'5px 3px'}}>POPULAR</div>
               <img
               src={useBaseUrl('/img/Fire.svg')}
@@ -175,16 +188,16 @@ cardFooterAzdCommand:{
         }
       />
       <div style={{display:'flex',flexDirection:'column',position:'relative',maxHeight:'inherit'}}>
-        <Link href={source} className={styles.cardTitle} style={{paddingTop:'16px'}}>{user.title}</Link>
-        <div style={{verticalAlign: 'middle', display:'flex'}}>
+        <Link href={source} className={styles.cardTitle}>{user.title}</Link>
+        <div style={{verticalAlign: 'middle', display:'flex',paddingTop:'2px'}}>
           <div className={styles.cardTextBy}>by</div>
-          <div className={styles.cardAuthor} style={{padding:'0px 3px'}}>
+          <div className={styles.cardAuthor}>
             <ShowcaseMultipleAuthors user={user}/>
           </div>
         </div>
         <div className={styles.cardDescription} style={{paddingTop:'10px',overflow: 'hidden',display:'-webkit-box',WebkitLineClamp:'3',WebkitBoxOrient:'vertical'}}>{user.description}</div>
-        <div style={{paddingTop:'10px'}}> 
-          <TagGroup className={styles.cardTag} style={{flexFlow:'wrap',position:'absolute',bottom:'0px',height:'75px',overflow:'hidden'}} >
+        <div style={{paddingTop:'10px',position:'absolute',bottom:'0px'}}> 
+          <TagGroup className={styles.cardTag} style={{flexWrap:'wrap',overflow:'hidden',maxHeight:'120px'}} >
             <ShowcaseCardTag tags={user.tags}/>
           </TagGroup>
         </div> 
@@ -192,7 +205,7 @@ cardFooterAzdCommand:{
       <CardFooter style={{alignItems:'center', width:'100%'}}>
         <div className={styles.cardFooterQuickUse} style={{whiteSpace:'nowrap'}}>Quick Use</div>
         <Button style={{padding:'0px'}} onClick={() => {navigator.clipboard.writeText(azdInitCommand);}}>
-          <div style={{whiteSpace:'nowrap',overflow:'hidden',paddingLeft:'3px'}} className={styles.cardFooterAzdCommand}>
+          <div className={styles.cardFooterAzdCommand} style={{whiteSpace:'nowrap',overflow:'hidden',paddingLeft:'3px'}} >
             {azdInitCommand}
           </div>
         </Button>

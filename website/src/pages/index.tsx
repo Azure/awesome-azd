@@ -178,7 +178,7 @@
        </div>
        <ul className={styles.checkboxList}>
          {TagList.map((tag, i) => {
-           const {label, description, color} = Tags[tag];
+           const {label, description} = Tags[tag];
            const id = `showcase_checkbox_id_${tag}`;
  
            return (
@@ -197,7 +197,6 @@
                      ) : (
                        <span
                          style={{
-                           backgroundColor: color,
                            width: 10,
                            height: 10,
                            borderRadius: '50%',

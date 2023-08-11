@@ -21,11 +21,11 @@
  } from '../../../data/users';
  import {sortBy} from '@site/src/utils/jsUtils';
  import useBaseUrl from '@docusaurus/useBaseUrl';
-import { Card, shorthands,makeStyles, CardHeader, CardFooter,Button} from '@fluentui/react-components';
+import { Card, shorthands,makeStyles, CardHeader, CardFooter,Button, CardPreview} from '@fluentui/react-components';
 
 const TagComp = React.forwardRef<HTMLLIElement, Tag>(
   ({label, description}, ref) => (
-      <TagFluentUI size="extra-small" title={description} ref={ref} style={{height:'20px',alignContent:'center',marginTop:'3px'}}>
+      <TagFluentUI appearance="outline" size="extra-small" title={description} ref={ref} style={{height:'20px',alignContent:'center',marginTop:'3px', backgroundColor:'#F0F0F0'}}>
         {label}
       </TagFluentUI>
   )
@@ -115,7 +115,7 @@ const TagComp = React.forwardRef<HTMLLIElement, Tag>(
     fontSize: '12px',
     fontFamily:'"Segoe UI-Regular", Helvetica;',
     color: '#6656d1',
-    paddingLeft:'3px'
+    paddingLeft:'3px',
   },
   cardDescription:{
     fontSize: '14px',
@@ -145,7 +145,7 @@ cardFooterAzdCommand:{
   const source = user.source;
   let azdInitCommand = "azd init -t "+source.replace("https://github.com/","");
    return (
-     <Card key={user.title} className={styles.card}>
+     <Card key={user.title} className={styles.card} style={{background:'linear-gradient(#FAFAFA 0 0)bottom/100% 45px no-repeat'}}>
       <CardHeader
         header={
             <div>
@@ -187,6 +187,7 @@ cardFooterAzdCommand:{
           </div>
         }
       />
+      <CardPreview style={{borderTop:'solid #F0F0F0'}}/>
       <div style={{display:'flex',flexDirection:'column',position:'relative',maxHeight:'inherit'}}>
         <Link href={source} className={styles.cardTitle}>{user.title}</Link>
         <div style={{verticalAlign: 'middle', display:'flex',paddingTop:'2px'}}>
@@ -197,11 +198,13 @@ cardFooterAzdCommand:{
         </div>
         <div className={styles.cardDescription} style={{paddingTop:'10px',overflow: 'hidden',display:'-webkit-box',WebkitLineClamp:'3',WebkitBoxOrient:'vertical'}}>{user.description}</div>
         <div style={{paddingTop:'10px',position:'absolute',bottom:'0px'}}> 
-          <TagGroup className={styles.cardTag} style={{flexWrap:'wrap',overflow:'hidden',maxHeight:'120px'}} >
+          <TagGroup className={styles.cardTag} style={{flexWrap:'wrap',overflow:'hidden',maxHeight:'96px'}} >
             <ShowcaseCardTag tags={user.tags}/>
           </TagGroup>
         </div> 
       </div>
+      <CardPreview style={{borderTop:'solid #F0F0F0',backgroundColor:'#FAFAFA'}}>
+      </CardPreview>
       <CardFooter style={{alignItems:'center', width:'100%'}}>
         <div className={styles.cardFooterQuickUse} style={{whiteSpace:'nowrap'}}>Quick Use</div>
         <Button style={{padding:'0px'}} onClick={() => {navigator.clipboard.writeText(azdInitCommand);}}>

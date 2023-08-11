@@ -132,9 +132,9 @@ export const Tags: { [type in TagType]: Tag } = {
       "This tag is used for admin-curated templates that represent high-quality (community) or official (Microsoft) azd templates.",
   },
 
-  // Use for templates that were valid once, but either
-  //  don't work now or have not been updated in XX time
-  /*
+    // Use for templates that were valid once, but either
+    //  don't work now or have not been updated in XX time
+    /*
     deprecated: {
         label: '❌ Deprecated',
         description: 'This tag is used when a previously approved template is no longer relevant (e.g., out of date, not refreshed in XX months etc.)',
@@ -149,9 +149,9 @@ export const Tags: { [type in TagType]: Tag } = {
       "This tag is used when there is a request for azd templates for a specific architecture. The title will link to arch, the button to a custom-issue for PR",
   },
 
-  //============  FOR REGULAR USE
+    //============  FOR REGULAR USE
 
-  // Language Tags
+    // Language Tags
 
   javascript: {
     label: "JavaScript",
@@ -402,3 +402,4 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture involves Artificial Intelligence",
   },
 };
+

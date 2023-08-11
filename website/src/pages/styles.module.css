@@ -112,16 +112,14 @@
 
 .filterAndCard {
   display: flex;
-  flex-direction: row;
 }
 
 .filter {
-  flex-basis: 20%;
-  min-width: 15rem;
+  flex: 2;
 }
 
 .card {
-  flex-basis: 80%;
+  flex: 8;
   min-width: 15rem;
 }
 

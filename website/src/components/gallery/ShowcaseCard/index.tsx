@@ -114,7 +114,7 @@ function ShowcaseMultipleAuthors({ user }: { user: User }) {
           );
         })}
       </div>
-    );
+    )    
   }
 
   return (

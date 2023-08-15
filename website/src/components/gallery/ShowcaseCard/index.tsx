@@ -6,10 +6,9 @@
  */
 
 import React from "react";
-import Link from "@docusaurus/Link";
 
 import styles from "./styles.module.css";
-import { Tag as TagFluentUI, TagGroup } from "@fluentui/react-tags-preview";
+import { Tag as FluentUITag, TagGroup } from "@fluentui/react-tags-preview";
 import { Tag, Tags, type User, type TagType } from "../../../data/tags";
 import { TagList } from "../../../data/users";
 import { sortBy } from "@site/src/utils/jsUtils";
@@ -22,11 +21,12 @@ import {
   CardFooter,
   Button,
   CardPreview,
+  Link as FluentUILink,
 } from "@fluentui/react-components";
 
 const TagComp = React.forwardRef<HTMLLIElement, Tag>(
   ({ label, description }, ref) => (
-    <TagFluentUI
+    <FluentUITag
       appearance="outline"
       size="extra-small"
       title={description}
@@ -39,7 +39,7 @@ const TagComp = React.forwardRef<HTMLLIElement, Tag>(
       }}
     >
       {label}
-    </TagFluentUI>
+    </FluentUITag>
   )
 );
 
@@ -74,15 +74,15 @@ function ShowcaseMultipleWebsites(
 ) {
   if (i != length - 1) {
     return (
-      <Link className={styles.cardAuthor} href={websiteLink}>
+      <FluentUILink className={styles.cardAuthor} href={websiteLink}>
         {authorName},{" "}
-      </Link>
+      </FluentUILink>
     );
   } else {
     return (
-      <Link className={styles.cardAuthor} href={websiteLink}>
+      <FluentUILink className={styles.cardAuthor} href={websiteLink}>
         {authorName}
-      </Link>
+      </FluentUILink>
     );
   }
 }
@@ -114,13 +114,13 @@ function ShowcaseMultipleAuthors({ user }: { user: User }) {
           );
         })}
       </div>
-    )    
+    );
   }
 
   return (
-    <Link className={styles.cardAuthor} href={websites}>
+    <FluentUILink className={styles.cardAuthor} href={websites}>
       {authors}
-    </Link>
+    </FluentUILink>
   );
 }
 
@@ -197,7 +197,7 @@ function ShowcaseCard({ user }: { user: User }) {
             author.includes("Azure Content Team") ? (
               <>
                 <img
-                  src={useBaseUrl("/img/Microsoft.svg")}
+                  src={useBaseUrl("/img/microsoft.svg")}
                   alt="Microsoft Logo"
                   height={16}
                   style={{ float: "left", margin: "5px 0px" }}
@@ -212,7 +212,7 @@ function ShowcaseCard({ user }: { user: User }) {
             ) : (
               <>
                 <img
-                  src={useBaseUrl("/img/Community.svg")}
+                  src={useBaseUrl("/img/community.svg")}
                   alt="Community"
                   height={16}
                   style={{ float: "left", margin: "5px 0px" }}
@@ -232,7 +232,7 @@ function ShowcaseCard({ user }: { user: User }) {
               POPULAR
             </div>
             <img
-              src={useBaseUrl("/img/Fire.svg")}
+              src={useBaseUrl("/img/fire.svg")}
               alt="Fire"
               height={16}
               style={{ float: "right", margin: "5px 0px" }}
@@ -244,7 +244,7 @@ function ShowcaseCard({ user }: { user: User }) {
               NEW
             </div>
             <img
-              src={useBaseUrl("/img/Sparkle.svg")}
+              src={useBaseUrl("/img/sparkle.svg")}
               alt="Star"
               height={16}
               style={{ float: "right", margin: "5px 0px" }}
@@ -261,9 +261,9 @@ function ShowcaseCard({ user }: { user: User }) {
           maxHeight: "inherit",
         }}
       >
-        <Link href={source} className={styles.cardTitle}>
+        <FluentUILink href={source} className={styles.cardTitle}>
           {user.title}
-        </Link>
+        </FluentUILink>
         <div
           style={{
             verticalAlign: "middle",
@@ -332,9 +332,67 @@ function ShowcaseCard({ user }: { user: User }) {
             navigator.clipboard.writeText(azdInitCommand);
           }}
         >
-          <img src={useBaseUrl("/img/Copy.svg")} height={20} alt="Copy" />
+          <img src={useBaseUrl("/img/copy.svg")} height={20} alt="Copy" />
         </Button>
       </CardFooter>
+    </Card>
+  );
+}
+
+export function ShowcaseContributionCard(): React.ReactElement {
+  const styles = useStyles();
+  return (
+    <Card className={styles.card}>
+      <Button size="small"
+        style={{
+          padding:'0px',
+          margin:'0px',
+          alignSelf: "flex-end",
+        }}
+        icon={<img src={useBaseUrl("/img/close.svg")} height={20} alt="Close" />}
+      >
+        
+      </Button>
+      <img
+        src={useBaseUrl("/img/contributionCard.svg")}
+        alt="contributionCard"
+        style={{ maxHeight: "110px", alignSelf: "flex-start" }}
+      />
+      <div
+        style={{
+          color: "#242424",
+          fontSize: "24px",
+          fontFamily: '"Segoe UI-Semibold", Helvetica;',
+        }}
+      >
+        See your template here!
+      </div>
+      <div
+        style={{
+          color: "#242424",
+          fontSize: "14px",
+          fontFamily: '"Segoe UI-Regular", Helvetica;',
+        }}
+      >
+        <p
+          style={{
+            margin: "0px",
+          }}
+        >
+          awesome-azd is looking for new templates!{" "}
+        </p>
+        <p
+          style={{
+            margin: "0px",
+          }}
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
+      </div>
+      <div>
+        <Button size="small">Submit a template</Button>
+        <Button size="small">Request a template</Button>
+      </div>
     </Card>
   );
 }

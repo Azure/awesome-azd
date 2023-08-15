@@ -21,7 +21,7 @@ import ShowcaseFilterToggle, {
   readOperator,
 } from "../components/gallery/ShowcaseFilterToggle";
 
-import ShowcaseCard from "../components/gallery/ShowcaseCard";
+import ShowcaseCard, {ShowcaseContributionCard} from "../components/gallery/ShowcaseCard";
 import ShowcaseTooltip from "../components/gallery/ShowcaseTooltip";
 import { FluentProvider, teamsLightTheme } from "@fluentui/react-components";
 
@@ -235,11 +235,8 @@ function ShowcaseFilterAndCard() {
 const featuredUsers = sortedUsers.filter((user) =>
   user.tags.includes("featured")
 );
-const helpWanted = sortedUsers.filter((user) =>
-  user.tags.includes("helpwanted")
-);
 const otherUsers = sortedUsers.filter(
-  (user) => !user.tags.includes("featured") && !user.tags.includes("helpwanted")
+  (user) => !user.tags.includes("featured")
 );
 
 function SearchBar() {
@@ -309,33 +306,19 @@ function ShowcaseCards() {
                   styles.showcaseFavoriteHeader
                 )}
               >
-                <h2>
-                  <Translate id="showcase.favoritesList.title">
-                    Featured Templates
-                  </Translate>
-                </h2>
-                <FavoriteIcon svgClass={styles.svgIconFavorite} />
                 <SearchBar />
               </div>
               <ul className={clsx("container", styles.showcaseList)}>
+                <ShowcaseContributionCard />
                 {featuredUsers.map((user) => (
                   <ShowcaseCard key={user.title} user={user} />
                 ))}
+                {otherUsers.map((user) => (
+                  <ShowcaseCard key={user.title} user={user} />
+                ))}
+                {/* <ShowcaseContributionCard /> */}
               </ul>
             </div>
-          </div>
-
-          <div className="container margin-top--lg">
-            <h2 className={styles.showcaseHeader}>
-              <Translate id="showcase.usersList.allUsers">
-                Other Templates
-              </Translate>
-            </h2>
-            <ul className={styles.showcaseList}>
-              {otherUsers.map((user) => (
-                <ShowcaseCard key={user.title} user={user} />
-              ))}
-            </ul>
           </div>
         </>
       ) : (

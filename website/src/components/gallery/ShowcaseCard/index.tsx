@@ -51,19 +51,56 @@ function ShowcaseCardTag({ tags }: { tags: TagType[] }) {
     TagList.indexOf(tagObject.tag)
   );
 
-  return (
-    <>
-      {tagObjectsSorted.map((tagObject, index) => {
-        const id = `showcase_card_tag_${tagObject.tag}`;
+  const length = tagObjectsSorted.length;
+  const rest = length - 7;
 
-        return (
-          <div>
-            <TagComp key={index} {...tagObject} />
-          </div>
-        );
-      })}
-    </>
-  );
+  if (length > 7) {
+    return (
+      <>
+      
+        {tagObjectsSorted.slice(0,7).map((tagObject, index) => {
+          const id = `showcase_card_tag_${tagObject.tag}`;
+if (
+  tagObject.clientHeight < tagObject.scrollHeight ||
+  tagObject.clientWidth < tagObject.scrollWidth
+) {
+  return (<div>hi</div>)
+}
+          return (
+            <div>
+              <TagComp key={index} id={id} {...tagObject} />
+            </div>
+          );
+        })}
+        <TagFluentUI
+          appearance="outline"
+          size="extra-small"
+          style={{
+            height: "20px",
+            alignContent: "center",
+            marginTop: "3px",
+            backgroundColor: "#F0F0F0",
+          }}
+        >
+          + {rest} more
+        </TagFluentUI>
+      </>
+    );
+  } else {
+    return (
+      <>
+        {tagObjectsSorted.map((tagObject, index) => {
+          const id = `showcase_card_tag_${tagObject.tag}`;
+
+          return (
+            <div>
+              <TagComp key={index} id={id} {...tagObject} />
+            </div>
+          );
+        })}
+      </>
+    );
+  }
 }
 
 function ShowcaseMultipleWebsites(
@@ -293,7 +330,7 @@ function ShowcaseCard({ user }: { user: User }) {
         >
           <TagGroup
             className={styles.cardTag}
-            style={{ flexWrap: "wrap", overflow: "hidden", maxHeight: "96px" }}
+            style={{ flexWrap: "wrap", overflow: "hidden", maxHeight: "73px" }}
           >
             <ShowcaseCardTag tags={user.tags} />
           </TagGroup>

@@ -343,95 +343,99 @@ function ShowcaseCard({user}: { user: User }) {
 function closeCard(parentDiv) {
   let parent = document.getElementById(parentDiv);
   parent.style.display = "none";
+  localStorage.setItem('contributionCardDisplay', parent.style.display);
 }
 
 export function ShowcaseContributionCard(): React.ReactElement {
   const styles = useStyles();
-  return (
-    <Card className={styles.card}>
-      <ToggleButton
-        // onClick={() => closeCard("contributionCard")}
-        size="small"
-        appearance="transparent"
-        style={{
-          padding: "0px",
-          margin: "0px",
-          alignSelf: "flex-end",
-          minWidth: "20px",
-          height: "0px",
-        }}
-        icon={
-          <img src={useBaseUrl("/img/close.svg")} height={20} alt="Close" />
-        }
-      ></ToggleButton>
-      <img
-        src={useBaseUrl("/img/contributionCard.svg")}
-        alt="contributionCard"
-        style={{ maxHeight: "110px", alignSelf: "flex-start" }}
-      />
-      <div
-        style={{
-          color: "#242424",
-          fontSize: "24px",
-          fontFamily: '"Segoe UI-Semibold", Helvetica',
-        }}
-      >
-        See your template here!
-      </div>
-      <div
-        style={{
-          color: "#242424",
-          fontSize: "14px",
-          fontFamily: '"Segoe UI-Regular", Helvetica',
-        }}
-      >
-        <p
-          style={{
-            margin: "0px",
-          }}
-        >
-          awesome-azd is looking for new templates!{" "}
-        </p>
-        <p
-          style={{
-            margin: "0px",
-          }}
-        >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </p>
-      </div>
-      <div style={{ display: "flex" }}>
-        <Button
-          size="small"
-          style={{
-            flex: 1,
-            color: "#ffffff",
-            fontFamily: '"Segoe UI-Semibold", Helvetica',
-            fontSize: "14px",
-            backgroundColor: "#6656d1",
-            height: "32px",
-            whiteSpace: "nowrap",
-          }}
-        >
-          Submit a template
-        </Button>
-        <Button
+  if (localStorage.getItem('contributionCardDisplay')){
+    return <></>;
+  }
+    return (
+      <Card className={styles.card} id="contributionCard">
+        <ToggleButton
+          onClick={() => closeCard("contributionCard")}
           size="small"
           appearance="transparent"
           style={{
-            flex: 1,
-            color: "#6656d1",
+            padding: "0px",
+            margin: "0px",
+            alignSelf: "flex-end",
+            minWidth: "20px",
+            height: "0px",
+          }}
+          icon={
+            <img src={useBaseUrl("/img/close.svg")} height={20} alt="Close" />
+          }
+        ></ToggleButton>
+        <img
+          src={useBaseUrl("/img/contributionCard.svg")}
+          alt="contributionCard"
+          style={{ maxHeight: "110px", alignSelf: "flex-start" }}
+        />
+        <div
+          style={{
+            color: "#242424",
+            fontSize: "24px",
             fontFamily: '"Segoe UI-Semibold", Helvetica',
-            fontSize: "14px",
-            height: "32px",
-            whiteSpace: "nowrap",
           }}
         >
-          Request a template
-        </Button>
-      </div>
-    </Card>
-  );
+          See your template here!
+        </div>
+        <div
+          style={{
+            color: "#242424",
+            fontSize: "14px",
+            fontFamily: '"Segoe UI-Regular", Helvetica',
+          }}
+        >
+          <p
+            style={{
+              margin: "0px",
+            }}
+          >
+            awesome-azd is looking for new templates!{" "}
+          </p>
+          <p
+            style={{
+              margin: "0px",
+            }}
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
+        </div>
+        <div style={{ display: "flex" }}>
+          <Button
+            size="small"
+            style={{
+              flex: 1,
+              color: "#ffffff",
+              fontFamily: '"Segoe UI-Semibold", Helvetica',
+              fontSize: "14px",
+              backgroundColor: "#6656d1",
+              height: "32px",
+              whiteSpace: "nowrap",
+            }}
+          >
+            Submit a template
+          </Button>
+          <Button
+            size="small"
+            appearance="transparent"
+            style={{
+              flex: 1,
+              color: "#6656d1",
+              fontFamily: '"Segoe UI-Semibold", Helvetica',
+              fontSize: "14px",
+              height: "32px",
+              whiteSpace: "nowrap",
+            }}
+          >
+            Request a template
+          </Button>
+        </div>
+      </Card>
+    );
 }
 
 export default React.memo(ShowcaseCard);

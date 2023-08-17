@@ -310,9 +310,13 @@ function ShowcaseCards() {
                 <SearchBar />
               </div>
               <ul className={clsx("container", styles.showcaseList)}>
-                <ShowcaseContributionCard />
-                {featuredAndOtherUsers.map((user) => (
-                  <ShowcaseCard key={user.title} user={user}/>
+                {featuredAndOtherUsers.map((user, index) => (
+                  <React.Fragment key={user.title}>
+                    <ShowcaseCard user={user} />
+                    {((featuredAndOtherUsers.length < 6 &&
+                      index === featuredAndOtherUsers.length - 1) ||
+                      index === 4) && <ShowcaseContributionCard />}
+                  </React.Fragment>
                 ))}
               </ul>
             </div>
@@ -326,8 +330,13 @@ function ShowcaseCards() {
             <SearchBar />
           </div>
           <ul className={styles.showcaseList}>
-            {filteredUsers.map((user) => (
-              <ShowcaseCard key={user.title} user={user} />
+            {filteredUsers.map((user, index) => (
+              <React.Fragment key={user.title}>
+                <ShowcaseCard user={user} />
+                {((filteredUsers.length < 6 &&
+                  index === filteredUsers.length - 1) ||
+                  index === 4) && <ShowcaseContributionCard />}
+              </React.Fragment>
             ))}
           </ul>
         </div>

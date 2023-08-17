@@ -22,6 +22,7 @@ import {
   Button,
   CardPreview,
   Link as FluentUILink,
+  ToggleButton,
 } from "@fluentui/react-components";
 
 const TagComp = React.forwardRef<HTMLLIElement, Tag>(
@@ -140,43 +141,43 @@ const useStyles = makeStyles({
   cardTitle: {
     verticalAlign: "middle",
     fontSize: "16px",
-    fontFamily: '"Segoe UI-Bold", Helvetica;',
+    fontFamily: '"Segoe UI-Bold", Helvetica',
     color: "#6656d1",
   },
   cardTextBy: {
     fontSize: "12px",
-    fontFamily: '"Segoe UI-Regular", Helvetica;',
+    fontFamily: '"Segoe UI-Regular", Helvetica',
     color: "#707070",
   },
   cardAuthor: {
     fontSize: "12px",
-    fontFamily: '"Segoe UI-Regular", Helvetica;',
+    fontFamily: '"Segoe UI-Regular", Helvetica',
     color: "#6656d1",
     paddingLeft: "3px",
   },
   cardDescription: {
     fontSize: "14px",
-    fontFamily: '"Segoe UI-Regular", Helvetica;',
+    fontFamily: '"Segoe UI-Regular", Helvetica',
     color: "#707070",
   },
   cardTag: {
     fontSize: "10px",
-    fontFamily: '"Segoe UI-Semibold", Helvetica;',
+    fontFamily: '"Segoe UI-Semibold", Helvetica',
     color: "#606060",
   },
   cardFooterQuickUse: {
     fontSize: "10px",
-    fontFamily: '"Segoe UI-Semibold", Helvetica;',
+    fontFamily: '"Segoe UI-Semibold", Helvetica',
     color: "#424242",
   },
   cardFooterAzdCommand: {
     fontSize: "11px",
-    fontFamily: '"Consolas-Regular", Helvetica;',
+    fontFamily: '"Consolas-Regular", Helvetica',
     color: "#606060",
   },
 });
 
-function ShowcaseCard({ user }: { user: User }) {
+function ShowcaseCard({user}: { user: User }) {
   const styles = useStyles();
   const author = user.author;
   const source = user.source;
@@ -339,20 +340,30 @@ function ShowcaseCard({ user }: { user: User }) {
   );
 }
 
+function closeCard(parentDiv) {
+  let parent = document.getElementById(parentDiv);
+  parent.style.display = "none";
+}
+
 export function ShowcaseContributionCard(): React.ReactElement {
   const styles = useStyles();
   return (
     <Card className={styles.card}>
-      <Button size="small"
+      <ToggleButton
+        // onClick={() => closeCard("contributionCard")}
+        size="small"
+        appearance="transparent"
         style={{
-          padding:'0px',
-          margin:'0px',
+          padding: "0px",
+          margin: "0px",
           alignSelf: "flex-end",
+          minWidth: "20px",
+          height: "0px",
         }}
-        icon={<img src={useBaseUrl("/img/close.svg")} height={20} alt="Close" />}
-      >
-        
-      </Button>
+        icon={
+          <img src={useBaseUrl("/img/close.svg")} height={20} alt="Close" />
+        }
+      ></ToggleButton>
       <img
         src={useBaseUrl("/img/contributionCard.svg")}
         alt="contributionCard"
@@ -362,7 +373,7 @@ export function ShowcaseContributionCard(): React.ReactElement {
         style={{
           color: "#242424",
           fontSize: "24px",
-          fontFamily: '"Segoe UI-Semibold", Helvetica;',
+          fontFamily: '"Segoe UI-Semibold", Helvetica',
         }}
       >
         See your template here!
@@ -371,7 +382,7 @@ export function ShowcaseContributionCard(): React.ReactElement {
         style={{
           color: "#242424",
           fontSize: "14px",
-          fontFamily: '"Segoe UI-Regular", Helvetica;',
+          fontFamily: '"Segoe UI-Regular", Helvetica',
         }}
       >
         <p
@@ -389,9 +400,35 @@ export function ShowcaseContributionCard(): React.ReactElement {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </p>
       </div>
-      <div>
-        <Button size="small">Submit a template</Button>
-        <Button size="small">Request a template</Button>
+      <div style={{ display: "flex" }}>
+        <Button
+          size="small"
+          style={{
+            flex: 1,
+            color: "#ffffff",
+            fontFamily: '"Segoe UI-Semibold", Helvetica',
+            fontSize: "14px",
+            backgroundColor: "#6656d1",
+            height: "32px",
+            whiteSpace: "nowrap",
+          }}
+        >
+          Submit a template
+        </Button>
+        <Button
+          size="small"
+          appearance="transparent"
+          style={{
+            flex: 1,
+            color: "#6656d1",
+            fontFamily: '"Segoe UI-Semibold", Helvetica',
+            fontSize: "14px",
+            height: "32px",
+            whiteSpace: "nowrap",
+          }}
+        >
+          Request a template
+        </Button>
       </div>
     </Card>
   );

@@ -238,6 +238,7 @@ const featuredUsers = sortedUsers.filter((user) =>
 const otherUsers = sortedUsers.filter(
   (user) => !user.tags.includes("featured")
 );
+const featuredAndOtherUsers = featuredUsers.concat(otherUsers);
 
 function SearchBar() {
   const history = useHistory();
@@ -310,13 +311,9 @@ function ShowcaseCards() {
               </div>
               <ul className={clsx("container", styles.showcaseList)}>
                 <ShowcaseContributionCard />
-                {featuredUsers.map((user) => (
-                  <ShowcaseCard key={user.title} user={user} />
+                {featuredAndOtherUsers.map((user) => (
+                  <ShowcaseCard key={user.title} user={user}/>
                 ))}
-                {otherUsers.map((user) => (
-                  <ShowcaseCard key={user.title} user={user} />
-                ))}
-                {/* <ShowcaseContributionCard /> */}
               </ul>
             </div>
           </div>

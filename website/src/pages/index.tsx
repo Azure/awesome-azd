@@ -21,7 +21,7 @@ import ShowcaseFilterToggle, {
   readOperator,
 } from "../components/gallery/ShowcaseFilterToggle";
 
-import ShowcaseCard from "../components/gallery/ShowcaseCard";
+import ShowcaseCard, {ShowcaseContributionCard} from "../components/gallery/ShowcaseCard";
 import ShowcaseTooltip from "../components/gallery/ShowcaseTooltip";
 import { FluentProvider, teamsLightTheme } from "@fluentui/react-components";
 
@@ -235,12 +235,10 @@ function ShowcaseFilterAndCard() {
 const featuredUsers = sortedUsers.filter((user) =>
   user.tags.includes("featured")
 );
-const helpWanted = sortedUsers.filter((user) =>
-  user.tags.includes("helpwanted")
-);
 const otherUsers = sortedUsers.filter(
-  (user) => !user.tags.includes("featured") && !user.tags.includes("helpwanted")
+  (user) => !user.tags.includes("featured")
 );
+const featuredAndOtherUsers = featuredUsers.concat(otherUsers);
 
 function SearchBar() {
   const history = useHistory();
@@ -309,33 +307,19 @@ function ShowcaseCards() {
                   styles.showcaseFavoriteHeader
                 )}
               >
-                <h2>
-                  <Translate id="showcase.favoritesList.title">
-                    Featured Templates
-                  </Translate>
-                </h2>
-                <FavoriteIcon svgClass={styles.svgIconFavorite} />
                 <SearchBar />
               </div>
               <ul className={clsx("container", styles.showcaseList)}>
-                {featuredUsers.map((user) => (
-                  <ShowcaseCard key={user.title} user={user} />
+                {featuredAndOtherUsers.map((user, index) => (
+                  <React.Fragment key={user.title}>
+                    <ShowcaseCard user={user} />
+                    {((featuredAndOtherUsers.length < 6 &&
+                      index === featuredAndOtherUsers.length - 1) ||
+                      index === 4) && <ShowcaseContributionCard />}
+                  </React.Fragment>
                 ))}
               </ul>
             </div>
-          </div>
-
-          <div className="container margin-top--lg">
-            <h2 className={styles.showcaseHeader}>
-              <Translate id="showcase.usersList.allUsers">
-                Other Templates
-              </Translate>
-            </h2>
-            <ul className={styles.showcaseList}>
-              {otherUsers.map((user) => (
-                <ShowcaseCard key={user.title} user={user} />
-              ))}
-            </ul>
           </div>
         </>
       ) : (
@@ -346,8 +330,13 @@ function ShowcaseCards() {
             <SearchBar />
           </div>
           <ul className={styles.showcaseList}>
-            {filteredUsers.map((user) => (
-              <ShowcaseCard key={user.title} user={user} />
+            {filteredUsers.map((user, index) => (
+              <React.Fragment key={user.title}>
+                <ShowcaseCard user={user} />
+                {((filteredUsers.length < 6 &&
+                  index === filteredUsers.length - 1) ||
+                  index === 4) && <ShowcaseContributionCard />}
+              </React.Fragment>
             ))}
           </ul>
         </div>

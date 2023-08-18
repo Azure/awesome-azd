@@ -6,10 +6,9 @@
  */
 
 import React from "react";
-import Link from "@docusaurus/Link";
 
 import styles from "./styles.module.css";
-import { Tag as TagFluentUI, TagGroup } from "@fluentui/react-tags-preview";
+import { Tag as FluentUITag, TagGroup } from "@fluentui/react-tags-preview";
 import { Tag, Tags, type User, type TagType } from "../../../data/tags";
 import { TagList } from "../../../data/users";
 import { sortBy } from "@site/src/utils/jsUtils";
@@ -22,11 +21,13 @@ import {
   CardFooter,
   Button,
   CardPreview,
+  Link as FluentUILink,
+  ToggleButton,
 } from "@fluentui/react-components";
 
 const TagComp = React.forwardRef<HTMLLIElement, Tag>(
   ({ label, description }, ref) => (
-    <TagFluentUI
+    <FluentUITag
       appearance="outline"
       size="extra-small"
       title={description}
@@ -39,7 +40,7 @@ const TagComp = React.forwardRef<HTMLLIElement, Tag>(
       }}
     >
       {label}
-    </TagFluentUI>
+    </FluentUITag>
   )
 );
 
@@ -111,15 +112,15 @@ function ShowcaseMultipleWebsites(
 ) {
   if (i != length - 1) {
     return (
-      <Link className={styles.cardAuthor} href={websiteLink}>
+      <FluentUILink className={styles.cardAuthor} href={websiteLink}>
         {authorName},{" "}
-      </Link>
+      </FluentUILink>
     );
   } else {
     return (
-      <Link className={styles.cardAuthor} href={websiteLink}>
+      <FluentUILink className={styles.cardAuthor} href={websiteLink}>
         {authorName}
-      </Link>
+      </FluentUILink>
     );
   }
 }
@@ -151,13 +152,13 @@ function ShowcaseMultipleAuthors({ user }: { user: User }) {
           );
         })}
       </div>
-    )    
+    );
   }
 
   return (
-    <Link className={styles.cardAuthor} href={websites}>
+    <FluentUILink className={styles.cardAuthor} href={websites}>
       {authors}
-    </Link>
+    </FluentUILink>
   );
 }
 
@@ -177,43 +178,43 @@ const useStyles = makeStyles({
   cardTitle: {
     verticalAlign: "middle",
     fontSize: "16px",
-    fontFamily: '"Segoe UI-Bold", Helvetica;',
+    fontFamily: '"Segoe UI-Bold", Helvetica',
     color: "#6656d1",
   },
   cardTextBy: {
     fontSize: "12px",
-    fontFamily: '"Segoe UI-Regular", Helvetica;',
+    fontFamily: '"Segoe UI-Regular", Helvetica',
     color: "#707070",
   },
   cardAuthor: {
     fontSize: "12px",
-    fontFamily: '"Segoe UI-Regular", Helvetica;',
+    fontFamily: '"Segoe UI-Regular", Helvetica',
     color: "#6656d1",
     paddingLeft: "3px",
   },
   cardDescription: {
     fontSize: "14px",
-    fontFamily: '"Segoe UI-Regular", Helvetica;',
+    fontFamily: '"Segoe UI-Regular", Helvetica',
     color: "#707070",
   },
   cardTag: {
     fontSize: "10px",
-    fontFamily: '"Segoe UI-Semibold", Helvetica;',
+    fontFamily: '"Segoe UI-Semibold", Helvetica',
     color: "#606060",
   },
   cardFooterQuickUse: {
     fontSize: "10px",
-    fontFamily: '"Segoe UI-Semibold", Helvetica;',
+    fontFamily: '"Segoe UI-Semibold", Helvetica',
     color: "#424242",
   },
   cardFooterAzdCommand: {
     fontSize: "11px",
-    fontFamily: '"Consolas-Regular", Helvetica;',
+    fontFamily: '"Consolas-Regular", Helvetica',
     color: "#606060",
   },
 });
 
-function ShowcaseCard({ user }: { user: User }) {
+function ShowcaseCard({user}: { user: User }) {
   const styles = useStyles();
   const author = user.author;
   const source = user.source;
@@ -234,7 +235,7 @@ function ShowcaseCard({ user }: { user: User }) {
             author.includes("Azure Content Team") ? (
               <>
                 <img
-                  src={useBaseUrl("/img/Microsoft.svg")}
+                  src={useBaseUrl("/img/microsoft.svg")}
                   alt="Microsoft Logo"
                   height={16}
                   style={{ float: "left", margin: "5px 0px" }}
@@ -249,7 +250,7 @@ function ShowcaseCard({ user }: { user: User }) {
             ) : (
               <>
                 <img
-                  src={useBaseUrl("/img/Community.svg")}
+                  src={useBaseUrl("/img/community.svg")}
                   alt="Community"
                   height={16}
                   style={{ float: "left", margin: "5px 0px" }}
@@ -269,7 +270,7 @@ function ShowcaseCard({ user }: { user: User }) {
               POPULAR
             </div>
             <img
-              src={useBaseUrl("/img/Fire.svg")}
+              src={useBaseUrl("/img/fire.svg")}
               alt="Fire"
               height={16}
               style={{ float: "right", margin: "5px 0px" }}
@@ -281,7 +282,7 @@ function ShowcaseCard({ user }: { user: User }) {
               NEW
             </div>
             <img
-              src={useBaseUrl("/img/Sparkle.svg")}
+              src={useBaseUrl("/img/sparkle.svg")}
               alt="Star"
               height={16}
               style={{ float: "right", margin: "5px 0px" }}
@@ -298,9 +299,9 @@ function ShowcaseCard({ user }: { user: User }) {
           maxHeight: "inherit",
         }}
       >
-        <Link href={source} className={styles.cardTitle}>
+        <FluentUILink href={source} className={styles.cardTitle}>
           {user.title}
-        </Link>
+        </FluentUILink>
         <div
           style={{
             verticalAlign: "middle",
@@ -369,11 +370,109 @@ function ShowcaseCard({ user }: { user: User }) {
             navigator.clipboard.writeText(azdInitCommand);
           }}
         >
-          <img src={useBaseUrl("/img/Copy.svg")} height={20} alt="Copy" />
+          <img src={useBaseUrl("/img/copy.svg")} height={20} alt="Copy" />
         </Button>
       </CardFooter>
     </Card>
   );
+}
+
+function closeCard(parentDiv) {
+  let parent = document.getElementById(parentDiv);
+  parent.style.display = "none";
+  localStorage.setItem('contributionCardDisplay', parent.style.display);
+}
+
+export function ShowcaseContributionCard(): React.ReactElement {
+  const styles = useStyles();
+  if (localStorage.getItem('contributionCardDisplay')){
+    return <></>;
+  }
+    return (
+      <Card className={styles.card} id="contributionCard">
+        <ToggleButton
+          onClick={() => closeCard("contributionCard")}
+          size="small"
+          appearance="transparent"
+          style={{
+            padding: "0px",
+            margin: "0px",
+            alignSelf: "flex-end",
+            minWidth: "20px",
+            height: "0px",
+          }}
+          icon={
+            <img src={useBaseUrl("/img/close.svg")} height={20} alt="Close" />
+          }
+        ></ToggleButton>
+        <img
+          src={useBaseUrl("/img/contributionCard.svg")}
+          alt="contributionCard"
+          style={{ maxHeight: "110px", alignSelf: "flex-start" }}
+        />
+        <div
+          style={{
+            color: "#242424",
+            fontSize: "24px",
+            fontFamily: '"Segoe UI-Semibold", Helvetica',
+          }}
+        >
+          See your template here!
+        </div>
+        <div
+          style={{
+            color: "#242424",
+            fontSize: "14px",
+            fontFamily: '"Segoe UI-Regular", Helvetica',
+          }}
+        >
+          <p
+            style={{
+              margin: "0px",
+            }}
+          >
+            awesome-azd is looking for new templates!{" "}
+          </p>
+          <p
+            style={{
+              margin: "0px",
+            }}
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
+        </div>
+        <div style={{ display: "flex" }}>
+          <Button
+            size="small"
+            style={{
+              flex: 1,
+              color: "#ffffff",
+              fontFamily: '"Segoe UI-Semibold", Helvetica',
+              fontSize: "14px",
+              backgroundColor: "#6656d1",
+              height: "32px",
+              whiteSpace: "nowrap",
+            }}
+          >
+            Submit a template
+          </Button>
+          <Button
+            size="small"
+            appearance="transparent"
+            style={{
+              flex: 1,
+              color: "#6656d1",
+              fontFamily: '"Segoe UI-Semibold", Helvetica',
+              fontSize: "14px",
+              height: "32px",
+              whiteSpace: "nowrap",
+            }}
+          >
+            Request a template
+          </Button>
+        </div>
+      </Card>
+    );
 }
 
 export default React.memo(ShowcaseCard);

@@ -6,9 +6,7 @@
  */
 
 import React from "react";
-
 import styles from "./styles.module.css";
-import { Tag as FluentUITag, TagGroup } from "@fluentui/react-tags-preview";
 import { Tag, Tags, type User, type TagType } from "../../../data/tags";
 import { TagList } from "../../../data/users";
 import { sortBy } from "@site/src/utils/jsUtils";
@@ -24,27 +22,73 @@ import {
   Link as FluentUILink,
   ToggleButton,
 } from "@fluentui/react-components";
+import { useBoolean } from "@fluentui/react-hooks";
+import {
+  initializeIcons,
+  IRenderFunction,
+  IStyleSet,
+  Label,
+  ILabelStyles,
+  Pivot,
+  PivotItem,
+  DefaultButton,
+  Panel,
+  PanelType,
+  IPanelProps,
+  FontWeights,
+  Popup
+} from "@fluentui/react";
+import { title } from "process";
 
 const TagComp = React.forwardRef<HTMLLIElement, Tag>(
-  ({ label, description }, ref) => (
-    <FluentUITag
+  ({ label, description }) => (
+    <Button
       appearance="outline"
-      size="extra-small"
+      size="small"
       title={description}
-      ref={ref}
       style={{
         height: "20px",
         alignContent: "center",
-        marginTop: "3px",
         backgroundColor: "#F0F0F0",
+        padding: "0 5px",
+        marginTop: "3px",
+        fontSize: "10px",
+        fontFamily: '"Segoe UI-Semibold", Helvetica',
+        color: "#606060",
+        minWidth: "0px",
       }}
     >
       {label}
-    </FluentUITag>
+    </Button>
   )
 );
 
-function ShowcaseCardTag({ tags }: { tags: TagType[] }) {
+const TagCompFluentUI8 = React.forwardRef<HTMLLIElement, Tag>(({ label }) => (
+  <DefaultButton
+    sizes="smallest"
+    text={label}
+    style={{
+      height: "20px",
+      alignContent: "center",
+      backgroundColor: "#F0F0F0",
+      borderColor: "#F0F0F0",
+      fontSize: "10px",
+      marginTop: "3px",
+      fontFamily: '"Segoe UI-Semibold", Helvetica',
+      color: "#606060",
+      padding: "0px",
+      minWidth: "0px",
+    }}
+  />
+));
+
+function ShowcaseCardTag({
+  tags,
+  moreTag,
+}: {
+  tags: TagType[];
+  moreTag: boolean;
+}) {
   const tagObjects = tags.map((tag) => ({ tag, ...Tags[tag] }));
 
   // Keep same order for all tags
@@ -55,49 +99,65 @@ function ShowcaseCardTag({ tags }: { tags: TagType[] }) {
   const length = tagObjectsSorted.length;
   const rest = length - 7;
 
-  if (length > 7) {
-    return (
-      <>
-      
-        {tagObjectsSorted.slice(0,7).map((tagObject, index) => {
-          const id = `showcase_card_tag_${tagObject.tag}`;
-if (
-  tagObject.clientHeight < tagObject.scrollHeight ||
-  tagObject.clientWidth < tagObject.scrollWidth
-) {
-  return (<div>hi</div>)
-}
-          return (
-            <div>
-              <TagComp key={index} id={id} {...tagObject} />
-            </div>
-          );
-        })}
-        <TagFluentUI
-          appearance="outline"
-          size="extra-small"
-          style={{
-            height: "20px",
-            alignContent: "center",
-            marginTop: "3px",
-            backgroundColor: "#F0F0F0",
-          }}
-        >
-          + {rest} more
-        </TagFluentUI>
-      </>
-    );
+  if (moreTag) {
+    if (length > 7) {
+      return (
+        <>
+          {tagObjectsSorted.slice(0, 7).map((tagObject, index) => {
+            const id = `showcase_card_tag_${tagObject.tag}`;
+            if (
+              tagObject.clientHeight < tagObject.scrollHeight ||
+              tagObject.clientWidth < tagObject.scrollWidth
+            ) {
+              return <div>hi</div>;
+            }
+            return (
+              <div>
+                <TagComp key={index} id={id} {...tagObject} />
+              </div>
+            );
+          })}
+          <Button
+            appearance="outline"
+            size="small"
+            style={{
+              height: "20px",
+              alignContent: "center",
+              marginTop: "3px",
+              backgroundColor: "#F0F0F0",
+              paddingTop: "3px",
+              fontFamily: '"Segoe UI-Semibold", Helvetica',
+              color: "#606060",
+              fontSize: "10px",
+              minWidth: "0px",
+            }}
+          >
+            + {rest} more
+          </Button>
+        </>
+      );
+    } else {
+      return (
+        <>
+          {tagObjectsSorted.map((tagObject, index) => {
+            const id = `showcase_card_tag_${tagObject.tag}`;
+
+            return (
+              <div>
+                <TagComp key={index} id={id} {...tagObject} />
+              </div>
+            );
+          })}
+        </>
+      );
+    }
   } else {
     return (
       <>
         {tagObjectsSorted.map((tagObject, index) => {
           const id = `showcase_card_tag_${tagObject.tag}`;
 
-          return (
-            <div>
-              <TagComp key={index} id={id} {...tagObject} />
-            </div>
-          );
+          return <TagCompFluentUI8 key={index} id={id} {...tagObject} />;
         })}
       </>
     );
@@ -110,15 +170,24 @@ function ShowcaseMultipleWebsites(
   length: number,
   i: number
 ) {
+  const styles = useStyles();
   if (i != length - 1) {
     return (
-      <FluentUILink className={styles.cardAuthor} href={websiteLink}>
+      <FluentUILink
+        className={styles.cardAuthor}
+        href={websiteLink}
+        target="_blank"
+      >
         {authorName},{" "}
       </FluentUILink>
     );
   } else {
     return (
-      <FluentUILink className={styles.cardAuthor} href={websiteLink}>
+      <FluentUILink
+        className={styles.cardAuthor}
+        href={websiteLink}
+        target="_blank"
+      >
         {authorName}
       </FluentUILink>
     );
@@ -128,6 +197,7 @@ function ShowcaseMultipleWebsites(
 function ShowcaseMultipleAuthors({ user }: { user: User }) {
   const authors = user.author;
   const websites = user.website;
+  const styles = useStyles();
   let i = 0;
 
   if (authors.includes(", ")) {
@@ -156,7 +226,7 @@ function ShowcaseMultipleAuthors({ user }: { user: User }) {
   }
 
   return (
-    <FluentUILink className={styles.cardAuthor} href={websites}>
+    <FluentUILink className={styles.cardAuthor} href={websites} target="_blank">
       {authors}
     </FluentUILink>
   );
@@ -187,10 +257,8 @@ const useStyles = makeStyles({
     color: "#707070",
   },
   cardAuthor: {
-    fontSize: "12px",
     fontFamily: '"Segoe UI-Regular", Helvetica',
     color: "#6656d1",
-    paddingLeft: "3px",
   },
   cardDescription: {
     fontSize: "14px",
@@ -214,12 +282,76 @@ const useStyles = makeStyles({
   },
 });
 
-function ShowcaseCard({user}: { user: User }) {
+function ShowcaseCard({ user }: { user: User }) {
   const styles = useStyles();
   const author = user.author;
   const source = user.source;
+  const star = useBaseUrl("/img/sparkle.svg");
+  const fire = useBaseUrl("/img/fire.svg");
   let azdInitCommand =
     "azd init -t " + source.replace("https://github.com/", "");
+  let headerLogo = useBaseUrl("/img/community.svg");
+  let headerText = "COMMUNITY AUTHORED";
+
+  // Panel
+  const [isOpen, { setTrue: openPanel, setFalse: dismissPanel }] =
+    useBoolean(false);
+  initializeIcons();
+  if (author.includes("Azure Dev") || author.includes("Azure Content Team")) {
+    headerLogo = useBaseUrl("/img/microsoft.svg");
+    headerText = "MICROSOFT AUTHORED";
+  }
+  const searchboxStyles = {
+    root: { margin: "5px", height: "auto", width: "100%" },
+  };
+  const onRenderNavigationContent: IRenderFunction<IPanelProps> =
+    React.useCallback(
+      (props, defaultRender) => (
+        <>
+          <div
+            style={{
+              display: "flex",
+              paddingLeft: "24px",
+              alignItems: "center",
+              flex: "8",
+            }}
+          >
+            <img src={headerLogo} height={16} style={{ margin: "5px 0px" }} />
+            <div
+              className={styles.text}
+              style={{ color: "#606060", paddingLeft: "3px" }}
+            >
+              {headerText}
+            </div>
+            <img
+              src={star}
+              alt="Star"
+              height={16}
+              style={{ paddingLeft: "10px" }}
+            />
+            <div className={styles.text} style={{ color: "#11910D" }}>
+              NEW
+            </div>
+            <img
+              src={fire}
+              alt="Fire"
+              height={16}
+              style={{ paddingLeft: "10px" }}
+            />
+            <div className={styles.text} style={{ color: "#F7630C" }}>
+              POPULAR
+            </div>
+          </div>
+          {
+            // This custom navigation still renders the close button (defaultRender).
+            // If you don't use defaultRender, be sure to provide some other way to close the panel.
+            defaultRender!(props)
+          }
+        </>
+      ),
+      []
+    );
+
   return (
     <Card
       key={user.title}
@@ -231,38 +363,17 @@ function ShowcaseCard({user}: { user: User }) {
       <CardHeader
         header={
           <div>
-            {author.includes("Azure Dev") ||
-            author.includes("Azure Content Team") ? (
-              <>
-                <img
-                  src={useBaseUrl("/img/microsoft.svg")}
-                  alt="Microsoft Logo"
-                  height={16}
-                  style={{ float: "left", margin: "5px 0px" }}
-                />
-                <div
-                  className={styles.text}
-                  style={{ float: "left", color: "#606060", margin: "5px 3px" }}
-                >
-                  MICROSOFT AUTHORED
-                </div>
-              </>
-            ) : (
-              <>
-                <img
-                  src={useBaseUrl("/img/community.svg")}
-                  alt="Community"
-                  height={16}
-                  style={{ float: "left", margin: "5px 0px" }}
-                />
-                <div
-                  className={styles.text}
-                  style={{ float: "left", color: "#606060", margin: "5px 3px" }}
-                >
-                  COMMUNITY AUTHORED
-                </div>
-              </>
-            )}
+            <img
+              src={headerLogo}
+              height={16}
+              style={{ float: "left", margin: "5px 0px" }}
+            />
+            <div
+              className={styles.text}
+              style={{ float: "left", color: "#606060", margin: "5px 3px" }}
+            >
+              {headerText}
+            </div>
             <div
               className={styles.text}
               style={{ float: "right", color: "#F7630C", margin: "5px 3px" }}
@@ -270,7 +381,7 @@ function ShowcaseCard({user}: { user: User }) {
               POPULAR
             </div>
             <img
-              src={useBaseUrl("/img/fire.svg")}
+              src={fire}
               alt="Fire"
               height={16}
               style={{ float: "right", margin: "5px 0px" }}
@@ -282,7 +393,7 @@ function ShowcaseCard({user}: { user: User }) {
               NEW
             </div>
             <img
-              src={useBaseUrl("/img/sparkle.svg")}
+              src={star}
               alt="Star"
               height={16}
               style={{ float: "right", margin: "5px 0px" }}
@@ -299,7 +410,11 @@ function ShowcaseCard({user}: { user: User }) {
           maxHeight: "inherit",
         }}
       >
-        <FluentUILink href={source} className={styles.cardTitle}>
+        <FluentUILink
+          href={source}
+          className={styles.cardTitle}
+          target="_blank"
+        >
           {user.title}
         </FluentUILink>
         <div
@@ -307,10 +422,12 @@ function ShowcaseCard({user}: { user: User }) {
             verticalAlign: "middle",
             display: "flex",
             paddingTop: "2px",
+            alignItems: "center",
+            columnGap: "3px",
           }}
         >
           <div className={styles.cardTextBy}>by</div>
-          <div className={styles.cardAuthor}>
+          <div style={{ fontSize: "12px" }}>
             <ShowcaseMultipleAuthors user={user} />
           </div>
         </div>
@@ -323,18 +440,37 @@ function ShowcaseCard({user}: { user: User }) {
             WebkitLineClamp: "3",
             WebkitBoxOrient: "vertical",
           }}
+          onClick={openPanel}
         >
           {user.description}
         </div>
+        <Panel
+          headerText={user.title}
+          isLightDismiss
+          isOpen={isOpen}
+          onDismiss={dismissPanel}
+          closeButtonAriaLabel="Close"
+          type={PanelType.medium}
+          onRenderNavigationContent={onRenderNavigationContent}
+        >
+          <ShowcaseCardPanel user={user} />
+        </Panel>
         <div
           style={{ paddingTop: "10px", position: "absolute", bottom: "0px" }}
         >
-          <TagGroup
+          <div
             className={styles.cardTag}
-            style={{ flexWrap: "wrap", overflow: "hidden", maxHeight: "73px" }}
+            style={{
+              display: "flex",
+              overflow: "hidden",
+              maxHeight: "73px",
+              columnGap: "5px",
+              flexFlow: "wrap",
+            }}
+            onClick={openPanel}
           >
-            <ShowcaseCardTag tags={user.tags} />
-          </TagGroup>
+            <ShowcaseCardTag tags={user.tags} moreTag={true} />
+          </div>
         </div>
       </div>
       <CardPreview
@@ -380,99 +516,211 @@ function ShowcaseCard({user}: { user: User }) {
 function closeCard(parentDiv) {
   let parent = document.getElementById(parentDiv);
   parent.style.display = "none";
-  localStorage.setItem('contributionCardDisplay', parent.style.display);
+  localStorage.setItem("contributionCardDisplay", parent.style.display);
 }
 
 export function ShowcaseContributionCard(): React.ReactElement {
   const styles = useStyles();
-  if (localStorage.getItem('contributionCardDisplay')){
+  if (localStorage.getItem("contributionCardDisplay")) {
     return <></>;
   }
-    return (
-      <Card className={styles.card} id="contributionCard">
-        <ToggleButton
-          onClick={() => closeCard("contributionCard")}
+  return (
+    <Card className={styles.card} id="contributionCard">
+      <ToggleButton
+        onClick={() => closeCard("contributionCard")}
+        size="small"
+        appearance="transparent"
+        style={{
+          padding: "0px",
+          margin: "0px",
+          alignSelf: "flex-end",
+          minWidth: "20px",
+          height: "0px",
+        }}
+        icon={
+          <img src={useBaseUrl("/img/close.svg")} height={20} alt="Close" />
+        }
+      ></ToggleButton>
+      <img
+        src={useBaseUrl("/img/contributionCard.svg")}
+        alt="contributionCard"
+        style={{ maxHeight: "110px", alignSelf: "flex-start" }}
+      />
+      <div
+        style={{
+          color: "#242424",
+          fontSize: "24px",
+          fontFamily: '"Segoe UI-Semibold", Helvetica',
+        }}
+      >
+        See your template here!
+      </div>
+      <div
+        style={{
+          color: "#242424",
+          fontSize: "14px",
+          fontFamily: '"Segoe UI-Regular", Helvetica',
+        }}
+      >
+        <p
+          style={{
+            margin: "0px",
+          }}
+        >
+          awesome-azd is looking for new templates!{" "}
+        </p>
+        <p
+          style={{
+            margin: "0px",
+          }}
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
+      </div>
+      <div style={{ display: "flex" }}>
+        <Button
+          size="small"
+          style={{
+            flex: 1,
+            color: "#ffffff",
+            fontFamily: '"Segoe UI-Semibold", Helvetica',
+            fontSize: "14px",
+            backgroundColor: "#6656d1",
+            height: "32px",
+            whiteSpace: "nowrap",
+          }}
+        >
+          Submit a template
+        </Button>
+        <Button
           size="small"
           appearance="transparent"
           style={{
-            padding: "0px",
-            margin: "0px",
-            alignSelf: "flex-end",
-            minWidth: "20px",
-            height: "0px",
-          }}
-          icon={
-            <img src={useBaseUrl("/img/close.svg")} height={20} alt="Close" />
-          }
-        ></ToggleButton>
-        <img
-          src={useBaseUrl("/img/contributionCard.svg")}
-          alt="contributionCard"
-          style={{ maxHeight: "110px", alignSelf: "flex-start" }}
-        />
-        <div
-          style={{
-            color: "#242424",
-            fontSize: "24px",
+            flex: 1,
+            color: "#6656d1",
             fontFamily: '"Segoe UI-Semibold", Helvetica',
+            fontSize: "14px",
+            height: "32px",
+            whiteSpace: "nowrap",
           }}
         >
-          See your template here!
+          Request a template
+        </Button>
+      </div>
+    </Card>
+  );
+}
+
+function ShowcaseCardPanel({ user }: { user: User }) {
+   const [isPopupVisible, { toggle: toggleIsPopupVisible }] = useBoolean(false);
+  return (
+    <div>
+      <div style={{ display: "flex", alignItems: "center", columnGap: "5px" }}>
+        <div className={styles.cardTextBy}>by</div>
+        <div style={{ fontSize: "14px" }}>
+          <ShowcaseMultipleAuthors user={user} />
         </div>
-        <div
+        <FluentUILink
+          href={user.website}
+          target="_blank"
+          style={{ color: "#6656d1" }}
+        >
+          <img
+            src={useBaseUrl("/img/redirect.svg")}
+            alt="Redirect"
+            height={13}
+          />
+        </FluentUILink>
+        <div>•</div>
+        <div>Last Update: </div>
+        <div>•</div>
+        <FluentUILink
+          href={user.source}
+          target="_blank"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            columnGap: "5px",
+            color: "#6656d1",
+          }}
+        >
+          View in GitHub
+          <img
+            src={useBaseUrl("/img/redirect.svg")}
+            alt="Redirect"
+            height={13}
+          />
+        </FluentUILink>
+      </div>
+      <div
+        className={styles.cardTag}
+        style={{
+          display: "flex",
+          overflow: "hidden",
+          maxHeight: "73px",
+          columnGap: "5px",
+          flexFlow: "wrap",
+        }}
+      >
+        <ShowcaseCardTag tags={user.tags} moreTag={false} />
+      </div>
+      <Pivot aria-label="Template Detials and Legal">
+        <PivotItem
           style={{
             color: "#242424",
+            fontFamily: '"Segoe UI-Semibold", Helvetica;',
             fontSize: "14px",
-            fontFamily: '"Segoe UI-Regular", Helvetica',
+            fontWeight: "400px",
           }}
+          headerText="Template Details"
         >
-          <p
-            style={{
-              margin: "0px",
-            }}
-          >
-            awesome-azd is looking for new templates!{" "}
-          </p>
-          <p
-            style={{
-              margin: "0px",
-            }}
-          >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </p>
-        </div>
-        <div style={{ display: "flex" }}>
-          <Button
-            size="small"
-            style={{
-              flex: 1,
-              color: "#ffffff",
-              fontFamily: '"Segoe UI-Semibold", Helvetica',
-              fontSize: "14px",
-              backgroundColor: "#6656d1",
-              height: "32px",
-              whiteSpace: "nowrap",
-            }}
-          >
-            Submit a template
-          </Button>
-          <Button
-            size="small"
-            appearance="transparent"
-            style={{
-              flex: 1,
-              color: "#6656d1",
-              fontFamily: '"Segoe UI-Semibold", Helvetica',
-              fontSize: "14px",
-              height: "32px",
-              whiteSpace: "nowrap",
-            }}
-          >
-            Request a template
-          </Button>
-        </div>
-      </Card>
-    );
+          <Label>
+            <div>{user.description}</div>
+            <div>
+              <div>Quick Use</div>
+              <DefaultButton onClick={toggleIsPopupVisible} text="˅" />
+              {isPopupVisible && (
+                <Popup>
+                  <div>
+                    If you already have the Azure Dev CLI installed on your
+                    machine, using this template is as simple as running this
+                    command in a new directory.
+                  </div>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua.
+                  </p>
+                </Popup>
+              )}
+            </div>
+          </Label>
+        </PivotItem>
+        <PivotItem headerText="Legal">
+          <Label>Pivot #2</Label>
+        </PivotItem>
+      </Pivot>
+    </div>
+  );
 }
+
+// function getLastUpdateDate(source) {
+//   const repoPath = source.replace("https://github.com/", "");
+//   const lastCommit = child.exec(
+//     "gh api repos/" +
+//     { repoPath } +
+//     "/commits/HEAD/branches-where-head --jq .[0].commit.url"
+//   );
+//   const repoAndLastCommit = lastCommit.stdout
+//     .toString()
+//     .replace("https://api.github.com/", "");
+//   const lastCommitDate = child.exec(
+//     "gh api " +
+//       { repoAndLastCommit } +
+//       "/commits/ccb174356ca35ace51dbaa2c34592b371b671436 --jq .commit.committer.date"
+//   );
+//   const lastUpdateDate = lastCommitDate.stdout.toString();
+//   return lastUpdateDate;
+// }
 
 export default React.memo(ShowcaseCard);

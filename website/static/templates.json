@@ -391,7 +391,7 @@
     "preview": "./templates/images/chatgpt-enterprise-dotnet.png",
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
-    "source": "https://github.com/Azure-Samples/azure-search-openai-demo-csharp/",
+    "source": "https://github.com/Azure-Samples/azure-search-openai-demo-csharp",
     "tags": [
       "featured",
       "bicep",

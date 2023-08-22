@@ -18,6 +18,7 @@
     "@docusaurus/module-type-aliases": "^2.4.1",
     "@docusaurus/plugin-ideal-image": "^2.4.1",
     "@docusaurus/preset-classic": "^2.4.1",
+    "@fluentui/react": "^8.110.14",
     "@fluentui/react-components": "^9.27.3",
     "@fluentui/react-tags-preview": "^0.1.1",
     "@mdx-js/react": "^1.6.22",

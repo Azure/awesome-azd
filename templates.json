@@ -1071,5 +1071,21 @@
             "aca",
             "bicep"
         ]
+    },
+    {
+      "title": "Azure OpenAI with Azure Bot and Custom API calling, Behind a Firewall",
+      "description": "A Teams Chatbot running behind a Firewall that leverages OpenAI to call private APIs.",
+      "preview": "./templates/images/locked-down-bot-openai.png",
+      "website": "https://github.com/graemefoster",
+      "author": "Graeme Foster",
+      "source": "https://github.com/graemefoster/LockedDownChatBot",
+      "tags": [
+            "openai", 
+            "ai", 
+            "dotnetCsharp", 
+            "appservice", 
+            "azurebot", 
+            "agw"
+        ]
     }
 ]

@@ -36,7 +36,8 @@ import {
   PanelType,
   IPanelProps,
   FontWeights,
-  Popup
+  Popup,
+  IconButton,
 } from "@fluentui/react";
 import { title } from "process";
 
@@ -612,7 +613,8 @@ export function ShowcaseContributionCard(): React.ReactElement {
 }
 
 function ShowcaseCardPanel({ user }: { user: User }) {
-   const [isPopupVisible, { toggle: toggleIsPopupVisible }] = useBoolean(false);
+  const [isPopupVisible, { toggle: toggleIsPopupVisible }] = useBoolean(false);
+  let azdInitCommand = "azd init -t " + user.source.replace("https://github.com/", "");
   return (
     <div>
       <div style={{ display: "flex", alignItems: "center", columnGap: "5px" }}>
@@ -686,11 +688,11 @@ function ShowcaseCardPanel({ user }: { user: User }) {
                     machine, using this template is as simple as running this
                     command in a new directory.
                   </div>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua.
-                  </p>
+                  <div>Terminal Command</div>
+                  {/* <IconButton
+                    iconProps={<img src={useBaseUrl("/img/close.svg")} height={20} alt="Close" />}>
+                  </IconButton> */}
+                  <div>{azdInitCommand}</div>
                 </Popup>
               )}
             </div>

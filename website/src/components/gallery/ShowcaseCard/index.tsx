@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./styles.module.css";
 import { Tag, Tags, type User, type TagType } from "../../../data/tags";
 import { TagList } from "../../../data/users";
@@ -38,6 +38,7 @@ import {
   FontWeights,
   Popup,
   IconButton,
+  nullRender,
 } from "@fluentui/react";
 import { title } from "process";
 
@@ -517,12 +518,19 @@ function ShowcaseCard({ user }: { user: User }) {
 function closeCard(parentDiv) {
   let parent = document.getElementById(parentDiv);
   parent.style.display = "none";
-  localStorage.setItem("contributionCardDisplay", parent.style.display);
+  // access localStorage until window is defined
+  if (typeof window !== "undefined") {
+    localStorage.setItem("contributionCardDisplay", parent.style.display);
+  }
 }
 
 export function ShowcaseContributionCard(): React.ReactElement {
   const styles = useStyles();
-  if (localStorage.getItem("contributionCardDisplay")) {
+  // access localStorage until window is defined
+  if (
+    typeof window !== "undefined" &&
+    localStorage.getItem("contributionCardDisplay")
+  ) {
     return <></>;
   }
   return (

@@ -1087,5 +1087,20 @@
             "azurebot", 
             "agw"
         ]
+    },
+    {
+      "title": "Hello world Java Application on Azure Spring Apps",
+      "description": "A complete hello-world application that includes everything you need to build, deploy, and run an Azure Spring Apps solution.",
+      "preview": "./templates/images/asa-helloworld.png",
+      "website": "https://github.com/spring-guides/",
+      "author": "Yi Liu",
+      "source": "https://github.com/spring-guides/gs-spring-boot-for-azure",
+      "tags": [
+          "java",
+          "azurespringapps",
+          "webapps",
+          "bicep",
+          "spring"
+        ]
     }
 ]

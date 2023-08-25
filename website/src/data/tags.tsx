@@ -37,6 +37,8 @@
 export type Tag = {
   label: string;
   description: string;
+  azureIcon?: string;
+  url?:string;
 };
 
 export type User = {
@@ -132,9 +134,9 @@ export const Tags: { [type in TagType]: Tag } = {
       "This tag is used for admin-curated templates that represent high-quality (community) or official (Microsoft) azd templates.",
   },
 
-    // Use for templates that were valid once, but either
-    //  don't work now or have not been updated in XX time
-    /*
+  // Use for templates that were valid once, but either
+  //  don't work now or have not been updated in XX time
+  /*
     deprecated: {
         label: '❌ Deprecated',
         description: 'This tag is used when a previously approved template is no longer relevant (e.g., out of date, not refreshed in XX months etc.)',
@@ -149,9 +151,9 @@ export const Tags: { [type in TagType]: Tag } = {
       "This tag is used when there is a request for azd templates for a specific architecture. The title will link to arch, the button to a custom-issue for PR",
   },
 
-    //============  FOR REGULAR USE
+  //============  FOR REGULAR USE
 
-    // Language Tags
+  // Language Tags
 
   javascript: {
     label: "JavaScript",
@@ -260,6 +262,19 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Kubernetes",
     description: "Template architecture uses Kubernetes",
   },
+  webapps: {
+    label: "Web Apps",
+    description: "Template architecture uses Web Apps",
+  },
+  dapr: {
+    label: "Dapr",
+    description:
+      "Template architecture uses Distributed Application Runtime (dapr)",
+  },
+  prometheus: {
+    label: "Prometheus",
+    description: "Template architecture uses Prometheus",
+  },
 
   // ---- Azure Services
   ahds: {
@@ -292,8 +307,10 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure Container Apps",
   },
   cosmosdb: {
-    label: "CosmosDB",
+    label: "Azure CosmosDB",
     description: "Template architecture uses Azure CosmosDB",
+    azureIcon: "./img/Azure-Cosmos-DB.svg",
+    url: "https://azure.microsoft.com/services/cosmos-db/",
   },
   signalR: {
     label: "Azure SignalR",
@@ -307,10 +324,6 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Azure Blob Storage",
     description: "Template architecture uses Azure Blob Storage",
   },
-  webapps: {
-    label: "Web Apps",
-    description: "Template architecture uses Web Apps",
-  },
   azuresql: {
     label: "Azure SQL",
     description: "Template architecture uses Azure SQL",
@@ -323,18 +336,13 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Azure Static Web Apps",
     description: "Template architecture uses Azure Static Web Apps",
   },
-  dapr: {
-    label: "Dapr",
-    description:
-      "Template architecture uses Distributed Application Runtime (dapr)",
-  },
   servicebus: {
     label: "Azure Service Bus",
     description: "Template architecture uses Azure Service Bus",
   },
   vnets: {
-    label: "Virtual Networks (VNET)",
-    description: "Template architecture uses Virtual Networks",
+    label: "Azure Virtual Networks (VNET)",
+    description: "Template architecture uses Azure Virtual Networks",
   },
   cognitivesearch: {
     label: "Azure Cognitive Search",
@@ -365,15 +373,9 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure Front Door",
   },
   grafana: {
-    label: "Grafana",
+    label: "Azure Managed Grafana",
     description: "Template architecture uses Azure Managed Grafana",
   },
-  prometheus: {
-    label: "Prometheus",
-    description:
-      "Template architecture uses Azure Monitor managed service for Prometheus",
-  },
-
   azurespringapps: {
     label: "Azure Spring Apps",
     description: "Template architecture uses Azure Spring Apps",

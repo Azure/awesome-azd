@@ -39,6 +39,8 @@ import {
   Popup,
   IconButton,
   nullRender,
+  PrimaryButton,
+  Separator,
 } from "@fluentui/react";
 import { title } from "process";
 
@@ -621,8 +623,18 @@ export function ShowcaseContributionCard(): React.ReactElement {
 }
 
 function ShowcaseCardPanel({ user }: { user: User }) {
-  const [isPopupVisible, { toggle: toggleIsPopupVisible }] = useBoolean(false);
-  let azdInitCommand = "azd init -t " + user.source.replace("https://github.com/", "");
+  const [
+    isPopupVisibleTemplateDetails,
+    { toggle: toggleIsPopupVisibleTemplateDetails },
+  ] = useBoolean(false);
+  const [
+    IsPopupVisibleAzureCalculator,
+    { toggle: toggleIsPopupVisibleAzureCalculator },
+  ] = useBoolean(false);
+  const templateURL = user.source.replace("https://github.com/", "");
+  const azdInitCommand = "azd init -t " + templateURL;
+  const copySVG = useBaseUrl("/img/copy.svg");
+  const chevronSVG = useBaseUrl("/img/leftChevron.svg");
   return (
     <div>
       <div style={{ display: "flex", alignItems: "center", columnGap: "5px" }}>
@@ -688,29 +700,160 @@ function ShowcaseCardPanel({ user }: { user: User }) {
             <div>{user.description}</div>
             <div>
               <div>Quick Use</div>
-              <DefaultButton onClick={toggleIsPopupVisible} text="˅" />
-              {isPopupVisible && (
+              <DefaultButton onClick={toggleIsPopupVisibleTemplateDetails}>
+                <img src={chevronSVG} height={20} alt="Expand" />
+              </DefaultButton>
+              {isPopupVisibleTemplateDetails && (
                 <Popup>
+                  <Separator />
                   <div>
                     If you already have the Azure Dev CLI installed on your
                     machine, using this template is as simple as running this
                     command in a new directory.
                   </div>
                   <div>Terminal Command</div>
-                  {/* <IconButton
-                    iconProps={<img src={useBaseUrl("/img/close.svg")} height={20} alt="Close" />}>
-                  </IconButton> */}
-                  <div>{azdInitCommand}</div>
+                  <DefaultButton
+                    style={{
+                      padding: "0px",
+                      minHeight: "20px",
+                      alignItems: "center",
+                    }}
+                    onClick={() => {
+                      navigator.clipboard.writeText(azdInitCommand);
+                    }}
+                  >
+                    <img src={copySVG} height={20} alt="Copy" />
+                    <div>Copy</div>
+                  </DefaultButton>
+                  <div style={{ whiteSpace: "nowrap", overflow: "hidden" }}>
+                    {azdInitCommand}
+                  </div>
+                  <Separator alignContent="start">Or</Separator>
+                  <div>
+                    If using the{" "}
+                    <a
+                      href={
+                        "https://marketplace.visualstudio.com/items?itemName=ms-azuretools.azure-dev"
+                      }
+                      target="_blank"
+                    >
+                      azd VS Code extension
+                    </a>{" "}
+                    you can paste this URL in the VS Code command palette to
+                    lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  </div>
+                  <div>Terminal URL</div>
+                  <DefaultButton
+                    style={{
+                      padding: "0px",
+                      minHeight: "20px",
+                      alignItems: "center",
+                    }}
+                    onClick={() => {
+                      navigator.clipboard.writeText(azdInitCommand);
+                    }}
+                  >
+                    <img src={copySVG} height={20} alt="Copy" />
+                    <div>Copy</div>
+                  </DefaultButton>
+                  <div style={{ whiteSpace: "nowrap", overflow: "hidden" }}>
+                    {templateURL}
+                  </div>
+                </Popup>
+              )}
+            </div>
+            <div>
+              <div>Included in this template</div>
+              <DefaultButton onClick={toggleIsPopupVisibleAzureCalculator}>
+                <img src={chevronSVG} height={20} alt="Expand" />
+              </DefaultButton>
+              {IsPopupVisibleAzureCalculator && (
+                <Popup>
+                  <Separator />
+                  <div>
+                    The services used in this template are subject to their
+                    normal usage fees and charges. Learn more about the cost of
+                    individual services by visiting the{" "}
+                    <a
+                      href="https://azure.microsoft.com/en-us/pricing/calculator/"
+                      target="_blank"
+                    >
+                      Azure Pricing Calculator
+                    </a>
+                    .
+                  </div>
+                  <ShowcaseCardAzureTag tags={user.tags} />
                 </Popup>
               )}
             </div>
           </Label>
         </PivotItem>
         <PivotItem headerText="Legal">
-          <Label>Pivot #2</Label>
+          <Label>
+            <div>
+              <div>
+                Awesome AZD Templates is a place for Azure Developer CLI users
+                to discover open-source Azure Developer CLI templates.
+              </div>
+              <div>
+                Please note that each template is licensed by its respective
+                owner (which may or may not be Microsoft) under the agreement
+                which accompanies the template. It is your responsibility to
+                determine what license applies to any template you choose to
+                use.
+              </div>
+              <div>
+                Microsoft is not responsible for any non-Microsoft code and does
+                not screen templates included in the Awesome AZD Templates for
+                security, privacy, compatibility, or performance issues.
+              </div>
+              <div>
+                The templates included in Awesome AZD Templates are not
+                supported by any Microsoft support program or service. Awesome
+                AZD Templates and any Microsoft-provided templates are provided
+                without warranty of any kind.
+              </div>
+            </div>
+          </Label>
         </PivotItem>
       </Pivot>
     </div>
+  );
+}
+
+function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
+  const tagObjects = tags.map((tag) => ({ tag, ...Tags[tag] }));
+
+  // Keep same order for all tags
+  const tagObjectsSorted = sortBy(tagObjects, (tagObject) =>
+    TagList.indexOf(tagObject.tag)
+  );
+
+  return (
+    <>
+      {tagObjectsSorted.map((tagObject) => {
+        const id = `showcase_card_tag_${tagObject.tag}`;
+
+        return (
+          <div>
+            <div>
+              <img
+                src={useBaseUrl(tagObject.azureIcon)}
+                alt="Azure Service Icon"
+                height={16}
+              />
+            </div>
+            <div>
+              <div>{tagObject.label}</div>
+              <div>
+                <div>Azure Service</div>
+                <a href={tagObject.url} target="_blank">Learn More</a>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </>
   );
 }
 

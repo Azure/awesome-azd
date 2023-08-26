@@ -19,6 +19,25 @@
         ]
     },
     {
+        "title": "WordPress with Azure Container Apps",
+        "description": "A blueprint to easily and quickly create and deploy your first scalable and secure WordPress site to Azure, leveraging Azure Container Apps with Azure Database for MariaDb.",
+        "preview": "./templates/images/apptemplate-wordpress-on-ACA.png",
+        "website": "https://github.com/kpantos",
+        "author": "Konstantinos Pantos",
+        "source": "https://github.com/Azure-Samples/apptemplate-wordpress-on-ACA",
+        "tags": [
+            "featured",
+            "php",
+            "javascript",
+            "aca",
+            "agw",
+            "rediscache",
+            "monitor",
+            "keyvault",
+            "bicep"
+        ]
+    },
+    {
         "title": "React Web App with C# API and MongoDB",
         "description": "A blueprint for getting a React web app with a C# API and a MongoDB database on Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly.",
         "preview": "./templates/images/todo-csharp.png",
@@ -1060,47 +1079,67 @@
         ]
     },
     {
-      "title": "Docusaurus with Azure Container Apps",
-      "description": "A blueprint to easily and quickly create and deploy your product documentation in Docusaurus using Azure Container Apps.",
-      "preview": "./templates/images/docusaurus-aca-template.png",
-      "website": "https://github.com/jsburckhardt",
-      "author": "Juan Burckhardt",
-      "source": "https://github.com/jsburckhardt/docusaurus-aca",
-      "tags": [
+        "title": "Docusaurus with Azure Container Apps",
+        "description": "A blueprint to easily and quickly create and deploy your product documentation in Docusaurus using Azure Container Apps.",
+        "preview": "./templates/images/docusaurus-aca-template.png",
+        "website": "https://github.com/jsburckhardt",
+        "author": "Juan Burckhardt",
+        "source": "https://github.com/jsburckhardt/docusaurus-aca",
+        "tags": [
             "javascript",
             "aca",
             "bicep"
         ]
     },
     {
-      "title": "Azure OpenAI with Azure Bot and Custom API calling, Behind a Firewall",
-      "description": "A Teams Chatbot running behind a Firewall that leverages OpenAI to call private APIs.",
-      "preview": "./templates/images/locked-down-bot-openai.png",
-      "website": "https://github.com/graemefoster",
-      "author": "Graeme Foster",
-      "source": "https://github.com/graemefoster/LockedDownChatBot",
-      "tags": [
-            "openai", 
-            "ai", 
-            "dotnetCsharp", 
-            "appservice", 
-            "azurebot", 
+        "title": "Azure OpenAI with Azure Bot and Custom API calling, Behind a Firewall",
+        "description": "A Teams Chatbot running behind a Firewall that leverages OpenAI to call private APIs.",
+        "preview": "./templates/images/locked-down-bot-openai.png",
+        "website": "https://github.com/graemefoster",
+        "author": "Graeme Foster",
+        "source": "https://github.com/graemefoster/LockedDownChatBot",
+        "tags": [
+            "openai",
+            "ai",
+            "dotnetCsharp",
+            "appservice",
+            "azurebot",
             "agw"
         ]
     },
     {
-      "title": "Hello world Java Application on Azure Spring Apps",
-      "description": "A complete hello-world application that includes everything you need to build, deploy, and run an Azure Spring Apps solution.",
-      "preview": "./templates/images/asa-helloworld.png",
-      "website": "https://github.com/spring-guides/",
-      "author": "Yi Liu",
-      "source": "https://github.com/spring-guides/gs-spring-boot-for-azure",
-      "tags": [
-          "java",
-          "azurespringapps",
-          "webapps",
-          "bicep",
-          "spring"
+        "title": "Hello world Java Application on Azure Spring Apps",
+        "description": "A complete hello-world application that includes everything you need to build, deploy, and run an Azure Spring Apps solution.",
+        "preview": "./templates/images/asa-helloworld.png",
+        "website": "https://github.com/spring-guides/",
+        "author": "Yi Liu",
+        "source": "https://github.com/spring-guides/gs-spring-boot-for-azure",
+        "tags": [
+            "java",
+            "azurespringapps",
+            "webapps",
+            "bicep",
+            "spring"
+        ]
+    },
+    {
+        "title": "Streamlit based ChatGPT + Azure OpenAI including Document Uploader",
+        "description": "Streamlit based application that include web interface for chat and document upload.",
+        "preview": "./templates/images/search-selfserve-openai-streamlit.png",
+        "website": "https://github.com/ssat335",
+        "author": "Shameer Sathar",
+        "source": "https://github.com/ssat335/search-selfserve-openai-streamlit",
+        "tags": [
+            "bicep",
+            "streamlit",
+            "azureai",
+            "ai",
+            "python",
+            "uploader",
+            "azurebot",
+            "formrecogniser",
+            "blobstorage",
+            "cognitivesearch"
         ]
     }
 ]

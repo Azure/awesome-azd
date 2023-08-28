@@ -114,6 +114,7 @@ export type TagType =
 | 'php'
 | 'agw'
 | 'streamlit'
+| 'azurebot'
 ;
 
 
@@ -446,6 +447,11 @@ export const Tags: {[type in TagType]: Tag} = {
     agw: {
         label: 'Azure Application Gateway',
         description: 'Template architecture uses Azure Application Gateway',
+        color: 'hotpink',
+    },
+    azurebot: {
+        label: 'Azure AI Bot Service',
+        description: 'Template architecture uses Azure AI Bot Service',
         color: 'hotpink',
     },
 

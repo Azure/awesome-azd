@@ -1091,6 +1091,7 @@
             "keyvault",
             "appinsights",
             "chatgpt"
+        ]
      },
      {
       "title": "Azure OpenAI with Azure Bot and Custom API calling, Behind a Firewall",

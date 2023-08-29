@@ -1105,7 +1105,7 @@
     },
     {
       "title": "Bootstrap DevCenter with Azure Deployment Environments",
-      "description": "A DevCenter instance with the minimun required configuration to start using Azure Deployment Environments.",
+      "description": "A blueprint for getting an Azure DevCenter deployed with the minimun configuration required to start using Azure Deployment Environments and supercharge your platform engineering story. Infrastructure as Code (written in Terraform) will get you started deploying environments quickly in a self-service manner using either the Developer Portal, Azure CLI or CI/CD pipelines.",
       "preview": "./templates/images/azure-deployment-environments.png",
       "website": "https://azure.microsoft.com/en-us/products/deployment-environments/",
       "author": "Leandro Lopez",

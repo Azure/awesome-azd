@@ -1102,5 +1102,19 @@
           "bicep",
           "spring"
         ]
+    },
+    {
+      "title": "Bootstrap DevCenter with Azure Deployment Environments",
+      "description": "A DevCenter instance with the minimun required configuration to start using Azure Deployment Environments.",
+      "preview": "./templates/images/azure-deployment-environments.png",
+      "website": "https://azure.microsoft.com/en-us/products/deployment-environments/",
+      "author": "Leandro Lopez",
+      "source": "https://github.com/lopezleandro03/azd-devcenter",
+      "tags": [
+          "terraform",
+          "platform engineering",
+          "devcenter",
+          "azure deployment environments"
+        ]
     }
 ]

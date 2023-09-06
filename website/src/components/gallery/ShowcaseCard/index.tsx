@@ -173,6 +173,7 @@ const useStyles = makeStyles({
     fontSize: "16px",
     fontFamily: '"Segoe UI-Bold", Helvetica;',
     color: "#6656d1",
+    fontWeight: "600",
   },
   cardTextBy: {
     fontSize: "12px",
@@ -199,6 +200,7 @@ const useStyles = makeStyles({
     fontSize: "10px",
     fontFamily: '"Segoe UI-Semibold", Helvetica;',
     color: "#424242",
+    fontWeight: "600",
   },
   cardFooterAzdCommand: {
     fontSize: "11px",
@@ -235,7 +237,12 @@ function ShowcaseCard({ user }: { user: User }) {
                 />
                 <div
                   className={styles.text}
-                  style={{ float: "left", color: "#606060", margin: "5px 3px" }}
+                  style={{
+                    float: "left",
+                    color: "#616161",
+                    margin: "5px 3px",
+                    fontWeight: "600",
+                  }}
                 >
                   MICROSOFT AUTHORED
                 </div>
@@ -250,7 +257,12 @@ function ShowcaseCard({ user }: { user: User }) {
                 />
                 <div
                   className={styles.text}
-                  style={{ float: "left", color: "#606060", margin: "5px 3px" }}
+                  style={{
+                    float: "left",
+                    color: "#616161",
+                    margin: "5px 3px",
+                    fontWeight: "600",
+                  }}
                 >
                   COMMUNITY AUTHORED
                 </div>
@@ -258,7 +270,12 @@ function ShowcaseCard({ user }: { user: User }) {
             )}
             <div
               className={styles.text}
-              style={{ float: "right", color: "#F7630C", margin: "5px 3px" }}
+              style={{
+                float: "right",
+                color: "#F7630C",
+                margin: "5px 3px",
+                fontWeight: "600",
+              }}
             >
               POPULAR
             </div>
@@ -270,7 +287,12 @@ function ShowcaseCard({ user }: { user: User }) {
             />
             <div
               className={styles.text}
-              style={{ float: "right", color: "#11910D", margin: "5px 3px" }}
+              style={{
+                float: "right",
+                color: "#11910D",
+                margin: "5px 3px",
+                fontWeight: "600",
+              }}
             >
               NEW
             </div>
@@ -341,7 +363,7 @@ function ShowcaseCard({ user }: { user: User }) {
           Quick Use
         </div>
         <Button
-          style={{ padding: "0px" }}
+          style={{ padding: "0px",fontWeight:'400' }}
           onClick={() => {
             navigator.clipboard.writeText(azdInitCommand);
           }}

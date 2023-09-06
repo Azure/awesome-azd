@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "./styles.module.css";
 import { Tag, Tags, type User, type TagType } from "../../../data/tags";
 import { TagList } from "../../../data/users";
@@ -26,9 +26,7 @@ import { useBoolean } from "@fluentui/react-hooks";
 import {
   initializeIcons,
   IRenderFunction,
-  IStyleSet,
   Label,
-  ILabelStyles,
   Pivot,
   PivotItem,
   DefaultButton,
@@ -37,10 +35,8 @@ import {
   IPanelProps,
   FontWeights,
   Popup,
-  IconButton,
-  nullRender,
-  PrimaryButton,
   Separator,
+  IPivotStyles
 } from "@fluentui/react";
 import { title } from "process";
 
@@ -113,7 +109,7 @@ function ShowcaseCardTag({
               tagObject.clientHeight < tagObject.scrollHeight ||
               tagObject.clientWidth < tagObject.scrollWidth
             ) {
-              return <div>hi</div>;
+              return <div></div>;
             }
             return (
               <div>
@@ -533,7 +529,7 @@ export function ShowcaseContributionCard(): React.ReactElement {
     typeof window !== "undefined" &&
     localStorage.getItem("contributionCardDisplay")
   ) {
-    return <></>;
+    return null;
   }
   return (
     <Card className={styles.card} id="contributionCard">
@@ -623,21 +619,49 @@ export function ShowcaseContributionCard(): React.ReactElement {
 }
 
 function ShowcaseCardPanel({ user }: { user: User }) {
-  const [
+  let [
     isPopupVisibleTemplateDetails,
     { toggle: toggleIsPopupVisibleTemplateDetails },
-  ] = useBoolean(false);
+  ] = useBoolean(true);
+
   const [
     IsPopupVisibleAzureCalculator,
     { toggle: toggleIsPopupVisibleAzureCalculator },
-  ] = useBoolean(false);
+  ] = useBoolean(true);
+
   const templateURL = user.source.replace("https://github.com/", "");
   const azdInitCommand = "azd init -t " + templateURL;
   const copySVG = useBaseUrl("/img/copy.svg");
   const chevronSVG = useBaseUrl("/img/leftChevron.svg");
+  const pivotStyles: IPivotStyles = {
+    linkIsSelected: [
+      {
+        selectors: {
+          ":before": {
+            backgroundColor: "#6656D1",
+          },
+        },
+      },
+    ],
+    root: "",
+    link: "",
+    linkContent: "",
+    text: "",
+    count: "",
+    icon: "",
+    linkInMenu: "",
+    overflowMenuButton: "",
+  };
   return (
     <div>
-      <div style={{ display: "flex", alignItems: "center", columnGap: "5px" }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          columnGap: "5px",
+          padding: "5px 0",
+        }}
+      >
         <div className={styles.cardTextBy}>by</div>
         <div style={{ fontSize: "14px" }}>
           <ShowcaseMultipleAuthors user={user} />
@@ -686,97 +710,272 @@ function ShowcaseCardPanel({ user }: { user: User }) {
       >
         <ShowcaseCardTag tags={user.tags} moreTag={false} />
       </div>
-      <Pivot aria-label="Template Detials and Legal">
+      <Pivot aria-label="Template Detials and Legal" styles={pivotStyles}>
         <PivotItem
           style={{
             color: "#242424",
             fontFamily: '"Segoe UI-Semibold", Helvetica;',
             fontSize: "14px",
-            fontWeight: "400px",
+            fontWeight: "400",
           }}
           headerText="Template Details"
         >
           <Label>
-            <div>{user.description}</div>
-            <div>
-              <div>Quick Use</div>
-              <DefaultButton onClick={toggleIsPopupVisibleTemplateDetails}>
-                <img src={chevronSVG} height={20} alt="Expand" />
+            <div
+              style={{
+                color: "#242424",
+                fontFamily: '"Segoe UI-Regular", Helvetica;',
+                fontSize: "14px",
+                fontWeight: "400",
+              }}
+            >
+              {user.description}
+            </div>
+            <div style={{ display: "flex", paddingTop: "30px" }}>
+              <div
+                style={{
+                  color: "#242424",
+                  fontFamily: '"Segoe UI-Semibold", Helvetica;',
+                  fontSize: "14px",
+                  flex: "1",
+                }}
+              >
+                Quick Use
+              </div>
+              <DefaultButton
+                style={{
+                  backgroundColor: "transparent",
+                  borderColor: "transparent",
+                  minWidth: "0px",
+                  padding: "0px",
+                  height: "20px",
+                }}
+              >
+                <img
+                  onClick={toggleIsPopupVisibleTemplateDetails}
+                  src={chevronSVG}
+                  height={20}
+                  alt="Expand"
+                />
               </DefaultButton>
-              {isPopupVisibleTemplateDetails && (
-                <Popup>
-                  <Separator />
-                  <div>
-                    If you already have the Azure Dev CLI installed on your
-                    machine, using this template is as simple as running this
-                    command in a new directory.
+            </div>
+            {isPopupVisibleTemplateDetails && (
+              <Popup>
+                <Separator />
+                <div
+                  style={{
+                    color: "#242424",
+                    fontFamily: '"Segoe UI-Regular", Helvetica;',
+                    fontSize: "14px",
+                    fontWeight: "400",
+                    paddingBottom: "10px",
+                  }}
+                >
+                  If you already have the Azure Dev CLI installed on your
+                  machine, using this template is as simple as running this
+                  command in a new directory.
+                </div>
+                <div
+                  style={{
+                    backgroundColor: "#F5F5F5",
+                    border: "1px solid #E0E0E0",
+                    display: "flex",
+                    height: "32px",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <div
+                    style={{
+                      flex: "1",
+                      color: "#242424",
+                      fontFamily: '"Segoe UI-Semibold", Helvetica;',
+                      fontSize: "12px",
+                      paddingLeft: "5px",
+                    }}
+                  >
+                    Terminal Command
                   </div>
-                  <div>Terminal Command</div>
                   <DefaultButton
                     style={{
                       padding: "0px",
                       minHeight: "20px",
-                      alignItems: "center",
+                      borderColor: "transparent",
+                      backgroundColor: "transparent",
                     }}
                     onClick={() => {
                       navigator.clipboard.writeText(azdInitCommand);
                     }}
                   >
                     <img src={copySVG} height={20} alt="Copy" />
-                    <div>Copy</div>
+                    <div style={{ color: "#6656D1" }}>Copy</div>
                   </DefaultButton>
-                  <div style={{ whiteSpace: "nowrap", overflow: "hidden" }}>
+                </div>
+                <div
+                  style={{
+                    backgroundColor: "#FFFFFF",
+                    border: "1px solid #E0E0E0",
+                    height: "46px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <div
+                    style={{
+                      margin: "auto",
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      color: "#616161",
+                      fontFamily: '"Consolas-Regular", Helvetica;',
+                      fontSize: "14px",
+                      fontWeight: "400",
+                    }}
+                  >
                     {azdInitCommand}
                   </div>
+                </div>
+                <div
+                  style={{
+                    paddingTop: "10px",
+                  }}
+                >
                   <Separator alignContent="start">Or</Separator>
-                  <div>
-                    If using the{" "}
-                    <a
-                      href={
-                        "https://marketplace.visualstudio.com/items?itemName=ms-azuretools.azure-dev"
-                      }
-                      target="_blank"
-                    >
-                      azd VS Code extension
-                    </a>{" "}
-                    you can paste this URL in the VS Code command palette to
-                    lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </div>
+
+                <div
+                  style={{
+                    color: "#242424",
+                    fontFamily: '"Segoe UI-Regular", Helvetica;',
+                    fontSize: "14px",
+                    fontWeight: "400",
+                    padding: "10px 0",
+                  }}
+                >
+                  If using the{" "}
+                  <a
+                    href={
+                      "https://marketplace.visualstudio.com/items?itemName=ms-azuretools.azure-dev"
+                    }
+                    target="_blank"
+                    style={{ color: "#6656D1" }}
+                  >
+                    azd VS Code extension
+                  </a>{" "}
+                  you can paste this URL in the VS Code command palette to lorem
+                  ipsum dolor sit amet, consectetur adipiscing elit.
+                </div>
+
+                <div
+                  style={{
+                    backgroundColor: "#F5F5F5",
+                    border: "1px solid #E0E0E0",
+                    display: "flex",
+                    height: "32px",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <div
+                    style={{
+                      flex: "1",
+                      color: "#242424",
+                      fontFamily: '"Segoe UI-Semibold", Helvetica;',
+                      paddingLeft: "5px",
+                      fontSize: "12px",
+                    }}
+                  >
+                    Terminal URL
                   </div>
-                  <div>Terminal URL</div>
                   <DefaultButton
                     style={{
                       padding: "0px",
                       minHeight: "20px",
-                      alignItems: "center",
+                      borderColor: "transparent",
+                      backgroundColor: "transparent",
                     }}
                     onClick={() => {
-                      navigator.clipboard.writeText(azdInitCommand);
+                      navigator.clipboard.writeText(templateURL);
                     }}
                   >
                     <img src={copySVG} height={20} alt="Copy" />
-                    <div>Copy</div>
+                    <div style={{ color: "#6656D1",fontSize:'12px' }}>Copy</div>
                   </DefaultButton>
-                  <div style={{ whiteSpace: "nowrap", overflow: "hidden" }}>
+                </div>
+                <div
+                  style={{
+                    backgroundColor: "#FFFFFF",
+                    border: "1px solid #E0E0E0",
+                    height: "46px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <div
+                    style={{
+                      margin: "auto",
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      color: "#616161",
+                      fontFamily: '"Consolas-Regular", Helvetica;',
+                      fontSize: "14px",
+                      fontWeight: "400",
+                    }}
+                  >
                     {templateURL}
                   </div>
-                </Popup>
-              )}
-            </div>
-            <div>
-              <div>Included in this template</div>
-              <DefaultButton onClick={toggleIsPopupVisibleAzureCalculator}>
-                <img src={chevronSVG} height={20} alt="Expand" />
-              </DefaultButton>
+                </div>
+              </Popup>
+            )}
+            <div >
+              <div style={{ display: "flex", paddingTop:'30px' }}>
+                <div
+                  style={{
+                    color: "#242424",
+                    fontFamily: '"Segoe UI-Semibold", Helvetica;',
+                    fontSize: "14px",
+                    flex: "1",
+                  }}
+                >
+                  Included in this template
+                </div>
+                <DefaultButton
+                  style={{
+                    backgroundColor: "transparent",
+                    borderColor: "transparent",
+                    minWidth: "0px",
+                    padding: "0px",
+                    height: "20px",
+                  }}
+                >
+                  <img
+                    onClick={toggleIsPopupVisibleAzureCalculator}
+                    src={chevronSVG}
+                    height={20}
+                    alt="Expand"
+                  />
+                </DefaultButton>
+              </div>
               {IsPopupVisibleAzureCalculator && (
                 <Popup>
-                  <Separator />
-                  <div>
+                  <Separator/>
+                  <div
+                    style={{
+                      color: "#242424",
+                      fontFamily: '"Segoe UI-Regular", Helvetica;',
+                      fontSize: "14px",
+                      fontWeight: "400",
+                      paddingBottom:'10px',
+                    }}
+                  >
                     The services used in this template are subject to their
                     normal usage fees and charges. Learn more about the cost of
                     individual services by visiting the{" "}
                     <a
                       href="https://azure.microsoft.com/en-us/pricing/calculator/"
                       target="_blank"
+                      style={{ color: "#6656D1" }}
                     >
                       Azure Pricing Calculator
                     </a>
@@ -788,7 +987,15 @@ function ShowcaseCardPanel({ user }: { user: User }) {
             </div>
           </Label>
         </PivotItem>
-        <PivotItem headerText="Legal">
+        <PivotItem
+          style={{
+            color: "#424242",
+            fontFamily: '"Segoe UI-Regular", Helvetica;',
+            fontSize: "14px",
+            fontWeight: "400",
+          }}
+          headerText="Legal"
+        >
           <Label>
             <div>
               <div>
@@ -832,26 +1039,70 @@ function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
   return (
     <>
       {tagObjectsSorted.map((tagObject) => {
-        const id = `showcase_card_tag_${tagObject.tag}`;
+        const azureService = tagObject.label.includes("Azure");
 
-        return (
-          <div>
-            <div>
+        return azureService ? (
+          <div
+            style={{
+              display: "flex",
+              padding:'5px 0'
+            }}
+          >
+            <div
+              style={{
+                height: "40px",
+                width: "40px",
+                float: "left",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                backgroundColor: "#F5F5F5",
+              }}
+            >
               <img
                 src={useBaseUrl(tagObject.azureIcon)}
                 alt="Azure Service Icon"
-                height={16}
+                height={20}
               />
             </div>
-            <div>
-              <div>{tagObject.label}</div>
-              <div>
-                <div>Azure Service</div>
-                <a href={tagObject.url} target="_blank">Learn More</a>
+            <div style={{ float: "right", height: "40px",paddingLeft:'5px' }}>
+              <div
+                style={{
+                  color: "#242424",
+                  fontSize: "14px",
+                  fontFamily: '"Segoe UI-Semibold", Helvetica',
+                }}
+              >
+                {tagObject.label}
+              </div>
+              <div style={{ display: "flex" }}>
+                <div
+                  style={{
+                    color: "#707070",
+                    fontSize: "12px",
+                    fontFamily: '"Segoe UI-Regular", Helvetica',
+                    fontWeight: "400",
+                  }}
+                >
+                  Azure Service •
+                </div>
+                <a
+                  href={tagObject.url}
+                  target="_blank"
+                  style={{
+                    color: "#6656d1",
+                    fontSize: "12px",
+                    fontFamily: '"Segoe UI-Regular", Helvetica',
+                    fontWeight: "400",
+                    paddingLeft:'3px'
+                  }}
+                >
+                  Learn More
+                </a>
               </div>
             </div>
           </div>
-        );
+        ) : null;
       })}
     </>
   );

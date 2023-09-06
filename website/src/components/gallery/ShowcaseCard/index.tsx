@@ -60,12 +60,6 @@ function ShowcaseCardTag({ tags }: { tags: TagType[] }) {
       
         {tagObjectsSorted.slice(0,7).map((tagObject, index) => {
           const id = `showcase_card_tag_${tagObject.tag}`;
-if (
-  tagObject.clientHeight < tagObject.scrollHeight ||
-  tagObject.clientWidth < tagObject.scrollWidth
-) {
-  return (<div>hi</div>)
-}
           return (
             <div>
               <TagComp key={index} id={id} {...tagObject} />

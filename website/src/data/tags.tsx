@@ -281,30 +281,44 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Azure Health Data Service",
     description:
       "Template architecture uses Azure Health Data Services workspace",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO: Add Azure Health Data Services icon
+    url: "https://azure.microsoft.com/services/health-data-services/",
   },
   appinsights: {
-    label: "Azure App Insights",
-    description: "Template architecture uses Azure App Insights",
+    label: "Azure Application Insights",
+    description: "Template architecture uses Azure Application Insights",
+    azureIcon: "./img/Azure-Application-Insights.svg",
+    url: "https://learn.microsoft.com/azure/azure-monitor/app/app-insights-overview",
   },
   loganalytics: {
     label: "Azure Log Analytics",
     description: "Template architecture uses Azure Log Analytics",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
   },
   appservice: {
     label: "Azure App Service",
     description: "Template architecture uses Azure App Service",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://azure.microsoft.com/products/app-service",
   },
   monitor: {
     label: "Azure Monitor",
     description: "Template architecture uses  Azure App Service",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
   },
   keyvault: {
     label: "Azure Key Vault",
     description: "Template architecture uses Azure Key Vault",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
   },
   aca: {
     label: "Azure Container Apps",
     description: "Template architecture uses Azure Container Apps",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
   },
   cosmosdb: {
     label: "Azure CosmosDB",
@@ -315,78 +329,116 @@ export const Tags: { [type in TagType]: Tag } = {
   signalR: {
     label: "Azure SignalR",
     description: "Template architecture uses Azure SignalR",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
   },
   functions: {
     label: "Azure Functions",
     description: "Template architecture uses Azure Functions",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
   },
   blobstorage: {
     label: "Azure Blob Storage",
     description: "Template architecture uses Azure Blob Storage",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
   },
   azuresql: {
     label: "Azure SQL",
     description: "Template architecture uses Azure SQL",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
   },
   "azuredb-postgreSQL": {
     label: "Azure DB For PostgreSQL",
     description: "Template architecture uses Azure DB for PostgreSQL",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
   },
   swa: {
     label: "Azure Static Web Apps",
     description: "Template architecture uses Azure Static Web Apps",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
   },
   servicebus: {
     label: "Azure Service Bus",
     description: "Template architecture uses Azure Service Bus",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
   },
   vnets: {
     label: "Azure Virtual Networks (VNET)",
     description: "Template architecture uses Azure Virtual Networks",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
   },
   cognitivesearch: {
     label: "Azure Cognitive Search",
     description: "Template architecture uses Azure Cognitive Search",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
   },
   openai: {
     label: "Azure OpenAI Service",
     description: "Template architecture uses Azure OpenAI Service",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
   },
   azureai: {
     label: "Azure AI Service",
     description: "Template architecture uses Azure AI Service",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
   },
   apim: {
     label: "Azure API Management",
     description: "Template architecture uses Azure API Management",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
   },
   aks: {
     label: "Azure Kubernetes Service",
     description: "Template architecture uses Azure Kubernetes Service",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
   },
   azurecdn: {
     label: "Azure Content Delivery Network",
     description: "Template architecture uses Azure Content Delivery Network",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
   },
   frontdoor: {
     label: "Azure Front Door",
     description: "Template architecture uses Azure Front Door",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
   },
   grafana: {
     label: "Azure Managed Grafana",
     description: "Template architecture uses Azure Managed Grafana",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
   },
   azurespringapps: {
     label: "Azure Spring Apps",
     description: "Template architecture uses Azure Spring Apps",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
   },
   rediscache: {
     label: "Azure Redis Cache",
     description: "Template architecture uses Azure Redis Cache",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
   },
   agw: {
     label: "Azure Application Gateway",
     description: "Template architecture uses Azure Application Gateway",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
   },
 
   // For Topics

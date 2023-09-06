@@ -731,7 +731,13 @@ function ShowcaseCardPanel({ user }: { user: User }) {
             >
               {user.description}
             </div>
-            <div style={{ display: "flex", paddingTop: "30px" }}>
+            <div
+              style={{
+                display: "flex",
+                paddingTop: "30px",
+                borderBottom: "1px solid #D1D1D1",
+              }}
+            >
               <div
                 style={{
                   color: "#242424",
@@ -761,14 +767,13 @@ function ShowcaseCardPanel({ user }: { user: User }) {
             </div>
             {isPopupVisibleTemplateDetails && (
               <Popup>
-                <Separator />
                 <div
                   style={{
                     color: "#242424",
                     fontFamily: '"Segoe UI-Regular", Helvetica;',
                     fontSize: "14px",
                     fontWeight: "400",
-                    paddingBottom: "10px",
+                    padding: "10px 0",
                   }}
                 >
                   If you already have the Azure Dev CLI installed on your
@@ -899,7 +904,9 @@ function ShowcaseCardPanel({ user }: { user: User }) {
                     }}
                   >
                     <img src={copySVG} height={20} alt="Copy" />
-                    <div style={{ color: "#6656D1",fontSize:'12px' }}>Copy</div>
+                    <div style={{ color: "#6656D1", fontSize: "12px" }}>
+                      Copy
+                    </div>
                   </DefaultButton>
                 </div>
                 <div
@@ -928,8 +935,14 @@ function ShowcaseCardPanel({ user }: { user: User }) {
                 </div>
               </Popup>
             )}
-            <div >
-              <div style={{ display: "flex", paddingTop:'30px' }}>
+            <div>
+              <div
+                style={{
+                  display: "flex",
+                  paddingTop: "30px",
+                  borderBottom: "1px solid #D1D1D1",
+                }}
+              >
                 <div
                   style={{
                     color: "#242424",
@@ -959,14 +972,13 @@ function ShowcaseCardPanel({ user }: { user: User }) {
               </div>
               {IsPopupVisibleAzureCalculator && (
                 <Popup>
-                  <Separator/>
                   <div
                     style={{
                       color: "#242424",
                       fontFamily: '"Segoe UI-Regular", Helvetica;',
                       fontSize: "14px",
                       fontWeight: "400",
-                      paddingBottom:'10px',
+                      padding: "10px 0",
                     }}
                   >
                     The services used in this template are subject to their
@@ -997,24 +1009,47 @@ function ShowcaseCardPanel({ user }: { user: User }) {
           headerText="Legal"
         >
           <Label>
-            <div>
-              <div>
+            <div
+              style={{
+                color: "#242424",
+                fontSize: "14px",
+                fontFamily: '"Segoe UI-Regular", Helvetica',
+                fontWeight: "400",
+              }}
+            >
+              <div
+                style={{
+                  padding: "10px 0",
+                }}
+              >
                 Awesome AZD Templates is a place for Azure Developer CLI users
                 to discover open-source Azure Developer CLI templates.
               </div>
-              <div>
+              <div
+                style={{
+                  padding: "10px 0",
+                }}
+              >
                 Please note that each template is licensed by its respective
                 owner (which may or may not be Microsoft) under the agreement
                 which accompanies the template. It is your responsibility to
                 determine what license applies to any template you choose to
                 use.
               </div>
-              <div>
+              <div
+                style={{
+                  padding: "10px 0",
+                }}
+              >
                 Microsoft is not responsible for any non-Microsoft code and does
                 not screen templates included in the Awesome AZD Templates for
                 security, privacy, compatibility, or performance issues.
               </div>
-              <div>
+              <div
+                style={{
+                  padding: "10px 0",
+                }}
+              >
                 The templates included in Awesome AZD Templates are not
                 supported by any Microsoft support program or service. Awesome
                 AZD Templates and any Microsoft-provided templates are provided

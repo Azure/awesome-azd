@@ -8,7 +8,6 @@
 import React from "react";
 import styles from "./styles.module.css";
 import { Tag, Tags, type User, type TagType } from "../../../data/tags";
-import { Tag as TagFluentUI, TagGroup } from "@fluentui/react-tags-preview";
 import { TagList } from "../../../data/users";
 import { sortBy } from "@site/src/utils/jsUtils";
 import useBaseUrl from "@docusaurus/useBaseUrl";
@@ -51,11 +50,12 @@ const TagComp = React.forwardRef<HTMLLIElement, Tag>(
         height: "20px",
         alignContent: "center",
         backgroundColor: "#F0F0F0",
+        border: "1px solid #E0E0E0",
         padding: "0 5px",
         marginTop: "3px",
         fontSize: "10px",
         fontFamily: '"Segoe UI-Semibold", Helvetica',
-        color: "#606060",
+        color: "#616161",
         minWidth: "0px",
       }}
     >
@@ -63,25 +63,6 @@ const TagComp = React.forwardRef<HTMLLIElement, Tag>(
     </Button>
   )
 );
-
-const TagCompFluentUI8 = React.forwardRef<HTMLLIElement, Tag>(({ label }) => (
-  <DefaultButton
-    sizes="smallest"
-    text={label}
-    style={{
-      height: "20px",
-      alignContent: "center",
-      backgroundColor: "#F0F0F0",
-      borderColor: "#F0F0F0",
-      fontSize: "10px",
-      marginTop: "3px",
-      fontFamily: '"Segoe UI-Semibold", Helvetica',
-      color: "#606060",
-      padding: "0px",
-      minWidth: "0px",
-    }}
-  />
-));
 
 function ShowcaseCardTag({
   tags,
@@ -98,13 +79,13 @@ function ShowcaseCardTag({
   );
 
   const length = tagObjectsSorted.length;
-  const rest = length - 7;
+  const rest = length - 10;
 
   if (moreTag) {
-    if (length > 7) {
+    if (length > 10) {
       return (
         <>
-          {tagObjectsSorted.slice(0, 7).map((tagObject, index) => {
+          {tagObjectsSorted.slice(0, 10).map((tagObject, index) => {
             const id = `showcase_card_tag_${tagObject.tag}`;
             return (
               <div>
@@ -112,23 +93,24 @@ function ShowcaseCardTag({
               </div>
             );
           })}
-          <TagFluentUI
+          <Button
             appearance="outline"
-            size="extra-small"
+            size="small"
             style={{
               height: "20px",
               alignContent: "center",
-              marginTop: "3px",
               backgroundColor: "#F0F0F0",
-              paddingTop: "3px",
-              fontFamily: '"Segoe UI-Semibold", Helvetica',
-              color: "#606060",
+              border: "1px solid #E0E0E0",
+              padding: "0 5px",
+              marginTop: "3px",
               fontSize: "10px",
+              fontFamily: '"Segoe UI-Semibold", Helvetica',
+              color: "#616161",
               minWidth: "0px",
             }}
           >
             + {rest} more
-          </TagFluentUI>
+          </Button>
         </>
       );
     } else {
@@ -152,7 +134,11 @@ function ShowcaseCardTag({
         {tagObjectsSorted.map((tagObject, index) => {
           const id = `showcase_card_tag_${tagObject.tag}`;
 
-          return <TagCompFluentUI8 key={index} id={id} {...tagObject} />;
+          return (
+            <div style={{paddingTop:'3px'}}>
+              <TagComp key={index} id={id} {...tagObject} />
+            </div>
+          );
         })}
       </>
     );
@@ -299,9 +285,6 @@ function ShowcaseCard({ user }: { user: User }) {
     headerLogo = useBaseUrl("/img/microsoft.svg");
     headerText = "MICROSOFT AUTHORED";
   }
-  const searchboxStyles = {
-    root: { margin: "5px", height: "auto", width: "100%" },
-  };
   const onRenderNavigationContent: IRenderFunction<IPanelProps> =
     React.useCallback(
       (props, defaultRender) => (
@@ -314,7 +297,7 @@ function ShowcaseCard({ user }: { user: User }) {
               flex: "8",
             }}
           >
-            <img src={headerLogo} height={16} style={{ margin: "5px 0px" }} />
+            <img src={headerLogo} height={16} style={{ margin: "5px 0px",fontWeight:'550'}} />
             <div
               className={styles.text}
               style={{ color: "#606060", paddingLeft: "3px" }}
@@ -672,11 +655,11 @@ function ShowcaseCardPanel({ user }: { user: User }) {
           display: "flex",
           alignItems: "center",
           columnGap: "5px",
-          padding: "5px 0",
+          padding: "10px 0",
         }}
       >
         <div className={styles.cardTextBy}>by</div>
-        <div style={{ fontSize: "14px" }}>
+        <div style={{ fontSize: "14px",fontWeight:'400' }}>
           <ShowcaseMultipleAuthors user={user} />
         </div>
         <FluentUILink
@@ -719,17 +702,17 @@ function ShowcaseCardPanel({ user }: { user: User }) {
           maxHeight: "73px",
           columnGap: "5px",
           flexFlow: "wrap",
+          padding:'5px 0'
         }}
       >
         <ShowcaseCardTag tags={user.tags} moreTag={false} />
       </div>
-      <Pivot aria-label="Template Detials and Legal" styles={pivotStyles}>
+      <Pivot aria-label="Template Detials and Legal" styles={pivotStyles} style={{paddingTop:'20px'}}>
         <PivotItem
           style={{
             color: "#242424",
             fontFamily: '"Segoe UI-Semibold", Helvetica;',
             fontSize: "14px",
-            fontWeight: "400",
           }}
           headerText="Template Details"
         >
@@ -1093,7 +1076,7 @@ function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
           <div
             style={{
               display: "flex",
-              padding:'5px 0'
+              padding: "5px 0",
             }}
           >
             <div
@@ -1113,7 +1096,9 @@ function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
                 height={20}
               />
             </div>
-            <div style={{ float: "right", height: "40px",paddingLeft:'5px' }}>
+            <div
+              style={{ float: "right", height: "40px", paddingLeft: "20px" }}
+            >
               <div
                 style={{
                   color: "#242424",
@@ -1123,7 +1108,13 @@ function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
               >
                 {tagObject.label}
               </div>
-              <div style={{ display: "flex" }}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
                 <div
                   style={{
                     color: "#707070",
@@ -1132,7 +1123,18 @@ function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
                     fontWeight: "400",
                   }}
                 >
-                  Azure Service •
+                  Azure Service
+                </div>
+                <div
+                  style={{
+                    color: "#707070",
+                    fontSize: "12px",
+                    fontFamily: '"Segoe UI-Regular", Helvetica',
+                    fontWeight: "400",
+                    padding:'0 6px'
+                  }}
+                >
+                  •
                 </div>
                 <a
                   href={tagObject.url}
@@ -1142,7 +1144,6 @@ function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
                     fontSize: "12px",
                     fontFamily: '"Segoe UI-Regular", Helvetica',
                     fontWeight: "400",
-                    paddingLeft:'3px'
                   }}
                 >
                   Learn More

@@ -79,13 +79,13 @@ function ShowcaseCardTag({
   );
 
   const length = tagObjectsSorted.length;
-  const rest = length - 10;
+  const rest = length - 8;
 
   if (moreTag) {
-    if (length > 10) {
+    if (length > 8) {
       return (
         <>
-          {tagObjectsSorted.slice(0, 10).map((tagObject, index) => {
+          {tagObjectsSorted.slice(0, 8).map((tagObject, index) => {
             const id = `showcase_card_tag_${tagObject.tag}`;
             return (
               <div>
@@ -135,7 +135,7 @@ function ShowcaseCardTag({
           const id = `showcase_card_tag_${tagObject.tag}`;
 
           return (
-            <div style={{paddingTop:'3px'}}>
+            <div>
               <TagComp key={index} id={id} {...tagObject} />
             </div>
           );
@@ -343,52 +343,51 @@ function ShowcaseCard({ user }: { user: User }) {
     >
       <CardHeader
         header={
-          <div>
-            <img
-              src={headerLogo}
-              height={16}
-              style={{ float: "left", margin: "5px 0px" }}
-            />
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <img src={headerLogo} height={16} />
             <div
               className={styles.text}
-              style={{ float: "left", color: "#606060", margin: "5px 3px" }}
+              style={{
+                fontWeight: "600",
+                flex: "1",
+                paddingLeft: "3px",
+              }}
             >
               {headerText}
             </div>
+            <img src={star} alt="Star" height={16} />
             <div
               className={styles.text}
               style={{
-                float: "right",
-                color: "#F7630C",
-                margin: "5px 3px",
-                fontWeight: "600",
-              }}
-            >
-              POPULAR
-            </div>
-            <img
-              src={fire}
-              alt="Fire"
-              height={16}
-              style={{ float: "right", margin: "5px 0px" }}
-            />
-            <div
-              className={styles.text}
-              style={{
-                float: "right",
                 color: "#11910D",
-                margin: "5px 3px",
                 fontWeight: "600",
               }}
             >
               NEW
             </div>
             <img
-              src={star}
-              alt="Star"
+              src={fire}
+              alt="Fire"
               height={16}
-              style={{ float: "right", margin: "5px 0px" }}
+              style={{
+                paddingLeft: "6px",
+              }}
             />
+            <div
+              className={styles.text}
+              style={{
+                color: "#F7630C",
+                fontWeight: "600",
+              }}
+            >
+              POPULAR
+            </div>
           </div>
         }
       />
@@ -454,7 +453,6 @@ function ShowcaseCard({ user }: { user: User }) {
             style={{
               display: "flex",
               overflow: "hidden",
-              maxHeight: "73px",
               columnGap: "5px",
               flexFlow: "wrap",
             }}
@@ -475,7 +473,7 @@ function ShowcaseCard({ user }: { user: User }) {
           Quick Use
         </div>
         <Button
-          style={{ padding: "0px",fontWeight:'400' }}
+          style={{ padding: "0px", fontWeight: "400" }}
           onClick={() => {
             navigator.clipboard.writeText(azdInitCommand);
           }}
@@ -699,7 +697,6 @@ function ShowcaseCardPanel({ user }: { user: User }) {
         style={{
           display: "flex",
           overflow: "hidden",
-          maxHeight: "73px",
           columnGap: "5px",
           flexFlow: "wrap",
           padding:'5px 0'

@@ -188,9 +188,9 @@ const config = {
 
         // CONFIG: theme = currently using `classic`
         //    See: https://docusaurus.io/docs/api/themes/@docusaurus/theme-classic
-        theme: {
-          customCss: require.resolve("./src/css/custom.css"),
-        },
+        // theme: {
+        //   customCss: require.resolve('./src/css/custom.css'),
+        // },
       }),
     ],
   ],

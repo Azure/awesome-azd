@@ -8,6 +8,7 @@
 import React from "react";
 import styles from "./styles.module.css";
 import { Tag, Tags, type User, type TagType } from "../../../data/tags";
+import { Tag as TagFluentUI, TagGroup } from "@fluentui/react-tags-preview";
 import { TagList } from "../../../data/users";
 import { sortBy } from "@site/src/utils/jsUtils";
 import useBaseUrl from "@docusaurus/useBaseUrl";
@@ -105,21 +106,15 @@ function ShowcaseCardTag({
         <>
           {tagObjectsSorted.slice(0, 7).map((tagObject, index) => {
             const id = `showcase_card_tag_${tagObject.tag}`;
-            if (
-              tagObject.clientHeight < tagObject.scrollHeight ||
-              tagObject.clientWidth < tagObject.scrollWidth
-            ) {
-              return <div></div>;
-            }
             return (
               <div>
                 <TagComp key={index} id={id} {...tagObject} />
               </div>
             );
           })}
-          <Button
+          <TagFluentUI
             appearance="outline"
-            size="small"
+            size="extra-small"
             style={{
               height: "20px",
               alignContent: "center",
@@ -133,7 +128,7 @@ function ShowcaseCardTag({
             }}
           >
             + {rest} more
-          </Button>
+          </TagFluentUI>
         </>
       );
     } else {
@@ -250,6 +245,7 @@ const useStyles = makeStyles({
     fontSize: "16px",
     fontFamily: '"Segoe UI-Bold", Helvetica',
     color: "#6656d1",
+    fontWeight: "600",
   },
   cardTextBy: {
     fontSize: "12px",
@@ -274,6 +270,7 @@ const useStyles = makeStyles({
     fontSize: "10px",
     fontFamily: '"Segoe UI-Semibold", Helvetica',
     color: "#424242",
+    fontWeight: "600",
   },
   cardFooterAzdCommand: {
     fontSize: "11px",
@@ -376,7 +373,12 @@ function ShowcaseCard({ user }: { user: User }) {
             </div>
             <div
               className={styles.text}
-              style={{ float: "right", color: "#F7630C", margin: "5px 3px" }}
+              style={{
+                float: "right",
+                color: "#F7630C",
+                margin: "5px 3px",
+                fontWeight: "600",
+              }}
             >
               POPULAR
             </div>
@@ -388,7 +390,12 @@ function ShowcaseCard({ user }: { user: User }) {
             />
             <div
               className={styles.text}
-              style={{ float: "right", color: "#11910D", margin: "5px 3px" }}
+              style={{
+                float: "right",
+                color: "#11910D",
+                margin: "5px 3px",
+                fontWeight: "600",
+              }}
             >
               NEW
             </div>
@@ -484,7 +491,7 @@ function ShowcaseCard({ user }: { user: User }) {
           Quick Use
         </div>
         <Button
-          style={{ padding: "0px" }}
+          style={{ padding: "0px",fontWeight:'400' }}
           onClick={() => {
             navigator.clipboard.writeText(azdInitCommand);
           }}

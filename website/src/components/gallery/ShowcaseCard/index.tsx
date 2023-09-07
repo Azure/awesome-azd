@@ -234,6 +234,7 @@ const useStyles = makeStyles({
     height: "368px",
     maxWidth: "100%",
     maxHeight: "100%",
+    minWidth:'300px',
   },
   text: {
     color: "#606060",
@@ -565,6 +566,8 @@ export function ShowcaseContributionCard(): React.ReactElement {
           color: "#242424",
           fontSize: "24px",
           fontFamily: '"Segoe UI-Semibold", Helvetica',
+            fontWeight: "550",
+            height:'0px',
         }}
       >
         See your template here!
@@ -591,7 +594,7 @@ export function ShowcaseContributionCard(): React.ReactElement {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </p>
       </div>
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex", paddingTop: "10px" }}>
         <Button
           size="small"
           style={{
@@ -602,6 +605,7 @@ export function ShowcaseContributionCard(): React.ReactElement {
             backgroundColor: "#6656d1",
             height: "32px",
             whiteSpace: "nowrap",
+              fontWeight: "550",
           }}
         >
           Submit a template
@@ -616,6 +620,8 @@ export function ShowcaseContributionCard(): React.ReactElement {
             fontSize: "14px",
             height: "32px",
             whiteSpace: "nowrap",
+              fontWeight: "550",
+              paddingLeft:'10px'
           }}
         >
           Request a template

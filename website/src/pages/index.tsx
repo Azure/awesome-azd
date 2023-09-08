@@ -16,11 +16,6 @@ import ShowcaseTagSelect, {
   readSearchTags,
 } from "../components/gallery/ShowcaseTagSelect";
 
-import ShowcaseFilterToggle, {
-  type Operator,
-  readOperator,
-} from "../components/gallery/ShowcaseFilterToggle";
-
 import ShowcaseCard, {ShowcaseContributionCard} from "../components/gallery/ShowcaseCard";
 import ShowcaseTooltip from "../components/gallery/ShowcaseTooltip";
 import { FluentProvider, teamsLightTheme } from "@fluentui/react-components";
@@ -75,7 +70,6 @@ function readSearchName(search: string) {
 function filterUsers(
   users: User[],
   selectedTags: TagType[],
-  operator: Operator,
   searchName: string | null
 ) {
   if (searchName) {
@@ -91,16 +85,12 @@ function filterUsers(
     if (user.tags.length === 0) {
       return false;
     }
-    if (operator === "AND") {
-      return selectedTags.every((tag) => user.tags.includes(tag));
-    }
-    return selectedTags.some((tag) => user.tags.includes(tag));
+    return selectedTags.every((tag) => user.tags.includes(tag));
   });
 }
 
 function useFilteredUsers() {
   const location = useLocation<UserState>();
-  const [operator, setOperator] = useState<Operator>("OR");
   // On SSR / first mount (hydration) no tag is selected
   const [selectedTags, setSelectedTags] = useState<TagType[]>([]);
   const [searchName, setSearchName] = useState<string | null>(null);
@@ -108,14 +98,14 @@ function useFilteredUsers() {
   // hydration mismatch)
   useEffect(() => {
     setSelectedTags(readSearchTags(location.search));
-    setOperator(readOperator(location.search));
     setSearchName(readSearchName(location.search));
     restoreUserState(location.state);
   }, [location]);
 
   return useMemo(
-    () => filterUsers(sortedUsers, selectedTags, operator, searchName),
-    [selectedTags, operator, searchName]
+    () =>
+      filterUsers(sortedUsers, selectedTags, searchName),
+    [selectedTags, searchName]
   );
 }
 
@@ -159,15 +149,12 @@ function ShowcaseFilters() {
   const filteredUsers = useFilteredUsers();
   const siteCountPlural = useSiteCountPlural();
   return (
-    <section className="container margin-top--l margin-bottom--lg">
-      <div className={clsx("margin-bottom--sm", styles.filterCheckbox)}>
-        <div>
-          <h2>
-            <Translate id="showcase.filters.title">Filters</Translate>
-          </h2>
-          <span>{siteCountPlural(filteredUsers.length)}</span>
-        </div>
-        <ShowcaseFilterToggle />
+    <div>
+      <div>
+          <div>
+            Filter by
+          </div>
+          {/* <span>{siteCountPlural(filteredUsers.length)}</span> */}
       </div>
       <ul className={styles.checkboxList}>
         {TagList.map((tag, i) => {
@@ -176,11 +163,6 @@ function ShowcaseFilters() {
 
           return (
             <li key={i} className={styles.checkboxListItem}>
-              <ShowcaseTooltip
-                id={id}
-                text={description}
-                anchorEl="#__docusaurus"
-              >
                 <ShowcaseTagSelect
                   tag={tag}
                   id={id}
@@ -200,12 +182,11 @@ function ShowcaseFilters() {
                     )
                   }
                 />
-              </ShowcaseTooltip>
             </li>
           );
         })}
       </ul>
-    </section>
+    </div>
   );
 }
 

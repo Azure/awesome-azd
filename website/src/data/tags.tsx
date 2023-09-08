@@ -115,6 +115,9 @@ export type TagType =
 | 'agw'
 | 'streamlit'
 | 'azurebot'
+| 'ade'
+| 'platformengineering'
+| 'devcenter'
 ;
 
 
@@ -297,6 +300,11 @@ export const Tags: {[type in TagType]: Tag} = {
         description: 'Template architecture uses Streamlit library',
         color: 'hotpink',
     },
+    devcenter: {
+    label: 'Dev Center',
+    description: 'Template architecture uses Dev Center',
+    color: 'hotpink',
+    },
     // ---- Azure Services
     ahds: {
         label: 'Azure Health Data Service',
@@ -454,6 +462,11 @@ export const Tags: {[type in TagType]: Tag} = {
         description: 'Template architecture uses Azure AI Bot Service',
         color: 'hotpink',
     },
+    ade: {
+    label: 'Azure Deployment Environments',
+    description: 'Template architecture uses Azure Deployment Environments',
+    color: 'hotpink',
+    },
 
     // For Topics
     datascience:{
@@ -469,6 +482,11 @@ export const Tags: {[type in TagType]: Tag} = {
     ai: {
         label: 'Artificial Intelligence',
         description: 'Template architecture involves Artificial Intelligence',
+        color: 'hotpink',
+    },
+    platformengineering: {
+        label: 'Platform Engineering',
+        description: 'Template architecture involves Platform Engineering',
         color: 'hotpink',
     }
 };

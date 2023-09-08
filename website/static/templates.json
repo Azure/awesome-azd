@@ -1107,14 +1107,14 @@
       "title": "Terraform template to bootstrap Azure Deployment Environments",
       "description": "A template to deploy Azure DevCenter with the minimun configuration to start using Azure Deployment Environments and supercharge your platform engineering story. Infrastructure as Code (written in Terraform) will get you started quickly to enable developers to self-serve environments via the Developer Portal, Azure CLI or CI/CD pipelines.",
       "preview": "./templates/images/azure-deployment-environments.png",
-      "website": "https://azure.microsoft.com/en-us/products/deployment-environments/",
+      "website": "https://github.com/lopezleandro03",
       "author": "Leandro Lopez",
       "source": "https://github.com/lopezleandro03/azd-devcenter",
       "tags": [
           "terraform",
-          "platform engineering",
+          "platformengineering",
           "devcenter",
-          "azure deployment environments"
+          "ade"
         ]
     }
 ]

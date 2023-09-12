@@ -1073,6 +1073,27 @@
         ]
     },
     {
+        "title": "React Web App with Azure API Management exposing SAP OData APIs",
+        "description": "Expose your SAP OData APIs via Azure API Management and link it with Azure Static Web App to create & integrate a serverless Web App blazing fast with GitHub Copilot or ChatGPT.",
+        "preview": "./templates/images/apim-odata-reactjs.png",
+        "website": "https://github.com/pascalvanderheiden",
+        "author": "Pascal van der Heiden",
+        "source": "https://github.com/pascalvanderheiden/ais-apim-odata-reactjs",
+        "tags": [
+            "bicep",
+            "swa",
+            "apim",
+            "sap",
+            "reactjs",
+            "typescript",
+            "javascript",
+            "monitor",
+            "keyvault",
+            "appinsights",
+            "chatgpt"
+        ]
+     },
+     {
       "title": "Azure OpenAI with Azure Bot and Custom API calling, Behind a Firewall",
       "description": "A Teams Chatbot running behind a Firewall that leverages OpenAI to call private APIs.",
       "preview": "./templates/images/locked-down-bot-openai.png",

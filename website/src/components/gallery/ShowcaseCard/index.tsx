@@ -54,7 +54,6 @@ const TagComp = React.forwardRef<HTMLLIElement, Tag>(
         padding: "0 5px",
         marginTop: "3px",
         fontSize: "10px",
-        fontFamily: "Segoe UI",
         color: "#616161",
         minWidth: "0px",
       }}
@@ -104,7 +103,6 @@ function ShowcaseCardTag({
               padding: "0 5px",
               marginTop: "3px",
               fontSize: "10px",
-              fontFamily: "Segoe UI",
               color: "#616161",
               minWidth: "0px",
             }}
@@ -225,37 +223,30 @@ const useStyles = makeStyles({
   text: {
     color: "#606060",
     fontSize: "10px",
-    fontFamily: "Segoe UI",
   },
   cardTitle: {
     verticalAlign: "middle",
     fontSize: "16px",
-    fontFamily: "Segoe UI",
     color: "#6656d1",
     fontWeight: "600",
   },
   cardTextBy: {
     fontSize: "12px",
-    fontFamily: "Segoe UI",
     color: "#707070",
   },
   cardAuthor: {
-    fontFamily: "Segoe UI",
     color: "#6656d1",
   },
   cardDescription: {
     fontSize: "14px",
-    fontFamily: "Segoe UI",
     color: "#707070",
   },
   cardTag: {
     fontSize: "10px",
-    fontFamily: "Segoe UI",
     color: "#606060",
   },
   cardFooterQuickUse: {
     fontSize: "10px",
-    fontFamily: "Segoe UI",
     color: "#424242",
     fontWeight: "600",
   },
@@ -546,7 +537,6 @@ export function ShowcaseContributionCard(): React.ReactElement {
         style={{
           color: "#242424",
           fontSize: "24px",
-          fontFamily: "Segoe UI",
             fontWeight: "550",
             height:'0px',
         }}
@@ -557,7 +547,6 @@ export function ShowcaseContributionCard(): React.ReactElement {
         style={{
           color: "#242424",
           fontSize: "14px",
-          fontFamily: "Segoe UI",
         }}
       >
         <p
@@ -581,7 +570,6 @@ export function ShowcaseContributionCard(): React.ReactElement {
           style={{
             flex: 1,
             color: "#ffffff",
-            fontFamily: "Segoe UI",
             fontSize: "14px",
             backgroundColor: "#6656d1",
             height: "32px",
@@ -597,7 +585,6 @@ export function ShowcaseContributionCard(): React.ReactElement {
           style={{
             flex: 1,
             color: "#6656d1",
-            fontFamily: "Segoe UI",
             fontSize: "14px",
             height: "32px",
             whiteSpace: "nowrap",
@@ -708,7 +695,6 @@ function ShowcaseCardPanel({ user }: { user: User }) {
         <PivotItem
           style={{
             color: "#242424",
-            fontFamily: "Segoe UI",
             fontSize: "14px",
           }}
           headerText="Template Details"
@@ -717,7 +703,6 @@ function ShowcaseCardPanel({ user }: { user: User }) {
             <div
               style={{
                 color: "#242424",
-                fontFamily: "Segoe UI",
                 fontSize: "14px",
                 fontWeight: "400",
               }}
@@ -734,7 +719,6 @@ function ShowcaseCardPanel({ user }: { user: User }) {
               <div
                 style={{
                   color: "#242424",
-                  fontFamily: "Segoe UI",
                   fontSize: "14px",
                   flex: "1",
                 }}
@@ -763,7 +747,6 @@ function ShowcaseCardPanel({ user }: { user: User }) {
                 <div
                   style={{
                     color: "#242424",
-                    fontFamily: "Segoe UI",
                     fontSize: "14px",
                     fontWeight: "400",
                     padding: "10px 0",
@@ -787,7 +770,6 @@ function ShowcaseCardPanel({ user }: { user: User }) {
                     style={{
                       flex: "1",
                       color: "#242424",
-                      fontFamily: "Segoe UI",
                       fontSize: "12px",
                       paddingLeft: "5px",
                     }}
@@ -844,7 +826,6 @@ function ShowcaseCardPanel({ user }: { user: User }) {
                 <div
                   style={{
                     color: "#242424",
-                    fontFamily: "Segoe UI",
                     fontSize: "14px",
                     fontWeight: "400",
                     padding: "10px 0",
@@ -878,7 +859,6 @@ function ShowcaseCardPanel({ user }: { user: User }) {
                     style={{
                       flex: "1",
                       color: "#242424",
-                      fontFamily: "Segoe UI",
                       paddingLeft: "5px",
                       fontSize: "12px",
                     }}
@@ -939,7 +919,6 @@ function ShowcaseCardPanel({ user }: { user: User }) {
                 <div
                   style={{
                     color: "#242424",
-                    fontFamily: "Segoe UI",
                     fontSize: "14px",
                     flex: "1",
                   }}
@@ -968,7 +947,6 @@ function ShowcaseCardPanel({ user }: { user: User }) {
                   <div
                     style={{
                       color: "#242424",
-                      fontFamily: "Segoe UI",
                       fontSize: "14px",
                       fontWeight: "400",
                       padding: "10px 0",
@@ -995,7 +973,6 @@ function ShowcaseCardPanel({ user }: { user: User }) {
         <PivotItem
           style={{
             color: "#424242",
-            fontFamily: "Segoe UI",
             fontSize: "14px",
             fontWeight: "400",
           }}
@@ -1006,7 +983,6 @@ function ShowcaseCardPanel({ user }: { user: User }) {
               style={{
                 color: "#242424",
                 fontSize: "14px",
-                fontFamily: "Segoe UI",
                 fontWeight: "400",
               }}
             >
@@ -1100,7 +1076,6 @@ function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
                 style={{
                   color: "#242424",
                   fontSize: "14px",
-                  fontFamily: "Segoe UI",
                 }}
               >
                 {tagObject.label}
@@ -1116,7 +1091,6 @@ function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
                   style={{
                     color: "#707070",
                     fontSize: "12px",
-                    fontFamily: "Segoe UI",
                     fontWeight: "400",
                   }}
                 >
@@ -1126,7 +1100,6 @@ function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
                   style={{
                     color: "#707070",
                     fontSize: "12px",
-                    fontFamily: "Segoe UI",
                     fontWeight: "400",
                     padding:'0 6px'
                   }}
@@ -1139,7 +1112,6 @@ function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
                   style={{
                     color: "#6656d1",
                     fontSize: "12px",
-                    fontFamily: "Segoe UI",
                     fontWeight: "400",
                   }}
                 >

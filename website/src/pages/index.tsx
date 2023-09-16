@@ -16,7 +16,9 @@ import ShowcaseTagSelect, {
   readSearchTags,
 } from "../components/gallery/ShowcaseTagSelect";
 
-import ShowcaseCard, {ShowcaseContributionCard} from "../components/gallery/ShowcaseCard";
+import ShowcaseCard, {
+  ShowcaseContributionCard,
+} from "../components/gallery/ShowcaseCard";
 import ShowcaseTooltip from "../components/gallery/ShowcaseTooltip";
 import { FluentProvider, teamsLightTheme } from "@fluentui/react-components";
 
@@ -103,8 +105,7 @@ function useFilteredUsers() {
   }, [location]);
 
   return useMemo(
-    () =>
-      filterUsers(sortedUsers, selectedTags, searchName),
+    () => filterUsers(sortedUsers, selectedTags, searchName),
     [selectedTags, searchName]
   );
 }
@@ -148,57 +149,122 @@ function useSiteCountPlural() {
 function ShowcaseFilters() {
   const filteredUsers = useFilteredUsers();
   const siteCountPlural = useSiteCountPlural();
+  const uncategoryTag = TagList.filter((tag) => {
+    const tagObject = Tags[tag];
+    return tagObject.type === undefined;
+  });
+  const languageTag = TagList.filter((tag) => {
+    const tagObject = Tags[tag];
+    return tagObject.type === "Language";
+  });
+  const frameworkTag = TagList.filter((tag) => {
+    const tagObject = Tags[tag];
+    return tagObject.type === "Framework";
+  });
+  const servicesTag = TagList.filter((tag) => {
+    const tagObject = Tags[tag];
+    return tagObject.type === "Service";
+  });
+  const databaseTag = TagList.filter((tag) => {
+    const tagObject = Tags[tag];
+    return tagObject.type === "Database";
+  });
+  const infrastructureAsCodeTag = TagList.filter((tag) => {
+    const tagObject = Tags[tag];
+    return tagObject.type === "Infrastructure as Code";
+  });
+  const otherTag = TagList.filter((tag) => {
+    const tagObject = Tags[tag];
+    return tagObject.type === "Other";
+  });
   return (
     <div>
-      <div>
-          <div>
-            Filter by
-          </div>
-          {/* <span>{siteCountPlural(filteredUsers.length)}</span> */}
-      </div>
-      <ul className={styles.checkboxList}>
-        {TagList.map((tag, i) => {
-          const { label, description } = Tags[tag];
-          const id = `showcase_checkbox_id_${tag}`;
+      <div>Filter by</div>
+      {/* <span>{siteCountPlural(filteredUsers.length)}</span> */}
+      {uncategoryTag.map((tag) => {
+        const tagObject = Tags[tag];
+        const id = `showcase_checkbox_id_${tag}`;
 
-          return (
-            <li key={i} className={styles.checkboxListItem}>
-                <ShowcaseTagSelect
-                  tag={tag}
-                  id={id}
-                  label={label}
-                  icon={
-                    tag === "featured" ? (
-                      <FavoriteIcon svgClass={styles.svgIconFavoriteXs} />
-                    ) : (
-                      <span
-                        style={{
-                          width: 10,
-                          height: 10,
-                          borderRadius: "50%",
-                          marginLeft: 8,
-                        }}
-                      />
-                    )
-                  }
-                />
-            </li>
-          );
-        })}
-      </ul>
+        return (
+          <div key={id} className={styles.checkboxListItem}>
+            <ShowcaseTagSelect tag={tag} label={tagObject.label} />
+          </div>
+        );
+      })}
+      <div>Language</div>
+      {languageTag.map((tag) => {
+        const tagObject = Tags[tag];
+        const id = `showcase_checkbox_id_${tag}`;
+
+        return (
+          <div key={id} className={styles.checkboxListItem}>
+            <ShowcaseTagSelect tag={tag} label={tagObject.label} />
+          </div>
+        );
+      })}
+      <div>Framework</div>
+      {frameworkTag.map((tag) => {
+        const tagObject = Tags[tag];
+        const id = `showcase_checkbox_id_${tag}`;
+
+        return (
+          <div key={id} className={styles.checkboxListItem}>
+            <ShowcaseTagSelect tag={tag} label={tagObject.label} />
+          </div>
+        );
+      })}
+      <div>Services</div>
+      {servicesTag.map((tag) => {
+        const tagObject = Tags[tag];
+        const id = `showcase_checkbox_id_${tag}`;
+
+        return (
+          <div key={id} className={styles.checkboxListItem}>
+            <ShowcaseTagSelect tag={tag} label={tagObject.label} />
+          </div>
+        );
+      })}
+      <div>Database</div>
+      {databaseTag.map((tag) => {
+        const tagObject = Tags[tag];
+        const id = `showcase_checkbox_id_${tag}`;
+
+        return (
+          <div key={id} className={styles.checkboxListItem}>
+            <ShowcaseTagSelect tag={tag} label={tagObject.label} />
+          </div>
+        );
+      })}
+      <div>Infrastructure as Code</div>
+      {infrastructureAsCodeTag.map((tag) => {
+        const tagObject = Tags[tag];
+        const id = `showcase_checkbox_id_${tag}`;
+
+        return (
+          <div key={id} className={styles.checkboxListItem}>
+            <ShowcaseTagSelect tag={tag} label={tagObject.label} />
+          </div>
+        );
+      })}
+      <div>Other</div>
+      {otherTag.map((tag) => {
+        const tagObject = Tags[tag];
+        const id = `showcase_checkbox_id_${tag}`;
+
+        return (
+          <div key={id} className={styles.checkboxListItem}>
+            <ShowcaseTagSelect tag={tag} label={tagObject.label} />
+          </div>
+        );
+      })}
     </div>
   );
 }
 
 function ShowcaseFilterAndCard() {
   return (
-    <section className={styles.filterAndCard}>
-      <div
-        className={clsx(
-          "container margin-top--l margin-bottom--lg",
-          styles.filter
-        )}
-      >
+    <div className={styles.filterAndCard}>
+      <div style={{ maxWidth: "256px" }}>
         <ShowcaseFilters />
       </div>
       <div
@@ -209,7 +275,7 @@ function ShowcaseFilterAndCard() {
       >
         <ShowcaseCards />
       </div>
-    </section>
+    </div>
   );
 }
 

@@ -134,7 +134,7 @@
     ]
   },
   {
-    "title": "React Web App with Python API and MongoDB",
+    "title": "React Web App with Python API and MongoDB - Terraform",
     "description": "A blueprint for getting a React.js web app with Python (FastAPI) API and a MongoDB API in Cosmos database onto Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Terraform) to get up and running quickly. This architecture is for hosting web apps and APIs without worrying about the infrastructure.",
     "preview": "./templates/images/todo-python-terraform.png",
     "website": "https://github.com/Azure/azure-dev",
@@ -156,7 +156,7 @@
     ]
   },
   {
-    "title": "React Web App with Node.js API and MongoDB",
+    "title": "React Web App with Node.js API and MongoDB - Terraform",
     "description": "A blueprint for getting a React web app with a Node.js API and a MongoDB database on Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Terraform) to get up and running quickly. This architecture is for hosting web apps and APIs without worrying about the infrastructure.",
     "preview": "./templates/images/todo-nodejs-mongo-terraform.png",
     "website": "https://github.com/Azure/azure-dev",
@@ -171,7 +171,6 @@
       "mongodb",
       "monitor",
       "keyvault",
-      "mongodb",
       "reactjs",
       "terraform",
       "appservice"
@@ -510,7 +509,7 @@
     "website": "https://github.com/Azure/azure-dev",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/pubsub-dapr-csharp-servicebus",
-    "tags": ["bicep", "dotnetCsharp", "aca", "dapr", "servicebus", "aca"]
+    "tags": ["bicep", "dotnetCsharp", "aca", "dapr", "servicebus"]
   },
   {
     "title": "Microservices App - Dapr PubSub Python ACA ServiceBus",
@@ -519,7 +518,7 @@
     "website": "https://github.com/Azure/azure-dev",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/pubsub-dapr-python-servicebus",
-    "tags": ["bicep", "python", "aca", "dapr", "servicebus", "aca"]
+    "tags": ["bicep", "python", "aca", "dapr", "servicebus"]
   },
   {
     "title": "Microservices App - Dapr PubSub Node.js ACA ServiceBus",
@@ -534,8 +533,8 @@
       "nodejs",
       "aca",
       "dapr",
-      "servicebus",
-      "aca"
+      "servicebus"
+      
     ]
   },
   {

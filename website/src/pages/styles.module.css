@@ -94,11 +94,11 @@
 }
 
 .filter {
-  flex: 2;
+  flex: 1;
 }
 
 .card {
-  flex: 8;
+  flex: 9;
   min-width: 15rem;
 }
 

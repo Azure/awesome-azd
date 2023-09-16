@@ -36,16 +36,17 @@ import {
   FontWeights,
   Popup,
   Separator,
-  IPivotStyles
+  IPivotStyles,
 } from "@fluentui/react";
 import { title } from "process";
 
-const TagComp = React.forwardRef<HTMLLIElement, Tag>(
-  ({ label, description }) => (
+ const TagComp = React.forwardRef<HTMLButtonElement, Tag>(
+   ({ label, description }, ref) => (
     <Button
       appearance="outline"
       size="small"
       title={description}
+      ref={ref}
       style={{
         height: "20px",
         alignContent: "center",
@@ -61,8 +62,8 @@ const TagComp = React.forwardRef<HTMLLIElement, Tag>(
     >
       {label}
     </Button>
-  )
-);
+   )
+ );
 
 function ShowcaseCardTag({
   tags,
@@ -85,11 +86,11 @@ function ShowcaseCardTag({
     if (length > 8) {
       return (
         <>
-          {tagObjectsSorted.slice(0, 8).map((tagObject, index) => {
+          {tagObjectsSorted.slice(0, 8).map((tagObject) => {
             const id = `showcase_card_tag_${tagObject.tag}`;
             return (
-              <div>
-                <TagComp key={index} id={id} {...tagObject} />
+              <div key={id}>
+                <TagComp id={id} {...tagObject} />
               </div>
             );
           })}
@@ -116,12 +117,11 @@ function ShowcaseCardTag({
     } else {
       return (
         <>
-          {tagObjectsSorted.map((tagObject, index) => {
+          {tagObjectsSorted.map((tagObject) => {
             const id = `showcase_card_tag_${tagObject.tag}`;
-
             return (
-              <div>
-                <TagComp key={index} id={id} {...tagObject} />
+              <div key={id}>
+                <TagComp id={id} {...tagObject} />
               </div>
             );
           })}
@@ -131,12 +131,11 @@ function ShowcaseCardTag({
   } else {
     return (
       <>
-        {tagObjectsSorted.map((tagObject, index) => {
+        {tagObjectsSorted.map((tagObject) => {
           const id = `showcase_card_tag_${tagObject.tag}`;
-
           return (
-            <div>
-              <TagComp key={index} id={id} {...tagObject} />
+            <div key={id}>
+              <TagComp id={id} {...tagObject} />
             </div>
           );
         })}
@@ -155,6 +154,7 @@ function ShowcaseMultipleWebsites(
   if (i != length - 1) {
     return (
       <FluentUILink
+      key={i}
         className={styles.cardAuthor}
         href={websiteLink}
         target="_blank"
@@ -165,6 +165,7 @@ function ShowcaseMultipleWebsites(
   } else {
     return (
       <FluentUILink
+        key={i}
         className={styles.cardAuthor}
         href={websiteLink}
         target="_blank"
@@ -418,7 +419,7 @@ function ShowcaseCard({ user }: { user: User }) {
         >
           <div className={styles.cardTextBy}>by</div>
           <div style={{ fontSize: "12px" }}>
-            <ShowcaseMultipleAuthors user={user} />
+            <ShowcaseMultipleAuthors key={user.title} user={user} />
           </div>
         </div>
         <div
@@ -458,7 +459,7 @@ function ShowcaseCard({ user }: { user: User }) {
             }}
             onClick={openPanel}
           >
-            <ShowcaseCardTag tags={user.tags} moreTag={true} />
+            <ShowcaseCardTag key={user.title} tags={user.tags} moreTag={true} />
           </div>
         </div>
       </div>
@@ -657,8 +658,8 @@ function ShowcaseCardPanel({ user }: { user: User }) {
         }}
       >
         <div className={styles.cardTextBy}>by</div>
-        <div style={{ fontSize: "14px",fontWeight:'400' }}>
-          <ShowcaseMultipleAuthors user={user} />
+        <div style={{ fontSize: "14px", fontWeight: "400" }}>
+          <ShowcaseMultipleAuthors key={user.title} user={user} />
         </div>
         <FluentUILink
           href={user.website}
@@ -699,12 +700,16 @@ function ShowcaseCardPanel({ user }: { user: User }) {
           overflow: "hidden",
           columnGap: "5px",
           flexFlow: "wrap",
-          padding:'5px 0'
+          padding: "5px 0",
         }}
       >
-        <ShowcaseCardTag tags={user.tags} moreTag={false} />
+        <ShowcaseCardTag key={user.title} tags={user.tags} moreTag={false} />
       </div>
-      <Pivot aria-label="Template Detials and Legal" styles={pivotStyles} style={{paddingTop:'20px'}}>
+      <Pivot
+        aria-label="Template Detials and Legal"
+        styles={pivotStyles}
+        style={{ paddingTop: "20px" }}
+      >
         <PivotItem
           style={{
             color: "#242424",

@@ -212,7 +212,14 @@ function ShowcaseFilters() {
       collapsible
     >
       <div style={{ paddingBottom: "7px" }}>
-        <div style={{ color: "#242424", fontSize: "20px", fontWeight: "500" }}>
+        <div
+          style={{
+            color: "#242424",
+            fontSize: "20px",
+            fontWeight: "500",
+            paddingBottom: "15px",
+          }}
+        >
           Filter by
         </div>
         {uncategoryTag.map((tag) => {

@@ -88,6 +88,14 @@ function ShowcaseCardTag({
         <>
           {tagObjectsSorted.slice(0, 8).map((tagObject) => {
             const id = `showcase_card_tag_${tagObject.tag}`;
+            if (
+              tagObject.tag == "msft" ||
+              tagObject.tag == "community" ||
+              tagObject.tag == "new" ||
+              tagObject.tag == "popular"
+            ) {
+              return;
+            }
             return (
               <div key={id}>
                 <TagComp id={id} {...tagObject} />
@@ -119,6 +127,14 @@ function ShowcaseCardTag({
         <>
           {tagObjectsSorted.map((tagObject) => {
             const id = `showcase_card_tag_${tagObject.tag}`;
+            if (
+              tagObject.tag == "msft" ||
+              tagObject.tag == "community" ||
+              tagObject.tag == "new" ||
+              tagObject.tag == "popular"
+            ) {
+              return;
+            }
             return (
               <div key={id}>
                 <TagComp id={id} {...tagObject} />
@@ -133,6 +149,14 @@ function ShowcaseCardTag({
       <>
         {tagObjectsSorted.map((tagObject) => {
           const id = `showcase_card_tag_${tagObject.tag}`;
+          if (
+            tagObject.tag == "msft" ||
+            tagObject.tag == "community" ||
+            tagObject.tag == "new" ||
+            tagObject.tag == "popular"
+          ) {
+            return;
+          }
           return (
             <div key={id}>
               <TagComp id={id} {...tagObject} />

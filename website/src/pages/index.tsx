@@ -20,7 +20,18 @@ import ShowcaseCard, {
   ShowcaseContributionCard,
 } from "../components/gallery/ShowcaseCard";
 import ShowcaseTooltip from "../components/gallery/ShowcaseTooltip";
-import { FluentProvider, teamsLightTheme } from "@fluentui/react-components";
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import {
+  FluentProvider,
+  teamsLightTheme,
+  Accordion,
+  AccordionHeader,
+  AccordionItem,
+  AccordionPanel,
+  AccordionToggleEventHandler,
+  makeStyles,
+} from "@fluentui/react-components";
 
 import { Tags, type User, type TagType } from "../data/tags";
 
@@ -177,11 +188,159 @@ function ShowcaseFilters() {
     const tagObject = Tags[tag];
     return tagObject.type === "Other";
   });
+  const [openItems, setOpenItems] = React.useState([
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+  ]);
+  const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
+    setOpenItems(data.openItems);
+  };
+
+  const chevronImg = (
+    <img src={useBaseUrl("/img/leftChevron.svg")} height={20} />
+  );
+
   return (
-    <div>
-      <div>Filter by</div>
-      {/* <span>{siteCountPlural(filteredUsers.length)}</span> */}
-      {uncategoryTag.map((tag) => {
+    <Accordion
+      openItems={openItems}
+      onToggle={handleToggle}
+      multiple
+      collapsible
+    >
+      <div style={{ paddingBottom: "7px" }}>
+        <div style={{ color: "#242424", fontSize: "20px", fontWeight: "500" }}>
+          Filter by
+        </div>
+        {uncategoryTag.map((tag) => {
+          const tagObject = Tags[tag];
+          const id = `showcase_checkbox_id_${tag}`;
+
+          return (
+            <div key={id} className={styles.checkboxListItem}>
+              <ShowcaseTagSelect tag={tag} label={tagObject.label} />
+            </div>
+          );
+        })}
+      </div>
+      <AccordionItem
+        value="1"
+        style={{ borderTop: "1px solid #D1D1D1", paddingBottom: "7px" }}
+      >
+        <AccordionHeader expandIconPosition="end" expandIcon={chevronImg}>
+          <div
+            style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
+          >
+            Language
+          </div>
+        </AccordionHeader>
+        <AccordionPanel>
+          <ShowcaseFilterViewAll tags={languageTag} number={"1"} />
+        </AccordionPanel>
+      </AccordionItem>
+
+      <AccordionItem
+        value="2"
+        style={{ borderTop: "1px solid #D1D1D1", paddingBottom: "7px" }}
+      >
+        <AccordionHeader expandIconPosition="end" expandIcon={chevronImg}>
+          <div
+            style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
+          >
+            Framework
+          </div>
+        </AccordionHeader>
+        <AccordionPanel>
+          <ShowcaseFilterViewAll tags={frameworkTag} number={"2"} />
+        </AccordionPanel>
+      </AccordionItem>
+
+      <AccordionItem
+        value="3"
+        style={{ borderTop: "1px solid #D1D1D1", paddingBottom: "7px" }}
+      >
+        <AccordionHeader expandIconPosition="end" expandIcon={chevronImg}>
+          <div
+            style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
+          >
+            Services
+          </div>
+        </AccordionHeader>
+        <AccordionPanel>
+          <ShowcaseFilterViewAll tags={servicesTag} number={"3"} />
+        </AccordionPanel>
+      </AccordionItem>
+
+      <AccordionItem
+        value="4"
+        style={{ borderTop: "1px solid #D1D1D1", paddingBottom: "7px" }}
+      >
+        <AccordionHeader expandIconPosition="end" expandIcon={chevronImg}>
+          <div
+            style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
+          >
+            Database
+          </div>
+        </AccordionHeader>
+        <AccordionPanel>
+          <ShowcaseFilterViewAll tags={databaseTag} number={"4"} />
+        </AccordionPanel>
+      </AccordionItem>
+
+      <AccordionItem
+        value="5"
+        style={{ borderTop: "1px solid #D1D1D1", paddingBottom: "7px" }}
+      >
+        <AccordionHeader expandIconPosition="end" expandIcon={chevronImg}>
+          <div
+            style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
+          >
+            Infrastructure as Code
+          </div>
+        </AccordionHeader>
+        <AccordionPanel>
+          <ShowcaseFilterViewAll tags={infrastructureAsCodeTag} number={"5"} />
+        </AccordionPanel>
+      </AccordionItem>
+
+      <AccordionItem value="6" style={{ borderTop: "1px solid #D1D1D1" }}>
+        <AccordionHeader expandIconPosition="end" expandIcon={chevronImg}>
+          <div
+            style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
+          >
+            Other
+          </div>
+        </AccordionHeader>
+        <AccordionPanel>
+          <ShowcaseFilterViewAll tags={otherTag} number={"6"} />
+        </AccordionPanel>
+      </AccordionItem>
+    </Accordion>
+
+    /* <span>{siteCountPlural(filteredUsers.length)}</span> */
+  );
+}
+
+function ShowcaseFilterViewAll({
+  tags,
+  number,
+}: {
+  tags: TagType[];
+  number: string;
+}) {
+  const [openItems, setOpenItems] = React.useState(["0"]);
+  const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
+    setOpenItems(data.openItems);
+  };
+  const chevronImgSmall = (
+    <img src={useBaseUrl("/img/leftChevron.svg")} height={13} />
+  );
+  return (
+    <>
+      {tags.slice(0, 6).map((tag) => {
         const tagObject = Tags[tag];
         const id = `showcase_checkbox_id_${tag}`;
 
@@ -191,88 +350,54 @@ function ShowcaseFilters() {
           </div>
         );
       })}
-      <div>Language</div>
-      {languageTag.map((tag) => {
-        const tagObject = Tags[tag];
-        const id = `showcase_checkbox_id_${tag}`;
+      {tags.length > 5 ? (
+        <Accordion
+          openItems={openItems}
+          onToggle={handleToggle}
+          multiple
+          collapsible
+        >
+          <AccordionItem value={number + "2"} style={{ padding: "0px" }}>
+            <AccordionHeader
+              inline={true}
+              expandIconPosition="end"
+              expandIcon={chevronImgSmall}
+            >
+              <div
+                style={{
+                  color: "#6656d1",
+                  fontSize: "12px",
+                }}
+              >
+                View All
+              </div>
+            </AccordionHeader>
+            <AccordionPanel style={{ margin: "0px" }}>
+              {tags.slice(6, tags.length).map((tag) => {
+                const tagObject = Tags[tag];
+                const id = `showcase_checkbox_id_${tag}`;
 
-        return (
-          <div key={id} className={styles.checkboxListItem}>
-            <ShowcaseTagSelect tag={tag} label={tagObject.label} />
-          </div>
-        );
-      })}
-      <div>Framework</div>
-      {frameworkTag.map((tag) => {
-        const tagObject = Tags[tag];
-        const id = `showcase_checkbox_id_${tag}`;
-
-        return (
-          <div key={id} className={styles.checkboxListItem}>
-            <ShowcaseTagSelect tag={tag} label={tagObject.label} />
-          </div>
-        );
-      })}
-      <div>Services</div>
-      {servicesTag.map((tag) => {
-        const tagObject = Tags[tag];
-        const id = `showcase_checkbox_id_${tag}`;
-
-        return (
-          <div key={id} className={styles.checkboxListItem}>
-            <ShowcaseTagSelect tag={tag} label={tagObject.label} />
-          </div>
-        );
-      })}
-      <div>Database</div>
-      {databaseTag.map((tag) => {
-        const tagObject = Tags[tag];
-        const id = `showcase_checkbox_id_${tag}`;
-
-        return (
-          <div key={id} className={styles.checkboxListItem}>
-            <ShowcaseTagSelect tag={tag} label={tagObject.label} />
-          </div>
-        );
-      })}
-      <div>Infrastructure as Code</div>
-      {infrastructureAsCodeTag.map((tag) => {
-        const tagObject = Tags[tag];
-        const id = `showcase_checkbox_id_${tag}`;
-
-        return (
-          <div key={id} className={styles.checkboxListItem}>
-            <ShowcaseTagSelect tag={tag} label={tagObject.label} />
-          </div>
-        );
-      })}
-      <div>Other</div>
-      {otherTag.map((tag) => {
-        const tagObject = Tags[tag];
-        const id = `showcase_checkbox_id_${tag}`;
-
-        return (
-          <div key={id} className={styles.checkboxListItem}>
-            <ShowcaseTagSelect tag={tag} label={tagObject.label} />
-          </div>
-        );
-      })}
-    </div>
+                return (
+                  <div key={id} className={styles.checkboxListItem}>
+                    <ShowcaseTagSelect tag={tag} label={tagObject.label} />
+                  </div>
+                );
+              })}
+            </AccordionPanel>
+          </AccordionItem>
+        </Accordion>
+      ) : null}
+    </>
   );
 }
 
 function ShowcaseFilterAndCard() {
   return (
     <div className={styles.filterAndCard}>
-      <div style={{ maxWidth: "256px" }}>
+      <div className={styles.filter}>
         <ShowcaseFilters />
       </div>
-      <div
-        className={clsx(
-          "container margin-top--l margin-bottom--lg",
-          styles.card
-        )}
-      >
+      <div className={styles.card}>
         <ShowcaseCards />
       </div>
     </div>
@@ -329,34 +454,27 @@ function ShowcaseCards() {
 
   if (filteredUsers.length === 0) {
     return (
-      <section className="margin-top--lg margin-bottom--xl">
-        <div className="container padding-vert--md text--center">
-          <h2>
-            <Translate id="showcase.usersList.noResult">
-              Be the first to add an example project!
-            </Translate>
-          </h2>
-          <SearchBar />
-        </div>
-      </section>
+      <div>
+        <h2>
+          <Translate id="showcase.usersList.noResult">
+            Be the first to add an example project!
+          </Translate>
+        </h2>
+        <SearchBar />
+      </div>
     );
   }
 
   return (
-    <section className="margin-top--lg margin-bottom--xl">
+    <section>
       {filteredUsers.length === sortedUsers.length ? (
         <>
           <div className={styles.showcaseFavorite}>
-            <div className="container">
-              <div
-                className={clsx(
-                  "margin-bottom--md",
-                  styles.showcaseFavoriteHeader
-                )}
-              >
+            <div>
+              <div className={styles.showcaseFavoriteHeader}>
                 <SearchBar />
               </div>
-              <ul className={clsx("container", styles.showcaseList)}>
+              <ul className={styles.showcaseList}>
                 {featuredAndOtherUsers.map((user, index) => (
                   <React.Fragment key={user.title}>
                     <ShowcaseCard user={user} />
@@ -370,10 +488,8 @@ function ShowcaseCards() {
           </div>
         </>
       ) : (
-        <div className="container">
-          <div
-            className={clsx("margin-bottom--md", styles.showcaseFavoriteHeader)}
-          >
+        <div>
+          <div className={styles.showcaseFavoriteHeader}>
             <SearchBar />
           </div>
           <ul className={styles.showcaseList}>
@@ -396,7 +512,7 @@ export default function Showcase(): JSX.Element {
   return (
     <FluentProvider theme={teamsLightTheme}>
       <Layout title={TITLE} description={DESCRIPTION}>
-        <main className="margin-vert--lg">
+        <main>
           <ShowcaseTemplateSearch />
           <ShowcaseFilterAndCard />
         </main>

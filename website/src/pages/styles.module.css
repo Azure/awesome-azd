@@ -94,15 +94,18 @@
 }
 
 .filter {
-  flex: 1;
+  flex: 2;
+  margin: 0px 25px;
+  max-width: 256px ;
 }
 
 .card {
-  flex: 9;
+  flex: 8;
   min-width: 15rem;
+  margin: 0px 25px;
 }
 
-@media screen and (max-width: 996px) {
+@media screen and (max-width: 600px) {
   .filterAndCard {
     flex-direction: column;
   }

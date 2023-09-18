@@ -66,32 +66,6 @@ export default function ShowcaseTagSelect(
   }, [tag, location, history]);
   return (
     <>
-      {/* <input
-          type="checkbox"
-          id={id}
-          className="screen-reader-only"
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              toggleTag();
-            }
-          }}
-          onFocus={(e) => {
-            if (e.relatedTarget) {
-              e.target.nextElementSibling?.dispatchEvent(
-                new KeyboardEvent('focus'),
-              );
-            }
-          }}
-          onBlur={(e) => {
-            e.target.nextElementSibling?.dispatchEvent(new KeyboardEvent('blur'));
-          }}
-          onChange={toggleTag}
-          checked={selected}
-          {...rest}
-        />
-        <label ref={ref} htmlFor={id} className={styles.checkboxLabel}>
-          {label}
-        </label> */}
       <Checkbox
         // id={id}
         onKeyDown={(e) => {

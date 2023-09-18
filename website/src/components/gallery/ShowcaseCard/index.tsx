@@ -40,8 +40,8 @@ import {
 } from "@fluentui/react";
 import { title } from "process";
 
- const TagComp = React.forwardRef<HTMLButtonElement, Tag>(
-   ({ label, description }, ref) => (
+const TagComp = React.forwardRef<HTMLButtonElement, Tag>(
+  ({ label, description }, ref) => (
     <Button
       appearance="outline"
       size="small"
@@ -62,8 +62,8 @@ import { title } from "process";
     >
       {label}
     </Button>
-   )
- );
+  )
+);
 
 function ShowcaseCardTag({
   tags,
@@ -178,7 +178,7 @@ function ShowcaseMultipleWebsites(
   if (i != length - 1) {
     return (
       <FluentUILink
-      key={i}
+        key={i}
         className={styles.cardAuthor}
         href={websiteLink}
         target="_blank"
@@ -245,7 +245,7 @@ const useStyles = makeStyles({
     height: "368px",
     maxWidth: "100%",
     maxHeight: "100%",
-    minWidth:'300px',
+    minWidth: "300px",
   },
   text: {
     color: "#606060",
@@ -293,7 +293,7 @@ const useStyles = makeStyles({
 
 function ShowcaseCard({ user }: { user: User }) {
   const styles = useStyles();
-  const author = user.author;
+  const tags = user.tags;
   const source = user.source;
   const star = useBaseUrl("/img/sparkle.svg");
   const fire = useBaseUrl("/img/fire.svg");
@@ -306,7 +306,7 @@ function ShowcaseCard({ user }: { user: User }) {
   const [isOpen, { setTrue: openPanel, setFalse: dismissPanel }] =
     useBoolean(false);
   initializeIcons();
-  if (author.includes("Azure Dev") || author.includes("Azure Content Team")) {
+  if (tags.includes("msft")) {
     headerLogo = useBaseUrl("/img/microsoft.svg");
     headerText = "MICROSOFT AUTHORED";
   }
@@ -322,31 +322,44 @@ function ShowcaseCard({ user }: { user: User }) {
               flex: "8",
             }}
           >
-            <img src={headerLogo} height={16} style={{ margin: "5px 0px",fontWeight:'550'}} />
+            <img
+              src={headerLogo}
+              height={16}
+              style={{ margin: "5px 0px", fontWeight: "550" }}
+            />
             <div
               className={styles.text}
               style={{ color: "#606060", paddingLeft: "3px" }}
             >
               {headerText}
             </div>
-            <img
-              src={star}
-              alt="Star"
-              height={16}
-              style={{ paddingLeft: "10px" }}
-            />
-            <div className={styles.text} style={{ color: "#11910D" }}>
-              NEW
-            </div>
-            <img
-              src={fire}
-              alt="Fire"
-              height={16}
-              style={{ paddingLeft: "10px" }}
-            />
-            <div className={styles.text} style={{ color: "#F7630C" }}>
-              POPULAR
-            </div>
+            {tags.includes("new") ? (
+              <>
+                <img
+                  src={star}
+                  alt="Star"
+                  height={16}
+                  style={{ paddingLeft: "10px" }}
+                />
+                <div className={styles.text} style={{ color: "#11910D" }}>
+                  NEW
+                </div>
+              </>
+            ) : null}
+
+            {tags.includes("popular") ? (
+              <>
+                <img
+                  src={fire}
+                  alt="Fire"
+                  height={16}
+                  style={{ paddingLeft: "10px" }}
+                />
+                <div className={styles.text} style={{ color: "#F7630C" }}>
+                  POPULAR
+                </div>
+              </>
+            ) : null}
           </div>
           {
             // This custom navigation still renders the close button (defaultRender).
@@ -386,33 +399,41 @@ function ShowcaseCard({ user }: { user: User }) {
             >
               {headerText}
             </div>
-            <img src={star} alt="Star" height={16} />
-            <div
-              className={styles.text}
-              style={{
-                color: "#11910D",
-                fontWeight: "600",
-              }}
-            >
-              NEW
-            </div>
-            <img
-              src={fire}
-              alt="Fire"
-              height={16}
-              style={{
-                paddingLeft: "6px",
-              }}
-            />
-            <div
-              className={styles.text}
-              style={{
-                color: "#F7630C",
-                fontWeight: "600",
-              }}
-            >
-              POPULAR
-            </div>
+            {tags.includes("new") ? (
+              <>
+                <img src={star} alt="Star" height={16} />
+                <div
+                  className={styles.text}
+                  style={{
+                    color: "#11910D",
+                    fontWeight: "600",
+                  }}
+                >
+                  NEW
+                </div>
+              </>
+            ) : null}
+            {tags.includes("popular") ? (
+              <>
+                <img
+                  src={fire}
+                  alt="Fire"
+                  height={16}
+                  style={{
+                    paddingLeft: "6px",
+                  }}
+                />
+                <div
+                  className={styles.text}
+                  style={{
+                    color: "#F7630C",
+                    fontWeight: "600",
+                  }}
+                >
+                  POPULAR
+                </div>
+              </>
+            ) : null}
           </div>
         }
       />
@@ -572,8 +593,8 @@ export function ShowcaseContributionCard(): React.ReactElement {
           color: "#242424",
           fontSize: "24px",
           fontFamily: '"Segoe UI-Semibold", Helvetica',
-            fontWeight: "550",
-            height:'0px',
+          fontWeight: "550",
+          height: "0px",
         }}
       >
         See your template here!
@@ -611,7 +632,7 @@ export function ShowcaseContributionCard(): React.ReactElement {
             backgroundColor: "#6656d1",
             height: "32px",
             whiteSpace: "nowrap",
-              fontWeight: "550",
+            fontWeight: "550",
           }}
         >
           Submit a template
@@ -626,8 +647,8 @@ export function ShowcaseContributionCard(): React.ReactElement {
             fontSize: "14px",
             height: "32px",
             whiteSpace: "nowrap",
-              fontWeight: "550",
-              paddingLeft:'10px'
+            fontWeight: "550",
+            paddingLeft: "10px",
           }}
         >
           Request a template
@@ -1157,7 +1178,7 @@ function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
                     fontSize: "12px",
                     fontFamily: '"Segoe UI-Regular", Helvetica',
                     fontWeight: "400",
-                    padding:'0 6px'
+                    padding: "0 6px",
                   }}
                 >
                   •

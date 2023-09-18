@@ -48,7 +48,14 @@
     "website": "https://rockpaperorleans.net/",
     "author": "Brady Gaster",
     "source": "https://github.com/bradygaster/RockPaperOrleans",
-    "tags": ["featured", "dotnetCsharp", "cosmosdb", "aca", "bicep","community"]
+    "tags": [
+      "featured",
+      "dotnetCsharp",
+      "cosmosdb",
+      "aca",
+      "bicep",
+      "community"
+    ]
   },
   {
     "title": "Scalable Django on Azure App Service",
@@ -314,7 +321,8 @@
       "monitor",
       "mongodb",
       "reactjs",
-      "msft"
+      "msft",
+      "popular"
     ]
   },
   {
@@ -398,7 +406,8 @@
       "monitor",
       "fastapi",
       "ai",
-      "msft"
+      "msft",
+      "new"
     ]
   },
   {
@@ -421,7 +430,9 @@
       "chatgpt",
       "rediscache",
       "ai",
-      "msft"
+      "msft",
+      "new",
+      "popular"
     ]
   },
   {
@@ -551,7 +562,15 @@
     "website": "https://github.com/Azure/azure-dev",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/pubsub-dapr-nodejs-servicebus",
-    "tags": ["bicep", "javascript", "nodejs", "aca", "dapr", "servicebus", "msft"]
+    "tags": [
+      "bicep",
+      "javascript",
+      "nodejs",
+      "aca",
+      "dapr",
+      "servicebus",
+      "msft"
+    ]
   },
   {
     "title": "Microservices App - Dapr Bindings Cron C# ACA PostgreSQL",
@@ -578,7 +597,14 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/bindings-dapr-nodejs-cron-postgres",
-    "tags": ["dapr", "nodejs", "azuredb-postgreSQL", "javascript", "aca", "msft"]
+    "tags": [
+      "dapr",
+      "nodejs",
+      "azuredb-postgreSQL",
+      "javascript",
+      "aca",
+      "msft"
+    ]
   },
   {
     "title": "Microservices App - Dapr Service Invoke Node.js ACA",
@@ -798,7 +824,14 @@
     "website": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/pamelafox/staticmaps-function",
-    "tags": ["python", "functions", "fastapi", "monitor", "azurecdn", "community"]
+    "tags": [
+      "python",
+      "functions",
+      "fastapi",
+      "monitor",
+      "azurecdn",
+      "community"
+    ]
   },
   {
     "title": "Jupyter Notebooks Web App on Azure Container Apps",
@@ -807,7 +840,15 @@
     "website": "https://github.com/savannahostrowski",
     "author": "Savannah Ostrowski",
     "source": "https://github.com/savannahostrowski/jupyter-mercury-aca",
-    "tags": ["python", "bicep", "webapps", "aca", "jupyter", "datascience", "community"]
+    "tags": [
+      "python",
+      "bicep",
+      "webapps",
+      "aca",
+      "jupyter",
+      "datascience",
+      "community"
+    ]
   },
   {
     "title": "Python (Django) Web App with PostgreSQL and Key Vault",
@@ -864,7 +905,15 @@
     "website": "https://github.com/sabbour/",
     "author": "Ahmed Sabbour",
     "source": "https://github.com/sabbour/aks-app-template",
-    "tags": ["bicep", "aks", "kubernetes", "keda", "grafana", "prometheus", "community"]
+    "tags": [
+      "bicep",
+      "aks",
+      "kubernetes",
+      "keda",
+      "grafana",
+      "prometheus",
+      "community"
+    ]
   },
   {
     "title": "React Component Toolkit with ChatGPT and OpenAI ",

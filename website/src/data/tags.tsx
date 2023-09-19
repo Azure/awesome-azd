@@ -153,7 +153,6 @@ export const Tags: { [type in TagType]: Tag } = {
   // Use for validated templates of high-quality
   featured: {
     label: "Featured",
-    label: "Featured",
     description:
       "This tag is used for admin-curated templates that represent high-quality (community) or official (Microsoft) azd templates.",
   },

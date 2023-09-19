@@ -22,6 +22,10 @@ import {
   CardPreview,
   Link as FluentUILink,
   ToggleButton,
+  Input,
+  Popover,
+  PopoverTrigger,
+  PopoverSurface,
 } from "@fluentui/react-components";
 import { useBoolean } from "@fluentui/react-hooks";
 import {
@@ -50,9 +54,8 @@ const TagComp = React.forwardRef<HTMLLIElement, Tag>(
       style={{
         alignContent: "center",
         borderColor: "#E0E0E0",
-        fontSize: "10px",
         color: "#616161",
-        margin: "2px",
+        fontSize: "10px",
       }}
     >
       {label}
@@ -74,20 +77,24 @@ function ShowcaseCardTag({
     TagList.indexOf(tagObject.tag)
   );
 
+  const checkAzureTag = tagObjectsSorted.filter((tag) =>
+    tag.label.includes("Azure")
+  );
+
   const length = tagObjectsSorted.length;
-  const rest = length - 8;
+  let number = 11;
+  if (checkAzureTag.length > 5) {
+    number = 9;
+  }
+  const rest = length - number;
 
   if (moreTag) {
-    if (length > 8) {
+    if (length > number) {
       return (
         <>
-          {tagObjectsSorted.slice(0, 8).map((tagObject, index) => {
+          {tagObjectsSorted.slice(0, number).map((tagObject, index) => {
             const id = `showcase_card_tag_${tagObject.tag}`;
-            return (
-              <div>
-                <TagComp key={index} id={id} {...tagObject} />
-              </div>
-            );
+            return <TagComp key={index} id={id} {...tagObject} />;
           })}
           <Badge
             appearance="outline"
@@ -95,9 +102,8 @@ function ShowcaseCardTag({
             style={{
               alignContent: "center",
               borderColor: "#E0E0E0",
-              fontSize: "10px",
               color: "#616161",
-              margin: "2px 0",
+              fontSize: "10px",
             }}
           >
             + {rest} more
@@ -110,11 +116,7 @@ function ShowcaseCardTag({
           {tagObjectsSorted.map((tagObject, index) => {
             const id = `showcase_card_tag_${tagObject.tag}`;
 
-            return (
-              <div>
-                <TagComp key={index} id={id} {...tagObject} />
-              </div>
-            );
+            return <TagComp key={index} id={id} {...tagObject} />;
           })}
         </>
       );
@@ -126,8 +128,23 @@ function ShowcaseCardTag({
           const id = `showcase_card_tag_${tagObject.tag}`;
 
           return (
-            <div>
-              <TagComp key={index} id={id} {...tagObject} />
+            <div
+              key={index}
+              id={id}
+              style={{
+                height: "20px",
+                alignContent: "center",
+                border: "1px solid #E0E0E0",
+                padding: "0 5px",
+                marginTop: "3px",
+                fontSize: "10px",
+                minWidth: "0px",
+                color: "#616161",
+                fontWeight: "500",
+                borderRadius: "100px",
+              }}
+            >
+              {tagObject.label}
             </div>
           );
         })}
@@ -208,7 +225,7 @@ const useStyles = makeStyles({
   card: {
     ...shorthands.margin("auto"),
     width: "350px",
-    height: "368px",
+    height: "353px",
     maxWidth: "100%",
     maxHeight: "100%",
     minWidth: "300px",
@@ -321,8 +338,9 @@ function ShowcaseCard({ user }: { user: User }) {
       key={user.title}
       className={styles.card}
       style={{
-        background: "linear-gradient(#FAFAFA 0 0)bottom/100% 45px no-repeat",
+        background: "linear-gradient(#FAFAFA 0 0)bottom/100% 52px no-repeat",
         borderRadius: "8px",
+        padding: "16px",
       }}
     >
       <CardHeader
@@ -437,7 +455,7 @@ function ShowcaseCard({ user }: { user: User }) {
             style={{
               display: "flex",
               overflow: "hidden",
-              columnGap: "5px",
+              gap: "4px",
               flexFlow: "wrap",
             }}
             onClick={openPanel}
@@ -449,42 +467,41 @@ function ShowcaseCard({ user }: { user: User }) {
       <CardPreview
         style={{ borderTop: "solid #F0F0F0", backgroundColor: "#FAFAFA" }}
       ></CardPreview>
-      <CardFooter
-      // style={{ display: "flex", justifyContent:'center',alignItems: "center", width: "100%" }}
-      >
-        <Button
-          style={{ padding: "0px", fontWeight: "100" }}
-          onClick={() => {
-            navigator.clipboard.writeText(azdInitCommand);
-          }}
-        >
-          <div
-            className={styles.cardFooterAzdCommand}
-            style={{
-              whiteSpace: "nowrap",
-              overflow: "hidden",
-              paddingLeft: "3px",
-            }}
-          >
-            {azdInitCommand}
-          </div>
-        </Button>
-        <Button
+      <CardFooter>
+        <Input
+          size="small"
+          className={styles.cardFooterAzdCommand}
+          defaultValue={azdInitCommand}
           style={{
-            fontSize: "11px",
-            minWidth: "36px",
-            padding: "0px",
-            color: "white",
-            backgroundColor: "#7160E8",
-            borderColor: "#7160E8",
-            fontWeight: "100",
+            flex: "1",
+            minHeight: "20px",
+            padding: "3px",
           }}
-          onClick={() => {
-            navigator.clipboard.writeText(azdInitCommand);
-          }}
-        >
-          Copy
-        </Button>
+        />
+        <Popover withArrow size="small">
+          <PopoverTrigger disableButtonEnhancement>
+            <Button
+              style={{
+                fontSize: "11px",
+                minWidth: "36px",
+                padding: "0px",
+                color: "white",
+                backgroundColor: "#7160E8",
+                borderColor: "#7160E8",
+                fontWeight: "100",
+              }}
+              onClick={() => {
+                navigator.clipboard.writeText(azdInitCommand);
+              }}
+            >
+              Copy
+            </Button>
+          </PopoverTrigger>
+
+          <PopoverSurface style={{ padding: "5px", fontSize: "12px" }}>
+            <div>Copied!</div>
+          </PopoverSurface>
+        </Popover>
       </CardFooter>
     </Card>
   );
@@ -509,7 +526,11 @@ export function ShowcaseContributionCard(): React.ReactElement {
     return null;
   }
   return (
-    <Card className={styles.card} id="contributionCard">
+    <Card
+      className={styles.card}
+      id="contributionCard"
+      style={{ padding: "24px", borderRadius: "8px" }}
+    >
       <ToggleButton
         onClick={() => closeCard("contributionCard")}
         size="small"
@@ -533,7 +554,7 @@ export function ShowcaseContributionCard(): React.ReactElement {
       <div
         style={{
           color: "#242424",
-          fontSize: "24px",
+          fontSize: "20px",
           fontWeight: "550",
           height: "0px",
         }}
@@ -543,7 +564,7 @@ export function ShowcaseContributionCard(): React.ReactElement {
       <div
         style={{
           color: "#242424",
-          fontSize: "14px",
+          fontSize: "12px",
         }}
       >
         <p
@@ -561,14 +582,15 @@ export function ShowcaseContributionCard(): React.ReactElement {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </p>
       </div>
-      <div style={{ display: "flex", paddingTop: "10px" }}>
+      <CardFooter>
         <Button
           size="small"
           style={{
             flex: 1,
             color: "#ffffff",
-            fontSize: "14px",
+            fontSize: "12px",
             backgroundColor: "#7160E8",
+            borderColor: "#7160E8",
             height: "32px",
             whiteSpace: "nowrap",
             fontWeight: "550",
@@ -582,7 +604,7 @@ export function ShowcaseContributionCard(): React.ReactElement {
           style={{
             flex: 1,
             color: "#7160E8",
-            fontSize: "14px",
+            fontSize: "12px",
             height: "32px",
             whiteSpace: "nowrap",
             fontWeight: "550",
@@ -591,7 +613,7 @@ export function ShowcaseContributionCard(): React.ReactElement {
         >
           Request a template
         </Button>
-      </div>
+      </CardFooter>
     </Card>
   );
 }
@@ -681,9 +703,8 @@ function ShowcaseCardPanel({ user }: { user: User }) {
         style={{
           display: "flex",
           overflow: "hidden",
-          columnGap: "5px",
+          gap: "4px",
           flexFlow: "wrap",
-          padding: "5px 0",
         }}
       >
         <ShowcaseCardTag tags={user.tags} moreTag={false} />

@@ -397,7 +397,7 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Database",
   },
   "azuredb-postgreSQL": {
-    label: "Azure Database for PostgreSQL",
+    label: "Azure PostgreSQL",
     description: "Template architecture uses Azure Database for PostgreSQL",
     azureIcon: "./img/Azure-Application-Insights.svg", //TODO
     url: "https://azure.microsoft.com/products/postgresql",

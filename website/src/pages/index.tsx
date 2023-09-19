@@ -227,7 +227,7 @@ function ShowcaseFilters() {
           const id = `showcase_checkbox_id_${tag}`;
 
           return (
-            <div key={id} className={styles.checkboxListItem}>
+            <div key={id} className={styles.checkboxListItem} style={{paddingLeft:"12px"}}>
               <ShowcaseTagSelect tag={tag} label={tagObject.label} />
             </div>
           );

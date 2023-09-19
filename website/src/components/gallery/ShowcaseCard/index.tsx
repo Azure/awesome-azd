@@ -184,6 +184,7 @@ function ShowcaseMultipleWebsites(
 }
 
 function ShowcaseMultipleAuthors({ user }: { user: User }) {
+function ShowcaseMultipleAuthors({ user }: { user: User }) {
   const authors = user.author;
   const websites = user.website;
   const styles = useStyles();
@@ -192,8 +193,27 @@ function ShowcaseMultipleAuthors({ user }: { user: User }) {
   if (authors.includes(", ")) {
     var multiWebsites = websites.split(", ");
     var multiAuthors = authors.split(", ");
+  if (authors.includes(", ")) {
+    var multiWebsites = websites.split(", ");
+    var multiAuthors = authors.split(", ");
 
     return (
+      <div
+        style={{
+          display: "-webkit-box",
+          overflow: "hidden",
+          WebkitLineClamp: "1",
+          WebkitBoxOrient: "vertical",
+        }}
+      >
+        {multiWebsites.map((value, index) => {
+          return ShowcaseMultipleWebsites(
+            multiAuthors[index],
+            multiWebsites[index],
+            multiWebsites.length,
+            i++
+          );
+        })}
       <div
         style={{
           display: "-webkit-box",

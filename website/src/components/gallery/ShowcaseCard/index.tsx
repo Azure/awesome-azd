@@ -18,6 +18,7 @@ import {
   CardHeader,
   CardFooter,
   Button,
+  Badge,
   CardPreview,
   Link as FluentUILink,
   ToggleButton,
@@ -36,30 +37,26 @@ import {
   FontWeights,
   Popup,
   Separator,
-  IPivotStyles
+  IPivotStyles,
 } from "@fluentui/react";
 import { title } from "process";
 
 const TagComp = React.forwardRef<HTMLLIElement, Tag>(
   ({ label, description }) => (
-    <Button
+    <Badge
       appearance="outline"
-      size="small"
+      size="medium"
       title={description}
       style={{
-        height: "20px",
         alignContent: "center",
-        backgroundColor: "#F0F0F0",
-        border: "1px solid #E0E0E0",
-        padding: "0 5px",
-        marginTop: "3px",
+        borderColor: "#E0E0E0",
         fontSize: "10px",
         color: "#616161",
-        minWidth: "0px",
+        margin: "2px",
       }}
     >
       {label}
-    </Button>
+    </Badge>
   )
 );
 
@@ -92,23 +89,19 @@ function ShowcaseCardTag({
               </div>
             );
           })}
-          <Button
+          <Badge
             appearance="outline"
-            size="small"
+            size="medium"
             style={{
-              height: "20px",
               alignContent: "center",
-              backgroundColor: "#F0F0F0",
-              border: "1px solid #E0E0E0",
-              padding: "0 5px",
-              marginTop: "3px",
+              borderColor: "#E0E0E0",
               fontSize: "10px",
               color: "#616161",
-              minWidth: "0px",
+              margin: "2px 0",
             }}
           >
             + {rest} more
-          </Button>
+          </Badge>
         </>
       );
     } else {
@@ -218,7 +211,7 @@ const useStyles = makeStyles({
     height: "368px",
     maxWidth: "100%",
     maxHeight: "100%",
-    minWidth:'300px',
+    minWidth: "300px",
   },
   text: {
     color: "#606060",
@@ -227,15 +220,15 @@ const useStyles = makeStyles({
   cardTitle: {
     verticalAlign: "middle",
     fontSize: "16px",
-    color: "#6656d1",
-    fontWeight: "600",
+    color: "#7160E8",
+    fontWeight: "650",
   },
   cardTextBy: {
     fontSize: "12px",
     color: "#707070",
   },
   cardAuthor: {
-    color: "#6656d1",
+    color: "#7160E8",
   },
   cardDescription: {
     fontSize: "14px",
@@ -245,14 +238,9 @@ const useStyles = makeStyles({
     fontSize: "10px",
     color: "#606060",
   },
-  cardFooterQuickUse: {
-    fontSize: "10px",
-    color: "#424242",
-    fontWeight: "600",
-  },
   cardFooterAzdCommand: {
     fontSize: "11px",
-    fontFamily: '"Consolas-Regular", Helvetica',
+    fontFamily: "consolas",
     color: "#606060",
   },
 });
@@ -288,7 +276,11 @@ function ShowcaseCard({ user }: { user: User }) {
               flex: "8",
             }}
           >
-            <img src={headerLogo} height={16} style={{ margin: "5px 0px",fontWeight:'550'}} />
+            <img
+              src={headerLogo}
+              height={16}
+              style={{ margin: "5px 0px", fontWeight: "550" }}
+            />
             <div
               className={styles.text}
               style={{ color: "#606060", paddingLeft: "3px" }}
@@ -330,6 +322,7 @@ function ShowcaseCard({ user }: { user: User }) {
       className={styles.card}
       style={{
         background: "linear-gradient(#FAFAFA 0 0)bottom/100% 45px no-repeat",
+        borderRadius: "8px",
       }}
     >
       <CardHeader
@@ -456,15 +449,11 @@ function ShowcaseCard({ user }: { user: User }) {
       <CardPreview
         style={{ borderTop: "solid #F0F0F0", backgroundColor: "#FAFAFA" }}
       ></CardPreview>
-      <CardFooter style={{ alignItems: "center", width: "100%" }}>
-        <div
-          className={styles.cardFooterQuickUse}
-          style={{ whiteSpace: "nowrap" }}
-        >
-          Quick Use
-        </div>
+      <CardFooter
+      // style={{ display: "flex", justifyContent:'center',alignItems: "center", width: "100%" }}
+      >
         <Button
-          style={{ padding: "0px", fontWeight: "400" }}
+          style={{ padding: "0px", fontWeight: "100" }}
           onClick={() => {
             navigator.clipboard.writeText(azdInitCommand);
           }}
@@ -481,12 +470,20 @@ function ShowcaseCard({ user }: { user: User }) {
           </div>
         </Button>
         <Button
-          style={{ minWidth: "20px", padding: "0px", minHeight: "20px" }}
+          style={{
+            fontSize: "11px",
+            minWidth: "36px",
+            padding: "0px",
+            color: "white",
+            backgroundColor: "#7160E8",
+            borderColor: "#7160E8",
+            fontWeight: "100",
+          }}
           onClick={() => {
             navigator.clipboard.writeText(azdInitCommand);
           }}
         >
-          <img src={useBaseUrl("/img/copy.svg")} height={20} alt="Copy" />
+          Copy
         </Button>
       </CardFooter>
     </Card>
@@ -537,8 +534,8 @@ export function ShowcaseContributionCard(): React.ReactElement {
         style={{
           color: "#242424",
           fontSize: "24px",
-            fontWeight: "550",
-            height:'0px',
+          fontWeight: "550",
+          height: "0px",
         }}
       >
         See your template here!
@@ -571,10 +568,10 @@ export function ShowcaseContributionCard(): React.ReactElement {
             flex: 1,
             color: "#ffffff",
             fontSize: "14px",
-            backgroundColor: "#6656d1",
+            backgroundColor: "#7160E8",
             height: "32px",
             whiteSpace: "nowrap",
-              fontWeight: "550",
+            fontWeight: "550",
           }}
         >
           Submit a template
@@ -584,12 +581,12 @@ export function ShowcaseContributionCard(): React.ReactElement {
           appearance="transparent"
           style={{
             flex: 1,
-            color: "#6656d1",
+            color: "#7160E8",
             fontSize: "14px",
             height: "32px",
             whiteSpace: "nowrap",
-              fontWeight: "550",
-              paddingLeft:'10px'
+            fontWeight: "550",
+            paddingLeft: "10px",
           }}
         >
           Request a template
@@ -644,13 +641,13 @@ function ShowcaseCardPanel({ user }: { user: User }) {
         }}
       >
         <div className={styles.cardTextBy}>by</div>
-        <div style={{ fontSize: "14px",fontWeight:'400' }}>
+        <div style={{ fontSize: "14px", fontWeight: "400" }}>
           <ShowcaseMultipleAuthors user={user} />
         </div>
         <FluentUILink
           href={user.website}
           target="_blank"
-          style={{ color: "#6656d1" }}
+          style={{ color: "#7160E8" }}
         >
           <img
             src={useBaseUrl("/img/redirect.svg")}
@@ -668,7 +665,7 @@ function ShowcaseCardPanel({ user }: { user: User }) {
             display: "flex",
             alignItems: "center",
             columnGap: "5px",
-            color: "#6656d1",
+            color: "#7160E8",
           }}
         >
           View in GitHub
@@ -686,12 +683,16 @@ function ShowcaseCardPanel({ user }: { user: User }) {
           overflow: "hidden",
           columnGap: "5px",
           flexFlow: "wrap",
-          padding:'5px 0'
+          padding: "5px 0",
         }}
       >
         <ShowcaseCardTag tags={user.tags} moreTag={false} />
       </div>
-      <Pivot aria-label="Template Detials and Legal" styles={pivotStyles} style={{paddingTop:'20px'}}>
+      <Pivot
+        aria-label="Template Detials and Legal"
+        styles={pivotStyles}
+        style={{ paddingTop: "20px" }}
+      >
         <PivotItem
           style={{
             color: "#242424",
@@ -1101,7 +1102,7 @@ function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
                     color: "#707070",
                     fontSize: "12px",
                     fontWeight: "400",
-                    padding:'0 6px'
+                    padding: "0 6px",
                   }}
                 >
                   •
@@ -1110,7 +1111,7 @@ function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
                   href={tagObject.url}
                   target="_blank"
                   style={{
-                    color: "#6656d1",
+                    color: "#7160E8",
                     fontSize: "12px",
                     fontWeight: "400",
                   }}

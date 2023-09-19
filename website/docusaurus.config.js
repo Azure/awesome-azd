@@ -18,7 +18,7 @@ const config = {
   },
 
   // CONFIG: Landing Pages uses this (also globally via siteConfig)
-  title: "Awesome Azure Dev CLI",
+  title: "Awesome Azure Developer CLI",
   tagline: "Discover - Create - Contribute",
 
   // CONIFIG: Used for GitHub Pages

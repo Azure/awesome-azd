@@ -39,6 +39,7 @@ import {
   IPivotStyles,
 } from "@fluentui/react";
 import { title } from "process";
+import { link } from "fs";
 
 const TagComp = React.forwardRef<HTMLButtonElement, Tag>(
   ({ label, description }, ref) => (
@@ -634,6 +635,12 @@ export function ShowcaseContributionCard(): React.ReactElement {
             whiteSpace: "nowrap",
             fontWeight: "550",
           }}
+          onClick={() => {
+            window.open(
+              "https://github.com/Azure/awesome-azd/compare",
+              "_blank"
+            );
+          }}
         >
           Submit a template
         </Button>
@@ -649,6 +656,12 @@ export function ShowcaseContributionCard(): React.ReactElement {
             whiteSpace: "nowrap",
             fontWeight: "550",
             paddingLeft: "10px",
+          }}
+          onClick={() => {
+            window.open(
+              "https://github.com/Azure/awesome-azd/issues/new?assignees=nigkulintya%2C+savannahostrowski&labels=requested-contribution&template=%F0%9F%A4%94-submit-a-template-request.md&title=%5BIdea%5D+%3Cyour-template-name%3E",
+              "_blank"
+            );
           }}
         >
           Request a template
@@ -819,7 +832,7 @@ function ShowcaseCardPanel({ user }: { user: User }) {
                     padding: "10px 0",
                   }}
                 >
-                  If you already have the Azure Dev CLI installed on your
+                  If you already have the Azure Developer CLI installed on your
                   machine, using this template is as simple as running this
                   command in a new directory.
                 </div>

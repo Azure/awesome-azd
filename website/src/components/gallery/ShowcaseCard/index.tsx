@@ -51,10 +51,9 @@ const TagComp = React.forwardRef<HTMLLIElement, Tag>(
       appearance="outline"
       size="medium"
       title={description}
+      color="informative"
       style={{
         alignContent: "center",
-        borderColor: "#E0E0E0",
-        color: "#616161",
         fontSize: "10px",
       }}
     >
@@ -82,7 +81,7 @@ function ShowcaseCardTag({
   );
 
   const length = tagObjectsSorted.length;
-  let number = 11;
+  let number = 9;
   if (checkAzureTag.length > 5) {
     number = 9;
   }
@@ -238,7 +237,7 @@ const useStyles = makeStyles({
     verticalAlign: "middle",
     fontSize: "16px",
     color: "#7160E8",
-    fontWeight: "650",
+    fontWeight: "500",
   },
   cardTextBy: {
     fontSize: "12px",
@@ -300,7 +299,7 @@ function ShowcaseCard({ user }: { user: User }) {
             />
             <div
               className={styles.text}
-              style={{ color: "#606060", paddingLeft: "3px" }}
+              style={{ color: "#707070", paddingLeft: "3px" }}
             >
               {headerText}
             </div>
@@ -340,7 +339,7 @@ function ShowcaseCard({ user }: { user: User }) {
       style={{
         background: "linear-gradient(#FAFAFA 0 0)bottom/100% 52px no-repeat",
         borderRadius: "8px",
-        padding: "16px",
+        padding: "12px",
       }}
     >
       <CardHeader
@@ -393,7 +392,7 @@ function ShowcaseCard({ user }: { user: User }) {
           </div>
         }
       />
-      <CardPreview style={{ borderTop: "solid #F0F0F0" }} />
+      <CardPreview style={{ borderTop: "1px solid #F0F0F0" }} />
       <div
         style={{
           display: "flex",
@@ -465,7 +464,7 @@ function ShowcaseCard({ user }: { user: User }) {
         </div>
       </div>
       <CardPreview
-        style={{ borderTop: "solid #F0F0F0", backgroundColor: "#FAFAFA" }}
+        style={{ borderTop: "1px solid #F0F0F0", backgroundColor: "#FAFAFA" }}
       ></CardPreview>
       <CardFooter>
         <Input

@@ -20,13 +20,9 @@
     type TagType,
   } from '@site/src/data/tags';
   
-  import styles from './styles.module.css';
+import { Checkbox } from "@fluentui/react-components";
   
-  interface Props extends ComponentProps<'input'> {
-    icon: ReactElement<ComponentProps<'svg'>>;
-    label: ReactNode;
-    tag: TagType;
-  }
+  import styles from './styles.module.css';
   
   const TagQueryStringKey = 'tags';
   
@@ -41,58 +37,46 @@
     return searchParams.toString();
   }
   
-  function ShowcaseTagSelect(
-    {id, icon, label, tag, ...rest}: Props,
-    ref: React.ForwardedRef<HTMLLabelElement>,
-  ) {
-    const location = useLocation();
-    const history = useHistory();
-    const [selected, setSelected] = useState(false);
-    useEffect(() => {
-      const tags = readSearchTags(location.search);
-      setSelected(tags.includes(tag));
-    }, [tag, location]);
-    const toggleTag = useCallback(() => {
-      const tags = readSearchTags(location.search);
-      const newTags = toggleListItem(tags, tag);
-      const newSearch = replaceSearchTags(location.search, newTags);
-      history.push({
-        ...location,
-        search: newSearch,
-        state: prepareUserState(),
-      });
-    }, [tag, location, history]);
-    return (
-      <>
-        <input
-          type="checkbox"
-          id={id}
-          className="screen-reader-only"
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              toggleTag();
-            }
-          }}
-          onFocus={(e) => {
-            if (e.relatedTarget) {
-              e.target.nextElementSibling?.dispatchEvent(
-                new KeyboardEvent('focus'),
-              );
-            }
-          }}
-          onBlur={(e) => {
-            e.target.nextElementSibling?.dispatchEvent(new KeyboardEvent('blur'));
-          }}
-          onChange={toggleTag}
-          checked={selected}
-          {...rest}
-        />
-        <label ref={ref} htmlFor={id} className={styles.checkboxLabel}>
-          {label}
-          {icon}
-        </label>
-      </>
-    );
-  }
-  
-  export default React.forwardRef(ShowcaseTagSelect);
+export default function ShowcaseTagSelect(
+  // id: string,
+  {
+  label,
+  tag,
+}: {
+  label:string;
+  tag: TagType;
+}
+): JSX.Element {
+  const location = useLocation();
+  const history = useHistory();
+  const [selected, setSelected] = useState(false);
+  useEffect(() => {
+    const tags = readSearchTags(location.search);
+    setSelected(tags.includes(tag));
+  }, [tag, location]);
+  const toggleTag = useCallback(() => {
+    const tags = readSearchTags(location.search);
+    const newTags = toggleListItem(tags, tag);
+    const newSearch = replaceSearchTags(location.search, newTags);
+    history.push({
+      ...location,
+      search: newSearch,
+      state: prepareUserState(),
+    });
+  }, [tag, location, history]);
+  return (
+    <>
+      <Checkbox
+        // id={id}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            toggleTag();
+          }
+        }}
+        onChange={toggleTag}
+        checked={selected}
+        label={label}
+      />
+    </>
+  );
+}

@@ -18,7 +18,7 @@ const config = {
   },
 
   // CONFIG: Landing Pages uses this (also globally via siteConfig)
-  title: "Awesome Azure Dev CLI",
+  title: "Awesome Azure Developer CLI",
   tagline: "Discover - Create - Contribute",
 
   // CONIFIG: Used for GitHub Pages
@@ -188,9 +188,9 @@ const config = {
 
         // CONFIG: theme = currently using `classic`
         //    See: https://docusaurus.io/docs/api/themes/@docusaurus/theme-classic
-        theme: {
-          customCss: require.resolve("./src/css/custom.css"),
-        },
+        // theme: {
+        //   customCss: require.resolve('./src/css/custom.css'),
+        // },
       }),
     ],
   ],

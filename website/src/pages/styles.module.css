@@ -39,6 +39,17 @@
   border: 1px solid gray;
 }
 
+.searchArea {
+  background-image: url("/img/cover.svg");
+  background-size: cover;
+  background-repeat: "no-repeat";
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .showcaseList {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -96,7 +107,7 @@
 .filter {
   flex: 2;
   margin: 0px 25px;
-  max-width: 256px ;
+  max-width: 256px;
 }
 
 .card {

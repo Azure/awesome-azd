@@ -8,9 +8,6 @@
 import React, { useState, useMemo, useEffect } from "react";
 
 import Layout from "@theme/Layout";
-import clsx from "clsx";
-
-import FavoriteIcon from "../components/svgIcons/FavoriteIcon";
 
 import ShowcaseTagSelect, {
   readSearchTags,
@@ -19,7 +16,6 @@ import ShowcaseTagSelect, {
 import ShowcaseCard, {
   ShowcaseContributionCard,
 } from "../components/gallery/ShowcaseCard";
-import ShowcaseTooltip from "../components/gallery/ShowcaseTooltip";
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import {
@@ -30,7 +26,7 @@ import {
   AccordionItem,
   AccordionPanel,
   AccordionToggleEventHandler,
-  makeStyles,
+  Text,
 } from "@fluentui/react-components";
 
 import { Tags, type User, type TagType } from "../data/tags";
@@ -44,9 +40,10 @@ import { usePluralForm } from "@docusaurus/theme-common";
 
 import styles from "./styles.module.css";
 
-const TITLE = "Awesome AZD Templates";
-const DESCRIPTION = "A community-contributed templates gallery";
-const ADD_URL = "https://aka.ms/awesome-azd-contribute";
+const TITLE = "Template Library";
+const DESCRIPTION =
+  "A community-contributed template gallery built to work with the Azure Developer CLI.";
+const ADD_URL = "https://aka.ms/azd";
 
 type UserState = {
   scrollTopPosition: number;
@@ -122,21 +119,35 @@ function useFilteredUsers() {
 }
 
 function ShowcaseTemplateSearch() {
+  const cover = useBaseUrl("/img/cover.png");
   return (
-    <section className="margin-top--lg margin-bottom--lg text--center">
-      <h1>{TITLE}</h1>
-      <p>{DESCRIPTION}</p>
-      <a
-        className="button button--primary"
-        href={ADD_URL}
-        target="_blank"
-        rel="noreferrer"
-      >
-        <Translate id="showcase.header.button">
-          Contribute Your Template! 🙏
-        </Translate>
-      </a>
-    </section>
+    <div className={styles.searchArea}>
+      <div style={{ height: "60px" }}></div>
+      <div style={{ textAlign: "center"}}>
+        <Text
+          style={{
+            background:
+              "linear-gradient(90deg, rgb(112.68, 94.63, 239.06) 0%, rgb(41.21, 120.83, 190.19) 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            fontSize: "32px",
+          }}
+        >
+          {TITLE}
+        </Text>
+        <p>{DESCRIPTION}</p>
+        <a
+          className="button button--primary"
+          href={ADD_URL}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <Translate id="showcase.header.button">
+            Contribute Your Template! 🙏
+          </Translate>
+        </a>
+      </div>
+    </div>
   );
 }
 
@@ -227,7 +238,11 @@ function ShowcaseFilters() {
           const id = `showcase_checkbox_id_${tag}`;
 
           return (
-            <div key={id} className={styles.checkboxListItem} style={{paddingLeft:"12px"}}>
+            <div
+              key={id}
+              className={styles.checkboxListItem}
+              style={{ paddingLeft: "12px" }}
+            >
               <ShowcaseTagSelect tag={tag} label={tagObject.label} />
             </div>
           );
@@ -419,13 +434,15 @@ const otherUsers = sortedUsers.filter(
 );
 const featuredAndOtherUsers = featuredUsers.concat(otherUsers);
 
-function SearchBar() {
+function SearchBar({ searchbar }: { searchbar: boolean }) {
   const history = useHistory();
   const location = useLocation();
   const [value, setValue] = useState<string | null>(null);
   useEffect(() => {
     setValue(readSearchName(location.search));
   }, [location]);
+  if (searchbar) {
+  }
   return (
     <div className={styles.searchContainer}>
       <input

@@ -472,12 +472,10 @@ function ShowcaseCard({ user }: { user: User }) {
           defaultValue={azdInitCommand}
           style={{
             flex: "1",
-            minHeight: "20px",
-            padding: "3px",
             border: "1px solid #d1d1d1",
             fontSize: "11px",
             fontFamily: "Consolas",
-            color: "#717171",
+            WebkitTextFillColor: "#717171",
           }}
         />
         <Popover withArrow size="small">

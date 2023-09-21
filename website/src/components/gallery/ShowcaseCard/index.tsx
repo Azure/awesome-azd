@@ -183,12 +183,7 @@ function ShowcaseMultipleWebsites(
     );
   }
 }
-      </FluentUILink>
-    );
-  }
-}
 
-function ShowcaseMultipleAuthors({ user }: { user: User }) {
 function ShowcaseMultipleAuthors({ user }: { user: User }) {
   const authors = user.author;
   const websites = user.website;
@@ -393,7 +388,7 @@ function ShowcaseCard({ user }: { user: User }) {
             </div>
             <img src={star} alt="Star" height={16} />
             <div
-              className={customStyles.text}
+              className={styles.text}
               style={{
                 color: "#11910D",
                 fontWeight: "600",
@@ -410,7 +405,7 @@ function ShowcaseCard({ user }: { user: User }) {
               }}
             />
             <div
-              className={customStyles.text}
+              className={styles.text}
               style={{
                 color: "#F7630C",
                 fontWeight: "600",
@@ -432,7 +427,7 @@ function ShowcaseCard({ user }: { user: User }) {
       >
         <FluentUILink
           href={source}
-          className={customStyles.cardTitle}
+          className={styles.cardTitle}
           target="_blank"
         >
           {user.title}
@@ -446,13 +441,13 @@ function ShowcaseCard({ user }: { user: User }) {
             columnGap: "3px",
           }}
         >
-          <div className={customStyles.cardTextBy}>by</div>
+          <div className={styles.cardTextBy}>by</div>
           <div style={{ fontSize: "12px" }}>
             <ShowcaseMultipleAuthors user={user} />
           </div>
         </div>
         <div
-          className={customStyles.cardDescription}
+          className={styles.cardDescription}
           style={{
             paddingTop: "10px",
             overflow: "hidden",
@@ -479,7 +474,7 @@ function ShowcaseCard({ user }: { user: User }) {
           style={{ paddingTop: "10px", position: "absolute", bottom: "0px" }}
         >
           <div
-            className={customStyles.cardTag}
+            className={styles.cardTag}
             style={{
               display: "flex",
               overflow: "hidden",
@@ -544,7 +539,7 @@ function closeCard(parentDiv) {
 }
 
 export function ShowcaseContributionCard(): React.ReactElement {
-  const customStyles = useStyles();
+  const styles = useStyles();
   // access localStorage until window is defined
   if (
     typeof window !== "undefined" &&
@@ -554,7 +549,7 @@ export function ShowcaseContributionCard(): React.ReactElement {
   }
   return (
     <Card
-      className={customStyles.card}
+      className={styles.card}
       id="contributionCard"
       style={{ padding: "24px", borderRadius: "8px" }}
     >
@@ -676,7 +671,7 @@ function ShowcaseCardPanel({ user }: { user: User }) {
     linkInMenu: "",
     overflowMenuButton: "",
   };
-  const customStyles = useStyles();
+  const styles = useStyles();
   return (
     <div>
       <div
@@ -687,7 +682,7 @@ function ShowcaseCardPanel({ user }: { user: User }) {
           padding: "10px 0",
         }}
       >
-        <div className={customStyles.cardTextBy}>by</div>
+        <div className={styles.cardTextBy}>by</div>
         <div style={{ fontSize: "14px", fontWeight: "400" }}>
           <ShowcaseMultipleAuthors user={user} />
         </div>

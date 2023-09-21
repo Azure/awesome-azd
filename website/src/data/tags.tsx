@@ -157,9 +157,9 @@ export const Tags: { [type in TagType]: Tag } = {
       "This tag is used for admin-curated templates that represent high-quality (community) or official (Microsoft) azd templates.",
   },
 
-    //============  FOR REGULAR USE
+  //============  FOR REGULAR USE
 
-    // Language Tags
+  // Language Tags
 
   javascript: {
     label: "JavaScript",
@@ -520,4 +520,3 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Topic",
   },
 };
-

@@ -114,8 +114,19 @@ function ShowcaseCardTag({
         <>
           {tagObjectsSorted.map((tagObject, index) => {
             const id = `showcase_card_tag_${tagObject.tag}`;
-
-            return <TagComp key={index} id={id} {...tagObject} />;
+            if (
+              tagObject.tag == "msft" ||
+              tagObject.tag == "community" ||
+              tagObject.tag == "new" ||
+              tagObject.tag == "popular"
+            ) {
+              return;
+            }
+            return (
+              <div key={id}>
+                <TagComp id={id} {...tagObject} />
+              </div>
+            );
           })}
         </>
       );
@@ -123,9 +134,16 @@ function ShowcaseCardTag({
   } else {
     return (
       <>
-        {tagObjectsSorted.map((tagObject, index) => {
+        {tagObjectsSorted.map((tagObject,index) => {
           const id = `showcase_card_tag_${tagObject.tag}`;
-
+          if (
+            tagObject.tag == "msft" ||
+            tagObject.tag == "community" ||
+            tagObject.tag == "new" ||
+            tagObject.tag == "popular"
+          ) {
+            return;
+          }
           return (
             <div
               key={index}
@@ -386,33 +404,41 @@ function ShowcaseCard({ user }: { user: User }) {
             >
               {headerText}
             </div>
-            <img src={star} alt="Star" height={16} />
-            <div
-              className={styles.text}
-              style={{
-                color: "#11910D",
-                fontWeight: "600",
-              }}
-            >
-              NEW
-            </div>
-            <img
-              src={fire}
-              alt="Fire"
-              height={16}
-              style={{
-                paddingLeft: "6px",
-              }}
-            />
-            <div
-              className={styles.text}
-              style={{
-                color: "#F7630C",
-                fontWeight: "600",
-              }}
-            >
-              POPULAR
-            </div>
+            {tags.includes("new") ? (
+              <>
+                <img src={star} alt="Star" height={16} />
+                <div
+                  className={styles.text}
+                  style={{
+                    color: "#11910D",
+                    fontWeight: "600",
+                  }}
+                >
+                  NEW
+                </div>
+              </>
+            ) : null}
+            {tags.includes("popular") ? (
+              <>
+                <img
+                  src={fire}
+                  alt="Fire"
+                  height={16}
+                  style={{
+                    paddingLeft: "6px",
+                  }}
+                />
+                <div
+                  className={styles.text}
+                  style={{
+                    color: "#F7630C",
+                    fontWeight: "600",
+                  }}
+                >
+                  POPULAR
+                </div>
+              </>
+            ) : null}
           </div>
         }
       />
@@ -443,7 +469,7 @@ function ShowcaseCard({ user }: { user: User }) {
         >
           <div className={styles.cardTextBy}>by</div>
           <div style={{ fontSize: "12px" }}>
-            <ShowcaseMultipleAuthors user={user} />
+            <ShowcaseMultipleAuthors key={user.title} user={user} />
           </div>
         </div>
         <div
@@ -483,7 +509,7 @@ function ShowcaseCard({ user }: { user: User }) {
             }}
             onClick={openPanel}
           >
-            <ShowcaseCardTag tags={user.tags} moreTag={true} />
+            <ShowcaseCardTag key={user.title} tags={user.tags} moreTag={true} />
           </div>
         </div>
       </div>
@@ -615,6 +641,12 @@ export function ShowcaseContributionCard(): React.ReactElement {
             fontWeight: "550",
             fontSize: "12px",
           }}
+          onClick={() => {
+            window.open(
+              "https://github.com/Azure/awesome-azd/compare",
+              "_blank"
+            );
+          }}
         >
           Submit a template
         </Button>
@@ -628,6 +660,12 @@ export function ShowcaseContributionCard(): React.ReactElement {
             fontWeight: "550",
             paddingLeft: "10px",
             fontSize: "12px",
+          }}
+          onClick={() => {
+            window.open(
+              "https://github.com/Azure/awesome-azd/issues/new?assignees=nigkulintya%2C+savannahostrowski&labels=requested-contribution&template=%F0%9F%A4%94-submit-a-template-request.md&title=%5BIdea%5D+%3Cyour-template-name%3E",
+              "_blank"
+            );
           }}
         >
           Request a template
@@ -684,7 +722,7 @@ function ShowcaseCardPanel({ user }: { user: User }) {
       >
         <div className={styles.cardTextBy}>by</div>
         <div style={{ fontSize: "14px", fontWeight: "400" }}>
-          <ShowcaseMultipleAuthors user={user} />
+          <ShowcaseMultipleAuthors key={user.title} user={user} />
         </div>
         <FluentUILink
           href={user.website}
@@ -795,7 +833,7 @@ function ShowcaseCardPanel({ user }: { user: User }) {
                     padding: "10px 0",
                   }}
                 >
-                  If you already have the Azure Dev CLI installed on your
+                  If you already have the Azure Developer CLI installed on your
                   machine, using this template is as simple as running this
                   command in a new directory.
                 </div>

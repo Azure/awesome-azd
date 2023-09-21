@@ -250,37 +250,30 @@ const useStyles = makeStyles({
   text: {
     color: "#606060",
     fontSize: "10px",
-    fontFamily: '"Segoe UI-Semibold", Helvetica',
   },
   cardTitle: {
     verticalAlign: "middle",
     fontSize: "16px",
-    fontFamily: '"Segoe UI-Bold", Helvetica',
     color: "#6656d1",
     fontWeight: "600",
   },
   cardTextBy: {
     fontSize: "12px",
-    fontFamily: '"Segoe UI-Regular", Helvetica',
     color: "#707070",
   },
   cardAuthor: {
-    fontFamily: '"Segoe UI-Regular", Helvetica',
     color: "#6656d1",
   },
   cardDescription: {
     fontSize: "14px",
-    fontFamily: '"Segoe UI-Regular", Helvetica',
     color: "#707070",
   },
   cardTag: {
     fontSize: "10px",
-    fontFamily: '"Segoe UI-Semibold", Helvetica',
     color: "#606060",
   },
   cardFooterQuickUse: {
     fontSize: "10px",
-    fontFamily: '"Segoe UI-Semibold", Helvetica',
     color: "#424242",
     fontWeight: "600",
   },

@@ -20,7 +20,6 @@ import {
   Button,
   Badge,
   CardPreview,
-  Popup,
   Link as FluentUILink,
   ToggleButton,
   Input,
@@ -41,15 +40,16 @@ import {
   IPanelProps,
   Separator,
   IPivotStyles,
-  IInputProps,
+  Popup
 } from "@fluentui/react";
 import { title } from "process";
 
-const TagComp = React.forwardRef<HTMLLIElement, Tag>(
-  ({ label, description }) => (
+const TagComp = React.forwardRef<HTMLDivElement, Tag>(
+  ({ label, description }, ref) => (
     <Badge
       appearance="outline"
       size="medium"
+      ref={ref}
       title={description}
       color="informative"
       style={{
@@ -481,7 +481,8 @@ function ShowcaseCard({ user }: { user: User }) {
             WebkitLineClamp: "3",
             WebkitBoxOrient: "vertical",
           }}
-          onClick={openPanel}
+          // Disable panel until redesign of card panel completed
+          // onClick={openPanel}
         >
           {user.description}
         </div>
@@ -507,7 +508,8 @@ function ShowcaseCard({ user }: { user: User }) {
               gap: "4px",
               flexFlow: "wrap",
             }}
-            onClick={openPanel}
+            // Disable panel until Card Panel redesign completed
+            // onClick={openPanel}
           >
             <ShowcaseCardTag key={user.title} tags={user.tags} moreTag={true} />
           </div>

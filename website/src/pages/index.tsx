@@ -19,7 +19,6 @@ import ShowcaseTagSelect, {
 import ShowcaseCard, {
   ShowcaseContributionCard,
 } from "../components/gallery/ShowcaseCard";
-import ShowcaseTooltip from "../components/gallery/ShowcaseTooltip";
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import {

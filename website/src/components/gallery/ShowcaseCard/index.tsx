@@ -6,7 +6,7 @@
  */
 
 import React from "react";
-import styles from "./styles.module.css";
+import inputStyle from "./styles.module.css";
 import { Tag, Tags, type User, type TagType } from "../../../data/tags";
 import { TagList } from "../../../data/users";
 import { sortBy } from "@site/src/utils/jsUtils";
@@ -20,6 +20,7 @@ import {
   Button,
   Badge,
   CardPreview,
+  Popup,
   Link as FluentUILink,
   ToggleButton,
   Input,
@@ -38,10 +39,9 @@ import {
   Panel,
   PanelType,
   IPanelProps,
-  FontWeights,
-  Popup,
   Separator,
   IPivotStyles,
+  IInputProps,
 } from "@fluentui/react";
 import { title } from "process";
 
@@ -81,9 +81,9 @@ function ShowcaseCardTag({
   );
 
   const length = tagObjectsSorted.length;
-  let number = 9;
+  let number = 10;
   if (checkAzureTag.length > 5) {
-    number = 9;
+    number = 7;
   }
   const rest = length - number;
 
@@ -158,11 +158,11 @@ function ShowcaseMultipleWebsites(
   length: number,
   i: number
 ) {
-  const styles = useStyles();
+  const customStyles = useStyles();
   if (i != length - 1) {
     return (
       <FluentUILink
-        className={styles.cardAuthor}
+        className={customStyles.cardAuthor}
         href={websiteLink}
         target="_blank"
       >
@@ -172,7 +172,7 @@ function ShowcaseMultipleWebsites(
   } else {
     return (
       <FluentUILink
-        className={styles.cardAuthor}
+        className={customStyles.cardAuthor}
         href={websiteLink}
         target="_blank"
       >
@@ -185,7 +185,7 @@ function ShowcaseMultipleWebsites(
 function ShowcaseMultipleAuthors({ user }: { user: User }) {
   const authors = user.author;
   const websites = user.website;
-  const styles = useStyles();
+  const customStyles = useStyles();
   let i = 0;
 
   if (authors.includes(", ")) {
@@ -214,7 +214,11 @@ function ShowcaseMultipleAuthors({ user }: { user: User }) {
   }
 
   return (
-    <FluentUILink className={styles.cardAuthor} href={websites} target="_blank">
+    <FluentUILink
+      className={customStyles.cardAuthor}
+      href={websites}
+      target="_blank"
+    >
       {authors}
     </FluentUILink>
   );
@@ -254,15 +258,10 @@ const useStyles = makeStyles({
     fontSize: "10px",
     color: "#606060",
   },
-  cardFooterAzdCommand: {
-    fontSize: "11px",
-    fontFamily: "consolas",
-    color: "#606060",
-  },
 });
 
 function ShowcaseCard({ user }: { user: User }) {
-  const styles = useStyles();
+  const customStyles = useStyles();
   const author = user.author;
   const source = user.source;
   const star = useBaseUrl("/img/sparkle.svg");
@@ -298,7 +297,7 @@ function ShowcaseCard({ user }: { user: User }) {
               style={{ margin: "5px 0px", fontWeight: "550" }}
             />
             <div
-              className={styles.text}
+              className={customStyles.text}
               style={{ color: "#707070", paddingLeft: "3px" }}
             >
               {headerText}
@@ -309,7 +308,7 @@ function ShowcaseCard({ user }: { user: User }) {
               height={16}
               style={{ paddingLeft: "10px" }}
             />
-            <div className={styles.text} style={{ color: "#11910D" }}>
+            <div className={customStyles.text} style={{ color: "#11910D" }}>
               NEW
             </div>
             <img
@@ -318,7 +317,7 @@ function ShowcaseCard({ user }: { user: User }) {
               height={16}
               style={{ paddingLeft: "10px" }}
             />
-            <div className={styles.text} style={{ color: "#F7630C" }}>
+            <div className={customStyles.text} style={{ color: "#F7630C" }}>
               POPULAR
             </div>
           </div>
@@ -335,9 +334,9 @@ function ShowcaseCard({ user }: { user: User }) {
   return (
     <Card
       key={user.title}
-      className={styles.card}
+      className={customStyles.card}
       style={{
-        background: "linear-gradient(#FAFAFA 0 0)bottom/100% 52px no-repeat",
+        background: "linear-gradient(#FAFAFA 0 0)bottom/100% 48px no-repeat",
         borderRadius: "8px",
         padding: "12px",
       }}
@@ -353,18 +352,19 @@ function ShowcaseCard({ user }: { user: User }) {
           >
             <img src={headerLogo} height={16} />
             <div
-              className={styles.text}
               style={{
                 fontWeight: "600",
                 flex: "1",
                 paddingLeft: "3px",
+                color: "#707070",
+                fontSize: "10px",
               }}
             >
               {headerText}
             </div>
             <img src={star} alt="Star" height={16} />
             <div
-              className={styles.text}
+              className={customStyles.text}
               style={{
                 color: "#11910D",
                 fontWeight: "600",
@@ -381,7 +381,7 @@ function ShowcaseCard({ user }: { user: User }) {
               }}
             />
             <div
-              className={styles.text}
+              className={customStyles.text}
               style={{
                 color: "#F7630C",
                 fontWeight: "600",
@@ -403,7 +403,7 @@ function ShowcaseCard({ user }: { user: User }) {
       >
         <FluentUILink
           href={source}
-          className={styles.cardTitle}
+          className={customStyles.cardTitle}
           target="_blank"
         >
           {user.title}
@@ -417,13 +417,13 @@ function ShowcaseCard({ user }: { user: User }) {
             columnGap: "3px",
           }}
         >
-          <div className={styles.cardTextBy}>by</div>
+          <div className={customStyles.cardTextBy}>by</div>
           <div style={{ fontSize: "12px" }}>
             <ShowcaseMultipleAuthors user={user} />
           </div>
         </div>
         <div
-          className={styles.cardDescription}
+          className={customStyles.cardDescription}
           style={{
             paddingTop: "10px",
             overflow: "hidden",
@@ -450,7 +450,7 @@ function ShowcaseCard({ user }: { user: User }) {
           style={{ paddingTop: "10px", position: "absolute", bottom: "0px" }}
         >
           <div
-            className={styles.cardTag}
+            className={customStyles.cardTag}
             style={{
               display: "flex",
               overflow: "hidden",
@@ -469,25 +469,26 @@ function ShowcaseCard({ user }: { user: User }) {
       <CardFooter>
         <Input
           size="small"
-          className={styles.cardFooterAzdCommand}
           defaultValue={azdInitCommand}
           style={{
             flex: "1",
             minHeight: "20px",
             padding: "3px",
+            border: "1px solid #d1d1d1",
+            fontSize: "11px",
+            fontFamily: "Consolas",
+            color: "#717171",
           }}
         />
         <Popover withArrow size="small">
           <PopoverTrigger disableButtonEnhancement>
             <Button
+              size="small"
+              appearance="primary"
               style={{
-                fontSize: "11px",
-                minWidth: "36px",
-                padding: "0px",
-                color: "white",
+                minWidth: "40px",
                 backgroundColor: "#7160E8",
                 borderColor: "#7160E8",
-                fontWeight: "100",
               }}
               onClick={() => {
                 navigator.clipboard.writeText(azdInitCommand);
@@ -516,7 +517,7 @@ function closeCard(parentDiv) {
 }
 
 export function ShowcaseContributionCard(): React.ReactElement {
-  const styles = useStyles();
+  const customStyles = useStyles();
   // access localStorage until window is defined
   if (
     typeof window !== "undefined" &&
@@ -526,7 +527,7 @@ export function ShowcaseContributionCard(): React.ReactElement {
   }
   return (
     <Card
-      className={styles.card}
+      className={customStyles.card}
       id="contributionCard"
       style={{ padding: "24px", borderRadius: "8px" }}
     >
@@ -583,14 +584,11 @@ export function ShowcaseContributionCard(): React.ReactElement {
       </div>
       <CardFooter>
         <Button
-          size="small"
+          size="medium"
+          appearance="primary"
           style={{
             flex: 1,
-            color: "#ffffff",
-            fontSize: "12px",
             backgroundColor: "#7160E8",
-            borderColor: "#7160E8",
-            height: "32px",
             whiteSpace: "nowrap",
             fontWeight: "550",
           }}
@@ -598,13 +596,11 @@ export function ShowcaseContributionCard(): React.ReactElement {
           Submit a template
         </Button>
         <Button
-          size="small"
+          size="medium"
           appearance="transparent"
           style={{
             flex: 1,
             color: "#7160E8",
-            fontSize: "12px",
-            height: "32px",
             whiteSpace: "nowrap",
             fontWeight: "550",
             paddingLeft: "10px",
@@ -651,6 +647,7 @@ function ShowcaseCardPanel({ user }: { user: User }) {
     linkInMenu: "",
     overflowMenuButton: "",
   };
+  const customStyles = useStyles();
   return (
     <div>
       <div
@@ -661,7 +658,7 @@ function ShowcaseCardPanel({ user }: { user: User }) {
           padding: "10px 0",
         }}
       >
-        <div className={styles.cardTextBy}>by</div>
+        <div className={customStyles.cardTextBy}>by</div>
         <div style={{ fontSize: "14px", fontWeight: "400" }}>
           <ShowcaseMultipleAuthors user={user} />
         </div>
@@ -698,7 +695,7 @@ function ShowcaseCardPanel({ user }: { user: User }) {
         </FluentUILink>
       </div>
       <div
-        className={styles.cardTag}
+        className={customStyles.cardTag}
         style={{
           display: "flex",
           overflow: "hidden",

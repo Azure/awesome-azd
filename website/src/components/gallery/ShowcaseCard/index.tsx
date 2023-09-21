@@ -18,13 +18,17 @@ import {
   CardHeader,
   CardFooter,
   Button,
+  Badge,
   CardPreview,
   Link as FluentUILink,
   ToggleButton,
+  Input,
+  Popover,
+  PopoverTrigger,
+  PopoverSurface,
 } from "@fluentui/react-components";
 import { useBoolean } from "@fluentui/react-hooks";
 import {
-  initializeIcons,
   IRenderFunction,
   Label,
   Pivot,
@@ -33,36 +37,26 @@ import {
   Panel,
   PanelType,
   IPanelProps,
-  FontWeights,
-  Popup,
   Separator,
   IPivotStyles,
+  Popup
 } from "@fluentui/react";
-import { title } from "process";
-import { link } from "fs";
 
-const TagComp = React.forwardRef<HTMLButtonElement, Tag>(
+const TagComp = React.forwardRef<HTMLDivElement, Tag>(
   ({ label, description }, ref) => (
-    <Button
+    <Badge
       appearance="outline"
-      size="small"
-      title={description}
+      size="medium"
       ref={ref}
+      title={description}
+      color="informative"
       style={{
-        height: "20px",
         alignContent: "center",
-        backgroundColor: "#F0F0F0",
-        border: "1px solid #E0E0E0",
-        padding: "0 5px",
-        marginTop: "3px",
         fontSize: "10px",
-        fontFamily: '"Segoe UI-Semibold", Helvetica',
-        color: "#616161",
-        minWidth: "0px",
       }}
     >
       {label}
-    </Button>
+    </Badge>
   )
 );
 
@@ -80,53 +74,43 @@ function ShowcaseCardTag({
     TagList.indexOf(tagObject.tag)
   );
 
+  const checkAzureTag = tagObjectsSorted.filter((tag) =>
+    tag.label.includes("Azure")
+  );
+
   const length = tagObjectsSorted.length;
-  const rest = length - 8;
+  let number = 10;
+  if (checkAzureTag.length > 5) {
+    number = 7;
+  }
+  const rest = length - number;
 
   if (moreTag) {
-    if (length > 8) {
+    if (length > number) {
       return (
         <>
-          {tagObjectsSorted.slice(0, 8).map((tagObject) => {
+          {tagObjectsSorted.slice(0, number).map((tagObject, index) => {
             const id = `showcase_card_tag_${tagObject.tag}`;
-            if (
-              tagObject.tag == "msft" ||
-              tagObject.tag == "community" ||
-              tagObject.tag == "new" ||
-              tagObject.tag == "popular"
-            ) {
-              return;
-            }
-            return (
-              <div key={id}>
-                <TagComp id={id} {...tagObject} />
-              </div>
-            );
+            return <TagComp key={index} id={id} {...tagObject} />;
           })}
-          <Button
+          <Badge
             appearance="outline"
-            size="small"
+            size="medium"
             style={{
-              height: "20px",
               alignContent: "center",
-              backgroundColor: "#F0F0F0",
-              border: "1px solid #E0E0E0",
-              padding: "0 5px",
-              marginTop: "3px",
-              fontSize: "10px",
-              fontFamily: '"Segoe UI-Semibold", Helvetica',
+              borderColor: "#E0E0E0",
               color: "#616161",
-              minWidth: "0px",
+              fontSize: "10px",
             }}
           >
             + {rest} more
-          </Button>
+          </Badge>
         </>
       );
     } else {
       return (
         <>
-          {tagObjectsSorted.map((tagObject) => {
+          {tagObjectsSorted.map((tagObject, index) => {
             const id = `showcase_card_tag_${tagObject.tag}`;
             if (
               tagObject.tag == "msft" ||
@@ -148,7 +132,7 @@ function ShowcaseCardTag({
   } else {
     return (
       <>
-        {tagObjectsSorted.map((tagObject) => {
+        {tagObjectsSorted.map((tagObject,index) => {
           const id = `showcase_card_tag_${tagObject.tag}`;
           if (
             tagObject.tag == "msft" ||
@@ -159,8 +143,23 @@ function ShowcaseCardTag({
             return;
           }
           return (
-            <div key={id}>
-              <TagComp id={id} {...tagObject} />
+            <div
+              key={index}
+              id={id}
+              style={{
+                height: "20px",
+                alignContent: "center",
+                border: "1px solid #E0E0E0",
+                padding: "0 5px",
+                marginTop: "3px",
+                fontSize: "10px",
+                minWidth: "0px",
+                color: "#616161",
+                fontWeight: "500",
+                borderRadius: "100px",
+              }}
+            >
+              {tagObject.label}
             </div>
           );
         })}
@@ -251,37 +250,30 @@ const useStyles = makeStyles({
   text: {
     color: "#606060",
     fontSize: "10px",
-    fontFamily: '"Segoe UI-Semibold", Helvetica',
   },
   cardTitle: {
     verticalAlign: "middle",
     fontSize: "16px",
-    fontFamily: '"Segoe UI-Bold", Helvetica',
     color: "#6656d1",
     fontWeight: "600",
   },
   cardTextBy: {
     fontSize: "12px",
-    fontFamily: '"Segoe UI-Regular", Helvetica',
     color: "#707070",
   },
   cardAuthor: {
-    fontFamily: '"Segoe UI-Regular", Helvetica',
     color: "#6656d1",
   },
   cardDescription: {
     fontSize: "14px",
-    fontFamily: '"Segoe UI-Regular", Helvetica',
     color: "#707070",
   },
   cardTag: {
     fontSize: "10px",
-    fontFamily: '"Segoe UI-Semibold", Helvetica',
     color: "#606060",
   },
   cardFooterQuickUse: {
     fontSize: "10px",
-    fontFamily: '"Segoe UI-Semibold", Helvetica',
     color: "#424242",
     fontWeight: "600",
   },
@@ -306,7 +298,6 @@ function ShowcaseCard({ user }: { user: User }) {
   // Panel
   const [isOpen, { setTrue: openPanel, setFalse: dismissPanel }] =
     useBoolean(false);
-  initializeIcons();
   if (tags.includes("msft")) {
     headerLogo = useBaseUrl("/img/microsoft.svg");
     headerText = "MICROSOFT AUTHORED";
@@ -377,7 +368,9 @@ function ShowcaseCard({ user }: { user: User }) {
       key={user.title}
       className={styles.card}
       style={{
-        background: "linear-gradient(#FAFAFA 0 0)bottom/100% 45px no-repeat",
+        background: "linear-gradient(#FAFAFA 0 0)bottom/100% 48px no-repeat",
+        borderRadius: "8px",
+        padding: "12px",
       }}
     >
       <CardHeader
@@ -391,11 +384,12 @@ function ShowcaseCard({ user }: { user: User }) {
           >
             <img src={headerLogo} height={16} />
             <div
-              className={styles.text}
               style={{
                 fontWeight: "600",
                 flex: "1",
                 paddingLeft: "3px",
+                color: "#707070",
+                fontSize: "10px",
               }}
             >
               {headerText}
@@ -438,7 +432,7 @@ function ShowcaseCard({ user }: { user: User }) {
           </div>
         }
       />
-      <CardPreview style={{ borderTop: "solid #F0F0F0" }} />
+      <CardPreview style={{ borderTop: "1px solid #F0F0F0" }} />
       <div
         style={{
           display: "flex",
@@ -477,7 +471,8 @@ function ShowcaseCard({ user }: { user: User }) {
             WebkitLineClamp: "3",
             WebkitBoxOrient: "vertical",
           }}
-          onClick={openPanel}
+          // Disable panel until redesign of card panel completed
+          // onClick={openPanel}
         >
           {user.description}
         </div>
@@ -500,50 +495,53 @@ function ShowcaseCard({ user }: { user: User }) {
             style={{
               display: "flex",
               overflow: "hidden",
-              columnGap: "5px",
+              gap: "4px",
               flexFlow: "wrap",
             }}
-            onClick={openPanel}
+            // Disable panel until Card Panel redesign completed
+            // onClick={openPanel}
           >
             <ShowcaseCardTag key={user.title} tags={user.tags} moreTag={true} />
           </div>
         </div>
       </div>
       <CardPreview
-        style={{ borderTop: "solid #F0F0F0", backgroundColor: "#FAFAFA" }}
+        style={{ borderTop: "1px solid #F0F0F0", backgroundColor: "#FAFAFA" }}
       ></CardPreview>
-      <CardFooter style={{ alignItems: "center", width: "100%" }}>
-        <div
-          className={styles.cardFooterQuickUse}
-          style={{ whiteSpace: "nowrap" }}
-        >
-          Quick Use
-        </div>
-        <Button
-          style={{ padding: "0px", fontWeight: "400" }}
-          onClick={() => {
-            navigator.clipboard.writeText(azdInitCommand);
+      <CardFooter>
+        <Input
+          size="small"
+          defaultValue={azdInitCommand}
+          style={{
+            flex: "1",
+            border: "1px solid #d1d1d1",
+            fontSize: "11px",
+            fontFamily: "Consolas",
+            WebkitTextFillColor: "#717171",
           }}
-        >
-          <div
-            className={styles.cardFooterAzdCommand}
-            style={{
-              whiteSpace: "nowrap",
-              overflow: "hidden",
-              paddingLeft: "3px",
-            }}
-          >
-            {azdInitCommand}
-          </div>
-        </Button>
-        <Button
-          style={{ minWidth: "20px", padding: "0px", minHeight: "20px" }}
-          onClick={() => {
-            navigator.clipboard.writeText(azdInitCommand);
-          }}
-        >
-          <img src={useBaseUrl("/img/copy.svg")} height={20} alt="Copy" />
-        </Button>
+        />
+        <Popover withArrow size="small">
+          <PopoverTrigger disableButtonEnhancement>
+            <Button
+              size="small"
+              appearance="primary"
+              style={{
+                minWidth: "40px",
+                backgroundColor: "#7160E8",
+                borderColor: "#7160E8",
+              }}
+              onClick={() => {
+                navigator.clipboard.writeText(azdInitCommand);
+              }}
+            >
+              Copy
+            </Button>
+          </PopoverTrigger>
+
+          <PopoverSurface style={{ padding: "5px", fontSize: "12px" }}>
+            <div>Copied!</div>
+          </PopoverSurface>
+        </Popover>
       </CardFooter>
     </Card>
   );
@@ -568,7 +566,11 @@ export function ShowcaseContributionCard(): React.ReactElement {
     return null;
   }
   return (
-    <Card className={styles.card} id="contributionCard">
+    <Card
+      className={styles.card}
+      id="contributionCard"
+      style={{ padding: "24px", borderRadius: "8px" }}
+    >
       <ToggleButton
         onClick={() => closeCard("contributionCard")}
         size="small"
@@ -592,8 +594,7 @@ export function ShowcaseContributionCard(): React.ReactElement {
       <div
         style={{
           color: "#242424",
-          fontSize: "24px",
-          fontFamily: '"Segoe UI-Semibold", Helvetica',
+          fontSize: "20px",
           fontWeight: "550",
           height: "0px",
         }}
@@ -603,8 +604,7 @@ export function ShowcaseContributionCard(): React.ReactElement {
       <div
         style={{
           color: "#242424",
-          fontSize: "14px",
-          fontFamily: '"Segoe UI-Regular", Helvetica',
+          fontSize: "12px",
         }}
       >
         <p
@@ -622,18 +622,16 @@ export function ShowcaseContributionCard(): React.ReactElement {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </p>
       </div>
-      <div style={{ display: "flex", paddingTop: "10px" }}>
+      <CardFooter>
         <Button
-          size="small"
+          size="medium"
+          appearance="primary"
           style={{
             flex: 1,
-            color: "#ffffff",
-            fontFamily: '"Segoe UI-Semibold", Helvetica',
-            fontSize: "14px",
-            backgroundColor: "#6656d1",
-            height: "32px",
+            backgroundColor: "#7160E8",
             whiteSpace: "nowrap",
             fontWeight: "550",
+            fontSize: "12px",
           }}
           onClick={() => {
             window.open(
@@ -645,17 +643,15 @@ export function ShowcaseContributionCard(): React.ReactElement {
           Submit a template
         </Button>
         <Button
-          size="small"
+          size="medium"
           appearance="transparent"
           style={{
             flex: 1,
-            color: "#6656d1",
-            fontFamily: '"Segoe UI-Semibold", Helvetica',
-            fontSize: "14px",
-            height: "32px",
+            color: "#7160E8",
             whiteSpace: "nowrap",
             fontWeight: "550",
             paddingLeft: "10px",
+            fontSize: "12px",
           }}
           onClick={() => {
             window.open(
@@ -666,7 +662,7 @@ export function ShowcaseContributionCard(): React.ReactElement {
         >
           Request a template
         </Button>
-      </div>
+      </CardFooter>
     </Card>
   );
 }
@@ -705,6 +701,7 @@ function ShowcaseCardPanel({ user }: { user: User }) {
     linkInMenu: "",
     overflowMenuButton: "",
   };
+  const styles = useStyles();
   return (
     <div>
       <div
@@ -771,7 +768,6 @@ function ShowcaseCardPanel({ user }: { user: User }) {
         <PivotItem
           style={{
             color: "#242424",
-            fontFamily: '"Segoe UI-Semibold", Helvetica;',
             fontSize: "14px",
           }}
           headerText="Template Details"
@@ -780,7 +776,6 @@ function ShowcaseCardPanel({ user }: { user: User }) {
             <div
               style={{
                 color: "#242424",
-                fontFamily: '"Segoe UI-Regular", Helvetica;',
                 fontSize: "14px",
                 fontWeight: "400",
               }}
@@ -797,7 +792,6 @@ function ShowcaseCardPanel({ user }: { user: User }) {
               <div
                 style={{
                   color: "#242424",
-                  fontFamily: '"Segoe UI-Semibold", Helvetica;',
                   fontSize: "14px",
                   flex: "1",
                 }}
@@ -826,7 +820,6 @@ function ShowcaseCardPanel({ user }: { user: User }) {
                 <div
                   style={{
                     color: "#242424",
-                    fontFamily: '"Segoe UI-Regular", Helvetica;',
                     fontSize: "14px",
                     fontWeight: "400",
                     padding: "10px 0",
@@ -850,7 +843,6 @@ function ShowcaseCardPanel({ user }: { user: User }) {
                     style={{
                       flex: "1",
                       color: "#242424",
-                      fontFamily: '"Segoe UI-Semibold", Helvetica;',
                       fontSize: "12px",
                       paddingLeft: "5px",
                     }}
@@ -907,7 +899,6 @@ function ShowcaseCardPanel({ user }: { user: User }) {
                 <div
                   style={{
                     color: "#242424",
-                    fontFamily: '"Segoe UI-Regular", Helvetica;',
                     fontSize: "14px",
                     fontWeight: "400",
                     padding: "10px 0",
@@ -941,7 +932,6 @@ function ShowcaseCardPanel({ user }: { user: User }) {
                     style={{
                       flex: "1",
                       color: "#242424",
-                      fontFamily: '"Segoe UI-Semibold", Helvetica;',
                       paddingLeft: "5px",
                       fontSize: "12px",
                     }}
@@ -1002,7 +992,6 @@ function ShowcaseCardPanel({ user }: { user: User }) {
                 <div
                   style={{
                     color: "#242424",
-                    fontFamily: '"Segoe UI-Semibold", Helvetica;',
                     fontSize: "14px",
                     flex: "1",
                   }}
@@ -1031,7 +1020,6 @@ function ShowcaseCardPanel({ user }: { user: User }) {
                   <div
                     style={{
                       color: "#242424",
-                      fontFamily: '"Segoe UI-Regular", Helvetica;',
                       fontSize: "14px",
                       fontWeight: "400",
                       padding: "10px 0",
@@ -1058,7 +1046,6 @@ function ShowcaseCardPanel({ user }: { user: User }) {
         <PivotItem
           style={{
             color: "#424242",
-            fontFamily: '"Segoe UI-Regular", Helvetica;',
             fontSize: "14px",
             fontWeight: "400",
           }}
@@ -1069,7 +1056,6 @@ function ShowcaseCardPanel({ user }: { user: User }) {
               style={{
                 color: "#242424",
                 fontSize: "14px",
-                fontFamily: '"Segoe UI-Regular", Helvetica',
                 fontWeight: "400",
               }}
             >
@@ -1163,7 +1149,6 @@ function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
                 style={{
                   color: "#242424",
                   fontSize: "14px",
-                  fontFamily: '"Segoe UI-Semibold", Helvetica',
                 }}
               >
                 {tagObject.label}
@@ -1179,7 +1164,6 @@ function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
                   style={{
                     color: "#707070",
                     fontSize: "12px",
-                    fontFamily: '"Segoe UI-Regular", Helvetica',
                     fontWeight: "400",
                   }}
                 >
@@ -1189,7 +1173,6 @@ function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
                   style={{
                     color: "#707070",
                     fontSize: "12px",
-                    fontFamily: '"Segoe UI-Regular", Helvetica',
                     fontWeight: "400",
                     padding: "0 6px",
                   }}
@@ -1200,9 +1183,8 @@ function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
                   href={tagObject.url}
                   target="_blank"
                   style={{
-                    color: "#6656d1",
+                    color: "#7160E8",
                     fontSize: "12px",
-                    fontFamily: '"Segoe UI-Regular", Helvetica',
                     fontWeight: "400",
                   }}
                 >

@@ -29,7 +29,6 @@ import {
 } from "@fluentui/react-components";
 import { useBoolean } from "@fluentui/react-hooks";
 import {
-  initializeIcons,
   IRenderFunction,
   Label,
   Pivot,
@@ -42,7 +41,6 @@ import {
   IPivotStyles,
   Popup
 } from "@fluentui/react";
-import { title } from "process";
 
 const TagComp = React.forwardRef<HTMLDivElement, Tag>(
   ({ label, description }, ref) => (
@@ -307,7 +305,6 @@ function ShowcaseCard({ user }: { user: User }) {
   // Panel
   const [isOpen, { setTrue: openPanel, setFalse: dismissPanel }] =
     useBoolean(false);
-  initializeIcons();
   if (tags.includes("msft")) {
     headerLogo = useBaseUrl("/img/microsoft.svg");
     headerText = "MICROSOFT AUTHORED";

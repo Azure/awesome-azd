@@ -591,6 +591,7 @@ export function ShowcaseContributionCard(): React.ReactElement {
             backgroundColor: "#7160E8",
             whiteSpace: "nowrap",
             fontWeight: "550",
+            fontSize: "12px",
           }}
         >
           Submit a template
@@ -604,6 +605,7 @@ export function ShowcaseContributionCard(): React.ReactElement {
             whiteSpace: "nowrap",
             fontWeight: "550",
             paddingLeft: "10px",
+            fontSize: "12px",
           }}
         >
           Request a template

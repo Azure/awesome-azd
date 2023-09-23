@@ -27,7 +27,12 @@ import {
   AccordionPanel,
   AccordionToggleEventHandler,
   Text,
+  Link as FluentUILink,
 } from "@fluentui/react-components";
+
+import { SearchBox } from "@fluentui/react/lib/SearchBox";
+
+import { initializeIcons } from "@uifabric/icons";
 
 import { Tags, type User, type TagType } from "../data/tags";
 
@@ -40,6 +45,7 @@ import { usePluralForm } from "@docusaurus/theme-common";
 
 import styles from "./styles.module.css";
 
+initializeIcons();
 const TITLE = "Template Library";
 const DESCRIPTION =
   "A community-contributed template gallery built to work with the Azure Developer CLI.";
@@ -122,30 +128,59 @@ function ShowcaseTemplateSearch() {
   const cover = useBaseUrl("/img/cover.png");
   return (
     <div className={styles.searchArea}>
-      <div style={{ height: "60px" }}></div>
-      <div style={{ textAlign: "center"}}>
-        <Text
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column"
+        }}
+      >
+        <div
+          className={styles.heroBar}
           style={{
-            background:
-              "linear-gradient(90deg, rgb(112.68, 94.63, 239.06) 0%, rgb(41.21, 120.83, 190.19) 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            fontSize: "32px",
+            textAlign: "center",
           }}
         >
-          {TITLE}
-        </Text>
-        <p>{DESCRIPTION}</p>
-        <a
-          className="button button--primary"
-          href={ADD_URL}
-          target="_blank"
-          rel="noreferrer"
+          <Text
+            size={800}
+            weight="semibold"
+            style={{
+              background:
+                "linear-gradient(90deg, rgb(112.68, 94.63, 239.06) 0%, rgb(41.21, 120.83, 190.19) 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            {TITLE}
+          </Text>
+        </div>
+        <Text
+          align="center"
+          size={400}
+          style={{
+            color: "#242424",
+            padding:"10px 0 20px 0"
+          }}
         >
-          <Translate id="showcase.header.button">
-            Contribute Your Template! 🙏
-          </Translate>
-        </a>
+          {DESCRIPTION}
+        </Text>
+        <FilterBar id="filterBar" />
+        <Text
+          align="center"
+          size={300}
+          style={{
+            color: "#242424",
+            padding: "20px 0",
+          }}
+        >
+          Not familiar with the Azure Developer CLI (azd)?
+          <FluentUILink
+            href={ADD_URL}
+            target="_blank"
+            style={{ paddingLeft: "3px", color: "#7160E8" }}
+          >
+            Learn more
+          </FluentUILink>
+        </Text>
       </div>
     </div>
   );
@@ -434,25 +469,54 @@ const otherUsers = sortedUsers.filter(
 );
 const featuredAndOtherUsers = featuredUsers.concat(otherUsers);
 
-function SearchBar({ searchbar }: { searchbar: boolean }) {
+function FilterBar({ id }: { id: string }) {
   const history = useHistory();
   const location = useLocation();
   const [value, setValue] = useState<string | null>(null);
+  console.log("value", value);
+  console.log(
+    "readSearchName(location.search)",
+    readSearchName(location.search)
+  );
   useEffect(() => {
     setValue(readSearchName(location.search));
   }, [location]);
-  if (searchbar) {
-  }
   return (
-    <div className={styles.searchContainer}>
-      <input
-        id="searchbar"
-        placeholder={translate({
-          message: "Search for site name...",
-          id: "showcase.searchBar.placeholder",
-        })}
-        value={value ?? undefined}
-        onInput={(e) => {
+    <>
+      <SearchBox
+        styles={{
+          root: {
+            border: "1px solid #D1D1D1",
+            height: "52px",
+            maxWidth: "740px",
+          },
+          icon: {
+            fontSize: "24px",
+            paddingLeft: "10px",
+          },
+          field: {
+            paddingLeft: "20px",
+            fontSize: "18px",
+          },
+        }}
+        id={id}
+        value={readSearchName(location.search) != null ? value : ""}
+        placeholder="Search for an azd template..."
+        onClear={(e) => {
+          setValue(null);
+          const newSearch = new URLSearchParams(location.search);
+          newSearch.delete(SearchNameQueryKey);
+
+          history.push({
+            ...location,
+            search: newSearch.toString(),
+            state: prepareUserState(),
+          });
+        }}
+        onChange={(e) => {
+          if (!e) {
+            return;
+          }
           setValue(e.currentTarget.value);
           const newSearch = new URLSearchParams(location.search);
           newSearch.delete(SearchNameQueryKey);
@@ -469,7 +533,7 @@ function SearchBar({ searchbar }: { searchbar: boolean }) {
           }, 0);
         }}
       />
-    </div>
+    </>
   );
 }
 
@@ -484,7 +548,7 @@ function ShowcaseCards() {
             Be the first to add an example project!
           </Translate>
         </h2>
-        <SearchBar />
+        {/* <FilterBar id="searchDropDown" /> */}
       </div>
     );
   }
@@ -496,7 +560,7 @@ function ShowcaseCards() {
           <div className={styles.showcaseFavorite}>
             <div>
               <div className={styles.showcaseFavoriteHeader}>
-                <SearchBar />
+                {/* <FilterBar id="searchDropDown" /> */}
               </div>
               <ul className={styles.showcaseList}>
                 {featuredAndOtherUsers.map((user, index) => (
@@ -514,7 +578,7 @@ function ShowcaseCards() {
       ) : (
         <div>
           <div className={styles.showcaseFavoriteHeader}>
-            <SearchBar />
+            {/* <FilterBar id="searchDropDown" /> */}
           </div>
           <ul className={styles.showcaseList}>
             {filteredUsers.map((user, index) => (
@@ -535,11 +599,10 @@ function ShowcaseCards() {
 export default function Showcase(): JSX.Element {
   return (
     <FluentProvider theme={teamsLightTheme}>
-      <Layout title={TITLE} description={DESCRIPTION}>
-        <main>
-          <ShowcaseTemplateSearch />
-          <ShowcaseFilterAndCard />
-        </main>
+      {/* <Layout title={TITLE} description={DESCRIPTION}> */}
+      <Layout>
+        <ShowcaseTemplateSearch />
+        <ShowcaseFilterAndCard />
       </Layout>
     </FluentProvider>
   );

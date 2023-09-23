@@ -22,6 +22,7 @@
     "@fluentui/react-components": "^9.27.3",
     "@fluentui/react-tags-preview": "^0.1.1",
     "@mdx-js/react": "^1.6.22",
+    "@uifabric/icons": "^7.9.5",
     "clsx": "^1.2.1",
     "prism-react-renderer": "^1.3.5",
     "react": "^17.0.2",

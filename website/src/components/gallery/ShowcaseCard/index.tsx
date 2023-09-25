@@ -6,7 +6,7 @@
  */
 
 import React from "react";
-import inputStyle from "./styles.module.css";
+import styles from "./styles.module.css";
 import { Tag, Tags, type User, type TagType } from "../../../data/tags";
 import { TagList } from "../../../data/users";
 import { sortBy } from "@site/src/utils/jsUtils";
@@ -20,7 +20,6 @@ import {
   Button,
   Badge,
   CardPreview,
-  Popup,
   Link as FluentUILink,
   ToggleButton,
   Input,
@@ -30,7 +29,6 @@ import {
 } from "@fluentui/react-components";
 import { useBoolean } from "@fluentui/react-hooks";
 import {
-  initializeIcons,
   IRenderFunction,
   Label,
   Pivot,
@@ -41,15 +39,15 @@ import {
   IPanelProps,
   Separator,
   IPivotStyles,
-  IInputProps,
+  Popup,
 } from "@fluentui/react";
-import { title } from "process";
 
-const TagComp = React.forwardRef<HTMLLIElement, Tag>(
-  ({ label, description }) => (
+const TagComp = React.forwardRef<HTMLDivElement, Tag>(
+  ({ label, description }, ref) => (
     <Badge
       appearance="outline"
       size="medium"
+      ref={ref}
       title={description}
       color="informative"
       style={{
@@ -114,8 +112,19 @@ function ShowcaseCardTag({
         <>
           {tagObjectsSorted.map((tagObject, index) => {
             const id = `showcase_card_tag_${tagObject.tag}`;
-
-            return <TagComp key={index} id={id} {...tagObject} />;
+            if (
+              tagObject.tag == "msft" ||
+              tagObject.tag == "community" ||
+              tagObject.tag == "new" ||
+              tagObject.tag == "popular"
+            ) {
+              return;
+            }
+            return (
+              <div key={id}>
+                <TagComp id={id} {...tagObject} />
+              </div>
+            );
           })}
         </>
       );
@@ -125,7 +134,14 @@ function ShowcaseCardTag({
       <>
         {tagObjectsSorted.map((tagObject, index) => {
           const id = `showcase_card_tag_${tagObject.tag}`;
-
+          if (
+            tagObject.tag == "msft" ||
+            tagObject.tag == "community" ||
+            tagObject.tag == "new" ||
+            tagObject.tag == "popular"
+          ) {
+            return;
+          }
           return (
             <div
               key={index}
@@ -158,11 +174,12 @@ function ShowcaseMultipleWebsites(
   length: number,
   i: number
 ) {
-  const customStyles = useStyles();
+  const styles = useStyles();
   if (i != length - 1) {
     return (
       <FluentUILink
-        className={customStyles.cardAuthor}
+        key={i}
+        className={styles.cardAuthor}
         href={websiteLink}
         target="_blank"
       >
@@ -172,7 +189,8 @@ function ShowcaseMultipleWebsites(
   } else {
     return (
       <FluentUILink
-        className={customStyles.cardAuthor}
+        key={i}
+        className={styles.cardAuthor}
         href={websiteLink}
         target="_blank"
       >
@@ -185,7 +203,7 @@ function ShowcaseMultipleWebsites(
 function ShowcaseMultipleAuthors({ user }: { user: User }) {
   const authors = user.author;
   const websites = user.website;
-  const customStyles = useStyles();
+  const styles = useStyles();
   let i = 0;
 
   if (authors.includes(", ")) {
@@ -214,11 +232,7 @@ function ShowcaseMultipleAuthors({ user }: { user: User }) {
   }
 
   return (
-    <FluentUILink
-      className={customStyles.cardAuthor}
-      href={websites}
-      target="_blank"
-    >
+    <FluentUILink className={styles.cardAuthor} href={websites} target="_blank">
       {authors}
     </FluentUILink>
   );
@@ -228,7 +242,7 @@ const useStyles = makeStyles({
   card: {
     ...shorthands.margin("auto"),
     width: "350px",
-    height: "353px",
+    height: "368px",
     maxWidth: "100%",
     maxHeight: "100%",
     minWidth: "300px",
@@ -240,15 +254,15 @@ const useStyles = makeStyles({
   cardTitle: {
     verticalAlign: "middle",
     fontSize: "16px",
-    color: "#7160E8",
-    fontWeight: "500",
+    color: "#6656d1",
+    fontWeight: "600",
   },
   cardTextBy: {
     fontSize: "12px",
     color: "#707070",
   },
   cardAuthor: {
-    color: "#7160E8",
+    color: "#6656d1",
   },
   cardDescription: {
     fontSize: "14px",
@@ -258,11 +272,21 @@ const useStyles = makeStyles({
     fontSize: "10px",
     color: "#606060",
   },
+  cardFooterQuickUse: {
+    fontSize: "10px",
+    color: "#424242",
+    fontWeight: "600",
+  },
+  cardFooterAzdCommand: {
+    fontSize: "11px",
+    fontFamily: '"Consolas-Regular", Helvetica',
+    color: "#606060",
+  },
 });
 
 function ShowcaseCard({ user }: { user: User }) {
-  const customStyles = useStyles();
-  const author = user.author;
+  const styles = useStyles();
+  const tags = user.tags;
   const source = user.source;
   const star = useBaseUrl("/img/sparkle.svg");
   const fire = useBaseUrl("/img/fire.svg");
@@ -274,8 +298,7 @@ function ShowcaseCard({ user }: { user: User }) {
   // Panel
   const [isOpen, { setTrue: openPanel, setFalse: dismissPanel }] =
     useBoolean(false);
-  initializeIcons();
-  if (author.includes("Azure Dev") || author.includes("Azure Content Team")) {
+  if (tags.includes("msft")) {
     headerLogo = useBaseUrl("/img/microsoft.svg");
     headerText = "MICROSOFT AUTHORED";
   }
@@ -297,29 +320,40 @@ function ShowcaseCard({ user }: { user: User }) {
               style={{ margin: "5px 0px", fontWeight: "550" }}
             />
             <div
-              className={customStyles.text}
-              style={{ color: "#707070", paddingLeft: "3px" }}
+              className={styles.text}
+              style={{ color: "#606060", paddingLeft: "3px" }}
             >
               {headerText}
             </div>
-            <img
-              src={star}
-              alt="Star"
-              height={16}
-              style={{ paddingLeft: "10px" }}
-            />
-            <div className={customStyles.text} style={{ color: "#11910D" }}>
-              NEW
-            </div>
-            <img
-              src={fire}
-              alt="Fire"
-              height={16}
-              style={{ paddingLeft: "10px" }}
-            />
-            <div className={customStyles.text} style={{ color: "#F7630C" }}>
-              POPULAR
-            </div>
+            {/* {tags.includes("new")  */}
+            {false ? (
+              <>
+                <img
+                  src={star}
+                  alt="Star"
+                  height={16}
+                  style={{ paddingLeft: "10px" }}
+                />
+                <div className={styles.text} style={{ color: "#11910D" }}>
+                  NEW
+                </div>
+              </>
+            ) : null}
+
+            {/* {tags.includes("popular")  */}
+            {false ? (
+              <>
+                <img
+                  src={fire}
+                  alt="Fire"
+                  height={16}
+                  style={{ paddingLeft: "10px" }}
+                />
+                <div className={styles.text} style={{ color: "#F7630C" }}>
+                  POPULAR
+                </div>
+              </>
+            ) : null}
           </div>
           {
             // This custom navigation still renders the close button (defaultRender).
@@ -334,7 +368,7 @@ function ShowcaseCard({ user }: { user: User }) {
   return (
     <Card
       key={user.title}
-      className={customStyles.card}
+      className={styles.card}
       style={{
         background: "linear-gradient(#FAFAFA 0 0)bottom/100% 48px no-repeat",
         borderRadius: "8px",
@@ -362,33 +396,43 @@ function ShowcaseCard({ user }: { user: User }) {
             >
               {headerText}
             </div>
-            <img src={star} alt="Star" height={16} />
-            <div
-              className={customStyles.text}
-              style={{
-                color: "#11910D",
-                fontWeight: "600",
-              }}
-            >
-              NEW
-            </div>
-            <img
-              src={fire}
-              alt="Fire"
-              height={16}
-              style={{
-                paddingLeft: "6px",
-              }}
-            />
-            <div
-              className={customStyles.text}
-              style={{
-                color: "#F7630C",
-                fontWeight: "600",
-              }}
-            >
-              POPULAR
-            </div>
+            {/* tags.includes("new")*/}
+            {false ? (
+              <>
+                <img src={star} alt="Star" height={16} />
+                <div
+                  className={styles.text}
+                  style={{
+                    color: "#11910D",
+                    fontWeight: "600",
+                  }}
+                >
+                  NEW
+                </div>
+              </>
+            ) : null}
+            {/* tags.includes("popular")  */}
+            {false ? (
+              <>
+                <img
+                  src={fire}
+                  alt="Fire"
+                  height={16}
+                  style={{
+                    paddingLeft: "6px",
+                  }}
+                />
+                <div
+                  className={styles.text}
+                  style={{
+                    color: "#F7630C",
+                    fontWeight: "600",
+                  }}
+                >
+                  POPULAR
+                </div>
+              </>
+            ) : null}
           </div>
         }
       />
@@ -403,7 +447,7 @@ function ShowcaseCard({ user }: { user: User }) {
       >
         <FluentUILink
           href={source}
-          className={customStyles.cardTitle}
+          className={styles.cardTitle}
           target="_blank"
         >
           {user.title}
@@ -417,13 +461,13 @@ function ShowcaseCard({ user }: { user: User }) {
             columnGap: "3px",
           }}
         >
-          <div className={customStyles.cardTextBy}>by</div>
+          <div className={styles.cardTextBy}>by</div>
           <div style={{ fontSize: "12px" }}>
-            <ShowcaseMultipleAuthors user={user} />
+            <ShowcaseMultipleAuthors key={user.title} user={user} />
           </div>
         </div>
         <div
-          className={customStyles.cardDescription}
+          className={styles.cardDescription}
           style={{
             paddingTop: "10px",
             overflow: "hidden",
@@ -431,7 +475,8 @@ function ShowcaseCard({ user }: { user: User }) {
             WebkitLineClamp: "3",
             WebkitBoxOrient: "vertical",
           }}
-          onClick={openPanel}
+          // Disable panel until redesign of card panel completed
+          // onClick={openPanel}
         >
           {user.description}
         </div>
@@ -450,16 +495,17 @@ function ShowcaseCard({ user }: { user: User }) {
           style={{ paddingTop: "10px", position: "absolute", bottom: "0px" }}
         >
           <div
-            className={customStyles.cardTag}
+            className={styles.cardTag}
             style={{
               display: "flex",
               overflow: "hidden",
               gap: "4px",
               flexFlow: "wrap",
             }}
-            onClick={openPanel}
+            // Disable panel until Card Panel redesign completed
+            // onClick={openPanel}
           >
-            <ShowcaseCardTag tags={user.tags} moreTag={true} />
+            <ShowcaseCardTag key={user.title} tags={user.tags} moreTag={true} />
           </div>
         </div>
       </div>
@@ -515,7 +561,7 @@ function closeCard(parentDiv) {
 }
 
 export function ShowcaseContributionCard(): React.ReactElement {
-  const customStyles = useStyles();
+  const styles = useStyles();
   // access localStorage until window is defined
   if (
     typeof window !== "undefined" &&
@@ -525,7 +571,7 @@ export function ShowcaseContributionCard(): React.ReactElement {
   }
   return (
     <Card
-      className={customStyles.card}
+      className={styles.card}
       id="contributionCard"
       style={{ padding: "24px", borderRadius: "8px" }}
     >
@@ -591,6 +637,12 @@ export function ShowcaseContributionCard(): React.ReactElement {
             fontWeight: "550",
             fontSize: "12px",
           }}
+          onClick={() => {
+            window.open(
+              "https://github.com/Azure/awesome-azd/compare",
+              "_blank"
+            );
+          }}
         >
           Submit a template
         </Button>
@@ -604,6 +656,12 @@ export function ShowcaseContributionCard(): React.ReactElement {
             fontWeight: "550",
             paddingLeft: "10px",
             fontSize: "12px",
+          }}
+          onClick={() => {
+            window.open(
+              "https://github.com/Azure/awesome-azd/issues/new?assignees=nigkulintya%2C+savannahostrowski&labels=requested-contribution&template=%F0%9F%A4%94-submit-a-template-request.md&title=%5BIdea%5D+%3Cyour-template-name%3E",
+              "_blank"
+            );
           }}
         >
           Request a template
@@ -647,7 +705,7 @@ function ShowcaseCardPanel({ user }: { user: User }) {
     linkInMenu: "",
     overflowMenuButton: "",
   };
-  const customStyles = useStyles();
+  const styles = useStyles();
   return (
     <div>
       <div
@@ -658,14 +716,14 @@ function ShowcaseCardPanel({ user }: { user: User }) {
           padding: "10px 0",
         }}
       >
-        <div className={customStyles.cardTextBy}>by</div>
+        <div className={styles.cardTextBy}>by</div>
         <div style={{ fontSize: "14px", fontWeight: "400" }}>
-          <ShowcaseMultipleAuthors user={user} />
+          <ShowcaseMultipleAuthors key={user.title} user={user} />
         </div>
         <FluentUILink
           href={user.website}
           target="_blank"
-          style={{ color: "#7160E8" }}
+          style={{ color: "#6656d1" }}
         >
           <img
             src={useBaseUrl("/img/redirect.svg")}
@@ -683,7 +741,7 @@ function ShowcaseCardPanel({ user }: { user: User }) {
             display: "flex",
             alignItems: "center",
             columnGap: "5px",
-            color: "#7160E8",
+            color: "#6656d1",
           }}
         >
           View in GitHub
@@ -695,15 +753,16 @@ function ShowcaseCardPanel({ user }: { user: User }) {
         </FluentUILink>
       </div>
       <div
-        className={customStyles.cardTag}
+        className={styles.cardTag}
         style={{
           display: "flex",
           overflow: "hidden",
-          gap: "4px",
+          columnGap: "5px",
           flexFlow: "wrap",
+          padding: "5px 0",
         }}
       >
-        <ShowcaseCardTag tags={user.tags} moreTag={false} />
+        <ShowcaseCardTag key={user.title} tags={user.tags} moreTag={false} />
       </div>
       <Pivot
         aria-label="Template Detials and Legal"
@@ -770,7 +829,7 @@ function ShowcaseCardPanel({ user }: { user: User }) {
                     padding: "10px 0",
                   }}
                 >
-                  If you already have the Azure Dev CLI installed on your
+                  If you already have the Azure Developer CLI installed on your
                   machine, using this template is as simple as running this
                   command in a new directory.
                 </div>

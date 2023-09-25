@@ -16,14 +16,20 @@ import ShowcaseTagSelect, {
   readSearchTags,
 } from "../components/gallery/ShowcaseTagSelect";
 
-import ShowcaseFilterToggle, {
-  type Operator,
-  readOperator,
-} from "../components/gallery/ShowcaseFilterToggle";
+import ShowcaseCard, {
+  ShowcaseContributionCard,
+} from "../components/gallery/ShowcaseCard";
 
-import ShowcaseCard, {ShowcaseContributionCard} from "../components/gallery/ShowcaseCard";
-import ShowcaseTooltip from "../components/gallery/ShowcaseTooltip";
-import { FluentProvider, teamsLightTheme } from "@fluentui/react-components";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import {
+  FluentProvider,
+  teamsLightTheme,
+  Accordion,
+  AccordionHeader,
+  AccordionItem,
+  AccordionPanel,
+  AccordionToggleEventHandler,
+} from "@fluentui/react-components";
 
 import { Tags, type User, type TagType } from "../data/tags";
 
@@ -75,7 +81,6 @@ function readSearchName(search: string) {
 function filterUsers(
   users: User[],
   selectedTags: TagType[],
-  operator: Operator,
   searchName: string | null
 ) {
   if (searchName) {
@@ -91,16 +96,12 @@ function filterUsers(
     if (user.tags.length === 0) {
       return false;
     }
-    if (operator === "AND") {
-      return selectedTags.every((tag) => user.tags.includes(tag));
-    }
-    return selectedTags.some((tag) => user.tags.includes(tag));
+    return selectedTags.every((tag) => user.tags.includes(tag));
   });
 }
 
 function useFilteredUsers() {
   const location = useLocation<UserState>();
-  const [operator, setOperator] = useState<Operator>("OR");
   // On SSR / first mount (hydration) no tag is selected
   const [selectedTags, setSelectedTags] = useState<TagType[]>([]);
   const [searchName, setSearchName] = useState<string | null>(null);
@@ -108,14 +109,13 @@ function useFilteredUsers() {
   // hydration mismatch)
   useEffect(() => {
     setSelectedTags(readSearchTags(location.search));
-    setOperator(readOperator(location.search));
     setSearchName(readSearchName(location.search));
     restoreUserState(location.state);
   }, [location]);
 
   return useMemo(
-    () => filterUsers(sortedUsers, selectedTags, operator, searchName),
-    [selectedTags, operator, searchName]
+    () => filterUsers(sortedUsers, selectedTags, searchName),
+    [selectedTags, searchName]
   );
 }
 
@@ -158,77 +158,263 @@ function useSiteCountPlural() {
 function ShowcaseFilters() {
   const filteredUsers = useFilteredUsers();
   const siteCountPlural = useSiteCountPlural();
+  const uncategoryTag = TagList.filter((tag) => {
+    const tagObject = Tags[tag];
+    return tagObject.type === undefined;
+  });
+  const languageTag = TagList.filter((tag) => {
+    const tagObject = Tags[tag];
+    return tagObject.type === "Language";
+  });
+  const frameworkTag = TagList.filter((tag) => {
+    const tagObject = Tags[tag];
+    return tagObject.type === "Framework";
+  });
+  const servicesTag = TagList.filter((tag) => {
+    const tagObject = Tags[tag];
+    return tagObject.type === "Service";
+  });
+  const databaseTag = TagList.filter((tag) => {
+    const tagObject = Tags[tag];
+    return tagObject.type === "Database";
+  });
+  const infrastructureAsCodeTag = TagList.filter((tag) => {
+    const tagObject = Tags[tag];
+    return tagObject.type === "Infrastructure as Code";
+  });
+  const otherTag = TagList.filter((tag) => {
+    const tagObject = Tags[tag];
+    return tagObject.type === "Other";
+  });
+  const [openItems, setOpenItems] = React.useState([
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+  ]);
+  const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
+    setOpenItems(data.openItems);
+  };
   return (
-    <section className="container margin-top--l margin-bottom--lg">
-      <div className={clsx("margin-bottom--sm", styles.filterCheckbox)}>
-        <div>
-          <h2>
-            <Translate id="showcase.filters.title">Filters</Translate>
-          </h2>
-          <span>{siteCountPlural(filteredUsers.length)}</span>
+    <Accordion
+      openItems={openItems}
+      onToggle={handleToggle}
+      multiple
+      collapsible
+    >
+      <div style={{ paddingBottom: "7px" }}>
+        <div
+          style={{
+            color: "#242424",
+            fontSize: "20px",
+            fontWeight: "500",
+            padding: "0 0 15px 12px",
+          }}
+        >
+          Filter by
         </div>
-        <ShowcaseFilterToggle />
-      </div>
-      <ul className={styles.checkboxList}>
-        {TagList.map((tag, i) => {
-          const { label, description } = Tags[tag];
+        {uncategoryTag.map((tag) => {
+          const tagObject = Tags[tag];
           const id = `showcase_checkbox_id_${tag}`;
 
           return (
-            <li key={i} className={styles.checkboxListItem}>
-              <ShowcaseTooltip
-                id={id}
-                text={description}
-                anchorEl="#__docusaurus"
-              >
-                <ShowcaseTagSelect
-                  tag={tag}
-                  id={id}
-                  label={label}
-                  icon={
-                    tag === "featured" ? (
-                      <FavoriteIcon svgClass={styles.svgIconFavoriteXs} />
-                    ) : (
-                      <span
-                        style={{
-                          width: 10,
-                          height: 10,
-                          borderRadius: "50%",
-                          marginLeft: 8,
-                        }}
-                      />
-                    )
-                  }
-                />
-              </ShowcaseTooltip>
-            </li>
+            <div
+              key={id}
+              className={styles.checkboxListItem}
+              style={{ paddingLeft: "12px" }}
+            >
+              <ShowcaseTagSelect tag={tag} label={tagObject.label} />
+            </div>
           );
         })}
-      </ul>
-    </section>
+      </div>
+      <AccordionItem value="1">
+        <AccordionHeader
+          expandIconPosition="end"
+          style={{background:"linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat"}}
+        >
+          <div
+            style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
+          >
+            Language
+          </div>
+        </AccordionHeader>
+        <AccordionPanel>
+          <ShowcaseFilterViewAll tags={languageTag} number={"1"} />
+        </AccordionPanel>
+      </AccordionItem>
+
+      <AccordionItem value="2">
+        <AccordionHeader
+          expandIconPosition="end"
+          style={{background:"linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat"}}
+        >
+          <div
+            style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
+          >
+            Framework
+          </div>
+        </AccordionHeader>
+        <AccordionPanel>
+          <ShowcaseFilterViewAll tags={frameworkTag} number={"2"} />
+        </AccordionPanel>
+      </AccordionItem>
+
+      <AccordionItem value="3">
+        <AccordionHeader
+          expandIconPosition="end"
+          style={{background:"linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat"}}
+        >
+          <div
+            style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
+          >
+            Services
+          </div>
+        </AccordionHeader>
+        <AccordionPanel>
+          <ShowcaseFilterViewAll tags={servicesTag} number={"3"} />
+        </AccordionPanel>
+      </AccordionItem>
+
+      <AccordionItem value="4">
+        <AccordionHeader
+          expandIconPosition="end"
+          style={{background:"linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat"}}
+        >
+          <div
+            style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
+          >
+            Database
+          </div>
+        </AccordionHeader>
+        <AccordionPanel>
+          <ShowcaseFilterViewAll tags={databaseTag} number={"4"} />
+        </AccordionPanel>
+      </AccordionItem>
+
+      <AccordionItem value="5">
+        <AccordionHeader
+          expandIconPosition="end"
+          style={{background:"linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat"}}
+        >
+          <div
+            style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
+          >
+            Infrastructure as Code
+          </div>
+        </AccordionHeader>
+        <AccordionPanel>
+          <ShowcaseFilterViewAll tags={infrastructureAsCodeTag} number={"5"} />
+        </AccordionPanel>
+      </AccordionItem>
+
+      <AccordionItem value="6">
+        <AccordionHeader
+          expandIconPosition="end"
+          style={{background:"linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat"}}
+        >
+          <div
+            style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
+          >
+            Other
+          </div>
+        </AccordionHeader>
+        <AccordionPanel>
+          <ShowcaseFilterViewAll tags={otherTag} number={"6"} />
+        </AccordionPanel>
+      </AccordionItem>
+    </Accordion>
+
+    /* <span>{siteCountPlural(filteredUsers.length)}</span> */
+  );
+}
+
+function ShowcaseFilterViewAll({
+  tags,
+  number,
+}: {
+  tags: TagType[];
+  number: string;
+}) {
+  const [openItems, setOpenItems] = React.useState(["0"]);
+  const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
+    setOpenItems(data.openItems);
+  };
+  const chevronDownSmall = <img src={useBaseUrl("/img/smallChevron.svg")} />;
+  const chevronUpSmall = (
+    <img
+      style={{ transform: "rotate(180deg)" }}
+      src={useBaseUrl("/img/smallChevron.svg")}
+    />
+  );
+  let value = number + "2";
+  return (
+    <>
+      {tags.slice(0, 6).map((tag) => {
+        const tagObject = Tags[tag];
+        const id = `showcase_checkbox_id_${tag}`;
+
+        return (
+          <div key={id} className={styles.checkboxListItem}>
+            <ShowcaseTagSelect tag={tag} label={tagObject.label} />
+          </div>
+        );
+      })}
+      {tags.length > 5 ? (
+        <Accordion
+          openItems={openItems}
+          onToggle={handleToggle}
+          multiple
+          collapsible
+        >
+          <AccordionItem value={value} style={{ padding: "0px" }}>
+            <AccordionPanel style={{ margin: "0px" }}>
+              {tags.slice(6, tags.length).map((tag) => {
+                const tagObject = Tags[tag];
+                const id = `showcase_checkbox_id_${tag}`;
+
+                return (
+                  <div key={id} className={styles.checkboxListItem}>
+                    <ShowcaseTagSelect tag={tag} label={tagObject.label} />
+                  </div>
+                );
+              })}
+            </AccordionPanel>
+            <AccordionHeader
+              inline={true}
+              expandIconPosition="end"
+              expandIcon={
+                openItems.includes(value) ? chevronUpSmall : chevronDownSmall
+              }
+            >
+              <div
+                style={{
+                  color: "#6656d1",
+                  fontSize: "12px",
+                }}
+              >
+                View All
+              </div>
+            </AccordionHeader>
+          </AccordionItem>
+        </Accordion>
+      ) : null}
+    </>
   );
 }
 
 function ShowcaseFilterAndCard() {
   return (
-    <section className={styles.filterAndCard}>
-      <div
-        className={clsx(
-          "container margin-top--l margin-bottom--lg",
-          styles.filter
-        )}
-      >
+    <div className={styles.filterAndCard}>
+      <div className={styles.filter}>
         <ShowcaseFilters />
       </div>
-      <div
-        className={clsx(
-          "container margin-top--l margin-bottom--lg",
-          styles.card
-        )}
-      >
+      <div className={styles.card}>
         <ShowcaseCards />
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -282,34 +468,27 @@ function ShowcaseCards() {
 
   if (filteredUsers.length === 0) {
     return (
-      <section className="margin-top--lg margin-bottom--xl">
-        <div className="container padding-vert--md text--center">
-          <h2>
-            <Translate id="showcase.usersList.noResult">
-              Be the first to add an example project!
-            </Translate>
-          </h2>
-          <SearchBar />
-        </div>
-      </section>
+      <div>
+        <h2>
+          <Translate id="showcase.usersList.noResult">
+            Be the first to add an example project!
+          </Translate>
+        </h2>
+        <SearchBar />
+      </div>
     );
   }
 
   return (
-    <section className="margin-top--lg margin-bottom--xl">
+    <section>
       {filteredUsers.length === sortedUsers.length ? (
         <>
           <div className={styles.showcaseFavorite}>
-            <div className="container">
-              <div
-                className={clsx(
-                  "margin-bottom--md",
-                  styles.showcaseFavoriteHeader
-                )}
-              >
+            <div>
+              <div className={styles.showcaseFavoriteHeader}>
                 <SearchBar />
               </div>
-              <ul className={clsx("container", styles.showcaseList)}>
+              <ul className={styles.showcaseList}>
                 {featuredAndOtherUsers.map((user, index) => (
                   <React.Fragment key={user.title}>
                     <ShowcaseCard user={user} />
@@ -323,10 +502,8 @@ function ShowcaseCards() {
           </div>
         </>
       ) : (
-        <div className="container">
-          <div
-            className={clsx("margin-bottom--md", styles.showcaseFavoriteHeader)}
-          >
+        <div>
+          <div className={styles.showcaseFavoriteHeader}>
             <SearchBar />
           </div>
           <ul className={styles.showcaseList}>
@@ -349,7 +526,7 @@ export default function Showcase(): JSX.Element {
   return (
     <FluentProvider theme={teamsLightTheme}>
       <Layout title={TITLE} description={DESCRIPTION}>
-        <main className="margin-vert--lg">
+        <main>
           <ShowcaseTemplateSearch />
           <ShowcaseFilterAndCard />
         </main>

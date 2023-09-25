@@ -15,7 +15,8 @@
       "rediscache",
       "monitor",
       "keyvault",
-      "bicep"
+      "bicep",
+      "community"
     ]
   },
   {
@@ -36,7 +37,8 @@
       "monitor",
       "keyvault",
       "reactjs",
-      "bicep"
+      "bicep",
+      "msft"
     ]
   },
   {
@@ -46,7 +48,14 @@
     "website": "https://rockpaperorleans.net/",
     "author": "Brady Gaster",
     "source": "https://github.com/bradygaster/RockPaperOrleans",
-    "tags": ["featured", "dotnetCsharp", "cosmosdb", "aca", "bicep"]
+    "tags": [
+      "featured",
+      "dotnetCsharp",
+      "cosmosdb",
+      "aca",
+      "bicep",
+      "community"
+    ]
   },
   {
     "title": "Scalable Django on Azure App Service",
@@ -62,7 +71,8 @@
       "azuredb-postgreSQL",
       "webapps",
       "vnets",
-      "bicep"
+      "bicep",
+      "community"
     ]
   },
   {
@@ -83,7 +93,8 @@
       "monitor",
       "keyvault",
       "mongodb",
-      "reactjs"
+      "reactjs",
+      "msft"
     ]
   },
   {
@@ -106,7 +117,8 @@
       "keyvault",
       "mongodb",
       "reactjs",
-      "appservice"
+      "appservice",
+      "msft"
     ]
   },
   {
@@ -130,11 +142,12 @@
       "mongodb",
       "reactjs",
       "appservice",
-      "fastapi"
+      "fastapi",
+      "msft"
     ]
   },
   {
-    "title": "React Web App with Python API and MongoDB",
+    "title": "React Web App with Python API and MongoDB - Terraform",
     "description": "A blueprint for getting a React.js web app with Python (FastAPI) API and a MongoDB API in Cosmos database onto Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Terraform) to get up and running quickly. This architecture is for hosting web apps and APIs without worrying about the infrastructure.",
     "preview": "./templates/images/todo-python-terraform.png",
     "website": "https://github.com/Azure/azure-dev",
@@ -149,15 +162,15 @@
       "mongodb",
       "monitor",
       "keyvault",
-      "mongodb",
       "reactjs",
       "terraform",
       "appservice",
-      "fastapi"
+      "fastapi",
+      "msft"
     ]
   },
   {
-    "title": "React Web App with Node.js API and MongoDB",
+    "title": "React Web App with Node.js API and MongoDB - Terraform",
     "description": "A blueprint for getting a React web app with a Node.js API and a MongoDB database on Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Terraform) to get up and running quickly. This architecture is for hosting web apps and APIs without worrying about the infrastructure.",
     "preview": "./templates/images/todo-nodejs-mongo-terraform.png",
     "website": "https://github.com/Azure/azure-dev",
@@ -172,10 +185,10 @@
       "mongodb",
       "monitor",
       "keyvault",
-      "mongodb",
       "reactjs",
       "terraform",
-      "appservice"
+      "appservice",
+      "msft"
     ]
   },
   {
@@ -197,7 +210,8 @@
       "keyvault",
       "mongodb",
       "reactjs",
-      "fastapi"
+      "fastapi",
+      "msft"
     ]
   },
   {
@@ -219,7 +233,8 @@
       "keyvault",
       "mongodb",
       "reactjs",
-      "aca"
+      "aca",
+      "msft"
     ]
   },
   {
@@ -241,7 +256,8 @@
       "keyvault",
       "mongodb",
       "reactjs",
-      "fastapi"
+      "fastapi",
+      "msft"
     ]
   },
   {
@@ -262,7 +278,8 @@
       "monitor",
       "keyvault",
       "mongodb",
-      "reactjs"
+      "reactjs",
+      "msft"
     ]
   },
   {
@@ -282,7 +299,8 @@
       "keyvault",
       "monitor",
       "mongodb",
-      "reactjs"
+      "reactjs",
+      "msft"
     ]
   },
   {
@@ -302,7 +320,8 @@
       "keyvault",
       "monitor",
       "mongodb",
-      "reactjs"
+      "reactjs",
+      "msft"
     ]
   },
   {
@@ -324,7 +343,8 @@
       "keyvault",
       "reactjs",
       "appservice",
-      "azuresql"
+      "azuresql",
+      "msft"
     ]
   },
   {
@@ -346,7 +366,8 @@
       "reactjs",
       "appservice",
       "cosmosdb",
-      "aks"
+      "aks",
+      "msft"
     ]
   },
   {
@@ -364,7 +385,8 @@
       "spring",
       "webapps",
       "azurespringapps",
-      "azuredb-postgreSQL"
+      "azuredb-postgreSQL",
+      "community"
     ]
   },
   {
@@ -382,7 +404,8 @@
       "cosmosdb",
       "monitor",
       "fastapi",
-      "ai"
+      "ai",
+      "msft"
     ]
   },
   {
@@ -404,7 +427,8 @@
       "openai",
       "chatgpt",
       "rediscache",
-      "ai"
+      "ai",
+      "msft"
     ]
   },
   {
@@ -422,7 +446,8 @@
       "chatgpt",
       "ai",
       "flask",
-      "aca"
+      "aca",
+      "msft"
     ]
   },
   {
@@ -440,7 +465,8 @@
       "chatgpt",
       "ai",
       "blobstorage",
-      "azurespringapps"
+      "azurespringapps",
+      "community"
     ]
   },
   {
@@ -460,7 +486,8 @@
       "azuredb-postgreSQL",
       "cosmosdb",
       "apim",
-      "enterprisepatterns"
+      "enterprisepatterns",
+      "community"
     ]
   },
   {
@@ -476,7 +503,8 @@
       "webapps",
       "azuredb-postgreSQL",
       "appservice",
-      "vnets"
+      "vnets",
+      "msft"
     ]
   },
   {
@@ -486,7 +514,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/azure-django-postgres-aca",
-    "tags": ["python", "django", "aca", "azuredb-postgreSQL", "bicep"]
+    "tags": ["python", "django", "aca", "azuredb-postgreSQL", "bicep", "msft"]
   },
   {
     "title": "Python (Flask) Web App with PostgreSQL in VNet",
@@ -501,7 +529,8 @@
       "azuredb-postgreSQL",
       "appservice",
       "vnets",
-      "flask"
+      "flask",
+      "msft"
     ]
   },
   {
@@ -511,7 +540,7 @@
     "website": "https://github.com/Azure/azure-dev",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/pubsub-dapr-csharp-servicebus",
-    "tags": ["bicep", "dotnetCsharp", "aca", "dapr", "servicebus", "aca"]
+    "tags": ["bicep", "dotnetCsharp", "aca", "dapr", "servicebus", "msft"]
   },
   {
     "title": "Microservices App - Dapr PubSub Python ACA ServiceBus",
@@ -520,7 +549,7 @@
     "website": "https://github.com/Azure/azure-dev",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/pubsub-dapr-python-servicebus",
-    "tags": ["bicep", "python", "aca", "dapr", "servicebus", "aca"]
+    "tags": ["bicep", "python", "aca", "dapr", "servicebus", "msft"]
   },
   {
     "title": "Microservices App - Dapr PubSub Node.js ACA ServiceBus",
@@ -536,7 +565,7 @@
       "aca",
       "dapr",
       "servicebus",
-      "aca"
+      "msft"
     ]
   },
   {
@@ -546,7 +575,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/bindings-dapr-csharp-cron-postgres",
-    "tags": ["dapr", "dotnetCsharp", "azuredb-postgreSQL", "aca"]
+    "tags": ["dapr", "dotnetCsharp", "azuredb-postgreSQL", "aca", "msft"]
   },
   {
     "title": "Microservices App - Dapr Bindings Cron Python ACA PostgreSQL",
@@ -555,7 +584,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/bindings-dapr-python-cron-postgres",
-    "tags": ["dapr", "python", "azuredb-postgreSQL", "aca"]
+    "tags": ["dapr", "python", "azuredb-postgreSQL", "aca", "msft"]
   },
   {
     "title": "Microservices App - Dapr Bindings Cron Node.js ACA PostgreSQL",
@@ -564,7 +593,14 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/bindings-dapr-nodejs-cron-postgres",
-    "tags": ["dapr", "nodejs", "azuredb-postgreSQL", "javascript", "aca"]
+    "tags": [
+      "dapr",
+      "nodejs",
+      "azuredb-postgreSQL",
+      "javascript",
+      "aca",
+      "msft"
+    ]
   },
   {
     "title": "Microservices App - Dapr Service Invoke Node.js ACA",
@@ -573,7 +609,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/svc-invoke-dapr-nodejs",
-    "tags": ["dapr", "nodejs", "aca"]
+    "tags": ["dapr", "nodejs", "aca", "msft"]
   },
   {
     "title": "Microservices App - Dapr Service Invoke Python ACA",
@@ -582,7 +618,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/svc-invoke-dapr-python",
-    "tags": ["dapr", "python", "aca"]
+    "tags": ["dapr", "python", "aca", "msft"]
   },
   {
     "title": "Microservices App - Dapr Service Invoke C# ACA",
@@ -591,7 +627,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/svc-invoke-dapr-csharp",
-    "tags": ["dapr", "dotnetCsharp", "aca"]
+    "tags": ["dapr", "dotnetCsharp", "aca", "msft"]
   },
   {
     "title": "ChatGPT and Enterprise data with Azure OpenAI and Cognitive Search",
@@ -608,7 +644,8 @@
       "typescript",
       "bicep",
       "nodejs",
-      "ai"
+      "ai",
+      "msft"
     ]
   },
   {
@@ -618,7 +655,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/fastapi-on-azure-functions",
-    "tags": ["python", "fastapi", "functions"]
+    "tags": ["python", "fastapi", "functions", "msft"]
   },
   {
     "title": "Spring PetClinic - Java Spring MySQL",
@@ -636,7 +673,8 @@
       "appinsights",
       "bicep",
       "spring",
-      "thymeleaf"
+      "thymeleaf",
+      "community"
     ]
   },
   {
@@ -653,7 +691,8 @@
       "keyvault",
       "azurespringapps",
       "bicep",
-      "spring"
+      "spring",
+      "msft"
     ]
   },
   {
@@ -673,7 +712,8 @@
       "featured",
       "nestjs",
       "sap",
-      "sapcloudsdk"
+      "sapcloudsdk",
+      "community"
     ]
   },
   {
@@ -689,7 +729,8 @@
       "servicebus",
       "monitor",
       "keyvault",
-      "dataverse"
+      "dataverse",
+      "community"
     ]
   },
   {
@@ -699,7 +740,7 @@
     "website": "https://github.com/tonybaloney",
     "author": "Anthony Shaw",
     "source": "https://github.com/tonybaloney/simple-flask-azd",
-    "tags": ["python", "appservice", "flask"]
+    "tags": ["python", "appservice", "flask", "community"]
   },
   {
     "title": "Function App - C# AI Text Summarize",
@@ -708,7 +749,7 @@
     "website": "https://github.com/paulyuk",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/function-csharp-ai-textsummarize",
-    "tags": ["functions", "dotnetCsharp", "azureai", "bicep", "ai"]
+    "tags": ["functions", "dotnetCsharp", "azureai", "bicep", "ai", "community"]
   },
   {
     "title": "Function App - Python AI Text Summarize",
@@ -717,7 +758,7 @@
     "website": "https://github.com/paulyuk",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/function-python-ai-textsummarize",
-    "tags": ["functions", "python", "azureai", "bicep", "ai"]
+    "tags": ["functions", "python", "azureai", "bicep", "ai", "community"]
   },
   {
     "title": "Flask Container with CDN",
@@ -726,7 +767,7 @@
     "website": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/pamelafox/flask-gallery-container-app",
-    "tags": ["python", "flask", "webapps", "aca", "azurecdn"]
+    "tags": ["python", "flask", "webapps", "aca", "azurecdn", "community"]
   },
   {
     "title": "Flask Surveys Container App",
@@ -741,7 +782,8 @@
       "keyvault",
       "aca",
       "webapps",
-      "azuredb-postgreSQL"
+      "azuredb-postgreSQL",
+      "community"
     ]
   },
   {
@@ -751,7 +793,7 @@
     "website": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/pamelafox/simple-flask-api-container",
-    "tags": ["python", "bicep", "aca", "flask"]
+    "tags": ["python", "bicep", "aca", "flask", "community"]
   },
   {
     "title": "FastAPI with API Management",
@@ -760,7 +802,7 @@
     "website": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/pamelafox/fastapi-azure-function-apim",
-    "tags": ["python", "fastapi", "functions", "apim"]
+    "tags": ["python", "fastapi", "functions", "apim", "community"]
   },
   {
     "title": "Flask Chart API on ACA and CDN",
@@ -769,7 +811,7 @@
     "website": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/pamelafox/flask-charts-api-container-app",
-    "tags": ["python", "flask", "webapps", "aca", "azurecdn"]
+    "tags": ["python", "flask", "webapps", "aca", "azurecdn", "community"]
   },
   {
     "title": "Static Maps API Function and CDN",
@@ -778,7 +820,14 @@
     "website": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/pamelafox/staticmaps-function",
-    "tags": ["python", "functions", "fastapi", "monitor", "azurecdn"]
+    "tags": [
+      "python",
+      "functions",
+      "fastapi",
+      "monitor",
+      "azurecdn",
+      "community"
+    ]
   },
   {
     "title": "Jupyter Notebooks Web App on Azure Container Apps",
@@ -787,7 +836,15 @@
     "website": "https://github.com/savannahostrowski",
     "author": "Savannah Ostrowski",
     "source": "https://github.com/savannahostrowski/jupyter-mercury-aca",
-    "tags": ["python", "bicep", "webapps", "aca", "jupyter", "datascience"]
+    "tags": [
+      "python",
+      "bicep",
+      "webapps",
+      "aca",
+      "jupyter",
+      "datascience",
+      "community"
+    ]
   },
   {
     "title": "Python (Django) Web App with PostgreSQL and Key Vault",
@@ -803,7 +860,8 @@
       "appservice",
       "bicep",
       "azuredb-postgreSQL",
-      "keyvault"
+      "keyvault",
+      "community"
     ]
   },
   {
@@ -823,7 +881,8 @@
       "appinsights",
       "blobstorage",
       "webapps",
-      "enterprisepatterns"
+      "enterprisepatterns",
+      "msft"
     ]
   },
   {
@@ -833,7 +892,7 @@
     "website": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/pamelafox/simple-fastapi-container",
-    "tags": ["python", "fastapi", "bicep", "aca"]
+    "tags": ["python", "fastapi", "bicep", "aca", "community"]
   },
   {
     "title": "Containerized Apps on Azure Kubernetes Service",
@@ -842,7 +901,15 @@
     "website": "https://github.com/sabbour/",
     "author": "Ahmed Sabbour",
     "source": "https://github.com/sabbour/aks-app-template",
-    "tags": ["bicep", "aks", "kubernetes", "keda", "grafana", "prometheus"]
+    "tags": [
+      "bicep",
+      "aks",
+      "kubernetes",
+      "keda",
+      "grafana",
+      "prometheus",
+      "community"
+    ]
   },
   {
     "title": "React Component Toolkit with ChatGPT and OpenAI ",
@@ -859,7 +926,8 @@
       "apim",
       "reactjs",
       "typescript",
-      "javascript"
+      "javascript",
+      "community"
     ]
   },
   {
@@ -875,7 +943,8 @@
       "bicep",
       "appservice",
       "webapps",
-      "azuredb-postgreSQL"
+      "azuredb-postgreSQL",
+      "community"
     ]
   },
   {
@@ -885,7 +954,7 @@
     "website": "https://github.com/gordonby",
     "author": "Gordon Byers",
     "source": "https://github.com/Gordonby/servicebus-dotnet-functionapp",
-    "tags": ["dotnetCsharp", "functions", "bicep", "servicebus"]
+    "tags": ["dotnetCsharp", "functions", "bicep", "servicebus", "community"]
   },
   {
     "title": "FastAPI, htmx, TailwindCSS on App Service",
@@ -900,8 +969,8 @@
       "appservice",
       "webapps",
       "loganalytics",
-      "bicep"
+      "bicep",
+      "community"
     ]
   }
 ]
-

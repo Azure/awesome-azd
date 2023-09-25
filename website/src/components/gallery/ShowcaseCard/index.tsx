@@ -326,7 +326,7 @@ function ShowcaseCard({ user }: { user: User }) {
               {headerText}
             </div>
             {/* {tags.includes("new")  */}
-            {true ? (
+            {false ? (
               <>
                 <img
                   src={star}
@@ -341,7 +341,7 @@ function ShowcaseCard({ user }: { user: User }) {
             ) : null}
 
             {/* {tags.includes("popular")  */}
-            {true ? (
+            {false ? (
               <>
                 <img
                   src={fire}
@@ -397,7 +397,7 @@ function ShowcaseCard({ user }: { user: User }) {
               {headerText}
             </div>
             {/* tags.includes("new")*/}
-            {true ? (
+            {false ? (
               <>
                 <img src={star} alt="Star" height={16} />
                 <div
@@ -412,7 +412,7 @@ function ShowcaseCard({ user }: { user: User }) {
               </>
             ) : null}
             {/* tags.includes("popular")  */}
-            {true ? (
+            {false ? (
               <>
                 <img
                   src={fire}

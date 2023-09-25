@@ -29,7 +29,6 @@ import {
   AccordionItem,
   AccordionPanel,
   AccordionToggleEventHandler,
-  makeStyles,
 } from "@fluentui/react-components";
 
 import { Tags, type User, type TagType } from "../data/tags";
@@ -211,7 +210,7 @@ function ShowcaseFilters() {
             color: "#242424",
             fontSize: "20px",
             fontWeight: "500",
-            paddingBottom: "15px",
+            padding: "0 0 15px 12px",
           }}
         >
           Filter by
@@ -231,8 +230,11 @@ function ShowcaseFilters() {
           );
         })}
       </div>
-      <AccordionItem value="1" style={{ borderTop: "1px solid #D1D1D1" }}>
-        <AccordionHeader expandIconPosition="end">
+      <AccordionItem value="1">
+        <AccordionHeader
+          expandIconPosition="end"
+          style={{background:"linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat"}}
+        >
           <div
             style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
           >
@@ -244,8 +246,11 @@ function ShowcaseFilters() {
         </AccordionPanel>
       </AccordionItem>
 
-      <AccordionItem value="2" style={{ borderTop: "1px solid #D1D1D1" }}>
-        <AccordionHeader expandIconPosition="end">
+      <AccordionItem value="2">
+        <AccordionHeader
+          expandIconPosition="end"
+          style={{background:"linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat"}}
+        >
           <div
             style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
           >
@@ -257,8 +262,11 @@ function ShowcaseFilters() {
         </AccordionPanel>
       </AccordionItem>
 
-      <AccordionItem value="3" style={{ borderTop: "1px solid #D1D1D1" }}>
-        <AccordionHeader expandIconPosition="end">
+      <AccordionItem value="3">
+        <AccordionHeader
+          expandIconPosition="end"
+          style={{background:"linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat"}}
+        >
           <div
             style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
           >
@@ -270,8 +278,11 @@ function ShowcaseFilters() {
         </AccordionPanel>
       </AccordionItem>
 
-      <AccordionItem value="4" style={{ borderTop: "1px solid #D1D1D1" }}>
-        <AccordionHeader expandIconPosition="end">
+      <AccordionItem value="4">
+        <AccordionHeader
+          expandIconPosition="end"
+          style={{background:"linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat"}}
+        >
           <div
             style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
           >
@@ -283,8 +294,11 @@ function ShowcaseFilters() {
         </AccordionPanel>
       </AccordionItem>
 
-      <AccordionItem value="5" style={{ borderTop: "1px solid #D1D1D1" }}>
-        <AccordionHeader expandIconPosition="end">
+      <AccordionItem value="5">
+        <AccordionHeader
+          expandIconPosition="end"
+          style={{background:"linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat"}}
+        >
           <div
             style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
           >
@@ -296,8 +310,11 @@ function ShowcaseFilters() {
         </AccordionPanel>
       </AccordionItem>
 
-      <AccordionItem value="6" style={{ borderTop: "1px solid #D1D1D1" }}>
-        <AccordionHeader expandIconPosition="end">
+      <AccordionItem value="6">
+        <AccordionHeader
+          expandIconPosition="end"
+          style={{background:"linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat"}}
+        >
           <div
             style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
           >

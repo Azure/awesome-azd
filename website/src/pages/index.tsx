@@ -226,17 +226,18 @@ function ShowcaseFilters() {
           const id = `showcase_checkbox_id_${tag}`;
 
           return (
-            <div key={id} className={styles.checkboxListItem} style={{paddingLeft:"12px"}}>
+            <div
+              key={id}
+              className={styles.checkboxListItem}
+              style={{ paddingLeft: "12px" }}
+            >
               <ShowcaseTagSelect tag={tag} label={tagObject.label} />
             </div>
           );
         })}
       </div>
-      <AccordionItem
-        value="1"
-        style={{ borderTop: "1px solid #D1D1D1", paddingBottom: "7px" }}
-      >
-        <AccordionHeader expandIconPosition="end" expandIcon={chevronImg}>
+      <AccordionItem value="1" style={{ borderTop: "1px solid #D1D1D1" }}>
+        <AccordionHeader expandIconPosition="end">
           <div
             style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
           >
@@ -248,11 +249,8 @@ function ShowcaseFilters() {
         </AccordionPanel>
       </AccordionItem>
 
-      <AccordionItem
-        value="2"
-        style={{ borderTop: "1px solid #D1D1D1", paddingBottom: "7px" }}
-      >
-        <AccordionHeader expandIconPosition="end" expandIcon={chevronImg}>
+      <AccordionItem value="2" style={{ borderTop: "1px solid #D1D1D1" }}>
+        <AccordionHeader expandIconPosition="end">
           <div
             style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
           >
@@ -264,11 +262,8 @@ function ShowcaseFilters() {
         </AccordionPanel>
       </AccordionItem>
 
-      <AccordionItem
-        value="3"
-        style={{ borderTop: "1px solid #D1D1D1", paddingBottom: "7px" }}
-      >
-        <AccordionHeader expandIconPosition="end" expandIcon={chevronImg}>
+      <AccordionItem value="3" style={{ borderTop: "1px solid #D1D1D1" }}>
+        <AccordionHeader expandIconPosition="end">
           <div
             style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
           >
@@ -280,11 +275,8 @@ function ShowcaseFilters() {
         </AccordionPanel>
       </AccordionItem>
 
-      <AccordionItem
-        value="4"
-        style={{ borderTop: "1px solid #D1D1D1", paddingBottom: "7px" }}
-      >
-        <AccordionHeader expandIconPosition="end" expandIcon={chevronImg}>
+      <AccordionItem value="4" style={{ borderTop: "1px solid #D1D1D1" }}>
+        <AccordionHeader expandIconPosition="end">
           <div
             style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
           >
@@ -296,11 +288,8 @@ function ShowcaseFilters() {
         </AccordionPanel>
       </AccordionItem>
 
-      <AccordionItem
-        value="5"
-        style={{ borderTop: "1px solid #D1D1D1", paddingBottom: "7px" }}
-      >
-        <AccordionHeader expandIconPosition="end" expandIcon={chevronImg}>
+      <AccordionItem value="5" style={{ borderTop: "1px solid #D1D1D1" }}>
+        <AccordionHeader expandIconPosition="end">
           <div
             style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
           >
@@ -313,7 +302,7 @@ function ShowcaseFilters() {
       </AccordionItem>
 
       <AccordionItem value="6" style={{ borderTop: "1px solid #D1D1D1" }}>
-        <AccordionHeader expandIconPosition="end" expandIcon={chevronImg}>
+        <AccordionHeader expandIconPosition="end">
           <div
             style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
           >

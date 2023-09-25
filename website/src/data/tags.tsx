@@ -58,8 +58,9 @@ export type TagType =
   | "helpwanted"
   | "msft"
   | "community"
-  | "new"
-  | "popular"
+  // Will add it back once those tags are identified and added in each templates
+  // | "new"
+  // | "popular"
   | "bicep"
   | "typescript"
   | "javascript"
@@ -141,14 +142,15 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Community Authored",
     description: "This tag is used for community templates.",
   },
-  new: {
-    label: "New",
-    description: "This tag is used for new templates.",
-  },
-  popular: {
-    label: "Popular",
-    description: "This tag is used for popular templates.",
-  },
+  // Will add it back once the tags is added in templates meta data
+  // new: {
+  //   label: "New",
+  //   description: "This tag is used for new templates.",
+  // },
+  // popular: {
+  //   label: "Popular",
+  //   description: "This tag is used for popular templates.",
+  // },
 
   // Use for validated templates of high-quality
   featured: {

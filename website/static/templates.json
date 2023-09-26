@@ -1,22 +1,45 @@
-[    {
-    "title": "Java Spring Apps with Azure OpenAI",
-    "description": "AI Shopping Cart is a sample app template that supercharges your shopping experience with the power of AI. It leverages Azure OpenAI and Azure Spring Apps to build a recommendation engine that is not only scalable, resilient, and secure, but also personalized to your needs.",
-    "preview": "./templates/images/java-springapps-openai.png",
-    "website": "https://github.com/Azure-Samples/app-templates-java-openai-springapps",
-    "author": "Pierre Malarme",
-    "source": "https://github.com/Azure-Samples/app-templates-java-openai-springapps",
-    "tags": [
-        "featured",
-        "spring",
-        "openai",
-        "aca",
-        "azurespringapps",
-        "azuredb-postgreSQL",
-        "monitor",
-        "reactjs",
-        "bicep"
-    ]
-},
+[
+    {
+        "title": "Starter - Bicep",
+        "description": "A starter template with Bicep as infrastructure provider",
+        "website": "https://github.com/Azure/azure-dev",
+        "author": "Azure Dev",
+        "source": "https://github.com/Azure-Samples/azd-starter-bicep",
+        "tags": [
+            "featured",
+            "bicep"
+        ]
+    },
+    {
+        "title": "Starter - Terraform",
+        "description": "A starter template with Terraform as infrastructure provider",
+        "website": "https://github.com/Azure/azure-dev",
+        "author": "Azure Dev",
+        "source": "https://github.com/Azure-Samples/azd-starter-terraform",
+        "tags": [
+            "featured",
+            "terraform"
+        ]
+    },
+    {
+        "title": "Java Spring Apps with Azure OpenAI",
+        "description": "AI Shopping Cart is a sample app template that supercharges your shopping experience with the power of AI. It leverages Azure OpenAI and Azure Spring Apps to build a recommendation engine that is not only scalable, resilient, and secure, but also personalized to your needs.",
+        "preview": "./templates/images/java-springapps-openai.png",
+        "website": "https://github.com/Azure-Samples/app-templates-java-openai-springapps",
+        "author": "Pierre Malarme",
+        "source": "https://github.com/Azure-Samples/app-templates-java-openai-springapps",
+        "tags": [
+            "featured",
+            "spring",
+            "openai",
+            "aca",
+            "azurespringapps",
+            "azuredb-postgreSQL",
+            "monitor",
+            "reactjs",
+            "bicep"
+        ]
+    },
     {
         "title": "WordPress with Azure Container Apps",
         "description": "A blueprint to easily and quickly create and deploy your first scalable and secure WordPress site to Azure, leveraging Azure Container Apps with Azure Database for MariaDb.",
@@ -1078,13 +1101,13 @@
         ]
     },
     {
-      "title": "Docusaurus with Azure Container Apps",
-      "description": "A blueprint to easily and quickly create and deploy your product documentation in Docusaurus using Azure Container Apps.",
-      "preview": "./templates/images/docusaurus-aca-template.png",
-      "website": "https://github.com/jsburckhardt",
-      "author": "Juan Burckhardt",
-      "source": "https://github.com/jsburckhardt/docusaurus-aca",
-      "tags": [
+        "title": "Docusaurus with Azure Container Apps",
+        "description": "A blueprint to easily and quickly create and deploy your product documentation in Docusaurus using Azure Container Apps.",
+        "preview": "./templates/images/docusaurus-aca-template.png",
+        "website": "https://github.com/jsburckhardt",
+        "author": "Juan Burckhardt",
+        "source": "https://github.com/jsburckhardt/docusaurus-aca",
+        "tags": [
             "javascript",
             "aca",
             "bicep"
@@ -1110,50 +1133,50 @@
             "appinsights",
             "chatgpt"
         ]
-     },
-     {
-      "title": "Azure OpenAI with Azure Bot and Custom API calling, Behind a Firewall",
-      "description": "A Teams Chatbot running behind a Firewall that leverages OpenAI to call private APIs.",
-      "preview": "./templates/images/locked-down-bot-openai.png",
-      "website": "https://github.com/graemefoster",
-      "author": "Graeme Foster",
-      "source": "https://github.com/graemefoster/LockedDownChatBot",
-      "tags": [
-            "openai", 
-            "ai", 
-            "dotnetCsharp", 
-            "appservice", 
-            "azurebot", 
+    },
+    {
+        "title": "Azure OpenAI with Azure Bot and Custom API calling, Behind a Firewall",
+        "description": "A Teams Chatbot running behind a Firewall that leverages OpenAI to call private APIs.",
+        "preview": "./templates/images/locked-down-bot-openai.png",
+        "website": "https://github.com/graemefoster",
+        "author": "Graeme Foster",
+        "source": "https://github.com/graemefoster/LockedDownChatBot",
+        "tags": [
+            "openai",
+            "ai",
+            "dotnetCsharp",
+            "appservice",
+            "azurebot",
             "agw"
         ]
     },
     {
-      "title": "Hello world Java Application on Azure Spring Apps",
-      "description": "A complete hello-world application that includes everything you need to build, deploy, and run an Azure Spring Apps solution.",
-      "preview": "./templates/images/asa-helloworld.png",
-      "website": "https://github.com/spring-guides/",
-      "author": "Yi Liu",
-      "source": "https://github.com/spring-guides/gs-spring-boot-for-azure",
-      "tags": [
-          "java",
-          "azurespringapps",
-          "webapps",
-          "bicep",
-          "spring"
+        "title": "Hello world Java Application on Azure Spring Apps",
+        "description": "A complete hello-world application that includes everything you need to build, deploy, and run an Azure Spring Apps solution.",
+        "preview": "./templates/images/asa-helloworld.png",
+        "website": "https://github.com/spring-guides/",
+        "author": "Yi Liu",
+        "source": "https://github.com/spring-guides/gs-spring-boot-for-azure",
+        "tags": [
+            "java",
+            "azurespringapps",
+            "webapps",
+            "bicep",
+            "spring"
         ]
     },
     {
-      "title": "Terraform template to bootstrap Azure Deployment Environments",
-      "description": "A template to deploy Azure DevCenter with the minimun configuration to start using Azure Deployment Environments and supercharge your platform engineering story. Infrastructure as Code (written in Terraform) will get you started quickly to enable developers to self-serve environments via the Developer Portal, Azure CLI or CI/CD pipelines.",
-      "preview": "./templates/images/azure-deployment-environments.png",
-      "website": "https://github.com/lopezleandro03",
-      "author": "Leandro Lopez",
-      "source": "https://github.com/lopezleandro03/azd-devcenter",
-      "tags": [
-          "terraform",
-          "platformengineering",
-          "devcenter",
-          "ade"
+        "title": "Terraform template to bootstrap Azure Deployment Environments",
+        "description": "A template to deploy Azure DevCenter with the minimun configuration to start using Azure Deployment Environments and supercharge your platform engineering story. Infrastructure as Code (written in Terraform) will get you started quickly to enable developers to self-serve environments via the Developer Portal, Azure CLI or CI/CD pipelines.",
+        "preview": "./templates/images/azure-deployment-environments.png",
+        "website": "https://github.com/lopezleandro03",
+        "author": "Leandro Lopez",
+        "source": "https://github.com/lopezleandro03/azd-devcenter",
+        "tags": [
+            "terraform",
+            "platformengineering",
+            "devcenter",
+            "ade"
         ]
     }
 ]

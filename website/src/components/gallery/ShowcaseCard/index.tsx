@@ -91,6 +91,14 @@ function ShowcaseCardTag({
         <>
           {tagObjectsSorted.slice(0, number).map((tagObject, index) => {
             const id = `showcase_card_tag_${tagObject.tag}`;
+            if (
+              tagObject.tag == "msft" ||
+              tagObject.tag == "community" ||
+              tagObject.tag == "new" ||
+              tagObject.tag == "popular"
+            ) {
+              return;
+            }
             return <TagComp key={index} id={id} {...tagObject} />;
           })}
           <Badge

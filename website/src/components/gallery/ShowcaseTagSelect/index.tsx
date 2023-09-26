@@ -22,6 +22,8 @@
   
 import { Checkbox } from "@fluentui/react-components";
   
+import { Checkbox } from "@fluentui/react-components";
+  
   const TagQueryStringKey = 'tags';
   
   export function readSearchTags(search: string): TagType[] {

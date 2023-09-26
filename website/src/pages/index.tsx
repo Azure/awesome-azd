@@ -186,6 +186,7 @@ function ShowcaseTemplateSearch() {
   );
 }
 
+
 function useSiteCountPlural() {
   const { selectMessage } = usePluralForm();
   return (sitesCount: number) =>
@@ -245,11 +246,6 @@ function ShowcaseFilters() {
   const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
     setOpenItems(data.openItems);
   };
-
-  const chevronImg = (
-    <img src={useBaseUrl("/img/leftChevron.svg")} height={20} />
-  );
-
   return (
     <Accordion
       openItems={openItems}
@@ -263,7 +259,7 @@ function ShowcaseFilters() {
             color: "#242424",
             fontSize: "20px",
             fontWeight: "500",
-            paddingBottom: "15px",
+            padding: "0 0 15px 12px",
           }}
         >
           Filter by
@@ -283,11 +279,11 @@ function ShowcaseFilters() {
           );
         })}
       </div>
-      <AccordionItem
-        value="1"
-        style={{ borderTop: "1px solid #D1D1D1", paddingBottom: "7px" }}
-      >
-        <AccordionHeader expandIconPosition="end" expandIcon={chevronImg}>
+      <AccordionItem value="1">
+        <AccordionHeader
+          expandIconPosition="end"
+          style={{background:"linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat"}}
+        >
           <div
             style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
           >
@@ -299,11 +295,11 @@ function ShowcaseFilters() {
         </AccordionPanel>
       </AccordionItem>
 
-      <AccordionItem
-        value="2"
-        style={{ borderTop: "1px solid #D1D1D1", paddingBottom: "7px" }}
-      >
-        <AccordionHeader expandIconPosition="end" expandIcon={chevronImg}>
+      <AccordionItem value="2">
+        <AccordionHeader
+          expandIconPosition="end"
+          style={{background:"linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat"}}
+        >
           <div
             style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
           >
@@ -315,11 +311,11 @@ function ShowcaseFilters() {
         </AccordionPanel>
       </AccordionItem>
 
-      <AccordionItem
-        value="3"
-        style={{ borderTop: "1px solid #D1D1D1", paddingBottom: "7px" }}
-      >
-        <AccordionHeader expandIconPosition="end" expandIcon={chevronImg}>
+      <AccordionItem value="3">
+        <AccordionHeader
+          expandIconPosition="end"
+          style={{background:"linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat"}}
+        >
           <div
             style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
           >
@@ -331,11 +327,11 @@ function ShowcaseFilters() {
         </AccordionPanel>
       </AccordionItem>
 
-      <AccordionItem
-        value="4"
-        style={{ borderTop: "1px solid #D1D1D1", paddingBottom: "7px" }}
-      >
-        <AccordionHeader expandIconPosition="end" expandIcon={chevronImg}>
+      <AccordionItem value="4">
+        <AccordionHeader
+          expandIconPosition="end"
+          style={{background:"linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat"}}
+        >
           <div
             style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
           >
@@ -347,11 +343,11 @@ function ShowcaseFilters() {
         </AccordionPanel>
       </AccordionItem>
 
-      <AccordionItem
-        value="5"
-        style={{ borderTop: "1px solid #D1D1D1", paddingBottom: "7px" }}
-      >
-        <AccordionHeader expandIconPosition="end" expandIcon={chevronImg}>
+      <AccordionItem value="5">
+        <AccordionHeader
+          expandIconPosition="end"
+          style={{background:"linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat"}}
+        >
           <div
             style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
           >
@@ -363,8 +359,11 @@ function ShowcaseFilters() {
         </AccordionPanel>
       </AccordionItem>
 
-      <AccordionItem value="6" style={{ borderTop: "1px solid #D1D1D1" }}>
-        <AccordionHeader expandIconPosition="end" expandIcon={chevronImg}>
+      <AccordionItem value="6">
+        <AccordionHeader
+          expandIconPosition="end"
+          style={{background:"linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat"}}
+        >
           <div
             style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
           >
@@ -392,9 +391,14 @@ function ShowcaseFilterViewAll({
   const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
     setOpenItems(data.openItems);
   };
-  const chevronImgSmall = (
-    <img src={useBaseUrl("/img/leftChevron.svg")} height={13} />
+  const chevronDownSmall = <img src={useBaseUrl("/img/smallChevron.svg")} />;
+  const chevronUpSmall = (
+    <img
+      style={{ transform: "rotate(180deg)" }}
+      src={useBaseUrl("/img/smallChevron.svg")}
+    />
   );
+  let value = number + "2";
   return (
     <>
       {tags.slice(0, 6).map((tag) => {
@@ -414,21 +418,7 @@ function ShowcaseFilterViewAll({
           multiple
           collapsible
         >
-          <AccordionItem value={number + "2"} style={{ padding: "0px" }}>
-            <AccordionHeader
-              inline={true}
-              expandIconPosition="end"
-              expandIcon={chevronImgSmall}
-            >
-              <div
-                style={{
-                  color: "#6656d1",
-                  fontSize: "12px",
-                }}
-              >
-                View All
-              </div>
-            </AccordionHeader>
+          <AccordionItem value={value} style={{ padding: "0px" }}>
             <AccordionPanel style={{ margin: "0px" }}>
               {tags.slice(6, tags.length).map((tag) => {
                 const tagObject = Tags[tag];
@@ -441,6 +431,22 @@ function ShowcaseFilterViewAll({
                 );
               })}
             </AccordionPanel>
+            <AccordionHeader
+              inline={true}
+              expandIconPosition="end"
+              expandIcon={
+                openItems.includes(value) ? chevronUpSmall : chevronDownSmall
+              }
+            >
+              <div
+                style={{
+                  color: "#6656d1",
+                  fontSize: "12px",
+                }}
+              >
+                View All
+              </div>
+            </AccordionHeader>
           </AccordionItem>
         </Accordion>
       ) : null}

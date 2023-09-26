@@ -109,6 +109,7 @@
   flex: 8;
   min-width: 15rem;
   margin: 0px 25px;
+  margin: 0px 25px;
 }
 
 @media screen and (max-width: 740px) {
@@ -124,3 +125,4 @@
   width: 100%;
 }
 }
+

@@ -132,7 +132,7 @@ function ShowcaseCardTag({
   } else {
     return (
       <>
-        {tagObjectsSorted.map((tagObject,index) => {
+        {tagObjectsSorted.map((tagObject, index) => {
           const id = `showcase_card_tag_${tagObject.tag}`;
           if (
             tagObject.tag == "msft" ||
@@ -325,7 +325,8 @@ function ShowcaseCard({ user }: { user: User }) {
             >
               {headerText}
             </div>
-            {tags.includes("new") ? (
+            {/* {tags.includes("new")  */}
+            {false ? (
               <>
                 <img
                   src={star}
@@ -339,7 +340,8 @@ function ShowcaseCard({ user }: { user: User }) {
               </>
             ) : null}
 
-            {tags.includes("popular") ? (
+            {/* {tags.includes("popular")  */}
+            {false ? (
               <>
                 <img
                   src={fire}
@@ -394,7 +396,8 @@ function ShowcaseCard({ user }: { user: User }) {
             >
               {headerText}
             </div>
-            {tags.includes("new") ? (
+            {/* tags.includes("new")*/}
+            {false ? (
               <>
                 <img src={star} alt="Star" height={16} />
                 <div
@@ -408,7 +411,8 @@ function ShowcaseCard({ user }: { user: User }) {
                 </div>
               </>
             ) : null}
-            {tags.includes("popular") ? (
+            {/* tags.includes("popular")  */}
+            {false ? (
               <>
                 <img
                   src={fire}

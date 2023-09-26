@@ -1155,5 +1155,42 @@
           "devcenter",
           "ade"
         ]
+    },
+    {
+        "title": "ChatGPT + Enterprise data with Azure OpenAI and Cognitive Search",
+        "description": "A TypeScript sample app for the Retrieval-Augmented Generation pattern running in Azure, using Azure Cognitive Search for retrieval and Azure OpenAI large language models to power ChatGPT-style and Q&A experiences.",
+        "preview": "./templates/images/azure-search-openai-demo.png",
+        "website": "https://github.com/Azure-Samples",
+        "author": "Azure Content Team",
+        "source": "https://github.com/Azure-Samples/azure-search-openai-javascript",
+        "tags": [
+            "javascript",
+            "cognitivesearch",
+            "openai",
+            "chatgpt",
+            "blobstorage",
+            "nodejs",
+            "aca",
+            "swa",
+            "monitor"
+        ]
+    },
+    {
+        "title": "Azure Data Manager for Energy + Azure OpenAI demo",
+        "description": "This is an end-to-end demo showing the power of LLM on top of Azure Data Manager for Energy data",
+        "preview": "./templates/images/azure-data/azure-data-manager-for-energy-openai-demo.png",
+        "website": "https://github.com/Azure-Samples",
+        "author": "Azure Content Team",
+        "source": "https://github.com/Azure-Samples/azure-data-manager-for-energy-openai-demo",
+        "tags": [
+            "python",
+            "cognitivesearch",
+            "openai",
+            "chatgpt",
+            "blobstorage",
+            "nodejs",
+            "appservice",
+            "monitor"
+        ]
     }
 ]

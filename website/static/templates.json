@@ -286,23 +286,47 @@
         ]
     },
     {
-    "title": "Java Spring Apps with Azure OpenAI",
-    "description": "AI Shopping Cart is a sample app template that supercharges your shopping experience with the power of AI. It leverages Azure OpenAI and Azure Spring Apps to build a recommendation engine that is not only scalable, resilient, and secure, but also personalized to your needs.",
-    "preview": "./templates/images/java-springapps-openai.png",
-    "website": "https://github.com/Azure-Samples/app-templates-java-openai-springapps",
-    "author": "Pierre Malarme",
-    "source": "https://github.com/Azure-Samples/app-templates-java-openai-springapps",
-    "tags": [
-        "featured",
-        "spring",
-        "openai",
-        "aca",
-        "azurespringapps",
-        "azuredb-postgreSQL",
-        "monitor",
-        "reactjs",
-        "bicep"
-    ]
+        "title": "Starter - Bicep",
+        "description": "A starter template with Bicep as infrastructure provider",
+        "preview": "./templates/images/test.png",
+        "website": "https://github.com/Azure/azure-dev",
+        "author": "Azure Dev",
+        "source": "https://github.com/Azure-Samples/azd-starter-bicep",
+        "tags": [
+            "featured",
+            "bicep"
+        ]
+    },
+    {
+        "title": "Starter - Terraform",
+        "description": "A starter template with Terraform as infrastructure provider",
+        "preview": "./templates/images/test.png",
+        "website": "https://github.com/Azure/azure-dev",
+        "author": "Azure Dev",
+        "source": "https://github.com/Azure-Samples/azd-starter-terraform",
+        "tags": [
+            "featured",
+            "terraform"
+        ]
+    },
+    {
+        "title": "Java Spring Apps with Azure OpenAI",
+        "description": "AI Shopping Cart is a sample app template that supercharges your shopping experience with the power of AI. It leverages Azure OpenAI and Azure Spring Apps to build a recommendation engine that is not only scalable, resilient, and secure, but also personalized to your needs.",
+        "preview": "./templates/images/java-springapps-openai.png",
+        "website": "https://github.com/Azure-Samples/app-templates-java-openai-springapps",
+        "author": "Pierre Malarme",
+        "source": "https://github.com/Azure-Samples/app-templates-java-openai-springapps",
+        "tags": [
+            "featured",
+            "spring",
+            "openai",
+            "aca",
+            "azurespringapps",
+            "azuredb-postgreSQL",
+            "monitor",
+            "reactjs",
+            "bicep"
+        ]
     },
     {
         "title": "WordPress with Azure Container Apps",

@@ -12,7 +12,7 @@
             "keyvault",
             "bicep",
             "aca",
-            "postgresql",
+            "azuredb-postgreSQL",
             "django"
         ]
     },
@@ -29,7 +29,7 @@
             "keyvault",
             "bicep",
             "appservice",
-            "postgresql",
+            "azuredb-postgreSQL",
             "django"
         ]
     },
@@ -96,7 +96,7 @@
             "keyvault",
             "bicep",
             "aca",
-            "postgresql",
+            "azuredb-postgreSQL",
             "flask"
         ]
     },
@@ -113,7 +113,7 @@
             "keyvault",
             "bicep",
             "appservice",
-            "postgresql",
+            "azuredb-postgreSQL",
             "flask"
         ]
     },
@@ -214,7 +214,7 @@
             "keyvault",
             "bicep",
             "aca",
-            "postgresql",
+            "azuredb-postgreSQL",
             "fastapi"
         ]
     },
@@ -231,7 +231,7 @@
             "keyvault",
             "bicep",
             "appservice",
-            "postgresql",
+            "azuredb-postgreSQL",
             "fastapi"
         ]
     },

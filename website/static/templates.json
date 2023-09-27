@@ -1,4 +1,291 @@
-[    {
+[
+    {
+        "title": "Django on Container Apps with PostgreSQL Flexible Server",
+        "description": "Web app using Python Django backend, set up for deployment to Azure Container Apps with Azure PostgreSQL Flexible Server.",
+        "preview": "./templates/images/postgres-flexible-aca.png",
+        "website": "https://learn.microsoft.com/azure/developer/python/overview-azd-templates",
+        "author": "Python Cloud Advocacy Team",
+        "source": "https://github.com/Azure-Samples/azure-django-postgres-flexible-aca",
+        "tags": [
+            "python",
+            "monitor",
+            "keyvault",
+            "bicep",
+            "aca",
+            "postgresql",
+            "django"
+        ]
+    },
+    {
+        "title": "Django on App Service with PostgreSQL Flexible Server",
+        "description": "Web app using Python Django backend, set up for deployment to Azure App Service with Azure PostgreSQL Flexible Server.",
+        "preview": "./templates/images/postgres-flexible-appservice.png",
+        "website": "https://learn.microsoft.com/azure/developer/python/overview-azd-templates",
+        "author": "Python Cloud Advocacy Team",
+        "source": "https://github.com/Azure-Samples/azure-django-postgres-flexible-appservice",
+        "tags": [
+            "python",
+            "monitor",
+            "keyvault",
+            "bicep",
+            "appservice",
+            "postgresql",
+            "django"
+        ]
+    },
+    {
+        "title": "Django on Container Apps with Cosmos DB PostgreSQL",
+        "description": "Web app using Python Django backend, set up for deployment to Azure Container Apps with Cosmos DB (PostgreSQL Adapter).",
+        "preview": "./templates/images/aca-cosmosdb.png",
+        "website": "https://learn.microsoft.com/azure/developer/python/overview-azd-templates",
+        "author": "Python Cloud Advocacy Team",
+        "source": "https://github.com/Azure-Samples/azure-django-cosmos-postgres-aca",
+        "tags": [
+            "python",
+            "monitor",
+            "keyvault",
+            "bicep",
+            "aca",
+            "cosmosdb",
+            "django"
+        ]
+    },
+    {
+        "title": "Django on App Service with Cosmos DB PostgreSQL",
+        "description": "Web app using Python Django backend, set up for deployment to Azure App Service with Cosmos DB (PostgreSQL Adapter).",
+        "preview": "./templates/images/appservice-cosmosdb.png",
+        "website": "https://learn.microsoft.com/azure/developer/python/overview-azd-templates",
+        "author": "Python Cloud Advocacy Team",
+        "source": "https://github.com/Azure-Samples/azure-django-cosmos-postgres-appservice",
+        "tags": [
+            "python",
+            "monitor",
+            "keyvault",
+            "bicep",
+            "appservice",
+            "cosmosdb",
+            "django"
+        ]
+    },
+    {
+        "title": "Django on Container Apps with PostgreSQL Add-on",
+        "description": "Web app using Python Django backend, set up for deployment to Azure Container Apps with PostgreSQL Add-on service.",
+        "preview": "./templates/images/aca-postgres-addon.png",
+        "website": "https://learn.microsoft.com/azure/developer/python/overview-azd-templates",
+        "author": "Python Cloud Advocacy Team",
+        "source": "https://github.com/Azure-Samples/azure-django-postgres-addon-aca",
+        "tags": [
+            "python",
+            "monitor",
+            "keyvault",
+            "bicep",
+            "aca",
+            "django"
+        ]
+    },
+    {
+        "title": "Flask on Container Apps with PostgreSQL Flexible Server",
+        "description": "Web app using Python Flask backend, set up for deployment to Azure Container Apps with Azure PostgreSQL Flexible Server.",
+        "preview": "./templates/images/postgres-flexible-aca.png",
+        "website": "https://learn.microsoft.com/azure/developer/python/overview-azd-templates",
+        "author": "Python Cloud Advocacy Team",
+        "source": "https://github.com/Azure-Samples/azure-flask-postgres-flexible-aca",
+        "tags": [
+            "python",
+            "monitor",
+            "keyvault",
+            "bicep",
+            "aca",
+            "postgresql",
+            "flask"
+        ]
+    },
+    {
+        "title": "Flask on App Service with PostgreSQL Flexible Server",
+        "description": "Web app using Python Flask backend, set up for deployment to Azure App Service with Azure PostgreSQL Flexible Server.",
+        "preview": "./templates/images/postgres-flexible-appservice.png",
+        "website": "https://learn.microsoft.com/azure/developer/python/overview-azd-templates",
+        "author": "Python Cloud Advocacy Team",
+        "source": "https://github.com/Azure-Samples/azure-flask-postgres-flexible-appservice",
+        "tags": [
+            "python",
+            "monitor",
+            "keyvault",
+            "bicep",
+            "appservice",
+            "postgresql",
+            "flask"
+        ]
+    },
+    {
+        "title": "Flask on Container Apps with Cosmos DB PostgreSQL",
+        "description": "Web app using Python Flask backend, set up for deployment to Azure Container Apps with Cosmos DB (PostgreSQL Adapter).",
+        "preview": "./templates/images/aca-cosmosdb.png",
+        "website": "https://learn.microsoft.com/azure/developer/python/overview-azd-templates",
+        "author": "Python Cloud Advocacy Team",
+        "source": "https://github.com/Azure-Samples/azure-flask-cosmos-postgres-aca",
+        "tags": [
+            "python",
+            "monitor",
+            "keyvault",
+            "bicep",
+            "aca",
+            "cosmosdb",
+            "flask"
+        ]
+    },
+    {
+        "title": "Flask on App Service with Cosmos DB PostgreSQL",
+        "description": "Web app using Python Flask backend, set up for deployment to Azure App Service with Cosmos DB (PostgreSQL Adapter).",
+        "preview": "./templates/images/appservice-cosmosdb.png",
+        "website": "https://learn.microsoft.com/azure/developer/python/overview-azd-templates",
+        "author": "Python Cloud Advocacy Team",
+        "source": "https://github.com/Azure-Samples/azure-flask-cosmos-postgres-appservice",
+        "tags": [
+            "python",
+            "monitor",
+            "keyvault",
+            "bicep",
+            "appservice",
+            "cosmosdb",
+            "flask"
+        ]
+    },
+    {
+        "title": "Flask on Container Apps with PostgreSQL Add-on",
+        "description": "Web app using Python Flask backend, set up for deployment to Azure Container Apps with PostgreSQL Add-on service.",
+        "preview": "./templates/images/aca-postgres-addon.png",
+        "website": "https://learn.microsoft.com/azure/developer/python/overview-azd-templates",
+        "author": "Python Cloud Advocacy Team",
+        "source": "https://github.com/Azure-Samples/azure-flask-postgres-addon-aca",
+        "tags": [
+            "python",
+            "monitor",
+            "keyvault",
+            "bicep",
+            "aca",
+            "flask"
+        ]
+    },
+    {
+        "title": "Flask on Container Apps with Cosmos DB MongoDB",
+        "description": "Web app using Python Flask backend, set up for deployment to Azure Container Apps with Cosmos DB (MongoDB).",
+        "preview": "./templates/images/aca-cosmosdb.png",
+        "website": "https://learn.microsoft.com/azure/developer/python/overview-azd-templates",
+        "author": "Python Cloud Advocacy Team",
+        "source": "https://github.com/Azure-Samples/azure-flask-cosmos-mongodb-aca",
+        "tags": [
+            "python",
+            "monitor",
+            "keyvault",
+            "bicep",
+            "aca",
+            "cosmosdb",
+            "flask"
+        ]
+    },
+    {
+        "title": "Flask on App Service with Cosmos DB MongoDB",
+        "description": "Web app using Python Flask backend, set up for deployment to Azure App Service with Cosmos DB (MongoDB).",
+        "preview": "./templates/images/appservice-cosmosdb.png",
+        "website": "https://learn.microsoft.com/azure/developer/python/overview-azd-templates",
+        "author": "Python Cloud Advocacy Team",
+        "source": "https://github.com/Azure-Samples/azure-flask-cosmos-mongodb-appservice",
+        "tags": [
+            "python",
+            "monitor",
+            "keyvault",
+            "bicep",
+            "appservice",
+            "cosmosdb",
+            "flask"
+        ]
+    },
+    {
+        "title": "FastAPI on Container Apps with PostgreSQL Flexible Server",
+        "description": "Web app using Python FastAPI backend, set up for deployment to Azure Container Apps with Azure PostgreSQL Flexible Server.",
+        "preview": "./templates/images/postgres-flexible-aca.png",
+        "website": "https://learn.microsoft.com/azure/developer/python/overview-azd-templates",
+        "author": "Python Cloud Advocacy Team",
+        "source": "https://github.com/Azure-Samples/azure-fastapi-postgres-flexible-aca",
+        "tags": [
+            "python",
+            "monitor",
+            "keyvault",
+            "bicep",
+            "aca",
+            "postgresql",
+            "fastapi"
+        ]
+    },
+    {
+        "title": "FastAPI on App Service with PostgreSQL Flexible Server",
+        "description": "Web app using Python FastAPI backend, set up for deployment to Azure App Service with Azure PostgreSQL Flexible Server.",
+        "preview": "./templates/images/postgres-flexible-appservice.png",
+        "website": "https://learn.microsoft.com/azure/developer/python/overview-azd-templates",
+        "author": "Python Cloud Advocacy Team",
+        "source": "https://github.com/Azure-Samples/azure-fastapi-postgres-flexible-appservice",
+        "tags": [
+            "python",
+            "monitor",
+            "keyvault",
+            "bicep",
+            "appservice",
+            "postgresql",
+            "fastapi"
+        ]
+    },
+    {
+        "title": "FastAPI on Container Apps with Cosmos DB PostgreSQL",
+        "description": "Web app using Python FastAPI backend, set up for deployment to Azure Container Apps with Cosmos DB (PostgreSQL Adapter).",
+        "preview": "./templates/images/aca-cosmosdb.png",
+        "website": "https://learn.microsoft.com/azure/developer/python/overview-azd-templates",
+        "author": "Python Cloud Advocacy Team",
+        "source": "https://github.com/Azure-Samples/azure-fastapi-cosmos-postgres-aca",
+        "tags": [
+            "python",
+            "monitor",
+            "keyvault",
+            "bicep",
+            "aca",
+            "cosmosdb",
+            "fastapi"
+        ]
+    },
+    {
+        "title": "FastAPI on App Service with Cosmos DB PostgreSQL",
+        "description": "Web app using Python FastAPI backend, set up for deployment to Azure App Service with Cosmos DB (PostgreSQL Adapter).",
+        "preview": "./templates/images/appservice-cosmosdb.png",
+        "website": "https://learn.microsoft.com/azure/developer/python/overview-azd-templates",
+        "author": "Python Cloud Advocacy Team",
+        "source": "https://github.com/Azure-Samples/azure-fastapi-cosmos-postgres-appservice",
+        "tags": [
+            "python",
+            "monitor",
+            "keyvault",
+            "bicep",
+            "appservice",
+            "cosmosdb",
+            "fastapi"
+        ]
+    },
+    {
+        "title": "FastAPI on Container Apps with PostgreSQL Add-on",
+        "description": "Web app using Python FastAPI backend, set up for deployment to Azure Container Apps with PostgreSQL Add-on service.",
+        "preview": "./templates/images/aca-postgres-addon.png",
+        "website": "https://learn.microsoft.com/azure/developer/python/overview-azd-templates",
+        "author": "Python Cloud Advocacy Team",
+        "source": "https://github.com/Azure-Samples/azure-fastapi-postgres-addon-aca",
+        "tags": [
+            "python",
+            "monitor",
+            "keyvault",
+            "bicep",
+            "aca",
+            "fastapi"
+        ]
+    },
+    {
     "title": "Java Spring Apps with Azure OpenAI",
     "description": "AI Shopping Cart is a sample app template that supercharges your shopping experience with the power of AI. It leverages Azure OpenAI and Azure Spring Apps to build a recommendation engine that is not only scalable, resilient, and secure, but also personalized to your needs.",
     "preview": "./templates/images/java-springapps-openai.png",
@@ -16,7 +303,7 @@
         "reactjs",
         "bicep"
     ]
-},
+    },
     {
         "title": "WordPress with Azure Container Apps",
         "description": "A blueprint to easily and quickly create and deploy your first scalable and secure WordPress site to Azure, leveraging Azure Container Apps with Azure Database for MariaDb.",

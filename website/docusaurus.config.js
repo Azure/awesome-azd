@@ -74,7 +74,7 @@ const config = {
           height: 32,
         },
 
-        style: "primary",
+        // style: "primary",
 
         items: [
           // FIXME: TEMPORARILY DISABLE DOCS, BLOG

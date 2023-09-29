@@ -14,10 +14,10 @@ Our template gallery will be at its best when our community is involved in creat
 We welcome contributions of [requested templates](https://github.com/Azure/awesome-azd/issues?q=is%3Aopen+is%3Aissue+label%3Arequested-contribution) as well as any others, subject to review. 
 
 To submit a template:
-1. Add an entry to [website/src/data/users.tsx](https://github.com/Azure/awesome-azd/blob/main/website/src/data/users.tsx) that includes:
+1. Add an entry to [website/static/templates.json](https://github.com/Azure/awesome-azd/blob/main/website/static/templates.json) that includes:
     - **Template title** - A short title that reflects the local application stack that someone could use to get their application on Azure (e.g. "Containerized React Web App with Java API and MongoDB")
     - **Description** - 1-2 sentence description of the architecture (e.g. Azure services) or solution that is defined by the template.
-    - **Architecture Diagram or Application Screenshot** - Used as display image for gallery card. The architecture should include all services and their connections ([example](https://github.com/Azure-Samples/todo-csharp-sql/blob/main/assets/resources.png)). You should add the image to [website/src/data/images/](https://github.com/Azure/awesome-azd/tree/main/website/src/data/images)
+    - **Architecture Diagram or Application Screenshot** - Used as display image for gallery card. The architecture should include all services and their connections ([example](https://github.com/Azure-Samples/todo-csharp-sql/blob/main/assets/resources.png)). You should add the image to [website/static/templates/images](https://github.com/Azure/awesome-azd/tree/main/website/static/templates/images)
     - **Link to Author's GitHub or other relevant website** - Used for attribution.
     - **Author's Name** - Name to credit on the gallery card
     - **Link to template source** - Link to the template GitHub repo
@@ -35,7 +35,7 @@ Did you write or find an article that helped you get started with `azd`? Or mayb
 
 ## Other Ways To Help 
 Other than these, we always welcome feedback through a:
- - [**request a template**](https://github.com/Azure/awesome-azd/issues/new?assignees=nigkulintya%2C+savannahostrowski&labels=requested-contribution&template=%F0%9F%A4%94-submit-a-template-request.md&title=%5BIdea%5D+%3Cyour-template-name%3E): if you cannot find a template with architecture that works for you-- you can submit a request for that template
+ - [**request a template**](https://github.com/Azure/awesome-azd/issues/new?assignees=gkulin&labels=requested-contribution&template=%F0%9F%A4%94-submit-a-template-request.md&title=%5BIdea%5D+%3Cyour-template-name%3E): if you cannot find a template with architecture that works for you-- you can submit a request for that template
     - Keep in mind, templates are made to be flexible and extensible. You can use a template's architecture and swap out the source code. For example, if you want to create a grocery list making application using Azure SQL and Azure App service, you can use the React Web App with C# API and SQL Database on Azure template and swap out the source code.
  - [**bug report**](https://github.com/Azure/awesome-azd/issues/new?assignees=&labels=&template=bug_report.md&title=): let us know if something is broken
  - [**feature request**](https://github.com/Azure/awesome-azd/issues/new?assignees=&labels=&template=feature_request.md&title=): for improvements to our awesome-azd site

@@ -117,7 +117,13 @@ export type TagType =
   | "rediscache"
   | "ai"
   | "php"
-  | "agw";
+  | "agw"
+  | "streamlit"
+  | "azurebot"
+  | "ade"
+  | "platformengineering"
+  | "devcenter"
+  ;
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -309,7 +315,16 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Prometheus",
     type: "Database",
   },
-
+  streamlit: {
+    label: "Streamlit",
+    description: "Template architecture uses Streamlit library",
+    type: "Framework",
+  },
+  devcenter: {
+    label: "Dev Center",
+    description: "Template architecture uses Dev Center",
+    type: "Service",
+  },
   // ---- Azure Services
   ahds: {
     label: "Azure Health Data Service",
@@ -501,6 +516,16 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/products/application-gateway",
     type: "Service",
   },
+  azurebot: {
+    label: "Azure AI Bot Service",
+    description: "Template architecture uses Azure AI Bot Service",
+    type: "Service",
+  },
+  ade: {
+    label: "Azure Deployment Environments",
+    description: "Template architecture uses Azure Deployment Environments",
+    type: "Service",
+  },
 
   // For Topics
   datascience: {
@@ -517,6 +542,11 @@ export const Tags: { [type in TagType]: Tag } = {
   ai: {
     label: "Artificial Intelligence",
     description: "Template architecture involves Artificial Intelligence",
+    type: "Topic",
+  },
+  platformengineering: {
+    label: "Platform Engineering",
+    description: "Template architecture involves Platform Engineering",
     type: "Topic",
   },
 };

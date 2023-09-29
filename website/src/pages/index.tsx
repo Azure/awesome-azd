@@ -467,14 +467,6 @@ function ShowcaseFilterAndCard() {
   );
 }
 
-const featuredUsers = sortedUsers.filter((user) =>
-  user.tags.includes("featured")
-);
-const otherUsers = sortedUsers.filter(
-  (user) => !user.tags.includes("featured")
-);
-const featuredAndOtherUsers = featuredUsers.concat(otherUsers);
-
 function FilterBar({ id }: { id: string }) {
   const history = useHistory();
   const location = useLocation();
@@ -570,11 +562,11 @@ function ShowcaseCards() {
                 {/* <FilterBar id="searchDropDown" /> */}
               </div>
               <ul className={styles.showcaseList}>
-                {featuredAndOtherUsers.map((user, index) => (
+                {sortedUsers.map((user, index) => (
                   <React.Fragment key={user.title}>
                     <ShowcaseCard user={user} />
-                    {((featuredAndOtherUsers.length < 6 &&
-                      index === featuredAndOtherUsers.length - 1) ||
+                    {((sortedUsers.length < 6 &&
+                      index === sortedUsers.length - 1) ||
                       index === 4) && <ShowcaseContributionCard />}
                   </React.Fragment>
                 ))}

@@ -6,7 +6,7 @@
     "website": "https://github.com/Azure/azure-dev",
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/azd-starter-bicep",
-    "tags": ["featured", "bicep", "msft"]
+    "tags": ["bicep", "msft"]
   },
   {
     "title": "Starter - Terraform",
@@ -15,7 +15,7 @@
     "website": "https://github.com/Azure/azure-dev",
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/azd-starter-terraform",
-    "tags": ["featured", "terraform", "msft"]
+    "tags": ["terraform", "msft"]
   },
   {
     "title": "Java Spring Apps with Azure OpenAI",
@@ -25,7 +25,6 @@
     "author": "Pierre Malarme",
     "source": "https://github.com/Azure-Samples/app-templates-java-openai-springapps",
     "tags": [
-      "featured",
       "spring",
       "openai",
       "aca",
@@ -34,7 +33,8 @@
       "monitor",
       "reactjs",
       "bicep",
-      "community"
+      "community",
+      "new"
     ]
   },
   {
@@ -45,7 +45,6 @@
     "author": "Konstantinos Pantos",
     "source": "https://github.com/Azure-Samples/apptemplate-wordpress-on-ACA",
     "tags": [
-      "featured",
       "php",
       "javascript",
       "aca",
@@ -65,7 +64,6 @@
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/todo-csharp-cosmos-sql",
     "tags": [
-      "featured",
       "dotnetCsharp",
       "typescript",
       "javascript",
@@ -86,14 +84,7 @@
     "website": "https://rockpaperorleans.net/",
     "author": "Brady Gaster",
     "source": "https://github.com/bradygaster/RockPaperOrleans",
-    "tags": [
-      "featured",
-      "dotnetCsharp",
-      "cosmosdb",
-      "aca",
-      "bicep",
-      "community"
-    ]
+    "tags": ["dotnetCsharp", "cosmosdb", "aca", "bicep", "community"]
   },
   {
     "title": "Scalable Django on Azure App Service",
@@ -103,7 +94,6 @@
     "author": "Anthony Shaw",
     "source": "https://github.com/tonybaloney/django-on-azure",
     "tags": [
-      "featured",
       "django",
       "python",
       "azuredb-postgreSQL",
@@ -121,7 +111,6 @@
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/todo-nodejs-mongo",
     "tags": [
-      "featured",
       "bicep",
       "nodejs",
       "typescript",
@@ -143,7 +132,6 @@
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/todo-nodejs-mongo-swa-func",
     "tags": [
-      "featured",
       "bicep",
       "swa",
       "functions",
@@ -167,7 +155,6 @@
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/todo-python-mongo-swa-func",
     "tags": [
-      "featured",
       "bicep",
       "swa",
       "functions",
@@ -192,7 +179,6 @@
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/todo-python-mongo-terraform",
     "tags": [
-      "featured",
       "python",
       "typescript",
       "javascript",
@@ -215,7 +201,6 @@
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/todo-nodejs-mongo-terraform",
     "tags": [
-      "featured",
       "nodejs",
       "typescript",
       "javascript",
@@ -237,7 +222,6 @@
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/todo-python-mongo",
     "tags": [
-      "featured",
       "bicep",
       "python",
       "typescript",
@@ -260,7 +244,6 @@
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/todo-nodejs-mongo-aca",
     "tags": [
-      "featured",
       "bicep",
       "nodejs",
       "typescript",
@@ -283,7 +266,6 @@
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/todo-python-mongo-aca",
     "tags": [
-      "featured",
       "bicep",
       "python",
       "typescript",
@@ -306,7 +288,6 @@
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/todo-csharp-sql",
     "tags": [
-      "featured",
       "bicep",
       "dotnetCsharp",
       "typescript",
@@ -328,7 +309,6 @@
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/todo-java-mongo",
     "tags": [
-      "featured",
       "bicep",
       "java",
       "typescript",
@@ -349,7 +329,6 @@
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/todo-java-mongo-aca",
     "tags": [
-      "featured",
       "bicep",
       "java",
       "typescript",
@@ -370,7 +349,6 @@
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/todo-csharp-sql-swa-func",
     "tags": [
-      "featured",
       "bicep",
       "swa",
       "functions",
@@ -393,7 +371,6 @@
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/todo-nodejs-mongo-aks",
     "tags": [
-      "featured",
       "bicep",
       "nodejs",
       "typescript",
@@ -416,7 +393,6 @@
     "author": "Yi Liu",
     "source": "https://github.com/Azure-Samples/ASA-Samples-Web-Application",
     "tags": [
-      "featured",
       "bicep",
       "java",
       "nodejs",
@@ -435,7 +411,6 @@
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/openai-plugin-fastapi",
     "tags": [
-      "featured",
       "bicep",
       "python",
       "aca",
@@ -454,7 +429,6 @@
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/azure-search-openai-demo-csharp",
     "tags": [
-      "featured",
       "bicep",
       "dotnetCsharp",
       "aks",
@@ -477,7 +451,6 @@
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/chatgpt-quickstart",
     "tags": [
-      "featured",
       "bicep",
       "python",
       "openai",
@@ -496,7 +469,6 @@
     "author": "Yi Liu",
     "source": "https://github.com/Azure-Samples/spring-chatgpt-sample",
     "tags": [
-      "featured",
       "bicep",
       "java",
       "openai",
@@ -525,7 +497,8 @@
       "cosmosdb",
       "apim",
       "enterprisepatterns",
-      "community"
+      "community",
+      "popular"
     ]
   },
   {
@@ -542,7 +515,8 @@
       "azuredb-postgreSQL",
       "appservice",
       "vnets",
-      "msft"
+      "msft",
+      "popular"
     ]
   },
   {
@@ -568,7 +542,8 @@
       "appservice",
       "vnets",
       "flask",
-      "msft"
+      "msft",
+      "popular"
     ]
   },
   {
@@ -683,7 +658,8 @@
       "bicep",
       "nodejs",
       "ai",
-      "msft"
+      "msft",
+      "popular"
     ]
   },
   {
@@ -712,7 +688,8 @@
       "bicep",
       "spring",
       "thymeleaf",
-      "community"
+      "community",
+      "popular"
     ]
   },
   {
@@ -747,7 +724,7 @@
       "webapps",
       "keyvault",
       "appinsights",
-      "featured",
+
       "nestjs",
       "sap",
       "sapcloudsdk",
@@ -1018,7 +995,7 @@
     "website": "https://github.com/MiguelElGallo",
     "author": "Miguel P. Z.",
     "source": "https://github.com/MiguelElGallo/simple-streamlit-azd",
-    "tags": ["python", "appservice", "streamlit","community"]
+    "tags": ["python", "appservice", "streamlit", "community"]
   },
   {
     "title": "Azure API Management with Azure OpenAI",
@@ -1066,7 +1043,8 @@
       "keyvault",
       "appinsights",
       "chatgpt",
-      "community"
+      "community",
+      "new"
     ]
   },
   {
@@ -1093,7 +1071,14 @@
     "website": "https://github.com/spring-guides/",
     "author": "Yi Liu",
     "source": "https://github.com/spring-guides/gs-spring-boot-for-azure",
-    "tags": ["java", "azurespringapps", "webapps", "bicep", "spring", "community"]
+    "tags": [
+      "java",
+      "azurespringapps",
+      "webapps",
+      "bicep",
+      "spring",
+      "community"
+    ]
   },
   {
     "title": "Terraform template to bootstrap Azure Deployment Environments",
@@ -1102,6 +1087,13 @@
     "website": "https://github.com/lopezleandro03",
     "author": "Leandro Lopez",
     "source": "https://github.com/lopezleandro03/azd-devcenter",
-    "tags": ["terraform", "platformengineering", "devcenter", "ade", "community"]
+    "tags": [
+      "terraform",
+      "platformengineering",
+      "devcenter",
+      "ade",
+      "community",
+      "new"
+    ]
   }
 ]

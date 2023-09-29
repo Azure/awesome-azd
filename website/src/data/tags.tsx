@@ -54,7 +54,6 @@ export type User = {
 
 // NN: Updated TagType to suit Static Web Apps
 export type TagType =
-  | "featured"
   | "helpwanted"
   | "msft"
   | "community"
@@ -133,7 +132,6 @@ export type TagType =
 //   - description = explainer for usage
 //   - color = color of the dot in tag
 // Some tags are special:
-//    - 'featured` can only be added by admin (for quality templates)
 //    - 'help wanted` must associate "source" with an open issue
 export const Tags: { [type in TagType]: Tag } = {
   // =============     FOR ADMIN USE ONLY:
@@ -154,13 +152,6 @@ export const Tags: { [type in TagType]: Tag } = {
   popular: {
     label: "Popular",
     description: "This tag is used for popular templates.",
-  },
-
-  // Use for validated templates of high-quality
-  featured: {
-    label: "Featured",
-    description:
-      "This tag is used for admin-curated templates that represent high-quality (community) or official (Microsoft) azd templates.",
   },
 
   //============  FOR REGULAR USE

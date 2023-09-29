@@ -495,6 +495,7 @@ function FilterBar({ id }: { id: string }) {
             border: "1px solid #D1D1D1",
             height: "52px",
             maxWidth: "740px",
+            borderRadius: "4px",
           },
           icon: {
             fontSize: "24px",

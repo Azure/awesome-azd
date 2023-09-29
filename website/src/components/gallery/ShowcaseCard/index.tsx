@@ -39,7 +39,7 @@ import {
   IPanelProps,
   Separator,
   IPivotStyles,
-  Popup
+  Popup,
 } from "@fluentui/react";
 
 const TagComp = React.forwardRef<HTMLDivElement, Tag>(
@@ -333,8 +333,7 @@ function ShowcaseCard({ user }: { user: User }) {
             >
               {headerText}
             </div>
-            {/* {tags.includes("new")  */}
-            {false ? (
+            {tags.includes("new") ? (
               <>
                 <img
                   src={star}
@@ -348,8 +347,7 @@ function ShowcaseCard({ user }: { user: User }) {
               </>
             ) : null}
 
-            {/* {tags.includes("popular")  */}
-            {false ? (
+            {tags.includes("popular") ? (
               <>
                 <img
                   src={fire}
@@ -404,8 +402,7 @@ function ShowcaseCard({ user }: { user: User }) {
             >
               {headerText}
             </div>
-            {/* tags.includes("new")*/}
-            {false ? (
+            {tags.includes("new") ? (
               <>
                 <img src={star} alt="Star" height={16} />
                 <div
@@ -419,8 +416,7 @@ function ShowcaseCard({ user }: { user: User }) {
                 </div>
               </>
             ) : null}
-            {/* tags.includes("popular")  */}
-            {false ? (
+            {tags.includes("popular") ? (
               <>
                 <img
                   src={fire}

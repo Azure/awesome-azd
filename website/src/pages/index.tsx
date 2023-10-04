@@ -496,11 +496,6 @@ function FilterBar({ id }: { id: string }) {
   const history = useHistory();
   const location = useLocation();
   const [value, setValue] = useState<string | null>(null);
-  console.log("value", value);
-  console.log(
-    "readSearchName(location.search)",
-    readSearchName(location.search)
-  );
   useEffect(() => {
     setValue(readSearchName(location.search));
   }, [location]);

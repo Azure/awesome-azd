@@ -518,6 +518,7 @@ function ShowcaseCard({ user }: { user: User }) {
       ></CardPreview>
       <CardFooter>
         <Input
+          id={"input_" + user.title}
           size="small"
           defaultValue={azdInitCommand}
           style={{

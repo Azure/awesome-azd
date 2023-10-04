@@ -18,10 +18,6 @@
 .checkboxListItem {
   user-select: none;
   white-space: nowrap;
-  height: 32px;
-  font-size: 0.8rem;
-  margin-top: 0.5rem;
-  margin-right: 0.5rem;
 }
 
 .checkboxListItem:last-child {

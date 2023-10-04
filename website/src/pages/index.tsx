@@ -131,7 +131,7 @@ function ShowcaseTemplateSearch() {
       <div
         style={{
           display: "flex",
-          flexDirection: "column"
+          flexDirection: "column",
         }}
       >
         <div
@@ -158,7 +158,7 @@ function ShowcaseTemplateSearch() {
           size={400}
           style={{
             color: "#242424",
-            padding:"10px 0 20px 0"
+            padding: "10px 0 20px 0",
           }}
         >
           {DESCRIPTION}
@@ -185,7 +185,6 @@ function ShowcaseTemplateSearch() {
     </div>
   );
 }
-
 
 function useSiteCountPlural() {
   const { selectMessage } = usePluralForm();
@@ -282,7 +281,10 @@ function ShowcaseFilters() {
       <AccordionItem value="1">
         <AccordionHeader
           expandIconPosition="end"
-          style={{background:"linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat"}}
+          style={{
+            background:
+              "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
+          }}
         >
           <div
             style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
@@ -298,7 +300,10 @@ function ShowcaseFilters() {
       <AccordionItem value="2">
         <AccordionHeader
           expandIconPosition="end"
-          style={{background:"linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat"}}
+          style={{
+            background:
+              "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
+          }}
         >
           <div
             style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
@@ -314,7 +319,10 @@ function ShowcaseFilters() {
       <AccordionItem value="3">
         <AccordionHeader
           expandIconPosition="end"
-          style={{background:"linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat"}}
+          style={{
+            background:
+              "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
+          }}
         >
           <div
             style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
@@ -330,7 +338,10 @@ function ShowcaseFilters() {
       <AccordionItem value="4">
         <AccordionHeader
           expandIconPosition="end"
-          style={{background:"linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat"}}
+          style={{
+            background:
+              "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
+          }}
         >
           <div
             style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
@@ -346,7 +357,10 @@ function ShowcaseFilters() {
       <AccordionItem value="5">
         <AccordionHeader
           expandIconPosition="end"
-          style={{background:"linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat"}}
+          style={{
+            background:
+              "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
+          }}
         >
           <div
             style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
@@ -362,7 +376,10 @@ function ShowcaseFilters() {
       <AccordionItem value="6">
         <AccordionHeader
           expandIconPosition="end"
-          style={{background:"linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat"}}
+          style={{
+            background:
+              "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
+          }}
         >
           <div
             style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
@@ -401,11 +418,19 @@ function ShowcaseFilterViewAll({
   let value = number + "2";
   return (
     <>
-      {tags.slice(0, 6).map((tag) => {
+      {tags.slice(0, 6).map((tag, index) => {
         const tagObject = Tags[tag];
         const id = `showcase_checkbox_id_${tag}`;
 
-        return (
+        return index == tags.length - 1 ? (
+          <div
+            key={id}
+            className={styles.checkboxListItem}
+            style={{ marginBottom: "7px" }}
+          >
+            <ShowcaseTagSelect tag={tag} label={tagObject.label} />
+          </div>
+        ) : (
           <div key={id} className={styles.checkboxListItem}>
             <ShowcaseTagSelect tag={tag} label={tagObject.label} />
           </div>

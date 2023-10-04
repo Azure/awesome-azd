@@ -232,7 +232,7 @@ function ShowcaseFilters() {
   });
   const otherTag = TagList.filter((tag) => {
     const tagObject = Tags[tag];
-    return tagObject.type === "Other";
+    return tagObject.type === "Tools";
   });
   const [openItems, setOpenItems] = React.useState([
     "1",
@@ -384,7 +384,7 @@ function ShowcaseFilters() {
           <div
             style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
           >
-            Other
+            Tools
           </div>
         </AccordionHeader>
         <AccordionPanel>

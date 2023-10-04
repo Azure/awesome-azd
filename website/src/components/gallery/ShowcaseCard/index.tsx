@@ -622,14 +622,8 @@ export function ShowcaseContributionCard(): React.ReactElement {
             margin: "0px",
           }}
         >
-          awesome-azd is always welcoming template contributions!{" "}
-        </p>
-        <p
-          style={{
-            margin: "0px",
-          }}
-        >
-          The community is excited to use your templates.
+          awesome-azd is always welcoming template contributions! Our community
+          is excited to see what you make.
         </p>
       </div>
       <CardFooter>

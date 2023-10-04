@@ -247,12 +247,12 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "SAP",
     description:
       "Template architecture uses Systems Applications and Products in data processing (SAP)",
-    type: "Other",
+    type: "Tools",
   },
   sapcloudsdk: {
     label: "SAP Cloud SDK",
     description: "Template architecture uses SAP Cloud SDK",
-    type: "Other",
+    type: "Tools",
   },
   spring: {
     label: "Spring",
@@ -262,7 +262,7 @@ export const Tags: { [type in TagType]: Tag } = {
   thymeleaf: {
     label: "Thymeleaf",
     description: "Template architecture uses Thymeleaf template engine",
-    type: "Other",
+    type: "Tools",
   },
   dataverse: {
     label: "Dataverse",
@@ -272,18 +272,18 @@ export const Tags: { [type in TagType]: Tag } = {
   chatgpt: {
     label: "ChatGPT",
     description: "Template architecture uses ChatGPT model",
-    type: "Other",
+    type: "Tools",
   },
   jupyter: {
     label: "Jupyter Notebooks",
     description: "Template architecture uses Jupyter Notebooks",
-    type: "Other",
+    type: "Tools",
   },
   keda: {
     label: "KEDA",
     description:
       "Template architecture uses Kubernetes Event Driven Autoscaling (KEDA)",
-    type: "Other",
+    type: "Tools",
   },
   kubernetes: {
     label: "Kubernetes",
@@ -299,7 +299,7 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Dapr",
     description:
       "Template architecture uses Distributed Application Runtime (dapr)",
-    type: "Other",
+    type: "Tools",
   },
   prometheus: {
     label: "Prometheus",

@@ -575,20 +575,22 @@ function ShowcaseCards() {
           </div>
         </>
       ) : (
-        <div>
-          <div className={styles.showcaseFavoriteHeader}>
-            {/* <FilterBar id="searchDropDown" /> */}
+        <div className={styles.showcaseFavorite}>
+          <div>
+            <div className={styles.showcaseFavoriteHeader}>
+              {/* <FilterBar id="searchDropDown" /> */}
+            </div>
+            <ul className={styles.showcaseList}>
+              {filteredUsers.map((user, index) => (
+                <React.Fragment key={user.title}>
+                  <ShowcaseCard user={user} />
+                  {((filteredUsers.length < 6 &&
+                    index === filteredUsers.length - 1) ||
+                    index === 4) && <ShowcaseContributionCard />}
+                </React.Fragment>
+              ))}
+            </ul>
           </div>
-          <ul className={styles.showcaseList}>
-            {filteredUsers.map((user, index) => (
-              <React.Fragment key={user.title}>
-                <ShowcaseCard user={user} />
-                {((filteredUsers.length < 6 &&
-                  index === filteredUsers.length - 1) ||
-                  index === 4) && <ShowcaseContributionCard />}
-              </React.Fragment>
-            ))}
-          </ul>
         </div>
       )}
     </section>

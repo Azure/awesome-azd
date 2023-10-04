@@ -532,9 +532,10 @@ function ShowcaseCard({ user }: { user: User }) {
           <PopoverTrigger disableButtonEnhancement>
             <Button
               size="small"
-              appearance="primary"
               style={{
-                minWidth: "40px",
+                minWidth: "23px",
+                padding: "0px",
+                minHeight: "20px",
                 backgroundColor: "#7160E8",
                 borderColor: "#7160E8",
               }}
@@ -542,7 +543,7 @@ function ShowcaseCard({ user }: { user: User }) {
                 navigator.clipboard.writeText(azdInitCommand);
               }}
             >
-              Copy
+              <img src={useBaseUrl("/img/copy.svg")} height={20} alt="Copy" />
             </Button>
           </PopoverTrigger>
 
@@ -620,14 +621,14 @@ export function ShowcaseContributionCard(): React.ReactElement {
             margin: "0px",
           }}
         >
-          awesome-azd is looking for new templates!{" "}
+          awesome-azd is always welcoming template contributions!{" "}
         </p>
         <p
           style={{
             margin: "0px",
           }}
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          The community is excited to use your templates.
         </p>
       </div>
       <CardFooter>

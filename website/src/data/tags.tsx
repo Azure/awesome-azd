@@ -54,13 +54,11 @@ export type User = {
 
 // NN: Updated TagType to suit Static Web Apps
 export type TagType =
-  | "featured"
   | "helpwanted"
   | "msft"
   | "community"
-  // Will add it back once those tags are identified and added in each templates
-  // | "new"
-  // | "popular"
+  | "new"
+  | "popular"
   | "bicep"
   | "typescript"
   | "javascript"
@@ -118,7 +116,13 @@ export type TagType =
   | "rediscache"
   | "ai"
   | "php"
-  | "agw";
+  | "agw"
+  | "streamlit"
+  | "azurebot"
+  | "ade"
+  | "platformengineering"
+  | "devcenter"
+  ;
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -128,7 +132,6 @@ export type TagType =
 //   - description = explainer for usage
 //   - color = color of the dot in tag
 // Some tags are special:
-//    - 'featured` can only be added by admin (for quality templates)
 //    - 'help wanted` must associate "source" with an open issue
 export const Tags: { [type in TagType]: Tag } = {
   // =============     FOR ADMIN USE ONLY:
@@ -142,21 +145,13 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Community Authored",
     description: "This tag is used for community templates.",
   },
-  // Will add it back once the tags is added in templates meta data
-  // new: {
-  //   label: "New",
-  //   description: "This tag is used for new templates.",
-  // },
-  // popular: {
-  //   label: "Popular",
-  //   description: "This tag is used for popular templates.",
-  // },
-
-  // Use for validated templates of high-quality
-  featured: {
-    label: "Featured",
-    description:
-      "This tag is used for admin-curated templates that represent high-quality (community) or official (Microsoft) azd templates.",
+  new: {
+    label: "New",
+    description: "This tag is used for new templates.",
+  },
+  popular: {
+    label: "Popular",
+    description: "This tag is used for popular templates.",
   },
 
   //============  FOR REGULAR USE
@@ -252,12 +247,12 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "SAP",
     description:
       "Template architecture uses Systems Applications and Products in data processing (SAP)",
-    type: "Other",
+    type: "Tools",
   },
   sapcloudsdk: {
     label: "SAP Cloud SDK",
     description: "Template architecture uses SAP Cloud SDK",
-    type: "Other",
+    type: "Tools",
   },
   spring: {
     label: "Spring",
@@ -267,7 +262,7 @@ export const Tags: { [type in TagType]: Tag } = {
   thymeleaf: {
     label: "Thymeleaf",
     description: "Template architecture uses Thymeleaf template engine",
-    type: "Other",
+    type: "Tools",
   },
   dataverse: {
     label: "Dataverse",
@@ -277,18 +272,18 @@ export const Tags: { [type in TagType]: Tag } = {
   chatgpt: {
     label: "ChatGPT",
     description: "Template architecture uses ChatGPT model",
-    type: "Other",
+    type: "Tools",
   },
   jupyter: {
     label: "Jupyter Notebooks",
     description: "Template architecture uses Jupyter Notebooks",
-    type: "Other",
+    type: "Tools",
   },
   keda: {
     label: "KEDA",
     description:
       "Template architecture uses Kubernetes Event Driven Autoscaling (KEDA)",
-    type: "Other",
+    type: "Tools",
   },
   kubernetes: {
     label: "Kubernetes",
@@ -304,14 +299,23 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Dapr",
     description:
       "Template architecture uses Distributed Application Runtime (dapr)",
-    type: "Other",
+    type: "Tools",
   },
   prometheus: {
     label: "Prometheus",
     description: "Template architecture uses Prometheus",
     type: "Database",
   },
-
+  streamlit: {
+    label: "Streamlit",
+    description: "Template architecture uses Streamlit library",
+    type: "Framework",
+  },
+  devcenter: {
+    label: "Dev Center",
+    description: "Template architecture uses Dev Center",
+    type: "Service",
+  },
   // ---- Azure Services
   ahds: {
     label: "Azure Health Data Service",
@@ -503,6 +507,16 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/products/application-gateway",
     type: "Service",
   },
+  azurebot: {
+    label: "Azure AI Bot Service",
+    description: "Template architecture uses Azure AI Bot Service",
+    type: "Service",
+  },
+  ade: {
+    label: "Azure Deployment Environments",
+    description: "Template architecture uses Azure Deployment Environments",
+    type: "Service",
+  },
 
   // For Topics
   datascience: {
@@ -521,4 +535,10 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture involves Artificial Intelligence",
     type: "Topic",
   },
+  platformengineering: {
+    label: "Platform Engineering",
+    description: "Template architecture involves Platform Engineering",
+    type: "Topic",
+  },
 };
+

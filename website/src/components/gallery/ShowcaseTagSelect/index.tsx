@@ -5,47 +5,43 @@
  * LICENSE file in the root directory of this source tree.
  */
 
- import React, {
-    useCallback,
-    useState,
-    useEffect,
-    type ComponentProps,
-    type ReactNode,
-    type ReactElement,
-  } from 'react';
-  import {useHistory, useLocation} from '@docusaurus/router';
-  import {toggleListItem} from '@site/src/utils/jsUtils';
-  import {prepareUserState} from '@site/src/pages/index';
-  import {
-    type TagType,
-  } from '@site/src/data/tags';
-  
+import React, {
+  useCallback,
+  useState,
+  useEffect,
+  type ComponentProps,
+  type ReactNode,
+  type ReactElement,
+} from "react";
+import { useHistory, useLocation } from "@docusaurus/router";
+import { toggleListItem } from "@site/src/utils/jsUtils";
+import { prepareUserState } from "@site/src/pages/index";
+import { type TagType } from "@site/src/data/tags";
+
 import { Checkbox } from "@fluentui/react-components";
-  
-  import styles from './styles.module.css';
-  
-  const TagQueryStringKey = 'tags';
-  
-  export function readSearchTags(search: string): TagType[] {
-    return new URLSearchParams(search).getAll(TagQueryStringKey) as TagType[];
-  }
-  
-  function replaceSearchTags(search: string, newTags: TagType[]) {
-    const searchParams = new URLSearchParams(search);
-    searchParams.delete(TagQueryStringKey);
-    newTags.forEach((tag) => searchParams.append(TagQueryStringKey, tag));
-    return searchParams.toString();
-  }
-  
+
+const TagQueryStringKey = "tags";
+
+export function readSearchTags(search: string): TagType[] {
+  return new URLSearchParams(search).getAll(TagQueryStringKey) as TagType[];
+}
+
+function replaceSearchTags(search: string, newTags: TagType[]) {
+  const searchParams = new URLSearchParams(search);
+  searchParams.delete(TagQueryStringKey);
+  newTags.forEach((tag) => searchParams.append(TagQueryStringKey, tag));
+  return searchParams.toString();
+}
+
 export default function ShowcaseTagSelect(
   // id: string,
   {
-  label,
-  tag,
-}: {
-  label:string;
-  tag: TagType;
-}
+    label,
+    tag,
+  }: {
+    label: string;
+    tag: TagType;
+  }
 ): JSX.Element {
   const location = useLocation();
   const history = useHistory();

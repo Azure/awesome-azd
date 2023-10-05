@@ -12,6 +12,7 @@ import { TagType, User, Tags } from './tags';
 import templates from '../../static/templates.json'
 
 // *** ADDING DATA TO AZD GALLERY ****/
+
 // Currently using Custom Issues on Repo
 // TODO: Define acceptable process for PR-based contributions
 
@@ -26,8 +27,6 @@ function sortUsers() {
   let result = Users;
   // Sort by site name
   result = sortBy(result, (user) => user.title.toLowerCase());
-  // Sort by favorite tag, favorites first
-  result = sortBy(result, (user) => !user.tags.includes('featured'));
   return result;
 }
 

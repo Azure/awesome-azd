@@ -91,6 +91,14 @@ function ShowcaseCardTag({
         <>
           {tagObjectsSorted.slice(0, number).map((tagObject, index) => {
             const id = `showcase_card_tag_${tagObject.tag}`;
+            if (
+              tagObject.tag == "msft" ||
+              tagObject.tag == "community" ||
+              tagObject.tag == "new" ||
+              tagObject.tag == "popular"
+            ) {
+              return;
+            }
             return <TagComp key={index} id={id} {...tagObject} />;
           })}
           <Badge
@@ -325,8 +333,7 @@ function ShowcaseCard({ user }: { user: User }) {
             >
               {headerText}
             </div>
-            {/* {tags.includes("new")  */}
-            {false ? (
+            {tags.includes("new") ? (
               <>
                 <img
                   src={star}
@@ -340,8 +347,7 @@ function ShowcaseCard({ user }: { user: User }) {
               </>
             ) : null}
 
-            {/* {tags.includes("popular")  */}
-            {false ? (
+            {tags.includes("popular") ? (
               <>
                 <img
                   src={fire}
@@ -396,8 +402,7 @@ function ShowcaseCard({ user }: { user: User }) {
             >
               {headerText}
             </div>
-            {/* tags.includes("new")*/}
-            {false ? (
+            {tags.includes("new") ? (
               <>
                 <img src={star} alt="Star" height={16} />
                 <div
@@ -411,8 +416,7 @@ function ShowcaseCard({ user }: { user: User }) {
                 </div>
               </>
             ) : null}
-            {/* tags.includes("popular")  */}
-            {false ? (
+            {tags.includes("popular") ? (
               <>
                 <img
                   src={fire}
@@ -514,6 +518,7 @@ function ShowcaseCard({ user }: { user: User }) {
       ></CardPreview>
       <CardFooter>
         <Input
+          id={"input_" + user.title}
           size="small"
           defaultValue={azdInitCommand}
           style={{
@@ -528,9 +533,10 @@ function ShowcaseCard({ user }: { user: User }) {
           <PopoverTrigger disableButtonEnhancement>
             <Button
               size="small"
-              appearance="primary"
               style={{
-                minWidth: "40px",
+                minWidth: "23px",
+                padding: "0px",
+                minHeight: "20px",
                 backgroundColor: "#7160E8",
                 borderColor: "#7160E8",
               }}
@@ -538,7 +544,7 @@ function ShowcaseCard({ user }: { user: User }) {
                 navigator.clipboard.writeText(azdInitCommand);
               }}
             >
-              Copy
+              <img src={useBaseUrl("/img/copy.svg")} height={20} alt="Copy" />
             </Button>
           </PopoverTrigger>
 
@@ -616,14 +622,8 @@ export function ShowcaseContributionCard(): React.ReactElement {
             margin: "0px",
           }}
         >
-          awesome-azd is looking for new templates!{" "}
-        </p>
-        <p
-          style={{
-            margin: "0px",
-          }}
-        >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          awesome-azd is always welcoming template contributions! Our community
+          is excited to see what you make.
         </p>
       </div>
       <CardFooter>

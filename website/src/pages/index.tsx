@@ -32,7 +32,7 @@ import {
 
 import { SearchBox } from "@fluentui/react/lib/SearchBox";
 
-import { initializeIcons } from "@uifabric/icons";
+import { initializeIcons } from "@fluentui/react/lib/Icons";
 
 import { Tags, type User, type TagType } from "../data/tags";
 

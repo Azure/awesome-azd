@@ -285,11 +285,6 @@ const useStyles = makeStyles({
     color: "#424242",
     fontWeight: "600",
   },
-  cardFooterAzdCommand: {
-    fontSize: "11px",
-    fontFamily: '"Consolas-Regular", Helvetica',
-    color: "#606060",
-  },
 });
 
 function ShowcaseCard({ user }: { user: User }) {
@@ -526,7 +521,7 @@ function ShowcaseCard({ user }: { user: User }) {
             flex: "1",
             border: "1px solid #d1d1d1",
             fontSize: "11px",
-            fontFamily: "Consolas",
+            fontFamily: "Consolas, Courier New, Courier, monospace",
             WebkitTextFillColor: "#717171",
           }}
         />

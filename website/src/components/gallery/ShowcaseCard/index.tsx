@@ -296,18 +296,18 @@ function ShowcaseCard({ user }: { user: User }) {
   const styles = useStyles();
   const tags = user.tags;
   const source = user.source;
-  const star = useBaseUrl("/img/sparkle.svg");
-  const fire = useBaseUrl("/img/fire.svg");
+  const star = useBaseUrl("/img/Sparkle.svg");
+  const fire = useBaseUrl("/img/Fire.svg");
   let azdInitCommand =
     "azd init -t " + source.replace("https://github.com/", "");
-  let headerLogo = useBaseUrl("/img/community.svg");
+  let headerLogo = useBaseUrl("/img/Community.svg");
   let headerText = "COMMUNITY AUTHORED";
 
   // Panel
   const [isOpen, { setTrue: openPanel, setFalse: dismissPanel }] =
     useBoolean(false);
   if (tags.includes("msft")) {
-    headerLogo = useBaseUrl("/img/microsoft.svg");
+    headerLogo = useBaseUrl("/img/Microsoft.svg");
     headerText = "MICROSOFT AUTHORED";
   }
   const onRenderNavigationContent: IRenderFunction<IPanelProps> =
@@ -544,7 +544,7 @@ function ShowcaseCard({ user }: { user: User }) {
                 navigator.clipboard.writeText(azdInitCommand);
               }}
             >
-              <img src={useBaseUrl("/img/copy.svg")} height={20} alt="Copy" />
+              <img src={useBaseUrl("/img/Copy.svg")} height={20} alt="Copy" />
             </Button>
           </PopoverTrigger>
 
@@ -684,7 +684,7 @@ function ShowcaseCardPanel({ user }: { user: User }) {
 
   const templateURL = user.source.replace("https://github.com/", "");
   const azdInitCommand = "azd init -t " + templateURL;
-  const copySVG = useBaseUrl("/img/copy.svg");
+  const copySVG = useBaseUrl("/img/Copy.svg");
   const chevronSVG = useBaseUrl("/img/leftChevron.svg");
   const pivotStyles: IPivotStyles = {
     linkIsSelected: [

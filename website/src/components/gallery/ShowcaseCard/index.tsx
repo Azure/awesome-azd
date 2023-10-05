@@ -520,6 +520,7 @@ function ShowcaseCard({ user }: { user: User }) {
         <Input
           id={"input_" + user.title}
           size="small"
+          spellCheck={false}
           defaultValue={azdInitCommand}
           style={{
             flex: "1",

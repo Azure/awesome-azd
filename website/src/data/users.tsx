@@ -27,8 +27,6 @@ function sortUsers() {
   let result = Users;
   // Sort by site name
   result = sortBy(result, (user) => user.title.toLowerCase());
-  // Sort by favorite tag, favorites first
-  result = sortBy(result, (user) => !user.tags.includes('featured'));
   return result;
 }
 

@@ -35,91 +35,94 @@
  */
 
 export type Tag = {
-    label: string;
-    description: string;
-    color: string;
+  label: string;
+  description: string;
+  azureIcon?: string;
+  url?: string;
+  type?: string;
 };
 
 export type User = {
-    title: string;
-    description: string;
-    preview: string;
-    website: string;
-    author: string;
-    source: string | null;
-    tags: TagType[];
+  title: string;
+  description: string;
+  preview: string;
+  website: string;
+  author: string;
+  source: string | null;
+  tags: TagType[];
 };
-  
-  // NN: Updated TagType to suit Static Web Apps
-export type TagType =
-| 'featured'
-//| 'deprecated'
-| 'helpwanted'
-| 'bicep'
-| 'typescript'
-| 'javascript'
-| 'dotnetCsharp'
-| 'java'
-| 'python'
-| 'django'
-| 'reactjs'
-| 'nodejs'
-| 'kubernetes'
-| 'keda'
-| 'grafana'
-| 'prometheus'
-| 'appservice'
-| 'cosmosdb'
-| 'monitor'
-| 'keyvault'
-| 'aca'
-| 'mongodb'
-| 'signalR'
-| 'functions'
-| 'blobstorage'
-| 'azuredb-postgreSQL'
-| 'azuresql'
-| 'webapps'
-| 'terraform'
-| 'swa'
-| 'dapr'
-| 'servicebus'
-| 'vnets'
-| 'fastapi'
-| 'fhir'
-| 'ahds'
-| 'appinsights'
-| 'loganalytics'
-| 'cognitivesearch'
-| 'openai'
-| 'azureai'
-| 'flask'
-| 'apim'
-| 'spring'
-| 'thymeleaf'
-| 'sap'
-| 'sapcloudsdk'
-| 'nestjs'
-| 'dataverse'
-| 'chatgpt'
-| 'aks'
-| 'azurecdn'
-| 'frontdoor'
-| 'enterprisepatterns'
-| 'jupyter'
-| 'datascience'
-| 'azurespringapps'
-| 'rediscache'
-| 'ai'
-| 'php'
-| 'agw'
-| 'streamlit'
-| 'azurebot'
-| 'ade'
-| 'platformengineering'
-| 'devcenter'
-;
 
+// NN: Updated TagType to suit Static Web Apps
+export type TagType =
+  | "helpwanted"
+  | "msft"
+  | "community"
+  | "new"
+  | "popular"
+  | "bicep"
+  | "typescript"
+  | "javascript"
+  | "dotnetCsharp"
+  | "java"
+  | "python"
+  | "django"
+  | "reactjs"
+  | "nodejs"
+  | "kubernetes"
+  | "keda"
+  | "grafana"
+  | "prometheus"
+  | "appservice"
+  | "cosmosdb"
+  | "monitor"
+  | "keyvault"
+  | "aca"
+  | "mongodb"
+  | "signalR"
+  | "functions"
+  | "blobstorage"
+  | "azuredb-postgreSQL"
+  | "azuresql"
+  | "webapps"
+  | "terraform"
+  | "swa"
+  | "dapr"
+  | "servicebus"
+  | "vnets"
+  | "fastapi"
+  | "fhir"
+  | "ahds"
+  | "appinsights"
+  | "loganalytics"
+  | "cognitivesearch"
+  | "openai"
+  | "azureai"
+  | "flask"
+  | "apim"
+  | "spring"
+  | "thymeleaf"
+  | "sap"
+  | "sapcloudsdk"
+  | "nestjs"
+  | "dataverse"
+  | "chatgpt"
+  | "aks"
+  | "azurecdn"
+  | "frontdoor"
+  | "enterprisepatterns"
+  | "jupyter"
+  | "datascience"
+  | "azurespringapps"
+  | "rediscache"
+  | "ai"
+  | "php"
+  | "agw"
+  | "streamlit"
+  | "azurebot"
+  | "ade"
+  | "platformengineering"
+  | "devcenter"
+  ;
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -129,365 +132,413 @@ export type TagType =
 //   - description = explainer for usage
 //   - color = color of the dot in tag
 // Some tags are special:
-//    - 'featured` can only be added by admin (for quality templates)
 //    - 'help wanted` must associate "source" with an open issue
-export const Tags: {[type in TagType]: Tag} = {
+export const Tags: { [type in TagType]: Tag } = {
+  // =============     FOR ADMIN USE ONLY:
 
-    // =============     FOR ADMIN USE ONLY: 
+  // Special Tag
+  msft: {
+    label: "Microsoft Authored",
+    description: "This tag is used for Microsoft azd templates.",
+  },
+  community: {
+    label: "Community Authored",
+    description: "This tag is used for community templates.",
+  },
+  new: {
+    label: "New",
+    description: "This tag is used for new templates.",
+  },
+  popular: {
+    label: "Popular",
+    description: "This tag is used for popular templates.",
+  },
 
-    // Use for validated templates of high-quality 
-    featured: {
-        label: ' ♥️ Featured',
-        description:
-        'This tag is used for admin-curated templates that represent high-quality (community) or official (Microsoft) azd templates.',
-        color: 'red', //'#e9669e',
-    },
+  //============  FOR REGULAR USE
 
-    // Use for templates that were valid once, but either
-    //  don't work now or have not been updated in XX time
-    /*
-    deprecated: {
-        label: '❌ Deprecated',
-        description: 'This tag is used when a previously approved template is no longer relevant (e.g., out of date, not refreshed in XX months etc.)',
-        color: 'red',
-    },
-    */
+  // Language Tags
 
-    // Use for templates that were valid once, but either
-    //  don't work now or have not been updated in XX time
-    helpwanted: {
-        label: '🙏🏽 Help Wanted',
-        description: 'This tag is used when there is a request for azd templates for a specific architecture. The title will link to arch, the button to a custom-issue for PR',
-        color: 'red',
-    },
+  javascript: {
+    label: "JavaScript",
+    description: "Template contains JavaScript app code",
+    type: "Language",
+  },
+  typescript: {
+    label: "TypeScript",
+    description: "Template contains TypeScript app code",
+    type: "Language",
+  },
+  dotnetCsharp: {
+    label: ".NET/C#",
+    description: "Template contains .NET and/or C# app code",
+    type: "Language",
+  },
+  java: {
+    label: "Java",
+    description: "Template contains Java app code",
+    type: "Language",
+  },
+  python: {
+    label: "Python",
+    description: "Template contains Python app code",
+    type: "Language",
+  },
+  django: {
+    label: "Django",
+    description: "Template contains Django web app code",
+    type: "Language",
+  },
+  reactjs: {
+    label: "React.js",
+    description: "Template architecture uses React.js",
+    type: "Language",
+  },
+  nodejs: {
+    label: "Node.js",
+    description: "Template architecture uses Node.js",
+    type: "Language",
+  },
+  php: {
+    label: "PHP",
+    description: "Template architecture uses PHP",
+    type: "Language",
+  },
 
+  // ---- Templating Options
+  bicep: {
+    label: "Bicep",
+    description: "Template uses Bicep for Infra as Code",
+    type: "Infrastructure as Code",
+  },
+  terraform: {
+    label: "Terraform",
+    description: "Template uses Terraform for Infra as Code",
+    type: "Infrastructure as Code",
+  },
 
-    //============  FOR REGULAR USE
+  // ---- 3rd Party Services
+  mongodb: {
+    label: "MongoDB",
+    description: "Template architecture uses MongoDB",
+    type: "Database",
+  },
+  fastapi: {
+    label: "FastAPI",
+    description: "Template architecture uses FastAPI web framework",
+    type: "Framework",
+  },
+  fhir: {
+    label: "FHIR Service",
+    description:
+      "Template architecture uses Fast Healthcare Interoperability Resources (FHIR) service",
+    type: "Service",
+  },
+  flask: {
+    label: "Flask",
+    description: "Template architecture uses Flask web framework",
+    type: "Framework",
+  },
+  nestjs: {
+    label: "NestJS",
+    description: "Template architecture uses NestJS framework",
+    type: "Framework",
+  },
+  sap: {
+    label: "SAP",
+    description:
+      "Template architecture uses Systems Applications and Products in data processing (SAP)",
+    type: "Tools",
+  },
+  sapcloudsdk: {
+    label: "SAP Cloud SDK",
+    description: "Template architecture uses SAP Cloud SDK",
+    type: "Tools",
+  },
+  spring: {
+    label: "Spring",
+    description: "Template architecture uses Spring framework",
+    type: "Framework",
+  },
+  thymeleaf: {
+    label: "Thymeleaf",
+    description: "Template architecture uses Thymeleaf template engine",
+    type: "Tools",
+  },
+  dataverse: {
+    label: "Dataverse",
+    description: "Template architecture uses Microsoft Dataverse",
+    type: "Service",
+  },
+  chatgpt: {
+    label: "ChatGPT",
+    description: "Template architecture uses ChatGPT model",
+    type: "Tools",
+  },
+  jupyter: {
+    label: "Jupyter Notebooks",
+    description: "Template architecture uses Jupyter Notebooks",
+    type: "Tools",
+  },
+  keda: {
+    label: "KEDA",
+    description:
+      "Template architecture uses Kubernetes Event Driven Autoscaling (KEDA)",
+    type: "Tools",
+  },
+  kubernetes: {
+    label: "Kubernetes",
+    description: "Template architecture uses Kubernetes",
+    type: "Platform",
+  },
+  webapps: {
+    label: "Web Apps",
+    description: "Template architecture uses Web Apps",
+    type: "Service",
+  },
+  dapr: {
+    label: "Dapr",
+    description:
+      "Template architecture uses Distributed Application Runtime (dapr)",
+    type: "Tools",
+  },
+  prometheus: {
+    label: "Prometheus",
+    description: "Template architecture uses Prometheus",
+    type: "Database",
+  },
+  streamlit: {
+    label: "Streamlit",
+    description: "Template architecture uses Streamlit library",
+    type: "Framework",
+  },
+  devcenter: {
+    label: "Dev Center",
+    description: "Template architecture uses Dev Center",
+    type: "Service",
+  },
+  // ---- Azure Services
+  ahds: {
+    label: "Azure Health Data Service",
+    description:
+      "Template architecture uses Azure Health Data Services workspace",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO: Add Azure Health Data Services icon
+    url: "https://azure.microsoft.com/products/health-data-services/",
+    type: "Service",
+  },
+  appinsights: {
+    label: "Azure Application Insights",
+    description: "Template architecture uses Azure Application Insights",
+    azureIcon: "./img/Azure-Application-Insights.svg",
+    url: "https://learn.microsoft.com/azure/azure-monitor/app/app-insights-overview",
+    type: "Service",
+  },
+  loganalytics: {
+    label: "Azure Log Analytics",
+    description: "Template architecture uses Azure Log Analytics",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
+    type: "Service",
+  },
+  appservice: {
+    label: "Azure App Service",
+    description: "Template architecture uses Azure App Service",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://azure.microsoft.com/products/app-service",
+    type: "Service",
+  },
+  monitor: {
+    label: "Azure Monitor",
+    description: "Template architecture uses Azure Monitor Service",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://azure.microsoft.com/products/monitor",
+    type: "Service",
+  },
+  keyvault: {
+    label: "Azure Key Vault",
+    description: "Template architecture uses Azure Key Vault",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://azure.microsoft.com/products/key-vault",
+    type: "Service",
+  },
+  aca: {
+    label: "Azure Container Apps",
+    description: "Template architecture uses Azure Container Apps",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://azure.microsoft.com/products/container-apps",
+    type: "Service",
+  },
+  cosmosdb: {
+    label: "Azure CosmosDB",
+    description: "Template architecture uses Azure CosmosDB",
+    azureIcon: "./img/Azure-Cosmos-DB.svg",
+    url: "https://azure.microsoft.com/products/cosmos-db/",
+    type: "Service",
+  },
+  signalR: {
+    label: "Azure SignalR",
+    description: "Template architecture uses Azure SignalR",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://azure.microsoft.com/products/signalr-service",
+    type: "Service",
+  },
+  functions: {
+    label: "Azure Functions",
+    description: "Template architecture uses Azure Functions",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://azure.microsoft.com/products/functions",
+    type: "Service",
+  },
+  blobstorage: {
+    label: "Azure Blob Storage",
+    description: "Template architecture uses Azure Blob Storage",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://azure.microsoft.com/products/storage/blobs",
+    type: "Service",
+  },
+  azuresql: {
+    label: "Azure SQL",
+    description: "Template architecture uses Azure SQL",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://azure.microsoft.com/products/azure-sql/database",
+    type: "Database",
+  },
+  "azuredb-postgreSQL": {
+    label: "Azure PostgreSQL",
+    description: "Template architecture uses Azure Database for PostgreSQL",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://azure.microsoft.com/products/postgresql",
+    type: "Database",
+  },
+  swa: {
+    label: "Azure Static Web Apps",
+    description: "Template architecture uses Azure Static Web Apps",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://azure.microsoft.com/products/app-service/static",
+    type: "Service",
+  },
+  servicebus: {
+    label: "Azure Service Bus",
+    description: "Template architecture uses Azure Service Bus",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://azure.microsoft.com/products/service-bus",
+    type: "Service",
+  },
+  vnets: {
+    label: "Azure Virtual Networks (VNET)",
+    description: "Template architecture uses Azure Virtual Networks",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://azure.microsoft.com/products/virtual-network",
+    type: "Service",
+  },
+  cognitivesearch: {
+    label: "Azure Cognitive Search",
+    description: "Template architecture uses Azure Cognitive Search",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://azure.microsoft.com/products/ai-services/cognitive-search",
+    type: "Service",
+  },
+  openai: {
+    label: "Azure OpenAI Service",
+    description: "Template architecture uses Azure OpenAI Service",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://azure.microsoft.com/products/ai-services/openai-service",
+    type: "Service",
+  },
+  azureai: {
+    label: "Azure AI Service",
+    description: "Template architecture uses Azure AI Service",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://azure.microsoft.com/solutions/ai",
+    type: "Service",
+  },
+  apim: {
+    label: "Azure API Management",
+    description: "Template architecture uses Azure API Management",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://azure.microsoft.com/products/api-management",
+    type: "Service",
+  },
+  aks: {
+    label: "Azure Kubernetes Service",
+    description: "Template architecture uses Azure Kubernetes Service",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://azure.microsoft.com/products/kubernetes-service",
+    type: "Service",
+  },
+  azurecdn: {
+    label: "Azure Content Delivery Network",
+    description: "Template architecture uses Azure Content Delivery Network",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://azure.microsoft.com/products/cdn",
+    type: "Service",
+  },
+  frontdoor: {
+    label: "Azure Front Door",
+    description: "Template architecture uses Azure Front Door",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://azure.microsoft.com/products/frontdoor",
+    type: "Service",
+  },
+  grafana: {
+    label: "Azure Managed Grafana",
+    description: "Template architecture uses Azure Managed Grafana",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://azure.microsoft.com/products/managed-grafana",
+    type: "Service",
+  },
+  azurespringapps: {
+    label: "Azure Spring Apps",
+    description: "Template architecture uses Azure Spring Apps",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://azure.microsoft.com/products/spring-apps",
+    type: "Service",
+  },
+  rediscache: {
+    label: "Azure Redis Cache",
+    description: "Template architecture uses Azure Redis Cache",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://azure.microsoft.com/products/cache",
+    type: "Service",
+  },
+  agw: {
+    label: "Azure Application Gateway",
+    description: "Template architecture uses Azure Application Gateway",
+    azureIcon: "./img/Azure-Application-Insights.svg", //TODO
+    url: "https://azure.microsoft.com/products/application-gateway",
+    type: "Service",
+  },
+  azurebot: {
+    label: "Azure AI Bot Service",
+    description: "Template architecture uses Azure AI Bot Service",
+    type: "Service",
+  },
+  ade: {
+    label: "Azure Deployment Environments",
+    description: "Template architecture uses Azure Deployment Environments",
+    type: "Service",
+  },
 
-    // Language Tags
-
-    javascript: {
-        label: 'JavaScript',
-        description: 'Template contains JavaScript app code',
-        color: '#1e90ff',
-    },
-    typescript: {
-        label: 'TypeScript',
-        description: 'Template contains TypeScript app code',
-        color: '#1e90ff',
-    },
-    dotnetCsharp: {
-        label: '.NET/C#',
-        description: 'Template contains .NET and/or C# app code',
-        color: '#1e90ff',
-    },
-    java: {
-        label: 'Java',
-        description: 'Template contains Java app code',
-        color: '#1e90ff',
-    },
-    python: {
-        label: 'Python',
-        description: 'Template contains Python app code',
-        color: '#1e90ff',
-    },
-    django: {
-        label: 'Django',
-        description: 'Template contains Django web app code',
-        color: '#1e90ff',
-    },
-    reactjs: {
-         label: 'React.js',
-         description: 'Template architecture uses React.js',
-         color: '#1e90ff',
-    },
-    nodejs: {
-        label: 'Node.js',
-        description: 'Template architecture uses Node.js',
-        color: '#1e90ff',
-    },
-    php: {
-        label: 'PHP',
-        description: 'Template architecture uses PHP',
-        color: '#1e90ff',
-    },
-
-    // ---- Templating Options
-    bicep: {
-        label: 'Bicep',
-        description: 'Template uses Bicep for Infra as Code',
-        color: '#66ff00',
-    },
-    terraform: {
-        label: 'Terraform',
-        description: 'Template uses Terraform for Infra as Code',
-        color: '#66ff00',
-    },
-
-    // ---- 3rd Party Services
-   mongodb: {
-    label: 'MongoDB',
-    description: 'Template architecture uses MongoDB',
-    color: 'hotpink',
-    },
-    fastapi: {
-    label: 'FastAPI',
-    description: 'Template architecture uses FastAPI web framework',
-    color: 'hotpink',
-    },
-    fhir: {
-    label: 'FHIR Service',
-    description: 'Template architecture uses Fast Healthcare Interoperability Resources (FHIR)',
-    color: 'hotpink',
-    },
-    flask:{
-    label: 'Flask',
-    description: 'Template architecture uses Flask web framework',
-    color: 'hotpink',
-    },
-    nestjs:{
-    label: 'NestJS',
-    description: 'Template architecture uses NestJS framework',
-    color: 'hotpink',
-    },
-    sap:{
-    label: 'SAP',
-    description: 'Template architecture uses Systems Applications and Products in data processing (SAP)',
-    color: 'hotpink',
-    },
-    sapcloudsdk:{
-    label: 'SAP Cloud SDK',
-    description: 'Template architecture uses SAP Cloud SDK',
-    color: 'hotpink',
-    },
-    spring:{
-    label: 'Spring',
-    description: 'Template architecture uses Spring framework',
-    color: 'hotpink',
-    },
-    thymeleaf:{
-    label: 'Thymeleaf',
-    description: 'Template architecture uses Thymeleaf template engine',
-    color: 'hotpink',
-    },
-    dataverse:{
-    label: 'Dataverse',
-    description: 'Template architecture uses Microsoft Dataverse',
-    color: 'hotpink',
-    },
-    chatgpt:{
-    label: 'ChatGPT',
-    description: 'Template architecture uses ChatGPT model',
-    color: 'hotpink',
-    },
-    jupyter:{
-    label: 'Jupyter Notebooks',
-    description: 'Template architecture uses Jupyter Notebooks',
-    color: 'hotpink',
-    },
-    keda: {
-        label: 'KEDA',
-        description: 'Template architecture uses Kubernetes Event Driven Autoscaling (KEDA)',
-        color: 'hotpink',
-    },
-    kubernetes: {
-        label: 'Kubernetes',
-        description: 'Template architecture uses Kubernetes',
-        color: 'hotpink',
-    },
-    streamlit: {
-        label: 'Streamlit',
-        description: 'Template architecture uses Streamlit library',
-        color: 'hotpink',
-    },
-    devcenter: {
-    label: 'Dev Center',
-    description: 'Template architecture uses Dev Center',
-    color: 'hotpink',
-    },
-    // ---- Azure Services
-    ahds: {
-        label: 'Azure Health Data Service',
-        description: 'Template architecture uses Azure Health Data Services workspace',
-        color: 'hotpink',
-    },
-    appinsights: {
-        label: 'Azure App Insights',
-        description: 'Template architecture uses Azure App Insights',
-        color: 'hotpink',
-    },
-    loganalytics: {
-        label: 'Azure Log Analytics',
-        description: 'Template architecture uses Azure Log Analytics',
-        color: 'hotpink',
-    },
-    appservice: {
-        label: 'Azure App Service',
-        description: 'Template architecture uses Azure App Service',
-        color: 'hotpink',
-    },
-    monitor: {
-        label: 'Azure Monitor',
-        description: 'Template architecture uses  Azure App Service',
-        color: 'hotpink',
-    },
-    keyvault: {
-        label: 'Azure Key Vault',
-        description: 'Template architecture uses Azure Key Vault',
-        color: 'hotpink',
-    },
-    aca: {
-        label: 'Azure Container Apps',
-        description: 'Template architecture uses Azure Container Apps',
-        color: 'hotpink',
-    },
-    cosmosdb: {
-        label: 'CosmosDB',
-        description: 'Template architecture uses Azure CosmosDB',
-        color: 'hotpink',
-    },
-    signalR: {
-        label: 'Azure SignalR',
-        description: 'Template architecture uses Azure SignalR',
-        color: 'hotpink',
-    },
-    functions: {
-        label: 'Azure Functions',
-        description: 'Template architecture uses Azure Functions',
-        color: 'hotpink',
-    },
-    blobstorage: {
-        label: 'Azure Blob Storage',
-        description: 'Template architecture uses Azure Blob Storage',
-        color: 'hotpink',
-    },    
-    webapps: {
-        label: 'Web Apps',
-        description: 'Template architecture uses Web Apps',
-        color: 'hotpink',
-    }, 
-    azuresql: {
-        label: 'Azure SQL',
-        description: 'Template architecture uses Azure SQL',
-        color: 'hotpink',
-    },
-    "azuredb-postgreSQL": {
-        label: 'Azure DB For PostgreSQL',
-        description: 'Template architecture uses Azure DB for PostgreSQL',
-        color: 'hotpink',
-    },
-    swa: {
-        label: 'Azure Static Web Apps',
-        description: 'Template architecture uses Azure Static Web Apps',
-        color: 'hotpink',
-    },
-    dapr: {
-        label: 'Dapr',
-        description: 'Template architecture uses Distributed Application Runtime (dapr)',
-        color: 'hotpink',
-    },
-    servicebus: {
-        label: 'Azure Service Bus',
-        description: 'Template architecture uses Azure Service Bus',
-        color: 'hotpink',
-    },
-    vnets: {
-        label: 'Virtual Networks (VNET)',
-        description: 'Template architecture uses Virtual Networks',
-        color: 'hotpink',
-    },
-    cognitivesearch: {
-        label: 'Azure Cognitive Search',
-        description: 'Template architecture uses Azure Cognitive Search',
-        color: 'hotpink',
-    },
-    openai: {
-        label: 'Azure OpenAI Service',
-        description: 'Template architecture uses Azure OpenAI Service',
-        color: 'hotpink',
-    },
-    azureai: {
-        label: 'Azure AI Service',
-        description: 'Template architecture uses Azure AI Service',
-        color: 'hotpink',
-    },
-    apim: {
-        label: 'Azure API Management',
-        description: 'Template architecture uses Azure API Management',
-        color: 'hotpink',
-    },
-    aks: {
-        label: 'Azure Kubernetes Service',
-        description: 'Template architecture uses Azure Kubernetes Service',
-        color: 'hotpink',
-    },
-    azurecdn: {
-        label: 'Azure Content Delivery Network',
-        description: 'Template architecture uses Azure Content Delivery Network',
-        color: 'hotpink',
-    },
-    frontdoor: {
-        label: 'Azure Front Door',
-        description: 'Template architecture uses Azure Front Door',
-        color: 'hotpink',
-    },
-    grafana: {
-        label: 'Grafana',
-        description: 'Template architecture uses Azure Managed Grafana',
-        color: 'hotpink',
-    },
-    prometheus: {
-        label: 'Prometheus',
-        description: 'Template architecture uses Azure Monitor managed service for Prometheus',
-        color: 'hotpink',
-    },
-
-    azurespringapps:{
-        label: 'Azure Spring Apps',
-        description: 'Template architecture uses Azure Spring Apps',
-        color: 'hotpink',
-    },
-    rediscache: {
-        label: 'Azure Redis Cache',
-        description: 'Template architecture uses Azure Redis Cache',
-        color: 'hotpink',
-    },
-    agw: {
-        label: 'Azure Application Gateway',
-        description: 'Template architecture uses Azure Application Gateway',
-        color: 'hotpink',
-    },
-    azurebot: {
-        label: 'Azure AI Bot Service',
-        description: 'Template architecture uses Azure AI Bot Service',
-        color: 'hotpink',
-    },
-    ade: {
-    label: 'Azure Deployment Environments',
-    description: 'Template architecture uses Azure Deployment Environments',
-    color: 'hotpink',
-    },
-
-    // For Topics
-    datascience:{
-        label: 'Data Science',
-        description: 'Template architecture involves Data Science',
-        color: 'hotpink',
-    },
-    enterprisepatterns: {
-        label: 'Enterprise App Patterns',
-        description: 'Template architecture involves Enterprise Application Patterns',
-        color: 'hotpink',
-    },
-    ai: {
-        label: 'Artificial Intelligence',
-        description: 'Template architecture involves Artificial Intelligence',
-        color: 'hotpink',
-    },
-    platformengineering: {
-        label: 'Platform Engineering',
-        description: 'Template architecture involves Platform Engineering',
-        color: 'hotpink',
-    }
+  // For Topics
+  datascience: {
+    label: "Data Science",
+    description: "Template architecture involves Data Science",
+    type: "Topic",
+  },
+  enterprisepatterns: {
+    label: "Enterprise App Patterns",
+    description:
+      "Template architecture involves Enterprise Application Patterns",
+    type: "Topic",
+  },
+  ai: {
+    label: "Artificial Intelligence",
+    description: "Template architecture involves Artificial Intelligence",
+    type: "Topic",
+  },
+  platformengineering: {
+    label: "Platform Engineering",
+    description: "Template architecture involves Platform Engineering",
+    type: "Topic",
+  },
 };
 

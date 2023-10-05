@@ -191,7 +191,7 @@ export const Tags: { [type in TagType]: Tag } = {
   reactjs: {
     label: "React.js",
     description: "Template architecture uses React.js",
-    type: "Language",
+    type: "Tools",
   },
   nodejs: {
     label: "Node.js",

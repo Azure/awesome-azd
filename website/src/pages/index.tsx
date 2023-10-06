@@ -581,16 +581,28 @@ function ShowcaseCards() {
               <div className={styles.showcaseFavoriteHeader}>
                 {/* <FilterBar id="searchDropDown" /> */}
               </div>
-              <ul className={styles.showcaseList}>
+              <div className={styles.showcaseList}>
                 {sortedUsers.map((user, index) => (
-                  <React.Fragment key={user.title}>
-                    <ShowcaseCard user={user} />
-                    {((sortedUsers.length < 6 &&
-                      index === sortedUsers.length - 1) ||
-                      index === 4) && <ShowcaseContributionCard />}
-                  </React.Fragment>
+                  <>
+                    {(filteredUsers.length < 6 &&
+                      index === filteredUsers.length - 1) ||
+                    index === 4 ? (
+                      <>
+                        <React.Fragment key={user.title}>
+                          <ShowcaseCard user={user} />
+                        </React.Fragment>
+                        <React.Fragment key="fragement_contributionCard">
+                          <ShowcaseContributionCard />
+                        </React.Fragment>
+                      </>
+                    ) : (
+                      <React.Fragment key={user.title}>
+                        <ShowcaseCard user={user} />
+                      </React.Fragment>
+                    )}
+                  </>
                 ))}
-              </ul>
+              </div>
             </div>
           </div>
         </>
@@ -600,16 +612,28 @@ function ShowcaseCards() {
             <div className={styles.showcaseFavoriteHeader}>
               {/* <FilterBar id="searchDropDown" /> */}
             </div>
-            <ul className={styles.showcaseList}>
+            <div className={styles.showcaseList}>
               {filteredUsers.map((user, index) => (
-                <React.Fragment key={user.title}>
-                  <ShowcaseCard user={user} />
-                  {((filteredUsers.length < 6 &&
+                <>
+                  {(filteredUsers.length < 6 &&
                     index === filteredUsers.length - 1) ||
-                    index === 4) && <ShowcaseContributionCard />}
-                </React.Fragment>
+                  index === 4 ? (
+                    <>
+                      <React.Fragment key={user.title}>
+                        <ShowcaseCard user={user} />
+                      </React.Fragment>
+                      <React.Fragment key="fragment_contributionCard">
+                        <ShowcaseContributionCard />
+                      </React.Fragment>
+                    </>
+                  ) : (
+                    <React.Fragment key={user.title}>
+                      <ShowcaseCard user={user} />
+                    </React.Fragment>
+                  )}
+                </>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       )}

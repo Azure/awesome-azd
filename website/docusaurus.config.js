@@ -73,15 +73,20 @@ const config = {
           width: 32,
           height: 32,
         },
-
-        // style: "primary",
-
         items: [
-          // FIXME: TEMPORARILY DISABLE DOCS, BLOG
-          //{ label: "Tutorial", position: "left", type: "doc", docId: "intro",},
-          //{ to: '/blog', label: 'Blog', position: 'left'},
+          { href: "/", label: "Templates", position: "left" },
 
-          { to: "/about", label: "About", position: "left" },
+          { to: "/about", label: "Getting Started", position: "left" },
+          {
+            to: "https://learn.microsoft.com/azure/developer/azure-developer-cli/",
+            label: "Docs",
+            position: "left",
+          },
+          {
+            to: "https://learn.microsoft.com/azure/architecture/browse/",
+            label: "Resources",
+            position: "left",
+          },
           {
             label: "Contribute",
             position: "left",
@@ -92,20 +97,14 @@ const config = {
           // CONFIG:
           // Make sure you have class defined in src/css/custom.css
           {
-            to: "https://learn.microsoft.com/azure/architecture/browse/",
-            label: "Architectures",
+            to: "https://azure.github.io/awesome-azd/docs/intro",
+            label: "Submit your template!",
             position: "right",
-          },
-          {
-            to: "https://learn.microsoft.com/azure/developer/azure-developer-cli/",
-            label: "Docs",
-            position: "right",
-          },
-          {
-            href: "https://github.com/azure/awesome-azd",
-            position: "right",
-            className: "header-github-link",
-            "aria-label": "GitHub repository",
+            className: "button",
+            style: {
+              backgroundColor: "#7160E8",
+              color: "white",
+            },
           },
         ],
       },

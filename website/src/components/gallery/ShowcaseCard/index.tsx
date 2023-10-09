@@ -636,7 +636,7 @@ export function ShowcaseContributionCard(): React.ReactElement {
           }}
           onClick={() => {
             window.open(
-              "https://github.com/Azure/awesome-azd/compare",
+              "https://azure.github.io/awesome-azd/docs/intro",
               "_blank"
             );
           }}

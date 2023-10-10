@@ -74,9 +74,17 @@ const config = {
           height: 32,
         },
         items: [
-          { href: "/", label: "Templates", position: "left" },
+          {
+            href: "/",
+            label: "Templates",
+            position: "left",
+          },
 
-          { to: "/about", label: "Getting Started", position: "left" },
+          {
+            to: "/about",
+            label: "Getting Started",
+            position: "left",
+          },
           {
             to: "https://learn.microsoft.com/azure/developer/azure-developer-cli/",
             label: "Docs",
@@ -92,6 +100,13 @@ const config = {
             position: "left",
             type: "doc",
             docId: "intro",
+          },
+
+          {
+            href: "https://github.com/Azure/repo/awesome-azd",
+            position: "right",
+            className: "header-github-link",
+            "aria-label": "GitHub repository",
           },
 
           // CONFIG:
@@ -187,9 +202,9 @@ const config = {
 
         // CONFIG: theme = currently using `classic`
         //    See: https://docusaurus.io/docs/api/themes/@docusaurus/theme-classic
-        // theme: {
-        //   customCss: require.resolve('./src/css/custom.css'),
-        // },
+        theme: {
+          customCss: require.resolve("./src/css/custom.css"),
+        },
       }),
     ],
   ],

@@ -15,8 +15,6 @@ import NavbarMobileSidebarToggle from "@theme/Navbar/MobileSidebar/Toggle";
 import NavbarLogo from "@theme/Navbar/Logo";
 import NavbarSearch from "@theme/Navbar/Search";
 import styles from "./styles.module.css";
-import clsx from "clsx";
-import useBaseUrl from "@docusaurus/useBaseUrl";
 function useNavbarItems() {
   // TODO temporary casting until ThemeConfig type is improved
   return useThemeConfig().navbar.items;
@@ -55,7 +53,6 @@ export default function NavbarContent() {
   const items = useNavbarItems();
   const [leftItems, rightItems] = splitNavbarItems(items);
   const searchBarItem = items.find((item) => item.type === "search");
-  const { colorMode, setColorMode } = useColorMode();
   return (
     <NavbarContentLayout
       left={
@@ -63,11 +60,6 @@ export default function NavbarContent() {
         <>
           {!mobileSidebar.disabled && <NavbarMobileSidebarToggle />}
           <NavbarLogo />
-          {colorMode != "dark" ? (
-            <div style={{ borderLeft: "1px solid black", height: "25px" }} />
-          ) : (
-            <div style={{ borderLeft: "1px solid white", height: "25px" }} />
-          )}
           <NavbarItems items={leftItems} />
         </>
       }
@@ -76,22 +68,6 @@ export default function NavbarContent() {
         // Ask the user to add the respective navbar items => more flexible
         <>
           <NavbarColorModeToggle className={styles.colorModeToggle} />
-          <div style={{ padding: "0 12px" }}>
-            <button
-              className={clsx("clean-btn", styles.colorModeToggle)}
-              onClick={() => {
-                window.open("https://github.com/Azure/awesome-azd", "_blank");
-              }}
-              value={colorMode}
-              onChange={setColorMode}
-            >
-              {colorMode != "dark" ? (
-                <img src={useBaseUrl("/img/githubLight.svg")} alt="Github" />
-              ) : (
-                <img src={useBaseUrl("/img/github.svg")} alt="Github" />
-              )}
-            </button>
-          </div>
           <NavbarItems items={rightItems} />
           {!searchBarItem && (
             <NavbarSearch>

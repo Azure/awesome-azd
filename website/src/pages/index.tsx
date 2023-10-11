@@ -50,6 +50,7 @@ const TITLE = "Template Library";
 const DESCRIPTION =
   "A community-contributed template gallery built to work with the Azure Developer CLI.";
 const ADD_URL = "https://aka.ms/azd";
+var InputValue;
 
 type UserState = {
   scrollTopPosition: number;
@@ -163,7 +164,7 @@ function ShowcaseTemplateSearch() {
         >
           {DESCRIPTION}
         </Text>
-        <FilterBar id="filterBar" />
+        <FilterBar />
         <Text
           align="center"
           size={300}
@@ -195,8 +196,8 @@ function useSiteCountPlural() {
         {
           id: "showcase.filters.resultCount",
           description:
-            'Pluralized label for the number of sites found on the showcase. Use as much plural forms (separated by "|") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)',
-          message: "1 site|{sitesCount} sites",
+            'Pluralized label for the number of templates found on the showcase. Use as much plural forms (separated by "|") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)',
+          message: "{sitesCount}",
         },
         { sitesCount }
       )
@@ -204,8 +205,6 @@ function useSiteCountPlural() {
 }
 
 function ShowcaseFilters() {
-  const filteredUsers = useFilteredUsers();
-  const siteCountPlural = useSiteCountPlural();
   const uncategoryTag = TagList.filter((tag) => {
     const tagObject = Tags[tag];
     return tagObject.type === undefined;
@@ -392,8 +391,6 @@ function ShowcaseFilters() {
         </AccordionPanel>
       </AccordionItem>
     </Accordion>
-
-    /* <span>{siteCountPlural(filteredUsers.length)}</span> */
   );
 }
 
@@ -492,13 +489,14 @@ function ShowcaseFilterAndCard() {
   );
 }
 
-function FilterBar({ id }: { id: string }) {
+function FilterBar() {
   const history = useHistory();
   const location = useLocation();
   const [value, setValue] = useState<string | null>(null);
   useEffect(() => {
     setValue(readSearchName(location.search));
   }, [location]);
+  InputValue = value;
   return (
     <>
       <SearchBox
@@ -518,7 +516,7 @@ function FilterBar({ id }: { id: string }) {
             fontSize: "18px",
           },
         }}
-        id={id}
+        id="filterBar"
         value={readSearchName(location.search) != null ? value : ""}
         placeholder="Search for an azd template..."
         onClear={(e) => {
@@ -556,18 +554,71 @@ function FilterBar({ id }: { id: string }) {
   );
 }
 
+function FilterTopBar() {
+  const siteCountPlural = useSiteCountPlural();
+  const filteredUsers = useFilteredUsers();
+  const templateNumber = siteCountPlural(filteredUsers.length);
+
+
+  const history = useHistory();
+  const location = useLocation();
+  const [value, setValue] = useState<string | null>(null);
+  useEffect(() => {
+    setValue(readSearchName(location.search));
+  }, [location]);
+  return (
+    <div>
+      <div
+        style={{
+          display: "flex",
+          gap: "4px",
+          float:"left",
+        }}
+      >
+        <Text size={400}>Viewing</Text>
+        <Text size={400} weight="bold">
+          {templateNumber}
+        </Text>
+        {templateNumber != "1" ? (
+          <Text size={400}>templates</Text>
+        ) : (
+          <Text size={400}>template</Text>
+        )}
+        {InputValue != null ? (
+          <>
+            <Text size={400}>for</Text>
+            <Text size={400} weight="bold">
+              '{InputValue}'
+            </Text>
+          </>
+        ) : null}
+      </div>
+      <div
+        style={{
+          float:"right",
+          display:"flex",
+          flex:"flex-end"
+        }}
+      >
+        <Text size={400}>Sort by</Text>
+        <div>HAHAHAH</div>
+      </div>
+    </div>
+  );
+}
+
 function ShowcaseCards() {
   const filteredUsers = useFilteredUsers();
 
   if (filteredUsers.length === 0) {
     return (
       <div>
+        <FilterTopBar />
         <h2>
           <Translate id="showcase.usersList.noResult">
             Be the first to add an example project!
           </Translate>
         </h2>
-        {/* <FilterBar id="searchDropDown" /> */}
       </div>
     );
   }
@@ -579,7 +630,7 @@ function ShowcaseCards() {
           <div className={styles.showcaseFavorite}>
             <div>
               <div className={styles.showcaseFavoriteHeader}>
-                {/* <FilterBar id="searchDropDown" /> */}
+                <FilterTopBar />
               </div>
               <div className={styles.showcaseList}>
                 {sortedUsers.map((user, index) => (
@@ -610,7 +661,7 @@ function ShowcaseCards() {
         <div className={styles.showcaseFavorite}>
           <div>
             <div className={styles.showcaseFavoriteHeader}>
-              {/* <FilterBar id="searchDropDown" /> */}
+              <FilterTopBar />
             </div>
             <div className={styles.showcaseList}>
               {filteredUsers.map((user, index) => (

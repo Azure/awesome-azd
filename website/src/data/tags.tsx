@@ -122,6 +122,7 @@ export type TagType =
   | "ade"
   | "platformengineering"
   | "devcenter"
+  | "semantickernel"
   ;
 
 // LIST OF AVAILABLE TAGS
@@ -309,6 +310,11 @@ export const Tags: { [type in TagType]: Tag } = {
   streamlit: {
     label: "Streamlit",
     description: "Template architecture uses Streamlit library",
+    type: "Framework",
+  },
+  semantickernel: {
+    label: 'Semantic Kernel',
+    description: 'Template architecture uses Semantic Kernel',
     type: "Framework",
   },
   devcenter: {

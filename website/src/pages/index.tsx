@@ -28,6 +28,8 @@ import {
   AccordionToggleEventHandler,
   Text,
   Link as FluentUILink,
+  Combobox,
+  Option,
 } from "@fluentui/react-components";
 
 import { SearchBox } from "@fluentui/react/lib/SearchBox";
@@ -36,7 +38,7 @@ import { initializeIcons } from "@fluentui/react/lib/Icons";
 
 import { Tags, type User, type TagType } from "../data/tags";
 
-import { sortedUsers, TagList } from "../data/users";
+import { sortedUsers, unsortedUsers, TagList } from "../data/users";
 
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import Translate, { translate } from "@docusaurus/Translate";
@@ -106,22 +108,46 @@ function filterUsers(
   });
 }
 
-function useFilteredUsers() {
+function readSortChoice(rule: string): User[] {
+  const options = [
+    "New to old",
+    "Old to new",
+    "Alphabetical (A - Z)",
+    "Alphabetical (Z - A)",
+  ];
+  if (rule == options[0]) {
+    return unsortedUsers;
+  }
+  if (rule == options[1]) {
+    return unsortedUsers.reverse();
+  }
+  if (rule == options[2]) {
+    return sortedUsers;
+  }
+  if (rule == options[3]) {
+    return sortedUsers.reverse();
+  }
+  return unsortedUsers;
+}
+
+function useFilteredUsers(rule: string) {
   const location = useLocation<UserState>();
   // On SSR / first mount (hydration) no tag is selected
   const [selectedTags, setSelectedTags] = useState<TagType[]>([]);
   const [searchName, setSearchName] = useState<string | null>(null);
+  const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
   // Sync tags from QS to state (delayed on purpose to avoid SSR/Client
   // hydration mismatch)
   useEffect(() => {
     setSelectedTags(readSearchTags(location.search));
+    setSelectedUsers(readSortChoice(rule));
     setSearchName(readSearchName(location.search));
     restoreUserState(location.state);
   }, [location]);
-
+  console.log(readSortChoice(rule));
   return useMemo(
-    () => filterUsers(sortedUsers, selectedTags, searchName),
-    [selectedTags, searchName]
+    () => filterUsers(selectedUsers, selectedTags, searchName),
+    [selectedTags, searchName, selectedUsers]
   );
 }
 
@@ -483,7 +509,7 @@ function ShowcaseFilterAndCard() {
         <ShowcaseFilters />
       </div>
       <div className={styles.card}>
-        <ShowcaseCards />
+        <ShowcaseCardPage />
       </div>
     </div>
   );
@@ -554,66 +580,91 @@ function FilterBar() {
   );
 }
 
-function FilterTopBar() {
+function ShowcaseCardPage() {
   const siteCountPlural = useSiteCountPlural();
-  const filteredUsers = useFilteredUsers();
+  const options = [
+    "New to old",
+    "Old to new",
+    "Alphabetical (A - Z)",
+    "Alphabetical (Z - A)",
+  ];
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+  const onSelect = (event, data) => {
+    setSelectedOptions(data.selectedOptions);
+  };
+
+  let filteredUsers = useFilteredUsers(selectedOptions[0]);
+  console.log(selectedOptions[0]);
   const templateNumber = siteCountPlural(filteredUsers.length);
 
-
-  const history = useHistory();
-  const location = useLocation();
-  const [value, setValue] = useState<string | null>(null);
-  useEffect(() => {
-    setValue(readSearchName(location.search));
-  }, [location]);
   return (
-    <div>
+    <>
       <div
         style={{
           display: "flex",
-          gap: "4px",
-          float:"left",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
-        <Text size={400}>Viewing</Text>
-        <Text size={400} weight="bold">
-          {templateNumber}
-        </Text>
-        {templateNumber != "1" ? (
-          <Text size={400}>templates</Text>
-        ) : (
-          <Text size={400}>template</Text>
-        )}
-        {InputValue != null ? (
-          <>
-            <Text size={400}>for</Text>
-            <Text size={400} weight="bold">
-              '{InputValue}'
-            </Text>
-          </>
-        ) : null}
+        <div
+          style={{
+            display: "flex",
+            gap: "4px",
+            float: "left",
+          }}
+        >
+          <Text size={400}>Viewing</Text>
+          <Text size={400} weight="bold">
+            {templateNumber}
+          </Text>
+          {templateNumber != "1" ? (
+            <Text size={400}>templates</Text>
+          ) : (
+            <Text size={400}>template</Text>
+          )}
+          {InputValue != null ? (
+            <>
+              <Text size={400}>for</Text>
+              <Text size={400} weight="bold">
+                '{InputValue}'
+              </Text>
+            </>
+          ) : null}
+        </div>
+        <div
+          style={{
+            float: "right",
+            display: "flex",
+            gap: "3px",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Text size={400}>Sort by: </Text>
+          <div>{selectedOptions}</div>
+          <Combobox
+            aria-labelledby="combo-default"
+            placeholder="Placeholder text"
+            // selectedOptions={selectedOptions}
+            onOptionSelect={onSelect}
+          >
+            {options.map((option) => (
+              <Option key={option} disabled={option === "Ferret"}>
+                {option}
+              </Option>
+            ))}
+          </Combobox>
+        </div>
       </div>
-      <div
-        style={{
-          float:"right",
-          display:"flex",
-          flex:"flex-end"
-        }}
-      >
-        <Text size={400}>Sort by</Text>
-        <div>HAHAHAH</div>
-      </div>
-    </div>
+      <ShowcaseCards filteredUsers={filteredUsers} />
+    </>
   );
 }
 
-function ShowcaseCards() {
-  const filteredUsers = useFilteredUsers();
-
+function ShowcaseCards({ filteredUsers }: { filteredUsers: User[] }) {
   if (filteredUsers.length === 0) {
     return (
       <div>
-        <FilterTopBar />
         <h2>
           <Translate id="showcase.usersList.noResult">
             Be the first to add an example project!
@@ -628,41 +679,6 @@ function ShowcaseCards() {
       {filteredUsers.length === sortedUsers.length ? (
         <>
           <div className={styles.showcaseFavorite}>
-            <div>
-              <div className={styles.showcaseFavoriteHeader}>
-                <FilterTopBar />
-              </div>
-              <div className={styles.showcaseList}>
-                {sortedUsers.map((user, index) => (
-                  <>
-                    {(filteredUsers.length < 6 &&
-                      index === filteredUsers.length - 1) ||
-                    index === 4 ? (
-                      <>
-                        <React.Fragment key={user.title}>
-                          <ShowcaseCard user={user} />
-                        </React.Fragment>
-                        <React.Fragment key="fragement_contributionCard">
-                          <ShowcaseContributionCard />
-                        </React.Fragment>
-                      </>
-                    ) : (
-                      <React.Fragment key={user.title}>
-                        <ShowcaseCard user={user} />
-                      </React.Fragment>
-                    )}
-                  </>
-                ))}
-              </div>
-            </div>
-          </div>
-        </>
-      ) : (
-        <div className={styles.showcaseFavorite}>
-          <div>
-            <div className={styles.showcaseFavoriteHeader}>
-              <FilterTopBar />
-            </div>
             <div className={styles.showcaseList}>
               {filteredUsers.map((user, index) => (
                 <>
@@ -673,7 +689,7 @@ function ShowcaseCards() {
                       <React.Fragment key={user.title}>
                         <ShowcaseCard user={user} />
                       </React.Fragment>
-                      <React.Fragment key="fragment_contributionCard">
+                      <React.Fragment key="fragement_contributionCard">
                         <ShowcaseContributionCard />
                       </React.Fragment>
                     </>
@@ -685,6 +701,31 @@ function ShowcaseCards() {
                 </>
               ))}
             </div>
+          </div>
+        </>
+      ) : (
+        <div className={styles.showcaseFavorite}>
+          <div className={styles.showcaseList}>
+            {filteredUsers.map((user, index) => (
+              <>
+                {(filteredUsers.length < 6 &&
+                  index === filteredUsers.length - 1) ||
+                index === 4 ? (
+                  <>
+                    <React.Fragment key={user.title}>
+                      <ShowcaseCard user={user} />
+                    </React.Fragment>
+                    <React.Fragment key="fragment_contributionCard">
+                      <ShowcaseContributionCard />
+                    </React.Fragment>
+                  </>
+                ) : (
+                  <React.Fragment key={user.title}>
+                    <ShowcaseCard user={user} />
+                  </React.Fragment>
+                )}
+              </>
+            ))}
           </div>
         </div>
       )}

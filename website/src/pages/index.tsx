@@ -115,19 +115,20 @@ function readSortChoice(rule: string): User[] {
     "Alphabetical (A - Z)",
     "Alphabetical (Z - A)",
   ];
+
   if (rule == options[0]) {
     return unsortedUsers;
   }
-  if (rule == options[1]) {
+  else if (rule == options[1]) {
     return unsortedUsers.reverse();
   }
-  if (rule == options[2]) {
+  else if (rule == options[2]) {
     return sortedUsers;
   }
-  if (rule == options[3]) {
+  else if (rule == options[3]) {
     return sortedUsers.reverse();
   }
-  return unsortedUsers;
+  return sortedUsers;
 }
 
 function useFilteredUsers(rule: string) {
@@ -144,10 +145,11 @@ function useFilteredUsers(rule: string) {
     setSearchName(readSearchName(location.search));
     restoreUserState(location.state);
   }, [location]);
-  console.log(readSortChoice(rule));
+  console.log(selectedUsers);
+  console.log(selectedTags);
   return useMemo(
     () => filterUsers(selectedUsers, selectedTags, searchName),
-    [selectedTags, searchName, selectedUsers]
+    [selectedUsers, selectedTags, searchName]
   );
 }
 
@@ -589,12 +591,14 @@ function ShowcaseCardPage() {
     "Alphabetical (Z - A)",
   ];
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
-  const onSelect = (event, data) => {
-    setSelectedOptions(data.selectedOptions);
-  };
 
   let filteredUsers = useFilteredUsers(selectedOptions[0]);
-  console.log(selectedOptions[0]);
+  const onSelect = (event, data) => {
+    setSelectedOptions(data.selectedOptions);
+    filteredUsers = useFilteredUsers(selectedOptions[0]);
+  };
+
+
   const templateNumber = siteCountPlural(filteredUsers.length);
 
   return (
@@ -603,14 +607,13 @@ function ShowcaseCardPage() {
         style={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "center",
         }}
       >
         <div
           style={{
             display: "flex",
             gap: "4px",
-            float: "left",
+            flex: 1,
           }}
         >
           <Text size={400}>Viewing</Text>
@@ -633,19 +636,15 @@ function ShowcaseCardPage() {
         </div>
         <div
           style={{
-            float: "right",
             display: "flex",
             gap: "3px",
             alignItems: "center",
-            justifyContent: "center",
           }}
         >
           <Text size={400}>Sort by: </Text>
-          <div>{selectedOptions}</div>
           <Combobox
             aria-labelledby="combo-default"
             placeholder="Placeholder text"
-            // selectedOptions={selectedOptions}
             onOptionSelect={onSelect}
           >
             {options.map((option) => (

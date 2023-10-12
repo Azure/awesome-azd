@@ -35,7 +35,7 @@
   justify-content: center;
 }
 
-.heroBar{
+.heroBar {
   width: 740px;
 }
 
@@ -107,8 +107,7 @@
     max-width: 100%;
   }
 
-  .heroBar{
-  width: 100%;
+  .heroBar {
+    width: 100%;
+  }
 }
-}
-

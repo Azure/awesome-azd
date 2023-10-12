@@ -121,7 +121,6 @@ export type TagType =
   | "azurebot"
   | "ade"
   | "platformengineering"
-  | "devcenter"
   ;
 
 // LIST OF AVAILABLE TAGS
@@ -310,11 +309,6 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Streamlit",
     description: "Template architecture uses Streamlit library",
     type: "Framework",
-  },
-  devcenter: {
-    label: "Dev Center",
-    description: "Template architecture uses Dev Center",
-    type: "Service",
   },
   // ---- Azure Services
   ahds: {

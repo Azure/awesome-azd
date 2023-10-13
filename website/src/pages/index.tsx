@@ -118,15 +118,14 @@ function readSortChoice(rule: string): User[] {
 
   if (rule == options[0]) {
     return unsortedUsers;
-  }
-  else if (rule == options[1]) {
-    return unsortedUsers.reverse();
-  }
-  else if (rule == options[2]) {
+  } else if (rule == options[1]) {
+    const copyUnsortedUser = unsortedUsers.slice();
+    return copyUnsortedUser.reverse();
+  } else if (rule == options[2]) {
     return sortedUsers;
-  }
-  else if (rule == options[3]) {
-    return sortedUsers.reverse();
+  } else if (rule == options[3]) {
+    const copySortedUser = sortedUsers.slice();
+    return copySortedUser.reverse();
   }
   return sortedUsers;
 }
@@ -144,9 +143,7 @@ function useFilteredUsers(rule: string) {
     setSelectedUsers(readSortChoice(rule));
     setSearchName(readSearchName(location.search));
     restoreUserState(location.state);
-  }, [location]);
-  console.log(selectedUsers);
-  console.log(selectedTags);
+  }, [location, rule]);
   return useMemo(
     () => filterUsers(selectedUsers, selectedTags, searchName),
     [selectedUsers, selectedTags, searchName]
@@ -154,7 +151,7 @@ function useFilteredUsers(rule: string) {
 }
 
 function ShowcaseTemplateSearch() {
-  const cover = useBaseUrl("/img/cover.png");
+  // const cover = useBaseUrl("/img/cover.png");
   return (
     <div className={styles.searchArea}>
       <div
@@ -593,12 +590,13 @@ function ShowcaseCardPage() {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
 
   let filteredUsers = useFilteredUsers(selectedOptions[0]);
+
   const onSelect = (event, data) => {
+    const start = Date.now();
+    console.log("starting timer...");
     setSelectedOptions(data.selectedOptions);
-    filteredUsers = useFilteredUsers(selectedOptions[0]);
+
   };
-
-
   const templateNumber = siteCountPlural(filteredUsers.length);
 
   return (
@@ -659,18 +657,51 @@ function ShowcaseCardPage() {
     </>
   );
 }
+function ShowcaseCardEmptyResult({ id }: { id: string }) {
+  return (
+    <div
+      id={id}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+      }}
+    >
+      <Text size={500} weight="bold">
+        We couldn’t find any results for '{InputValue}'
+      </Text>
+      <Text size={400}>
+        Check for spelling or try searching for another term.
+      </Text>
+      <div style={{ display: "flex" }}>
+        <img
+          height={50}
+          src={useBaseUrl("/img/smile.svg")}
+          alt="smile"
+          style={{ flex: 1 }}
+        />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <Text size={400} weight="bold">
+            Want to be the change you wish to see in the world?
+          </Text>
+          <Text size={300}>
+            awesome-azd is always looking for new templates!
+          </Text>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function ShowcaseCards({ filteredUsers }: { filteredUsers: User[] }) {
   if (filteredUsers.length === 0) {
-    return (
-      <div>
-        <h2>
-          <Translate id="showcase.usersList.noResult">
-            Be the first to add an example project!
-          </Translate>
-        </h2>
-      </div>
-    );
+    return <ShowcaseCardEmptyResult id="showcase.usersList.noResult" />;
   }
 
   return (

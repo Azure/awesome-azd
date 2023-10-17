@@ -121,6 +121,7 @@ export type TagType =
   | "azurebot"
   | "ade"
   | "platformengineering"
+  | "semantickernel"
   ;
 
 // LIST OF AVAILABLE TAGS
@@ -308,6 +309,11 @@ export const Tags: { [type in TagType]: Tag } = {
   streamlit: {
     label: "Streamlit",
     description: "Template architecture uses Streamlit library",
+    type: "Framework",
+  },
+  semantickernel: {
+    label: 'Semantic Kernel',
+    description: 'Template architecture uses Semantic Kernel',
     type: "Framework",
   },
   // ---- Azure Services

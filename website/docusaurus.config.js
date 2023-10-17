@@ -74,11 +74,11 @@ const config = {
           height: 32,
         },
         items: [
-          {
-            href: "/",
-            label: "Templates",
-            position: "left",
-          },
+          // {
+          //   href: "/",
+          //   label: "Templates",
+          //   position: "left",
+          // },
 
           {
             to: "/about",

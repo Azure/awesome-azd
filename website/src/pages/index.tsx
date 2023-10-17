@@ -413,6 +413,7 @@ function ShowcaseFilterViewAll({
   tags: TagType[];
   number: string;
 }) {
+  tags = tags.sort();
   const [openItems, setOpenItems] = React.useState(["0"]);
   const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
     setOpenItems(data.openItems);

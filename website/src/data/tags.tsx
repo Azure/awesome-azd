@@ -121,7 +121,6 @@ export type TagType =
   | "azurebot"
   | "ade"
   | "platformengineering"
-  | "devcenter"
   | "semantickernel"
   ;
 
@@ -316,11 +315,6 @@ export const Tags: { [type in TagType]: Tag } = {
     label: 'Semantic Kernel',
     description: 'Template architecture uses Semantic Kernel',
     type: "Framework",
-  },
-  devcenter: {
-    label: "Dev Center",
-    description: "Template architecture uses Dev Center",
-    type: "Service",
   },
   // ---- Azure Services
   ahds: {

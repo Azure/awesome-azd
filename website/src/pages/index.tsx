@@ -593,10 +593,7 @@ function ShowcaseCardPage() {
   let filteredUsers = useFilteredUsers(selectedOptions[0]);
 
   const onSelect = (event, data) => {
-    const start = Date.now();
-    console.log("starting timer...");
     setSelectedOptions(data.selectedOptions);
-
   };
   const templateNumber = siteCountPlural(filteredUsers.length);
 

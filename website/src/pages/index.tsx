@@ -46,6 +46,7 @@ import { useHistory, useLocation } from "@docusaurus/router";
 import { usePluralForm } from "@docusaurus/theme-common";
 
 import styles from "./styles.module.css";
+import Link from "@docusaurus/Link";
 
 initializeIcons();
 const TITLE = "Template Library";
@@ -641,6 +642,8 @@ function ShowcaseCardPage() {
         >
           <Text size={400}>Sort by: </Text>
           <Combobox
+            style={{ minWidth: "unset" }}
+            input={{ style: { width: "130px" } }}
             aria-labelledby="combo-default"
             placeholder="Placeholder text"
             onOptionSelect={onSelect}
@@ -666,15 +669,34 @@ function ShowcaseCardEmptyResult({ id }: { id: string }) {
         alignItems: "center",
         justifyContent: "center",
         flexDirection: "column",
+        gap: "40px",
       }}
     >
-      <Text size={500} weight="bold">
-        We couldn’t find any results for '{InputValue}'
-      </Text>
-      <Text size={400}>
-        Check for spelling or try searching for another term.
-      </Text>
-      <div style={{ display: "flex" }}>
+      <div
+        style={{
+          paddingTop: "100px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px",
+        }}
+      >
+        <Text size={500} weight="bold" align="center">
+          We couldn’t find any results for '{InputValue}'
+        </Text>
+        <Text size={400} align="center">
+          Check for spelling or try searching for another term.
+        </Text>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          columnGap: "30px",
+          backgroundColor: "#FFFFFF",
+          border: "#F0F0F0 2px solid",
+          borderRadius: "8px",
+          padding: "24px",
+        }}
+      >
         <img
           height={50}
           src={useBaseUrl("/img/smile.svg")}
@@ -685,6 +707,8 @@ function ShowcaseCardEmptyResult({ id }: { id: string }) {
           style={{
             display: "flex",
             flexDirection: "column",
+            rowGap: "5px",
+            paddingRight: "50px",
           }}
         >
           <Text size={400} weight="bold">
@@ -693,6 +717,22 @@ function ShowcaseCardEmptyResult({ id }: { id: string }) {
           <Text size={300}>
             awesome-azd is always looking for new templates!
           </Text>
+          <FluentUILink
+            key="emptySearch_contributeTemplate"
+            href="https://azure.github.io/awesome-azd/docs/intro"
+            target="_blank"
+            style={{ paddingLeft: "10px" }}
+          >
+            • Learn how to contribute an azd template
+          </FluentUILink>
+          <FluentUILink
+            key="emptySearch_requestBoard"
+            href="https://github.com/Azure/awesome-azd/issues/new?assignees=nigkulintya%2C+savannahostrowski&labels=requested-contribution&template=%F0%9F%A4%94-submit-a-template-request.md&title=%5BIdea%5D+%3Cyour-template-name%3E"
+            target="_blank"
+            style={{ paddingLeft: "10px" }}
+          >
+            • View our template request board
+          </FluentUILink>
         </div>
       </div>
     </div>

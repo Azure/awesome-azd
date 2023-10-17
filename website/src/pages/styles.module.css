@@ -98,7 +98,7 @@
   margin: 0px 25px;
 }
 
-@media screen and (max-width: 740px) {
+@media screen and (max-width: 960px) {
   .filterAndCard {
     flex-direction: column;
   }

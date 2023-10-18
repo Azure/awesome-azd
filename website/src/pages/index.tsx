@@ -677,12 +677,25 @@ function ShowcaseCardEmptyResult({ id }: { id: string }) {
           gap: "10px",
         }}
       >
-        <Text size={500} weight="bold" align="center">
-          We couldn’t find any results for '{InputValue}'
-        </Text>
-        <Text size={400} align="center">
-          Check for spelling or try searching for another term.
-        </Text>
+        {InputValue != null ? (
+          <>
+            <Text size={500} weight="bold" align="center">
+              We couldn’t find any results for '{InputValue}'
+            </Text>
+            <Text size={400} align="center">
+              Check for spelling or try searching for another term.
+            </Text>
+          </>
+        ) : (
+          <>
+            <Text size={500} weight="bold" align="center">
+              We couldn’t find any results.
+            </Text>
+            <Text size={400} align="center">
+              Check for tags or try filtering for another tag.
+            </Text>
+          </>
+        )}
       </div>
       <div
         style={{

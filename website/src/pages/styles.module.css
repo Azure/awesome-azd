@@ -35,7 +35,7 @@
   justify-content: center;
 }
 
-.heroBar{
+.heroBar {
   width: 740px;
 }
 
@@ -63,16 +63,6 @@
 
 .showcaseFavoriteHeader {
   display: flex;
-  align-items: center;
-}
-
-.showcaseFavoriteHeader > h2 {
-  margin-bottom: 0;
-}
-
-.showcaseFavoriteHeader > svg {
-  width: 30px;
-  height: 30px;
 }
 
 .svgIconFavoriteXs,
@@ -108,7 +98,7 @@
   margin: 0px 25px;
 }
 
-@media screen and (max-width: 740px) {
+@media screen and (max-width: 960px) {
   .filterAndCard {
     flex-direction: column;
   }
@@ -117,8 +107,7 @@
     max-width: 100%;
   }
 
-  .heroBar{
-  width: 100%;
+  .heroBar {
+    width: 100%;
+  }
 }
-}
-

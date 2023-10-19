@@ -28,15 +28,17 @@ import {
   AccordionToggleEventHandler,
   Text,
   Link as FluentUILink,
+  Combobox,
+  Option,
 } from "@fluentui/react-components";
 
 import { SearchBox } from "@fluentui/react/lib/SearchBox";
 
-import { initializeIcons } from "@uifabric/icons";
+import { initializeIcons } from "@fluentui/react/lib/Icons";
 
 import { Tags, type User, type TagType } from "../data/tags";
 
-import { sortedUsers, TagList } from "../data/users";
+import { sortedUsers, unsortedUsers, TagList } from "../data/users";
 
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import Translate, { translate } from "@docusaurus/Translate";
@@ -44,12 +46,14 @@ import { useHistory, useLocation } from "@docusaurus/router";
 import { usePluralForm } from "@docusaurus/theme-common";
 
 import styles from "./styles.module.css";
+import Link from "@docusaurus/Link";
 
 initializeIcons();
 const TITLE = "Template Library";
 const DESCRIPTION =
   "A community-contributed template gallery built to work with the Azure Developer CLI.";
 const ADD_URL = "https://aka.ms/azd";
+var InputValue;
 
 type UserState = {
   scrollTopPosition: number;
@@ -105,27 +109,50 @@ function filterUsers(
   });
 }
 
-function useFilteredUsers() {
+function readSortChoice(rule: string): User[] {
+  const options = [
+    "New to old",
+    "Old to new",
+    "Alphabetical (A - Z)",
+    "Alphabetical (Z - A)",
+  ];
+
+  if (rule == options[0]) {
+    return unsortedUsers;
+  } else if (rule == options[1]) {
+    const copyUnsortedUser = unsortedUsers.slice();
+    return copyUnsortedUser.reverse();
+  } else if (rule == options[2]) {
+    return sortedUsers;
+  } else if (rule == options[3]) {
+    const copySortedUser = sortedUsers.slice();
+    return copySortedUser.reverse();
+  }
+  return sortedUsers;
+}
+
+function useFilteredUsers(rule: string) {
   const location = useLocation<UserState>();
   // On SSR / first mount (hydration) no tag is selected
   const [selectedTags, setSelectedTags] = useState<TagType[]>([]);
   const [searchName, setSearchName] = useState<string | null>(null);
+  const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
   // Sync tags from QS to state (delayed on purpose to avoid SSR/Client
   // hydration mismatch)
   useEffect(() => {
     setSelectedTags(readSearchTags(location.search));
+    setSelectedUsers(readSortChoice(rule));
     setSearchName(readSearchName(location.search));
     restoreUserState(location.state);
-  }, [location]);
-
+  }, [location, rule]);
   return useMemo(
-    () => filterUsers(sortedUsers, selectedTags, searchName),
-    [selectedTags, searchName]
+    () => filterUsers(selectedUsers, selectedTags, searchName),
+    [selectedUsers, selectedTags, searchName]
   );
 }
 
 function ShowcaseTemplateSearch() {
-  const cover = useBaseUrl("/img/cover.png");
+  // const cover = useBaseUrl("/img/cover.png");
   return (
     <div className={styles.searchArea}>
       <div
@@ -163,7 +190,7 @@ function ShowcaseTemplateSearch() {
         >
           {DESCRIPTION}
         </Text>
-        <FilterBar id="filterBar" />
+        <FilterBar />
         <Text
           align="center"
           size={300}
@@ -195,8 +222,8 @@ function useSiteCountPlural() {
         {
           id: "showcase.filters.resultCount",
           description:
-            'Pluralized label for the number of sites found on the showcase. Use as much plural forms (separated by "|") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)',
-          message: "1 site|{sitesCount} sites",
+            'Pluralized label for the number of templates found on the showcase. Use as much plural forms (separated by "|") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)',
+          message: "{sitesCount}",
         },
         { sitesCount }
       )
@@ -204,8 +231,6 @@ function useSiteCountPlural() {
 }
 
 function ShowcaseFilters() {
-  const filteredUsers = useFilteredUsers();
-  const siteCountPlural = useSiteCountPlural();
   const uncategoryTag = TagList.filter((tag) => {
     const tagObject = Tags[tag];
     return tagObject.type === undefined;
@@ -392,8 +417,6 @@ function ShowcaseFilters() {
         </AccordionPanel>
       </AccordionItem>
     </Accordion>
-
-    /* <span>{siteCountPlural(filteredUsers.length)}</span> */
   );
 }
 
@@ -486,19 +509,20 @@ function ShowcaseFilterAndCard() {
         <ShowcaseFilters />
       </div>
       <div className={styles.card}>
-        <ShowcaseCards />
+        <ShowcaseCardPage />
       </div>
     </div>
   );
 }
 
-function FilterBar({ id }: { id: string }) {
+function FilterBar() {
   const history = useHistory();
   const location = useLocation();
   const [value, setValue] = useState<string | null>(null);
   useEffect(() => {
     setValue(readSearchName(location.search));
   }, [location]);
+  InputValue = value;
   return (
     <>
       <SearchBox
@@ -518,7 +542,7 @@ function FilterBar({ id }: { id: string }) {
             fontSize: "18px",
           },
         }}
-        id={id}
+        id="filterBar"
         value={readSearchName(location.search) != null ? value : ""}
         placeholder="Search for an azd template..."
         onClear={(e) => {
@@ -556,20 +580,178 @@ function FilterBar({ id }: { id: string }) {
   );
 }
 
-function ShowcaseCards() {
-  const filteredUsers = useFilteredUsers();
+function ShowcaseCardPage() {
+  const siteCountPlural = useSiteCountPlural();
+  const options = [
+    "New to old",
+    "Old to new",
+    "Alphabetical (A - Z)",
+    "Alphabetical (Z - A)",
+  ];
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
 
-  if (filteredUsers.length === 0) {
-    return (
-      <div>
-        <h2>
-          <Translate id="showcase.usersList.noResult">
-            Be the first to add an example project!
-          </Translate>
-        </h2>
-        {/* <FilterBar id="searchDropDown" /> */}
+  let filteredUsers = useFilteredUsers(selectedOptions[0]);
+
+  const onSelect = (event, data) => {
+    setSelectedOptions(data.selectedOptions);
+  };
+  const templateNumber = siteCountPlural(filteredUsers.length);
+
+  return (
+    <>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            gap: "4px",
+            flex: 1,
+          }}
+        >
+          <Text size={400}>Viewing</Text>
+          <Text size={400} weight="bold">
+            {templateNumber}
+          </Text>
+          {templateNumber != "1" ? (
+            <Text size={400}>templates</Text>
+          ) : (
+            <Text size={400}>template</Text>
+          )}
+          {InputValue != null ? (
+            <>
+              <Text size={400}>for</Text>
+              <Text size={400} weight="bold">
+                '{InputValue}'
+              </Text>
+            </>
+          ) : null}
+        </div>
+        <div
+          style={{
+            display: "flex",
+            gap: "3px",
+            alignItems: "center",
+          }}
+        >
+          <Text size={400}>Sort by: </Text>
+          <Combobox
+            style={{ minWidth: "unset" }}
+            input={{ style: { width: "130px" } }}
+            aria-labelledby="combo-default"
+            placeholder="Placeholder text"
+            onOptionSelect={onSelect}
+          >
+            {options.map((option) => (
+              <Option key={option} disabled={option === "Ferret"}>
+                {option}
+              </Option>
+            ))}
+          </Combobox>
+        </div>
       </div>
-    );
+      <ShowcaseCards filteredUsers={filteredUsers} />
+    </>
+  );
+}
+function ShowcaseCardEmptyResult({ id }: { id: string }) {
+  return (
+    <div
+      id={id}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+        gap: "40px",
+      }}
+    >
+      <div
+        style={{
+          paddingTop: "100px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px",
+        }}
+      >
+        {InputValue != null ? (
+          <>
+            <Text size={500} weight="bold" align="center">
+              We couldn’t find any results for '{InputValue}'
+            </Text>
+            <Text size={400} align="center">
+              Check for spelling or try searching for another term.
+            </Text>
+          </>
+        ) : (
+          <>
+            <Text size={500} weight="bold" align="center">
+              We couldn’t find any results.
+            </Text>
+            <Text size={400} align="center">
+              Check for tags or try filtering for another tag.
+            </Text>
+          </>
+        )}
+      </div>
+      <div
+        style={{
+          display: "flex",
+          columnGap: "30px",
+          backgroundColor: "#FFFFFF",
+          border: "#F0F0F0 2px solid",
+          borderRadius: "8px",
+          padding: "24px",
+        }}
+      >
+        <img
+          height={50}
+          src={useBaseUrl("/img/smile.svg")}
+          alt="smile"
+          style={{ flex: 1 }}
+        />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            rowGap: "5px",
+            paddingRight: "50px",
+          }}
+        >
+          <Text size={400} weight="bold">
+            Want to be the change you wish to see in the world?
+          </Text>
+          <Text size={300}>
+            awesome-azd is always looking for new templates!
+          </Text>
+          <FluentUILink
+            key="emptySearch_contributeTemplate"
+            href="https://azure.github.io/awesome-azd/docs/intro"
+            target="_blank"
+            style={{ paddingLeft: "10px" }}
+          >
+            • Learn how to contribute an azd template
+          </FluentUILink>
+          <FluentUILink
+            key="emptySearch_requestBoard"
+            href="https://github.com/Azure/awesome-azd/issues/new?assignees=nigkulintya%2C+savannahostrowski&labels=requested-contribution&template=%F0%9F%A4%94-submit-a-template-request.md&title=%5BIdea%5D+%3Cyour-template-name%3E"
+            target="_blank"
+            style={{ paddingLeft: "10px" }}
+          >
+            • View our template request board
+          </FluentUILink>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ShowcaseCards({ filteredUsers }: { filteredUsers: User[] }) {
+  if (filteredUsers.length === 0) {
+    return <ShowcaseCardEmptyResult id="showcase.usersList.noResult" />;
   }
 
   return (
@@ -577,39 +759,53 @@ function ShowcaseCards() {
       {filteredUsers.length === sortedUsers.length ? (
         <>
           <div className={styles.showcaseFavorite}>
-            <div>
-              <div className={styles.showcaseFavoriteHeader}>
-                {/* <FilterBar id="searchDropDown" /> */}
-              </div>
-              <ul className={styles.showcaseList}>
-                {sortedUsers.map((user, index) => (
-                  <React.Fragment key={user.title}>
-                    <ShowcaseCard user={user} />
-                    {((sortedUsers.length < 6 &&
-                      index === sortedUsers.length - 1) ||
-                      index === 4) && <ShowcaseContributionCard />}
-                  </React.Fragment>
-                ))}
-              </ul>
+            <div className={styles.showcaseList}>
+              {filteredUsers.map((user, index) => (
+                <>
+                  {(filteredUsers.length < 6 &&
+                    index === filteredUsers.length - 1) ||
+                  index === 4 ? (
+                    <>
+                      <React.Fragment key={user.title}>
+                        <ShowcaseCard user={user} />
+                      </React.Fragment>
+                      <React.Fragment key="fragement_contributionCard">
+                        <ShowcaseContributionCard />
+                      </React.Fragment>
+                    </>
+                  ) : (
+                    <React.Fragment key={user.title}>
+                      <ShowcaseCard user={user} />
+                    </React.Fragment>
+                  )}
+                </>
+              ))}
             </div>
           </div>
         </>
       ) : (
         <div className={styles.showcaseFavorite}>
-          <div>
-            <div className={styles.showcaseFavoriteHeader}>
-              {/* <FilterBar id="searchDropDown" /> */}
-            </div>
-            <ul className={styles.showcaseList}>
-              {filteredUsers.map((user, index) => (
-                <React.Fragment key={user.title}>
-                  <ShowcaseCard user={user} />
-                  {((filteredUsers.length < 6 &&
-                    index === filteredUsers.length - 1) ||
-                    index === 4) && <ShowcaseContributionCard />}
-                </React.Fragment>
-              ))}
-            </ul>
+          <div className={styles.showcaseList}>
+            {filteredUsers.map((user, index) => (
+              <>
+                {(filteredUsers.length < 6 &&
+                  index === filteredUsers.length - 1) ||
+                index === 4 ? (
+                  <>
+                    <React.Fragment key={user.title}>
+                      <ShowcaseCard user={user} />
+                    </React.Fragment>
+                    <React.Fragment key="fragment_contributionCard">
+                      <ShowcaseContributionCard />
+                    </React.Fragment>
+                  </>
+                ) : (
+                  <React.Fragment key={user.title}>
+                    <ShowcaseCard user={user} />
+                  </React.Fragment>
+                )}
+              </>
+            ))}
           </div>
         </div>
       )}

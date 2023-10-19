@@ -285,29 +285,24 @@ const useStyles = makeStyles({
     color: "#424242",
     fontWeight: "600",
   },
-  cardFooterAzdCommand: {
-    fontSize: "11px",
-    fontFamily: '"Consolas-Regular", Helvetica',
-    color: "#606060",
-  },
 });
 
 function ShowcaseCard({ user }: { user: User }) {
   const styles = useStyles();
   const tags = user.tags;
   const source = user.source;
-  const star = useBaseUrl("/img/sparkle.svg");
-  const fire = useBaseUrl("/img/fire.svg");
+  const star = useBaseUrl("/img/Sparkle.svg");
+  const fire = useBaseUrl("/img/Fire.svg");
   let azdInitCommand =
     "azd init -t " + source.replace("https://github.com/", "");
-  let headerLogo = useBaseUrl("/img/community.svg");
+  let headerLogo = useBaseUrl("/img/Community.svg");
   let headerText = "COMMUNITY AUTHORED";
 
   // Panel
   const [isOpen, { setTrue: openPanel, setFalse: dismissPanel }] =
     useBoolean(false);
   if (tags.includes("msft")) {
-    headerLogo = useBaseUrl("/img/microsoft.svg");
+    headerLogo = useBaseUrl("/img/Microsoft.svg");
     headerText = "MICROSOFT AUTHORED";
   }
   const onRenderNavigationContent: IRenderFunction<IPanelProps> =
@@ -324,6 +319,7 @@ function ShowcaseCard({ user }: { user: User }) {
           >
             <img
               src={headerLogo}
+              alt="Logo"
               height={16}
               style={{ margin: "5px 0px", fontWeight: "550" }}
             />
@@ -390,7 +386,7 @@ function ShowcaseCard({ user }: { user: User }) {
               alignItems: "center",
             }}
           >
-            <img src={headerLogo} height={16} />
+            <img src={headerLogo} height={16} alt="logo" />
             <div
               style={{
                 fontWeight: "600",
@@ -520,12 +516,13 @@ function ShowcaseCard({ user }: { user: User }) {
         <Input
           id={"input_" + user.title}
           size="small"
+          spellCheck={false}
           defaultValue={azdInitCommand}
           style={{
             flex: "1",
             border: "1px solid #d1d1d1",
             fontSize: "11px",
-            fontFamily: "Consolas",
+            fontFamily: "Consolas, Courier New, Courier, monospace",
             WebkitTextFillColor: "#717171",
           }}
         />
@@ -544,7 +541,7 @@ function ShowcaseCard({ user }: { user: User }) {
                 navigator.clipboard.writeText(azdInitCommand);
               }}
             >
-              <img src={useBaseUrl("/img/copy.svg")} height={20} alt="Copy" />
+              <img src={useBaseUrl("/img/Copy.svg")} height={20} alt="Copy" />
             </Button>
           </PopoverTrigger>
 
@@ -639,7 +636,7 @@ export function ShowcaseContributionCard(): React.ReactElement {
           }}
           onClick={() => {
             window.open(
-              "https://github.com/Azure/awesome-azd/compare",
+              "https://azure.github.io/awesome-azd/docs/intro",
               "_blank"
             );
           }}
@@ -684,7 +681,7 @@ function ShowcaseCardPanel({ user }: { user: User }) {
 
   const templateURL = user.source.replace("https://github.com/", "");
   const azdInitCommand = "azd init -t " + templateURL;
-  const copySVG = useBaseUrl("/img/copy.svg");
+  const copySVG = useBaseUrl("/img/Copy.svg");
   const chevronSVG = useBaseUrl("/img/leftChevron.svg");
   const pivotStyles: IPivotStyles = {
     linkIsSelected: [

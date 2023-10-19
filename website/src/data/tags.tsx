@@ -183,15 +183,10 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template contains Python app code",
     type: "Language",
   },
-  django: {
-    label: "Django",
-    description: "Template contains Django web app code",
-    type: "Language",
-  },
   reactjs: {
     label: "React.js",
     description: "Template architecture uses React.js",
-    type: "Language",
+    type: "Tools",
   },
   nodejs: {
     label: "Node.js",
@@ -236,6 +231,11 @@ export const Tags: { [type in TagType]: Tag } = {
   flask: {
     label: "Flask",
     description: "Template architecture uses Flask web framework",
+    type: "Framework",
+  },
+  django: {
+    label: "Django",
+    description: "Template architecture uses Django web framework",
     type: "Framework",
   },
   nestjs: {

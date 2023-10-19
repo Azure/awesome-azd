@@ -1,8 +1,6 @@
 /**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
+* Copyright (c) Microsoft Corporation. All rights reserved.
+* Licensed under the MIT License.
  */
 
 /* eslint-disable global-require */
@@ -20,11 +18,11 @@ import templates from '../../static/templates.json'
 // Add your site to this list
 // prettier-ignore
 
-const Users: User[] = templates as User[]
+export const unsortedUsers: User[] = templates as User[]
 
 export const TagList = Object.keys(Tags) as TagType[];
 function sortUsers() {
-  let result = Users;
+  let result = unsortedUsers;
   // Sort by site name
   result = sortBy(result, (user) => user.title.toLowerCase());
   return result;

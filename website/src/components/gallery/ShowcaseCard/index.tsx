@@ -1,8 +1,6 @@
 /**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
+* Copyright (c) Microsoft Corporation. All rights reserved.
+* Licensed under the MIT License.
  */
 
 import React from "react";
@@ -319,6 +317,7 @@ function ShowcaseCard({ user }: { user: User }) {
           >
             <img
               src={headerLogo}
+              alt="Logo"
               height={16}
               style={{ margin: "5px 0px", fontWeight: "550" }}
             />
@@ -385,7 +384,7 @@ function ShowcaseCard({ user }: { user: User }) {
               alignItems: "center",
             }}
           >
-            <img src={headerLogo} height={16} />
+            <img src={headerLogo} height={16} alt="logo" />
             <div
               style={{
                 fontWeight: "600",
@@ -635,7 +634,7 @@ export function ShowcaseContributionCard(): React.ReactElement {
           }}
           onClick={() => {
             window.open(
-              "https://github.com/Azure/awesome-azd/compare",
+              "https://azure.github.io/awesome-azd/docs/intro",
               "_blank"
             );
           }}

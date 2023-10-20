@@ -4,15 +4,33 @@
  */
 
 .heroBanner {
-  padding: 4rem 0;
-  text-align: center;
-  position: relative;
+  padding:2rem;
+  display: inline-block;
   overflow: hidden;
+  position: relative;
   background-color: white;
-  color: #245e94;
+}
+
+.cover {
+  pointer-events: none;
+  position: absolute;
+  height: 29rem;
+  width: 96%;
+}
+
+.video{
+  width: 38rem;
+}
+
+.description{
+  position: relative;
 }
 
 [data-theme="dark"] .heroBanner {
+  padding:2rem;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
   background-color: black;
 }
 

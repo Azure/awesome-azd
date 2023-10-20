@@ -151,70 +151,60 @@ function useFilteredUsers(rule: string) {
 
 function ShowcaseTemplateSearch() {
   return (
-    <div className={styles.searchContainer}>
-      <img
-        src={useBaseUrl("/img/coverBackground.png")}
-        className={styles.cover}
-        onError={({ currentTarget }) => {
-          currentTarget.style.display = "none"; 
+    <div className={styles.searchArea}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
         }}
-        alt=""
-      />
-      <div className={styles.searchArea}>
+      >
         <div
+          className={styles.heroBar}
           style={{
-            display: "flex",
-            flexDirection: "column",
+            textAlign: "center",
           }}
         >
-          <div
-            className={styles.heroBar}
-            style={{
-              textAlign: "center",
-            }}
-          >
-            <Text
-              size={800}
-              weight="semibold"
-              style={{
-                background:
-                  "linear-gradient(90deg, rgb(112.68, 94.63, 239.06) 0%, rgb(41.21, 120.83, 190.19) 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
-              {TITLE}
-            </Text>
-          </div>
           <Text
-            align="center"
-            size={400}
+            size={800}
+            weight="semibold"
             style={{
-              color: "#242424",
-              padding: "10px 0 20px 0",
+              background:
+                "linear-gradient(90deg, rgb(112.68, 94.63, 239.06) 0%, rgb(41.21, 120.83, 190.19) 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
             }}
           >
-            {DESCRIPTION}
-          </Text>
-          <FilterBar />
-          <Text
-            align="center"
-            size={300}
-            style={{
-              color: "#242424",
-              padding: "20px 0",
-            }}
-          >
-            Not familiar with the Azure Developer CLI (azd)?
-            <FluentUILink
-              href={ADD_URL}
-              target="_blank"
-              style={{ paddingLeft: "3px", color: "#7160E8" }}
-            >
-              Learn more
-            </FluentUILink>
+            {TITLE}
           </Text>
         </div>
+        <Text
+          align="center"
+          size={400}
+          style={{
+            color: "#242424",
+            padding: "10px 0 20px 0",
+          }}
+        >
+          {DESCRIPTION}
+        </Text>
+        <FilterBar />
+        <Text
+          align="center"
+          size={300}
+          style={{
+            color: "#242424",
+            padding: "20px 0",
+          }}
+        >
+          Not familiar with the Azure Developer CLI (azd)?
+          <FluentUILink
+            href={ADD_URL}
+            target="_blank"
+            style={{ paddingLeft: "3px", color: "#7160E8" }}
+          >
+            Learn more
+          </FluentUILink>
+        </Text>
       </div>
     </div>
   );

@@ -319,6 +319,7 @@ function ShowcaseCard({ user }: { user: User }) {
           >
             <img
               src={headerLogo}
+              alt="Logo"
               height={16}
               style={{ margin: "5px 0px", fontWeight: "550" }}
             />
@@ -385,7 +386,7 @@ function ShowcaseCard({ user }: { user: User }) {
               alignItems: "center",
             }}
           >
-            <img src={headerLogo} height={16} />
+            <img src={headerLogo} height={16} alt="logo" />
             <div
               style={{
                 fontWeight: "600",
@@ -635,7 +636,7 @@ export function ShowcaseContributionCard(): React.ReactElement {
           }}
           onClick={() => {
             window.open(
-              "https://github.com/Azure/awesome-azd/compare",
+              "https://azure.github.io/awesome-azd/docs/intro",
               "_blank"
             );
           }}

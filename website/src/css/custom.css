@@ -35,14 +35,6 @@
   color:white;
 }
 
-.templatePage:hover::before{
-  text-decoration-line: underline;
-  text-underline-offset: 20px;
-  text-decoration-thickness: 4px;
-  color:var(--ifm-color-primary);
-
-}
-
 .header-github-link:hover {
   opacity: 0.6;
 }

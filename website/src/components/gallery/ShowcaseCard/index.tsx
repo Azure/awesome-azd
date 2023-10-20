@@ -1,6 +1,6 @@
 /**
-* Copyright (c) Microsoft Corporation. All rights reserved.
-* Licensed under the MIT License.
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
  */
 
 import React from "react";
@@ -178,35 +178,74 @@ function ShowcaseMultipleWebsites(
   authorName: string,
   websiteLink: string,
   length: number,
-  i: number
+  i: number,
+  cardPanel: boolean
 ) {
   const styles = useStyles();
   if (i != length - 1) {
     return (
-      <FluentUILink
-        key={i}
-        className={styles.cardAuthor}
-        href={websiteLink}
-        target="_blank"
-      >
-        {authorName},{" "}
-      </FluentUILink>
+      <>
+        <FluentUILink
+          key={i}
+          className={styles.cardAuthor}
+          href={websiteLink}
+          target="_blank"
+        >
+          {authorName}
+          {cardPanel ? (
+            <FluentUILink
+              href={websiteLink}
+              target="_blank"
+              style={{ color: "#6656d1" }}
+            >
+              {" "}
+              <img
+                src={useBaseUrl("/img/redirect.svg")}
+                alt="Redirect"
+                height={13}
+              />
+            </FluentUILink>
+          ) : null}
+          ,{" "}
+        </FluentUILink>
+      </>
     );
   } else {
     return (
-      <FluentUILink
-        key={i}
-        className={styles.cardAuthor}
-        href={websiteLink}
-        target="_blank"
-      >
-        {authorName}
-      </FluentUILink>
+      <>
+        <FluentUILink
+          key={i}
+          className={styles.cardAuthor}
+          href={websiteLink}
+          target="_blank"
+        >
+          {authorName}{" "}
+        </FluentUILink>
+        {cardPanel ? (
+          <FluentUILink
+            href={websiteLink}
+            target="_blank"
+            style={{ color: "#6656d1" }}
+          >
+            <img
+              src={useBaseUrl("/img/redirect.svg")}
+              alt="Redirect"
+              height={13}
+            />
+          </FluentUILink>
+        ) : null}
+      </>
     );
   }
 }
 
-function ShowcaseMultipleAuthors({ user }: { user: User }) {
+function ShowcaseMultipleAuthors({
+  user,
+  cardPanel,
+}: {
+  user: User;
+  cardPanel: boolean;
+}) {
   const authors = user.author;
   const websites = user.website;
   const styles = useStyles();
@@ -230,7 +269,8 @@ function ShowcaseMultipleAuthors({ user }: { user: User }) {
             multiAuthors[index],
             multiWebsites[index],
             multiWebsites.length,
-            i++
+            i++,
+            cardPanel
           );
         })}
       </div>
@@ -239,7 +279,20 @@ function ShowcaseMultipleAuthors({ user }: { user: User }) {
 
   return (
     <FluentUILink className={styles.cardAuthor} href={websites} target="_blank">
-      {authors}
+      {authors}{" "}
+      {cardPanel ? (
+        <FluentUILink
+          href={websites}
+          target="_blank"
+          style={{ color: "#6656d1" }}
+        >
+          <img
+            src={useBaseUrl("/img/redirect.svg")}
+            alt="Redirect"
+            height={13}
+          />
+        </FluentUILink>
+      ) : null}
     </FluentUILink>
   );
 }
@@ -461,7 +514,11 @@ function ShowcaseCard({ user }: { user: User }) {
         >
           <div className={styles.cardTextBy}>by</div>
           <div style={{ fontSize: "12px" }}>
-            <ShowcaseMultipleAuthors key={user.title} user={user} />
+            <ShowcaseMultipleAuthors
+              key={user.title}
+              user={user}
+              cardPanel={false}
+            />
           </div>
         </div>
         <div
@@ -473,8 +530,7 @@ function ShowcaseCard({ user }: { user: User }) {
             WebkitLineClamp: "3",
             WebkitBoxOrient: "vertical",
           }}
-          // Disable panel until redesign of card panel completed
-          // onClick={openPanel}
+          onClick={openPanel}
         >
           {user.description}
         </div>
@@ -500,8 +556,7 @@ function ShowcaseCard({ user }: { user: User }) {
               gap: "4px",
               flexFlow: "wrap",
             }}
-            // Disable panel until Card Panel redesign completed
-            // onClick={openPanel}
+            onClick={openPanel}
           >
             <ShowcaseCardTag key={user.title} tags={user.tags} moreTag={true} />
           </div>
@@ -711,24 +766,17 @@ function ShowcaseCardPanel({ user }: { user: User }) {
           padding: "10px 0",
         }}
       >
-        <div className={styles.cardTextBy}>by</div>
+        <div className={styles.cardDescription}>by</div>
         <div style={{ fontSize: "14px", fontWeight: "400" }}>
-          <ShowcaseMultipleAuthors key={user.title} user={user} />
-        </div>
-        <FluentUILink
-          href={user.website}
-          target="_blank"
-          style={{ color: "#6656d1" }}
-        >
-          <img
-            src={useBaseUrl("/img/redirect.svg")}
-            alt="Redirect"
-            height={13}
+          <ShowcaseMultipleAuthors
+            key={user.title}
+            user={user}
+            cardPanel={true}
           />
-        </FluentUILink>
+        </div>
         <div>•</div>
-        <div>Last Update: </div>
-        <div>•</div>
+        {/* <div>Last Update: </div>
+        <div>•</div> */}
         <FluentUILink
           href={user.source}
           target="_blank"
@@ -1155,7 +1203,6 @@ function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
               <div
                 style={{
                   display: "flex",
-                  justifyContent: "center",
                   alignItems: "center",
                 }}
               >

@@ -27,18 +27,12 @@
   text-decoration-thickness: 4px;
 }
 
-/* .navbar .navbar__inner .navbar__items .navbar_item .navbar__link .templatePage{
-  text-decoration-line: underline;
-  text-underline-offset: 20px;
-  text-decoration-thickness: 4px;
-} */
+.navbar .navbar__inner .navbar__items .navbar__brand:hover{
+  color:black;
+}
 
-.templatePage:hover::before{
-  text-decoration-line: underline;
-  text-underline-offset: 20px;
-  text-decoration-thickness: 4px;
-  color:var(--ifm-color-primary);
-
+[data-theme='dark'] .navbar .navbar__inner .navbar__items .navbar__brand:hover{
+  color:white;
 }
 
 .header-github-link:hover {

@@ -6,10 +6,9 @@
  */
 
 import React from "react";
-import InputValue from "../ShowcaseTemplateSearch/index";
+import {InputValue} from "../ShowcaseTemplateSearch";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { Text, Link as FluentUILink } from "@fluentui/react-components";
-
 import styles from "./styles.module.css";
 
 export default function ShowcaseEmptyResult({ id }: { id: string }) {

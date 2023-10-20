@@ -16,6 +16,7 @@ const TITLE = "Template Library";
 const DESCRIPTION =
   "A community-contributed template gallery built to work with the Azure Developer CLI.";
 const ADD_URL = "https://aka.ms/azd";
+export var InputValue: string | null = null;
 
 export type UserState = {
   scrollTopPosition: number;
@@ -46,7 +47,7 @@ function FilterBar(): React.JSX.Element {
   useEffect(() => {
     setValue(readSearchName(location.search));
   }, [location]);
-  var InputValue = value;
+  InputValue = value;
   return (
     <>
       <SearchBox

@@ -1,8 +1,6 @@
 /**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
+* Copyright (c) Microsoft Corporation. All rights reserved.
+* Licensed under the MIT License.
  */
 
 .checkboxList {
@@ -24,10 +22,22 @@
   margin-right: 0;
 }
 
+.cover{
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.searchContainer{
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
 .searchArea {
-  background-image: url("/img/cover.svg");
-  background-size: cover;
-  background-repeat: "no-repeat";
+  position: relative;
   width: 100%;
   height: 300px;
   display: flex;

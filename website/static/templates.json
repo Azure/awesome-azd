@@ -1089,9 +1089,28 @@
     "tags": [
       "terraform",
       "platformengineering",
-      "devcenter",
       "ade",
       "community",
+      "new"
+    ]
+  },
+  {
+    "title": "Java - ChatGPT + Enterprise data with Azure OpenAI and Cognitive Search",
+    "description": "This repo is the java conversion of the well known chatGPT + Enterprise data code sample originally developed in python",
+    "preview": "./templates/images/azure-search-openai-demo-java.png",
+    "website": "https://github.com/Azure-Samples/azure-search-openai-demo-java",
+    "author": "Davide Antelmo",
+    "source": "https://github.com/Azure-Samples/azure-search-openai-demo-java",
+    "tags": [
+      "java",
+      "spring",
+      "openai",
+      "appservice",
+      "cognitivesearch",
+      "semantickernel",
+      "reactjs",
+      "bicep",
+      "msft",
       "new"
     ]
   },

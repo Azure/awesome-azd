@@ -121,19 +121,6 @@ const config = {
               color: "white",
             },
           },
-
-          // CONFIG:
-          // Make sure you have class defined in src/css/custom.css
-          {
-            to: "https://azure.github.io/awesome-azd/docs/intro",
-            label: "Submit your template!",
-            position: "right",
-            className: "button",
-            style: {
-              backgroundColor: "#7160E8",
-              color: "white",
-            },
-          },
         ],
       },
 

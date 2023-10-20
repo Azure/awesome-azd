@@ -1,0 +1,105 @@
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+import React from "react";
+import InputValue from "../ShowcaseTemplateSearch/index";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { Text, Link as FluentUILink } from "@fluentui/react-components";
+
+import styles from "./styles.module.css";
+
+export default function ShowcaseEmptyResult({ id }: { id: string }) {
+  return (
+    <div
+      id={id}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+        gap: "40px",
+      }}
+    >
+      <div
+        style={{
+          paddingTop: "100px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px",
+        }}
+      >
+        {InputValue != null ? (
+          <>
+            <Text size={500} weight="bold" align="center">
+              We couldn’t find any results for '{InputValue}'
+            </Text>
+            <Text size={400} align="center">
+              Check for spelling or try searching for another term.
+            </Text>
+          </>
+        ) : (
+          <>
+            <Text size={500} weight="bold" align="center">
+              We couldn’t find any results.
+            </Text>
+            <Text size={400} align="center">
+              Check for tags or try filtering for another tag.
+            </Text>
+          </>
+        )}
+      </div>
+      <div
+        style={{
+          display: "flex",
+          columnGap: "30px",
+          backgroundColor: "#FFFFFF",
+          border: "#F0F0F0 2px solid",
+          borderRadius: "8px",
+          padding: "24px",
+        }}
+      >
+        <img
+          height={50}
+          src={useBaseUrl("/img/smile.svg")}
+          alt="smile"
+          style={{ flex: 1 }}
+        />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            rowGap: "5px",
+            paddingRight: "50px",
+          }}
+        >
+          <Text size={400} weight="bold">
+            Want to be the change you wish to see in the world?
+          </Text>
+          <Text size={300}>
+            awesome-azd is always looking for new templates!
+          </Text>
+          <FluentUILink
+            key="emptySearch_contributeTemplate"
+            href="https://azure.github.io/awesome-azd/docs/intro"
+            target="_blank"
+            style={{ paddingLeft: "10px" }}
+          >
+            • Learn how to contribute an azd template
+          </FluentUILink>
+          <FluentUILink
+            key="emptySearch_requestBoard"
+            href="https://github.com/Azure/awesome-azd/issues/new?assignees=nigkulintya%2C+savannahostrowski&labels=requested-contribution&template=%F0%9F%A4%94-submit-a-template-request.md&title=%5BIdea%5D+%3Cyour-template-name%3E"
+            target="_blank"
+            style={{ paddingLeft: "10px" }}
+          >
+            • View our template request board
+          </FluentUILink>
+        </div>
+      </div>
+    </div>
+  );
+}

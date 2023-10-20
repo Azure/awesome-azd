@@ -6,6 +6,7 @@
  */
 
 import React from "react";
+import styles from "./styles.module.css";
 import { Tag, Tags, type User, type TagType } from "../../../data/tags";
 import { TagList } from "../../../data/users";
 import { sortBy } from "@site/src/utils/jsUtils";
@@ -29,7 +30,7 @@ const TagComp = React.forwardRef<HTMLDivElement, Tag>(
   )
 );
 
-export function ShowcaseCardTag({
+export default function ShowcaseCardTag({
   tags,
   moreTag,
 }: {

@@ -6,25 +6,24 @@
  */
 
 import React from "react";
-import { Tag, Tags, type User, type TagType } from "../../../data/tags";
+import styles from "./styles.module.css";
+import { Tags, type User, type TagType } from "../../../data/tags";
 import { TagList } from "../../../data/users";
 import { sortBy } from "@site/src/utils/jsUtils";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { Link as FluentUILink, makeStyles } from "@fluentui/react-components";
 import { useBoolean } from "@fluentui/react-hooks";
 import {
-  IRenderFunction,
   Label,
   Pivot,
   PivotItem,
   DefaultButton,
-  Panel,
-  PanelType,
-  IPanelProps,
   Separator,
   IPivotStyles,
   Popup,
 } from "@fluentui/react";
+import ShowcaseMultipleAuthors from "../ShowcaseMultipleAuthors/index";
+import ShowcaseCardTag from "../ShowcaseTag/index";
 
 const useStyles = makeStyles({
   cardTextBy: {
@@ -474,7 +473,6 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
     </div>
   );
 }
-
 
 function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
   const tagObjects = tags.map((tag) => ({ tag, ...Tags[tag] }));

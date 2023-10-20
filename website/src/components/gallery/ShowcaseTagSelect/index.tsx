@@ -10,6 +10,7 @@ import React, {
   useState,
   useEffect,
 } from "react";
+import styles from "./styles.module.css";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { toggleListItem } from "@site/src/utils/jsUtils";
 import { prepareUserState } from "@site/src/pages/index";

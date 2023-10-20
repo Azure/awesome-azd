@@ -6,6 +6,7 @@
  */
 
 import React from "react";
+import styles from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import {
   Card,
@@ -36,7 +37,7 @@ const useStyles = makeStyles({
   },
 });
 
-export function ShowcaseContributionCard(): React.ReactElement {
+export default function ShowcaseContributionCard(): React.ReactElement {
   const styles = useStyles();
   // access localStorage until window is defined
   if (

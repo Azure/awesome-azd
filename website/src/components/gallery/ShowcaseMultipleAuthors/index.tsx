@@ -48,7 +48,7 @@ function ShowcaseMultipleWebsites(
   }
 }
 
-export function ShowcaseMultipleAuthors({ user }: { user: User }) {
+export default function ShowcaseMultipleAuthors({ user }: { user: User }) {
   const authors = user.author;
   const websites = user.website;
   const styles = useStyles();

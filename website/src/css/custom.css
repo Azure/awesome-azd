@@ -27,11 +27,13 @@
   text-decoration-thickness: 4px;
 }
 
-/* .navbar .navbar__inner .navbar__items .navbar_item .navbar__link .templatePage{
-  text-decoration-line: underline;
-  text-underline-offset: 20px;
-  text-decoration-thickness: 4px;
-} */
+.navbar .navbar__inner .navbar__items .navbar__brand:hover{
+  color:black;
+}
+
+[data-theme='dark'] .navbar .navbar__inner .navbar__items .navbar__brand:hover{
+  color:white;
+}
 
 .templatePage:hover::before{
   text-decoration-line: underline;

@@ -86,6 +86,12 @@ const config = {
             position: "left",
           },
           {
+            label: "Contribute",
+            position: "left",
+            type: "doc",
+            docId: "intro",
+          },
+          {
             to: "https://learn.microsoft.com/azure/developer/azure-developer-cli/",
             label: "Docs",
             position: "left",
@@ -95,13 +101,8 @@ const config = {
             label: "Resources",
             position: "left",
           },
-          {
-            label: "Contribute",
-            position: "left",
-            type: "doc",
-            docId: "intro",
-          },
 
+          // right
           {
             href: "https://github.com/Azure/repo/awesome-azd",
             position: "right",

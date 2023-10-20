@@ -74,16 +74,21 @@ const config = {
           height: 32,
         },
         items: [
-          {
-            href: "/",
-            label: "Templates",
-            position: "left",
-          },
-
+          // {
+          //   href: "/",
+          //   label: "Templates",
+          //   position: "left",
+          // },
           {
             to: "/about",
             label: "Getting Started",
             position: "left",
+          },
+          {
+            label: "Contribute",
+            position: "left",
+            type: "doc",
+            docId: "intro",
           },
           {
             to: "https://learn.microsoft.com/azure/developer/azure-developer-cli/",
@@ -95,18 +100,26 @@ const config = {
             label: "Resources",
             position: "left",
           },
-          {
-            label: "Contribute",
-            position: "left",
-            type: "doc",
-            docId: "intro",
-          },
 
+          // right
           {
             href: "https://github.com/Azure/repo/awesome-azd",
             position: "right",
             className: "header-github-link",
             "aria-label": "GitHub repository",
+          },
+
+          // CONFIG:
+          // Make sure you have class defined in src/css/custom.css
+          {
+            to: "https://azure.github.io/awesome-azd/docs/intro",
+            label: "Submit your template!",
+            position: "right",
+            className: "button",
+            style: {
+              backgroundColor: "#7160E8",
+              color: "white",
+            },
           },
 
           // CONFIG:
@@ -202,6 +215,9 @@ const config = {
 
         // CONFIG: theme = currently using `classic`
         //    See: https://docusaurus.io/docs/api/themes/@docusaurus/theme-classic
+        theme: {
+          customCss: require.resolve("./src/css/custom.css"),
+        },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },

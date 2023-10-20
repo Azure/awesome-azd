@@ -1089,10 +1089,46 @@
     "tags": [
       "terraform",
       "platformengineering",
-      "devcenter",
       "ade",
       "community",
       "new"
+    ]
+  },
+  {
+    "title": "Java - ChatGPT + Enterprise data with Azure OpenAI and Cognitive Search",
+    "description": "This repo is the java conversion of the well known chatGPT + Enterprise data code sample originally developed in python",
+    "preview": "./templates/images/azure-search-openai-demo-java.png",
+    "website": "https://github.com/Azure-Samples/azure-search-openai-demo-java",
+    "author": "Davide Antelmo",
+    "source": "https://github.com/Azure-Samples/azure-search-openai-demo-java",
+    "tags": [
+      "java",
+      "spring",
+      "openai",
+      "appservice",
+      "cognitivesearch",
+      "semantickernel",
+      "reactjs",
+      "bicep",
+      "msft",
+      "new"
+    ]
+  },
+  {
+    "title": "Next.js 13 on Container Apps",
+    "description": "A blueprint for getting a Next.js 13 app running on Azure Container Apps with CDN and Application Insights.",
+    "preview": "./templates/images/nextjs-aca.png",
+    "website": "https://github.com/CMeeg",
+    "author": "Chris Meagher",
+    "source": "https://github.com/CMeeg/nextjs-aca",
+    "tags": [
+      "typescript",
+      "reactjs",
+      "nodejs",
+      "bicep",
+      "aca",
+      "azurecdn",
+      "appinsights"
     ]
   }
 ]

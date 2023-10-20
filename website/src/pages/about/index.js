@@ -14,8 +14,8 @@ function HomepageHeader() {
         <iframe
           width="773"
           height="435"
-          src="https://www.youtube.com/embed/VTk-FhJyo7s"
-          title="Introducing the Azure Developer CLI (azd) | Azure Friday"
+          src="https://www.youtube.com/embed/9z3PiHSCcYs?si=F1yKpoiOQnzb4o-K"
+          title="Azure Developer CLI: GitHub to cloud in minutes - Universe 2022"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen

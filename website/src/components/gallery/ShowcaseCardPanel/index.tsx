@@ -10,7 +10,7 @@ import { Tag, Tags, type User, type TagType } from "../../../data/tags";
 import { TagList } from "../../../data/users";
 import { sortBy } from "@site/src/utils/jsUtils";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import { Link as FluentUILink } from "@fluentui/react-components";
+import { Link as FluentUILink, makeStyles } from "@fluentui/react-components";
 import { useBoolean } from "@fluentui/react-hooks";
 import {
   IRenderFunction,
@@ -25,6 +25,17 @@ import {
   IPivotStyles,
   Popup,
 } from "@fluentui/react";
+
+const useStyles = makeStyles({
+  cardTextBy: {
+    fontSize: "12px",
+    color: "#707070",
+  },
+  cardTag: {
+    fontSize: "10px",
+    color: "#606060",
+  },
+});
 
 export default function ShowcaseCardPanel({ user }: { user: User }) {
   let [

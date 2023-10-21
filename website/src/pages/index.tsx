@@ -125,23 +125,6 @@ function useFilteredUsers(rule: string) {
   );
 }
 
-function useSiteCountPlural() {
-  const { selectMessage } = usePluralForm();
-  return (sitesCount: number) =>
-    selectMessage(
-      sitesCount,
-      translate(
-        {
-          id: "showcase.filters.resultCount",
-          description:
-            'Pluralized label for the number of templates found on the showcase. Use as much plural forms (separated by "|") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)',
-          message: "{sitesCount}",
-        },
-        { sitesCount }
-      )
-    );
-}
-
 function ShowcaseFilterAndCard() {
   return (
     <div className={styles.filterAndCard}>
@@ -156,7 +139,6 @@ function ShowcaseFilterAndCard() {
 }
 
 function ShowcaseCardPage() {
-  const siteCountPlural = useSiteCountPlural();
   const options = [
     "New to old",
     "Old to new",
@@ -170,7 +152,7 @@ function ShowcaseCardPage() {
   const onSelect = (event, data) => {
     setSelectedOptions(data.selectedOptions);
   };
-  const templateNumber = siteCountPlural(filteredUsers.length);
+  const templateNumber = filteredUsers.length;
 
   return (
     <>
@@ -300,7 +282,6 @@ function ShowcaseCards({ filteredUsers }: { filteredUsers: User[] }) {
 export default function Showcase(): JSX.Element {
   return (
     <FluentProvider theme={teamsLightTheme}>
-      {/* <Layout title={TITLE} description={DESCRIPTION}> */}
       <Layout>
         <ShowcaseTemplateSearch />
         <ShowcaseFilterAndCard />

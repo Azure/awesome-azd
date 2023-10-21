@@ -27,9 +27,7 @@ import { initializeIcons } from "@fluentui/react/lib/Icons";
 import { type User, type TagType } from "../data/tags";
 import { sortedUsers, unsortedUsers, TagList } from "../data/users";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
-import { translate } from "@docusaurus/Translate";
 import { useLocation } from "@docusaurus/router";
-import { usePluralForm } from "@docusaurus/theme-common";
 import styles from "./styles.module.css";
 
 initializeIcons();
@@ -84,21 +82,14 @@ function filterUsers(
 }
 
 function readSortChoice(rule: string): User[] {
-  const options = [
-    "New to old",
-    "Old to new",
-    "Alphabetical (A - Z)",
-    "Alphabetical (Z - A)",
-  ];
-
-  if (rule == options[0]) {
+  if (rule == SORT_BY_OPTIONS[0]) {
     return unsortedUsers;
-  } else if (rule == options[1]) {
+  } else if (rule == SORT_BY_OPTIONS[1]) {
     const copyUnsortedUser = unsortedUsers.slice();
     return copyUnsortedUser.reverse();
-  } else if (rule == options[2]) {
+  } else if (rule == SORT_BY_OPTIONS[2]) {
     return sortedUsers;
-  } else if (rule == options[3]) {
+  } else if (rule == SORT_BY_OPTIONS[3]) {
     const copySortedUser = sortedUsers.slice();
     return copySortedUser.reverse();
   }
@@ -125,31 +116,19 @@ function useFilteredUsers(rule: string) {
   );
 }
 
-function ShowcaseFilterAndCard() {
-  return (
-    <div className={styles.filterAndCard}>
-      <div className={styles.filter}>
-        <ShowcaseLeftFilters />
-      </div>
-      <div className={styles.card}>
-        <ShowcaseCardPage />
-      </div>
-    </div>
-  );
-}
+const SORT_BY_OPTIONS = [
+  "New to old",
+  "Old to new",
+  "Alphabetical (A - Z)",
+  "Alphabetical (Z - A)",
+];
 
 function ShowcaseCardPage() {
-  const options = [
-    "New to old",
-    "Old to new",
-    "Alphabetical (A - Z)",
-    "Alphabetical (Z - A)",
-  ];
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
 
   let filteredUsers = useFilteredUsers(selectedOptions[0]);
 
-  const onSelect = (event, data) => {
+  const sortByOnSelect = (event, data) => {
     setSelectedOptions(data.selectedOptions);
   };
   const templateNumber = filteredUsers.length;
@@ -173,7 +152,7 @@ function ShowcaseCardPage() {
           <Text size={400} weight="bold">
             {templateNumber}
           </Text>
-          {templateNumber != "1" ? (
+          {templateNumber != 1 ? (
             <Text size={400}>templates</Text>
           ) : (
             <Text size={400}>template</Text>
@@ -200,10 +179,10 @@ function ShowcaseCardPage() {
             input={{ style: { width: "130px" } }}
             aria-labelledby="combo-default"
             placeholder="Placeholder text"
-            onOptionSelect={onSelect}
+            onOptionSelect={sortByOnSelect}
           >
-            {options.map((option) => (
-              <Option key={option} disabled={option === "Ferret"}>
+            {SORT_BY_OPTIONS.map((option) => (
+              <Option key={option}>
                 {option}
               </Option>
             ))}
@@ -235,7 +214,7 @@ function ShowcaseCards({ filteredUsers }: { filteredUsers: User[] }) {
                       <React.Fragment key={user.title}>
                         <ShowcaseCard user={user} />
                       </React.Fragment>
-                      <React.Fragment key="fragement_contributionCard">
+                      <React.Fragment key="fragment_contributionCard">
                         <ShowcaseContributionCard />
                       </React.Fragment>
                     </>
@@ -284,7 +263,14 @@ export default function Showcase(): JSX.Element {
     <FluentProvider theme={teamsLightTheme}>
       <Layout>
         <ShowcaseTemplateSearch />
-        <ShowcaseFilterAndCard />
+        <div className={styles.filterAndCard}>
+          <div className={styles.filter}>
+            <ShowcaseLeftFilters />
+        </div>
+          <div className={styles.card}>
+            <ShowcaseCardPage />
+          </div>
+        </div>
       </Layout>
     </FluentProvider>
   );

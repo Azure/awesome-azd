@@ -224,6 +224,7 @@ function ShowcaseCard({ user }: { user: User }) {
           </div>
         }
       />
+      {/* TODO: what's CardPreview for?  Is it only adding a little margin? */}
       <CardPreview style={{ borderTop: "1px solid #F0F0F0" }} />
       <div
         style={{
@@ -268,6 +269,7 @@ function ShowcaseCard({ user }: { user: User }) {
         >
           {user.description}
         </div>
+        {/* // Disable panel until redesign of card panel completed
         <Panel
           headerText={user.title}
           isLightDismiss
@@ -278,7 +280,7 @@ function ShowcaseCard({ user }: { user: User }) {
           onRenderNavigationContent={onRenderNavigationContent}
         >
           <ShowcaseCardPanel user={user} />
-        </Panel>
+        </Panel> */}
         <div
           style={{ paddingTop: "10px", position: "absolute", bottom: "0px" }}
         >
@@ -297,15 +299,15 @@ function ShowcaseCard({ user }: { user: User }) {
           </div>
         </div>
       </div>
-      <CardPreview
-        style={{ borderTop: "1px solid #F0F0F0", backgroundColor: "#FAFAFA" }}
-      ></CardPreview>
+      {/* TODO: what's CardPreview for?  Is it only adding a little margin? */}
+      <CardPreview style={{ borderTop: "1px solid #F0F0F0", backgroundColor: "#FAFAFA" }} />
       <CardFooter>
         <Input
           id={"input_" + user.title}
           size="small"
           spellCheck={false}
           defaultValue={azdInitCommand}
+
           style={{
             flex: "1",
             border: "1px solid #d1d1d1",

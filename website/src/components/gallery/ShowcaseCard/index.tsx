@@ -222,7 +222,6 @@ function ShowcaseCard({ user }: { user: User }) {
           </div>
         }
       />
-      {/* TODO: what's CardPreview for?  Is it only adding a little margin? */}
       <CardPreview style={{ borderTop: "1px solid #F0F0F0" }} />
       <div
         style={{
@@ -297,7 +296,6 @@ function ShowcaseCard({ user }: { user: User }) {
           </div>
         </div>
       </div>
-      {/* TODO: what's CardPreview for?  Is it only adding a little margin? */}
       <CardPreview style={{ borderTop: "1px solid #F0F0F0", backgroundColor: "#FAFAFA" }} />
       <CardFooter>
         <Input

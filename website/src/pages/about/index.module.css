@@ -8,18 +8,21 @@
   display: inline-block;
   overflow: hidden;
   position: relative;
+  width:100%;
   background-color: white;
 }
 
 .cover {
   pointer-events: none;
   position: absolute;
-  height: 29rem;
-  width: 96%;
+  /* height: 100%;
+  width: 100%; */
+
 }
 
 .video{
   width: 38rem;
+  padding:2rem;
 }
 
 .description{
@@ -35,9 +38,6 @@
 }
 
 @media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
 }
 
 .buttons {

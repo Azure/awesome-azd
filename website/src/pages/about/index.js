@@ -17,7 +17,7 @@ function HomepageHeader() {
           alt=""
         />
         <div className={styles.description}>
-          <iframe
+          {/* <iframe
             className={styles.video}
             height="340"
             src="https://www.youtube.com/embed/9z3PiHSCcYs?si=F1yKpoiOQnzb4o-K"
@@ -25,7 +25,8 @@ function HomepageHeader() {
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
-          ></iframe>
+          ></iframe> */}
+          Hello
       </div>
     </header>
   );

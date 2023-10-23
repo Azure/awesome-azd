@@ -192,33 +192,6 @@ function ShowcaseCardPage() {
   );
 }
 
-const Render = ({source}: { source: User[]}) => (  
-  <div className={styles.showcaseFavorite}>
-    <div className={styles.showcaseList}>
-      {source.map((user, index) => (
-        <React.Fragment key={index}>
-          {(source.length < 6 && index === source.length - 1) || index === 4 ?
-          (
-            <React.Fragment key="cardWithContributionCard">
-              <React.Fragment key={user.title}>
-                <ShowcaseCard user={user} />
-              </React.Fragment>
-              <React.Fragment key="fragment_contributionCard">
-                <ShowcaseContributionCard />
-              </React.Fragment>
-            </React.Fragment>
-          ) : 
-          (
-            <React.Fragment key={user.title}>
-              <ShowcaseCard user={user} />
-            </React.Fragment>
-          )}
-        </React.Fragment>
-      ))}
-    </div>
-  </div>
-)
-
 function ShowcaseCards({ filteredUsers }: { filteredUsers: User[] }) {
   if (filteredUsers.length === 0) {
     return <ShowcaseEmptyResult id="showcase.usersList.noResult" />;
@@ -226,11 +199,31 @@ function ShowcaseCards({ filteredUsers }: { filteredUsers: User[] }) {
 
   return (
     <section>
-      {filteredUsers.length === sortedUsers.length ? 
-        <Render source={filteredUsers} /> 
-      : 
-        <Render source={sortedUsers} />
-      }
+      <div className={styles.showcaseFavorite}>
+        <div className={styles.showcaseList}>
+          {filteredUsers.map((user, index) => (
+            <React.Fragment key={index}>
+              {(filteredUsers.length < 6 && index === sortedUsers.length - 1) || index === 4 ?
+                (
+                  <React.Fragment key="cardWithContributionCard">
+                    <React.Fragment key={user.title}>
+                      <ShowcaseCard user={user} />
+                    </React.Fragment>
+                    <React.Fragment key="fragment_contributionCard">
+                      <ShowcaseContributionCard />
+                    </React.Fragment>
+                  </React.Fragment>
+                ) :       
+                (
+                  <React.Fragment key={user.title}>
+                    <ShowcaseCard user={user} />
+                  </React.Fragment>
+                )
+              }
+            </React.Fragment>))
+          }
+        </div>
+      </div>
     </section>
   );
 }

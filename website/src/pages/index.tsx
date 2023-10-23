@@ -193,7 +193,8 @@ function ShowcaseCardPage() {
 }
 
 function ShowcaseCards({ filteredUsers }: { filteredUsers: User[] }) {
-  if (filteredUsers.length === 0) {
+  const len = filteredUsers.length;
+  if (len === 0) {
     return <ShowcaseEmptyResult id="showcase.usersList.noResult" />;
   }
 
@@ -203,25 +204,22 @@ function ShowcaseCards({ filteredUsers }: { filteredUsers: User[] }) {
         <div className={styles.showcaseList}>
           {filteredUsers.map((user, index) => (
             <React.Fragment key={index}>
-              {(filteredUsers.length < 6 && index === sortedUsers.length - 1) || index === 4 ?
-                (
-                  <React.Fragment key="cardWithContributionCard">
-                    <React.Fragment key={user.title}>
-                      <ShowcaseCard user={user} />
-                    </React.Fragment>
-                    <React.Fragment key="fragment_contributionCard">
-                      <ShowcaseContributionCard />
-                    </React.Fragment>
-                  </React.Fragment>
-                ) :       
-                (
+              {(len < 6 && index === len - 1) || index === 4 ? (
+                <React.Fragment key="cardWithContributionCard">
                   <React.Fragment key={user.title}>
                     <ShowcaseCard user={user} />
                   </React.Fragment>
-                )
-              }
-            </React.Fragment>))
-          }
+                  <React.Fragment key="fragment_contributionCard">
+                    <ShowcaseContributionCard />
+                  </React.Fragment>
+                </React.Fragment>
+              ) : (
+                <React.Fragment key={user.title}>
+                  <ShowcaseCard user={user} />
+                </React.Fragment>
+              )}
+            </React.Fragment>
+          ))}
         </div>
       </div>
     </section>

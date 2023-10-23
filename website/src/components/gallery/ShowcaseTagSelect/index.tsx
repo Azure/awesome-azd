@@ -1,18 +1,14 @@
 /**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
+* Copyright (c) Microsoft Corporation. All rights reserved.
+* Licensed under the MIT License.
  */
 
 import React, {
   useCallback,
   useState,
   useEffect,
-  type ComponentProps,
-  type ReactNode,
-  type ReactElement,
 } from "react";
+import styles from "./styles.module.css";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { toggleListItem } from "@site/src/utils/jsUtils";
 import { prepareUserState } from "@site/src/pages/index";

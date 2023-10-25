@@ -118,7 +118,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
           padding: "5px 0",
         }}
       >
-        <ShowcaseCardTag key={user.title} tags={user.tags} moreTag={false} />
+        <ShowcaseCardTag key={"tag_"+user.title} tags={user.tags} moreTag={false} />
       </div>
       <Pivot
         aria-label="Template Detials and Legal"
@@ -240,7 +240,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                       whiteSpace: "nowrap",
                       overflow: "hidden",
                       color: "#616161",
-                      fontFamily: '"Consolas-Regular", Helvetica;',
+                      fontFamily: '"Consolas-Regular", Helvetica',
                       fontSize: "14px",
                       fontWeight: "400",
                     }}
@@ -331,7 +331,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                       whiteSpace: "nowrap",
                       overflow: "hidden",
                       color: "#616161",
-                      fontFamily: '"Consolas-Regular", Helvetica;',
+                      fontFamily: '"Consolas-Regular", Helvetica',
                       fontSize: "14px",
                       fontWeight: "400",
                     }}
@@ -397,7 +397,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                     </a>
                     .
                   </div>
-                  <ShowcaseCardAzureTag tags={user.tags} />
+                  <ShowcaseCardAzureTag key={"azure_tag_"+user.title} tags={user.tags} />
                 </Popup>
               )}
             </div>
@@ -474,12 +474,12 @@ function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
   );
 
   return (
-    <>
-      {tagObjectsSorted.map((tagObject) => {
+      tagObjectsSorted.map((tagObject,index) => {
         const azureService = tagObject.label.includes("Azure");
 
         return azureService ? (
           <div
+            key={index}
             style={{
               display: "flex",
               padding: "5px 0",
@@ -553,7 +553,6 @@ function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
             </div>
           </div>
         ) : null;
-      })}
-    </>
+      })
   );
 }

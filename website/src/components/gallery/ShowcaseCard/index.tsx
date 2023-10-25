@@ -1,11 +1,11 @@
 /**
-* Copyright (c) Microsoft Corporation. All rights reserved.
-* Licensed under the MIT License.
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
  */
 
 import React from "react";
 import styles from "./styles.module.css";
-import { type User} from "../../../data/tags";
+import { type User } from "../../../data/tags";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import {
   Card,
@@ -231,11 +231,7 @@ function ShowcaseCard({ user }: { user: User }) {
           maxHeight: "inherit",
         }}
       >
-        <FluentUILink
-          href={source}
-          className={styles.cardTitle}
-          target="_blank"
-        >
+        <FluentUILink className={styles.cardTitle} onClick={openPanel}>
           {user.title}
         </FluentUILink>
         <div
@@ -265,7 +261,6 @@ function ShowcaseCard({ user }: { user: User }) {
             WebkitLineClamp: "3",
             WebkitBoxOrient: "vertical",
           }}
-          onClick={openPanel}
         >
           {user.description}
         </div>
@@ -291,7 +286,6 @@ function ShowcaseCard({ user }: { user: User }) {
               gap: "4px",
               flexFlow: "wrap",
             }}
-            onClick={openPanel}
           >
             <ShowcaseCardTag key={user.title} tags={user.tags} moreTag={true} />
           </div>

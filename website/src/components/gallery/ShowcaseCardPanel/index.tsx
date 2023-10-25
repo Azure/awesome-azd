@@ -82,7 +82,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
         <div className={styles.cardDescription}>by</div>
         <div style={{ fontSize: "14px", fontWeight: "400" }}>
           <ShowcaseMultipleAuthors
-            key={user.title}
+            key={"author_"+user.title}
             user={user}
             cardPanel={true}
           />

@@ -16,6 +16,7 @@ const useStyles = makeStyles({
 });
 
 function ShowcaseMultipleWebsites(
+  key: number,
   authorName: string,
   websiteLink: string,
   length: number,
@@ -25,7 +26,7 @@ function ShowcaseMultipleWebsites(
   const styles = useStyles();
   if (i != length - 1) {
     return (
-      <>
+      <div key={key}>
         <FluentUILink
           key={i}
           className={styles.cardAuthor}
@@ -49,11 +50,11 @@ function ShowcaseMultipleWebsites(
           ) : null}
           ,{" "}
         </FluentUILink>
-      </>
+      </div>
     );
   } else {
     return (
-      <>
+      <div key={key}>
         <FluentUILink
           key={i}
           className={styles.cardAuthor}
@@ -75,7 +76,7 @@ function ShowcaseMultipleWebsites(
             />
           </FluentUILink>
         ) : null}
-      </>
+      </div>
     );
   }
 }
@@ -107,6 +108,7 @@ export default function ShowcaseMultipleAuthors({
       >
         {multiWebsites.map((value, index) => {
           return ShowcaseMultipleWebsites(
+            index,
             multiAuthors[index],
             multiWebsites[index],
             multiWebsites.length,

@@ -250,7 +250,7 @@ function ShowcaseCard({ user }: { user: User }) {
           <div className={styles.cardTextBy}>by</div>
           <div style={{ fontSize: "12px" }}>
             <ShowcaseMultipleAuthors
-              key={user.title}
+              key={"author_" + user.title}
               user={user}
               cardPanel={false}
             />
@@ -297,14 +297,15 @@ function ShowcaseCard({ user }: { user: User }) {
           </div>
         </div>
       </div>
-      <CardPreview style={{ borderTop: "1px solid #F0F0F0", backgroundColor: "#FAFAFA" }} />
+      <CardPreview
+        style={{ borderTop: "1px solid #F0F0F0", backgroundColor: "#FAFAFA" }}
+      />
       <CardFooter>
         <Input
           id={"input_" + user.title}
           size="small"
           spellCheck={false}
           defaultValue={azdInitCommand}
-
           style={{
             flex: "1",
             border: "1px solid #d1d1d1",

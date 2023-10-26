@@ -281,7 +281,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                       whiteSpace: "nowrap",
                       overflow: "hidden",
                       color: "#616161",
-                      fontFamily: '"Consolas-Regular", Helvetica',
+                      fontFamily: "Consolas, Courier New, Courier, monospace",
                       fontSize: "14px",
                       fontWeight: "400",
                     }}
@@ -355,7 +355,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                       whiteSpace: "nowrap",
                       overflow: "hidden",
                       color: "#616161",
-                      fontFamily: '"Consolas-Regular", Helvetica',
+                      fontFamily: "Consolas, Courier New, Courier, monospace",
                       fontSize: "14px",
                       fontWeight: "400",
                     }}

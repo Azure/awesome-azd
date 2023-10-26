@@ -85,7 +85,7 @@ function ShowcaseFilterViewAll({
             >
               <div
                 style={{
-                  color: "#6656d1",
+                  color: "#7160E8",
                   fontSize: "12px",
                 }}
               >

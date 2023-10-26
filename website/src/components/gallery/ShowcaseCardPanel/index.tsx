@@ -19,9 +19,11 @@ import {
   Separator,
   IPivotStyles,
   Popup,
+  Callout,
+  mergeStyleSets,
+  Text,
+  DirectionalHint,
 } from "@fluentui/react";
-import { TeachingBubble } from "@fluentui/react/lib/TeachingBubble";
-import { DirectionalHint } from "@fluentui/react/lib/Callout";
 import ShowcaseMultipleAuthors from "../ShowcaseMultipleAuthors/index";
 import ShowcaseCardTag from "../ShowcaseTag/index";
 
@@ -36,9 +38,18 @@ const useStyles = makeStyles({
   },
 });
 
-function copyButton(templateURL: string) {
+function copyButton(url: string) {
   const copySVG = useBaseUrl("/img/purpleCopy.svg");
   const buttonId = useId("copyButton");
+  const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] =
+    useBoolean(false);
+  const labelId = useId("callout-label");
+  const descriptionId = useId("callout-description");
+  const style = mergeStyleSets({
+    callout: {
+      padding: "3px 10px",
+    },
+  });
   return (
     <div>
       <DefaultButton
@@ -50,12 +61,28 @@ function copyButton(templateURL: string) {
           backgroundColor: "transparent",
         }}
         onClick={() => {
-          navigator.clipboard.writeText(templateURL);
+          toggleIsCalloutVisible();
+          navigator.clipboard.writeText(url);
         }}
       >
         <img src={copySVG} height={20} alt="Copy" />
-        <div style={{ color: "#6656D1", fontSize: "12px" }}>Copy</div>
+        <div style={{ color: "#7160E8", fontSize: "12px" }}>Copy</div>
       </DefaultButton>
+      {isCalloutVisible && (
+        <Callout
+          className={style.callout}
+          ariaLabelledBy={labelId}
+          ariaDescribedBy={descriptionId}
+          role="dialog"
+          gapSpace={0}
+          target={`#${buttonId}`}
+          onDismiss={toggleIsCalloutVisible}
+          setInitialFocus
+          directionalHint={DirectionalHint.topCenter}
+        >
+          <Text variant="small">Copied</Text>
+        </Callout>
+      )}
     </div>
   );
 }
@@ -79,7 +106,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
       {
         selectors: {
           ":before": {
-            backgroundColor: "#6656D1",
+            backgroundColor: "#7160E8",
           },
         },
       },
@@ -122,7 +149,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
             display: "flex",
             alignItems: "center",
             columnGap: "5px",
-            color: "#6656d1",
+            color: "#7160E8",
           }}
         >
           View in GitHub
@@ -284,7 +311,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                       "https://marketplace.visualstudio.com/items?itemName=ms-azuretools.azure-dev"
                     }
                     target="_blank"
-                    style={{ color: "#6656D1" }}
+                    style={{ color: "#7160E8" }}
                   >
                     azd VS Code extension
                   </a>{" "}
@@ -388,7 +415,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                     <a
                       href="https://azure.microsoft.com/en-us/pricing/calculator/"
                       target="_blank"
-                      style={{ color: "#6656D1" }}
+                      style={{ color: "#7160E8" }}
                     >
                       Azure Pricing Calculator
                     </a>

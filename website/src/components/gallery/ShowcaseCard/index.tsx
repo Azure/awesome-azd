@@ -48,7 +48,7 @@ const useStyles = makeStyles({
   cardTitle: {
     verticalAlign: "middle",
     fontSize: "16px",
-    color: "#6656d1",
+    color: "#7160E8",
     fontWeight: "600",
   },
   cardTextBy: {
@@ -56,7 +56,7 @@ const useStyles = makeStyles({
     color: "#707070",
   },
   cardAuthor: {
-    color: "#6656d1",
+    color: "#7160E8",
   },
   cardDescription: {
     fontSize: "14px",

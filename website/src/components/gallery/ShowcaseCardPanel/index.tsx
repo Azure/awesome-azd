@@ -10,7 +10,7 @@ import { TagList } from "../../../data/users";
 import { sortBy } from "@site/src/utils/jsUtils";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { Link as FluentUILink, makeStyles } from "@fluentui/react-components";
-import { useBoolean } from "@fluentui/react-hooks";
+import { useBoolean, useId } from "@fluentui/react-hooks";
 import {
   Label,
   Pivot,
@@ -20,6 +20,8 @@ import {
   IPivotStyles,
   Popup,
 } from "@fluentui/react";
+import { TeachingBubble } from "@fluentui/react/lib/TeachingBubble";
+import { DirectionalHint } from "@fluentui/react/lib/Callout";
 import ShowcaseMultipleAuthors from "../ShowcaseMultipleAuthors/index";
 import ShowcaseCardTag from "../ShowcaseTag/index";
 
@@ -34,6 +36,30 @@ const useStyles = makeStyles({
   },
 });
 
+function copyButton(templateURL: string) {
+  const copySVG = useBaseUrl("/img/purpleCopy.svg");
+  const buttonId = useId("copyButton");
+  return (
+    <div>
+      <DefaultButton
+        id={buttonId}
+        style={{
+          padding: "0px",
+          minHeight: "20px",
+          borderColor: "transparent",
+          backgroundColor: "transparent",
+        }}
+        onClick={() => {
+          navigator.clipboard.writeText(templateURL);
+        }}
+      >
+        <img src={copySVG} height={20} alt="Copy" />
+        <div style={{ color: "#6656D1", fontSize: "12px" }}>Copy</div>
+      </DefaultButton>
+    </div>
+  );
+}
+
 export default function ShowcaseCardPanel({ user }: { user: User }) {
   let [
     isPopupVisibleTemplateDetails,
@@ -47,7 +73,6 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
 
   const templateURL = user.source.replace("https://github.com/", "");
   const azdInitCommand = "azd init -t " + templateURL;
-  const copySVG = useBaseUrl("/img/Copy.svg");
   const chevronSVG = useBaseUrl("/img/leftChevron.svg");
   const pivotStyles: IPivotStyles = {
     linkIsSelected: [
@@ -82,7 +107,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
         <div className={styles.cardDescription}>by</div>
         <div style={{ fontSize: "14px", fontWeight: "400" }}>
           <ShowcaseMultipleAuthors
-            key={"author_"+user.title}
+            key={"author_" + user.title}
             user={user}
             cardPanel={true}
           />
@@ -118,7 +143,11 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
           padding: "5px 0",
         }}
       >
-        <ShowcaseCardTag key={"tag_"+user.title} tags={user.tags} moreTag={false} />
+        <ShowcaseCardTag
+          key={"tag_" + user.title}
+          tags={user.tags}
+          moreTag={false}
+        />
       </div>
       <Pivot
         aria-label="Template Detials and Legal"
@@ -204,34 +233,19 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                       flex: "1",
                       color: "#242424",
                       fontSize: "12px",
-                      paddingLeft: "5px",
+                      paddingLeft: "11px",
                     }}
                   >
                     Terminal Command
                   </div>
-                  <DefaultButton
-                    style={{
-                      padding: "0px",
-                      minHeight: "20px",
-                      borderColor: "transparent",
-                      backgroundColor: "transparent",
-                    }}
-                    onClick={() => {
-                      navigator.clipboard.writeText(azdInitCommand);
-                    }}
-                  >
-                    <img src={copySVG} height={20} alt="Copy" />
-                    <div style={{ color: "#6656D1" }}>Copy</div>
-                  </DefaultButton>
+                  {copyButton(azdInitCommand)}
                 </div>
                 <div
                   style={{
                     backgroundColor: "#FFFFFF",
                     border: "1px solid #E0E0E0",
                     height: "46px",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
+                    padding: "11px",
                   }}
                 >
                   <div
@@ -292,37 +306,20 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                     style={{
                       flex: "1",
                       color: "#242424",
-                      paddingLeft: "5px",
+                      paddingLeft: "11px",
                       fontSize: "12px",
                     }}
                   >
                     Terminal URL
                   </div>
-                  <DefaultButton
-                    style={{
-                      padding: "0px",
-                      minHeight: "20px",
-                      borderColor: "transparent",
-                      backgroundColor: "transparent",
-                    }}
-                    onClick={() => {
-                      navigator.clipboard.writeText(templateURL);
-                    }}
-                  >
-                    <img src={copySVG} height={20} alt="Copy" />
-                    <div style={{ color: "#6656D1", fontSize: "12px" }}>
-                      Copy
-                    </div>
-                  </DefaultButton>
+                  {copyButton(templateURL)}
                 </div>
                 <div
                   style={{
                     backgroundColor: "#FFFFFF",
                     border: "1px solid #E0E0E0",
                     height: "46px",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
+                    padding: "11px",
                   }}
                 >
                   <div
@@ -397,7 +394,10 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                     </a>
                     .
                   </div>
-                  <ShowcaseCardAzureTag key={"azure_tag_"+user.title} tags={user.tags} />
+                  <ShowcaseCardAzureTag
+                    key={"azure_tag_" + user.title}
+                    tags={user.tags}
+                  />
                 </Popup>
               )}
             </div>
@@ -473,86 +473,82 @@ function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
     TagList.indexOf(tagObject.tag)
   );
 
-  return (
-      tagObjectsSorted.map((tagObject,index) => {
-        const azureService = tagObject.label.includes("Azure");
+  return tagObjectsSorted.map((tagObject, index) => {
+    const azureService = tagObject.label.includes("Azure");
 
-        return azureService ? (
+    return azureService ? (
+      <div
+        key={index}
+        style={{
+          display: "flex",
+          padding: "5px 0",
+        }}
+      >
+        <div
+          style={{
+            height: "40px",
+            width: "40px",
+            float: "left",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "#F5F5F5",
+          }}
+        >
+          <img
+            src={useBaseUrl(tagObject.azureIcon)}
+            alt="Azure Service Icon"
+            height={20}
+          />
+        </div>
+        <div style={{ float: "right", height: "40px", paddingLeft: "20px" }}>
           <div
-            key={index}
+            style={{
+              color: "#242424",
+              fontSize: "14px",
+            }}
+          >
+            {tagObject.label}
+          </div>
+          <div
             style={{
               display: "flex",
-              padding: "5px 0",
+              alignItems: "center",
             }}
           >
             <div
               style={{
-                height: "40px",
-                width: "40px",
-                float: "left",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                backgroundColor: "#F5F5F5",
+                color: "#707070",
+                fontSize: "12px",
+                fontWeight: "400",
               }}
             >
-              <img
-                src={useBaseUrl(tagObject.azureIcon)}
-                alt="Azure Service Icon"
-                height={20}
-              />
+              Azure Service
             </div>
             <div
-              style={{ float: "right", height: "40px", paddingLeft: "20px" }}
+              style={{
+                color: "#707070",
+                fontSize: "12px",
+                fontWeight: "400",
+                padding: "0 6px",
+              }}
             >
-              <div
-                style={{
-                  color: "#242424",
-                  fontSize: "14px",
-                }}
-              >
-                {tagObject.label}
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                }}
-              >
-                <div
-                  style={{
-                    color: "#707070",
-                    fontSize: "12px",
-                    fontWeight: "400",
-                  }}
-                >
-                  Azure Service
-                </div>
-                <div
-                  style={{
-                    color: "#707070",
-                    fontSize: "12px",
-                    fontWeight: "400",
-                    padding: "0 6px",
-                  }}
-                >
-                  •
-                </div>
-                <a
-                  href={tagObject.url}
-                  target="_blank"
-                  style={{
-                    color: "#7160E8",
-                    fontSize: "12px",
-                    fontWeight: "400",
-                  }}
-                >
-                  Learn More
-                </a>
-              </div>
+              •
             </div>
+            <a
+              href={tagObject.url}
+              target="_blank"
+              style={{
+                color: "#7160E8",
+                fontSize: "12px",
+                fontWeight: "400",
+              }}
+            >
+              Learn More
+            </a>
           </div>
-        ) : null;
-      })
-  );
+        </div>
+      </div>
+    ) : null;
+  });
 }

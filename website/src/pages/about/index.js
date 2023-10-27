@@ -18,17 +18,6 @@ function HomepageHeader() {
         alt=""
       />
       <div className={styles.section}>
-        {/* <div className={styles.description}>
-          <div className={styles.title}>
-            <div>Accelerate your journey to </div>
-            <div> the cloud with azd</div>
-          </div>
-          <div className={styles.content}>
-            <div>Azure Developer CLI (azd) is an open-source</div>
-            <div>tool that accelerates your application’s journey</div>
-            <div>from local development to Azure</div>
-          </div>
-        </div> */}
         <div className={styles.description}>
           <div className={styles.title}>
             Accelerate your journey to the cloud with azd

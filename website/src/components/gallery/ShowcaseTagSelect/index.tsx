@@ -7,10 +7,8 @@ import React, {
   useCallback,
   useState,
   useEffect,
-  type ComponentProps,
-  type ReactNode,
-  type ReactElement,
 } from "react";
+import styles from "./styles.module.css";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { toggleListItem } from "@site/src/utils/jsUtils";
 import { prepareUserState } from "@site/src/pages/index";

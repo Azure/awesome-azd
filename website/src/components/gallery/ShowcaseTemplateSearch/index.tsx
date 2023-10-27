@@ -9,6 +9,7 @@ import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { Text, Link as FluentUILink } from "@fluentui/react-components";
 import styles from "./styles.module.css";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 
 const TITLE = "Template Library";
 const DESCRIPTION =
@@ -105,60 +106,70 @@ function FilterBar(): React.JSX.Element {
 
 export default function ShowcaseTemplateSearch() {
   return (
-    <div className={styles.searchArea}>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
+    <div className={styles.searchContainer}>
+      <img
+        src={useBaseUrl("/img/coverBackground.png")}
+        className={styles.cover}
+        onError={({ currentTarget }) => {
+          currentTarget.style.display = "none";
         }}
-      >
+        alt=""
+      />
+      <div className={styles.searchArea}>
         <div
-          className={styles.heroBar}
           style={{
-            textAlign: "center",
+            display: "flex",
+            flexDirection: "column",
           }}
         >
-          <Text
-            size={800}
-            weight="semibold"
+          <div
+            className={styles.heroBar}
             style={{
-              background:
-                "linear-gradient(90deg, rgb(112.68, 94.63, 239.06) 0%, rgb(41.21, 120.83, 190.19) 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
+              textAlign: "center",
             }}
           >
-            {TITLE}
+            <Text
+              size={800}
+              weight="semibold"
+              style={{
+                background:
+                  "linear-gradient(90deg, rgb(112.68, 94.63, 239.06) 0%, rgb(41.21, 120.83, 190.19) 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              {TITLE}
+            </Text>
+          </div>
+          <Text
+            align="center"
+            size={400}
+            style={{
+              color: "#242424",
+              padding: "10px 0 20px 0",
+            }}
+          >
+            {DESCRIPTION}
+          </Text>
+          <FilterBar id="filterBar" />
+          <Text
+            align="center"
+            size={300}
+            style={{
+              color: "#242424",
+              padding: "20px 0",
+            }}
+          >
+            Not familiar with the Azure Developer CLI (azd)?
+            <FluentUILink
+              href={ADD_URL}
+              target="_blank"
+              style={{ paddingLeft: "3px", color: "#7160E8" }}
+            >
+              Learn more
+            </FluentUILink>
           </Text>
         </div>
-        <Text
-          align="center"
-          size={400}
-          style={{
-            color: "#242424",
-            padding: "10px 0 20px 0",
-          }}
-        >
-          {DESCRIPTION}
-        </Text>
-        <FilterBar />
-        <Text
-          align="center"
-          size={300}
-          style={{
-            color: "#242424",
-            padding: "20px 0",
-          }}
-        >
-          Not familiar with the Azure Developer CLI (azd)?
-          <FluentUILink
-            href={ADD_URL}
-            target="_blank"
-            style={{ paddingLeft: "3px", color: "#7160E8" }}
-          >
-            Learn more
-          </FluentUILink>
-        </Text>
       </div>
     </div>
   );

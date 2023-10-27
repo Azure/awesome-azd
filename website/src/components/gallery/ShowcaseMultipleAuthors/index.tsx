@@ -1,52 +1,112 @@
 /**
-* Copyright (c) Microsoft Corporation. All rights reserved.
-* Licensed under the MIT License.
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
  */
 
 import React from "react";
 import styles from "./styles.module.css";
 import { type User } from "../../../data/tags";
-import { makeStyles, Link as FluentUILink } from "@fluentui/react-components";
+import {
+  makeStyles,
+  Link as FluentUILink,
+  Text,
+} from "@fluentui/react-components";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 
 const useStyles = makeStyles({
   cardAuthor: {
-    color: "#6656d1",
+    color: "#7160E8",
   },
 });
 
 function ShowcaseMultipleWebsites(
+  key: number,
   authorName: string,
   websiteLink: string,
   length: number,
-  i: number
+  i: number,
+  cardPanel: boolean
 ) {
   const styles = useStyles();
   if (i != length - 1) {
     return (
-      <FluentUILink
-        key={i}
-        className={styles.cardAuthor}
-        href={websiteLink}
-        target="_blank"
-      >
-        {authorName},{" "}
-      </FluentUILink>
+      <div key={key}>
+        {cardPanel ? (
+          <FluentUILink
+            key={i}
+            href={websiteLink}
+            className={styles.cardAuthor}
+            target="_blank"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              columnGap: "5px",
+            }}
+          >
+            {authorName}
+            <img
+              src={useBaseUrl("/img/redirect.svg")}
+              alt="Redirect"
+              height={13}
+            />
+            ,
+          </FluentUILink>
+        ) : (
+          <FluentUILink
+            key={i}
+            className={styles.cardAuthor}
+            href={websiteLink}
+            target="_blank"
+          >
+            {authorName},
+          </FluentUILink>
+        )}
+      </div>
     );
   } else {
     return (
-      <FluentUILink
-        key={i}
-        className={styles.cardAuthor}
-        href={websiteLink}
-        target="_blank"
-      >
-        {authorName}
-      </FluentUILink>
+      <div key={key}>
+        {cardPanel ? (
+          <FluentUILink
+            key={i}
+            className={styles.cardAuthor}
+            href={websiteLink}
+            target="_blank"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              columnGap: "5px",
+            }}
+          >
+            {authorName}
+            <img
+              src={useBaseUrl("/img/redirect.svg")}
+              alt="Redirect"
+              height={13}
+            />
+          </FluentUILink>
+        ) : (
+          <FluentUILink
+            key={i}
+            className={styles.cardAuthor}
+            href={websiteLink}
+            target="_blank"
+          >
+            {authorName}
+          </FluentUILink>
+        )}
+      </div>
     );
   }
 }
 
-export default function ShowcaseMultipleAuthors({ user }: { user: User }) {
+export default function ShowcaseMultipleAuthors({
+  user,
+  cardPanel,
+}: {
+  user: User;
+  cardPanel: boolean;
+}) {
   const authors = user.author;
   const websites = user.website;
   const styles = useStyles();
@@ -62,15 +122,18 @@ export default function ShowcaseMultipleAuthors({ user }: { user: User }) {
           display: "-webkit-box",
           overflow: "hidden",
           WebkitLineClamp: "1",
-          WebkitBoxOrient: "vertical",
+          WebkitBoxOrient: "horizontal",
+          gap: "3px",
         }}
       >
         {multiWebsites.map((value, index) => {
           return ShowcaseMultipleWebsites(
+            index,
             multiAuthors[index],
             multiWebsites[index],
             multiWebsites.length,
-            i++
+            i++,
+            cardPanel
           );
         })}
       </div>
@@ -78,8 +141,34 @@ export default function ShowcaseMultipleAuthors({ user }: { user: User }) {
   }
 
   return (
-    <FluentUILink className={styles.cardAuthor} href={websites} target="_blank">
-      {authors}
-    </FluentUILink>
+    <div>
+      {cardPanel ? (
+        <FluentUILink
+          className={styles.cardAuthor}
+          href={websites}
+          target="_blank"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            columnGap: "5px",
+          }}
+        >
+          {authors}
+          <img
+            src={useBaseUrl("/img/redirect.svg")}
+            alt="Redirect"
+            height={13}
+          />
+        </FluentUILink>
+      ) : (
+        <FluentUILink
+          className={styles.cardAuthor}
+          href={websites}
+          target="_blank"
+        >
+          {authors}
+        </FluentUILink>
+      )}
+    </div>
   );
 }

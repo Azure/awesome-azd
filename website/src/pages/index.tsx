@@ -225,7 +225,6 @@ function ShowcaseCards({ filteredUsers }: { filteredUsers: User[] }) {
     </section>
   );
 }
-
 export default function Showcase(): JSX.Element {
   return (
     <FluentProvider theme={teamsLightTheme}>

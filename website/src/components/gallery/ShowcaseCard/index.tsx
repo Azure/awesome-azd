@@ -1,11 +1,11 @@
 /**
-* Copyright (c) Microsoft Corporation. All rights reserved.
-* Licensed under the MIT License.
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
  */
 
 import React from "react";
 import styles from "./styles.module.css";
-import { type User} from "../../../data/tags";
+import { type User } from "../../../data/tags";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import {
   Card,
@@ -48,7 +48,7 @@ const useStyles = makeStyles({
   cardTitle: {
     verticalAlign: "middle",
     fontSize: "16px",
-    color: "#6656d1",
+    color: "#7160E8",
     fontWeight: "600",
   },
   cardTextBy: {
@@ -56,7 +56,7 @@ const useStyles = makeStyles({
     color: "#707070",
   },
   cardAuthor: {
-    color: "#6656d1",
+    color: "#7160E8",
   },
   cardDescription: {
     fontSize: "14px",
@@ -231,11 +231,7 @@ function ShowcaseCard({ user }: { user: User }) {
           maxHeight: "inherit",
         }}
       >
-        <FluentUILink
-          href={source}
-          className={styles.cardTitle}
-          target="_blank"
-        >
+        <FluentUILink className={styles.cardTitle} onClick={openPanel}>
           {user.title}
         </FluentUILink>
         <div
@@ -249,7 +245,11 @@ function ShowcaseCard({ user }: { user: User }) {
         >
           <div className={styles.cardTextBy}>by</div>
           <div style={{ fontSize: "12px" }}>
-            <ShowcaseMultipleAuthors key={user.title} user={user} />
+            <ShowcaseMultipleAuthors
+              key={"author_" + user.title}
+              user={user}
+              cardPanel={false}
+            />
           </div>
         </div>
         <div
@@ -261,12 +261,9 @@ function ShowcaseCard({ user }: { user: User }) {
             WebkitLineClamp: "3",
             WebkitBoxOrient: "vertical",
           }}
-          // Disable panel until redesign of card panel completed
-          // onClick={openPanel}
         >
           {user.description}
         </div>
-        {/* // Disable panel until redesign of card panel completed
         <Panel
           headerText={user.title}
           isLightDismiss
@@ -277,7 +274,7 @@ function ShowcaseCard({ user }: { user: User }) {
           onRenderNavigationContent={onRenderNavigationContent}
         >
           <ShowcaseCardPanel user={user} />
-        </Panel> */}
+        </Panel>
         <div
           style={{ paddingTop: "10px", position: "absolute", bottom: "0px" }}
         >
@@ -289,21 +286,20 @@ function ShowcaseCard({ user }: { user: User }) {
               gap: "4px",
               flexFlow: "wrap",
             }}
-            // Disable panel until Card Panel redesign completed
-            // onClick={openPanel}
           >
             <ShowcaseCardTag key={user.title} tags={user.tags} moreTag={true} />
           </div>
         </div>
       </div>
-      <CardPreview style={{ borderTop: "1px solid #F0F0F0", backgroundColor: "#FAFAFA" }} />
+      <CardPreview
+        style={{ borderTop: "1px solid #F0F0F0", backgroundColor: "#FAFAFA" }}
+      />
       <CardFooter>
         <Input
           id={"input_" + user.title}
           size="small"
           spellCheck={false}
           defaultValue={azdInitCommand}
-
           style={{
             flex: "1",
             border: "1px solid #d1d1d1",

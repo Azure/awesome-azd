@@ -1,6 +1,6 @@
 /**
-* Copyright (c) Microsoft Corporation. All rights reserved.
-* Licensed under the MIT License.
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
  */
 
 import React from "react";
@@ -10,7 +10,7 @@ import { TagList } from "../../../data/users";
 import { sortBy } from "@site/src/utils/jsUtils";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { Link as FluentUILink, makeStyles } from "@fluentui/react-components";
-import { useBoolean } from "@fluentui/react-hooks";
+import { useBoolean, useId } from "@fluentui/react-hooks";
 import {
   Label,
   Pivot,
@@ -19,13 +19,17 @@ import {
   Separator,
   IPivotStyles,
   Popup,
+  Callout,
+  mergeStyleSets,
+  Text,
+  DirectionalHint,
 } from "@fluentui/react";
 import ShowcaseMultipleAuthors from "../ShowcaseMultipleAuthors/index";
 import ShowcaseCardTag from "../ShowcaseTag/index";
 
 const useStyles = makeStyles({
-  cardTextBy: {
-    fontSize: "12px",
+  cardDescription: {
+    fontSize: "14px",
     color: "#707070",
   },
   cardTag: {
@@ -33,6 +37,55 @@ const useStyles = makeStyles({
     color: "#606060",
   },
 });
+
+function copyButton(url: string) {
+  const copySVG = useBaseUrl("/img/purpleCopy.svg");
+  const buttonId = useId("copyButton");
+  const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] =
+    useBoolean(false);
+  const labelId = useId("callout-label");
+  const descriptionId = useId("callout-description");
+  const style = mergeStyleSets({
+    callout: {
+      padding: "3px 10px",
+    },
+  });
+  return (
+    <div>
+      <DefaultButton
+        id={buttonId}
+        style={{
+          padding: "0px",
+          minHeight: "20px",
+          borderColor: "transparent",
+          backgroundColor: "transparent",
+        }}
+        onClick={() => {
+          toggleIsCalloutVisible();
+          navigator.clipboard.writeText(url);
+        }}
+      >
+        <img src={copySVG} height={20} alt="Copy" />
+        <div style={{ color: "#7160E8", fontSize: "12px" }}>Copy</div>
+      </DefaultButton>
+      {isCalloutVisible && (
+        <Callout
+          className={style.callout}
+          ariaLabelledBy={labelId}
+          ariaDescribedBy={descriptionId}
+          role="dialog"
+          gapSpace={0}
+          target={`#${buttonId}`}
+          onDismiss={toggleIsCalloutVisible}
+          setInitialFocus
+          directionalHint={DirectionalHint.topCenter}
+        >
+          <Text variant="small">Copied</Text>
+        </Callout>
+      )}
+    </div>
+  );
+}
 
 export default function ShowcaseCardPanel({ user }: { user: User }) {
   let [
@@ -47,14 +100,13 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
 
   const templateURL = user.source.replace("https://github.com/", "");
   const azdInitCommand = "azd init -t " + templateURL;
-  const copySVG = useBaseUrl("/img/Copy.svg");
   const chevronSVG = useBaseUrl("/img/leftChevron.svg");
   const pivotStyles: IPivotStyles = {
     linkIsSelected: [
       {
         selectors: {
           ":before": {
-            backgroundColor: "#6656D1",
+            backgroundColor: "#7160E8",
           },
         },
       },
@@ -79,24 +131,17 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
           padding: "10px 0",
         }}
       >
-        <div className={styles.cardTextBy}>by</div>
+        <div className={styles.cardDescription}>by</div>
         <div style={{ fontSize: "14px", fontWeight: "400" }}>
-          <ShowcaseMultipleAuthors key={user.title} user={user} />
-        </div>
-        <FluentUILink
-          href={user.website}
-          target="_blank"
-          style={{ color: "#6656d1" }}
-        >
-          <img
-            src={useBaseUrl("/img/redirect.svg")}
-            alt="Redirect"
-            height={13}
+          <ShowcaseMultipleAuthors
+            key={"author_" + user.title}
+            user={user}
+            cardPanel={true}
           />
-        </FluentUILink>
+        </div>
         <div>•</div>
-        <div>Last Update: </div>
-        <div>•</div>
+        {/* <div>Last Update: </div>
+        <div>•</div> */}
         <FluentUILink
           href={user.source}
           target="_blank"
@@ -104,7 +149,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
             display: "flex",
             alignItems: "center",
             columnGap: "5px",
-            color: "#6656d1",
+            color: "#7160E8",
           }}
         >
           View in GitHub
@@ -125,7 +170,11 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
           padding: "5px 0",
         }}
       >
-        <ShowcaseCardTag key={user.title} tags={user.tags} moreTag={false} />
+        <ShowcaseCardTag
+          key={"tag_" + user.title}
+          tags={user.tags}
+          moreTag={false}
+        />
       </div>
       <Pivot
         aria-label="Template Detials and Legal"
@@ -211,34 +260,19 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                       flex: "1",
                       color: "#242424",
                       fontSize: "12px",
-                      paddingLeft: "5px",
+                      paddingLeft: "11px",
                     }}
                   >
                     Terminal Command
                   </div>
-                  <DefaultButton
-                    style={{
-                      padding: "0px",
-                      minHeight: "20px",
-                      borderColor: "transparent",
-                      backgroundColor: "transparent",
-                    }}
-                    onClick={() => {
-                      navigator.clipboard.writeText(azdInitCommand);
-                    }}
-                  >
-                    <img src={copySVG} height={20} alt="Copy" />
-                    <div style={{ color: "#6656D1" }}>Copy</div>
-                  </DefaultButton>
+                  {copyButton(azdInitCommand)}
                 </div>
                 <div
                   style={{
                     backgroundColor: "#FFFFFF",
                     border: "1px solid #E0E0E0",
                     height: "46px",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
+                    padding: "11px",
                   }}
                 >
                   <div
@@ -247,7 +281,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                       whiteSpace: "nowrap",
                       overflow: "hidden",
                       color: "#616161",
-                      fontFamily: '"Consolas-Regular", Helvetica;',
+                      fontFamily: "Consolas, Courier New, Courier, monospace",
                       fontSize: "14px",
                       fontWeight: "400",
                     }}
@@ -277,7 +311,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                       "https://marketplace.visualstudio.com/items?itemName=ms-azuretools.azure-dev"
                     }
                     target="_blank"
-                    style={{ color: "#6656D1" }}
+                    style={{ color: "#7160E8" }}
                   >
                     azd VS Code extension
                   </a>{" "}
@@ -299,37 +333,20 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                     style={{
                       flex: "1",
                       color: "#242424",
-                      paddingLeft: "5px",
+                      paddingLeft: "11px",
                       fontSize: "12px",
                     }}
                   >
                     Terminal URL
                   </div>
-                  <DefaultButton
-                    style={{
-                      padding: "0px",
-                      minHeight: "20px",
-                      borderColor: "transparent",
-                      backgroundColor: "transparent",
-                    }}
-                    onClick={() => {
-                      navigator.clipboard.writeText(templateURL);
-                    }}
-                  >
-                    <img src={copySVG} height={20} alt="Copy" />
-                    <div style={{ color: "#6656D1", fontSize: "12px" }}>
-                      Copy
-                    </div>
-                  </DefaultButton>
+                  {copyButton(templateURL)}
                 </div>
                 <div
                   style={{
                     backgroundColor: "#FFFFFF",
                     border: "1px solid #E0E0E0",
                     height: "46px",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
+                    padding: "11px",
                   }}
                 >
                   <div
@@ -338,7 +355,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                       whiteSpace: "nowrap",
                       overflow: "hidden",
                       color: "#616161",
-                      fontFamily: '"Consolas-Regular", Helvetica;',
+                      fontFamily: "Consolas, Courier New, Courier, monospace",
                       fontSize: "14px",
                       fontWeight: "400",
                     }}
@@ -398,13 +415,16 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                     <a
                       href="https://azure.microsoft.com/en-us/pricing/calculator/"
                       target="_blank"
-                      style={{ color: "#6656D1" }}
+                      style={{ color: "#7160E8" }}
                     >
                       Azure Pricing Calculator
                     </a>
                     .
                   </div>
-                  <ShowcaseCardAzureTag tags={user.tags} />
+                  <ShowcaseCardAzureTag
+                    key={"azure_tag_" + user.title}
+                    tags={user.tags}
+                  />
                 </Popup>
               )}
             </div>
@@ -480,88 +500,82 @@ function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
     TagList.indexOf(tagObject.tag)
   );
 
-  return (
-    <>
-      {tagObjectsSorted.map((tagObject) => {
-        const azureService = tagObject.label.includes("Azure");
+  return tagObjectsSorted.map((tagObject, index) => {
+    const azureService = tagObject.label.includes("Azure");
 
-        return azureService ? (
+    return azureService ? (
+      <div
+        key={index}
+        style={{
+          display: "flex",
+          padding: "5px 0",
+        }}
+      >
+        <div
+          style={{
+            height: "40px",
+            width: "40px",
+            float: "left",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "#F5F5F5",
+          }}
+        >
+          <img
+            src={useBaseUrl(tagObject.azureIcon)}
+            alt="Azure Service Icon"
+            height={20}
+          />
+        </div>
+        <div style={{ float: "right", height: "40px", paddingLeft: "20px" }}>
+          <div
+            style={{
+              color: "#242424",
+              fontSize: "14px",
+            }}
+          >
+            {tagObject.label}
+          </div>
           <div
             style={{
               display: "flex",
-              padding: "5px 0",
+              alignItems: "center",
             }}
           >
             <div
               style={{
-                height: "40px",
-                width: "40px",
-                float: "left",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                backgroundColor: "#F5F5F5",
+                color: "#707070",
+                fontSize: "12px",
+                fontWeight: "400",
               }}
             >
-              <img
-                src={useBaseUrl(tagObject.azureIcon)}
-                alt="Azure Service Icon"
-                height={20}
-              />
+              Azure Service
             </div>
             <div
-              style={{ float: "right", height: "40px", paddingLeft: "20px" }}
+              style={{
+                color: "#707070",
+                fontSize: "12px",
+                fontWeight: "400",
+                padding: "0 6px",
+              }}
             >
-              <div
-                style={{
-                  color: "#242424",
-                  fontSize: "14px",
-                }}
-              >
-                {tagObject.label}
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <div
-                  style={{
-                    color: "#707070",
-                    fontSize: "12px",
-                    fontWeight: "400",
-                  }}
-                >
-                  Azure Service
-                </div>
-                <div
-                  style={{
-                    color: "#707070",
-                    fontSize: "12px",
-                    fontWeight: "400",
-                    padding: "0 6px",
-                  }}
-                >
-                  •
-                </div>
-                <a
-                  href={tagObject.url}
-                  target="_blank"
-                  style={{
-                    color: "#7160E8",
-                    fontSize: "12px",
-                    fontWeight: "400",
-                  }}
-                >
-                  Learn More
-                </a>
-              </div>
+              •
             </div>
+            <a
+              href={tagObject.url}
+              target="_blank"
+              style={{
+                color: "#7160E8",
+                fontSize: "12px",
+                fontWeight: "400",
+              }}
+            >
+              Learn More
+            </a>
           </div>
-        ) : null;
-      })}
-    </>
-  );
+        </div>
+      </div>
+    ) : null;
+  });
 }

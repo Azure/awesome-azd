@@ -1,28 +1,40 @@
-import React from 'react';
-import clsx from 'clsx';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
-
-import styles from './index.module.css';
+import React from "react";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import Layout from "@theme/Layout";
+import HomepageFeatures from "@site/src/components/HomepageFeatures";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { FluentProvider, Text, teamsLightTheme } from "@fluentui/react-components";
+import styles from "./index.module.css";
 
 function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <iframe width="773" height="435" src="https://www.youtube.com/embed/9z3PiHSCcYs?si=F1yKpoiOQnzb4o-K" title="Azure Developer CLI: GitHub to cloud in minutes - Universe 2022" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-        </iframe>
-
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="https://github.com/Azure/awesome-azd/issues/new?assignees=gkulin&labels=requested-contribution&template=%F0%9F%A4%94-submit-an-idea-for-a-template.md&title=%5BIdea%5D+%3Cyour-template-name%3E">
-            Request a Template 📫
-          </Link>
+    <header className={styles.heroBanner}>
+      <img
+        src={useBaseUrl("/img/coverBackground.png")}
+        className={styles.cover}
+        onError={({ currentTarget }) => {
+          currentTarget.style.display = "none";
+        }}
+        alt=""
+      />
+      <div className={styles.section}>
+        <div className={styles.description}>
+          <div className={styles.title}>
+            Accelerate your journey to the cloud with azd
+          </div>
+          <div className={styles.content}>
+            Azure Developer CLI (azd) is an open-source tool that accelerates
+            your application’s journey from local development to Azure
+          </div>
+        </div>
+        <div>
+          <iframe
+            className={styles.video}
+            src="https://www.youtube.com/embed/9z3PiHSCcYs?si=F1yKpoiOQnzb4o-K"
+            title="Azure Developer CLI: GitHub to cloud in minutes - Universe 2022"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
         </div>
       </div>
     </header>
@@ -30,15 +42,16 @@ function HomepageHeader() {
 }
 
 export default function Home() {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
       title={`Welcome to ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      description="Description will go into a meta tag in <head />"
+    >
       <HomepageHeader />
-      <main>
+      <FluentProvider theme={teamsLightTheme}>
         <HomepageFeatures />
-      </main>
+      </FluentProvider>
     </Layout>
   );
 }

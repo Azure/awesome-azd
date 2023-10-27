@@ -2,6 +2,8 @@ import React from 'react';
 import {useColorMode, useThemeConfig} from '@docusaurus/theme-common';
 import ColorModeToggle from '@theme/ColorModeToggle';
 import styles from './styles.module.css';
+
+export var ThemeColorMode = null;
 export default function NavbarColorModeToggle({className}) {
   const navbarStyle = useThemeConfig().navbar.style;
   const disabled = useThemeConfig().colorMode.disableSwitch;
@@ -9,6 +11,8 @@ export default function NavbarColorModeToggle({className}) {
   if (disabled) {
     return null;
   }
+  ThemeColorMode = colorMode;
+  console.log("ThemeColorMode in Nar " + ThemeColorMode);
   return (
     <ColorModeToggle
       className={className}

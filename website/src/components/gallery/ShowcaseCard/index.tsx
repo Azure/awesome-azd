@@ -4,7 +4,7 @@
  */
 
 import React from "react";
-import styles from "./styles.module.css";
+import styleCSS from "./styles.module.css";
 import { type User } from "../../../data/tags";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import {
@@ -222,7 +222,7 @@ function ShowcaseCard({ user }: { user: User }) {
           </div>
         }
       />
-      <CardPreview style={{ borderTop: "1px solid #F0F0F0" }} />
+      <CardPreview className={styleCSS.cardBreakLine} />
       <div
         style={{
           display: "flex",
@@ -292,7 +292,7 @@ function ShowcaseCard({ user }: { user: User }) {
         </div>
       </div>
       <CardPreview
-        style={{ borderTop: "1px solid #F0F0F0", backgroundColor: "#FAFAFA" }}
+        className={styleCSS.cardBreakLine}
       />
       <CardFooter>
         <Input

@@ -2,9 +2,12 @@
 * Copyright (c) Microsoft Corporation. All rights reserved.
 * Licensed under the MIT License.
  */
-  
+
 /* Keep for future change on light vs dark theme */
-  [data-theme='dark'] .showcaseCardSrcBtn {
-    background-color: var(--ifm-color-emphasis-200) !important;
-    color: inherit;
-  }
+.cardBreakLine {
+  border-top: 1px solid #F0F0F0;
+}
+
+[data-theme="dark"] .cardBreakLine {
+    border-top: 1px solid #292929;
+}

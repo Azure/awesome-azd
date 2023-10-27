@@ -1,6 +1,6 @@
 /**
-* Copyright (c) Microsoft Corporation. All rights reserved.
-* Licensed under the MIT License.
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
  */
 
 import React, { useState, useMemo, useEffect } from "react";
@@ -20,6 +20,7 @@ import {
   Text,
   Combobox,
   Option,
+  teamsDarkTheme,
 } from "@fluentui/react-components";
 import { initializeIcons } from "@fluentui/react/lib/Icons";
 import { type User, type TagType } from "../data/tags";
@@ -27,6 +28,7 @@ import { sortedUsers, unsortedUsers, TagList } from "../data/users";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import { useLocation } from "@docusaurus/router";
 import styles from "./styles.module.css";
+import { ThemeColorMode } from "../theme/Navbar/ColorModeToggle";
 
 initializeIcons();
 
@@ -180,9 +182,7 @@ function ShowcaseCardPage() {
             onOptionSelect={sortByOnSelect}
           >
             {SORT_BY_OPTIONS.map((option) => (
-              <Option key={option}>
-                {option}
-              </Option>
+              <Option key={option}>{option}</Option>
             ))}
           </Combobox>
         </div>
@@ -225,15 +225,21 @@ function ShowcaseCards({ filteredUsers }: { filteredUsers: User[] }) {
     </section>
   );
 }
+
+  console.log(ThemeColorMode);
 export default function Showcase(): JSX.Element {
+  const [selected, setSelected] = useState(false);
   return (
-    <FluentProvider theme={teamsLightTheme}>
+    <FluentProvider
+      theme={ThemeColorMode != "dark" ? teamsLightTheme : teamsDarkTheme}
+      // theme={teamsDarkTheme}
+    >
       <Layout>
         <ShowcaseTemplateSearch />
         <div className={styles.filterAndCard}>
           <div className={styles.filter}>
             <ShowcaseLeftFilters />
-        </div>
+          </div>
           <div className={styles.card}>
             <ShowcaseCardPage />
           </div>

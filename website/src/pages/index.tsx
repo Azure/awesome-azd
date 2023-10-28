@@ -28,7 +28,8 @@ import { sortedUsers, unsortedUsers, TagList } from "../data/users";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import { useLocation } from "@docusaurus/router";
 import styles from "./styles.module.css";
-import { ThemeColorMode } from "../theme/Navbar/ColorModeToggle";
+import EventEmitter from '../utils/EventEmitter'
+import { useColorMode } from '@docusaurus/theme-common';
 
 initializeIcons();
 
@@ -226,25 +227,34 @@ function ShowcaseCards({ filteredUsers }: { filteredUsers: User[] }) {
   );
 }
 
-  console.log(ThemeColorMode);
+
+const App = () => {
+  const { colorMode, setColorMode } = useColorMode();
+  EventEmitter.addListener('switchStyle', () => {
+    colorMode == "dark" ? setColorMode("light") : setColorMode("dark")
+  })
+
+  return (<FluentProvider
+    theme={colorMode == "dark" ? teamsDarkTheme : teamsLightTheme}
+  // theme={teamsDarkTheme}
+  >
+    <ShowcaseTemplateSearch />
+    <div className={styles.filterAndCard}>
+      <div className={styles.filter}>
+        <ShowcaseLeftFilters />
+      </div>
+      <div className={styles.card}>
+        <ShowcaseCardPage />
+      </div>
+    </div>
+  </FluentProvider>)
+}
+
 export default function Showcase(): JSX.Element {
-  const [selected, setSelected] = useState(false);
+
   return (
-    <FluentProvider
-      theme={ThemeColorMode != "dark" ? teamsLightTheme : teamsDarkTheme}
-      // theme={teamsDarkTheme}
-    >
-      <Layout>
-        <ShowcaseTemplateSearch />
-        <div className={styles.filterAndCard}>
-          <div className={styles.filter}>
-            <ShowcaseLeftFilters />
-          </div>
-          <div className={styles.card}>
-            <ShowcaseCardPage />
-          </div>
-        </div>
-      </Layout>
-    </FluentProvider>
+    <Layout>
+      <App />
+    </Layout>
   );
 }

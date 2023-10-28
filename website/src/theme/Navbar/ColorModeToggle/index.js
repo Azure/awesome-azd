@@ -2,17 +2,18 @@ import React from 'react';
 import {useColorMode, useThemeConfig} from '@docusaurus/theme-common';
 import ColorModeToggle from '@theme/ColorModeToggle';
 import styles from './styles.module.css';
+import EventEmitter from '../../../utils/EventEmitter'
 
 export var ThemeColorMode = null;
 export default function NavbarColorModeToggle({className}) {
   const navbarStyle = useThemeConfig().navbar.style;
   const disabled = useThemeConfig().colorMode.disableSwitch;
-  const {colorMode, setColorMode} = useColorMode();
+  const {colorMode} = useColorMode();
   if (disabled) {
     return null;
   }
   ThemeColorMode = colorMode;
-  console.log("ThemeColorMode in Nar " + ThemeColorMode);
+  // console.log("ThemeColorMode in Nar " + ThemeColorMode);
   return (
     <ColorModeToggle
       className={className}
@@ -20,7 +21,9 @@ export default function NavbarColorModeToggle({className}) {
         navbarStyle === 'dark' ? styles.darkNavbarColorModeToggle : undefined
       }
       value={colorMode}
-      onChange={setColorMode}
+      onChange={()=>{
+        EventEmitter.emit('switchStyle')
+      }}
     />
   );
 }

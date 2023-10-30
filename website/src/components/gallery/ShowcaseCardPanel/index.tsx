@@ -26,19 +26,9 @@ import {
 } from "@fluentui/react";
 import ShowcaseMultipleAuthors from "../ShowcaseMultipleAuthors/index";
 import ShowcaseCardTag from "../ShowcaseTag/index";
+import { useColorMode } from "@docusaurus/theme-common";
 
-const useStyles = makeStyles({
-  cardDescription: {
-    fontSize: "14px",
-    color: "#707070",
-  },
-  cardTag: {
-    fontSize: "10px",
-    color: "#606060",
-  },
-});
-
-function copyButton(url: string) {
+function CopyButton({url,colorMode}: {url:string;colorMode:string}) {
   const copySVG = useBaseUrl("/img/purpleCopy.svg");
   const buttonId = useId("copyButton");
   const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] =
@@ -79,6 +69,7 @@ function copyButton(url: string) {
           onDismiss={toggleIsCalloutVisible}
           setInitialFocus
           directionalHint={DirectionalHint.topCenter}
+          backgroundColor={colorMode == "dark" ? "white" : "black"}
         >
           <Text variant="small">Copied</Text>
         </Callout>
@@ -88,7 +79,7 @@ function copyButton(url: string) {
 }
 
 export default function ShowcaseCardPanel({ user }: { user: User }) {
-  let [
+  const [
     isPopupVisibleTemplateDetails,
     { toggle: toggleIsPopupVisibleTemplateDetails },
   ] = useBoolean(true);
@@ -100,7 +91,14 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
 
   const templateURL = user.source.replace("https://github.com/", "");
   const azdInitCommand = "azd init -t " + templateURL;
-  const chevronSVG = useBaseUrl("/img/leftChevron.svg");
+  let chevronSVG = useBaseUrl("/img/leftChevron.svg");
+
+  let pivotTextColor = "black";
+  const { colorMode } = useColorMode();
+  if (colorMode == "dark") {
+    pivotTextColor = "white";
+    chevronSVG = useBaseUrl("/img/leftChevronDark.svg");
+  }
   const pivotStyles: IPivotStyles = {
     linkIsSelected: [
       {
@@ -114,13 +112,14 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
     root: "",
     link: "",
     linkContent: "",
-    text: "",
+    text: {
+      color: pivotTextColor,
+    },
     count: "",
     icon: "",
     linkInMenu: "",
     overflowMenuButton: "",
   };
-  const styles = useStyles();
   return (
     <div>
       <div
@@ -183,199 +182,196 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
       >
         <PivotItem
           style={{
-            color: "#242424",
             fontSize: "14px",
           }}
           headerText="Template Details"
         >
           <Label>
             <div
+              className={styles.textColor}
               style={{
-                color: "#242424",
                 fontSize: "14px",
                 fontWeight: "400",
               }}
             >
               {user.description}
             </div>
-            <div
-              style={{
-                display: "flex",
-                paddingTop: "30px",
-                borderBottom: "1px solid #D1D1D1",
-              }}
-            >
-              <div
-                style={{
-                  color: "#242424",
-                  fontSize: "14px",
-                  flex: "1",
-                }}
-              >
-                Quick Use
-              </div>
-              <DefaultButton
-                style={{
-                  backgroundColor: "transparent",
-                  borderColor: "transparent",
-                  minWidth: "0px",
-                  padding: "0px",
-                  height: "20px",
-                }}
-              >
-                <img
-                  onClick={toggleIsPopupVisibleTemplateDetails}
-                  src={chevronSVG}
-                  height={20}
-                  alt="Expand"
-                />
-              </DefaultButton>
-            </div>
-            {isPopupVisibleTemplateDetails && (
-              <Popup>
-                <div
-                  style={{
-                    color: "#242424",
-                    fontSize: "14px",
-                    fontWeight: "400",
-                    padding: "10px 0",
-                  }}
-                >
-                  If you already have the Azure Developer CLI installed on your
-                  machine, using this template is as simple as running this
-                  command in a new directory.
-                </div>
-                <div
-                  style={{
-                    backgroundColor: "#F5F5F5",
-                    border: "1px solid #E0E0E0",
-                    display: "flex",
-                    height: "32px",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <div
-                    style={{
-                      flex: "1",
-                      color: "#242424",
-                      fontSize: "12px",
-                      paddingLeft: "11px",
-                    }}
-                  >
-                    Terminal Command
-                  </div>
-                  {copyButton(azdInitCommand)}
-                </div>
-                <div
-                  style={{
-                    backgroundColor: "#FFFFFF",
-                    border: "1px solid #E0E0E0",
-                    height: "46px",
-                    padding: "11px",
-                  }}
-                >
-                  <div
-                    style={{
-                      margin: "auto",
-                      whiteSpace: "nowrap",
-                      overflow: "hidden",
-                      color: "#616161",
-                      fontFamily: "Consolas, Courier New, Courier, monospace",
-                      fontSize: "14px",
-                      fontWeight: "400",
-                    }}
-                  >
-                    {azdInitCommand}
-                  </div>
-                </div>
-                <div
-                  style={{
-                    paddingTop: "10px",
-                  }}
-                >
-                  <Separator alignContent="start">Or</Separator>
-                </div>
-
-                <div
-                  style={{
-                    color: "#242424",
-                    fontSize: "14px",
-                    fontWeight: "400",
-                    padding: "10px 0",
-                  }}
-                >
-                  If using the{" "}
-                  <a
-                    href={
-                      "https://marketplace.visualstudio.com/items?itemName=ms-azuretools.azure-dev"
-                    }
-                    target="_blank"
-                    style={{ color: "#7160E8" }}
-                  >
-                    azd VS Code extension
-                  </a>{" "}
-                  you can paste this URL in the VS Code command palette to lorem
-                  ipsum dolor sit amet, consectetur adipiscing elit.
-                </div>
-
-                <div
-                  style={{
-                    backgroundColor: "#F5F5F5",
-                    border: "1px solid #E0E0E0",
-                    display: "flex",
-                    height: "32px",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <div
-                    style={{
-                      flex: "1",
-                      color: "#242424",
-                      paddingLeft: "11px",
-                      fontSize: "12px",
-                    }}
-                  >
-                    Terminal URL
-                  </div>
-                  {copyButton(templateURL)}
-                </div>
-                <div
-                  style={{
-                    backgroundColor: "#FFFFFF",
-                    border: "1px solid #E0E0E0",
-                    height: "46px",
-                    padding: "11px",
-                  }}
-                >
-                  <div
-                    style={{
-                      margin: "auto",
-                      whiteSpace: "nowrap",
-                      overflow: "hidden",
-                      color: "#616161",
-                      fontFamily: "Consolas, Courier New, Courier, monospace",
-                      fontSize: "14px",
-                      fontWeight: "400",
-                    }}
-                  >
-                    {templateURL}
-                  </div>
-                </div>
-              </Popup>
-            )}
             <div>
               <div
+                className={styles.borderBottomColor}
                 style={{
                   display: "flex",
                   paddingTop: "30px",
-                  borderBottom: "1px solid #D1D1D1",
                 }}
               >
                 <div
+                  className={styles.textColor}
                   style={{
-                    color: "#242424",
+                    fontSize: "14px",
+                    flex: "1",
+                  }}
+                >
+                  Quick Use
+                </div>
+                <DefaultButton
+                  style={{
+                    backgroundColor: "transparent",
+                    borderColor: "transparent",
+                    minWidth: "0px",
+                    padding: "0px",
+                    height: "20px",
+                  }}
+                >
+                  <img
+                    onClick={toggleIsPopupVisibleTemplateDetails}
+                    src={chevronSVG}
+                    height={20}
+                    alt="Expand"
+                  />
+                </DefaultButton>
+              </div>
+              {isPopupVisibleTemplateDetails && (
+                <Popup>
+                  <div
+                    className={styles.textColor}
+                    style={{
+                      fontSize: "14px",
+                      fontWeight: "400",
+                      padding: "10px 0",
+                    }}
+                  >
+                    If you already have the Azure Developer CLI installed on
+                    your machine, using this template is as simple as running
+                    this command in a new directory.
+                  </div>
+                  <div
+                    className={styles.terminalSquareTopColor}
+                    style={{
+                      display: "flex",
+                      height: "32px",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <div
+                      className={styles.textColor}
+                      style={{
+                        flex: "1",
+                        fontSize: "12px",
+                        paddingLeft: "11px",
+                      }}
+                    >
+                      Terminal Command
+                    </div>
+                    <CopyButton colorMode={colorMode} url={azdInitCommand} />
+                  </div>
+                  <div
+                    className={styles.terminalSquareBottomColor}
+                    style={{
+                      height: "46px",
+                      padding: "11px",
+                    }}
+                  >
+                    <div
+                      className={styles.commandColor}
+                      style={{
+                        margin: "auto",
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        fontFamily: "Consolas, Courier New, Courier, monospace",
+                        fontSize: "14px",
+                        fontWeight: "400",
+                      }}
+                    >
+                      {azdInitCommand}
+                    </div>
+                  </div>
+                  <div
+                    style={{
+                      paddingTop: "10px",
+                    }}
+                  >
+                    <Separator alignContent="start">Or</Separator>
+                  </div>
+
+                  <div
+                    className={styles.textColor}
+                    style={{
+                      fontSize: "14px",
+                      fontWeight: "400",
+                      padding: "10px 0",
+                    }}
+                  >
+                    If using the{" "}
+                    <a
+                      href={
+                        "https://marketplace.visualstudio.com/items?itemName=ms-azuretools.azure-dev"
+                      }
+                      target="_blank"
+                      style={{ color: "#7160E8" }}
+                    >
+                      azd VS Code extension
+                    </a>{" "}
+                    you can paste this URL in the VS Code command palette to
+                    lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  </div>
+
+                  <div
+                    className={styles.terminalSquareTopColor}
+                    style={{
+                      display: "flex",
+                      height: "32px",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <div
+                      className={styles.textColor}
+                      style={{
+                        flex: "1",
+                        paddingLeft: "11px",
+                        fontSize: "12px",
+                      }}
+                    >
+                      Terminal URL
+                    </div>
+                    <CopyButton colorMode={colorMode} url={azdInitCommand} />
+                  </div>
+                  <div
+                    className={styles.terminalSquareBottomColor}
+                    style={{
+                      height: "46px",
+                      padding: "11px",
+                    }}
+                  >
+                    <div
+                      className={styles.commandColor}
+                      style={{
+                        margin: "auto",
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        fontFamily: "Consolas, Courier New, Courier, monospace",
+                        fontSize: "14px",
+                        fontWeight: "400",
+                      }}
+                    >
+                      {templateURL}
+                    </div>
+                  </div>
+                </Popup>
+              )}
+            </div>
+            <div>
+              <div
+                className={styles.borderBottomColor}
+                style={{
+                  display: "flex",
+                  paddingTop: "30px",
+                }}
+              >
+                <div
+                  className={styles.textColor}
+                  style={{
                     fontSize: "14px",
                     flex: "1",
                   }}
@@ -402,8 +398,8 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
               {IsPopupVisibleAzureCalculator && (
                 <Popup>
                   <div
+                    className={styles.textColor}
                     style={{
-                      color: "#242424",
                       fontSize: "14px",
                       fontWeight: "400",
                       padding: "10px 0",
@@ -440,8 +436,8 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
         >
           <Label>
             <div
+              className={styles.textColor}
               style={{
-                color: "#242424",
                 fontSize: "14px",
                 fontWeight: "400",
               }}
@@ -512,6 +508,7 @@ function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
         }}
       >
         <div
+          className={styles.squareColor}
           style={{
             height: "40px",
             width: "40px",
@@ -519,7 +516,6 @@ function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            backgroundColor: "#F5F5F5",
           }}
         >
           <img
@@ -530,8 +526,8 @@ function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
         </div>
         <div style={{ float: "right", height: "40px", paddingLeft: "20px" }}>
           <div
+            className={styles.textColor}
             style={{
-              color: "#242424",
               fontSize: "14px",
             }}
           >

@@ -28,10 +28,13 @@ import {
   Panel,
   PanelType,
   IPanelProps,
+  ThemeProvider,
+  PartialTheme,
 } from "@fluentui/react";
 import ShowcaseMultipleAuthors from "../ShowcaseMultipleAuthors/index";
 import ShowcaseCardPanel from "../ShowcaseCardPanel/index";
 import ShowcaseCardTag from "../ShowcaseTag/index";
+import { useColorMode } from "@docusaurus/theme-common";
 
 const useStyles = makeStyles({
   card: {
@@ -73,6 +76,20 @@ const useStyles = makeStyles({
   },
 });
 
+const lightTheme: PartialTheme = {
+  semanticColors: {
+    bodyBackground: "white",
+    bodyText: "black",
+  },
+};
+
+const darkTheme: PartialTheme = {
+  semanticColors: {
+    bodyBackground: "#292929",
+    bodyText: "white",
+  },
+};
+
 function ShowcaseCard({ user }: { user: User }) {
   const styles = useStyles();
   const tags = user.tags;
@@ -85,6 +102,7 @@ function ShowcaseCard({ user }: { user: User }) {
   let headerText = "COMMUNITY AUTHORED";
 
   // Panel
+  const { colorMode } = useColorMode();
   const [isOpen, { setTrue: openPanel, setFalse: dismissPanel }] =
     useBoolean(false);
   if (tags.includes("msft")) {
@@ -159,11 +177,13 @@ function ShowcaseCard({ user }: { user: User }) {
               alignItems: "center",
             }}
           >
-            <img src={headerLogo} height={16} alt="logo" className={styleCSS.headerLogo}/>
-            <div className={styleCSS.headerText}
-            >
-              {headerText}
-            </div>
+            <img
+              src={headerLogo}
+              height={16}
+              alt="logo"
+              className={styleCSS.headerLogo}
+            />
+            <div className={styleCSS.headerText}>{headerText}</div>
             {tags.includes("new") ? (
               <>
                 <img src={star} alt="Star" height={16} />
@@ -244,17 +264,22 @@ function ShowcaseCard({ user }: { user: User }) {
         >
           {user.description}
         </div>
-        <Panel
-          headerText={user.title}
-          isLightDismiss
-          isOpen={isOpen}
-          onDismiss={dismissPanel}
-          closeButtonAriaLabel="Close"
-          type={PanelType.medium}
-          onRenderNavigationContent={onRenderNavigationContent}
+        {/* Panel is Fluent UI 8. Must use ThemeProvider */}
+        <ThemeProvider
+          theme={colorMode != "dark" ? lightTheme : darkTheme}
         >
-          <ShowcaseCardPanel user={user} />
-        </Panel>
+          <Panel
+            headerText={user.title}
+            isLightDismiss
+            isOpen={isOpen}
+            onDismiss={dismissPanel}
+            closeButtonAriaLabel="Close"
+            type={PanelType.medium}
+            onRenderNavigationContent={onRenderNavigationContent}
+          >
+            <ShowcaseCardPanel user={user} />
+          </Panel>
+        </ThemeProvider>
         <div
           style={{ paddingTop: "10px", position: "absolute", bottom: "0px" }}
         >

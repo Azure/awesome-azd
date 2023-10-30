@@ -92,7 +92,6 @@
 .filterAndCard {
   display: flex;
   padding: 30px;
-  border-top: 1px solid #d1d1d1;
 }
 
 .filter {

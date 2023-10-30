@@ -8,6 +8,17 @@
   border-top: 1px solid #F0F0F0;
 }
 
+.card{
+  background: linear-gradient(#FAFAFA 0 0)bottom/100% 48px no-repeat;
+  border-radius: 8px;
+  padding: 12px;
+}
+
 [data-theme="dark"] .cardBreakLine {
-    border-top: 1px solid #292929;
+    border-top: 1px solid black;
+}
+
+[data-theme="dark"] .card{
+  border-radius: 8px;
+  padding: 12px;
 }

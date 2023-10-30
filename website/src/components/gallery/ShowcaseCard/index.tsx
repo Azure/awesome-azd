@@ -7,6 +7,7 @@ import React from "react";
 import styleCSS from "./styles.module.css";
 import { type User } from "../../../data/tags";
 import useBaseUrl from "@docusaurus/useBaseUrl";
+import clsx from 'clsx';
 import {
   Card,
   shorthands,
@@ -156,12 +157,7 @@ function ShowcaseCard({ user }: { user: User }) {
   return (
     <Card
       key={user.title}
-      className={styles.card}
-      style={{
-        background: "linear-gradient(#FAFAFA 0 0)bottom/100% 48px no-repeat",
-        borderRadius: "8px",
-        padding: "12px",
-      }}
+      className={clsx(styles.card,styleCSS.card)}
     >
       <CardHeader
         header={
@@ -291,9 +287,7 @@ function ShowcaseCard({ user }: { user: User }) {
           </div>
         </div>
       </div>
-      <CardPreview
-        className={styleCSS.cardBreakLine}
-      />
+      <CardPreview className={styleCSS.cardBreakLine} />
       <CardFooter>
         <Input
           id={"input_" + user.title}

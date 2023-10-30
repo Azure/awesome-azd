@@ -1,6 +1,6 @@
 /**
-* Copyright (c) Microsoft Corporation. All rights reserved.
-* Licensed under the MIT License.
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
  */
 
 import React from "react";
@@ -100,33 +100,38 @@ function ShowcaseFilterViewAll({
 }
 
 export default function ShowcaseLeftFilters() {
+  const sortTagList = TagList.sort();
   const uncategoryTag = TagList.filter((tag) => {
     const tagObject = Tags[tag];
     return tagObject.type === undefined;
   });
-  const languageTag = TagList.filter((tag) => {
+  const languageTag = sortTagList.filter((tag) => {
     const tagObject = Tags[tag];
     return tagObject.type === "Language";
   });
-  const frameworkTag = TagList.filter((tag) => {
+  const frameworkTag = sortTagList.filter((tag) => {
     const tagObject = Tags[tag];
     return tagObject.type === "Framework";
   });
-  const servicesTag = TagList.filter((tag) => {
+  const servicesTag = sortTagList.filter((tag) => {
     const tagObject = Tags[tag];
     return tagObject.type === "Service";
   });
-  const databaseTag = TagList.filter((tag) => {
+  const databaseTag = sortTagList.filter((tag) => {
     const tagObject = Tags[tag];
     return tagObject.type === "Database";
   });
-  const infrastructureAsCodeTag = TagList.filter((tag) => {
+  const infrastructureAsCodeTag = sortTagList.filter((tag) => {
     const tagObject = Tags[tag];
     return tagObject.type === "Infrastructure as Code";
   });
-  const otherTag = TagList.filter((tag) => {
+  const otherTag = sortTagList.filter((tag) => {
     const tagObject = Tags[tag];
     return tagObject.type === "Tools";
+  });
+  const topicTag = sortTagList.filter((tag) => {
+    const tagObject = Tags[tag];
+    return tagObject.type === "Topic";
   });
   const [openItems, setOpenItems] = React.useState([
     "1",
@@ -135,6 +140,7 @@ export default function ShowcaseLeftFilters() {
     "4",
     "5",
     "6",
+    "7",
   ]);
   const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
     setOpenItems(data.openItems);
@@ -149,7 +155,6 @@ export default function ShowcaseLeftFilters() {
       <div style={{ paddingBottom: "7px" }}>
         <div
           style={{
-            color: "#242424",
             fontSize: "20px",
             fontWeight: "500",
             padding: "0 0 15px 12px",
@@ -180,11 +185,7 @@ export default function ShowcaseLeftFilters() {
               "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
           }}
         >
-          <div
-            style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
-          >
-            Language
-          </div>
+          <div style={{ fontSize: "16px", fontWeight: "500" }}>Language</div>
         </AccordionHeader>
         <AccordionPanel>
           <ShowcaseFilterViewAll tags={languageTag} number={"1"} />
@@ -199,11 +200,7 @@ export default function ShowcaseLeftFilters() {
               "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
           }}
         >
-          <div
-            style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
-          >
-            Framework
-          </div>
+          <div style={{ fontSize: "16px", fontWeight: "500" }}>Framework</div>
         </AccordionHeader>
         <AccordionPanel>
           <ShowcaseFilterViewAll tags={frameworkTag} number={"2"} />
@@ -218,11 +215,7 @@ export default function ShowcaseLeftFilters() {
               "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
           }}
         >
-          <div
-            style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
-          >
-            Services
-          </div>
+          <div style={{ fontSize: "16px", fontWeight: "500" }}>Services</div>
         </AccordionHeader>
         <AccordionPanel>
           <ShowcaseFilterViewAll tags={servicesTag} number={"3"} />
@@ -237,11 +230,7 @@ export default function ShowcaseLeftFilters() {
               "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
           }}
         >
-          <div
-            style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
-          >
-            Database
-          </div>
+          <div style={{ fontSize: "16px", fontWeight: "500" }}>Database</div>
         </AccordionHeader>
         <AccordionPanel>
           <ShowcaseFilterViewAll tags={databaseTag} number={"4"} />
@@ -256,9 +245,7 @@ export default function ShowcaseLeftFilters() {
               "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
           }}
         >
-          <div
-            style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
-          >
+          <div style={{ fontSize: "16px", fontWeight: "500" }}>
             Infrastructure as Code
           </div>
         </AccordionHeader>
@@ -275,14 +262,25 @@ export default function ShowcaseLeftFilters() {
               "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
           }}
         >
-          <div
-            style={{ color: "#242424", fontSize: "16px", fontWeight: "500" }}
-          >
-            Tools
-          </div>
+          <div style={{ fontSize: "16px", fontWeight: "500" }}>Tools</div>
         </AccordionHeader>
         <AccordionPanel>
           <ShowcaseFilterViewAll tags={otherTag} number={"6"} />
+        </AccordionPanel>
+      </AccordionItem>
+
+      <AccordionItem value="7">
+        <AccordionHeader
+          expandIconPosition="end"
+          style={{
+            background:
+              "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
+          }}
+        >
+          <div style={{ fontSize: "16px", fontWeight: "500" }}>Topic</div>
+        </AccordionHeader>
+        <AccordionPanel>
+          <ShowcaseFilterViewAll tags={topicTag} number={"7"} />
         </AccordionPanel>
       </AccordionItem>
     </Accordion>

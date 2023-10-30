@@ -4,7 +4,6 @@ import ColorModeToggle from '@theme/ColorModeToggle';
 import styles from './styles.module.css';
 import EventEmitter from '../../../utils/EventEmitter'
 
-export var ThemeColorMode = null;
 export default function NavbarColorModeToggle({className}) {
   const navbarStyle = useThemeConfig().navbar.style;
   const disabled = useThemeConfig().colorMode.disableSwitch;
@@ -12,8 +11,6 @@ export default function NavbarColorModeToggle({className}) {
   if (disabled) {
     return null;
   }
-  ThemeColorMode = colorMode;
-  // console.log("ThemeColorMode in Nar " + ThemeColorMode);
   return (
     <ColorModeToggle
       className={className}
@@ -22,7 +19,7 @@ export default function NavbarColorModeToggle({className}) {
       }
       value={colorMode}
       onChange={()=>{
-        EventEmitter.emit('switchStyle')
+        EventEmitter.emit('switchColorMode')
       }}
     />
   );

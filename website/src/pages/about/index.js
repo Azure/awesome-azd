@@ -3,7 +3,9 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import { FluentProvider, Text, teamsLightTheme } from "@fluentui/react-components";
+import { FluentProvider, Text, teamsLightTheme,teamsDarkTheme } from "@fluentui/react-components";
+import EventEmitter from "../../utils/EventEmitter";
+import { useColorMode } from "@docusaurus/theme-common";
 import styles from "./index.module.css";
 
 function HomepageHeader() {
@@ -41,6 +43,21 @@ function HomepageHeader() {
   );
 }
 
+const HomeApp = () => {
+  const { colorMode, setColorMode } = useColorMode();
+  EventEmitter.addListener("switchColorMode", () => {
+    colorMode == "dark" ? setColorMode("light") : setColorMode("dark");
+  });
+
+  return (
+    <FluentProvider
+      theme={colorMode == "dark" ? teamsDarkTheme : teamsLightTheme}
+    >
+      <HomepageFeatures />
+    </FluentProvider>
+  );
+};
+
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   return (
@@ -49,9 +66,7 @@ export default function Home() {
       description="Description will go into a meta tag in <head />"
     >
       <HomepageHeader />
-      <FluentProvider theme={teamsLightTheme}>
-        <HomepageFeatures />
-      </FluentProvider>
+      <HomeApp />
     </Layout>
   );
 }

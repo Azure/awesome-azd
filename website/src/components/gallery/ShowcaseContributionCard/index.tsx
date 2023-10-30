@@ -72,7 +72,6 @@ export default function ShowcaseContributionCard(): React.ReactElement {
       />
       <div
         style={{
-          color: "#242424",
           fontSize: "20px",
           fontWeight: "550",
           height: "0px",
@@ -82,7 +81,6 @@ export default function ShowcaseContributionCard(): React.ReactElement {
       </div>
       <div
         style={{
-          color: "#242424",
           fontSize: "12px",
         }}
       >

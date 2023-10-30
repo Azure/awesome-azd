@@ -230,13 +230,13 @@ function ShowcaseCards({ filteredUsers }: { filteredUsers: User[] }) {
 
 const App = () => {
   const { colorMode, setColorMode } = useColorMode();
-  EventEmitter.addListener('switchStyle', () => {
+  EventEmitter.addListener('switchColorMode', () => {
     colorMode == "dark" ? setColorMode("light") : setColorMode("dark")
   })
 
-  return (<FluentProvider
+  return (
+  <FluentProvider
     theme={colorMode == "dark" ? teamsDarkTheme : teamsLightTheme}
-  // theme={teamsDarkTheme}
   >
     <ShowcaseTemplateSearch />
     <div className={styles.filterAndCard}>
@@ -247,11 +247,11 @@ const App = () => {
         <ShowcaseCardPage />
       </div>
     </div>
-  </FluentProvider>)
+  </FluentProvider>
+  )
 }
 
 export default function Showcase(): JSX.Element {
-
   return (
     <Layout>
       <App />

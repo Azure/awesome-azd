@@ -7,7 +7,7 @@ import React from "react";
 import styleCSS from "./styles.module.css";
 import { type User } from "../../../data/tags";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import clsx from 'clsx';
+import clsx from "clsx";
 import {
   Card,
   shorthands,
@@ -44,7 +44,6 @@ const useStyles = makeStyles({
   },
   text: {
     color: "#606060",
-    fontSize: "10px",
   },
   cardTitle: {
     verticalAlign: "middle",
@@ -110,12 +109,7 @@ function ShowcaseCard({ user }: { user: User }) {
               height={16}
               style={{ margin: "5px 0px", fontWeight: "550" }}
             />
-            <div
-              className={styles.text}
-              style={{ color: "#606060", paddingLeft: "3px" }}
-            >
-              {headerText}
-            </div>
+            <div className={styleCSS.headerTextCardPanel}>{headerText}</div>
             {tags.includes("new") ? (
               <>
                 <img
@@ -155,10 +149,7 @@ function ShowcaseCard({ user }: { user: User }) {
     );
 
   return (
-    <Card
-      key={user.title}
-      className={clsx(styles.card,styleCSS.card)}
-    >
+    <Card key={user.title} className={clsx(styles.card, styleCSS.card)}>
       <CardHeader
         header={
           <div
@@ -168,15 +159,8 @@ function ShowcaseCard({ user }: { user: User }) {
               alignItems: "center",
             }}
           >
-            <img src={headerLogo} height={16} alt="logo" />
-            <div
-              style={{
-                fontWeight: "600",
-                flex: "1",
-                paddingLeft: "3px",
-                color: "#707070",
-                fontSize: "10px",
-              }}
+            <img src={headerLogo} height={16} alt="logo" className={styleCSS.headerLogo}/>
+            <div className={styleCSS.headerText}
             >
               {headerText}
             </div>
@@ -306,13 +290,7 @@ function ShowcaseCard({ user }: { user: User }) {
           <PopoverTrigger disableButtonEnhancement>
             <Button
               size="small"
-              style={{
-                minWidth: "23px",
-                padding: "0px",
-                minHeight: "20px",
-                backgroundColor: "#7160E8",
-                borderColor: "#7160E8",
-              }}
+              className={styleCSS.copyButton}
               onClick={() => {
                 navigator.clipboard.writeText(azdInitCommand);
               }}

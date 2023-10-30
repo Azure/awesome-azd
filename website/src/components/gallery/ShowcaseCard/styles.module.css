@@ -5,20 +5,56 @@
 
 /* Keep for future change on light vs dark theme */
 .cardBreakLine {
-  border-top: 1px solid #F0F0F0;
+  border-top: 1px solid #f0f0f0;
 }
 
-.card{
-  background: linear-gradient(#FAFAFA 0 0)bottom/100% 48px no-repeat;
+.card {
+  background: linear-gradient(#fafafa 0 0) bottom/100% 48px no-repeat;
   border-radius: 8px;
   padding: 12px;
+}
+
+.headerText {
+  font-weight: 600;
+  flex: 1;
+  padding-left: 3px;
+  color: #707070;
+  font-size: 10px;
+}
+
+.headerTextCardPanel {
+  color: #606060;
+  font-size: 10px;
+  padding-left: 3px;
+}
+
+[data-theme="light"] .copyButton {
+  background-color: #7160e8;
+  border-color: #7160e8;
+  min-height: 20px;
+  min-width: 23px;
+  padding: 0px;
 }
 
 [data-theme="dark"] .cardBreakLine {
-    border-top: 1px solid black;
+  border-top: 1px solid black;
 }
 
-[data-theme="dark"] .card{
+[data-theme="dark"] .card {
   border-radius: 8px;
   padding: 12px;
+}
+
+[data-theme="dark"] .headerTextCardPanel {
+  color: #d6d6d6;
+}
+
+[data-theme="dark"] .headerText {
+  color: #d6d6d6;
+}
+
+[data-theme="dark"] .copyButton {
+  min-height: 20px;
+  min-width: 23px;
+  padding: 0px;
 }

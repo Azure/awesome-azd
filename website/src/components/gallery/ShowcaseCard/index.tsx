@@ -160,6 +160,7 @@ function ShowcaseCard({ user }: { user: User }) {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+              flex:"1",
             }}
           >
             <img
@@ -189,9 +190,6 @@ function ShowcaseCard({ user }: { user: User }) {
                   src={fire}
                   alt="Fire"
                   height={16}
-                  style={{
-                    paddingLeft: "6px",
-                  }}
                 />
                 <div
                   style={{

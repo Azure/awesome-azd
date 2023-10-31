@@ -7,10 +7,8 @@ import React from "react";
 import styleCSS from "./styles.module.css";
 import { type User } from "../../../data/tags";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import clsx from "clsx";
 import {
   Card,
-  shorthands,
   makeStyles,
   CardHeader,
   CardFooter,
@@ -37,17 +35,6 @@ import ShowcaseCardTag from "../ShowcaseTag/index";
 import { useColorMode } from "@docusaurus/theme-common";
 
 const useStyles = makeStyles({
-  card: {
-    ...shorthands.margin("auto"),
-    width: "350px",
-    height: "368px",
-    maxWidth: "100%",
-    maxHeight: "100%",
-    minWidth: "300px",
-  },
-  text: {
-    color: "#606060",
-  },
   cardTitle: {
     verticalAlign: "middle",
     fontSize: "16px",
@@ -99,7 +86,7 @@ function ShowcaseCard({ user }: { user: User }) {
   let azdInitCommand =
     "azd init -t " + source.replace("https://github.com/", "");
   let headerLogo = useBaseUrl("/img/Community.svg");
-  let headerText = "COMMUNITY AUTHORED";
+  let headerText = "Community Authored";
 
   // Panel
   const { colorMode } = useColorMode();
@@ -107,7 +94,7 @@ function ShowcaseCard({ user }: { user: User }) {
     useBoolean(false);
   if (tags.includes("msft")) {
     headerLogo = useBaseUrl("/img/Microsoft.svg");
-    headerText = "MICROSOFT AUTHORED";
+    headerText = "Microsoft Authored";
   }
   const onRenderNavigationContent: IRenderFunction<IPanelProps> =
     React.useCallback(
@@ -136,9 +123,7 @@ function ShowcaseCard({ user }: { user: User }) {
                   height={16}
                   style={{ paddingLeft: "10px" }}
                 />
-                <div className={styles.text} style={{ color: "#11910D" }}>
-                  NEW
-                </div>
+                <div style={{ color: "#11910D", fontSize: "10px" }}>New</div>
               </>
             ) : null}
 
@@ -150,8 +135,8 @@ function ShowcaseCard({ user }: { user: User }) {
                   height={16}
                   style={{ paddingLeft: "10px" }}
                 />
-                <div className={styles.text} style={{ color: "#F7630C" }}>
-                  POPULAR
+                <div style={{ color: "#F7630C", fontSize: "10px" }}>
+                  Popular
                 </div>
               </>
             ) : null}
@@ -167,7 +152,7 @@ function ShowcaseCard({ user }: { user: User }) {
     );
 
   return (
-    <Card key={user.title} className={clsx(styles.card, styleCSS.card)}>
+    <Card key={user.title} className={styleCSS.card}>
       <CardHeader
         header={
           <div
@@ -188,13 +173,13 @@ function ShowcaseCard({ user }: { user: User }) {
               <>
                 <img src={star} alt="Star" height={16} />
                 <div
-                  className={styles.text}
                   style={{
                     color: "#11910D",
                     fontWeight: "600",
+                    fontSize: "10px",
                   }}
                 >
-                  NEW
+                  New
                 </div>
               </>
             ) : null}
@@ -209,13 +194,13 @@ function ShowcaseCard({ user }: { user: User }) {
                   }}
                 />
                 <div
-                  className={styles.text}
                   style={{
                     color: "#F7630C",
                     fontWeight: "600",
+                    fontSize: "10px",
                   }}
                 >
-                  POPULAR
+                  Popular
                 </div>
               </>
             ) : null}
@@ -265,9 +250,7 @@ function ShowcaseCard({ user }: { user: User }) {
           {user.description}
         </div>
         {/* Panel is Fluent UI 8. Must use ThemeProvider */}
-        <ThemeProvider
-          theme={colorMode != "dark" ? lightTheme : darkTheme}
-        >
+        <ThemeProvider theme={colorMode != "dark" ? lightTheme : darkTheme}>
           <Panel
             headerText={user.title}
             isLightDismiss
@@ -315,7 +298,23 @@ function ShowcaseCard({ user }: { user: User }) {
           <PopoverTrigger disableButtonEnhancement>
             <Button
               size="small"
-              className={styleCSS.copyButton}
+              style={
+                colorMode != "dark"
+                  ? {
+                      padding: " 0px",
+                      minHeight: "20px",
+                      minWidth: "23px",
+                      backgroundColor: "#7160e8",
+                      borderColor: "#7160e8",
+                    }
+                  : {
+                      padding: " 0px",
+                      minHeight: "20px",
+                      minWidth: "23px",
+                      backgroundColor: "#292929",
+                      borderColor: "#666666",
+                    }
+              }
               onClick={() => {
                 navigator.clipboard.writeText(azdInitCommand);
               }}

@@ -84,10 +84,10 @@ function filterUsers(
 
 function readSortChoice(rule: string): User[] {
   if (rule == SORT_BY_OPTIONS[0]) {
-    return unsortedUsers;
-  } else if (rule == SORT_BY_OPTIONS[1]) {
     const copyUnsortedUser = unsortedUsers.slice();
-    return copyUnsortedUser.reverse();
+    return copyUnsortedUser.reverse();;
+  } else if (rule == SORT_BY_OPTIONS[1]) {
+    return unsortedUsers;
   } else if (rule == SORT_BY_OPTIONS[2]) {
     return sortedUsers;
   } else if (rule == SORT_BY_OPTIONS[3]) {
@@ -170,7 +170,7 @@ function ShowcaseCardPage() {
         <div
           style={{
             display: "flex",
-            gap: "3px",
+            gap: "8px",
             alignItems: "center",
           }}
         >
@@ -179,7 +179,7 @@ function ShowcaseCardPage() {
             style={{ minWidth: "unset" }}
             input={{ style: { width: "130px" } }}
             aria-labelledby="combo-default"
-            placeholder="Placeholder text"
+            placeholder={SORT_BY_OPTIONS[2]}
             onOptionSelect={sortByOnSelect}
           >
             {SORT_BY_OPTIONS.map((option) => (

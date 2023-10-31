@@ -12,6 +12,11 @@
   background: linear-gradient(#fafafa 0 0) bottom/100% 48px no-repeat;
   border-radius: 8px;
   padding: 12px;
+  width: 350px;
+  height: 368px;
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 300px;
 }
 
 .headerText {
@@ -28,21 +33,13 @@
   padding-left: 3px;
 }
 
-[data-theme="light"] .copyButton {
-  background-color: #7160e8;
-  border-color: #7160e8;
-  min-height: 20px;
-  min-width: 23px;
-  padding: 0px;
-}
 
 [data-theme="dark"] .cardBreakLine {
   border-top: 1px solid black;
 }
 
 [data-theme="dark"] .card {
-  border-radius: 8px;
-  padding: 12px;
+  background: linear-gradient(#292929 0 0) bottom/100% 48px no-repeat;
 }
 
 [data-theme="dark"] .headerTextCardPanel {
@@ -51,10 +48,4 @@
 
 [data-theme="dark"] .headerText {
   color: #d6d6d6;
-}
-
-[data-theme="dark"] .copyButton {
-  min-height: 20px;
-  min-width: 23px;
-  padding: 0px;
 }

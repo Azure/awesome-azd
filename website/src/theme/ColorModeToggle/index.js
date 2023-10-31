@@ -5,7 +5,7 @@ import {translate} from '@docusaurus/Translate';
 import IconLightMode from '@theme/Icon/LightMode';
 import IconDarkMode from '@theme/Icon/DarkMode';
 import styles from './styles.module.css';
-function ColorModeToggle({className, buttonClassName, value, onChange, github}) {
+function ColorModeToggle({className, buttonClassName, value, onChange}) {
   
   const isBrowser = useIsBrowser();
   const title = translate(

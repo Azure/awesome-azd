@@ -72,10 +72,9 @@ export default function ShowcaseCardTag({
           <Badge
             appearance="outline"
             size="medium"
+            color="informative"
             style={{
               alignContent: "center",
-              borderColor: "#E0E0E0",
-              color: "#616161",
               fontSize: "10px",
             }}
           >

@@ -1,6 +1,6 @@
 /**
-* Copyright (c) Microsoft Corporation. All rights reserved.
-* Licensed under the MIT License.
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
  */
 
 import React, { useState, useMemo, useEffect } from "react";
@@ -20,6 +20,7 @@ import {
   Text,
   Combobox,
   Option,
+  teamsDarkTheme,
 } from "@fluentui/react-components";
 import { initializeIcons } from "@fluentui/react/lib/Icons";
 import { type User, type TagType } from "../data/tags";
@@ -27,6 +28,8 @@ import { sortedUsers, unsortedUsers, TagList } from "../data/users";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import { useLocation } from "@docusaurus/router";
 import styles from "./styles.module.css";
+import EventEmitter from '../utils/EventEmitter'
+import { useColorMode } from '@docusaurus/theme-common';
 
 initializeIcons();
 
@@ -81,10 +84,10 @@ function filterUsers(
 
 function readSortChoice(rule: string): User[] {
   if (rule == SORT_BY_OPTIONS[0]) {
-    return unsortedUsers;
-  } else if (rule == SORT_BY_OPTIONS[1]) {
     const copyUnsortedUser = unsortedUsers.slice();
-    return copyUnsortedUser.reverse();
+    return copyUnsortedUser.reverse();;
+  } else if (rule == SORT_BY_OPTIONS[1]) {
+    return unsortedUsers;
   } else if (rule == SORT_BY_OPTIONS[2]) {
     return sortedUsers;
   } else if (rule == SORT_BY_OPTIONS[3]) {
@@ -167,7 +170,7 @@ function ShowcaseCardPage() {
         <div
           style={{
             display: "flex",
-            gap: "3px",
+            gap: "8px",
             alignItems: "center",
           }}
         >
@@ -176,13 +179,11 @@ function ShowcaseCardPage() {
             style={{ minWidth: "unset" }}
             input={{ style: { width: "130px" } }}
             aria-labelledby="combo-default"
-            placeholder="Placeholder text"
+            placeholder={SORT_BY_OPTIONS[2]}
             onOptionSelect={sortByOnSelect}
           >
             {SORT_BY_OPTIONS.map((option) => (
-              <Option key={option}>
-                {option}
-              </Option>
+              <Option key={option}>{option}</Option>
             ))}
           </Combobox>
         </div>
@@ -225,20 +226,35 @@ function ShowcaseCards({ filteredUsers }: { filteredUsers: User[] }) {
     </section>
   );
 }
+
+
+const App = () => {
+  const { colorMode, setColorMode } = useColorMode();
+  EventEmitter.addListener('switchColorMode', () => {
+    colorMode == "dark" ? setColorMode("light") : setColorMode("dark")
+  })
+
+  return (
+  <FluentProvider
+    theme={colorMode == "dark" ? teamsDarkTheme : teamsLightTheme}
+  >
+    <ShowcaseTemplateSearch />
+    <div className={styles.filterAndCard}>
+      <div className={styles.filter}>
+        <ShowcaseLeftFilters />
+      </div>
+      <div className={styles.card}>
+        <ShowcaseCardPage />
+      </div>
+    </div>
+  </FluentProvider>
+  )
+}
+
 export default function Showcase(): JSX.Element {
   return (
-    <FluentProvider theme={teamsLightTheme}>
-      <Layout>
-        <ShowcaseTemplateSearch />
-        <div className={styles.filterAndCard}>
-          <div className={styles.filter}>
-            <ShowcaseLeftFilters />
-        </div>
-          <div className={styles.card}>
-            <ShowcaseCardPage />
-          </div>
-        </div>
-      </Layout>
-    </FluentProvider>
+    <Layout>
+      <App />
+    </Layout>
   );
 }

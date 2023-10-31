@@ -9,7 +9,6 @@
   overflow: hidden;
   position: relative;
   width: 100%;
-  background-color: white;
 }
 
 .cover {
@@ -41,6 +40,7 @@
   justify-content: center;
   align-items: start;
   flex-flow: column;
+  color:black;
 }
 
 .description .title {
@@ -54,7 +54,7 @@
 }
 
 [data-theme="dark"] .heroBanner {
-  background-color: black;
+  background-color: #292929;
 }
 
 @media screen and (max-width: 996px) {

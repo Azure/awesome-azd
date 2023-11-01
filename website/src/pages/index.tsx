@@ -28,8 +28,8 @@ import { sortedUsers, unsortedUsers, TagList } from "../data/users";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import { useLocation } from "@docusaurus/router";
 import styles from "./styles.module.css";
-import EventEmitter from '../utils/EventEmitter'
-import { useColorMode } from '@docusaurus/theme-common';
+import EventEmitter from "../utils/EventEmitter";
+import { useColorMode } from "@docusaurus/theme-common";
 
 initializeIcons();
 
@@ -85,7 +85,7 @@ function filterUsers(
 function readSortChoice(rule: string): User[] {
   if (rule == SORT_BY_OPTIONS[0]) {
     const copyUnsortedUser = unsortedUsers.slice();
-    return copyUnsortedUser.reverse();;
+    return copyUnsortedUser.reverse();
   } else if (rule == SORT_BY_OPTIONS[1]) {
     return unsortedUsers;
   } else if (rule == SORT_BY_OPTIONS[2]) {
@@ -227,29 +227,28 @@ function ShowcaseCards({ filteredUsers }: { filteredUsers: User[] }) {
   );
 }
 
-
 const App = () => {
   const { colorMode, setColorMode } = useColorMode();
-  EventEmitter.addListener('switchColorMode', () => {
-    colorMode == "dark" ? setColorMode("light") : setColorMode("dark")
-  })
+  EventEmitter.addListener("switchColorMode", () => {
+    colorMode == "dark" ? setColorMode("light") : setColorMode("dark");
+  });
 
   return (
-  <FluentProvider
-    theme={colorMode == "dark" ? teamsDarkTheme : teamsLightTheme}
-  >
-    <ShowcaseTemplateSearch />
-    <div className={styles.filterAndCard}>
-      <div className={styles.filter}>
-        <ShowcaseLeftFilters />
+    <FluentProvider
+      theme={colorMode == "dark" ? teamsDarkTheme : teamsLightTheme}
+    >
+      <ShowcaseTemplateSearch />
+      <div className={styles.filterAndCard}>
+        <div className={styles.filter}>
+          <ShowcaseLeftFilters />
+        </div>
+        <div className={styles.card}>
+          <ShowcaseCardPage />
+        </div>
       </div>
-      <div className={styles.card}>
-        <ShowcaseCardPage />
-      </div>
-    </div>
-  </FluentProvider>
-  )
-}
+    </FluentProvider>
+  );
+};
 
 export default function Showcase(): JSX.Element {
   return (

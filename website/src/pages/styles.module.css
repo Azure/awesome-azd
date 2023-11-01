@@ -107,6 +107,13 @@
   margin: 0px 25px;
 }
 
+.load{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 @media screen and (max-width: 996px) {
   .filterAndCard {
     flex-direction: column;

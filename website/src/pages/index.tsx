@@ -244,15 +244,16 @@ const App = () => {
   }, []);
 
   return (
-    <FluentProvider
-      theme={colorMode == "dark" ? teamsDarkTheme : teamsLightTheme}
-    >
+    <>
       {loading ? (
         <div className={styles.load}>
           <Spinner labelPosition="below" label="Loading..." />
         </div>
       ) : (
         <div>
+          <FluentProvider
+            theme={colorMode == "dark" ? teamsDarkTheme : teamsLightTheme}
+          >
             <ShowcaseTemplateSearch />
             <div className={styles.filterAndCard}>
               <div className={styles.filter}>
@@ -262,9 +263,10 @@ const App = () => {
                 <ShowcaseCardPage />
               </div>
             </div>
+          </FluentProvider>
         </div>
       )}
-    </FluentProvider>
+    </>
   );
 };
 

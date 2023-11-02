@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import { FluentProvider, Text, teamsLightTheme,teamsDarkTheme } from "@fluentui/react-components";
+import {
+  Text,
+  Spinner,
+  teamsLightTheme,
+  teamsDarkTheme,
+  FluentProvider,
+} from "@fluentui/react-components";
 import EventEmitter from "../../utils/EventEmitter";
 import { useColorMode } from "@docusaurus/theme-common";
-import styles from "./index.module.css";
+import styles from "./styles.module.css";
 
 function HomepageHeader() {
   return (
@@ -21,13 +27,13 @@ function HomepageHeader() {
       />
       <div className={styles.section}>
         <div className={styles.description}>
-          <div className={styles.title}>
+          <Text>
             Accelerate your journey to the cloud with azd
-          </div>
-          <div className={styles.content}>
+          </Text>
+          <Text>
             Azure Developer CLI (azd) is an open-source tool that accelerates
             your application’s journey from local development to Azure
-          </div>
+          </Text>
         </div>
         <div>
           <iframe
@@ -36,7 +42,7 @@ function HomepageHeader() {
             title="Azure Developer CLI: GitHub to cloud in minutes - Universe 2022"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
-          ></iframe>
+          />
         </div>
       </div>
     </header>
@@ -49,11 +55,28 @@ const HomeApp = () => {
     colorMode == "dark" ? setColorMode("light") : setColorMode("dark");
   });
 
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  }, []);
+
   return (
     <FluentProvider
       theme={colorMode == "dark" ? teamsDarkTheme : teamsLightTheme}
     >
-      <HomepageFeatures />
+      {loading ? (
+        <div className={styles.load}>
+          <Spinner labelPosition="below" label="Loading..." />
+        </div>
+      ) : (
+        <div className="container">
+          <HomepageHeader />
+          <HomepageFeatures />
+        </div>
+      )}
     </FluentProvider>
   );
 };
@@ -65,7 +88,6 @@ export default function Home() {
       title={`Welcome to ${siteConfig.title}`}
       description="Description will go into a meta tag in <head />"
     >
-      <HomepageHeader />
       <HomeApp />
     </Layout>
   );

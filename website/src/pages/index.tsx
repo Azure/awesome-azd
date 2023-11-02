@@ -235,12 +235,17 @@ const App = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const [cardLoading, setCardLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 500);
+    setCardLoading(true);
+    setTimeout(() => {
+      setCardLoading(false);
+    }, 1000);
   }, []);
 
   return (
@@ -263,9 +268,15 @@ const App = () => {
               <div className={styles.filter}>
                 <ShowcaseLeftFilters />
               </div>
-              <div className={styles.card}>
-                <ShowcaseCardPage />
-              </div>
+              {cardLoading ? (
+                <div className={styles.cardLoad}>
+                  <Spinner labelPosition="below" label="Loading..." />
+                </div>
+              ) : (
+                <div className={styles.card}>
+                  <ShowcaseCardPage />
+                </div>
+              )}
             </div>
           </FluentProvider>
         </div>

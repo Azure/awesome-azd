@@ -292,11 +292,3 @@ export default function Showcase(): JSX.Element {
     </Layout>
   );
 };
-
-export default function Showcase(): JSX.Element {
-  return (
-    <Layout>
-      <App />
-    </Layout>
-  );
-}

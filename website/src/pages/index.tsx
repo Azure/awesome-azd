@@ -12,16 +12,14 @@ import ShowcaseTemplateSearch, {
 import {
   teamsLightTheme,
   teamsDarkTheme,
-  Spinner,
   FluentProvider,
 } from "@fluentui/react-components";
 import { initializeIcons } from "@fluentui/react/lib/Icons";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 
 import styles from "./styles.module.css";
-import EventEmitter from "../utils/EventEmitter";
 import { useColorMode } from "@docusaurus/theme-common";
-import { ShowcaseCardPage } from "./ShowcaseCardPage"
+import ShowcaseCardPage from "./ShowcaseCardPage"
 
 initializeIcons();
 
@@ -37,28 +35,31 @@ export function prepareUserState(): UserState | undefined {
 }
 
 const App = () => {
-  const { colorMode, setColorMode } = useColorMode();
-  EventEmitter.addListener("switchColorMode", () => {
-    colorMode == "dark" ? setColorMode("light") : setColorMode("dark");
-  });
+  const { colorMode } = useColorMode();
+  const [loading, setLoading] = useState(true);
 
-  return (
-    <>
-      <FluentProvider
-        theme={colorMode == "dark" ? teamsDarkTheme : teamsLightTheme}
-      >
-        <ShowcaseTemplateSearch />
-        <div className={styles.filterAndCard}>
-          <div className={styles.filter}>
-            <ShowcaseLeftFilters />
-          </div>
-          <div className={styles.card}>
-            <ShowcaseCardPage />
-          </div>
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  }, []);
+
+  return !loading ?
+    <FluentProvider
+      theme={colorMode == "dark" ? teamsDarkTheme : teamsLightTheme}
+    >
+      <ShowcaseTemplateSearch />
+      <div className={styles.filterAndCard}>
+        <div className={styles.filter}>
+          <ShowcaseLeftFilters />
         </div>
-      </FluentProvider>
-    </>
-  );
+        <div className={styles.card}>
+          <ShowcaseCardPage />
+        </div>
+      </div>
+    </FluentProvider>
+    :
+    null
 };
 
 export default function Showcase(): JSX.Element {

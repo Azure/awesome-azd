@@ -13,7 +13,7 @@ import {
     Option,
     Spinner,
 } from "@fluentui/react-components";
-import { ShowcaseCards } from "./ShowcaseCards"
+import ShowcaseCards from "./ShowcaseCards"
 
 function restoreUserState(userState: UserState | null) {
     const { scrollTopPosition, focusedElementId } = userState ?? {
@@ -65,36 +65,16 @@ function filterUsers(
             user.title.toLowerCase().includes(searchName.toLowerCase())
         );
     }
-    if (selectedTags.length === 0) {
+    if (!selectedTags && selectedTags.length === 0) {
         return users;
     }
     return users.filter((user) => {
-        if (user.tags.length === 0) {
+        if (!user && !user.tags && user.tags.length === 0) {
             return false;
         }
         return selectedTags.every((tag) => user.tags.includes(tag));
     });
 }
-
-// function useFilteredUsers(rule: string) {
-//     const location = useLocation<UserState>();
-//     // On SSR / first mount (hydration) no tag is selected
-//     const [selectedTags, setSelectedTags] = useState<TagType[]>([]);
-//     const [searchName, setSearchName] = useState<string | null>(null);
-//     const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
-//     // Sync tags from QS to state (delayed on purpose to avoid SSR/Client
-//     // hydration mismatch)
-//     useEffect(() => {
-//         setSelectedTags(readSearchTags(location.search));
-//         setSelectedUsers(readSortChoice(rule));
-//         setSearchName(readSearchName(location.search));
-//         restoreUserState(location.state);
-//     }, [location, rule]);
-//     return useMemo(
-//         () => filterUsers(selectedUsers, selectedTags, searchName),
-//         [selectedUsers, selectedTags, searchName]
-//     );
-// }
 
 export default function ShowcaseCardPage() {
     const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
@@ -104,7 +84,7 @@ export default function ShowcaseCardPage() {
     const [searchName, setSearchName] = useState<string | null>(null);
     const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
     const location = useLocation<UserState>();
-
+    
     useEffect(() => {
         setSelectedTags(readSearchTags(location.search));
         setSelectedUsers(readSortChoice(selectedOptions[0]));
@@ -122,7 +102,7 @@ export default function ShowcaseCardPage() {
         setLoading(true)
         setSelectedOptions(data.selectedOptions);
     };
-    const templateNumber = cards.length;
+    const templateNumber = cards? cards.length : 0;
 
     return (
         <>

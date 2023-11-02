@@ -15,13 +15,13 @@ import ShowcaseTemplateSearch, {
   InputValue,
 } from "../components/gallery/ShowcaseTemplateSearch";
 import {
-  FluentProvider,
   teamsLightTheme,
   Text,
   Combobox,
   Option,
   teamsDarkTheme,
   Spinner,
+  FluentProvider,
 } from "@fluentui/react-components";
 import { initializeIcons } from "@fluentui/react/lib/Icons";
 import { type User, type TagType } from "../data/tags";
@@ -282,6 +282,14 @@ const App = () => {
         </div>
       )}
     </>
+  );
+};
+
+export default function Showcase(): JSX.Element {
+  return (
+    <Layout>
+      <App />
+    </Layout>
   );
 };
 

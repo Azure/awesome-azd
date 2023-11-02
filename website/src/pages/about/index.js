@@ -5,16 +5,23 @@ import HomepageFeatures from "@site/src/components/HomepageFeatures";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import {
   Text,
-  Spinner,
   teamsLightTheme,
   teamsDarkTheme,
+  makeStyles,
+  typographyStyles,
   FluentProvider,
 } from "@fluentui/react-components";
-import EventEmitter from "../../utils/EventEmitter";
 import { useColorMode } from "@docusaurus/theme-common";
 import styles from "./styles.module.css";
 
+const useStyles = makeStyles({
+  largeTitle: typographyStyles.largeTitle,
+  title3: typographyStyles.title3,
+  subtitle1: typographyStyles.subtitle1,
+});
+
 function HomepageHeader() {
+  const style = useStyles();
   return (
     <header className={styles.heroBanner}>
       <img
@@ -27,12 +34,15 @@ function HomepageHeader() {
       />
       <div className={styles.section}>
         <div className={styles.description}>
-          <Text>
+          <Text
+            className={style.largeTitle}
+            style={{ marginBottom: "6px", color: "#242424" }}
+          >
             Accelerate your journey to the cloud with azd
           </Text>
-          <Text>
+          <Text className={style.title3} style={{ color: "#242424" }}>
             Azure Developer CLI (azd) is an open-source tool that accelerates
-            your application’s journey from local development to Azure
+            your application’s journey from local development to Azure.
           </Text>
         </div>
         <div>
@@ -51,9 +61,6 @@ function HomepageHeader() {
 
 const HomeApp = () => {
   const { colorMode, setColorMode } = useColorMode();
-  EventEmitter.addListener("switchColorMode", () => {
-    colorMode == "dark" ? setColorMode("light") : setColorMode("dark");
-  });
 
   const [loading, setLoading] = useState(false);
   useEffect(() => {

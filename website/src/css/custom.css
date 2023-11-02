@@ -21,6 +21,14 @@
   font-size: 16px;
 }
 
+.navbar .navbar__inner .navbar__items .navbar__link{
+  color:#242424;
+}
+
+.navbar .navbar__inner .navbar__items .navbar__title{
+  color:#242424;
+}
+
 .navbar .navbar__inner .navbar__items .navbar__link--active{
   text-decoration-line: underline;
   text-underline-offset: 20px;
@@ -32,6 +40,14 @@
 }
 
 [data-theme='dark'] .navbar .navbar__inner .navbar__items .navbar__brand:hover{
+  color:white;
+}
+
+[data-theme='dark'] .navbar .navbar__inner .navbar__items .navbar__link{
+  color:white;
+}
+
+ [data-theme='dark'] .navbar .navbar__inner .navbar__items .navbar__title{
   color:white;
 }
 

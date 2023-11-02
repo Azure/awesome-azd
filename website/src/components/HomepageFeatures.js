@@ -13,7 +13,7 @@ import Feature from '@site/src/components/Feature';
 const FeatureList = [
   {
     title: "Discover Templates",
-    Svg: "img/home-discover.png",
+    Svg: "img/home-discover.svg",
     link: "https://azure.github.io/awesome-azd/",
     description:
       "View our gallery of community-contributed and Microsoft-authored templates.",
@@ -21,7 +21,7 @@ const FeatureList = [
   },
   {
     title: "Learn more about azd",
-    Svg: "img/home-learn.png",
+    Svg: "img/home-learn.svg",
     link: "https://aka.ms/azd",
     description:
       "Read our documentation for more information about azd and its features.",
@@ -29,7 +29,7 @@ const FeatureList = [
   },
   {
     title: "Create your own template",
-    Svg: "img/home-create.png",
+    Svg: "img/home-create.svg",
     link: "https://learn.microsoft.com/azure/developer/azure-developer-cli/make-azd-compatible?pivots=azd-create",
     description:
       "Learn how to build a template with step-by-step instructions.",
@@ -37,7 +37,7 @@ const FeatureList = [
   },
   {
     title: "Contribute to the Gallery",
-    Svg: "img/home-contribute.png",
+    Svg: "img/home-contribute.svg",
     link: "https://azure.github.io/awesome-azd/docs/intro",
     description:
       "After making your azd template, consider adding it to our gallery to share with fellow azd-developers.",

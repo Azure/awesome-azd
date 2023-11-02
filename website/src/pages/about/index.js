@@ -9,7 +9,6 @@ import {
   teamsDarkTheme,
   makeStyles,
   typographyStyles,
-  Spinner,
   FluentProvider,
 } from "@fluentui/react-components";
 import { useColorMode } from "@docusaurus/theme-common";
@@ -61,30 +60,16 @@ function HomepageHeader() {
 }
 
 const HomeApp = () => {
-  const { colorMode, setColorMode } = useColorMode();
-
-  const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 500);
-  }, []);
+  const { colorMode } = useColorMode();
 
   return (
     <FluentProvider
       theme={colorMode == "dark" ? teamsDarkTheme : teamsLightTheme}
     >
-      {loading ? (
-        <div className={styles.load}>
-          <Spinner labelPosition="below" label="Loading..." />
-        </div>
-      ) : (
-        <div className="container">
+      <div className="container">
           <HomepageHeader />
           <HomepageFeatures />
         </div>
-      )}
     </FluentProvider>
   );
 };

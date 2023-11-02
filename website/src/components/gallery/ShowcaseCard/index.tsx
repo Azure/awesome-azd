@@ -4,12 +4,11 @@
  */
 
 import React from "react";
-import styles from "./styles.module.css";
+import styleCSS from "./styles.module.css";
 import { type User } from "../../../data/tags";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import {
   Card,
-  shorthands,
   makeStyles,
   CardHeader,
   CardFooter,
@@ -27,24 +26,15 @@ import {
   Panel,
   PanelType,
   IPanelProps,
+  ThemeProvider,
+  PartialTheme,
 } from "@fluentui/react";
 import ShowcaseMultipleAuthors from "../ShowcaseMultipleAuthors/index";
 import ShowcaseCardPanel from "../ShowcaseCardPanel/index";
 import ShowcaseCardTag from "../ShowcaseTag/index";
+import { useColorMode } from "@docusaurus/theme-common";
 
 const useStyles = makeStyles({
-  card: {
-    ...shorthands.margin("auto"),
-    width: "350px",
-    height: "368px",
-    maxWidth: "100%",
-    maxHeight: "100%",
-    minWidth: "300px",
-  },
-  text: {
-    color: "#606060",
-    fontSize: "10px",
-  },
   cardTitle: {
     verticalAlign: "middle",
     fontSize: "16px",
@@ -73,7 +63,21 @@ const useStyles = makeStyles({
   },
 });
 
-function ShowcaseCard({ user }: { user: User }) {
+const lightTheme: PartialTheme = {
+  semanticColors: {
+    bodyBackground: "white",
+    bodyText: "black",
+  },
+};
+
+const darkTheme: PartialTheme = {
+  semanticColors: {
+    bodyBackground: "#292929",
+    bodyText: "white",
+  },
+};
+
+function ShowcaseCard({ user }: { user: User }):JSX.Element {
   const styles = useStyles();
   const tags = user.tags;
   const source = user.source;
@@ -82,14 +86,15 @@ function ShowcaseCard({ user }: { user: User }) {
   let azdInitCommand =
     "azd init -t " + source.replace("https://github.com/", "");
   let headerLogo = useBaseUrl("/img/Community.svg");
-  let headerText = "COMMUNITY AUTHORED";
+  let headerText = "Community Authored";
 
   // Panel
+  const { colorMode } = useColorMode();
   const [isOpen, { setTrue: openPanel, setFalse: dismissPanel }] =
     useBoolean(false);
   if (tags.includes("msft")) {
     headerLogo = useBaseUrl("/img/Microsoft.svg");
-    headerText = "MICROSOFT AUTHORED";
+    headerText = "Microsoft Authored";
   }
   const onRenderNavigationContent: IRenderFunction<IPanelProps> =
     React.useCallback(
@@ -109,12 +114,7 @@ function ShowcaseCard({ user }: { user: User }) {
               height={16}
               style={{ margin: "5px 0px", fontWeight: "550" }}
             />
-            <div
-              className={styles.text}
-              style={{ color: "#606060", paddingLeft: "3px" }}
-            >
-              {headerText}
-            </div>
+            <div className={styleCSS.headerTextCardPanel}>{headerText}</div>
             {tags.includes("new") ? (
               <>
                 <img
@@ -123,9 +123,7 @@ function ShowcaseCard({ user }: { user: User }) {
                   height={16}
                   style={{ paddingLeft: "10px" }}
                 />
-                <div className={styles.text} style={{ color: "#11910D" }}>
-                  NEW
-                </div>
+                <div style={{ color: "#11910D", fontSize: "10px" }}>New</div>
               </>
             ) : null}
 
@@ -137,8 +135,8 @@ function ShowcaseCard({ user }: { user: User }) {
                   height={16}
                   style={{ paddingLeft: "10px" }}
                 />
-                <div className={styles.text} style={{ color: "#F7630C" }}>
-                  POPULAR
+                <div style={{ color: "#F7630C", fontSize: "10px" }}>
+                  Popular
                 </div>
               </>
             ) : null}
@@ -154,15 +152,7 @@ function ShowcaseCard({ user }: { user: User }) {
     );
 
   return (
-    <Card
-      key={user.title}
-      className={styles.card}
-      style={{
-        background: "linear-gradient(#FAFAFA 0 0)bottom/100% 48px no-repeat",
-        borderRadius: "8px",
-        padding: "12px",
-      }}
-    >
+    <Card key={user.title} className={styleCSS.card}>
       <CardHeader
         header={
           <div
@@ -170,31 +160,27 @@ function ShowcaseCard({ user }: { user: User }) {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+              flex:"1",
             }}
           >
-            <img src={headerLogo} height={16} alt="logo" />
-            <div
-              style={{
-                fontWeight: "600",
-                flex: "1",
-                paddingLeft: "3px",
-                color: "#707070",
-                fontSize: "10px",
-              }}
-            >
-              {headerText}
-            </div>
+            <img
+              src={headerLogo}
+              height={16}
+              alt="logo"
+              className={styleCSS.headerLogo}
+            />
+            <div className={styleCSS.headerText}>{headerText}</div>
             {tags.includes("new") ? (
               <>
                 <img src={star} alt="Star" height={16} />
                 <div
-                  className={styles.text}
                   style={{
                     color: "#11910D",
                     fontWeight: "600",
+                    fontSize: "10px",
                   }}
                 >
-                  NEW
+                  New
                 </div>
               </>
             ) : null}
@@ -204,25 +190,22 @@ function ShowcaseCard({ user }: { user: User }) {
                   src={fire}
                   alt="Fire"
                   height={16}
-                  style={{
-                    paddingLeft: "6px",
-                  }}
                 />
                 <div
-                  className={styles.text}
                   style={{
                     color: "#F7630C",
                     fontWeight: "600",
+                    fontSize: "10px",
                   }}
                 >
-                  POPULAR
+                  Popular
                 </div>
               </>
             ) : null}
           </div>
         }
       />
-      <CardPreview style={{ borderTop: "1px solid #F0F0F0" }} />
+      <CardPreview className={styleCSS.cardBreakLine} />
       <div
         style={{
           display: "flex",
@@ -264,17 +247,20 @@ function ShowcaseCard({ user }: { user: User }) {
         >
           {user.description}
         </div>
-        <Panel
-          headerText={user.title}
-          isLightDismiss
-          isOpen={isOpen}
-          onDismiss={dismissPanel}
-          closeButtonAriaLabel="Close"
-          type={PanelType.medium}
-          onRenderNavigationContent={onRenderNavigationContent}
-        >
-          <ShowcaseCardPanel user={user} />
-        </Panel>
+        {/* Panel is Fluent UI 8. Must use ThemeProvider */}
+        <ThemeProvider theme={colorMode != "dark" ? lightTheme : darkTheme}>
+          <Panel
+            headerText={user.title}
+            isLightDismiss
+            isOpen={isOpen}
+            onDismiss={dismissPanel}
+            closeButtonAriaLabel="Close"
+            type={PanelType.medium}
+            onRenderNavigationContent={onRenderNavigationContent}
+          >
+            <ShowcaseCardPanel user={user} />
+          </Panel>
+        </ThemeProvider>
         <div
           style={{ paddingTop: "10px", position: "absolute", bottom: "0px" }}
         >
@@ -291,9 +277,7 @@ function ShowcaseCard({ user }: { user: User }) {
           </div>
         </div>
       </div>
-      <CardPreview
-        style={{ borderTop: "1px solid #F0F0F0", backgroundColor: "#FAFAFA" }}
-      />
+      <CardPreview className={styleCSS.cardBreakLine} />
       <CardFooter>
         <Input
           id={"input_" + user.title}
@@ -312,13 +296,23 @@ function ShowcaseCard({ user }: { user: User }) {
           <PopoverTrigger disableButtonEnhancement>
             <Button
               size="small"
-              style={{
-                minWidth: "23px",
-                padding: "0px",
-                minHeight: "20px",
-                backgroundColor: "#7160E8",
-                borderColor: "#7160E8",
-              }}
+              style={
+                colorMode != "dark"
+                  ? {
+                      padding: " 0px",
+                      minHeight: "20px",
+                      minWidth: "23px",
+                      backgroundColor: "#7160e8",
+                      borderColor: "#7160e8",
+                    }
+                  : {
+                      padding: " 0px",
+                      minHeight: "20px",
+                      minWidth: "23px",
+                      backgroundColor: "#292929",
+                      borderColor: "#666666",
+                    }
+              }
               onClick={() => {
                 navigator.clipboard.writeText(azdInitCommand);
               }}

@@ -3,10 +3,26 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import { FluentProvider, Text, teamsLightTheme } from "@fluentui/react-components";
-import styles from "./index.module.css";
+import {
+  FluentProvider,
+  Text,
+  teamsLightTheme,
+  teamsDarkTheme,
+  makeStyles,
+  typographyStyles,
+} from "@fluentui/react-components";
+import EventEmitter from "../../utils/EventEmitter";
+import { useColorMode } from "@docusaurus/theme-common";
+import styles from "./styles.module.css";
+
+const useStyles = makeStyles({
+  largeTitle: typographyStyles.largeTitle,
+  title3: typographyStyles.title3,
+  subtitle1: typographyStyles.subtitle1,
+});
 
 function HomepageHeader() {
+  const style = useStyles();
   return (
     <header className={styles.heroBanner}>
       <img
@@ -19,13 +35,16 @@ function HomepageHeader() {
       />
       <div className={styles.section}>
         <div className={styles.description}>
-          <div className={styles.title}>
+          <Text
+            className={style.largeTitle}
+            style={{ marginBottom: "6px", color: "#242424" }}
+          >
             Accelerate your journey to the cloud with azd
-          </div>
-          <div className={styles.content}>
+          </Text>
+          <Text className={style.title3} style={{ color: "#242424" }}>
             Azure Developer CLI (azd) is an open-source tool that accelerates
-            your application’s journey from local development to Azure
-          </div>
+            your application’s journey from local development to Azure.
+          </Text>
         </div>
         <div>
           <iframe
@@ -34,12 +53,30 @@ function HomepageHeader() {
             title="Azure Developer CLI: GitHub to cloud in minutes - Universe 2022"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
-          ></iframe>
+          />
         </div>
       </div>
     </header>
   );
 }
+
+const HomeApp = () => {
+  const { colorMode, setColorMode } = useColorMode();
+  EventEmitter.addListener("switchColorMode", () => {
+    colorMode == "dark" ? setColorMode("light") : setColorMode("dark");
+  });
+
+  return (
+    <FluentProvider
+      theme={colorMode == "dark" ? teamsDarkTheme : teamsLightTheme}
+    >
+      <div className="container">
+        <HomepageHeader />
+        <HomepageFeatures />
+      </div>
+    </FluentProvider>
+  );
+};
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
@@ -48,10 +85,7 @@ export default function Home() {
       title={`Welcome to ${siteConfig.title}`}
       description="Description will go into a meta tag in <head />"
     >
-      <HomepageHeader />
-      <FluentProvider theme={teamsLightTheme}>
-        <HomepageFeatures />
-      </FluentProvider>
+      <HomeApp />
     </Layout>
   );
 }

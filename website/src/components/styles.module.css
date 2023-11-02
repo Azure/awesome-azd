@@ -10,26 +10,10 @@
   gap: 24px;
 }
 
-.title {
-  font-size: 20px;
-  font-weight: 600;
-}
-
-.description {
-  font-size: 14px;
-  font-weight: 400;
-}
-
 .cardContent {
   display: flex;
   row-gap: 10px;
   flex-flow: column;
-}
-
-.link {
-  font-size: 16px;
-  font-weight: 400;
-  --colorBrandForegroundLink: #7160e8;
 }
 
 @media screen and (max-width: 996px) {

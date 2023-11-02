@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 import ShowcaseCard from "../components/gallery/ShowcaseCard";
 import ShowcaseContributionCard from "../components/gallery/ShowcaseContributionCard";
 
-export function ShowcaseCards({ filteredUsers }: { filteredUsers: User[] }) {
+export default function ShowcaseCards({ filteredUsers }: { filteredUsers: User[] }) {
     const len = filteredUsers.length;
     if (len === 0) {
       return <ShowcaseEmptyResult id="showcase.usersList.noResult" />;

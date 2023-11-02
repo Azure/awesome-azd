@@ -76,37 +76,50 @@ function filterUsers(
     });
 }
 
-function useFilteredUsers(rule: string) {
-    const location = useLocation<UserState>();
-    // On SSR / first mount (hydration) no tag is selected
+// function useFilteredUsers(rule: string) {
+//     const location = useLocation<UserState>();
+//     // On SSR / first mount (hydration) no tag is selected
+//     const [selectedTags, setSelectedTags] = useState<TagType[]>([]);
+//     const [searchName, setSearchName] = useState<string | null>(null);
+//     const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
+//     // Sync tags from QS to state (delayed on purpose to avoid SSR/Client
+//     // hydration mismatch)
+//     useEffect(() => {
+//         setSelectedTags(readSearchTags(location.search));
+//         setSelectedUsers(readSortChoice(rule));
+//         setSearchName(readSearchName(location.search));
+//         restoreUserState(location.state);
+//     }, [location, rule]);
+//     return useMemo(
+//         () => filterUsers(selectedUsers, selectedTags, searchName),
+//         [selectedUsers, selectedTags, searchName]
+//     );
+// }
+
+export default function ShowcaseCardPage() {
+    const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+    const [loading, setLoading] = useState(true);
+
     const [selectedTags, setSelectedTags] = useState<TagType[]>([]);
     const [searchName, setSearchName] = useState<string | null>(null);
     const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
-    // Sync tags from QS to state (delayed on purpose to avoid SSR/Client
-    // hydration mismatch)
+    const location = useLocation<UserState>();
+
     useEffect(() => {
         setSelectedTags(readSearchTags(location.search));
-        setSelectedUsers(readSortChoice(rule));
+        setSelectedUsers(readSortChoice(selectedOptions[0]));
         setSearchName(readSearchName(location.search));
         restoreUserState(location.state);
-    }, [location, rule]);
-    return useMemo(
-        () => filterUsers(selectedUsers, selectedTags, searchName),
-        [selectedUsers, selectedTags, searchName]
-    );
-}
 
-export function ShowcaseCardPage() {
-    const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [cards, setCards] = useState<User[]>([]);
-
-    useEffect(() => {
-        setCards(useFilteredUsers(selectedOptions[0]));
         setLoading(false);
-    }, []);
+    }, [location, selectedOptions]);
+
+    var cards = useMemo(
+        () => filterUsers(selectedUsers, selectedTags, searchName),
+        [selectedUsers, selectedTags, searchName])
 
     const sortByOnSelect = (event, data) => {
+        setLoading(true)
         setSelectedOptions(data.selectedOptions);
     };
     const templateNumber = cards.length;

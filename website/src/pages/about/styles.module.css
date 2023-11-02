@@ -43,16 +43,6 @@
   color:black;
 }
 
-.description .title {
-  font-size: 40px;
-  font-weight: 500;
-}
-
-.description .content {
-  font-size: 24px;
-  font-weight: 500;
-}
-
 [data-theme="dark"] .heroBanner {
   background-color: #292929;
 }

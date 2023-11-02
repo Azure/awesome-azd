@@ -6,7 +6,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import { FluentProvider, Text, teamsLightTheme,teamsDarkTheme } from "@fluentui/react-components";
 import EventEmitter from "../../utils/EventEmitter";
 import { useColorMode } from "@docusaurus/theme-common";
-import styles from "./index.module.css";
+import styles from "./styles.module.css";
 
 function HomepageHeader() {
   return (
@@ -21,13 +21,11 @@ function HomepageHeader() {
       />
       <div className={styles.section}>
         <div className={styles.description}>
-          <div className={styles.title}>
-            Accelerate your journey to the cloud with azd
-          </div>
-          <div className={styles.content}>
+          <Text>Accelerate your journey to the cloud with azd</Text>
+          <Text>
             Azure Developer CLI (azd) is an open-source tool that accelerates
             your application’s journey from local development to Azure
-          </div>
+          </Text>
         </div>
         <div>
           <iframe
@@ -36,7 +34,7 @@ function HomepageHeader() {
             title="Azure Developer CLI: GitHub to cloud in minutes - Universe 2022"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
-          ></iframe>
+          />
         </div>
       </div>
     </header>

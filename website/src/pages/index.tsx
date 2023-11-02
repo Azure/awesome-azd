@@ -246,9 +246,13 @@ const App = () => {
   return (
     <>
       {loading ? (
-        <div className={styles.load}>
-          <Spinner labelPosition="below" label="Loading..." />
-        </div>
+        <FluentProvider
+          theme={colorMode == "dark" ? teamsDarkTheme : teamsLightTheme}
+        >
+          <div className={styles.load}>
+            <Spinner labelPosition="below" label="Loading..." />
+          </div>
+        </FluentProvider>
       ) : (
         <div>
           <FluentProvider

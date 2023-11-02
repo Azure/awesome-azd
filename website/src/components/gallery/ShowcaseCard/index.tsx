@@ -77,7 +77,7 @@ const darkTheme: PartialTheme = {
   },
 };
 
-function ShowcaseCard({ user }: { user: User }) {
+function ShowcaseCard({ user }: { user: User }):JSX.Element {
   const styles = useStyles();
   const tags = user.tags;
   const source = user.source;

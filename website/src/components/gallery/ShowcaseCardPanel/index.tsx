@@ -312,8 +312,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                     >
                       azd VS Code extension
                     </a>{" "}
-                    you can paste this URL in the VS Code command palette to
-                    lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    you can paste this URL in the VS Code command terminal.
                   </div>
 
                   <div

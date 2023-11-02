@@ -35,12 +35,15 @@ function HomepageHeader() {
       />
       <div className={styles.section}>
         <div className={styles.description}>
-          <Text className={style.largeTitle}>
+          <Text
+            className={style.largeTitle}
+            style={{ marginBottom: "6px", color: "#242424" }}
+          >
             Accelerate your journey to the cloud with azd
           </Text>
-          <Text className={style.title3}>
+          <Text className={style.title3} style={{ color: "#242424" }}>
             Azure Developer CLI (azd) is an open-source tool that accelerates
-            your application’s journey from local development to Azure
+            your application’s journey from local development to Azure.
           </Text>
         </div>
         <div>
@@ -67,8 +70,10 @@ const HomeApp = () => {
     <FluentProvider
       theme={colorMode == "dark" ? teamsDarkTheme : teamsLightTheme}
     >
-      <HomepageHeader />
-      <HomepageFeatures />
+      <div className="container">
+        <HomepageHeader />
+        <HomepageFeatures />
+      </div>
     </FluentProvider>
   );
 };

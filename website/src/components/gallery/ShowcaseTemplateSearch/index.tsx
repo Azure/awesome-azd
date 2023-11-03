@@ -124,12 +124,10 @@ export default function ShowcaseTemplateSearch() {
         >
           <div
             className={styles.heroBar}
-            style={{
-              textAlign: "center",
-            }}
           >
             <Text
               size={800}
+              align="center"
               weight="semibold"
               style={{
                 background:
@@ -151,7 +149,7 @@ export default function ShowcaseTemplateSearch() {
           >
             {DESCRIPTION}
           </Text>
-          <FilterBar id="filterBar" />
+          <FilterBar />
           <Text
             align="center"
             size={300}

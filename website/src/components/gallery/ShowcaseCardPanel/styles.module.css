@@ -49,11 +49,11 @@
 }
 
 [data-theme="dark"] .cardDescription {
-  color: #ffffff;
+  color: #ADADAD;
 }
 
 [data-theme="dark"] .cardTag {
-  color: #adadad;
+  color: #ADADAD;
 }
 
 [data-theme="dark"] .textColor {

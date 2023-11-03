@@ -26,7 +26,6 @@ function closeCard(parentDiv) {
 
 const useStyles = makeStyles({
   card: {
-    ...shorthands.margin("auto"),
     width: "350px",
     height: "368px",
     maxWidth: "100%",

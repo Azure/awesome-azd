@@ -121,18 +121,7 @@ export default function ShowcaseCardTag({
             <div
               key={index}
               id={id}
-              style={{
-                height: "20px",
-                alignContent: "center",
-                border: "1px solid #E0E0E0",
-                padding: "0 5px",
-                marginTop: "3px",
-                fontSize: "10px",
-                minWidth: "0px",
-                color: "#616161",
-                fontWeight: "500",
-                borderRadius: "100px",
-              }}
+              className={styles.cardPanelTag}
             >
               {tagObject.label}
             </div>

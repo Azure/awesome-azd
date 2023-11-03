@@ -9,7 +9,7 @@ import { Tags, type User, type TagType } from "../../../data/tags";
 import { TagList } from "../../../data/users";
 import { sortBy } from "@site/src/utils/jsUtils";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import { Link as FluentUILink, makeStyles } from "@fluentui/react-components";
+import { Link as FluentUILink } from "@fluentui/react-components";
 import { useBoolean, useId } from "@fluentui/react-hooks";
 import {
   Label,
@@ -20,7 +20,6 @@ import {
   IPivotStyles,
   Popup,
   Callout,
-  mergeStyleSets,
   Text,
   DirectionalHint,
 } from "@fluentui/react";
@@ -28,18 +27,13 @@ import ShowcaseMultipleAuthors from "../ShowcaseMultipleAuthors/index";
 import ShowcaseCardTag from "../ShowcaseTag/index";
 import { useColorMode } from "@docusaurus/theme-common";
 
-function CopyButton({url,colorMode}: {url:string;colorMode:string}) {
+function CopyButton({ url, colorMode }: { url: string; colorMode: string }) {
   const copySVG = useBaseUrl("/img/purpleCopy.svg");
   const buttonId = useId("copyButton");
   const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] =
     useBoolean(false);
   const labelId = useId("callout-label");
   const descriptionId = useId("callout-description");
-  const style = mergeStyleSets({
-    callout: {
-      padding: "3px 10px",
-    },
-  });
   return (
     <div>
       <DefaultButton
@@ -60,7 +54,6 @@ function CopyButton({url,colorMode}: {url:string;colorMode:string}) {
       </DefaultButton>
       {isCalloutVisible && (
         <Callout
-          className={style.callout}
           ariaLabelledBy={labelId}
           ariaDescribedBy={descriptionId}
           role="dialog"
@@ -69,7 +62,22 @@ function CopyButton({url,colorMode}: {url:string;colorMode:string}) {
           onDismiss={toggleIsCalloutVisible}
           setInitialFocus
           directionalHint={DirectionalHint.topCenter}
-          backgroundColor={colorMode == "dark" ? "white" : "black"}
+          styles={
+            colorMode != "dark"
+              ? {
+                  calloutMain: {
+                    padding: "3px 10px",
+                  },
+                }
+              : {
+                  beak: { background: "#292929" },
+                  beakCurtain: { background: "#292929" },
+                  calloutMain: {
+                    background: "transparent",
+                    padding: "3px 10px",
+                  },
+                }
+          }
         >
           <Text variant="small">Copied</Text>
         </Callout>

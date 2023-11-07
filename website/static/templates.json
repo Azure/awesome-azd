@@ -642,6 +642,26 @@
     ]
   },
   {
+    "title": "ChatGPT and RAG with Azure OpenAI and Cognitive Search for JavaScript",
+    "description": "A reference sample to build Retrieval Augmented Generation applications using Azure Cognitive Search and Azure OpenAI.",
+    "preview": "./templates/images/azure-search-openai-javascript.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "JavaScript Advocacy Team, Natalia Venditto, Shibani Basava",
+    "source": "https://github.com/Azure-Samples/azure-search-openai-javascript",
+    "tags": [
+      "ai",
+      "bicep",
+      "chatgpt",
+      "cognitivesearch",
+      "javascript",
+      "msft",
+      "nodejs",
+      "openai",
+      "popular",
+      "typescript"
+    ]
+  },
+  {
     "title": "FastAPI on Azure Functions",
     "description": "A simple FastAPI app deployed to Azure Functions. Can also be run and debugged locally with the Azure Functions Core Tool emulator.",
     "preview": "./templates/images/fastapi-on-azure-functions.png",

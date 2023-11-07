@@ -21,8 +21,14 @@
 }
 
 .video {
-  width: 38rem;
-  height: 21rem;
+  max-width: 615px;
+  height: 340px;
+  width: -webkit-fill-available;
+}
+
+.iframe {
+  height: 100%;
+  width: 100%;
 }
 
 .section {
@@ -41,7 +47,7 @@
   justify-content: center;
   align-items: flex-start;
   flex-flow: column;
-  color:black;
+  color: black;
 }
 
 [data-theme="dark"] .heroBanner {
@@ -52,13 +58,4 @@
   .section {
     flex-direction: column;
   }
-  .video {
-    width: 100%;
-  }
-}
-
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }

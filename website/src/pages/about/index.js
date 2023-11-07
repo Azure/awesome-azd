@@ -49,9 +49,9 @@ function HomepageHeader({ colorMode }) {
             your application’s journey from local development to Azure.
           </Text>
         </div>
-        <div>
+        <div className={styles.video}>
           <iframe
-            className={styles.video}
+            className={styles.iframe}
             src="https://www.youtube.com/embed/9z3PiHSCcYs?si=F1yKpoiOQnzb4o-K"
             title="Azure Developer CLI: GitHub to cloud in minutes - Universe 2022"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

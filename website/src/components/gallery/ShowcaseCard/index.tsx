@@ -66,8 +66,6 @@ function ShowcaseCard({ user }: { user: User }):JSX.Element {
   const source = user.source;
   const star = useBaseUrl("/img/Sparkle.svg");
   const fire = useBaseUrl("/img/Fire.svg");
-  const star = useBaseUrl("/img/Sparkle.svg");
-  const fire = useBaseUrl("/img/Fire.svg");
   let azdInitCommand =
     "azd init -t " + source.replace("https://github.com/", "");
   let headerLogo = useBaseUrl("/img/Community.svg");

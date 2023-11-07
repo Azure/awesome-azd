@@ -34,3 +34,11 @@
 .color {
   color: var(--ifm-color-purple);
 }
+
+.learnMoreColor{
+  color: #7160E8 !important;
+}
+
+[data-theme="dark"] .learnMoreColor{
+   color: #5649B0 !important;
+ }

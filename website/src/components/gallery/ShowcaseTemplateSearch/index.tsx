@@ -167,7 +167,7 @@ export default function ShowcaseTemplateSearch() {
               href={ADD_URL}
               target="_blank"
               style={{ paddingLeft: "3px" }}
-              className={styles.color}
+              className={styles.learnMoreColor}
             >
               Learn more
             </FluentUILink>

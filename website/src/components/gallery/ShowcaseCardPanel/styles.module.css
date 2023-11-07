@@ -41,20 +41,11 @@
 }
 
 .color{
-  color:var(--ifm-color-purple) !important;
+  color:var(--ifm-color-purple-light) !important;
 }
-
-.learnMoreColor{
-  color: #7160E8;
-}
-
-[data-theme="dark"] .learnMoreColor{
-   color: #5649B0;
- }
 
 .purple {
-  filter: invert(35%) sepia(74%) saturate(2992%) hue-rotate(233deg)
-    brightness(99%) contrast(83%) !important;
+  filter:invert(37%) sepia(47%) saturate(1651%) hue-rotate(221deg) brightness(86%) contrast(90%) !important;
   color: black;
 }
 

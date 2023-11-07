@@ -114,7 +114,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
         selectors: {
           ":before":
             colorMode != "dark"
-              ? { backgroundColor: "#7160E8" }
+              ? { backgroundColor: "#6656d1" }
               : { backgroundColor: "#A79CF1" },
         },
       },
@@ -593,7 +593,7 @@ function ShowcaseCardAzureTag({
                 fontSize: "12px",
                 fontWeight: "400",
               }}
-              className={styles.learMoreColor}
+              className={styles.color}
             >
               Learn More
             </a>

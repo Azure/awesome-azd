@@ -98,7 +98,7 @@ const config = {
 
           // right
           {
-            href: "https://github.com/Azure/repo/awesome-azd",
+            href: "https://github.com/Azure/awesome-azd",
             position: "right",
             className: "header-github-link",
             "aria-label": "GitHub repository",

@@ -69,8 +69,9 @@ const HomeApp = () => {
   return (
     <FluentProvider
       theme={colorMode == "dark" ? teamsDarkTheme : teamsLightTheme}
+      className={styles.backgroundColor}
     >
-      <div className="container">
+      <div className={styles.container}>
         <HomepageHeader colorMode={colorMode} />
         <HomepageFeatures />
       </div>

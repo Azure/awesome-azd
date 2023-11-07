@@ -10,15 +10,9 @@ import {
   CardHeader,
   typographyStyles,
 } from "@fluentui/react-components";
+import { useColorMode } from "@docusaurus/theme-common";
 
 const useStyles = makeStyles({
-  card: {
-    ...shorthands.margin("auto"),
-    width: "326px",
-    height: "280px",
-    maxWidth: "100%",
-    maxHeight: "100%",
-  },
   subtitle1: typographyStyles.subtitle1,
   body1: typographyStyles.body1,
   body2: typographyStyles.body2,
@@ -29,8 +23,9 @@ const useStyles = makeStyles({
  */
 export default function Feature({ Svg, title, description, link, content }) {
   const style = useStyles();
+  const { colorMode } = useColorMode();
   return (
-    <Card className={style.card}>
+    <Card className={styles.card}>
       <CardHeader
         header={<img width="80px" height="80px" src={Svg} alt={title} />}
       />
@@ -39,7 +34,13 @@ export default function Feature({ Svg, title, description, link, content }) {
         <div className={style.body1}>{description}</div>
       </div>
       <CardFooter>
-        <Link className={style.body2} style={{color:"#7160E8"}} href={link}>
+        <Link
+          className={style.body2}
+          style={
+            colorMode != "dark" ? { color: "#7160E8" } : { color: "#A79CF1" }
+          }
+          href={link}
+        >
           {content} ➔
         </Link>
       </CardFooter>

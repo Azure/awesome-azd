@@ -16,8 +16,8 @@
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --ifm-navbar-link-color: #242424;
-  --ifm-color-purple:#7160e8;
-  --ifm-color-purple-light:#6656d1;
+  --ifm-color-purple: #7160e8;
+  --ifm-color-purple-light: #6656d1;
 }
 
 .navbar {
@@ -33,6 +33,9 @@
 [data-theme="dark"] {
   --ifm-navbar-link-color: white;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-color-purple: #a79cf1;
+  --ifm-color-purple-light: #a79cf1;
+  --ifm-color-primary: #a79cf1;
 }
 
 .header-github-link:hover {
@@ -48,12 +51,12 @@
     no-repeat;
 }
 
-.button{
-  background-color: #7160E8;
+.button {
+  background-color: var(--ifm-color-purple);
   color: white;
 }
 
-.button:hover{
+.button:hover {
   background-color: #5a4cb9;
   color: white;
 }

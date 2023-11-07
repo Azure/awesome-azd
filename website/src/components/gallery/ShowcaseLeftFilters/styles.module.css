@@ -13,9 +13,5 @@
 }
 
 .color {
-  color: #7160E8;
-}
-
-[data-theme="dark"] .color {
-  color: #A79CF1;
+  color: var(--ifm-color-purple);
 }

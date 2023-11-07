@@ -60,8 +60,8 @@
   padding: 0px !important;
   min-height: 20px !important;
   min-width: 23px !important;
-  background-color: #7160e8 !important;
-  border-color: #7160e8 !important;
+  background-color: var(--ifm-color-purple) !important;
+  border-color: var(--ifm-color-purple) !important;
 }
 
 .copyIconButton:hover{

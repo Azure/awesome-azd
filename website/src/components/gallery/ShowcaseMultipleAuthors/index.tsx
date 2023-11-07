@@ -12,6 +12,7 @@ import {
   Text,
 } from "@fluentui/react-components";
 import useBaseUrl from "@docusaurus/useBaseUrl";
+import { useColorMode } from "@docusaurus/theme-common";
 
 function ShowcaseMultipleWebsites(
   key: number,
@@ -19,7 +20,8 @@ function ShowcaseMultipleWebsites(
   websiteLink: string,
   length: number,
   i: number,
-  cardPanel: boolean
+  cardPanel: boolean,
+  colorMode: string,
 ) {
   if (i != length - 1) {
     return (
@@ -37,11 +39,19 @@ function ShowcaseMultipleWebsites(
             }}
           >
             {authorName}
-            <img
-              src={useBaseUrl("/img/redirect.svg")}
-              alt="Redirect"
-              height={13}
-            />
+            {colorMode != "dark" ? (
+              <img
+                src={useBaseUrl("/img/redirect.svg")}
+                alt="Redirect"
+                height={13}
+              />
+            ) : (
+              <img
+                src={useBaseUrl("/img/redirectDark.svg")}
+                alt="Redirect"
+                height={13}
+              />
+            )}
             ,
           </FluentUILink>
         ) : (
@@ -72,11 +82,19 @@ function ShowcaseMultipleWebsites(
             }}
           >
             {authorName}
-            <img
-              src={useBaseUrl("/img/redirect.svg")}
-              alt="Redirect"
-              height={13}
-            />
+            {colorMode != "dark" ? (
+              <img
+                src={useBaseUrl("/img/redirect.svg")}
+                alt="Redirect"
+                height={13}
+              />
+            ) : (
+              <img
+                src={useBaseUrl("/img/redirectDark.svg")}
+                alt="Redirect"
+                height={13}
+              />
+            )}
           </FluentUILink>
         ) : (
           <FluentUILink
@@ -100,6 +118,7 @@ export default function ShowcaseMultipleAuthors({
   user: User;
   cardPanel: boolean;
 }) {
+  const { colorMode } = useColorMode();
   const authors = user.author;
   const websites = user.website;
   let i = 0;
@@ -125,7 +144,8 @@ export default function ShowcaseMultipleAuthors({
             multiWebsites[index],
             multiWebsites.length,
             i++,
-            cardPanel
+            cardPanel,
+            colorMode,
           );
         })}
       </div>
@@ -146,11 +166,19 @@ export default function ShowcaseMultipleAuthors({
           }}
         >
           {authors}
-          <img
-            src={useBaseUrl("/img/redirect.svg")}
-            alt="Redirect"
-            height={13}
-          />
+          {colorMode != "dark" ? (
+            <img
+              src={useBaseUrl("/img/redirect.svg")}
+              alt="Redirect"
+              height={13}
+            />
+          ) : (
+            <img
+              src={useBaseUrl("/img/redirectDark.svg")}
+              alt="Redirect"
+              height={13}
+            />
+          )}
         </FluentUILink>
       ) : (
         <FluentUILink

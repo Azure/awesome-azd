@@ -10,7 +10,7 @@
 }
 
 .cardAuthorPanel {
-  color: #7160e8 !important;
+  color: var(--ifm-color-purple) !important;
 }
 
 .cardAuthor:hover {

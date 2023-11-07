@@ -6,7 +6,7 @@
 /* Keep for future change on light vs dark theme */
 .submitButton {
   flex: 1;
-  background-color: #7160e8 !important;
+  background-color: var(--ifm-color-purple) !important;
   white-space: nowrap;
   font-weight: 550;
   font-size: 12px;
@@ -18,7 +18,7 @@
 
 .requestButton {
   flex: 1;
-  color: #7160e8 !important;
+  color: var(--ifm-color-purple) !important;
   white-space: nowrap;
   font-weight: 550;
   font-size: 12px;

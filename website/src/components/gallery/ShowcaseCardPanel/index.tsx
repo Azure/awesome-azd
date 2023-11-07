@@ -50,16 +50,8 @@ function CopyButton({ url, colorMode }: { url: string; colorMode: string }) {
           navigator.clipboard.writeText(url);
         }}
       >
-        <img
-          src={copySVG}
-          height={20}
-          alt="Copy"
-        />
-        <div
-        style={{fontSize: "12px" }}
-        >
-          Copy
-        </div>
+        <img src={copySVG} height={20} alt="Copy" />
+        <div style={{ fontSize: "12px" }}>Copy</div>
       </DefaultButton>
       {isCalloutVisible && (
         <Callout
@@ -120,9 +112,10 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
     linkIsSelected: [
       {
         selectors: {
-          ":before": {
-            backgroundColor: "#7160E8",
-          },
+          ":before":
+            colorMode != "dark"
+              ? { backgroundColor: "#7160E8" }
+              : { backgroundColor: "#A79CF1" },
         },
       },
     ],
@@ -165,15 +158,23 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
             display: "flex",
             alignItems: "center",
             columnGap: "5px",
-            color: "#7160E8",
           }}
+          className={styles.color}
         >
           View in GitHub
-          <img
-            src={useBaseUrl("/img/redirect.svg")}
-            alt="Redirect"
-            height={13}
-          />
+          {colorMode != "dark" ? (
+            <img
+              src={useBaseUrl("/img/redirect.svg")}
+              alt="Redirect"
+              height={13}
+            />
+          ) : (
+            <img
+              src={useBaseUrl("/img/redirectDark.svg")}
+              alt="Redirect"
+              height={13}
+            />
+          )}
         </FluentUILink>
       </div>
       <div
@@ -193,7 +194,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
         />
       </div>
       <Pivot
-        aria-label="Template Detials and Legal"
+        aria-label="Template Details and Legal"
         styles={pivotStyles}
         style={{ paddingTop: "20px" }}
       >
@@ -325,7 +326,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                         "https://marketplace.visualstudio.com/items?itemName=ms-azuretools.azure-dev"
                       }
                       target="_blank"
-                      style={{ color: "#7160E8" }}
+                      className={styles.color}
                     >
                       azd VS Code extension
                     </a>{" "}
@@ -427,7 +428,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                     <a
                       href="https://azure.microsoft.com/en-us/pricing/calculator/"
                       target="_blank"
-                      style={{ color: "#7160E8" }}
+                      className={styles.color}
                     >
                       Azure Pricing Calculator
                     </a>
@@ -589,10 +590,10 @@ function ShowcaseCardAzureTag({
               href={tagObject.url}
               target="_blank"
               style={{
-                color: "#7160E8",
                 fontSize: "12px",
                 fontWeight: "400",
               }}
+              className={styles.color}
             >
               Learn More
             </a>

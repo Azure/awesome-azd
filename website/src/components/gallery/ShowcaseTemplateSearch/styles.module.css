@@ -30,3 +30,7 @@
   max-width: 740px;
   text-align: center;
 }
+
+.color {
+  color: var(--ifm-color-purple);
+}

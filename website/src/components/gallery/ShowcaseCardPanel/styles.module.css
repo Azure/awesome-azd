@@ -40,6 +40,10 @@
   color: #616161;
 }
 
+.color{
+  color:var(--ifm-color-purple) !important;
+}
+
 .purple {
   filter: invert(35%) sepia(74%) saturate(2992%) hue-rotate(233deg)
     brightness(99%) contrast(83%) !important;
@@ -47,6 +51,15 @@
 }
 
 .purple:hover {
+  filter: invert(34%) sepia(15%) saturate(4006%) hue-rotate(217deg)
+    brightness(90%) contrast(93%) !important;
+}
+
+[data-theme="dark"] .purple{
+  filter:invert(82%) sepia(32%) saturate(6544%) hue-rotate(203deg) brightness(101%) contrast(89%) !important;
+}
+
+[data-theme="dark"] .purple:hover {
   filter: invert(34%) sepia(15%) saturate(4006%) hue-rotate(217deg)
     brightness(90%) contrast(93%) !important;
 }

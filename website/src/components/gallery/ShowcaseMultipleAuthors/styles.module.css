@@ -13,6 +13,14 @@
   color: var(--ifm-color-purple-light) !important;
 }
 
+.cardAuthor:hover {
+  color: var(--ifm-color-purple-light) !important;
+}
+
 [data-theme="dark"] .cardAuthor {
   color: #707070 !important;
+}
+
+[data-theme="dark"] .cardAuthor:hover {
+  color: var(--ifm-color-purple-light) !important;
 }

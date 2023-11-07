@@ -12,12 +12,7 @@ import {
   Text,
 } from "@fluentui/react-components";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-
-const useStyles = makeStyles({
-  cardAuthor: {
-    color: "#7160E8",
-  },
-});
+import { useColorMode } from "@docusaurus/theme-common";
 
 function ShowcaseMultipleWebsites(
   key: number,
@@ -25,9 +20,9 @@ function ShowcaseMultipleWebsites(
   websiteLink: string,
   length: number,
   i: number,
-  cardPanel: boolean
+  cardPanel: boolean,
+  colorMode: string,
 ) {
-  const styles = useStyles();
   if (i != length - 1) {
     return (
       <div key={key}>
@@ -35,7 +30,7 @@ function ShowcaseMultipleWebsites(
           <FluentUILink
             key={i}
             href={websiteLink}
-            className={styles.cardAuthor}
+            className={styles.cardAuthorPanel}
             target="_blank"
             style={{
               display: "flex",
@@ -44,11 +39,19 @@ function ShowcaseMultipleWebsites(
             }}
           >
             {authorName}
-            <img
-              src={useBaseUrl("/img/redirect.svg")}
-              alt="Redirect"
-              height={13}
-            />
+            {colorMode != "dark" ? (
+              <img
+                src={useBaseUrl("/img/redirect.svg")}
+                alt="Redirect"
+                height={13}
+              />
+            ) : (
+              <img
+                src={useBaseUrl("/img/redirectDark.svg")}
+                alt="Redirect"
+                height={13}
+              />
+            )}
             ,
           </FluentUILink>
         ) : (
@@ -69,7 +72,7 @@ function ShowcaseMultipleWebsites(
         {cardPanel ? (
           <FluentUILink
             key={i}
-            className={styles.cardAuthor}
+            className={styles.cardAuthorPanel}
             href={websiteLink}
             target="_blank"
             style={{
@@ -79,11 +82,19 @@ function ShowcaseMultipleWebsites(
             }}
           >
             {authorName}
-            <img
-              src={useBaseUrl("/img/redirect.svg")}
-              alt="Redirect"
-              height={13}
-            />
+            {colorMode != "dark" ? (
+              <img
+                src={useBaseUrl("/img/redirect.svg")}
+                alt="Redirect"
+                height={13}
+              />
+            ) : (
+              <img
+                src={useBaseUrl("/img/redirectDark.svg")}
+                alt="Redirect"
+                height={13}
+              />
+            )}
           </FluentUILink>
         ) : (
           <FluentUILink
@@ -107,9 +118,9 @@ export default function ShowcaseMultipleAuthors({
   user: User;
   cardPanel: boolean;
 }) {
+  const { colorMode } = useColorMode();
   const authors = user.author;
   const websites = user.website;
-  const styles = useStyles();
   let i = 0;
 
   if (authors.includes(", ")) {
@@ -133,7 +144,8 @@ export default function ShowcaseMultipleAuthors({
             multiWebsites[index],
             multiWebsites.length,
             i++,
-            cardPanel
+            cardPanel,
+            colorMode,
           );
         })}
       </div>
@@ -144,7 +156,7 @@ export default function ShowcaseMultipleAuthors({
     <div>
       {cardPanel ? (
         <FluentUILink
-          className={styles.cardAuthor}
+          className={styles.cardAuthorPanel}
           href={websites}
           target="_blank"
           style={{
@@ -154,11 +166,19 @@ export default function ShowcaseMultipleAuthors({
           }}
         >
           {authors}
-          <img
-            src={useBaseUrl("/img/redirect.svg")}
-            alt="Redirect"
-            height={13}
-          />
+          {colorMode != "dark" ? (
+            <img
+              src={useBaseUrl("/img/redirect.svg")}
+              alt="Redirect"
+              height={13}
+            />
+          ) : (
+            <img
+              src={useBaseUrl("/img/redirectDark.svg")}
+              alt="Redirect"
+              height={13}
+            />
+          )}
         </FluentUILink>
       ) : (
         <FluentUILink

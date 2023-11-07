@@ -1,6 +1,6 @@
 /**
-* Copyright (c) Microsoft Corporation. All rights reserved.
-* Licensed under the MIT License.
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
  */
 
 import React from "react";
@@ -8,7 +8,7 @@ import styles from "./styles.module.css";
 import { Tag, Tags, type User, type TagType } from "../../../data/tags";
 import { TagList } from "../../../data/users";
 import { sortBy } from "@site/src/utils/jsUtils";
-import { Badge } from "@fluentui/react-components";
+import { Badge, Tooltip, makeStyles } from "@fluentui/react-components";
 
 const TagComp = React.forwardRef<HTMLDivElement, Tag>(
   ({ label, description }, ref) => (
@@ -28,6 +28,12 @@ const TagComp = React.forwardRef<HTMLDivElement, Tag>(
   )
 );
 
+const useStyles = makeStyles({
+  tooltip: {
+    textAlign: "center",
+  },
+});
+
 export default function ShowcaseCardTag({
   tags,
   moreTag,
@@ -35,7 +41,13 @@ export default function ShowcaseCardTag({
   tags: TagType[];
   moreTag: boolean;
 }) {
-  const tagObjects = tags.map((tag) => ({ tag, ...Tags[tag] }));
+  const tagObjects = tags.filter(
+    (tagObject) =>
+      tagObject != "msft" &&
+      tagObject != "community" &&
+      tagObject != "new" &&
+      tagObject != "popular"
+  ).map((tag) => ({ tag, ...Tags[tag] }));
 
   // Keep same order for all tags
   const tagObjectsSorted = sortBy(tagObjects, (tagObject) =>
@@ -53,33 +65,45 @@ export default function ShowcaseCardTag({
   }
   const rest = length - number;
 
+  const moreTagDetailList = tagObjectsSorted
+    .slice(number, length)
+    .map((tagObject) => tagObject.label)
+    .join("\n");
+
+  const style = useStyles();
+
   if (moreTag) {
     if (length > number) {
       return (
         <>
           {tagObjectsSorted.slice(0, number).map((tagObject, index) => {
             const id = `showcase_card_tag_${tagObject.tag}`;
-            if (
-              tagObject.tag == "msft" ||
-              tagObject.tag == "community" ||
-              tagObject.tag == "new" ||
-              tagObject.tag == "popular"
-            ) {
-              return;
-            }
             return <TagComp key={index} id={id} {...tagObject} />;
           })}
-          <Badge
-            appearance="outline"
-            size="medium"
-            color="informative"
-            style={{
-              alignContent: "center",
-              fontSize: "10px",
+          <Tooltip
+            withArrow
+            content={{
+              children: (
+                <span style={{ whiteSpace: "pre-line" }}>
+                  {moreTagDetailList}
+                </span>
+              ),
+              className: style.tooltip,
             }}
+            relationship="label"
           >
-            + {rest} more
-          </Badge>
+            <Badge
+              appearance="outline"
+              size="medium"
+              color="informative"
+              style={{
+                alignContent: "center",
+                fontSize: "10px",
+              }}
+            >
+              + {rest} more
+            </Badge>
+          </Tooltip>
         </>
       );
     } else {
@@ -118,22 +142,7 @@ export default function ShowcaseCardTag({
             return;
           }
           return (
-            <div
-              key={index}
-              id={id}
-              style={{
-                height: "20px",
-                alignContent: "center",
-                border: "1px solid #E0E0E0",
-                padding: "0 5px",
-                marginTop: "3px",
-                fontSize: "10px",
-                minWidth: "0px",
-                color: "#616161",
-                fontWeight: "500",
-                borderRadius: "100px",
-              }}
-            >
+            <div key={index} id={id} className={styles.cardPanelTag}>
               {tagObject.label}
             </div>
           );

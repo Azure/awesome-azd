@@ -3,14 +3,14 @@
 * Licensed under the MIT License.
  */
 
-.cover{
+.cover {
   pointer-events: none;
   position: absolute;
   width: 100%;
   height: 100%;
 }
 
-.searchContainer{
+.searchContainer {
   display: inline-block;
   overflow: hidden;
   position: relative;
@@ -26,6 +26,19 @@
   justify-content: center;
 }
 
-.heroBar{
-  width: 740px;
+.heroBar {
+  max-width: 740px;
+  text-align: center;
 }
+
+.color {
+  color: var(--ifm-color-purple);
+}
+
+.learnMoreColor{
+  color: #7160E8 !important;
+}
+
+[data-theme="dark"] .learnMoreColor{
+   color: #5649B0 !important;
+ }

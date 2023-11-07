@@ -9,7 +9,7 @@ import { Tags, type User, type TagType } from "../../../data/tags";
 import { TagList } from "../../../data/users";
 import { sortBy } from "@site/src/utils/jsUtils";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import { Link as FluentUILink, makeStyles } from "@fluentui/react-components";
+import { Link as FluentUILink } from "@fluentui/react-components";
 import { useBoolean, useId } from "@fluentui/react-hooks";
 import {
   Label,
@@ -20,7 +20,6 @@ import {
   IPivotStyles,
   Popup,
   Callout,
-  mergeStyleSets,
   Text,
   DirectionalHint,
 } from "@fluentui/react";
@@ -28,22 +27,18 @@ import ShowcaseMultipleAuthors from "../ShowcaseMultipleAuthors/index";
 import ShowcaseCardTag from "../ShowcaseTag/index";
 import { useColorMode } from "@docusaurus/theme-common";
 
-function CopyButton({url,colorMode}: {url:string;colorMode:string}) {
+function CopyButton({ url, colorMode }: { url: string; colorMode: string }) {
   const copySVG = useBaseUrl("/img/purpleCopy.svg");
   const buttonId = useId("copyButton");
   const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] =
     useBoolean(false);
   const labelId = useId("callout-label");
   const descriptionId = useId("callout-description");
-  const style = mergeStyleSets({
-    callout: {
-      padding: "3px 10px",
-    },
-  });
   return (
     <div>
       <DefaultButton
         id={buttonId}
+        className={styles.purple}
         style={{
           padding: "0px",
           minHeight: "20px",
@@ -56,11 +51,10 @@ function CopyButton({url,colorMode}: {url:string;colorMode:string}) {
         }}
       >
         <img src={copySVG} height={20} alt="Copy" />
-        <div style={{ color: "#7160E8", fontSize: "12px" }}>Copy</div>
+        <div style={{ fontSize: "12px" }}>Copy</div>
       </DefaultButton>
       {isCalloutVisible && (
         <Callout
-          className={style.callout}
           ariaLabelledBy={labelId}
           ariaDescribedBy={descriptionId}
           role="dialog"
@@ -69,7 +63,22 @@ function CopyButton({url,colorMode}: {url:string;colorMode:string}) {
           onDismiss={toggleIsCalloutVisible}
           setInitialFocus
           directionalHint={DirectionalHint.topCenter}
-          backgroundColor={colorMode == "dark" ? "white" : "black"}
+          styles={
+            colorMode != "dark"
+              ? {
+                  calloutMain: {
+                    padding: "3px 10px",
+                  },
+                }
+              : {
+                  beak: { background: "#292929" },
+                  beakCurtain: { background: "#292929" },
+                  calloutMain: {
+                    background: "transparent",
+                    padding: "3px 10px",
+                  },
+                }
+          }
         >
           <Text variant="small">Copied</Text>
         </Callout>
@@ -103,9 +112,10 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
     linkIsSelected: [
       {
         selectors: {
-          ":before": {
-            backgroundColor: "#7160E8",
-          },
+          ":before":
+            colorMode != "dark"
+              ? { backgroundColor: "#6656d1" }
+              : { backgroundColor: "#A79CF1" },
         },
       },
     ],
@@ -148,15 +158,23 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
             display: "flex",
             alignItems: "center",
             columnGap: "5px",
-            color: "#7160E8",
           }}
+          className={styles.color}
         >
           View in GitHub
-          <img
-            src={useBaseUrl("/img/redirect.svg")}
-            alt="Redirect"
-            height={13}
-          />
+          {colorMode != "dark" ? (
+            <img
+              src={useBaseUrl("/img/redirect.svg")}
+              alt="Redirect"
+              height={13}
+            />
+          ) : (
+            <img
+              src={useBaseUrl("/img/redirectDark.svg")}
+              alt="Redirect"
+              height={13}
+            />
+          )}
         </FluentUILink>
       </div>
       <div
@@ -176,7 +194,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
         />
       </div>
       <Pivot
-        aria-label="Template Detials and Legal"
+        aria-label="Template Details and Legal"
         styles={pivotStyles}
         style={{ paddingTop: "20px" }}
       >
@@ -308,7 +326,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                         "https://marketplace.visualstudio.com/items?itemName=ms-azuretools.azure-dev"
                       }
                       target="_blank"
-                      style={{ color: "#7160E8" }}
+                      className={styles.color}
                     >
                       azd VS Code extension
                     </a>{" "}
@@ -410,7 +428,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                     <a
                       href="https://azure.microsoft.com/en-us/pricing/calculator/"
                       target="_blank"
-                      style={{ color: "#7160E8" }}
+                      className={styles.color}
                     >
                       Azure Pricing Calculator
                     </a>
@@ -419,6 +437,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                   <ShowcaseCardAzureTag
                     key={"azure_tag_" + user.title}
                     tags={user.tags}
+                    colorMode={colorMode}
                   />
                 </Popup>
               )}
@@ -487,7 +506,13 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
   );
 }
 
-function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
+function ShowcaseCardAzureTag({
+  tags,
+  colorMode,
+}: {
+  tags: TagType[];
+  colorMode: string;
+}) {
   const tagObjects = tags.map((tag) => ({ tag, ...Tags[tag] }));
 
   // Keep same order for all tags
@@ -518,7 +543,11 @@ function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
           }}
         >
           <img
-            src={useBaseUrl(tagObject.azureIcon)}
+            src={
+              colorMode != "dark" || tagObject.darkmodeAzureIcon == null
+                ? useBaseUrl(tagObject.azureIcon)
+                : useBaseUrl(tagObject.darkmodeAzureIcon)
+            }
             alt="Azure Service Icon"
             height={20}
           />
@@ -561,10 +590,10 @@ function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
               href={tagObject.url}
               target="_blank"
               style={{
-                color: "#7160E8",
                 fontSize: "12px",
                 fontWeight: "400",
               }}
+              className={styles.color}
             >
               Learn More
             </a>

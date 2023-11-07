@@ -38,6 +38,7 @@ export type Tag = {
   label: string;
   description: string;
   azureIcon?: string;
+  darkmodeAzureIcon?: string;
   url?: string;
   type?: string;
 };
@@ -440,6 +441,7 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Azure OpenAI Service",
     description: "Template architecture uses Azure OpenAI Service",
     azureIcon: "./img/Azure-OpenAI-Service.svg",
+    darkmodeAzureIcon:"./img/Azure-OpenAI-Service-white.svg",
     url: "https://azure.microsoft.com/products/ai-services/openai-service",
     type: "Service",
   },

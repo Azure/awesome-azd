@@ -11,3 +11,7 @@
 .checkboxListItem:last-child {
   margin-right: 0;
 }
+
+.color {
+  color: var(--ifm-color-purple);
+}

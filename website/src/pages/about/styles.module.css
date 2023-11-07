@@ -9,6 +9,7 @@
   overflow: hidden;
   position: relative;
   width: 100%;
+  min-width: 309px;
 }
 
 .cover {
@@ -20,8 +21,14 @@
 }
 
 .video {
-  width: 38rem;
-  height: 21rem;
+  max-width: 615px;
+  height: 340px;
+  width: -webkit-fill-available;
+}
+
+.iframe {
+  height: 100%;
+  width: 100%;
 }
 
 .section {
@@ -38,26 +45,32 @@
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
   flex-flow: column;
-  color:black;
+  color: black;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 0  1rem;
+  width: 100%;
+}
+
+[data-theme="dark"] .backgroundColor {
+  background-color: #1F1F1F;
+}
+
+[data-theme="dark"] .container {
+  background-color: #1F1F1F;
 }
 
 [data-theme="dark"] .heroBanner {
-  background-color: #292929;
+  background-color: #1F1F1F;
 }
 
 @media screen and (max-width: 996px) {
   .section {
     flex-direction: column;
   }
-  .video {
-    width: 100%;
-  }
-}
-
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }

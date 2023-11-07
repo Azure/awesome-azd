@@ -74,11 +74,6 @@ const config = {
           height: 32,
         },
         items: [
-          // {
-          //   href: "/",
-          //   label: "Templates",
-          //   position: "left",
-          // },
           {
             to: "/about",
             label: "Getting Started",
@@ -91,7 +86,7 @@ const config = {
             docId: "intro",
           },
           {
-            to: "https://learn.microsoft.com/azure/developer/azure-developer-cli/",
+            to: "https://aka.ms/azd",
             label: "Docs",
             position: "left",
           },
@@ -103,7 +98,7 @@ const config = {
 
           // right
           {
-            href: "https://github.com/Azure/repo/awesome-azd",
+            href: "https://github.com/Azure/awesome-azd",
             position: "right",
             className: "header-github-link",
             "aria-label": "GitHub repository",
@@ -116,10 +111,6 @@ const config = {
             label: "Submit your template!",
             position: "right",
             className: "button",
-            style: {
-              backgroundColor: "#7160E8",
-              color: "white",
-            },
           },
         ],
       },

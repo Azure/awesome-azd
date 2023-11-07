@@ -18,7 +18,7 @@
 
 .requestButton {
   flex: 1;
-  color: #7160E8 !important;
+  color: var(--ifm-color-purple) !important;
   white-space: nowrap;
   font-weight: 550;
   font-size: 12px;

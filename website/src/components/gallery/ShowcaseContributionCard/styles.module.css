@@ -8,8 +8,8 @@
   flex: 1;
   background-color: #7160E8 !important;
   white-space: nowrap;
-  font-weight: 550;
-  font-size: 12px;
+  font-weight: 550 !important;
+  font-size: 12px !important;
 }
 
 .submitButton:hover {
@@ -19,9 +19,9 @@
 .requestButton {
   flex: 1;
   color: var(--ifm-color-purple) !important;
-  white-space: nowrap;
-  font-weight: 550;
-  font-size: 12px;
+  white-space: nowrap !important;
+  font-weight: 550 !important;
+  font-size: 12px !important;
   padding-left: 10px;
 }
 

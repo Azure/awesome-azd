@@ -16,6 +16,7 @@ import {
 import { Tags, type TagType } from "../../../data/tags";
 import { TagList } from "../../../data/users";
 import styles from "./styles.module.css";
+import { useColorMode } from "@docusaurus/theme-common";
 
 function ShowcaseFilterViewAll({
   tags,
@@ -28,11 +29,25 @@ function ShowcaseFilterViewAll({
   const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
     setOpenItems(data.openItems);
   };
-  const chevronDownSmall = <img src={useBaseUrl("/img/smallChevron.svg")} />;
-  const chevronUpSmall = (
+  const { colorMode } = useColorMode();
+  const chevronDownSmall = (
+    colorMode !="dark" ?
     <img
-      style={{ transform: "rotate(180deg)" }}
       src={useBaseUrl("/img/smallChevron.svg")}
+    /> :
+    <img
+      src={useBaseUrl("/img/smallChevronDark.svg")}
+    />
+  );
+  const chevronUpSmall = (
+    colorMode !="dark" ?
+    <img
+      style={{ transform: "rotate(180deg)"}}
+      src={useBaseUrl("/img/smallChevron.svg")}
+    /> :
+    <img
+      style={{ transform: "rotate(180deg)"}}
+      src={useBaseUrl("/img/smallChevronDark.svg")}
     />
   );
   let value = number + "2";
@@ -85,9 +100,9 @@ function ShowcaseFilterViewAll({
             >
               <div
                 style={{
-                  color: "#7160E8",
                   fontSize: "12px",
                 }}
+                className={styles.color}
               >
                 View All
               </div>

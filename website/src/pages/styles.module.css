@@ -93,6 +93,10 @@
   display: flex;
   padding: 30px;
 }
+  
+[data-theme="dark"] .filterAndCard {
+  background-color: #1F1F1F;
+}
 
 .filter {
   flex: 2;

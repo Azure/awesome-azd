@@ -11,3 +11,11 @@
 .checkboxListItem:last-child {
   margin-right: 0;
 }
+
+.color {
+  color: #7160E8;
+}
+
+[data-theme="dark"] .color {
+  color: #A79CF1;
+}

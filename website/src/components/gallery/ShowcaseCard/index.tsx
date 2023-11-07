@@ -35,13 +35,6 @@ import ShowcaseCardTag from "../ShowcaseTag/index";
 import { useColorMode } from "@docusaurus/theme-common";
 
 const useStyles = makeStyles({
-  cardTitle: {
-    verticalAlign: "middle",
-    fontSize: "16px",
-    color: "#6656D1",
-    fontWeight: "600",
-    ":hover": { color: "#6656D1" },
-  },
   cardTag: {
     fontSize: "10px",
     color: "#606060",
@@ -200,7 +193,7 @@ function ShowcaseCard({ user }: { user: User }):JSX.Element {
           maxHeight: "inherit",
         }}
       >
-        <FluentUILink className={styles.cardTitle} onClick={openPanel}>
+        <FluentUILink className={styleCSS.cardTitle} onClick={openPanel}>
           {user.title}
         </FluentUILink>
         <div

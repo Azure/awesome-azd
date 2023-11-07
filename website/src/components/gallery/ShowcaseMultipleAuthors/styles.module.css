@@ -14,7 +14,7 @@
 }
 
 .cardAuthor:hover {
-  color: #6656d1 !important;
+  color: var(--ifm-color-purple-light) !important;
 }
 
 [data-theme="dark"] .cardAuthor {
@@ -22,5 +22,5 @@
 }
 
 [data-theme="dark"] .cardAuthor:hover {
-  color: #6656d1 !important;
+  color: var(--ifm-color-purple-light) !important;
 }

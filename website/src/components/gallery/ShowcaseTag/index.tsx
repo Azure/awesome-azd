@@ -41,7 +41,13 @@ export default function ShowcaseCardTag({
   tags: TagType[];
   moreTag: boolean;
 }) {
-  const tagObjects = tags.map((tag) => ({ tag, ...Tags[tag] }));
+  const tagObjects = tags.filter(
+    (tagObject) =>
+      tagObject != "msft" &&
+      tagObject != "community" &&
+      tagObject != "new" &&
+      tagObject != "popular"
+  ).map((tag) => ({ tag, ...Tags[tag] }));
 
   // Keep same order for all tags
   const tagObjectsSorted = sortBy(tagObjects, (tagObject) =>
@@ -72,14 +78,6 @@ export default function ShowcaseCardTag({
         <>
           {tagObjectsSorted.slice(0, number).map((tagObject, index) => {
             const id = `showcase_card_tag_${tagObject.tag}`;
-            if (
-              tagObject.tag == "msft" ||
-              tagObject.tag == "community" ||
-              tagObject.tag == "new" ||
-              tagObject.tag == "popular"
-            ) {
-              return;
-            }
             return <TagComp key={index} id={id} {...tagObject} />;
           })}
           <Tooltip

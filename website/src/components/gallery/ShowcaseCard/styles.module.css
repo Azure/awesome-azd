@@ -68,6 +68,17 @@
   background-color: #5a4cb9 !important;
 }
 
+.cardTitle{
+  vertical-align: middle !important;
+  font-size: 16px !important;
+  color: var(--ifm-color-purple-light) !important;
+  font-weight: 600 !important;
+}
+
+[data-theme="dark"] .cardTitle{
+  color: #A79CF1 !important;
+}
+
 [data-theme="dark"] .copyIconButton{
   background-color: #292929 !important;
   border-color: #666666 !important;
@@ -97,6 +108,7 @@
 
 [data-theme="dark"] .card {
   background: linear-gradient(#292929 0 0) bottom/100% 48px no-repeat;
+  background-color: #292929;
 }
 
 [data-theme="dark"] .headerTextCardPanel {

@@ -16,6 +16,8 @@
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --ifm-navbar-link-color: #242424;
+  --ifm-color-purple:#7160e8;
+  --ifm-color-purple-light:#6656d1;
 }
 
 .navbar {

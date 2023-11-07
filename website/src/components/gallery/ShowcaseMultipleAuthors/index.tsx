@@ -13,12 +13,6 @@ import {
 } from "@fluentui/react-components";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
-const useStyles = makeStyles({
-  cardAuthor: {
-    color: "#7160E8",
-  },
-});
-
 function ShowcaseMultipleWebsites(
   key: number,
   authorName: string,
@@ -27,7 +21,6 @@ function ShowcaseMultipleWebsites(
   i: number,
   cardPanel: boolean
 ) {
-  const styles = useStyles();
   if (i != length - 1) {
     return (
       <div key={key}>
@@ -35,7 +28,7 @@ function ShowcaseMultipleWebsites(
           <FluentUILink
             key={i}
             href={websiteLink}
-            className={styles.cardAuthor}
+            className={styles.cardAuthorPanel}
             target="_blank"
             style={{
               display: "flex",
@@ -69,7 +62,7 @@ function ShowcaseMultipleWebsites(
         {cardPanel ? (
           <FluentUILink
             key={i}
-            className={styles.cardAuthor}
+            className={styles.cardAuthorPanel}
             href={websiteLink}
             target="_blank"
             style={{
@@ -109,7 +102,6 @@ export default function ShowcaseMultipleAuthors({
 }) {
   const authors = user.author;
   const websites = user.website;
-  const styles = useStyles();
   let i = 0;
 
   if (authors.includes(", ")) {
@@ -144,7 +136,7 @@ export default function ShowcaseMultipleAuthors({
     <div>
       {cardPanel ? (
         <FluentUILink
-          className={styles.cardAuthor}
+          className={styles.cardAuthorPanel}
           href={websites}
           target="_blank"
           style={{

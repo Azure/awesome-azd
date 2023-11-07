@@ -1,0 +1,30 @@
+/**
+* Copyright (c) Microsoft Corporation. All rights reserved.
+* Licensed under the MIT License.
+ */
+
+/* Keep for future change on light vs dark theme */
+.submitButton {
+  flex: 1;
+  background-color: #7160e8 !important;
+  white-space: nowrap;
+  font-weight: 550;
+  font-size: 12px;
+}
+
+.submitButton:hover {
+  background-color: #5a4cb9 !important;
+}
+
+.requestButton {
+  flex: 1;
+  color: #7160e8 !important;
+  white-space: nowrap;
+  font-weight: 550;
+  font-size: 12px;
+  padding-left: 10px;
+}
+
+.requestButton:hover {
+  color: #5a4cb9 !important;
+}

@@ -987,6 +987,7 @@
       "bicep",
       "apim",
       "openai",
+      "ai",
       "appinsights",
       "monitor",
       "enterprisepatterns",
@@ -1013,6 +1014,7 @@
     "tags": [
       "spring",
       "openai",
+      "ai",
       "aca",
       "azurespringapps",
       "azuredb-postgreSQL",
@@ -1101,6 +1103,7 @@
       "java",
       "spring",
       "openai",
+      "ai",
       "appservice",
       "cognitivesearch",
       "semantickernel",

@@ -9,6 +9,7 @@
   overflow: hidden;
   position: relative;
   width: 100%;
+  min-width: 309px;
 }
 
 .cover {
@@ -38,7 +39,7 @@
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
   flex-flow: column;
   color:black;
 }

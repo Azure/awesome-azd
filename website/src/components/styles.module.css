@@ -3,10 +3,8 @@
 }
 
 .row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow: row;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
   gap: 24px;
 }
 

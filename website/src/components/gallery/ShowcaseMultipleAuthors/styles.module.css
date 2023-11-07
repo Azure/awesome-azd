@@ -1,0 +1,26 @@
+/**
+* Copyright (c) Microsoft Corporation. All rights reserved.
+* Licensed under the MIT License.
+ */
+
+/* Keep for future change on light vs dark theme */
+
+.cardAuthor {
+  color: #616161 !important;
+}
+
+.cardAuthorPanel {
+  color: #7160e8 !important;
+}
+
+.cardAuthor:hover {
+  color: #6656d1 !important;
+}
+
+[data-theme="dark"] .cardAuthor {
+  color: #707070 !important;
+}
+
+[data-theme="dark"] .cardAuthor:hover {
+  color: #6656d1 !important;
+}

@@ -15,7 +15,7 @@ const useStyles = makeStyles({
   card: {
     ...shorthands.margin("auto"),
     width: "326px",
-    height: "272px",
+    height: "280px",
     maxWidth: "100%",
     maxHeight: "100%",
   },

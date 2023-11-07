@@ -24,24 +24,35 @@
 
 .terminalSquareTopColor {
   background-color: #f5f5f5;
-  border: 1px solid #E0E0E0;
+  border: 1px solid #e0e0e0;
 }
 
 .terminalSquareBottomColor {
   color: #ffffff;
-  border: 1px solid #E0E0E0;
+  border: 1px solid #e0e0e0;
 }
 
 .borderBottomColor {
   border-bottom: 1px solid #d1d1d1;
 }
 
-.commandColor{
+.commandColor {
   color: #616161;
 }
 
-[data-theme="dark"] .commandColor{
-  color:#FFFFFF;
+.purple {
+  filter: invert(35%) sepia(74%) saturate(2992%) hue-rotate(233deg)
+    brightness(99%) contrast(83%) !important;
+  color: black;
+}
+
+.purple:hover {
+  filter: invert(34%) sepia(15%) saturate(4006%) hue-rotate(217deg)
+    brightness(90%) contrast(93%) !important;
+}
+
+[data-theme="dark"] .commandColor {
+  color: #ffffff;
 }
 
 [data-theme="dark"] .borderBottomColor {
@@ -49,11 +60,11 @@
 }
 
 [data-theme="dark"] .cardDescription {
-  color: #ADADAD;
+  color: #adadad;
 }
 
 [data-theme="dark"] .cardTag {
-  color: #ADADAD;
+  color: #adadad;
 }
 
 [data-theme="dark"] .textColor {
@@ -66,10 +77,10 @@
 
 [data-theme="dark"] .terminalSquareTopColor {
   background-color: #404040;
-   border: 1px solid #3D3D3D;
+  border: 1px solid #3d3d3d;
 }
 
 [data-theme="dark"] .terminalSquareBottomColor {
   background-color: #2f2f2f;
-   border: 1px solid #3D3D3D;
+  border: 1px solid #3d3d3d;
 }

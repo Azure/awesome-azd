@@ -38,6 +38,7 @@ function CopyButton({ url, colorMode }: { url: string; colorMode: string }) {
     <div>
       <DefaultButton
         id={buttonId}
+        className={styles.purple}
         style={{
           padding: "0px",
           minHeight: "20px",
@@ -49,8 +50,16 @@ function CopyButton({ url, colorMode }: { url: string; colorMode: string }) {
           navigator.clipboard.writeText(url);
         }}
       >
-        <img src={copySVG} height={20} alt="Copy" />
-        <div style={{ color: "#7160E8", fontSize: "12px" }}>Copy</div>
+        <img
+          src={copySVG}
+          height={20}
+          alt="Copy"
+        />
+        <div
+        style={{fontSize: "12px" }}
+        >
+          Copy
+        </div>
       </DefaultButton>
       {isCalloutVisible && (
         <Callout
@@ -427,6 +436,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                   <ShowcaseCardAzureTag
                     key={"azure_tag_" + user.title}
                     tags={user.tags}
+                    colorMode={colorMode}
                   />
                 </Popup>
               )}
@@ -495,7 +505,13 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
   );
 }
 
-function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
+function ShowcaseCardAzureTag({
+  tags,
+  colorMode,
+}: {
+  tags: TagType[];
+  colorMode: string;
+}) {
   const tagObjects = tags.map((tag) => ({ tag, ...Tags[tag] }));
 
   // Keep same order for all tags
@@ -526,7 +542,11 @@ function ShowcaseCardAzureTag({ tags }: { tags: TagType[] }) {
           }}
         >
           <img
-            src={useBaseUrl(tagObject.azureIcon)}
+            src={
+              colorMode != "dark" || tagObject.darkmodeAzureIcon == null
+                ? useBaseUrl(tagObject.azureIcon)
+                : useBaseUrl(tagObject.darkmodeAzureIcon)
+            }
             alt="Azure Service Icon"
             height={20}
           />

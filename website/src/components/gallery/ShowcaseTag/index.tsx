@@ -1,6 +1,6 @@
 /**
-* Copyright (c) Microsoft Corporation. All rights reserved.
-* Licensed under the MIT License.
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
  */
 
 import React from "react";
@@ -8,7 +8,7 @@ import styles from "./styles.module.css";
 import { Tag, Tags, type User, type TagType } from "../../../data/tags";
 import { TagList } from "../../../data/users";
 import { sortBy } from "@site/src/utils/jsUtils";
-import { Badge } from "@fluentui/react-components";
+import { Badge, Tooltip, makeStyles } from "@fluentui/react-components";
 
 const TagComp = React.forwardRef<HTMLDivElement, Tag>(
   ({ label, description }, ref) => (
@@ -27,6 +27,12 @@ const TagComp = React.forwardRef<HTMLDivElement, Tag>(
     </Badge>
   )
 );
+
+const useStyles = makeStyles({
+  tooltip: {
+    textAlign: "center",
+  },
+});
 
 export default function ShowcaseCardTag({
   tags,
@@ -53,6 +59,13 @@ export default function ShowcaseCardTag({
   }
   const rest = length - number;
 
+  const moreTagDetailList = tagObjectsSorted
+    .slice(number, length)
+    .map((tagObject) => tagObject.label)
+    .join("\n");
+
+  const style = useStyles();
+
   if (moreTag) {
     if (length > number) {
       return (
@@ -69,17 +82,30 @@ export default function ShowcaseCardTag({
             }
             return <TagComp key={index} id={id} {...tagObject} />;
           })}
-          <Badge
-            appearance="outline"
-            size="medium"
-            color="informative"
-            style={{
-              alignContent: "center",
-              fontSize: "10px",
+          <Tooltip
+            withArrow
+            content={{
+              children: (
+                <span style={{ whiteSpace: "pre-line" }}>
+                  {moreTagDetailList}
+                </span>
+              ),
+              className: style.tooltip,
             }}
+            relationship="label"
           >
-            + {rest} more
-          </Badge>
+            <Badge
+              appearance="outline"
+              size="medium"
+              color="informative"
+              style={{
+                alignContent: "center",
+                fontSize: "10px",
+              }}
+            >
+              + {rest} more
+            </Badge>
+          </Tooltip>
         </>
       );
     } else {
@@ -118,11 +144,7 @@ export default function ShowcaseCardTag({
             return;
           }
           return (
-            <div
-              key={index}
-              id={id}
-              className={styles.cardPanelTag}
-            >
+            <div key={index} id={id} className={styles.cardPanelTag}>
               {tagObject.label}
             </div>
           );

@@ -38,19 +38,9 @@ const useStyles = makeStyles({
   cardTitle: {
     verticalAlign: "middle",
     fontSize: "16px",
-    color: "#7160E8",
+    color: "#6656D1",
     fontWeight: "600",
-  },
-  cardTextBy: {
-    fontSize: "12px",
-    color: "#707070",
-  },
-  cardAuthor: {
-    color: "#7160E8",
-  },
-  cardDescription: {
-    fontSize: "14px",
-    color: "#707070",
+    ":hover": { color: "#6656D1" },
   },
   cardTag: {
     fontSize: "10px",
@@ -160,7 +150,7 @@ function ShowcaseCard({ user }: { user: User }):JSX.Element {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              flex:"1",
+              flex: "1",
             }}
           >
             <img
@@ -186,11 +176,7 @@ function ShowcaseCard({ user }: { user: User }):JSX.Element {
             ) : null}
             {tags.includes("popular") ? (
               <>
-                <img
-                  src={fire}
-                  alt="Fire"
-                  height={16}
-                />
+                <img src={fire} alt="Fire" height={16} />
                 <div
                   style={{
                     color: "#F7630C",
@@ -226,7 +212,7 @@ function ShowcaseCard({ user }: { user: User }):JSX.Element {
             columnGap: "3px",
           }}
         >
-          <div className={styles.cardTextBy}>by</div>
+          <div className={styleCSS.cardTextBy}>by</div>
           <div style={{ fontSize: "12px" }}>
             <ShowcaseMultipleAuthors
               key={"author_" + user.title}
@@ -235,18 +221,7 @@ function ShowcaseCard({ user }: { user: User }):JSX.Element {
             />
           </div>
         </div>
-        <div
-          className={styles.cardDescription}
-          style={{
-            paddingTop: "10px",
-            overflow: "hidden",
-            display: "-webkit-box",
-            WebkitLineClamp: "3",
-            WebkitBoxOrient: "vertical",
-          }}
-        >
-          {user.description}
-        </div>
+        <div className={styleCSS.cardDescription}>{user.description}</div>
         {/* Panel is Fluent UI 8. Must use ThemeProvider */}
         <ThemeProvider theme={colorMode != "dark" ? lightTheme : darkTheme}>
           <Panel
@@ -284,35 +259,13 @@ function ShowcaseCard({ user }: { user: User }):JSX.Element {
           size="small"
           spellCheck={false}
           defaultValue={azdInitCommand}
-          style={{
-            flex: "1",
-            border: "1px solid #d1d1d1",
-            fontSize: "11px",
-            fontFamily: "Consolas, Courier New, Courier, monospace",
-            WebkitTextFillColor: "#717171",
-          }}
+          className={styleCSS.input}
         />
         <Popover withArrow size="small">
           <PopoverTrigger disableButtonEnhancement>
             <Button
               size="small"
-              style={
-                colorMode != "dark"
-                  ? {
-                      padding: " 0px",
-                      minHeight: "20px",
-                      minWidth: "23px",
-                      backgroundColor: "#7160e8",
-                      borderColor: "#7160e8",
-                    }
-                  : {
-                      padding: " 0px",
-                      minHeight: "20px",
-                      minWidth: "23px",
-                      backgroundColor: "#292929",
-                      borderColor: "#666666",
-                    }
-              }
+              className={styleCSS.copyIconButton}
               onClick={() => {
                 navigator.clipboard.writeText(azdInitCommand);
               }}

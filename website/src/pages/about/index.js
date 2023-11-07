@@ -20,12 +20,16 @@ const useStyles = makeStyles({
   subtitle1: typographyStyles.subtitle1,
 });
 
-function HomepageHeader() {
+function HomepageHeader({ colorMode }) {
   const style = useStyles();
   return (
     <header className={styles.heroBanner}>
       <img
-        src={useBaseUrl("/img/coverBackground.png")}
+        src={
+          colorMode != "dark"
+            ? useBaseUrl("/img/coverBackground.png")
+            : useBaseUrl("/img/coverBackgroundDark.png")
+        }
         className={styles.cover}
         onError={({ currentTarget }) => {
           currentTarget.style.display = "none";
@@ -67,9 +71,9 @@ const HomeApp = () => {
       theme={colorMode == "dark" ? teamsDarkTheme : teamsLightTheme}
     >
       <div className="container">
-          <HomepageHeader />
-          <HomepageFeatures />
-        </div>
+        <HomepageHeader colorMode={colorMode} />
+        <HomepageFeatures />
+      </div>
     </FluentProvider>
   );
 };

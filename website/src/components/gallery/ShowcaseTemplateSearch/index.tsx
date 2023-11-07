@@ -1,6 +1,6 @@
 /**
-* Copyright (c) Microsoft Corporation. All rights reserved.
-* Licensed under the MIT License.
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
  */
 
 import React, { useState, useEffect } from "react";
@@ -10,6 +10,7 @@ import { useHistory, useLocation } from "@docusaurus/router";
 import { Text, Link as FluentUILink } from "@fluentui/react-components";
 import styles from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
+import { useColorMode } from "@docusaurus/theme-common";
 
 const TITLE = "Template Library";
 const DESCRIPTION =
@@ -105,10 +106,15 @@ function FilterBar(): React.JSX.Element {
 }
 
 export default function ShowcaseTemplateSearch() {
+  const { colorMode } = useColorMode();
   return (
     <div className={styles.searchContainer}>
       <img
-        src={useBaseUrl("/img/coverBackground.png")}
+        src={
+          colorMode != "dark"
+            ? useBaseUrl("/img/coverBackground.png")
+            : useBaseUrl("/img/coverBackgroundDark.png")
+        }
         className={styles.cover}
         onError={({ currentTarget }) => {
           currentTarget.style.display = "none";
@@ -122,9 +128,7 @@ export default function ShowcaseTemplateSearch() {
             flexDirection: "column",
           }}
         >
-          <div
-            className={styles.heroBar}
-          >
+          <div className={styles.heroBar}>
             <Text
               size={800}
               align="center"

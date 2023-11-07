@@ -4,7 +4,7 @@
  */
 
 import React from "react";
-import styles from "./styles.module.css";
+import styleCSS from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import {
   Card,
@@ -96,13 +96,7 @@ export default function ShowcaseContributionCard(): React.ReactElement {
         <Button
           size="medium"
           appearance="primary"
-          style={{
-            flex: 1,
-            backgroundColor: "#7160E8",
-            whiteSpace: "nowrap",
-            fontWeight: "550",
-            fontSize: "12px",
-          }}
+          className={styleCSS.submitButton}
           onClick={() => {
             window.open(
               "https://azure.github.io/awesome-azd/docs/intro",
@@ -115,14 +109,7 @@ export default function ShowcaseContributionCard(): React.ReactElement {
         <Button
           size="medium"
           appearance="transparent"
-          style={{
-            flex: 1,
-            color: "#7160E8",
-            whiteSpace: "nowrap",
-            fontWeight: "550",
-            paddingLeft: "10px",
-            fontSize: "12px",
-          }}
+          className={styleCSS.requestButton}
           onClick={() => {
             window.open(
               "https://github.com/Azure/awesome-azd/issues/new?assignees=nigkulintya%2C+savannahostrowski&labels=requested-contribution&template=%F0%9F%A4%94-submit-a-template-request.md&title=%5BIdea%5D+%3Cyour-template-name%3E",

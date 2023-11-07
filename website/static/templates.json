@@ -669,18 +669,16 @@
     "author": "JavaScript Advocacy Team, Natalia Venditto, Shibani Basava",
     "source": "https://github.com/Azure-Samples/azure-search-openai-javascript",
     "tags": [
-      "openai",
       "ai",
+      "bicep",
       "chatgpt",
       "cognitivesearch",
-      "nodejs",
       "javascript",
-      "typescript",
-      "webcomponents",
-      "microfrontend",
-      "bicep",
       "msft",
-      "popular"
+      "nodejs",
+      "openai",
+      "popular",
+      "typescript"
     ]
   },
   {

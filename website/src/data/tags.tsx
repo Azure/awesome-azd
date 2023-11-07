@@ -187,6 +187,7 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "React.js",
     description: "Template architecture uses React.js",
     type: "Tools",
+    type: "Tools",
   },
   nodejs: {
     label: "Node.js",
@@ -231,6 +232,11 @@ export const Tags: { [type in TagType]: Tag } = {
   flask: {
     label: "Flask",
     description: "Template architecture uses Flask web framework",
+    type: "Framework",
+  },
+  django: {
+    label: "Django",
+    description: "Template architecture uses Django web framework",
     type: "Framework",
   },
   django: {

@@ -66,6 +66,8 @@ function ShowcaseCard({ user }: { user: User }):JSX.Element {
   const source = user.source;
   const star = useBaseUrl("/img/Sparkle.svg");
   const fire = useBaseUrl("/img/Fire.svg");
+  const star = useBaseUrl("/img/Sparkle.svg");
+  const fire = useBaseUrl("/img/Fire.svg");
   let azdInitCommand =
     "azd init -t " + source.replace("https://github.com/", "");
   let headerLogo = useBaseUrl("/img/Community.svg");
@@ -93,6 +95,7 @@ function ShowcaseCard({ user }: { user: User }):JSX.Element {
           >
             <img
               src={headerLogo}
+              alt="Logo"
               alt="Logo"
               height={16}
               style={{ margin: "5px 0px", fontWeight: "550" }}
@@ -251,6 +254,7 @@ function ShowcaseCard({ user }: { user: User }):JSX.Element {
           id={"input_" + user.title}
           size="small"
           spellCheck={false}
+          spellCheck={false}
           defaultValue={azdInitCommand}
           className={styleCSS.input}
         />
@@ -263,6 +267,7 @@ function ShowcaseCard({ user }: { user: User }):JSX.Element {
                 navigator.clipboard.writeText(azdInitCommand);
               }}
             >
+              <img src={useBaseUrl("/img/Copy.svg")} height={20} alt="Copy" />
               <img src={useBaseUrl("/img/Copy.svg")} height={20} alt="Copy" />
             </Button>
           </PopoverTrigger>

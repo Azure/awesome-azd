@@ -81,7 +81,7 @@ export default function ShowcaseEmptyResult({ id }: { id: string }) {
               key="emptySearch_contributeTemplate"
               href="https://azure.github.io/awesome-azd/docs/intro"
               target="_blank"
-              style={{ paddingLeft: "10px" }}
+              className={styles.colorLink}
             >
               • Learn how to contribute an azd template
             </FluentUILink>
@@ -89,7 +89,7 @@ export default function ShowcaseEmptyResult({ id }: { id: string }) {
               key="emptySearch_requestBoard"
               href="https://github.com/Azure/awesome-azd/issues/new?assignees=nigkulintya%2C+savannahostrowski&labels=requested-contribution&template=%F0%9F%A4%94-submit-a-template-request.md&title=%5BIdea%5D+%3Cyour-template-name%3E"
               target="_blank"
-              style={{ paddingLeft: "10px" }}
+              className={styles.colorLink}
             >
               • View our template request board
             </FluentUILink>

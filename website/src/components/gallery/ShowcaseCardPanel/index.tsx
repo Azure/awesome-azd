@@ -593,7 +593,7 @@ function ShowcaseCardAzureTag({
                 fontSize: "12px",
                 fontWeight: "400",
               }}
-              className={styles.color}
+              className={styles.learMoreColor}
             >
               Learn More
             </a>

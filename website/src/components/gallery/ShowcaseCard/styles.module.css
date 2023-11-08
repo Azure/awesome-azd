@@ -48,15 +48,15 @@
   color: #616161;
 }
 
-.input{
+.input {
   flex: 1;
   border: 1px solid #d1d1d1 !important;
   font-size: 11px;
-  font-family: Consolas,Courier New, Courier, monospace !important;
+  font-family: Consolas, Courier New, Courier, monospace !important;
   -webkit-text-fill-color: #707070;
 }
 
-.copyIconButton{
+.copyIconButton {
   padding: 0px !important;
   min-height: 20px !important;
   min-width: 23px !important;
@@ -64,32 +64,32 @@
   border-color: var(--ifm-color-purple) !important;
 }
 
-.copyIconButton:hover{
+.copyIconButton:hover {
   background-color: #5a4cb9 !important;
 }
 
-.cardTitle{
+.cardTitle {
   vertical-align: middle !important;
   font-size: 16px !important;
   color: var(--ifm-color-purple-light) !important;
   font-weight: 600 !important;
 }
 
-[data-theme="dark"] .cardTitle{
-  color: #A79CF1 !important;
+[data-theme="dark"] .cardTitle {
+  color: #a79cf1 !important;
 }
 
-[data-theme="dark"] .copyIconButton{
+[data-theme="dark"] .copyIconButton {
   background-color: #292929 !important;
   border-color: #666666 !important;
 }
 
-[data-theme="dark"] .copyIconButton:hover{
+[data-theme="dark"] .copyIconButton:hover {
   background-color: #3e3e3e !important;
 }
 
-[data-theme="dark"] .input{
-  -webkit-text-fill-color: #D6D6D6;
+[data-theme="dark"] .input {
+  -webkit-text-fill-color: #d6d6d6;
   border: 1px solid #141414 !important;
   background-color: #141414;
 }

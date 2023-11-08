@@ -40,12 +40,13 @@
   color: #616161;
 }
 
-.color{
-  color:var(--ifm-color-purple-light) !important;
+.color {
+  color: var(--ifm-color-purple-light) !important;
 }
 
 .purple {
-  filter:invert(37%) sepia(47%) saturate(1651%) hue-rotate(221deg) brightness(86%) contrast(90%) !important;
+  filter: invert(37%) sepia(47%) saturate(1651%) hue-rotate(221deg)
+    brightness(86%) contrast(90%) !important;
   color: black;
 }
 
@@ -54,8 +55,9 @@
     brightness(90%) contrast(93%) !important;
 }
 
-[data-theme="dark"] .purple{
-  filter:invert(82%) sepia(32%) saturate(6544%) hue-rotate(203deg) brightness(101%) contrast(89%) !important;
+[data-theme="dark"] .purple {
+  filter: invert(82%) sepia(32%) saturate(6544%) hue-rotate(203deg)
+    brightness(101%) contrast(89%) !important;
 }
 
 [data-theme="dark"] .purple:hover {

@@ -19,7 +19,7 @@ import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
-import ShowcaseCardPage from "./ShowcaseCardPage"
+import ShowcaseCardPage from "./ShowcaseCardPage";
 
 initializeIcons();
 
@@ -44,7 +44,7 @@ const App = () => {
     }, 500);
   }, []);
 
-  return !loading ?
+  return !loading ? (
     <FluentProvider
       theme={colorMode == "dark" ? teamsDarkTheme : teamsLightTheme}
     >
@@ -58,8 +58,7 @@ const App = () => {
         </div>
       </div>
     </FluentProvider>
-    :
-    null
+  ) : null;
 };
 
 export default function Showcase(): JSX.Element {
@@ -68,4 +67,4 @@ export default function Showcase(): JSX.Element {
       <App />
     </Layout>
   );
-};
+}

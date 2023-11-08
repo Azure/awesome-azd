@@ -1,6 +1,11 @@
-import React from 'react';
-import styles from './styles.module.css';
-import Feature from '@site/src/components/Feature';
+/**
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
+ */
+
+import React from "react";
+import styles from "./styles.module.css";
+import Feature from "@site/src/components/Feature";
 
 /**
  * Fixed data that is rendered as a 'Feature' component on Homepage
@@ -45,7 +50,6 @@ const FeatureList = [
   },
 ];
 
-
 /**
  * Component that renders FeaturesList data in a container
  * with each data item represented as a Feature in a responsive grid
@@ -53,11 +57,11 @@ const FeatureList = [
 export default function HomepageFeatures() {
   return (
     <div className={styles.features}>
-        <div className={styles.row}>
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
-          ))}
-        </div>
+      <div className={styles.row}>
+        {FeatureList.map((props, idx) => (
+          <Feature key={idx} {...props} />
+        ))}
+      </div>
     </div>
   );
 }

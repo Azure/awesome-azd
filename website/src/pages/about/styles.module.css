@@ -1,6 +1,6 @@
 /**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
  */
 
 .heroBanner {
@@ -53,20 +53,20 @@
 .container {
   margin: 0 auto;
   max-width: 1340px;
-  padding: 0  1rem;
+  padding: 0 1rem;
   width: 100%;
 }
 
 [data-theme="dark"] .backgroundColor {
-  background-color: #1F1F1F;
+  background-color: #1f1f1f;
 }
 
 [data-theme="dark"] .container {
-  background-color: #1F1F1F;
+  background-color: #1f1f1f;
 }
 
 [data-theme="dark"] .heroBanner {
-  background-color: #1F1F1F;
+  background-color: #1f1f1f;
 }
 
 @media screen and (max-width: 996px) {

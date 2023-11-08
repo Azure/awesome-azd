@@ -65,8 +65,15 @@ function HomepageHeader({ colorMode }) {
 
 const HomeApp = () => {
   const { colorMode } = useColorMode();
+  const [loading, setLoading] = useState(true);
 
-  return (
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 100);
+  }, []);
+
+  return !loading ? (
     <FluentProvider
       theme={colorMode == "dark" ? teamsDarkTheme : teamsLightTheme}
       className={styles.backgroundColor}
@@ -76,7 +83,7 @@ const HomeApp = () => {
         <HomepageFeatures />
       </div>
     </FluentProvider>
-  );
+  ) : null;
 };
 
 export default function Home() {

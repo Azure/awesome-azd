@@ -352,7 +352,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                     >
                       Terminal URL
                     </div>
-                    <CopyButton colorMode={colorMode} url={azdInitCommand} />
+                    <CopyButton colorMode={colorMode} url={templateURL} />
                   </div>
                   <div
                     className={styles.terminalSquareBottomColor}

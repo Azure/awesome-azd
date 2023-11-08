@@ -3,10 +3,10 @@
 * Licensed under the MIT License.
  */
 
-.cardPanelTag{
+.cardPanelTag {
   height: 20px;
   align-content: center;
-  border: 1px solid #E0E0E0;
+  border: 1px solid #e0e0e0;
   padding: 0 5px;
   margin-top: 3px;
   font-size: 10px;
@@ -17,6 +17,6 @@
 }
 
 [data-theme="dark"] .cardPanelTag {
-  color: #ADADAD;
+  color: #adadad;
   border: 1px solid #525252;
 }

@@ -1,4 +1,9 @@
-.features {
+/**
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
+ */
+
+ .features {
   padding: 2rem;
 }
 
@@ -14,14 +19,14 @@
   flex-flow: column;
 }
 
-.card{
+.card {
   width: 326px;
   height: 280px;
   max-width: 100%;
   max-height: 100%;
 }
 
-[data-theme="dark"] .card{
+[data-theme="dark"] .card {
   background-color: #292929;
 }
 

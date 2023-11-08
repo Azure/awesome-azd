@@ -60,7 +60,7 @@ const darkTheme: PartialTheme = {
   },
 };
 
-function ShowcaseCard({ user }: { user: User }):JSX.Element {
+function ShowcaseCard({ user }: { user: User }): JSX.Element {
   const styles = useStyles();
   const tags = user.tags;
   const source = user.source;
@@ -93,7 +93,6 @@ function ShowcaseCard({ user }: { user: User }):JSX.Element {
           >
             <img
               src={headerLogo}
-              alt="Logo"
               alt="Logo"
               height={16}
               style={{ margin: "5px 0px", fontWeight: "550" }}
@@ -156,7 +155,12 @@ function ShowcaseCard({ user }: { user: User }):JSX.Element {
             <div className={styleCSS.headerText}>{headerText}</div>
             {tags.includes("new") ? (
               <>
-                <img src={star} alt="Star" height={16} />
+                <img
+                  src={star}
+                  alt="Star"
+                  height={16}
+                  style={{ paddingLeft: "10px" }}
+                />
                 <div
                   style={{
                     color: "#11910D",
@@ -170,7 +174,12 @@ function ShowcaseCard({ user }: { user: User }):JSX.Element {
             ) : null}
             {tags.includes("popular") ? (
               <>
-                <img src={fire} alt="Fire" height={16} />
+                <img
+                  src={fire}
+                  alt="Fire"
+                  height={16}
+                  style={{ paddingLeft: "10px" }}
+                />
                 <div
                   style={{
                     color: "#F7630C",
@@ -251,7 +260,6 @@ function ShowcaseCard({ user }: { user: User }):JSX.Element {
         <Input
           id={"input_" + user.title}
           size="small"
-          spellCheck={false}
           spellCheck={false}
           defaultValue={azdInitCommand}
           className={styleCSS.input}

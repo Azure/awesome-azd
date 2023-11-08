@@ -1,8 +1,12 @@
+/**
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
+ */
+
 import React from "react";
 import styles from "./styles.module.css";
 import {
   Card,
-  shorthands,
   makeStyles,
   Link,
   CardFooter,
@@ -27,7 +31,9 @@ export default function Feature({ Svg, title, description, link, content }) {
   return (
     <Card className={styles.card}>
       <CardHeader
-        header={<img width="80px" height="80px" src={useBaseUrl(Svg)} alt={title} />}
+        header={
+          <img width="80px" height="80px" src={useBaseUrl(Svg)} alt={title} />
+        }
       />
       <div className={styles.cardContent}>
         <div className={style.subtitle1}>{title}</div>

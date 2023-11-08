@@ -6,7 +6,7 @@
 /* Keep for future change on light vs dark theme */
 .submitButton {
   flex: 1;
-  background-color: #7160E8 !important;
+  background-color: #7160e8 !important;
   white-space: nowrap;
   font-weight: 550 !important;
   font-size: 12px !important;

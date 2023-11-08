@@ -12,7 +12,6 @@ import templates from '../../static/templates.json'
 // *** ADDING DATA TO AZD GALLERY ****/
 
 // Currently using Custom Issues on Repo
-// TODO: Define acceptable process for PR-based contributions
 
 // *************** CARD DATA STARTS HERE ***********************
 // Add your site to this list

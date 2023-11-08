@@ -544,9 +544,9 @@ function ShowcaseCardAzureTag({
         >
           <img
             src={
-              colorMode != "dark" || tagObject.darkmodeAzureIcon == null
+              colorMode != "dark" || tagObject.darkModeAzureIcon == null
                 ? useBaseUrl(tagObject.azureIcon)
-                : useBaseUrl(tagObject.darkmodeAzureIcon)
+                : useBaseUrl(tagObject.darkModeAzureIcon)
             }
             alt="Azure Service Icon"
             height={20}

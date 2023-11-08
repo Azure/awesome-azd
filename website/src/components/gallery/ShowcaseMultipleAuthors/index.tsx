@@ -21,7 +21,7 @@ function ShowcaseMultipleWebsites(
   length: number,
   i: number,
   cardPanel: boolean,
-  colorMode: string,
+  colorMode: string
 ) {
   if (i != length - 1) {
     return (
@@ -145,7 +145,7 @@ export default function ShowcaseMultipleAuthors({
             multiWebsites.length,
             i++,
             cardPanel,
-            colorMode,
+            colorMode
           );
         })}
       </div>

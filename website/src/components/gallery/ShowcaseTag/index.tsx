@@ -41,13 +41,15 @@ export default function ShowcaseCardTag({
   tags: TagType[];
   moreTag: boolean;
 }) {
-  const tagObjects = tags.filter(
-    (tagObject) =>
-      tagObject != "msft" &&
-      tagObject != "community" &&
-      tagObject != "new" &&
-      tagObject != "popular"
-  ).map((tag) => ({ tag, ...Tags[tag] }));
+  const tagObjects = tags
+    .filter(
+      (tagObject) =>
+        tagObject != "msft" &&
+        tagObject != "community" &&
+        tagObject != "new" &&
+        tagObject != "popular"
+    )
+    .map((tag) => ({ tag, ...Tags[tag] }));
 
   // Keep same order for all tags
   const tagObjectsSorted = sortBy(tagObjects, (tagObject) =>
@@ -111,14 +113,6 @@ export default function ShowcaseCardTag({
         <>
           {tagObjectsSorted.map((tagObject, index) => {
             const id = `showcase_card_tag_${tagObject.tag}`;
-            if (
-              tagObject.tag == "msft" ||
-              tagObject.tag == "community" ||
-              tagObject.tag == "new" ||
-              tagObject.tag == "popular"
-            ) {
-              return;
-            }
             return (
               <div key={id}>
                 <TagComp id={id} {...tagObject} />
@@ -133,14 +127,6 @@ export default function ShowcaseCardTag({
       <>
         {tagObjectsSorted.map((tagObject, index) => {
           const id = `showcase_card_tag_${tagObject.tag}`;
-          if (
-            tagObject.tag == "msft" ||
-            tagObject.tag == "community" ||
-            tagObject.tag == "new" ||
-            tagObject.tag == "popular"
-          ) {
-            return;
-          }
           return (
             <div key={index} id={id} className={styles.cardPanelTag}>
               {tagObject.label}

@@ -122,7 +122,9 @@ export type TagType =
   | "azurebot"
   | "ade"
   | "platformengineering"
-  | "semantickernel";
+  | "semantickernel"
+  | "webcomponents"
+  | "microfrontend";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -183,12 +185,6 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template contains Python app code",
     type: "Language",
   },
-  reactjs: {
-    label: "React.js",
-    description: "Template architecture uses React.js",
-    type: "Tools",
-    type: "Tools",
-  },
   nodejs: {
     label: "Node.js",
     description: "Template architecture uses Node.js",
@@ -200,54 +196,12 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Language",
   },
 
-  // ---- Templating Options
-  bicep: {
-    label: "Bicep",
-    description: "Template uses Bicep for Infra as Code",
-    type: "Infrastructure as Code",
-  },
-  terraform: {
-    label: "Terraform",
-    description: "Template uses Terraform for Infra as Code",
-    type: "Infrastructure as Code",
-  },
+  // ---- Tools
 
-  // ---- 3rd Party Services
-  mongodb: {
-    label: "MongoDB",
-    description: "Template architecture uses MongoDB",
-    type: "Database",
-  },
-  fastapi: {
-    label: "FastAPI",
-    description: "Template architecture uses FastAPI web framework",
-    type: "Framework",
-  },
-  fhir: {
-    label: "FHIR Service",
-    description:
-      "Template architecture uses Fast Healthcare Interoperability Resources (FHIR) service",
-    type: "Service",
-  },
-  flask: {
-    label: "Flask",
-    description: "Template architecture uses Flask web framework",
-    type: "Framework",
-  },
-  django: {
-    label: "Django",
-    description: "Template architecture uses Django web framework",
-    type: "Framework",
-  },
-  django: {
-    label: "Django",
-    description: "Template architecture uses Django web framework",
-    type: "Framework",
-  },
-  nestjs: {
-    label: "NestJS",
-    description: "Template architecture uses NestJS framework",
-    type: "Framework",
+  reactjs: {
+    label: "React.js",
+    description: "Template architecture uses React.js",
+    type: "Tools",
   },
   sap: {
     label: "SAP",
@@ -260,20 +214,10 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses SAP Cloud SDK",
     type: "Tools",
   },
-  spring: {
-    label: "Spring",
-    description: "Template architecture uses Spring framework",
-    type: "Framework",
-  },
   thymeleaf: {
     label: "Thymeleaf",
     description: "Template architecture uses Thymeleaf template engine",
     type: "Tools",
-  },
-  dataverse: {
-    label: "Dataverse",
-    description: "Template architecture uses Microsoft Dataverse",
-    type: "Service",
   },
   chatgpt: {
     label: "ChatGPT",
@@ -291,26 +235,67 @@ export const Tags: { [type in TagType]: Tag } = {
       "Template architecture uses Kubernetes Event Driven Autoscaling (KEDA)",
     type: "Tools",
   },
-  kubernetes: {
-    label: "Kubernetes",
-    description: "Template architecture uses Kubernetes",
-    type: "Platform",
-  },
-  webapps: {
-    label: "Web Apps",
-    description: "Template architecture uses Web Apps",
-    type: "Service",
-  },
   dapr: {
     label: "Dapr",
     description:
       "Template architecture uses Distributed Application Runtime (dapr)",
     type: "Tools",
   },
+  webcomponents: {
+    label: "Web Components",
+    description: "Template architecture uses Web Components",
+    type: "Tools",
+  },
+
+  // ---- Infrastructure as Code
+  bicep: {
+    label: "Bicep",
+    description: "Template uses Bicep for Infra as Code",
+    type: "Infrastructure as Code",
+  },
+  terraform: {
+    label: "Terraform",
+    description: "Template uses Terraform for Infra as Code",
+    type: "Infrastructure as Code",
+  },
+
+  // ---- Database
+  mongodb: {
+    label: "MongoDB",
+    description: "Template architecture uses MongoDB",
+    type: "Database",
+  },
   prometheus: {
     label: "Prometheus",
     description: "Template architecture uses Prometheus",
     type: "Database",
+  },
+
+  // ---- Framework
+  fastapi: {
+    label: "FastAPI",
+    description: "Template architecture uses FastAPI web framework",
+    type: "Framework",
+  },
+  flask: {
+    label: "Flask",
+    description: "Template architecture uses Flask web framework",
+    type: "Framework",
+  },
+  django: {
+    label: "Django",
+    description: "Template architecture uses Django web framework",
+    type: "Framework",
+  },
+  nestjs: {
+    label: "NestJS",
+    description: "Template architecture uses NestJS framework",
+    type: "Framework",
+  },
+  spring: {
+    label: "Spring",
+    description: "Template architecture uses Spring framework",
+    type: "Framework",
   },
   streamlit: {
     label: "Streamlit",
@@ -322,6 +307,37 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Semantic Kernel",
     type: "Framework",
   },
+  microfrontend: {
+    label: "Micro Frontend",
+    description: "Template architecture uses Micro Frontend",
+    type: "Framework",
+  },
+
+  // ---- Platform
+  kubernetes: {
+    label: "Kubernetes",
+    description: "Template architecture uses Kubernetes",
+    type: "Platform",
+  },
+
+  // ---- Service
+  fhir: {
+    label: "FHIR Service",
+    description:
+      "Template architecture uses Fast Healthcare Interoperability Resources (FHIR) service",
+    type: "Service",
+  },
+  dataverse: {
+    label: "Dataverse",
+    description: "Template architecture uses Microsoft Dataverse",
+    type: "Service",
+  },
+  webapps: {
+    label: "Web Apps",
+    description: "Template architecture uses Web Apps",
+    type: "Service",
+  },
+
   // ---- Azure Services
   ahds: {
     label: "Azure Health Data Service",
@@ -447,7 +463,7 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Azure OpenAI Service",
     description: "Template architecture uses Azure OpenAI Service",
     azureIcon: "./img/Azure-OpenAI-Service.svg",
-    darkmodeAzureIcon:"./img/Azure-OpenAI-Service-white.svg",
+    darkmodeAzureIcon: "./img/Azure-OpenAI-Service-white.svg",
     url: "https://azure.microsoft.com/products/ai-services/openai-service",
     type: "Service",
   },

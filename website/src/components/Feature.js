@@ -1,5 +1,4 @@
 import React from "react";
-import clsx from "clsx";
 import styles from "./styles.module.css";
 import {
   Card,
@@ -11,6 +10,7 @@ import {
   typographyStyles,
 } from "@fluentui/react-components";
 import { useColorMode } from "@docusaurus/theme-common";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 
 const useStyles = makeStyles({
   subtitle1: typographyStyles.subtitle1,
@@ -27,7 +27,7 @@ export default function Feature({ Svg, title, description, link, content }) {
   return (
     <Card className={styles.card}>
       <CardHeader
-        header={<img width="80px" height="80px" src={Svg} alt={title} />}
+        header={<img width="80px" height="80px" src={useBaseUrl(Svg)} alt={title} />}
       />
       <div className={styles.cardContent}>
         <div className={style.subtitle1}>{title}</div>

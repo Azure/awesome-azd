@@ -642,28 +642,6 @@
     ]
   },
   {
-    "title": "ChatGPT and RAG with Azure OpenAI and Cognitive Search for JavaScript",
-    "description": "A reference sample to build Retrieval Augmented Generation applications using Azure Cognitive Search and Azure OpenAI.",
-    "preview": "./templates/images/azure-search-openai-javascript.png",
-    "website": "https://github.com/Azure-Samples",
-    "author": "JavaScript Advocacy Team, Natalia Venditto, Shibani Basava",
-    "source": "https://github.com/Azure-Samples/azure-search-openai-javascript",
-    "tags": [
-      "ai",
-      "bicep",
-      "chatgpt",
-      "cognitivesearch",
-      "javascript",
-      "msft",
-      "new",
-      "nodejs",
-      "openai",
-      "ai",
-      "popular",
-      "typescript"
-    ]
-  },
-  {
     "title": "FastAPI on Azure Functions",
     "description": "A simple FastAPI app deployed to Azure Functions. Can also be run and debugged locally with the Azure Functions Core Tool emulator.",
     "preview": "./templates/images/fastapi-on-azure-functions.png",
@@ -1043,8 +1021,7 @@
       "monitor",
       "reactjs",
       "bicep",
-      "community",
-      "new"
+      "community"
     ]
   },
   {
@@ -1066,8 +1043,7 @@
       "keyvault",
       "appinsights",
       "chatgpt",
-      "community",
-      "new"
+      "community"
     ]
   },
   {
@@ -1084,8 +1060,7 @@
       "appservice",
       "azurebot",
       "agw",
-      "community",
-      "new"
+      "community"
     ]
   },
   {
@@ -1112,7 +1087,7 @@
     "website": "https://github.com/lopezleandro03",
     "author": "Leandro Lopez",
     "source": "https://github.com/lopezleandro03/azd-devcenter",
-    "tags": ["terraform", "platformengineering", "ade", "community", "new"]
+    "tags": ["terraform", "platformengineering", "ade", "community"]
   },
   {
     "title": "Java - ChatGPT + Enterprise data with Azure OpenAI and Cognitive Search",
@@ -1154,41 +1129,27 @@
       "new"
     ]
   },
+
   {
-    "title": "Java - ChatGPT + Enterprise data with Azure OpenAI and Cognitive Search",
-    "description": "This repo is the java conversion of the well known chatGPT + Enterprise data code sample originally developed in python",
-    "preview": "./templates/images/azure-search-openai-demo-java.png",
-    "website": "https://github.com/Azure-Samples/azure-search-openai-demo-java",
-    "author": "Davide Antelmo",
-    "source": "https://github.com/Azure-Samples/azure-search-openai-demo-java",
+    "title": "ChatGPT and RAG with Azure OpenAI and Cognitive Search for JavaScript",
+    "description": "A reference sample to build Retrieval Augmented Generation applications using Azure Cognitive Search and Azure OpenAI.",
+    "preview": "./templates/images/azure-search-openai-javascript.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "JavaScript Advocacy Team, Natalia Venditto, Shibani Basava",
+    "source": "https://github.com/Azure-Samples/azure-search-openai-javascript",
     "tags": [
-      "java",
-      "spring",
-      "openai",
-      "appservice",
+      "ai",
+      "bicep",
+      "chatgpt",
       "cognitivesearch",
-      "semantickernel",
-      "reactjs",
-      "bicep",
+      "javascript",
       "msft",
-      "new"
-    ]
-  },
-  {
-    "title": "Next.js 13 on Container Apps",
-    "description": "A blueprint for getting a Next.js 13 app running on Azure Container Apps with CDN and Application Insights.",
-    "preview": "./templates/images/nextjs-aca.png",
-    "website": "https://github.com/CMeeg",
-    "author": "Chris Meagher",
-    "source": "https://github.com/CMeeg/nextjs-aca",
-    "tags": [
-      "typescript",
-      "reactjs",
       "nodejs",
-      "bicep",
-      "aca",
-      "azurecdn",
-      "appinsights"
+      "openai",
+      "ai",
+      "popular",
+      "typescript",
+      "new"
     ]
   }
 ]

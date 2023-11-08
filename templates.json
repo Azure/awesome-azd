@@ -18,26 +18,6 @@
     "tags": ["terraform", "msft"]
   },
   {
-    "title": "Java Spring Apps with Azure OpenAI",
-    "description": "AI Shopping Cart is a sample app template that supercharges your shopping experience with the power of AI. It leverages Azure OpenAI and Azure Spring Apps to build a recommendation engine that is not only scalable, resilient, and secure, but also personalized to your needs.",
-    "preview": "./templates/images/java-springapps-openai.png",
-    "website": "https://github.com/Azure-Samples/app-templates-java-openai-springapps",
-    "author": "Pierre Malarme",
-    "source": "https://github.com/Azure-Samples/app-templates-java-openai-springapps",
-    "tags": [
-      "spring",
-      "openai",
-      "aca",
-      "azurespringapps",
-      "azuredb-postgreSQL",
-      "monitor",
-      "reactjs",
-      "bicep",
-      "community",
-      "new"
-    ]
-  },
-  {
     "title": "WordPress with Azure Container Apps",
     "description": "A blueprint to easily and quickly create and deploy your first scalable and secure WordPress site to Azure, leveraging Azure Container Apps with Azure Database for MariaDb.",
     "preview": "./templates/images/apptemplate-wordpress-on-ACA.png",
@@ -675,8 +655,10 @@
       "cognitivesearch",
       "javascript",
       "msft",
+      "new",
       "nodejs",
       "openai",
+      "ai",
       "popular",
       "typescript"
     ]
@@ -1027,6 +1009,7 @@
       "bicep",
       "apim",
       "openai",
+      "ai",
       "appinsights",
       "monitor",
       "enterprisepatterns",
@@ -1042,6 +1025,27 @@
     "author": "Juan Burckhardt",
     "source": "https://github.com/jsburckhardt/docusaurus-aca",
     "tags": ["javascript", "aca", "bicep", "community"]
+  },
+  {
+    "title": "Java Spring Apps with Azure OpenAI",
+    "description": "AI Shopping Cart is a sample app template that supercharges your shopping experience with the power of AI. It leverages Azure OpenAI and Azure Spring Apps to build a recommendation engine that is not only scalable, resilient, and secure, but also personalized to your needs.",
+    "preview": "./templates/images/java-springapps-openai.png",
+    "website": "https://github.com/Azure-Samples/app-templates-java-openai-springapps",
+    "author": "Pierre Malarme",
+    "source": "https://github.com/Azure-Samples/app-templates-java-openai-springapps",
+    "tags": [
+      "spring",
+      "openai",
+      "ai",
+      "aca",
+      "azurespringapps",
+      "azuredb-postgreSQL",
+      "monitor",
+      "reactjs",
+      "bicep",
+      "community",
+      "new"
+    ]
   },
   {
     "title": "React Web App with Azure API Management exposing SAP OData APIs",
@@ -1080,7 +1084,8 @@
       "appservice",
       "azurebot",
       "agw",
-      "community"
+      "community",
+      "new"
     ]
   },
   {
@@ -1096,7 +1101,8 @@
       "webapps",
       "bicep",
       "spring",
-      "community"
+      "community",
+      "new"
     ]
   },
   {
@@ -1106,10 +1112,44 @@
     "website": "https://github.com/lopezleandro03",
     "author": "Leandro Lopez",
     "source": "https://github.com/lopezleandro03/azd-devcenter",
+    "tags": ["terraform", "platformengineering", "ade", "community", "new"]
+  },
+  {
+    "title": "Java - ChatGPT + Enterprise data with Azure OpenAI and Cognitive Search",
+    "description": "This repo is the java conversion of the well known chatGPT + Enterprise data code sample originally developed in python",
+    "preview": "./templates/images/azure-search-openai-demo-java.png",
+    "website": "https://github.com/Azure-Samples/azure-search-openai-demo-java",
+    "author": "Davide Antelmo",
+    "source": "https://github.com/Azure-Samples/azure-search-openai-demo-java",
     "tags": [
-      "terraform",
-      "platformengineering",
-      "ade",
+      "java",
+      "spring",
+      "openai",
+      "ai",
+      "appservice",
+      "cognitivesearch",
+      "semantickernel",
+      "reactjs",
+      "bicep",
+      "msft",
+      "new"
+    ]
+  },
+  {
+    "title": "Next.js 13 on Container Apps",
+    "description": "A blueprint for getting a Next.js 13 app running on Azure Container Apps with CDN and Application Insights.",
+    "preview": "./templates/images/nextjs-aca.png",
+    "website": "https://github.com/CMeeg",
+    "author": "Chris Meagher",
+    "source": "https://github.com/CMeeg/nextjs-aca",
+    "tags": [
+      "typescript",
+      "reactjs",
+      "nodejs",
+      "bicep",
+      "aca",
+      "azurecdn",
+      "appinsights",
       "community",
       "new"
     ]

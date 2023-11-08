@@ -266,7 +266,6 @@ function ShowcaseCard({ user }: { user: User }):JSX.Element {
               }}
             >
               <img src={useBaseUrl("/img/Copy.svg")} height={20} alt="Copy" />
-              <img src={useBaseUrl("/img/Copy.svg")} height={20} alt="Copy" />
             </Button>
           </PopoverTrigger>
 

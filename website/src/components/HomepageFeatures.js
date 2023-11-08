@@ -12,34 +12,36 @@ import Feature from '@site/src/components/Feature';
  */
 const FeatureList = [
   {
-    title: 'Discover Templates',
-    Svg: 'img/home-discover.svg',
-    link: "/",
-    description: (
-      <>
-        Explore the <a href="https://github.com/azure/">azd-templates</a> topic on GitHub <b>or</b> check out the <a href="/awesome-azd">Gallery</a> to find templates using richer filters and search capability.
-      </>
-    ),
+    title: "Discover Templates",
+    Svg: "img/home-discover.svg",
+    link: "https://azure.github.io/awesome-azd/",
+    description:
+      "View our gallery of community-contributed and Microsoft-authored templates.",
+    content: "View templates",
   },
   {
-    title: 'Create Your Own',
-    Svg: 'img/home-create.svg',
+    title: "Learn more about azd",
+    Svg: "img/home-learn.svg",
+    link: "https://aka.ms/azd",
+    description:
+      "Read our documentation for more information about azd and its features.",
+    content: "View docs",
+  },
+  {
+    title: "Create your own template",
+    Svg: "img/home-create.svg",
     link: "https://learn.microsoft.com/azure/developer/azure-developer-cli/make-azd-compatible?pivots=azd-create",
-    description: (
-      <>
-        Have an existing project that you want to migrate, to use azd templates? <a href="https://learn.microsoft.com/azure/developer/azure-developer-cli/make-azd-compatible?pivots=azd-convert"> Convert a sample </a> <b>or</b> <a href="https://learn.microsoft.com/azure/developer/azure-developer-cli/make-azd-compatible?pivots=azd-create">create a new template!</a>
-      </>
-    ),
+    description:
+      "Learn how to build a template with step-by-step instructions.",
+    content: "Try learn module",
   },
   {
-    title: 'Contribute To Gallery',
-    Svg: 'img/home-contribute.svg',
-    link: "https://github.com/Azure/awesome-azd/issues/new/choose",
-    description: (
-      <>
-        Consider sharing your template in our <a href="/awesome-azd">Gallery</a> to help the community. Just <a href="https://github.com/Azure/awesome-azd/issues/new/choose">fill in the issue </a> and we'll do the rest!
-      </>
-    ),
+    title: "Contribute to the Gallery",
+    Svg: "img/home-contribute.svg",
+    link: "https://azure.github.io/awesome-azd/docs/intro",
+    description:
+      "After making your azd template, consider adding it to our gallery to share with fellow azd-developers.",
+    content: "View contributor guide",
   },
 ];
 
@@ -50,14 +52,12 @@ const FeatureList = [
  */
 export default function HomepageFeatures() {
   return (
-    <section className={styles.features}>
-      <div className="container">
-        <div className="row">
+    <div className={styles.features}>
+        <div className={styles.row}>
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}
         </div>
-      </div>
-    </section>
+    </div>
   );
 }

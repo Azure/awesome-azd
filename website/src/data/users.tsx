@@ -18,11 +18,11 @@ import templates from '../../static/templates.json'
 // Add your site to this list
 // prettier-ignore
 
-const Users: User[] = templates as User[]
+export const unsortedUsers: User[] = templates as User[]
 
 export const TagList = Object.keys(Tags) as TagType[];
 function sortUsers() {
-  let result = Users;
+  let result = unsortedUsers;
   // Sort by site name
   result = sortBy(result, (user) => user.title.toLowerCase());
   return result;

@@ -1090,21 +1090,6 @@
     "tags": ["terraform", "platformengineering", "ade", "community"]
   },
   {
-    "title": "Bicep template to bootstrap Azure Deployment Environments",
-    "description": "A template to deploy Azure DevCenter with the minimun configuration to start using Azure Deployment Environments and supercharge your platform engineering story. Infrastructure as Code (written in Bicep) will get you started quickly to enable developers to self-serve environments via the Developer Portal, Azure CLI or CI/CD pipelines.",
-    "preview": "./templates/images/azure-deployment-environments.png",
-    "website": "https://github.com/Azure/azure-dev",
-    "author": "Azure Dev",
-    "source": "https://github.com/Azure-Samples/azd-deployment-environments",
-    "tags": [
-      "devcenter",
-      "bicep",
-      "platformengineering",
-      "ade",
-      "msft"
-    ]
-  },
-  {
     "title": "Java - ChatGPT + Enterprise data with Azure OpenAI and Cognitive Search",
     "description": "This repo is the java conversion of the well known chatGPT + Enterprise data code sample originally developed in python",
     "preview": "./templates/images/azure-search-openai-demo-java.png",
@@ -1144,7 +1129,6 @@
       "new"
     ]
   },
-
   {
     "title": "ChatGPT and RAG with Azure OpenAI and Cognitive Search for JavaScript",
     "description": "A reference sample to build Retrieval Augmented Generation applications using Azure Cognitive Search and Azure OpenAI.",
@@ -1166,5 +1150,14 @@
       "typescript",
       "new"
     ]
+  },
+  {
+    "title": "Bicep template to bootstrap Azure Deployment Environments",
+    "description": "A template to deploy Azure DevCenter with the minimun configuration to start using Azure Deployment Environments and supercharge your platform engineering story. Infrastructure as Code (written in Bicep) will get you started quickly to enable developers to self-serve environments via the Developer Portal, Azure CLI or CI/CD pipelines.",
+    "preview": "./templates/images/azure-deployment-environments.png",
+    "website": "https://github.com/Azure/azure-dev",
+    "author": "Azure Dev",
+    "source": "https://github.com/Azure-Samples/azd-deployment-environments",
+    "tags": ["bicep", "platformengineering", "ade", "msft", "new"]
   }
 ]

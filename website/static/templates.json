@@ -1111,8 +1111,8 @@
     ]
   },
   {
-    "title": "Next.js 13 on Container Apps",
-    "description": "A blueprint for getting a Next.js 13 app running on Azure Container Apps with CDN and Application Insights.",
+    "title": "Next.js on Container Apps",
+    "description": "A blueprint for getting a Next.js app running on Azure Container Apps with CDN and Application Insights.",
     "preview": "./templates/images/nextjs-aca.png",
     "website": "https://github.com/CMeeg",
     "author": "Chris Meagher",

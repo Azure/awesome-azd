@@ -68,6 +68,9 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
   const fire = useBaseUrl("/img/Fire.svg");
   let azdInitCommand =
     "azd init -t " + source.replace("https://github.com/", "");
+  if (azdInitCommand.includes("Azure-Samples/")) {
+    azdInitCommand = azdInitCommand.replace("Azure-Samples/", "");
+  }
   let headerLogo = useBaseUrl("/img/Community.svg");
   let headerText = "Community Authored";
 

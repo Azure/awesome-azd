@@ -98,7 +98,10 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
     { toggle: toggleIsPopupVisibleAzureCalculator },
   ] = useBoolean(true);
 
-  const templateURL = user.source.replace("https://github.com/", "");
+  let templateURL = user.source.replace("https://github.com/", "");
+  if (templateURL.includes("Azure-Samples/")) {
+    templateURL = templateURL.replace("Azure-Samples/", "");
+  }
   const azdInitCommand = "azd init -t " + templateURL;
   let chevronSVG = useBaseUrl("/img/leftChevron.svg");
 

@@ -127,6 +127,11 @@ export default function ShowcaseMultipleAuthors({
     var multiWebsites = websites.split(", ");
     var multiAuthors = authors.split(", ");
 
+    if (multiWebsites.length != multiAuthors.length) {
+      throw new Error(
+        "The number of multiple authors and websites are not equal."
+      );
+    }
     return (
       <div
         style={{

@@ -119,11 +119,26 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
             colorMode != "dark"
               ? { backgroundColor: "#6656d1" }
               : { backgroundColor: "#A79CF1" },
+          ":hover":
+            colorMode != "dark"
+              ? { backgroundColor: "#f3f2f1" }
+              : { backgroundColor: "#242424" },
         },
       },
     ],
     root: "",
-    link: "",
+    link: {
+      selectors: {
+        ":active":
+          colorMode != "dark"
+            ? { backgroundColor: "#f3f2f1" }
+            : { backgroundColor: "#242424" },
+        ":hover":
+          colorMode != "dark"
+            ? { backgroundColor: "#f3f2f1" }
+            : { backgroundColor: "#242424" },
+      },
+    },
     linkContent: "",
     text: {
       color: pivotTextColor,

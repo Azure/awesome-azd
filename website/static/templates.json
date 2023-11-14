@@ -1157,5 +1157,47 @@
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/azd-deployment-environments",
     "tags": ["bicep", "platformengineering", "ade", "msft", "new"]
+  },
+  {
+    "title": ".NET eShop on Web App with Redis Cache",
+    "description": "A web application hosted in App Services Web App using Redis Cache for shopping cart and session data, and using SQL database for product catelog. Cache aside pattern applied",
+    "preview": "./templates/images/webapp-rediscache-sql-vnet.png",
+    "website": "https://github.com/CawaMS",
+    "author": "Catherine Wang",
+    "source": "https://github.com/CawaMS/eShop/tree/cache",
+    "tags": [
+      "dotnetCsharp",
+      "rediscache",
+      "azuresql",
+      "appservice",
+      "community",
+      "new"
+    ]
+  },
+  {
+    "title": "Real time game leaderboard with Azure Container Apps and Redis Cache",
+    "description": "Azure container app for a real-time game leaderboard that saves players and scores as sorted set in Azure Cache for Redis",
+    "preview": "./templates/images/containerapp-rediscache-leaderboard.png",
+    "website": "https://github.com/CawaMS",
+    "author": "Catherine Wang",
+    "source": "https://github.com/CawaMS/GameLeaderboard",
+    "tags": ["aca", "dotnetCsharp", "rediscache", "community", "new"]
+  },
+  {
+    "title": ".NET Redis OutputCache with Azure OpenAI",
+    "description": "An AI image gallery.Azure Container app that uses Redis Cache to save web responses for improving Azure Open AI API calls performance, consistency, and efficiency",
+    "preview": "./templates/images/aca-openai-redis-artgallery.png",
+    "website": "https://github.com/CawaMS",
+    "author": "Catherine Wang",
+    "source": "https://github.com/CawaMS/OutputCacheOpenAI",
+    "tags": [
+      "aca",
+      "dotnetCsharp",
+      "rediscache",
+      "ai",
+      "openai",
+      "community",
+      "new"
+    ]
   }
 ]

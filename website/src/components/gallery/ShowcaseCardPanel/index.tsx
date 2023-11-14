@@ -151,7 +151,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
             cardPanel={true}
           />
         </div>
-        <div>•</div>
+        <div className={styles.textColor}>•</div>
         {/* <div>Last Update: </div>
         <div>•</div> */}
         <FluentUILink

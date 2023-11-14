@@ -33,7 +33,7 @@
       "monitor",
       "keyvault",
       "bicep",
-      "community"
+      "msft"
     ]
   },
   {
@@ -380,7 +380,7 @@
       "webapps",
       "azurespringapps",
       "azuredb-postgreSQL",
-      "community"
+      "msft"
     ]
   },
   {
@@ -455,7 +455,7 @@
       "ai",
       "blobstorage",
       "azurespringapps",
-      "community"
+      "msft"
     ]
   },
   {
@@ -476,7 +476,7 @@
       "cosmosdb",
       "apim",
       "enterprisepatterns",
-      "community",
+      "msft",
       "popular"
     ]
   },
@@ -667,7 +667,7 @@
       "bicep",
       "spring",
       "thymeleaf",
-      "community",
+      "msft",
       "popular"
     ]
   },
@@ -703,11 +703,10 @@
       "webapps",
       "keyvault",
       "appinsights",
-
       "nestjs",
       "sap",
       "sapcloudsdk",
-      "community"
+      "msft"
     ]
   },
   {
@@ -743,7 +742,7 @@
     "website": "https://github.com/paulyuk",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/function-csharp-ai-textsummarize",
-    "tags": ["functions", "dotnetCsharp", "azureai", "bicep", "ai", "community"]
+    "tags": ["functions", "dotnetCsharp", "azureai", "bicep", "ai", "msft"]
   },
   {
     "title": "Function App - Python AI Text Summarize",
@@ -752,7 +751,7 @@
     "website": "https://github.com/paulyuk",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/function-python-ai-textsummarize",
-    "tags": ["functions", "python", "azureai", "bicep", "ai", "community"]
+    "tags": ["functions", "python", "azureai", "bicep", "ai", "msft"]
   },
   {
     "title": "Flask Container with CDN",
@@ -909,7 +908,7 @@
     "title": "React Component Toolkit with ChatGPT and OpenAI ",
     "description": "A sample demo for building and testing react components and includes a set of unique features including AI component generation and automatic conversion to Azure APIM Widgets",
     "preview": "./templates/images/react-component-toolkit-openai.png",
-    "website": "https://github.com/Azure-Samples",
+    "website": "https://github.com/jenny0322",
     "author": "Jenny Chen",
     "source": "https://github.com/Azure-Samples/react-component-toolkit-openai-demo",
     "tags": [
@@ -921,7 +920,7 @@
       "reactjs",
       "typescript",
       "javascript",
-      "community"
+      "msft"
     ]
   },
   {
@@ -1008,7 +1007,7 @@
     "title": "Java Spring Apps with Azure OpenAI",
     "description": "AI Shopping Cart is a sample app template that supercharges your shopping experience with the power of AI. It leverages Azure OpenAI and Azure Spring Apps to build a recommendation engine that is not only scalable, resilient, and secure, but also personalized to your needs.",
     "preview": "./templates/images/java-springapps-openai.png",
-    "website": "https://github.com/Azure-Samples/app-templates-java-openai-springapps",
+    "website": "https://github.com/pmalarme",
     "author": "Pierre Malarme",
     "source": "https://github.com/Azure-Samples/app-templates-java-openai-springapps",
     "tags": [
@@ -1021,7 +1020,7 @@
       "monitor",
       "reactjs",
       "bicep",
-      "community"
+      "msft"
     ]
   },
   {
@@ -1092,7 +1091,7 @@
     "title": "Java - ChatGPT + Enterprise data with Azure OpenAI and Cognitive Search",
     "description": "This repo is the java conversion of the well known chatGPT + Enterprise data code sample originally developed in python",
     "preview": "./templates/images/azure-search-openai-demo-java.png",
-    "website": "https://github.com/Azure-Samples/azure-search-openai-demo-java",
+    "website": "https://github.com/dantelmomsft",
     "author": "Davide Antelmo",
     "source": "https://github.com/Azure-Samples/azure-search-openai-demo-java",
     "tags": [
@@ -1133,7 +1132,7 @@
     "title": "ChatGPT and RAG with Azure OpenAI and Cognitive Search for JavaScript",
     "description": "A reference sample to build Retrieval Augmented Generation applications using Azure Cognitive Search and Azure OpenAI.",
     "preview": "./templates/images/azure-search-openai-javascript.png",
-    "website": "https://github.com/Azure-Samples",
+    "website": "https://github.com/Azure-Samples, https://github.com/anfibiacreativa, https://github.com/shibbas",
     "author": "JavaScript Advocacy Team, Natalia Venditto, Shibani Basava",
     "source": "https://github.com/Azure-Samples/azure-search-openai-javascript",
     "tags": [

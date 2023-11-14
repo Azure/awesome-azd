@@ -1,16 +1,9 @@
 /**
-* Copyright (c) Microsoft Corporation. All rights reserved.
-* Licensed under the MIT License.
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
  */
 
-import React, {
-  useCallback,
-  useState,
-  useEffect,
-  type ComponentProps,
-  type ReactNode,
-  type ReactElement,
-} from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { toggleListItem } from "@site/src/utils/jsUtils";
 import { prepareUserState } from "@site/src/pages/index";

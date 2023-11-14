@@ -1,0 +1,17 @@
+/**
+* Copyright (c) Microsoft Corporation. All rights reserved.
+* Licensed under the MIT License.
+ */
+
+.checkboxListItem {
+  user-select: none;
+  white-space: nowrap;
+}
+
+.checkboxListItem:last-child {
+  margin-right: 0;
+}
+
+.color {
+  color: var(--ifm-color-purple);
+}

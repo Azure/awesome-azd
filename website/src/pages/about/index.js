@@ -1,44 +1,104 @@
-import React from 'react';
-import clsx from 'clsx';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
+/**
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
+ */
 
-import styles from './index.module.css';
+import React, { useState, useEffect } from "react";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import Layout from "@theme/Layout";
+import HomepageFeatures from "@site/src/components/HomepageFeatures";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import {
+  Text,
+  teamsLightTheme,
+  teamsDarkTheme,
+  makeStyles,
+  typographyStyles,
+  FluentProvider,
+} from "@fluentui/react-components";
+import { useColorMode } from "@docusaurus/theme-common";
+import styles from "./styles.module.css";
 
-function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
+const useStyles = makeStyles({
+  largeTitle: typographyStyles.largeTitle,
+  title3: typographyStyles.title3,
+  subtitle1: typographyStyles.subtitle1,
+});
+
+function HomepageHeader({ colorMode }) {
+  const style = useStyles();
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <iframe width="773" height="435" src="https://www.youtube.com/embed/9z3PiHSCcYs?si=F1yKpoiOQnzb4o-K" title="Azure Developer CLI: GitHub to cloud in minutes - Universe 2022" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-        </iframe>
-
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="https://github.com/Azure/awesome-azd/issues/new?assignees=gkulin&labels=requested-contribution&template=%F0%9F%A4%94-submit-an-idea-for-a-template.md&title=%5BIdea%5D+%3Cyour-template-name%3E">
-            Request a Template 📫
-          </Link>
+    <header className={styles.heroBanner}>
+      <img
+        src={
+          colorMode != "dark"
+            ? useBaseUrl("/img/coverBackground.png")
+            : useBaseUrl("/img/coverBackgroundDark.png")
+        }
+        className={styles.cover}
+        onError={({ currentTarget }) => {
+          currentTarget.style.display = "none";
+        }}
+        alt=""
+      />
+      <div className={styles.section}>
+        <div className={styles.description}>
+          <Text
+            className={style.largeTitle}
+            style={{ marginBottom: "6px", color: "#242424" }}
+          >
+            Accelerate your journey to the cloud with azd
+          </Text>
+          <Text className={style.title3} style={{ color: "#242424" }}>
+            Azure Developer CLI (azd) is an open-source tool that accelerates
+            your application’s journey from local development to Azure.
+          </Text>
+        </div>
+        <div className={styles.video}>
+          <iframe
+            className={styles.iframe}
+            src="https://www.youtube.com/embed/9z3PiHSCcYs?si=F1yKpoiOQnzb4o-K"
+            title="Azure Developer CLI: GitHub to cloud in minutes - Universe 2022"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
         </div>
       </div>
     </header>
   );
 }
 
+const HomeApp = () => {
+  const { colorMode } = useColorMode();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 100);
+  }, []);
+
+  return !loading ? (
+    <FluentProvider
+      theme={colorMode == "dark" ? teamsDarkTheme : teamsLightTheme}
+      className={styles.backgroundColor}
+    >
+      <div className={styles.container}>
+        <HomepageHeader colorMode={colorMode} />
+        <HomepageFeatures />
+      </div>
+    </FluentProvider>
+  ) : null;
+};
+
 export default function Home() {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
       title={`Welcome to ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
-      <HomepageHeader />
-      <main>
-        <HomepageFeatures />
-      </main>
+      description="Description will go into a meta tag in <head />"
+    >
+      <HomeApp />
     </Layout>
   );
 }

@@ -73,39 +73,44 @@ const config = {
           width: 32,
           height: 32,
         },
-
-        // style: "primary",
-
         items: [
-          // FIXME: TEMPORARILY DISABLE DOCS, BLOG
-          //{ label: "Tutorial", position: "left", type: "doc", docId: "intro",},
-          //{ to: '/blog', label: 'Blog', position: 'left'},
-
-          { to: "/about", label: "About", position: "left" },
+          {
+            to: "/about",
+            label: "Getting Started",
+            position: "left",
+          },
           {
             label: "Contribute",
             position: "left",
             type: "doc",
             docId: "intro",
           },
+          {
+            to: "https://aka.ms/azd",
+            label: "Docs",
+            position: "left",
+          },
+          {
+            to: "https://learn.microsoft.com/azure/architecture/browse/",
+            label: "Resources",
+            position: "left",
+          },
+
+          // right
+          {
+            href: "https://github.com/Azure/awesome-azd",
+            position: "right",
+            className: "header-github-link",
+            "aria-label": "GitHub repository",
+          },
 
           // CONFIG:
           // Make sure you have class defined in src/css/custom.css
           {
-            to: "https://learn.microsoft.com/azure/architecture/browse/",
-            label: "Architectures",
+            to: "https://azure.github.io/awesome-azd/docs/intro",
+            label: "Submit your template!",
             position: "right",
-          },
-          {
-            to: "https://learn.microsoft.com/azure/developer/azure-developer-cli/",
-            label: "Docs",
-            position: "right",
-          },
-          {
-            href: "https://github.com/azure/awesome-azd",
-            position: "right",
-            className: "header-github-link",
-            "aria-label": "GitHub repository",
+            className: "button",
           },
         ],
       },
@@ -188,9 +193,9 @@ const config = {
 
         // CONFIG: theme = currently using `classic`
         //    See: https://docusaurus.io/docs/api/themes/@docusaurus/theme-classic
-        // theme: {
-        //   customCss: require.resolve('./src/css/custom.css'),
-        // },
+        theme: {
+          customCss: require.resolve("./src/css/custom.css"),
+        },
       }),
     ],
   ],

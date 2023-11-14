@@ -18,26 +18,6 @@
     "tags": ["terraform", "msft"]
   },
   {
-    "title": "Java Spring Apps with Azure OpenAI",
-    "description": "AI Shopping Cart is a sample app template that supercharges your shopping experience with the power of AI. It leverages Azure OpenAI and Azure Spring Apps to build a recommendation engine that is not only scalable, resilient, and secure, but also personalized to your needs.",
-    "preview": "./templates/images/java-springapps-openai.png",
-    "website": "https://github.com/Azure-Samples/app-templates-java-openai-springapps",
-    "author": "Pierre Malarme",
-    "source": "https://github.com/Azure-Samples/app-templates-java-openai-springapps",
-    "tags": [
-      "spring",
-      "openai",
-      "aca",
-      "azurespringapps",
-      "azuredb-postgreSQL",
-      "monitor",
-      "reactjs",
-      "bicep",
-      "community",
-      "new"
-    ]
-  },
-  {
     "title": "WordPress with Azure Container Apps",
     "description": "A blueprint to easily and quickly create and deploy your first scalable and secure WordPress site to Azure, leveraging Azure Container Apps with Azure Database for MariaDb.",
     "preview": "./templates/images/apptemplate-wordpress-on-ACA.png",
@@ -53,7 +33,7 @@
       "monitor",
       "keyvault",
       "bicep",
-      "community"
+      "msft"
     ]
   },
   {
@@ -400,7 +380,7 @@
       "webapps",
       "azurespringapps",
       "azuredb-postgreSQL",
-      "community"
+      "msft"
     ]
   },
   {
@@ -475,7 +455,7 @@
       "ai",
       "blobstorage",
       "azurespringapps",
-      "community"
+      "msft"
     ]
   },
   {
@@ -496,7 +476,7 @@
       "cosmosdb",
       "apim",
       "enterprisepatterns",
-      "community",
+      "msft",
       "popular"
     ]
   },
@@ -687,7 +667,7 @@
       "bicep",
       "spring",
       "thymeleaf",
-      "community",
+      "msft",
       "popular"
     ]
   },
@@ -723,11 +703,10 @@
       "webapps",
       "keyvault",
       "appinsights",
-
       "nestjs",
       "sap",
       "sapcloudsdk",
-      "community"
+      "msft"
     ]
   },
   {
@@ -763,7 +742,7 @@
     "website": "https://github.com/paulyuk",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/function-csharp-ai-textsummarize",
-    "tags": ["functions", "dotnetCsharp", "azureai", "bicep", "ai", "community"]
+    "tags": ["functions", "dotnetCsharp", "azureai", "bicep", "ai", "msft"]
   },
   {
     "title": "Function App - Python AI Text Summarize",
@@ -772,7 +751,7 @@
     "website": "https://github.com/paulyuk",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/function-python-ai-textsummarize",
-    "tags": ["functions", "python", "azureai", "bicep", "ai", "community"]
+    "tags": ["functions", "python", "azureai", "bicep", "ai", "msft"]
   },
   {
     "title": "Flask Container with CDN",
@@ -929,7 +908,7 @@
     "title": "React Component Toolkit with ChatGPT and OpenAI ",
     "description": "A sample demo for building and testing react components and includes a set of unique features including AI component generation and automatic conversion to Azure APIM Widgets",
     "preview": "./templates/images/react-component-toolkit-openai.png",
-    "website": "https://github.com/Azure-Samples",
+    "website": "https://github.com/jenny0322",
     "author": "Jenny Chen",
     "source": "https://github.com/Azure-Samples/react-component-toolkit-openai-demo",
     "tags": [
@@ -941,7 +920,7 @@
       "reactjs",
       "typescript",
       "javascript",
-      "community"
+      "msft"
     ]
   },
   {
@@ -1007,6 +986,7 @@
       "bicep",
       "apim",
       "openai",
+      "ai",
       "appinsights",
       "monitor",
       "enterprisepatterns",
@@ -1022,6 +1002,26 @@
     "author": "Juan Burckhardt",
     "source": "https://github.com/jsburckhardt/docusaurus-aca",
     "tags": ["javascript", "aca", "bicep", "community"]
+  },
+  {
+    "title": "Java Spring Apps with Azure OpenAI",
+    "description": "AI Shopping Cart is a sample app template that supercharges your shopping experience with the power of AI. It leverages Azure OpenAI and Azure Spring Apps to build a recommendation engine that is not only scalable, resilient, and secure, but also personalized to your needs.",
+    "preview": "./templates/images/java-springapps-openai.png",
+    "website": "https://github.com/pmalarme",
+    "author": "Pierre Malarme",
+    "source": "https://github.com/Azure-Samples/app-templates-java-openai-springapps",
+    "tags": [
+      "spring",
+      "openai",
+      "ai",
+      "aca",
+      "azurespringapps",
+      "azuredb-postgreSQL",
+      "monitor",
+      "reactjs",
+      "bicep",
+      "msft"
+    ]
   },
   {
     "title": "React Web App with Azure API Management exposing SAP OData APIs",
@@ -1042,8 +1042,7 @@
       "keyvault",
       "appinsights",
       "chatgpt",
-      "community",
-      "new"
+      "community"
     ]
   },
   {
@@ -1086,25 +1085,20 @@
     "website": "https://github.com/lopezleandro03",
     "author": "Leandro Lopez",
     "source": "https://github.com/lopezleandro03/azd-devcenter",
-    "tags": [
-      "terraform",
-      "platformengineering",
-      "ade",
-      "community",
-      "new"
-    ]
+    "tags": ["terraform", "platformengineering", "ade", "community"]
   },
   {
     "title": "Java - ChatGPT + Enterprise data with Azure OpenAI and Cognitive Search",
     "description": "This repo is the java conversion of the well known chatGPT + Enterprise data code sample originally developed in python",
     "preview": "./templates/images/azure-search-openai-demo-java.png",
-    "website": "https://github.com/Azure-Samples/azure-search-openai-demo-java",
+    "website": "https://github.com/dantelmomsft",
     "author": "Davide Antelmo",
     "source": "https://github.com/Azure-Samples/azure-search-openai-demo-java",
     "tags": [
       "java",
       "spring",
       "openai",
+      "ai",
       "appservice",
       "cognitivesearch",
       "semantickernel",
@@ -1115,8 +1109,8 @@
     ]
   },
   {
-    "title": "Next.js 13 on Container Apps",
-    "description": "A blueprint for getting a Next.js 13 app running on Azure Container Apps with CDN and Application Insights.",
+    "title": "Next.js on Container Apps",
+    "description": "A blueprint for getting a Next.js app running on Azure Container Apps with CDN and Application Insights.",
     "preview": "./templates/images/nextjs-aca.png",
     "website": "https://github.com/CMeeg",
     "author": "Chris Meagher",
@@ -1128,49 +1122,82 @@
       "bicep",
       "aca",
       "azurecdn",
-      "appinsights"
+      "appinsights",
+      "community",
+      "new"
     ]
+  }
+  {
+    "title": "ChatGPT and RAG with Azure OpenAI and Cognitive Search for JavaScript",
+    "description": "A reference sample to build Retrieval Augmented Generation applications using Azure Cognitive Search and Azure OpenAI.",
+    "preview": "./templates/images/azure-search-openai-javascript.png",
+    "website": "https://github.com/Azure-Samples, https://github.com/anfibiacreativa, https://github.com/shibbas",
+    "author": "JavaScript Advocacy Team, Natalia Venditto, Shibani Basava",
+    "source": "https://github.com/Azure-Samples/azure-search-openai-javascript",
+    "tags": [
+      "ai",
+      "bicep",
+      "chatgpt",
+      "cognitivesearch",
+      "javascript",
+      "nodejs",
+      "openai",
+      "typescript",
+      "webcomponents",
+      "microfrontend",
+      "msft",
+      "new"
+    ]
+  },
+  {
+    "title": "Bicep template to bootstrap Azure Deployment Environments",
+    "description": "A template to deploy Azure DevCenter with the minimun configuration to start using Azure Deployment Environments and supercharge your platform engineering story. Infrastructure as Code (written in Bicep) will get you started quickly to enable developers to self-serve environments via the Developer Portal, Azure CLI or CI/CD pipelines.",
+    "preview": "./templates/images/azure-deployment-environments.png",
+    "website": "https://github.com/Azure/azure-dev",
+    "author": "Azure Dev",
+    "source": "https://github.com/Azure-Samples/azd-deployment-environments",
+    "tags": ["bicep", "platformengineering", "ade", "msft", "new"]
   },
   {
     "title": ".NET eShop on Web App with Redis Cache",
     "description": "A web application hosted in App Services Web App using Redis Cache for shopping cart and session data, and using SQL database for product catelog. Cache aside pattern applied",
-    "preview":"./templates/images/webapp-rediscache-sql-vnet.png",
-    "website":"https://github.com/CawaMS",
-    "author":"Catherine Wang",
-    "source":"https://github.com/CawaMS/eShop/tree/cache",
-    "tags":[
+    "preview": "./templates/images/webapp-rediscache-sql-vnet.png",
+    "website": "https://github.com/CawaMS",
+    "author": "Catherine Wang",
+    "source": "https://github.com/CawaMS/eShop/tree/cache",
+    "tags": [
       "dotnetCsharp",
       "rediscache",
       "azuresql",
-      "appservice"
-    ]    
-  },
-  {
-    "title":"Real time game leaderboard with Azure Container Apps and Redis Cache",
-    "description":"Azure container app for a real-time game leaderboard that saves players and scores as sorted set in Azure Cache for Redis",
-    "preview":"./templates/images/containerapp-rediscache-leaderboard.png",
-    "website":"https://github.com/CawaMS",
-    "author":"Catherine Wang",
-    "source":"https://github.com/CawaMS/GameLeaderboard",
-    "tags":[
-      "aca",
-      "dotnetCsharp",
-      "rediscache"
+      "appservice",
+      "community",
+      "new"
     ]
   },
   {
-    "title":".NET Redis OutputCache with Azure OpenAI",
-    "description":"An AI image gallery.Azure Container app that uses Redis Cache to save web responses for improving Azure Open AI API calls performance, consistency, and efficiency",
-    "preview":"./templates/images/aca-openai-redis-artgallery.png",
-    "website":"https://github.com/CawaMS",
-    "author":"Catherine Wang",
-    "source":"https://github.com/CawaMS/OutputCacheOpenAI",
-    "tags":[
+    "title": "Real time game leaderboard with Azure Container Apps and Redis Cache",
+    "description": "Azure container app for a real-time game leaderboard that saves players and scores as sorted set in Azure Cache for Redis",
+    "preview": "./templates/images/containerapp-rediscache-leaderboard.png",
+    "website": "https://github.com/CawaMS",
+    "author": "Catherine Wang",
+    "source": "https://github.com/CawaMS/GameLeaderboard",
+    "tags": ["aca", "dotnetCsharp", "rediscache", "community", "new"]
+  },
+  {
+    "title": ".NET Redis OutputCache with Azure OpenAI",
+    "description": "An AI image gallery.Azure Container app that uses Redis Cache to save web responses for improving Azure Open AI API calls performance, consistency, and efficiency",
+    "preview": "./templates/images/aca-openai-redis-artgallery.png",
+    "website": "https://github.com/CawaMS",
+    "author": "Catherine Wang",
+    "source": "https://github.com/CawaMS/OutputCacheOpenAI",
+    "tags": [
       "aca",
       "dotnetCsharp",
       "rediscache",
       "ai",
-      "openai"
+      "openai",
+      "community",
+      "new"
     ]
   }
 ]

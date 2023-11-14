@@ -1126,7 +1126,7 @@
       "community",
       "new"
     ]
-  }
+  },
   {
     "title": "ChatGPT and RAG with Azure OpenAI and Cognitive Search for JavaScript",
     "description": "A reference sample to build Retrieval Augmented Generation applications using Azure Cognitive Search and Azure OpenAI.",

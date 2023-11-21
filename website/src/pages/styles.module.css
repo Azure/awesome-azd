@@ -1,30 +1,7 @@
 /**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
  */
-
- .filterCheckbox {
-  justify-content: space-between;
-}
-
-.filterCheckbox,
-.checkboxList {
-  display: flex;
-  align-items: center;
-}
-
-.filterCheckbox > div:first-child {
-  display: flex;
-  flex: 1 1 auto;
-  align-items: center;
-}
-
-.filterCheckbox > div > * {
-  margin-bottom: 0;
-  margin-right: 8px;
-}
 
 .checkboxList {
   flex-wrap: wrap;
@@ -39,30 +16,43 @@
 .checkboxListItem {
   user-select: none;
   white-space: nowrap;
-  height: 32px;
-  font-size: 0.8rem;
-  margin-top: 0.5rem;
-  margin-right: 0.5rem;
 }
 
 .checkboxListItem:last-child {
   margin-right: 0;
 }
 
-.searchContainer {
-  margin-left: auto;
+.cover {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
-.searchContainer input {
-  height: 30px;
-  border-radius: 15px;
-  padding: 10px;
-  border: 1px solid gray;
+.searchContainer {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.searchArea {
+  position: relative;
+  position: relative;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroBar {
+  width: 740px;
 }
 
 .showcaseList {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
   gap: 24px;
 }
 
@@ -78,23 +68,12 @@
   background-color: #33d4f4;
 }
 
-.helpText{
+.helpText {
   color: #245e94;
 }
 
-
 .showcaseFavoriteHeader {
   display: flex;
-  align-items: center;
-}
-
-.showcaseFavoriteHeader > h2 {
-  margin-bottom: 0;
-}
-
-.showcaseFavoriteHeader > svg {
-  width: 30px;
-  height: 30px;
 }
 
 .svgIconFavoriteXs,
@@ -109,4 +88,56 @@
 
 .svgIconFavorite {
   margin-left: 1rem;
+}
+
+.filterAndCard {
+  display: flex;
+  padding: 30px;
+}
+
+[data-theme="dark"] .filterAndCard {
+  background-color: #1f1f1f;
+}
+
+.filter {
+  flex: 2;
+  margin: 0px 25px;
+  max-width: 256px;
+}
+
+.card {
+  flex: 8;
+  min-width: 15rem;
+  margin: 0px 25px;
+  margin: 0px 25px;
+}
+
+.load {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.cardLoad {
+  margin-top: 15rem;
+  width: 100%;
+}
+
+@media screen and (max-width: 996px) {
+  .filterAndCard {
+    flex-direction: column;
+  }
+
+  .filter {
+    max-width: 100%;
+  }
+
+  .heroBar {
+    width: 100%;
+  }
+
+  .cardLoad {
+    margin-top: 1rem;
+  }
 }

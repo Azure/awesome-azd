@@ -1,0 +1,10 @@
+/**
+* Copyright (c) Microsoft Corporation. All rights reserved.
+* Licensed under the MIT License.
+ */
+
+/* Keep for future change on light vs dark theme */
+.colorLink {
+  padding-left: 10px !important;
+  color: var(--ifm-color-purple) !important;
+}

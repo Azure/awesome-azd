@@ -1,99 +1,120 @@
 /**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
+* Copyright (c) Microsoft Corporation. All rights reserved.
+* Licensed under the MIT License.
  */
 
- .showcaseCardImage {
-    overflow: hidden;
-    height: 150px;
-    border-bottom: 2px solid var(--ifm-color-emphasis-200);
-  }
-  
-  .showcaseCardHeader {
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-  }
-  
-  .showcaseCardTitle {
-    margin-bottom: 0;
-    flex: 1 1 auto;
-  }
-  
-  .showcaseCardTitle a {
-    text-decoration: none;
-    background: linear-gradient(
-        var(--ifm-color-primary),
-        var(--ifm-color-primary)
-      )
-      0% 100% / 0% 1px no-repeat;
-    transition: background-size ease-out 200ms;
-  }
-  
-  .showcaseCardTitle a:not(:focus):hover {
-    background-size: 100% 1px;
-  }
-  
-  .showcaseCardTitle,
-  .showcaseCardHeader .svgIconFavorite {
-    margin-right: 0.25rem;
-  }
-  
-  .showcaseCardHeader .svgIconFavorite {
-    color: var(--site-color-svg-icon-favorite);
-  }
-  
-  .showcaseCardSrcBtn {
-    margin-left: 6px;
-    padding-left: 12px;
-    padding-right: 12px;
-    border: none;
-  }
-  
-  .showcaseCardSrcBtn:focus-visible {
-    background-color: var(--ifm-color-secondary-dark);
-  }
-  
-  [data-theme='dark'] .showcaseCardSrcBtn {
-    background-color: var(--ifm-color-emphasis-200) !important;
-    color: inherit;
-  }
-  
-  [data-theme='dark'] .showcaseCardSrcBtn:hover {
-    background-color: var(--ifm-color-emphasis-300) !important;
-  }
-  
-  .showcaseCardBody {
-    font-size: smaller;
-    line-height: 1.66;
-  }
-  
-  .cardFooter {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .tag {
-    font-size: 0.675rem;
-    border: 1px solid var(--ifm-color-secondary-darkest);
-    cursor: default;
-    margin-right: 6px;
-    margin-bottom: 6px !important;
-    border-radius: 12px;
-    display: inline-flex;
-    align-items: center;
-  }
-  
-  .tag .textLabel {
-    margin-left: 8px;
-  }
-  
-  .tag .colorLabel {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    margin-left: 6px;
-    margin-right: 6px;
-  }
+/* Keep for future change on light vs dark theme */
+.cardBreakLine {
+  border-top: 1px solid #f0f0f0;
+}
+
+.card {
+  background: linear-gradient(#fafafa 0 0) bottom/100% 48px no-repeat;
+  border-radius: 8px;
+  padding: 12px;
+  width: 350px;
+  height: 368px;
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 300px;
+}
+
+.headerText {
+  font-weight: 600;
+  flex: 1;
+  padding-left: 3px;
+  color: #616161;
+  font-size: 10px;
+}
+
+.headerTextCardPanel {
+  color: #606060;
+  font-size: 10px;
+  padding-left: 3px;
+}
+
+.cardDescription {
+  font-size: 14px;
+  color: #242424;
+  padding-top: 10px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.cardTextBy {
+  font-size: 12px;
+  color: #616161;
+}
+
+.input {
+  flex: 1;
+  border: 1px solid #d1d1d1 !important;
+  font-size: 11px;
+  font-family: Consolas, Courier New, Courier, monospace !important;
+  -webkit-text-fill-color: #707070;
+}
+
+.copyIconButton {
+  padding: 0px !important;
+  min-height: 20px !important;
+  min-width: 23px !important;
+  background-color: var(--ifm-color-purple) !important;
+  border-color: var(--ifm-color-purple) !important;
+}
+
+.copyIconButton:hover {
+  background-color: #5a4cb9 !important;
+}
+
+.cardTitle {
+  vertical-align: middle !important;
+  font-size: 16px !important;
+  color: var(--ifm-color-purple-light) !important;
+  font-weight: 600 !important;
+}
+
+[data-theme="dark"] .cardTitle {
+  color: #a79cf1 !important;
+}
+
+[data-theme="dark"] .copyIconButton {
+  background-color: #292929 !important;
+  border-color: #666666 !important;
+}
+
+[data-theme="dark"] .copyIconButton:hover {
+  background-color: #3e3e3e !important;
+}
+
+[data-theme="dark"] .input {
+  -webkit-text-fill-color: #d6d6d6;
+  border: 1px solid #141414 !important;
+  background-color: #141414;
+}
+
+[data-theme="dark"] .cardTextBy {
+  color: #707070;
+}
+
+[data-theme="dark"] .cardDescription {
+  color: #adadad;
+}
+
+[data-theme="dark"] .cardBreakLine {
+  border-top: 1px solid black;
+}
+
+[data-theme="dark"] .card {
+  background: linear-gradient(#292929 0 0) bottom/100% 48px no-repeat;
+  background-color: #292929;
+}
+
+[data-theme="dark"] .headerTextCardPanel {
+  color: #d6d6d6;
+}
+
+[data-theme="dark"] .headerText {
+  color: #d6d6d6;
+}

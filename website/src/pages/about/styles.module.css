@@ -1,0 +1,76 @@
+/**
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
+ */
+
+.heroBanner {
+  padding: 2rem;
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  min-width: 309px;
+}
+
+.cover {
+  pointer-events: none;
+  position: absolute;
+  height: calc(100% - 4rem);
+  width: calc(100% - 4rem);
+  border-radius: 20px;
+}
+
+.video {
+  max-width: 615px;
+  height: 340px;
+  width: -webkit-fill-available;
+}
+
+.iframe {
+  height: 100%;
+  width: 100%;
+}
+
+.section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+  gap: 2rem;
+}
+
+.description {
+  max-width: 34rem;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-flow: column;
+  color: black;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1340px;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+[data-theme="dark"] .backgroundColor {
+  background-color: #1f1f1f;
+}
+
+[data-theme="dark"] .container {
+  background-color: #1f1f1f;
+}
+
+[data-theme="dark"] .heroBanner {
+  background-color: #1f1f1f;
+}
+
+@media screen and (max-width: 996px) {
+  .section {
+    flex-direction: column;
+  }
+}

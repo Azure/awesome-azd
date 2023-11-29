@@ -14,8 +14,14 @@ Place your template repository link here:
     - [ ] **Link to Author's GitHub or other relevant website** - Used for attribution
     - [ ] **Author's Name** -  Name to credit on the gallery card
     - [ ] **Link to template source** - Link to the template GitHub repo 
-    - [ ] **Tags** - One or more [tags](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) representing the template. Provide at least 1 tag for programming language used and at least 1 tag for Azure services integrated. Also tag the IaC provider (Bicep or Terraform). If you don't see a relevant tag for your template? Feel free to add one!
-      - [ ] Be sure to use a tag to specify whether your template is Micrsoft-authored (`"msft"`) or Community-authored (`"community"`)
+    - [ ] **Tags** - Specify [tags](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) to represent the template. If you don't see a relevant tag for your template? Feel free to add one!
+        
+        **Required tags**:
+      - [ ] Tag your template as Micrsoft-authored (`"msft"`) or Community-authored (`"community"`)
+      - [ ] Tag the IaC provider (`"bicep"` or `"terraform"`)
+      - [ ] At least 1 tag for programming language used
+      - [ ] At least 1 tag for Azure services integrated
+      - [ ] Add the `"new"` tag for any newly authored templates
 
 - [ ] In the PR comment, if you can also add a link to the PR where you made your repo `azd` compatible this will allow us to provide feedback on your template and speed up the review process.
 

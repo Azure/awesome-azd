@@ -1,9 +1,8 @@
-name: Deploy to GitHub Pages
+name: Release Awesome Azd
 
+# This pipeline is manually started only as part of releasing Awesome AZD
 on:
-  push:
-    branches: [main]
-    paths: [website/**]
+  workflow_dispatch:
 
 jobs:
   deploy:

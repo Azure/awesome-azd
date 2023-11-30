@@ -1,0 +1,23 @@
+
+name: Sync Awesome Azd Daily
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync daily repo
+        uses: repo-sync/github-sync@v2
+        with:
+          source_repo: ${{ github.repository }}
+          source_branch: main
+          destination_repo: azure/awesome-azd-daily
+          destination_branch: main
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+    # Only run on main repository
+    if: github.repository == 'azure/awesome-azd'

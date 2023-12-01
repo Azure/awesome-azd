@@ -1201,6 +1201,28 @@
     ]
   },
   {
+    "title": "Azure OpenAI Conference Session Recommender",
+    "description": "Build a recommender using OpenAI, Azure Functions, Azure Static Web Apps, Azure SQL DB, Data API builder and Text Embeddings",
+    "preview": "./templates/images/session-recommender-architecture.png",
+    "website": "https://sessionfinder.dotnetconf.net/",
+    "author": "Davide Mauri",
+    "source": "https://github.com/Azure-Samples/azure-sql-db-session-recommender",
+    "tags": [
+      "msft",
+      "reactjs",
+      "new",
+      "appservice",
+      "functions",
+      "azuresql",
+      "swa",
+      "appinsights",
+      "openai",
+      "azureai",
+      "enterprisepatterns",
+      "ai"
+    ]
+  },
+  {
     "title": "Microservices App - Dapr PubSub Java AKS",
     "description": "Demonstrate event-driven communication between microservices by leveraging the pub/sub messaging architecture using Dapr for a Java application running in an AKS cluster.",
     "preview": "./templates/images/dapr-pubsub-java-aks-diagram.png",

@@ -25,8 +25,7 @@ jobs:
           mkdir daily-fork
           cd daily-fork
           git init
-          # git remote add origin "https://$($AuthToken)@github.com/azure-sdk/awesome-azd.git"
-          git remote add origin "https://github.com/azure-sdk/awesome-azd.git"
+          git remote add origin "https://$($AuthToken)@github.com/azure-sdk/awesome-azd.git"
           git fetch --no-tags origin gh-pages
           git checkout gh-pages
           cp -R ../website/build/* .

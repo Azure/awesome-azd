@@ -1,19 +1,37 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
 
 trigger:
-- main
+  branches:
+    include:
+      - main
 
-pool:
-  vmImage: ubuntu-latest
+jobs:
+  - job: build_and_commit
+    displayName: Build and Commit
+    pool:
+      vmImage: 'ubuntu-latest'
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+    steps:
+      - checkout: self
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+      - script: |
+          npm install
+          npm run build
+        workingDirectory: website/
+        displayName: 'Build Website'
+
+      - script: |
+          git config --global user.email "azuresdk@microsoft.com"
+          git config --global user.name "azure-sdk"
+          mkdir daily-fork
+          cd daily-fork
+          git init
+          # git remote add Source "https://$($AuthToken)@github.com/azure-sdk/awesome-azd.git"
+          git remote add Source "https://github.com/azure-sdk/awesome-azd.git"
+          cd awesome-azd
+          git fetch --no-tags Source gh-pages
+          git checkout gh-pages
+          cp -R ../../website/dist/* .
+          git add .
+          git commit -a -m "daily release"
+          git push origin gh-pages
+        displayName: 'Commit to Azure SDK Fork'

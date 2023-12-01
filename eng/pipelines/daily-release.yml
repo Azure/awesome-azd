@@ -1,0 +1,33 @@
+
+trigger:
+  branches:
+    include:
+      - main
+
+jobs:
+  - job: build_and_commit
+    displayName: Build and Commit
+    pool:
+      vmImage: 'ubuntu-latest'
+
+    steps:
+      - checkout: self
+
+      - script: |
+          npm install
+          npm run build
+        workingDirectory: website/
+        displayName: 'Build Website'
+
+      - script: |
+          mkdir daily-fork
+          cd daily-fork
+          git init
+          git remote add origin "https://$(azuresdk-github-pat)@github.com/azure-sdk/awesome-azd.git"
+          git fetch --no-tags origin gh-pages
+          git checkout gh-pages
+          cp -R ../website/build/* .
+          git add .
+          git -c user.name="azure-sdk" -c user.email="azuresdk@microsoft.com" commit -a -m "daily release"
+          git push origin gh-pages
+        displayName: 'Commit to Azure SDK Fork'

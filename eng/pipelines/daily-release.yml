@@ -20,8 +20,6 @@ jobs:
         displayName: 'Build Website'
 
       - script: |
-          git config --global user.email "azuresdk@microsoft.com"
-          git config --global user.name "azure-sdk"
           mkdir daily-fork
           cd daily-fork
           git init
@@ -30,6 +28,6 @@ jobs:
           git checkout gh-pages
           cp -R ../website/build/* .
           git add .
-          git commit -a -m "daily release"
+          git -c user.name="azure-sdk" -c user.email="azuresdk@microsoft.com" commit -a -m "daily release"
           git push origin gh-pages
         displayName: 'Commit to Azure SDK Fork'

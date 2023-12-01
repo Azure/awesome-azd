@@ -625,9 +625,9 @@
     "title": "ChatGPT and Enterprise data with Azure OpenAI and Cognitive Search",
     "description": "Demonstration of how to leverage Azure OpenAI and Cognitive Search to enable Information Search and Discovery over organizational content.",
     "preview": "./templates/images/azure-search-openai-demo.png",
-    "website": "https://github.com/Azure",
+    "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
-    "source": "https://github.com/Azure/GPT-RAG",
+    "source": "https://github.com/Azure-Samples/azure-search-openai-demo",
     "tags": [
       "openai",
       "chatgpt",
@@ -645,9 +645,9 @@
     "title": "Multi-repo ChatGPT and Enterprise data with Azure OpenAI and Cognitive Search",
     "description": "Azure OpenAI at scale in a secure manner.",
     "preview": "./templates/images/GPT-Rag-Architecture-Zero-Trust.png",
-    "website": "https://github.com/GPT-RAG",
+    "website": "https://github.com/Azure",
     "author": "Azure Content Team",
-    "source": "https://github.com/Azure-Samples/azure-search-openai-demo",
+    "source": "https://github.com/Azure/GPT-RAG",
     "tags": [
       "openai",
       "chatgpt",

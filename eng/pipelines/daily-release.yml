@@ -29,7 +29,7 @@ jobs:
           git remote add Source "https://github.com/azure-sdk/awesome-azd.git"
           git fetch --no-tags Source gh-pages
           git checkout gh-pages
-          cp -R ../website/dist/* .
+          cp -R ../website/build/* .
           git add .
           git commit -a -m "daily release"
           git push origin gh-pages

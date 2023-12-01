@@ -1222,6 +1222,7 @@
       "ai"
     ]
   },
+  {
     "title": "Microservices App - Dapr PubSub Java AKS",
     "description": "Demonstrate event-driven communication between microservices by leveraging the pub/sub messaging architecture using Dapr for a Java application running in an AKS cluster.",
     "preview": "./templates/images/dapr-pubsub-java-aks-diagram.png",

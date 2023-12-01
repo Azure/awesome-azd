@@ -642,6 +642,26 @@
     ]
   },
   {
+    "title": "Multi-repo ChatGPT and Enterprise data with Azure OpenAI and Cognitive Search",
+    "description": "Azure OpenAI at scale in a secure manner.",
+    "preview": "./templates/images/GPT-Rag-Architecture-Zero-Trust.png",
+    "website": "https://github.com/Azure",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure/GPT-RAG",
+    "tags": [
+      "openai",
+      "chatgpt",
+      "cognitivesearch",
+      "python",
+      "typescript",
+      "bicep",
+      "nodejs",
+      "ai",
+      "msft",
+      "popular"
+    ]
+  },  
+  {
     "title": "FastAPI on Azure Functions",
     "description": "A simple FastAPI app deployed to Azure Functions. Can also be run and debugged locally with the Azure Functions Core Tool emulator.",
     "preview": "./templates/images/fastapi-on-azure-functions.png",

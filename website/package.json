@@ -21,7 +21,7 @@
     "@fluentui/react": "^8.110.14",
     "@fluentui/react-components": "^9.27.3",
     "@fluentui/react-tags-preview": "^0.1.1",
-    "@mdx-js/react": "^1.6.22",
+    "@mdx-js/react": "^3.0.0",
     "@uifabric/icons": "^7.9.5",
     "clsx": "^1.2.1",
     "fbemitter": "^3.0.0",

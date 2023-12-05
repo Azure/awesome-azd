@@ -1,14 +1,12 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-// CONFIG: Set for use in themeConfig: prism
-//    Pick: https://github.com/FormidableLabs/prism-react-renderer/tree/master/src/themes
-const lightCodeTheme = require("prism-react-renderer/themes/github");
-const darkCodeTheme = require("prism-react-renderer/themes/dracula");
-
 // USAGE: Config object can be accessed via React context as `{siteConfig}`
 //   See: https://docusaurus.io/docs/configuration#custom-configurations
 /** @type {import('@docusaurus/types').Config} */
+
+import { themes as prismThemes } from "prism-react-renderer";
+
 const config = {
   // CONFIG: Add Custom Fields - globally reference them from siteConfig
   //    See: https://docusaurus.io/docs/deployment#using-environment-variables
@@ -151,8 +149,8 @@ const config = {
       //    See: https://docusaurus.io/docs/next/markdown-features/code-blocks#supported-languages
       //    See: https://prismjs.com/#supported-languagescshar
       prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
+        theme: prismThemes.github,
+        darkTheme: prismThemes.dracula,
       },
     }),
 

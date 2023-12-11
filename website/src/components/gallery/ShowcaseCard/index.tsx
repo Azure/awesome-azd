@@ -243,7 +243,12 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
           </Panel>
         </ThemeProvider>
         <div
-          style={{ paddingTop: "10px", position: "absolute", bottom: "0px" }}
+          style={{
+            paddingTop: "10px",
+            position: "absolute",
+            bottom: "0px",
+            width: "100%",
+          }}
         >
           <div
             className={styles.cardTag}

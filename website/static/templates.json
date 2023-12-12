@@ -642,26 +642,6 @@
     ]
   },
   {
-    "title": "Multi-repo ChatGPT and Enterprise data with Azure OpenAI and Cognitive Search",
-    "description": "Azure OpenAI at scale in a secure manner.",
-    "preview": "./templates/images/GPT-Rag-Architecture-Zero-Trust.png",
-    "website": "https://github.com/Azure",
-    "author": "Azure Content Team",
-    "source": "https://github.com/Azure/GPT-RAG",
-    "tags": [
-      "openai",
-      "chatgpt",
-      "cognitivesearch",
-      "python",
-      "typescript",
-      "bicep",
-      "nodejs",
-      "ai",
-      "msft",
-      "popular"
-    ]
-  },  
-  {
     "title": "FastAPI on Azure Functions",
     "description": "A simple FastAPI app deployed to Azure Functions. Can also be run and debugged locally with the Azure Functions Core Tool emulator.",
     "preview": "./templates/images/fastapi-on-azure-functions.png",
@@ -762,7 +742,14 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/function-csharp-ai-textsummarize",
-    "tags": ["functions", "cognitivesearch","dotnetCsharp", "azureai", "ai", "msft"]
+    "tags": [
+      "functions",
+      "cognitivesearch",
+      "dotnetCsharp",
+      "azureai",
+      "ai",
+      "msft"
+    ]
   },
   {
     "title": "Azure Functions - Text Summarization using AI Cognitive Language Service (Python v2 Function)",
@@ -771,7 +758,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/function-python-ai-textsummarize",
-    "tags": ["functions", "cognitivesearch","python", "azureai", "ai", "msft"]
+    "tags": ["functions", "cognitivesearch", "python", "azureai", "ai", "msft"]
   },
   {
     "title": "Flask Container with CDN",
@@ -1124,8 +1111,7 @@
       "semantickernel",
       "reactjs",
       "bicep",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -1143,8 +1129,7 @@
       "aca",
       "azurecdn",
       "appinsights",
-      "community",
-      "new"
+      "community"
     ]
   },
   {
@@ -1165,8 +1150,7 @@
       "typescript",
       "webcomponents",
       "microfrontend",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -1245,7 +1229,7 @@
   {
     "title": "Microservices App - Dapr PubSub Java AKS",
     "description": "Demonstrate event-driven communication between microservices by leveraging the pub/sub messaging architecture using Dapr for a Java application running in an AKS cluster.",
-    "preview": "./templates/images/dapr-pubsub-java-aks-diagram.png",
+    "preview": "./templates/images/dapr-pubsub-javnewa-aks-diagram.png",
     "website": "https://github.com/Azure-Samples",
     "author": "Mahmut Canga",
     "source": "https://github.com/Azure-Samples/pubsub-dapr-aks-java",
@@ -1285,5 +1269,25 @@
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/function-python-ai-langchain",
     "tags": ["functions", "python", "ai", "msft", "new"]
+  },
+  {
+    "title": "Multi-repo ChatGPT and Enterprise data with Azure OpenAI and Cognitive Search",
+    "description": "Azure OpenAI at scale in a secure manner.",
+    "preview": "./templates/images/GPT-Rag-Architecture-Zero-Trust.png",
+    "website": "https://github.com/Azure",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure/GPT-RAG",
+    "tags": [
+      "openai",
+      "chatgpt",
+      "cognitivesearch",
+      "python",
+      "typescript",
+      "bicep",
+      "nodejs",
+      "ai",
+      "msft",
+      "new"
+    ]
   }
 ]

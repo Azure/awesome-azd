@@ -92,7 +92,8 @@ export type TagType =
   | "platformengineering"
   | "semantickernel"
   | "webcomponents"
-  | "microfrontend";
+  | "microfrontend"
+  | "blazor";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -279,6 +280,11 @@ export const Tags: { [type in TagType]: Tag } = {
   microfrontend: {
     label: "Micro Frontend",
     description: "Template architecture uses Micro Frontend",
+    type: "Framework",
+  },
+  blazor: {
+    label: "Blazor",
+    description: "Template architecture uses Blazor",
     type: "Framework",
   },
 

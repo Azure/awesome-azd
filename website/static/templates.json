@@ -1289,5 +1289,24 @@
       "msft",
       "new"
     ]
+  },
+  {
+    "title": "Blazor Web App with C# and SQL Database on Azure",
+    "description": "A starter project for creating a Blazor web app using C# and a SQL database hosted on Azure. The project contains sample application code which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get the app up and running quickly.",
+    "preview": "./templates/images/azd-blazor.png",
+    "website": "https://jasontaylor.dev",
+    "author": "JasonTaylorDev",
+    "source": "https://github.com/JasonTaylorDev/azd-blazor",
+    "tags": [
+      "bicep",
+      "dotnetCsharp",
+      "appservice",
+      "azuresql",
+      "monitor",
+      "keyvault",
+      "blazor",
+      "community",
+      "new"
+    ]
   }
 ]

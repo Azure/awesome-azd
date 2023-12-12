@@ -1229,7 +1229,7 @@
   {
     "title": "Microservices App - Dapr PubSub Java AKS",
     "description": "Demonstrate event-driven communication between microservices by leveraging the pub/sub messaging architecture using Dapr for a Java application running in an AKS cluster.",
-    "preview": "./templates/images/dapr-pubsub-javnewa-aks-diagram.png",
+    "preview": "./templates/images/dapr-pubsub-java-aks-diagram.png",
     "website": "https://github.com/Azure-Samples",
     "author": "Mahmut Canga",
     "source": "https://github.com/Azure-Samples/pubsub-dapr-aks-java",

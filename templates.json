@@ -736,22 +736,29 @@
     "tags": ["python", "appservice", "flask", "community"]
   },
   {
-    "title": "Function App - C# AI Text Summarize",
+    "title": "Azure Functions - Text Summarization using AI Cognitive Language Service (C#-Isolated)",
     "description": "This sample shows how to take text documents as a input via BlobTrigger, does Text Summarization processing using the AI Congnitive Language service, and then outputs to another text document using BlobOutput binding.",
     "preview": "./templates/images/test.png",
-    "website": "https://github.com/paulyuk",
+    "website": "https://github.com/Azure-Samples",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/function-csharp-ai-textsummarize",
-    "tags": ["functions", "dotnetCsharp", "azureai", "bicep", "ai", "msft"]
+    "tags": [
+      "functions",
+      "cognitivesearch",
+      "dotnetCsharp",
+      "azureai",
+      "ai",
+      "msft"
+    ]
   },
   {
-    "title": "Function App - Python AI Text Summarize",
-    "description": "This sample shows how to take text documents as a input via BlobTrigger, does Text Summarization processing using the AI Congnitive Language service, and then outputs to another text document using BlobOutput binding. Uses Azure Functions Python v2 programming model.",
+    "title": "Azure Functions - Text Summarization using AI Cognitive Language Service (Python v2 Function)",
+    "description": "This sample shows how to take text documents as a input via BlobTrigger, does Text Summarization processing using the AI Congnitive Language service, and then outputs to another text document using BlobOutput binding.",
     "preview": "./templates/images/test.png",
-    "website": "https://github.com/paulyuk",
+    "website": "https://github.com/Azure-Samples",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/function-python-ai-textsummarize",
-    "tags": ["functions", "python", "azureai", "bicep", "ai", "msft"]
+    "tags": ["functions", "cognitivesearch", "python", "azureai", "ai", "msft"]
   },
   {
     "title": "Flask Container with CDN",
@@ -1104,8 +1111,7 @@
       "semantickernel",
       "reactjs",
       "bicep",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -1123,8 +1129,7 @@
       "aca",
       "azurecdn",
       "appinsights",
-      "community",
-      "new"
+      "community"
     ]
   },
   {
@@ -1145,8 +1150,7 @@
       "typescript",
       "webcomponents",
       "microfrontend",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -1196,6 +1200,111 @@
       "rediscache",
       "ai",
       "openai",
+      "community",
+      "new"
+    ]
+  },
+  {
+    "title": "Azure OpenAI Conference Session Recommender",
+    "description": "Build a recommender using OpenAI, Azure Functions, Azure Static Web Apps, Azure SQL DB, Data API builder and Text Embeddings",
+    "preview": "./templates/images/session-recommender-architecture.png",
+    "website": "https://sessionfinder.dotnetconf.net/",
+    "author": "Davide Mauri",
+    "source": "https://github.com/Azure-Samples/azure-sql-db-session-recommender",
+    "tags": [
+      "msft",
+      "reactjs",
+      "new",
+      "appservice",
+      "functions",
+      "azuresql",
+      "swa",
+      "appinsights",
+      "openai",
+      "azureai",
+      "enterprisepatterns",
+      "ai"
+    ]
+  },
+  {
+    "title": "Microservices App - Dapr PubSub Java AKS",
+    "description": "Demonstrate event-driven communication between microservices by leveraging the pub/sub messaging architecture using Dapr for a Java application running in an AKS cluster.",
+    "preview": "./templates/images/dapr-pubsub-java-aks-diagram.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Mahmut Canga",
+    "source": "https://github.com/Azure-Samples/pubsub-dapr-aks-java",
+    "tags": ["dapr", "java", "aks", "msft", "new"]
+  },
+  {
+    "title": "Azure Functions - Chat using ChatGPT (Node.js JavaScript Function)",
+    "description": "This sample shows how to take a ChatGPT prompt as HTTP Get or Post input, calculates the completions using OpenAI ChatGPT service, and then returns the output plus caches in a Blob state store.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Paul Yuknewicz",
+    "source": "https://github.com/Azure-Samples/function-javascript-ai-openai-chatgpt",
+    "tags": [
+      "functions",
+      "openai",
+      "javascript",
+      "ai",
+      "chatgpt",
+      "msft",
+      "new"
+    ]
+  },
+  {
+    "title": "Azure Functions - Chat using ChatGPT (Python v2 Function)",
+    "description": "This sample shows how to take a ChatGPT prompt as HTTP Get or Post input, calculates the completions using OpenAI ChatGPT service, and then returns the output plus caches in a Blob state store.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Paul Yuknewicz",
+    "source": "https://github.com/Azure-Samples/function-python-ai-openai-chatgpt",
+    "tags": ["functions", "openai", "python", "ai", "chatgpt", "msft", "new"]
+  },
+  {
+    "title": "Azure Functions - LangChain with Azure OpenAI and ChatGPT (Python v2 Function)",
+    "description": "This sample shows how to take a human prompt as HTTP Get or Post input, calculates the completions using chains of human input and templates. This is a starting point that can be used for more sophisticated chains.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Paul Yuknewicz",
+    "source": "https://github.com/Azure-Samples/function-python-ai-langchain",
+    "tags": ["functions", "python", "ai", "msft", "new"]
+  },
+  {
+    "title": "Multi-repo ChatGPT and Enterprise data with Azure OpenAI and Cognitive Search",
+    "description": "Azure OpenAI at scale in a secure manner.",
+    "preview": "./templates/images/GPT-Rag-Architecture-Zero-Trust.png",
+    "website": "https://github.com/Azure",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure/GPT-RAG",
+    "tags": [
+      "openai",
+      "chatgpt",
+      "cognitivesearch",
+      "python",
+      "typescript",
+      "bicep",
+      "nodejs",
+      "ai",
+      "msft",
+      "new"
+    ]
+  },
+  {
+    "title": "Blazor Web App with C# and SQL Database on Azure",
+    "description": "A starter project for creating a Blazor web app using C# and a SQL database hosted on Azure. The project contains sample application code which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get the app up and running quickly.",
+    "preview": "./templates/images/azd-blazor.png",
+    "website": "https://jasontaylor.dev",
+    "author": "JasonTaylorDev",
+    "source": "https://github.com/JasonTaylorDev/azd-blazor",
+    "tags": [
+      "bicep",
+      "dotnetCsharp",
+      "appservice",
+      "azuresql",
+      "monitor",
+      "keyvault",
+      "blazor",
       "community",
       "new"
     ]

@@ -1343,7 +1343,8 @@
       "keyvault",
       "eventhub",
       "azurestorage",
-      "new"
+      "new",
+      "msft"
     ]
   }
 ]

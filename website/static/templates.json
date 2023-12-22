@@ -1342,7 +1342,8 @@
       "appinsights",
       "keyvault",
       "eventhub",
-      "azurestorage"
+      "azurestorage",
+      "new"
     ]
   }
 ]

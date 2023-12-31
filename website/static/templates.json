@@ -1342,6 +1342,7 @@
       "appservice",
       "webapps",
       "azuredb-mysql",
+      "new",
       "community"
     ]
   }

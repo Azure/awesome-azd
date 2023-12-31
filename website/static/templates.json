@@ -1327,5 +1327,22 @@
       "cosmosdb",
       "msft"
     ]
+  },
+  {
+    "title": "Python (Flask) Web App with MySQL",
+    "description": "A Python Flask app on App Service with a MySQL flexible server database. Database access is restricted to Azure IPs, and admin password is generated randomly",
+    "preview": "./templates/images/flask-db-mysql-example.png",
+    "website": "https://github.com/john0isaac",
+    "author": "John Aziz",
+    "source": "https://github.com/john0isaac/flask-webapp-mysql-db",
+    "tags": [
+      "python",
+      "flask",
+      "bicep",
+      "appservice",
+      "webapps",
+      "azuredb-mysql",
+      "community"
+    ]
   }
 ]

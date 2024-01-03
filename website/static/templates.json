@@ -1168,7 +1168,7 @@
     "preview": "./templates/images/webapp-rediscache-sql-vnet.png",
     "website": "https://github.com/CawaMS",
     "author": "Catherine Wang",
-    "source": "https://github.com/CawaMS/eShop/tree/cache",
+    "source": "https://github.com/CawaMS/eShop",
     "tags": [
       "dotnetCsharp",
       "rediscache",

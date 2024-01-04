@@ -167,6 +167,12 @@ const config = {
         disableInDev: false,
       },
     ],
+    [
+      '@gracefullight/docusaurus-plugin-microsoft-clarity',
+      {
+        projectId: 'kgcjy0d3wp',
+      },
+    ]
   ],
 
   // CONFIG: Set presets for chosen theme

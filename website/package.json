@@ -46,6 +46,7 @@
     "node": ">=18.0"
   },
   "dependencies": {
+    "@gracefullight/docusaurus-plugin-microsoft-clarity": "^1.0.0",
     "@popperjs/core": "^2.11.8",
     "scheduler": "^0.20.2",
     "search-insights": "^2.11.0"

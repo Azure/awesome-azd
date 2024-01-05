@@ -1327,5 +1327,21 @@
       "cosmosdb",
       "msft"
     ]
+  },
+  {
+    "title": "Azure API Management REST and GQL APIs with Logging and Monitoring",
+    "description": "Sample application that demonstrates the Azure API Management capabilities for GraphQL passthrough and federation.",
+    "preview": "./templates/images/apim-gql-samples.png",
+    "website": "http://aka.ms/apimlove",
+    "author": "Adrian Hall, Galin Iliev",
+    "source": "https://github.com/Azure-Samples/api-management-sample-apis",
+    "tags": [
+      "bicep",
+      "apim",
+      "gql",
+      "graphql",
+      "appinsights",
+      "monitor"
+    ]
   }
 ]

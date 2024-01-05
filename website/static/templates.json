@@ -1341,7 +1341,11 @@
       "gql",
       "graphql",
       "appinsights",
-      "monitor"
+      "monitor",
+      "msft",
+      "csharp",
+      "typescript",
+      "nodejs"
     ]
   }
 ]

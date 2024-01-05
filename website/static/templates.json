@@ -1343,7 +1343,8 @@
       "webapps",
       "azuresql",
       "terraform",
-      "helpwanted"
+      "helpwanted",
+      "community"      
     ]
   }
 ]

@@ -93,7 +93,9 @@ export type TagType =
   | "semantickernel"
   | "webcomponents"
   | "microfrontend"
-  | "blazor";
+  | "blazor"
+  | "eventhub"
+  | "azurestorage";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -517,6 +519,20 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure Deployment Environments",
     azureIcon: "./img/Azure-Deployment-Environments.svg",
     url: "https://azure.microsoft.com/products/deployment-environments",
+    type: "Service",
+  },
+  eventhub: {
+    label: "Azure Event Hubs",
+    description: "Template architecture uses Azure Event Hubs",
+    azureIcon: "./img/Azure-Event-Hubs.svg",
+    url: "https://azure.microsoft.com/products/event-hubs",
+    type: "Service",
+  },
+  azurestorage: {
+    label: "Azure Storage",
+    description: "Template architecture uses Azure Storage",
+    azureIcon: "./img/Azure-Storage.svg",
+    url: "https://azure.microsoft.com/products/storage",
     type: "Service",
   },
 

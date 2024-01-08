@@ -1168,7 +1168,7 @@
     "preview": "./templates/images/webapp-rediscache-sql-vnet.png",
     "website": "https://github.com/CawaMS",
     "author": "Catherine Wang",
-    "source": "https://github.com/CawaMS/eShop/tree/cache",
+    "source": "https://github.com/CawaMS/eShop",
     "tags": [
       "dotnetCsharp",
       "rediscache",
@@ -1327,6 +1327,15 @@
       "cosmosdb",
       "msft"
     ]
+  },
+  {
+    "title": "Using FastAPI Framework with Azure Functions to serve paginated data from Snowflake",
+    "description": "This is a sample Azure Function app created with the FastAPI framework to serve data from Snowflake using pagination",
+    "preview": "./templates/images/simple-fastapi-snow-azd.png",
+    "website": "https://github.com/MiguelElGallo",
+    "author": "Miguel P. Z.",
+    "source": "https://github.com/MiguelElGallo/simple-fastapi-snow-azd",
+    "tags": ["python", "fastapi", "functions", "bicep", "community", "new"]
   },
   {
     "title":"Azure Function with Event Hub with optional virtual network capabilities.",

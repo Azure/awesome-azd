@@ -93,7 +93,9 @@ export type TagType =
   | "semantickernel"
   | "webcomponents"
   | "microfrontend"
-  | "blazor";
+  | "blazor"
+  | "expressjs"
+  | "acr";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -285,6 +287,11 @@ export const Tags: { [type in TagType]: Tag } = {
   blazor: {
     label: "Blazor",
     description: "Template architecture uses Blazor",
+    type: "Framework",
+  },
+  expressjs: {
+    label: "Express.js",
+    description: "Template architecture uses Express.js",
     type: "Framework",
   },
 
@@ -517,6 +524,13 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure Deployment Environments",
     azureIcon: "./img/Azure-Deployment-Environments.svg",
     url: "https://azure.microsoft.com/products/deployment-environments",
+    type: "Service",
+  },
+  acr: {
+    label: "Azure Container Registry",
+    description: "Template architecture uses Azure Container Registry",
+    azureIcon: "./img/Azure-Container-Registry.svg",
+    url: "https://azure.microsoft.com/en-us/products/container-registry",
     type: "Service",
   },
 

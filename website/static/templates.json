@@ -1355,5 +1355,24 @@
       "new",
       "community"
     ]
+  },
+  {
+    "title":"Azure Function with Event Hub with optional virtual network capabilities",
+    "description":"An Azure Function app which sends events to and consumes from an Event Hub. The Function app can optionally be configured to integrate with a virtual network, and dependent resources configured with virtual network private endpoints. Managed identity is used for authentication to dependent resources.",
+    "preview":"./templates/images/function-eventhub-vnet.png",
+    "website":"https://www.michaelscollier.com/",
+    "author": "Michael S. Collier",
+    "source":"https://github.com/mcollier/azd-function-eventhub-private-mi-csharp",
+    "tags":[
+      "bicep",
+      "dotnetCsharp",
+      "functions",
+      "appinsights",
+      "keyvault",
+      "eventhub",
+      "azurestorage",
+      "new",
+      "community"
+    ]
   }
 ]

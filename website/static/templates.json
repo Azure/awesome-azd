@@ -1336,5 +1336,24 @@
     "author": "Miguel P. Z.",
     "source": "https://github.com/MiguelElGallo/simple-fastapi-snow-azd",
     "tags": ["python", "fastapi", "functions", "bicep", "community", "new"]
+  },
+  {
+    "title": "Python (Flask) Web App with MySQL and Key Vault",
+    "description": "A Python Flask app on App Service with a MySQL flexible server database. Database access is restricted to Azure IPs, and all administrative secrets are stored in Key Vault.",
+    "preview": "./templates/images/flask-db-mysql-example.png",
+    "website": "https://github.com/john0isaac",
+    "author": "John Aziz",
+    "source": "https://github.com/john0isaac/flask-webapp-mysql-db",
+    "tags": [
+      "python",
+      "flask",
+      "bicep",
+      "appservice",
+      "webapps",
+      "azuredb-mysql",
+      "keyvault",
+      "new",
+      "community"
+    ]
   }
 ]

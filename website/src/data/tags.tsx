@@ -93,7 +93,8 @@ export type TagType =
   | "semantickernel"
   | "webcomponents"
   | "microfrontend"
-  | "blazor";
+  | "blazor"
+  | "azuredb-mySQL";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -404,6 +405,13 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure Database for PostgreSQL",
     azureIcon: "./img/Azure-PostgreSQL.svg",
     url: "https://azure.microsoft.com/products/postgresql",
+    type: "Database",
+  },
+  "azuredb-mySQL": {
+    label: "Azure MySQL",
+    description: "Template architecture uses Azure Database for MySQL",
+    azureIcon: "./img/Azure-MySQL.svg",
+    url: "https://azure.microsoft.com/products/mysql",
     type: "Database",
   },
   swa: {

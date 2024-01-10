@@ -1160,7 +1160,7 @@
     "website": "https://github.com/Azure/azure-dev",
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/azd-deployment-environments",
-    "tags": ["bicep", "platformengineering", "ade", "msft", "new"]
+    "tags": ["bicep", "platformengineering", "ade", "msft"]
   },
   {
     "title": ".NET eShop on Web App with Redis Cache",
@@ -1168,14 +1168,13 @@
     "preview": "./templates/images/webapp-rediscache-sql-vnet.png",
     "website": "https://github.com/CawaMS",
     "author": "Catherine Wang",
-    "source": "https://github.com/CawaMS/eShop/tree/cache",
+    "source": "https://github.com/CawaMS/eShop",
     "tags": [
       "dotnetCsharp",
       "rediscache",
       "azuresql",
       "appservice",
-      "community",
-      "new"
+      "community"
     ]
   },
   {
@@ -1185,7 +1184,7 @@
     "website": "https://github.com/CawaMS",
     "author": "Catherine Wang",
     "source": "https://github.com/CawaMS/GameLeaderboard",
-    "tags": ["aca", "dotnetCsharp", "rediscache", "community", "new"]
+    "tags": ["aca", "dotnetCsharp", "rediscache", "community"]
   },
   {
     "title": ".NET Redis OutputCache with Azure OpenAI",
@@ -1200,8 +1199,7 @@
       "rediscache",
       "ai",
       "openai",
-      "community",
-      "new"
+      "community"
     ]
   },
   {
@@ -1214,7 +1212,6 @@
     "tags": [
       "msft",
       "reactjs",
-      "new",
       "appservice",
       "functions",
       "azuresql",
@@ -1233,7 +1230,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Mahmut Canga",
     "source": "https://github.com/Azure-Samples/pubsub-dapr-aks-java",
-    "tags": ["dapr", "java", "aks", "msft", "new"]
+    "tags": ["dapr", "java", "aks", "msft"]
   },
   {
     "title": "Azure Functions - Chat using ChatGPT (Node.js JavaScript Function)",
@@ -1248,8 +1245,7 @@
       "javascript",
       "ai",
       "chatgpt",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -1259,7 +1255,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/function-python-ai-openai-chatgpt",
-    "tags": ["functions", "openai", "python", "ai", "chatgpt", "msft", "new"]
+    "tags": ["functions", "openai", "python", "ai", "chatgpt", "msft"]
   },
   {
     "title": "Azure Functions - LangChain with Azure OpenAI and ChatGPT (Python v2 Function)",
@@ -1268,7 +1264,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/function-python-ai-langchain",
-    "tags": ["functions", "python", "ai", "msft", "new"]
+    "tags": ["functions", "python", "ai", "msft"]
   },
   {
     "title": "Multi-repo ChatGPT and Enterprise data with Azure OpenAI and Cognitive Search",
@@ -1286,8 +1282,7 @@
       "bicep",
       "nodejs",
       "ai",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -1305,8 +1300,72 @@
       "monitor",
       "keyvault",
       "blazor",
-      "community",
-      "new"
+      "community"
+    ]
+  },
+  {
+    "title": "ASP.NET Blazor chat application with Azure Cosmos DB for NoSQL, Azure Container Apps, and Azure OpenAI",
+    "description": "A sample sample chat application deployed to Azure Container Apps that answers questions from the user and tracks chat history across conversations. Chat sessions and history is stored in Azure Cosmos DB for NoSQL and chat completions are provided by Azure OpenAI.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/Azure-Samples/chat-csharp-cosmos-db-nosql-openai",
+    "tags": [
+      "bicep",
+      "aca",
+      "dotnetCsharp",
+      "ai",
+      "openai",
+      "chatgpt",
+      "cosmosdb",
+      "msft"
+    ]
+  },
+  {
+    "title": "Using FastAPI Framework with Azure Functions to serve paginated data from Snowflake",
+    "description": "This is a sample Azure Function app created with the FastAPI framework to serve data from Snowflake using pagination",
+    "preview": "./templates/images/simple-fastapi-snow-azd.png",
+    "website": "https://github.com/MiguelElGallo",
+    "author": "Miguel P. Z.",
+    "source": "https://github.com/MiguelElGallo/simple-fastapi-snow-azd",
+    "tags": ["python", "fastapi", "functions", "bicep", "community", "new"]
+  },
+  {
+    "title": "Python (Flask) Web App with MySQL and Key Vault",
+    "description": "A Python Flask app on App Service with a MySQL flexible server database. Database access is restricted to Azure IPs, and all administrative secrets are stored in Key Vault.",
+    "preview": "./templates/images/flask-db-mysql-example.png",
+    "website": "https://github.com/john0isaac",
+    "author": "John Aziz",
+    "source": "https://github.com/john0isaac/flask-webapp-mysql-db",
+    "tags": [
+      "python",
+      "flask",
+      "bicep",
+      "appservice",
+      "webapps",
+      "azuredb-mySQL",
+      "keyvault",
+      "new",
+      "community"
+    ]
+  },
+  {
+    "title":"Azure Function with Event Hub with optional virtual network capabilities",
+    "description":"An Azure Function app which sends events to and consumes from an Event Hub. The Function app can optionally be configured to integrate with a virtual network, and dependent resources configured with virtual network private endpoints. Managed identity is used for authentication to dependent resources.",
+    "preview":"./templates/images/function-eventhub-vnet.png",
+    "website":"https://www.michaelscollier.com/",
+    "author": "Michael S. Collier",
+    "source":"https://github.com/mcollier/azd-function-eventhub-private-mi-csharp",
+    "tags":[
+      "bicep",
+      "dotnetCsharp",
+      "functions",
+      "appinsights",
+      "keyvault",
+      "eventhub",
+      "azurestorage",
+      "new",
+      "community"
     ]
   }
 ]

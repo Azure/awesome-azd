@@ -1160,7 +1160,7 @@
     "website": "https://github.com/Azure/azure-dev",
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/azd-deployment-environments",
-    "tags": ["bicep", "platformengineering", "ade", "msft", "new"]
+    "tags": ["bicep", "platformengineering", "ade", "msft"]
   },
   {
     "title": ".NET eShop on Web App with Redis Cache",
@@ -1174,8 +1174,7 @@
       "rediscache",
       "azuresql",
       "appservice",
-      "community",
-      "new"
+      "community"
     ]
   },
   {
@@ -1185,7 +1184,7 @@
     "website": "https://github.com/CawaMS",
     "author": "Catherine Wang",
     "source": "https://github.com/CawaMS/GameLeaderboard",
-    "tags": ["aca", "dotnetCsharp", "rediscache", "community", "new"]
+    "tags": ["aca", "dotnetCsharp", "rediscache", "community"]
   },
   {
     "title": ".NET Redis OutputCache with Azure OpenAI",
@@ -1200,8 +1199,7 @@
       "rediscache",
       "ai",
       "openai",
-      "community",
-      "new"
+      "community"
     ]
   },
   {
@@ -1214,7 +1212,6 @@
     "tags": [
       "msft",
       "reactjs",
-      "new",
       "appservice",
       "functions",
       "azuresql",
@@ -1233,7 +1230,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Mahmut Canga",
     "source": "https://github.com/Azure-Samples/pubsub-dapr-aks-java",
-    "tags": ["dapr", "java", "aks", "msft", "new"]
+    "tags": ["dapr", "java", "aks", "msft"]
   },
   {
     "title": "Azure Functions - Chat using ChatGPT (Node.js JavaScript Function)",
@@ -1248,8 +1245,7 @@
       "javascript",
       "ai",
       "chatgpt",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -1259,7 +1255,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/function-python-ai-openai-chatgpt",
-    "tags": ["functions", "openai", "python", "ai", "chatgpt", "msft", "new"]
+    "tags": ["functions", "openai", "python", "ai", "chatgpt", "msft"]
   },
   {
     "title": "Azure Functions - LangChain with Azure OpenAI and ChatGPT (Python v2 Function)",
@@ -1268,7 +1264,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/function-python-ai-langchain",
-    "tags": ["functions", "python", "ai", "msft", "new"]
+    "tags": ["functions", "python", "ai", "msft"]
   },
   {
     "title": "Multi-repo ChatGPT and Enterprise data with Azure OpenAI and Cognitive Search",
@@ -1286,8 +1282,7 @@
       "bicep",
       "nodejs",
       "ai",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -1305,8 +1300,7 @@
       "monitor",
       "keyvault",
       "blazor",
-      "community",
-      "new"
+      "community"
     ]
   },
   {
@@ -1323,7 +1317,6 @@
       "ai",
       "openai",
       "chatgpt",
-      "new",
       "cosmosdb",
       "msft"
     ]
@@ -1350,7 +1343,7 @@
       "bicep",
       "appservice",
       "webapps",
-      "azuredb-mysql",
+      "azuredb-mySQL",
       "keyvault",
       "new",
       "community"

@@ -1367,5 +1367,21 @@
       "new",
       "community"
     ]
+  },
+  {
+    "title": "URL Shortener using Microsoft Orleans and Azure for hosting and data",
+    "description": "An ASP.NET Core 8.0 web application to illustrate basic Microsoft Orleans concepts; such as working with Grains, Silos, and persistent state. Uses Azure Developer CLI (azd) to build, deploy, and monitor.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/orleans-url-shortener",
+    "tags": [
+      "bicep",
+      "dotnetCsharp",
+      "cosmosdb",
+      "msft",
+      "new",
+      "aca"
+    ]
   }
 ]

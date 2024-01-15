@@ -1367,5 +1367,18 @@
       "new",
       "community"
     ]
+  },
+  {
+    "title":"Azure OpenAI priority-based load balancer with Azure Container Apps",
+    "description":"A load balancer crafted specifically for Azure OpenAI, which is aware of 'retry-after' headers and intelligently pause traffic when certain OpenAI endpoints reach maximum capacity.",
+    "preview":"./templates/images/openai-aca-loadbalancer.png",
+    "website":"https://github.com/Azure-Samples",
+    "author": "Andre Dewes",
+    "source":"https://github.com/Azure-Samples/openai-aca-lb",
+    "tags":[
+      "aca",
+      "containerapps",
+      "openai"
+    ]
   }
 ]

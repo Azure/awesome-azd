@@ -1364,6 +1364,7 @@
       "keyvault",
       "eventhub",
       "azurestorage",
+      "vnets",
       "new",
       "community"
     ]

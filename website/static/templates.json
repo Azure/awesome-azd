@@ -1380,7 +1380,7 @@
       "openai",
       "msft",
       "bicep",
-      "csharp",
+      "dotnetCsharp",
       "new"
     ]
   }

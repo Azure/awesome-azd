@@ -1377,7 +1377,6 @@
     "source":"https://github.com/Azure-Samples/openai-aca-lb",
     "tags":[
       "aca",
-      "containerapps",
       "openai",
       "msft",
       "bicep",

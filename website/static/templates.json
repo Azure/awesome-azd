@@ -1378,7 +1378,7 @@
     "description": "Sample microservices app for AKS demos, tutorials, and experiments.",
     "preview": "./templates/images/aks-store-demo.png",
     "website": "https://github.com/Azure-Samples",
-    "author": "Azure Content Team",
+    "author": "AKS Content Team",
     "source": "https://github.com/azure-samples/aks-store-demo",
     "tags": ["terraform", "aks", "openai", "ai", "msft", "new", "kubernetes", "helm" ]
   }

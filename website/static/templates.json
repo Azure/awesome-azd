@@ -1380,6 +1380,6 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/azure-samples/aks-store-demo",
-    "tags": ["terraform", "aks", "openai", "ai", "msft", "new"]
+    "tags": ["terraform", "aks", "openai", "ai", "msft", "new", "kubernetes", "helm" ]
   }
 ]

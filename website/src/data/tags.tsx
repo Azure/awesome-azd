@@ -96,7 +96,8 @@ export type TagType =
   | "blazor"
   | "azuredb-mySQL"
   | "eventhub"
-  | "azurestorage";
+  | "azurestorage"
+  | "helm";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -217,6 +218,11 @@ export const Tags: { [type in TagType]: Tag } = {
   webcomponents: {
     label: "Web Components",
     description: "Template architecture uses Web Components",
+    type: "Tools",
+  },
+  helm: {
+    label: "Helm",
+    description: "Template architecture uses Helm",
     type: "Tools",
   },
 

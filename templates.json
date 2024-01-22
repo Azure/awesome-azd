@@ -1193,14 +1193,7 @@
     "website": "https://github.com/CawaMS",
     "author": "Catherine Wang",
     "source": "https://github.com/CawaMS/OutputCacheOpenAI",
-    "tags": [
-      "aca",
-      "dotnetCsharp",
-      "rediscache",
-      "ai",
-      "openai",
-      "community"
-    ]
+    "tags": ["aca", "dotnetCsharp", "rediscache", "ai", "openai", "community"]
   },
   {
     "title": "Azure OpenAI Conference Session Recommender",
@@ -1239,14 +1232,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/function-javascript-ai-openai-chatgpt",
-    "tags": [
-      "functions",
-      "openai",
-      "javascript",
-      "ai",
-      "chatgpt",
-      "msft"
-    ]
+    "tags": ["functions", "openai", "javascript", "ai", "chatgpt", "msft"]
   },
   {
     "title": "Azure Functions - Chat using ChatGPT (Python v2 Function)",
@@ -1350,13 +1336,13 @@
     ]
   },
   {
-    "title":"Azure Function with Event Hub with optional virtual network capabilities",
-    "description":"An Azure Function app which sends events to and consumes from an Event Hub. The Function app can optionally be configured to integrate with a virtual network, and dependent resources configured with virtual network private endpoints. Managed identity is used for authentication to dependent resources.",
-    "preview":"./templates/images/function-eventhub-vnet.png",
-    "website":"https://www.michaelscollier.com/",
+    "title": "Azure Function with Event Hub with optional virtual network capabilities",
+    "description": "An Azure Function app which sends events to and consumes from an Event Hub. The Function app can optionally be configured to integrate with a virtual network, and dependent resources configured with virtual network private endpoints. Managed identity is used for authentication to dependent resources.",
+    "preview": "./templates/images/function-eventhub-vnet.png",
+    "website": "https://www.michaelscollier.com/",
     "author": "Michael S. Collier",
-    "source":"https://github.com/mcollier/azd-function-eventhub-private-mi-csharp",
-    "tags":[
+    "source": "https://github.com/mcollier/azd-function-eventhub-private-mi-csharp",
+    "tags": [
       "bicep",
       "dotnetCsharp",
       "functions",
@@ -1364,8 +1350,36 @@
       "keyvault",
       "eventhub",
       "azurestorage",
+      "vnets",
       "new",
       "community"
     ]
+  },
+  {
+    "title": "URL Shortener using Microsoft Orleans and Azure for hosting and data",
+    "description": "An ASP.NET Core 8.0 web application to illustrate basic Microsoft Orleans concepts; such as working with Grains, Silos, and persistent state. Uses Azure Developer CLI (azd) to build, deploy, and monitor.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/orleans-url-shortener",
+    "tags": ["bicep", "dotnetCsharp", "cosmosdb", "msft", "new", "aca"]
+  },
+  {
+    "title": "Azure OpenAI priority-based load balancer with Azure Container Apps",
+    "description": "A load balancer crafted specifically for Azure OpenAI, which is aware of 'retry-after' headers and intelligently pause traffic when certain OpenAI endpoints reach maximum capacity.",
+    "preview": "./templates/images/openai-aca-loadbalancer.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Andre Dewes",
+    "source": "https://github.com/Azure-Samples/openai-aca-lb",
+    "tags": ["aca", "openai", "ai", "msft", "bicep", "dotnetCsharp", "new"]
+  },
+  {
+    "title": "Azure Kubernetes Service Store Demo",
+    "description": "Sample microservices app for AKS demos, tutorials, and experiments.",
+    "preview": "./templates/images/aks-store-demo.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "AKS Content Team",
+    "source": "https://github.com/azure-samples/aks-store-demo",
+    "tags": ["terraform", "aks", "openai", "ai", "msft", "new", "kubernetes", "helm" ]
   }
 ]

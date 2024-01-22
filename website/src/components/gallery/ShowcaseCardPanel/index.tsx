@@ -98,9 +98,11 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
     { toggle: toggleIsPopupVisibleAzureCalculator },
   ] = useBoolean(true);
 
-  let templateURL = user.source.replace("https://github.com/", "");
-  if (templateURL.includes("Azure-Samples/")) {
-    templateURL = templateURL.replace("Azure-Samples/", "");
+  let templateURL = user.source
+    .replace("https://github.com/", "")
+    .toLowerCase();
+  if (templateURL.includes("azure-samples/")) {
+    templateURL = templateURL.replace("azure-samples/", "");
   }
   const azdInitCommand = "azd init -t " + templateURL;
   let chevronSVG = useBaseUrl("/img/leftChevron.svg");

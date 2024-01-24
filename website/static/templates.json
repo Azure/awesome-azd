@@ -1387,7 +1387,7 @@
     "description": "Unleash the power of Azure AI to all your application developers in a secure & manageable way with Azure API Management and Azure Container Apps, utilizing Azure OpenAI PTUs across your organization with chargeback capabilities.",
     "preview": "./templates/images/enterprise-azureai.png",
     "website": "https://github.com/Azure, https://github.com/Azure, https://github.com/Azure",
-    "author": "Remco Brosky, Mick Vleeshouwer, Pascal van der Heiden",
+    "author": "Azure AI Content Team, Remco Brosky, Mick Vleeshouwer, Pascal van der Heiden",
     "source": "https://github.com/Azure/enterprise-azureai",
     "tags": [
       "bicep",

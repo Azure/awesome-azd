@@ -20,6 +20,7 @@ import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
 import ShowcaseCardPage from "./ShowcaseCardPage";
+import { ApplicationInsights } from "@microsoft/1ds-analytics-web-js";
 
 initializeIcons();
 
@@ -62,6 +63,35 @@ const App = () => {
 };
 
 export default function Showcase(): JSX.Element {
+  const analytics: ApplicationInsights = new ApplicationInsights();
+
+  var config = {
+    instrumentationKey:
+      "41c1099574f14f06bdce4f80fcd0a65c-4a29467c-f5d4-4151-8e8b-62c0a3515947-7118",
+    channelConfiguration: {
+      // Post channel configuration
+      eventsLimitInMem: 5000,
+    },
+    propertyConfiguration: {
+      // Properties Plugin configuration
+      userAgent: "Custom User Agent",
+    },
+    webAnalyticsConfiguration: {
+      // Web Analytics Plugin configuration
+      autoCapture: {
+        scroll: true,
+        pageView: true,
+        onLoad: true,
+        onUnload: true,
+        click: true,
+        resize: true,
+        jsError: true,
+      },
+    },
+  };
+  //Initialize SDK
+  analytics.initialize(config, []);
+
   return (
     <Layout>
       <App />

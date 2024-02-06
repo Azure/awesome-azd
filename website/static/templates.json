@@ -1402,5 +1402,14 @@
       "msft",
       "new"
     ]
+  },
+  {
+    "title": "Azure API Management policy for priority-based routing to Azure OpenAI",
+    "description": "A load balancer policy crafted specifically for Azure OpenAI, which is aware of 'retry-after' headers and intelligently pause traffic when certain OpenAI endpoints reach maximum capacity.",
+    "preview": "./templates/images/openai-apim-loadbalancer.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Andre Dewes, Chris Ayers",
+    "source": "https://github.com/Azure-Samples/openai-apim-lb",
+    "tags": ["apim", "openai", "ai", "msft", "bicep", "new"]
   }
 ]

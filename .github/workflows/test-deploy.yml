@@ -21,5 +21,6 @@ jobs:
       - name: Build website
         working-directory: website
         run: |
+          npm login --scope=@microsoft/1ds-analytics-web-js@3.2.15 --registry=https://msasg.pkgs.visualstudio.com/_packaging/1DS-SDK/npm/registry/
           npm ci
           npm run build

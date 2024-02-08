@@ -12,6 +12,10 @@ jobs:
     name: Test deployment
     runs-on: ubuntu-latest
     steps:
+      - uses: npmAuthenticate@0
+        with:
+          workingFile: '.npmrc'
+
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -21,7 +25,5 @@ jobs:
       - name: Build website
         working-directory: website
         run: |
-          ls
-          echo "//msasg.pkgs.visualstudio.com/_packaging/1DS-SDK/npm/registry/:_authToken=${{ secrets.GITHUB_TOKEN }}" > .npmrc
           npm ci
           npm run build

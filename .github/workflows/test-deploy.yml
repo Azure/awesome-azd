@@ -21,7 +21,7 @@ jobs:
       - name: Build website
         working-directory: website
         run: |
-          cd ../../website
+          ls
           echo "//msasg.pkgs.visualstudio.com/_packaging/1DS-SDK/npm/registry/:_authToken=${{ secrets.GITHUB_TOKEN }}" > .npmrc
           npm ci
           npm run build

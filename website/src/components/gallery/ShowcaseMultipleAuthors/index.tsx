@@ -24,89 +24,89 @@ function ShowcaseMultipleWebsites(
   colorMode: string
 ) {
   if (i != length - 1) {
-    return (
-      <div key={key}>
-        {cardPanel ? (
-          <FluentUILink
-            key={i}
-            href={websiteLink}
-            className={styles.cardAuthorPanel}
-            target="_blank"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              columnGap: "5px",
-            }}
-          >
-            {authorName}
-            {colorMode != "dark" ? (
-              <img
-                src={useBaseUrl("/img/redirect.svg")}
-                alt="Redirect"
-                height={13}
-              />
-            ) : (
-              <img
-                src={useBaseUrl("/img/redirectDark.svg")}
-                alt="Redirect"
-                height={13}
-              />
-            )}
-            ,
-          </FluentUILink>
+    return cardPanel ? (
+      <FluentUILink
+        key={i}
+        href={websiteLink}
+        className={styles.cardAuthorPanel}
+        target="_blank"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          columnGap: "5px",
+          fontSize: "14px",
+          fontWeight: "400",
+          flexShrink: 0,
+        }}
+      >
+        {authorName}
+        {colorMode != "dark" ? (
+          <img
+            src={useBaseUrl("/img/redirect.svg")}
+            alt="Redirect"
+            height={13}
+          />
         ) : (
-          <FluentUILink
-            key={i}
-            className={styles.cardAuthor}
-            href={websiteLink}
-            target="_blank"
-          >
-            {authorName},
-          </FluentUILink>
+          <img
+            src={useBaseUrl("/img/redirectDark.svg")}
+            alt="Redirect"
+            height={13}
+          />
         )}
-      </div>
+        ,
+      </FluentUILink>
+    ) : (
+      <FluentUILink
+        key={i}
+        className={styles.cardAuthor}
+        href={websiteLink}
+        target="_blank"
+        style={{ flexShrink: 0, fontSize: "12px" }}
+      >
+        {authorName},
+      </FluentUILink>
     );
   } else {
-    return (
-      <div key={key}>
-        {cardPanel ? (
-          <FluentUILink
-            key={i}
-            className={styles.cardAuthorPanel}
-            href={websiteLink}
-            target="_blank"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              columnGap: "5px",
-            }}
-          >
-            {authorName}
-            {colorMode != "dark" ? (
-              <img
-                src={useBaseUrl("/img/redirect.svg")}
-                alt="Redirect"
-                height={13}
-              />
-            ) : (
-              <img
-                src={useBaseUrl("/img/redirectDark.svg")}
-                alt="Redirect"
-                height={13}
-              />
-            )}
-          </FluentUILink>
+    return cardPanel ? (
+      <FluentUILink
+        key={i}
+        className={styles.cardAuthorPanel}
+        href={websiteLink}
+        target="_blank"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          columnGap: "5px",
+          fontSize: "14px",
+          fontWeight: "400",
+          flexShrink: 0,
+        }}
+      >
+        {authorName}
+        {colorMode != "dark" ? (
+          <img
+            src={useBaseUrl("/img/redirect.svg")}
+            alt="Redirect"
+            height={13}
+          />
         ) : (
-          <FluentUILink
-            key={i}
-            className={styles.cardAuthor}
-            href={websiteLink}
-            target="_blank"
-          >
-            {authorName}
-          </FluentUILink>
+          <img
+            src={useBaseUrl("/img/redirectDark.svg")}
+            alt="Redirect"
+            height={13}
+          />
         )}
-      </div>
+      </FluentUILink>
+    ) : (
+      <FluentUILink
+        key={i}
+        className={styles.cardAuthor}
+        href={websiteLink}
+        target="_blank"
+        style={{ flexShrink: 0, fontSize: "12px" }}
+      >
+        {authorName}
+      </FluentUILink>
     );
   }
 }
@@ -132,68 +132,52 @@ export default function ShowcaseMultipleAuthors({
         "The number of multiple authors and websites are not equal."
       );
     }
-    return (
-      <div
-        style={{
-          display: "-webkit-box",
-          overflow: "hidden",
-          WebkitLineClamp: "1",
-          WebkitBoxOrient: "horizontal",
-          gap: "3px",
-        }}
-      >
-        {multiWebsites.map((value, index) => {
-          return ShowcaseMultipleWebsites(
-            index,
-            multiAuthors[index],
-            multiWebsites[index],
-            multiWebsites.length,
-            i++,
-            cardPanel,
-            colorMode
-          );
-        })}
-      </div>
-    );
+    return multiWebsites.map((value, index) => {
+      return ShowcaseMultipleWebsites(
+        index,
+        multiAuthors[index],
+        multiWebsites[index],
+        multiWebsites.length,
+        i++,
+        cardPanel,
+        colorMode
+      );
+    });
   }
 
-  return (
-    <div>
-      {cardPanel ? (
-        <FluentUILink
-          className={styles.cardAuthorPanel}
-          href={websites}
-          target="_blank"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            columnGap: "5px",
-          }}
-        >
-          {authors}
-          {colorMode != "dark" ? (
-            <img
-              src={useBaseUrl("/img/redirect.svg")}
-              alt="Redirect"
-              height={13}
-            />
-          ) : (
-            <img
-              src={useBaseUrl("/img/redirectDark.svg")}
-              alt="Redirect"
-              height={13}
-            />
-          )}
-        </FluentUILink>
+  return cardPanel ? (
+    <FluentUILink
+      className={styles.cardAuthorPanel}
+      href={websites}
+      target="_blank"
+      style={{
+        display: "flex",
+        alignItems: "center",
+        columnGap: "5px",
+        fontSize: "14px",
+        fontWeight: "400",
+        flexShrink: 0,
+      }}
+    >
+      {authors}
+      {colorMode != "dark" ? (
+        <img src={useBaseUrl("/img/redirect.svg")} alt="Redirect" height={13} />
       ) : (
-        <FluentUILink
-          className={styles.cardAuthor}
-          href={websites}
-          target="_blank"
-        >
-          {authors}
-        </FluentUILink>
+        <img
+          src={useBaseUrl("/img/redirectDark.svg")}
+          alt="Redirect"
+          height={13}
+        />
       )}
-    </div>
+    </FluentUILink>
+  ) : (
+    <FluentUILink
+      className={styles.cardAuthor}
+      href={websites}
+      target="_blank"
+      style={{ fontSize: "12px", flexShrink: 0 }}
+    >
+      {authors}
+    </FluentUILink>
   );
 }

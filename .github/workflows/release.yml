@@ -4,6 +4,10 @@ name: Release Awesome Azd
 on:
   workflow_dispatch:
 
+permissions:
+  id-token: write
+  contents: read
+  
 jobs:
   deploy:
     name: Deploy Site To GitHub Pages
@@ -12,7 +16,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: npm
           cache-dependency-path: website/package-lock.json
       - name: Build website

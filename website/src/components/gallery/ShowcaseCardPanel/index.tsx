@@ -158,16 +158,15 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
           alignItems: "center",
           columnGap: "5px",
           padding: "10px 0",
+          flexWrap: "wrap",
         }}
       >
         <div className={styles.cardDescription}>by</div>
-        <div style={{ fontSize: "14px", fontWeight: "400" }}>
-          <ShowcaseMultipleAuthors
-            key={"author_" + user.title}
-            user={user}
-            cardPanel={true}
-          />
-        </div>
+        <ShowcaseMultipleAuthors
+          key={"author_" + user.title}
+          user={user}
+          cardPanel={true}
+        />
         <div className={styles.textColor}>•</div>
         {/* <div>Last Update: </div>
         <div>•</div> */}

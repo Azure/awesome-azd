@@ -216,16 +216,15 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
             paddingTop: "2px",
             alignItems: "center",
             columnGap: "3px",
+            overflow: "hidden",
           }}
         >
           <div className={styleCSS.cardTextBy}>by</div>
-          <div style={{ fontSize: "12px" }}>
-            <ShowcaseMultipleAuthors
-              key={"author_" + user.title}
-              user={user}
-              cardPanel={false}
-            />
-          </div>
+          <ShowcaseMultipleAuthors
+            key={"author_" + user.title}
+            user={user}
+            cardPanel={false}
+          />
         </div>
         <div className={styleCSS.cardDescription}>{user.description}</div>
         {/* Panel is Fluent UI 8. Must use ThemeProvider */}

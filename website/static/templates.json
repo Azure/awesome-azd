@@ -701,6 +701,7 @@
       "nodejs",
       "bicep",
       "webapps",
+      "apim",
       "keyvault",
       "appinsights",
       "nestjs",
@@ -1314,7 +1315,7 @@
     "website": "https://github.com/MiguelElGallo",
     "author": "Miguel P. Z.",
     "source": "https://github.com/MiguelElGallo/simple-fastapi-snow-azd",
-    "tags": ["python", "fastapi", "functions", "bicep", "community", "new"]
+    "tags": ["python", "fastapi", "functions", "bicep", "community"]
   },
   {
     "title": "Python (Flask) Web App with MySQL and Key Vault",
@@ -1331,7 +1332,6 @@
       "webapps",
       "azuredb-mySQL",
       "keyvault",
-      "new",
       "community"
     ]
   },
@@ -1351,7 +1351,6 @@
       "eventhub",
       "azurestorage",
       "vnets",
-      "new",
       "msft"
     ]
   },
@@ -1362,7 +1361,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/orleans-url-shortener",
-    "tags": ["bicep", "dotnetCsharp", "cosmosdb", "msft", "new", "aca"]
+    "tags": ["bicep", "dotnetCsharp", "cosmosdb", "msft", "aca"]
   },
   {
     "title": "Azure OpenAI priority-based load balancer with Azure Container Apps",
@@ -1380,7 +1379,16 @@
     "website": "https://github.com/Azure-Samples",
     "author": "AKS Content Team",
     "source": "https://github.com/azure-samples/aks-store-demo",
-    "tags": ["terraform", "aks", "openai", "ai", "msft", "new", "kubernetes", "helm" ]
+    "tags": [
+      "terraform",
+      "aks",
+      "openai",
+      "ai",
+      "msft",
+      "new",
+      "kubernetes",
+      "helm"
+    ]
   },
   {
     "title": "Setting up Azure OpenAI as a central capability within your organization",
@@ -1404,10 +1412,55 @@
     ]
   },
   {
+    "title": "SAP Cloud SDK on Azure Functions Quickstart (TypeScript)",
+    "description": "This repos serves as quick-start project showcasing SAP Cloud SDK for JavaScript OData consumption running on Azure Functions. Its primary purpose is to set you up for success for your SAP extension project on Azure and reduce the lead time to your first successful deployment as much as possible with developer friendly commands.",
+    "preview": "./templates/images/functions-javascript-sap-cloud-sdk-quickstart.png",
+    "website": "https://github.com/MartinPankraz, https://github.com/lechnerc77",
+    "author": "Martin Pankraz, Christian Lechner",
+    "source": "https://github.com/Azure-Samples/functions-javascript-sap-cloud-sdk-quickstart",
+    "tags": [
+      "typescript",
+      "nodejs",
+      "bicep",
+      "webapps",
+      "apim",
+      "keyvault",
+      "appinsights",
+      "nestjs",
+      "sap",
+      "sapcap",
+      "msft",
+      "new"
+    ]
+  },
+  {
+    "title": "SAP CAP on Azure App Service Quickstart",
+    "description": "This repos serves as quick-start project showcasing SAP Cloud Application Programming Model (CAP) for Node.js OData consumption from SAP S/4HANA running on Azure App Services backed with Azure Cosmos DB for PostgreSQL. SAP offers a native module cds-dbs for PostgreSQL integration.",
+    "preview": "./templates/images/app-service-javascript-sap-cap-quickstart.png",
+    "website": "https://github.com/MartinPankraz, https://github.com/vobu",
+    "author": "Martin Pankraz, Volker Buzek",
+    "source": "https://github.com/Azure-Samples/app-service-javascript-sap-cap-quickstart",
+    "tags": [
+      "nodejs",
+      "bicep",
+      "webapps",
+      "apim",
+      "keyvault",
+      "appinsights",
+      "nestjs",
+      "sap",
+      "cosmosdb",
+      "azuredb-postgreSQL",
+      "sapcloudsdk",
+      "msft",
+      "new"
+    ]
+  },
+  {
     "title": "Azure API Management policy for priority-based routing to Azure OpenAI",
     "description": "A load balancer policy crafted specifically for Azure OpenAI, which is aware of 'retry-after' headers and intelligently pause traffic when certain OpenAI endpoints reach maximum capacity.",
     "preview": "./templates/images/openai-apim-loadbalancer.png",
-    "website": "https://github.com/Azure-Samples",
+    "website": "https://github.com/Azure-Samples, https://github.com/codebytes",
     "author": "Andre Dewes, Chris Ayers",
     "source": "https://github.com/Azure-Samples/openai-apim-lb",
     "tags": ["apim", "openai", "ai", "msft", "bicep", "new"]

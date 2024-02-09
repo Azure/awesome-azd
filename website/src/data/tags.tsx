@@ -71,6 +71,7 @@ export type TagType =
   | "spring"
   | "thymeleaf"
   | "sap"
+  | "sapcap"
   | "sapcloudsdk"
   | "nestjs"
   | "dataverse"
@@ -186,6 +187,11 @@ export const Tags: { [type in TagType]: Tag } = {
   sapcloudsdk: {
     label: "SAP Cloud SDK",
     description: "Template architecture uses SAP Cloud SDK",
+    type: "Tools",
+  },
+  sapcap: {
+    label: "SAP CAP",
+    description: "Template architecture uses SAP Cloud Application Programming Model",
     type: "Tools",
   },
   thymeleaf: {

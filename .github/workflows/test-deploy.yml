@@ -7,6 +7,10 @@ on:
     # Review gh actions docs if you want to further define triggers, paths, etc
     # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   test-deploy:
     name: Test deployment
@@ -15,7 +19,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: npm
           cache-dependency-path: website/package-lock.json
       - name: Build website

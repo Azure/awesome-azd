@@ -4,6 +4,10 @@ name: Release Awesome Azd
 on:
   workflow_dispatch:
 
+permissions:
+  id-token: write
+  contents: read
+  
 jobs:
   deploy:
     name: Deploy Site To GitHub Pages

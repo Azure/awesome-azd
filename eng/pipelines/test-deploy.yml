@@ -23,9 +23,8 @@ jobs:
       displayName: 'Install Node.js'
 
     - task: npmAuthenticate@0
-      workingDirectory: website/
       inputs:
-        workingFile: .npmrc
+        workingFile: ./website/.npmrc
 
     - script: |
         npm install && npm run build

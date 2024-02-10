@@ -19,9 +19,16 @@ steps:
   inputs:
     version: '20.x'
   displayName: 'Install Node.js'
+
 - task: npmAuthenticate@0
   inputs:
     workingFile: .npmrc
+
+- script: |
+    ls
+    cd ..
+    ls
+  displayName: 'debug'
 
 - script: |
     npm install

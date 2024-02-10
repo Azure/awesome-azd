@@ -1,13 +1,12 @@
 resources:
   repositories:
-  - repository: awesome-azd
-    type: git
-    name: awesome-azd
+  - repository: self
     ref: $(branch)
 
 pr:
-  branches:
-    include: [main]
+  paths:
+    include:
+      - eng/pipelines/test-deploy.yml
 
 pool:
   vmImage: ubuntu-latest

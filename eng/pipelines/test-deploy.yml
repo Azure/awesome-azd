@@ -12,7 +12,7 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- checkout: awesome-azd
+- checkout: self
   path: ./website
 
 - task: UseNode@1

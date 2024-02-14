@@ -98,7 +98,8 @@ export type TagType =
   | "azuredb-mySQL"
   | "eventhub"
   | "azurestorage"
-  | "helm";
+  | "helm"
+  | "aspire";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -191,7 +192,8 @@ export const Tags: { [type in TagType]: Tag } = {
   },
   sapcap: {
     label: "SAP CAP",
-    description: "Template architecture uses SAP Cloud Application Programming Model",
+    description:
+      "Template architecture uses SAP Cloud Application Programming Model",
     type: "Tools",
   },
   thymeleaf: {
@@ -300,6 +302,11 @@ export const Tags: { [type in TagType]: Tag } = {
   blazor: {
     label: "Blazor",
     description: "Template architecture uses Blazor",
+    type: "Framework",
+  },
+  aspire: {
+    label: "Aspire",
+    description: "Template architecture uses .Net Aspire",
     type: "Framework",
   },
 

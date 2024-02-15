@@ -46,7 +46,6 @@
     "node": ">=18.0"
   },
   "dependencies": {
-    "@microsoft/1ds-analytics-web-js": "^3.2.15",
     "@popperjs/core": "^2.11.8",
     "scheduler": "^0.20.2",
     "search-insights": "^2.11.0"

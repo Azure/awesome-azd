@@ -37,6 +37,13 @@ const config = {
     locales: ["en"],
   },
 
+  // CONFIG: scripts
+  scripts: [
+    "https://js.monitor.azure.com/scripts/c/ms.analytics-web-3.min.js",
+    "https://consentdeliveryfd.azurefd.net/mscc/lib/v2/wcp-consent.js",
+    { src: "addAdobe.js",  async: true, },
+  ],
+
   // CONFIG: theme = set properties for UI like navbar, footer, docs, copyright etc.
   //    See: https://docusaurus.io/docs/api/docusaurus-config#themeConfig
   themeConfig:

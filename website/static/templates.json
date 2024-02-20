@@ -1472,6 +1472,6 @@
     "website": "https://github.com/microsoft",
     "author": "Kenichiro Nakamura",
     "source": "https://github.com/microsoft/aoai-logging-with-apim",
-    "tags": ["bicep", "msft", "ai","aoai","apim","token_usage","monitoring","csharp","new"]
+    "tags": ["bicep", "msft", "ai","openai","apim","keyvault","dotnetCsharp","new"]
   }
 ]

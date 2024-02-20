@@ -1469,7 +1469,7 @@
     "title": "Azure Open AI management and logging via Azure API Management",
     "description": "To use Azure Open AI in production, you need to manage each application and user by issuing new keys, and monitor their usage such as number of tokens they consume and types of endpoint and mode they use. The solution uses Azure APIM and other resources to support such requirements.",
     "preview": "./templates/images/aoai_apim.svg",
-    "website": "https://github.com/microsoft\",
+    "website": "https://github.com/microsoft",
     "author": "Kenichiro Nakamura",
     "source": "https://github.com/microsoft/aoai-logging-with-apim",
     "tags": ["bicep", "msft", "ai","aoai","apim","token_usage","monitoring","csharp","new"]

@@ -272,7 +272,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
           className={styleCSS.input}
           placeholder={azdInitCommand}
         />
-        <Popover withArrow size="small">
+        <Popover trapFocus withArrow size="small">
           <PopoverTrigger disableButtonEnhancement>
             <Button
               size="small"

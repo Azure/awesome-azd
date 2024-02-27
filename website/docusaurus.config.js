@@ -39,15 +39,12 @@ const config = {
 
   // CONFIG: scripts
   scripts: [
-    "https://js.monitor.azure.com/scripts/c/ms.analytics-web-3.min.js",
+    "https://js.monitor.azure.com/scripts/c/ms.analytics-web-4.min.js",
     "https://consentdeliveryfd.azurefd.net/mscc/lib/v2/wcp-consent.js",
     "https://wcpstatic.microsoft.com/mscc/lib/v2/wcp-consent.js",
     // { src: "addAdobe.js", async: true },
   ],
 
-  clientModules: [
-    require.resolve("./static/addAdobe.js"),
-  ],
 
   // CONFIG: theme = set properties for UI like navbar, footer, docs, copyright etc.
   //    See: https://docusaurus.io/docs/api/docusaurus-config#themeConfig

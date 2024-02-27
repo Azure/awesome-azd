@@ -41,7 +41,12 @@ const config = {
   scripts: [
     "https://js.monitor.azure.com/scripts/c/ms.analytics-web-3.min.js",
     "https://consentdeliveryfd.azurefd.net/mscc/lib/v2/wcp-consent.js",
-    { src: "addAdobe.js",  async: true, },
+    "https://wcpstatic.microsoft.com/mscc/lib/v2/wcp-consent.js",
+    // { src: "addAdobe.js", async: true },
+  ],
+
+  clientModules: [
+    require.resolve("./static/addAdobe.js"),
   ],
 
   // CONFIG: theme = set properties for UI like navbar, footer, docs, copyright etc.

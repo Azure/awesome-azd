@@ -40,11 +40,9 @@ const config = {
   // CONFIG: scripts
   scripts: [
     "https://js.monitor.azure.com/scripts/c/ms.analytics-web-4.min.js",
-    "https://consentdeliveryfd.azurefd.net/mscc/lib/v2/wcp-consent.js",
+    // "https://consentdeliveryfd.azurefd.net/mscc/lib/v2/wcp-consent.js",
     "https://wcpstatic.microsoft.com/mscc/lib/v2/wcp-consent.js",
-    // { src: "addAdobe.js", async: true },
   ],
-
 
   // CONFIG: theme = set properties for UI like navbar, footer, docs, copyright etc.
   //    See: https://docusaurus.io/docs/api/docusaurus-config#themeConfig
@@ -136,11 +134,15 @@ const config = {
             to: "https://learn.microsoft.com/azure/developer/azure-developer-cli/reference",
           },
           {
-            label: "Privacy Statement ",
+            label: "Privacy Statement",
             to: "https://privacy.microsoft.com/privacystatement",
           },
           {
-            label: "Built With Docusaurus ",
+            label: "Manage Cookies",
+            to: " ",
+          },
+          {
+            label: "Built With Docusaurus",
             to: "https://docusaurus.io",
           },
           {

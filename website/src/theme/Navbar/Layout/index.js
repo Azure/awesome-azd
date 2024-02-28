@@ -25,8 +25,9 @@ const adobeInit = () => {
   const SET = "set";
   const RESET = "reset";
   var siteConsent = null;
+  var WcpConsent = window.WcpConsent;
 
-  window.WcpConsent &&
+  WcpConsent &&
     WcpConsent.init(
       "en-US",
       "cookie-banner",
@@ -89,6 +90,7 @@ const adobeInit = () => {
       WcpConsent.siteConsent.manageConsent();
     });
   }
+  setNonEssentialCookies(WcpConsent.siteConsent.getConsent());
 
   // 1DS initialization
   const analytics = new oneDS.ApplicationInsights();
@@ -154,7 +156,6 @@ export default function NavbarLayout({ children }) {
       {children}
       <NavbarBackdrop onClick={mobileSidebar.toggle} />
       <NavbarMobileSidebar />
-      <Button id="manage_cookie">Manage Cookie</Button>
     </nav>
   );
 }

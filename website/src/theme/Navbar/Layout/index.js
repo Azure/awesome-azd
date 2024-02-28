@@ -40,34 +40,55 @@ const adobeInit = () => {
       onConsentChanged
     );
 
-  function manageConsent() {
-    if (siteConsent.isConsentRequired) {
-      siteConsent.manageConsent();
+  function onConsentChanged(categoryPreferences) {
+    setNonEssentialCookies(categoryPreferences);
+  }
+
+  function setNonEssentialCookies(categoryPreferences) {
+    if (categoryPreferences.Analytics) {
+      AnalyticsCookies(SET);
+    } else {
+      AnalyticsCookies(RESET);
+    }
+
+    if (categoryPreferences.SocialMedia) {
+      SocialMediaCookies(SET);
+    } else {
+      SocialMediaCookies(RESET);
+    }
+
+    if (categoryPreferences.Advertising) {
+      AdvertisingCookies(SET);
+    } else {
+      AdvertisingCookies(RESET);
     }
   }
 
-  //call back method when consent is changed by user
-  function onConsentChanged(newConsent) {
-    console.log("onConsentChanged", newConsent);
-    console.log("getConsent()", siteConsent.getConsent());
-    console.log(
-      "getConsentFor(wcpConsentCategory.Required)",
-      siteConsent.getConsentFor(WcpConsent.consentCategories.Required)
-    );
-    console.log(
-      "getConsentFor(wcpConsentCategory.ThirdPartyAnalytics)",
-      siteConsent.getConsentFor(WcpConsent.consentCategories.Analytics)
-    );
-    console.log(
-      "getConsentFor(wcpConsentCategory.SocialMedia)",
-      siteConsent.getConsentFor(WcpConsent.consentCategories.SocialMedia)
-    );
-    console.log(
-      "getConsentFor(wcpConsentCategory.Advertising)",
-      siteConsent.getConsentFor(WcpConsent.consentCategories.Advertising)
-    );
+  function AnalyticsCookies(setString) {
+    if (setString === SET) {
+    } else {
+    }
   }
-  // setNonEssentialCookies(siteConsent.getConsent());
+
+  function SocialMediaCookies(setString) {
+    if (setString === SET) {
+    } else {
+    }
+  }
+
+  function AdvertisingCookies(setString) {
+    if (setString === SET) {
+    } else {
+    }
+  }
+
+  if (WcpConsent.siteConsent.isConsentRequired) {
+    var manageCookies = document.getElementById("manage_cookie");
+    manageCookies.addEventListener("click", function (e) {
+      e.preventDefault();
+      WcpConsent.siteConsent.manageConsent();
+    });
+  }
 
   // 1DS initialization
   const analytics = new oneDS.ApplicationInsights();
@@ -95,7 +116,6 @@ const adobeInit = () => {
   };
   //Initialize SDK
   analytics.initialize(config, []);
-  return manageConsent;
 };
 
 export default function NavbarLayout({ children }) {
@@ -134,7 +154,7 @@ export default function NavbarLayout({ children }) {
       {children}
       <NavbarBackdrop onClick={mobileSidebar.toggle} />
       <NavbarMobileSidebar />
-      <Button onClick={adobeInit.manageConsent()}>Manage Cookie</Button>
+      <Button id="manage_cookie">Manage Cookie</Button>
     </nav>
   );
 }

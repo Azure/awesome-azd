@@ -20,14 +20,6 @@ import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
 import ShowcaseCardPage from "./ShowcaseCardPage";
-import {
-  MessageBar,
-  MessageBarActions,
-  MessageBarTitle,
-  MessageBarBody,
-  Button,
-  Link,
-} from "@fluentui/react-components";
 
 initializeIcons();
 
@@ -47,11 +39,9 @@ const App = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    
     setTimeout(() => {
       setLoading(false);
     }, 500);
-
   }, []);
 
   return !loading ? (

@@ -90,6 +90,10 @@ const adobeInit = () => {
       WcpConsent.siteConsent.manageConsent();
     });
   }
+  else {
+    var manageCookies = document.getElementById("manage_cookie");
+    manageCookies.style.display = "none";
+  }
   setNonEssentialCookies(WcpConsent.siteConsent.getConsent());
 
   // 1DS initialization

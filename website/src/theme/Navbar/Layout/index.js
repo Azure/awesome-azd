@@ -8,7 +8,7 @@ import {
 import { translate } from "@docusaurus/Translate";
 import NavbarMobileSidebar from "@theme/Navbar/MobileSidebar";
 import styles from "./styles.module.css";
-import { Button } from "@fluentui/react-components";
+import { manageCookieLabel, manageCookieId } from "../../../../constants.js";
 function NavbarBackdrop(props) {
   return (
     <div
@@ -17,6 +17,15 @@ function NavbarBackdrop(props) {
       className={clsx("navbar-sidebar__backdrop", props.className)}
     />
   );
+}
+
+function removeItem(id) {
+  var getItem = document.getElementById(id);
+  if (getItem !== null) {
+    getItem.remove();
+  } else {
+    throw new Error("id '" + id + "' is not found, cannot remove the item.");
+  }
 }
 
 const adobeInit = () => {
@@ -89,10 +98,10 @@ const adobeInit = () => {
       e.preventDefault();
       WcpConsent.siteConsent.manageConsent();
     });
-  }
-  else {
-    var manageCookies = document.getElementById("manage_cookie");
-    manageCookies.style.display = "none";
+  } else {
+    // remove Manage Cookie and separator in footer
+    removeItem("footer__links_" + manageCookieLabel);
+    removeItem(manageCookieId);
   }
   setNonEssentialCookies(WcpConsent.siteConsent.getConsent());
 

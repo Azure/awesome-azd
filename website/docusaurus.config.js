@@ -6,6 +6,7 @@
 /** @type {import('@docusaurus/types').Config} */
 
 import { themes as prismThemes } from "prism-react-renderer";
+import {manageCookieLabel} from "./constants.js";
 
 const config = {
   // CONFIG: Add Custom Fields - globally reference them from siteConfig
@@ -138,7 +139,7 @@ const config = {
             to: "https://privacy.microsoft.com/privacystatement",
           },
           {
-            label: "Manage Cookies",
+            label: manageCookieLabel,
             to: " ",
           },
           {

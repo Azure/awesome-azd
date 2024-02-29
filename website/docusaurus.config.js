@@ -6,6 +6,7 @@
 /** @type {import('@docusaurus/types').Config} */
 
 import { themes as prismThemes } from "prism-react-renderer";
+import {manageCookieLabel} from "./constants.js";
 
 const config = {
   // CONFIG: Add Custom Fields - globally reference them from siteConfig
@@ -39,9 +40,9 @@ const config = {
 
   // CONFIG: scripts
   scripts: [
-    "https://js.monitor.azure.com/scripts/c/ms.analytics-web-3.min.js",
-    "https://consentdeliveryfd.azurefd.net/mscc/lib/v2/wcp-consent.js",
-    { src: "addAdobe.js",  async: true, },
+    "https://js.monitor.azure.com/scripts/c/ms.analytics-web-4.min.js",
+    // "https://consentdeliveryfd.azurefd.net/mscc/lib/v2/wcp-consent.js",
+    "https://wcpstatic.microsoft.com/mscc/lib/v2/wcp-consent.js",
   ],
 
   // CONFIG: theme = set properties for UI like navbar, footer, docs, copyright etc.
@@ -134,11 +135,15 @@ const config = {
             to: "https://learn.microsoft.com/azure/developer/azure-developer-cli/reference",
           },
           {
-            label: "Privacy Statement ",
+            label: "Privacy Statement",
             to: "https://privacy.microsoft.com/privacystatement",
           },
           {
-            label: "Built With Docusaurus ",
+            label: manageCookieLabel,
+            to: " ",
+          },
+          {
+            label: "Built With Docusaurus",
             to: "https://docusaurus.io",
           },
           {

@@ -1469,7 +1469,7 @@
     "title": "Langfuse on Azure",
     "description": "Deploy Langfuse (open-source LLM observability platform) to Azure Container Apps with PostgreSQL Flexible Server.",
     "preview": "./templates/images/aca_postgres_keyvault.png",
-    "website": "https://github.com/Azure-Samples",
+    "website": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/Azure-Samples/langfuse-on-azure",
     "tags": ["aca", "azuredb-postgreSQL", "ai", "bicep", "new"]

@@ -1464,5 +1464,14 @@
     "author": "Andre Dewes, Chris Ayers",
     "source": "https://github.com/Azure-Samples/openai-apim-lb",
     "tags": ["apim", "openai", "ai", "msft", "bicep", "new"]
+  },
+  {
+    "title": "Langfuse on Azure",
+    "description": "Deploy Langfuse (open-source LLM observability platform) to Azure Container Apps with PostgreSQL Flexible Server.",
+    "preview": "./templates/images/aca_postgres_keyvault.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Pamela Fox",
+    "source": "https://github.com/Azure-Samples/langfuse-on-azure",
+    "tags": ["aca", "azuredb-postgreSQL", "ai", "bicep", "new"]
   }
 ]

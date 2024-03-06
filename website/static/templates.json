@@ -1472,6 +1472,6 @@
     "website": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/Azure-Samples/langfuse-on-azure",
-    "tags": ["aca", "azuredb-postgreSQL", "ai", "bicep", "new"]
+    "tags": ["aca", "azuredb-postgreSQL", "keyvault", "ai", "msft", "bicep", "new"]
   }
 ]

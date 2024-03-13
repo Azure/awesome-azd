@@ -1473,5 +1473,33 @@
     "author": "Pamela Fox",
     "source": "https://github.com/Azure-Samples/langfuse-on-azure",
     "tags": ["aca", "azuredb-postgreSQL", "keyvault", "ai", "msft", "bicep", "new"]
+  },
+  {
+    "title": "Azure Open AI management and logging via Azure API Management",
+    "description": "To use Azure Open AI in production, you need to manage each application and user by issuing new keys, and monitor their usage such as number of tokens they consume and types of endpoint and mode they use. The solution uses Azure APIM and other resources to support such requirements.",
+    "preview": "./templates/images/aoai_apim.svg",
+    "website": "https://github.com/microsoft",
+    "author": "Kenichiro Nakamura",
+    "source": "https://github.com/microsoft/aoai-logging-with-apim",
+    "tags": ["bicep", "msft", "ai","openai","apim","keyvault","dotnetCsharp","new"]
+  },
+  {
+    "title": "Remix on Container Apps",
+    "description": "A blueprint for getting a Remix app running on Azure Container Apps with CDN and Application Insights.",
+    "preview": "./templates/images/remix-aca.png",
+    "website": "https://github.com/CMeeg",
+    "author": "Chris Meagher",
+    "source": "https://github.com/CMeeg/remix-aca",
+    "tags": [
+      "typescript",
+      "reactjs",
+      "nodejs",
+      "bicep",
+      "aca",
+      "azurecdn",
+      "appinsights",
+      "community",
+      "new"
+    ]
   }
 ]

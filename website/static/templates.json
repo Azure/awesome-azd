@@ -1466,6 +1466,15 @@
     "tags": ["apim", "openai", "ai", "msft", "bicep", "new"]
   },
   {
+    "title": "Langfuse on Azure",
+    "description": "Deploy Langfuse (open-source LLM observability platform) to Azure Container Apps with PostgreSQL Flexible Server.",
+    "preview": "./templates/images/aca_postgres_keyvault.png",
+    "website": "https://github.com/pamelafox",
+    "author": "Pamela Fox",
+    "source": "https://github.com/Azure-Samples/langfuse-on-azure",
+    "tags": ["aca", "azuredb-postgreSQL", "keyvault", "ai", "msft", "bicep", "new"]
+  },
+  {
     "title": "Azure Open AI management and logging via Azure API Management",
     "description": "To use Azure Open AI in production, you need to manage each application and user by issuing new keys, and monitor their usage such as number of tokens they consume and types of endpoint and mode they use. The solution uses Azure APIM and other resources to support such requirements.",
     "preview": "./templates/images/aoai_apim.svg",

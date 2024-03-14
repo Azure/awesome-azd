@@ -1513,11 +1513,14 @@
       "ai",
       "openai",
       "dotnetCsharp",
-      "samples",
-      "microsoft",
+      "azureai",
+      "msft",
       "gtp",
       "dall-e",
-      "semantickernel"
+      "semantickernel",
+      "community",
+      "bicep",
+      "new"
     ]
   }
 ]

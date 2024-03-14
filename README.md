@@ -23,10 +23,12 @@ _Getting started? Click the image below to check out an Azure Friday episode all
  * [Azure Developer CLI - The new infrastructure setup](https://dev.to/lechnerc77/azure-developer-cli-the-new-infrastructure-setup-4caj) - [_Christian Lechner_](https://github.com/lechnerc77) - Oct 2022
   * [Azure Developer CLI - How does it know that?](https://dev.to/lechnerc77/azure-developer-cli-how-does-it-know-that-1ngl) - [_Christian Lechner_](https://github.com/lechnerc77) - Oct 2022
   * [Azure Developer CLI - Compatibility journey for an Azure Functions Project](https://dev.to/lechnerc77/the-azure-developer-cli-compatibility-journey-for-an-azure-functions-project-3mc1) - [_Christian Lechner_](https://github.com/lechnerc77) - Oct 2022
+  * [Generate Local .NET Secrets from Azure Deployments](https://devblogs.microsoft.com/dotnet/generate-dotnet-secrets-automatically-from-azure-deployment/) - March 2024
 
 ### 2.2 Videos
  * [Azure Developer CLI - #QuickGlance Playlist](https://www.youtube.com/watch?v=eLiD3E7tPYo&list=PLmZLSvJAm8FbFq2XhqaPZgIzl6kewz1HD) - 
  * [Azure Developer CLI - on Azure CosmosDB TV](https://www.youtube.com/watch?v=LjI-WZtunqA) - Aug 2022
+ * [Generate Local .NET Secrets from Azure Deployments](https://www.youtube.com/watch?v=NpE7edalTlQ) - March 2024
 
 
 ## 3. Templates

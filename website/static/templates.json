@@ -1225,6 +1225,8 @@
     "author": "Davide Mauri",
     "source": "https://github.com/Azure-Samples/azure-sql-db-session-recommender-v2",
     "tags": [
+      "new",
+      "bicep",
       "msft",
       "reactjs",
       "appservice",

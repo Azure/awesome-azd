@@ -1217,6 +1217,29 @@
       "ai"
     ]
   },
+   {
+    "title": "Azure OpenAI Conference Session Assistant",
+    "description": "Build a conference assistant using using Vector Search and Retrieval Augmented Generator to allow attendees to ask questions about conference in natural language",
+    "preview": "./templates/images/session-assistant-architecture.png",
+    "website": "https://ai.lasvegas.vslive.com/",
+    "author": "Davide Mauri",
+    "source": "https://github.com/Azure-Samples/azure-sql-db-session-recommender-v2",
+    "tags": [
+      "new",
+      "bicep",
+      "msft",
+      "reactjs",
+      "appservice",
+      "functions",
+      "azuresql",
+      "swa",
+      "appinsights",
+      "openai",
+      "azureai",
+      "enterprisepatterns",
+      "ai"
+    ]
+  },
   {
     "title": "Microservices App - Dapr PubSub Java AKS",
     "description": "Demonstrate event-driven communication between microservices by leveraging the pub/sub messaging architecture using Dapr for a Java application running in an AKS cluster.",

@@ -1498,6 +1498,15 @@
     "tags": ["aca", "azuredb-postgreSQL", "keyvault", "ai", "msft", "bicep", "new"]
   },
   {
+    "title": "PostgreSQL + Pgvector",
+    "description": "Deploy a PostgreSQL Flexible Server with Pgvector extension and keyless auth, then access it from Python scripts.",
+    "preview": "./templates/images/postgres_entra.png",
+    "website": "https://github.com/pamelafox",
+    "author": "Pamela Fox",
+    "source": "https://github.com/Azure-Samples/azure-postgres-pgvector-python",
+    "tags": ["azuredb-postgreSQL", "ai", "msft", "bicep", "new", "python"]
+  },
+  {
     "title": "Azure Open AI management and logging via Azure API Management",
     "description": "To use Azure Open AI in production, you need to manage each application and user by issuing new keys, and monitor their usage such as number of tokens they consume and types of endpoint and mode they use. The solution uses Azure APIM and other resources to support such requirements.",
     "preview": "./templates/images/aoai_apim.svg",

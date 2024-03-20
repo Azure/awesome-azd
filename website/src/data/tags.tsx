@@ -99,7 +99,8 @@ export type TagType =
   | "eventhub"
   | "azurestorage"
   | "helm"
-  | "dall-e";
+  | "dall-e"
+  | "gpt35t";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -236,6 +237,11 @@ export const Tags: { [type in TagType]: Tag } = {
   helm: {
     label: "Helm",
     description: "Template architecture uses Helm",
+    type: "Tools",
+  },
+  gpt35t:{
+    label: "GPT-35-Turbo",
+    description:"Template architecture uses GPT-35-Turbo model",
     type: "Tools",
   },
 

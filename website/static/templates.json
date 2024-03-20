@@ -1314,24 +1314,6 @@
     ]
   },
   {
-    "title": "ASP.NET Blazor chat application with Azure Cosmos DB for NoSQL, Azure Container Apps, and Azure OpenAI",
-    "description": "A sample sample chat application deployed to Azure Container Apps that answers questions from the user and tracks chat history across conversations. Chat sessions and history is stored in Azure Cosmos DB for NoSQL and chat completions are provided by Azure OpenAI.",
-    "preview": "./templates/images/test.png",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Azure Cosmos DB Content Team",
-    "source": "https://github.com/Azure-Samples/chat-csharp-cosmos-db-nosql-openai",
-    "tags": [
-      "bicep",
-      "aca",
-      "dotnetCsharp",
-      "ai",
-      "openai",
-      "chatgpt",
-      "cosmosdb",
-      "msft"
-    ]
-  },
-  {
     "title": "Using FastAPI Framework with Azure Functions to serve paginated data from Snowflake",
     "description": "This is a sample Azure Function app created with the FastAPI framework to serve data from Snowflake using pagination",
     "preview": "./templates/images/simple-fastapi-snow-azd.png",

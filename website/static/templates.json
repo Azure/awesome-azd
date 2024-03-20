@@ -1217,29 +1217,6 @@
       "ai"
     ]
   },
-   {
-    "title": "Azure OpenAI Conference Session Assistant",
-    "description": "Build a conference assistant using using Vector Search and Retrieval Augmented Generator to allow attendees to ask questions about conference in natural language",
-    "preview": "./templates/images/session-assistant-architecture.png",
-    "website": "https://ai.lasvegas.vslive.com/",
-    "author": "Davide Mauri",
-    "source": "https://github.com/Azure-Samples/azure-sql-db-session-recommender-v2",
-    "tags": [
-      "new",
-      "bicep",
-      "msft",
-      "reactjs",
-      "appservice",
-      "functions",
-      "azuresql",
-      "swa",
-      "appinsights",
-      "openai",
-      "azureai",
-      "enterprisepatterns",
-      "ai"
-    ]
-  },
   {
     "title": "Microservices App - Dapr PubSub Java AKS",
     "description": "Demonstrate event-driven communication between microservices by leveraging the pub/sub messaging architecture using Dapr for a Java application running in an AKS cluster.",
@@ -1375,7 +1352,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Andre Dewes",
     "source": "https://github.com/Azure-Samples/openai-aca-lb",
-    "tags": ["aca", "openai", "ai", "msft", "bicep", "dotnetCsharp", "new"]
+    "tags": ["aca", "openai", "ai", "msft", "bicep", "dotnetCsharp"]
   },
   {
     "title": "Azure Kubernetes Service Store Demo",
@@ -1384,16 +1361,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "AKS Content Team",
     "source": "https://github.com/azure-samples/aks-store-demo",
-    "tags": [
-      "terraform",
-      "aks",
-      "openai",
-      "ai",
-      "msft",
-      "new",
-      "kubernetes",
-      "helm"
-    ]
+    "tags": ["terraform", "aks", "openai", "ai", "msft", "kubernetes", "helm"]
   },
   {
     "title": "Setting up Azure OpenAI as a central capability within your organization",
@@ -1412,8 +1380,7 @@
       "enterprisepatterns",
       "aca",
       "dotnetCsharp",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -1434,8 +1401,7 @@
       "nestjs",
       "sap",
       "sapcap",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -1457,8 +1423,7 @@
       "cosmosdb",
       "azuredb-postgreSQL",
       "sapcloudsdk",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -1468,7 +1433,7 @@
     "website": "https://github.com/Azure-Samples, https://github.com/codebytes",
     "author": "Andre Dewes, Chris Ayers",
     "source": "https://github.com/Azure-Samples/openai-apim-lb",
-    "tags": ["apim", "openai", "ai", "msft", "bicep", "new"]
+    "tags": ["apim", "openai", "ai", "msft", "bicep"]
   },
   {
     "title": "Langfuse on Azure",
@@ -1477,7 +1442,15 @@
     "website": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/Azure-Samples/langfuse-on-azure",
-    "tags": ["aca", "azuredb-postgreSQL", "keyvault", "ai", "msft", "bicep", "new"]
+    "tags": [
+      "aca",
+      "azuredb-postgreSQL",
+      "keyvault",
+      "ai",
+      "msft",
+      "bicep",
+      "new"
+    ]
   },
   {
     "title": "Azure Open AI management and logging via Azure API Management",
@@ -1486,7 +1459,16 @@
     "website": "https://github.com/microsoft",
     "author": "Kenichiro Nakamura",
     "source": "https://github.com/microsoft/aoai-logging-with-apim",
-    "tags": ["bicep", "msft", "ai","openai","apim","keyvault","dotnetCsharp","new"]
+    "tags": [
+      "bicep",
+      "msft",
+      "ai",
+      "openai",
+      "apim",
+      "keyvault",
+      "dotnetCsharp",
+      "new"
+    ]
   },
   {
     "title": "Remix on Container Apps",
@@ -1504,6 +1486,29 @@
       "azurecdn",
       "appinsights",
       "community",
+      "new"
+    ]
+  },
+  {
+    "title": "Azure OpenAI Conference Session Assistant",
+    "description": "Build a conference assistant using using Vector Search and Retrieval Augmented Generator to allow attendees to ask questions about conference in natural language",
+    "preview": "./templates/images/session-assistant-architecture.png",
+    "website": "https://ai.lasvegas.vslive.com/",
+    "author": "Davide Mauri",
+    "source": "https://github.com/Azure-Samples/azure-sql-db-session-recommender-v2",
+    "tags": [
+      "bicep",
+      "msft",
+      "reactjs",
+      "appservice",
+      "functions",
+      "azuresql",
+      "swa",
+      "appinsights",
+      "openai",
+      "azureai",
+      "enterprisepatterns",
+      "ai",
       "new"
     ]
   }

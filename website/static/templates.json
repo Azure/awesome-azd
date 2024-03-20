@@ -1490,6 +1490,25 @@
     ]
   },
   {
+    "title": ".NET AI samples with Azure OpenAI",
+    "description": ".NET samples demonstrating how to use AI in your .NET applications. Each sample demonstrate a specific AI scenario with only a few lines of code. It consists of a console application, running locally, that will send request(s) to an Azure OpenAI Service deployed in your Azure subscription",
+    "preview": "./templates/images/dotnet-ai-samples.png",
+    "website": "https://github.com/fboucher",
+    "author": "Frank Boucher",
+    "source": "https://github.com/dotnet/ai-samples",
+    "tags": [
+      "ai",
+      "openai",
+      "dotnetCsharp",
+      "azureai",
+      "msft",
+      "gpt",
+      "dall-e",
+      "semantickernel",
+      "bicep"
+     ]
+  },
+  {
     "title": "Azure OpenAI Conference Session Assistant",
     "description": "Build a conference assistant using using Vector Search and Retrieval Augmented Generator to allow attendees to ask questions about conference in natural language",
     "preview": "./templates/images/session-assistant-architecture.png",

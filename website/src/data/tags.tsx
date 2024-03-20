@@ -100,7 +100,7 @@ export type TagType =
   | "azurestorage"
   | "helm"
   | "dall-e"
-  | "gpt35t";
+  | "gpt";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -204,7 +204,7 @@ export const Tags: { [type in TagType]: Tag } = {
   },
   chatgpt: {
     label: "ChatGPT",
-    description: "Template architecture uses ChatGPT model",
+    description: "Template architecture uses ChatGPT application",
     type: "Tools",
   },
   "dall-e": {
@@ -239,9 +239,9 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Helm",
     type: "Tools",
   },
-  gpt35t:{
-    label: "GPT-35-Turbo",
-    description:"Template architecture uses GPT-35-Turbo model",
+  gpt:{
+    label: "GPT",
+    description:"Template architecture uses GPT AI model",
     type: "Tools",
   },
 

@@ -1217,29 +1217,6 @@
       "ai"
     ]
   },
-   {
-    "title": "Azure OpenAI Conference Session Assistant",
-    "description": "Build a conference assistant using using Vector Search and Retrieval Augmented Generator to allow attendees to ask questions about conference in natural language",
-    "preview": "./templates/images/session-assistant-architecture.png",
-    "website": "https://ai.lasvegas.vslive.com/",
-    "author": "Davide Mauri",
-    "source": "https://github.com/Azure-Samples/azure-sql-db-session-recommender-v2",
-    "tags": [
-      "new",
-      "bicep",
-      "msft",
-      "reactjs",
-      "appservice",
-      "functions",
-      "azuresql",
-      "swa",
-      "appinsights",
-      "openai",
-      "azureai",
-      "enterprisepatterns",
-      "ai"
-    ]
-  },
   {
     "title": "Microservices App - Dapr PubSub Java AKS",
     "description": "Demonstrate event-driven communication between microservices by leveraging the pub/sub messaging architecture using Dapr for a Java application running in an AKS cluster.",
@@ -1314,24 +1291,6 @@
     ]
   },
   {
-    "title": "ASP.NET Blazor chat application with Azure Cosmos DB for NoSQL, Azure Container Apps, and Azure OpenAI",
-    "description": "A sample sample chat application deployed to Azure Container Apps that answers questions from the user and tracks chat history across conversations. Chat sessions and history is stored in Azure Cosmos DB for NoSQL and chat completions are provided by Azure OpenAI.",
-    "preview": "./templates/images/test.png",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Azure Cosmos DB Content Team",
-    "source": "https://github.com/Azure-Samples/chat-csharp-cosmos-db-nosql-openai",
-    "tags": [
-      "bicep",
-      "aca",
-      "dotnetCsharp",
-      "ai",
-      "openai",
-      "chatgpt",
-      "cosmosdb",
-      "msft"
-    ]
-  },
-  {
     "title": "Using FastAPI Framework with Azure Functions to serve paginated data from Snowflake",
     "description": "This is a sample Azure Function app created with the FastAPI framework to serve data from Snowflake using pagination",
     "preview": "./templates/images/simple-fastapi-snow-azd.png",
@@ -1393,7 +1352,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Andre Dewes",
     "source": "https://github.com/Azure-Samples/openai-aca-lb",
-    "tags": ["aca", "openai", "ai", "msft", "bicep", "dotnetCsharp", "new"]
+    "tags": ["aca", "openai", "ai", "msft", "bicep", "dotnetCsharp"]
   },
   {
     "title": "Azure Kubernetes Service Store Demo",
@@ -1402,16 +1361,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "AKS Content Team",
     "source": "https://github.com/azure-samples/aks-store-demo",
-    "tags": [
-      "terraform",
-      "aks",
-      "openai",
-      "ai",
-      "msft",
-      "new",
-      "kubernetes",
-      "helm"
-    ]
+    "tags": ["terraform", "aks", "openai", "ai", "msft", "kubernetes", "helm"]
   },
   {
     "title": "Setting up Azure OpenAI as a central capability within your organization",
@@ -1430,8 +1380,7 @@
       "enterprisepatterns",
       "aca",
       "dotnetCsharp",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -1452,8 +1401,7 @@
       "nestjs",
       "sap",
       "sapcap",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -1475,8 +1423,7 @@
       "cosmosdb",
       "azuredb-postgreSQL",
       "sapcloudsdk",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -1486,7 +1433,7 @@
     "website": "https://github.com/Azure-Samples, https://github.com/codebytes",
     "author": "Andre Dewes, Chris Ayers",
     "source": "https://github.com/Azure-Samples/openai-apim-lb",
-    "tags": ["apim", "openai", "ai", "msft", "bicep", "new"]
+    "tags": ["apim", "openai", "ai", "msft", "bicep"]
   },
   {
     "title": "Langfuse on Azure",
@@ -1495,7 +1442,15 @@
     "website": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/Azure-Samples/langfuse-on-azure",
-    "tags": ["aca", "azuredb-postgreSQL", "keyvault", "ai", "msft", "bicep", "new"]
+    "tags": [
+      "aca",
+      "azuredb-postgreSQL",
+      "keyvault",
+      "ai",
+      "msft",
+      "bicep",
+      "new"
+    ]
   },
   {
     "title": "Azure Open AI management and logging via Azure API Management",
@@ -1504,7 +1459,16 @@
     "website": "https://github.com/microsoft",
     "author": "Kenichiro Nakamura",
     "source": "https://github.com/microsoft/aoai-logging-with-apim",
-    "tags": ["bicep", "msft", "ai","openai","apim","keyvault","dotnetCsharp","new"]
+    "tags": [
+      "bicep",
+      "msft",
+      "ai",
+      "openai",
+      "apim",
+      "keyvault",
+      "dotnetCsharp",
+      "new"
+    ]
   },
   {
     "title": "Remix on Container Apps",
@@ -1526,6 +1490,48 @@
     ]
   },
   {
+    "title": ".NET AI samples with Azure OpenAI",
+    "description": ".NET samples demonstrating how to use AI in your .NET applications. Each sample demonstrate a specific AI scenario with only a few lines of code. It consists of a console application, running locally, that will send request(s) to an Azure OpenAI Service deployed in your Azure subscription",
+    "preview": "./templates/images/dotnet-ai-samples.png",
+    "website": "https://github.com/fboucher",
+    "author": "Frank Boucher",
+    "source": "https://github.com/dotnet/ai-samples",
+    "tags": [
+      "ai",
+      "openai",
+      "dotnetCsharp",
+      "azureai",
+      "msft",
+      "gpt",
+      "dall-e",
+      "semantickernel",
+      "bicep"
+     ]
+  },
+  {
+    "title": "Azure OpenAI Conference Session Assistant",
+    "description": "Build a conference assistant using using Vector Search and Retrieval Augmented Generator to allow attendees to ask questions about conference in natural language",
+    "preview": "./templates/images/session-assistant-architecture.png",
+    "website": "https://ai.lasvegas.vslive.com/",
+    "author": "Davide Mauri",
+    "source": "https://github.com/Azure-Samples/azure-sql-db-session-recommender-v2",
+    "tags": [
+      "bicep",
+      "msft",
+      "reactjs",
+      "appservice",
+      "functions",
+      "azuresql",
+      "swa",
+      "appinsights",
+      "openai",
+      "azureai",
+      "enterprisepatterns",
+      "ai",
+      "new"
+    ]
+  },
+  {
     "title": "Simple Flask (Python) Web App (Terraform) on Azure",
     "description": "A simple Python Flask website, made for demonstration purposes only, and deployed to Azure App service and Azure Monitoring.",
     "preview": "./templates/images/flask-app-terraform.png",
@@ -1541,7 +1547,5 @@
       "monitor",
       "appinsights",
       "community",
-      "new"
-    ]
   }
 ]

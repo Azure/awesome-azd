@@ -36,6 +36,7 @@ _Getting started? Click the image below to check out an Azure Friday episode all
 * [Azure-Samples/todo-csharp-cosmos-sql](https://github.com/Azure-Samples/todo-csharp-cosmos-sql) - complete ToDo application.
 * [tonybaloney/django-on-azure](https://github.com/tonybaloney/django-on-azure) - Django + PostgreSQL + Azure App Service
 * [bradygaster](https://github.com/bradygaster/RockPaperOrleans) - distributed .NET game
+* [dotnet/ai-samples](https://github.com/dotnet/ai-samples) - .NET samples demonstrating how to use AI in your applications.
 
 ### 3.2 Community
 

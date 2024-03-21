@@ -98,7 +98,9 @@ export type TagType =
   | "azuredb-mySQL"
   | "eventhub"
   | "azurestorage"
-  | "helm";
+  | "helm"
+  | "dall-e"
+  | "gpt";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -191,7 +193,8 @@ export const Tags: { [type in TagType]: Tag } = {
   },
   sapcap: {
     label: "SAP CAP",
-    description: "Template architecture uses SAP Cloud Application Programming Model",
+    description:
+      "Template architecture uses SAP Cloud Application Programming Model",
     type: "Tools",
   },
   thymeleaf: {
@@ -201,7 +204,12 @@ export const Tags: { [type in TagType]: Tag } = {
   },
   chatgpt: {
     label: "ChatGPT",
-    description: "Template architecture uses ChatGPT model",
+    description: "Template architecture uses ChatGPT application",
+    type: "Tools",
+  },
+  "dall-e": {
+    label: "Dall-E",
+    description: "Template architecture uses Dall-E",
     type: "Tools",
   },
   jupyter: {
@@ -229,6 +237,11 @@ export const Tags: { [type in TagType]: Tag } = {
   helm: {
     label: "Helm",
     description: "Template architecture uses Helm",
+    type: "Tools",
+  },
+  gpt:{
+    label: "GPT",
+    description:"Template architecture uses GPT AI model",
     type: "Tools",
   },
 

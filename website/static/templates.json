@@ -1530,5 +1530,24 @@
       "ai",
       "new"
     ]
+  },
+  {
+    "title": "Simple Flask (Python) Web App (Terraform) on Azure",
+    "description": "A simple Python Flask website, made for demonstration purposes only, and deployed to Azure App service and Azure Monitoring.",
+    "preview": "./templates/images/flask-app-terraform.png",
+    "website": "https://github.com/john0isaac",
+    "author": "John Aziz",
+    "source": "https://github.com/john0isaac/simple-flask-app-terraform",
+    "tags": [
+      "python",
+      "flask",
+      "terraform",
+      "appservice",
+      "loganalytics",
+      "monitor",
+      "appinsights",
+      "community",
+      "new"
+    ]
   }
 ]

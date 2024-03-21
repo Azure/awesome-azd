@@ -1504,7 +1504,7 @@
     "website": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/Azure-Samples/azure-postgres-pgvector-python",
-    "tags": ["azuredb-postgreSQL", "ai", "msft", "bicep", "new", "python"]
+    "tags": ["azuredb-postgreSQL", "ai", "msft", "bicep", "new", "python","new"]
   },
   {
     "title": "Azure Open AI management and logging via Azure API Management",

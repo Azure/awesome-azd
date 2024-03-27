@@ -1453,6 +1453,15 @@
     ]
   },
   {
+    "title": "PostgreSQL + Pgvector",
+    "description": "Deploy a PostgreSQL Flexible Server with Pgvector extension and keyless auth, then access it from Python scripts.",
+    "preview": "./templates/images/postgres_entra.png",
+    "website": "https://github.com/pamelafox",
+    "author": "Pamela Fox",
+    "source": "https://github.com/Azure-Samples/azure-postgres-pgvector-python",
+    "tags": ["azuredb-postgreSQL", "ai", "msft", "bicep", "new", "python","new"]
+  },
+  {
     "title": "Azure Open AI management and logging via Azure API Management",
     "description": "To use Azure Open AI in production, you need to manage each application and user by issuing new keys, and monitor their usage such as number of tokens they consume and types of endpoint and mode they use. The solution uses Azure APIM and other resources to support such requirements.",
     "preview": "./templates/images/aoai_apim.svg",
@@ -1490,6 +1499,26 @@
     ]
   },
   {
+    "title": ".NET AI samples with Azure OpenAI",
+    "description": ".NET samples demonstrating how to use AI in your .NET applications. Each sample demonstrate a specific AI scenario with only a few lines of code. It consists of a console application, running locally, that will send request(s) to an Azure OpenAI Service deployed in your Azure subscription",
+    "preview": "./templates/images/dotnet-ai-samples.png",
+    "website": "https://github.com/fboucher",
+    "author": "Frank Boucher",
+    "source": "https://github.com/dotnet/ai-samples",
+    "tags": [
+      "ai",
+      "openai",
+      "dotnetCsharp",
+      "azureai",
+      "msft",
+      "gpt",
+      "dall-e",
+      "semantickernel",
+      "bicep",
+      "new"
+     ]
+  },
+  {
     "title": "Azure OpenAI Conference Session Assistant",
     "description": "Build a conference assistant using using Vector Search and Retrieval Augmented Generator to allow attendees to ask questions about conference in natural language",
     "preview": "./templates/images/session-assistant-architecture.png",
@@ -1509,6 +1538,25 @@
       "azureai",
       "enterprisepatterns",
       "ai",
+      "new"
+    ]
+  },
+  {
+    "title": "Simple Flask (Python) Web App (Terraform) on Azure",
+    "description": "A simple Python Flask website, made for demonstration purposes only, and deployed to Azure App service and Azure Monitoring.",
+    "preview": "./templates/images/flask-app-terraform.png",
+    "website": "https://github.com/john0isaac",
+    "author": "John Aziz",
+    "source": "https://github.com/john0isaac/simple-flask-app-terraform",
+    "tags": [
+      "python",
+      "flask",
+      "terraform",
+      "appservice",
+      "loganalytics",
+      "monitor",
+      "appinsights",
+      "community",
       "new"
     ]
   }

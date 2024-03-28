@@ -1559,5 +1559,23 @@
       "community",
       "new"
     ]
+  },
+  {
+    "title": "Azure App Configuration on AKS",
+    "description": "A sample that demonstrates how to configure an Azure Kubernetes Service (AKS) workload with Azure App Configuration.",
+    "preview": "./templates/images/azure-appconfig-aks.png",
+    "website": "https://github.com/Azure/AppConfiguration",
+    "author": "Azure App Configuration",
+    "source": "https://github.com/Azure-Samples/azure-appconfig-aks",
+    "tags": [
+      "azureappconfig",
+      "kubernetes",
+      "aks",
+      "dotnetCsharp",
+      "bicep",
+      "webapps",
+      "msft",
+      "new"
+    ]
   }
 ]

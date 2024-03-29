@@ -573,7 +573,7 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Azure App Configuration",
     description: "Template architecture uses Azure App Configuration",
     azureIcon: "./img/Azure-App-Configuration.svg",
-    url: "https://github.com/Azure/AppConfiguration",
+    url: "https://azure.microsoft.com/products/app-configuration",
     type: "Service",
   },
 

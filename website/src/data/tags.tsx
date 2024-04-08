@@ -100,7 +100,8 @@ export type TagType =
   | "azurestorage"
   | "helm"
   | "dall-e"
-  | "gpt";
+  | "gpt"
+  | "azureappconfig";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -566,6 +567,13 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure Storage",
     azureIcon: "./img/Azure-Storage.svg",
     url: "https://azure.microsoft.com/products/storage",
+    type: "Service",
+  },
+  azureappconfig: {
+    label: "Azure App Configuration",
+    description: "Template architecture uses Azure App Configuration",
+    azureIcon: "./img/Azure-App-Configuration.svg",
+    url: "https://azure.microsoft.com/products/app-configuration",
     type: "Service",
   },
 

@@ -423,6 +423,26 @@
     ]
   },
   {
+    "title": "Chat with your Data Solution Accelerator",
+    "description": "A Solution Accelerator for the RAG pattern running in Azure, using Azure AI Search for retrieval and Azure OpenAI large language models to power ChatGPT-style and Q&A experiences. This includes most common requirements and best practices.",
+    "preview": "./templates/images/cwyd-solution-architecture.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/chat-with-your-data-solution-accelerator",
+    "tags": [
+      "bicep",
+      "python",
+      "typescript",
+      "flask",
+      "cognitivesearch",
+      "openai",
+      "chatgpt",
+      "ai",
+      "msft",
+      "new"
+    ]
+  },
+  {
     "title": "Simple Chat Application using Azure OpenAI",
     "description": "A sample chat app that uses Python and the Flask framework to stream ChatGPT completions as server-sent events to a simple frontend.",
     "preview": "./templates/images/simplechat-azureopenai.png",

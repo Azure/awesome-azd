@@ -100,7 +100,10 @@ export type TagType =
   | "azurestorage"
   | "helm"
   | "dall-e"
-  | "gpt";
+  | "gpt"
+  | "azureappconfig"
+  | "ruby"
+  | "rubyonrails";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -170,6 +173,11 @@ export const Tags: { [type in TagType]: Tag } = {
   php: {
     label: "PHP",
     description: "Template architecture uses PHP",
+    type: "Language",
+  },
+  ruby: {
+    label: "Ruby",
+    description: "Template architecture uses Ruby",
     type: "Language",
   },
 
@@ -313,6 +321,11 @@ export const Tags: { [type in TagType]: Tag } = {
   blazor: {
     label: "Blazor",
     description: "Template architecture uses Blazor",
+    type: "Framework",
+  },
+  rubyonrails: {
+    label: "Ruby on Rails",
+    description: "Template architecture uses Ruby on Rails web application framework",
     type: "Framework",
   },
 

@@ -1597,5 +1597,23 @@
       "msft",
       "new"
     ]
+  },
+  {
+    "title": "Sample Ruby on Rails app deployed (Bicep) on Azure Container App with PostgreSQL",
+    "description": "A sample Ruby on Rails Web App, made for demonstration purposes only, and deployed to Azure Container App and PostgreSQL.",
+    "preview": "./templates/images/azure-rails-starter.png",
+    "website": "https://github.com/dbroeglin",
+    "author": "Dominique Broeglin",
+    "source": "https://github.com/dbroeglin/azure-rails-starter",
+    "tags": [
+      "ruby",
+      "rubyonrails",
+      "bicep",
+      "aca",
+      "azuredb-postgreSQL",
+      "monitor",
+      "community",
+      "new"
+    ]
   }
 ]

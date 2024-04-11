@@ -581,6 +581,13 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/products/storage",
     type: "Service",
   },
+  azureappconfig: {
+    label: "Azure App Configuration",
+    description: "Template architecture uses Azure App Configuration",
+    azureIcon: "./img/Azure-App-Configuration.svg",
+    url: "https://azure.microsoft.com/products/app-configuration",
+    type: "Service",
+  },
 
   // For Topics
   datascience: {

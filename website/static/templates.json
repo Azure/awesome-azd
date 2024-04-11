@@ -1448,8 +1448,7 @@
       "keyvault",
       "ai",
       "msft",
-      "bicep",
-      "new"
+      "bicep"
     ]
   },
   {
@@ -1459,7 +1458,13 @@
     "website": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/Azure-Samples/azure-postgres-pgvector-python",
-    "tags": ["azuredb-postgreSQL", "ai", "msft", "bicep", "new", "python","new"]
+    "tags": [
+      "azuredb-postgreSQL",
+      "ai",
+      "msft",
+      "bicep",
+      "python"
+    ]
   },
   {
     "title": "Azure Open AI management and logging via Azure API Management",
@@ -1475,8 +1480,7 @@
       "openai",
       "apim",
       "keyvault",
-      "dotnetCsharp",
-      "new"
+      "dotnetCsharp"
     ]
   },
   {
@@ -1494,8 +1498,7 @@
       "aca",
       "azurecdn",
       "appinsights",
-      "community",
-      "new"
+      "community"
     ]
   },
   {
@@ -1514,9 +1517,8 @@
       "gpt",
       "dall-e",
       "semantickernel",
-      "bicep",
-      "new"
-     ]
+      "bicep"
+    ]
   },
   {
     "title": "Azure OpenAI Conference Session Assistant",
@@ -1537,8 +1539,7 @@
       "openai",
       "azureai",
       "enterprisepatterns",
-      "ai",
-      "new"
+      "ai"
     ]
   },
   {
@@ -1556,7 +1557,44 @@
       "loganalytics",
       "monitor",
       "appinsights",
-      "community",
+      "community"
+    ]
+  },
+  {
+    "title": "Dynamic Configuration for AKS workloads (w/o changing ConfigMaps or with Azure App Configuration)",
+    "description": "A sample that demonstrates how to dynamically configure an Azure Kubernetes Service (AKS) workload with Azure App Configuration.",
+    "preview": "./templates/images/azure-appconfig-aks.png",
+    "website": "https://github.com/Azure/AppConfiguration",
+    "author": "Azure App Configuration",
+    "source": "https://github.com/Azure-Samples/azure-appconfig-aks",
+    "tags": [
+      "azureappconfig",
+      "kubernetes",
+      "aks",
+      "dotnetCsharp",
+      "bicep",
+      "webapps",
+      "msft",
+      "new"
+    ]
+  },
+  {
+    "title": "Chat with your Data Solution Accelerator",
+    "description": "A Solution Accelerator for the RAG pattern running in Azure, using Azure AI Search for retrieval and Azure OpenAI large language models to power ChatGPT-style and Q&A experiences. This includes most common requirements and best practices.",
+    "preview": "./templates/images/cwyd-solution-architecture.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/chat-with-your-data-solution-accelerator",
+    "tags": [
+      "bicep",
+      "python",
+      "typescript",
+      "flask",
+      "cognitivesearch",
+      "openai",
+      "chatgpt",
+      "ai",
+      "msft",
       "new"
     ]
   },

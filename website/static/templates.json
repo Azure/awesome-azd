@@ -1638,7 +1638,8 @@
       "langchain",
       "functions",
       "swa",
-      "azureai"
+      "azureai",
+      "new"
     ]
-  },
+  }
 ]

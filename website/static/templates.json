@@ -1615,5 +1615,24 @@
       "community",
       "new"
     ]
+  },
+  {
+    "title": "RAG using Semantic Kernel with Azure OpenAI and Azure Cosmos DB for MongoDB vCore",
+    "description": "A Python sample for implementing retrieval augmented generation using Azure Open AI to generate embeddings, Azure Cosmos DB for MongoDB vCore to perform vector search and semantic kernel. Deployed to Azure App service using Azure Developer CLI (azd).",
+    "preview": "./templates/images/rag-semantic-kernel-mongodb-vcore.png",
+    "website": "https://github.com/john0isaac",
+    "author": "John Aziz",
+    "source": "https://github.com/john0isaac/rag-semantic-kernel-mongodb-vcore",
+    "tags": [
+      "openai",
+      "chatgpt",
+      "cosmosdb",
+      "mongodb",
+      "python",
+      "bicep",
+      "ai",
+      "community",
+      "new"
+    ]
   }
 ]

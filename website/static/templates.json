@@ -1617,6 +1617,51 @@
     ]
   },
   {
+    "title": "RAG using Semantic Kernel with Azure OpenAI and Azure Cosmos DB for MongoDB vCore",
+    "description": "A Python sample for implementing retrieval augmented generation using Azure Open AI to generate embeddings, Azure Cosmos DB for MongoDB vCore to perform vector search and semantic kernel. Deployed to Azure App service using Azure Developer CLI (azd).",
+    "preview": "./templates/images/rag-semantic-kernel-mongodb-vcore.png",
+    "website": "https://github.com/john0isaac",
+    "author": "John Aziz",
+    "source": "https://github.com/john0isaac/rag-semantic-kernel-mongodb-vcore",
+    "tags": [
+      "openai",
+      "chatgpt",
+      "cosmosdb",
+      "mongodb",
+      "python",
+      "bicep",
+      "ai",
+      "community",
+      "new"
+    ]
+  },
+  {
+    "title": "Serverless ChatGPT with RAG using LangChain.js",
+    "description": "A Serverless ChatGPT-like experience with Retrieval-Augmented Generation using LangChain.js, TypeScript and Azure",
+    "preview": "./templates/images/serverless-chat-langchainjs.gif",
+    "website": "https://github.com/glaucia86, https://github.com/sinedied",
+    "author": "Glaucia Lemos, Yohan Lasorsa",
+    "source": "https://github.com/Azure-Samples/serverless-chat-langchainjs/",
+    "tags": [
+      "ai",
+      "bicep",
+      "chatgpt",
+      "serverlessapi",
+      "javascript",
+      "nodejs",
+      "openai",
+      "typescript",
+      "webcomponents",
+      "cosmosdb",
+      "msft",
+      "langchain",
+      "functions",
+      "swa",
+      "azureai",
+      "new"
+    ]
+  },
+  {
     "title": ".NET Isolated Azure Function with Zip Deploy",
     "description": "Create .NET Isolated Azure Function and use Zip Push to deploy the code to Azure Function App. As example the .NET 8 code in the repository and the release package are used in the template. Execute the AZD UP command from the deployment folder to deploy the function app. One de Azure Function is deploy test it with the URL: https://<functionappname>.azurewebsites.net//api/getadventurers.",
     "preview": "./templates/images/dotnet-azfunc-zipdeploy.png",

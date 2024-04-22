@@ -103,7 +103,9 @@ export type TagType =
   | "gpt"
   | "azureappconfig"
   | "ruby"
-  | "rubyonrails";
+  | "rubyonrails"
+  | "serverlessapi"
+  | "langchain";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -247,9 +249,9 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Helm",
     type: "Tools",
   },
-  gpt:{
+  gpt: {
     label: "GPT",
-    description:"Template architecture uses GPT AI model",
+    description: "Template architecture uses GPT AI model",
     type: "Tools",
   },
 
@@ -325,7 +327,13 @@ export const Tags: { [type in TagType]: Tag } = {
   },
   rubyonrails: {
     label: "Ruby on Rails",
-    description: "Template architecture uses Ruby on Rails web application framework",
+    description:
+      "Template architecture uses Ruby on Rails web application framework",
+    type: "Framework",
+  },
+  langchain: {
+    label: "LangChain",
+    description: "Template architecture uses LangChain framework",
     type: "Framework",
   },
 
@@ -351,6 +359,11 @@ export const Tags: { [type in TagType]: Tag } = {
   webapps: {
     label: "Web Apps",
     description: "Template architecture uses Web Apps",
+    type: "Service",
+  },
+  serverlessapi: {
+    label: "Serverless API",
+    description: "Template architecture uses Serverless API",
     type: "Service",
   },
 

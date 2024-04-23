@@ -1663,7 +1663,7 @@
   },
   {
     "title": ".NET Isolated Azure Function with Zip Deploy",
-    "description": "Create .NET Isolated Azure Function and use Zip Push to deploy the code to Azure Function App. As example the .NET 8 code in the repository and the release package are used in the template. Execute the AZD UP command from the deployment folder to deploy the function app. One de Azure Function is deploy test it with the URL: https://<functionappname>.azurewebsites.net//api/getadventurers.",
+    "description": "Create a .NET Isolated Azure Function and use Zip Push to deploy the code to the Azure Function App. For example, the .NET 8 code in the repository and the release package are used in the template. Execute the AZD UP command from the deployment folder to deploy the function app. Once the Azure Function is deployed, test it using the URL: https://<functionappname>.azurewebsites.net/api/getadventurers.",
     "preview": "./templates/images/dotnet-azfunc-zipdeploy.png",
     "website": "https://github.com/fboucher",
     "author": "Frank Boucher",

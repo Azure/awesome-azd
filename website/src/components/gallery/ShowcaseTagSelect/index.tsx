@@ -29,9 +29,11 @@ export default function ShowcaseTagSelect(
   {
     label,
     tag,
+    id,
   }: {
     label: string;
     tag: TagType;
+    id: string;
   }
 ): JSX.Element {
   const location = useLocation();
@@ -51,10 +53,13 @@ export default function ShowcaseTagSelect(
       state: prepareUserState(),
     });
   }, [tag, location, history]);
+  const template = id.replace("showcase_checkbox_id_", "")
+  const contentForAdobeAnalytics = `id:${template},cN:"Tags"`
   return (
     <>
       <Checkbox
-        // id={id}
+        id={id}
+        data-m={contentForAdobeAnalytics}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
             toggleTag();

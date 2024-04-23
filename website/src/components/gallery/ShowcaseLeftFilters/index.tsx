@@ -53,19 +53,20 @@ function ShowcaseFilterViewAll({
     <>
       {tags.slice(0, 6).map((tag, index) => {
         const tagObject = Tags[tag];
+        const key = `showcase_checkbox_key_${tag}`;
         const id = `showcase_checkbox_id_${tag}`;
 
         return index == tags.length - 1 ? (
           <div
-            key={id}
+            key={key}
             className={styles.checkboxListItem}
             style={{ marginBottom: "7px" }}
           >
-            <ShowcaseTagSelect tag={tag} label={tagObject.label} />
+            <ShowcaseTagSelect id={id} tag={tag} label={tagObject.label} />
           </div>
         ) : (
-          <div key={id} className={styles.checkboxListItem}>
-            <ShowcaseTagSelect tag={tag} label={tagObject.label} />
+          <div key={key} className={styles.checkboxListItem}>
+            <ShowcaseTagSelect id={id} tag={tag} label={tagObject.label} />
           </div>
         );
       })}
@@ -80,11 +81,16 @@ function ShowcaseFilterViewAll({
             <AccordionPanel style={{ margin: "0px" }}>
               {tags.slice(6, tags.length).map((tag) => {
                 const tagObject = Tags[tag];
+                const key = `showcase_checkbox_key_${tag}`;
                 const id = `showcase_checkbox_id_${tag}`;
 
                 return (
-                  <div key={id} className={styles.checkboxListItem}>
-                    <ShowcaseTagSelect tag={tag} label={tagObject.label} />
+                  <div key={key} className={styles.checkboxListItem}>
+                    <ShowcaseTagSelect
+                      id={id}
+                      tag={tag}
+                      label={tagObject.label}
+                    />
                   </div>
                 );
               })}
@@ -177,15 +183,16 @@ export default function ShowcaseLeftFilters() {
         </div>
         {uncategoryTag.map((tag) => {
           const tagObject = Tags[tag];
+          const key = `showcase_checkbox_key_${tag}`;
           const id = `showcase_checkbox_id_${tag}`;
 
           return (
             <div
-              key={id}
+              key={key}
               className={styles.checkboxListItem}
               style={{ paddingLeft: "12px" }}
             >
-              <ShowcaseTagSelect tag={tag} label={tagObject.label} />
+              <ShowcaseTagSelect id={id} tag={tag} label={tagObject.label} />
             </div>
           );
         })}

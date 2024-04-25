@@ -62,6 +62,7 @@ const darkTheme: PartialTheme = {
 
 function ShowcaseCard({ user }: { user: User }): JSX.Element {
   const styles = useStyles();
+  const title = user.title;
   const tags = user.tags;
   const source = user.source;
   const star = useBaseUrl("/img/Sparkle.svg");
@@ -73,6 +74,9 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
   }
   let headerLogo = useBaseUrl("/img/Community.svg");
   let headerText = "Community Authored";
+
+  // Adobe Analytics Content
+  const contentForAdobeAnalytics = `id:${title},cN:"Copy Button (azd init)"`;
 
   // Panel
   const { colorMode } = useColorMode();
@@ -138,7 +142,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
     );
 
   return (
-    <Card key={user.title} className={styleCSS.card}>
+    <Card key={title} className={styleCSS.card}>
       <CardHeader
         header={
           <div
@@ -207,7 +211,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
         }}
       >
         <FluentUILink className={styleCSS.cardTitle} onClick={openPanel}>
-          {user.title}
+          {title}
         </FluentUILink>
         <div
           style={{
@@ -221,7 +225,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
         >
           <div className={styleCSS.cardTextBy}>by</div>
           <ShowcaseMultipleAuthors
-            key={"author_" + user.title}
+            key={"author_" + title}
             user={user}
             cardPanel={false}
           />
@@ -230,7 +234,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
         {/* Panel is Fluent UI 8. Must use ThemeProvider */}
         <ThemeProvider theme={colorMode != "dark" ? lightTheme : darkTheme}>
           <Panel
-            headerText={user.title}
+            headerText={title}
             isLightDismiss
             isOpen={isOpen}
             onDismiss={dismissPanel}
@@ -258,14 +262,14 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
               flexFlow: "wrap",
             }}
           >
-            <ShowcaseCardTag key={user.title} tags={user.tags} moreTag={true} />
+            <ShowcaseCardTag key={title} tags={tags} moreTag={true} />
           </div>
         </div>
       </div>
       <CardPreview className={styleCSS.cardBreakLine} />
       <CardFooter>
         <Input
-          id={"input_" + user.title}
+          id={"input_" + title}
           size="small"
           spellCheck={false}
           defaultValue={azdInitCommand}
@@ -280,6 +284,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
               onClick={() => {
                 navigator.clipboard.writeText(azdInitCommand);
               }}
+              data-m={contentForAdobeAnalytics}
             >
               <img src={useBaseUrl("/img/Copy.svg")} height={20} alt="Copy" />
             </Button>

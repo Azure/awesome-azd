@@ -54,7 +54,7 @@ export default function ShowcaseTagSelect(
     });
   }, [tag, location, history]);
   const template = id.replace("showcase_checkbox_id_", "")
-  const contentForAdobeAnalytics = `id:${template},cN:"Tags"`
+  const contentForAdobeAnalytics = `{\"id\":\"${template}\",\"cN\":\"Tags\"}`
   return (
     <>
       <Checkbox

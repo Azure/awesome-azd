@@ -76,7 +76,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
   let headerText = "Community Authored";
 
   // Adobe Analytics Content
-  const contentForAdobeAnalytics = `id:${title},cN:"Copy Button (azd init)"`;
+  const contentForAdobeAnalytics = `{\"id\":\"${title}\",\"cN\":\"Copy Button (azd init)\"}`;
 
   // Panel
   const { colorMode } = useColorMode();

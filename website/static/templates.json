@@ -1694,6 +1694,6 @@
     "website": "https://github.com/Azure/azure-dev",
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/azd-aistudio-starter",
-    "tags": ["bicep", "ai", "azureai", "openai", "msft"]
+    "tags": ["bicep", "ai", "azureai", "openai", "msft", "new"]
   }
 ]

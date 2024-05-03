@@ -5,7 +5,7 @@
 
 import React from "react";
 import ShowcaseEmptyResult from "../components/gallery/ShowcaseEmptyResult";
-import { type User, type TagType } from "../data/tags";
+import { type Template, type TagType } from "../data/tags";
 import styles from "./styles.module.css";
 import ShowcaseCard from "../components/gallery/ShowcaseCard";
 import ShowcaseContributionCard from "../components/gallery/ShowcaseContributionCard";
@@ -13,7 +13,7 @@ import ShowcaseContributionCard from "../components/gallery/ShowcaseContribution
 export default function ShowcaseCards({
   filteredUsers,
 }: {
-  filteredUsers: User[];
+  filteredUsers: Template[];
 }) {
   const len = filteredUsers ? filteredUsers.length : 0;
   if (len === 0) {

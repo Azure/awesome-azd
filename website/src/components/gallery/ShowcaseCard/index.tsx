@@ -5,7 +5,7 @@
 
 import React from "react";
 import styleCSS from "./styles.module.css";
-import { type User } from "../../../data/tags";
+import { type Template } from "../../../data/tags";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import {
   Card,
@@ -60,7 +60,7 @@ const darkTheme: PartialTheme = {
   },
 };
 
-function ShowcaseCard({ user }: { user: User }): JSX.Element {
+function ShowcaseCard({ user }: { user: Template }): JSX.Element {
   const styles = useStyles();
   const title = user.title;
   const tags = user.tags;

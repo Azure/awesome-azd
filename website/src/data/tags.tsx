@@ -12,7 +12,7 @@ export type Tag = {
   type?: string;
 };
 
-export type User = {
+export type Template = {
   title: string;
   description: string;
   preview: string;
@@ -20,6 +20,7 @@ export type User = {
   author: string;
   source: string | null;
   tags: TagType[];
+  ref: string;
 };
 
 // NN: Updated TagType to suit Static Web Apps
@@ -105,7 +106,8 @@ export type TagType =
   | "ruby"
   | "rubyonrails"
   | "serverlessapi"
-  | "langchain";
+  | "langchain"
+  | "aiApps";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -136,6 +138,10 @@ export const Tags: { [type in TagType]: Tag } = {
   popular: {
     label: "Popular",
     description: "This tag is used for popular templates.",
+  },
+  aiApps: {
+    label: "AI Apps",
+    description: "This tag is used for AI Apps.",
   },
 
   //============  FOR REGULAR USE

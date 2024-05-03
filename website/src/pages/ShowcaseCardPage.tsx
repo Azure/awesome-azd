@@ -10,7 +10,7 @@ import {
   UserState,
   InputValue,
 } from "../components/gallery/ShowcaseTemplateSearch";
-import { type User, type TagType } from "../data/tags";
+import { type Template, type TagType } from "../data/tags";
 import { sortedUsers, unsortedUsers } from "../data/users";
 import { Text, Combobox, Option, Spinner } from "@fluentui/react-components";
 import ShowcaseCards from "./ShowcaseCards";
@@ -32,19 +32,19 @@ const SORT_BY_OPTIONS = [
   "Alphabetical (Z - A)",
 ];
 
-function readSortChoice(rule: string): User[] {
+async function readSortChoice(rule: string): Promise<Template[]> {
   if (rule == SORT_BY_OPTIONS[0]) {
-    const copyUnsortedUser = unsortedUsers.slice();
+    const copyUnsortedUser = (await unsortedUsers).slice();
     return copyUnsortedUser.reverse();
   } else if (rule == SORT_BY_OPTIONS[1]) {
-    return unsortedUsers;
+    return await unsortedUsers;
   } else if (rule == SORT_BY_OPTIONS[2]) {
-    return sortedUsers;
+    return await sortedUsers;
   } else if (rule == SORT_BY_OPTIONS[3]) {
-    const copySortedUser = sortedUsers.slice();
+    const copySortedUser = (await sortedUsers).slice();
     return copySortedUser.reverse();
   }
-  return sortedUsers;
+  return await sortedUsers;
 }
 
 const SearchNameQueryKey = "name";
@@ -54,7 +54,7 @@ function readSearchName(search: string) {
 }
 
 function filterUsers(
-  users: User[],
+  users: Template[],
   selectedTags: TagType[],
   searchName: string | null
 ) {
@@ -81,16 +81,17 @@ export default function ShowcaseCardPage() {
 
   const [selectedTags, setSelectedTags] = useState<TagType[]>([]);
   const [searchName, setSearchName] = useState<string | null>(null);
-  const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
+  const [selectedUsers, setSelectedUsers] = useState<Template[]>([]);
   const location = useLocation<UserState>();
 
   useEffect(() => {
-    setSelectedTags(readSearchTags(location.search));
-    setSelectedUsers(readSortChoice(selectedOptions[0]));
-    setSearchName(readSearchName(location.search));
-    restoreUserState(location.state);
-
-    setLoading(false);
+    readSortChoice(selectedOptions[0]).then(templates =>{
+      setSelectedTags(readSearchTags(location.search));
+      setSelectedUsers(templates);
+      setSearchName(readSearchName(location.search));
+      restoreUserState(location.state);
+      setLoading(false);
+    })
   }, [location, selectedOptions]);
 
   var cards = useMemo(

@@ -5,7 +5,7 @@
 
 import React from "react";
 import styles from "./styles.module.css";
-import { type User } from "../../../data/tags";
+import { type Template } from "../../../data/tags";
 import {
   makeStyles,
   Link as FluentUILink,
@@ -115,7 +115,7 @@ export default function ShowcaseMultipleAuthors({
   user,
   cardPanel,
 }: {
-  user: User;
+  user: Template;
   cardPanel: boolean;
 }) {
   const { colorMode } = useColorMode();

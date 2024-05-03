@@ -5,7 +5,7 @@
 
 import React from "react";
 import styles from "./styles.module.css";
-import { Tags, type User, type TagType } from "../../../data/tags";
+import { Tags, type Template, type TagType } from "../../../data/tags";
 import { TagList } from "../../../data/users";
 import { sortBy } from "@site/src/utils/jsUtils";
 import useBaseUrl from "@docusaurus/useBaseUrl";
@@ -87,7 +87,7 @@ function CopyButton({ url, colorMode }: { url: string; colorMode: string }) {
   );
 }
 
-export default function ShowcaseCardPanel({ user }: { user: User }) {
+export default function ShowcaseCardPanel({ user }: { user: Template }) {
   const [
     isPopupVisibleTemplateDetails,
     { toggle: toggleIsPopupVisibleTemplateDetails },

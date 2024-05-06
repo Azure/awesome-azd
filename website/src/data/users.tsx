@@ -6,7 +6,7 @@
 /* eslint-disable global-require */
 
 import { sortBy } from '../utils/jsUtils';
-import { TagType, User, Tags } from './tags';
+import { TagType, Template, Tags } from './tags';
 import templates from '../../static/templates.json'
 
 // *** ADDING DATA TO AZD GALLERY ****/
@@ -16,12 +16,34 @@ import templates from '../../static/templates.json'
 // *************** CARD DATA STARTS HERE ***********************
 // Add your site to this list
 // prettier-ignore
+const expandedTemplates: Template[] = [];
 
-export const unsortedUsers: User[] = templates as User[]
+const expand = async (source:Template[]):Promise<Template[]> => {
+  await Promise.all(source.map(async (template) => {
+    if (template.ref) {
+      const resp = await fetch(template.ref);
+      const data = await resp.json() as Template[];
+      data.forEach((d) => {
+        expandedTemplates.push({...d, tags: [...d.tags, ...(template.tags || [])]});
+      });
+    } else {
+      expandedTemplates.push(template)
+    }
+  }));
+  
+  return expandedTemplates;
+}
+
+export const unsortedUsers = (async ():Promise<Template[]> => {
+  if (expandedTemplates.length !== 0) {
+    return expandedTemplates;
+  }
+  return expand(templates as Template[]);
+})();
 
 export const TagList = Object.keys(Tags) as TagType[];
-function sortUsers() {
-  let result = unsortedUsers;
+async function sortUsers() {
+  let result = await unsortedUsers;
   // Sort by site name
   result = sortBy(result, (user) => user.title.toLowerCase());
   return result;

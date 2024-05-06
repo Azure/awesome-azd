@@ -1677,5 +1677,9 @@
       "appinsights",
       "blobstorage"
     ]
+  },
+  {
+    "ref": "https://cacheddkci2rpqggas.blob.core.windows.net/ai-templates/templates.json",
+    "tags": ["aiApps"]
   }
 ]

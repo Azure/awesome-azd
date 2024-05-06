@@ -5,7 +5,7 @@
 
 import React from "react";
 import styles from "./styles.module.css";
-import { Tag, Tags, type User, type TagType } from "../../../data/tags";
+import { Tag, Tags, type Template, type TagType } from "../../../data/tags";
 import { TagList } from "../../../data/users";
 import { sortBy } from "@site/src/utils/jsUtils";
 import { Badge, Tooltip, makeStyles } from "@fluentui/react-components";

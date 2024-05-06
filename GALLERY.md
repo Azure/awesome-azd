@@ -1,6 +1,6 @@
 # AZD Templates Gallery
 
-Currently, azd templates can be discovered using the [azd-templates](https://github.com/topics/azd-templates) topic on Github. We're working on adding a **hosted gallery** to this repo to simplify the process.
+Currently, azd templates can be discovered using the [azd-templates](https://github.com/topics/azd-templates) topic on Github or browsing the our [**hosted gallery**](https://azure.github.io/awesome-azd).
 
 ## 1. Landing Page
 
@@ -32,10 +32,7 @@ This page provides three key actions:
 ## 3. Contributor Guide
 ![](./website/static/img/contrib-guide.png) 
 
-This is a **🚧 Work in Progress**. Use this to find documentation related to:
- * Creating a new template
- * Contributing a new template
- * Contributing a template for a requested architecture
+We love contributuions! To learn more about submitting an azd template, please see our [contributor guide](https://azure.github.io/awesome-azd/docs/intro).
  
 
 ---

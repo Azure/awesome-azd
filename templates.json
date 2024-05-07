@@ -1677,5 +1677,23 @@
       "appinsights",
       "blobstorage"
     ]
+  },
+  {
+    "title": "Azure AI Starter",
+    "description": "Bicep template that deploys Azure AI services with configured machine learning models.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure/azure-dev",
+    "author": "Azure Dev",
+    "source": "https://github.com/Azure-Samples/azd-ai-starter",
+    "tags": ["bicep", "ai", "azureai", "openai", "msft", "new"]
+  },
+  {
+    "title": "Azure AI Studio Starter",
+    "description": "Bicep template that deploys everything you need to get started with Azure AI Studio.  Includes AI Hub with dependent resources, AI project, AI Services and an online endpoint",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure/azure-dev",
+    "author": "Azure Dev",
+    "source": "https://github.com/Azure-Samples/azd-aistudio-starter",
+    "tags": ["bicep", "ai", "azureai", "openai", "msft", "new"]
   }
 ]

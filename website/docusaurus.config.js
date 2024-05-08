@@ -6,7 +6,7 @@
 /** @type {import('@docusaurus/types').Config} */
 
 import { themes as prismThemes } from "prism-react-renderer";
-import {manageCookieLabel} from "./constants.js";
+import { manageCookieLabel } from "./constants.js";
 
 const config = {
   // CONFIG: Add Custom Fields - globally reference them from siteConfig
@@ -41,7 +41,6 @@ const config = {
   // CONFIG: scripts
   scripts: [
     "https://js.monitor.azure.com/scripts/c/ms.analytics-web-4.min.js",
-    // "https://consentdeliveryfd.azurefd.net/mscc/lib/v2/wcp-consent.js",
     "https://wcpstatic.microsoft.com/mscc/lib/v2/wcp-consent.js",
   ],
 
@@ -211,4 +210,14 @@ const config = {
   ],
 };
 
-module.exports = config;
+try {
+  module.exports = config;
+} catch (error) {
+  if (error.message.includes("ERR_BLOCKED_BY_CLIENT")) {
+    // Print out a message if user uses a ad blocker
+    console.log("Adobe Analytics is currently unavailable.");
+  } else {
+    // Throw other errors
+    throw error;
+  }
+}

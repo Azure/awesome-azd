@@ -141,7 +141,7 @@ export const Tags: { [type in TagType]: Tag } = {
   },
   aiApps: {
     label: "AI Apps",
-    description: "This tag is used for AI Apps.",
+    description: "This tag is used for AI Apps templates gallery.",
   },
 
   //============  FOR REGULAR USE

@@ -199,7 +199,6 @@ const config = {
             to: "/docs/faq/what-is-an-azd-template",
             from: "/docs/faq/azd-template",
           },
-          ,
           {
             to: "/docs/faq/use-azd-templates",
             from: "/docs/faq/how-to-use-azd-templates",

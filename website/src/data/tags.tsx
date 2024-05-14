@@ -63,7 +63,7 @@ export type TagType =
   | "ahds"
   | "appinsights"
   | "loganalytics"
-  | "cognitivesearch"
+  | "aisearch"
   | "openai"
   | "azureai"
   | "flask"
@@ -488,11 +488,11 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/products/virtual-network",
     type: "Service",
   },
-  cognitivesearch: {
+  aisearch: {
     label: "Azure Cognitive Search",
     description: "Template architecture uses Azure Cognitive Search",
-    azureIcon: "./img/Azure-Cognitive-Search.svg",
-    url: "https://azure.microsoft.com/products/ai-services/cognitive-search",
+    azureIcon: "./img/Azure-AI-Search.svg",
+    url: "https://azure.microsoft.com/products/ai-services/ai-search",
     type: "Service",
   },
   openai: {

@@ -200,8 +200,8 @@ const config = {
             from: "/docs/faq/azd-template",
           },
           {
-            to: "/docs/faq/use-azd-templates",
-            from: "/docs/faq/how-to-use-azd-templates",
+            to: "/docs/faq/how-to-use-azd-templates",
+            from: "/docs/faq/use-azd-templates",
           },
           {
             to: "/docs/faq/request-a-template",

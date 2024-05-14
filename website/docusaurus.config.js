@@ -6,7 +6,7 @@
 /** @type {import('@docusaurus/types').Config} */
 
 import { themes as prismThemes } from "prism-react-renderer";
-import {manageCookieLabel} from "./constants.js";
+import { manageCookieLabel } from "./constants.js";
 
 const config = {
   // CONFIG: Add Custom Fields - globally reference them from siteConfig
@@ -177,6 +177,38 @@ const config = {
         min: 640, // min resized image's size. if original is lower, use that size.
         steps: 2, // the max number of images generated between min and max (inclusive)
         disableInDev: false,
+      },
+    ],
+    [
+      "@docusaurus/plugin-client-redirects",
+      {
+        redirects: [
+          {
+            to: "/getting-started",
+            from: "/about",
+          },
+          {
+            to: "/docs/contribute",
+            from: "/docs/intro",
+          },
+          {
+            to: "/docs/faq/what-is-azd",
+            from: "/docs/faq/azd",
+          },
+          {
+            to: "/docs/faq/what-is-an-azd-template",
+            from: "/docs/faq/azd-template",
+          },
+          ,
+          {
+            to: "/docs/faq/use-azd-templates",
+            from: "/docs/faq/how-to-use-azd-templates",
+          },
+          {
+            to: "/docs/faq/request-a-template",
+            from: "/docs/faq/request-template",
+          },
+        ],
       },
     ],
   ],

@@ -210,14 +210,4 @@ const config = {
   ],
 };
 
-try {
-  module.exports = config;
-} catch (error) {
-  if (error.message.includes("ERR_BLOCKED_BY_CLIENT")) {
-    // Print out a message if user uses a ad blocker
-    console.log("Adobe Analytics is currently unavailable.");
-  } else {
-    // Throw other errors
-    throw error;
-  }
-}
+module.exports = config;

@@ -32,7 +32,7 @@ This page provides three key actions:
 ## 3. Contributor Guide
 ![](./website/static/img/contrib-guide.png) 
 
-We love contributuions! To learn more about submitting an azd template, please see our [contributor guide](https://azure.github.io/awesome-azd/docs/intro).
+We love contributions! To learn more about submitting an azd template, please see our [contributor guide](https://azure.github.io/awesome-azd/docs/contribute).
  
 
 ---

@@ -79,7 +79,7 @@ export default function ShowcaseEmptyResult({ id }: { id: string }) {
             </Text>
             <FluentUILink
               key="emptySearch_contributeTemplate"
-              href="https://azure.github.io/awesome-azd/docs/intro"
+              href="https://azure.github.io/awesome-azd/docs/contribute"
               target="_blank"
               className={styles.colorLink}
             >

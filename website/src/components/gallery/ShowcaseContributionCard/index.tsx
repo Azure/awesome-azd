@@ -99,7 +99,7 @@ export default function ShowcaseContributionCard(): React.ReactElement {
           className={styleCSS.submitButton}
           onClick={() => {
             window.open(
-              "https://azure.github.io/awesome-azd/docs/intro",
+              "https://azure.github.io/awesome-azd/docs/contribute",
               "_blank"
             );
           }}

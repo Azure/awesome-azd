@@ -81,7 +81,7 @@ const config = {
         },
         items: [
           {
-            to: "/about",
+            to: "/getting-started",
             label: "Getting Started",
             position: "left",
           },
@@ -89,7 +89,7 @@ const config = {
             label: "Contribute",
             position: "left",
             type: "doc",
-            docId: "intro",
+            docId: "contribute",
           },
           {
             to: "https://aka.ms/azd",
@@ -113,7 +113,7 @@ const config = {
           // CONFIG:
           // Make sure you have class defined in src/css/custom.css
           {
-            to: "https://azure.github.io/awesome-azd/docs/intro",
+            to: "https://azure.github.io/awesome-azd/docs/contribute",
             label: "Submit your template!",
             position: "right",
             className: "button",

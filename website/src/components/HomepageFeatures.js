@@ -43,7 +43,7 @@ const FeatureList = [
   {
     title: "Contribute to the Gallery",
     Svg: "img/home-contribute.svg",
-    link: "https://azure.github.io/awesome-azd/docs/intro",
+    link: "https://azure.github.io/awesome-azd/docs/contribute",
     description:
       "After making your azd template, consider adding it to our gallery to share with fellow azd-developers.",
     content: "View contributor guide",

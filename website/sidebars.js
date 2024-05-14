@@ -19,7 +19,7 @@ const sidebars = {
   // CONFIG: Let's do a custom one
 
   docs: [
-    'intro',
+    'contribute',
     {
       type: 'category',
       label: 'FAQ',

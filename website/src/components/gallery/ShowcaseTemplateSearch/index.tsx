@@ -128,7 +128,7 @@ export default function ShowcaseTemplateSearch() {
             flexDirection: "column",
           }}
         >
-          <div className={styles.heroBar}>
+          <h1 className={styles.heroBar}>
             <Text
               size={800}
               align="center"
@@ -142,7 +142,7 @@ export default function ShowcaseTemplateSearch() {
             >
               {TITLE}
             </Text>
-          </div>
+          </h1>
           <Text
             align="center"
             size={400}

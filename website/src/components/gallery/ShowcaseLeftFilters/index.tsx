@@ -21,9 +21,11 @@ import { useColorMode } from "@docusaurus/theme-common";
 function ShowcaseFilterViewAll({
   tags,
   number,
+  activeTags,
 }: {
   tags: TagType[];
   number: string;
+  activeTags: TagType[];
 }) {
   const [openItems, setOpenItems] = React.useState(["0"]);
   const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
@@ -62,11 +64,21 @@ function ShowcaseFilterViewAll({
             className={styles.checkboxListItem}
             style={{ marginBottom: "7px" }}
           >
-            <ShowcaseTagSelect id={id} tag={tag} label={tagObject.label} />
+            <ShowcaseTagSelect
+              id={id}
+              tag={tag}
+              label={tagObject.label}
+              activeTags={activeTags}
+            />
           </div>
         ) : (
           <div key={key} className={styles.checkboxListItem}>
-            <ShowcaseTagSelect id={id} tag={tag} label={tagObject.label} />
+            <ShowcaseTagSelect
+              id={id}
+              tag={tag}
+              label={tagObject.label}
+              activeTags={activeTags}
+            />
           </div>
         );
       })}
@@ -90,6 +102,7 @@ function ShowcaseFilterViewAll({
                       id={id}
                       tag={tag}
                       label={tagObject.label}
+                      activeTags={activeTags}
                     />
                   </div>
                 );
@@ -118,7 +131,7 @@ function ShowcaseFilterViewAll({
   );
 }
 
-export default function ShowcaseLeftFilters() {
+export default function ShowcaseLeftFilters({ activeTags }: { activeTags: TagType[] }) {
   const sortTagList = TagList.sort();
   const uncategoryTag = TagList.filter((tag) => {
     const tagObject = Tags[tag];
@@ -192,7 +205,12 @@ export default function ShowcaseLeftFilters() {
               className={styles.checkboxListItem}
               style={{ paddingLeft: "12px" }}
             >
-              <ShowcaseTagSelect id={id} tag={tag} label={tagObject.label} />
+              <ShowcaseTagSelect
+                id={id}
+                tag={tag}
+                label={tagObject.label}
+                activeTags={activeTags}
+              />
             </div>
           );
         })}
@@ -208,7 +226,11 @@ export default function ShowcaseLeftFilters() {
           <div style={{ fontSize: "16px", fontWeight: "500" }}>Language</div>
         </AccordionHeader>
         <AccordionPanel>
-          <ShowcaseFilterViewAll tags={languageTag} number={"1"} />
+          <ShowcaseFilterViewAll
+            tags={languageTag}
+            number={"1"}
+            activeTags={activeTags}
+          />
         </AccordionPanel>
       </AccordionItem>
 
@@ -223,7 +245,11 @@ export default function ShowcaseLeftFilters() {
           <div style={{ fontSize: "16px", fontWeight: "500" }}>Framework</div>
         </AccordionHeader>
         <AccordionPanel>
-          <ShowcaseFilterViewAll tags={frameworkTag} number={"2"} />
+          <ShowcaseFilterViewAll
+            tags={frameworkTag}
+            number={"2"}
+            activeTags={activeTags}
+          />
         </AccordionPanel>
       </AccordionItem>
 
@@ -238,7 +264,11 @@ export default function ShowcaseLeftFilters() {
           <div style={{ fontSize: "16px", fontWeight: "500" }}>Services</div>
         </AccordionHeader>
         <AccordionPanel>
-          <ShowcaseFilterViewAll tags={servicesTag} number={"3"} />
+          <ShowcaseFilterViewAll
+            tags={servicesTag}
+            number={"3"}
+            activeTags={activeTags}
+          />
         </AccordionPanel>
       </AccordionItem>
 
@@ -253,7 +283,11 @@ export default function ShowcaseLeftFilters() {
           <div style={{ fontSize: "16px", fontWeight: "500" }}>Database</div>
         </AccordionHeader>
         <AccordionPanel>
-          <ShowcaseFilterViewAll tags={databaseTag} number={"4"} />
+          <ShowcaseFilterViewAll
+            tags={databaseTag}
+            number={"4"}
+            activeTags={activeTags}
+          />
         </AccordionPanel>
       </AccordionItem>
 
@@ -270,7 +304,11 @@ export default function ShowcaseLeftFilters() {
           </div>
         </AccordionHeader>
         <AccordionPanel>
-          <ShowcaseFilterViewAll tags={infrastructureAsCodeTag} number={"5"} />
+          <ShowcaseFilterViewAll
+            tags={infrastructureAsCodeTag}
+            number={"5"}
+            activeTags={activeTags}
+          />
         </AccordionPanel>
       </AccordionItem>
 
@@ -285,7 +323,11 @@ export default function ShowcaseLeftFilters() {
           <div style={{ fontSize: "16px", fontWeight: "500" }}>Tools</div>
         </AccordionHeader>
         <AccordionPanel>
-          <ShowcaseFilterViewAll tags={otherTag} number={"6"} />
+          <ShowcaseFilterViewAll
+            tags={otherTag}
+            number={"6"}
+            activeTags={activeTags}
+          />
         </AccordionPanel>
       </AccordionItem>
 
@@ -300,7 +342,11 @@ export default function ShowcaseLeftFilters() {
           <div style={{ fontSize: "16px", fontWeight: "500" }}>Topic</div>
         </AccordionHeader>
         <AccordionPanel>
-          <ShowcaseFilterViewAll tags={topicTag} number={"7"} />
+          <ShowcaseFilterViewAll
+            tags={topicTag}
+            number={"7"}
+            activeTags={activeTags}
+          />
         </AccordionPanel>
       </AccordionItem>
     </Accordion>

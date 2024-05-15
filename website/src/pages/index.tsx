@@ -16,7 +16,8 @@ import {
 } from "@fluentui/react-components";
 import { initializeIcons } from "@fluentui/react/lib/Icons";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
-
+import { type TagType } from "@site/src/data/tags";
+import { TagList } from "@site/src/data/users";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
 import ShowcaseCardPage from "./ShowcaseCardPage";
@@ -37,6 +38,7 @@ export function prepareUserState(): UserState | undefined {
 const App = () => {
   const { colorMode } = useColorMode();
   const [loading, setLoading] = useState(true);
+  const [activeTags, setActiveTags] = useState<TagType[]>(TagList);
 
   useEffect(() => {
     setTimeout(() => {
@@ -51,10 +53,10 @@ const App = () => {
       <ShowcaseTemplateSearch />
       <div className={styles.filterAndCard}>
         <div className={styles.filter}>
-          <ShowcaseLeftFilters />
+          <ShowcaseLeftFilters activeTags={activeTags} />
         </div>
         <div className={styles.card}>
-          <ShowcaseCardPage />
+          <ShowcaseCardPage setActiveTags={setActiveTags} />
         </div>
       </div>
     </FluentProvider>

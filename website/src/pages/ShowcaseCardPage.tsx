@@ -75,7 +75,11 @@ function filterUsers(
   });
 }
 
-export default function ShowcaseCardPage() {
+export default function ShowcaseCardPage({
+  setActiveTags,
+}: {
+  setActiveTags: React.Dispatch<React.SetStateAction<TagType[]>>;
+}) {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -89,7 +93,6 @@ export default function ShowcaseCardPage() {
     setSelectedUsers(readSortChoice(selectedOptions[0]));
     setSearchName(readSearchName(location.search));
     restoreUserState(location.state);
-
     setLoading(false);
   }, [location, selectedOptions]);
 
@@ -97,6 +100,12 @@ export default function ShowcaseCardPage() {
     () => filterUsers(selectedUsers, selectedTags, searchName),
     [selectedUsers, selectedTags, searchName]
   );
+
+  useEffect(() => {
+    const unionTags = new Set<TagType>();
+    cards.forEach((user) => user.tags.forEach((tag) => unionTags.add(tag)));
+    setActiveTags(Array.from(unionTags));
+  }, [cards]);
 
   const sortByOnSelect = (event, data) => {
     setLoading(true);

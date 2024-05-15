@@ -47,7 +47,6 @@ export type TagType =
   | "keyvault"
   | "aca"
   | "mongodb"
-  | "signalR"
   | "functions"
   | "blobstorage"
   | "azuredb-postgreSQL"
@@ -59,8 +58,6 @@ export type TagType =
   | "servicebus"
   | "vnets"
   | "fastapi"
-  | "fhir"
-  | "ahds"
   | "appinsights"
   | "loganalytics"
   | "aisearch"
@@ -345,12 +342,6 @@ export const Tags: { [type in TagType]: Tag } = {
   },
 
   // ---- Service
-  fhir: {
-    label: "FHIR Service",
-    description:
-      "Template architecture uses Fast Healthcare Interoperability Resources (FHIR) service",
-    type: "Service",
-  },
   dataverse: {
     label: "Dataverse",
     description: "Template architecture uses Microsoft Dataverse",
@@ -368,14 +359,6 @@ export const Tags: { [type in TagType]: Tag } = {
   },
 
   // ---- Azure Services
-  ahds: {
-    label: "Azure Health Data Service",
-    description:
-      "Template architecture uses Azure Health Data Services workspace",
-    azureIcon: "./img/Azure-Health-Data-Service.svg",
-    url: "https://azure.microsoft.com/products/health-data-services/",
-    type: "Service",
-  },
   appinsights: {
     label: "Azure Application Insights",
     description: "Template architecture uses Azure Application Insights",
@@ -423,13 +406,6 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure CosmosDB",
     azureIcon: "./img/Azure-Cosmos-DB.svg",
     url: "https://azure.microsoft.com/products/cosmos-db/",
-    type: "Service",
-  },
-  signalR: {
-    label: "Azure SignalR",
-    description: "Template architecture uses Azure SignalR",
-    azureIcon: "./img/Azure-SignalR.svg",
-    url: "https://azure.microsoft.com/products/signalr-service",
     type: "Service",
   },
   functions: {

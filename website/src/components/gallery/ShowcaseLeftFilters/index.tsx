@@ -131,7 +131,11 @@ function ShowcaseFilterViewAll({
   );
 }
 
-export default function ShowcaseLeftFilters({ activeTags }: { activeTags: TagType[] }) {
+export default function ShowcaseLeftFilters({
+  activeTags,
+}: {
+  activeTags: TagType[];
+}) {
   const sortTagList = TagList.sort();
   const uncategoryTag = TagList.filter((tag) => {
     const tagObject = Tags[tag];
@@ -185,14 +189,13 @@ export default function ShowcaseLeftFilters({ activeTags }: { activeTags: TagTyp
       collapsible
     >
       <div style={{ paddingBottom: "7px" }}>
-        <div
-          style={{
-            fontSize: "20px",
-            fontWeight: "500",
-            padding: "0 0 15px 12px",
-          }}
-        >
-          Filter by
+        <div className={styles.filterTop}>
+          <div className={styles.filterBy}>Filter by</div>
+          <div
+            className={styles.clearAll}
+          >
+            Clear all
+          </div>
         </div>
         {uncategoryTag.map((tag) => {
           const tagObject = Tags[tag];

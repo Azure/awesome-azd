@@ -5,15 +5,24 @@
 
 import React, { useState, useMemo, useEffect } from "react";
 import { readSearchTags } from "../components/gallery/ShowcaseTagSelect";
-import { useLocation } from "@docusaurus/router";
 import {
   UserState,
   InputValue,
 } from "../components/gallery/ShowcaseTemplateSearch";
-import { type User, type TagType } from "../data/tags";
+import { Tags, type User, type TagType } from "../data/tags";
 import { sortedUsers, unsortedUsers } from "../data/users";
-import { Text, Combobox, Option, Spinner } from "@fluentui/react-components";
+import {
+  Text,
+  Combobox,
+  Option,
+  Spinner,
+  Badge,
+} from "@fluentui/react-components";
 import ShowcaseCards from "./ShowcaseCards";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import styles from "./styles.module.css";
+import { useColorMode } from "@docusaurus/theme-common";
+import { toggleTag } from "../components/gallery/ShowcaseTagSelect";
 
 function restoreUserState(userState: UserState | null) {
   const { scrollTopPosition, focusedElementId } = userState ?? {
@@ -75,18 +84,93 @@ function filterUsers(
   });
 }
 
+function FilterAppliedBar({
+  clearAll,
+  selectedTags,
+}: {
+  clearAll;
+  selectedTags: TagType[];
+}) {
+  const { colorMode } = useColorMode();
+  return selectedTags.length > 0 ? (
+    <div
+      style={{
+        paddingTop: "32px",
+        display: "flex",
+        gap: "12px",
+        alignItems: "center",
+      }}
+    >
+      <div
+        style={{
+          fontSize: "14px",
+          fontWeight: "400",
+          lineHeight: "20px",
+        }}
+      >
+        Filters applied:
+      </div>
+      {selectedTags.map((tag, index) => {
+        const tagObject = Tags[tag];
+        const key = `showcase_checkbox_key_${tag}`;
+        const id = `showcase_checkbox_id_${tag}`;
+
+        return (
+          <Badge
+            appearance="tint"
+            size="extra-large"
+            color="brand"
+            shape="rounded"
+            icon={
+              colorMode != "dark" ? (
+                <img
+                  src={useBaseUrl("/img/lightModePurpleClose.svg")}
+                  height={20}
+                  alt="Close"
+                />
+              ) : (
+                <img
+                  src={useBaseUrl("/img/darkModePurpleClose.svg")}
+                  height={20}
+                  alt="Close"
+                />
+              )
+            }
+            iconPosition="after"
+            className={styles.filterBadge}
+            onClick={() => {
+              toggleTag(tag, location);
+            }}
+          >
+            {tagObject.label}
+          </Badge>
+        );
+      })}
+      <div className={styles.clearAll} onClick={clearAll}>
+        Clear all
+      </div>
+    </div>
+  ) : null;
+}
+
 export default function ShowcaseCardPage({
   setActiveTags,
+  selectedTags,
+  location,
+  setSelectedTags,
 }: {
   setActiveTags: React.Dispatch<React.SetStateAction<TagType[]>>;
+  selectedTags: TagType[];
+  location;
+  setSelectedTags: React.Dispatch<React.SetStateAction<TagType[]>>;
 }) {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
-
-  const [selectedTags, setSelectedTags] = useState<TagType[]>([]);
   const [searchName, setSearchName] = useState<string | null>(null);
   const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
-  const location = useLocation<UserState>();
+  const clearAll = () => {
+    setSelectedTags([]);
+  };
 
   useEffect(() => {
     setSelectedTags(readSearchTags(location.search));
@@ -167,6 +251,7 @@ export default function ShowcaseCardPage({
           </Combobox>
         </div>
       </div>
+      <FilterAppliedBar clearAll={clearAll} selectedTags={selectedTags} />
       {loading ? (
         <Spinner labelPosition="below" label="Loading..." />
       ) : (

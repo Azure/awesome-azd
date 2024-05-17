@@ -17,15 +17,27 @@ import { Tags, type TagType } from "../../../data/tags";
 import { TagList } from "../../../data/users";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
+import { useHistory } from "@docusaurus/router";
+import { prepareUserState } from "@site/src/pages/index";
+import { TagQueryStringKey } from "../ShowcaseTagSelect";
+import { UserState } from "../ShowcaseTemplateSearch";
 
 function ShowcaseFilterViewAll({
   tags,
   number,
   activeTags,
+  selectedCheckbox,
+  setSelectedCheckbox,
+  location,
+  setSelectedTags,
 }: {
   tags: TagType[];
   number: string;
   activeTags: TagType[];
+  selectedCheckbox: boolean;
+  setSelectedCheckbox: React.Dispatch<React.SetStateAction<boolean>>;
+  location;
+  setSelectedTags: React.Dispatch<React.SetStateAction<TagType[]>>;
 }) {
   const [openItems, setOpenItems] = React.useState(["0"]);
   const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
@@ -69,6 +81,10 @@ function ShowcaseFilterViewAll({
               tag={tag}
               label={tagObject.label}
               activeTags={activeTags}
+              selectedCheckbox={selectedCheckbox}
+              setSelectedCheckbox={setSelectedCheckbox}
+              location={location}
+              setSelectedTags={setSelectedTags}
             />
           </div>
         ) : (
@@ -78,6 +94,10 @@ function ShowcaseFilterViewAll({
               tag={tag}
               label={tagObject.label}
               activeTags={activeTags}
+              selectedCheckbox={selectedCheckbox}
+              setSelectedCheckbox={setSelectedCheckbox}
+              location={location}
+              setSelectedTags={setSelectedTags}
             />
           </div>
         );
@@ -103,6 +123,10 @@ function ShowcaseFilterViewAll({
                       tag={tag}
                       label={tagObject.label}
                       activeTags={activeTags}
+                      selectedCheckbox={selectedCheckbox}
+                      setSelectedCheckbox={setSelectedCheckbox}
+                      location={location}
+                      setSelectedTags={setSelectedTags}
                     />
                   </div>
                 );
@@ -133,8 +157,18 @@ function ShowcaseFilterViewAll({
 
 export default function ShowcaseLeftFilters({
   activeTags,
+  selectedCheckbox,
+  setSelectedCheckbox,
+  location,
+  selectedTags,
+  setSelectedTags,
 }: {
   activeTags: TagType[];
+  selectedCheckbox: boolean;
+  setSelectedCheckbox: React.Dispatch<React.SetStateAction<boolean>>;
+  location;
+  selectedTags: TagType[];
+  setSelectedTags: React.Dispatch<React.SetStateAction<TagType[]>>;
 }) {
   const sortTagList = TagList.sort();
   const uncategoryTag = TagList.filter((tag) => {
@@ -169,17 +203,21 @@ export default function ShowcaseLeftFilters({
     const tagObject = Tags[tag];
     return tagObject.type === "Topic";
   });
-  const [openItems, setOpenItems] = React.useState([
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-  ]);
+  const [openItems, setOpenItems] = React.useState([]);
   const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
     setOpenItems(data.openItems);
+  };
+  const history = useHistory();
+  const searchParams = new URLSearchParams(location.search);
+  const clearAll = () => {
+    setSelectedCheckbox(false);
+    setSelectedTags([]);
+    searchParams.delete(TagQueryStringKey);
+    history.push({
+      ...location,
+      search: searchParams.toString(),
+      state: prepareUserState(),
+    });
   };
   return (
     <Accordion
@@ -191,11 +229,11 @@ export default function ShowcaseLeftFilters({
       <div style={{ paddingBottom: "7px" }}>
         <div className={styles.filterTop}>
           <div className={styles.filterBy}>Filter by</div>
-          <div
-            className={styles.clearAll}
-          >
-            Clear all
-          </div>
+          {selectedTags.length > 0 ? (
+            <div className={styles.clearAll} onClick={clearAll}>
+              Clear all
+            </div>
+          ) : null}
         </div>
         {uncategoryTag.map((tag) => {
           const tagObject = Tags[tag];
@@ -213,6 +251,10 @@ export default function ShowcaseLeftFilters({
                 tag={tag}
                 label={tagObject.label}
                 activeTags={activeTags}
+                selectedCheckbox={selectedCheckbox}
+                setSelectedCheckbox={setSelectedCheckbox}
+                location={location}
+                setSelectedTags={setSelectedTags}
               />
             </div>
           );
@@ -233,6 +275,10 @@ export default function ShowcaseLeftFilters({
             tags={languageTag}
             number={"1"}
             activeTags={activeTags}
+            selectedCheckbox={selectedCheckbox}
+            setSelectedCheckbox={setSelectedCheckbox}
+            location={location}
+            setSelectedTags={setSelectedTags}
           />
         </AccordionPanel>
       </AccordionItem>
@@ -252,6 +298,10 @@ export default function ShowcaseLeftFilters({
             tags={frameworkTag}
             number={"2"}
             activeTags={activeTags}
+            selectedCheckbox={selectedCheckbox}
+            setSelectedCheckbox={setSelectedCheckbox}
+            location={location}
+            setSelectedTags={setSelectedTags}
           />
         </AccordionPanel>
       </AccordionItem>
@@ -271,6 +321,10 @@ export default function ShowcaseLeftFilters({
             tags={servicesTag}
             number={"3"}
             activeTags={activeTags}
+            selectedCheckbox={selectedCheckbox}
+            setSelectedCheckbox={setSelectedCheckbox}
+            location={location}
+            setSelectedTags={setSelectedTags}
           />
         </AccordionPanel>
       </AccordionItem>
@@ -290,6 +344,10 @@ export default function ShowcaseLeftFilters({
             tags={databaseTag}
             number={"4"}
             activeTags={activeTags}
+            selectedCheckbox={selectedCheckbox}
+            setSelectedCheckbox={setSelectedCheckbox}
+            location={location}
+            setSelectedTags={setSelectedTags}
           />
         </AccordionPanel>
       </AccordionItem>
@@ -311,6 +369,10 @@ export default function ShowcaseLeftFilters({
             tags={infrastructureAsCodeTag}
             number={"5"}
             activeTags={activeTags}
+            selectedCheckbox={selectedCheckbox}
+            setSelectedCheckbox={setSelectedCheckbox}
+            location={location}
+            setSelectedTags={setSelectedTags}
           />
         </AccordionPanel>
       </AccordionItem>
@@ -330,6 +392,10 @@ export default function ShowcaseLeftFilters({
             tags={otherTag}
             number={"6"}
             activeTags={activeTags}
+            selectedCheckbox={selectedCheckbox}
+            setSelectedCheckbox={setSelectedCheckbox}
+            location={location}
+            setSelectedTags={setSelectedTags}
           />
         </AccordionPanel>
       </AccordionItem>
@@ -349,6 +415,10 @@ export default function ShowcaseLeftFilters({
             tags={topicTag}
             number={"7"}
             activeTags={activeTags}
+            selectedCheckbox={selectedCheckbox}
+            setSelectedCheckbox={setSelectedCheckbox}
+            location={location}
+            setSelectedTags={setSelectedTags}
           />
         </AccordionPanel>
       </AccordionItem>

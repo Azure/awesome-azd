@@ -3,15 +3,14 @@
  * Licensed under the MIT License.
  */
 
-import React, { useCallback, useState, useEffect } from "react";
-import { useHistory, useLocation } from "@docusaurus/router";
+import React, { useCallback, useEffect } from "react";
+import { useHistory } from "@docusaurus/router";
 import { toggleListItem } from "@site/src/utils/jsUtils";
 import { prepareUserState } from "@site/src/pages/index";
 import { type TagType } from "@site/src/data/tags";
-
 import { Checkbox } from "@fluentui/react-components";
 
-const TagQueryStringKey = "tags";
+export const TagQueryStringKey = "tags";
 
 export function readSearchTags(search: string): TagType[] {
   return new URLSearchParams(search).getAll(TagQueryStringKey) as TagType[];
@@ -24,28 +23,9 @@ function replaceSearchTags(search: string, newTags: TagType[]) {
   return searchParams.toString();
 }
 
-export default function ShowcaseTagSelect(
-  // id: string,
-  {
-    label,
-    tag,
-    id,
-    activeTags,
-  }: {
-    label: string;
-    tag: TagType;
-    id: string;
-    activeTags: TagType[];
-  }
-): JSX.Element {
-  const location = useLocation();
+export function toggleTag(tag: TagType, location: Location) {
   const history = useHistory();
-  const [selected, setSelected] = useState(false);
-  useEffect(() => {
-    const tags = readSearchTags(location.search);
-    setSelected(tags.includes(tag));
-  }, [tag, location]);
-  const toggleTag = useCallback(() => {
+  return useCallback(() => {
     const tags = readSearchTags(location.search);
     const newTags = toggleListItem(tags, tag);
     const newSearch = replaceSearchTags(location.search, newTags);
@@ -55,6 +35,31 @@ export default function ShowcaseTagSelect(
       state: prepareUserState(),
     });
   }, [tag, location, history]);
+}
+
+export default function ShowcaseTagSelect({
+  label,
+  tag,
+  id,
+  activeTags,
+  selectedCheckbox,
+  setSelectedCheckbox,
+  location,
+  setSelectedTags,
+}: {
+  label: string;
+  tag: TagType;
+  id: string;
+  activeTags: TagType[];
+  selectedCheckbox: boolean;
+  setSelectedCheckbox: React.Dispatch<React.SetStateAction<boolean>>;
+  location;
+  setSelectedTags: React.Dispatch<React.SetStateAction<TagType[]>>;
+}): JSX.Element {
+  useEffect(() => {
+    const tags = readSearchTags(location.search);
+    setSelectedCheckbox(tags.includes(tag));
+  }, [tag, location]);
   const template = id.replace("showcase_checkbox_id_", "");
   const contentForAdobeAnalytics = `{\"id\":\"${template}\",\"cN\":\"Tags\"}`;
   return (
@@ -64,11 +69,11 @@ export default function ShowcaseTagSelect(
         data-m={contentForAdobeAnalytics}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
-            toggleTag();
+            toggleTag(tag, location);
           }
         }}
-        onChange={toggleTag}
-        checked={selected}
+        onChange={toggleTag(tag, location)}
+        checked={selectedCheckbox}
         label={label}
         disabled={!activeTags?.includes(tag)}
       />

@@ -21,6 +21,8 @@ import { TagList } from "@site/src/data/users";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
 import ShowcaseCardPage from "./ShowcaseCardPage";
+import { readSearchTags } from "../components/gallery/ShowcaseTagSelect";
+import { useLocation } from "@docusaurus/router";
 
 initializeIcons();
 
@@ -39,12 +41,16 @@ const App = () => {
   const { colorMode } = useColorMode();
   const [loading, setLoading] = useState(true);
   const [activeTags, setActiveTags] = useState<TagType[]>(TagList);
+  const [selectedCheckbox, setSelectedCheckbox] = useState(false);
+  const location = useLocation<UserState>();
+  const [selectedTags, setSelectedTags] = useState<TagType[]>([]);
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 500);
-  }, []);
+    setSelectedTags(readSearchTags(location.search));
+  }, [location]);
 
   return !loading ? (
     <FluentProvider
@@ -53,10 +59,22 @@ const App = () => {
       <ShowcaseTemplateSearch />
       <div className={styles.filterAndCard}>
         <div className={styles.filter}>
-          <ShowcaseLeftFilters activeTags={activeTags} />
+          <ShowcaseLeftFilters
+            activeTags={activeTags}
+            selectedCheckbox={selectedCheckbox}
+            setSelectedCheckbox={setSelectedCheckbox}
+            location={location}
+            setSelectedTags={setSelectedTags}
+            selectedTags={selectedTags}
+          />
         </div>
         <div className={styles.card}>
-          <ShowcaseCardPage setActiveTags={setActiveTags} />
+          <ShowcaseCardPage
+            setActiveTags={setActiveTags}
+            selectedTags={selectedTags}
+            location={location}
+            setSelectedTags={setSelectedTags}
+          />
         </div>
       </div>
     </FluentProvider>

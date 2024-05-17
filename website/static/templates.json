@@ -416,7 +416,7 @@
       "aca",
       "aisearch",
       "openai",
-      "chatgpt",
+      "gpt",
       "rediscache",
       "ai",
       "msft"
@@ -433,7 +433,7 @@
       "bicep",
       "python",
       "openai",
-      "chatgpt",
+      "gpt",
       "ai",
       "flask",
       "aca",
@@ -451,7 +451,7 @@
       "bicep",
       "java",
       "openai",
-      "chatgpt",
+      "gpt",
       "ai",
       "blobstorage",
       "azurespringapps",
@@ -630,7 +630,7 @@
     "source": "https://github.com/Azure-Samples/azure-search-openai-demo",
     "tags": [
       "openai",
-      "chatgpt",
+      "gpt",
       "aisearch",
       "python",
       "typescript",
@@ -922,7 +922,7 @@
     "tags": [
       "bicep",
       "openai",
-      "chatgpt",
+      "gpt",
       "ai",
       "apim",
       "reactjs",
@@ -1049,7 +1049,7 @@
       "monitor",
       "keyvault",
       "appinsights",
-      "chatgpt",
+      "gpt",
       "community"
     ]
   },
@@ -1143,7 +1143,7 @@
     "tags": [
       "ai",
       "bicep",
-      "chatgpt",
+      "gpt",
       "aisearch",
       "javascript",
       "nodejs",
@@ -1233,7 +1233,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/function-javascript-ai-openai-chatgpt",
-    "tags": ["functions", "openai", "javascript", "ai", "chatgpt", "msft"]
+    "tags": ["functions", "openai", "javascript", "ai", "gpt", "msft"]
   },
   {
     "title": "Azure Functions - Chat using ChatGPT (Python v2 Function)",
@@ -1242,7 +1242,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/function-python-ai-openai-chatgpt",
-    "tags": ["functions", "openai", "python", "ai", "chatgpt", "msft"]
+    "tags": ["functions", "openai", "python", "ai", "gpt", "msft"]
   },
   {
     "title": "Azure Functions - LangChain with Azure OpenAI and ChatGPT (Python v2 Function)",
@@ -1262,7 +1262,7 @@
     "source": "https://github.com/Azure/GPT-RAG",
     "tags": [
       "openai",
-      "chatgpt",
+      "gpt",
       "aisearch",
       "python",
       "typescript",
@@ -1592,7 +1592,7 @@
       "flask",
       "aisearch",
       "openai",
-      "chatgpt",
+      "gpt",
       "ai",
       "msft",
       "new"
@@ -1625,7 +1625,7 @@
     "source": "https://github.com/john0isaac/rag-semantic-kernel-mongodb-vcore",
     "tags": [
       "openai",
-      "chatgpt",
+      "gpt",
       "cosmosdb",
       "mongodb",
       "python",
@@ -1645,7 +1645,7 @@
     "tags": [
       "ai",
       "bicep",
-      "chatgpt",
+      "gpt",
       "serverlessapi",
       "javascript",
       "nodejs",

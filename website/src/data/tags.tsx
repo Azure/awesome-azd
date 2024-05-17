@@ -72,7 +72,6 @@ export type TagType =
   | "sapcloudsdk"
   | "nestjs"
   | "dataverse"
-  | "chatgpt"
   | "aks"
   | "azurecdn"
   | "frontdoor"
@@ -207,11 +206,6 @@ export const Tags: { [type in TagType]: Tag } = {
   thymeleaf: {
     label: "Thymeleaf",
     description: "Template architecture uses Thymeleaf template engine",
-    type: "Tools",
-  },
-  chatgpt: {
-    label: "ChatGPT",
-    description: "Template architecture uses ChatGPT application",
     type: "Tools",
   },
   "dall-e": {

@@ -30,10 +30,12 @@ export default function ShowcaseTagSelect(
     label,
     tag,
     id,
+    activeTags,
   }: {
     label: string;
     tag: TagType;
     id: string;
+    activeTags: TagType[];
   }
 ): JSX.Element {
   const location = useLocation();
@@ -53,8 +55,8 @@ export default function ShowcaseTagSelect(
       state: prepareUserState(),
     });
   }, [tag, location, history]);
-  const template = id.replace("showcase_checkbox_id_", "")
-  const contentForAdobeAnalytics = `{\"id\":\"${template}\",\"cN\":\"Tags\"}`
+  const template = id.replace("showcase_checkbox_id_", "");
+  const contentForAdobeAnalytics = `{\"id\":\"${template}\",\"cN\":\"Tags\"}`;
   return (
     <>
       <Checkbox
@@ -68,6 +70,7 @@ export default function ShowcaseTagSelect(
         onChange={toggleTag}
         checked={selected}
         label={label}
+        disabled={!activeTags?.includes(tag)}
       />
     </>
   );

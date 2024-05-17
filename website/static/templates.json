@@ -414,7 +414,7 @@
       "aks",
       "kubernetes",
       "aca",
-      "cognitivesearch",
+      "aisearch",
       "openai",
       "chatgpt",
       "rediscache",
@@ -631,7 +631,7 @@
     "tags": [
       "openai",
       "chatgpt",
-      "cognitivesearch",
+      "aisearch",
       "python",
       "typescript",
       "bicep",
@@ -745,7 +745,7 @@
     "source": "https://github.com/Azure-Samples/function-csharp-ai-textsummarize",
     "tags": [
       "functions",
-      "cognitivesearch",
+      "aisearch",
       "dotnetCsharp",
       "azureai",
       "ai",
@@ -759,7 +759,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/function-python-ai-textsummarize",
-    "tags": ["functions", "cognitivesearch", "python", "azureai", "ai", "msft"]
+    "tags": ["functions", "aisearch", "python", "azureai", "ai", "msft"]
   },
   {
     "title": "Flask Container with CDN",
@@ -1108,7 +1108,7 @@
       "openai",
       "ai",
       "appservice",
-      "cognitivesearch",
+      "aisearch",
       "semantickernel",
       "reactjs",
       "bicep",
@@ -1144,7 +1144,7 @@
       "ai",
       "bicep",
       "chatgpt",
-      "cognitivesearch",
+      "aisearch",
       "javascript",
       "nodejs",
       "openai",
@@ -1263,7 +1263,7 @@
     "tags": [
       "openai",
       "chatgpt",
-      "cognitivesearch",
+      "aisearch",
       "python",
       "typescript",
       "bicep",
@@ -1590,7 +1590,7 @@
       "python",
       "typescript",
       "flask",
-      "cognitivesearch",
+      "aisearch",
       "openai",
       "chatgpt",
       "ai",

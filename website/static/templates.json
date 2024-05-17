@@ -1695,5 +1695,23 @@
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/azd-aistudio-starter",
     "tags": ["bicep", "ai", "azureai", "openai", "msft", "new"]
-  }
+  },
+  {
+    "title": "Simple Chat Application using Azure OpenAI (Python)",
+    "description": "Build a chat application using Azure OpenAI GPT models.",
+    "preview": "./templates/images/openai-chat-app-quickstart_diagram.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/openai-chat-app-quickstart",
+    "tags": ["msft", "build2024", "openai", "aca", "bicep", "ai", "new"]
+  },
+  {
+    "title": "ChatGPT + Enterprise data with Azure OpenAI and AI Search",
+    "description": "A sample app for the Retrieval-Augmented Generation pattern running in Azure, using Azure AI Search for retrieval and Azure OpenAI large language models to power ChatGPT-style and Q&A experiences.",
+    "preview": "",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/azure-search-openai-demo",
+    "tags": ["msft", "build2024", "openai", "appservice", "bicep", "ai", "", "new"]
+  },
 ]

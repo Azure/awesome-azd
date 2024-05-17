@@ -105,7 +105,9 @@ export type TagType =
   | "ruby"
   | "rubyonrails"
   | "serverlessapi"
-  | "langchain";
+  | "langchain"
+  | "build2024"
+  ;
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -136,6 +138,10 @@ export const Tags: { [type in TagType]: Tag } = {
   popular: {
     label: "Popular",
     description: "This tag is used for popular templates.",
+  },
+  build2024: {
+    label: "Build 2024 Collection",
+    description: "This tag is used for templates included in the Microsoft Build 2024 conference collection.",
   },
 
   //============  FOR REGULAR USE

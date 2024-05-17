@@ -10,32 +10,6 @@ import { prepareUserState } from "@site/src/pages/index";
 import { type TagType } from "@site/src/data/tags";
 import { Checkbox } from "@fluentui/react-components";
 
-export const TagQueryStringKey = "tags";
-
-export function readSearchTags(search: string): TagType[] {
-  return new URLSearchParams(search).getAll(TagQueryStringKey) as TagType[];
-}
-
-function replaceSearchTags(search: string, newTags: TagType[]) {
-  const searchParams = new URLSearchParams(search);
-  searchParams.delete(TagQueryStringKey);
-  newTags.forEach((tag) => searchParams.append(TagQueryStringKey, tag));
-  return searchParams.toString();
-}
-
-export function toggleTag(tag: TagType, location: Location) {
-  const history = useHistory();
-  return useCallback(() => {
-    const tags = readSearchTags(location.search);
-    const newTags = toggleListItem(tags, tag);
-    const newSearch = replaceSearchTags(location.search, newTags);
-    history.push({
-      ...location,
-      search: newSearch,
-      state: prepareUserState(),
-    });
-  }, [tag, location, history]);
-}
 
 export default function ShowcaseTagSelect({
   label,
@@ -46,22 +20,45 @@ export default function ShowcaseTagSelect({
   setSelectedCheckbox,
   location,
   setSelectedTags,
+  readSearchTags,
+  replaceSearchTags,
 }: {
   label: string;
   tag: TagType;
   id: string;
   activeTags: TagType[];
-  selectedCheckbox: boolean;
-  setSelectedCheckbox: React.Dispatch<React.SetStateAction<boolean>>;
+  selectedCheckbox: TagType[];
+  setSelectedCheckbox: React.Dispatch<React.SetStateAction<TagType[]>>;
   location;
   setSelectedTags: React.Dispatch<React.SetStateAction<TagType[]>>;
+  readSearchTags: (search: string) => TagType[];
+  replaceSearchTags: (search: string, newTags: TagType[]) => string;
 }): JSX.Element {
-  useEffect(() => {
+  const history = useHistory();
+
+  // updates only the url query
+  const toggleTag = () => {
     const tags = readSearchTags(location.search);
-    setSelectedCheckbox(tags.includes(tag));
-  }, [tag, location]);
+    const newTags = toggleListItem(tags, tag);
+    const newSearch = replaceSearchTags(location.search, newTags);
+    history.push({
+      ...location,
+      search: newSearch,
+      state: prepareUserState(),
+    });
+  }
+
   const template = id.replace("showcase_checkbox_id_", "");
   const contentForAdobeAnalytics = `{\"id\":\"${template}\",\"cN\":\"Tags\"}`;
+
+  const toggleCheck = (tag: TagType) => {
+    if (selectedCheckbox.includes(tag)) {
+      setSelectedCheckbox(selectedCheckbox.filter((item) => item !== tag));
+    } else {
+      setSelectedCheckbox([...selectedCheckbox, tag]);
+    }
+  }
+
   return (
     <>
       <Checkbox
@@ -69,11 +66,15 @@ export default function ShowcaseTagSelect({
         data-m={contentForAdobeAnalytics}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
-            toggleTag(tag, location);
+            toggleTag();
           }
+          toggleCheck(tag);
         }}
-        onChange={toggleTag(tag, location)}
-        checked={selectedCheckbox}
+        onChange={() => {
+          toggleTag();
+          toggleCheck(tag);
+        }}
+        checked={selectedCheckbox.includes(tag)}
         label={label}
         disabled={!activeTags?.includes(tag)}
       />

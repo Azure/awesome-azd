@@ -21,7 +21,6 @@ import { TagList } from "@site/src/data/users";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
 import ShowcaseCardPage from "./ShowcaseCardPage";
-import { readSearchTags } from "../components/gallery/ShowcaseTagSelect";
 import { useLocation } from "@docusaurus/router";
 
 initializeIcons();
@@ -37,11 +36,23 @@ export function prepareUserState(): UserState | undefined {
   return undefined;
 }
 
+const TagQueryStringKey = "tags"
+const readSearchTags = (search: string): TagType[] => {
+  return new URLSearchParams(search).getAll(TagQueryStringKey) as TagType[];
+}
+const replaceSearchTags = (search: string, newTags: TagType[]) => {
+  const searchParams = new URLSearchParams(search);
+  searchParams.delete(TagQueryStringKey);
+  newTags.forEach((tag) => searchParams.append(TagQueryStringKey, tag));
+  return searchParams.toString();
+}
+
+
 const App = () => {
   const { colorMode } = useColorMode();
   const [loading, setLoading] = useState(true);
   const [activeTags, setActiveTags] = useState<TagType[]>(TagList);
-  const [selectedCheckbox, setSelectedCheckbox] = useState(false);
+  const [selectedCheckbox, setSelectedCheckbox] = useState<TagType[]>([]);
   const location = useLocation<UserState>();
   const [selectedTags, setSelectedTags] = useState<TagType[]>([]);
 
@@ -66,6 +77,8 @@ const App = () => {
             location={location}
             setSelectedTags={setSelectedTags}
             selectedTags={selectedTags}
+            readSearchTags={readSearchTags}
+            replaceSearchTags={replaceSearchTags}
           />
         </div>
         <div className={styles.card}>
@@ -74,6 +87,8 @@ const App = () => {
             selectedTags={selectedTags}
             location={location}
             setSelectedTags={setSelectedTags}
+            readSearchTags={readSearchTags}
+            replaceSearchTags={replaceSearchTags}
           />
         </div>
       </div>

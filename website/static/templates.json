@@ -1708,10 +1708,55 @@
   {
     "title": "ChatGPT + Enterprise data with Azure OpenAI and AI Search",
     "description": "A sample app for the Retrieval-Augmented Generation pattern running in Azure, using Azure AI Search for retrieval and Azure OpenAI large language models to power ChatGPT-style and Q&A experiences.",
-    "preview": "",
+    "preview": "./templates/images/azure-search-openai-demo-appcomponents.png",
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/azure-search-openai-demo",
-    "tags": ["msft", "build2024", "openai", "appservice", "bicep", "ai", "", "new"]
+    "tags": ["msft", "build2024", "openai", "appservice", "bicep", "ai", "aisearch", "blobstorage", "new"]
+  },
+  {
+    "title": "RAG on PostgreSQL",
+    "description": "A RAG app to ask questions about rows in a database table. Deployable on Azure Container Apps with PostgreSQL Flexible Server.",
+    "preview": "./templates/images/rag-postgres-openai-python-screenshot_chat.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/rag-postgres-openai-python",
+    "tags": ["msft", "build2024", "openai", "aca", "bicep", "ai", "azuredb-postgreSQL", "new"]
+  },
+  {
+    "title": "Creative Writing Assistant: Working with Agents using Promptflow (Python Implementation)",
+    "description": "A creative writing multi-agent solution to help users write articles.",
+    "preview": "./templates/images/agent-openai-python-prompty-creative_writing.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/agent-openai-python-prompty",
+    "tags": ["msft", "build2024", "openai", "aks", "bicep", "ai", "aisearch", "new"]
+  },
+  {
+    "title": "Process Automation: Speech to Text and Summarization with AI Studio",
+    "description": "This solution converts speech to text and then processes and summarizes the text based on the prompt scenario.",
+    "preview": "./templates/images/summarization-openai-python-promptflow-architecture-diagram.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/summarization-openai-python-promptflow",
+    "tags": ["msft", "build2024", "openai", "aca", "bicep", "ai", "new"]
+  },
+  {
+    "title": "Function Calling with Prompty, LangChain and Elastic Search",
+    "description": "Function calling for vector database lookup based on user question",
+    "preview": "./templates/images/agent-python-openai-prompty-langchain-architecture-diagram.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/agent-python-openai-prompty-langchain",
+    "tags": ["msft", "build2024", "openai", "aistudio", "bicep", "ai", "new"]
+  },
+  {
+    "title": "Function Calling with Prompty, LangChain and Pinecone",
+    "description": "Function calling for vector database lookup based on user question.",
+    "preview": "./templates/images/agent-openai-python-prompty-langchain-pinecone-architecture-diagram.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/agent-openai-python-prompty-langchain-pinecone",
+    "tags": ["msft", "build2024", "openai", "aistudio", "bicep", "ai", "new"]
   },
 ]

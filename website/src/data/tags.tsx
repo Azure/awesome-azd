@@ -104,6 +104,7 @@ export type TagType =
   | "serverlessapi"
   | "langchain"
   | "build2024"
+  | "aistudio"
   ;
 
 // LIST OF AVAILABLE TAGS
@@ -471,8 +472,8 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Service",
   },
   aisearch: {
-    label: "Azure Cognitive Search",
-    description: "Template architecture uses Azure Cognitive Search",
+    label: "Azure AI Search",
+    description: "Template architecture uses Azure AI Search",
     azureIcon: "./img/Azure-AI-Search.svg",
     url: "https://azure.microsoft.com/products/ai-services/ai-search",
     type: "Service",
@@ -581,6 +582,13 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure App Configuration",
     azureIcon: "./img/Azure-App-Configuration.svg",
     url: "https://azure.microsoft.com/products/app-configuration",
+    type: "Service",
+  },
+  aistudio: {
+    label: "Azure AI Studio",
+    description: "Template architecture uses AI Studio",
+    azureIcon: "./img/Azure-AI-Studio.svg",
+    url: "https://azure.microsoft.com/products/ai-studio",
     type: "Service",
   },
 

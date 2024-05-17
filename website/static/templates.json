@@ -1654,6 +1654,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/openai-chat-app-quickstart",
+<<<<<<< HEAD
     "tags": [
       "msft",
       "build2024",
@@ -1860,4 +1861,17 @@
       "new"
     ]
   }
+=======
+    "tags": ["msft", "build2024", "openai", "aca", "bicep", "ai", "new"]
+  },
+  {
+    "title": "ChatGPT + Enterprise data with Azure OpenAI and AI Search",
+    "description": "A sample app for the Retrieval-Augmented Generation pattern running in Azure, using Azure AI Search for retrieval and Azure OpenAI large language models to power ChatGPT-style and Q&A experiences.",
+    "preview": "",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/azure-search-openai-demo",
+    "tags": ["msft", "build2024", "openai", "appservice", "bicep", "ai", "", "new"]
+  },
+>>>>>>> 17ae92c (wip)
 ]

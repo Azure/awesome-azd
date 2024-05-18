@@ -15,3 +15,25 @@
 .color {
   color: var(--ifm-color-purple);
 }
+
+.filterTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 0 15px 12px;
+}
+
+.clearAll {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-decoration-line: underline;
+  cursor: pointer;
+  color: var(--ifm-color-purple);
+}
+
+.filterBy {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+}

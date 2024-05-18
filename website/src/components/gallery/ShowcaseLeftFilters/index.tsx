@@ -19,7 +19,6 @@ import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
 import { useHistory } from "@docusaurus/router";
 import { prepareUserState } from "@site/src/pages/index";
-import { TagQueryStringKey } from "../ShowcaseTagSelect";
 import { UserState } from "../ShowcaseTemplateSearch";
 
 function ShowcaseFilterViewAll({
@@ -30,14 +29,18 @@ function ShowcaseFilterViewAll({
   setSelectedCheckbox,
   location,
   setSelectedTags,
+  readSearchTags,
+  replaceSearchTags,
 }: {
   tags: TagType[];
   number: string;
   activeTags: TagType[];
-  selectedCheckbox: boolean;
-  setSelectedCheckbox: React.Dispatch<React.SetStateAction<boolean>>;
+  selectedCheckbox: TagType[];
+  setSelectedCheckbox: React.Dispatch<React.SetStateAction<TagType[]>>;
   location;
   setSelectedTags: React.Dispatch<React.SetStateAction<TagType[]>>;
+  readSearchTags: (search: string) => TagType[];
+  replaceSearchTags: (search: string, newTags: TagType[]) => string;
 }) {
   const [openItems, setOpenItems] = React.useState(["0"]);
   const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
@@ -85,6 +88,8 @@ function ShowcaseFilterViewAll({
               setSelectedCheckbox={setSelectedCheckbox}
               location={location}
               setSelectedTags={setSelectedTags}
+              readSearchTags={readSearchTags}
+              replaceSearchTags={replaceSearchTags}
             />
           </div>
         ) : (
@@ -98,6 +103,8 @@ function ShowcaseFilterViewAll({
               setSelectedCheckbox={setSelectedCheckbox}
               location={location}
               setSelectedTags={setSelectedTags}
+              readSearchTags={readSearchTags}
+              replaceSearchTags={replaceSearchTags}
             />
           </div>
         );
@@ -127,6 +134,8 @@ function ShowcaseFilterViewAll({
                       setSelectedCheckbox={setSelectedCheckbox}
                       location={location}
                       setSelectedTags={setSelectedTags}
+                      readSearchTags={readSearchTags}
+                      replaceSearchTags={replaceSearchTags}
                     />
                   </div>
                 );
@@ -162,13 +171,17 @@ export default function ShowcaseLeftFilters({
   location,
   selectedTags,
   setSelectedTags,
+  readSearchTags,
+  replaceSearchTags,
 }: {
   activeTags: TagType[];
-  selectedCheckbox: boolean;
-  setSelectedCheckbox: React.Dispatch<React.SetStateAction<boolean>>;
+  selectedCheckbox: TagType[];
+  setSelectedCheckbox: React.Dispatch<React.SetStateAction<TagType[]>>;
   location;
   selectedTags: TagType[];
   setSelectedTags: React.Dispatch<React.SetStateAction<TagType[]>>;
+  readSearchTags: (search: string) => TagType[];
+  replaceSearchTags: (search: string, newTags: TagType[]) => string;
 }) {
   const sortTagList = TagList.sort();
   const uncategoryTag = TagList.filter((tag) => {
@@ -210,9 +223,9 @@ export default function ShowcaseLeftFilters({
   const history = useHistory();
   const searchParams = new URLSearchParams(location.search);
   const clearAll = () => {
-    setSelectedCheckbox(false);
+    setSelectedCheckbox([]);
     setSelectedTags([]);
-    searchParams.delete(TagQueryStringKey);
+    searchParams.delete("tags");
     history.push({
       ...location,
       search: searchParams.toString(),
@@ -255,6 +268,8 @@ export default function ShowcaseLeftFilters({
                 setSelectedCheckbox={setSelectedCheckbox}
                 location={location}
                 setSelectedTags={setSelectedTags}
+                readSearchTags={readSearchTags}
+                replaceSearchTags={replaceSearchTags}
               />
             </div>
           );
@@ -279,6 +294,8 @@ export default function ShowcaseLeftFilters({
             setSelectedCheckbox={setSelectedCheckbox}
             location={location}
             setSelectedTags={setSelectedTags}
+            readSearchTags={readSearchTags}
+            replaceSearchTags={replaceSearchTags}
           />
         </AccordionPanel>
       </AccordionItem>
@@ -302,6 +319,8 @@ export default function ShowcaseLeftFilters({
             setSelectedCheckbox={setSelectedCheckbox}
             location={location}
             setSelectedTags={setSelectedTags}
+            readSearchTags={readSearchTags}
+            replaceSearchTags={replaceSearchTags}
           />
         </AccordionPanel>
       </AccordionItem>
@@ -325,6 +344,8 @@ export default function ShowcaseLeftFilters({
             setSelectedCheckbox={setSelectedCheckbox}
             location={location}
             setSelectedTags={setSelectedTags}
+            readSearchTags={readSearchTags}
+            replaceSearchTags={replaceSearchTags}
           />
         </AccordionPanel>
       </AccordionItem>
@@ -348,6 +369,8 @@ export default function ShowcaseLeftFilters({
             setSelectedCheckbox={setSelectedCheckbox}
             location={location}
             setSelectedTags={setSelectedTags}
+            readSearchTags={readSearchTags}
+            replaceSearchTags={replaceSearchTags}
           />
         </AccordionPanel>
       </AccordionItem>
@@ -373,6 +396,8 @@ export default function ShowcaseLeftFilters({
             setSelectedCheckbox={setSelectedCheckbox}
             location={location}
             setSelectedTags={setSelectedTags}
+            readSearchTags={readSearchTags}
+            replaceSearchTags={replaceSearchTags}
           />
         </AccordionPanel>
       </AccordionItem>
@@ -396,6 +421,8 @@ export default function ShowcaseLeftFilters({
             setSelectedCheckbox={setSelectedCheckbox}
             location={location}
             setSelectedTags={setSelectedTags}
+            readSearchTags={readSearchTags}
+            replaceSearchTags={replaceSearchTags}
           />
         </AccordionPanel>
       </AccordionItem>
@@ -419,6 +446,8 @@ export default function ShowcaseLeftFilters({
             setSelectedCheckbox={setSelectedCheckbox}
             location={location}
             setSelectedTags={setSelectedTags}
+            readSearchTags={readSearchTags}
+            replaceSearchTags={replaceSearchTags}
           />
         </AccordionPanel>
       </AccordionItem>

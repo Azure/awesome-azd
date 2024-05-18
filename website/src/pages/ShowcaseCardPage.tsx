@@ -3,8 +3,7 @@
  * Licensed under the MIT License.
  */
 
-import React, { useState, useMemo, useEffect } from "react";
-import { readSearchTags } from "../components/gallery/ShowcaseTagSelect";
+import React, { useState, useMemo, useEffect, useCallback } from "react";
 import {
   UserState,
   InputValue,
@@ -22,7 +21,37 @@ import ShowcaseCards from "./ShowcaseCards";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
-import { toggleTag } from "../components/gallery/ShowcaseTagSelect";
+import { useHistory } from "@docusaurus/router";
+import { toggleListItem } from "@site/src/utils/jsUtils";
+import { prepareUserState } from "./index";
+
+const TagQueryStringKey2 = "tags";
+
+const readSearchTags2 = (search: string): TagType[] => {
+  return new URLSearchParams(search).getAll(TagQueryStringKey2) as TagType[];
+}
+
+function replaceSearchTags(search: string, newTags: TagType[]) {
+  const searchParams = new URLSearchParams(search);
+  searchParams.delete(TagQueryStringKey2);
+  newTags.forEach((tag) => searchParams.append(TagQueryStringKey2, tag));
+  return searchParams.toString();
+}
+
+// updates only the url query
+const toggleTag = (tag: TagType, location: Location) => {
+  const history = useHistory();
+  return useCallback(() => {
+    const tags = readSearchTags2(location.search);
+    const newTags = toggleListItem(tags, tag);
+    const newSearch = replaceSearchTags(location.search, newTags);
+    history.push({
+      ...location,
+      search: newSearch,
+      state: prepareUserState(),
+    });
+  }, [tag, location, history]);
+}
 
 function restoreUserState(userState: UserState | null) {
   const { scrollTopPosition, focusedElementId } = userState ?? {
@@ -158,11 +187,15 @@ export default function ShowcaseCardPage({
   selectedTags,
   location,
   setSelectedTags,
+  readSearchTags,
+  replaceSearchTags,
 }: {
   setActiveTags: React.Dispatch<React.SetStateAction<TagType[]>>;
   selectedTags: TagType[];
   location;
   setSelectedTags: React.Dispatch<React.SetStateAction<TagType[]>>;
+  readSearchTags: (search: string) => TagType[];
+  replaceSearchTags: (search: string, newTags: TagType[]) => string;
 }) {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
@@ -251,7 +284,7 @@ export default function ShowcaseCardPage({
           </Combobox>
         </div>
       </div>
-      <FilterAppliedBar clearAll={clearAll} selectedTags={selectedTags} />
+      {/* <FilterAppliedBar clearAll={clearAll} selectedTags={selectedTags} /> */}
       {loading ? (
         <Spinner labelPosition="below" label="Loading..." />
       ) : (

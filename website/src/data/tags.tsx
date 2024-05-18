@@ -459,8 +459,8 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Service",
   },
   aisearch: {
-    label: "Azure Cognitive Search",
-    description: "Template architecture uses Azure Cognitive Search",
+    label: "Azure AI Search",
+    description: "Template architecture uses Azure AI Search",
     azureIcon: "./img/Azure-AI-Search.svg",
     url: "https://azure.microsoft.com/products/ai-services/ai-search",
     type: "Service",

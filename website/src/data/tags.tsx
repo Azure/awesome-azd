@@ -101,7 +101,10 @@ export type TagType =
   | "ruby"
   | "rubyonrails"
   | "serverlessapi"
-  | "langchain";
+  | "langchain"
+  | "build2024"
+  | "aistudio"
+  ;
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -132,6 +135,10 @@ export const Tags: { [type in TagType]: Tag } = {
   popular: {
     label: "Popular",
     description: "This tag is used for popular templates.",
+  },
+  build2024: {
+    label: "Build 2024 Collection",
+    description: "This tag is used for templates included in the Microsoft Build 2024 conference collection.",
   },
 
   //============  FOR REGULAR USE
@@ -569,6 +576,13 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure App Configuration",
     azureIcon: "./img/Azure-App-Configuration.svg",
     url: "https://azure.microsoft.com/products/app-configuration",
+    type: "Service",
+  },
+  aistudio: {
+    label: "Azure AI Studio",
+    description: "Template architecture uses AI Studio",
+    azureIcon: "./img/Azure-AI-Studio.svg",
+    url: "https://azure.microsoft.com/products/ai-studio",
     type: "Service",
   },
 

@@ -10,7 +10,6 @@ import { prepareUserState } from "@site/src/pages/index";
 import { type TagType } from "@site/src/data/tags";
 import { Checkbox } from "@fluentui/react-components";
 
-
 export default function ShowcaseTagSelect({
   label,
   tag,
@@ -35,7 +34,6 @@ export default function ShowcaseTagSelect({
   replaceSearchTags: (search: string, newTags: TagType[]) => string;
 }): JSX.Element {
   const history = useHistory();
-
   // updates only the url query
   const toggleTag = () => {
     const tags = readSearchTags(location.search);
@@ -46,7 +44,7 @@ export default function ShowcaseTagSelect({
       search: newSearch,
       state: prepareUserState(),
     });
-  }
+  };
 
   const template = id.replace("showcase_checkbox_id_", "");
   const contentForAdobeAnalytics = `{\"id\":\"${template}\",\"cN\":\"Tags\"}`;
@@ -57,7 +55,7 @@ export default function ShowcaseTagSelect({
     } else {
       setSelectedCheckbox([...selectedCheckbox, tag]);
     }
-  }
+  };
 
   return (
     <>

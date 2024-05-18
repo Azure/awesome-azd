@@ -36,17 +36,16 @@ export function prepareUserState(): UserState | undefined {
   return undefined;
 }
 
-const TagQueryStringKey = "tags"
+const TagQueryStringKey = "tags";
 const readSearchTags = (search: string): TagType[] => {
   return new URLSearchParams(search).getAll(TagQueryStringKey) as TagType[];
-}
+};
 const replaceSearchTags = (search: string, newTags: TagType[]) => {
   const searchParams = new URLSearchParams(search);
   searchParams.delete(TagQueryStringKey);
   newTags.forEach((tag) => searchParams.append(TagQueryStringKey, tag));
   return searchParams.toString();
-}
-
+};
 
 const App = () => {
   const { colorMode } = useColorMode();
@@ -57,10 +56,10 @@ const App = () => {
   const [selectedTags, setSelectedTags] = useState<TagType[]>([]);
 
   useEffect(() => {
+    setSelectedTags(readSearchTags(location.search));
     setTimeout(() => {
       setLoading(false);
     }, 500);
-    setSelectedTags(readSearchTags(location.search));
   }, [location]);
 
   return !loading ? (

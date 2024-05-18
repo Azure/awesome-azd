@@ -57,6 +57,7 @@ const App = () => {
 
   useEffect(() => {
     setSelectedTags(readSearchTags(location.search));
+    setSelectedCheckbox(readSearchTags(location.search));
     setTimeout(() => {
       setLoading(false);
     }, 500);

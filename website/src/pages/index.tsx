@@ -21,6 +21,7 @@ import { TagList } from "@site/src/data/users";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
 import ShowcaseCardPage from "./ShowcaseCardPage";
+import { useLocation } from "@docusaurus/router";
 
 initializeIcons();
 
@@ -35,16 +36,32 @@ export function prepareUserState(): UserState | undefined {
   return undefined;
 }
 
+const TagQueryStringKey = "tags";
+const readSearchTags = (search: string): TagType[] => {
+  return new URLSearchParams(search).getAll(TagQueryStringKey) as TagType[];
+};
+const replaceSearchTags = (search: string, newTags: TagType[]) => {
+  const searchParams = new URLSearchParams(search);
+  searchParams.delete(TagQueryStringKey);
+  newTags.forEach((tag) => searchParams.append(TagQueryStringKey, tag));
+  return searchParams.toString();
+};
+
 const App = () => {
   const { colorMode } = useColorMode();
   const [loading, setLoading] = useState(true);
   const [activeTags, setActiveTags] = useState<TagType[]>(TagList);
+  const [selectedCheckbox, setSelectedCheckbox] = useState<TagType[]>([]);
+  const location = useLocation<UserState>();
+  const [selectedTags, setSelectedTags] = useState<TagType[]>([]);
 
   useEffect(() => {
+    setSelectedTags(readSearchTags(location.search));
+    setSelectedCheckbox(readSearchTags(location.search));
     setTimeout(() => {
       setLoading(false);
     }, 500);
-  }, []);
+  }, [location]);
 
   return !loading ? (
     <FluentProvider
@@ -53,10 +70,26 @@ const App = () => {
       <ShowcaseTemplateSearch />
       <div className={styles.filterAndCard}>
         <div className={styles.filter}>
-          <ShowcaseLeftFilters activeTags={activeTags} />
+          <ShowcaseLeftFilters
+            activeTags={activeTags}
+            selectedCheckbox={selectedCheckbox}
+            setSelectedCheckbox={setSelectedCheckbox}
+            location={location}
+            setSelectedTags={setSelectedTags}
+            selectedTags={selectedTags}
+            readSearchTags={readSearchTags}
+            replaceSearchTags={replaceSearchTags}
+          />
         </div>
         <div className={styles.card}>
-          <ShowcaseCardPage setActiveTags={setActiveTags} />
+          <ShowcaseCardPage
+            setActiveTags={setActiveTags}
+            selectedTags={selectedTags}
+            location={location}
+            setSelectedTags={setSelectedTags}
+            readSearchTags={readSearchTags}
+            replaceSearchTags={replaceSearchTags}
+          />
         </div>
       </div>
     </FluentProvider>

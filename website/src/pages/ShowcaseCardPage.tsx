@@ -3,17 +3,55 @@
  * Licensed under the MIT License.
  */
 
-import React, { useState, useMemo, useEffect } from "react";
-import { readSearchTags } from "../components/gallery/ShowcaseTagSelect";
-import { useLocation } from "@docusaurus/router";
+import React, { useState, useMemo, useEffect, useCallback } from "react";
 import {
   UserState,
   InputValue,
 } from "../components/gallery/ShowcaseTemplateSearch";
-import { type User, type TagType } from "../data/tags";
+import { Tags, type User, type TagType } from "../data/tags";
 import { sortedUsers, unsortedUsers } from "../data/users";
-import { Text, Combobox, Option, Spinner } from "@fluentui/react-components";
+import {
+  Text,
+  Combobox,
+  Option,
+  Spinner,
+  Badge,
+} from "@fluentui/react-components";
 import ShowcaseCards from "./ShowcaseCards";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import styles from "./styles.module.css";
+import { useColorMode } from "@docusaurus/theme-common";
+import { useHistory } from "@docusaurus/router";
+import { toggleListItem } from "@site/src/utils/jsUtils";
+import { prepareUserState } from "./index";
+
+const TagQueryStringKey2 = "tags";
+
+const readSearchTags2 = (search: string): TagType[] => {
+  return new URLSearchParams(search).getAll(TagQueryStringKey2) as TagType[];
+}
+
+function replaceSearchTags(search: string, newTags: TagType[]) {
+  const searchParams = new URLSearchParams(search);
+  searchParams.delete(TagQueryStringKey2);
+  newTags.forEach((tag) => searchParams.append(TagQueryStringKey2, tag));
+  return searchParams.toString();
+}
+
+// updates only the url query
+const toggleTag = (tag: TagType, location: Location) => {
+  const history = useHistory();
+  return useCallback(() => {
+    const tags = readSearchTags2(location.search);
+    const newTags = toggleListItem(tags, tag);
+    const newSearch = replaceSearchTags(location.search, newTags);
+    history.push({
+      ...location,
+      search: newSearch,
+      state: prepareUserState(),
+    });
+  }, [tag, location, history]);
+}
 
 function restoreUserState(userState: UserState | null) {
   const { scrollTopPosition, focusedElementId } = userState ?? {
@@ -64,7 +102,7 @@ function filterUsers(
       user.title.toLowerCase().includes(searchName.toLowerCase())
     );
   }
-  if (!selectedTags && selectedTags.length === 0) {
+  if (!selectedTags || selectedTags.length === 0) {
     return users;
   }
   return users.filter((user) => {
@@ -75,18 +113,97 @@ function filterUsers(
   });
 }
 
+function FilterAppliedBar({
+  clearAll,
+  selectedTags,
+}: {
+  clearAll;
+  selectedTags: TagType[];
+}) {
+  const { colorMode } = useColorMode();
+  return selectedTags.length > 0 ? (
+    <div
+      style={{
+        paddingTop: "32px",
+        display: "flex",
+        gap: "12px",
+        alignItems: "center",
+      }}
+    >
+      <div
+        style={{
+          fontSize: "14px",
+          fontWeight: "400",
+          lineHeight: "20px",
+        }}
+      >
+        Filters applied:
+      </div>
+      {selectedTags.map((tag, index) => {
+        const tagObject = Tags[tag];
+        const key = `showcase_checkbox_key_${tag}`;
+        const id = `showcase_checkbox_id_${tag}`;
+
+        return (
+          <Badge
+            appearance="tint"
+            size="extra-large"
+            color="brand"
+            shape="rounded"
+            icon={
+              colorMode != "dark" ? (
+                <img
+                  src={useBaseUrl("/img/lightModePurpleClose.svg")}
+                  height={20}
+                  alt="Close"
+                />
+              ) : (
+                <img
+                  src={useBaseUrl("/img/darkModePurpleClose.svg")}
+                  height={20}
+                  alt="Close"
+                />
+              )
+            }
+            iconPosition="after"
+            className={styles.filterBadge}
+            onClick={() => {
+              toggleTag(tag, location);
+            }}
+          >
+            {tagObject.label}
+          </Badge>
+        );
+      })}
+      <div className={styles.clearAll} onClick={clearAll}>
+        Clear all
+      </div>
+    </div>
+  ) : null;
+}
+
 export default function ShowcaseCardPage({
   setActiveTags,
+  selectedTags,
+  location,
+  setSelectedTags,
+  readSearchTags,
+  replaceSearchTags,
 }: {
   setActiveTags: React.Dispatch<React.SetStateAction<TagType[]>>;
+  selectedTags: TagType[];
+  location;
+  setSelectedTags: React.Dispatch<React.SetStateAction<TagType[]>>;
+  readSearchTags: (search: string) => TagType[];
+  replaceSearchTags: (search: string, newTags: TagType[]) => string;
 }) {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
-
-  const [selectedTags, setSelectedTags] = useState<TagType[]>([]);
   const [searchName, setSearchName] = useState<string | null>(null);
   const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
-  const location = useLocation<UserState>();
+  const clearAll = () => {
+    setSelectedTags([]);
+  };
 
   useEffect(() => {
     setSelectedTags(readSearchTags(location.search));
@@ -167,6 +284,7 @@ export default function ShowcaseCardPage({
           </Combobox>
         </div>
       </div>
+      {/* <FilterAppliedBar clearAll={clearAll} selectedTags={selectedTags} /> */}
       {loading ? (
         <Spinner labelPosition="below" label="Loading..." />
       ) : (

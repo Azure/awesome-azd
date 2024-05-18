@@ -124,6 +124,27 @@
   width: 100%;
 }
 
+.clearAll {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-decoration-line: underline;
+  cursor: pointer;
+  color: var(--ifm-color-purple);
+}
+
+.filterBadge {
+  color: var(--ifm-color-purple);
+  cursor: pointer;
+  border: 1px solid #d2ccf8;
+  background: #f9f8fe;
+}
+
+[data-theme="dark"] .filterBadge {
+  border: 1px solid #221d46;
+  background: #3f3682;
+}
+
 @media screen and (max-width: 996px) {
   .filterAndCard {
     flex-direction: column;

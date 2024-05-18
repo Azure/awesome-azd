@@ -102,7 +102,7 @@ function filterUsers(
       user.title.toLowerCase().includes(searchName.toLowerCase())
     );
   }
-  if (!selectedTags && selectedTags.length === 0) {
+  if (!selectedTags || selectedTags.length === 0) {
     return users;
   }
   return users.filter((user) => {

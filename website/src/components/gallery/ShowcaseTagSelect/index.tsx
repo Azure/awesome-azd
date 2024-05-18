@@ -18,7 +18,6 @@ export default function ShowcaseTagSelect({
   selectedCheckbox,
   setSelectedCheckbox,
   location,
-  setSelectedTags,
   readSearchTags,
   replaceSearchTags,
 }: {
@@ -29,7 +28,6 @@ export default function ShowcaseTagSelect({
   selectedCheckbox: TagType[];
   setSelectedCheckbox: React.Dispatch<React.SetStateAction<TagType[]>>;
   location;
-  setSelectedTags: React.Dispatch<React.SetStateAction<TagType[]>>;
   readSearchTags: (search: string) => TagType[];
   replaceSearchTags: (search: string, newTags: TagType[]) => string;
 }): JSX.Element {

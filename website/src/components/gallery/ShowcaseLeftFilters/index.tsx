@@ -28,7 +28,6 @@ function ShowcaseFilterViewAll({
   selectedCheckbox,
   setSelectedCheckbox,
   location,
-  setSelectedTags,
   readSearchTags,
   replaceSearchTags,
 }: {
@@ -38,7 +37,6 @@ function ShowcaseFilterViewAll({
   selectedCheckbox: TagType[];
   setSelectedCheckbox: React.Dispatch<React.SetStateAction<TagType[]>>;
   location;
-  setSelectedTags: React.Dispatch<React.SetStateAction<TagType[]>>;
   readSearchTags: (search: string) => TagType[];
   replaceSearchTags: (search: string, newTags: TagType[]) => string;
 }) {
@@ -87,7 +85,6 @@ function ShowcaseFilterViewAll({
               selectedCheckbox={selectedCheckbox}
               setSelectedCheckbox={setSelectedCheckbox}
               location={location}
-              setSelectedTags={setSelectedTags}
               readSearchTags={readSearchTags}
               replaceSearchTags={replaceSearchTags}
             />
@@ -102,7 +99,6 @@ function ShowcaseFilterViewAll({
               selectedCheckbox={selectedCheckbox}
               setSelectedCheckbox={setSelectedCheckbox}
               location={location}
-              setSelectedTags={setSelectedTags}
               readSearchTags={readSearchTags}
               replaceSearchTags={replaceSearchTags}
             />
@@ -133,7 +129,6 @@ function ShowcaseFilterViewAll({
                       selectedCheckbox={selectedCheckbox}
                       setSelectedCheckbox={setSelectedCheckbox}
                       location={location}
-                      setSelectedTags={setSelectedTags}
                       readSearchTags={readSearchTags}
                       replaceSearchTags={replaceSearchTags}
                     />
@@ -267,7 +262,6 @@ export default function ShowcaseLeftFilters({
                 selectedCheckbox={selectedCheckbox}
                 setSelectedCheckbox={setSelectedCheckbox}
                 location={location}
-                setSelectedTags={setSelectedTags}
                 readSearchTags={readSearchTags}
                 replaceSearchTags={replaceSearchTags}
               />
@@ -293,7 +287,6 @@ export default function ShowcaseLeftFilters({
             selectedCheckbox={selectedCheckbox}
             setSelectedCheckbox={setSelectedCheckbox}
             location={location}
-            setSelectedTags={setSelectedTags}
             readSearchTags={readSearchTags}
             replaceSearchTags={replaceSearchTags}
           />
@@ -318,7 +311,6 @@ export default function ShowcaseLeftFilters({
             selectedCheckbox={selectedCheckbox}
             setSelectedCheckbox={setSelectedCheckbox}
             location={location}
-            setSelectedTags={setSelectedTags}
             readSearchTags={readSearchTags}
             replaceSearchTags={replaceSearchTags}
           />
@@ -343,7 +335,6 @@ export default function ShowcaseLeftFilters({
             selectedCheckbox={selectedCheckbox}
             setSelectedCheckbox={setSelectedCheckbox}
             location={location}
-            setSelectedTags={setSelectedTags}
             readSearchTags={readSearchTags}
             replaceSearchTags={replaceSearchTags}
           />
@@ -368,7 +359,6 @@ export default function ShowcaseLeftFilters({
             selectedCheckbox={selectedCheckbox}
             setSelectedCheckbox={setSelectedCheckbox}
             location={location}
-            setSelectedTags={setSelectedTags}
             readSearchTags={readSearchTags}
             replaceSearchTags={replaceSearchTags}
           />
@@ -395,7 +385,6 @@ export default function ShowcaseLeftFilters({
             selectedCheckbox={selectedCheckbox}
             setSelectedCheckbox={setSelectedCheckbox}
             location={location}
-            setSelectedTags={setSelectedTags}
             readSearchTags={readSearchTags}
             replaceSearchTags={replaceSearchTags}
           />
@@ -420,7 +409,6 @@ export default function ShowcaseLeftFilters({
             selectedCheckbox={selectedCheckbox}
             setSelectedCheckbox={setSelectedCheckbox}
             location={location}
-            setSelectedTags={setSelectedTags}
             readSearchTags={readSearchTags}
             replaceSearchTags={replaceSearchTags}
           />
@@ -445,7 +433,6 @@ export default function ShowcaseLeftFilters({
             selectedCheckbox={selectedCheckbox}
             setSelectedCheckbox={setSelectedCheckbox}
             location={location}
-            setSelectedTags={setSelectedTags}
             readSearchTags={readSearchTags}
             replaceSearchTags={replaceSearchTags}
           />

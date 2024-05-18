@@ -1758,5 +1758,5 @@
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/agent-openai-python-prompty-langchain-pinecone",
     "tags": ["msft", "build2024", "openai", "aistudio", "bicep", "ai", "new"]
-  },
+  }
 ]

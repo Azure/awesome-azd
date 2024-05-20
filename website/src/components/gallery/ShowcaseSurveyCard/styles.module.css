@@ -20,11 +20,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  padding-bottom: 32px;
 }
 
-.surveyButton {
-  background-color: #0F6CBD !important;
+.surveyButton{
+  background-color: #7160e8 !important;
+}
+
+.surveyButton:hover {
+  background-color: #5a4cb9 !important;
 }
 
 .closeButton {

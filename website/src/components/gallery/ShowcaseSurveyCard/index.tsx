@@ -12,8 +12,8 @@ import {
   Button,
   ToggleButton,
   Image,
-  Body1Strong,
-  Caption1,
+  Body2,
+  Subtitle1,
 } from "@fluentui/react-components";
 
 function closeCard(parentDiv) {
@@ -52,22 +52,23 @@ export default function ShowcaseSurveyCard(): React.ReactElement {
       <Image
         src={useBaseUrl("/img/chatPencil.svg")}
         alt="surveyCard"
-        height={72}
-        width={72}
+        height={128}
+        width={128}
       />
       <div className={styles.text}>
-        <Body1Strong>Got a minute? We're all ears!</Body1Strong>
-        <Caption1>Help us shape the future of our template library.</Caption1>
+        <Subtitle1 align="center">Got a minute? We're all ears!</Subtitle1>
+        <Body2 align="center">
+          Help us shape the future of our template library by sharing your
+          feedback.
+        </Body2>
       </div>
       <CardFooter>
         <Button
           appearance="primary"
+          size="large"
           className={styles.surveyButton}
           onClick={() => {
-            window.open(
-              "https://aka.ms/awesome-azd-survey",
-              "_blank"
-            );
+            window.open("https://aka.ms/awesome-azd-survey", "_blank");
           }}
           icon={
             <Image

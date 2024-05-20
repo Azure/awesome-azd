@@ -1697,7 +1697,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/openai-chat-app-quickstart",
-    "tags": ["msft", "build2024", "openai", "aca", "bicep", "ai", "new"]
+    "tags": ["msft", "build2024", "python", "openai", "aca", "bicep", "ai", "new"]
   },
   {
     "title": "ChatGPT + Enterprise data with Azure OpenAI and AI Search",
@@ -1706,7 +1706,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/azure-search-openai-demo",
-    "tags": ["msft", "build2024", "openai", "appservice", "bicep", "ai", "aisearch", "blobstorage", "new"]
+    "tags": ["msft", "build2024", "python", "openai", "appservice", "bicep", "ai", "aisearch", "blobstorage", "new"]
   },
   {
     "title": "RAG on PostgreSQL",
@@ -1715,7 +1715,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/rag-postgres-openai-python",
-    "tags": ["msft", "build2024", "openai", "aca", "bicep", "ai", "azuredb-postgreSQL", "new"]
+    "tags": ["msft", "build2024", "python", "openai", "aca", "bicep", "ai", "azuredb-postgreSQL", "new"]
   },
   {
     "title": "Creative Writing Assistant: Working with Agents using Promptflow (Python Implementation)",
@@ -1724,7 +1724,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/agent-openai-python-prompty",
-    "tags": ["msft", "build2024", "openai", "aks", "bicep", "ai", "aisearch", "new"]
+    "tags": ["msft", "build2024", "python", "openai", "aks", "bicep", "ai", "aisearch", "new"]
   },
   {
     "title": "Process Automation: Speech to Text and Summarization with AI Studio",
@@ -1733,7 +1733,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/summarization-openai-python-promptflow",
-    "tags": ["msft", "build2024", "openai", "aca", "bicep", "ai", "new"]
+    "tags": ["msft", "build2024", "python", "openai", "aca", "bicep", "ai", "new"]
   },
   {
     "title": "Function Calling with Prompty, LangChain and Elastic Search",
@@ -1742,7 +1742,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/agent-python-openai-prompty-langchain",
-    "tags": ["msft", "build2024", "openai", "aistudio", "bicep", "ai", "new"]
+    "tags": ["msft", "build2024", "python", "openai", "aistudio", "bicep", "ai", "new"]
   },
   {
     "title": "Function Calling with Prompty, LangChain and Pinecone",
@@ -1751,6 +1751,6 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/agent-openai-python-prompty-langchain-pinecone",
-    "tags": ["msft", "build2024", "openai", "aistudio", "bicep", "ai", "new"]
+    "tags": ["msft", "build2024", "python", "openai", "aistudio", "bicep", "ai", "new"]
   }
 ]

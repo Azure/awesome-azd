@@ -398,12 +398,13 @@
       "monitor",
       "fastapi",
       "ai",
-      "msft"
+      "msft",
+      "build2024"
     ]
   },
   {
-    "title": "ChatGPT + Enterprise Data with Azure OpenAI and Cognitive Search",
-    "description": "A sample app for the Retrieval-Augmented Generation pattern running in Azure, using Azure Cognitive Search for retrieval and Azure OpenAI large language models to power ChatGPT-style and Q&A experiences.",
+    "title": "ChatGPT + Enterprise Data with Azure OpenAI and AI Search",
+    "description": "A sample app for the Retrieval-Augmented Generation pattern running in Azure, using Azure AI Search for retrieval and Azure OpenAI large language models to power ChatGPT-style and Q&A experiences.",
     "preview": "./templates/images/chatgpt-enterprise-dotnet.png",
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
@@ -430,16 +431,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/chatgpt-quickstart",
-    "tags": [
-      "bicep",
-      "python",
-      "openai",
-      "gpt",
-      "ai",
-      "flask",
-      "aca",
-      "msft"
-    ]
+    "tags": ["bicep", "python", "openai", "gpt", "ai", "flask", "aca", "msft"]
   },
   {
     "title": "Spring ChatGPT Application using Azure OpenAI on Azure Spring Apps",
@@ -623,9 +615,9 @@
     "tags": ["dapr", "dotnetCsharp", "aca", "msft"]
   },
   {
-    "title": "ChatGPT and Enterprise data with Azure OpenAI and Cognitive Search",
-    "description": "Demonstration of how to leverage Azure OpenAI and Cognitive Search to enable Information Search and Discovery over organizational content.",
-    "preview": "./templates/images/azure-search-openai-demo.png",
+    "title": "ChatGPT + Enterprise data with Azure OpenAI and AI Search",
+    "description": "A sample app for the Retrieval-Augmented Generation pattern running in Azure, using Azure AI Search for retrieval and Azure OpenAI large language models to power ChatGPT-style and Q&A experiences.",
+    "preview": "./templates/images/azure-search-openai-demo-appcomponents.png",
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/azure-search-openai-demo",
@@ -639,7 +631,10 @@
       "nodejs",
       "ai",
       "msft",
-      "popular"
+      "popular",
+      "blobstorage",
+      "appservice",
+      "build2024"
     ]
   },
   {
@@ -743,14 +738,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/function-csharp-ai-textsummarize",
-    "tags": [
-      "functions",
-      "aisearch",
-      "dotnetCsharp",
-      "azureai",
-      "ai",
-      "msft"
-    ]
+    "tags": ["functions", "aisearch", "dotnetCsharp", "azureai", "ai", "msft"]
   },
   {
     "title": "Azure Functions - Text Summarization using AI Cognitive Language Service (Python v2 Function)",
@@ -1096,7 +1084,7 @@
     "tags": ["terraform", "platformengineering", "ade", "community"]
   },
   {
-    "title": "Java - ChatGPT + Enterprise data with Azure OpenAI and Cognitive Search",
+    "title": "Java - ChatGPT + Enterprise data with Azure OpenAI and AI Search",
     "description": "This repo is the java conversion of the well known chatGPT + Enterprise data code sample originally developed in python",
     "preview": "./templates/images/azure-search-openai-demo-java.png",
     "website": "https://github.com/dantelmomsft",
@@ -1134,8 +1122,8 @@
     ]
   },
   {
-    "title": "ChatGPT and RAG with Azure OpenAI and Cognitive Search for JavaScript",
-    "description": "A reference sample to build Retrieval Augmented Generation applications using Azure Cognitive Search and Azure OpenAI.",
+    "title": "ChatGPT and RAG with Azure OpenAI and AI Search for JavaScript",
+    "description": "A reference sample to build Retrieval Augmented Generation applications using Azure AI Search and Azure OpenAI.",
     "preview": "./templates/images/azure-search-openai-javascript.png",
     "website": "https://github.com/Azure-Samples, https://github.com/anfibiacreativa, https://github.com/shibbas",
     "author": "JavaScript Advocacy Team, Natalia Venditto, Shibani Basava",
@@ -1151,7 +1139,8 @@
       "typescript",
       "webcomponents",
       "microfrontend",
-      "msft"
+      "msft",
+      "build2024"
     ]
   },
   {
@@ -1254,7 +1243,7 @@
     "tags": ["functions", "python", "ai", "msft"]
   },
   {
-    "title": "Multi-repo ChatGPT and Enterprise data with Azure OpenAI and Cognitive Search",
+    "title": "Multi-repo ChatGPT and Enterprise data with Azure OpenAI and AI Search",
     "description": "Azure OpenAI at scale in a secure manner.",
     "preview": "./templates/images/GPT-Rag-Architecture-Zero-Trust.png",
     "website": "https://github.com/Azure",
@@ -1442,14 +1431,7 @@
     "website": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/Azure-Samples/langfuse-on-azure",
-    "tags": [
-      "aca",
-      "azuredb-postgreSQL",
-      "keyvault",
-      "ai",
-      "msft",
-      "bicep"
-    ]
+    "tags": ["aca", "azuredb-postgreSQL", "keyvault", "ai", "msft", "bicep"]
   },
   {
     "title": "PostgreSQL + Pgvector",
@@ -1458,13 +1440,7 @@
     "website": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/Azure-Samples/azure-postgres-pgvector-python",
-    "tags": [
-      "azuredb-postgreSQL",
-      "ai",
-      "msft",
-      "bicep",
-      "python"
-    ]
+    "tags": ["azuredb-postgreSQL", "ai", "msft", "bicep", "python"]
   },
   {
     "title": "Azure Open AI management and logging via Azure API Management",
@@ -1697,16 +1673,16 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/openai-chat-app-quickstart",
-    "tags": ["msft", "build2024", "openai", "aca", "bicep", "ai", "new"]
-  },
-  {
-    "title": "ChatGPT + Enterprise data with Azure OpenAI and AI Search",
-    "description": "A sample app for the Retrieval-Augmented Generation pattern running in Azure, using Azure AI Search for retrieval and Azure OpenAI large language models to power ChatGPT-style and Q&A experiences.",
-    "preview": "./templates/images/azure-search-openai-demo-appcomponents.png",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Azure Content Team",
-    "source": "https://github.com/Azure-Samples/azure-search-openai-demo",
-    "tags": ["msft", "build2024", "openai", "appservice", "bicep", "ai", "aisearch", "blobstorage", "new"]
+    "tags": [
+      "msft",
+      "build2024",
+      "python",
+      "openai",
+      "aca",
+      "bicep",
+      "ai",
+      "new"
+    ]
   },
   {
     "title": "RAG on PostgreSQL",
@@ -1715,7 +1691,17 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/rag-postgres-openai-python",
-    "tags": ["msft", "build2024", "openai", "aca", "bicep", "ai", "azuredb-postgreSQL", "new"]
+    "tags": [
+      "msft",
+      "build2024",
+      "python",
+      "openai",
+      "aca",
+      "bicep",
+      "ai",
+      "azuredb-postgreSQL",
+      "new"
+    ]
   },
   {
     "title": "Creative Writing Assistant: Working with Agents using Promptflow (Python Implementation)",
@@ -1724,7 +1710,17 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/agent-openai-python-prompty",
-    "tags": ["msft", "build2024", "openai", "aks", "bicep", "ai", "aisearch", "new"]
+    "tags": [
+      "msft",
+      "build2024",
+      "python",
+      "openai",
+      "aks",
+      "bicep",
+      "ai",
+      "aisearch",
+      "new"
+    ]
   },
   {
     "title": "Process Automation: Speech to Text and Summarization with AI Studio",
@@ -1733,16 +1729,34 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/summarization-openai-python-promptflow",
-    "tags": ["msft", "build2024", "openai", "aca", "bicep", "ai", "new"]
+    "tags": [
+      "msft",
+      "build2024",
+      "python",
+      "openai",
+      "aca",
+      "bicep",
+      "ai",
+      "new"
+    ]
   },
   {
     "title": "Function Calling with Prompty, LangChain and Elastic Search",
-    "description": "Function calling for vector database lookup based on user question",
+    "description": "Function calling for vector database lookup based on user question.",
     "preview": "./templates/images/agent-python-openai-prompty-langchain-architecture-diagram.png",
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/agent-python-openai-prompty-langchain",
-    "tags": ["msft", "build2024", "openai", "aistudio", "bicep", "ai", "new"]
+    "tags": [
+      "msft",
+      "build2024",
+      "python",
+      "openai",
+      "aistudio",
+      "bicep",
+      "ai",
+      "new"
+    ]
   },
   {
     "title": "Function Calling with Prompty, LangChain and Pinecone",
@@ -1751,6 +1765,15 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/agent-openai-python-prompty-langchain-pinecone",
-    "tags": ["msft", "build2024", "openai", "aistudio", "bicep", "ai", "new"]
+    "tags": [
+      "msft",
+      "build2024",
+      "python",
+      "openai",
+      "aistudio",
+      "bicep",
+      "ai",
+      "new"
+    ]
   }
 ]

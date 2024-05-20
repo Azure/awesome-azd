@@ -14,7 +14,7 @@ import { useColorMode } from "@docusaurus/theme-common";
 
 const TITLE = "Template Library";
 const DESCRIPTION =
-  "A community-contributed template gallery built to work with the Azure Developer CLI.";
+  "An open-source template gallery to get started with Azure.";
 const ADD_URL = "https://aka.ms/azd";
 export var InputValue: string | null = null;
 
@@ -159,17 +159,28 @@ export default function ShowcaseTemplateSearch() {
             size={300}
             style={{
               color: "#242424",
-              padding: "20px 0",
+              paddingTop: "20px",
             }}
           >
-            Not familiar with the Azure Developer CLI (azd)?
+            Each template is a fully working, cloud-ready application deployable
+            with the Azure Developer CLI (azd).{" "}
+          </Text>
+          <Text
+            align="center"
+            size={300}
+            style={{
+              color: "#242424",
+              paddingBottom: "20px",
+            }}
+          >
+            New to azd? Welcome!
             <FluentUILink
               href={ADD_URL}
               target="_blank"
               style={{ paddingLeft: "3px" }}
               className={styles.learnMoreColor}
             >
-              Learn more
+              Learn more in our docs.
             </FluentUILink>
           </Text>
         </div>

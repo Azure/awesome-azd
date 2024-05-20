@@ -414,9 +414,9 @@
       "aks",
       "kubernetes",
       "aca",
-      "cognitivesearch",
+      "aisearch",
       "openai",
-      "chatgpt",
+      "gpt",
       "rediscache",
       "ai",
       "msft",
@@ -434,7 +434,7 @@
       "bicep",
       "python",
       "openai",
-      "chatgpt",
+      "gpt",
       "ai",
       "flask",
       "aca",
@@ -452,7 +452,7 @@
       "bicep",
       "java",
       "openai",
-      "chatgpt",
+      "gpt",
       "ai",
       "blobstorage",
       "azurespringapps",
@@ -631,8 +631,8 @@
     "source": "https://github.com/Azure-Samples/azure-search-openai-demo",
     "tags": [
       "openai",
-      "chatgpt",
-      "cognitivesearch",
+      "gpt",
+      "aisearch",
       "python",
       "typescript",
       "bicep",
@@ -745,7 +745,7 @@
     "source": "https://github.com/Azure-Samples/function-csharp-ai-textsummarize",
     "tags": [
       "functions",
-      "cognitivesearch",
+      "aisearch",
       "dotnetCsharp",
       "azureai",
       "ai",
@@ -759,7 +759,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/function-python-ai-textsummarize",
-    "tags": ["functions", "cognitivesearch", "python", "azureai", "ai", "msft"]
+    "tags": ["functions", "aisearch", "python", "azureai", "ai", "msft"]
   },
   {
     "title": "Flask Container with CDN",
@@ -922,7 +922,7 @@
     "tags": [
       "bicep",
       "openai",
-      "chatgpt",
+      "gpt",
       "ai",
       "apim",
       "reactjs",
@@ -1049,7 +1049,7 @@
       "monitor",
       "keyvault",
       "appinsights",
-      "chatgpt",
+      "gpt",
       "community"
     ]
   },
@@ -1108,7 +1108,7 @@
       "openai",
       "ai",
       "appservice",
-      "cognitivesearch",
+      "aisearch",
       "semantickernel",
       "reactjs",
       "bicep",
@@ -1143,8 +1143,8 @@
     "tags": [
       "ai",
       "bicep",
-      "chatgpt",
-      "cognitivesearch",
+      "gpt",
+      "aisearch",
       "javascript",
       "nodejs",
       "openai",
@@ -1233,7 +1233,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/function-javascript-ai-openai-chatgpt",
-    "tags": ["functions", "openai", "javascript", "ai", "chatgpt", "msft"]
+    "tags": ["functions", "openai", "javascript", "ai", "gpt", "msft"]
   },
   {
     "title": "Azure Functions - Chat using ChatGPT (Python v2 Function)",
@@ -1242,7 +1242,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/function-python-ai-openai-chatgpt",
-    "tags": ["functions", "openai", "python", "ai", "chatgpt", "msft"]
+    "tags": ["functions", "openai", "python", "ai", "gpt", "msft"]
   },
   {
     "title": "Azure Functions - LangChain with Azure OpenAI and ChatGPT (Python v2 Function)",
@@ -1262,8 +1262,8 @@
     "source": "https://github.com/Azure/GPT-RAG",
     "tags": [
       "openai",
-      "chatgpt",
-      "cognitivesearch",
+      "gpt",
+      "aisearch",
       "python",
       "typescript",
       "bicep",
@@ -1574,8 +1574,7 @@
       "dotnetCsharp",
       "bicep",
       "webapps",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -1590,12 +1589,11 @@
       "python",
       "typescript",
       "flask",
-      "cognitivesearch",
+      "aisearch",
       "openai",
-      "chatgpt",
+      "gpt",
       "ai",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -1612,8 +1610,7 @@
       "aca",
       "azuredb-postgreSQL",
       "monitor",
-      "community",
-      "new"
+      "community"
     ]
   },
   {
@@ -1625,14 +1622,13 @@
     "source": "https://github.com/john0isaac/rag-semantic-kernel-mongodb-vcore",
     "tags": [
       "openai",
-      "chatgpt",
+      "gpt",
       "cosmosdb",
       "mongodb",
       "python",
       "bicep",
       "ai",
-      "community",
-      "new"
+      "community"
     ]
   },
   {
@@ -1645,7 +1641,7 @@
     "tags": [
       "ai",
       "bicep",
-      "chatgpt",
+      "gpt",
       "serverlessapi",
       "javascript",
       "nodejs",
@@ -1657,8 +1653,7 @@
       "langchain",
       "functions",
       "swa",
-      "azureai",
-      "new"
+      "azureai"
     ]
   },
   {
@@ -1669,7 +1664,6 @@
     "author": "Frank Boucher",
     "source": "https://github.com/FBoucher/ZipDeploy-AzFunc",
     "tags": [
-      "new",
       "dotnetCsharp",
       "community",
       "bicep",
@@ -1695,5 +1689,68 @@
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/azd-aistudio-starter",
     "tags": ["bicep", "ai", "azureai", "openai", "msft", "new"]
+  },
+  {
+    "title": "Simple Chat Application using Azure OpenAI (Python)",
+    "description": "Build a chat application using Azure OpenAI GPT models.",
+    "preview": "./templates/images/openai-chat-app-quickstart_diagram.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/openai-chat-app-quickstart",
+    "tags": ["msft", "build2024", "openai", "aca", "bicep", "ai", "new"]
+  },
+  {
+    "title": "ChatGPT + Enterprise data with Azure OpenAI and AI Search",
+    "description": "A sample app for the Retrieval-Augmented Generation pattern running in Azure, using Azure AI Search for retrieval and Azure OpenAI large language models to power ChatGPT-style and Q&A experiences.",
+    "preview": "./templates/images/azure-search-openai-demo-appcomponents.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/azure-search-openai-demo",
+    "tags": ["msft", "build2024", "openai", "appservice", "bicep", "ai", "aisearch", "blobstorage", "new"]
+  },
+  {
+    "title": "RAG on PostgreSQL",
+    "description": "A RAG app to ask questions about rows in a database table. Deployable on Azure Container Apps with PostgreSQL Flexible Server.",
+    "preview": "./templates/images/rag-postgres-openai-python-screenshot_chat.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/rag-postgres-openai-python",
+    "tags": ["msft", "build2024", "openai", "aca", "bicep", "ai", "azuredb-postgreSQL", "new"]
+  },
+  {
+    "title": "Creative Writing Assistant: Working with Agents using Promptflow (Python Implementation)",
+    "description": "A creative writing multi-agent solution to help users write articles.",
+    "preview": "./templates/images/agent-openai-python-prompty-creative_writing.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/agent-openai-python-prompty",
+    "tags": ["msft", "build2024", "openai", "aks", "bicep", "ai", "aisearch", "new"]
+  },
+  {
+    "title": "Process Automation: Speech to Text and Summarization with AI Studio",
+    "description": "This solution converts speech to text and then processes and summarizes the text based on the prompt scenario.",
+    "preview": "./templates/images/summarization-openai-python-promptflow-architecture-diagram.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/summarization-openai-python-promptflow",
+    "tags": ["msft", "build2024", "openai", "aca", "bicep", "ai", "new"]
+  },
+  {
+    "title": "Function Calling with Prompty, LangChain and Elastic Search",
+    "description": "Function calling for vector database lookup based on user question",
+    "preview": "./templates/images/agent-python-openai-prompty-langchain-architecture-diagram.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/agent-python-openai-prompty-langchain",
+    "tags": ["msft", "build2024", "openai", "aistudio", "bicep", "ai", "new"]
+  },
+  {
+    "title": "Function Calling with Prompty, LangChain and Pinecone",
+    "description": "Function calling for vector database lookup based on user question.",
+    "preview": "./templates/images/agent-openai-python-prompty-langchain-pinecone-architecture-diagram.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/agent-openai-python-prompty-langchain-pinecone",
+    "tags": ["msft", "build2024", "openai", "aistudio", "bicep", "ai", "new"]
   }
 ]

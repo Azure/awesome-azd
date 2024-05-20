@@ -15,24 +15,29 @@ import {
   Body2,
   Subtitle1,
 } from "@fluentui/react-components";
+import { useColorMode } from "@docusaurus/theme-common";
+
+const surveyCardLocalStorageID = "surveyCardDisplay";
 
 function closeCard(parentDiv) {
   let parent = document.getElementById(parentDiv);
   parent.style.display = "none";
   // access localStorage until window is defined
   if (typeof window !== "undefined") {
-    localStorage.setItem("surveyCardDisplay", parent.style.display);
+    localStorage.setItem(surveyCardLocalStorageID, parent.style.display);
   }
 }
 
 export default function ShowcaseSurveyCard(): React.ReactElement {
+  const { colorMode } = useColorMode();
   // access localStorage until window is defined
   if (
     typeof window !== "undefined" &&
-    localStorage.getItem("surveyCardDisplay")
+    localStorage.getItem(surveyCardLocalStorageID)
   ) {
     return null;
   }
+
   return (
     <Card className={styles.card} appearance="filled" id="surveyCard">
       <ToggleButton
@@ -50,7 +55,11 @@ export default function ShowcaseSurveyCard(): React.ReactElement {
         className={styles.closeButton}
       />
       <Image
-        src={useBaseUrl("/img/chatPencil.svg")}
+        src={
+          colorMode != "dark"
+            ? useBaseUrl("/img/chatPencil.svg")
+            : useBaseUrl("/img/chatPencilDark.svg")
+        }
         alt="surveyCard"
         height={128}
         width={128}

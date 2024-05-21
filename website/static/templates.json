@@ -384,25 +384,6 @@
     ]
   },
   {
-    "title": "ChatGPT Plugin using Python (FastAPI)",
-    "description": "This is a quickstart for creating a ChatGPT Plugin using Python and Azure.",
-    "preview": "./templates/images/chatgpt-plugin-python.png",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Azure Content Team",
-    "source": "https://github.com/Azure-Samples/openai-plugin-fastapi",
-    "tags": [
-      "bicep",
-      "python",
-      "aca",
-      "cosmosdb",
-      "monitor",
-      "fastapi",
-      "ai",
-      "msft",
-      "build2024"
-    ]
-  },
-  {
     "title": "ChatGPT + Enterprise Data with Azure OpenAI and AI Search",
     "description": "A sample app for the Retrieval-Augmented Generation pattern running in Azure, using Azure AI Search for retrieval and Azure OpenAI large language models to power ChatGPT-style and Q&A experiences.",
     "preview": "./templates/images/chatgpt-enterprise-dotnet.png",

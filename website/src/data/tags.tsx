@@ -47,7 +47,6 @@ export type TagType =
   | "keyvault"
   | "aca"
   | "mongodb"
-  | "signalR"
   | "functions"
   | "blobstorage"
   | "azuredb-postgreSQL"
@@ -59,11 +58,9 @@ export type TagType =
   | "servicebus"
   | "vnets"
   | "fastapi"
-  | "fhir"
-  | "ahds"
   | "appinsights"
   | "loganalytics"
-  | "cognitivesearch"
+  | "aisearch"
   | "openai"
   | "azureai"
   | "flask"
@@ -75,7 +72,6 @@ export type TagType =
   | "sapcloudsdk"
   | "nestjs"
   | "dataverse"
-  | "chatgpt"
   | "aks"
   | "azurecdn"
   | "frontdoor"
@@ -107,6 +103,7 @@ export type TagType =
   | "serverlessapi"
   | "langchain"
   | "build2024"
+  | "aistudio"
   ;
 
 // LIST OF AVAILABLE TAGS
@@ -216,11 +213,6 @@ export const Tags: { [type in TagType]: Tag } = {
   thymeleaf: {
     label: "Thymeleaf",
     description: "Template architecture uses Thymeleaf template engine",
-    type: "Tools",
-  },
-  chatgpt: {
-    label: "ChatGPT",
-    description: "Template architecture uses ChatGPT application",
     type: "Tools",
   },
   "dall-e": {
@@ -351,12 +343,6 @@ export const Tags: { [type in TagType]: Tag } = {
   },
 
   // ---- Service
-  fhir: {
-    label: "FHIR Service",
-    description:
-      "Template architecture uses Fast Healthcare Interoperability Resources (FHIR) service",
-    type: "Service",
-  },
   dataverse: {
     label: "Dataverse",
     description: "Template architecture uses Microsoft Dataverse",
@@ -374,14 +360,6 @@ export const Tags: { [type in TagType]: Tag } = {
   },
 
   // ---- Azure Services
-  ahds: {
-    label: "Azure Health Data Service",
-    description:
-      "Template architecture uses Azure Health Data Services workspace",
-    azureIcon: "./img/Azure-Health-Data-Service.svg",
-    url: "https://azure.microsoft.com/products/health-data-services/",
-    type: "Service",
-  },
   appinsights: {
     label: "Azure Application Insights",
     description: "Template architecture uses Azure Application Insights",
@@ -429,13 +407,6 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure CosmosDB",
     azureIcon: "./img/Azure-Cosmos-DB.svg",
     url: "https://azure.microsoft.com/products/cosmos-db/",
-    type: "Service",
-  },
-  signalR: {
-    label: "Azure SignalR",
-    description: "Template architecture uses Azure SignalR",
-    azureIcon: "./img/Azure-SignalR.svg",
-    url: "https://azure.microsoft.com/products/signalr-service",
     type: "Service",
   },
   functions: {
@@ -494,11 +465,11 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/products/virtual-network",
     type: "Service",
   },
-  cognitivesearch: {
-    label: "Azure Cognitive Search",
-    description: "Template architecture uses Azure Cognitive Search",
-    azureIcon: "./img/Azure-Cognitive-Search.svg",
-    url: "https://azure.microsoft.com/products/ai-services/cognitive-search",
+  aisearch: {
+    label: "Azure AI Search",
+    description: "Template architecture uses Azure AI Search",
+    azureIcon: "./img/Azure-AI-Search.svg",
+    url: "https://azure.microsoft.com/products/ai-services/ai-search",
     type: "Service",
   },
   openai: {
@@ -605,6 +576,13 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure App Configuration",
     azureIcon: "./img/Azure-App-Configuration.svg",
     url: "https://azure.microsoft.com/products/app-configuration",
+    type: "Service",
+  },
+  aistudio: {
+    label: "Azure AI Studio",
+    description: "Template architecture uses AI Studio",
+    azureIcon: "./img/Azure-AI-Studio.svg",
+    url: "https://azure.microsoft.com/products/ai-studio",
     type: "Service",
   },
 

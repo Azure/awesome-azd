@@ -1716,7 +1716,7 @@
       "python",
       "openai",
       "aks",
-      "bicep",
+      "terraform",
       "ai",
       "aisearch",
       "new"
@@ -1772,6 +1772,26 @@
       "openai",
       "aistudio",
       "bicep",
+      "ai",
+      "new"
+    ]
+  },
+  {
+    "title": "Contoso Chat Retail with Azure AI Studio and Promptflow",
+    "description": "This sample has the full End2End process of creating RAG application with Prompt Flow and AI Studio. It includes GPT 3.5 Turbo LLM application code, evaluations, deployment automation with AZD CLI, GitHub actions for evaluation and deployment and intent mapping for multiple LLM task mapping.",
+    "preview": "./templates/images/contoso-chat-architecture-diagram.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/contoso-chat",
+    "tags": [
+      "msft",
+      "build2024",
+      "python",
+      "openai",
+      "aistudio",
+      "bicep",
+      "cosmosdb",
+      "aisearch",
       "ai",
       "new"
     ]

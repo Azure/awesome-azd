@@ -1776,5 +1776,70 @@
       "ai",
       "new"
     ]
+  },
+  {
+    "title": "API Center Analyzer",
+    "description": "This sample provides an Azure API Center along with Azure Functions and Azure Event Grid to analyze API specs when registering or updating API specs to Azure API Center.",
+    "preview": "./templates/images/apic-analyzer.png",
+    "website": "https://github.com/Azure",
+    "author": "Justin Yoo, Pierce Boggan",
+    "source": "https://github.com/Azure/APICenter-Analyzer",
+    "tags": [
+      "msft",
+      "bicep",
+      "build2024",
+      "apicenter",
+      "functions",
+      "eventgrid",
+      "managedidentity",
+      "applicationinsights",
+      "loganalytics",
+      "diagnostics",
+      "typescript"
+    ]
+  },
+  {
+    "title": "API Center Portal",
+    "description": "This sample provides an Azure API Center along with Azure Static Web Apps that governs API specs registered on Azure API Center for developers and stakeholders.",
+    "preview": "./templates/images/apic-portal.png",
+    "website": "https://github.com/Azure",
+    "author": "Justin Yoo, Pierce Boggan",
+    "source": "https://github.com/Azure/APICenter-Portal-Starter",
+    "tags": [
+      "msft",
+      "bicep",
+      "build2024",
+      "apicenter",
+      "swa",
+      "serviceprincipal",
+      "typescript"
+    ]
+  },
+  {
+    "title": "API Center Reference Sample",
+    "description": "This sample provides an Azure API Center along with Azure App Service, Static Web Apps and Azure Functions that governs, analyzes and performs service discovery of API specs registered on Azure API Center.",
+    "preview": "./templates/images/apic-reference.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Justin Yoo",
+    "source": "https://github.com/Azure-Samples/APICenter-Reference",
+    "tags": [
+      "msft",
+      "bicep",
+      "build2024",
+      "apicenter",
+      "appservice",
+      "functions",
+      "eventgrid",
+      "managedidentity",
+      "applicationinsights",
+      "loganalytics",
+      "diagnostics",
+      "swa",
+      "serviceprincipal",
+      "logicapps",
+      "apim",
+      "dotnetCsharp",
+      "typescript"
+    ]
   }
 ]

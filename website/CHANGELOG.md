@@ -13,6 +13,7 @@
 ## 0.4.0 (2024-05-20)
 
 ### Features Added
+
 - [[386]](https://github.com/Azure/awesome-azd/pull/386) Implement dynamically greying out tags and adding a "Clear All" button for the filter.
 - [[388]](https://github.com/Azure/awesome-azd/pull/388) Update the Contribution Card to the Survey Card.
 

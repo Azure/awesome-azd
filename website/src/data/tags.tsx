@@ -104,6 +104,12 @@ export type TagType =
   | "langchain"
   | "build2024"
   | "aistudio"
+  | "apicenter"
+  | "eventgrid"
+  | "diagnostics"
+  | "managedidentity"
+  | "serviceprincipal"
+  | "logicapps"
   ;
 
 // LIST OF AVAILABLE TAGS

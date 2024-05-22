@@ -39,6 +39,7 @@ _Getting started? Click the image below to check out an Azure Friday episode all
 * [tonybaloney/django-on-azure](https://github.com/tonybaloney/django-on-azure) - Django + PostgreSQL + Azure App Service
 * [bradygaster](https://github.com/bradygaster/RockPaperOrleans) - distributed .NET game
 * [dotnet/ai-samples](https://github.com/dotnet/ai-samples) - .NET samples demonstrating how to use AI in your applications.
+* [Azure-Samples/APICenter-Reference](https://github.com/Azure-Samples/APICenter-Reference) - API Center reference samples with various use cases including analyzer and portal experiences.
 
 ### 3.2 Community
 

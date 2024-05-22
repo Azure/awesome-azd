@@ -1795,7 +1795,8 @@
       "applicationinsights",
       "loganalytics",
       "diagnostics",
-      "typescript"
+      "typescript",
+      "new"
     ]
   },
   {
@@ -1812,7 +1813,8 @@
       "apicenter",
       "swa",
       "serviceprincipal",
-      "typescript"
+      "typescript",
+      "new"
     ]
   },
   {
@@ -1839,7 +1841,8 @@
       "logicapps",
       "apim",
       "dotnetCsharp",
-      "typescript"
+      "typescript",
+      "new"
     ]
   }
 ]

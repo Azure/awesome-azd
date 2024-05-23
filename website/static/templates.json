@@ -1793,7 +1793,7 @@
       "managedidentity",
       "appinsights",
       "loganalytics",
-      "diagnostics",
+      "diagnosticsettings",
       "typescript",
       "new"
     ]
@@ -1832,7 +1832,7 @@
       "managedidentity",
       "appinsights",
       "loganalytics",
-      "diagnostics",
+      "diagnosticsettings",
       "swa",
       "serviceprincipal",
       "logicapps",

@@ -106,11 +106,10 @@ export type TagType =
   | "aistudio"
   | "apicenter"
   | "eventgrid"
-  | "diagnostics"
+  | "diagnosticsettings"
   | "managedidentity"
   | "serviceprincipal"
-  | "logicapps"
-  ;
+  | "logicapps";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -144,7 +143,8 @@ export const Tags: { [type in TagType]: Tag } = {
   },
   build2024: {
     label: "Build 2024 Collection",
-    description: "This tag is used for templates included in the Microsoft Build 2024 conference collection.",
+    description:
+      "This tag is used for templates included in the Microsoft Build 2024 conference collection.",
   },
 
   //============  FOR REGULAR USE
@@ -586,9 +586,51 @@ export const Tags: { [type in TagType]: Tag } = {
   },
   aistudio: {
     label: "Azure AI Studio",
-    description: "Template architecture uses AI Studio",
+    description: "Template architecture uses Azure AI Studio",
     azureIcon: "./img/Azure-AI-Studio.svg",
     url: "https://azure.microsoft.com/products/ai-studio",
+    type: "Service",
+  },
+  apicenter: {
+    label: "Azure API Center",
+    description: "Template architecture uses Azure API Center",
+    azureIcon: "./img/Azure-API-Center.svg",
+    url: "https://learn.microsoft.com/azure/api-center/overview",
+    type: "Service",
+  },
+  eventgrid: {
+    label: "Azure Event Grid",
+    description: "Template architecture uses Azure Event Grid",
+    azureIcon: "./img/Azure-Event-Grid.svg",
+    url: "https://learn.microsoft.com/azure/event-grid/overview",
+    type: "Service",
+  },
+  diagnosticsettings: {
+    label: "Azure Diagnostic Settings",
+    description: "Template architecture uses Azure Diagnostic Settings",
+    azureIcon: "./img/Azure-Diagnostic-Settings.svg",
+    url: "https://learn.microsoft.com/azure/azure-monitor/essentials/diagnostic-settings",
+    type: "Service",
+  },
+  logicapps: {
+    label: "Azure Logic Apps",
+    description: "Template architecture uses Azure Logic Apps",
+    azureIcon: "./img/Azure-Logic-Apps.svg",
+    url: "https://learn.microsoft.com/azure/logic-apps/logic-apps-overview",
+    type: "Service",
+  },
+  managedidentity: {
+    label: "Azure Managed Identities",
+    description: "Template architecture uses Azure Managed Identities",
+    azureIcon: "./img/Azure-Managed-Identities.svg",
+    url: "https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/overview",
+    type: "Service",
+  },
+  serviceprincipal: {
+    label: "Azure Service Principal",
+    description: "Template architecture uses Azure Service Principal",
+    azureIcon: "./img/Azure-Service-Principal.svg",
+    url: "https://learn.microsoft.com/entra/identity-platform/app-objects-and-service-principals",
     type: "Service",
   },
 

@@ -19,27 +19,32 @@ _Getting started? Click the image below to check out an Azure Friday episode all
 **[Submit a new resource!](https://github.com/Azure/awesome-azd/issues/new?assignees=gkulin&labels=awesome-readme&template=%E2%9A%99%EF%B8%8F-submit-a-new-resource.md&title=%5BResource%5D)**
 
 ### 2.1 Articles
- * [Azure Developer CLI - A Walkthrough](https://dev.to/lechnerc77/the-azure-developer-cli-a-walk-through-22fm) - [_Christian Lechner_](https://github.com/lechnerc77) - Sep 2022
+ * [Microsoft’s AI Azure Studio is now generally available and supports OpenAI’s GPT-4o](https://venturebeat.com/ai/microsofts-ai-azure-studio-is-now-generally-available-and-supports-openais-gpt-4o/) - May 2024
+ * [Generate Local .NET Secrets from Azure Deployments](https://devblogs.microsoft.com/dotnet/generate-dotnet-secrets-automatically-from-azure-deployment/) - March 2024 
  * [Azure Developer CLI - The new infrastructure setup](https://dev.to/lechnerc77/azure-developer-cli-the-new-infrastructure-setup-4caj) - [_Christian Lechner_](https://github.com/lechnerc77) - Oct 2022
   * [Azure Developer CLI - How does it know that?](https://dev.to/lechnerc77/azure-developer-cli-how-does-it-know-that-1ngl) - [_Christian Lechner_](https://github.com/lechnerc77) - Oct 2022
   * [Azure Developer CLI - Compatibility journey for an Azure Functions Project](https://dev.to/lechnerc77/the-azure-developer-cli-compatibility-journey-for-an-azure-functions-project-3mc1) - [_Christian Lechner_](https://github.com/lechnerc77) - Oct 2022
-  * [Generate Local .NET Secrets from Azure Deployments](https://devblogs.microsoft.com/dotnet/generate-dotnet-secrets-automatically-from-azure-deployment/) - March 2024
+  * [Azure Developer CLI - A Walkthrough](https://dev.to/lechnerc77/the-azure-developer-cli-a-walk-through-22fm) - [_Christian Lechner_](https://github.com/lechnerc77) - Sep 2022
+
 
 ### 2.2 Videos
- * [Azure Developer CLI - #QuickGlance Playlist](https://www.youtube.com/watch?v=eLiD3E7tPYo&list=PLmZLSvJAm8FbFq2XhqaPZgIzl6kewz1HD) - 
- * [Azure Developer CLI - on Azure CosmosDB TV](https://www.youtube.com/watch?v=LjI-WZtunqA) - Aug 2022
+ * [Better together, build and deploy to Azure with GitHub](https://build.microsoft.com/en-US/sessions/95f1aa9b-3085-4d5c-b8c9-167175b136a1?source=sessions) - May 2024
+ * [Maximize joy, minimize toil with great developer experiences](https://build.microsoft.com/en-US/sessions/80558a0c-7ea0-4949-8c50-e7bead5ea8cc?source=sessions) - May 2024
+ * [How To Deploy to Azure with the Azure Developer CLI (azd)](https://learn.microsoft.com/en-us/shows/open-at-microsoft/how-to-deploy-to-azure-with-the-azure-developer-cli-azd) - May 2024
+ * [Introduction to the Azure Developer CLI (azd)](https://learn.microsoft.com/en-us/shows/open-at-microsoft/introduction-to-the-azure-developer-cli-azd) - April 2024
  * [Generate Local .NET Secrets from Azure Deployments](https://www.youtube.com/watch?v=NpE7edalTlQ) - March 2024
-
+ * [Azure Developer CLI - #QuickGlance Playlist](https://www.youtube.com/watch?v=eLiD3E7tPYo&list=PLmZLSvJAm8FbFq2XhqaPZgIzl6kewz1HD) - August 2022
+ * [Azure Developer CLI - on Azure CosmosDB TV](https://www.youtube.com/watch?v=LjI-WZtunqA) - August 2022
 
 ## 3. Templates
 **[Submit a template for the gallery!](https://github.com/Azure/awesome-azd/issues/new?assignees=gkulin&labels=new-contribution&template=%F0%9F%93%B2contribute-an-azd-template-.md&title=%5BNew+azd-template%5D+%3Cyour-template-name%3E)**
 
 ### 3.1 Microsoft
-* [Azure-Samples/todo-csharp-cosmos-sql](https://github.com/Azure-Samples/todo-csharp-cosmos-sql) - complete ToDo application.
+* [Azure-Samples/todo-csharp-cosmos-sql](https://github.com/Azure-Samples/todo-csharp-cosmos-sql) - complete ToDo application
 * [tonybaloney/django-on-azure](https://github.com/tonybaloney/django-on-azure) - Django + PostgreSQL + Azure App Service
 * [bradygaster](https://github.com/bradygaster/RockPaperOrleans) - distributed .NET game
-* [dotnet/ai-samples](https://github.com/dotnet/ai-samples) - .NET samples demonstrating how to use AI in your applications.
-* [Azure-Samples/APICenter-Reference](https://github.com/Azure-Samples/APICenter-Reference) - API Center reference samples with various use cases including analyzer and portal experiences.
+* [dotnet/ai-samples](https://github.com/dotnet/ai-samples) - .NET samples demonstrating how to use AI in your applications
+* [Azure-Samples/APICenter-Reference](https://github.com/Azure-Samples/APICenter-Reference) - API Center reference samples with various use cases including analyzer and portal experiences
 
 ### 3.2 Community
 
@@ -54,7 +59,7 @@ _Getting started? Click the image below to check out an Azure Friday episode all
 
 ## Contributing
 
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
+This project welcomes contributions and suggestions. Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
 the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
 

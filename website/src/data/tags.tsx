@@ -43,6 +43,7 @@ export type TagType =
   | "prometheus"
   | "appservice"
   | "cosmosdb"
+  | "azuredatafactory"
   | "monitor"
   | "keyvault"
   | "aca"
@@ -631,6 +632,13 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure Service Principal",
     azureIcon: "./img/Azure-Service-Principal.svg",
     url: "https://learn.microsoft.com/entra/identity-platform/app-objects-and-service-principals",
+    type: "Service",
+  },
+  azuredatafactory: {
+    label: "Azure Data Factory",
+    description: "Template architecture uses Azure Data Factory",
+    azureIcon: "./img/Azure-Data-Factory.svg",
+    url: "https://learn.microsoft.com/en-us/azure/data-factory/introduction",
     type: "Service",
   },
 

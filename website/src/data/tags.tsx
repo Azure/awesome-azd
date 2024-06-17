@@ -638,7 +638,7 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Azure Data Factory",
     description: "Template architecture uses Azure Data Factory",
     azureIcon: "./img/Azure-Data-Factory.svg",
-    url: "https://learn.microsoft.com/en-us/azure/data-factory/introduction",
+    url: "https://learn.microsoft.com/azure/data-factory/introduction",
     type: "Service",
   },
 

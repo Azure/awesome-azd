@@ -1859,5 +1859,23 @@
       "ai",
       "new"
     ]
+  },
+  {
+    "title": "Serverless Azure OpenAI Quick Start with LlamaIndex (JavaScript)",
+    "description": "This sample shows how to quickly get started with LlamaIndex.ai on Azure. The application is hosted on Azure Container Apps. You can use it as a starting point for building more complex RAG applications.",
+    "preview": "./templates/images/llama-index-javascript-architecture-diagram.png",
+    "website": "https://github.com/Azure-Samples/gpt-video-analysis-in-a-box",
+    "author": "Wassim Chegham",
+    "source": "https://github.com/Azure-Samples/llama-index-javascript",
+    "tags": [
+      "msft",
+      "openai",
+      "bicep",
+      "javascript",
+      "nodejs",
+      "ai",
+      "aca"
+      "new"
+    ]
   }
 ]

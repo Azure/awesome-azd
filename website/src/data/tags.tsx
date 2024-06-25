@@ -104,6 +104,13 @@ export type TagType =
   | "serverlessapi"
   | "langchain"
   | "build2024"
+  | "aistudio"
+  | "apicenter"
+  | "eventgrid"
+  | "diagnosticsettings"
+  | "managedidentity"
+  | "serviceprincipal"
+  | "logicapps";
   ;
 
 // LIST OF AVAILABLE TAGS

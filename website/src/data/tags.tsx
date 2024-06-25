@@ -111,7 +111,7 @@ export type TagType =
   | "managedidentity"
   | "serviceprincipal"
   | "logicapps";
-
+  
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
 // One or more tags can be associated per card
@@ -144,8 +144,7 @@ export const Tags: { [type in TagType]: Tag } = {
   },
   build2024: {
     label: "Build 2024 Collection",
-    description:
-      "This tag is used for templates included in the Microsoft Build 2024 conference collection.",
+    description: "This tag is used for templates included in the Microsoft Build 2024 conference collection.",
   },
 
   //============  FOR REGULAR USE

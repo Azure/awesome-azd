@@ -111,8 +111,7 @@ export type TagType =
   | "managedidentity"
   | "serviceprincipal"
   | "logicapps";
-  ;
-
+  
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
 // One or more tags can be associated per card

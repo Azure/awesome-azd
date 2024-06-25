@@ -1859,5 +1859,21 @@
       "ai",
       "new"
     ]
+  },
+  {
+    "title": "Deploy Phoenix to Azure",
+    "description": "Phoenix provides MLOps and LLMOps insights at lightning speed with zero-config observability.",
+    "preview": "./templates/images/arize-phoenix.png",
+    "website": "https://github.com/Arize-ai",
+    "author": "Arize AI Team",
+    "source": "https://github.com/Arize-ai/phoenix-on-azure",
+    "tags": [
+      "community",
+      "bicep",
+      "python",
+      "aca",
+      "ai",
+      "new"
+    ]
   }
 ]

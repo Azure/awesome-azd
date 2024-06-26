@@ -25,6 +25,7 @@ Place your template repository link here:
       - [ ] Add the `"new"` tag for any newly authored templates
 
 - [ ] In the PR comment, if you can also add a link to the PR where you made your repo `azd` compatible this will allow us to provide feedback on your template and speed up the review process.
+- [ ] If the template is Microsoft-authored, we encourage you to also [publish it to learn.microsoft.com/samples](https://review.learn.microsoft.com/en-us/help/contribute/samples/process/onboarding?branch=main).
 
 # If you are submitting a resource to be added to the awesome-azd README:
 - [ ] Name of resource

@@ -1861,6 +1861,22 @@
     ]
   },
   {
+    "title": "Deploy Phoenix to Azure",
+    "description": "Phoenix provides MLOps and LLMOps insights at lightning speed with zero-config observability.",
+    "preview": "./templates/images/arize-phoenix.png",
+    "website": "https://github.com/Arize-ai",
+    "author": "Arize AI Team",
+    "source": "https://github.com/Arize-ai/phoenix-on-azure",
+    "tags": [
+      "community",
+      "bicep",
+      "python",
+      "aca",
+      "ai",
+      "new"
+    ]
+  }, 
+  {
     "title": "Serverless Azure OpenAI Quick Start with LlamaIndex (JavaScript)",
     "description": "This sample shows how to quickly get started with LlamaIndex.ai on Azure. The application is hosted on Azure Container Apps. You can use it as a starting point for building more complex RAG applications.",
     "preview": "./templates/images/llama-index-javascript-architecture-diagram.png",
@@ -1874,7 +1890,7 @@
       "javascript",
       "nodejs",
       "ai",
-      "aca"
+      "aca",
       "new"
     ]
   }

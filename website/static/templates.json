@@ -1594,7 +1594,7 @@
     "preview": "./templates/images/serverless-chat-langchainjs.gif",
     "website": "https://github.com/glaucia86, https://github.com/sinedied",
     "author": "Glaucia Lemos, Yohan Lasorsa",
-    "source": "https://github.com/Azure-Samples/serverless-chat-langchainjs/",
+    "source": "https://github.com/Azure-Samples/serverless-chat-langchainjs",
     "tags": [
       "ai",
       "bicep",

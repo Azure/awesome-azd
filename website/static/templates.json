@@ -1861,7 +1861,7 @@
     ]
   },
   {
-    "title": "Deploy Phoenix to Azure",
+     "title": "Deploy Phoenix to Azure",
     "description": "Phoenix provides MLOps and LLMOps insights at lightning speed with zero-config observability.",
     "preview": "./templates/images/arize-phoenix.png",
     "website": "https://github.com/Arize-ai",
@@ -1873,6 +1873,28 @@
       "python",
       "aca",
       "ai",
+      "new"
+     ]
+   },
+   {
+    "title": "Build a Copilot app using Azure Cosmos DB, Azure OpenAI Service and Azure App Service",
+    "description": "Build a copilot application with Azure OpenAI Service, Azure Cosmos DB for NoSQL vector database & Azure App Service.",
+    "preview": "./templates/images/cosmos-nosql-copilot.png",
+    "website": "https://github.com/AzureCosmosDB",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/AzureCosmosDB/cosmosdb-nosql-copilot",
+    "tags": [
+      "msft",      
+      "openai",
+      "gpt",
+      "cosmosdb",
+      "bicep",
+      "ai",
+      "dotnetCsharp",
+      "managedidentity",
+      "appservice",
+      "semantickernel",
+      "blazor",
       "new"
     ]
   }

@@ -1907,15 +1907,14 @@
     "source": "https://github.com/ryanninodizon/AzureServerlessApp-with-auth-for-dotnet-angular",
     "tags": [
       "apim",
-      "azure",
       "functions",
       "msal",
-      "dotnet",
       "dotnetCsharp",
       "cosmosdb",
-      "serverless",      
+      "serverlessapi",
       "angular",
-      "new"
+      "new",
+      "community"
     ]
   }
 ]

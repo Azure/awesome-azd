@@ -352,7 +352,6 @@ export const Tags: { [type in TagType]: Tag } = {
   msal: {
     label: "MSAL",
     description: "Template architecture uses Microsoft Authentication Library",
-    url: "https://learn.microsoft.com/en-us/entra/identity-platform/msal-overview",
     type: "Library",
   },
 

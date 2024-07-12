@@ -36,6 +36,7 @@ export type TagType =
   | "python"
   | "django"
   | "reactjs"
+  | "angular"
   | "nodejs"
   | "kubernetes"
   | "keda"
@@ -110,7 +111,8 @@ export type TagType =
   | "diagnosticsettings"
   | "managedidentity"
   | "serviceprincipal"
-  | "logicapps";
+  | "logicapps"
+  | "msal";
   
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -197,6 +199,11 @@ export const Tags: { [type in TagType]: Tag } = {
   reactjs: {
     label: "React.js",
     description: "Template architecture uses React.js",
+    type: "Tools",
+  },
+  angular: {
+    label: "Angular",
+    description: "Template architecture uses Angular",
     type: "Tools",
   },
   sap: {
@@ -339,6 +346,14 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "LangChain",
     description: "Template architecture uses LangChain framework",
     type: "Framework",
+  },
+
+  // ---- Library
+  msal: {
+    label: "MSAL",
+    description: "Template architecture uses Microsoft Authentication Library",
+    url: "https://learn.microsoft.com/en-us/entra/identity-platform/msal-overview",
+    type: "Library",
   },
 
   // ---- Platform

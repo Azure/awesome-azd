@@ -1916,5 +1916,23 @@
       "new",
       "community"
     ]
+  },
+  {
+    "title": "Pinecone RAG Demo",
+    "description": "This example application sets up an Azure container app with Next.js, linking to a Pinecone index and an OpenAI embedding model for storing and retrieving context for a RAG model.",
+    "preview": "./templates/images/pinecone-rag-demo-azd.png",
+    "website": "https://pinecone.io",
+    "author": "Pinecone Team",
+    "source": "https://github.com/pinecone-io/pinecone-rag-demo-azd",
+    "tags": [
+      "community",
+      "pinecone",
+      "bicep",
+      "aca",
+      "nextjs",
+      "typescript",
+      "ai",
+      "new"
+    ]
   }
 ]

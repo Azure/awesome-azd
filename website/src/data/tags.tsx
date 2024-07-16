@@ -36,6 +36,7 @@ export type TagType =
   | "python"
   | "django"
   | "reactjs"
+  | "angular"
   | "nodejs"
   | "kubernetes"
   | "keda"
@@ -111,6 +112,7 @@ export type TagType =
   | "managedidentity"
   | "serviceprincipal"
   | "logicapps"
+  | "msal"
   | "pinecone"
   | "nextjs";
   
@@ -260,6 +262,11 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses GPT AI model",
     type: "Tools",
   },
+  msal: {
+    label: "Microsoft Authentication Library",
+    description: "Template architecture uses Microsoft Authentication Library",
+    type: "Tools",
+  },
 
   // ---- Infrastructure as Code
   bicep: {
@@ -357,6 +364,11 @@ export const Tags: { [type in TagType]: Tag } = {
   kubernetes: {
     label: "Kubernetes",
     description: "Template architecture uses Kubernetes",
+    type: "Platform",
+  },
+  angular: {
+    label: "Angular",
+    description: "Template architecture uses Angular",
     type: "Platform",
   },
 

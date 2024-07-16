@@ -1594,7 +1594,7 @@
     "preview": "./templates/images/serverless-chat-langchainjs.gif",
     "website": "https://github.com/glaucia86, https://github.com/sinedied",
     "author": "Glaucia Lemos, Yohan Lasorsa",
-    "source": "https://github.com/Azure-Samples/serverless-chat-langchainjs/",
+    "source": "https://github.com/Azure-Samples/serverless-chat-langchainjs",
     "tags": [
       "ai",
       "bicep",
@@ -1861,7 +1861,7 @@
     ]
   },
   {
-    "title": "Deploy Phoenix to Azure",
+     "title": "Deploy Phoenix to Azure",
     "description": "Phoenix provides MLOps and LLMOps insights at lightning speed with zero-config observability.",
     "preview": "./templates/images/arize-phoenix.png",
     "website": "https://github.com/Arize-ai",
@@ -1874,6 +1874,47 @@
       "aca",
       "ai",
       "new"
+     ]
+   },
+   {
+    "title": "Build a Copilot app using Azure Cosmos DB, Azure OpenAI Service and Azure App Service",
+    "description": "Build a copilot application with Azure OpenAI Service, Azure Cosmos DB for NoSQL vector database & Azure App Service.",
+    "preview": "./templates/images/cosmos-nosql-copilot.png",
+    "website": "https://github.com/AzureCosmosDB",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/AzureCosmosDB/cosmosdb-nosql-copilot",
+    "tags": [
+      "msft",      
+      "openai",
+      "gpt",
+      "cosmosdb",
+      "bicep",
+      "ai",
+      "dotnetCsharp",
+      "managedidentity",
+      "appservice",
+      "semantickernel",
+      "blazor",
+      "new"
+    ]
+  },
+  {
+    "title": "Azure Serverless App with Angular and MSAL",
+    "description": "Azure Serverless Template using Angular-standalone, Azure Functions App, Cosmos DB and APIM",
+    "preview": "./templates/images/serverless-application-flow.png",
+    "website": "https://github.com/ryanninodizon",
+    "author": "Ryan Niño Dizon",
+    "source": "https://github.com/ryanninodizon/AzureServerlessApp-with-auth-for-dotnet-angular",
+    "tags": [
+      "apim",
+      "functions",
+      "msal",
+      "dotnetCsharp",
+      "cosmosdb",
+      "serverlessapi",
+      "angular",
+      "new",
+      "community"
     ]
   },
   {

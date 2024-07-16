@@ -1897,5 +1897,24 @@
       "blazor",
       "new"
     ]
+  },
+  {
+    "title": "Azure Serverless App with Angular and MSAL",
+    "description": "Azure Serverless Template using Angular-standalone, Azure Functions App, Cosmos DB and APIM",
+    "preview": "./templates/images/serverless-application-flow.png",
+    "website": "https://github.com/ryanninodizon",
+    "author": "Ryan Niño Dizon",
+    "source": "https://github.com/ryanninodizon/AzureServerlessApp-with-auth-for-dotnet-angular",
+    "tags": [
+      "apim",
+      "functions",
+      "msal",
+      "dotnetCsharp",
+      "cosmosdb",
+      "serverlessapi",
+      "angular",
+      "new",
+      "community"
+    ]
   }
 ]

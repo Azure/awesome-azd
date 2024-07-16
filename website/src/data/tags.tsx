@@ -201,11 +201,6 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses React.js",
     type: "Tools",
   },
-  angular: {
-    label: "Angular",
-    description: "Template architecture uses Angular",
-    type: "Tools",
-  },
   sap: {
     label: "SAP",
     description:
@@ -263,6 +258,11 @@ export const Tags: { [type in TagType]: Tag } = {
   gpt: {
     label: "GPT",
     description: "Template architecture uses GPT AI model",
+    type: "Tools",
+  },
+  msal: {
+    label: "Microsoft Authentication Library",
+    description: "Template architecture uses Microsoft Authentication Library",
     type: "Tools",
   },
 
@@ -348,17 +348,15 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Framework",
   },
 
-  // ---- Library
-  msal: {
-    label: "MSAL",
-    description: "Template architecture uses Microsoft Authentication Library",
-    type: "Library",
-  },
-
   // ---- Platform
   kubernetes: {
     label: "Kubernetes",
     description: "Template architecture uses Kubernetes",
+    type: "Platform",
+  },
+  angular: {
+    label: "Angular",
+    description: "Template architecture uses Angular",
     type: "Platform",
   },
 

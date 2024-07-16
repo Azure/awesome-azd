@@ -110,7 +110,9 @@ export type TagType =
   | "diagnosticsettings"
   | "managedidentity"
   | "serviceprincipal"
-  | "logicapps";
+  | "logicapps"
+  | "pinecone"
+  | "nextjs";
   
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -282,6 +284,11 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Prometheus",
     type: "Database",
   },
+  pinecone: {
+    label: "Pinecone",
+    description: "Template architecture uses Pinecone",
+    type: "Database",
+  },
 
   // ---- Framework
   fastapi: {
@@ -338,6 +345,11 @@ export const Tags: { [type in TagType]: Tag } = {
   langchain: {
     label: "LangChain",
     description: "Template architecture uses LangChain framework",
+    type: "Framework",
+  },
+  nextjs: {
+    label: "Next.js",
+    description: "Template architecture uses Next.js framework",
     type: "Framework",
   },
 

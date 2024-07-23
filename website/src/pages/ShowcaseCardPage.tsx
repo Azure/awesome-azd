@@ -16,6 +16,7 @@ import {
   Option,
   Spinner,
   Badge,
+  Body1,
 } from "@fluentui/react-components";
 import ShowcaseCards from "./ShowcaseCards";
 import useBaseUrl from "@docusaurus/useBaseUrl";
@@ -24,6 +25,7 @@ import { useColorMode } from "@docusaurus/theme-common";
 import { useHistory } from "@docusaurus/router";
 import { toggleListItem } from "@site/src/utils/jsUtils";
 import { prepareUserState } from "./index";
+import { Dismiss20Filled } from "@fluentui/react-icons";
 
 const TagQueryStringKey2 = "tags";
 
@@ -116,29 +118,31 @@ function filterUsers(
 function FilterAppliedBar({
   clearAll,
   selectedTags,
+  readSearchTags,
+  replaceSearchTags,
 }: {
   clearAll;
   selectedTags: TagType[];
+  readSearchTags: (search: string) => TagType[];
+  replaceSearchTags: (search: string, newTags: TagType[]) => string;
 }) {
-  const { colorMode } = useColorMode();
-  return selectedTags.length > 0 ? (
-    <div
-      style={{
-        paddingTop: "32px",
-        display: "flex",
-        gap: "12px",
-        alignItems: "center",
-      }}
-    >
-      <div
-        style={{
-          fontSize: "14px",
-          fontWeight: "400",
-          lineHeight: "20px",
-        }}
-      >
+  const history = useHistory();
+  const toggleTag = (tag: TagType, location: Location) => {
+    const tags = readSearchTags(location.search);
+    const newTags = toggleListItem(tags, tag);
+    const newSearch = replaceSearchTags(location.search, newTags);
+    history.push({
+      ...location,
+      search: newSearch,
+      state: prepareUserState(),
+    });
+  }
+
+  return selectedTags && selectedTags.length > 0 ? (
+    <div className={styles.filterAppliedBar}>
+      <Body1>
         Filters applied:
-      </div>
+      </Body1>
       {selectedTags.map((tag, index) => {
         const tagObject = Tags[tag];
         const key = `showcase_checkbox_key_${tag}`;
@@ -150,21 +154,7 @@ function FilterAppliedBar({
             size="extra-large"
             color="brand"
             shape="rounded"
-            icon={
-              colorMode != "dark" ? (
-                <img
-                  src={useBaseUrl("/img/lightModePurpleClose.svg")}
-                  height={20}
-                  alt="Close"
-                />
-              ) : (
-                <img
-                  src={useBaseUrl("/img/darkModePurpleClose.svg")}
-                  height={20}
-                  alt="Close"
-                />
-              )
-            }
+            icon={<Dismiss20Filled />}
             iconPosition="after"
             className={styles.filterBadge}
             onClick={() => {
@@ -189,6 +179,7 @@ export default function ShowcaseCardPage({
   setSelectedTags,
   readSearchTags,
   replaceSearchTags,
+  setSelectedCheckbox,
 }: {
   setActiveTags: React.Dispatch<React.SetStateAction<TagType[]>>;
   selectedTags: TagType[];
@@ -196,13 +187,23 @@ export default function ShowcaseCardPage({
   setSelectedTags: React.Dispatch<React.SetStateAction<TagType[]>>;
   readSearchTags: (search: string) => TagType[];
   replaceSearchTags: (search: string, newTags: TagType[]) => string;
+  setSelectedCheckbox: React.Dispatch<React.SetStateAction<TagType[]>>;
 }) {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchName, setSearchName] = useState<string | null>(null);
   const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
+  const history = useHistory();
+  const searchParams = new URLSearchParams(location.search);
   const clearAll = () => {
     setSelectedTags([]);
+    setSelectedCheckbox([]);
+    searchParams.delete("tags");
+    history.push({
+      ...location,
+      search: searchParams.toString(),
+      state: prepareUserState(),
+    });
   };
 
   useEffect(() => {
@@ -284,7 +285,12 @@ export default function ShowcaseCardPage({
           </Combobox>
         </div>
       </div>
-      {/* <FilterAppliedBar clearAll={clearAll} selectedTags={selectedTags} /> */}
+      <FilterAppliedBar
+        clearAll={clearAll}
+        selectedTags={selectedTags}
+        readSearchTags={readSearchTags}
+        replaceSearchTags={replaceSearchTags}
+      />
       {loading ? (
         <Spinner labelPosition="below" label="Loading..." />
       ) : (

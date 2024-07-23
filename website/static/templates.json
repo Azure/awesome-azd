@@ -1907,7 +1907,7 @@
       "ai",
       "new"
     ]
-  } 
+  } ,
   {
     "title": "Azure Serverless App with Angular and MSAL",
     "description": "Azure Serverless Template using Angular-standalone, Azure Functions App, Cosmos DB and APIM",

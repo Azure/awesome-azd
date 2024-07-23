@@ -1636,7 +1636,7 @@
     "website": "https://github.com/Azure/azure-dev",
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/azd-ai-starter",
-    "tags": ["bicep", "ai", "azureai", "openai", "msft", "new"]
+    "tags": ["bicep", "ai", "azureai", "openai", "msft"]
   },
   {
     "title": "Azure AI Studio Starter",
@@ -1645,7 +1645,7 @@
     "website": "https://github.com/Azure/azure-dev",
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/azd-aistudio-starter",
-    "tags": ["bicep", "ai", "azureai", "openai", "msft", "new"]
+    "tags": ["bicep", "ai", "azureai", "openai", "msft"]
   },
   {
     "title": "Simple Chat Application using Azure OpenAI (Python)",
@@ -1661,8 +1661,7 @@
       "openai",
       "aca",
       "bicep",
-      "ai",
-      "new"
+      "ai"
     ]
   },
   {
@@ -1680,8 +1679,7 @@
       "aca",
       "bicep",
       "ai",
-      "azuredb-postgreSQL",
-      "new"
+      "azuredb-postgreSQL"
     ]
   },
   {
@@ -1699,8 +1697,7 @@
       "aks",
       "terraform",
       "ai",
-      "aisearch",
-      "new"
+      "aisearch"
     ]
   },
   {
@@ -1717,8 +1714,7 @@
       "openai",
       "aca",
       "bicep",
-      "ai",
-      "new"
+      "ai"
     ]
   },
   {
@@ -1735,8 +1731,7 @@
       "openai",
       "aistudio",
       "bicep",
-      "ai",
-      "new"
+      "ai"
     ]
   },
   {
@@ -1754,7 +1749,7 @@
       "aistudio",
       "bicep",
       "ai",
-      "new"
+      "pinecone"
     ]
   },
   {
@@ -1773,8 +1768,7 @@
       "bicep",
       "cosmosdb",
       "aisearch",
-      "ai",
-      "new"
+      "ai"
     ]
   },
   {
@@ -1794,8 +1788,7 @@
       "appinsights",
       "loganalytics",
       "diagnosticsettings",
-      "typescript",
-      "new"
+      "typescript"
     ]
   },
   {
@@ -1811,8 +1804,7 @@
       "apicenter",
       "swa",
       "serviceprincipal",
-      "typescript",
-      "new"
+      "typescript"
     ]
   },
   {
@@ -1838,8 +1830,7 @@
       "logicapps",
       "apim",
       "dotnetCsharp",
-      "typescript",
-      "new"
+      "typescript"
     ]
   },
   {
@@ -1856,8 +1847,7 @@
       "cosmosdb",
       "azuredatafactory",
       "blobstorage",
-      "ai",
-      "new"
+      "ai"
     ]
   },
   {
@@ -1918,4 +1908,41 @@
       "new"
     ]
   } 
+  {
+    "title": "Azure Serverless App with Angular and MSAL",
+    "description": "Azure Serverless Template using Angular-standalone, Azure Functions App, Cosmos DB and APIM",
+    "preview": "./templates/images/serverless-application-flow.png",
+    "website": "https://github.com/ryanninodizon",
+    "author": "Ryan Niño Dizon",
+    "source": "https://github.com/ryanninodizon/AzureServerlessApp-with-auth-for-dotnet-angular",
+    "tags": [
+      "apim",
+      "functions",
+      "msal",
+      "dotnetCsharp",
+      "cosmosdb",
+      "serverlessapi",
+      "angular",
+      "new",
+      "community"
+    ]
+  },
+  {
+    "title": "Pinecone RAG Demo",
+    "description": "This example application sets up an Azure container app with Next.js, linking to a Pinecone index and an OpenAI embedding model for storing and retrieving context for a RAG model.",
+    "preview": "./templates/images/pinecone-rag-demo-azd.png",
+    "website": "https://pinecone.io",
+    "author": "Pinecone Team",
+    "source": "https://github.com/pinecone-io/pinecone-rag-demo-azd",
+    "tags": [
+      "community",
+      "pinecone",
+      "bicep",
+      "aca",
+      "nextjs",
+      "typescript",
+      "ai",
+      "new"
+    ]
+  }
 ]

@@ -36,6 +36,7 @@ export type TagType =
   | "python"
   | "django"
   | "reactjs"
+  | "angular"
   | "nodejs"
   | "kubernetes"
   | "keda"
@@ -110,7 +111,10 @@ export type TagType =
   | "diagnosticsettings"
   | "managedidentity"
   | "serviceprincipal"
-  | "logicapps";
+  | "logicapps"
+  | "msal"
+  | "pinecone"
+  | "nextjs";
   
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -258,6 +262,11 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses GPT AI model",
     type: "Tools",
   },
+  msal: {
+    label: "Microsoft Authentication Library",
+    description: "Template architecture uses Microsoft Authentication Library",
+    type: "Tools",
+  },
 
   // ---- Infrastructure as Code
   bicep: {
@@ -280,6 +289,11 @@ export const Tags: { [type in TagType]: Tag } = {
   prometheus: {
     label: "Prometheus",
     description: "Template architecture uses Prometheus",
+    type: "Database",
+  },
+  pinecone: {
+    label: "Pinecone",
+    description: "Template architecture uses Pinecone",
     type: "Database",
   },
 
@@ -340,11 +354,21 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses LangChain framework",
     type: "Framework",
   },
+  nextjs: {
+    label: "Next.js",
+    description: "Template architecture uses Next.js framework",
+    type: "Framework",
+  },
 
   // ---- Platform
   kubernetes: {
     label: "Kubernetes",
     description: "Template architecture uses Kubernetes",
+    type: "Platform",
+  },
+  angular: {
+    label: "Angular",
+    description: "Template architecture uses Angular",
     type: "Platform",
   },
 

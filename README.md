@@ -10,22 +10,20 @@ _Getting started? Click the image below to check out an Azure Friday episode all
 
 | [Azure Developer CLI Templates](https://github.com/topics/azd-templates) | 
 |:---|
-| The Azure Developer CLI (`azd`) is an open-source tool that accelerates the time it takes for you to get started on Azure - with a set of developer-friendly commands that map to key stages in your workflow (code, build, deploy, monitor). The Azure Developer CLI uses extensible application templates that include everything you need to get up and running on Azure. The templates include application code and reusable infrastructure as code assets written in Bicep or Terraform and are infused with cloud best practices.  More than that, they cover end-to-end scenarios that go far beyond "Hello World!".|
-| ![Azure Developer CLI Templates](https://raw.githubusercontent.com/github/explore/a8036e684c6a96e4656252a806f21d332bc4d4e1/topics/azd-templates/azd-templates.png) |
-| [**azd** Overview](https://learn.microsoft.com/azure/developer/azure-developer-cli/overview?tabs=nodejs)   - [**azd** Quickstart](https://learn.microsoft.com/azure/developer/azure-developer-cli/get-started?tabs=bare-metal%2Cwindows&pivots=programming-language-nodejs)-  [**azd** Reference](https://learn.microsoft.com/azure/developer/azure-developer-cli/reference)|
-|[**azd-templates** on Github](https://github.com/topics/azd-templates)|
+| The Azure Developer CLI (`azd`) is an open-source tool that accelerates the time it takes for developers to get started on Azure by using developer-friendly commands that map to key stages in your workflow (code, build, deploy, monitor). The Azure Developer CLI uses application templates that include everything you need to get up and running on Azure, then allows you to customize them. The templates include application code and reusable infrastructure as code assets written in Bicep or Terraform and are infused with cloud best practices.  More than that, they cover end-to-end scenarios that go far beyond "Hello World!".
 
-## 2. Content
-**[Submit a new resource!](https://github.com/Azure/awesome-azd/issues/new?assignees=gkulin&labels=awesome-readme&template=%E2%9A%99%EF%B8%8F-submit-a-new-resource.md&title=%5BResource%5D)**
+![Azure Developer CLI Templates](https://raw.githubusercontent.com/github/explore/a8036e684c6a96e4656252a806f21d332bc4d4e1/topics/azd-templates/azd-templates.png) <br>
+📖 [**azd** Overview](https://learn.microsoft.com/azure/developer/azure-developer-cli/overview?tabs=nodejs) | 🚀 [**azd** Quickstart](https://learn.microsoft.com/azure/developer/azure-developer-cli/get-started?tabs=bare-metal%2Cwindows&pivots=programming-language-nodejs) | 📚 [**azd** Reference](https://learn.microsoft.com/azure/developer/azure-developer-cli/reference) | 🗃️ [**azd-templates** on Github](https://github.com/topics/azd-templates) <br>
+
+## 2. Resources
 
 ### 2.1 Articles
  * [Microsoft’s AI Azure Studio is now generally available and supports OpenAI’s GPT-4o](https://venturebeat.com/ai/microsofts-ai-azure-studio-is-now-generally-available-and-supports-openais-gpt-4o/) - May 2024
  * [Generate Local .NET Secrets from Azure Deployments](https://devblogs.microsoft.com/dotnet/generate-dotnet-secrets-automatically-from-azure-deployment/) - March 2024 
  * [Azure Developer CLI - The new infrastructure setup](https://dev.to/lechnerc77/azure-developer-cli-the-new-infrastructure-setup-4caj) - [_Christian Lechner_](https://github.com/lechnerc77) - Oct 2022
-  * [Azure Developer CLI - How does it know that?](https://dev.to/lechnerc77/azure-developer-cli-how-does-it-know-that-1ngl) - [_Christian Lechner_](https://github.com/lechnerc77) - Oct 2022
-  * [Azure Developer CLI - Compatibility journey for an Azure Functions Project](https://dev.to/lechnerc77/the-azure-developer-cli-compatibility-journey-for-an-azure-functions-project-3mc1) - [_Christian Lechner_](https://github.com/lechnerc77) - Oct 2022
-  * [Azure Developer CLI - A Walkthrough](https://dev.to/lechnerc77/the-azure-developer-cli-a-walk-through-22fm) - [_Christian Lechner_](https://github.com/lechnerc77) - Sep 2022
-
+ * [Azure Developer CLI - How does it know that?](https://dev.to/lechnerc77/azure-developer-cli-how-does-it-know-that-1ngl) - [_Christian Lechner_](https://github.com/lechnerc77) - Oct 2022
+ * [Azure Developer CLI - Compatibility journey for an Azure Functions Project](https://dev.to/lechnerc77/the-azure-developer-cli-compatibility-journey-for-an-azure-functions-project-3mc1) - [_Christian Lechner_](https://github.com/lechnerc77) - Oct 2022
+ * [Azure Developer CLI - A Walkthrough](https://dev.to/lechnerc77/the-azure-developer-cli-a-walk-through-22fm) - [_Christian Lechner_](https://github.com/lechnerc77) - Sep 2022
 
 ### 2.2 Videos
  * [Better together, build and deploy to Azure with GitHub](https://build.microsoft.com/en-US/sessions/95f1aa9b-3085-4d5c-b8c9-167175b136a1?source=sessions) - May 2024
@@ -37,9 +35,10 @@ _Getting started? Click the image below to check out an Azure Friday episode all
  * [Azure Developer CLI - on Azure CosmosDB TV](https://www.youtube.com/watch?v=LjI-WZtunqA) - August 2022
 
 ## 3. Templates
-**[Submit a template for the gallery!](https://github.com/Azure/awesome-azd/issues/new?assignees=gkulin&labels=new-contribution&template=%F0%9F%93%B2contribute-an-azd-template-.md&title=%5BNew+azd-template%5D+%3Cyour-template-name%3E)**
 
 ### 3.1 Microsoft
+* [Azure-Samples/azd-aistudio-starter](https://github.com/Azure-Samples/azd-aistudio-starter) - Bicep template to get started with Azure AI Studio
+* [Azure/APICenter-Portal-Starter](https://github.com/Azure/APICenter-Portal-Starter) - Reference implementation of API Center portal for a web-based API discovery
 * [Azure-Samples/todo-csharp-cosmos-sql](https://github.com/Azure-Samples/todo-csharp-cosmos-sql) - complete ToDo application
 * [tonybaloney/django-on-azure](https://github.com/tonybaloney/django-on-azure) - Django + PostgreSQL + Azure App Service
 * [bradygaster](https://github.com/bradygaster/RockPaperOrleans) - distributed .NET game
@@ -47,13 +46,13 @@ _Getting started? Click the image below to check out an Azure Friday episode all
 * [Azure-Samples/APICenter-Reference](https://github.com/Azure-Samples/APICenter-Reference) - API Center reference samples with various use cases including analyzer and portal experiences
 
 ### 3.2 Community
-
----
+* [Arize-ai/phoenix-on-azure](https://github.com/Arize-ai/phoenix-on-azure) - MLOps and LLMOps insights with zero-config observability
+* [pascalvanderheiden/ais-apim-openai](https://github.com/pascalvanderheiden/ais-apim-openai) - Azure API Management with Azure OpenAI
 
 ## 4. Contribute to Gallery
- * This repository is also associated with a [live website](https://aka.ms/awesome-azd) that makes azd-templates searchable and discoverable (by various filter tags).
-  * Read [this document](GALLERY.md) for an overview of how this is setup
-  * Use [this issue](https://github.com/Azure/awesome-azd/issues/new?assignees=gkulin&labels=new-contribution&template=%F0%9F%93%B2contribute-an-azd-template-.md&title=%5BNew+azd-template%5D+%3Cyour-template-name%3E) to contribute your template to the showcase.
+* This repository is also associated with a [live website](https://aka.ms/awesome-azd) that makes azd-templates searchable and discoverable (by various filter tags).
+* Read [this document](GALLERY.md) for an overview of how this is setup.
+* Submit a template for the gallery! Use [this issue](https://github.com/Azure/awesome-azd/issues/new?assignees=gkulin&labels=new-contribution&template=%F0%9F%93%B2contribute-an-azd-template-.md&title=%5BNew+azd-template%5D+%3Cyour-template-name%3E) to contribute your template to the showcase.
 
 ---
 

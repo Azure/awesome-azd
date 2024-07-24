@@ -1889,6 +1889,26 @@
     ]
   },
   {
+    "title": "Serverless Azure OpenAI Quick Start with LlamaIndex (Python)",
+    "description": "This sample shows how to quickly get started with LlamaIndex.ai on Azure. The application is hosted on Azure Container Apps. You can use it as a starting point for building more complex RAG applications.",
+    "preview": "./templates/images/llama-index-python-architecture-diagram.png",
+    "website": "https://github.com/run-llama/llama_index",
+    "author": "Marlene Mhangami",
+    "source": "https://github.com/Azure-Samples/llama-index-python",
+    "tags": [
+      "msft",      
+      "openai",
+      "gpt",
+      "bicep",
+      "ai",
+      "python",
+      "managedidentity",
+      "aca",
+      "ai",
+      "new"
+    ]
+  } ,
+  {
     "title": "Azure Serverless App with Angular and MSAL",
     "description": "Azure Serverless Template using Angular-standalone, Azure Functions App, Cosmos DB and APIM",
     "preview": "./templates/images/serverless-application-flow.png",

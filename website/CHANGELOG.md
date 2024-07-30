@@ -1,14 +1,10 @@
 # Release History
 
-## 0.5.0 (Unreleased)
+## 0.5.0 (2024-07-31)
 
 ### Features Added
 
-### Breaking Changes
-
-### Bugs Fixed
-
-### Other Changes
+- [[418]](https://github.com/Azure/awesome-azd/pull/418) Implement filter applied bar and "Clear All" button.
 
 ## 0.4.0 (2024-05-20)
 

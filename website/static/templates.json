@@ -1962,5 +1962,25 @@
       "aca",
       "new"
     ]
+  },
+  {
+    "title": "Azure OpenAI On Your Data with Python Streamlit",
+    "description": "Showcase the use of Azure OpenAI's native On Your Data feature and integrates it with Streamlit, a robust framework for developing web applications purely in Python. The goal is to create an MVP for RAG with the most streamlined architecture possible.",
+    "preview": "./templates/images/on-your-data-with-streamlit.png",
+    "website": "https://github.com/charliewei0716",
+    "author": "Charlie Wei",
+    "source": "https://github.com/charliewei0716/on-your-data-with-streamlit",
+    "tags": [
+      "community",
+      "openai",
+      "blobstorage",
+      "appservice",
+      "aisearch",
+      "bicep",
+      "python",
+      "ai",
+      "streamlit",
+      "new"
+    ]
   }
 ]

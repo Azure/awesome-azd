@@ -114,7 +114,8 @@ export type TagType =
   | "logicapps"
   | "msal"
   | "pinecone"
-  | "nextjs";
+  | "nextjs"
+  | "speechservice";
   
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -515,6 +516,13 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure AI Service",
     azureIcon: "./img/Azure-AI-Service.svg",
     url: "https://azure.microsoft.com/solutions/ai",
+    type: "Service",
+  },
+  speechservice: {
+    label: "Azure Speech Services",
+    description: "Template architecture uses Azure AI Speech Services",
+    azureIcon: "./img/Azure-Speech-Services.svg",
+    url: "https://azure.microsoft.com/en-us/products/ai-services/ai-speech",
     type: "Service",
   },
   apim: {

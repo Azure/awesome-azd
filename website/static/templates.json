@@ -615,7 +615,8 @@
       "popular",
       "blobstorage",
       "appservice",
-      "build2024"
+      "build2024",
+      "speechservice"
     ]
   },
   {
@@ -1714,7 +1715,8 @@
       "openai",
       "aca",
       "bicep",
-      "ai"
+      "ai",
+      "speechservice"
     ]
   },
   {
@@ -1835,9 +1837,9 @@
   },
   {
     "title": "GPT Video Analysis-In-A-Box",
-    "description": "This solution is part of the the AI-in-a-Box framework developed by the team of Microsoft Customer Engineers and Architects to accelerate the deployment of AI and ML solutions. Our goal is to simplify the adoption of AI technologies by providing ready-to-use accelerators that ensure quality, efficiency, and rapid deployment.",
-    "preview": "./templates/images/contoso-chat-architecture-diagram.png",
-    "website": "https://github.com/Azure-Samples/gpt-video-analysis-in-a-box",
+    "description": "The GPT Video Analysis in-a-Box project leverages Azure OpenAI GPT-4 Turbo with Vision and Azure Data Factory to provide a low-code solution for analyzing images and videos, making AI adoption simpler and more efficient. This solution, part of the AI-in-a-Box framework by Microsoft Customer Engineers and Architects, ensures quality, efficiency, and rapid deployment of AI and ML solutions across various industries.",
+    "preview": "./templates/images/gpt4-adf-architecture.jpg",
+    "website": "https://github.com/Azure/AI-in-a-box",
     "author": "AI-in-a-Box Team",
     "source": "https://github.com/Azure-Samples/gpt-video-analysis-in-a-box",
     "tags": [
@@ -1960,6 +1962,28 @@
       "nodejs",
       "ai",
       "aca",
+      "new"
+    ]
+  },
+  {
+    "title": "NLP to SQL In-A-Box",
+    "description": "NLP-SQL-in-a-Box is part of Microsoft's AI-in-a-Box framework, designed to simplify the deployment of AI and ML solutions. This project enables users to interact with SQL databases using natural language and speech, leveraging Azure OpenAI, Semantic Kernel, and Azure AI Speech Service to translate spoken queries into SQL statements, execute them, and deliver results audibly, ensuring an intuitive and user-friendly experience.",
+    "preview": "./templates/images/nlp_to_sql_architecture.png",
+    "website": "https://github.com/Azure/AI-in-a-box",
+    "author": "AI-in-a-Box Team",
+    "source": "https://github.com/Azure-Samples/nlp-sql-in-a-box",
+    "tags": [
+      "msft",      
+      "openai",
+      "gpt",
+      "bicep",
+      "ai",
+      "python",
+      "azuresql",
+      "speechservice",
+      "azureai",
+      "managedidentity",
+      "semantickernel",
       "new"
     ]
   },

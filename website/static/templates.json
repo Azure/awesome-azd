@@ -1966,6 +1966,25 @@
     ]
   },
   {
+    "title": "Azure OpenAI On Your Data with Python Streamlit",
+    "description": "Showcase the use of Azure OpenAI's native On Your Data feature and integrates it with Streamlit, a robust framework for developing web applications purely in Python. The goal is to create an MVP for RAG with the most streamlined architecture possible.",
+    "preview": "./templates/images/on-your-data-with-streamlit.png",
+    "website": "https://github.com/charliewei0716",
+    "author": "Charlie Wei",
+    "source": "https://github.com/charliewei0716/on-your-data-with-streamlit",
+    "tags": [
+      "community",
+      "openai",
+      "blobstorage",
+      "appservice",
+      "aisearch",
+      "bicep",
+      "python",
+      "ai",
+      "streamlit"
+    ]
+  },
+  {
     "title": "NLP to SQL In-A-Box",
     "description": "NLP-SQL-in-a-Box is part of Microsoft's AI-in-a-Box framework, designed to simplify the deployment of AI and ML solutions. This project enables users to interact with SQL databases using natural language and speech, leveraging Azure OpenAI, Semantic Kernel, and Azure AI Speech Service to translate spoken queries into SQL statements, execute them, and deliver results audibly, ensuring an intuitive and user-friendly experience.",
     "preview": "./templates/images/nlp_to_sql_architecture.png",

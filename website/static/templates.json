@@ -2000,5 +2000,21 @@
       "semantickernel",
       "new"
     ]
+  },
+  {
+    "title": "Blob Data Sharing with Azure Functions Flex Consumption",
+    "description": "Construct a high-performance, low-latency data sharing solution between different Azure Storage Accounts using Azure Functions Flex Consumption and the Copy Blob API.",
+    "preview": "./templates/images/blob-data-sharing.png",
+    "website": "https://github.com/charliewei0716",
+    "author": "Charlie Wei",
+    "source": "https://github.com/charliewei0716/blob-data-sharing",
+    "tags": [
+      "community",
+      "blobstorage",
+      "functions",
+      "bicep",
+      "python",
+      "new"
+    ]
   }
 ]

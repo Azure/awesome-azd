@@ -2000,5 +2000,50 @@
       "semantickernel",
       "new"
     ]
+  },
+  {
+    "title": "Blob Data Sharing with Azure Functions Flex Consumption",
+    "description": "Construct a high-performance, low-latency data sharing solution between different Azure Storage Accounts using Azure Functions Flex Consumption and the Copy Blob API.",
+    "preview": "./templates/images/blob-data-sharing.png",
+    "website": "https://github.com/charliewei0716",
+    "author": "Charlie Wei",
+    "source": "https://github.com/charliewei0716/blob-data-sharing",
+    "tags": [
+      "community",
+      "blobstorage",
+      "functions",
+      "bicep",
+      "python",
+      "new"
+    ]
+  },
+  {
+    "title": "RAG using Kernel Memory on Azure",
+    "description": "Kernel Memory (KM) is a multi-modal AI Service specialized in the efficient indexing of datasets through custom continuous data hybrid pipelines, with support for Retrieval Augmented Generation (RAG), synthetic memory, prompt engineering, and custom semantic memory processing.",
+    "preview": "./templates/images/kernel-memory.png",
+    "website": "https://microsoft.github.io/kernel-memory/",
+    "author": "Kernel Memory Team",
+    "source": "https://github.com/microsoft/kernel-memory",
+    "tags": [
+      "msft",
+      "openai",
+      "aca",
+      "ai",
+      "aisearch",
+      "azureai",
+      "bicep",
+      "managedidentity",
+      "blobstorage",
+      "dotnetCsharp",
+      "gpt",
+      "agw",
+      "semantickernel",
+      "azurestorage",
+      "appinsights",
+      "vnets",
+      "kernelmemory",
+      "promptengineering",
+      "new"
+    ]
   }
 ]

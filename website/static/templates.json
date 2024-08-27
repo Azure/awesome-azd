@@ -2000,5 +2000,37 @@
       "semantickernel",
       "new"
     ]
+  },
+  {
+    "title": "RAG using Kernel Memory on Azure",
+    "description": "Kernel Memory (KM) is a multi-modal AI Service specialized in the efficient indexing of datasets through custom continuous data hybrid pipelines, with support for Retrieval Augmented Generation (RAG), synthetic memory, prompt engineering, and custom semantic memory processing.",
+    "preview": "./templates/images/kernel-memory.png",
+    "website": "https://microsoft.github.io/kernel-memory/, https://github.com/microsoft/kernel-memory",
+    "author": "Kernel Memory Team",
+    "source": "https://github.com/microsoft/kernel-memory",
+    "tags": [
+      "aca",
+      "ai",
+      "aisearch",
+      "azureai",
+      "bicep",
+      "blobstorage",
+      "blobqueue",
+      "community",
+      "dotnetCsharp",
+      "gpt",
+      "intent",
+      "ISV",
+      "kernel-memory",
+      "memory",
+      "msft",
+      "multitenant",
+      "openai",
+      "prompt",
+      "RAG",
+      "SaaS",
+      "secure",
+      "startup"
+    ]
   }
 ]

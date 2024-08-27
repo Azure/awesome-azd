@@ -115,7 +115,9 @@ export type TagType =
   | "msal"
   | "pinecone"
   | "nextjs"
-  | "speechservice";
+  | "speechservice"
+  | "kernelmemory"
+  | "promptengineering";
   
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -358,6 +360,11 @@ export const Tags: { [type in TagType]: Tag } = {
   nextjs: {
     label: "Next.js",
     description: "Template architecture uses Next.js framework",
+    type: "Framework",
+  },
+  kernelmemory: {
+    label: "Kernel Memory",
+    description: "Template architecture uses Kernel Memory",
     type: "Framework",
   },
 
@@ -693,6 +700,11 @@ export const Tags: { [type in TagType]: Tag } = {
   platformengineering: {
     label: "Platform Engineering",
     description: "Template architecture involves Platform Engineering",
+    type: "Topic",
+  },
+  promptengineering: {
+    label: "Prompt Engineering",
+    description: "Template architecture involves Prompt Engineering",
     type: "Topic",
   },
 };

@@ -2045,5 +2045,22 @@
       "promptengineering",
       "new"
     ]
+  },
+  {
+    "title": "Pinecone Assistant sample app",
+    "description": "This sample app is designed to get you up and running using Pinecone Assistant quickly. It was developed by engineers at Pinecone to help you deploy your first Assistant-based application in minutes.",
+    "preview": "./templates/images/pinecone-assistant-architecture.png",
+    "website": "https://docs.pinecone.io/guides/assistant/understanding-assistant",
+    "author": "Pinecone Developer Relations Team",
+    "source": "https://github.com/pinecone-io/pinecone-assistant-azd",
+    "tags": [
+      "community",
+      "bicep",
+      "typescript",
+      "python",
+      "pinecone",
+      "rag",
+      "ai"
+    ]
   }
 ]

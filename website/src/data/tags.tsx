@@ -117,8 +117,9 @@ export type TagType =
   | "nextjs"
   | "speechservice"
   | "kernelmemory"
-  | "promptengineering";
-  
+  | "promptengineering"
+  | "rag";
+
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
 // One or more tags can be associated per card
@@ -365,6 +366,11 @@ export const Tags: { [type in TagType]: Tag } = {
   kernelmemory: {
     label: "Kernel Memory",
     description: "Template architecture uses Kernel Memory",
+    type: "Framework",
+  },
+  rag: {
+    label: "Retrieval-Augmented Generation",
+    description: "Template architecture uses Retrieval-Augmented Generation",
     type: "Framework",
   },
 

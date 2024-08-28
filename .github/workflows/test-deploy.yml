@@ -33,3 +33,4 @@ jobs:
           if grep -Rq "This page crashed|error" . ; then
             echo "Error: Found 'the page is crashed' message in site output."
             exit 1
+          fi

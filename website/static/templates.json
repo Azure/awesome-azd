@@ -1122,7 +1122,8 @@
       "webcomponents",
       "microfrontend",
       "msft",
-      "build2024"
+      "build2024",
+      "rag"
     ]
   },
   {
@@ -1551,7 +1552,8 @@
       "openai",
       "gpt",
       "ai",
-      "msft"
+      "msft",
+      "rag"
     ]
   },
   {
@@ -1586,7 +1588,8 @@
       "python",
       "bicep",
       "ai",
-      "community"
+      "community",
+      "rag"
     ]
   },
   {
@@ -1611,7 +1614,8 @@
       "langchain",
       "functions",
       "swa",
-      "azureai"
+      "azureai",
+      "rag"
     ]
   },
   {
@@ -1680,7 +1684,8 @@
       "aca",
       "bicep",
       "ai",
-      "azuredb-postgreSQL"
+      "azuredb-postgreSQL",
+      "rag"
     ]
   },
   {
@@ -1770,7 +1775,8 @@
       "bicep",
       "cosmosdb",
       "aisearch",
-      "ai"
+      "ai",
+      "rag"
     ]
   },
   {
@@ -1896,7 +1902,7 @@
     "author": "Marlene Mhangami",
     "source": "https://github.com/Azure-Samples/llama-index-python",
     "tags": [
-      "msft",      
+      "msft",
       "openai",
       "gpt",
       "bicep",
@@ -1904,7 +1910,8 @@
       "python",
       "managedidentity",
       "aca",
-      "ai"
+      "ai",
+      "rag"
     ]
   } ,
   {
@@ -1939,7 +1946,8 @@
       "aca",
       "nextjs",
       "typescript",
-      "ai"
+      "ai",
+      "rag"
     ]
   }, 
   {
@@ -1949,15 +1957,7 @@
     "website": "https://github.com/Azure-Samples/gpt-video-analysis-in-a-box",
     "author": "Wassim Chegham",
     "source": "https://github.com/Azure-Samples/llama-index-javascript",
-    "tags": [
-      "msft",
-      "openai",
-      "bicep",
-      "javascript",
-      "nodejs",
-      "ai",
-      "aca"
-    ]
+    "tags": ["msft", "openai", "bicep", "javascript", "nodejs", "ai", "aca", "rag"]
   },
   {
     "title": "Azure OpenAI On Your Data with Python Streamlit",
@@ -1976,7 +1976,8 @@
       "python",
       "ai",
       "streamlit",
-      "new"
+      "new",
+      "rag"
     ]
   },
   {
@@ -2043,7 +2044,8 @@
       "vnets",
       "kernelmemory",
       "promptengineering",
-      "new"
+      "new",
+      "rag"
     ]
   },
   {
@@ -2060,7 +2062,8 @@
       "python",
       "pinecone",
       "rag",
-      "ai"
+      "ai",
+      "new"
     ]
   }
 ]

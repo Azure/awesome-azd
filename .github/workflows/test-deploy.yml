@@ -27,3 +27,9 @@ jobs:
         run: |
           npm ci
           npm run build
+      - name: Check for crash/error message
+        working-directory: website
+        run: |
+          if grep -Rq "This page crashed|error" . ; then
+            echo "Error: Found 'the page is crashed' message in site output."
+            exit 1

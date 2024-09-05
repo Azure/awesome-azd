@@ -36,6 +36,7 @@ export type TagType =
   | "python"
   | "django"
   | "reactjs"
+  | "angular"
   | "nodejs"
   | "kubernetes"
   | "keda"
@@ -110,8 +111,15 @@ export type TagType =
   | "diagnosticsettings"
   | "managedidentity"
   | "serviceprincipal"
-  | "logicapps";
-  
+  | "logicapps"
+  | "msal"
+  | "pinecone"
+  | "nextjs"
+  | "speechservice"
+  | "kernelmemory"
+  | "promptengineering"
+  | "rag";
+
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
 // One or more tags can be associated per card
@@ -258,6 +266,11 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses GPT AI model",
     type: "Tools",
   },
+  msal: {
+    label: "Microsoft Authentication Library",
+    description: "Template architecture uses Microsoft Authentication Library",
+    type: "Tools",
+  },
 
   // ---- Infrastructure as Code
   bicep: {
@@ -280,6 +293,11 @@ export const Tags: { [type in TagType]: Tag } = {
   prometheus: {
     label: "Prometheus",
     description: "Template architecture uses Prometheus",
+    type: "Database",
+  },
+  pinecone: {
+    label: "Pinecone",
+    description: "Template architecture uses Pinecone",
     type: "Database",
   },
 
@@ -340,11 +358,31 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses LangChain framework",
     type: "Framework",
   },
+  nextjs: {
+    label: "Next.js",
+    description: "Template architecture uses Next.js framework",
+    type: "Framework",
+  },
+  kernelmemory: {
+    label: "Kernel Memory",
+    description: "Template architecture uses Kernel Memory",
+    type: "Framework",
+  },
+  rag: {
+    label: "Retrieval-Augmented Generation",
+    description: "Template architecture uses Retrieval-Augmented Generation",
+    type: "Framework",
+  },
 
   // ---- Platform
   kubernetes: {
     label: "Kubernetes",
     description: "Template architecture uses Kubernetes",
+    type: "Platform",
+  },
+  angular: {
+    label: "Angular",
+    description: "Template architecture uses Angular",
     type: "Platform",
   },
 
@@ -491,6 +529,13 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure AI Service",
     azureIcon: "./img/Azure-AI-Service.svg",
     url: "https://azure.microsoft.com/solutions/ai",
+    type: "Service",
+  },
+  speechservice: {
+    label: "Azure Speech Services",
+    description: "Template architecture uses Azure AI Speech Services",
+    azureIcon: "./img/Azure-Speech-Services.svg",
+    url: "https://azure.microsoft.com/en-us/products/ai-services/ai-speech",
     type: "Service",
   },
   apim: {
@@ -661,6 +706,11 @@ export const Tags: { [type in TagType]: Tag } = {
   platformengineering: {
     label: "Platform Engineering",
     description: "Template architecture involves Platform Engineering",
+    type: "Topic",
+  },
+  promptengineering: {
+    label: "Prompt Engineering",
+    description: "Template architecture involves Prompt Engineering",
     type: "Topic",
   },
 };

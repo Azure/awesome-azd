@@ -616,7 +616,8 @@
       "popular",
       "blobstorage",
       "appservice",
-      "aicollection"
+      "aicollection",
+      "speechservice"
     ]
   },
   {
@@ -1123,7 +1124,8 @@
       "webcomponents",
       "microfrontend",
       "msft",
-      "aicollection"
+      "aicollection",
+      "rag"
     ]
   },
   {
@@ -1552,7 +1554,8 @@
       "openai",
       "gpt",
       "ai",
-      "msft"
+      "msft",
+      "rag"
     ]
   },
   {
@@ -1587,7 +1590,8 @@
       "python",
       "bicep",
       "ai",
-      "community"
+      "community",
+      "rag"
     ]
   },
   {
@@ -1596,7 +1600,7 @@
     "preview": "./templates/images/serverless-chat-langchainjs.gif",
     "website": "https://github.com/glaucia86, https://github.com/sinedied",
     "author": "Glaucia Lemos, Yohan Lasorsa",
-    "source": "https://github.com/Azure-Samples/serverless-chat-langchainjs/",
+    "source": "https://github.com/Azure-Samples/serverless-chat-langchainjs",
     "tags": [
       "ai",
       "bicep",
@@ -1613,7 +1617,8 @@
       "functions",
       "swa",
       "azureai",
-      "aicollection"
+      "aicollection",
+      "rag"
     ]
   },
   {
@@ -1639,7 +1644,7 @@
     "website": "https://github.com/Azure/azure-dev",
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/azd-ai-starter",
-    "tags": ["bicep", "ai", "azureai", "openai", "msft", "new"]
+    "tags": ["bicep", "ai", "azureai", "openai", "msft"]
   },
   {
     "title": "Azure AI Studio Starter",
@@ -1648,7 +1653,7 @@
     "website": "https://github.com/Azure/azure-dev",
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/azd-aistudio-starter",
-    "tags": ["bicep", "ai", "azureai", "openai", "msft", "new"]
+    "tags": ["bicep", "ai", "azureai", "openai", "msft"]
   },
   {
     "title": "Simple Chat Application using Azure OpenAI (Python)",
@@ -1664,8 +1669,7 @@
       "openai",
       "aca",
       "bicep",
-      "ai",
-      "new"
+      "ai"
     ]
   },
   {
@@ -1684,7 +1688,7 @@
       "bicep",
       "ai",
       "azuredb-postgreSQL",
-      "new"
+      "rag"
     ]
   },
   {
@@ -1702,8 +1706,7 @@
       "aks",
       "terraform",
       "ai",
-      "aisearch",
-      "new"
+      "aisearch"
     ]
   },
   {
@@ -1721,7 +1724,7 @@
       "aca",
       "bicep",
       "ai",
-      "new"
+      "speechservice"
     ]
   },
   {
@@ -1738,8 +1741,7 @@
       "openai",
       "aistudio",
       "bicep",
-      "ai",
-      "new"
+      "ai"
     ]
   },
   {
@@ -1757,7 +1759,7 @@
       "aistudio",
       "bicep",
       "ai",
-      "new"
+      "pinecone"
     ]
   },
   {
@@ -1777,7 +1779,7 @@
       "cosmosdb",
       "aisearch",
       "ai",
-      "new"
+      "rag"
     ]
   },
   {
@@ -1797,8 +1799,7 @@
       "appinsights",
       "loganalytics",
       "diagnosticsettings",
-      "typescript",
-      "new"
+      "typescript"
     ]
   },
   {
@@ -1814,8 +1815,7 @@
       "apicenter",
       "swa",
       "serviceprincipal",
-      "typescript",
-      "new"
+      "typescript"
     ]
   },
   {
@@ -1841,15 +1841,14 @@
       "logicapps",
       "apim",
       "dotnetCsharp",
-      "typescript",
-      "new"
+      "typescript"
     ]
   },
   {
     "title": "GPT Video Analysis-In-A-Box",
-    "description": "This solution is part of the the AI-in-a-Box framework developed by the team of Microsoft Customer Engineers and Architects to accelerate the deployment of AI and ML solutions. Our goal is to simplify the adoption of AI technologies by providing ready-to-use accelerators that ensure quality, efficiency, and rapid deployment.",
-    "preview": "./templates/images/contoso-chat-architecture-diagram.png",
-    "website": "https://github.com/Azure-Samples/gpt-video-analysis-in-a-box",
+    "description": "The GPT Video Analysis in-a-Box project leverages Azure OpenAI GPT-4 Turbo with Vision and Azure Data Factory to provide a low-code solution for analyzing images and videos, making AI adoption simpler and more efficient. This solution, part of the AI-in-a-Box framework by Microsoft Customer Engineers and Architects, ensures quality, efficiency, and rapid deployment of AI and ML solutions across various industries.",
+    "preview": "./templates/images/gpt4-adf-architecture.jpg",
+    "website": "https://github.com/Azure/AI-in-a-box",
     "author": "AI-in-a-Box Team",
     "source": "https://github.com/Azure-Samples/gpt-video-analysis-in-a-box",
     "tags": [
@@ -1859,6 +1858,213 @@
       "cosmosdb",
       "azuredatafactory",
       "blobstorage",
+      "ai"
+    ]
+  },
+  {
+     "title": "Deploy Phoenix to Azure",
+    "description": "Phoenix provides MLOps and LLMOps insights at lightning speed with zero-config observability.",
+    "preview": "./templates/images/arize-phoenix.png",
+    "website": "https://github.com/Arize-ai",
+    "author": "Arize AI Team",
+    "source": "https://github.com/Arize-ai/phoenix-on-azure",
+    "tags": [
+      "community",
+      "bicep",
+      "python",
+      "aca",
+      "ai"
+     ]
+   },
+   {
+    "title": "Build a Copilot app using Azure Cosmos DB, Azure OpenAI Service and Azure App Service",
+    "description": "Build a copilot application with Azure OpenAI Service, Azure Cosmos DB for NoSQL vector database & Azure App Service.",
+    "preview": "./templates/images/cosmos-nosql-copilot.png",
+    "website": "https://github.com/AzureCosmosDB",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/AzureCosmosDB/cosmosdb-nosql-copilot",
+    "tags": [
+      "msft",      
+      "openai",
+      "gpt",
+      "cosmosdb",
+      "bicep",
+      "ai",
+      "dotnetCsharp",
+      "managedidentity",
+      "appservice",
+      "semantickernel",
+      "blazor"
+    ]
+  },
+  {
+    "title": "Serverless Azure OpenAI Quick Start with LlamaIndex (Python)",
+    "description": "This sample shows how to quickly get started with LlamaIndex.ai on Azure. The application is hosted on Azure Container Apps. You can use it as a starting point for building more complex RAG applications.",
+    "preview": "./templates/images/llama-index-python-architecture-diagram.png",
+    "website": "https://github.com/run-llama/llama_index",
+    "author": "Marlene Mhangami",
+    "source": "https://github.com/Azure-Samples/llama-index-python",
+    "tags": [
+      "msft",
+      "openai",
+      "gpt",
+      "bicep",
+      "ai",
+      "python",
+      "managedidentity",
+      "aca",
+      "ai",
+      "rag"
+    ]
+  },
+  {
+    "title": "Azure Serverless App with Angular and MSAL",
+    "description": "Azure Serverless Template using Angular-standalone, Azure Functions App, Cosmos DB and APIM",
+    "preview": "./templates/images/serverless-application-flow.png",
+    "website": "https://github.com/ryanninodizon",
+    "author": "Ryan Niño Dizon",
+    "source": "https://github.com/ryanninodizon/AzureServerlessApp-with-auth-for-dotnet-angular",
+    "tags": [
+      "apim",
+      "functions",
+      "msal",
+      "dotnetCsharp",
+      "cosmosdb",
+      "serverlessapi",
+      "angular",
+      "community"
+    ]
+  },
+  {
+    "title": "Pinecone RAG Demo",
+    "description": "This example application sets up an Azure container app with Next.js, linking to a Pinecone index and an OpenAI embedding model for storing and retrieving context for a RAG model.",
+    "preview": "./templates/images/pinecone-rag-demo-azd.png",
+    "website": "https://pinecone.io",
+    "author": "Pinecone Team",
+    "source": "https://github.com/pinecone-io/pinecone-rag-demo-azd",
+    "tags": [
+      "community",
+      "pinecone",
+      "bicep",
+      "aca",
+      "nextjs",
+      "typescript",
+      "ai",
+      "rag"
+    ]
+  }, 
+  {
+    "title": "Serverless Azure OpenAI Quick Start with LlamaIndex (JavaScript)",
+    "description": "This sample shows how to quickly get started with LlamaIndex.ai on Azure. The application is hosted on Azure Container Apps. You can use it as a starting point for building more complex RAG applications.",
+    "preview": "./templates/images/llama-index-javascript-architecture-diagram.png",
+    "website": "https://github.com/Azure-Samples/gpt-video-analysis-in-a-box",
+    "author": "Wassim Chegham",
+    "source": "https://github.com/Azure-Samples/llama-index-javascript",
+    "tags": ["msft", "openai", "bicep", "javascript", "nodejs", "ai", "aca", "rag"]
+  },
+  {
+    "title": "Azure OpenAI On Your Data with Python Streamlit",
+    "description": "Showcase the use of Azure OpenAI's native On Your Data feature and integrates it with Streamlit, a robust framework for developing web applications purely in Python. The goal is to create an MVP for RAG with the most streamlined architecture possible.",
+    "preview": "./templates/images/on-your-data-with-streamlit.png",
+    "website": "https://github.com/charliewei0716",
+    "author": "Charlie Wei",
+    "source": "https://github.com/charliewei0716/on-your-data-with-streamlit",
+    "tags": [
+      "community",
+      "openai",
+      "blobstorage",
+      "appservice",
+      "aisearch",
+      "bicep",
+      "python",
+      "ai",
+      "streamlit",
+      "new",
+      "rag"
+    ]
+  },
+  {
+    "title": "NLP to SQL In-A-Box",
+    "description": "NLP-SQL-in-a-Box is part of Microsoft's AI-in-a-Box framework, designed to simplify the deployment of AI and ML solutions. This project enables users to interact with SQL databases using natural language and speech, leveraging Azure OpenAI, Semantic Kernel, and Azure AI Speech Service to translate spoken queries into SQL statements, execute them, and deliver results audibly, ensuring an intuitive and user-friendly experience.",
+    "preview": "./templates/images/nlp_to_sql_architecture.png",
+    "website": "https://github.com/Azure/AI-in-a-box",
+    "author": "AI-in-a-Box Team",
+    "source": "https://github.com/Azure-Samples/nlp-sql-in-a-box",
+    "tags": [
+      "msft",      
+      "openai",
+      "gpt",
+      "bicep",
+      "ai",
+      "python",
+      "azuresql",
+      "speechservice",
+      "azureai",
+      "managedidentity",
+      "semantickernel",
+      "new"
+    ]
+  },
+  {
+    "title": "Blob Data Sharing with Azure Functions Flex Consumption",
+    "description": "Construct a high-performance, low-latency data sharing solution between different Azure Storage Accounts using Azure Functions Flex Consumption and the Copy Blob API.",
+    "preview": "./templates/images/blob-data-sharing.png",
+    "website": "https://github.com/charliewei0716",
+    "author": "Charlie Wei",
+    "source": "https://github.com/charliewei0716/blob-data-sharing",
+    "tags": [
+      "community",
+      "blobstorage",
+      "functions",
+      "bicep",
+      "python",
+      "new"
+    ]
+  },
+  {
+    "title": "RAG using Kernel Memory on Azure",
+    "description": "Kernel Memory (KM) is a multi-modal AI Service specialized in the efficient indexing of datasets through custom continuous data hybrid pipelines, with support for Retrieval Augmented Generation (RAG), synthetic memory, prompt engineering, and custom semantic memory processing.",
+    "preview": "./templates/images/kernel-memory.png",
+    "website": "https://microsoft.github.io/kernel-memory/",
+    "author": "Kernel Memory Team",
+    "source": "https://github.com/microsoft/kernel-memory",
+    "tags": [
+      "msft",
+      "openai",
+      "aca",
+      "ai",
+      "aisearch",
+      "azureai",
+      "bicep",
+      "managedidentity",
+      "blobstorage",
+      "dotnetCsharp",
+      "gpt",
+      "agw",
+      "semantickernel",
+      "azurestorage",
+      "appinsights",
+      "vnets",
+      "kernelmemory",
+      "promptengineering",
+      "new",
+      "rag"
+    ]
+  },
+  {
+    "title": "Pinecone Assistant sample app",
+    "description": "This sample app is designed to get you up and running using Pinecone Assistant quickly. It was developed by engineers at Pinecone to help you deploy your first Assistant-based application in minutes.",
+    "preview": "./templates/images/pinecone-assistant-architecture.png",
+    "website": "https://docs.pinecone.io/guides/assistant/understanding-assistant",
+    "author": "Pinecone Developer Relations Team",
+    "source": "https://github.com/pinecone-io/pinecone-assistant-azd",
+    "tags": [
+      "community",
+      "bicep",
+      "typescript",
+      "python",
+      "pinecone",
+      "rag",
       "ai",
       "new"
     ]

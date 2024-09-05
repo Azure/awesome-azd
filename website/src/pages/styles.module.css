@@ -134,15 +134,32 @@
 }
 
 .filterBadge {
-  color: var(--ifm-color-purple);
+  color: var(--ifm-color-purple-light) !important;
   cursor: pointer;
-  border: 1px solid #d2ccf8;
-  background: #f9f8fe;
+  border-color: #d2ccf8 !important;
+  background: #f9f8fe !important;
+}
+
+.filterAppliedBar {
+  padding-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.clearAll {
+  color: #6656d1;
+  cursor: pointer;
+}
+
+[data-theme="dark"] .clearAll {
+  color: #a79cf1;
+  cursor: pointer;
 }
 
 [data-theme="dark"] .filterBadge {
-  border: 1px solid #221d46;
-  background: #3f3682;
+  border-color: #221d46 !important;
+  background: #3f3682 !important;
 }
 
 @media screen and (max-width: 996px) {

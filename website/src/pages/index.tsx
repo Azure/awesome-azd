@@ -85,6 +85,7 @@ const App = () => {
           <ShowcaseCardPage
             setActiveTags={setActiveTags}
             selectedTags={selectedTags}
+            setSelectedCheckbox={setSelectedCheckbox}
             location={location}
             setSelectedTags={setSelectedTags}
             readSearchTags={readSearchTags}

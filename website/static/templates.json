@@ -1883,83 +1883,79 @@
   {
     "title": "LlamaIndex Python Chat App",
     "description": "A starting point for more complex Retrieval-Augmented-Generation (RAG) applications using LlamaIndex.ai and Python.",
-    "website": "",
-    "author": "Marlene",
+    "preview": "./templates/images/architecture-diagram-llama-index-python.png",
+    "website": "https://github.com/marlenezw",
+    "author": "Marlene Mhangami",
     "source": "https://github.com/Azure-Samples/llama-index-python",
     "tags": [
       "python",
-      "gpt35turbo",
-      "chat",
+      "gpt",
+      "ai",
       "managedidentity",
       "aca",
       "openai",
-      "llama",
-      "azureopenai",
-      "meta",
       "aicollection"
     ]
   },
   {
     "title": "Azure OpenAI Chat Frontend",
     "description": "Features a Chat-GPT-like user interface, including additional capabilities to debug responses, restyle, revisit history and reset the chat.",
+    "preview": "./templates/images/azure-openai-chat-frontend-architecture.png",
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/azure-openai-chat-frontend",
     "tags": [
       "javascript",
       "typescript",
-      "chat",
-      "swa",
-      "aicollection"
+      "aicollection",
+      "openai",
+      "blobstorage",
+      "aisearch"
     ]
   },
   {
     "title": "Serverless Azure OpenAI Assistant Quick Start with Function Calling",
     "description": "Allows you to create AI assistants tailored to your needs via custom instructions and tools like code interpreter and custom functions.",
+    "preview": "./templates/images/architecture-diagram-assistant-javascript.png",
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/azure-openai-assistant-javascript",
     "tags": [
       "javascript",
-      "gpt35turbo",
-      "agent",
+      "gpt",
       "swa",
       "functions",
       "openai",
       "managedidentity",
-      "azureopenai",
+      "openai",
       "aicollection"
     ]
   },
   {
     "title": "LlamaIndex TypeScript Chat App",
     "description": "A starting point for more complex Retrieval-Augmented-Generation (RAG) applications using LlamaIndex.ai and JavaScript.",
-    "website": "",
+    "preview": "./templates/images/architecture-diagram-llama-index-javascript.png",
+    "website": "https://github.com/manekinekko",
     "author": "Wassim Chegham",
     "source": "https://github.com/Azure-Samples/llama-index-javascript",
     "tags": [
       "typescript",
-      "gpt35turbo",
-      "chat",
+      "gpt",
       "managedidentity",
       "aca",
       "openai",
-      "llama",
-      "azureopenai",
-      "meta",
       "aicollection"
     ]
   },
   {
     "title": "Chat + Vision using Azure OpenAI",
     "description": "A demonstration of chatting with uploaded images using OpenAI vision models like gpt-4o.",
+    "preview": "./templates/images/openai-chat-vision-quickstart-diagram.png",
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/openai-chat-vision-quickstart",
     "tags": [
-      "featured",
       "python",
-      "chat",
       "managedidentity",
       "aca",
       "azureai",
@@ -1969,13 +1965,12 @@
   {
     "title": "Pinecone Canopy",
     "description": "An open-source Retrieval Augmented Generation (RAG) framework and context engine built on top of the Pinecone vector database.",
+    "preview": "./templates/images/canopy-rag_flow.png",
     "website": "https://github.com/cwaddingham",
     "author": "Cory Waddingham",
     "source": "https://github.com/cwaddingham/canopy/tree/create-azd-template",
     "tags": [
-      "featured",
       "python",
-      "chat",
       "pinecone",
       "aca",
       "aicollection"

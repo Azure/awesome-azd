@@ -1863,40 +1863,8 @@
       "new"
     ]
   },
-  {
-    "title": "Deploy Phoenix to Azure",
-    "description": "Phoenix provides MLOps and LLMOps insights at lightning speed with zero-config observability.",
-    "preview": "./templates/images/arize-phoenix.png",
-    "website": "https://github.com/Arize-ai",
-    "author": "Arize AI Team",
-    "source": "https://github.com/Arize-ai/phoenix-on-azure",
-    "tags": [
-      "community",
-      "bicep",
-      "python",
-      "aca",
-      "ai",
-      "new",
-      "aicollection"
-    ]
-  },
-  {
-    "title": "LlamaIndex Python Chat App",
-    "description": "A starting point for more complex Retrieval-Augmented-Generation (RAG) applications using LlamaIndex.ai and Python.",
-    "preview": "./templates/images/architecture-diagram-llama-index-python.png",
-    "website": "https://github.com/marlenezw",
-    "author": "Marlene Mhangami",
-    "source": "https://github.com/Azure-Samples/llama-index-python",
-    "tags": [
-      "python",
-      "gpt",
-      "ai",
-      "managedidentity",
-      "aca",
-      "openai",
-      "aicollection"
-    ]
-  },
+  
+  
   {
     "title": "Azure OpenAI Chat Frontend",
     "description": "Features a Chat-GPT-like user interface, including additional capabilities to debug responses, restyle, revisit history and reset the chat.",
@@ -1927,22 +1895,6 @@
       "functions",
       "openai",
       "managedidentity",
-      "openai",
-      "aicollection"
-    ]
-  },
-  {
-    "title": "LlamaIndex TypeScript Chat App",
-    "description": "A starting point for more complex Retrieval-Augmented-Generation (RAG) applications using LlamaIndex.ai and JavaScript.",
-    "preview": "./templates/images/architecture-diagram-llama-index-javascript.png",
-    "website": "https://github.com/manekinekko",
-    "author": "Wassim Chegham",
-    "source": "https://github.com/Azure-Samples/llama-index-javascript",
-    "tags": [
-      "typescript",
-      "gpt",
-      "managedidentity",
-      "aca",
       "openai",
       "aicollection"
     ]

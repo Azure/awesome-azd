@@ -1873,7 +1873,8 @@
       "bicep",
       "python",
       "aca",
-      "ai"
+      "ai",
+      "aicollection"
      ]
    },
    {
@@ -1914,7 +1915,8 @@
       "managedidentity",
       "aca",
       "ai",
-      "rag"
+      "rag",
+      "aicollection"
     ]
   },
   {
@@ -1960,7 +1962,17 @@
     "website": "https://github.com/Azure-Samples/gpt-video-analysis-in-a-box",
     "author": "Wassim Chegham",
     "source": "https://github.com/Azure-Samples/llama-index-javascript",
-    "tags": ["msft", "openai", "bicep", "javascript", "nodejs", "ai", "aca", "rag"]
+    "tags": [
+      "msft", 
+      "openai", 
+      "bicep", 
+      "javascript", 
+      "nodejs", 
+      "ai", 
+      "aca", 
+      "rag",
+      "aicollection"
+    ]
   },
   {
     "title": "Azure OpenAI On Your Data with Python Streamlit",

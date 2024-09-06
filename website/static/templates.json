@@ -2116,7 +2116,8 @@
       "managedidentity",
       "openai",
       "aicollection",
-      "msft"
+      "msft",
+      "new"
     ]
   },
   {
@@ -2132,7 +2133,8 @@
       "aca",
       "azureai",
       "aicollection",
-      "msft"
+      "msft",
+      "new"
     ]
   },
   {
@@ -2147,7 +2149,8 @@
       "pinecone",
       "aca",
       "aicollection",
-      "community"
+      "community",
+      "new"
     ]
   }
 ]

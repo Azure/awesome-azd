@@ -2096,7 +2096,8 @@
       "aicollection",
       "openai",
       "blobstorage",
-      "aisearch"
+      "aisearch",
+      "msft"
     ]
   },
   {
@@ -2114,7 +2115,8 @@
       "openai",
       "managedidentity",
       "openai",
-      "aicollection"
+      "aicollection",
+      "msft"
     ]
   },
   {
@@ -2129,7 +2131,8 @@
       "managedidentity",
       "aca",
       "azureai",
-      "aicollection"
+      "aicollection",
+      "msft"
     ]
   },
   {
@@ -2143,7 +2146,8 @@
       "python",
       "pinecone",
       "aca",
-      "aicollection"
+      "aicollection",
+      "community"
     ]
   }
 ]

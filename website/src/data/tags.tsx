@@ -104,7 +104,7 @@ export type TagType =
   | "rubyonrails"
   | "serverlessapi"
   | "langchain"
-  | "build2024"
+  | "aicollection"
   | "aistudio"
   | "apicenter"
   | "eventgrid"
@@ -150,9 +150,9 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Popular",
     description: "This tag is used for popular templates.",
   },
-  build2024: {
-    label: "Build 2024 Collection",
-    description: "This tag is used for templates included in the Microsoft Build 2024 conference collection.",
+  aicollection: {
+    label: "AI Collection",
+    description: "This tag is used for templates included in the Microsoft-curated AI collection.",
   },
 
   //============  FOR REGULAR USE

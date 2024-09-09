@@ -11,9 +11,12 @@
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids"
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "test": "jest"
   },
   "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.4",
     "@docusaurus/core": "^3.3.2",
     "@docusaurus/module-type-aliases": "^3.3.2",
     "@docusaurus/plugin-client-redirects": "^3.3.2",
@@ -23,11 +26,14 @@
     "@fluentui/react-components": "^9.42.0",
     "@mdx-js/react": "^3.0.0",
     "@types/react-dom": "^18.2.17",
+    "babel-jest": "^29.7.0",
     "clsx": "^2.0.0",
+    "jest": "^29.7.0",
     "prism-react-renderer": "^2.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-popper": "^2.3.0",
+    "ts-jest": "^29.2.5",
     "typescript": "^5.3.2",
     "webpack": "^5.94.0"
   },

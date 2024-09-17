@@ -104,7 +104,7 @@ export type TagType =
   | "rubyonrails"
   | "serverlessapi"
   | "langchain"
-  | "build2024"
+  | "aicollection"
   | "aistudio"
   | "apicenter"
   | "eventgrid"
@@ -115,8 +115,13 @@ export type TagType =
   | "msal"
   | "pinecone"
   | "nextjs"
-  | "speechservice";
-  
+  | "speechservice"
+  | "kernelmemory"
+  | "promptengineering"
+  | "rag"
+  | "featureExperimentation"
+  | "featuremanagement";
+
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
 // One or more tags can be associated per card
@@ -147,9 +152,9 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Popular",
     description: "This tag is used for popular templates.",
   },
-  build2024: {
-    label: "Build 2024 Collection",
-    description: "This tag is used for templates included in the Microsoft Build 2024 conference collection.",
+  aicollection: {
+    label: "AI Collection",
+    description: "This tag is used for templates included in the Microsoft-curated AI collection.",
   },
 
   //============  FOR REGULAR USE
@@ -268,6 +273,11 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Microsoft Authentication Library",
     type: "Tools",
   },
+  featuremanagement: {
+    label: "Microsoft Feature Management",
+    description: "Template architecture uses Microsoft Feature Management",
+    type: "Tools",
+  },
 
   // ---- Infrastructure as Code
   bicep: {
@@ -358,6 +368,16 @@ export const Tags: { [type in TagType]: Tag } = {
   nextjs: {
     label: "Next.js",
     description: "Template architecture uses Next.js framework",
+    type: "Framework",
+  },
+  kernelmemory: {
+    label: "Kernel Memory",
+    description: "Template architecture uses Kernel Memory",
+    type: "Framework",
+  },
+  rag: {
+    label: "Retrieval-Augmented Generation",
+    description: "Template architecture uses Retrieval-Augmented Generation",
     type: "Framework",
   },
 
@@ -693,6 +713,16 @@ export const Tags: { [type in TagType]: Tag } = {
   platformengineering: {
     label: "Platform Engineering",
     description: "Template architecture involves Platform Engineering",
+    type: "Topic",
+  },
+  promptengineering: {
+    label: "Prompt Engineering",
+    description: "Template architecture involves Prompt Engineering",
+    type: "Topic",
+  },
+  featureExperimentation: {
+    label: "Feature Experimentation",
+    description: "Template architecture involves Feature Experimentation",
     type: "Topic",
   },
 };

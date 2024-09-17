@@ -402,7 +402,8 @@
       "rediscache",
       "ai",
       "msft",
-      "popular"
+      "popular",
+      "aicollection"
     ]
   },
   {
@@ -615,7 +616,7 @@
       "popular",
       "blobstorage",
       "appservice",
-      "build2024",
+      "aicollection",
       "speechservice"
     ]
   },
@@ -1082,7 +1083,8 @@
       "semantickernel",
       "reactjs",
       "bicep",
-      "msft"
+      "msft",
+      "aicollection"
     ]
   },
   {
@@ -1122,7 +1124,8 @@
       "webcomponents",
       "microfrontend",
       "msft",
-      "build2024"
+      "aicollection",
+      "rag"
     ]
   },
   {
@@ -1551,7 +1554,8 @@
       "openai",
       "gpt",
       "ai",
-      "msft"
+      "msft",
+      "rag"
     ]
   },
   {
@@ -1586,7 +1590,8 @@
       "python",
       "bicep",
       "ai",
-      "community"
+      "community",
+      "rag"
     ]
   },
   {
@@ -1611,7 +1616,9 @@
       "langchain",
       "functions",
       "swa",
-      "azureai"
+      "azureai",
+      "aicollection",
+      "rag"
     ]
   },
   {
@@ -1657,7 +1664,7 @@
     "source": "https://github.com/Azure-Samples/openai-chat-app-quickstart",
     "tags": [
       "msft",
-      "build2024",
+      "aicollection",
       "python",
       "openai",
       "aca",
@@ -1674,13 +1681,14 @@
     "source": "https://github.com/Azure-Samples/rag-postgres-openai-python",
     "tags": [
       "msft",
-      "build2024",
+      "aicollection",
       "python",
       "openai",
       "aca",
       "bicep",
       "ai",
-      "azuredb-postgreSQL"
+      "azuredb-postgreSQL",
+      "rag"
     ]
   },
   {
@@ -1692,7 +1700,7 @@
     "source": "https://github.com/Azure-Samples/agent-openai-python-prompty",
     "tags": [
       "msft",
-      "build2024",
+      "aicollection",
       "python",
       "openai",
       "aks",
@@ -1710,7 +1718,7 @@
     "source": "https://github.com/Azure-Samples/summarization-openai-python-promptflow",
     "tags": [
       "msft",
-      "build2024",
+      "aicollection",
       "python",
       "openai",
       "aca",
@@ -1728,7 +1736,7 @@
     "source": "https://github.com/Azure-Samples/agent-python-openai-prompty-langchain",
     "tags": [
       "msft",
-      "build2024",
+      "aicollection",
       "python",
       "openai",
       "aistudio",
@@ -1745,7 +1753,7 @@
     "source": "https://github.com/Azure-Samples/agent-openai-python-prompty-langchain-pinecone",
     "tags": [
       "msft",
-      "build2024",
+      "aicollection",
       "python",
       "openai",
       "aistudio",
@@ -1763,14 +1771,15 @@
     "source": "https://github.com/Azure-Samples/contoso-chat",
     "tags": [
       "msft",
-      "build2024",
+      "aicollection",
       "python",
       "openai",
       "aistudio",
       "bicep",
       "cosmosdb",
       "aisearch",
-      "ai"
+      "ai",
+      "rag"
     ]
   },
   {
@@ -1865,7 +1874,7 @@
       "python",
       "aca",
       "ai",
-      "new"
+      "aicollection"
      ]
    },
    {
@@ -1886,8 +1895,7 @@
       "managedidentity",
       "appservice",
       "semantickernel",
-      "blazor",
-      "new"
+      "blazor"
     ]
   },
   {
@@ -1898,7 +1906,7 @@
     "author": "Marlene Mhangami",
     "source": "https://github.com/Azure-Samples/llama-index-python",
     "tags": [
-      "msft",      
+      "msft",
       "openai",
       "gpt",
       "bicep",
@@ -1907,9 +1915,10 @@
       "managedidentity",
       "aca",
       "ai",
-      "new"
+      "rag",
+      "aicollection"
     ]
-  } ,
+  },
   {
     "title": "Azure Serverless App with Angular and MSAL",
     "description": "Azure Serverless Template using Angular-standalone, Azure Functions App, Cosmos DB and APIM",
@@ -1925,7 +1934,6 @@
       "cosmosdb",
       "serverlessapi",
       "angular",
-      "new",
       "community"
     ]
   },
@@ -1944,7 +1952,7 @@
       "nextjs",
       "typescript",
       "ai",
-      "new"
+      "rag"
     ]
   }, 
   {
@@ -1955,14 +1963,36 @@
     "author": "Wassim Chegham",
     "source": "https://github.com/Azure-Samples/llama-index-javascript",
     "tags": [
-      "msft",
+      "msft", 
+      "openai", 
+      "bicep", 
+      "javascript", 
+      "nodejs", 
+      "ai", 
+      "aca", 
+      "rag",
+      "aicollection"
+    ]
+  },
+  {
+    "title": "Azure OpenAI On Your Data with Python Streamlit",
+    "description": "Showcase the use of Azure OpenAI's native On Your Data feature and integrates it with Streamlit, a robust framework for developing web applications purely in Python. The goal is to create an MVP for RAG with the most streamlined architecture possible.",
+    "preview": "./templates/images/on-your-data-with-streamlit.png",
+    "website": "https://github.com/charliewei0716",
+    "author": "Charlie Wei",
+    "source": "https://github.com/charliewei0716/on-your-data-with-streamlit",
+    "tags": [
+      "community",
       "openai",
+      "blobstorage",
+      "appservice",
+      "aisearch",
       "bicep",
-      "javascript",
-      "nodejs",
+      "python",
       "ai",
-      "aca",
-      "new"
+      "streamlit",
+      "new",
+      "rag"
     ]
   },
   {
@@ -1988,6 +2018,142 @@
     ]
   },
   {
+    "title": "Blob Data Sharing with Azure Functions Flex Consumption",
+    "description": "Construct a high-performance, low-latency data sharing solution between different Azure Storage Accounts using Azure Functions Flex Consumption and the Copy Blob API.",
+    "preview": "./templates/images/blob-data-sharing.png",
+    "website": "https://github.com/charliewei0716",
+    "author": "Charlie Wei",
+    "source": "https://github.com/charliewei0716/blob-data-sharing",
+    "tags": [
+      "community",
+      "blobstorage",
+      "functions",
+      "bicep",
+      "python",
+      "new"
+    ]
+  },
+  {
+    "title": "RAG using Kernel Memory on Azure",
+    "description": "Kernel Memory (KM) is a multi-modal AI Service specialized in the efficient indexing of datasets through custom continuous data hybrid pipelines, with support for Retrieval Augmented Generation (RAG), synthetic memory, prompt engineering, and custom semantic memory processing.",
+    "preview": "./templates/images/kernel-memory.png",
+    "website": "https://microsoft.github.io/kernel-memory/",
+    "author": "Kernel Memory Team",
+    "source": "https://github.com/microsoft/kernel-memory",
+    "tags": [
+      "msft",
+      "openai",
+      "aca",
+      "ai",
+      "aisearch",
+      "azureai",
+      "bicep",
+      "managedidentity",
+      "blobstorage",
+      "dotnetCsharp",
+      "gpt",
+      "agw",
+      "semantickernel",
+      "azurestorage",
+      "appinsights",
+      "vnets",
+      "kernelmemory",
+      "promptengineering",
+      "new",
+      "rag"
+    ]
+  },
+  {
+    "title": "Pinecone Assistant sample app",
+    "description": "This sample app is designed to get you up and running using Pinecone Assistant quickly. It was developed by engineers at Pinecone to help you deploy your first Assistant-based application in minutes.",
+    "preview": "./templates/images/pinecone-assistant-architecture.png",
+    "website": "https://docs.pinecone.io/guides/assistant/understanding-assistant",
+    "author": "Pinecone Developer Relations Team",
+    "source": "https://github.com/pinecone-io/pinecone-assistant-azd",
+    "tags": [
+      "community",
+      "bicep",
+      "typescript",
+      "python",
+      "pinecone",
+      "rag",
+      "ai",
+      "new"
+    ]
+  },
+  
+  
+  {
+    "title": "Azure OpenAI Chat Frontend",
+    "description": "Features a Chat-GPT-like user interface, including additional capabilities to debug responses, restyle, revisit history and reset the chat.",
+    "preview": "./templates/images/azure-openai-chat-frontend-architecture.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/azure-openai-chat-frontend",
+    "tags": [
+      "javascript",
+      "typescript",
+      "aicollection",
+      "openai",
+      "blobstorage",
+      "aisearch",
+      "msft"
+    ]
+  },
+  {
+    "title": "Serverless Azure OpenAI Assistant Quick Start with Function Calling",
+    "description": "Allows you to create AI assistants tailored to your needs via custom instructions and tools like code interpreter and custom functions.",
+    "preview": "./templates/images/architecture-diagram-assistant-javascript.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/azure-openai-assistant-javascript",
+    "tags": [
+      "javascript",
+      "gpt",
+      "swa",
+      "functions",
+      "openai",
+      "managedidentity",
+      "openai",
+      "aicollection",
+      "msft",
+      "new"
+    ]
+  },
+  {
+    "title": "Chat + Vision using Azure OpenAI",
+    "description": "A demonstration of chatting with uploaded images using OpenAI vision models like gpt-4o.",
+    "preview": "./templates/images/openai-chat-vision-quickstart-diagram.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/openai-chat-vision-quickstart",
+    "tags": [
+      "python",
+      "managedidentity",
+      "aca",
+      "azureai",
+      "aicollection",
+      "msft",
+      "new"
+    ]
+  },
+  {
+    "title": "Pinecone Canopy",
+    "description": "An open-source Retrieval Augmented Generation (RAG) framework and context engine built on top of the Pinecone vector database.",
+    "preview": "./templates/images/canopy-rag_flow.png",
+    "website": "https://github.com/cwaddingham",
+    "author": "Cory Waddingham",
+    "source": "https://github.com/cwaddingham/canopy/tree/create-azd-template",
+    "tags": [
+      "python",
+      "pinecone",
+      "aca",
+      "aicollection",
+      "community",
+      "new"
+    ]
+  },
+  {
     "title": "Quote of the Day: Feature Experimentation in .NET with Azure App Configuration",
     "description": "An ASP.NET Core web app that demonstrates A/B testing using Azure App Configuration and the Microsoft Feature Management library.",
     "preview": "./templates/images/quote-of-the-day-diagram.png",
@@ -2000,7 +2166,7 @@
       "appinsights",
       "appservice",
       "azureappconfig",
-      "experimentation",
+      "featureExperimentation",
       "bicep",
       "featuremanagement",
       "new"

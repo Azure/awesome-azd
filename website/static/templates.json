@@ -2081,8 +2081,6 @@
       "new"
     ]
   },
-  
-  
   {
     "title": "Azure OpenAI Chat Frontend",
     "description": "Features a Chat-GPT-like user interface, including additional capabilities to debug responses, restyle, revisit history and reset the chat.",
@@ -2154,7 +2152,7 @@
     ]
   },
   {
-    "title": "Quote of the Day: Feature Experimentation in .NET with Azure App Configuration",
+     "title": "Quote of the Day: Feature Experimentation in .NET with Azure App Configuration",
     "description": "An ASP.NET Core web app that demonstrates A/B testing using Azure App Configuration and the Microsoft Feature Management library.",
     "preview": "./templates/images/quote-of-the-day-diagram.png",
     "website": "https://github.com/Azure/AppConfiguration",
@@ -2170,6 +2168,6 @@
       "bicep",
       "featuremanagement",
       "new"
-    ]
+      ]
   }
 ]

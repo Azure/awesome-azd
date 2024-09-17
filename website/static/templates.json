@@ -2164,7 +2164,7 @@
       "appinsights",
       "appservice",
       "azureappconfig",
-      "experimentation",
+      "featureExperimentation",
       "bicep",
       "featuremanagement",
       "new"

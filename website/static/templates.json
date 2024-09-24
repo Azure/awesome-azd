@@ -2153,7 +2153,7 @@
       "new"
     ]
   },
-    {
+  {
     "title": "RAG using LangChain with Azure OpenAI and Azure Cosmos DB for MongoDB vCore",
     "description": "A Python sample for implementing retrieval augmented generation using Azure Open AI to generate embeddings, Azure Cosmos DB for MongoDB vCore to perform vector search and LangChain. Deployed to Azure App service using Azure Developer CLI (azd).",
     "preview": "./templates/images/rag-langchain-mongodb-vcore.png",

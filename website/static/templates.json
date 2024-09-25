@@ -2081,8 +2081,6 @@
       "new"
     ]
   },
-  
-  
   {
     "title": "Azure OpenAI Chat Frontend",
     "description": "Features a Chat-GPT-like user interface, including additional capabilities to debug responses, restyle, revisit history and reset the chat.",
@@ -2152,6 +2150,25 @@
       "community",
       "new"
     ]
+  },
+  {
+    "title": "Quote of the Day: Feature Experimentation in .NET with Azure App Configuration",
+    "description": "An ASP.NET Core web app that demonstrates A/B testing using Azure App Configuration and the Microsoft Feature Management library.",
+    "preview": "./templates/images/quote-of-the-day-diagram.png",
+    "website": "https://github.com/Azure/AppConfiguration",
+    "author": "Azure App Configuration",
+    "source": "https://github.com/Azure-Samples/quote-of-the-day-dotnet",
+    "tags": [
+      "msft",
+      "dotnetCsharp",
+      "appinsights",
+      "appservice",
+      "azureappconfig",
+      "featureExperimentation",
+      "bicep",
+      "featuremanagement",
+      "new"
+      ]
   },
   {
     "title": "RAG using LangChain with Azure OpenAI and Azure Cosmos DB for MongoDB vCore",

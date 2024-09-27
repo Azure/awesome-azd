@@ -2169,5 +2169,28 @@
       "featuremanagement",
       "new"
       ]
+  },
+  {
+    "title": "AI Studio-In-A-Box",
+    "description": "The AI Studio in-a-Box project provides a quickstart solution for deploying AI and ML solutions using Azure AI Studio to simplify AI adoption with centralized security, compliance controls, and support for various AI workloads. This solution, part of the AI-in-a-Box framework by Microsoft Customer Engineers and Architects, ensures quality, efficiency, and rapid deployment of AI and ML solutions across various industries.",
+    "preview": "./templates/images/ai-studio-in-a-box.png",
+    "website": "https://github.com/Azure/AI-in-a-box",
+    "author": "AI-in-a-Box Team",
+    "source": "https://github.com/azure-samples/ai-studio-in-a-box",
+    "tags": [
+      "msft",
+      "bicep",
+      "azureai",
+      "aisearch",
+      "openai",
+      "vnets",
+      "cosmosdb",
+      "serviceprincipal",
+      "keyvault",
+      "azureai",
+      "blobstorage",
+      "ai"
+    ]
   }
+
 ]

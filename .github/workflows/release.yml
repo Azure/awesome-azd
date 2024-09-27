@@ -24,6 +24,10 @@ jobs:
         run: |
           npm ci
           npm run build
+      - name: Test
+        working-directory: website
+        run: |
+          npm test
 
       # Popular action to deploy to GitHub Pages:
       # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus

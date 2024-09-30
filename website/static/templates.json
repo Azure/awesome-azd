@@ -2179,6 +2179,7 @@
     "source": "https://github.com/Azure-Samples/doc-intelligence-in-a-box",
     "tags": [
       "msft",
+      "new",
       "bicep",
       "cosmosdb",
       "functions",

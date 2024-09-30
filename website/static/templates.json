@@ -2184,7 +2184,8 @@
       "cosmosdb",
       "bicep",
       "managedidentity",
-      "new"
+      "new",
+      "msft"
     ] 
   }
 ]

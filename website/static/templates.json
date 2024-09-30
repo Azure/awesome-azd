@@ -2152,7 +2152,7 @@
     ]
   },
   {
-     "title": "Quote of the Day: Feature Experimentation in .NET with Azure App Configuration",
+    "title": "Quote of the Day: Feature Experimentation in .NET with Azure App Configuration",
     "description": "An ASP.NET Core web app that demonstrates A/B testing using Azure App Configuration and the Microsoft Feature Management library.",
     "preview": "./templates/images/quote-of-the-day-diagram.png",
     "website": "https://github.com/Azure/AppConfiguration",
@@ -2169,5 +2169,23 @@
       "featuremanagement",
       "new"
       ]
+  },
+  {
+    "title": "Hello AZD",
+    "description": "A demo template that provides a getting started and welcome experience for the Azure Developer CLI. Run the template to provision and deploy resources to Azure and experiment with a working sample app.",
+    "preview": "./templates/images/hello-azd.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/hello-azd",
+    "tags": [
+      "dotnetCsharp",
+      "blobstorage",
+      "aca",
+      "cosmosdb",
+      "bicep",
+      "managedidentity",
+      "new",
+      "msft"
+    ] 
   }
 ]

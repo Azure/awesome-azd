@@ -2171,5 +2171,26 @@
       "new",
       "msft"
     ] 
+  },
+  {
+    "title": "Azure OpenAI keyless deployment",
+    "description": "Example Azure OpenAI deployment and RBAC role for your user account for keyless access",
+    "preview": "./templates/images/keyless.png",
+    "website": "https://github.com/sinedied",
+    "author": "Yohan Lasorsa",
+    "source": "https://github.com/Azure-Samples/azure-openai-keyless-js",
+    "tags": [
+      "ai",
+      "bicep",
+      "gpt",
+      "serverlessapi",
+      "javascript",
+      "nodejs",
+      "openai",
+      "typescript",
+      "msft",
+      "azureai",
+      "aicollection"
+    ]
   }
 ]

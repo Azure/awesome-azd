@@ -2155,6 +2155,31 @@
       ]
   },
   {
+    "title": "Azure OpenAI secure UI starter",
+    "description": "Reusable OpenAI secure UI and infrastructure for AI Chat with Azure",
+    "preview": "./templates/images/openai-secure-ui-js.gif",
+    "website": "https://github.com/sinedied",
+    "author": "Yohan Lasorsa",
+    "source": "https://github.com/Azure-Samples/openai-secure-ui-js",
+    "tags": [
+      "ai",
+      "bicep",
+      "gpt",
+      "serverlessapi",
+      "javascript",
+      "nodejs",
+      "openai",
+      "typescript",
+      "webcomponents",
+      "msft",
+      "functions",
+      "swa",
+      "azureai",
+      "aicollection",
+      "security"
+    ]
+  },
+  {
     "title": "Hello AZD",
     "description": "A demo template that provides a getting started and welcome experience for the Azure Developer CLI. Run the template to provision and deploy resources to Azure and experiment with a working sample app.",
     "preview": "./templates/images/hello-azd.png",

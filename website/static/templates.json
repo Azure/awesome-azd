@@ -2191,7 +2191,9 @@
       "msft",
       "azureai",
       "aicollection",
-      "new"
+      "new",
+      "keyless",
+      "security"
     ]
   }
 ]

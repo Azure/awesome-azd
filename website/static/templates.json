@@ -312,7 +312,7 @@
       "bicep",
       "java",
       "typescript",
-      "appservice",
+      "aca",
       "cosmosdb",
       "keyvault",
       "monitor",
@@ -990,6 +990,7 @@
     "author": "Pierre Malarme",
     "source": "https://github.com/Azure-Samples/app-templates-java-openai-springapps",
     "tags": [
+      "java",
       "spring",
       "openai",
       "ai",
@@ -1076,6 +1077,7 @@
     "tags": [
       "java",
       "spring",
+      "aca",
       "openai",
       "ai",
       "appservice",

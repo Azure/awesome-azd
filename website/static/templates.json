@@ -2202,7 +2202,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd",
-    "tags": ["new", "functions", "flex", "dotnetCsharp", "http", "entra-id", "vnet", "appinsights", "msft", "bicep"]
+    "tags": ["new", "functions", "dotnetCsharp", "http", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
   },
   {
     "title": "Azure Functions Python HTTP Trigger using Azure Developer CLI",
@@ -2211,7 +2211,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-python-http-azd",
-    "tags": ["new", "functions", "flex", "python", "http", "entra-id", "vnet", "appinsights", "msft", "bicep"]
+    "tags": ["new", "functions", "python", "http", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
   },
   {
     "title": "Azure Functions JavaScript HTTP Trigger using Azure Developer CLI",
@@ -2220,7 +2220,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-javascript-azd",
-    "tags": ["new", "functions", "flex", "javascript", "http", "entra-id", "vnet", "appinsights", "msft", "bicep"]
+    "tags": ["new", "functions", "javascript", "http", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
   },
   {
     "title": "Azure Functions TypeScript HTTP Trigger using Azure Developer CLI",
@@ -2229,7 +2229,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-typescript-azd",
-    "tags": ["new", "functions", "flex", "typescript", "http", "entra-id", "vnet", "appinsights", "msft", "bicep"]
+    "tags": ["new", "functions", "typescript", "http", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
   },
   {
     "title": "Azure Functions Java HTTP Trigger using Azure Developer CLI",
@@ -2238,7 +2238,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/azure-functions-java-flex-consumption-azd",
-    "tags": ["new", "functions", "flex", "java", "http", "entra-id", "vnet", "appinsights", "msft", "bicep"]
+    "tags": ["new", "functions", "java", "http", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
   },
   {
     "title": "Azure Functions PowerShell HTTP Trigger using Azure Developer CLI",
@@ -2247,7 +2247,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-powershell-azd",
-    "tags": ["new", "functions", "flex", "powershell", "http", "entra-id", "vnet", "appinsights", "msft", "bicep"]
+    "tags": ["new", "functions", "powershell", "http", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
   },
   {
     "title": "Chat + Enterprise data with Azure OpenAI and Azure Functions (C#)",
@@ -2256,6 +2256,6 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/Azure-Functions-OpenAI-Demo",
-    "tags": ["new", "functions", "flex", "dotnetCsharp", "entra-id", "vnet", "appinsights", "openai", "ai", "chat", "rag", "skills", "msft", "bicep"]
+    "tags": ["new", "functions", "dotnetCsharp", "managedidentity", "vnets", "appinsights", "openai", "azureai", "ai", "rag", "azurebot", "msft", "bicep"]
   }
 ]

@@ -2194,5 +2194,68 @@
       "langchain",
       "new"
     ]
+  },
+  {
+    "title": "Azure Functions C# HTTP Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions HTTP trigger quickstart written in C# and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd",
+    "tags": ["functions", "flex", "dotnetCsharp", "http", "entra-id", "vnet", "appinsights", "msft", "bicep"]
+  },
+  {
+    "title": "Azure Functions Python HTTP Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions HTTP trigger quickstart written in Python and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-python-http-azd",
+    "tags": ["functions", "flex", "python", "http", "entra-id", "vnet", "appinsights", "msft", "bicep"]
+  },
+  {
+    "title": "Azure Functions JavaScript HTTP Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions HTTP trigger quickstart written in JavaScript and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-javascript-azd",
+    "tags": ["functions", "flex", "javascript", "http", "entra-id", "vnet", "appinsights", "msft", "bicep"]
+  },
+  {
+    "title": "Azure Functions TypeScript HTTP Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions HTTP trigger quickstart written in TypeScript and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-typescript-azd",
+    "tags": ["functions", "flex", "typescript", "http", "entra-id", "vnet", "appinsights", "msft", "bicep"]
+  },
+  {
+    "title": "Azure Functions Java HTTP Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions HTTP trigger quickstart written in Java and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (AZD). This sample uses managed identity and a virtual network to insure it's secure by default.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/azure-functions-java-flex-consumption-azd",
+    "tags": ["functions", "flex", "java", "http", "entra-id", "vnet", "appinsights", "msft", "bicep"]
+  },
+  {
+    "title": "Azure Functions PowerShell HTTP Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions HTTP trigger quickstart written in PowerShell and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (AZD). This sample uses managed identity and a virtual network to insure it's secure by default.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-powershell-azd",
+    "tags": ["functions", "flex", "powershell", "http", "entra-id", "vnet", "appinsights", "msft", "bicep"]
+  },
+  {
+    "title": "Chat + Enterprise data with Azure OpenAI and Azure Functions (C#)",
+    "description": "This C# demo is based on azure-search-openai-demo and uses a static web app for the frontend and Azure functions for the backend API's. This solution uses the Azure Functions OpenAI triggers and binding extension for the backend capabilities.",
+    "preview": "./templates/images/functions-OpenAI-chat-enterprise.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/Azure-Functions-OpenAI-Demo",
+    "tags": ["functions", "flex", "dotnetCsharp", "entra-id", "vnet", "appinsights", "openai", "ai", "chat", "rag", "skills", "msft"]
   }
 ]

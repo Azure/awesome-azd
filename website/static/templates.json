@@ -312,7 +312,7 @@
       "bicep",
       "java",
       "typescript",
-      "appservice",
+      "aca",
       "cosmosdb",
       "keyvault",
       "monitor",
@@ -990,6 +990,7 @@
     "author": "Pierre Malarme",
     "source": "https://github.com/Azure-Samples/app-templates-java-openai-springapps",
     "tags": [
+      "java",
       "spring",
       "openai",
       "ai",
@@ -1076,6 +1077,7 @@
     "tags": [
       "java",
       "spring",
+      "aca",
       "openai",
       "ai",
       "appservice",
@@ -2193,6 +2195,26 @@
       "aicollection",
       "new",
       "managedidentity"
+  },
+  {
+    "title": "RAG using LangChain with Azure OpenAI and Azure Cosmos DB for MongoDB vCore",
+    "description": "A Python sample for implementing retrieval augmented generation using Azure Open AI to generate embeddings, Azure Cosmos DB for MongoDB vCore to perform vector search and LangChain. Deployed to Azure App service using Azure Developer CLI (azd).",
+    "preview": "./templates/images/rag-langchain-mongodb-vcore.png",
+    "website": "https://github.com/john0isaac",
+    "author": "John Aziz",
+    "source": "https://github.com/Azure-Samples/Cosmic-Food-RAG-app",
+    "tags": [
+      "openai",
+      "gpt",
+      "cosmosdb",
+      "mongodb",
+      "python",
+      "bicep",
+      "ai",
+      "community",
+      "rag",
+      "langchain",
+      "new"
     ]
   }
 ]

@@ -312,7 +312,7 @@
       "bicep",
       "java",
       "typescript",
-      "appservice",
+      "aca",
       "cosmosdb",
       "keyvault",
       "monitor",
@@ -990,6 +990,7 @@
     "author": "Pierre Malarme",
     "source": "https://github.com/Azure-Samples/app-templates-java-openai-springapps",
     "tags": [
+      "java",
       "spring",
       "openai",
       "ai",
@@ -1076,6 +1077,7 @@
     "tags": [
       "java",
       "spring",
+      "aca",
       "openai",
       "ai",
       "appservice",
@@ -2068,7 +2070,7 @@
     "description": "This sample app is designed to get you up and running using Pinecone Assistant quickly. It was developed by engineers at Pinecone to help you deploy your first Assistant-based application in minutes.",
     "preview": "./templates/images/pinecone-assistant-architecture.png",
     "website": "https://docs.pinecone.io/guides/assistant/understanding-assistant",
-    "author": "Pinecone Developer Relations Team",
+    "author": "Pinecone Team",
     "source": "https://github.com/pinecone-io/pinecone-assistant-azd",
     "tags": [
       "community",
@@ -2136,23 +2138,7 @@
     ]
   },
   {
-    "title": "Pinecone Canopy",
-    "description": "An open-source Retrieval Augmented Generation (RAG) framework and context engine built on top of the Pinecone vector database.",
-    "preview": "./templates/images/canopy-rag_flow.png",
-    "website": "https://github.com/cwaddingham",
-    "author": "Cory Waddingham",
-    "source": "https://github.com/cwaddingham/canopy/tree/create-azd-template",
-    "tags": [
-      "python",
-      "pinecone",
-      "aca",
-      "aicollection",
-      "community",
-      "new"
-    ]
-  },
-  {
-     "title": "Quote of the Day: Feature Experimentation in .NET with Azure App Configuration",
+    "title": "Quote of the Day: Feature Experimentation in .NET with Azure App Configuration",
     "description": "An ASP.NET Core web app that demonstrates A/B testing using Azure App Configuration and the Microsoft Feature Management library.",
     "preview": "./templates/images/quote-of-the-day-diagram.png",
     "website": "https://github.com/Azure/AppConfiguration",
@@ -2169,6 +2155,45 @@
       "featuremanagement",
       "new"
       ]
+  },
+  {
+    "title": "Hello AZD",
+    "description": "A demo template that provides a getting started and welcome experience for the Azure Developer CLI. Run the template to provision and deploy resources to Azure and experiment with a working sample app.",
+    "preview": "./templates/images/hello-azd.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/hello-azd",
+    "tags": [
+      "dotnetCsharp",
+      "blobstorage",
+      "aca",
+      "cosmosdb",
+      "bicep",
+      "managedidentity",
+      "new",
+      "msft"
+    ] 
+  },
+  {
+    "title": "RAG using LangChain with Azure OpenAI and Azure Cosmos DB for MongoDB vCore",
+    "description": "A Python sample for implementing retrieval augmented generation using Azure Open AI to generate embeddings, Azure Cosmos DB for MongoDB vCore to perform vector search and LangChain. Deployed to Azure App service using Azure Developer CLI (azd).",
+    "preview": "./templates/images/rag-langchain-mongodb-vcore.png",
+    "website": "https://github.com/john0isaac",
+    "author": "John Aziz",
+    "source": "https://github.com/Azure-Samples/Cosmic-Food-RAG-app",
+    "tags": [
+      "openai",
+      "gpt",
+      "cosmosdb",
+      "mongodb",
+      "python",
+      "bicep",
+      "ai",
+      "community",
+      "rag",
+      "langchain",
+      "new"
+    ]
   },
   {
     "title": "Doc Intelligence-In-A-Box",
@@ -2189,6 +2214,6 @@
       "azureai",
       "blobstorage",
       "ai"
-    ]
+      ]
   }
 ]

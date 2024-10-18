@@ -2441,6 +2441,27 @@
     ]
   },
   {
+    "title": "Doc Intelligence-In-A-Box",
+    "description": "The Doc Intelligence in-a-Box project leverages Azure AI Document Intelligence to extract data from PDF forms and store the data in a Azure Cosmos DB. This solution, part of the AI-in-a-Box framework by Microsoft Customer Engineers and Architects, ensures quality, efficiency, and rapid deployment of AI and ML solutions across various industries.",
+    "preview": "./templates/images/doc-intelligence-in-a-box.png",
+    "website": "https://github.com/Azure/AI-in-a-box",
+    "author": "AI-in-a-Box Team",
+    "source": "https://github.com/Azure-Samples/doc-intelligence-in-a-box",
+    "tags": [
+      "msft",
+      "new",
+      "bicep",
+      "cosmosdb",
+      "functions",
+      "serviceprincipal",
+      "logicapps",
+      "keyvault",
+      "azureai",
+      "blobstorage",
+      "ai"
+      ]
+  },
+  {
     "title": "Azure OpenAI keyless deployment",
     "description": "Example Azure OpenAI deployment and RBAC role for your user account for keyless access",
     "preview": "./templates/images/keyless.png",

@@ -27,3 +27,7 @@ jobs:
         run: |
           npm ci
           npm run build
+      - name: Run Tests
+        working-directory: website
+        run: |
+          npm test

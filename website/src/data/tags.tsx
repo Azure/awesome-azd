@@ -118,7 +118,9 @@ export type TagType =
   | "speechservice"
   | "kernelmemory"
   | "promptengineering"
-  | "rag";
+  | "rag"
+  | "featureExperimentation"
+  | "featuremanagement";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -269,6 +271,11 @@ export const Tags: { [type in TagType]: Tag } = {
   msal: {
     label: "Microsoft Authentication Library",
     description: "Template architecture uses Microsoft Authentication Library",
+    type: "Tools",
+  },
+  featuremanagement: {
+    label: "Microsoft Feature Management",
+    description: "Template architecture uses Microsoft Feature Management",
     type: "Tools",
   },
 
@@ -711,6 +718,11 @@ export const Tags: { [type in TagType]: Tag } = {
   promptengineering: {
     label: "Prompt Engineering",
     description: "Template architecture involves Prompt Engineering",
+    type: "Topic",
+  },
+  featureExperimentation: {
+    label: "Feature Experimentation",
+    description: "Template architecture involves Feature Experimentation",
     type: "Topic",
   },
 };

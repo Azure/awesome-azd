@@ -2202,7 +2202,7 @@
     "website": "https://github.com/azure-samples/cosmos-db-nosql-dotnet-quickstart",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-nosql-dotnet-quickstart",
-    "tags": ["cosmosdb", "dotnetCsharp", "aca", "managedidentity", "bicep", "msft"]
+    "tags": ["cosmosdb", "dotnetCsharp", "aca", "managedidentity", "bicep", "msft", "new"]
   },
   {
     "title": "Azure Cosmos DB for NoSQL Quickstart - Python",
@@ -2211,7 +2211,7 @@
     "website": "https://github.com/azure-samples/cosmos-db-nosql-python-quickstart",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-nosql-python-quickstart",
-    "tags": ["cosmosdb", "python", "aca", "managedidentity", "bicep", "msft"]
+    "tags": ["cosmosdb", "python", "aca", "managedidentity", "bicep", "msft", "new"]
   },
   {
     "title": "Azure Cosmos DB for NoSQL Quickstart - Node.js",
@@ -2220,7 +2220,7 @@
     "website": "https://github.com/azure-samples/cosmos-db-nosql-nodejs-quickstart",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-nosql-nodejs-quickstart",
-    "tags": ["cosmosdb", "nodejs", "aca", "managedidentity", "bicep", "msft"]
+    "tags": ["cosmosdb", "nodejs", "aca", "managedidentity", "bicep", "msft", "new"]
   },
   {
     "title": "Azure Cosmos DB for NoSQL Quickstart - Java",
@@ -2229,7 +2229,7 @@
     "website": "https://github.com/azure-samples/cosmos-db-nosql-java-quickstart",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-nosql-java-quickstart",
-    "tags": ["cosmosdb", "java", "aca", "managedidentity", "bicep", "msft"]
+    "tags": ["cosmosdb", "java", "aca", "managedidentity", "bicep", "msft", "new"]
   },
   {
     "title": "Azure Cosmos DB for NoSQL Quickstart - Go",
@@ -2238,6 +2238,6 @@
     "website": "https://github.com/azure-samples/cosmos-db-nosql-go-quickstart",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-nosql-go-quickstart",
-    "tags": ["cosmosdb", "go", "aca", "managedidentity", "bicep", "msft"]
+    "tags": ["cosmosdb", "go", "aca", "managedidentity", "bicep", "msft", "new"]
   }
 ]

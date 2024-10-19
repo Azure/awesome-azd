@@ -2238,7 +2238,6 @@
       "python",
       "ai",
       "streamlit",
-      "new",
       "rag"
     ]
   },
@@ -2260,8 +2259,7 @@
       "speechservice",
       "azureai",
       "managedidentity",
-      "semantickernel",
-      "new"
+      "semantickernel"
     ]
   },
   {
@@ -2276,8 +2274,7 @@
       "blobstorage",
       "functions",
       "bicep",
-      "python",
-      "new"
+      "python"
     ]
   },
   {
@@ -2306,7 +2303,6 @@
       "vnets",
       "kernelmemory",
       "promptengineering",
-      "new",
       "rag"
     ]
   },
@@ -2324,8 +2320,7 @@
       "python",
       "pinecone",
       "rag",
-      "ai",
-      "new"
+      "ai"
     ]
   },
   {
@@ -2361,8 +2356,7 @@
       "managedidentity",
       "openai",
       "aicollection",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -2378,8 +2372,8 @@
       "aca",
       "azureai",
       "aicollection",
-      "msft",
-      "new"
+      "msft"
+      
     ]
   },
   {
@@ -2397,8 +2391,24 @@
       "azureappconfig",
       "featureExperimentation",
       "bicep",
-      "featuremanagement",
-      "new"
+      "featuremanagement"
+    ]
+  },
+  {
+    "title": "Hello AZD",
+    "description": "A demo template that provides a getting started and welcome experience for the Azure Developer CLI. Run the template to provision and deploy resources to Azure and experiment with a working sample app.",
+    "preview": "./templates/images/hello-azd.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/hello-azd",
+    "tags": [
+      "dotnetCsharp",
+      "blobstorage",
+      "aca",
+      "cosmosdb",
+      "bicep",
+      "managedidentity",
+      "msft"
     ]
   },
   {
@@ -2425,24 +2435,6 @@
       "aicollection",
       "managedidentity",
       "new"
-    ]
-  },
-  {
-    "title": "Hello AZD",
-    "description": "A demo template that provides a getting started and welcome experience for the Azure Developer CLI. Run the template to provision and deploy resources to Azure and experiment with a working sample app.",
-    "preview": "./templates/images/hello-azd.png",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Azure Content Team",
-    "source": "https://github.com/Azure-Samples/hello-azd",
-    "tags": [
-      "dotnetCsharp",
-      "blobstorage",
-      "aca",
-      "cosmosdb",
-      "bicep",
-      "managedidentity",
-      "new",
-      "msft"
     ]
   },
   {

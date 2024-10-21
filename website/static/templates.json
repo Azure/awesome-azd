@@ -2202,6 +2202,6 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/Durable-Functions-Order-Processing",
-    "tags": ["new", "azure", "azd", "azd-templates", "azure-functions", "azure-function", "durable-functions", "csharp", "dotnet", "managedidentity","bicep", "msft"]
+    "tags": ["new", "functions", "dotnetCsharp", "managedidentity","bicep", "msft"]
   }
 ]

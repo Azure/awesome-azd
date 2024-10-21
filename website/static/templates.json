@@ -2501,5 +2501,14 @@
       "new",
       "managedidentity"
     ]
+  },
+  {
+    "title": "Order processing workflow with Durable Functions",
+    "description": "This repository contains the implementation of an order processing workflow with Durable Functions in C#. The sample is deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd) and is configured with managed identity as the authentication mechanism.",
+    "preview": "./templates/images/order-processing-durable-functions.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/Durable-Functions-Order-Processing",
+    "tags": ["new", "functions", "dotnetCsharp", "managedidentity","bicep", "msft"]
   }
 ]

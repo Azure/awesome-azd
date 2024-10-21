@@ -6,7 +6,10 @@
     "website": "https://github.com/Azure/azure-dev",
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/azd-starter-bicep",
-    "tags": ["bicep", "msft"]
+    "tags": [
+      "bicep",
+      "msft"
+    ]
   },
   {
     "title": "Starter - Terraform",
@@ -15,7 +18,10 @@
     "website": "https://github.com/Azure/azure-dev",
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/azd-starter-terraform",
-    "tags": ["terraform", "msft"]
+    "tags": [
+      "terraform",
+      "msft"
+    ]
   },
   {
     "title": "WordPress with Azure Container Apps",
@@ -64,7 +70,13 @@
     "website": "https://rockpaperorleans.net/",
     "author": "Brady Gaster",
     "source": "https://github.com/bradygaster/RockPaperOrleans",
-    "tags": ["dotnetCsharp", "cosmosdb", "aca", "bicep", "community"]
+    "tags": [
+      "dotnetCsharp",
+      "cosmosdb",
+      "aca",
+      "bicep",
+      "community"
+    ]
   },
   {
     "title": "Scalable Django on Azure App Service",
@@ -413,7 +425,16 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/chatgpt-quickstart",
-    "tags": ["bicep", "python", "openai", "gpt", "ai", "flask", "aca", "msft"]
+    "tags": [
+      "bicep",
+      "python",
+      "openai",
+      "gpt",
+      "ai",
+      "flask",
+      "aca",
+      "msft"
+    ]
   },
   {
     "title": "Spring ChatGPT Application using Azure OpenAI on Azure Spring Apps",
@@ -480,7 +501,14 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/azure-django-postgres-aca",
-    "tags": ["python", "django", "aca", "azuredb-postgreSQL", "bicep", "msft"]
+    "tags": [
+      "python",
+      "django",
+      "aca",
+      "azuredb-postgreSQL",
+      "bicep",
+      "msft"
+    ]
   },
   {
     "title": "Python (Flask) Web App with PostgreSQL in VNet",
@@ -507,7 +535,14 @@
     "website": "https://github.com/Azure/azure-dev",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/pubsub-dapr-csharp-servicebus",
-    "tags": ["bicep", "dotnetCsharp", "aca", "dapr", "servicebus", "msft"]
+    "tags": [
+      "bicep",
+      "dotnetCsharp",
+      "aca",
+      "dapr",
+      "servicebus",
+      "msft"
+    ]
   },
   {
     "title": "Microservices App - Dapr PubSub Python ACA ServiceBus",
@@ -516,7 +551,14 @@
     "website": "https://github.com/Azure/azure-dev",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/pubsub-dapr-python-servicebus",
-    "tags": ["bicep", "python", "aca", "dapr", "servicebus", "msft"]
+    "tags": [
+      "bicep",
+      "python",
+      "aca",
+      "dapr",
+      "servicebus",
+      "msft"
+    ]
   },
   {
     "title": "Microservices App - Dapr PubSub Node.js ACA ServiceBus",
@@ -542,7 +584,13 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/bindings-dapr-csharp-cron-postgres",
-    "tags": ["dapr", "dotnetCsharp", "azuredb-postgreSQL", "aca", "msft"]
+    "tags": [
+      "dapr",
+      "dotnetCsharp",
+      "azuredb-postgreSQL",
+      "aca",
+      "msft"
+    ]
   },
   {
     "title": "Microservices App - Dapr Bindings Cron Python ACA PostgreSQL",
@@ -551,7 +599,13 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/bindings-dapr-python-cron-postgres",
-    "tags": ["dapr", "python", "azuredb-postgreSQL", "aca", "msft"]
+    "tags": [
+      "dapr",
+      "python",
+      "azuredb-postgreSQL",
+      "aca",
+      "msft"
+    ]
   },
   {
     "title": "Microservices App - Dapr Bindings Cron Node.js ACA PostgreSQL",
@@ -576,7 +630,12 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/svc-invoke-dapr-nodejs",
-    "tags": ["dapr", "nodejs", "aca", "msft"]
+    "tags": [
+      "dapr",
+      "nodejs",
+      "aca",
+      "msft"
+    ]
   },
   {
     "title": "Microservices App - Dapr Service Invoke Python ACA",
@@ -585,7 +644,12 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/svc-invoke-dapr-python",
-    "tags": ["dapr", "python", "aca", "msft"]
+    "tags": [
+      "dapr",
+      "python",
+      "aca",
+      "msft"
+    ]
   },
   {
     "title": "Microservices App - Dapr Service Invoke C# ACA",
@@ -594,7 +658,12 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/svc-invoke-dapr-csharp",
-    "tags": ["dapr", "dotnetCsharp", "aca", "msft"]
+    "tags": [
+      "dapr",
+      "dotnetCsharp",
+      "aca",
+      "msft"
+    ]
   },
   {
     "title": "ChatGPT + Enterprise data with Azure OpenAI and AI Search",
@@ -627,7 +696,12 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/fastapi-on-azure-functions",
-    "tags": ["python", "fastapi", "functions", "msft"]
+    "tags": [
+      "python",
+      "fastapi",
+      "functions",
+      "msft"
+    ]
   },
   {
     "title": "Spring PetClinic - Java Spring MySQL",
@@ -712,7 +786,12 @@
     "website": "https://github.com/tonybaloney",
     "author": "Anthony Shaw",
     "source": "https://github.com/tonybaloney/simple-flask-azd",
-    "tags": ["python", "appservice", "flask", "community"]
+    "tags": [
+      "python",
+      "appservice",
+      "flask",
+      "community"
+    ]
   },
   {
     "title": "Azure Functions - Text Summarization using AI Cognitive Language Service (C#-Isolated)",
@@ -721,7 +800,14 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/function-csharp-ai-textsummarize",
-    "tags": ["functions", "aisearch", "dotnetCsharp", "azureai", "ai", "msft"]
+    "tags": [
+      "functions",
+      "aisearch",
+      "dotnetCsharp",
+      "azureai",
+      "ai",
+      "msft"
+    ]
   },
   {
     "title": "Azure Functions - Text Summarization using AI Cognitive Language Service (Python v2 Function)",
@@ -730,7 +816,14 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/function-python-ai-textsummarize",
-    "tags": ["functions", "aisearch", "python", "azureai", "ai", "msft"]
+    "tags": [
+      "functions",
+      "aisearch",
+      "python",
+      "azureai",
+      "ai",
+      "msft"
+    ]
   },
   {
     "title": "Flask Container with CDN",
@@ -739,7 +832,14 @@
     "website": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/pamelafox/flask-gallery-container-app",
-    "tags": ["python", "flask", "webapps", "aca", "azurecdn", "community"]
+    "tags": [
+      "python",
+      "flask",
+      "webapps",
+      "aca",
+      "azurecdn",
+      "community"
+    ]
   },
   {
     "title": "Flask Surveys Container App",
@@ -765,7 +865,13 @@
     "website": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/pamelafox/simple-flask-api-container",
-    "tags": ["python", "bicep", "aca", "flask", "community"]
+    "tags": [
+      "python",
+      "bicep",
+      "aca",
+      "flask",
+      "community"
+    ]
   },
   {
     "title": "FastAPI with API Management",
@@ -774,7 +880,13 @@
     "website": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/pamelafox/fastapi-azure-function-apim",
-    "tags": ["python", "fastapi", "functions", "apim", "community"]
+    "tags": [
+      "python",
+      "fastapi",
+      "functions",
+      "apim",
+      "community"
+    ]
   },
   {
     "title": "Flask Chart API on ACA and CDN",
@@ -783,7 +895,14 @@
     "website": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/pamelafox/flask-charts-api-container-app",
-    "tags": ["python", "flask", "webapps", "aca", "azurecdn", "community"]
+    "tags": [
+      "python",
+      "flask",
+      "webapps",
+      "aca",
+      "azurecdn",
+      "community"
+    ]
   },
   {
     "title": "Static Maps API Function and CDN",
@@ -864,7 +983,13 @@
     "website": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/pamelafox/simple-fastapi-container",
-    "tags": ["python", "fastapi", "bicep", "aca", "community"]
+    "tags": [
+      "python",
+      "fastapi",
+      "bicep",
+      "aca",
+      "community"
+    ]
   },
   {
     "title": "Containerized Apps on Azure Kubernetes Service",
@@ -926,7 +1051,13 @@
     "website": "https://github.com/gordonby",
     "author": "Gordon Byers",
     "source": "https://github.com/Gordonby/servicebus-dotnet-functionapp",
-    "tags": ["dotnetCsharp", "functions", "bicep", "servicebus", "community"]
+    "tags": [
+      "dotnetCsharp",
+      "functions",
+      "bicep",
+      "servicebus",
+      "community"
+    ]
   },
   {
     "title": "FastAPI, htmx, TailwindCSS on App Service",
@@ -952,7 +1083,12 @@
     "website": "https://github.com/MiguelElGallo",
     "author": "Miguel P. Z.",
     "source": "https://github.com/MiguelElGallo/simple-streamlit-azd",
-    "tags": ["python", "appservice", "streamlit", "community"]
+    "tags": [
+      "python",
+      "appservice",
+      "streamlit",
+      "community"
+    ]
   },
   {
     "title": "Azure API Management with Azure OpenAI",
@@ -980,7 +1116,12 @@
     "website": "https://github.com/jsburckhardt",
     "author": "Juan Burckhardt",
     "source": "https://github.com/jsburckhardt/docusaurus-aca",
-    "tags": ["javascript", "aca", "bicep", "community"]
+    "tags": [
+      "javascript",
+      "aca",
+      "bicep",
+      "community"
+    ]
   },
   {
     "title": "Java Spring Apps with Azure OpenAI",
@@ -1065,7 +1206,12 @@
     "website": "https://github.com/lopezleandro03",
     "author": "Leandro Lopez",
     "source": "https://github.com/lopezleandro03/azd-devcenter",
-    "tags": ["terraform", "platformengineering", "ade", "community"]
+    "tags": [
+      "terraform",
+      "platformengineering",
+      "ade",
+      "community"
+    ]
   },
   {
     "title": "Java - ChatGPT + Enterprise data with Azure OpenAI and AI Search",
@@ -1137,7 +1283,12 @@
     "website": "https://github.com/Azure/azure-dev",
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/azd-deployment-environments",
-    "tags": ["bicep", "platformengineering", "ade", "msft"]
+    "tags": [
+      "bicep",
+      "platformengineering",
+      "ade",
+      "msft"
+    ]
   },
   {
     "title": ".NET eShop on Web App with Redis Cache",
@@ -1161,7 +1312,12 @@
     "website": "https://github.com/CawaMS",
     "author": "Catherine Wang",
     "source": "https://github.com/CawaMS/GameLeaderboard",
-    "tags": ["aca", "dotnetCsharp", "rediscache", "community"]
+    "tags": [
+      "aca",
+      "dotnetCsharp",
+      "rediscache",
+      "community"
+    ]
   },
   {
     "title": ".NET Redis OutputCache with Azure OpenAI",
@@ -1170,7 +1326,14 @@
     "website": "https://github.com/CawaMS",
     "author": "Catherine Wang",
     "source": "https://github.com/CawaMS/OutputCacheOpenAI",
-    "tags": ["aca", "dotnetCsharp", "rediscache", "ai", "openai", "community"]
+    "tags": [
+      "aca",
+      "dotnetCsharp",
+      "rediscache",
+      "ai",
+      "openai",
+      "community"
+    ]
   },
   {
     "title": "Azure OpenAI Conference Session Recommender",
@@ -1200,7 +1363,12 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Mahmut Canga",
     "source": "https://github.com/Azure-Samples/pubsub-dapr-aks-java",
-    "tags": ["dapr", "java", "aks", "msft"]
+    "tags": [
+      "dapr",
+      "java",
+      "aks",
+      "msft"
+    ]
   },
   {
     "title": "Azure Functions - Chat using ChatGPT (Node.js JavaScript Function)",
@@ -1209,7 +1377,14 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/function-javascript-ai-openai-chatgpt",
-    "tags": ["functions", "openai", "javascript", "ai", "gpt", "msft"]
+    "tags": [
+      "functions",
+      "openai",
+      "javascript",
+      "ai",
+      "gpt",
+      "msft"
+    ]
   },
   {
     "title": "Azure Functions - Chat using ChatGPT (Python v2 Function)",
@@ -1218,7 +1393,14 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/function-python-ai-openai-chatgpt",
-    "tags": ["functions", "openai", "python", "ai", "gpt", "msft"]
+    "tags": [
+      "functions",
+      "openai",
+      "python",
+      "ai",
+      "gpt",
+      "msft"
+    ]
   },
   {
     "title": "Azure Functions - LangChain with Azure OpenAI and ChatGPT (Python v2 Function)",
@@ -1227,7 +1409,12 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/function-python-ai-langchain",
-    "tags": ["functions", "python", "ai", "msft"]
+    "tags": [
+      "functions",
+      "python",
+      "ai",
+      "msft"
+    ]
   },
   {
     "title": "Multi-repo ChatGPT and Enterprise data with Azure OpenAI and AI Search",
@@ -1273,7 +1460,13 @@
     "website": "https://github.com/MiguelElGallo",
     "author": "Miguel P. Z.",
     "source": "https://github.com/MiguelElGallo/simple-fastapi-snow-azd",
-    "tags": ["python", "fastapi", "functions", "bicep", "community"]
+    "tags": [
+      "python",
+      "fastapi",
+      "functions",
+      "bicep",
+      "community"
+    ]
   },
   {
     "title": "Python (Flask) Web App with MySQL and Key Vault",
@@ -1319,7 +1512,13 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/orleans-url-shortener",
-    "tags": ["bicep", "dotnetCsharp", "cosmosdb", "msft", "aca"]
+    "tags": [
+      "bicep",
+      "dotnetCsharp",
+      "cosmosdb",
+      "msft",
+      "aca"
+    ]
   },
   {
     "title": "Azure OpenAI priority-based load balancer with Azure Container Apps",
@@ -1328,7 +1527,14 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Andre Dewes",
     "source": "https://github.com/Azure-Samples/openai-aca-lb",
-    "tags": ["aca", "openai", "ai", "msft", "bicep", "dotnetCsharp"]
+    "tags": [
+      "aca",
+      "openai",
+      "ai",
+      "msft",
+      "bicep",
+      "dotnetCsharp"
+    ]
   },
   {
     "title": "Azure Kubernetes Service Store Demo",
@@ -1337,7 +1543,15 @@
     "website": "https://github.com/Azure-Samples",
     "author": "AKS Content Team",
     "source": "https://github.com/azure-samples/aks-store-demo",
-    "tags": ["terraform", "aks", "openai", "ai", "msft", "kubernetes", "helm"]
+    "tags": [
+      "terraform",
+      "aks",
+      "openai",
+      "ai",
+      "msft",
+      "kubernetes",
+      "helm"
+    ]
   },
   {
     "title": "Setting up Azure OpenAI as a central capability within your organization",
@@ -1409,7 +1623,13 @@
     "website": "https://github.com/Azure-Samples, https://github.com/codebytes",
     "author": "Andre Dewes, Chris Ayers",
     "source": "https://github.com/Azure-Samples/openai-apim-lb",
-    "tags": ["apim", "openai", "ai", "msft", "bicep"]
+    "tags": [
+      "apim",
+      "openai",
+      "ai",
+      "msft",
+      "bicep"
+    ]
   },
   {
     "title": "Langfuse on Azure",
@@ -1418,7 +1638,14 @@
     "website": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/Azure-Samples/langfuse-on-azure",
-    "tags": ["aca", "azuredb-postgreSQL", "keyvault", "ai", "msft", "bicep"]
+    "tags": [
+      "aca",
+      "azuredb-postgreSQL",
+      "keyvault",
+      "ai",
+      "msft",
+      "bicep"
+    ]
   },
   {
     "title": "PostgreSQL + Pgvector",
@@ -1427,7 +1654,13 @@
     "website": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/Azure-Samples/azure-postgres-pgvector-python",
-    "tags": ["azuredb-postgreSQL", "ai", "msft", "bicep", "python"]
+    "tags": [
+      "azuredb-postgreSQL",
+      "ai",
+      "msft",
+      "bicep",
+      "python"
+    ]
   },
   {
     "title": "Azure Open AI management and logging via Azure API Management",
@@ -1646,7 +1879,13 @@
     "website": "https://github.com/Azure/azure-dev",
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/azd-ai-starter",
-    "tags": ["bicep", "ai", "azureai", "openai", "msft"]
+    "tags": [
+      "bicep",
+      "ai",
+      "azureai",
+      "openai",
+      "msft"
+    ]
   },
   {
     "title": "Azure AI Studio Starter",
@@ -1655,7 +1894,13 @@
     "website": "https://github.com/Azure/azure-dev",
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/azd-aistudio-starter",
-    "tags": ["bicep", "ai", "azureai", "openai", "msft"]
+    "tags": [
+      "bicep",
+      "ai",
+      "azureai",
+      "openai",
+      "msft"
+    ]
   },
   {
     "title": "Simple Chat Application using Azure OpenAI (Python)",
@@ -1864,7 +2109,7 @@
     ]
   },
   {
-     "title": "Deploy Phoenix to Azure",
+    "title": "Deploy Phoenix to Azure",
     "description": "Phoenix provides MLOps and LLMOps insights at lightning speed with zero-config observability.",
     "preview": "./templates/images/arize-phoenix.png",
     "website": "https://github.com/Arize-ai",
@@ -1877,9 +2122,9 @@
       "aca",
       "ai",
       "aicollection"
-     ]
-   },
-   {
+    ]
+  },
+  {
     "title": "Build a Copilot app using Azure Cosmos DB, Azure OpenAI Service and Azure App Service",
     "description": "Build a copilot application with Azure OpenAI Service, Azure Cosmos DB for NoSQL vector database & Azure App Service.",
     "preview": "./templates/images/cosmos-nosql-copilot.png",
@@ -1887,7 +2132,7 @@
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/AzureCosmosDB/cosmosdb-nosql-copilot",
     "tags": [
-      "msft",      
+      "msft",
       "openai",
       "gpt",
       "cosmosdb",
@@ -1956,7 +2201,7 @@
       "ai",
       "rag"
     ]
-  }, 
+  },
   {
     "title": "Serverless Azure OpenAI Quick Start with LlamaIndex (JavaScript)",
     "description": "This sample shows how to quickly get started with LlamaIndex.ai on Azure. The application is hosted on Azure Container Apps. You can use it as a starting point for building more complex RAG applications.",
@@ -1965,13 +2210,13 @@
     "author": "Wassim Chegham",
     "source": "https://github.com/Azure-Samples/llama-index-javascript",
     "tags": [
-      "msft", 
-      "openai", 
-      "bicep", 
-      "javascript", 
-      "nodejs", 
-      "ai", 
-      "aca", 
+      "msft",
+      "openai",
+      "bicep",
+      "javascript",
+      "nodejs",
+      "ai",
+      "aca",
       "rag",
       "aicollection"
     ]
@@ -1993,7 +2238,6 @@
       "python",
       "ai",
       "streamlit",
-      "new",
       "rag"
     ]
   },
@@ -2005,7 +2249,7 @@
     "author": "AI-in-a-Box Team",
     "source": "https://github.com/Azure-Samples/nlp-sql-in-a-box",
     "tags": [
-      "msft",      
+      "msft",
       "openai",
       "gpt",
       "bicep",
@@ -2015,8 +2259,7 @@
       "speechservice",
       "azureai",
       "managedidentity",
-      "semantickernel",
-      "new"
+      "semantickernel"
     ]
   },
   {
@@ -2031,8 +2274,7 @@
       "blobstorage",
       "functions",
       "bicep",
-      "python",
-      "new"
+      "python"
     ]
   },
   {
@@ -2061,7 +2303,6 @@
       "vnets",
       "kernelmemory",
       "promptengineering",
-      "new",
       "rag"
     ]
   },
@@ -2079,8 +2320,7 @@
       "python",
       "pinecone",
       "rag",
-      "ai",
-      "new"
+      "ai"
     ]
   },
   {
@@ -2116,8 +2356,7 @@
       "managedidentity",
       "openai",
       "aicollection",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -2133,8 +2372,8 @@
       "aca",
       "azureai",
       "aicollection",
-      "msft",
-      "new"
+      "msft"
+      
     ]
   },
   {
@@ -2152,9 +2391,8 @@
       "azureappconfig",
       "featureExperimentation",
       "bicep",
-      "featuremanagement",
-      "new"
-      ]
+      "featuremanagement"
+    ]
   },
   {
     "title": "Hello AZD",
@@ -2170,9 +2408,34 @@
       "cosmosdb",
       "bicep",
       "managedidentity",
-      "new",
       "msft"
-    ] 
+    ]
+  },
+  {
+    "title": "Azure OpenAI secure UI starter",
+    "description": "Reusable OpenAI secure UI and infrastructure for AI Chat with Azure",
+    "preview": "./templates/images/openai-secure-ui-js.gif",
+    "website": "https://github.com/sinedied",
+    "author": "Yohan Lasorsa",
+    "source": "https://github.com/Azure-Samples/openai-secure-ui-js",
+    "tags": [
+      "ai",
+      "bicep",
+      "gpt",
+      "serverlessapi",
+      "javascript",
+      "nodejs",
+      "openai",
+      "typescript",
+      "webcomponents",
+      "msft",
+      "functions",
+      "swa",
+      "azureai",
+      "aicollection",
+      "managedidentity",
+      "new"
+    ]
   },
   {
     "title": "RAG using LangChain with Azure OpenAI and Azure Cosmos DB for MongoDB vCore",
@@ -2193,6 +2456,50 @@
       "rag",
       "langchain",
       "new"
+    ]
+  },
+  {
+    "title": "Doc Intelligence-In-A-Box",
+    "description": "The Doc Intelligence in-a-Box project leverages Azure AI Document Intelligence to extract data from PDF forms and store the data in a Azure Cosmos DB. This solution, part of the AI-in-a-Box framework by Microsoft Customer Engineers and Architects, ensures quality, efficiency, and rapid deployment of AI and ML solutions across various industries.",
+    "preview": "./templates/images/doc-intelligence-in-a-box.png",
+    "website": "https://github.com/Azure/AI-in-a-box",
+    "author": "AI-in-a-Box Team",
+    "source": "https://github.com/Azure-Samples/doc-intelligence-in-a-box",
+    "tags": [
+      "msft",
+      "new",
+      "bicep",
+      "cosmosdb",
+      "functions",
+      "serviceprincipal",
+      "logicapps",
+      "keyvault",
+      "azureai",
+      "blobstorage",
+      "ai"
+      ]
+  },
+  {
+    "title": "Azure OpenAI keyless deployment",
+    "description": "Example Azure OpenAI deployment and RBAC role for your user account for keyless access",
+    "preview": "./templates/images/keyless.png",
+    "website": "https://github.com/sinedied",
+    "author": "Yohan Lasorsa",
+    "source": "https://github.com/Azure-Samples/azure-openai-keyless-js",
+    "tags": [
+      "ai",
+      "bicep",
+      "gpt",
+      "serverlessapi",
+      "javascript",
+      "nodejs",
+      "openai",
+      "typescript",
+      "msft",
+      "azureai",
+      "aicollection",
+      "new",
+      "managedidentity"
     ]
   },
   {

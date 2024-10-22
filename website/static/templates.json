@@ -2572,7 +2572,7 @@
     "website": "https://github.com/marnixcox",
     "author": "Marnix Cox",
     "source": "https://github.com/marnixcox/integration-hub",
-    "tags": ["new", "functions", "dotnetCsharp", "powershell","bicep", "servicebus", "logicapps", "keyvault", "monitor", "appservice"]
+    "tags": ["new", "community", "functions", "dotnetCsharp", "powershell","bicep", "servicebus", "logicapps", "keyvault", "monitor", "appservice"]
   },
   {
     "title": "Logic App Standard and Functions",
@@ -2581,7 +2581,7 @@
     "website": "https://github.com/marnixcox",
     "author": "Marnix Cox",
     "source": "https://github.com/marnixcox/logicapp-standard-func",
-    "tags": ["new", "functions", "dotnetCsharp", "bicep", "logicapps", "keyvault", "monitor", "appservice"]
+    "tags": ["new", "community", "functions", "dotnetCsharp", "bicep", "logicapps", "keyvault", "monitor", "appservice"]
   }
   {
     "title": "Logic App Consumption",
@@ -2590,6 +2590,6 @@
     "website": "https://github.com/marnixcox",
     "author": "Marnix Cox",
     "source": "https://github.com/marnixcox/logicapp-consumption",
-    "tags": ["new", "bicep", "logicapps", "keyvault", "monitor"]
+    "tags": ["new", "community", "bicep", "logicapps", "keyvault", "monitor"]
   }
 ]

@@ -121,7 +121,8 @@ export type TagType =
   | "rag"
   | "featureExperimentation"
   | "featuremanagement"
-  | "go";
+  | "go"
+  | "powershell";  
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -282,6 +283,11 @@ export const Tags: { [type in TagType]: Tag } = {
   featuremanagement: {
     label: "Microsoft Feature Management",
     description: "Template architecture uses Microsoft Feature Management",
+    type: "Tools",
+  },
+  powershell: {
+    label: "PowerShell",
+    description: "Template architecture uses PowerShell",
     type: "Tools",
   },
 

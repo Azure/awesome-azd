@@ -2459,7 +2459,7 @@
     ]
   },
   {
-    "title": "Azure Cosmos DB for NoSQL Quickstart - .NET",
+   "title": "Azure Cosmos DB for NoSQL Quickstart - .NET",
     "description": "A quick application to get started using Azure Cosmos DB for NoSQL with the Azure SDK for .NET.",
     "preview": "./templates/images/cosmos-nosql-dotnet-quickstart.png",
     "website": "https://github.com/azure-samples/cosmos-db-nosql-dotnet-quickstart",
@@ -2504,6 +2504,60 @@
     "tags": ["cosmosdb", "go", "aca", "managedidentity", "bicep", "msft", "new"]
   },
   {
+    "title": "Azure Functions C# HTTP Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions HTTP trigger quickstart written in C# and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd",
+    "tags": ["new", "functions", "dotnetCsharp", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
+  },
+  {
+    "title": "Azure Functions Python HTTP Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions HTTP trigger quickstart written in Python and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-python-http-azd",
+    "tags": ["new", "functions", "python", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
+  },
+  {
+    "title": "Azure Functions JavaScript HTTP Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions HTTP trigger quickstart written in JavaScript and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-javascript-azd",
+    "tags": ["new", "functions", "javascript", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
+  },
+  {
+    "title": "Azure Functions TypeScript HTTP Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions HTTP trigger quickstart written in TypeScript and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-typescript-azd",
+    "tags": ["new", "functions", "typescript", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
+  },
+  {
+    "title": "Azure Functions Java HTTP Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions HTTP trigger quickstart written in Java and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (AZD). This sample uses managed identity and a virtual network to insure it's secure by default.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/azure-functions-java-flex-consumption-azd",
+    "tags": ["new", "functions", "java", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
+  },
+  {
+    "title": "Azure Functions PowerShell HTTP Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions HTTP trigger quickstart written in PowerShell and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (AZD). This sample uses managed identity and a virtual network to insure it's secure by default.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-powershell-azd",
+    "tags": ["new", "functions", "powershell", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
+  },
+  {
     "title": "Doc Intelligence-In-A-Box",
     "description": "The Doc Intelligence in-a-Box project leverages Azure AI Document Intelligence to extract data from PDF forms and store the data in a Azure Cosmos DB. This solution, part of the AI-in-a-Box framework by Microsoft Customer Engineers and Architects, ensures quality, efficiency, and rapid deployment of AI and ML solutions across various industries.",
     "preview": "./templates/images/doc-intelligence-in-a-box.png",
@@ -2546,5 +2600,14 @@
       "new",
       "managedidentity"
     ]
+  },
+  {
+    "title": "Order processing workflow with Durable Functions",
+    "description": "This repository contains the implementation of an order processing workflow with Durable Functions in C#. The sample is deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd) and is configured with managed identity as the authentication mechanism.",
+    "preview": "./templates/images/order-processing-durable-functions.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/Durable-Functions-Order-Processing",
+    "tags": ["new", "functions", "dotnetCsharp", "managedidentity","bicep", "msft"]
   }
 ]

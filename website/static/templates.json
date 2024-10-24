@@ -1975,41 +1975,6 @@
     ]
   },
   {
-    "title": "Function Calling with Prompty, LangChain and Elastic Search",
-    "description": "Function calling for vector database lookup based on user question.",
-    "preview": "./templates/images/agent-python-openai-prompty-langchain-architecture-diagram.png",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Azure Content Team",
-    "source": "https://github.com/Azure-Samples/agent-python-openai-prompty-langchain",
-    "tags": [
-      "msft",
-      "aicollection",
-      "python",
-      "openai",
-      "aistudio",
-      "bicep",
-      "ai"
-    ]
-  },
-  {
-    "title": "Function Calling with Prompty, LangChain and Pinecone",
-    "description": "Function calling for vector database lookup based on user question.",
-    "preview": "./templates/images/agent-openai-python-prompty-langchain-pinecone-architecture-diagram.png",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Azure Content Team",
-    "source": "https://github.com/Azure-Samples/agent-openai-python-prompty-langchain-pinecone",
-    "tags": [
-      "msft",
-      "aicollection",
-      "python",
-      "openai",
-      "aistudio",
-      "bicep",
-      "ai",
-      "pinecone"
-    ]
-  },
-  {
     "title": "Contoso Chat Retail with Azure AI Studio and Promptflow",
     "description": "This sample has the full End2End process of creating RAG application with Prompt Flow and AI Studio. It includes GPT 3.5 Turbo LLM application code, evaluations, deployment automation with AZD CLI, GitHub actions for evaluation and deployment and intent mapping for multiple LLM task mapping.",
     "preview": "./templates/images/contoso-chat-architecture-diagram.png",

@@ -2574,5 +2574,23 @@
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/Durable-Functions-Order-Processing",
     "tags": ["new", "functions", "dotnetCsharp", "managedidentity","bicep", "msft"]
+  },
+  {
+   "title": "Azure Cosmos DB for Table Quickstart - .NET",
+    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for .NET.",
+    "preview": "./templates/images/cosmos-db-table-dotnet-quickstart.png",
+    "website": "https://github.com/azure-samples/cosmos-db-table-dotnet-quickstart",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-table-dotnet-quickstart",
+    "tags": ["cosmosdb", "dotnetCsharp", "aca", "managedidentity", "bicep", "msft", "new"]
+  },
+  {
+    "title": "Azure Cosmos DB for Table Quickstart - Node.js",
+    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Node.js.",
+    "preview": "./templates/images/cosmos-db-table-nodejs-quickstart.png",
+    "website": "https://github.com/azure-samples/cosmos-db-table-nodejs-quickstart",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-table-nodejs-quickstart",
+    "tags": ["cosmosdb", "nodejs", "aca", "managedidentity", "bicep", "msft", "new"]
   }
 ]

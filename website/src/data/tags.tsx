@@ -121,6 +121,7 @@ export type TagType =
   | "rag"
   | "featureExperimentation"
   | "featuremanagement"
+  | "go"
   | "powershell";  
 
 // LIST OF AVAILABLE TAGS
@@ -200,6 +201,11 @@ export const Tags: { [type in TagType]: Tag } = {
   ruby: {
     label: "Ruby",
     description: "Template architecture uses Ruby",
+    type: "Language",
+  },
+  go: {
+    label: "Go",
+    description: "Template contains Go app code",
     type: "Language",
   },
 

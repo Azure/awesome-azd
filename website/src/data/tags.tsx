@@ -466,8 +466,8 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Service",
   },
   cosmosdb: {
-    label: "Azure CosmosDB",
-    description: "Template architecture uses Azure CosmosDB",
+    label: "Azure Cosmos DB",
+    description: "Template architecture uses Azure Cosmos DB",
     azureIcon: "./img/Azure-Cosmos-DB.svg",
     url: "https://azure.microsoft.com/products/cosmos-db/",
     type: "Service",

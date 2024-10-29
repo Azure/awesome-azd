@@ -121,6 +121,7 @@ export type TagType =
   | "rag"
   | "featureExperimentation"
   | "featuremanagement"
+  | "go"
   | "powershell";  
 
 // LIST OF AVAILABLE TAGS
@@ -200,6 +201,11 @@ export const Tags: { [type in TagType]: Tag } = {
   ruby: {
     label: "Ruby",
     description: "Template architecture uses Ruby",
+    type: "Language",
+  },
+  go: {
+    label: "Go",
+    description: "Template contains Go app code",
     type: "Language",
   },
 
@@ -460,8 +466,8 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Service",
   },
   cosmosdb: {
-    label: "Azure CosmosDB",
-    description: "Template architecture uses Azure CosmosDB",
+    label: "Azure Cosmos DB",
+    description: "Template architecture uses Azure Cosmos DB",
     azureIcon: "./img/Azure-Cosmos-DB.svg",
     url: "https://azure.microsoft.com/products/cosmos-db/",
     type: "Service",

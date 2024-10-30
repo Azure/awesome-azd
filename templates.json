@@ -1975,41 +1975,6 @@
     ]
   },
   {
-    "title": "Function Calling with Prompty, LangChain and Elastic Search",
-    "description": "Function calling for vector database lookup based on user question.",
-    "preview": "./templates/images/agent-python-openai-prompty-langchain-architecture-diagram.png",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Azure Content Team",
-    "source": "https://github.com/Azure-Samples/agent-python-openai-prompty-langchain",
-    "tags": [
-      "msft",
-      "aicollection",
-      "python",
-      "openai",
-      "aistudio",
-      "bicep",
-      "ai"
-    ]
-  },
-  {
-    "title": "Function Calling with Prompty, LangChain and Pinecone",
-    "description": "Function calling for vector database lookup based on user question.",
-    "preview": "./templates/images/agent-openai-python-prompty-langchain-pinecone-architecture-diagram.png",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Azure Content Team",
-    "source": "https://github.com/Azure-Samples/agent-openai-python-prompty-langchain-pinecone",
-    "tags": [
-      "msft",
-      "aicollection",
-      "python",
-      "openai",
-      "aistudio",
-      "bicep",
-      "ai",
-      "pinecone"
-    ]
-  },
-  {
     "title": "Contoso Chat Retail with Azure AI Studio and Promptflow",
     "description": "This sample has the full End2End process of creating RAG application with Prompt Flow and AI Studio. It includes GPT 3.5 Turbo LLM application code, evaluations, deployment automation with AZD CLI, GitHub actions for evaluation and deployment and intent mapping for multiple LLM task mapping.",
     "preview": "./templates/images/contoso-chat-architecture-diagram.png",
@@ -2459,6 +2424,51 @@
     ]
   },
   {
+   "title": "Azure Cosmos DB for NoSQL Quickstart - .NET",
+    "description": "A quick application to get started using Azure Cosmos DB for NoSQL with the Azure SDK for .NET.",
+    "preview": "./templates/images/cosmos-db-nosql-dotnet-quickstart.png",
+    "website": "https://github.com/azure-samples/cosmos-db-nosql-dotnet-quickstart",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-nosql-dotnet-quickstart",
+    "tags": ["cosmosdb", "dotnetCsharp", "aca", "managedidentity", "bicep", "msft", "new"]
+  },
+  {
+    "title": "Azure Cosmos DB for NoSQL Quickstart - Python",
+    "description": "A quick application to get started using Azure Cosmos DB for NoSQL with the Azure SDK for Python.",
+    "preview": "./templates/images/cosmos-db-nosql-python-quickstart.png",
+    "website": "https://github.com/azure-samples/cosmos-db-nosql-python-quickstart",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-nosql-python-quickstart",
+    "tags": ["cosmosdb", "python", "aca", "managedidentity", "bicep", "msft", "new"]
+  },
+  {
+    "title": "Azure Cosmos DB for NoSQL Quickstart - Node.js",
+    "description": "A quick application to get started using Azure Cosmos DB for NoSQL with the Azure SDK for Node.js.",
+    "preview": "./templates/images/cosmos-db-nosql-nodejs-quickstart.png",
+    "website": "https://github.com/azure-samples/cosmos-db-nosql-nodejs-quickstart",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-nosql-nodejs-quickstart",
+    "tags": ["cosmosdb", "nodejs", "aca", "managedidentity", "bicep", "msft", "new"]
+  },
+  {
+    "title": "Azure Cosmos DB for NoSQL Quickstart - Java",
+    "description": "A quick application to get started using Azure Cosmos DB for NoSQL with the Azure SDK for Java.",
+    "preview": "./templates/images/cosmos-db-nosql-java-quickstart.png",
+    "website": "https://github.com/azure-samples/cosmos-db-nosql-java-quickstart",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-nosql-java-quickstart",
+    "tags": ["cosmosdb", "java", "aca", "managedidentity", "bicep", "msft", "new"]
+  },
+  {
+    "title": "Azure Cosmos DB for NoSQL Quickstart - Go",
+    "description": "A quick application to get started using Azure Cosmos DB for NoSQL with the Azure SDK for Go.",
+    "preview": "./templates/images/cosmos-db-nosql-go-quickstart.png",
+    "website": "https://github.com/azure-samples/cosmos-db-nosql-go-quickstart",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-nosql-go-quickstart",
+    "tags": ["cosmosdb", "go", "aca", "managedidentity", "bicep", "msft", "new"]
+  },
+  {
     "title": "Azure Functions C# HTTP Trigger using Azure Developer CLI",
     "description": "This repository contains an Azure Functions HTTP trigger quickstart written in C# and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
     "preview": "./templates/images/test.png",
@@ -2564,5 +2574,50 @@
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/Durable-Functions-Order-Processing",
     "tags": ["new", "functions", "dotnetCsharp", "managedidentity","bicep", "msft"]
+  },
+  {
+    "title": "Azure Cosmos DB for Table Quickstart - .NET",
+    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for .NET.",
+    "preview": "./templates/images/cosmos-db-table-dotnet-quickstart.png",
+    "website": "https://github.com/azure-samples/cosmos-db-table-dotnet-quickstart",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-table-dotnet-quickstart",
+    "tags": ["cosmosdb", "dotnetCsharp", "aca", "managedidentity", "bicep", "msft", "new"]
+  },
+  {
+    "title": "Azure Cosmos DB for Table Quickstart - Node.js",
+    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Node.js.",
+    "preview": "./templates/images/cosmos-db-table-nodejs-quickstart.png",
+    "website": "https://github.com/azure-samples/cosmos-db-table-nodejs-quickstart",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-table-nodejs-quickstart",
+    "tags": ["cosmosdb", "nodejs", "aca", "managedidentity", "bicep", "msft", "new"]
+  },
+  {
+    "title": "Integration Hub with Logic App Standard",
+    "description": "Template to deploy shared components like Logic App Standard Plan, Service Bus and Azure Artifacts for an integration platform.",
+    "preview": "./templates/images/integration-hub.png",
+    "website": "https://github.com/marnixcox",
+    "author": "Marnix Cox",
+    "source": "https://github.com/marnixcox/integration-hub",
+    "tags": ["new", "community", "functions", "dotnetCsharp", "powershell","bicep", "servicebus", "logicapps", "keyvault", "monitor", "appservice"]
+  },
+  {
+    "title": "Logic App Standard and Functions",
+    "description": "Template to deploy Logic App Standard and Functions for application integrations.",
+    "preview": "./templates/images/logicapp-standard-func.png",
+    "website": "https://github.com/marnixcox",
+    "author": "Marnix Cox",
+    "source": "https://github.com/marnixcox/logicapp-standard-func",
+    "tags": ["new", "community", "functions", "dotnetCsharp", "bicep", "logicapps", "keyvault", "monitor", "appservice"]
+  },
+  {
+    "title": "Logic App Consumption",
+    "description": "Template to deploy Logic App Comsumption for (legacy) application integrations.",
+    "preview": "./templates/images/logicapp-standard-func.png",
+    "website": "https://github.com/marnixcox",
+    "author": "Marnix Cox",
+    "source": "https://github.com/marnixcox/logicapp-consumption",
+    "tags": ["new", "community", "bicep", "logicapps", "keyvault", "monitor"]
   }
 ]

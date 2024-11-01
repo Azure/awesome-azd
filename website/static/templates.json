@@ -2576,6 +2576,51 @@
     "tags": ["new", "functions", "dotnetCsharp", "managedidentity","bicep", "msft"]
   },
   {
+    "title": "Azure Cosmos DB for Table Quickstart - .NET",
+    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for .NET.",
+    "preview": "./templates/images/cosmos-db-table-dotnet-quickstart.png",
+    "website": "https://github.com/azure-samples/cosmos-db-table-dotnet-quickstart",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-table-dotnet-quickstart",
+    "tags": ["cosmosdb", "dotnetCsharp", "aca", "managedidentity", "bicep", "msft", "new"]
+  },
+  {
+    "title": "Azure Cosmos DB for Table Quickstart - Node.js",
+    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Node.js.",
+    "preview": "./templates/images/cosmos-db-table-nodejs-quickstart.png",
+    "website": "https://github.com/azure-samples/cosmos-db-table-nodejs-quickstart",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-table-nodejs-quickstart",
+    "tags": ["cosmosdb", "nodejs", "aca", "managedidentity", "bicep", "msft", "new"]
+  },
+  {
+    "title": "Integration Hub with Logic App Standard",
+    "description": "Template to deploy shared components like Logic App Standard Plan, Service Bus and Azure Artifacts for an integration platform.",
+    "preview": "./templates/images/integration-hub.png",
+    "website": "https://github.com/marnixcox",
+    "author": "Marnix Cox",
+    "source": "https://github.com/marnixcox/integration-hub",
+    "tags": ["new", "community", "functions", "dotnetCsharp", "powershell","bicep", "servicebus", "logicapps", "keyvault", "monitor", "appservice"]
+  },
+  {
+    "title": "Logic App Standard and Functions",
+    "description": "Template to deploy Logic App Standard and Functions for application integrations.",
+    "preview": "./templates/images/logicapp-standard-func.png",
+    "website": "https://github.com/marnixcox",
+    "author": "Marnix Cox",
+    "source": "https://github.com/marnixcox/logicapp-standard-func",
+    "tags": ["new", "community", "functions", "dotnetCsharp", "bicep", "logicapps", "keyvault", "monitor", "appservice"]
+  },
+  {
+    "title": "Logic App Consumption",
+    "description": "Template to deploy Logic App Comsumption for (legacy) application integrations.",
+    "preview": "./templates/images/logicapp-standard-func.png",
+    "website": "https://github.com/marnixcox",
+    "author": "Marnix Cox",
+    "source": "https://github.com/marnixcox/logicapp-consumption",
+    "tags": ["new", "community", "bicep", "logicapps", "keyvault", "monitor"]
+  },
+  {
     "title": "Java Quarkus Apps on Azure Container Apps",
     "description": "This repo builds and deploys Java Quarkus applications on Azure Container Apps using the Azure Developer CLI (azd).",
     "preview": "./templates/images/java-quarkus-apps-aca.png",

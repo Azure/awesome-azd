@@ -1145,27 +1145,6 @@
     ]
   },
   {
-    "title": "Java Quarkus Apps on Azure Container Apps",
-    "description": "This repo builds and deploys Java Quarkus applications on Azure Container Apps using the Azure Developer CLI (azd).",
-    "preview": "./templates/images/java-quarkus-apps-aca.png",
-    "website": "https://github.com/majguo",
-    "author": "Jianguo Ma",
-    "source": "https://github.com/Azure-Samples/java-on-aca-quarkus",
-    "tags": [
-      "java",
-      "quarkus",
-      "aca",
-      "azuredb-postgreSQL",
-      "azuredb-mySQL",
-      "monitor",
-      "managedidentity",
-      "vuejs",
-      "bicep",
-      "msft",
-      "new"
-    ]
-  },
-  {
     "title": "React Web App with Azure API Management exposing SAP OData APIs",
     "description": "Expose your SAP OData APIs via Azure API Management and link it with Azure Static Web App to create & integrate a serverless Web App blazing fast with GitHub Copilot or ChatGPT.",
     "preview": "./templates/images/apim-odata-reactjs.png",
@@ -2595,5 +2574,26 @@
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/Durable-Functions-Order-Processing",
     "tags": ["new", "functions", "dotnetCsharp", "managedidentity","bicep", "msft"]
+  },
+  {
+    "title": "Java Quarkus Apps on Azure Container Apps",
+    "description": "This repo builds and deploys Java Quarkus applications on Azure Container Apps using the Azure Developer CLI (azd).",
+    "preview": "./templates/images/java-quarkus-apps-aca.png",
+    "website": "https://github.com/majguo",
+    "author": "Jianguo Ma",
+    "source": "https://github.com/Azure-Samples/java-on-aca-quarkus",
+    "tags": [
+      "java",
+      "quarkus",
+      "aca",
+      "azuredb-postgreSQL",
+      "azuredb-mySQL",
+      "monitor",
+      "managedidentity",
+      "vuejs",
+      "bicep",
+      "msft",
+      "new"
+    ]
   }
 ]

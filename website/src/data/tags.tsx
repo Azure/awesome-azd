@@ -124,7 +124,7 @@ export type TagType =
   | "featureExperimentation"
   | "featuremanagement"
   | "go"
-  | "powershell";  
+  | "powershell";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -216,11 +216,6 @@ export const Tags: { [type in TagType]: Tag } = {
   reactjs: {
     label: "React.js",
     description: "Template architecture uses React.js",
-    type: "Tools",
-  },
-  vuejs: {
-    label: "Vue.js",
-    description: "Template architecture uses Vue.js",
     type: "Tools",
   },
   sap: {
@@ -356,6 +351,11 @@ export const Tags: { [type in TagType]: Tag } = {
   quarkus: {
     label: "Quarkus",
     description: "Template architecture uses Quarkus framework",
+    type: "Framework",
+  },
+  vuejs: {
+    label: "Vue.js",
+    description: "Template architecture uses Vue.js framework",
     type: "Framework",
   },
   streamlit: {

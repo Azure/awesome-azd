@@ -36,6 +36,7 @@ export type TagType =
   | "python"
   | "django"
   | "reactjs"
+  | "vuejs"
   | "angular"
   | "nodejs"
   | "kubernetes"
@@ -68,6 +69,7 @@ export type TagType =
   | "flask"
   | "apim"
   | "spring"
+  | "quarkus"
   | "thymeleaf"
   | "sap"
   | "sapcap"
@@ -122,7 +124,7 @@ export type TagType =
   | "featureExperimentation"
   | "featuremanagement"
   | "go"
-  | "powershell";  
+  | "powershell";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -344,6 +346,16 @@ export const Tags: { [type in TagType]: Tag } = {
   spring: {
     label: "Spring",
     description: "Template architecture uses Spring framework",
+    type: "Framework",
+  },
+  quarkus: {
+    label: "Quarkus",
+    description: "Template architecture uses Quarkus framework",
+    type: "Framework",
+  },
+  vuejs: {
+    label: "Vue.js",
+    description: "Template architecture uses Vue.js framework",
     type: "Framework",
   },
   streamlit: {

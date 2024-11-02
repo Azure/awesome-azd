@@ -213,11 +213,6 @@ export const Tags: { [type in TagType]: Tag } = {
 
   // ---- Tools
 
-  reactjs: {
-    label: "React.js",
-    description: "Template architecture uses React.js",
-    type: "Tools",
-  },
   sap: {
     label: "SAP",
     description:
@@ -358,6 +353,16 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Vue.js framework",
     type: "Framework",
   },
+  reactjs: {
+    label: "React",
+    description: "Template architecture uses React framework",
+    type: "Framework",
+  },
+  angular: {
+    label: "Angular",
+    description: "Template architecture uses Angular framework",
+    type: "Framework",
+  },
   streamlit: {
     label: "Streamlit",
     description: "Template architecture uses Streamlit library",
@@ -409,11 +414,6 @@ export const Tags: { [type in TagType]: Tag } = {
   kubernetes: {
     label: "Kubernetes",
     description: "Template architecture uses Kubernetes",
-    type: "Platform",
-  },
-  angular: {
-    label: "Angular",
-    description: "Template architecture uses Angular",
     type: "Platform",
   },
 

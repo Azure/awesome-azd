@@ -2658,7 +2658,8 @@
       "keyvault",
       "appinsights",
       "msft",
-      "openai"
+      "openai",
+      "new"
     ]
   }
 ]

@@ -2661,5 +2661,21 @@
       "openai",
       "new"
     ]
-  }
+  },
+{
+    "title": ".NET + AI - Video Analyser",
+    "description": "This repository contains a series of samples on how to analyse a video using multimodal Large Language Models, like GPT-4o or GPT-4o-mini.",
+    "preview": "./templates/images/netaivideoanalysis.png",
+    "website": "https://github.com/Azure/azure-dev",
+    "author": ".NET Cloud Advocates",
+    "source": "https://github.com/Azure-Samples/netaivideoanalyzer",
+    "tags": [
+      "dotnetCsharp",
+      "openai",
+      "bicep",
+      "managedidentity",
+      "azureai",
+      "msft"
+    ]
+  },  
 ]

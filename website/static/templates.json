@@ -2661,5 +2661,26 @@
       "openai",
       "new"
     ]
+  },
+  {
+    "title": "Intelligent App on Azure Container Apps and GitHub Models",
+    "description": "MarketingWriter is an AI marketing content generation application sample powered by GitHub Models, Azure Container App, Streamlit and Azure Developer CLI (AZD)",
+    "preview": "./templates/images/aca-githubmodel-marketingwriter.png",
+    "website": "https://github.com/xuhaoruins",
+    "author": "Hao Xu",
+    "source": "https://github.com/xuhaoruins/marketingwriter",
+    "tags": [
+      "python",
+      "streamlit",
+      "aca",
+      "azureopenai",
+      "GitHubmodel",
+      "GitHubCopilot",
+      "azd",
+      "aoai",
+      "container",
+      "msft",
+      "AIapp"
+    ]
   }
 ]

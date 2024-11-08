@@ -2619,5 +2619,47 @@
     "author": "Marnix Cox",
     "source": "https://github.com/marnixcox/logicapp-consumption",
     "tags": ["new", "community", "bicep", "logicapps", "keyvault", "monitor"]
+  },
+  {
+    "title": "Java Quarkus Apps on Azure Container Apps",
+    "description": "This repo builds and deploys Java Quarkus applications on Azure Container Apps using the Azure Developer CLI (azd).",
+    "preview": "./templates/images/java-quarkus-apps-aca.png",
+    "website": "https://github.com/majguo",
+    "author": "Jianguo Ma",
+    "source": "https://github.com/Azure-Samples/java-on-aca-quarkus",
+    "tags": [
+      "java",
+      "quarkus",
+      "aca",
+      "azuredb-postgreSQL",
+      "azuredb-mySQL",
+      "monitor",
+      "managedidentity",
+      "vuejs",
+      "bicep",
+      "msft",
+      "new"
+    ]
+  },
+  {
+    "title": "Spring Petclinic Microservices with AI on Azure Container Apps",
+    "description": "A Spring Petclinic Microservice with OpenAI running on Azure Container Apps environment, with additional Azure services and Azure Container Apps features.",
+    "preview": "./templates/images/java-microservices-aca-lab.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Songbo Wang",
+    "source": "https://github.com/Azure-Samples/java-microservices-aca-lab",
+    "tags": [
+      "java",
+      "aca",
+      "azuredb-mySQL",
+      "monitor",
+      "managedidentity",
+      "bicep",
+      "keyvault",
+      "appinsights",
+      "msft",
+      "openai",
+      "new"
+    ]
   }
 ]

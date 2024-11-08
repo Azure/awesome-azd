@@ -2675,7 +2675,8 @@
       "bicep",
       "managedidentity",
       "azureai",
-      "msft"
+      "msft",
+      "new"
     ]
-  },  
+  }  
 ]

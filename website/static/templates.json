@@ -2673,14 +2673,10 @@
       "python",
       "streamlit",
       "aca",
-      "azureopenai",
-      "GitHubmodel",
-      "GitHubCopilot",
-      "azd",
-      "aoai",
-      "container",
-      "msft",
-      "AIapp"
+      "bicep",
+      "community",
+      "openai",
+      "new"
     ]
   }
 ]

@@ -2675,6 +2675,21 @@
       "aca",
       "bicep",
       "community",
+      ]
+  },
+  {
+    "title": "Sprint Petclinic AI application on Azure Container Apps",
+    "description": "A chat bot using Generative AI to the Spring Petclinic application, running on Azure Container Apps",
+    "preview": "./templates/images/spring-petclinic-ai.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Songbo Wang",
+    "source": "https://github.com/Azure-Samples/spring-petclinic-ai",
+    "tags": [
+      "java",
+      "aca",
+      "managedidentity",
+      "bicep",
+      "msft",
       "openai",
       "new"
     ]

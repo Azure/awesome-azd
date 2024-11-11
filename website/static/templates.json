@@ -2663,6 +2663,21 @@
     ]
   },
   {
+    "title": "Intelligent App on Azure Container Apps and GitHub Models",
+    "description": "MarketingWriter is an AI marketing content generation application sample powered by GitHub Models, Azure Container App, Streamlit and Azure Developer CLI (AZD)",
+    "preview": "./templates/images/aca-githubmodel-marketingwriter.png",
+    "website": "https://github.com/xuhaoruins",
+    "author": "Hao Xu",
+    "source": "https://github.com/xuhaoruins/marketingwriter",
+    "tags": [
+      "python",
+      "streamlit",
+      "aca",
+      "bicep",
+      "community"
+      ]
+  },
+  {
     "title": "Sprint Petclinic AI application on Azure Container Apps",
     "description": "A chat bot using Generative AI to the Spring Petclinic application, running on Azure Container Apps",
     "preview": "./templates/images/spring-petclinic-ai.png",

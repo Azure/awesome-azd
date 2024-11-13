@@ -36,6 +36,7 @@ export type TagType =
   | "python"
   | "django"
   | "reactjs"
+  | "vuejs"
   | "angular"
   | "nodejs"
   | "kubernetes"
@@ -68,6 +69,7 @@ export type TagType =
   | "flask"
   | "apim"
   | "spring"
+  | "quarkus"
   | "thymeleaf"
   | "sap"
   | "sapcap"
@@ -118,7 +120,11 @@ export type TagType =
   | "speechservice"
   | "kernelmemory"
   | "promptengineering"
-  | "rag";
+  | "rag"
+  | "featureExperimentation"
+  | "featuremanagement"
+  | "go"
+  | "powershell";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -199,14 +205,14 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Ruby",
     type: "Language",
   },
+  go: {
+    label: "Go",
+    description: "Template contains Go app code",
+    type: "Language",
+  },
 
   // ---- Tools
 
-  reactjs: {
-    label: "React.js",
-    description: "Template architecture uses React.js",
-    type: "Tools",
-  },
   sap: {
     label: "SAP",
     description:
@@ -271,6 +277,16 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Microsoft Authentication Library",
     type: "Tools",
   },
+  featuremanagement: {
+    label: "Microsoft Feature Management",
+    description: "Template architecture uses Microsoft Feature Management",
+    type: "Tools",
+  },
+  powershell: {
+    label: "PowerShell",
+    description: "Template architecture uses PowerShell",
+    type: "Tools",
+  },
 
   // ---- Infrastructure as Code
   bicep: {
@@ -327,6 +343,26 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Spring framework",
     type: "Framework",
   },
+  quarkus: {
+    label: "Quarkus",
+    description: "Template architecture uses Quarkus framework",
+    type: "Framework",
+  },
+  vuejs: {
+    label: "Vue.js",
+    description: "Template architecture uses Vue.js framework",
+    type: "Framework",
+  },
+  reactjs: {
+    label: "React",
+    description: "Template architecture uses React framework",
+    type: "Framework",
+  },
+  angular: {
+    label: "Angular",
+    description: "Template architecture uses Angular framework",
+    type: "Framework",
+  },
   streamlit: {
     label: "Streamlit",
     description: "Template architecture uses Streamlit library",
@@ -378,11 +414,6 @@ export const Tags: { [type in TagType]: Tag } = {
   kubernetes: {
     label: "Kubernetes",
     description: "Template architecture uses Kubernetes",
-    type: "Platform",
-  },
-  angular: {
-    label: "Angular",
-    description: "Template architecture uses Angular",
     type: "Platform",
   },
 
@@ -447,8 +478,8 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Service",
   },
   cosmosdb: {
-    label: "Azure CosmosDB",
-    description: "Template architecture uses Azure CosmosDB",
+    label: "Azure Cosmos DB",
+    description: "Template architecture uses Azure Cosmos DB",
     azureIcon: "./img/Azure-Cosmos-DB.svg",
     url: "https://azure.microsoft.com/products/cosmos-db/",
     type: "Service",
@@ -711,6 +742,11 @@ export const Tags: { [type in TagType]: Tag } = {
   promptengineering: {
     label: "Prompt Engineering",
     description: "Template architecture involves Prompt Engineering",
+    type: "Topic",
+  },
+  featureExperimentation: {
+    label: "Feature Experimentation",
+    description: "Template architecture involves Feature Experimentation",
     type: "Topic",
   },
 };

@@ -2659,6 +2659,7 @@
       "appinsights",
       "msft",
       "openai",
+      "aicollection",
       "new"
     ]
   },
@@ -2691,6 +2692,7 @@
       "bicep",
       "msft",
       "openai",
+      "aicollection",
       "new"
     ]
   }

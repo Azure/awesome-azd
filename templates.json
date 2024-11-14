@@ -2398,8 +2398,7 @@
       "swa",
       "azureai",
       "aicollection",
-      "managedidentity",
-      "new"
+      "managedidentity"
     ]
   },
   {
@@ -2419,8 +2418,7 @@
       "ai",
       "community",
       "rag",
-      "langchain",
-      "new"
+      "langchain"
     ]
   },
   {
@@ -2430,7 +2428,7 @@
     "website": "https://github.com/azure-samples/cosmos-db-nosql-dotnet-quickstart",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-nosql-dotnet-quickstart",
-    "tags": ["cosmosdb", "dotnetCsharp", "aca", "managedidentity", "bicep", "msft", "new"]
+    "tags": ["cosmosdb", "dotnetCsharp", "aca", "managedidentity", "bicep", "msft"]
   },
   {
     "title": "Azure Cosmos DB for NoSQL Quickstart - Python",
@@ -2439,7 +2437,7 @@
     "website": "https://github.com/azure-samples/cosmos-db-nosql-python-quickstart",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-nosql-python-quickstart",
-    "tags": ["cosmosdb", "python", "aca", "managedidentity", "bicep", "msft", "new"]
+    "tags": ["cosmosdb", "python", "aca", "managedidentity", "bicep", "msft"]
   },
   {
     "title": "Azure Cosmos DB for NoSQL Quickstart - Node.js",
@@ -2448,7 +2446,7 @@
     "website": "https://github.com/azure-samples/cosmos-db-nosql-nodejs-quickstart",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-nosql-nodejs-quickstart",
-    "tags": ["cosmosdb", "nodejs", "aca", "managedidentity", "bicep", "msft", "new"]
+    "tags": ["cosmosdb", "nodejs", "aca", "managedidentity", "bicep", "msft"]
   },
   {
     "title": "Azure Cosmos DB for NoSQL Quickstart - Java",
@@ -2457,7 +2455,7 @@
     "website": "https://github.com/azure-samples/cosmos-db-nosql-java-quickstart",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-nosql-java-quickstart",
-    "tags": ["cosmosdb", "java", "aca", "managedidentity", "bicep", "msft", "new"]
+    "tags": ["cosmosdb", "java", "aca", "managedidentity", "bicep", "msft"]
   },
   {
     "title": "Azure Cosmos DB for NoSQL Quickstart - Go",
@@ -2466,7 +2464,7 @@
     "website": "https://github.com/azure-samples/cosmos-db-nosql-go-quickstart",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-nosql-go-quickstart",
-    "tags": ["cosmosdb", "go", "aca", "managedidentity", "bicep", "msft", "new"]
+    "tags": ["cosmosdb", "go", "aca", "managedidentity", "bicep", "msft"]
   },
   {
     "title": "Azure Functions C# HTTP Trigger using Azure Developer CLI",
@@ -2475,7 +2473,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd",
-    "tags": ["new", "functions", "dotnetCsharp", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
+    "tags": ["functions", "dotnetCsharp", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
   },
   {
     "title": "Azure Functions Python HTTP Trigger using Azure Developer CLI",
@@ -2484,7 +2482,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-python-http-azd",
-    "tags": ["new", "functions", "python", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
+    "tags": ["functions", "python", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
   },
   {
     "title": "Azure Functions JavaScript HTTP Trigger using Azure Developer CLI",
@@ -2493,7 +2491,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-javascript-azd",
-    "tags": ["new", "functions", "javascript", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
+    "tags": ["functions", "javascript", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
   },
   {
     "title": "Azure Functions TypeScript HTTP Trigger using Azure Developer CLI",
@@ -2502,7 +2500,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-typescript-azd",
-    "tags": ["new", "functions", "typescript", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
+    "tags": ["functions", "typescript", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
   },
   {
     "title": "Azure Functions Java HTTP Trigger using Azure Developer CLI",
@@ -2511,7 +2509,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/azure-functions-java-flex-consumption-azd",
-    "tags": ["new", "functions", "java", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
+    "tags": ["functions", "java", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
   },
   {
     "title": "Azure Functions PowerShell HTTP Trigger using Azure Developer CLI",
@@ -2520,7 +2518,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-powershell-azd",
-    "tags": ["new", "functions", "powershell", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
+    "tags": ["functions", "powershell", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
   },
   {
     "title": "Doc Intelligence-In-A-Box",
@@ -2531,7 +2529,6 @@
     "source": "https://github.com/Azure-Samples/doc-intelligence-in-a-box",
     "tags": [
       "msft",
-      "new",
       "bicep",
       "cosmosdb",
       "functions",
@@ -2562,7 +2559,6 @@
       "msft",
       "azureai",
       "aicollection",
-      "new",
       "managedidentity"
     ]
   },
@@ -2573,7 +2569,7 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/Durable-Functions-Order-Processing",
-    "tags": ["new", "functions", "dotnetCsharp", "managedidentity","bicep", "msft"]
+    "tags": ["functions", "dotnetCsharp", "managedidentity","bicep", "msft"]
   },
   {
     "title": "Azure Cosmos DB for Table Quickstart - .NET",
@@ -2657,6 +2653,40 @@
       "bicep",
       "keyvault",
       "appinsights",
+      "msft",
+      "openai",
+      "aicollection",
+      "new"
+    ]
+  },
+  {
+    "title": "Intelligent App on Azure Container Apps and GitHub Models",
+    "description": "MarketingWriter is an AI marketing content generation application sample powered by GitHub Models, Azure Container App, Streamlit and Azure Developer CLI (AZD)",
+    "preview": "./templates/images/aca-githubmodel-marketingwriter.png",
+    "website": "https://github.com/xuhaoruins",
+    "author": "Hao Xu",
+    "source": "https://github.com/xuhaoruins/marketingwriter",
+    "tags": [
+      "python",
+      "streamlit",
+      "aca",
+      "bicep",
+      "community",
+      "new"
+      ]
+  },
+  {
+    "title": "Sprint Petclinic AI application on Azure Container Apps",
+    "description": "A chat bot using Generative AI to the Spring Petclinic application, running on Azure Container Apps",
+    "preview": "./templates/images/spring-petclinic-ai.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Songbo Wang",
+    "source": "https://github.com/Azure-Samples/spring-petclinic-ai",
+    "tags": [
+      "java",
+      "aca",
+      "managedidentity",
+      "bicep",
       "msft",
       "openai",
       "new"

@@ -2691,5 +2691,22 @@
       "openai",
       "new"
     ]
+  },
+  {
+    "title": "Simple Chat App using API Management Gateway and Azure OpenAI",
+    "description": "A chat interface that sends messages through API Management Azure OpenAI endpoints implementing load-balancing, circuit breaking and semantic caching, showcasing enterprise-grade API management for AI workloads.",
+    "preview": "./templates/images/genai-apim-sample.jpg",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Chris Noring",
+    "source": "https://github.com/Azure-Samples/genai-gateway-apim",
+    "tags": [
+      "javascript",
+      "apim",
+      "managedidentity",
+      "bicep",
+      "msft",
+      "openai",
+      "new"
+    ]
   }
 ]

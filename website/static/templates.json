@@ -2691,5 +2691,30 @@
       "openai",
       "new"
     ]
+  },
+  {
+    "title": "LlamaIndex RAG chat app with Azure OpenAI and Azure AI Search (JavaScript)",
+    "description": "This solution creates a ChatGPT-like, Retrieval Augmented Generation (RAG) agentic application, over your own documents, powered by Llamaindex (TypeScript). It uses Azure OpenAI Service to access GPT models and embedding, and Azure AI Search for data indexing and retrieval.",
+    "preview": "./templates/images/llama-index-vector-search-javascript.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Wassim Chegham",
+    "source": "https://github.com/Azure-Samples/llama-index-vector-search-javascript",
+    "tags": [
+      "javascript",
+      "aca",
+      "managedidentity",
+      "bicep",
+      "msft",
+      "openai",
+      "new",
+      "ai",
+      "gpt",
+      "javascript",
+      "nodejs",
+      "typescript",
+      "azureai",
+      "aicollection",
+      "managedidentity"
+    ]
   }
 ]

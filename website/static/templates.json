@@ -2710,7 +2710,8 @@
       "new",
       "langchain4j",
       "rag",
-      "chatbot"
+      "monitor",
+      "loganalytics"
     ]
   }
 ]

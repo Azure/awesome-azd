@@ -121,6 +121,7 @@ export type TagType =
   | "kernelmemory"
   | "promptengineering"
   | "rag"
+  | "langchain4j"
   | "featureExperimentation"
   | "featuremanagement"
   | "go"
@@ -407,6 +408,11 @@ export const Tags: { [type in TagType]: Tag } = {
   rag: {
     label: "Retrieval-Augmented Generation",
     description: "Template architecture uses Retrieval-Augmented Generation",
+    type: "Framework",
+  },
+  langchain4j: {
+    label: "LangChain4j",
+    description: "Template architecture uses LangChain4j framework",
     type: "Framework",
   },
 

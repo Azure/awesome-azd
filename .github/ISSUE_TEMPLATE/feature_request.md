@@ -4,7 +4,7 @@ name: Feature request
 about: Suggest an idea for this project
 title: ''
 labels: ''
-assignees: gkulin
+assignees: kristenwomack
 
 ---
 

@@ -67,7 +67,7 @@
     "preview": "./templates/images/eshop-semanticsearch-aisearch.png",
     "website": "https://twitter.com/elbruno",
     "author": "Bruno Capuano",
-    "source": "https://github.com/Azure-Samples/eShopLite-SemanticSearch",
+    "source": "https://github.com/Azure-Samples/eShopLite-SemanticSearch-AzureAISearch",
     "tags": [
       "dotnetCsharp",
       "typescript",

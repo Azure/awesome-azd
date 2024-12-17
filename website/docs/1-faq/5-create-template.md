@@ -19,5 +19,5 @@ The `azd template` has this file structure defined [by azd conventions](https://
 The Azure Developer CLI (azd) tool helps you with the process of _creating_ the template with `azd init` as the first step, followed by creation of the `infra/` folder, updating of the `azure.yaml` file, and validation of template using `azd up` to provision and deploy resources.
 
 :::tip READ THE DOCS
-Learn more about [making your codebase `azd`compatible](https://aka.ms/azure-dev/enabletemplateworkflow.png)
+Learn more about [making your codebase `azd`compatible](https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/make-azd-compatible)
 :::

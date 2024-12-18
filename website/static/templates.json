@@ -2708,5 +2708,25 @@
       "openai",
       "new"
     ]
+  },
+  {
+    "title": "Multi-tier App with Dashboard Front-End SPA and Backend API",
+    "description": "A multi-tier app with a dashboard front-end (React + Bootstrap) hosted in Azure Static Web Apps and back-end API (Node.js) hosted in Azure App Service",
+    "preview": "./templates/images/spring-petclinic-ai.png",
+    "website": "https://build5nines.com",
+    "author": "Build5Nines",
+    "source": "https://github.com/Build5Nines/azd-react-bootstrap-dashboard",
+    "tags": [
+      "javascript",
+      "nodejs",
+      "reactjs",
+      "bootstrap",
+      "dashboard",
+      "bicep",
+      "build5nines",
+      "spa",
+      "api",
+      "multitier"
+    ]
   }
 ]

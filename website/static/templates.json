@@ -2722,13 +2722,8 @@
       "javascript",
       "nodejs",
       "reactjs",
-      "dashboard",
       "bicep",
-      "build5nines",
-      "spa",
-      "api",
-      "appservice",
-      "staticwebapps"
+      "appservice"
     ]
   }
 ]

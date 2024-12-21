@@ -2723,7 +2723,12 @@
       "nodejs",
       "reactjs",
       "bicep",
-      "appservice"
+      "appservice",
+      "swa",
+      "appinsights",
+      "loganalytics",
+      "monitor",
+      "keyvault"
     ]
   }
 ]

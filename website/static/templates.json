@@ -2854,7 +2854,9 @@
       "bicep",
       "botservice",
       "keyvault",
-      "monitor"
+      "monitor",
+      "csharp",
+      "new"
     ]
   }
 ]

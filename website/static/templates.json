@@ -2708,5 +2708,27 @@
       "openai",
       "new"
     ]
+  },
+  {
+    "title": "Multi-tier App with React.js Dashboard Front-End SPA and Backend Node.js API",
+    "description": "A multi-tier app with a dashboard front-end (React + Bootstrap) hosted in Azure Static Web Apps and back-end API (Node.js) hosted in Azure App Service",
+    "preview": "./templates/images/build5nines-azd-react-bootstrap-dashboard.png",
+    "website": "https://build5nines.com",
+    "author": "Build5Nines",
+    "source": "https://github.com/Build5Nines/azd-react-bootstrap-dashboard",
+    "tags": [
+      "new",
+      "community",
+      "javascript",
+      "nodejs",
+      "reactjs",
+      "bicep",
+      "appservice",
+      "swa",
+      "appinsights",
+      "loganalytics",
+      "monitor",
+      "keyvault"
+    ]
   }
 ]

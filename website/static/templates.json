@@ -2745,5 +2745,26 @@
       "msft",
       "new"
     ]
+  },
+  {
+    "title": "Advanced multi agent application based on Autogen and Azure Open AI",
+    "description": "This repository leverages Microsoft Autogen 0.4, Azure OpenAI and integrates it with Streamlit, to build an end to end multi agents application. this repo makes it easy to build test and deploy an advanced multi agent framework",
+    "preview": "./templates/images/dream_team.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Yaniv Vaknin",
+    "source": "https://github.com/Azure-Samples/dream-team",
+    "tags": [
+      "python",
+      "managedidentity",
+      "bicep",
+      "msft",
+      "openai",
+      "autogen",
+      "aca",
+      "keyvault",
+      "loganalytics",
+      "appinsights",
+      "new"
+    ]
   }
 ]

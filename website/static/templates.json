@@ -2578,7 +2578,7 @@
     "website": "https://github.com/azure-samples/cosmos-db-table-dotnet-quickstart",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-table-dotnet-quickstart",
-    "tags": ["cosmosdb", "dotnetCsharp", "aca", "managedidentity", "bicep", "msft", "new"]
+    "tags": ["cosmosdb", "dotnetCsharp", "aca", "managedidentity", "bicep", "msft"]
   },
   {
     "title": "Azure Cosmos DB for Table Quickstart - Node.js",
@@ -2587,7 +2587,7 @@
     "website": "https://github.com/azure-samples/cosmos-db-table-nodejs-quickstart",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-table-nodejs-quickstart",
-    "tags": ["cosmosdb", "nodejs", "aca", "managedidentity", "bicep", "msft", "new"]
+    "tags": ["cosmosdb", "nodejs", "aca", "managedidentity", "bicep", "msft"]
   },
   {
     "title": "Integration Hub with Logic App Standard",
@@ -2596,7 +2596,7 @@
     "website": "https://github.com/marnixcox",
     "author": "Marnix Cox",
     "source": "https://github.com/marnixcox/integration-hub",
-    "tags": ["new", "community", "functions", "dotnetCsharp", "powershell","bicep", "servicebus", "logicapps", "keyvault", "monitor", "appservice"]
+    "tags": ["community", "functions", "dotnetCsharp", "powershell","bicep", "servicebus", "logicapps", "keyvault", "monitor", "appservice"]
   },
   {
     "title": "Logic App Standard and Functions",
@@ -2605,7 +2605,7 @@
     "website": "https://github.com/marnixcox",
     "author": "Marnix Cox",
     "source": "https://github.com/marnixcox/logicapp-standard-func",
-    "tags": ["new", "community", "functions", "dotnetCsharp", "bicep", "logicapps", "keyvault", "monitor", "appservice"]
+    "tags": ["community", "functions", "dotnetCsharp", "bicep", "logicapps", "keyvault", "monitor", "appservice"]
   },
   {
     "title": "Logic App Consumption",
@@ -2614,7 +2614,7 @@
     "website": "https://github.com/marnixcox",
     "author": "Marnix Cox",
     "source": "https://github.com/marnixcox/logicapp-consumption",
-    "tags": ["new", "community", "bicep", "logicapps", "keyvault", "monitor"]
+    "tags": ["community", "bicep", "logicapps", "keyvault", "monitor"]
   },
   {
     "title": "Java Quarkus Apps on Azure Container Apps",
@@ -2633,8 +2633,7 @@
       "managedidentity",
       "vuejs",
       "bicep",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -2655,8 +2654,7 @@
       "appinsights",
       "msft",
       "openai",
-      "aicollection",
-      "new"
+      "aicollection"
     ]
   },
   {
@@ -2671,8 +2669,7 @@
       "streamlit",
       "aca",
       "bicep",
-      "community",
-      "new"
+      "community"
       ]
   },
   {
@@ -2688,8 +2685,7 @@
       "managedidentity",
       "bicep",
       "msft",
-      "openai",
-      "new"
+      "openai"
     ]
   },
   {
@@ -2705,8 +2701,7 @@
       "managedidentity",
       "bicep",
       "msft",
-      "openai",
-      "new"
+      "openai"
     ]
   },
   {
@@ -2748,6 +2743,27 @@
       "managedidentity",
       "bicep",
       "msft",
+      "new"
+    ]
+  },
+  {
+    "title": "Advanced multi agent application based on Autogen and Azure Open AI",
+    "description": "This repository leverages Microsoft Autogen 0.4, Azure OpenAI and integrates it with Streamlit, to build an end to end multi agents application. this repo makes it easy to build test and deploy an advanced multi agent framework",
+    "preview": "./templates/images/dream_team.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Yaniv Vaknin",
+    "source": "https://github.com/Azure-Samples/dream-team",
+    "tags": [
+      "python",
+      "managedidentity",
+      "bicep",
+      "msft",
+      "openai",
+      "autogen",
+      "aca",
+      "keyvault",
+      "loganalytics",
+      "appinsights",
       "new"
     ]
   }

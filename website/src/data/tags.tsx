@@ -124,7 +124,8 @@ export type TagType =
   | "featureExperimentation"
   | "featuremanagement"
   | "go"
-  | "powershell";
+  | "powershell"
+  | "autogen";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -748,5 +749,10 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Feature Experimentation",
     description: "Template architecture involves Feature Experimentation",
     type: "Topic",
+  },
+  autogen: {
+  label: "Microsoft AutoGen",
+  description: "Template architecture uses Microsoft AutoGen",
+  type: "Framework",
   },
 };

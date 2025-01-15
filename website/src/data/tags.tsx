@@ -70,6 +70,7 @@ export type TagType =
   | "apim"
   | "spring"
   | "quarkus"
+  | "javaee"
   | "thymeleaf"
   | "sap"
   | "sapcap"
@@ -347,6 +348,11 @@ export const Tags: { [type in TagType]: Tag } = {
   quarkus: {
     label: "Quarkus",
     description: "Template architecture uses Quarkus framework",
+    type: "Framework",
+  },
+  javaee: {
+    label: "JavaEE",
+    description: "Template architecture uses Jakarta EE framework",
     type: "Framework",
   },
   vuejs: {

@@ -794,6 +794,21 @@
     ]
   },
   {
+    "title": "Simple FastAPI AZD",
+    "description": "A tiny, no-frills, template to deploy Python's FastAPI web framework to Azure App Service in the free tier.",
+    "preview": "./templates/images/simple-fastapi-azd.png",
+    "website": "https://github.com/reneenoble",
+    "author": "Renee Noble",
+    "source": "https://github.com/reneenoble/simple-fastapi-azd",
+    "tags": [
+      "python",
+      "appservice",
+      "fastapi",
+      "community",
+      "bicep"
+    ]
+  },
+  {
     "title": "Azure Functions - Text Summarization using AI Cognitive Language Service (C#-Isolated)",
     "description": "This sample shows how to take text documents as a input via BlobTrigger, does Text Summarization processing using the AI Congnitive Language service, and then outputs to another text document using BlobOutput binding.",
     "preview": "./templates/images/test.png",

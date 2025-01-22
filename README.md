@@ -41,7 +41,7 @@ The Azure Developer CLI (`azd`) is an open-source tool that accelerates the time
 
 * This repository is also associated with a [live website](https://aka.ms/awesome-azd) that makes azd-templates searchable and discoverable (by various filter tags).
 * Read [this document](GALLERY.md) for an overview of how the gallery is setup.
-* Submit a template for the gallery! Use [this issue](https://github.com/Azure/awesome-azd/issues/new?assignees=gkulin&labels=new-contribution&template=%F0%9F%93%B2contribute-an-azd-template-.md&title=%5BNew+azd-template%5D+%3Cyour-template-name%3E) to contribute your template to the showcase.
+* Submit a template for the gallery! Use [this issue](https://github.com/Azure/awesome-azd/issues/new?assignees=kristenwomack&labels=new-contribution&template=%F0%9F%93%B2contribute-an-azd-template-.md&title=%5BNew+azd-template%5D+%3Cyour-template-name%3E) to contribute your template to the showcase.
 
 ---
 

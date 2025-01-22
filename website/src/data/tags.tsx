@@ -124,7 +124,8 @@ export type TagType =
   | "featureExperimentation"
   | "featuremanagement"
   | "go"
-  | "powershell";
+  | "powershell"
+  | "dataApiBuilder";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -287,6 +288,11 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses PowerShell",
     type: "Tools",
   },
+  dab: {
+    label: "Data API builder",
+    description: "Template architecture uses Data API builder (DAB)",
+    type: "Tools",
+  }
 
   // ---- Infrastructure as Code
   bicep: {

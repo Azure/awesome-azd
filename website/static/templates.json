@@ -805,7 +805,8 @@
       "appservice",
       "fastapi",
       "msft",
-      "bicep"
+      "bicep",
+      "new"
     ]
   },
   {

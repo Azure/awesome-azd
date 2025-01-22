@@ -125,7 +125,7 @@ export type TagType =
   | "featuremanagement"
   | "go"
   | "powershell"
-  | "dataApiBuilder";
+  | "dab";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here

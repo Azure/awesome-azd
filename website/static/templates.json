@@ -2727,7 +2727,7 @@
     ]
   },
   {
-    "title": "Java EE Cargo Tracker application with Open Liberty running on Azure Kubernetes Service (AKS)",
+    "title": "Jakarta Java EE Cargo Tracker application with Open Liberty running on Azure Kubernetes Service (AKS)",
     "description": "A Jakarta EE based Cargo Tracker application with Open Liberty running on Azure Kubernetes Service (AKS) with Azure Database for PostgreSQL and Azure OpenAI.",
     "preview": "./templates/images/cargotracker-liberty-aks.png",
     "website": "https://github.com/Azure-Samples",

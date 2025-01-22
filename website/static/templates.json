@@ -2682,7 +2682,7 @@
     "website": "https://github.com/azure-samples/dab-azure-cosmos-db-nosql-quickstart",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/dab-azure-cosmos-db-nosql-quickstart",
-    "tags": ["cosmosdb", "dotnetCsharp", "blazor", "dataApiBuilder", "aca", "managedidentity", "bicep", "msft", "new"]
+    "tags": ["cosmosdb", "dotnetCsharp", "blazor", "dab", "aca", "managedidentity", "bicep", "msft", "new"]
   },
   {
     "title": "Sprint Petclinic AI application on Azure Container Apps",

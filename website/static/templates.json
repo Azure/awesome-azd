@@ -794,12 +794,12 @@
     ]
   },
   {
-    "title": "Simple FastAPI AZD",
+    "title": "AZD Simple FastAPI Azure App Service",
     "description": "A tiny, no-frills, template to deploy Python's FastAPI web framework to Azure App Service in the free tier.",
     "preview": "./templates/images/simple-fastapi-azd.png",
-    "website": "https://github.com/reneenoble",
+    "website": "https://github.com/Azure-Samples",
     "author": "Renee Noble",
-    "source": "https://github.com/reneenoble/simple-fastapi-azd",
+    "source": "https://github.com/Azure-Samples/azd-simple-fastapi-appservice",
     "tags": [
       "python",
       "appservice",

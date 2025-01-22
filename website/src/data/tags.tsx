@@ -294,7 +294,7 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Data API builder",
     description: "Template architecture uses Data API builder (DAB)",
     type: "Tools",
-  }
+  },
 
   // ---- Infrastructure as Code
   bicep: {

@@ -2776,11 +2776,15 @@
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/durable-functions-order-processing-python",
     "tags": [
-      "functions", 
-      "durable-functions", 
+      "functions",
       "python", 
       "managedidentity",
+      "azurestorage",
+      "blobstorage",
+      "vnets",
       "bicep", 
+      "appinsights",
+      "loganalytics",
       "msft", 
       "new"
     ]

@@ -827,7 +827,7 @@
   },
   {
     "title": "Flask Container with CDN",
-    "description": "A simple photos website written with Python Flask and Bootstrap. Can be run locally with Docker and then deployed to Azure Container Apps with an Azure CDN in front.",
+    "description": "A simple pos website written with Python Flask and Bootstrap. Can be run locally with Docker and then deployed to Azure Container Apps with an Azure CDN in front.",
     "preview": "./templates/images/flask-cdn-container-app.png",
     "website": "https://github.com/pamelafox",
     "author": "Pamela Fox",
@@ -1922,7 +1922,7 @@
   {
     "title": "RAG on PostgreSQL",
     "description": "A RAG app to ask questions about rows in a database table. Deployable on Azure Container Apps with PostgreSQL Flexible Server.",
-    "preview": "./templates/images/rag-postgres-openai-python-screenshot_chat.png",
+    "preview": "./templates/images/rag-postgres-openai-python-screens_chat.png",
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/rag-postgres-openai-python",
@@ -2775,7 +2775,7 @@
     "website": "https://github.com/petender/ConferenceAPI",
     "author": "petender",
     "source": "https://github.com/petender/ConferenceAPI",
-    "tags": ["msft", "new", "hot", "appservice"]
+    "tags": ["msft", "new", "popular", "appservice"]
     
   },
   {
@@ -2785,7 +2785,7 @@
     "website": "https://github.com/petender/azd-apimwithconfAPI",
     "author": "petender",
     "source": "https://github.com/petender/azd-apimwithconfAPI",
-    "tags": ["msft", "new", "hot", "appservice", "apim"]
+    "tags": ["msft", "new", "popular", "appservice", "apim"]
 
     
   },
@@ -2796,7 +2796,7 @@
     "website": "https://github.com/petender/OpenAIMultiModel",
     "author": "petender",
     "source": "https://github.com/petender/OpenAIMultiModel",
-    "tags": ["msft", "new", "hot", "openai", "azureai"]
+    "tags": ["msft", "new", "popular", "openai", "azureai"]
     
   },
   {
@@ -2806,7 +2806,7 @@
     "website": "https://github.com/rob-foulkrod/TollBooth",
     "author": "rob-foulkrod",
     "source": "https://github.com/rob-foulkrod/TollBooth",
-    "tags": ["msft", "new", "hot", "webapps", "keyvault", "cosmosdb", "appinsights", "functions", "eventhub"]
+    "tags": ["msft", "new", "popular", "webapps", "keyvault", "cosmosdb", "appinsights", "functions", "eventhub"]
 
     
   },
@@ -2817,7 +2817,7 @@
     "website": "https://github.com/rob-foulkrod/BadgeMaker",
     "author": "rob-foulkrod",
     "source": "https://github.com/rob-foulkrod/BadgeMaker",
-    "tags": ["msft", "new", "hot", "webapps", "azureai", "blazor"]
+    "tags": ["msft", "new", "popular", "webapps", "azureai", "blazor"]
 
     
   },
@@ -2828,7 +2828,7 @@
     "website": "https://github.com/rob-foulkrod/MachineLearningAZD",
     "author": "rob-foulkrod",
     "source": "https://github.com/rob-foulkrod/MachineLearningAZD",
-    "tags": ["msft", "new", "hot", "azureml", "keyvault", "appinsights"]
+    "tags": ["msft", "new", "popular", "azureml", "keyvault", "appinsights"]
     
   },
   

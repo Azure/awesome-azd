@@ -2767,5 +2767,112 @@
       "appinsights",
       "new"
     ]
+  },
+  {
+    "title": "Minimal .NET API with ConferenceAPI sample ",
+    "description": "A minimal .NET API with ConferenceAPI sample",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/petender/ConferenceAPI",
+    "author": "petender",
+    "source": "https://github.com/petender/ConferenceAPI",
+    "tags": ["msft", "new", "hot", "appservice"]
+    
+  },
+  {
+    "title": "API Management with ConferenceAPI",
+    "description": "This scenario deploys an Azure API Management Resource with a Standard SKU, as well as a Conference Demo API Web App, allowing for showing different API calls, as well as using API Management Policies for rate-limit and header-modification + demo Products",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/petender/azd-apimwithconfAPI",
+    "author": "petender",
+    "source": "https://github.com/petender/azd-apimwithconfAPI",
+    "tags": ["msft", "new", "hot", "appservice", "apim"]
+
+    
+  },
+  {
+    "title": "Azure AI Services with multiple OpenAI models",
+    "description": "This scenario deploys an Azure AI Services Resource with multiple OpenAI models, allowing for showing different AI calls, as well as using AI Services for text generation, image generation and more. The deployed models are GPT-3.5-Turbo, GPT-4o, Dall-E-3",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/petender/OpenAIMultiModel",
+    "author": "petender",
+    "source": "https://github.com/petender/OpenAIMultiModel",
+    "tags": ["msft", "new", "hot", "openai", "azureai"]
+    
+  },
+  {
+    "title": "Tollbooth Serverless Architecture with Azure Functions",
+    "description": "This scenario deploys the building blocks for a serverless automated parking lot / tollbooth / HOV lanes system using Azure Functions and EventGrid. It also has Azure Storage Account, CosmosDB, Azure KeyVault and Application Insights as part of the architecture.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/rob-foulkrod/TollBooth",
+    "author": "rob-foulkrod",
+    "source": "https://github.com/rob-foulkrod/TollBooth",
+    "tags": ["msft", "new", "hot", "webapps", "keyvault", "cosmosdb", "appinsights", "functions", "eventhub"]
+
+    
+  },
+  {
+    "title": "Blazor BadgeMaker with Azure AI Services",
+    "description": "The BadgeMaker is a Blazor front-end application that provides a user-friendly interface for designing and generating digital badges. It allows users to customize badges with various templates, colors, and text options.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/rob-foulkrod/BadgeMaker",
+    "author": "rob-foulkrod",
+    "source": "https://github.com/rob-foulkrod/BadgeMaker",
+    "tags": ["msft", "new", "hot", "webapps", "azureai", "blazor"]
+
+    
+  },
+  {
+    "title": "Azure Machine Learning",
+    "description": "This scenario deploys AzureML Service, together with other resources such as Key Vault, Application Insights, Container Registry and the necessary RBAC permissions.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/rob-foulkrod/MachineLearningAZD",
+    "author": "rob-foulkrod",
+    "source": "https://github.com/rob-foulkrod/MachineLearningAZD",
+    "tags": ["msft", "new", "hot", "azureml", "keyvault", "appinsights"]
+    
+  },
+  
+  {
+    "title": "EShopOnWeb VM Architecture",
+    "description": "This scenario is based on a WebVM and SQLVM architecture, showcasing traditional IAAS in Azure.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/rob-foulkrod/IAAS2019",
+    "author": "rob-foulkrod",
+    "source": "https://github.com/rob-foulkrod/IAAS2019",
+    "tags": ["msft", "new", "virtualmachine"]
+
+    
+  },
+  {
+    "title": "EShopOnWeb ACI Architecture",
+    "description": "This scenario is deploying Azure Container Instance, with a sample EShopOnWeb Container with .NET8.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/maartenvandiemen/AZD-ACI-Demo",
+    "author": "maartenvandiemen",
+    "source": "https://github.com/maartenvandiemen/AZD-ACI-Demo",
+    "tags": ["new", "community"]
+
+    
+  },
+  {
+    "title": "EShopOnWeb ACAPPS Architecture",
+    "description": "This scenario is deploying Azure Container Apps, with a sample EShopOnWeb Container with .NET8.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/maartenvandiemen/AZD-ACA-Demo",
+    "author": "maartenvandiemen",
+    "source": "https://github.com/maartenvandiemen/AZD-ACA-Demo",
+    "tags": ["new", "aca", "community"]
+    
+  },
+
+  {
+    "title": "EShopOnWeb AKS Architecture",
+    "description": "This scenario is based on a Kubernetes (AKS) architecture.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/maartenvandiemen/AZD-AKS-Demo",
+    "author": "maartenvandiemen",
+    "source": "https://github.com/maartenvandiemen/AZD-AKS-Demo",
+    "tags": ["new", "aks", "community"]
+    
   }
 ]

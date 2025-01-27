@@ -2783,5 +2783,26 @@
       "appinsights",
       "new"
     ]
+  },
+  {
+    "title": "Order processing workflow with Durable Functions (Python)",
+    "description": "This repository contains the implementation of an order processing workflow with Durable Functions in Python. The sample is deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd) and is configured with managed identity as the authentication mechanism.",
+    "preview": "./templates/images/order-processing-durable-functions.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/durable-functions-order-processing-python",
+    "tags": [
+      "functions",
+      "python", 
+      "managedidentity",
+      "azurestorage",
+      "blobstorage",
+      "vnets",
+      "bicep", 
+      "appinsights",
+      "loganalytics",
+      "msft", 
+      "new"
+    ]
   }
 ]

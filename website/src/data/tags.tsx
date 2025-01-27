@@ -126,7 +126,8 @@ export type TagType =
   | "featuremanagement"
   | "go"
   | "powershell"
-  | "autogen";
+  | "autogen"
+  | "dab";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -287,6 +288,11 @@ export const Tags: { [type in TagType]: Tag } = {
   powershell: {
     label: "PowerShell",
     description: "Template architecture uses PowerShell",
+    type: "Tools",
+  },
+  dab: {
+    label: "Data API builder",
+    description: "Template architecture uses Data API builder (DAB)",
     type: "Tools",
   },
 

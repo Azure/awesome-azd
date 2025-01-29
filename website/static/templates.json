@@ -2833,6 +2833,67 @@
     ]
   },
   {
+    "title": "Multi-tier App with React.js Dashboard Front-End SPA and Backend Node.js API",
+    "description": "A multi-tier app with a dashboard front-end (React + Bootstrap) hosted in Azure Static Web Apps and back-end API (Node.js) hosted in Azure App Service",
+    "preview": "./templates/images/build5nines-azd-react-bootstrap-dashboard.png",
+    "website": "https://build5nines.com",
+    "author": "Build5Nines",
+    "source": "https://github.com/Build5Nines/azd-react-bootstrap-dashboard",
+    "tags": [
+      "community",
+      "javascript",
+      "nodejs",
+      "reactjs",
+      "bicep",
+      "appservice",
+      "swa",
+      "appinsights",
+      "loganalytics",
+      "monitor",
+      "keyvault"
+    ]
+  },
+  {
+    "title": "Jakarta Java EE Cargo Tracker application with Open Liberty running on Azure Kubernetes Service (AKS)",
+    "description": "A Jakarta EE based Cargo Tracker application with Open Liberty running on Azure Kubernetes Service (AKS) with Azure Database for PostgreSQL and Azure OpenAI.",
+    "preview": "./templates/images/cargotracker-liberty-aks.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Zhihao Guo",
+    "source": "https://github.com/Azure-Samples/cargotracker-liberty-aks-azd",
+    "tags": [
+      "java",
+      "javaee",
+      "azuredb-postgreSQL",
+      "openai",
+      "gpt",
+      "ai",
+      "aks",
+      "managedidentity",
+      "bicep",
+      "msft"
+    ]
+  },
+  {
+    "title": "Advanced multi agent application based on Autogen and Azure Open AI",
+    "description": "This repository leverages Microsoft Autogen 0.4, Azure OpenAI and integrates it with Streamlit, to build an end to end multi agents application. this repo makes it easy to build test and deploy an advanced multi agent framework",
+    "preview": "./templates/images/dream_team.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Yaniv Vaknin",
+    "source": "https://github.com/Azure-Samples/dream-team",
+    "tags": [
+      "python",
+      "managedidentity",
+      "bicep",
+      "msft",
+      "openai",
+      "autogen",
+      "aca",
+      "keyvault",
+      "loganalytics",
+      "appinsights"
+    ]
+  },
+  {
     "title": "AZD Simple FastAPI Azure App Service",
     "description": "A tiny, no-frills, template to deploy Python's FastAPI web framework to Azure App Service in the free tier.",
     "preview": "./templates/images/simple-fastapi-azd.png",
@@ -2884,70 +2945,6 @@
       "bicep",
       "msft",
       "openai",
-      "new"
-    ]
-  },
-  {
-    "title": "Multi-tier App with React.js Dashboard Front-End SPA and Backend Node.js API",
-    "description": "A multi-tier app with a dashboard front-end (React + Bootstrap) hosted in Azure Static Web Apps and back-end API (Node.js) hosted in Azure App Service",
-    "preview": "./templates/images/build5nines-azd-react-bootstrap-dashboard.png",
-    "website": "https://build5nines.com",
-    "author": "Build5Nines",
-    "source": "https://github.com/Build5Nines/azd-react-bootstrap-dashboard",
-    "tags": [
-      "new",
-      "community",
-      "javascript",
-      "nodejs",
-      "reactjs",
-      "bicep",
-      "appservice",
-      "swa",
-      "appinsights",
-      "loganalytics",
-      "monitor",
-      "keyvault"
-    ]
-  },
-  {
-    "title": "Jakarta Java EE Cargo Tracker application with Open Liberty running on Azure Kubernetes Service (AKS)",
-    "description": "A Jakarta EE based Cargo Tracker application with Open Liberty running on Azure Kubernetes Service (AKS) with Azure Database for PostgreSQL and Azure OpenAI.",
-    "preview": "./templates/images/cargotracker-liberty-aks.png",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Zhihao Guo",
-    "source": "https://github.com/Azure-Samples/cargotracker-liberty-aks-azd",
-    "tags": [
-      "java",
-      "javaee",
-      "azuredb-postgreSQL",
-      "openai",
-      "gpt",
-      "ai",
-      "aks",
-      "managedidentity",
-      "bicep",
-      "msft",
-      "new"
-    ]
-  },
-  {
-    "title": "Advanced multi agent application based on Autogen and Azure Open AI",
-    "description": "This repository leverages Microsoft Autogen 0.4, Azure OpenAI and integrates it with Streamlit, to build an end to end multi agents application. this repo makes it easy to build test and deploy an advanced multi agent framework",
-    "preview": "./templates/images/dream_team.png",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Yaniv Vaknin",
-    "source": "https://github.com/Azure-Samples/dream-team",
-    "tags": [
-      "python",
-      "managedidentity",
-      "bicep",
-      "msft",
-      "openai",
-      "autogen",
-      "aca",
-      "keyvault",
-      "loganalytics",
-      "appinsights",
       "new"
     ]
   },

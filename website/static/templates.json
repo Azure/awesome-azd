@@ -2817,7 +2817,6 @@
     "author": "Azure SQL Content Team",
     "source": "https://github.com/azure-samples/dab-azure-sql-quickstart",
     "tags": ["azuresql", "dotnetCsharp", "blazor", "dab", "aca", "managedidentity", "bicep", "msft", "new"]
-    ]
   },
   {
     "title": "Sprint Petclinic AI application on Azure Container Apps",

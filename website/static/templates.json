@@ -3127,5 +3127,28 @@
       "managedidentity",
       "monitor"
     ]
+  },
+   {
+    "title": "Azure Functions JavaScript sample using OpenAI TextCompletion",
+    "description": "JavaScript Azure Functions sample using OpenAI TextCompletion input binding to send content to Azure OpenAI and get a result",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/azure-functions-completion-openai-node",
+    "tags": [
+      "bicep",
+      "msft",
+      "javascript",
+      "functions",
+      "openai",
+      "appinsights",
+      "azurestorage",
+      "managedidentity",
+      "monitor",
+      "azureai",
+      "blobstorage",
+      "loganalytics",
+      "new"
+    ]
   }
 ]

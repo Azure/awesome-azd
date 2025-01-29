@@ -794,6 +794,22 @@
     ]
   },
   {
+    "title": "AZD Simple FastAPI Azure App Service",
+    "description": "A tiny, no-frills, template to deploy Python's FastAPI web framework to Azure App Service in the free tier.",
+    "preview": "./templates/images/simple-fastapi-azd.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Renee Noble",
+    "source": "https://github.com/Azure-Samples/azd-simple-fastapi-appservice",
+    "tags": [
+      "python",
+      "appservice",
+      "fastapi",
+      "msft",
+      "bicep",
+      "new"
+    ]
+  },
+  {
     "title": "Azure Functions - Text Summarization using AI Cognitive Language Service (C#-Isolated)",
     "description": "This sample shows how to take text documents as a input via BlobTrigger, does Text Summarization processing using the AI Congnitive Language service, and then outputs to another text document using BlobOutput binding.",
     "preview": "./templates/images/test.png",
@@ -2578,7 +2594,7 @@
     "website": "https://github.com/azure-samples/cosmos-db-table-dotnet-quickstart",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-table-dotnet-quickstart",
-    "tags": ["cosmosdb", "dotnetCsharp", "aca", "managedidentity", "bicep", "msft", "new"]
+    "tags": ["cosmosdb", "dotnetCsharp", "aca", "managedidentity", "bicep", "msft"]
   },
   {
     "title": "Azure Cosmos DB for Table Quickstart - Node.js",
@@ -2587,7 +2603,7 @@
     "website": "https://github.com/azure-samples/cosmos-db-table-nodejs-quickstart",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-table-nodejs-quickstart",
-    "tags": ["cosmosdb", "nodejs", "aca", "managedidentity", "bicep", "msft", "new"]
+    "tags": ["cosmosdb", "nodejs", "aca", "managedidentity", "bicep", "msft"]
   },
   {
     "title": "Integration Hub with Logic App Standard",
@@ -2596,7 +2612,7 @@
     "website": "https://github.com/marnixcox",
     "author": "Marnix Cox",
     "source": "https://github.com/marnixcox/integration-hub",
-    "tags": ["new", "community", "functions", "dotnetCsharp", "powershell","bicep", "servicebus", "logicapps", "keyvault", "monitor", "appservice"]
+    "tags": ["community", "functions", "dotnetCsharp", "powershell","bicep", "servicebus", "logicapps", "keyvault", "monitor", "appservice"]
   },
   {
     "title": "Logic App Standard and Functions",
@@ -2605,7 +2621,7 @@
     "website": "https://github.com/marnixcox",
     "author": "Marnix Cox",
     "source": "https://github.com/marnixcox/logicapp-standard-func",
-    "tags": ["new", "community", "functions", "dotnetCsharp", "bicep", "logicapps", "keyvault", "monitor", "appservice"]
+    "tags": ["community", "functions", "dotnetCsharp", "bicep", "logicapps", "keyvault", "monitor", "appservice"]
   },
   {
     "title": "Logic App Consumption",
@@ -2614,7 +2630,7 @@
     "website": "https://github.com/marnixcox",
     "author": "Marnix Cox",
     "source": "https://github.com/marnixcox/logicapp-consumption",
-    "tags": ["new", "community", "bicep", "logicapps", "keyvault", "monitor"]
+    "tags": ["community", "bicep", "logicapps", "keyvault", "monitor"]
   },
   {
     "title": "Java Quarkus Apps on Azure Container Apps",
@@ -2633,8 +2649,7 @@
       "managedidentity",
       "vuejs",
       "bicep",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -2655,8 +2670,7 @@
       "appinsights",
       "msft",
       "openai",
-      "aicollection",
-      "new"
+      "aicollection"
     ]
   },
   {
@@ -2671,9 +2685,17 @@
       "streamlit",
       "aca",
       "bicep",
-      "community",
-      "new"
+      "community"
       ]
+  },
+  {
+    "title": "Data API builder Quickstart - Azure Cosmos DB for NoSQL",
+    "description": "A quick application to get started using Data API builder to create a GraphQL API for Azure Cosmos DB for NoSQL.",
+    "preview": "./templates/images/dab-azure-cosmos-db-nosql-quickstart.png",
+    "website": "https://github.com/azure-samples",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/dab-azure-cosmos-db-nosql-quickstart",
+    "tags": ["cosmosdb", "dotnetCsharp", "blazor", "dab", "aca", "managedidentity", "bicep", "msft", "new"]
   },
   {
     "title": "Sprint Petclinic AI application on Azure Container Apps",
@@ -2685,6 +2707,25 @@
     "tags": [
       "java",
       "aca",
+      "managedidentity",
+      "bicep",
+      "msft",
+      "openai"
+    ]
+  },
+  {
+    "title": "LlamaIndex RAG chat app with Azure OpenAI and Azure AI Search (JavaScript)",
+    "description": "This solution creates a ChatGPT-like, Retrieval Augmented Generation (RAG) agentic application, over your own documents, powered by Llamaindex (TypeScript). It uses Azure OpenAI Service to access GPT models and embedding, and Azure AI Search for data indexing and retrieval.",
+    "preview": "./templates/images/llama-index-vector-search-javascript.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Wassim Chegham",
+    "source": "https://github.com/Azure-Samples/llama-index-vector-search-javascript",
+    "tags": [
+      "javascript",
+      "typescript", 
+      "nodejs",
+      "aca",
+      "azureai",
       "managedidentity",
       "bicep",
       "msft",
@@ -2705,8 +2746,7 @@
       "managedidentity",
       "bicep",
       "msft",
-      "openai",
-      "new"
+      "openai"
     ]
   },
   {
@@ -2732,14 +2772,15 @@
     ]
   },
   {
-    "title": "Cargo Tracker application with Open Liberty running on Azure Kubernetes Service (AKS)",
-    "description": "Cargo Tracker application with Open Liberty running on Azure Kubernetes Service (AKS) with Azure Database for PostgreSQL and Azure OpenAI.",
+    "title": "Jakarta Java EE Cargo Tracker application with Open Liberty running on Azure Kubernetes Service (AKS)",
+    "description": "A Jakarta EE based Cargo Tracker application with Open Liberty running on Azure Kubernetes Service (AKS) with Azure Database for PostgreSQL and Azure OpenAI.",
     "preview": "./templates/images/cargotracker-liberty-aks.png",
     "website": "https://github.com/Azure-Samples",
     "author": "Zhihao Guo",
     "source": "https://github.com/Azure-Samples/cargotracker-liberty-aks-azd",
     "tags": [
       "java",
+      "javaee",
       "azuredb-postgreSQL",
       "openai",
       "gpt",
@@ -2748,6 +2789,48 @@
       "managedidentity",
       "bicep",
       "msft",
+      "new"
+    ]
+  },
+  {
+    "title": "Advanced multi agent application based on Autogen and Azure Open AI",
+    "description": "This repository leverages Microsoft Autogen 0.4, Azure OpenAI and integrates it with Streamlit, to build an end to end multi agents application. this repo makes it easy to build test and deploy an advanced multi agent framework",
+    "preview": "./templates/images/dream_team.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Yaniv Vaknin",
+    "source": "https://github.com/Azure-Samples/dream-team",
+    "tags": [
+      "python",
+      "managedidentity",
+      "bicep",
+      "msft",
+      "openai",
+      "autogen",
+      "aca",
+      "keyvault",
+      "loganalytics",
+      "appinsights",
+      "new"
+    ]
+  },
+  {
+    "title": "Order processing workflow with Durable Functions (Python)",
+    "description": "This repository contains the implementation of an order processing workflow with Durable Functions in Python. The sample is deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd) and is configured with managed identity as the authentication mechanism.",
+    "preview": "./templates/images/order-processing-durable-functions.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/durable-functions-order-processing-python",
+    "tags": [
+      "functions",
+      "python", 
+      "managedidentity",
+      "azurestorage",
+      "blobstorage",
+      "vnets",
+      "bicep", 
+      "appinsights",
+      "loganalytics",
+      "msft", 
       "new"
     ]
   }

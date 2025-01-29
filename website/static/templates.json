@@ -2678,7 +2678,7 @@
   {
     "title": "Azure Cosmos DB for Table Quickstart - Node.js",
     "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Node.js.",
-    "preview": "./templates/images/cosmos-db-table-nodejs-typescript-quickstart.png",
+    "preview": "./templates/images/cosmos-db-table-nodejs-quickstart.png",
     "website": "https://github.com/azure-samples/cosmos-db-table-nodejs-quickstart",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-table-nodejs-quickstart",

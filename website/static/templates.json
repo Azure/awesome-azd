@@ -3127,5 +3127,28 @@
       "managedidentity",
       "monitor"
     ]
+  },
+  {
+    "title": "Azure Functions RAG + AI Search using JavaScript",
+    "description": "JavaScript Azure Function using OpenAI bindings extension to highlight OpenAI retrieval augmented generation with Azure AI Search.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/azure-functions-openai-aisearch-node",
+    "tags": [
+      "bicep",
+      "msft",
+      "javascript",
+      "functions",
+      "openai",
+      "aisearch",
+      "appinsights",
+      "azurestorage",
+      "managedidentity",
+      "monitor",
+      "azureai",
+      "blobstorage",
+      "loganalytics"
+    ]
   }
 ]

@@ -794,22 +794,6 @@
     ]
   },
   {
-    "title": "AZD Simple FastAPI Azure App Service",
-    "description": "A tiny, no-frills, template to deploy Python's FastAPI web framework to Azure App Service in the free tier.",
-    "preview": "./templates/images/simple-fastapi-azd.png",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Renee Noble",
-    "source": "https://github.com/Azure-Samples/azd-simple-fastapi-appservice",
-    "tags": [
-      "python",
-      "appservice",
-      "fastapi",
-      "msft",
-      "bicep",
-      "new"
-    ]
-  },
-  {
     "title": "Azure Functions - Text Summarization using AI Cognitive Language Service (C#-Isolated)",
     "description": "This sample shows how to take text documents as a input via BlobTrigger, does Text Summarization processing using the AI Congnitive Language service, and then outputs to another text document using BlobOutput binding.",
     "preview": "./templates/images/test.png",
@@ -843,7 +827,7 @@
   },
   {
     "title": "Flask Container with CDN",
-    "description": "A simple photos website written with Python Flask and Bootstrap. Can be run locally with Docker and then deployed to Azure Container Apps with an Azure CDN in front.",
+    "description": "A simple pos website written with Python Flask and Bootstrap. Can be run locally with Docker and then deployed to Azure Container Apps with an Azure CDN in front.",
     "preview": "./templates/images/flask-cdn-container-app.png",
     "website": "https://github.com/pamelafox",
     "author": "Pamela Fox",
@@ -1938,7 +1922,7 @@
   {
     "title": "RAG on PostgreSQL",
     "description": "A RAG app to ask questions about rows in a database table. Deployable on Azure Container Apps with PostgreSQL Flexible Server.",
-    "preview": "./templates/images/rag-postgres-openai-python-screenshot_chat.png",
+    "preview": "./templates/images/rag-postgres-openai-python-screens_chat.png",
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/rag-postgres-openai-python",
@@ -2354,7 +2338,6 @@
       "azureai",
       "aicollection",
       "msft"
-      
     ]
   },
   {
@@ -2438,13 +2421,20 @@
     ]
   },
   {
-   "title": "Azure Cosmos DB for NoSQL Quickstart - .NET",
+    "title": "Azure Cosmos DB for NoSQL Quickstart - .NET",
     "description": "A quick application to get started using Azure Cosmos DB for NoSQL with the Azure SDK for .NET.",
     "preview": "./templates/images/cosmos-db-nosql-dotnet-quickstart.png",
     "website": "https://github.com/azure-samples/cosmos-db-nosql-dotnet-quickstart",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-nosql-dotnet-quickstart",
-    "tags": ["cosmosdb", "dotnetCsharp", "aca", "managedidentity", "bicep", "msft"]
+    "tags": [
+      "cosmosdb",
+      "dotnetCsharp",
+      "aca",
+      "managedidentity",
+      "bicep",
+      "msft"
+    ]
   },
   {
     "title": "Azure Cosmos DB for NoSQL Quickstart - Python",
@@ -2453,7 +2443,14 @@
     "website": "https://github.com/azure-samples/cosmos-db-nosql-python-quickstart",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-nosql-python-quickstart",
-    "tags": ["cosmosdb", "python", "aca", "managedidentity", "bicep", "msft"]
+    "tags": [
+      "cosmosdb",
+      "python",
+      "aca",
+      "managedidentity",
+      "bicep",
+      "msft"
+    ]
   },
   {
     "title": "Azure Cosmos DB for NoSQL Quickstart - Node.js",
@@ -2462,7 +2459,14 @@
     "website": "https://github.com/azure-samples/cosmos-db-nosql-nodejs-quickstart",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-nosql-nodejs-quickstart",
-    "tags": ["cosmosdb", "nodejs", "aca", "managedidentity", "bicep", "msft"]
+    "tags": [
+      "cosmosdb",
+      "nodejs",
+      "aca",
+      "managedidentity",
+      "bicep",
+      "msft"
+    ]
   },
   {
     "title": "Azure Cosmos DB for NoSQL Quickstart - Java",
@@ -2471,7 +2475,14 @@
     "website": "https://github.com/azure-samples/cosmos-db-nosql-java-quickstart",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-nosql-java-quickstart",
-    "tags": ["cosmosdb", "java", "aca", "managedidentity", "bicep", "msft"]
+    "tags": [
+      "cosmosdb",
+      "java",
+      "aca",
+      "managedidentity",
+      "bicep",
+      "msft"
+    ]
   },
   {
     "title": "Azure Cosmos DB for NoSQL Quickstart - Go",
@@ -2480,7 +2491,14 @@
     "website": "https://github.com/azure-samples/cosmos-db-nosql-go-quickstart",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-nosql-go-quickstart",
-    "tags": ["cosmosdb", "go", "aca", "managedidentity", "bicep", "msft"]
+    "tags": [
+      "cosmosdb",
+      "go",
+      "aca",
+      "managedidentity",
+      "bicep",
+      "msft"
+    ]
   },
   {
     "title": "Azure Functions C# HTTP Trigger using Azure Developer CLI",
@@ -2489,7 +2507,15 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd",
-    "tags": ["functions", "dotnetCsharp", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
+    "tags": [
+      "functions",
+      "dotnetCsharp",
+      "managedidentity",
+      "vnets",
+      "appinsights",
+      "msft",
+      "bicep"
+    ]
   },
   {
     "title": "Azure Functions Python HTTP Trigger using Azure Developer CLI",
@@ -2498,7 +2524,15 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-python-http-azd",
-    "tags": ["functions", "python", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
+    "tags": [
+      "functions",
+      "python",
+      "managedidentity",
+      "vnets",
+      "appinsights",
+      "msft",
+      "bicep"
+    ]
   },
   {
     "title": "Azure Functions JavaScript HTTP Trigger using Azure Developer CLI",
@@ -2507,7 +2541,15 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-javascript-azd",
-    "tags": ["functions", "javascript", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
+    "tags": [
+      "functions",
+      "javascript",
+      "managedidentity",
+      "vnets",
+      "appinsights",
+      "msft",
+      "bicep"
+    ]
   },
   {
     "title": "Azure Functions TypeScript HTTP Trigger using Azure Developer CLI",
@@ -2516,7 +2558,15 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-typescript-azd",
-    "tags": ["functions", "typescript", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
+    "tags": [
+      "functions",
+      "typescript",
+      "managedidentity",
+      "vnets",
+      "appinsights",
+      "msft",
+      "bicep"
+    ]
   },
   {
     "title": "Azure Functions Java HTTP Trigger using Azure Developer CLI",
@@ -2525,7 +2575,15 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/azure-functions-java-flex-consumption-azd",
-    "tags": ["functions", "java", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
+    "tags": [
+      "functions",
+      "java",
+      "managedidentity",
+      "vnets",
+      "appinsights",
+      "msft",
+      "bicep"
+    ]
   },
   {
     "title": "Azure Functions PowerShell HTTP Trigger using Azure Developer CLI",
@@ -2534,7 +2592,15 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-powershell-azd",
-    "tags": ["functions", "powershell", "managedidentity", "vnets", "appinsights", "msft", "bicep"]
+    "tags": [
+      "functions",
+      "powershell",
+      "managedidentity",
+      "vnets",
+      "appinsights",
+      "msft",
+      "bicep"
+    ]
   },
   {
     "title": "Doc Intelligence-In-A-Box",
@@ -2554,7 +2620,7 @@
       "azureai",
       "blobstorage",
       "ai"
-      ]
+    ]
   },
   {
     "title": "Azure OpenAI keyless deployment",
@@ -2585,7 +2651,13 @@
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/Durable-Functions-Order-Processing",
-    "tags": ["functions", "dotnetCsharp", "managedidentity","bicep", "msft"]
+    "tags": [
+      "functions",
+      "dotnetCsharp",
+      "managedidentity",
+      "bicep",
+      "msft"
+    ]
   },
   {
     "title": "Azure Cosmos DB for Table Quickstart - .NET",
@@ -2594,7 +2666,14 @@
     "website": "https://github.com/azure-samples/cosmos-db-table-dotnet-quickstart",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-table-dotnet-quickstart",
-    "tags": ["cosmosdb", "dotnetCsharp", "aca", "managedidentity", "bicep", "msft"]
+    "tags": [
+      "cosmosdb",
+      "dotnetCsharp",
+      "aca",
+      "managedidentity",
+      "bicep",
+      "msft"
+    ]
   },
   {
     "title": "Azure Cosmos DB for Table Quickstart - Node.js",
@@ -2603,7 +2682,14 @@
     "website": "https://github.com/azure-samples/cosmos-db-table-nodejs-quickstart",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-table-nodejs-quickstart",
-    "tags": ["cosmosdb", "nodejs", "aca", "managedidentity", "bicep", "msft"]
+    "tags": [
+      "cosmosdb",
+      "nodejs",
+      "aca",
+      "managedidentity",
+      "bicep",
+      "msft"
+    ]
   },
   {
     "title": "Integration Hub with Logic App Standard",
@@ -2612,7 +2698,18 @@
     "website": "https://github.com/marnixcox",
     "author": "Marnix Cox",
     "source": "https://github.com/marnixcox/integration-hub",
-    "tags": ["community", "functions", "dotnetCsharp", "powershell","bicep", "servicebus", "logicapps", "keyvault", "monitor", "appservice"]
+    "tags": [
+      "community",
+      "functions",
+      "dotnetCsharp",
+      "powershell",
+      "bicep",
+      "servicebus",
+      "logicapps",
+      "keyvault",
+      "monitor",
+      "appservice"
+    ]
   },
   {
     "title": "Logic App Standard and Functions",
@@ -2621,7 +2718,16 @@
     "website": "https://github.com/marnixcox",
     "author": "Marnix Cox",
     "source": "https://github.com/marnixcox/logicapp-standard-func",
-    "tags": ["community", "functions", "dotnetCsharp", "bicep", "logicapps", "keyvault", "monitor", "appservice"]
+    "tags": [
+      "community",
+      "functions",
+      "dotnetCsharp",
+      "bicep",
+      "logicapps",
+      "keyvault",
+      "monitor",
+      "appservice"
+    ]
   },
   {
     "title": "Logic App Consumption",
@@ -2630,7 +2736,13 @@
     "website": "https://github.com/marnixcox",
     "author": "Marnix Cox",
     "source": "https://github.com/marnixcox/logicapp-consumption",
-    "tags": ["community", "bicep", "logicapps", "keyvault", "monitor"]
+    "tags": [
+      "community",
+      "bicep",
+      "logicapps",
+      "keyvault",
+      "monitor"
+    ]
   },
   {
     "title": "Java Quarkus Apps on Azure Container Apps",
@@ -2686,7 +2798,7 @@
       "aca",
       "bicep",
       "community"
-      ]
+    ]
   },
   {
     "title": "Data API builder Quickstart - Azure Cosmos DB for NoSQL",
@@ -2705,6 +2817,7 @@
     "author": "Azure SQL Content Team",
     "source": "https://github.com/azure-samples/dab-azure-sql-quickstart",
     "tags": ["azuresql", "dotnetCsharp", "blazor", "dab", "aca", "managedidentity", "bicep", "msft", "new"]
+    ]
   },
   {
     "title": "Sprint Petclinic AI application on Azure Container Apps",
@@ -2720,26 +2833,6 @@
       "bicep",
       "msft",
       "openai"
-    ]
-  },
-  {
-    "title": "LlamaIndex RAG chat app with Azure OpenAI and Azure AI Search (JavaScript)",
-    "description": "This solution creates a ChatGPT-like, Retrieval Augmented Generation (RAG) agentic application, over your own documents, powered by Llamaindex (TypeScript). It uses Azure OpenAI Service to access GPT models and embedding, and Azure AI Search for data indexing and retrieval.",
-    "preview": "./templates/images/llama-index-vector-search-javascript.png",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Wassim Chegham",
-    "source": "https://github.com/Azure-Samples/llama-index-vector-search-javascript",
-    "tags": [
-      "javascript",
-      "typescript", 
-      "nodejs",
-      "aca",
-      "azureai",
-      "managedidentity",
-      "bicep",
-      "msft",
-      "openai",
-      "new"
     ]
   },
   {
@@ -2766,7 +2859,6 @@
     "author": "Build5Nines",
     "source": "https://github.com/Build5Nines/azd-react-bootstrap-dashboard",
     "tags": [
-      "new",
       "community",
       "javascript",
       "nodejs",
@@ -2797,8 +2889,7 @@
       "aks",
       "managedidentity",
       "bicep",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -2818,7 +2909,61 @@
       "aca",
       "keyvault",
       "loganalytics",
-      "appinsights",
+      "appinsights"
+    ]
+  },
+  {
+    "title": "AZD Simple FastAPI Azure App Service",
+    "description": "A tiny, no-frills, template to deploy Python's FastAPI web framework to Azure App Service in the free tier.",
+    "preview": "./templates/images/simple-fastapi-azd.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Renee Noble",
+    "source": "https://github.com/Azure-Samples/azd-simple-fastapi-appservice",
+    "tags": [
+      "python",
+      "appservice",
+      "fastapi",
+      "msft",
+      "bicep",
+      "new"
+    ]
+  },
+  {
+    "title": "Data API builder Quickstart - Azure Cosmos DB for NoSQL",
+    "description": "A quick application to get started using Data API builder to create a GraphQL API for Azure Cosmos DB for NoSQL.",
+    "preview": "./templates/images/dab-azure-cosmos-db-nosql-quickstart.png",
+    "website": "https://github.com/azure-samples",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/dab-azure-cosmos-db-nosql-quickstart",
+    "tags": [
+      "cosmosdb",
+      "dotnetCsharp",
+      "blazor",
+      "dab",
+      "aca",
+      "managedidentity",
+      "bicep",
+      "msft",
+      "new"
+    ]
+  },
+  {
+    "title": "LlamaIndex RAG chat app with Azure OpenAI and Azure AI Search (JavaScript)",
+    "description": "This solution creates a ChatGPT-like, Retrieval Augmented Generation (RAG) agentic application, over your own documents, powered by Llamaindex (TypeScript). It uses Azure OpenAI Service to access GPT models and embedding, and Azure AI Search for data indexing and retrieval.",
+    "preview": "./templates/images/llama-index-vector-search-javascript.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Wassim Chegham",
+    "source": "https://github.com/Azure-Samples/llama-index-vector-search-javascript",
+    "tags": [
+      "javascript",
+      "typescript",
+      "nodejs",
+      "aca",
+      "azureai",
+      "managedidentity",
+      "bicep",
+      "msft",
+      "openai",
       "new"
     ]
   },
@@ -2831,16 +2976,175 @@
     "source": "https://github.com/Azure-Samples/durable-functions-order-processing-python",
     "tags": [
       "functions",
-      "python", 
+      "python",
       "managedidentity",
       "azurestorage",
       "blobstorage",
       "vnets",
-      "bicep", 
+      "bicep",
       "appinsights",
       "loganalytics",
-      "msft", 
+      "msft",
       "new"
+    ]
+  },
+  {
+    "title": "Minimal .NET API with ConferenceAPI sample",
+    "description": "A minimal .NET API with ConferenceAPI sample",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/petender",
+    "author": "Peter De Tender",
+    "source": "https://github.com/petender/ConferenceAPI",
+    "tags": [
+      "community",
+      "new",
+      "appservice",
+      "managedidentity",
+      "keyvault",
+      "monitor"
+    ]
+  },
+  {
+    "title": "API Management with ConferenceAPI",
+    "description": "This scenario deploys an Azure API Management Resource with a Standard SKU, as well as a Conference Demo API Web App, allowing for showing different API calls, as well as using API Management Policies for rate-limit and header-modification + demo Products",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/petender",
+    "author": "Peter De Tender",
+    "source": "https://github.com/petender/azd-apimwithconfAPI",
+    "tags": [
+      "community",
+      "new",
+      "appservice",
+      "apim",
+      "monitor",
+      "managedidentity",
+      "keyvault"
+    ]
+  },
+  {
+    "title": "Azure AI Services with multiple OpenAI models",
+    "description": "This scenario deploys an Azure AI Services Resource with multiple OpenAI models, allowing for showing different AI calls, as well as using AI Services for text generation, image generation and more. The deployed models are GPT-3.5-Turbo, GPT-4o, Dall-E-3",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/petender",
+    "author": "Peter De Tender",
+    "source": "https://github.com/petender/OpenAIMultiModel",
+    "tags": [
+      "community",
+      "new",
+      "openai",
+      "azureai",
+      "monitor"
+    ]
+  },
+  {
+    "title": "Tollbooth Serverless Architecture with Azure Functions",
+    "description": "This scenario deploys the building blocks for a serverless automated parking lot / tollbooth / HOV lanes system using Azure Functions and EventGrid. It also has Azure Storage Account, CosmosDB, Azure KeyVault and Application Insights as part of the architecture.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/rob-foulkrod",
+    "author": "Rob Foulkrod",
+    "source": "https://github.com/rob-foulkrod/TollBooth",
+    "tags": [
+      "community",
+      "new",
+      "webapps",
+      "keyvault",
+      "cosmosdb",
+      "appinsights",
+      "functions",
+      "eventhub",
+      "azurestorage"
+    ]
+  },
+  {
+    "title": "Blazor BadgeMaker with Azure AI Services",
+    "description": "The BadgeMaker is a Blazor front-end application that provides a user-friendly interface for designing and generating digital badges. It allows users to customize badges with various templates, colors, and text options.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/rob-foulkrod",
+    "author": "Rob Foulkrod",
+    "source": "https://github.com/rob-foulkrod/BadgeMaker",
+    "tags": [
+      "community",
+      "new",
+      "webapps",
+      "azureai",
+      "blazor",
+      "monitor",
+      "azurestorage"
+    ]
+  },
+  {
+    "title": "Azure Machine Learning",
+    "description": "This scenario deploys AzureML Service, together with other resources such as Key Vault, Application Insights, Container Registry and the necessary RBAC permissions.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/rob-foulkrod",
+    "author": "Rob Foulkrod",
+    "source": "https://github.com/rob-foulkrod/MachineLearningAZD",
+    "tags": [
+      "community",
+      "new",
+      "keyvault",
+      "appinsights",
+      "vnets",
+      "managedidentity",
+      "azurestorage",
+      "keyvault"
+    ]
+  },
+  {
+    "title": "EShopOnWeb VM Architecture",
+    "description": "This scenario is based on a WebVM and SQLVM architecture, showcasing traditional IAAS in Azure.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/rob-foulkrod",
+    "author": "Rob Foulkrod",
+    "source": "https://github.com/rob-foulkrod/IAAS2019",
+    "tags": [
+      "community",
+      "new",
+      "monitor",
+      "keyvault",
+      "vnets"
+    ]
+  },
+  {
+    "title": "EShopOnWeb ACI Architecture",
+    "description": "This scenario is deploying Azure Container Instance, with a sample EShopOnWeb Container with .NET8.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/maartenvandiemen",
+    "author": "Maarten van Diemen",
+    "source": "https://github.com/maartenvandiemen/AZD-ACI-Demo",
+    "tags": [
+      "new",
+      "community",
+      "managedidentity"
+    ]
+  },
+  {
+    "title": "EShopOnWeb ACAPPS Architecture",
+    "description": "This scenario is deploying Azure Container Apps, with a sample EShopOnWeb Container with .NET8.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/maartenvandiemen",
+    "author": "Maarten van Diemen",
+    "source": "https://github.com/maartenvandiemen/AZD-ACA-Demo",
+    "tags": [
+      "new",
+      "aca",
+      "community",
+      "managedidentity"
+    ]
+  },
+  {
+    "title": "EShopOnWeb AKS Architecture",
+    "description": "This scenario is based on a Kubernetes (AKS) architecture.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/maartenvandiemen",
+    "author": "Maarten van Diemen",
+    "source": "https://github.com/maartenvandiemen/AZD-AKS-Demo",
+    "tags": [
+      "new",
+      "aks",
+      "community",
+      "managedidentity",
+      "monitor"
     ]
   }
 ]

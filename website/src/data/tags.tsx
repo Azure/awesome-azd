@@ -127,7 +127,8 @@ export type TagType =
   | "go"
   | "powershell"
   | "autogen"
-  | "dab";
+  | "dab"
+  | "rust";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -211,6 +212,11 @@ export const Tags: { [type in TagType]: Tag } = {
   go: {
     label: "Go",
     description: "Template contains Go app code",
+    type: "Language",
+  },
+  rust: {
+    label: "Rust",
+    description: "Template contains Rust app code",
     type: "Language",
   },
 

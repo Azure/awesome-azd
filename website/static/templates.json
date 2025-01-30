@@ -2801,24 +2801,6 @@
     ]
   },
   {
-    "title": "Data API builder Quickstart - Azure Cosmos DB for NoSQL",
-    "description": "A quick application to get started using Data API builder to create a GraphQL API for Azure Cosmos DB for NoSQL.",
-    "preview": "./templates/images/dab-azure-cosmos-db-nosql-quickstart.png",
-    "website": "https://github.com/azure-samples",
-    "author": "Azure Cosmos DB Content Team",
-    "source": "https://github.com/azure-samples/dab-azure-cosmos-db-nosql-quickstart",
-    "tags": ["cosmosdb", "dotnetCsharp", "blazor", "dab", "aca", "managedidentity", "bicep", "msft", "new"]
-  },  
-  {
-    "title": "Data API builder Quickstart - Azure SQL",
-    "description": "A quick application to get started using Data API builder to create a REST API for Azure SQL.",
-    "preview": "./templates/images/dab-azure-sql-quickstart.png",
-    "website": "https://github.com/azure-samples",
-    "author": "Azure SQL Content Team",
-    "source": "https://github.com/azure-samples/dab-azure-sql-quickstart",
-    "tags": ["azuresql", "dotnetCsharp", "blazor", "dab", "aca", "managedidentity", "bicep", "msft", "new"]
-  },
-  {
     "title": "Sprint Petclinic AI application on Azure Container Apps",
     "description": "A chat bot using Generative AI to the Spring Petclinic application, running on Azure Container Apps",
     "preview": "./templates/images/spring-petclinic-ai.png",
@@ -2936,6 +2918,25 @@
     "source": "https://github.com/azure-samples/dab-azure-cosmos-db-nosql-quickstart",
     "tags": [
       "cosmosdb",
+      "dotnetCsharp",
+      "blazor",
+      "dab",
+      "aca",
+      "managedidentity",
+      "bicep",
+      "msft",
+      "new"
+    ]
+  },
+  {
+    "title": "Data API builder Quickstart - Azure SQL",
+    "description": "A quick application to get started using Data API builder to create a REST API for Azure SQL.",
+    "preview": "./templates/images/dab-azure-sql-quickstart.png",
+    "website": "https://github.com/azure-samples",
+    "author": "Azure SQL Content Team",
+    "source": "https://github.com/azure-samples/dab-azure-sql-quickstart",
+    "tags": [
+      "azuresql",
       "dotnetCsharp",
       "blazor",
       "dab",

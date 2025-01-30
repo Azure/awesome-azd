@@ -127,7 +127,8 @@ export type TagType =
   | "go"
   | "powershell"
   | "autogen"
-  | "dab";
+  | "dab"
+  | "sharepoint";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -477,6 +478,11 @@ export const Tags: { [type in TagType]: Tag } = {
   serverlessapi: {
     label: "Serverless API",
     description: "Template architecture uses Serverless API",
+    type: "Service",
+  },
+  sharepoint: {
+    label: "SharePoint",
+    description: "Template architecture involves a connection to SharePoint",
     type: "Service",
   },
 

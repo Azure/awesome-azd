@@ -2989,6 +2989,7 @@
       "new"
     ]
   },
+  {
     "title": "Minimal .NET API with ConferenceAPI sample",
     "description": "A minimal .NET API with ConferenceAPI sample",
     "preview": "./templates/images/test.png",

@@ -2695,7 +2695,7 @@
     "title": "Azure Cosmos DB for MongoDB Quickstart - .NET",
     "description": "A quick application to get started using Azure Cosmos DB for MongoDB with the Azure SDK for .NET.",
     "preview": "./templates/images/cosmos-db-mongodb-dotnet-quickstart.png",
-    "website": "https://github.com/azure-samples/cosmos-db-mongodb-dotnet-quickstart",
+    "website": "https://learn.microsoft.com/azure/cosmos-db/mongodb/quickstart-dotnet",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-mongodb-dotnet-quickstart",
     "tags": [
@@ -2712,7 +2712,7 @@
     "title": "Azure Cosmos DB for MongoDB Quickstart - Node.js",
     "description": "A quick application to get started using Azure Cosmos DB for MongoDB with the Azure SDK for Node.js.",
     "preview": "./templates/images/cosmos-db-mongodb-nodejs-quickstart.png",
-    "website": "https://github.com/azure-samples/cosmos-db-mongodb-nodejs-quickstart",
+    "website": "https://learn.microsoft.com/azure/cosmos-db/mongodb/quickstart-nodejs",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-mongodb-nodejs-quickstart",
     "tags": [
@@ -2729,7 +2729,7 @@
     "title": "Azure Cosmos DB for MongoDB Quickstart - Python",
     "description": "A quick application to get started using Azure Cosmos DB for MongoDB with the Azure SDK for Python.",
     "preview": "./templates/images/cosmos-db-mongodb-python-quickstart.png",
-    "website": "https://github.com/azure-samples/cosmos-db-mongodb-python-quickstart",
+    "website": "https://learn.microsoft.com/azure/cosmos-db/mongodb/quickstart-python",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-mongodb-python-quickstart",
     "tags": [

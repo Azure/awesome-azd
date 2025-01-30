@@ -2932,7 +2932,7 @@
     "title": "Data API builder Quickstart - Azure SQL",
     "description": "A quick application to get started using Data API builder to create a REST API for Azure SQL.",
     "preview": "./templates/images/dab-azure-sql-quickstart.png",
-    "website": "https://github.com/azure-samples",
+    "website": "https://learn.microsoft.com/azure/data-api-builder/quickstart-azure-sql",
     "author": "Azure SQL Content Team",
     "source": "https://github.com/azure-samples/dab-azure-sql-quickstart",
     "tags": [

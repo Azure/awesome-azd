@@ -2424,7 +2424,7 @@
     "title": "Azure Cosmos DB for NoSQL Quickstart - .NET",
     "description": "A quick application to get started using Azure Cosmos DB for NoSQL with the Azure SDK for .NET.",
     "preview": "./templates/images/cosmos-db-nosql-dotnet-quickstart.png",
-    "website": "https://github.com/azure-samples/cosmos-db-nosql-dotnet-quickstart",
+    "website": "https://learn.microsoft.com/azure/cosmos-db/nosql/quickstart-dotnet",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-nosql-dotnet-quickstart",
     "tags": [
@@ -2440,7 +2440,7 @@
     "title": "Azure Cosmos DB for NoSQL Quickstart - Python",
     "description": "A quick application to get started using Azure Cosmos DB for NoSQL with the Azure SDK for Python.",
     "preview": "./templates/images/cosmos-db-nosql-python-quickstart.png",
-    "website": "https://github.com/azure-samples/cosmos-db-nosql-python-quickstart",
+    "website": "https://learn.microsoft.com/azure/cosmos-db/nosql/quickstart-python",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-nosql-python-quickstart",
     "tags": [
@@ -2456,7 +2456,7 @@
     "title": "Azure Cosmos DB for NoSQL Quickstart - Node.js",
     "description": "A quick application to get started using Azure Cosmos DB for NoSQL with the Azure SDK for Node.js.",
     "preview": "./templates/images/cosmos-db-nosql-nodejs-typescript-quickstart.png",
-    "website": "https://github.com/azure-samples/cosmos-db-nosql-nodejs-quickstart",
+    "website": "https://learn.microsoft.com/azure/cosmos-db/nosql/quickstart-nodejs",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-nosql-nodejs-quickstart",
     "tags": [
@@ -2472,7 +2472,7 @@
     "title": "Azure Cosmos DB for NoSQL Quickstart - Java",
     "description": "A quick application to get started using Azure Cosmos DB for NoSQL with the Azure SDK for Java.",
     "preview": "./templates/images/cosmos-db-nosql-java-quickstart.png",
-    "website": "https://github.com/azure-samples/cosmos-db-nosql-java-quickstart",
+    "website": "https://learn.microsoft.com/azure/cosmos-db/nosql/quickstart-java",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-nosql-java-quickstart",
     "tags": [
@@ -2488,7 +2488,7 @@
     "title": "Azure Cosmos DB for NoSQL Quickstart - Go",
     "description": "A quick application to get started using Azure Cosmos DB for NoSQL with the Azure SDK for Go.",
     "preview": "./templates/images/cosmos-db-nosql-go-quickstart.png",
-    "website": "https://github.com/azure-samples/cosmos-db-nosql-go-quickstart",
+    "website": "https://learn.microsoft.com/azure/cosmos-db/nosql/quickstart-go",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-nosql-go-quickstart",
     "tags": [
@@ -2663,7 +2663,7 @@
     "title": "Azure Cosmos DB for Table Quickstart - .NET",
     "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for .NET.",
     "preview": "./templates/images/cosmos-db-table-dotnet-quickstart.png",
-    "website": "https://github.com/azure-samples/cosmos-db-table-dotnet-quickstart",
+    "website": "https://learn.microsoft.com/azure/cosmos-db/table/quickstart-dotnet",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-table-dotnet-quickstart",
     "tags": [
@@ -2679,7 +2679,7 @@
     "title": "Azure Cosmos DB for Table Quickstart - Node.js",
     "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Node.js.",
     "preview": "./templates/images/cosmos-db-table-nodejs-typescript-quickstart.png",
-    "website": "https://github.com/azure-samples/cosmos-db-table-nodejs-quickstart",
+    "website": "https://learn.microsoft.com/azure/cosmos-db/table/quickstart-nodejs",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/azure-samples/cosmos-db-table-nodejs-quickstart",
     "tags": [

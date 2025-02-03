@@ -3206,5 +3206,32 @@
         "new", 
         "functions"
     ]
+  },
+   {
+    "title": "Azure Sentinel with Data Connectors",
+    "description": "This scenario deploys an Azure Sentinel workspace, including a few sample data connectors (AWS, M365, Entra Id and LogicApps.",
+    "preview": "./templates/images/Sentinel.png",
+    "website": "https://github.com/petender",
+    "author": "petender",
+    "source": "https://github.com/petender/azd-sentinel",
+    "tags": [
+	    "community", 
+	    "new", 
+	    "sentinel"]
+    
+  },
+
+  {
+    "title": "Azure Traffic Manager with WebApps",
+    "description": "This scenario deploys Azure Traffic Manager with WebApps in 3 regions.",
+    "preview": "./templates/images/trafficmgr.png",
+    "website": "https://github.com/petender",
+    "author": "petender",
+    "source": "https://github.com/petender/azd-trafficmgr",
+    "tags": [
+	    "community", 
+	    "new", 
+	    "trafficmgr"]
+    
   }
 ]

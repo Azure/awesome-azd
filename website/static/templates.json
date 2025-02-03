@@ -3020,7 +3020,7 @@
   {
     "title": "Tollbooth Serverless Architecture with Azure Functions",
     "description": "This scenario deploys the building blocks for a serverless automated parking lot / tollbooth / HOV lanes system using Azure Functions and EventGrid. It also has Azure Storage Account, CosmosDB, Azure KeyVault and Application Insights as part of the architecture.",
-    "preview": "./templates/images/test.png",
+    "preview": "./templates/images/tollbooth.png",
     "website": "https://github.com/rob-foulkrod",
     "author": "Rob Foulkrod",
     "source": "https://github.com/rob-foulkrod/TollBooth",
@@ -3074,7 +3074,7 @@
   {
     "title": "EShopOnWeb VM Architecture",
     "description": "This scenario is based on a WebVM and SQLVM architecture, showcasing traditional IAAS in Azure.",
-    "preview": "./templates/images/test.png",
+    "preview": "./templates/images/eshoponweb_vm_architecture.png",
     "website": "https://github.com/rob-foulkrod",
     "author": "Rob Foulkrod",
     "source": "https://github.com/rob-foulkrod/IAAS2019",
@@ -3089,7 +3089,7 @@
   {
     "title": "EShopOnWeb ACI Architecture",
     "description": "This scenario is deploying Azure Container Instance, with a sample EShopOnWeb Container with .NET8.",
-    "preview": "./templates/images/test.png",
+    "preview": "./templates/images/eshoponweb_aci.png",
     "website": "https://github.com/maartenvandiemen",
     "author": "Maarten van Diemen",
     "source": "https://github.com/maartenvandiemen/AZD-ACI-Demo",
@@ -3102,7 +3102,7 @@
   {
     "title": "EShopOnWeb ACAPPS Architecture",
     "description": "This scenario is deploying Azure Container Apps, with a sample EShopOnWeb Container with .NET8.",
-    "preview": "./templates/images/test.png",
+    "preview": "./templates/images/eshoponweb_aca.png",
     "website": "https://github.com/maartenvandiemen",
     "author": "Maarten van Diemen",
     "source": "https://github.com/maartenvandiemen/AZD-ACA-Demo",
@@ -3116,7 +3116,7 @@
   {
     "title": "EShopOnWeb AKS Architecture",
     "description": "This scenario is based on a Kubernetes (AKS) architecture.",
-    "preview": "./templates/images/test.png",
+    "preview": "./templates/images/eshoponweb_aks.png",
     "website": "https://github.com/maartenvandiemen",
     "author": "Maarten van Diemen",
     "source": "https://github.com/maartenvandiemen/AZD-AKS-Demo",
@@ -3127,5 +3127,111 @@
       "managedidentity",
       "monitor"
     ]
+  },
+  {
+    "title": "Azure FrontDoor CDN with sample HTML webapp",
+    "description": "This template deploys an Azure FrontDoor CDN, with a sample HTML-based webapp. The webapp allows you to load sample images from different endpoints, one is from within the webapp storage itself, a second one loads from Azure Storage Account Blobs and the last one loads from Azure Frontdoor CDN. This demo shows how static data such as image files can optimize site loading time when using CDN caching.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/petender",
+    "author": "petender",
+    "source": "https://github.com/petender/azd-fdcdn",
+    "tags": [
+        "community", 
+        "new", 
+        "frontdoor"
+    ]
+  }, 
+  {
+    "title": "EShopOnWeb in Azure App Service and SQL Azure DB",
+    "description": "This template deploys the EShopOnWeb .NET 8 application in Azure App Services, connecting to a SQL Azure database instance.",
+    "preview": "./templates/images/eshoponweb_paas.png",
+    "website": "https://github.com/maartenvandiemen",
+    "author": "maartenvandiemen",
+    "source": "https://github.com/maartenvandiemen/AZD-PaaS-Demo",
+    "tags": [
+        "community",
+        "new", 
+        "appservice", 
+        "azuresql"
+    ]
+  },
+  {
+    "title": "Azure Event Hub with Console App",
+    "description": "This template deploys Azure Event Hub, as well as runs a local Console app on your machine to interact with Publisher and Subscriber events.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/true-while",
+    "author": "true-while",
+    "source": "https://github.com/true-while/event-hub-azd",
+    "tags": [
+        "community", 
+        "new", 
+        "eventhub"
+    ]
+  },
+  {
+    "title": "Hub Spoke with VPN Gateway and JumpVM",
+    "description": "This scenario deploys an Azure VNET Hub & Spoke architecture including VNET Peering, VPN Gateway and a Windows Server 2022 JumpVM.",
+    "preview": "./templates/images/HubSpokewithJumpVM.png",
+    "website": "https://github.com/petender",
+    "author": "petender",
+    "source": "https://github.com/petender/azd-hubspoke",
+    "tags": [
+        "community", 
+        "new", 
+        "vnets"
+    ]
+  },
+  {
+    "title": "Azure Site 2 Site VPN",
+    "description": "This scenario deploys 3 Azure VPN Gateways in 3 different regions (West Europe, Central US and East Asia) and establishes the connections across all 3 of them.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/petender",
+    "author": "petender",
+    "source": "https://github.com/petender/azd-site2sitevpn/",
+    "tags": [
+        "community", 
+        "new", 
+        "vnets"
+    ]
+  },
+  {
+    "title": "Azure Functions with Blob Trigger (Watermark text)",
+    "description": "This scenario deploys an Azure Functions App, which provides a Blob Trigger. When an image file is uploaded to the /input container, the Function gets triggered and adds a watermark text to the image file. The new image file getes saved into an /output container. Application Insights is also deployed, so you can showcase the necessary monitoring features of Azure Functions monitor, as well as more detailed in App Insights itself.",
+    "preview": "./templates/images/WaterMarkFunction.png",
+    "website": "https://github.com/maartenvandiemen",
+    "author": "maartenvandiemen",
+    "source": "https://github.com/maartenvandiemen/AZD-WatermarkFunction",
+    "tags": [
+        "community", 
+        "new", 
+        "functions"
+    ]
+  },
+   {
+    "title": "Azure Sentinel with Data Connectors",
+    "description": "This scenario deploys an Azure Sentinel workspace, including a few sample data connectors (AWS, M365, Entra Id and LogicApps.",
+    "preview": "./templates/images/Sentinel.png",
+    "website": "https://github.com/petender",
+    "author": "petender",
+    "source": "https://github.com/petender/azd-sentinel",
+    "tags": [
+	    "community", 
+	    "new", 
+	    "sentinel"]
+    
+  },
+
+  {
+    "title": "Azure Traffic Manager with WebApps",
+    "description": "This scenario deploys Azure Traffic Manager with WebApps in 3 regions.",
+    "preview": "./templates/images/trafficmgr.png",
+    "website": "https://github.com/petender",
+    "author": "petender",
+    "source": "https://github.com/petender/azd-trafficmgr",
+    "tags": [
+	    "community", 
+	    "new", 
+	    "trafficmgr"]
+    
   }
 ]

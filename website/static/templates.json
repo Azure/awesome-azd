@@ -3233,5 +3233,23 @@
 	    "new", 
 	    "trafficmgr"]
     
+  },
+    "title": "SpringBoot OpenAI Chat on Azure App Service",
+    "description": "The SpringBoot petclinic using Azure OpenAI, Managed Identity, and hosted with Azure App Service. Get up and running with OpenAI on Azure App Service + Java quickly, securely, and easily.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure-Samples/SpringBoot-Petclinic-AI-Chat-on-App-Service",
+    "author": "denverbrittain",
+    "source": "https://github.com/Azure-Samples/SpringBoot-Petclinic-AI-Chat-on-App-Service",
+    "tags": [
+	    "msft", 
+	    "bicep", 
+	    "entraid",
+    	    "java",
+	    "openai",
+	    "ai",
+	    "spring",
+	    "springboot",
+	    "paas",
+	    "appservice"]	
   }
 ]

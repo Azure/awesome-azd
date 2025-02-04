@@ -3244,7 +3244,8 @@
     "tags": [
 	    "msft", 
 	    "bicep", 
-	    "entraid",
+	    "managedidentity",
+	    "serviceprincipal",
     	    "java",
 	    "openai",
 	    "ai",

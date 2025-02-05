@@ -3233,5 +3233,28 @@
 	    "new", 
 	    "trafficmgr"]
     
+  },
+
+  {
+    "title": "Agentic Voice Assistant",
+    "description": "This demo deploys a voice based interface to agentic system that uses Azure Logic Apps as the execution mechanism.",
+    "preview": "./templates/images/agentic-voice-assistant.png",
+    "website": "https://github.com/Azure-Samples/agentic-voice-assistant",
+    "author": "eminkevich",
+    "source": "https://github.com/Azure-Samples/agentic-voice-assistant",
+    "tags": [
+	    "community", 
+	    "new", 
+	    "ai",
+      "cosmosdb",
+      "appinsights",
+      "azurestorage",
+      "python",
+      "chainlit",
+      "aca",
+      "bicep",
+      "community"
+      ]
+    
   }
 ]

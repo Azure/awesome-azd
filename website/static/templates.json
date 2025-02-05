@@ -780,17 +780,17 @@
     ]
   },
   {
-    "title": "Simple Flask AZD",
+    "title": "AZD Simple Flask app on Azure App Service",
     "description": "A tiny, no-frills, template to deploy Python's Flask web framework to Azure App Service in the free tier.",
     "preview": "./templates/images/simple-flask-azd.png",
-    "website": "https://github.com/tonybaloney",
+    "website": "https://github.com/Azure-Samples",
     "author": "Anthony Shaw",
-    "source": "https://github.com/tonybaloney/simple-flask-azd",
+    "source": "https://github.com/Azure-Samples/azd-simple-flask-appservice",
     "tags": [
       "python",
       "appservice",
       "flask",
-      "community"
+      "msft"
     ]
   },
   {

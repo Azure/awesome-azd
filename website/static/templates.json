@@ -2767,10 +2767,10 @@
   {
     "title": "Spring Petclinic Microservices with AI on Azure Container Apps",
     "description": "A Spring Petclinic Microservice with OpenAI running on Azure Container Apps environment, with additional Azure services and Azure Container Apps features.",
-    "preview": "./templates/images/java-microservices-aca-lab.png",
+    "preview": "./templates/images/java-on-aca.png",
     "website": "https://github.com/Azure-Samples",
     "author": "Songbo Wang",
-    "source": "https://github.com/Azure-Samples/java-microservices-aca-lab",
+    "source": "https://github.com/Azure-Samples/java-on-aca",
     "tags": [
       "java",
       "aca",

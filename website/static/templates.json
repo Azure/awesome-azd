@@ -3207,7 +3207,7 @@
         "functions"
     ]
   },
-   {
+  {
     "title": "Azure Sentinel with Data Connectors",
     "description": "This scenario deploys an Azure Sentinel workspace, including a few sample data connectors (AWS, M365, Entra Id and LogicApps.",
     "preview": "./templates/images/Sentinel.png",
@@ -3220,7 +3220,6 @@
 	    "sentinel"]
     
   },
-
   {
     "title": "Azure Traffic Manager with WebApps",
     "description": "This scenario deploys Azure Traffic Manager with WebApps in 3 regions.",
@@ -3231,7 +3230,30 @@
     "tags": [
 	    "community", 
 	    "new", 
-	    "trafficmgr"]
-    
+	    "trafficmgr"
+    ]
+  },
+  {
+    "title": "Azure Functions JavaScript sample using OpenAI TextCompletion",
+    "description": "JavaScript Azure Functions sample using OpenAI TextCompletion input binding to send content to Azure OpenAI and get a result",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/azure-functions-completion-openai-node",
+    "tags": [
+      "bicep",
+      "msft",
+      "javascript",
+      "functions",
+      "openai",
+      "appinsights",
+      "azurestorage",
+      "managedidentity",
+      "monitor",
+      "azureai",
+      "blobstorage",
+      "loganalytics",
+      "new"
+    ]
   }
 ]

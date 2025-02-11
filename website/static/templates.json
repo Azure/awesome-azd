@@ -3016,6 +3016,25 @@
     ]
   },
   {
+    "title": "Create SharePoint Online webhooks with an Azure function app (Node.js)",
+    "description": "A secured Azure function app that connects to your SharePoint Online tenant, to register and manage webhooks, and process the notifications from SharePoint.",
+    "preview": "./templates/images/azd-functions-sharepoint-webhooks.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Yvan Duhamel",
+    "source": "https://github.com/Azure-Samples/azd-functions-sharepoint-webhooks",
+    "tags": [
+      "functions",
+      "managedidentity",
+      "sharepoint",
+      "typescript",
+      "javascript",
+      "appinsights",
+      "bicep",
+      "msft",
+      "new"
+    ]
+  },
+  {
     "title": "Minimal .NET API with ConferenceAPI sample",
     "description": "A minimal .NET API with ConferenceAPI sample",
     "preview": "./templates/images/test.png",

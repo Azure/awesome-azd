@@ -2692,6 +2692,33 @@
     ]
   },
   {
+    "title": "Azure Cosmos DB for Table Quickstart - Python",
+    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Python.",
+    "preview": "./templates/images/cosmos-db-table-python-quickstart.png",
+    "website": "https://learn.microsoft.com/azure/cosmos-db/table/quickstart-python",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-table-python-quickstart",
+    "tags": ["cosmosdb", "python", "aca", "managedidentity", "bicep", "msft", "new"]
+  },
+  {
+    "title": "Azure Cosmos DB for Table Quickstart - Go",
+    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Go.",
+    "preview": "./templates/images/cosmos-db-table-go-quickstart.png",
+    "website": "https://learn.microsoft.com/azure/cosmos-db/table/quickstart-go",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-table-go-quickstart",
+    "tags": ["cosmosdb", "go", "aca", "managedidentity", "bicep", "msft", "new"]
+  },
+  {
+    "title": "Azure Cosmos DB for Table Quickstart - Java",
+    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Java.",
+    "preview": "./templates/images/cosmos-db-table-java-quickstart.png",
+    "website": "https://learn.microsoft.com/azure/cosmos-db/table/quickstart-java",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-table-java-quickstart",
+    "tags": ["cosmosdb", "java", "aca", "managedidentity", "bicep", "msft", "new"]
+  },
+  {
     "title": "Integration Hub with Logic App Standard",
     "description": "Template to deploy shared components like Logic App Standard Plan, Service Bus and Azure Artifacts for an integration platform.",
     "preview": "./templates/images/integration-hub.png",

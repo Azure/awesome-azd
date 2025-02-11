@@ -3276,7 +3276,24 @@
     "tags": [
 	    "community", 
 	    "new", 
-	    "trafficmgr"
+	    "trafficmgr"]
+    
+  },
+  {
+    "title": "Azure Functions - TextCompletion using OpenAI input binding with Java",
+    "description": "This sample highlights how to use the Azure Functions OpenAI TextCompletion input binding to send content to Azure OpenAI and get a result using Java.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Thiago Almeida",
+    "source": "https://github.com/Azure-Samples/azure-functions-completion-openai-java",
+    "tags": [
+      "functions",
+      "bicep",
+      "java",
+      "azureai",
+      "ai",
+      "msft",
+      "new"
     ]
   },
   {

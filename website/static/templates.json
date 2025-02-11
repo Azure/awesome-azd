@@ -3294,7 +3294,8 @@
       "langchain4j",
       "rag",
       "monitor",
-  },
+    ]
+   },
   {
     "title": "Azure Functions RAG + AI Search using JavaScript",
     "description": "JavaScript Azure Function using OpenAI bindings extension to highlight OpenAI retrieval augmented generation with Azure AI Search.",

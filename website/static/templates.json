@@ -780,17 +780,17 @@
     ]
   },
   {
-    "title": "Simple Flask AZD",
+    "title": "AZD Simple Flask app on Azure App Service",
     "description": "A tiny, no-frills, template to deploy Python's Flask web framework to Azure App Service in the free tier.",
     "preview": "./templates/images/simple-flask-azd.png",
-    "website": "https://github.com/tonybaloney",
+    "website": "https://github.com/Azure-Samples",
     "author": "Anthony Shaw",
-    "source": "https://github.com/tonybaloney/simple-flask-azd",
+    "source": "https://github.com/Azure-Samples/azd-simple-flask-appservice",
     "tags": [
       "python",
       "appservice",
       "flask",
-      "community"
+      "msft"
     ]
   },
   {
@@ -2709,6 +2709,33 @@
     ]
   },
   {
+    "title": "Azure Cosmos DB for Table Quickstart - Python",
+    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Python.",
+    "preview": "./templates/images/cosmos-db-table-python-quickstart.png",
+    "website": "https://learn.microsoft.com/azure/cosmos-db/table/quickstart-python",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-table-python-quickstart",
+    "tags": ["cosmosdb", "python", "aca", "managedidentity", "bicep", "msft", "new"]
+  },
+  {
+    "title": "Azure Cosmos DB for Table Quickstart - Go",
+    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Go.",
+    "preview": "./templates/images/cosmos-db-table-go-quickstart.png",
+    "website": "https://learn.microsoft.com/azure/cosmos-db/table/quickstart-go",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-table-go-quickstart",
+    "tags": ["cosmosdb", "go", "aca", "managedidentity", "bicep", "msft", "new"]
+  },
+  {
+    "title": "Azure Cosmos DB for Table Quickstart - Java",
+    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Java.",
+    "preview": "./templates/images/cosmos-db-table-java-quickstart.png",
+    "website": "https://learn.microsoft.com/azure/cosmos-db/table/quickstart-java",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-table-java-quickstart",
+    "tags": ["cosmosdb", "java", "aca", "managedidentity", "bicep", "msft", "new"]
+  },
+  {
     "title": "Integration Hub with Logic App Standard",
     "description": "Template to deploy shared components like Logic App Standard Plan, Service Bus and Azure Artifacts for an integration platform.",
     "preview": "./templates/images/integration-hub.png",
@@ -2784,10 +2811,10 @@
   {
     "title": "Spring Petclinic Microservices with AI on Azure Container Apps",
     "description": "A Spring Petclinic Microservice with OpenAI running on Azure Container Apps environment, with additional Azure services and Azure Container Apps features.",
-    "preview": "./templates/images/java-microservices-aca-lab.png",
+    "preview": "./templates/images/java-on-aca.png",
     "website": "https://github.com/Azure-Samples",
     "author": "Songbo Wang",
-    "source": "https://github.com/Azure-Samples/java-microservices-aca-lab",
+    "source": "https://github.com/Azure-Samples/java-on-aca",
     "tags": [
       "java",
       "aca",
@@ -2911,7 +2938,7 @@
     ]
   },
   {
-    "title": "AZD Simple FastAPI Azure App Service",
+    "title": "AZD Simple FastAPI app on Azure App Service",
     "description": "A tiny, no-frills, template to deploy Python's FastAPI web framework to Azure App Service in the free tier.",
     "preview": "./templates/images/simple-fastapi-azd.png",
     "website": "https://github.com/Azure-Samples",
@@ -2935,6 +2962,25 @@
     "source": "https://github.com/azure-samples/dab-azure-cosmos-db-nosql-quickstart",
     "tags": [
       "cosmosdb",
+      "dotnetCsharp",
+      "blazor",
+      "dab",
+      "aca",
+      "managedidentity",
+      "bicep",
+      "msft",
+      "new"
+    ]
+  },
+  {
+    "title": "Data API builder Quickstart - Azure SQL",
+    "description": "A quick application to get started using Data API builder to create a REST API for Azure SQL.",
+    "preview": "./templates/images/dab-azure-sql-quickstart.png",
+    "website": "https://learn.microsoft.com/azure/data-api-builder/quickstart-azure-sql",
+    "author": "Azure SQL Content Team",
+    "source": "https://github.com/azure-samples/dab-azure-sql-quickstart",
+    "tags": [
+      "azuresql",
       "dotnetCsharp",
       "blazor",
       "dab",
@@ -3224,7 +3270,7 @@
         "functions"
     ]
   },
-   {
+  {
     "title": "Azure Sentinel with Data Connectors",
     "description": "This scenario deploys an Azure Sentinel workspace, including a few sample data connectors (AWS, M365, Entra Id and LogicApps.",
     "preview": "./templates/images/Sentinel.png",
@@ -3237,7 +3283,6 @@
 	    "sentinel"]
     
   },
-
   {
     "title": "Azure Traffic Manager with WebApps",
     "description": "This scenario deploys Azure Traffic Manager with WebApps in 3 regions.",
@@ -3250,5 +3295,68 @@
 	    "new", 
 	    "trafficmgr"]
     
+  },
+  {
+    "title": "Azure Functions - TextCompletion using OpenAI input binding with Java",
+    "description": "This sample highlights how to use the Azure Functions OpenAI TextCompletion input binding to send content to Azure OpenAI and get a result using Java.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Thiago Almeida",
+    "source": "https://github.com/Azure-Samples/azure-functions-completion-openai-java",
+    "tags": [
+      "functions",
+      "bicep",
+      "java",
+      "azureai",
+      "ai",
+      "msft",
+      "new"
+    ]
+  },
+  {
+    "title": "Azure Functions JavaScript sample using OpenAI TextCompletion",
+    "description": "JavaScript Azure Functions sample using OpenAI TextCompletion input binding to send content to Azure OpenAI and get a result",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/azure-functions-completion-openai-node",
+    "tags": [
+      "bicep",
+      "msft",
+      "javascript",
+      "functions",
+      "openai",
+      "appinsights",
+      "azurestorage",
+      "managedidentity",
+      "monitor",
+      "azureai",
+      "blobstorage",
+      "loganalytics",
+      "new"
+    ]
+  },
+  {
+    "title": "Azure Functions RAG + AI Search using JavaScript",
+    "description": "JavaScript Azure Function using OpenAI bindings extension to highlight OpenAI retrieval augmented generation with Azure AI Search.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/azure-functions-openai-aisearch-node",
+    "tags": [
+      "bicep",
+      "msft",
+      "javascript",
+      "functions",
+      "openai",
+      "aisearch",
+      "appinsights",
+      "azurestorage",
+      "managedidentity",
+      "monitor",
+      "azureai",
+      "blobstorage",
+      "loganalytics"
+    ]
   }
 ]

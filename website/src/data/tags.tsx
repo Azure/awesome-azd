@@ -128,7 +128,7 @@ export type TagType =
   | "powershell"
   | "autogen"
   | "dab"
-  | "sharepoint";
+  | "sharepoint"
   | "virtualmachine"
   | "sentinel"
   | "trafficmgr";

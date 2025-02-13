@@ -3182,11 +3182,11 @@
     "author": "petender",
     "source": "https://github.com/petender/azd-fdcdn",
     "tags": [
-        "community", 
-        "new", 
-        "frontdoor"
+      "community",
+      "new",
+      "frontdoor"
     ]
-  }, 
+  },
   {
     "title": "EShopOnWeb in Azure App Service and SQL Azure DB",
     "description": "This template deploys the EShopOnWeb .NET 8 application in Azure App Services, connecting to a SQL Azure database instance.",
@@ -3195,10 +3195,10 @@
     "author": "maartenvandiemen",
     "source": "https://github.com/maartenvandiemen/AZD-PaaS-Demo",
     "tags": [
-        "community",
-        "new", 
-        "appservice", 
-        "azuresql"
+      "community",
+      "new",
+      "appservice",
+      "azuresql"
     ]
   },
   {
@@ -3209,9 +3209,9 @@
     "author": "true-while",
     "source": "https://github.com/true-while/event-hub-azd",
     "tags": [
-        "community", 
-        "new", 
-        "eventhub"
+      "community",
+      "new",
+      "eventhub"
     ]
   },
   {
@@ -3222,9 +3222,9 @@
     "author": "petender",
     "source": "https://github.com/petender/azd-hubspoke",
     "tags": [
-        "community", 
-        "new", 
-        "vnets"
+      "community",
+      "new",
+      "vnets"
     ]
   },
   {
@@ -3235,9 +3235,9 @@
     "author": "petender",
     "source": "https://github.com/petender/azd-site2sitevpn/",
     "tags": [
-        "community", 
-        "new", 
-        "vnets"
+      "community",
+      "new",
+      "vnets"
     ]
   },
   {
@@ -3248,9 +3248,9 @@
     "author": "maartenvandiemen",
     "source": "https://github.com/maartenvandiemen/AZD-WatermarkFunction",
     "tags": [
-        "community", 
-        "new", 
-        "functions"
+      "community",
+      "new",
+      "functions"
     ]
   },
   {
@@ -3261,10 +3261,10 @@
     "author": "petender",
     "source": "https://github.com/petender/azd-sentinel",
     "tags": [
-	    "community", 
-	    "new", 
-	    "sentinel"]
-    
+      "community",
+      "new",
+      "sentinel"
+    ]
   },
   {
     "title": "Azure Traffic Manager with WebApps",
@@ -3274,72 +3274,29 @@
     "author": "petender",
     "source": "https://github.com/petender/azd-trafficmgr",
     "tags": [
-	    "community", 
-	    "new", 
-	    "trafficmgr"]
-    
+      "community",
+      "new",
+      "trafficmgr"
+    ]
   },
   {
-    "title": "Azure Functions - TextCompletion using OpenAI input binding with Java",
-    "description": "This sample highlights how to use the Azure Functions OpenAI TextCompletion input binding to send content to Azure OpenAI and get a result using Java.",
-    "preview": "./templates/images/test.png",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Thiago Almeida",
-    "source": "https://github.com/Azure-Samples/azure-functions-completion-openai-java",
+    "title": "Agentic Voice Assistant based on Azure Container Apps, Azure OpenAI and Azure Logic Apps",
+    "description": "This demo deploys a voice based interface to agentic system that uses Azure Logic Apps as the execution mechanism.",
+    "preview": "./templates/images/agentic-voice-assistant.png",
+    "website": "https://github.com/Azure-Samples/agentic-voice-assistant",
+    "author": "eminkevich",
+    "source": "https://github.com/Azure-Samples/agentic-voice-assistant",
     "tags": [
-      "functions",
-      "bicep",
-      "java",
-      "azureai",
       "ai",
-      "msft",
-      "new"
-    ]
-  },
-  {
-    "title": "Azure Functions JavaScript sample using OpenAI TextCompletion",
-    "description": "JavaScript Azure Functions sample using OpenAI TextCompletion input binding to send content to Azure OpenAI and get a result",
-    "preview": "./templates/images/test.png",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Azure Functions Team",
-    "source": "https://github.com/Azure-Samples/azure-functions-completion-openai-node",
-    "tags": [
-      "bicep",
-      "msft",
-      "javascript",
-      "functions",
-      "openai",
+      "cosmosdb",
       "appinsights",
       "azurestorage",
-      "managedidentity",
-      "monitor",
-      "azureai",
-      "blobstorage",
-      "loganalytics",
-      "new"
-    ]
-  },
-  {
-    "title": "Azure Functions RAG + AI Search using JavaScript",
-    "description": "JavaScript Azure Function using OpenAI bindings extension to highlight OpenAI retrieval augmented generation with Azure AI Search.",
-    "preview": "./templates/images/test.png",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Azure Functions Team",
-    "source": "https://github.com/Azure-Samples/azure-functions-openai-aisearch-node",
-    "tags": [
+      "python",
+      "chainlit",
+      "aca",
       "bicep",
-      "msft",
-      "javascript",
-      "functions",
-      "openai",
-      "aisearch",
-      "appinsights",
-      "azurestorage",
-      "managedidentity",
-      "monitor",
-      "azureai",
-      "blobstorage",
-      "loganalytics"
+      "community",
+      "new"
     ]
   }
 ]

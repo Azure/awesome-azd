@@ -130,7 +130,8 @@ export type TagType =
   | "dab"
   | "virtualmachine"
   | "sentinel"
-  | "trafficmgr";
+  | "trafficmgr"
+  | "chainlit";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -458,6 +459,11 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Microsoft AutoGen",
     type: "Framework",
   },
+  chainlit: {
+    label: "Microsoft AutoGen",
+    description: "Template architecture uses Microsoft AutoGen",
+    type: "Framework",
+  },
 
   // ---- Platform
   kubernetes: {
@@ -751,7 +757,7 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/en-us/products/microsoft-sentinel/",
     type: "Service",
   },
-trafficmgr: {
+  trafficmgr: {
     label: "Azure Traffic Manager",
     description: "Template architecture uses Azure Traffic Manager",
     azureIcon: "./img/trafficmgr.svg",

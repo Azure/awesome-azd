@@ -457,6 +457,7 @@ export const Tags: { [type in TagType]: Tag } = {
   langchain4j: {
     label: "LangChain4j",
     description: "Template architecture uses LangChain4j framework",
+    type: "Framework",
    },
   autogen: {
     label: "Microsoft AutoGen",

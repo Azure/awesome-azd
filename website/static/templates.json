@@ -2692,6 +2692,33 @@
     ]
   },
   {
+    "title": "Azure Cosmos DB for Table Quickstart - Python",
+    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Python.",
+    "preview": "./templates/images/cosmos-db-table-python-quickstart.png",
+    "website": "https://learn.microsoft.com/azure/cosmos-db/table/quickstart-python",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-table-python-quickstart",
+    "tags": ["cosmosdb", "python", "aca", "managedidentity", "bicep", "msft", "new"]
+  },
+  {
+    "title": "Azure Cosmos DB for Table Quickstart - Go",
+    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Go.",
+    "preview": "./templates/images/cosmos-db-table-go-quickstart.png",
+    "website": "https://learn.microsoft.com/azure/cosmos-db/table/quickstart-go",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-table-go-quickstart",
+    "tags": ["cosmosdb", "go", "aca", "managedidentity", "bicep", "msft", "new"]
+  },
+  {
+    "title": "Azure Cosmos DB for Table Quickstart - Java",
+    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Java.",
+    "preview": "./templates/images/cosmos-db-table-java-quickstart.png",
+    "website": "https://learn.microsoft.com/azure/cosmos-db/table/quickstart-java",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-table-java-quickstart",
+    "tags": ["cosmosdb", "java", "aca", "managedidentity", "bicep", "msft", "new"]
+  },
+  {
     "title": "Integration Hub with Logic App Standard",
     "description": "Template to deploy shared components like Logic App Standard Plan, Service Bus and Azure Artifacts for an integration platform.",
     "preview": "./templates/images/integration-hub.png",
@@ -2989,6 +3016,25 @@
     ]
   },
   {
+    "title": "Create SharePoint Online webhooks with an Azure function app (Node.js)",
+    "description": "A secured Azure function app that connects to your SharePoint Online tenant, to register and manage webhooks, and process the notifications from SharePoint.",
+    "preview": "./templates/images/azd-functions-sharepoint-webhooks.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Yvan Duhamel",
+    "source": "https://github.com/Azure-Samples/azd-functions-sharepoint-webhooks",
+    "tags": [
+      "functions",
+      "managedidentity",
+      "sharepoint",
+      "typescript",
+      "javascript",
+      "appinsights",
+      "bicep",
+      "msft",
+      "new"
+    ]
+  },
+  {
     "title": "Minimal .NET API with ConferenceAPI sample",
     "description": "A minimal .NET API with ConferenceAPI sample",
     "preview": "./templates/images/test.png",
@@ -3155,11 +3201,11 @@
     "author": "petender",
     "source": "https://github.com/petender/azd-fdcdn",
     "tags": [
-        "community", 
-        "new", 
-        "frontdoor"
+      "community",
+      "new",
+      "frontdoor"
     ]
-  }, 
+  },
   {
     "title": "EShopOnWeb in Azure App Service and SQL Azure DB",
     "description": "This template deploys the EShopOnWeb .NET 8 application in Azure App Services, connecting to a SQL Azure database instance.",
@@ -3168,10 +3214,10 @@
     "author": "maartenvandiemen",
     "source": "https://github.com/maartenvandiemen/AZD-PaaS-Demo",
     "tags": [
-        "community",
-        "new", 
-        "appservice", 
-        "azuresql"
+      "community",
+      "new",
+      "appservice",
+      "azuresql"
     ]
   },
   {
@@ -3182,9 +3228,9 @@
     "author": "true-while",
     "source": "https://github.com/true-while/event-hub-azd",
     "tags": [
-        "community", 
-        "new", 
-        "eventhub"
+      "community",
+      "new",
+      "eventhub"
     ]
   },
   {
@@ -3195,9 +3241,9 @@
     "author": "petender",
     "source": "https://github.com/petender/azd-hubspoke",
     "tags": [
-        "community", 
-        "new", 
-        "vnets"
+      "community",
+      "new",
+      "vnets"
     ]
   },
   {
@@ -3208,9 +3254,9 @@
     "author": "petender",
     "source": "https://github.com/petender/azd-site2sitevpn/",
     "tags": [
-        "community", 
-        "new", 
-        "vnets"
+      "community",
+      "new",
+      "vnets"
     ]
   },
   {
@@ -3221,9 +3267,9 @@
     "author": "maartenvandiemen",
     "source": "https://github.com/maartenvandiemen/AZD-WatermarkFunction",
     "tags": [
-        "community", 
-        "new", 
-        "functions"
+      "community",
+      "new",
+      "functions"
     ]
   },
   {
@@ -3234,10 +3280,10 @@
     "author": "petender",
     "source": "https://github.com/petender/azd-sentinel",
     "tags": [
-	    "community", 
-	    "new", 
-	    "sentinel"]
-    
+      "community",
+      "new",
+      "sentinel"
+    ]
   },
   {
     "title": "Azure Traffic Manager with WebApps",
@@ -3247,31 +3293,28 @@
     "author": "petender",
     "source": "https://github.com/petender/azd-trafficmgr",
     "tags": [
-	    "community", 
-	    "new", 
-	    "trafficmgr"
+      "community",
+      "new",
+      "trafficmgr"
     ]
   },
   {
-    "title": "Azure Functions JavaScript sample using OpenAI TextCompletion",
-    "description": "JavaScript Azure Functions sample using OpenAI TextCompletion input binding to send content to Azure OpenAI and get a result",
-    "preview": "./templates/images/test.png",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Azure Functions Team",
-    "source": "https://github.com/Azure-Samples/azure-functions-completion-openai-node",
+    "title": "Agentic Voice Assistant based on Azure Container Apps, Azure OpenAI and Azure Logic Apps",
+    "description": "This demo deploys a voice based interface to agentic system that uses Azure Logic Apps as the execution mechanism.",
+    "preview": "./templates/images/agentic-voice-assistant.png",
+    "website": "https://github.com/Azure-Samples/agentic-voice-assistant",
+    "author": "eminkevich",
+    "source": "https://github.com/Azure-Samples/agentic-voice-assistant",
     "tags": [
-      "bicep",
-      "msft",
-      "javascript",
-      "functions",
-      "openai",
+      "ai",
+      "cosmosdb",
       "appinsights",
       "azurestorage",
-      "managedidentity",
-      "monitor",
-      "azureai",
-      "blobstorage",
-      "loganalytics",
+      "python",
+      "chainlit",
+      "aca",
+      "bicep",
+      "community",
       "new"
     ]
   },

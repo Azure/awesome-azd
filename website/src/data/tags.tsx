@@ -129,9 +129,11 @@ export type TagType =
   | "powershell"
   | "autogen"
   | "dab"
+  | "sharepoint"
   | "virtualmachine"
   | "sentinel"
-  | "trafficmgr";
+  | "trafficmgr"
+  | "chainlit";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -464,6 +466,11 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Microsoft AutoGen",
     type: "Framework",
   },
+  chainlit: {
+    label: "Microsoft AutoGen",
+    description: "Template architecture uses Microsoft AutoGen",
+    type: "Framework",
+  },
 
   // ---- Platform
   kubernetes: {
@@ -486,6 +493,11 @@ export const Tags: { [type in TagType]: Tag } = {
   serverlessapi: {
     label: "Serverless API",
     description: "Template architecture uses Serverless API",
+    type: "Service",
+  },
+  sharepoint: {
+    label: "SharePoint",
+    description: "Template architecture involves a connection to SharePoint",
     type: "Service",
   },
 
@@ -757,7 +769,7 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/en-us/products/microsoft-sentinel/",
     type: "Service",
   },
-trafficmgr: {
+  trafficmgr: {
     label: "Azure Traffic Manager",
     description: "Template architecture uses Azure Traffic Manager",
     azureIcon: "./img/trafficmgr.svg",

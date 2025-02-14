@@ -127,7 +127,12 @@ export type TagType =
   | "go"
   | "powershell"
   | "autogen"
-  | "dab";
+  | "dab"
+  | "sharepoint"
+  | "virtualmachine"
+  | "sentinel"
+  | "trafficmgr"
+  | "chainlit";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -455,6 +460,11 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Microsoft AutoGen",
     type: "Framework",
   },
+  chainlit: {
+    label: "Microsoft AutoGen",
+    description: "Template architecture uses Microsoft AutoGen",
+    type: "Framework",
+  },
 
   // ---- Platform
   kubernetes: {
@@ -477,6 +487,11 @@ export const Tags: { [type in TagType]: Tag } = {
   serverlessapi: {
     label: "Serverless API",
     description: "Template architecture uses Serverless API",
+    type: "Service",
+  },
+  sharepoint: {
+    label: "SharePoint",
+    description: "Template architecture involves a connection to SharePoint",
     type: "Service",
   },
 
@@ -732,6 +747,27 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure Data Factory",
     azureIcon: "./img/Azure-Data-Factory.svg",
     url: "https://learn.microsoft.com/azure/data-factory/introduction",
+    type: "Service",
+  },
+  virtualmachine: {
+    label: "Azure Virtual Machine",
+    description: "Template architecture uses Azure Virtual Machine",
+    azureIcon: "./img/Azure-Virtual-Machine.svg",
+    url: "https://azure.microsoft.com/azure/virtual-machines",
+    type: "Service",
+  },
+  sentinel: {
+    label: "Azure Sentinel",
+    description: "Template architecture uses Azure Sentinel",
+    azureIcon: "./img/Microsoft-Sentinel.svg",
+    url: "https://azure.microsoft.com/en-us/products/microsoft-sentinel/",
+    type: "Service",
+  },
+  trafficmgr: {
+    label: "Azure Traffic Manager",
+    description: "Template architecture uses Azure Traffic Manager",
+    azureIcon: "./img/trafficmgr.svg",
+    url: "https://azure.microsoft.com/products/traffic-manager",
     type: "Service",
   },
 

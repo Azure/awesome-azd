@@ -2909,57 +2909,6 @@
     ]
   },
   {
-    "title": "Azure Cosmos DB for Table Quickstart - Python",
-    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Python.",
-    "preview": "./templates/images/cosmos-db-table-python-quickstart.png",
-    "website": "https://learn.microsoft.com/azure/cosmos-db/table/quickstart-python",
-    "author": "Azure Cosmos DB Content Team",
-    "source": "https://github.com/azure-samples/cosmos-db-table-python-quickstart",
-    "tags": [
-      "cosmosdb",
-      "python",
-      "aca",
-      "managedidentity",
-      "bicep",
-      "msft"
-    ]
-  },
-  {
-    "title": "Azure Cosmos DB for Table Quickstart - Go",
-    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Go.",
-    "preview": "./templates/images/cosmos-db-table-go-quickstart.png",
-    "website": "https://learn.microsoft.com/azure/cosmos-db/table/quickstart-go",
-    "author": "Azure Cosmos DB Content Team",
-    "source": "https://github.com/azure-samples/cosmos-db-table-go-quickstart",
-    "tags": [
-      "cosmosdb",
-      "go",
-      "aca",
-      "managedidentity",
-      "bicep",
-      "msft"
-    ]
-  },
-  {
-    "title": "Data API builder Quickstart - Azure Cosmos DB for NoSQL",
-    "description": "A quick application to get started using Data API builder to create a GraphQL API for Azure Cosmos DB for NoSQL.",
-    "preview": "./templates/images/dab-azure-cosmos-db-nosql-quickstart.png",
-    "website": "https://github.com/azure-samples",
-    "author": "Azure Cosmos DB Content Team",
-    "source": "https://github.com/azure-samples/dab-azure-cosmos-db-nosql-quickstart",
-    "tags": [
-      "cosmosdb",
-      "dotnetCsharp",
-      "blazor",
-      "dab",
-      "aca",
-      "managedidentity",
-      "bicep",
-      "msft",
-      "new"
-    ]
-  },
-  {
     "title": "Azure Cosmos DB for Table Quickstart - Java",
     "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Java.",
     "preview": "./templates/images/cosmos-db-table-java-quickstart.png",
@@ -2977,14 +2926,14 @@
     ]
   },
   {
-    "title": "Data API builder Quickstart - Azure SQL",
-    "description": "A quick application to get started using Data API builder to create a REST API for Azure SQL.",
-    "preview": "./templates/images/dab-azure-sql-quickstart.png",
-    "website": "https://learn.microsoft.com/azure/data-api-builder/quickstart-azure-sql",
-    "author": "Azure SQL Content Team",
-    "source": "https://github.com/azure-samples/dab-azure-sql-quickstart",
+    "title": "Data API builder Quickstart - Azure Cosmos DB for NoSQL",
+    "description": "A quick application to get started using Data API builder to create a GraphQL API for Azure Cosmos DB for NoSQL.",
+    "preview": "./templates/images/dab-azure-cosmos-db-nosql-quickstart.png",
+    "website": "https://github.com/azure-samples",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/dab-azure-cosmos-db-nosql-quickstart",
     "tags": [
-      "azuresql",
+      "cosmosdb",
       "dotnetCsharp",
       "blazor",
       "dab",
@@ -3032,25 +2981,6 @@
       "bicep",
       "appinsights",
       "loganalytics",
-      "msft",
-      "new"
-    ]
-  },
-  {
-    "title": "Create SharePoint Online webhooks with an Azure function app (Node.js)",
-    "description": "A secured Azure function app that connects to your SharePoint Online tenant, to register and manage webhooks, and process the notifications from SharePoint.",
-    "preview": "./templates/images/azd-functions-sharepoint-webhooks.png",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Yvan Duhamel",
-    "source": "https://github.com/Azure-Samples/azd-functions-sharepoint-webhooks",
-    "tags": [
-      "functions",
-      "managedidentity",
-      "sharepoint",
-      "typescript",
-      "javascript",
-      "appinsights",
-      "bicep",
       "msft",
       "new"
     ]
@@ -3212,6 +3142,78 @@
       "community",
       "managedidentity",
       "monitor"
+    ]
+  },
+  {
+    "title": "Azure Cosmos DB for Table Quickstart - Python",
+    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Python.",
+    "preview": "./templates/images/cosmos-db-table-python-quickstart.png",
+    "website": "https://learn.microsoft.com/azure/cosmos-db/table/quickstart-python",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-table-python-quickstart",
+    "tags": [
+      "cosmosdb",
+      "python",
+      "aca",
+      "managedidentity",
+      "bicep",
+      "msft",
+      "new"
+    ]
+  },
+  {
+    "title": "Azure Cosmos DB for Table Quickstart - Go",
+    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Go.",
+    "preview": "./templates/images/cosmos-db-table-go-quickstart.png",
+    "website": "https://learn.microsoft.com/azure/cosmos-db/table/quickstart-go",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-table-go-quickstart",
+    "tags": [
+      "cosmosdb",
+      "go",
+      "aca",
+      "managedidentity",
+      "bicep",
+      "msft",
+      "new"
+    ]
+  },
+  {
+    "title": "Data API builder Quickstart - Azure SQL",
+    "description": "A quick application to get started using Data API builder to create a REST API for Azure SQL.",
+    "preview": "./templates/images/dab-azure-sql-quickstart.png",
+    "website": "https://learn.microsoft.com/azure/data-api-builder/quickstart-azure-sql",
+    "author": "Azure SQL Content Team",
+    "source": "https://github.com/azure-samples/dab-azure-sql-quickstart",
+    "tags": [
+      "azuresql",
+      "dotnetCsharp",
+      "blazor",
+      "dab",
+      "aca",
+      "managedidentity",
+      "bicep",
+      "msft",
+      "new"
+    ]
+  },
+  {
+    "title": "Create SharePoint Online webhooks with an Azure function app (Node.js)",
+    "description": "A secured Azure function app that connects to your SharePoint Online tenant, to register and manage webhooks, and process the notifications from SharePoint.",
+    "preview": "./templates/images/azd-functions-sharepoint-webhooks.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Yvan Duhamel",
+    "source": "https://github.com/Azure-Samples/azd-functions-sharepoint-webhooks",
+    "tags": [
+      "functions",
+      "managedidentity",
+      "sharepoint",
+      "typescript",
+      "javascript",
+      "appinsights",
+      "bicep",
+      "msft",
+      "new"
     ]
   },
   {

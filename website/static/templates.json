@@ -3338,5 +3338,26 @@
       "community",
       "new"
     ]
+  },
+  {
+    "title": "Azure OpenAI RAG with Java, LangChain4j and Quarkus",
+    "description": "Create a Java service using Quarkus, OpenAI SDK, and LangChain4j to build a chatbot that answers questions based on document data, with a website interface for API interaction.",
+    "preview": "./templates/images/rag-java-quarkus-langchain4j.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Sandra Ahlgrimm",
+    "source": "https://github.com/Azure-Samples/azure-openai-rag-workshop-java",
+    "tags": [
+      "java",
+      "quarkus",
+      "aca",
+      "managedidentity",
+      "bicep",
+      "msft",
+      "openai",
+      "new",
+      "langchain4j",
+      "rag",
+      "monitor"
+    ]
   }
 ]

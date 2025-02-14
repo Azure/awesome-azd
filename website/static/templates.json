@@ -2928,6 +2928,25 @@
     ]
   },
   {
+    "title": "Data API builder Quickstart - Azure SQL",
+    "description": "A quick application to get started using Data API builder to create a REST API for Azure SQL.",
+    "preview": "./templates/images/dab-azure-sql-quickstart.png",
+    "website": "https://learn.microsoft.com/azure/data-api-builder/quickstart-azure-sql",
+    "author": "Azure SQL Content Team",
+    "source": "https://github.com/azure-samples/dab-azure-sql-quickstart",
+    "tags": [
+      "azuresql",
+      "dotnetCsharp",
+      "blazor",
+      "dab",
+      "aca",
+      "managedidentity",
+      "bicep",
+      "msft",
+      "new"
+    ]
+  },
+  {
     "title": "LlamaIndex RAG chat app with Azure OpenAI and Azure AI Search (JavaScript)",
     "description": "This solution creates a ChatGPT-like, Retrieval Augmented Generation (RAG) agentic application, over your own documents, powered by Llamaindex (TypeScript). It uses Azure OpenAI Service to access GPT models and embedding, and Azure AI Search for data indexing and retrieval.",
     "preview": "./templates/images/llama-index-vector-search-javascript.png",
@@ -2964,6 +2983,25 @@
       "bicep",
       "appinsights",
       "loganalytics",
+      "msft",
+      "new"
+    ]
+  },
+  {
+    "title": "Create SharePoint Online webhooks with an Azure function app (Node.js)",
+    "description": "A secured Azure function app that connects to your SharePoint Online tenant, to register and manage webhooks, and process the notifications from SharePoint.",
+    "preview": "./templates/images/azd-functions-sharepoint-webhooks.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Yvan Duhamel",
+    "source": "https://github.com/Azure-Samples/azd-functions-sharepoint-webhooks",
+    "tags": [
+      "functions",
+      "managedidentity",
+      "sharepoint",
+      "typescript",
+      "javascript",
+      "appinsights",
+      "bicep",
       "msft",
       "new"
     ]
@@ -3173,44 +3211,6 @@
       "java",
       "aca",
       "managedidentity",
-      "bicep",
-      "msft",
-      "new"
-    ]
-  },
-  {
-    "title": "Data API builder Quickstart - Azure SQL",
-    "description": "A quick application to get started using Data API builder to create a REST API for Azure SQL.",
-    "preview": "./templates/images/dab-azure-sql-quickstart.png",
-    "website": "https://learn.microsoft.com/azure/data-api-builder/quickstart-azure-sql",
-    "author": "Azure SQL Content Team",
-    "source": "https://github.com/azure-samples/dab-azure-sql-quickstart",
-    "tags": [
-      "azuresql",
-      "dotnetCsharp",
-      "blazor",
-      "dab",
-      "aca",
-      "managedidentity",
-      "bicep",
-      "msft",
-      "new"
-    ]
-  },
-  {
-    "title": "Create SharePoint Online webhooks with an Azure function app (Node.js)",
-    "description": "A secured Azure function app that connects to your SharePoint Online tenant, to register and manage webhooks, and process the notifications from SharePoint.",
-    "preview": "./templates/images/azd-functions-sharepoint-webhooks.png",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Yvan Duhamel",
-    "source": "https://github.com/Azure-Samples/azd-functions-sharepoint-webhooks",
-    "tags": [
-      "functions",
-      "managedidentity",
-      "sharepoint",
-      "typescript",
-      "javascript",
-      "appinsights",
       "bicep",
       "msft",
       "new"

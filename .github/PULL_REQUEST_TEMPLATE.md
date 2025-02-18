@@ -8,17 +8,17 @@ Place your template repository link here:
 
 <!-- Please ensure that your PR includes the following metadata! All fields are mandatory unless explicitly marked as optional -->
 
-- [ ] Added an entry to https://github.com/Azure/awesome-azd/blob/main/website/src/data/users.tsx that includes:
+- [ ] Added an entry to https://github.com/Azure/awesome-azd/blob/main/website/static/templates.json that includes:
     - [ ] **Template title** - A short title that reflects the local application stack that someone could use to get their application on Azure (e.g. "Containerized React Web App with Java API and MongoDB")
     - [ ] **Description** - 1-2 sentence description of the architecture (e.g. Azure services) or solution that is defined by the template.
-    - [ ] **Architecture Diagram or Application Screenshot** - The image should include all services and their connections ([example](https://github.com/Azure-Samples/todo-csharp-sql/blob/main/assets/resources.png)). You should add the image to the `website/src/data/images/`.
+    - [ ] **Architecture Diagram or Application Screenshot** - The image should include all services and their connections ([example](https://github.com/Azure-Samples/todo-csharp-sql/blob/main/assets/resources.png)). You should add the image to the `website/static/templates/images`.
     - [ ] **Link to Author's GitHub or other relevant website** - Used for attribution
     - [ ] **Author's Name** -  Name to credit on the gallery card
     - [ ] **Link to template source** - Link to the template GitHub repo 
     - [ ] **Tags** - Specify [tags](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) to represent the template. If you don't see a relevant tag for your template? Feel free to add one!
         
         **Required tags**:
-      - [ ] Tag your template as Micrsoft-authored (`"msft"`) or Community-authored (`"community"`)
+      - [ ] Tag your template as Microsoft-authored (`"msft"`) or Community-authored (`"community"`)
       - [ ] Tag the IaC provider (`"bicep"` or `"terraform"`)
       - [ ] At least 1 tag for programming language used
       - [ ] At least 1 tag for Azure services integrated

@@ -122,15 +122,18 @@ export type TagType =
   | "kernelmemory"
   | "promptengineering"
   | "rag"
+  | "langchain4j"
   | "featureExperimentation"
   | "featuremanagement"
   | "go"
   | "powershell"
   | "autogen"
   | "dab"
+  | "sharepoint"
   | "virtualmachine"
   | "sentinel"
-  | "trafficmgr";
+  | "trafficmgr"
+  | "chainlit";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -453,7 +456,17 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Retrieval-Augmented Generation",
     type: "Framework",
   },
+  langchain4j: {
+    label: "LangChain4j",
+    description: "Template architecture uses LangChain4j framework",
+    type: "Framework",
+   },
   autogen: {
+    label: "Microsoft AutoGen",
+    description: "Template architecture uses Microsoft AutoGen",
+    type: "Framework",
+  },
+  chainlit: {
     label: "Microsoft AutoGen",
     description: "Template architecture uses Microsoft AutoGen",
     type: "Framework",
@@ -480,6 +493,11 @@ export const Tags: { [type in TagType]: Tag } = {
   serverlessapi: {
     label: "Serverless API",
     description: "Template architecture uses Serverless API",
+    type: "Service",
+  },
+  sharepoint: {
+    label: "SharePoint",
+    description: "Template architecture involves a connection to SharePoint",
     type: "Service",
   },
 
@@ -751,7 +769,7 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/en-us/products/microsoft-sentinel/",
     type: "Service",
   },
-trafficmgr: {
+  trafficmgr: {
     label: "Azure Traffic Manager",
     description: "Template architecture uses Azure Traffic Manager",
     azureIcon: "./img/trafficmgr.svg",

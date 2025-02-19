@@ -3375,6 +3375,7 @@
       "azurestorage",
       "bicep",
       "community",
+      "new",
       "dotnetCsharp",
       "eventhub",
       "functions",

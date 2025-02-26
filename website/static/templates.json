@@ -3420,7 +3420,8 @@
       "blobstorage",
       "functions",
       "bicep",
-      "python"
+      "python",
+      "new"
     ]
   }
 ]

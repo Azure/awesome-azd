@@ -3421,7 +3421,8 @@
       "bicep",
       "acr",
       "monitor",
-      "container"
+      "container",
+      "new"
     ]
   }
 ]

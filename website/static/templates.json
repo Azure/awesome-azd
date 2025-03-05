@@ -2692,33 +2692,6 @@
     ]
   },
   {
-    "title": "Azure Cosmos DB for Table Quickstart - Python",
-    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Python.",
-    "preview": "./templates/images/cosmos-db-table-python-quickstart.png",
-    "website": "https://learn.microsoft.com/azure/cosmos-db/table/quickstart-python",
-    "author": "Azure Cosmos DB Content Team",
-    "source": "https://github.com/azure-samples/cosmos-db-table-python-quickstart",
-    "tags": ["cosmosdb", "python", "aca", "managedidentity", "bicep", "msft", "new"]
-  },
-  {
-    "title": "Azure Cosmos DB for Table Quickstart - Go",
-    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Go.",
-    "preview": "./templates/images/cosmos-db-table-go-quickstart.png",
-    "website": "https://learn.microsoft.com/azure/cosmos-db/table/quickstart-go",
-    "author": "Azure Cosmos DB Content Team",
-    "source": "https://github.com/azure-samples/cosmos-db-table-go-quickstart",
-    "tags": ["cosmosdb", "go", "aca", "managedidentity", "bicep", "msft", "new"]
-  },
-  {
-    "title": "Azure Cosmos DB for Table Quickstart - Java",
-    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Java.",
-    "preview": "./templates/images/cosmos-db-table-java-quickstart.png",
-    "website": "https://learn.microsoft.com/azure/cosmos-db/table/quickstart-java",
-    "author": "Azure Cosmos DB Content Team",
-    "source": "https://github.com/azure-samples/cosmos-db-table-java-quickstart",
-    "tags": ["cosmosdb", "java", "aca", "managedidentity", "bicep", "msft", "new"]
-  },
-  {
     "title": "Integration Hub with Logic App Standard",
     "description": "Template to deploy shared components like Logic App Standard Plan, Service Bus and Azure Artifacts for an integration platform.",
     "preview": "./templates/images/integration-hub.png",
@@ -2932,8 +2905,7 @@
       "appservice",
       "fastapi",
       "msft",
-      "bicep",
-      "new"
+      "bicep"
     ]
   },
   {
@@ -3019,7 +2991,7 @@
     "title": "Create SharePoint Online webhooks with an Azure function app (Node.js)",
     "description": "A secured Azure function app that connects to your SharePoint Online tenant, to register and manage webhooks, and process the notifications from SharePoint.",
     "preview": "./templates/images/azd-functions-sharepoint-webhooks.png",
-    "website": "https://github.com/Azure-Samples",
+    "website": "https://github.com/Yvand",
     "author": "Yvan Duhamel",
     "source": "https://github.com/Azure-Samples/azd-functions-sharepoint-webhooks",
     "tags": [
@@ -3194,6 +3166,57 @@
     ]
   },
   {
+    "title": "Azure Cosmos DB for Table Quickstart - Python",
+    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Python.",
+    "preview": "./templates/images/cosmos-db-table-python-quickstart.png",
+    "website": "https://learn.microsoft.com/azure/cosmos-db/table/quickstart-python",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-table-python-quickstart",
+    "tags": [
+      "cosmosdb",
+      "python",
+      "aca",
+      "managedidentity",
+      "bicep",
+      "msft",
+      "new"
+    ]
+  },
+  {
+    "title": "Azure Cosmos DB for Table Quickstart - Go",
+    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Go.",
+    "preview": "./templates/images/cosmos-db-table-go-quickstart.png",
+    "website": "https://learn.microsoft.com/azure/cosmos-db/table/quickstart-go",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-table-go-quickstart",
+    "tags": [
+      "cosmosdb",
+      "go",
+      "aca",
+      "managedidentity",
+      "bicep",
+      "msft",
+      "new"
+    ]
+  },
+  {
+    "title": "Azure Cosmos DB for Table Quickstart - Java",
+    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Java.",
+    "preview": "./templates/images/cosmos-db-table-java-quickstart.png",
+    "website": "https://learn.microsoft.com/azure/cosmos-db/table/quickstart-java",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-table-java-quickstart",
+    "tags": [
+      "cosmosdb",
+      "java",
+      "aca",
+      "managedidentity",
+      "bicep",
+      "msft",
+      "new"
+    ]
+  },
+  {
     "title": "Azure FrontDoor CDN with sample HTML webapp",
     "description": "This template deploys an Azure FrontDoor CDN, with a sample HTML-based webapp. The webapp allows you to load sample images from different endpoints, one is from within the webapp storage itself, a second one loads from Azure Storage Account Blobs and the last one loads from Azure Frontdoor CDN. This demo shows how static data such as image files can optimize site loading time when using CDN caching.",
     "preview": "./templates/images/test.png",
@@ -3293,9 +3316,28 @@
     "author": "petender",
     "source": "https://github.com/petender/azd-trafficmgr",
     "tags": [
-      "community",
-      "new",
-      "trafficmgr"
+	    "community", 
+	    "new", 
+	    "trafficmgr"
+    ]
+  },
+  {
+    "title": "SpringBoot OpenAI Chat on Azure App Service",
+    "description": "The SpringBoot petclinic using Azure OpenAI, Managed Identity, and hosted with Azure App Service. Get up and running with OpenAI on Azure App Service + Java quickly, securely, and easily.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "denverbrittain",
+    "source": "https://github.com/Azure-Samples/SpringBoot-Petclinic-AI-Chat-on-App-Service",
+    "tags": [
+	    "msft", 
+	    "bicep", 
+	    "managedidentity",
+    	"java",
+	    "openai",
+	    "ai",
+	    "spring",
+	    "new",
+	    "appservice"
     ]
   },
   {
@@ -3337,6 +3379,31 @@
       "langchain4j",
       "rag",
       "monitor"
+    ]
+  },
+  {
+    "title": "Azure Integration Services Quickstart",
+    "description": "Deploys Azure Integration Services, including Azure API Management, Function App, Logic App, Service Bus and Event Hubs namespace, along with supporting resources such as Application Insights, Key Vault and Storage Account. This template is ideal for demos, testing or getting started with Azure Integration Services.",
+    "preview": "./templates/images/azure-integration-services-quickstart.png",
+    "website": "https://github.com/ronaldbosma",
+    "author": "Ronald Bosma",
+    "source": "https://github.com/ronaldbosma/azure-integration-services-quickstart",
+    "tags": [
+      "apim",
+      "appinsights",
+      "azurestorage",
+      "bicep",
+      "community",
+      "new",
+      "dotnetCsharp",
+      "eventhub",
+      "functions",
+      "managedidentity",
+      "monitor",
+      "new",
+      "keyvault",
+      "logicapps",
+      "servicebus"
     ]
   }
 ]

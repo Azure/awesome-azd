@@ -133,7 +133,11 @@ export type TagType =
   | "virtualmachine"
   | "sentinel"
   | "trafficmgr"
-  | "chainlit";
+  | "chainlit"
+  | "purview"
+  | "vpngw"
+  | "azurearc"
+  | "loadtesting";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -775,6 +779,34 @@ export const Tags: { [type in TagType]: Tag } = {
     azureIcon: "./img/trafficmgr.svg",
     url: "https://azure.microsoft.com/products/traffic-manager",
     type: "Service",
+  },
+  purview: {
+    label: "Azure Purview",
+    description: "Template architecture uses Azure Purview",
+    azureIcon: "./img/Azure-Purview.svg",
+    url: "https://azure.microsoft.com/products/purview",
+    type: "Service",
+  },
+  vpngw: {
+    label: "Azure VPN Gateway",
+    description: "Template architecture uses Azure VPN Gateway",
+    azureIcon: "./img/Azure-VPN-GW.svg",
+    url: "https://azure.microsoft.com/en-us/products/vpn-gateway",
+    type: "Service",
+  },
+  azurearc: {
+    label: "Azure ARC",
+    description: "Template architecture for Azure ARC",
+    azureIcon: "./img/Azure-Arc-VM.svg",
+    url: "hhttps://azure.microsoft.com/en-us/products/azure-arc",
+    type: "Service",
+  },
+  loadtesting: {
+    label: "Azure Load Testing",
+    description: "Template architecture for Azure Load Testing",
+    azureIcon: "./img/Azure-Load-Testing.svg",
+    url: "https://azure.microsoft.com/en-us/products/load-testing",
+    type: "Service", 
   },
 
   // For Topics

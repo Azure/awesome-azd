@@ -3470,7 +3470,7 @@
     "description": "an automated way to deploy a development environment inside a container, accessible as a web-based VS Code instance. The container includes all essential dependencies like Python, Node.js, and .NET, making it a ready-to-use development workspace.",
     "preview": "https://raw.githubusercontent.com/koenraadhaedens/azd-infra-dev-containers/refs/heads/main/media/vscodeweb.png",
     "website": "https://github.com/koenraadhaedens",
-    "author": "koenraadhaedens",
+    "author": "Koenraad Haedens",
     "source": "https://github.com/koenraadhaedens/azd-infra-dev-containers",
     "tags": [
 	"azureai",

@@ -19,6 +19,10 @@
   min-width: 300px;
 }
 
+.cardBody {
+  flex: 1 0 auto;
+}
+
 .headerText {
   font-weight: 600;
   flex: 1;

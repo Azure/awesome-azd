@@ -3416,7 +3416,12 @@
     "tags": [
 	"community", 
 	"new", 
-	"purview"
+	"purview",
+	"azuresql",
+	"keyvault",
+	"azurestorage",
+	"azuredatafactory",
+	"managedidentity"	
 	]
   },
   {

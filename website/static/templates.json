@@ -3439,7 +3439,7 @@
     "description": "This repository showcases a collection of demos leveraging Azure's nested hypervisor capabilities, integrating powerful tools like Azure Arc, Defender for Identity, and more. These demos are designed to demonstrate hybrid cloud management, advanced security, and multi-cloud governance scenarios.",
     "preview": "https://raw.githubusercontent.com/koenraadhaedens/azd-nestedhv-dc-rtr/refs/heads/main/media/azure-nested-vm.png",
     "website": "https://github.com/koenraadhaedens",
-    "author": "koenraadhaedens",
+    "author": "Koenraad Haedens",
     "source": "https://github.com/koenraadhaedens/azd-nestedhv-dc-rtr",
     "tags": [
 	"azurearc",

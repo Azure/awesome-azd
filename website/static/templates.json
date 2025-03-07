@@ -3458,7 +3458,9 @@
     "author": "koenraadhaedens",
     "source": "https://github.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER",
     "tags": [
-	"azureai",
+	"vnets",
+	"virtualmachine",
+	"azurestorage"
 	"new",
 	"community"
 	]

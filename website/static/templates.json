@@ -3514,7 +3514,7 @@
     "description": "This scenario is used to demonstrate security principals and deploys Azure Firewall, Front Door, Application Gateway, Web Application Firewall to protect OWASP Juice Shop website.",
     "preview": "./templates/images/owasp.png",
     "website": "https://github.com/true-while",
-    "author": "true-while",
+    "author": "Alex Ivanov",
     "source": "https://github.com/true-while/owasp-azd/",
     "tags": [
 	"new",

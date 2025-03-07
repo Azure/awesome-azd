@@ -791,7 +791,7 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Azure VPN Gateway",
     description: "Template architecture uses Azure VPN Gateway",
     azureIcon: "./img/Azure-VPN-GW.svg",
-    url: "https://azure.microsoft.com/en-us/products/vpn-gateway",
+    url: "https://azure.microsoft.com/products/vpn-gateway",
     type: "Service",
   },
   azurearc: {

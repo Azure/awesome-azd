@@ -3429,7 +3429,9 @@
     "tags": [
 	"community", 
 	"new", 
-	"vnets"
+	"vnets",
+	"azurestorage",
+	"virtualmachine"
 	]
   },
   {

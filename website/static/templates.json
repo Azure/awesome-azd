@@ -3492,6 +3492,18 @@
     "source": "https://github.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs",
      "tags": [
 	"functions", 
+	"community", 
+	"new",
+	"vnets",
+	"mongodb",
+	"azurestorage",
+	"cosmosdb",
+	"azuresql",
+	"keyvault",
+	"appservice",
+	"appinsights",
+	"loganalytics",
+	"monitor",
 	"eventhub", 
 	"loadtesting"
 	]

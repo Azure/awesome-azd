@@ -3460,7 +3460,7 @@
     "description": "A Windows 11 developer PC that can be used for installing demos and showcasing them during deliveries.",
     "preview": "https://raw.githubusercontent.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER/refs/heads/main/media/devpc.png",
     "website": "https://github.com/koenraadhaedens",
-    "author": "koenraadhaedens",
+    "author": "Koenraad Haedens",
     "source": "https://github.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER",
     "tags": [
 	"vnets",

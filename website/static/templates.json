@@ -3443,6 +3443,9 @@
     "source": "https://github.com/koenraadhaedens/azd-nestedhv-dc-rtr",
     "tags": [
 	"azurearc",
+	"vnets",
+	"virtualmachine",
+	"azurestorage"
 	"new",
 	"community"
 	]

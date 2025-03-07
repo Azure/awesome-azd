@@ -3518,7 +3518,10 @@
     "source": "https://github.com/true-while/owasp-azd/",
     "tags": [
 	"new",
-	"community"
+	"community",
+	"agw",
+	"vnets",
+	"virtualmachine",
 	]
   }
 

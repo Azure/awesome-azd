@@ -3483,7 +3483,7 @@
     "description": "This demo deploys a flexible, consumption-based Azure Functions app integrated with Event Hubs through private endpoints and a virtual network. It includes load testing, secure networking, and real-time monitoring via Application Insights.",
     "preview": "https://raw.githubusercontent.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs/main/img/HTTP-VNET-EH.png",
     "website": "https://github.com/rob-foulkrod",
-    "author": "rob-foulkrod",
+    "author": "Rob Foulkrod",
     "source": "https://github.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs",
      "tags": [
 	"functions", 

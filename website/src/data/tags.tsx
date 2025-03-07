@@ -798,7 +798,7 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Azure ARC",
     description: "Template architecture for Azure ARC",
     azureIcon: "./img/Azure-Arc-VM.svg",
-    url: "hhttps://azure.microsoft.com/en-us/products/azure-arc",
+    url: "https://azure.microsoft.com/products/azure-arc",
     type: "Service",
   },
   loadtesting: {

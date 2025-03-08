@@ -3447,7 +3447,7 @@
     "author": "Koenraad Haedens",
     "source": "https://github.com/koenraadhaedens/azd-nestedhv-dc-rtr",
     "tags": [
-	"azurearc",
+	"hyperv",
 	"vnets",
 	"virtualmachine",
 	"azurestorage",

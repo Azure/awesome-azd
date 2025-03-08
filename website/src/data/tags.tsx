@@ -137,7 +137,8 @@ export type TagType =
   | "purview"
   | "vpngw"
   | "azurearc"
-  | "loadtesting";
+  | "loadtesting"
+  | "hyperv";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -807,6 +808,13 @@ export const Tags: { [type in TagType]: Tag } = {
     azureIcon: "./img/Azure-Load-Testing.svg",
     url: "https://azure.microsoft.com/products/load-testing",
     type: "Service", 
+  },
+  hyperv: {
+    label: "Microsoft Hyper-V",
+    description: "Template for Microsoft Hyper-V Host",
+    azureIcon: "./img/Hyper-V-Host.svg",
+    url: "https://azure.microsoft.com/products/virtual-machines/",
+    type: "Service",
   },
 
   // For Topics

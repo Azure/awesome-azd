@@ -3414,12 +3414,12 @@
     "author": "Frank Boucher",
     "source": "https://github.com/FBoucher/AspireAzStorage",
     "tags": [
-      "aspire",
       "community",
       "dotnetCsharp",
       "azure",
       "aca",
-      "bicep"
+      "bicep",
+      "new"
     ]
   }
 ]

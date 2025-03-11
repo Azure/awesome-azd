@@ -133,7 +133,8 @@ export type TagType =
   | "virtualmachine"
   | "sentinel"
   | "trafficmgr"
-  | "chainlit";
+  | "chainlit"
+  | "aspire";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -299,6 +300,11 @@ export const Tags: { [type in TagType]: Tag } = {
   dab: {
     label: "Data API builder",
     description: "Template architecture uses Data API builder (DAB)",
+    type: "Tools",
+  },
+  aspire: {
+    label: ".NET Aspire",
+    description: "Set of tools, templates, and packages for building observable, production ready apps.",
     type: "Tools",
   },
 

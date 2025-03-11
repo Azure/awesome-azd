@@ -3405,5 +3405,21 @@
       "logicapps",
       "servicebus"
     ]
+  },
+  {
+    "title": ".NET Aspire Azure Storage Demo",
+    "description": "This project demonstrates how to use Azure Table Storage with a .NET Minimal API in an .NET Aspire solution. Debeing deploy into Azure Container Apps (ACA).",
+    "preview": "./templates/images/aspire-az-storage.png",
+    "website": "https://github.com/fboucher",
+    "author": "Frank Boucher",
+    "source": "https://github.com/FBoucher/AspireAzStorage",
+    "tags": [
+      "aspire",
+      "community",
+      "dotnetCsharp",
+      "azure",
+      "aca",
+      "bicep"
+    ]
   }
 ]

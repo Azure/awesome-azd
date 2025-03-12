@@ -2923,8 +2923,7 @@
       "aca",
       "managedidentity",
       "bicep",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -2942,8 +2941,7 @@
       "aca",
       "managedidentity",
       "bicep",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -2962,8 +2960,7 @@
       "managedidentity",
       "bicep",
       "msft",
-      "openai",
-      "new"
+      "openai"
     ]
   },
   {
@@ -2983,8 +2980,7 @@
       "bicep",
       "appinsights",
       "loganalytics",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -3002,8 +2998,7 @@
       "javascript",
       "appinsights",
       "bicep",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -3015,7 +3010,6 @@
     "source": "https://github.com/petender/ConferenceAPI",
     "tags": [
       "community",
-      "new",
       "appservice",
       "managedidentity",
       "keyvault",
@@ -3031,7 +3025,6 @@
     "source": "https://github.com/petender/azd-apimwithconfAPI",
     "tags": [
       "community",
-      "new",
       "appservice",
       "apim",
       "monitor",
@@ -3048,7 +3041,6 @@
     "source": "https://github.com/petender/OpenAIMultiModel",
     "tags": [
       "community",
-      "new",
       "openai",
       "azureai",
       "monitor"
@@ -3063,7 +3055,6 @@
     "source": "https://github.com/rob-foulkrod/TollBooth",
     "tags": [
       "community",
-      "new",
       "webapps",
       "keyvault",
       "cosmosdb",
@@ -3082,7 +3073,6 @@
     "source": "https://github.com/rob-foulkrod/BadgeMaker",
     "tags": [
       "community",
-      "new",
       "webapps",
       "azureai",
       "blazor",
@@ -3099,7 +3089,6 @@
     "source": "https://github.com/rob-foulkrod/MachineLearningAZD",
     "tags": [
       "community",
-      "new",
       "keyvault",
       "appinsights",
       "vnets",
@@ -3117,7 +3106,6 @@
     "source": "https://github.com/rob-foulkrod/IAAS2019",
     "tags": [
       "community",
-      "new",
       "monitor",
       "keyvault",
       "vnets"
@@ -3131,7 +3119,6 @@
     "author": "Maarten van Diemen",
     "source": "https://github.com/maartenvandiemen/AZD-ACI-Demo",
     "tags": [
-      "new",
       "community",
       "managedidentity"
     ]
@@ -3144,7 +3131,6 @@
     "author": "Maarten van Diemen",
     "source": "https://github.com/maartenvandiemen/AZD-ACA-Demo",
     "tags": [
-      "new",
       "aca",
       "community",
       "managedidentity"
@@ -3158,7 +3144,6 @@
     "author": "Maarten van Diemen",
     "source": "https://github.com/maartenvandiemen/AZD-AKS-Demo",
     "tags": [
-      "new",
       "aks",
       "community",
       "managedidentity",
@@ -3178,8 +3163,7 @@
       "aca",
       "managedidentity",
       "bicep",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -3195,8 +3179,7 @@
       "aca",
       "managedidentity",
       "bicep",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -3212,8 +3195,7 @@
       "aca",
       "managedidentity",
       "bicep",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -3225,7 +3207,6 @@
     "source": "https://github.com/petender/azd-fdcdn",
     "tags": [
       "community",
-      "new",
       "frontdoor"
     ]
   },
@@ -3238,7 +3219,6 @@
     "source": "https://github.com/maartenvandiemen/AZD-PaaS-Demo",
     "tags": [
       "community",
-      "new",
       "appservice",
       "azuresql"
     ]
@@ -3252,7 +3232,6 @@
     "source": "https://github.com/true-while/event-hub-azd",
     "tags": [
       "community",
-      "new",
       "eventhub"
     ]
   },
@@ -3265,7 +3244,6 @@
     "source": "https://github.com/petender/azd-hubspoke",
     "tags": [
       "community",
-      "new",
       "vnets"
     ]
   },
@@ -3278,7 +3256,6 @@
     "source": "https://github.com/petender/azd-site2sitevpn/",
     "tags": [
       "community",
-      "new",
       "vnets"
     ]
   },
@@ -3291,7 +3268,6 @@
     "source": "https://github.com/maartenvandiemen/AZD-WatermarkFunction",
     "tags": [
       "community",
-      "new",
       "functions"
     ]
   },
@@ -3304,7 +3280,6 @@
     "source": "https://github.com/petender/azd-sentinel",
     "tags": [
       "community",
-      "new",
       "sentinel"
     ]
   },
@@ -3316,9 +3291,8 @@
     "author": "petender",
     "source": "https://github.com/petender/azd-trafficmgr",
     "tags": [
-	    "community", 
-	    "new", 
-	    "trafficmgr"
+      "community",
+      "trafficmgr"
     ]
   },
   {
@@ -3329,15 +3303,14 @@
     "author": "denverbrittain",
     "source": "https://github.com/Azure-Samples/SpringBoot-Petclinic-AI-Chat-on-App-Service",
     "tags": [
-	    "msft", 
-	    "bicep", 
-	    "managedidentity",
-    	"java",
-	    "openai",
-	    "ai",
-	    "spring",
-	    "new",
-	    "appservice"
+      "msft",
+      "bicep",
+      "managedidentity",
+      "java",
+      "openai",
+      "ai",
+      "spring",
+      "appservice"
     ]
   },
   {
@@ -3356,8 +3329,7 @@
       "chainlit",
       "aca",
       "bicep",
-      "community",
-      "new"
+      "community"
     ]
   },
   {
@@ -3375,7 +3347,6 @@
       "bicep",
       "msft",
       "openai",
-      "new",
       "langchain4j",
       "rag",
       "monitor"
@@ -3394,13 +3365,11 @@
       "azurestorage",
       "bicep",
       "community",
-      "new",
       "dotnetCsharp",
       "eventhub",
       "functions",
       "managedidentity",
       "monitor",
-      "new",
       "keyvault",
       "logicapps",
       "servicebus"
@@ -3432,15 +3401,15 @@
     "author": "Rob Foulkrod",
     "source": "https://github.com/rob-foulkrod/purviewEnvironment-azd",
     "tags": [
-	"community", 
-	"new", 
-	"purview",
-	"azuresql",
-	"keyvault",
-	"azurestorage",
-	"azuredatafactory",
-	"managedidentity"	
-	]
+      "community",
+      "new",
+      "purview",
+      "azuresql",
+      "keyvault",
+      "azurestorage",
+      "azuredatafactory",
+      "managedidentity"
+    ]
   },
   {
     "title": "Service endpoint, private endpoint and private link service",
@@ -3450,12 +3419,12 @@
     "author": "Sarah Allali",
     "source": "https://github.com/sarahallali/azd-Privatelink-Pendpoint",
     "tags": [
-	"community", 
-	"new", 
-	"vnets",
-	"azurestorage",
-	"virtualmachine"
-	]
+      "community",
+      "new",
+      "vnets",
+      "azurestorage",
+      "virtualmachine"
+    ]
   },
   {
     "title": "Azure Nested Hypervisor Demos",
@@ -3465,13 +3434,13 @@
     "author": "Koenraad Haedens",
     "source": "https://github.com/koenraadhaedens/azd-nestedhv-dc-rtr",
     "tags": [
-	"hyperv",
-	"vnets",
-	"virtualmachine",
-	"azurestorage",
-	"new",
-	"community"
-	]
+      "hyperv",
+      "vnets",
+      "virtualmachine",
+      "azurestorage",
+      "new",
+      "community"
+    ]
   },
   {
     "title": "Windows 11 Developer Pc",
@@ -3481,12 +3450,12 @@
     "author": "Koenraad Haedens",
     "source": "https://github.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER",
     "tags": [
-	"vnets",
-	"virtualmachine",
-	"azurestorage",
-	"new",
-	"community"
-	]
+      "vnets",
+      "virtualmachine",
+      "azurestorage",
+      "new",
+      "community"
+    ]
   },
   {
     "title": "Azure hosted Dev Container",
@@ -3496,10 +3465,9 @@
     "author": "Koenraad Haedens",
     "source": "https://github.com/koenraadhaedens/azd-infra-dev-containers",
     "tags": [
-	"new",
-	"community"
-	]
-    
+      "new",
+      "community"
+    ]
   },
   {
     "title": "Functions E2E HTTP to Event Hubs",
@@ -3508,26 +3476,25 @@
     "website": "https://github.com/rob-foulkrod",
     "author": "Rob Foulkrod",
     "source": "https://github.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs",
-     "tags": [
-	"functions", 
-	"community", 
-	"new",
-	"vnets",
-	"mongodb",
-	"azurestorage",
-	"cosmosdb",
-	"azuresql",
-	"keyvault",
-	"appservice",
-	"appinsights",
-	"loganalytics",
-	"monitor",
-	"eventhub", 
-	"loadtesting"
-	]
+    "tags": [
+      "functions",
+      "community",
+      "new",
+      "vnets",
+      "mongodb",
+      "azurestorage",
+      "cosmosdb",
+      "azuresql",
+      "keyvault",
+      "appservice",
+      "appinsights",
+      "loganalytics",
+      "monitor",
+      "eventhub",
+      "loadtesting"
+    ]
   },
   {
-
     "title": "Azure Security Scenarios",
     "description": "This scenario is used to demonstrate security principals and deploys Azure Firewall, Front Door, Application Gateway, Web Application Firewall to protect OWASP Juice Shop website.",
     "preview": "./templates/images/owasp.png",
@@ -3535,12 +3502,11 @@
     "author": "Alex Ivanov",
     "source": "https://github.com/true-while/owasp-azd/",
     "tags": [
-	"new",
-	"community",
-	"agw",
-	"vnets",
-	"virtualmachine"
-	]
+      "new",
+      "community",
+      "agw",
+      "vnets",
+      "virtualmachine"
+    ]
   }
-
 ]

@@ -275,8 +275,9 @@ export default function ShowcaseCardPage({
           <Combobox
             style={{ minWidth: "unset" }}
             input={{ style: { width: "130px" } }}
-            aria-labelledby="combo-default"
-            placeholder={SORT_BY_OPTIONS[2]}
+            defaultValue={SORT_BY_OPTIONS[2]}
+            defaultSelectedOptions={[SORT_BY_OPTIONS[2]]}
+            aria-label="Sort by"
             onOptionSelect={sortByOnSelect}
           >
             {SORT_BY_OPTIONS.map((option) => (

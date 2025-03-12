@@ -3405,5 +3405,142 @@
       "logicapps",
       "servicebus"
     ]
+  },
+  {
+    "title": "Indexing PDFs from blob to ai search with durable functions for RAG Applications",
+    "description": "Indexadillo helps you push data to Azure AI Search in a scalable, observable way. Instead of using a pull-based DSL approach, this solution uses Azure Durable Functions to handle everything from parsing your documents to uploading embeddings.",
+    "preview": "./templates/images/indexadillo-resources.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Felix Monckemeyer",
+    "source": "https://github.com/Azure-Samples/indexadillo",
+    "tags": [
+      "aisearch",
+      "azureai",
+      "msft",
+      "blobstorage",
+      "functions",
+      "bicep",
+      "python",
+      "new"
+    ]
+  },
+  {
+    "title": "Purview Demo Environment",
+    "description": "This deploys Purview, a storage account, Data factory, Synapse, and a SQL Database. It Adds the storage account and database to collections, creates an runs a pipeline, and reports the lineage.",
+    "preview": "https://github.com/user-attachments/assets/1f6f3121-a626-40f6-a228-a5153dde579b",
+    "website": "https://github.com/rob-foulkrod",
+    "author": "Rob Foulkrod",
+    "source": "https://github.com/rob-foulkrod/purviewEnvironment-azd",
+    "tags": [
+	"community", 
+	"new", 
+	"purview",
+	"azuresql",
+	"keyvault",
+	"azurestorage",
+	"azuredatafactory",
+	"managedidentity"	
+	]
+  },
+  {
+    "title": "Service endpoint, private endpoint and private link service",
+    "description": "This is a complete demo for Service endpoint, private endpoint and private link service",
+    "preview": "https://github.com/user-attachments/assets/fb691a32-37d0-4144-aa47-86bbd1ff1bb0",
+    "website": "https://github.com/sarahallali",
+    "author": "Sarah Allali",
+    "source": "https://github.com/sarahallali/azd-Privatelink-Pendpoint",
+    "tags": [
+	"community", 
+	"new", 
+	"vnets",
+	"azurestorage",
+	"virtualmachine"
+	]
+  },
+  {
+    "title": "Azure Nested Hypervisor Demos",
+    "description": "This repository showcases a collection of demos leveraging Azure's nested hypervisor capabilities, integrating powerful tools like Azure Arc, Defender for Identity, and more. These demos are designed to demonstrate hybrid cloud management, advanced security, and multi-cloud governance scenarios.",
+    "preview": "https://raw.githubusercontent.com/koenraadhaedens/azd-nestedhv-dc-rtr/refs/heads/main/media/azure-nested-vm.png",
+    "website": "https://github.com/koenraadhaedens",
+    "author": "Koenraad Haedens",
+    "source": "https://github.com/koenraadhaedens/azd-nestedhv-dc-rtr",
+    "tags": [
+	"hyperv",
+	"vnets",
+	"virtualmachine",
+	"azurestorage",
+	"new",
+	"community"
+	]
+  },
+  {
+    "title": "Windows 11 Developer Pc",
+    "description": "A Windows 11 developer PC that can be used for installing demos and showcasing them during deliveries.",
+    "preview": "https://raw.githubusercontent.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER/refs/heads/main/media/devpc.png",
+    "website": "https://github.com/koenraadhaedens",
+    "author": "Koenraad Haedens",
+    "source": "https://github.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER",
+    "tags": [
+	"vnets",
+	"virtualmachine",
+	"azurestorage",
+	"new",
+	"community"
+	]
+  },
+  {
+    "title": "Azure hosted Dev Container",
+    "description": "an automated way to deploy a development environment inside a container, accessible as a web-based VS Code instance. The container includes all essential dependencies like Python, Node.js, and .NET, making it a ready-to-use development workspace.",
+    "preview": "https://raw.githubusercontent.com/koenraadhaedens/azd-infra-dev-containers/refs/heads/main/media/vscodeweb.png",
+    "website": "https://github.com/koenraadhaedens",
+    "author": "Koenraad Haedens",
+    "source": "https://github.com/koenraadhaedens/azd-infra-dev-containers",
+    "tags": [
+	"new",
+	"community"
+	]
+    
+  },
+  {
+    "title": "Functions E2E HTTP to Event Hubs",
+    "description": "This demo deploys a flexible, consumption-based Azure Functions app integrated with Event Hubs through private endpoints and a virtual network. It includes load testing, secure networking, and real-time monitoring via Application Insights.",
+    "preview": "https://raw.githubusercontent.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs/main/img/HTTP-VNET-EH.png",
+    "website": "https://github.com/rob-foulkrod",
+    "author": "Rob Foulkrod",
+    "source": "https://github.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs",
+     "tags": [
+	"functions", 
+	"community", 
+	"new",
+	"vnets",
+	"mongodb",
+	"azurestorage",
+	"cosmosdb",
+	"azuresql",
+	"keyvault",
+	"appservice",
+	"appinsights",
+	"loganalytics",
+	"monitor",
+	"eventhub", 
+	"loadtesting"
+	]
+  },
+  {
+
+    "title": "Azure Security Scenarios",
+    "description": "This scenario is used to demonstrate security principals and deploys Azure Firewall, Front Door, Application Gateway, Web Application Firewall to protect OWASP Juice Shop website.",
+    "preview": "./templates/images/owasp.png",
+    "website": "https://github.com/true-while",
+    "author": "Alex Ivanov",
+    "source": "https://github.com/true-while/owasp-azd/",
+    "tags": [
+	"new",
+	"community",
+	"agw",
+	"vnets",
+	"virtualmachine"
+	]
   }
+
 ]

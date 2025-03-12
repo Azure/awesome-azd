@@ -136,7 +136,6 @@ export type TagType =
   | "chainlit"
   | "purview"
   | "vpngw"
-  | "azurearc"
   | "loadtesting"
   | "hyperv";
 
@@ -793,13 +792,6 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure VPN Gateway",
     azureIcon: "./img/Azure-VPN-GW.svg",
     url: "https://azure.microsoft.com/products/vpn-gateway",
-    type: "Service",
-  },
-  azurearc: {
-    label: "Azure ARC",
-    description: "Template architecture for Azure ARC",
-    azureIcon: "./img/Azure-Arc-VM.svg",
-    url: "https://azure.microsoft.com/products/azure-arc",
     type: "Service",
   },
   loadtesting: {

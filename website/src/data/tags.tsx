@@ -802,10 +802,10 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Service", 
   },
   hyperv: {
-    label: "Microsoft Hyper-V",
-    description: "Template for Microsoft Hyper-V Host",
-    azureIcon: "./img/Hyper-V-Host.svg",
-    url: "https://azure.microsoft.com/products/virtual-machines/",
+    label: "Azure Hyper-V Host",
+    description: "Template for Azure Hyper-V Host",
+    azureIcon: "./img/Azure-Hyper-V-Host.svg",
+    url: "https://learn.microsoft.com/azure/migrate/tutorial-migrate-hyper-v?tabs=UI",
     type: "Service",
   },
 

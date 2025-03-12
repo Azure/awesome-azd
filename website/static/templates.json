@@ -3407,6 +3407,24 @@
     ]
   },
   {
+    "title": "Indexing PDFs from blob to ai search with durable functions for RAG Applications",
+    "description": "Indexadillo helps you push data to Azure AI Search in a scalable, observable way. Instead of using a pull-based DSL approach, this solution uses Azure Durable Functions to handle everything from parsing your documents to uploading embeddings.",
+    "preview": "./templates/images/indexadillo-resources.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Felix Monckemeyer",
+    "source": "https://github.com/Azure-Samples/indexadillo",
+    "tags": [
+      "aisearch",
+      "azureai",
+      "msft",
+      "blobstorage",
+      "functions",
+      "bicep",
+      "python",
+      "new"
+    ]
+  },
+  {
     "title": "Purview Demo Environment",
     "description": "This deploys Purview, a storage account, Data factory, Synapse, and a SQL Database. It Adds the storage account and database to collections, creates an runs a pipeline, and reports the lineage.",
     "preview": "https://github.com/user-attachments/assets/1f6f3121-a626-40f6-a228-a5153dde579b",

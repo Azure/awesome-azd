@@ -3419,9 +3419,7 @@
       "fastapi",
       "community",
       "bicep",
-      "acr",
       "monitor",
-      "container",
       "new"
     ]
   }

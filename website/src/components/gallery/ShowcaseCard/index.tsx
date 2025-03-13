@@ -209,6 +209,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
           position: "relative",
           maxHeight: "inherit",
         }}
+        className={styleCSS.cardBody}
       >
         <FluentUILink className={styleCSS.cardTitle} onClick={openPanel}>
           {title}

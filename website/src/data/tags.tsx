@@ -134,7 +134,11 @@ export type TagType =
   | "sentinel"
   | "trafficmgr"
   | "chainlit"
-  | "aspire";
+  | "aspire"
+  | "purview"
+  | "vpngw"
+  | "loadtesting"
+
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -780,6 +784,34 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure Traffic Manager",
     azureIcon: "./img/trafficmgr.svg",
     url: "https://azure.microsoft.com/products/traffic-manager",
+    type: "Service",
+  },
+  purview: {
+    label: "Azure Purview",
+    description: "Template architecture uses Azure Purview",
+    azureIcon: "./img/Azure-Purview.svg",
+    url: "https://azure.microsoft.com/products/purview",
+    type: "Service",
+  },
+  vpngw: {
+    label: "Azure VPN Gateway",
+    description: "Template architecture uses Azure VPN Gateway",
+    azureIcon: "./img/Azure-VPN-GW.svg",
+    url: "https://azure.microsoft.com/products/vpn-gateway",
+    type: "Service",
+  },
+  loadtesting: {
+    label: "Azure Load Testing",
+    description: "Template architecture for Azure Load Testing",
+    azureIcon: "./img/Azure-Load-Testing.svg",
+    url: "https://azure.microsoft.com/products/load-testing",
+    type: "Service", 
+  },
+  hyperv: {
+    label: "Azure Hyper-V Host",
+    description: "Template for Azure Hyper-V Host",
+    azureIcon: "./img/Azure-Hyper-V-Host.svg",
+    url: "https://learn.microsoft.com/azure/migrate/tutorial-migrate-hyper-v?tabs=UI",
     type: "Service",
   },
 

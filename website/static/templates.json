@@ -3508,5 +3508,22 @@
       "vnets",
       "virtualmachine"
     ]
+  },
+  {
+    "title": "FastAPI Containerized App on Azure App Service",
+    "description": "A simple template to deploy Python containerized FastAPI App to Azure App Service in the free tier.",
+    "preview": "./templates/images/simple-fastapi-container-azd.png",
+    "website": "https://github.com/madebygps",
+    "author": "Gwyneth Peña-Siguenza",
+    "source": "https://github.com/madebygps/azd-simple-fastapi-container-appservice",
+    "tags": [
+      "python",
+      "appservice",
+      "fastapi",
+      "community",
+      "bicep",
+      "monitor",
+      "new"
+      ]
   }
 ]

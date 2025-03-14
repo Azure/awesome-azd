@@ -3376,6 +3376,23 @@
     ]
   },
   {
+
+    "title": ".NET Aspire Azure Storage Demo",
+    "description": "This project demonstrates how to use Azure Table Storage with a .NET Minimal API in an .NET Aspire solution. Debeing deploy into Azure Container Apps (ACA).",
+    "preview": "./templates/images/aspire-az-storage.png",
+    "website": "https://github.com/fboucher",
+    "author": "Frank Boucher",
+    "source": "https://github.com/FBoucher/AspireAzStorage",
+    "tags": [
+      "community",
+      "dotnetCsharp",
+      "aspire",
+      "aca",
+      "bicep",
+      "new"
+    ]
+  },
+  {
     "title": "Indexing PDFs from blob to ai search with durable functions for RAG Applications",
     "description": "Indexadillo helps you push data to Azure AI Search in a scalable, observable way. Instead of using a pull-based DSL approach, this solution uses Azure Durable Functions to handle everything from parsing your documents to uploading embeddings.",
     "preview": "./templates/images/indexadillo-resources.png",

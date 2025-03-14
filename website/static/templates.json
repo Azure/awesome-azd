@@ -3525,5 +3525,20 @@
       "monitor",
       "new"
       ]
+  },
+  {
+    "title": "LiteLLM in Azure Container Apps with PostgreSQL database",
+    "description": "A template to deploy LiteLLM, open-source Python AI LLM Proxy API, to Azure Container Apps with Azure Database for PostgreSQL.",
+    "preview": "./templates/images/build5nines-azd-litellm.png",
+    "website": "https://build5nines.com",
+    "author": "Build5Nines",
+    "source": "https://github.com/Build5Nines/azd-litellm",
+    "tags": [
+      "openai",
+      "ai",
+      "azuredb-postgreSQL",
+      "aca",
+      "python"
+    ]
   }
 ]

@@ -138,6 +138,7 @@ export type TagType =
   | "purview"
   | "vpngw"
   | "loadtesting"
+  | "hyperv";
 
 
 // LIST OF AVAILABLE TAGS

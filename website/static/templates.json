@@ -3534,6 +3534,9 @@
     "author": "Build5Nines",
     "source": "https://github.com/Build5Nines/azd-litellm",
     "tags": [
+      "community",
+      "new",
+      "bicep",
       "openai",
       "ai",
       "azuredb-postgreSQL",

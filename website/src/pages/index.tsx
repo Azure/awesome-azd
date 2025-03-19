@@ -67,32 +67,34 @@ const App = () => {
     <FluentProvider
       theme={colorMode == "dark" ? teamsDarkTheme : teamsLightTheme}
     >
-      <ShowcaseTemplateSearch />
-      <div className={styles.filterAndCard}>
-        <div className={styles.filter}>
-          <ShowcaseLeftFilters
-            activeTags={activeTags}
-            selectedCheckbox={selectedCheckbox}
-            setSelectedCheckbox={setSelectedCheckbox}
-            location={location}
-            setSelectedTags={setSelectedTags}
-            selectedTags={selectedTags}
-            readSearchTags={readSearchTags}
-            replaceSearchTags={replaceSearchTags}
-          />
+      <main>
+        <ShowcaseTemplateSearch />
+        <div className={styles.filterAndCard}>
+          <div className={styles.filter}>
+            <ShowcaseLeftFilters
+              activeTags={activeTags}
+              selectedCheckbox={selectedCheckbox}
+              setSelectedCheckbox={setSelectedCheckbox}
+              location={location}
+              setSelectedTags={setSelectedTags}
+              selectedTags={selectedTags}
+              readSearchTags={readSearchTags}
+              replaceSearchTags={replaceSearchTags}
+            />
+          </div>
+          <div className={styles.card}>
+            <ShowcaseCardPage
+              setActiveTags={setActiveTags}
+              selectedTags={selectedTags}
+              setSelectedCheckbox={setSelectedCheckbox}
+              location={location}
+              setSelectedTags={setSelectedTags}
+              readSearchTags={readSearchTags}
+              replaceSearchTags={replaceSearchTags}
+            />
+          </div>
         </div>
-        <div className={styles.card}>
-          <ShowcaseCardPage
-            setActiveTags={setActiveTags}
-            selectedTags={selectedTags}
-            setSelectedCheckbox={setSelectedCheckbox}
-            location={location}
-            setSelectedTags={setSelectedTags}
-            readSearchTags={readSearchTags}
-            replaceSearchTags={replaceSearchTags}
-          />
-        </div>
-      </div>
+      </main>
     </FluentProvider>
   ) : null;
 };

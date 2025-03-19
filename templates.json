@@ -3376,6 +3376,23 @@
     ]
   },
   {
+
+    "title": ".NET Aspire Azure Storage Demo",
+    "description": "This project demonstrates how to use Azure Table Storage with a .NET Minimal API in an .NET Aspire solution. Debeing deploy into Azure Container Apps (ACA).",
+    "preview": "./templates/images/aspire-az-storage.png",
+    "website": "https://github.com/fboucher",
+    "author": "Frank Boucher",
+    "source": "https://github.com/FBoucher/AspireAzStorage",
+    "tags": [
+      "community",
+      "dotnetCsharp",
+      "aspire",
+      "aca",
+      "bicep",
+      "new"
+    ]
+  },
+  {
     "title": "Indexing PDFs from blob to ai search with durable functions for RAG Applications",
     "description": "Indexadillo helps you push data to Azure AI Search in a scalable, observable way. Instead of using a pull-based DSL approach, this solution uses Azure Durable Functions to handle everything from parsing your documents to uploading embeddings.",
     "preview": "./templates/images/indexadillo-resources.png",
@@ -3507,6 +3524,41 @@
       "agw",
       "vnets",
       "virtualmachine"
+    ]
+  },
+  {
+    "title": "FastAPI Containerized App on Azure App Service",
+    "description": "A simple template to deploy Python containerized FastAPI App to Azure App Service in the free tier.",
+    "preview": "./templates/images/simple-fastapi-container-azd.png",
+    "website": "https://github.com/madebygps",
+    "author": "Gwyneth Peña-Siguenza",
+    "source": "https://github.com/madebygps/azd-simple-fastapi-container-appservice",
+    "tags": [
+      "python",
+      "appservice",
+      "fastapi",
+      "community",
+      "bicep",
+      "monitor",
+      "new"
+      ]
+  },
+  {
+    "title": "LiteLLM in Azure Container Apps with PostgreSQL database",
+    "description": "A template to deploy LiteLLM, open-source Python AI LLM Proxy API, to Azure Container Apps with Azure Database for PostgreSQL.",
+    "preview": "./templates/images/build5nines-azd-litellm.png",
+    "website": "https://build5nines.com",
+    "author": "Build5Nines",
+    "source": "https://github.com/Build5Nines/azd-litellm",
+    "tags": [
+      "community",
+      "new",
+      "bicep",
+      "openai",
+      "ai",
+      "azuredb-postgreSQL",
+      "aca",
+      "python"
     ]
   }
 ]

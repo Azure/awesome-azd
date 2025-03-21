@@ -85,10 +85,10 @@ const HomeApp = () => {
       theme={colorMode == "dark" ? teamsDarkTheme : teamsLightTheme}
       className={styles.backgroundColor}
     >
-      <div className={styles.container}>
+      <main className={styles.container}>
         <HomepageHeader colorMode={colorMode} />
         <HomepageFeatures />
-      </div>
+      </main>
     </FluentProvider>
   ) : null;
 };

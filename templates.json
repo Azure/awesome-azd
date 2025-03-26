@@ -455,28 +455,6 @@
     ]
   },
   {
-    "title": "Enterprise-Grade Reference Architecture for JavaScript",
-    "description": "A reference architecture and components for building enterprise-grade modern composable frontends (or micro-frontends) and cloud-native applications. It is a collection of best practices, architecture patterns, and functional components that can be used to build and deploy modern JavaScript applications to Azure.",
-    "preview": "./templates/images/enterprise-grade-reference-architecture-for-javascript.png",
-    "website": "https://github.com/Azure-Samples, https://github.com/anfibiacreativa",
-    "author": "JavaScript Advocacy Team, Natalia Venditto",
-    "source": "https://github.com/Azure-Samples/contoso-real-estate",
-    "tags": [
-      "bicep",
-      "javascript",
-      "swa",
-      "aca",
-      "keyvault",
-      "blobstorage",
-      "azuredb-postgreSQL",
-      "cosmosdb",
-      "apim",
-      "enterprisepatterns",
-      "msft",
-      "popular"
-    ]
-  },
-  {
     "title": "Python (Django) Web App with PostgreSQL in VNet",
     "description": "A restaurants review web app that uses whitenoise for static assets and PostgreSQL for the database. Ready for deployment on App Service with a PostgreSQL Flexible Server inside a VNet.",
     "preview": "./templates/images/msdocs-django-postgresql-sample-app.png",
@@ -3560,5 +3538,20 @@
       "aca",
       "python"
     ]
+  },
+  {
+      "title": "Azure Load Testing",
+      "description": "This scenario is used to demonstrate Azure Load Testing.",
+      "preview": "./templates/images/azloadtest.png",
+      "website": "https://github.com/maartenvandiemen",
+      "author": "Maarten van Diemen",
+      "source": "https://github.com/maartenvandiemen/azd-loadtest/",
+      "tags": [
+      	"new",
+      	"community", 
+      	"loadtesting",
+      	"appservice",
+      	"appinsights"
+	    ]
   }
 ]

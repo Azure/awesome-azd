@@ -3560,5 +3560,18 @@
       "aca",
       "python"
     ]
+  },
+  {
+      "title": "Azure Load Testing",
+      "description": "This scenario is used to demonstrate Azure Load Testing.",
+      "preview": "./templates/images/azloadtest.png",
+      "website": "https://github.com/maartenvandiemen",
+      "author": "Maarten van Diemen",
+      "source": "https://github.com/maartenvandiemen/azd-loadtest/",
+      "tags": [
+      	"new",
+      	"community", 
+      	"loadtesting"
+	    ]
   }
 ]

@@ -3571,7 +3571,9 @@
       "tags": [
       	"new",
       	"community", 
-      	"loadtesting"
+      	"loadtesting",
+      	"appservice",
+      	"appinsights"
 	    ]
   }
 ]

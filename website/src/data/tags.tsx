@@ -50,6 +50,7 @@ export type TagType =
   | "keyvault"
   | "aca"
   | "mongodb"
+  | "neondb"
   | "functions"
   | "blobstorage"
   | "azuredb-postgreSQL"
@@ -329,6 +330,11 @@ export const Tags: { [type in TagType]: Tag } = {
   mongodb: {
     label: "MongoDB",
     description: "Template architecture uses MongoDB",
+    type: "Database",
+  },
+  neondb: {
+    label: "Neon Serverless Postgres",
+    description: "Template architecture uses Neon",
     type: "Database",
   },
   prometheus: {

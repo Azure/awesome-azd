@@ -3553,5 +3553,34 @@
       	"appservice",
       	"appinsights"
 	    ]
-  }
+  },
+  {
+      "title": "Azure Storage Account",
+      "description": "This scenario is used to demonstrate Azure Storage Account with Blobs and File Share sample data.",
+      "preview": "./templates/images/test.png",
+      "website": "https://github.com/petender",
+      "author": "Peter De Tender",
+      "source": "https://github.com/petender/azd-storaccnt/",
+      "tags": [
+      	"new",
+      	"community", 
+      	"blobstorage",
+      	"azurestorage"
+	    ]
+},
+  {
+      "title": "Azure Secured Data Solutions",
+      "description": "This scenario is used to demonstrate different Azure Data Solutions, using secured connectivity.",
+      "preview": "./templates/images/test.png",
+      "website": "https://github.com/true-while",
+      "author": "Alex Ivanov",
+      "source": "https://github.com/true-while/secure-data-solutions/",
+      "tags": [
+      	"new",
+      	"community", 
+      	"azurestorage",
+	"cosmosdb",
+	"azuresql"
+	    ]
+}
 ]

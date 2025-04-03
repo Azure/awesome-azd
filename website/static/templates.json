@@ -3583,5 +3583,21 @@
 	"cosmosdb",
 	"azuresql"
 	    ]
+},
+{
+  "title": "Remote MCP Functions with .NET",
+  "description": "This scenario demonstrates how to to easily build and deploy a custom remote MCP (Message Control Protocol) server to the cloud using Azure functions and .NET.",
+  "preview": "./templates/images/azure-functions-mcp-server-dotnet.png",
+  "website": "https://github.com/Azure-Samples",
+  "author": "Paul Yuknewicz",
+  "source": "https://github.com/Azure-Samples/remote-mcp-functions-dotnet",
+  "tags": [
+    "functions",
+    "dotnetCsharp",
+    "bicep",
+    "msft",
+    "ai",
+    "new"
+  ]
 }
 ]

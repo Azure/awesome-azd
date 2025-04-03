@@ -3583,5 +3583,22 @@
 	"cosmosdb",
 	"azuresql"
 	    ]
+},
+{
+  "title": "Remote MCP Functions with TypeScript",
+  "description": "This scenario demonstrates how to to easily build and deploy a custom remote MCP (Message Control Protocol) server to the cloud using Azure functions and TypeScript.",
+  "preview": "./templates/images/azure-functions-mcp-server-typescript.png",
+  "website": "https://github.com/Azure-Samples",
+  "author": "Paul Yuknewicz",
+  "source": "https://github.com/Azure-Samples/remote-mcp-functions-typescript",
+  "tags": [
+    "functions",
+    "typescript",
+    "nodejs",
+    "bicep",
+    "msft",
+    "ai",
+    "new"
+  ]
 }
 ]

@@ -3579,6 +3579,7 @@
       	"new",
       	"community", 
       	"azurestorage",
+      	"keyvault",
 	"cosmosdb",
 	"azuresql"
 	    ]

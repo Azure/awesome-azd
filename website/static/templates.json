@@ -3600,5 +3600,21 @@
     "ai",
     "new"
   ]
+},
+{
+  "title": "Remote MCP Functions with Python",
+  "description": "This scenario demonstrates how to to easily build and deploy a custom remote MCP (Message Control Protocol) server to the cloud using Azure functions and Python.",
+  "preview": "./templates/images/azure-functions-mcp-server-python.png",
+  "website": "https://github.com/Azure-Samples",
+  "author": "Paul Yuknewicz",
+  "source": "https://github.com/Azure-Samples/remote-mcp-functions-python",
+  "tags": [
+    "functions",
+    "python",
+    "bicep",
+    "msft",
+    "ai",
+    "new"
+  ]
 }
 ]

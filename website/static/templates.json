@@ -3567,7 +3567,7 @@
       	"blobstorage",
       	"azurestorage"
 	    ]
-},
+  },
   {
       "title": "Azure Secured Data Solutions",
       "description": "This scenario is used to demonstrate different Azure Data Solutions, using secured connectivity.",
@@ -3580,24 +3580,41 @@
       	"community", 
       	"azurestorage",
       	"keyvault",
-	"cosmosdb",
-	"azuresql"
+	      "cosmosdb",
+	      "azuresql"
 	    ]
-},
-{
-  "title": "Remote MCP Functions with .NET",
-  "description": "This scenario demonstrates how to to easily build and deploy a custom remote MCP (Message Control Protocol) server to the cloud using Azure functions and .NET.",
-  "preview": "./templates/images/azure-functions-mcp-server-dotnet.png",
-  "website": "https://github.com/Azure-Samples",
-  "author": "Paul Yuknewicz",
-  "source": "https://github.com/Azure-Samples/remote-mcp-functions-dotnet",
-  "tags": [
-    "functions",
-    "dotnetCsharp",
-    "bicep",
-    "msft",
-    "ai",
-    "new"
+  },
+  {
+      "title": "Remote MCP Functions with TypeScript",
+      "description": "This scenario demonstrates how to to easily build and deploy a custom remote MCP (Message Control Protocol) server to the cloud using Azure functions and TypeScript.",
+      "preview": "./templates/images/azure-functions-mcp-server-typescript.png",
+      "website": "https://github.com/Azure-Samples",
+      "author": "Paul Yuknewicz",
+      "source": "https://github.com/Azure-Samples/remote-mcp-functions-typescript",
+      "tags": [
+        "functions",
+        "typescript",
+        "nodejs",
+        "bicep",
+        "msft",
+        "ai",
+        "new"
+        ]
+  },
+  {
+      "title": "Remote MCP Functions with .NET",
+      "description": "This scenario demonstrates how to to easily build and deploy a custom remote MCP (Message Control Protocol) server to the cloud using Azure functions and .NET.",
+      "preview": "./templates/images/azure-functions-mcp-server-dotnet.png",
+      "website": "https://github.com/Azure-Samples",
+      "author": "Paul Yuknewicz",
+      "source": "https://github.com/Azure-Samples/remote-mcp-functions-dotnet",
+      "tags": [
+        "functions",
+        "dotnetCsharp",
+        "bicep",
+        "msft",
+        "ai",
+        "new"
   ]
-}
+ 
 ]

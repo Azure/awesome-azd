@@ -3354,7 +3354,6 @@
     ]
   },
   {
-
     "title": ".NET Aspire Azure Storage Demo",
     "description": "This project demonstrates how to use Azure Table Storage with a .NET Minimal API in an .NET Aspire solution. Debeing deploy into Azure Container Apps (ACA).",
     "preview": "./templates/images/aspire-az-storage.png",
@@ -3519,7 +3518,7 @@
       "bicep",
       "monitor",
       "new"
-      ]
+    ]
   },
   {
     "title": "LiteLLM in Azure Container Apps with PostgreSQL database",
@@ -3540,51 +3539,6 @@
     ]
   },
   {
-      "title": "Azure Load Testing",
-      "description": "This scenario is used to demonstrate Azure Load Testing.",
-      "preview": "./templates/images/azloadtest.png",
-      "website": "https://github.com/maartenvandiemen",
-      "author": "Maarten van Diemen",
-      "source": "https://github.com/maartenvandiemen/azd-loadtest/",
-      "tags": [
-      	"new",
-      	"community", 
-      	"loadtesting",
-      	"appservice",
-      	"appinsights"
-	    ]
-  },
-  {
-      "title": "Azure Storage Account",
-      "description": "This scenario is used to demonstrate Azure Storage Account with Blobs and File Share sample data.",
-      "preview": "./templates/images/test.png",
-      "website": "https://github.com/petender",
-      "author": "Peter De Tender",
-      "source": "https://github.com/petender/azd-storaccnt/",
-      "tags": [
-      	"new",
-      	"community", 
-      	"blobstorage",
-      	"azurestorage"
-	    ]
-  },
-  {
-      "title": "Azure Secured Data Solutions",
-      "description": "This scenario is used to demonstrate different Azure Data Solutions, using secured connectivity.",
-      "preview": "./templates/images/test.png",
-      "website": "https://github.com/true-while",
-      "author": "Alex Ivanov",
-      "source": "https://github.com/true-while/secure-data-solutions/",
-      "tags": [
-      	"new",
-      	"community", 
-      	"azurestorage",
-      	"keyvault",
-	"cosmosdb",
-	"azuresql"
-	    ]
-  },
-  {
     "title": "MCP Server written in TypeScript running in Azure Container Apps",
     "description": "A template to deploy a Model Context Protocol (MCP) server written in TypeScript to Azure Container Apps using SSE Transport.",
     "preview": "./templates/images/powergentic-azd-mcp-ts.png",
@@ -3599,6 +3553,84 @@
       "aca",
       "nodejs",
       "typescript"
+    ]
+  },
+  {
+    "title": "Azure Load Testing",
+    "description": "This scenario is used to demonstrate Azure Load Testing.",
+    "preview": "./templates/images/azloadtest.png",
+    "website": "https://github.com/maartenvandiemen",
+    "author": "Maarten van Diemen",
+    "source": "https://github.com/maartenvandiemen/azd-loadtest/",
+    "tags": [
+      "new",
+      "community",
+      "loadtesting",
+      "appservice",
+      "appinsights"
+    ]
+  },
+  {
+    "title": "Azure Storage Account",
+    "description": "This scenario is used to demonstrate Azure Storage Account with Blobs and File Share sample data.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/petender",
+    "author": "Peter De Tender",
+    "source": "https://github.com/petender/azd-storaccnt/",
+    "tags": [
+      "new",
+      "community",
+      "blobstorage",
+      "azurestorage"
+    ]
+  },
+  {
+    "title": "Azure Secured Data Solutions",
+    "description": "This scenario is used to demonstrate different Azure Data Solutions, using secured connectivity.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/true-while",
+    "author": "Alex Ivanov",
+    "source": "https://github.com/true-while/secure-data-solutions/",
+    "tags": [
+      "new",
+      "community",
+      "azurestorage",
+      "keyvault",
+      "cosmosdb",
+      "azuresql"
+    ]
+  },
+  {
+    "title": "Remote MCP Functions with TypeScript",
+    "description": "This scenario demonstrates how to to easily build and deploy a custom remote MCP (Message Control Protocol) server to the cloud using Azure functions and TypeScript.",
+    "preview": "./templates/images/azure-functions-mcp-server-typescript.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Paul Yuknewicz",
+    "source": "https://github.com/Azure-Samples/remote-mcp-functions-typescript",
+    "tags": [
+      "functions",
+      "typescript",
+      "nodejs",
+      "bicep",
+      "msft",
+      "ai",
+      "new"
+    ]
+  },
+  {
+    "title": "Remote MCP Functions with .NET",
+    "description": "This scenario demonstrates how to to easily build and deploy a custom remote MCP (Message Control Protocol) server to the cloud using Azure functions and .NET.",
+    "preview": "./templates/images/azure-functions-mcp-server-dotnet.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Paul Yuknewicz",
+    "source": "https://github.com/Azure-Samples/remote-mcp-functions-dotnet",
+    "tags": [
+      "functions",
+      "dotnetCsharp",
+      "bicep",
+      "msft",
+      "ai",
+      "new"
     ]
   }
 ]

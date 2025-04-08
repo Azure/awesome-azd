@@ -1808,6 +1808,47 @@
     ]
   },
   {
+    "title": "RAG on Neon Serverless Postgres",
+    "description": "This project creates a web-based chat application with an API backend that leverages Azure OpenAI chat models to answer questions using Neon Serverless Postgres. The frontend is built with React and FluentUI, while the backend is written in Python (FastAPI).",
+    "preview": "./templates/images/rag-neon-azure-architecture-diagram-v1.png",
+    "website": "https://neon.tech/demos",
+    "author": "Bobur Umurzokov",
+    "source": "https://github.com/neondatabase-labs/rag-neon-postgres-openai-azure-python",
+    "tags": [
+      "openai",
+      "gpt",
+      "neondb",
+      "python",
+      "javascript",
+      "bicep",
+      "ai",
+      "community",
+      "rag",
+      "new"
+    ]
+  },
+  {
+    "title": "Multi-tenant RAG Chat in Azure: Vector store per user",
+    "description": "RAG Chat example on Azure creates one Neon database project per user, each user's data will be completely isolated.",
+    "preview": "./templates/images/rag-neon-vector-store-per-user.png",
+    "website": "https://neon.tech/demos",
+    "author": "Bobur Umurzokov",
+    "source": "https://github.com/neondatabase-labs/azure-tenant-ai-chat",
+    "tags": [
+      "openai",
+      "gpt",
+      "neondb",
+      "javascript",
+      "typescript",
+      "bicep",
+      "ai",
+      "nodejs",
+      "community",
+      "rag",
+      "new"
+    ]
+  },
+  {
     "title": "Serverless ChatGPT with RAG using LangChain.js",
     "description": "A Serverless ChatGPT-like experience with Retrieval-Augmented Generation using LangChain.js, TypeScript and Azure",
     "preview": "./templates/images/serverless-chat-langchainjs.gif",

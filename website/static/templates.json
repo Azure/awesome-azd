@@ -3580,6 +3580,23 @@
     ]
   },
   {
+    "title": "MCP Server written in TypeScript running in Azure Container Apps",
+    "description": "A template to deploy a Model Context Protocol (MCP) server written in TypeScript to Azure Container Apps using SSE Transport.",
+    "preview": "./templates/images/powergentic-azd-mcp-ts.png",
+    "website": "https://powergentic.ai",
+    "author": "Powergentic",
+    "source": "https://github.com/powergentic/azd-mcp-ts",
+    "tags": [
+      "community",
+      "new",
+      "bicep",
+      "ai",
+      "aca",
+      "nodejs",
+      "typescript"
+    ]
+  },
+  {
     "title": "Azure Load Testing",
     "description": "This scenario is used to demonstrate Azure Load Testing.",
     "preview": "./templates/images/azloadtest.png",

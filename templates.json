@@ -3365,8 +3365,7 @@
       "dotnetCsharp",
       "aspire",
       "aca",
-      "bicep",
-      "new"
+      "bicep"
     ]
   },
   {
@@ -3383,8 +3382,7 @@
       "blobstorage",
       "functions",
       "bicep",
-      "python",
-      "new"
+      "python"
     ]
   },
   {
@@ -3396,7 +3394,6 @@
     "source": "https://github.com/rob-foulkrod/purviewEnvironment-azd",
     "tags": [
       "community",
-      "new",
       "purview",
       "azuresql",
       "keyvault",
@@ -3414,7 +3411,6 @@
     "source": "https://github.com/sarahallali/azd-Privatelink-Pendpoint",
     "tags": [
       "community",
-      "new",
       "vnets",
       "azurestorage",
       "virtualmachine"
@@ -3432,7 +3428,6 @@
       "vnets",
       "virtualmachine",
       "azurestorage",
-      "new",
       "community"
     ]
   },
@@ -3447,7 +3442,6 @@
       "vnets",
       "virtualmachine",
       "azurestorage",
-      "new",
       "community"
     ]
   },
@@ -3459,7 +3453,6 @@
     "author": "Koenraad Haedens",
     "source": "https://github.com/koenraadhaedens/azd-infra-dev-containers",
     "tags": [
-      "new",
       "community"
     ]
   },
@@ -3473,7 +3466,6 @@
     "tags": [
       "functions",
       "community",
-      "new",
       "vnets",
       "mongodb",
       "azurestorage",
@@ -3496,7 +3488,6 @@
     "author": "Alex Ivanov",
     "source": "https://github.com/true-while/owasp-azd/",
     "tags": [
-      "new",
       "community",
       "agw",
       "vnets",
@@ -3516,8 +3507,7 @@
       "fastapi",
       "community",
       "bicep",
-      "monitor",
-      "new"
+      "monitor"
     ]
   },
   {
@@ -3529,13 +3519,29 @@
     "source": "https://github.com/Build5Nines/azd-litellm",
     "tags": [
       "community",
-      "new",
       "bicep",
       "openai",
       "ai",
       "azuredb-postgreSQL",
       "aca",
       "python"
+    ]
+  },
+  {
+    "title": "MCP Server written in TypeScript running in Azure Container Apps",
+    "description": "A template to deploy a Model Context Protocol (MCP) server written in TypeScript to Azure Container Apps using SSE Transport.",
+    "preview": "./templates/images/powergentic-azd-mcp-ts.png",
+    "website": "https://powergentic.ai",
+    "author": "Powergentic",
+    "source": "https://github.com/powergentic/azd-mcp-ts",
+    "tags": [
+      "community",
+      "new",
+      "bicep",
+      "ai",
+      "aca",
+      "nodejs",
+      "typescript"
     ]
   },
   {
@@ -3616,20 +3622,103 @@
       "new"
     ]
   },
-{
-  "title": "Remote MCP Functions with Python",
-  "description": "This scenario demonstrates how to to easily build and deploy a custom remote MCP (Message Control Protocol) server to the cloud using Azure functions and Python.",
-  "preview": "./templates/images/azure-functions-mcp-server-python.png",
-  "website": "https://github.com/Azure-Samples",
-  "author": "Paul Yuknewicz",
-  "source": "https://github.com/Azure-Samples/remote-mcp-functions-python",
-  "tags": [
-    "functions",
-    "python",
-    "bicep",
-    "msft",
-    "ai",
-    "new"
-  ]
-}
+  {
+    "title": "Remote MCP Functions with Python",
+    "description": "This scenario demonstrates how to to easily build and deploy a custom remote MCP (Message Control Protocol) server to the cloud using Azure functions and Python.",
+    "preview": "./templates/images/azure-functions-mcp-server-python.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Paul Yuknewicz",
+    "source": "https://github.com/Azure-Samples/remote-mcp-functions-python",
+    "tags": [
+      "functions",
+      "python",
+      "bicep",
+      "msft",
+      "ai",
+      "new"
+    ]
+  },
+  {
+    "title": ".NET + Semantic Search - eShopLite",
+    "description": "eShopLite - Semantic Search is a reference .NET application implementing an eCommerce site with Search features using Keyword Search and Semantic Search.",
+    "preview": "./templates/images/eshop-semanticsearch.png",
+    "website": "https://twitter.com/elbruno",
+    "author": "Bruno Capuano",
+    "source": "https://github.com/Azure-Samples/eShopLite-SemanticSearch",
+    "tags": [
+      "dotnetCsharp",
+      "typescript",
+      "javascript",
+      "managedidentity",
+      "bicep",
+      "ai",
+      "openai",
+      "loganalytics",
+      "msft",
+      "new"
+    ]
+  },
+  {
+    "title": ".NET + Semantic Search + AI Search - eShopLite",
+    "description": "eShopLite - Semantic Search - Azure AI Search is a reference .NET application implementing an eCommerce site with Search features using Keyword Search with SQL queries, and Semantic Search with Vector Database and Azure AI Search.",
+    "preview": "./templates/images/eshop-semanticsearch-aisearch.png",
+    "website": "https://twitter.com/elbruno",
+    "author": "Bruno Capuano",
+    "source": "https://github.com/Azure-Samples/eShopLite-SemanticSearch-AzureAISearch",
+    "tags": [
+      "dotnetCsharp",
+      "typescript",
+      "javascript",
+      "managedidentity",
+      "bicep",
+      "ai",
+      "aisearch",
+      "azuresql",
+      "openai",
+      "loganalytics",
+      "msft",
+      "new"
+    ]
+  },
+  {
+    "title": "RAG on Neon Serverless Postgres",
+    "description": "This project creates a web-based chat application with an API backend that leverages Azure OpenAI chat models to answer questions using Neon Serverless Postgres. The frontend is built with React and FluentUI, while the backend is written in Python (FastAPI).",
+    "preview": "./templates/images/rag-neon-azure-architecture-diagram-v1.png",
+    "website": "https://neon.tech/demos",
+    "author": "Bobur Umurzokov",
+    "source": "https://github.com/neondatabase-labs/rag-neon-postgres-openai-azure-python",
+    "tags": [
+      "openai",
+      "gpt",
+      "neondb",
+      "python",
+      "javascript",
+      "bicep",
+      "ai",
+      "community",
+      "rag",
+      "new"
+    ]
+  },
+  {
+    "title": "Multi-tenant RAG Chat in Azure: Vector store per user",
+    "description": "RAG Chat example on Azure creates one Neon database project per user, each user's data will be completely isolated.",
+    "preview": "./templates/images/rag-neon-vector-store-per-user.png",
+    "website": "https://neon.tech/demos",
+    "author": "Bobur Umurzokov",
+    "source": "https://github.com/neondatabase-labs/azure-tenant-ai-chat",
+    "tags": [
+      "openai",
+      "gpt",
+      "neondb",
+      "javascript",
+      "typescript",
+      "bicep",
+      "ai",
+      "nodejs",
+      "community",
+      "rag",
+      "new"
+    ]
+  }
 ]

@@ -50,6 +50,7 @@ export type TagType =
   | "keyvault"
   | "aca"
   | "mongodb"
+  | "neondb"
   | "functions"
   | "blobstorage"
   | "azuredb-postgreSQL"
@@ -134,10 +135,12 @@ export type TagType =
   | "sentinel"
   | "trafficmgr"
   | "chainlit"
+  | "aspire"
   | "purview"
   | "vpngw"
   | "loadtesting"
   | "hyperv";
+
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -305,6 +308,11 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Data API builder (DAB)",
     type: "Tools",
   },
+  aspire: {
+    label: ".NET Aspire",
+    description: "Set of tools, templates, and packages for building observable, production ready apps.",
+    type: "Tools",
+  },
 
   // ---- Infrastructure as Code
   bicep: {
@@ -322,6 +330,11 @@ export const Tags: { [type in TagType]: Tag } = {
   mongodb: {
     label: "MongoDB",
     description: "Template architecture uses MongoDB",
+    type: "Database",
+  },
+  neondb: {
+    label: "Neon Serverless Postgres",
+    description: "Template architecture uses Neon",
     type: "Database",
   },
   prometheus: {

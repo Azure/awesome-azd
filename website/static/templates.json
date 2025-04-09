@@ -41,7 +41,49 @@
       "bicep",
       "msft"
     ]
+  },  
+  {
+    "title": ".NET + Semantic Search - eShopLite",
+    "description": "eShopLite - Semantic Search is a reference .NET application implementing an eCommerce site with Search features using Keyword Search and Semantic Search.",
+    "preview": "./templates/images/eshop-semanticsearch.png",
+    "website": "https://twitter.com/elbruno",
+    "author": "Bruno Capuano",
+    "source": "https://github.com/Azure-Samples/eShopLite-SemanticSearch",
+    "tags": [
+      "dotnetCsharp",
+      "typescript",
+      "javascript",
+      "managedidentity",
+      "bicep",
+      "ai",
+      "openai",
+      "loganalytics",
+      "msft",
+      "new"
+    ]
   },
+   {
+    "title": ".NET + Semantic Search + AI Search - eShopLite",
+    "description": "eShopLite - Semantic Search - Azure AI Search is a reference .NET application implementing an eCommerce site with Search features using Keyword Search with SQL queries, and Semantic Search with Vector Database and Azure AI Search.",
+    "preview": "./templates/images/eshop-semanticsearch-aisearch.png",
+    "website": "https://twitter.com/elbruno",
+    "author": "Bruno Capuano",
+    "source": "https://github.com/Azure-Samples/eShopLite-SemanticSearch-AzureAISearch",
+    "tags": [
+      "dotnetCsharp",
+      "typescript",
+      "javascript",
+      "managedidentity",
+      "bicep",
+      "ai",
+      "aisearch",
+      "azuresql",
+      "openai",
+      "loganalytics",
+      "msft",
+      "new"
+    ]
+  }, 
   {
     "title": "React Web App with C# API and MongoDB",
     "description": "A blueprint for getting a React web app with a C# API and a MongoDB database on Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly.",
@@ -452,28 +494,6 @@
       "blobstorage",
       "azurespringapps",
       "msft"
-    ]
-  },
-  {
-    "title": "Enterprise-Grade Reference Architecture for JavaScript",
-    "description": "A reference architecture and components for building enterprise-grade modern composable frontends (or micro-frontends) and cloud-native applications. It is a collection of best practices, architecture patterns, and functional components that can be used to build and deploy modern JavaScript applications to Azure.",
-    "preview": "./templates/images/enterprise-grade-reference-architecture-for-javascript.png",
-    "website": "https://github.com/Azure-Samples, https://github.com/anfibiacreativa",
-    "author": "JavaScript Advocacy Team, Natalia Venditto",
-    "source": "https://github.com/Azure-Samples/contoso-real-estate",
-    "tags": [
-      "bicep",
-      "javascript",
-      "swa",
-      "aca",
-      "keyvault",
-      "blobstorage",
-      "azuredb-postgreSQL",
-      "cosmosdb",
-      "apim",
-      "enterprisepatterns",
-      "msft",
-      "popular"
     ]
   },
   {
@@ -1830,6 +1850,47 @@
     ]
   },
   {
+    "title": "RAG on Neon Serverless Postgres",
+    "description": "This project creates a web-based chat application with an API backend that leverages Azure OpenAI chat models to answer questions using Neon Serverless Postgres. The frontend is built with React and FluentUI, while the backend is written in Python (FastAPI).",
+    "preview": "./templates/images/rag-neon-azure-architecture-diagram-v1.png",
+    "website": "https://neon.tech/demos",
+    "author": "Bobur Umurzokov",
+    "source": "https://github.com/neondatabase-labs/rag-neon-postgres-openai-azure-python",
+    "tags": [
+      "openai",
+      "gpt",
+      "neondb",
+      "python",
+      "javascript",
+      "bicep",
+      "ai",
+      "community",
+      "rag",
+      "new"
+    ]
+  },
+  {
+    "title": "Multi-tenant RAG Chat in Azure: Vector store per user",
+    "description": "RAG Chat example on Azure creates one Neon database project per user, each user's data will be completely isolated.",
+    "preview": "./templates/images/rag-neon-vector-store-per-user.png",
+    "website": "https://neon.tech/demos",
+    "author": "Bobur Umurzokov",
+    "source": "https://github.com/neondatabase-labs/azure-tenant-ai-chat",
+    "tags": [
+      "openai",
+      "gpt",
+      "neondb",
+      "javascript",
+      "typescript",
+      "bicep",
+      "ai",
+      "nodejs",
+      "community",
+      "rag",
+      "new"
+    ]
+  },
+  {
     "title": "Serverless ChatGPT with RAG using LangChain.js",
     "description": "A Serverless ChatGPT-like experience with Retrieval-Augmented Generation using LangChain.js, TypeScript and Azure",
     "preview": "./templates/images/serverless-chat-langchainjs.gif",
@@ -2923,8 +2984,7 @@
       "aca",
       "managedidentity",
       "bicep",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -2942,8 +3002,7 @@
       "aca",
       "managedidentity",
       "bicep",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -2962,8 +3021,7 @@
       "managedidentity",
       "bicep",
       "msft",
-      "openai",
-      "new"
+      "openai"
     ]
   },
   {
@@ -2983,8 +3041,7 @@
       "bicep",
       "appinsights",
       "loganalytics",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -3002,8 +3059,7 @@
       "javascript",
       "appinsights",
       "bicep",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -3015,7 +3071,6 @@
     "source": "https://github.com/petender/ConferenceAPI",
     "tags": [
       "community",
-      "new",
       "appservice",
       "managedidentity",
       "keyvault",
@@ -3031,7 +3086,6 @@
     "source": "https://github.com/petender/azd-apimwithconfAPI",
     "tags": [
       "community",
-      "new",
       "appservice",
       "apim",
       "monitor",
@@ -3048,7 +3102,6 @@
     "source": "https://github.com/petender/OpenAIMultiModel",
     "tags": [
       "community",
-      "new",
       "openai",
       "azureai",
       "monitor"
@@ -3063,7 +3116,6 @@
     "source": "https://github.com/rob-foulkrod/TollBooth",
     "tags": [
       "community",
-      "new",
       "webapps",
       "keyvault",
       "cosmosdb",
@@ -3082,7 +3134,6 @@
     "source": "https://github.com/rob-foulkrod/BadgeMaker",
     "tags": [
       "community",
-      "new",
       "webapps",
       "azureai",
       "blazor",
@@ -3099,7 +3150,6 @@
     "source": "https://github.com/rob-foulkrod/MachineLearningAZD",
     "tags": [
       "community",
-      "new",
       "keyvault",
       "appinsights",
       "vnets",
@@ -3117,7 +3167,6 @@
     "source": "https://github.com/rob-foulkrod/IAAS2019",
     "tags": [
       "community",
-      "new",
       "monitor",
       "keyvault",
       "vnets"
@@ -3131,7 +3180,6 @@
     "author": "Maarten van Diemen",
     "source": "https://github.com/maartenvandiemen/AZD-ACI-Demo",
     "tags": [
-      "new",
       "community",
       "managedidentity"
     ]
@@ -3144,7 +3192,6 @@
     "author": "Maarten van Diemen",
     "source": "https://github.com/maartenvandiemen/AZD-ACA-Demo",
     "tags": [
-      "new",
       "aca",
       "community",
       "managedidentity"
@@ -3158,7 +3205,6 @@
     "author": "Maarten van Diemen",
     "source": "https://github.com/maartenvandiemen/AZD-AKS-Demo",
     "tags": [
-      "new",
       "aks",
       "community",
       "managedidentity",
@@ -3178,8 +3224,7 @@
       "aca",
       "managedidentity",
       "bicep",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -3195,8 +3240,7 @@
       "aca",
       "managedidentity",
       "bicep",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -3212,8 +3256,7 @@
       "aca",
       "managedidentity",
       "bicep",
-      "msft",
-      "new"
+      "msft"
     ]
   },
   {
@@ -3225,7 +3268,6 @@
     "source": "https://github.com/petender/azd-fdcdn",
     "tags": [
       "community",
-      "new",
       "frontdoor"
     ]
   },
@@ -3238,7 +3280,6 @@
     "source": "https://github.com/maartenvandiemen/AZD-PaaS-Demo",
     "tags": [
       "community",
-      "new",
       "appservice",
       "azuresql"
     ]
@@ -3252,7 +3293,6 @@
     "source": "https://github.com/true-while/event-hub-azd",
     "tags": [
       "community",
-      "new",
       "eventhub"
     ]
   },
@@ -3265,7 +3305,6 @@
     "source": "https://github.com/petender/azd-hubspoke",
     "tags": [
       "community",
-      "new",
       "vnets"
     ]
   },
@@ -3278,7 +3317,6 @@
     "source": "https://github.com/petender/azd-site2sitevpn/",
     "tags": [
       "community",
-      "new",
       "vnets"
     ]
   },
@@ -3291,7 +3329,6 @@
     "source": "https://github.com/maartenvandiemen/AZD-WatermarkFunction",
     "tags": [
       "community",
-      "new",
       "functions"
     ]
   },
@@ -3304,7 +3341,6 @@
     "source": "https://github.com/petender/azd-sentinel",
     "tags": [
       "community",
-      "new",
       "sentinel"
     ]
   },
@@ -3316,9 +3352,8 @@
     "author": "petender",
     "source": "https://github.com/petender/azd-trafficmgr",
     "tags": [
-	    "community", 
-	    "new", 
-	    "trafficmgr"
+      "community",
+      "trafficmgr"
     ]
   },
   {
@@ -3329,15 +3364,14 @@
     "author": "denverbrittain",
     "source": "https://github.com/Azure-Samples/SpringBoot-Petclinic-AI-Chat-on-App-Service",
     "tags": [
-	    "msft", 
-	    "bicep", 
-	    "managedidentity",
-    	"java",
-	    "openai",
-	    "ai",
-	    "spring",
-	    "new",
-	    "appservice"
+      "msft",
+      "bicep",
+      "managedidentity",
+      "java",
+      "openai",
+      "ai",
+      "spring",
+      "appservice"
     ]
   },
   {
@@ -3356,8 +3390,7 @@
       "chainlit",
       "aca",
       "bicep",
-      "community",
-      "new"
+      "community"
     ]
   },
   {
@@ -3375,7 +3408,6 @@
       "bicep",
       "msft",
       "openai",
-      "new",
       "langchain4j",
       "rag",
       "monitor"
@@ -3394,16 +3426,30 @@
       "azurestorage",
       "bicep",
       "community",
-      "new",
       "dotnetCsharp",
       "eventhub",
       "functions",
       "managedidentity",
       "monitor",
-      "new",
       "keyvault",
       "logicapps",
       "servicebus"
+    ]
+  },
+  {
+    "title": ".NET Aspire Azure Storage Demo",
+    "description": "This project demonstrates how to use Azure Table Storage with a .NET Minimal API in an .NET Aspire solution. Debeing deploy into Azure Container Apps (ACA).",
+    "preview": "./templates/images/aspire-az-storage.png",
+    "website": "https://github.com/fboucher",
+    "author": "Frank Boucher",
+    "source": "https://github.com/FBoucher/AspireAzStorage",
+    "tags": [
+      "community",
+      "dotnetCsharp",
+      "aspire",
+      "aca",
+      "bicep",
+      "new"
     ]
   },
   {
@@ -3432,15 +3478,15 @@
     "author": "Rob Foulkrod",
     "source": "https://github.com/rob-foulkrod/purviewEnvironment-azd",
     "tags": [
-	"community", 
-	"new", 
-	"purview",
-	"azuresql",
-	"keyvault",
-	"azurestorage",
-	"azuredatafactory",
-	"managedidentity"	
-	]
+      "community",
+      "new",
+      "purview",
+      "azuresql",
+      "keyvault",
+      "azurestorage",
+      "azuredatafactory",
+      "managedidentity"
+    ]
   },
   {
     "title": "Service endpoint, private endpoint and private link service",
@@ -3450,12 +3496,12 @@
     "author": "Sarah Allali",
     "source": "https://github.com/sarahallali/azd-Privatelink-Pendpoint",
     "tags": [
-	"community", 
-	"new", 
-	"vnets",
-	"azurestorage",
-	"virtualmachine"
-	]
+      "community",
+      "new",
+      "vnets",
+      "azurestorage",
+      "virtualmachine"
+    ]
   },
   {
     "title": "Azure Nested Hypervisor Demos",
@@ -3465,13 +3511,13 @@
     "author": "Koenraad Haedens",
     "source": "https://github.com/koenraadhaedens/azd-nestedhv-dc-rtr",
     "tags": [
-	"hyperv",
-	"vnets",
-	"virtualmachine",
-	"azurestorage",
-	"new",
-	"community"
-	]
+      "hyperv",
+      "vnets",
+      "virtualmachine",
+      "azurestorage",
+      "new",
+      "community"
+    ]
   },
   {
     "title": "Windows 11 Developer Pc",
@@ -3481,12 +3527,12 @@
     "author": "Koenraad Haedens",
     "source": "https://github.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER",
     "tags": [
-	"vnets",
-	"virtualmachine",
-	"azurestorage",
-	"new",
-	"community"
-	]
+      "vnets",
+      "virtualmachine",
+      "azurestorage",
+      "new",
+      "community"
+    ]
   },
   {
     "title": "Azure hosted Dev Container",
@@ -3496,10 +3542,9 @@
     "author": "Koenraad Haedens",
     "source": "https://github.com/koenraadhaedens/azd-infra-dev-containers",
     "tags": [
-	"new",
-	"community"
-	]
-    
+      "new",
+      "community"
+    ]
   },
   {
     "title": "Functions E2E HTTP to Event Hubs",
@@ -3508,26 +3553,25 @@
     "website": "https://github.com/rob-foulkrod",
     "author": "Rob Foulkrod",
     "source": "https://github.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs",
-     "tags": [
-	"functions", 
-	"community", 
-	"new",
-	"vnets",
-	"mongodb",
-	"azurestorage",
-	"cosmosdb",
-	"azuresql",
-	"keyvault",
-	"appservice",
-	"appinsights",
-	"loganalytics",
-	"monitor",
-	"eventhub", 
-	"loadtesting"
-	]
+    "tags": [
+      "functions",
+      "community",
+      "new",
+      "vnets",
+      "mongodb",
+      "azurestorage",
+      "cosmosdb",
+      "azuresql",
+      "keyvault",
+      "appservice",
+      "appinsights",
+      "loganalytics",
+      "monitor",
+      "eventhub",
+      "loadtesting"
+    ]
   },
   {
-
     "title": "Azure Security Scenarios",
     "description": "This scenario is used to demonstrate security principals and deploys Azure Firewall, Front Door, Application Gateway, Web Application Firewall to protect OWASP Juice Shop website.",
     "preview": "./templates/images/owasp.png",
@@ -3535,12 +3579,157 @@
     "author": "Alex Ivanov",
     "source": "https://github.com/true-while/owasp-azd/",
     "tags": [
-	"new",
-	"community",
-	"agw",
-	"vnets",
-	"virtualmachine"
-	]
-  }
-
+      "new",
+      "community",
+      "agw",
+      "vnets",
+      "virtualmachine"
+    ]
+  },
+  {
+    "title": "FastAPI Containerized App on Azure App Service",
+    "description": "A simple template to deploy Python containerized FastAPI App to Azure App Service in the free tier.",
+    "preview": "./templates/images/simple-fastapi-container-azd.png",
+    "website": "https://github.com/madebygps",
+    "author": "Gwyneth Peña-Siguenza",
+    "source": "https://github.com/madebygps/azd-simple-fastapi-container-appservice",
+    "tags": [
+      "python",
+      "appservice",
+      "fastapi",
+      "community",
+      "bicep",
+      "monitor",
+      "new"
+    ]
+  },
+  {
+    "title": "LiteLLM in Azure Container Apps with PostgreSQL database",
+    "description": "A template to deploy LiteLLM, open-source Python AI LLM Proxy API, to Azure Container Apps with Azure Database for PostgreSQL.",
+    "preview": "./templates/images/build5nines-azd-litellm.png",
+    "website": "https://build5nines.com",
+    "author": "Build5Nines",
+    "source": "https://github.com/Build5Nines/azd-litellm",
+    "tags": [
+      "community",
+      "new",
+      "bicep",
+      "openai",
+      "ai",
+      "azuredb-postgreSQL",
+      "aca",
+      "python"
+    ]
+  },
+  {
+    "title": "MCP Server written in TypeScript running in Azure Container Apps",
+    "description": "A template to deploy a Model Context Protocol (MCP) server written in TypeScript to Azure Container Apps using SSE Transport.",
+    "preview": "./templates/images/powergentic-azd-mcp-ts.png",
+    "website": "https://powergentic.ai",
+    "author": "Powergentic",
+    "source": "https://github.com/powergentic/azd-mcp-ts",
+    "tags": [
+      "community",
+      "new",
+      "bicep",
+      "ai",
+      "aca",
+      "nodejs",
+      "typescript"
+    ]
+  },
+  {
+    "title": "Azure Load Testing",
+    "description": "This scenario is used to demonstrate Azure Load Testing.",
+    "preview": "./templates/images/azloadtest.png",
+    "website": "https://github.com/maartenvandiemen",
+    "author": "Maarten van Diemen",
+    "source": "https://github.com/maartenvandiemen/azd-loadtest/",
+    "tags": [
+      "new",
+      "community",
+      "loadtesting",
+      "appservice",
+      "appinsights"
+    ]
+  },
+  {
+    "title": "Azure Storage Account",
+    "description": "This scenario is used to demonstrate Azure Storage Account with Blobs and File Share sample data.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/petender",
+    "author": "Peter De Tender",
+    "source": "https://github.com/petender/azd-storaccnt/",
+    "tags": [
+      "new",
+      "community",
+      "blobstorage",
+      "azurestorage"
+    ]
+  },
+  {
+    "title": "Azure Secured Data Solutions",
+    "description": "This scenario is used to demonstrate different Azure Data Solutions, using secured connectivity.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/true-while",
+    "author": "Alex Ivanov",
+    "source": "https://github.com/true-while/secure-data-solutions/",
+    "tags": [
+      "new",
+      "community",
+      "azurestorage",
+      "keyvault",
+      "cosmosdb",
+      "azuresql"
+    ]
+  },
+  {
+    "title": "Remote MCP Functions with TypeScript",
+    "description": "This scenario demonstrates how to to easily build and deploy a custom remote MCP (Message Control Protocol) server to the cloud using Azure functions and TypeScript.",
+    "preview": "./templates/images/azure-functions-mcp-server-typescript.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Paul Yuknewicz",
+    "source": "https://github.com/Azure-Samples/remote-mcp-functions-typescript",
+    "tags": [
+      "functions",
+      "typescript",
+      "nodejs",
+      "bicep",
+      "msft",
+      "ai",
+      "new"
+    ]
+  },
+  {
+    "title": "Remote MCP Functions with .NET",
+    "description": "This scenario demonstrates how to to easily build and deploy a custom remote MCP (Message Control Protocol) server to the cloud using Azure functions and .NET.",
+    "preview": "./templates/images/azure-functions-mcp-server-dotnet.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Paul Yuknewicz",
+    "source": "https://github.com/Azure-Samples/remote-mcp-functions-dotnet",
+    "tags": [
+      "functions",
+      "dotnetCsharp",
+      "bicep",
+      "msft",
+      "ai",
+      "new"
+    ]
+  },
+{
+  "title": "Remote MCP Functions with Python",
+  "description": "This scenario demonstrates how to to easily build and deploy a custom remote MCP (Message Control Protocol) server to the cloud using Azure functions and Python.",
+  "preview": "./templates/images/azure-functions-mcp-server-python.png",
+  "website": "https://github.com/Azure-Samples",
+  "author": "Paul Yuknewicz",
+  "source": "https://github.com/Azure-Samples/remote-mcp-functions-python",
+  "tags": [
+    "functions",
+    "python",
+    "bicep",
+    "msft",
+    "ai",
+    "new"
+  ]
+}
 ]

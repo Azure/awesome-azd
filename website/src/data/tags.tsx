@@ -16,7 +16,7 @@ export type User = {
   title: string;
   description: string;
   preview: string;
-  website: string;
+  authorUrl: string;
   author: string;
   source: string | null;
   tags: TagType[];

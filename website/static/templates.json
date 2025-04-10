@@ -3720,5 +3720,22 @@
       "rag",
       "new"
     ]
+  },
+  {
+    "title": "Remote MCP Servers using Azure API Management",
+    "description": "This repo builds and deploys remote MCP servers using Azure API Management as your auth gateway and Azure Functions as your deployment location.",
+    "preview": "./templates/images/remote-mcp-apim-auth.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Julia Kasper",
+    "source": "https://github.com/Azure-Samples/remote-mcp-apim-functions-python",
+    "tags": [
+      "apim",
+      "functions",
+      "python",
+      "bicep",
+      "msft",
+      "ai",
+      "new"
+    ]
   }
 ]

@@ -3737,5 +3737,21 @@
       "ai",
       "new"
     ]
+  },
+  {
+    "title": "MCP Server written in C# running in Azure Container Apps",
+    "description": "A template to deploy a Model Context Protocol (MCP) server written in C# to Azure Container Apps using SSE Transport.",
+    "preview": "./templates/images/powergentic-azd-mcp-csharp.png",
+    "website": "https://powergentic.ai",
+    "author": "Powergentic",
+    "source": "https://github.com/powergentic/azd-mcp-csharp",
+    "tags": [
+      "community",
+      "new",
+      "bicep",
+      "ai",
+      "aca",
+      "dotnetCsharp"
+    ]
   }
 ]

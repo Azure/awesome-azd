@@ -25,6 +25,7 @@ To submit a template:
     - **Tags** - One or more [tags](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) representing the template. Please tag the IaC provider (Bicep or Terraform). If you don't see a relevant tag for your template? Feel free to add one!
     - **Language Tags** - One or more [language tags](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) representing the template. Provide at least 1 tag for programming language used.
     - **Azure Service Tags** - One or more [azure service tags](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) representing the template. Provide at least 1 tag for Azure services integrated.
+    - **ID** - Please provide a unique uuid.
 2. If the template is Microsoft-authored, we encourage you to also [publish it to learn.microsoft.com/samples](https://review.learn.microsoft.com/en-us/help/contribute/samples/process/onboarding?branch=main). 
 3. Open a PR!
 4. If possible, add a link to the PR in your repo where you made your app `azd` compatible to the PR description. This will help us provide feedback on your template and speed up the review process. 

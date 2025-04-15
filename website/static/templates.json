@@ -3737,5 +3737,20 @@
       "ai",
       "new"
     ]
+  },
+  {
+    "title": "This template helps you quickly publish a static website to Azure Web App (Static Site).",
+    "description": "The template is designed to simplify the process of deploying static websites to Azure, leveraging the Azure Developer CLI (azd) for streamlined setup and deployment.",
+    "preview": "./templates/images/staticSite.png",
+    "website": "https://github.com/erudinsky",
+    "author": "Evgeny Rudinsky",
+    "source": "https://github.com/erudinsky/azd-static-web-vuejs",
+    "tags": [
+      "vuejs",
+      "swa",
+      "bicep",
+      "community",
+      "new"
+    ]
   }
 ]

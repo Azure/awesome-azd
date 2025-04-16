@@ -150,6 +150,11 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
     linkInMenu: "",
     overflowMenuButton: "",
   };
+  const tags = [
+    ...user.tags,
+    ...(user.language || []),
+    ...(user.azure_service || []),
+  ];
   return (
     <div>
       <div
@@ -208,7 +213,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
       >
         <ShowcaseCardTag
           key={"tag_" + user.title}
-          tags={user.tags}
+          tags={tags}
           moreTag={false}
         />
       </div>
@@ -455,7 +460,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                   </div>
                   <ShowcaseCardAzureTag
                     key={"azure_tag_" + user.title}
-                    tags={user.tags}
+                    tags={tags}
                     colorMode={colorMode}
                   />
                 </Popup>

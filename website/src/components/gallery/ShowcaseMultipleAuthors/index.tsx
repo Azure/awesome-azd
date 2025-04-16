@@ -120,7 +120,7 @@ export default function ShowcaseMultipleAuthors({
 }) {
   const { colorMode } = useColorMode();
   const authors = user.author;
-  const websites = user.website;
+  const websites = user.authorUrl;
   let i = 0;
 
   if (authors.includes(", ")) {

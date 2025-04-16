@@ -108,10 +108,15 @@ function filterUsers(
     return users;
   }
   return users.filter((user) => {
-    if (!user && !user.tags && user.tags.length === 0) {
+    const tags = [
+      ...user.tags,
+      ...(user.language || []),
+      ...(user.azure_service || []),
+    ];
+    if (!user && !tags && tags.length === 0) {
       return false;
     }
-    return selectedTags.every((tag) => user.tags.includes(tag));
+    return selectedTags.every((tag) => tags.includes(tag));
   });
 }
 
@@ -221,7 +226,14 @@ export default function ShowcaseCardPage({
 
   useEffect(() => {
     const unionTags = new Set<TagType>();
-    cards.forEach((user) => user.tags.forEach((tag) => unionTags.add(tag)));
+    cards.forEach((user) => {
+      const tags = [
+        ...user.tags,
+        ...(user.language || []),
+        ...(user.azure_service || []),
+      ];
+      tags.forEach((tag) => unionTags.add(tag))
+    });
     setActiveTags(Array.from(unionTags));
   }, [cards]);
 

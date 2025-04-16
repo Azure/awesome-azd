@@ -3739,6 +3739,22 @@
     ]
   },
   {
+    "title": "MCP Server written in C# running in Azure Container Apps",
+    "description": "A template to deploy a Model Context Protocol (MCP) server written in C# to Azure Container Apps using SSE Transport.",
+    "preview": "./templates/images/powergentic-azd-mcp-csharp.png",
+    "website": "https://powergentic.ai",
+    "author": "Powergentic",
+    "source": "https://github.com/powergentic/azd-mcp-csharp",
+    "tags": [
+      "community",
+      "new",
+      "bicep",
+      "ai",
+      "aca",
+      "dotnetCsharp"
+     ]
+  },
+  {
     "title": "This template helps you quickly publish a static website to Azure Web App (Static Site).",
     "description": "The template is designed to simplify the process of deploying static websites to Azure, leveraging the Azure Developer CLI (azd) for streamlined setup and deployment.",
     "preview": "./templates/images/staticSite.png",

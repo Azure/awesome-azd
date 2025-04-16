@@ -16,10 +16,12 @@ export type User = {
   title: string;
   description: string;
   preview: string;
-  website: string;
+  authorUrl: string;
   author: string;
-  source: string | null;
+  source: string;
   tags: TagType[];
+  language?: TagType[];
+  azure_service?: TagType[];
 };
 
 // NN: Updated TagType to suit Static Web Apps

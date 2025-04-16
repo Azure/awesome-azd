@@ -63,7 +63,11 @@ const darkTheme: PartialTheme = {
 function ShowcaseCard({ user }: { user: User }): JSX.Element {
   const styles = useStyles();
   const title = user.title;
-  const tags = user.tags;
+  const tags = [
+    ...user.tags,
+    ...(user.language || []),
+    ...(user.azure_service || []),
+  ];
   const source = user.source;
   const star = useBaseUrl("/img/Sparkle.svg");
   const fire = useBaseUrl("/img/Fire.svg");

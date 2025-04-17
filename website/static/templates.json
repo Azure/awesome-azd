@@ -4719,7 +4719,7 @@
       "ai",
       "aca",
       "dotnetCsharp"
-     ]
+    ]
   },
   {
     "title": "This template helps you quickly publish a static website to Azure Web App (Static Site).",
@@ -4749,6 +4749,32 @@
       "bicep",
       "community",
       "new"
+    ]
+  },
+  {
+    "title": "Azure SQL w/ Azure OpenAI Blazor chat app on Azure App Service",
+    "description": "Create a .NET Blazor chat app with Azure SQL data using a hybrid vector search and Azure OpenAI.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Jeff Martinez",
+    "source": "https://github.com/Azure-Samples/blazor-azure-sql-vector-search",
+    "tags": [
+      "msft",
+      "bicep",
+      "ai",
+      "rag",
+      "c#",
+      "semantickernel",
+      "azuresql"
+    ],
+    "azure_service": [
+      "managedidentity",
+      "openai",
+      "appservice"
+    ],
+    "id": "7e574780-0f87-42e8-af8c-5e8cb7d3540a",
+    "language": [
+      "dotnet"
     ]
   }
 ]

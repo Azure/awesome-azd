@@ -4760,7 +4760,9 @@
     "tags": [
       "community", 
       "new", 
-      "azureai"
+      "azureai",
+      "managedidentity",
+      "openai"
       ]
   }
 ]

@@ -4737,6 +4737,35 @@
     ]
   },
   {
+    "title": "Deploy DeepSeek-R1 on Azure Container Apps with Serverless GPUs.",
+    "description": "This scenario deploys deploy DeepSeek-R1 on Azure Container Apps with Serverless GPUs",
+    "preview": "./templates/images/deepseekr1.jpg",
+    "website": "https://github.com/daverendon",
+    "author": "Dave Rendon",
+    "source": "https://github.com/daverendon/azd-deepseek-r1-on-azure-container-apps",
+    "tags": [
+      "community", 
+      "new", 
+      "loganalytics",
+      "aca"
+    ]     
+  },
+  {
+    "title": "YouTube Summarizer with OpenAI and Blazor .NET",
+    "description": "This scenario deploys a Blazor .NET FrontEnd application, together with Azure OpenAI Service, to provide a summary of YouTube videos in 5 bullet points",
+    "preview": "./templates/images/YoutubeSummarizer.png",
+    "website": "https://github.com/petender",
+    "author": "Peter De Tender",
+    "source": "https://github.com/petender/azd-youtubesummarizer-openai",
+    "tags": [
+      "community", 
+      "new", 
+      "azureai",
+      "managedidentity",
+      "openai"
+     ]
+  },
+  {
     "title": "Vite + Lit AI Chat UI Starter",
     "description": "A ready-to-integrate chat interface template using Vite and Lit for AI-powered conversations.",
     "preview": "./templates/images/vite-lit-ai-chat-interface.png",

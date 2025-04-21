@@ -2436,7 +2436,7 @@
     "tags": [
       "msft",
       "aicollection",
-      "terraform",
+      "bicep",
       "ai"
     ],
     "azure_service": [
@@ -4763,6 +4763,21 @@
       "azureai",
       "managedidentity",
       "openai"
-      ]
+     ]
+  },
+  {
+    "title": "Vite + Lit AI Chat UI Starter",
+    "description": "A ready-to-integrate chat interface template using Vite and Lit for AI-powered conversations.",
+    "preview": "./templates/images/vite-lit-ai-chat-interface.png",
+    "website": "https://github.com/juliamuiruri4",
+    "author": "Julia Muiruri",
+    "source": "https://github.com/juliamuiruri4/vite-chat-interface",
+    "tags": [
+      "javascript",
+      "swa",
+      "bicep",
+      "community",
+      "new"
+    ]
   }
 ]

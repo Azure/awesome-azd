@@ -110,8 +110,8 @@ function filterUsers(
   return users.filter((user) => {
     const tags = [
       ...user.tags,
-      ...(user.language || []),
-      ...(user.azure_service || []),
+      ...(user.languages || []),
+      ...(user.azureServices || []),
     ];
     if (!user && !tags && tags.length === 0) {
       return false;
@@ -229,8 +229,8 @@ export default function ShowcaseCardPage({
     cards.forEach((user) => {
       const tags = [
         ...user.tags,
-        ...(user.language || []),
-        ...(user.azure_service || []),
+        ...(user.languages || []),
+        ...(user.azureServices || []),
       ];
       tags.forEach((tag) => unionTags.add(tag))
     });

@@ -4696,13 +4696,18 @@
     "author": "Julia Kasper",
     "source": "https://github.com/Azure-Samples/remote-mcp-apim-functions-python",
     "tags": [
-      "apim",
-      "functions",
-      "python",
       "bicep",
       "msft",
       "ai",
       "new"
+    ],
+    "azureServices": [
+      "apim",
+      "functions"
+    ],
+    "id": "d31149d5-3c9a-47d5-9f28-629890dbe1f2",
+    "languages": [
+      "python"
     ]
   },
   {
@@ -4716,10 +4721,15 @@
       "community",
       "new",
       "bicep",
-      "ai",
-      "aca",
+      "ai"
+    ],
+    "azureServices": [
+      "aca"
+    ],
+    "id": "2912362d-7bf2-4091-8910-d6e22fd76618",
+    "languages": [
       "dotnetCsharp"
-     ]
+    ]
   },
   {
     "title": "This template helps you quickly publish a static website to Azure Web App (Static Site).",
@@ -4730,11 +4740,14 @@
     "source": "https://github.com/erudinsky/azd-static-web-vuejs",
     "tags": [
       "vuejs",
-      "swa",
       "bicep",
       "community",
       "new"
-    ]
+    ],
+    "azureServices": [
+      "swa"
+    ],
+    "id": "ce524ab6-db44-48c6-a299-daa462987ad0"
   },
   {
     "title": "Deploy DeepSeek-R1 on Azure Container Apps with Serverless GPUs.",
@@ -4744,11 +4757,14 @@
     "author": "Dave Rendon",
     "source": "https://github.com/daverendon/azd-deepseek-r1-on-azure-container-apps",
     "tags": [
-      "community", 
-      "new", 
+      "community",
+      "new"
+    ],
+    "azureServices": [
       "loganalytics",
       "aca"
-    ]     
+    ],
+    "id": "16dde382-f20b-4c29-ad9b-e11ea0be715e"
   },
   {
     "title": "YouTube Summarizer with OpenAI and Blazor .NET",
@@ -4758,12 +4774,15 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-youtubesummarizer-openai",
     "tags": [
-      "community", 
-      "new", 
+      "community",
+      "new"
+    ],
+    "azureServices": [
       "azureai",
       "managedidentity",
       "openai"
-     ]
+    ],
+    "id": "c8a63813-80dc-435f-ba93-e5d82ed5a2b2"
   },
   {
     "title": "Vite + Lit AI Chat UI Starter",
@@ -4773,11 +4792,16 @@
     "author": "Julia Muiruri",
     "source": "https://github.com/juliamuiruri4/vite-chat-interface",
     "tags": [
-      "javascript",
-      "swa",
       "bicep",
       "community",
       "new"
+    ],
+    "azureServices": [
+      "swa"
+    ],
+    "id": "cbb98c98-07f3-4cc8-a361-00c8e6895018",
+    "languages": [
+      "javascript"
     ]
   }
 ]

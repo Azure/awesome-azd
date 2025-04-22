@@ -21,10 +21,9 @@ To submit a template:
     - **Link to Author's GitHub or other relevant website** - Used for attribution.
     - **Author's Name** - Name to credit on the gallery card
     - **Link to template source** - Link to the template GitHub repo
-    - **Tags** - One or more [tags](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) representing the template. Provide at least 1 tag for programming language used and at least 1 tag for Azure services integrated. Also tag the IaC provider (Bicep or Terraform). If you don't see a relevant tag for your template? Feel free to add one!
     - **Tags** - One or more [tags](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) representing the template. Please tag the IaC provider (Bicep or Terraform). If you don't see a relevant tag for your template? Feel free to add one!
-    - **Language Tags** - One or more [language tags](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) representing the template. Provide at least 1 tag for programming language used.
-    - **Azure Service Tags** - One or more [azure service tags](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) representing the template. Provide at least 1 tag for Azure services integrated.
+    - **Languages Tags** - [Tags for languages](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) representing the template.
+    - **Azure Services Tags** - [Tags for azure services](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) representing the template.
     - **ID** - Please provide a unique uuid.
 2. If the template is Microsoft-authored, we encourage you to also [publish it to learn.microsoft.com/samples](https://review.learn.microsoft.com/en-us/help/contribute/samples/process/onboarding?branch=main). 
 3. Open a PR!

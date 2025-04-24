@@ -4803,5 +4803,31 @@
     "languages": [
       "javascript"
     ]
+  },
+  {
+    "title": "Azure SQL w/ Azure OpenAI Blazor chat app on Azure App Service",
+    "description": "Create a .NET Blazor chat app with Azure SQL data using a hybrid vector search and Azure OpenAI.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/jeffwmartinez",
+    "author": "Jeff Martinez",
+    "source": "https://github.com/Azure-Samples/blazor-azure-sql-vector-search",
+    "tags": [
+      "msft",
+      "new",
+      "bicep",
+      "ai",
+      "rag",
+      "semantickernel"
+    ],
+    "azure_service": [
+      "managedidentity",
+      "openai",
+      "appservice",
+      "azuresql"
+    ],
+    "id": "7e574780-0f87-42e8-af8c-5e8cb7d3540a",
+    "language": [
+      "dotnetCsharp"
+    ]
   }
 ]

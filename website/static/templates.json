@@ -4817,7 +4817,7 @@
       "bicep",
       "ai",
       "rag",
-      "semantickernel",
+      "semantickernel"
     ],
     "azure_service": [
       "managedidentity",

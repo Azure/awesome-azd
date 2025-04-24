@@ -36,7 +36,7 @@
       "bicep",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca",
       "agw",
       "rediscache",
@@ -44,7 +44,7 @@
       "keyvault"
     ],
     "id": "729d2ab2-7326-4cdd-81be-540e4bc7c8c7",
-    "language": [
+    "languages": [
       "php",
       "javascript"
     ]
@@ -62,14 +62,14 @@
       "bicep",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "appservice",
       "cosmosdb",
       "monitor",
       "keyvault"
     ],
     "id": "406a5813-bd0b-4b4f-81c4-37e726edce4a",
-    "language": [
+    "languages": [
       "dotnetCsharp",
       "typescript",
       "javascript"
@@ -86,12 +86,12 @@
       "bicep",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "cosmosdb",
       "aca"
     ],
     "id": "01b5c589-eb46-4fc1-b6ed-6f9315276f8b",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -108,12 +108,12 @@
       "bicep",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "azuredb-postgreSQL",
       "vnets"
     ],
     "id": "d4f1b8d9-98b3-4f72-8f97-11a365ea11b0",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -130,14 +130,14 @@
       "reactjs",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "appservice",
       "cosmosdb",
       "monitor",
       "keyvault"
     ],
     "id": "d2fbf0ef-693e-48f2-be36-05053201807f",
-    "language": [
+    "languages": [
       "nodejs",
       "typescript",
       "javascript"
@@ -156,7 +156,7 @@
       "reactjs",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "swa",
       "functions",
       "cosmosdb",
@@ -165,7 +165,7 @@
       "appservice"
     ],
     "id": "ada236c1-2d00-440e-9730-5042a283a409",
-    "language": [
+    "languages": [
       "nodejs",
       "typescript",
       "javascript"
@@ -185,7 +185,7 @@
       "fastapi",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "swa",
       "functions",
       "cosmosdb",
@@ -194,7 +194,7 @@
       "appservice"
     ],
     "id": "deb89dec-3275-48e5-b5c0-830fb59743e6",
-    "language": [
+    "languages": [
       "python",
       "typescript",
       "javascript"
@@ -214,14 +214,14 @@
       "fastapi",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "cosmosdb",
       "monitor",
       "keyvault",
       "appservice"
     ],
     "id": "f36282ac-e3db-475a-8030-ede81da41eb4",
-    "language": [
+    "languages": [
       "python",
       "typescript",
       "javascript"
@@ -240,14 +240,14 @@
       "terraform",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "cosmosdb",
       "monitor",
       "keyvault",
       "appservice"
     ],
     "id": "523cbcd0-e0c3-44e1-b552-abf9b12ed577",
-    "language": [
+    "languages": [
       "nodejs",
       "typescript",
       "javascript"
@@ -267,14 +267,14 @@
       "fastapi",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "appservice",
       "cosmosdb",
       "monitor",
       "keyvault"
     ],
     "id": "75e7c4ea-205e-4480-a7e2-ddf7d64b4c60",
-    "language": [
+    "languages": [
       "python",
       "typescript",
       "javascript"
@@ -293,7 +293,7 @@
       "reactjs",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "appservice",
       "cosmosdb",
       "monitor",
@@ -301,7 +301,7 @@
       "aca"
     ],
     "id": "3ae2b74c-3d7c-45d3-abae-7b43b7ada8f8",
-    "language": [
+    "languages": [
       "nodejs",
       "typescript",
       "javascript"
@@ -321,14 +321,14 @@
       "fastapi",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca",
       "cosmosdb",
       "monitor",
       "keyvault"
     ],
     "id": "855fbaa1-e251-469e-8d9d-c4eb0a1ef9bd",
-    "language": [
+    "languages": [
       "python",
       "typescript",
       "javascript"
@@ -347,14 +347,14 @@
       "reactjs",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "appservice",
       "azuresql",
       "monitor",
       "keyvault"
     ],
     "id": "29fda7be-7cb8-4871-8186-91b140afe497",
-    "language": [
+    "languages": [
       "dotnetCsharp",
       "typescript",
       "javascript"
@@ -373,14 +373,14 @@
       "reactjs",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "appservice",
       "cosmosdb",
       "keyvault",
       "monitor"
     ],
     "id": "d0aa5618-2e2a-4a1c-af41-29218ab7c1db",
-    "language": [
+    "languages": [
       "java",
       "typescript"
     ]
@@ -398,14 +398,14 @@
       "reactjs",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca",
       "cosmosdb",
       "keyvault",
       "monitor"
     ],
     "id": "3ffcef92-73e6-49ec-9c35-22a5cfc6ee98",
-    "language": [
+    "languages": [
       "java",
       "typescript"
     ]
@@ -422,7 +422,7 @@
       "reactjs",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "swa",
       "functions",
       "monitor",
@@ -431,7 +431,7 @@
       "azuresql"
     ],
     "id": "5ea70efc-3ac9-4ce5-87c9-d68200336a89",
-    "language": [
+    "languages": [
       "dotnetCsharp",
       "typescript",
       "javascript"
@@ -450,7 +450,7 @@
       "reactjs",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "monitor",
       "keyvault",
       "appservice",
@@ -458,7 +458,7 @@
       "aks"
     ],
     "id": "f9936700-5a9a-4bf9-bfe7-e1e10477ba76",
-    "language": [
+    "languages": [
       "nodejs",
       "typescript",
       "javascript"
@@ -477,12 +477,12 @@
       "webapps",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "azurespringapps",
       "azuredb-postgreSQL"
     ],
     "id": "0c5072fa-a12c-4a5f-a821-ead605c1d10c",
-    "language": [
+    "languages": [
       "java",
       "nodejs"
     ]
@@ -503,7 +503,7 @@
       "popular",
       "aicollection"
     ],
-    "azure_service": [
+    "azureServices": [
       "aks",
       "aca",
       "aisearch",
@@ -511,7 +511,7 @@
       "rediscache"
     ],
     "id": "75989eb4-f7e0-4dab-be54-262775942d4e",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -529,12 +529,12 @@
       "flask",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "aca"
     ],
     "id": "b9dc8b04-ecb2-4484-9241-0ec5dcacbdb4",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -551,13 +551,13 @@
       "ai",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "blobstorage",
       "azurespringapps"
     ],
     "id": "609fce57-2f3e-44d7-9fec-162f91fd1f42",
-    "language": [
+    "languages": [
       "java"
     ]
   },
@@ -574,13 +574,13 @@
       "msft",
       "popular"
     ],
-    "azure_service": [
+    "azureServices": [
       "azuredb-postgreSQL",
       "appservice",
       "vnets"
     ],
     "id": "aca56c78-0e01-4525-b678-c3d5c28be1be",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -596,12 +596,12 @@
       "bicep",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca",
       "azuredb-postgreSQL"
     ],
     "id": "0b2fbaad-df80-4f21-a10c-a2739e0fd35b",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -618,13 +618,13 @@
       "msft",
       "popular"
     ],
-    "azure_service": [
+    "azureServices": [
       "azuredb-postgreSQL",
       "appservice",
       "vnets"
     ],
     "id": "96511c7b-bcc2-45e3-b7f9-254e3104a185",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -640,12 +640,12 @@
       "dapr",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca",
       "servicebus"
     ],
     "id": "b3c37e46-c66a-4a6f-ac07-825f8d9e4af9",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -661,12 +661,12 @@
       "dapr",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca",
       "servicebus"
     ],
     "id": "43a132f8-f6a3-4896-ae9c-a670157a7e77",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -682,12 +682,12 @@
       "dapr",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca",
       "servicebus"
     ],
     "id": "a23f5ea7-2d36-4642-9b61-99c9367e54b3",
-    "language": [
+    "languages": [
       "javascript",
       "nodejs"
     ]
@@ -703,12 +703,12 @@
       "dapr",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "azuredb-postgreSQL",
       "aca"
     ],
     "id": "eb747c5a-e95f-4859-bb21-b1aef740684a",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -723,12 +723,12 @@
       "dapr",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "azuredb-postgreSQL",
       "aca"
     ],
     "id": "9736cc49-7b91-4a54-b8a1-86a5c609765e",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -743,12 +743,12 @@
       "dapr",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "azuredb-postgreSQL",
       "aca"
     ],
     "id": "bb2a0e5f-cb80-4501-b699-6c6b36a87c8d",
-    "language": [
+    "languages": [
       "nodejs",
       "javascript"
     ]
@@ -764,11 +764,11 @@
       "dapr",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca"
     ],
     "id": "aa44bec0-701a-4702-a105-f301e2c05b73",
-    "language": [
+    "languages": [
       "nodejs"
     ]
   },
@@ -783,11 +783,11 @@
       "dapr",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca"
     ],
     "id": "89d40b9e-b02c-4ed7-82c4-b4a3bed80706",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -802,11 +802,11 @@
       "dapr",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca"
     ],
     "id": "4aa93d14-9bf2-4dbc-a7f5-0f8796d922f1",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -825,7 +825,7 @@
       "popular",
       "aicollection"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "aisearch",
       "blobstorage",
@@ -833,7 +833,7 @@
       "speechservice"
     ],
     "id": "5f6de8e1-9742-4888-ae09-30347b4f4445",
-    "language": [
+    "languages": [
       "python",
       "typescript",
       "nodejs"
@@ -850,11 +850,11 @@
       "fastapi",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions"
     ],
     "id": "fcfd9b78-5e57-467e-a6e0-46cb54d1e246",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -871,7 +871,7 @@
       "thymeleaf",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "appservice",
       "azuresql",
       "monitor",
@@ -879,7 +879,7 @@
       "appinsights"
     ],
     "id": "fc267cdd-831c-4e2d-b86f-2b5af58f1876",
-    "language": [
+    "languages": [
       "java"
     ]
   },
@@ -895,14 +895,14 @@
       "spring",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "servicebus",
       "monitor",
       "keyvault",
       "azurespringapps"
     ],
     "id": "6631fe19-f77a-4f1e-8b06-759bc7648b60",
-    "language": [
+    "languages": [
       "java"
     ]
   },
@@ -921,13 +921,13 @@
       "sapcloudsdk",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "apim",
       "keyvault",
       "appinsights"
     ],
     "id": "bcb1fed3-63ff-4f1b-a72b-638f548651bf",
-    "language": [
+    "languages": [
       "typescript",
       "nodejs"
     ]
@@ -943,14 +943,14 @@
       "dataverse",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions",
       "servicebus",
       "monitor",
       "keyvault"
     ],
     "id": "c5301f33-e7d0-4a18-9588-c3f1eff51845",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -965,11 +965,11 @@
       "flask",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "appservice"
     ],
     "id": "147a3984-3705-4972-8c24-159495676ccc",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -984,13 +984,13 @@
       "ai",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions",
       "aisearch",
       "azureai"
     ],
     "id": "3dae246d-17c8-4af7-a74d-cc6ece82921b",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -1005,13 +1005,13 @@
       "ai",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions",
       "aisearch",
       "azureai"
     ],
     "id": "8d50865f-60f3-4a78-b00c-c185a984cc9a",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -1027,12 +1027,12 @@
       "webapps",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca",
       "azurecdn"
     ],
     "id": "a0bf9e18-e7f4-426b-8dd4-295c1d4397b6",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -1048,13 +1048,13 @@
       "webapps",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "keyvault",
       "aca",
       "azuredb-postgreSQL"
     ],
     "id": "3173285e-2b3c-4021-b21b-6876adb4d172",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -1070,11 +1070,11 @@
       "flask",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca"
     ],
     "id": "a7276a20-b29f-44e2-8d63-1cdaf2cc766b",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -1089,12 +1089,12 @@
       "fastapi",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions",
       "apim"
     ],
     "id": "a7dc66c7-4c9f-4897-971c-1bc740859fdc",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -1110,12 +1110,12 @@
       "webapps",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca",
       "azurecdn"
     ],
     "id": "fbc313cc-bcc9-46e9-9a97-54c3cbaf0bc3",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -1130,13 +1130,13 @@
       "fastapi",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions",
       "monitor",
       "azurecdn"
     ],
     "id": "a9bf70a0-b36b-4553-91dd-8d4c2f15f052",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -1154,11 +1154,11 @@
       "datascience",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca"
     ],
     "id": "a4418f19-3320-4fd7-b567-46f6856c1c48",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -1175,13 +1175,13 @@
       "bicep",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "appservice",
       "azuredb-postgreSQL",
       "keyvault"
     ],
     "id": "f8ac8c5b-c769-4c68-9a9c-487aeaedd2fb",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -1198,7 +1198,7 @@
       "enterprisepatterns",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "appservice",
       "keyvault",
       "frontdoor",
@@ -1207,7 +1207,7 @@
       "blobstorage"
     ],
     "id": "81076d3c-f8bb-4653-827c-71854ac4e3ae",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -1223,11 +1223,11 @@
       "bicep",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca"
     ],
     "id": "ab71af49-3402-4dd0-858b-d100eae4c83a",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -1245,7 +1245,7 @@
       "prometheus",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "aks",
       "grafana"
     ],
@@ -1265,12 +1265,12 @@
       "reactjs",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "apim"
     ],
     "id": "2bda5e52-9786-4900-af96-601ff76218e3",
-    "language": [
+    "languages": [
       "typescript",
       "javascript"
     ]
@@ -1288,12 +1288,12 @@
       "webapps",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "appservice",
       "azuredb-postgreSQL"
     ],
     "id": "ae207d42-35cf-420d-b932-2626e7c2bf19",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -1308,12 +1308,12 @@
       "bicep",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions",
       "servicebus"
     ],
     "id": "f351c6e5-7cc8-4093-9d07-4d05190a3d6a",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -1330,12 +1330,12 @@
       "bicep",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "appservice",
       "loganalytics"
     ],
     "id": "8fad9861-fabf-4567-823b-ed98be81d611",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -1350,11 +1350,11 @@
       "streamlit",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "appservice"
     ],
     "id": "6eef1213-03ed-49ba-937f-c1d471b3775e",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -1371,7 +1371,7 @@
       "enterprisepatterns",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "apim",
       "openai",
       "appinsights",
@@ -1391,11 +1391,11 @@
       "bicep",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca"
     ],
     "id": "11812855-671c-469b-8e31-bf81a9edbb75",
-    "language": [
+    "languages": [
       "javascript"
     ]
   },
@@ -1413,7 +1413,7 @@
       "bicep",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "aca",
       "azurespringapps",
@@ -1421,7 +1421,7 @@
       "monitor"
     ],
     "id": "f3d3346b-d621-4ced-9e2c-1b891da214ad",
-    "language": [
+    "languages": [
       "java"
     ]
   },
@@ -1439,7 +1439,7 @@
       "gpt",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "swa",
       "apim",
       "monitor",
@@ -1447,7 +1447,7 @@
       "appinsights"
     ],
     "id": "e49261a5-6d65-4f0f-ab39-f747b9f10d9c",
-    "language": [
+    "languages": [
       "typescript",
       "javascript"
     ]
@@ -1463,14 +1463,14 @@
       "ai",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "appservice",
       "azurebot",
       "agw"
     ],
     "id": "56053f9b-9406-40be-9a33-842548870d3f",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -1487,11 +1487,11 @@
       "spring",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "azurespringapps"
     ],
     "id": "e7e67e8f-cb48-4cd3-ae54-493aad4faa1a",
-    "language": [
+    "languages": [
       "java"
     ]
   },
@@ -1507,7 +1507,7 @@
       "platformengineering",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "ade"
     ],
     "id": "9d682481-a26a-4037-8503-32d0fc49e52b"
@@ -1528,14 +1528,14 @@
       "msft",
       "aicollection"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca",
       "openai",
       "appservice",
       "aisearch"
     ],
     "id": "68592edf-9c61-4208-84b0-fd264282af94",
-    "language": [
+    "languages": [
       "java"
     ]
   },
@@ -1551,13 +1551,13 @@
       "bicep",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca",
       "azurecdn",
       "appinsights"
     ],
     "id": "e8b16cf8-d0c6-4548-a337-1c1ade5b7a0b",
-    "language": [
+    "languages": [
       "typescript",
       "nodejs"
     ]
@@ -1579,12 +1579,12 @@
       "aicollection",
       "rag"
     ],
-    "azure_service": [
+    "azureServices": [
       "aisearch",
       "openai"
     ],
     "id": "9b2cfe95-02be-4c62-8733-1dab7434b65b",
-    "language": [
+    "languages": [
       "javascript",
       "nodejs",
       "typescript"
@@ -1602,7 +1602,7 @@
       "platformengineering",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "ade"
     ],
     "id": "8a1f4405-43bd-4af5-ad33-23a03a56eaed"
@@ -1617,13 +1617,13 @@
     "tags": [
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "rediscache",
       "azuresql",
       "appservice"
     ],
     "id": "a8a102d0-621d-4a3f-ba9a-b396c5355a75",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -1637,12 +1637,12 @@
     "tags": [
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca",
       "rediscache"
     ],
     "id": "de47f514-3e4a-47c4-8a90-6e32228fc1bd",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -1657,13 +1657,13 @@
       "ai",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca",
       "rediscache",
       "openai"
     ],
     "id": "4dba6803-d1c7-4c75-b250-7a679c38a85c",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -1680,7 +1680,7 @@
       "enterprisepatterns",
       "ai"
     ],
-    "azure_service": [
+    "azureServices": [
       "appservice",
       "functions",
       "azuresql",
@@ -1702,11 +1702,11 @@
       "dapr",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "aks"
     ],
     "id": "8b4c552b-5538-4929-924f-3dffbc6ce0df",
-    "language": [
+    "languages": [
       "java"
     ]
   },
@@ -1722,12 +1722,12 @@
       "gpt",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions",
       "openai"
     ],
     "id": "c8353be4-6a27-4141-8f37-e01268ae3a26",
-    "language": [
+    "languages": [
       "javascript"
     ]
   },
@@ -1743,12 +1743,12 @@
       "gpt",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions",
       "openai"
     ],
     "id": "2e8d1ced-9837-4c06-92c8-36c3cb91ff86",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -1763,11 +1763,11 @@
       "ai",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions"
     ],
     "id": "56c75a9b-82e2-403f-8bcb-f612ecfb03fd",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -1784,12 +1784,12 @@
       "ai",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "aisearch"
     ],
     "id": "79f4bbff-490c-4919-b187-31b1af47aba4",
-    "language": [
+    "languages": [
       "python",
       "typescript",
       "nodejs"
@@ -1807,14 +1807,14 @@
       "blazor",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "appservice",
       "azuresql",
       "monitor",
       "keyvault"
     ],
     "id": "ab5d4355-6321-4145-a882-f4819cee294d",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -1830,11 +1830,11 @@
       "bicep",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions"
     ],
     "id": "d2e36461-54b6-4ff7-be56-f2c0b029732e",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -1851,13 +1851,13 @@
       "webapps",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "appservice",
       "azuredb-mySQL",
       "keyvault"
     ],
     "id": "eef2b875-b618-4978-98a6-d186c4c6113b",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -1872,7 +1872,7 @@
       "bicep",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions",
       "appinsights",
       "keyvault",
@@ -1881,7 +1881,7 @@
       "vnets"
     ],
     "id": "dd8e6d7a-f915-407d-91cf-8543698a2092",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -1896,12 +1896,12 @@
       "bicep",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "cosmosdb",
       "aca"
     ],
     "id": "0372fd41-52fb-49b2-9c13-55d1f8ea3182",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -1917,12 +1917,12 @@
       "msft",
       "bicep"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca",
       "openai"
     ],
     "id": "0f690ca4-e013-43c7-8848-b4172f321646",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -1940,7 +1940,7 @@
       "kubernetes",
       "helm"
     ],
-    "azure_service": [
+    "azureServices": [
       "aks",
       "openai"
     ],
@@ -1959,7 +1959,7 @@
       "enterprisepatterns",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "apim",
       "openai",
       "appinsights",
@@ -1967,7 +1967,7 @@
       "aca"
     ],
     "id": "c5c49771-d402-4b5a-9cdc-5e61292bd5af",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -1986,13 +1986,13 @@
       "sapcap",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "apim",
       "keyvault",
       "appinsights"
     ],
     "id": "160b1ab0-defa-481a-9092-26938a447bb2",
-    "language": [
+    "languages": [
       "typescript",
       "nodejs"
     ]
@@ -2012,7 +2012,7 @@
       "sapcloudsdk",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "apim",
       "keyvault",
       "appinsights",
@@ -2020,7 +2020,7 @@
       "azuredb-postgreSQL"
     ],
     "id": "591868f7-222c-49f8-b2df-bd08d235e40f",
-    "language": [
+    "languages": [
       "nodejs"
     ]
   },
@@ -2036,7 +2036,7 @@
       "msft",
       "bicep"
     ],
-    "azure_service": [
+    "azureServices": [
       "apim",
       "openai"
     ],
@@ -2054,7 +2054,7 @@
       "msft",
       "bicep"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca",
       "azuredb-postgreSQL",
       "keyvault"
@@ -2073,11 +2073,11 @@
       "msft",
       "bicep"
     ],
-    "azure_service": [
+    "azureServices": [
       "azuredb-postgreSQL"
     ],
     "id": "4d99865e-efff-430f-837e-bc031dbac8a0",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -2093,13 +2093,13 @@
       "msft",
       "ai"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "apim",
       "keyvault"
     ],
     "id": "c75a029a-c618-430e-8922-0511bae8a38e",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -2115,13 +2115,13 @@
       "bicep",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca",
       "azurecdn",
       "appinsights"
     ],
     "id": "4fc85597-77f8-46ca-b035-3cddf6795f4f",
-    "language": [
+    "languages": [
       "typescript",
       "nodejs"
     ]
@@ -2141,12 +2141,12 @@
       "semantickernel",
       "bicep"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "azureai"
     ],
     "id": "6e970d12-ce54-4982-bdd0-051925b0acb8",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -2164,7 +2164,7 @@
       "enterprisepatterns",
       "ai"
     ],
-    "azure_service": [
+    "azureServices": [
       "appservice",
       "functions",
       "azuresql",
@@ -2187,14 +2187,14 @@
       "terraform",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "appservice",
       "loganalytics",
       "monitor",
       "appinsights"
     ],
     "id": "bf5ad7e7-16fc-4389-90ff-21f49a79e8dd",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -2211,12 +2211,12 @@
       "webapps",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "azureappconfig",
       "aks"
     ],
     "id": "2ec02506-2785-4b99-bcca-0e5c5cc1e4a9",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -2235,12 +2235,12 @@
       "msft",
       "rag"
     ],
-    "azure_service": [
+    "azureServices": [
       "aisearch",
       "openai"
     ],
     "id": "3f9352e8-6295-4f72-a214-81d0ca7769de",
-    "language": [
+    "languages": [
       "python",
       "typescript"
     ]
@@ -2257,13 +2257,13 @@
       "bicep",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca",
       "azuredb-postgreSQL",
       "monitor"
     ],
     "id": "da2e4d30-d499-4a83-8d9d-8b92c5acbd67",
-    "language": [
+    "languages": [
       "ruby"
     ]
   },
@@ -2282,12 +2282,12 @@
       "community",
       "rag"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "cosmosdb"
     ],
     "id": "ab57b3ff-d197-49e8-8f46-c4037a3f70bc",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -2309,7 +2309,7 @@
       "aicollection",
       "rag"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "cosmosdb",
       "functions",
@@ -2317,7 +2317,7 @@
       "azureai"
     ],
     "id": "10db7027-bc05-450f-8664-a3a9d783cc08",
-    "language": [
+    "languages": [
       "javascript",
       "nodejs",
       "typescript"
@@ -2334,13 +2334,13 @@
       "community",
       "bicep"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions",
       "appinsights",
       "blobstorage"
     ],
     "id": "2ced2b3a-de10-4f8b-9bbf-f30def771837",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -2356,7 +2356,7 @@
       "ai",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "azureai",
       "openai"
     ],
@@ -2374,7 +2374,7 @@
       "ai",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "azureai",
       "openai"
     ],
@@ -2393,12 +2393,12 @@
       "bicep",
       "ai"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "aca"
     ],
     "id": "aa4f579e-05a3-48be-ac1e-253f54d839b2",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -2416,13 +2416,13 @@
       "ai",
       "rag"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "aca",
       "azuredb-postgreSQL"
     ],
     "id": "952bd229-f367-4875-b95c-5c0c430abe45",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -2436,16 +2436,16 @@
     "tags": [
       "msft",
       "aicollection",
-      "terraform",
+      "bicep",
       "ai"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "aks",
       "aisearch"
     ],
     "id": "4d1aa700-6936-420a-b853-a3b00124011f",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -2462,13 +2462,13 @@
       "bicep",
       "ai"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "aca",
       "speechservice"
     ],
     "id": "45d0acf6-4d69-49bd-9b26-5e5e6689a35b",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -2486,14 +2486,14 @@
       "ai",
       "rag"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "aistudio",
       "cosmosdb",
       "aisearch"
     ],
     "id": "05d97dde-491b-40fe-959f-c8ff19b42e6b",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -2508,7 +2508,7 @@
       "msft",
       "bicep"
     ],
-    "azure_service": [
+    "azureServices": [
       "apicenter",
       "functions",
       "eventgrid",
@@ -2518,7 +2518,7 @@
       "diagnosticsettings"
     ],
     "id": "dd15c2d8-9d0c-4227-b52d-6adc3b936230",
-    "language": [
+    "languages": [
       "typescript"
     ]
   },
@@ -2533,13 +2533,13 @@
       "msft",
       "bicep"
     ],
-    "azure_service": [
+    "azureServices": [
       "apicenter",
       "swa",
       "serviceprincipal"
     ],
     "id": "289b66c8-939c-4a10-9a63-266f196d65fd",
-    "language": [
+    "languages": [
       "typescript"
     ]
   },
@@ -2554,7 +2554,7 @@
       "msft",
       "bicep"
     ],
-    "azure_service": [
+    "azureServices": [
       "apicenter",
       "appservice",
       "functions",
@@ -2569,7 +2569,7 @@
       "apim"
     ],
     "id": "9f4c434a-72a5-4577-ab69-04d808d389c2",
-    "language": [
+    "languages": [
       "dotnetCsharp",
       "typescript"
     ]
@@ -2586,7 +2586,7 @@
       "bicep",
       "ai"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "cosmosdb",
       "azuredatafactory",
@@ -2607,11 +2607,11 @@
       "ai",
       "aicollection"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca"
     ],
     "id": "2274c45c-6864-47a6-b479-9cb8885eaca0",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -2630,14 +2630,14 @@
       "semantickernel",
       "blazor"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "cosmosdb",
       "managedidentity",
       "appservice"
     ],
     "id": "361872a4-3321-4d89-8d6e-cd157ce6500d",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -2657,13 +2657,13 @@
       "rag",
       "aicollection"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "managedidentity",
       "aca"
     ],
     "id": "7ecf2af4-4784-4bd5-b826-30a99e2682f0",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -2680,13 +2680,13 @@
       "angular",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "apim",
       "functions",
       "cosmosdb"
     ],
     "id": "ef87ec3c-3b34-43c3-920f-16d32130420a",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -2705,11 +2705,11 @@
       "ai",
       "rag"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca"
     ],
     "id": "85bacd39-d643-4dda-b670-6f4ea771cc93",
-    "language": [
+    "languages": [
       "typescript"
     ]
   },
@@ -2727,12 +2727,12 @@
       "rag",
       "aicollection"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "aca"
     ],
     "id": "95b73b72-e014-4f01-8ff7-7d7ace9b8b01",
-    "language": [
+    "languages": [
       "javascript",
       "nodejs"
     ]
@@ -2751,14 +2751,14 @@
       "streamlit",
       "rag"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "blobstorage",
       "appservice",
       "aisearch"
     ],
     "id": "37a754db-fbed-44de-b1ad-baba6cf7e390",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -2776,7 +2776,7 @@
       "ai",
       "semantickernel"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "azuresql",
       "speechservice",
@@ -2784,7 +2784,7 @@
       "managedidentity"
     ],
     "id": "aea29f41-d5d6-4457-bd01-102cb8069a1e",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -2799,12 +2799,12 @@
       "community",
       "bicep"
     ],
-    "azure_service": [
+    "azureServices": [
       "blobstorage",
       "functions"
     ],
     "id": "c6766aec-94cf-471b-b880-ace4bbb7aced",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -2825,7 +2825,7 @@
       "promptengineering",
       "rag"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "aca",
       "aisearch",
@@ -2838,7 +2838,7 @@
       "vnets"
     ],
     "id": "6d9166fa-5793-485d-a918-19b461ca0260",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -2857,7 +2857,7 @@
       "ai"
     ],
     "id": "205ad993-e5bf-4262-a6a5-17dc8749d7db",
-    "language": [
+    "languages": [
       "typescript",
       "python"
     ]
@@ -2873,13 +2873,13 @@
       "aicollection",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "blobstorage",
       "aisearch"
     ],
     "id": "2e20a073-7ed2-44a9-839c-9ca51dddd8e8",
-    "language": [
+    "languages": [
       "javascript",
       "typescript"
     ]
@@ -2896,7 +2896,7 @@
       "aicollection",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "swa",
       "functions",
       "openai",
@@ -2904,7 +2904,7 @@
       "openai"
     ],
     "id": "698493d2-840a-4225-944c-adce06b74505",
-    "language": [
+    "languages": [
       "javascript"
     ]
   },
@@ -2919,13 +2919,13 @@
       "aicollection",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "managedidentity",
       "aca",
       "azureai"
     ],
     "id": "42b6c92c-f4d1-4002-923e-ce1d265ef590",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -2942,13 +2942,13 @@
       "bicep",
       "featuremanagement"
     ],
-    "azure_service": [
+    "azureServices": [
       "appinsights",
       "appservice",
       "azureappconfig"
     ],
     "id": "aef3a42a-675e-4821-8a91-2f17e027a2aa",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -2963,14 +2963,14 @@
       "bicep",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "blobstorage",
       "aca",
       "cosmosdb",
       "managedidentity"
     ],
     "id": "42520a78-aa7f-49c6-92ed-e7b5713c4d2b",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -2990,7 +2990,7 @@
       "msft",
       "aicollection"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "functions",
       "swa",
@@ -2998,7 +2998,7 @@
       "managedidentity"
     ],
     "id": "bfc3528d-453f-48dd-b450-13e0cc84b49e",
-    "language": [
+    "languages": [
       "javascript",
       "nodejs",
       "typescript"
@@ -3020,12 +3020,12 @@
       "rag",
       "langchain"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "cosmosdb"
     ],
     "id": "179f354d-814a-4e5a-b445-244bb227e3be",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -3040,13 +3040,13 @@
       "bicep",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "cosmosdb",
       "aca",
       "managedidentity"
     ],
     "id": "783418ac-262e-417d-9f7e-0193eec408d2",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -3061,13 +3061,13 @@
       "bicep",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "cosmosdb",
       "aca",
       "managedidentity"
     ],
     "id": "e0298977-96b5-4f41-a57c-f3238c5bff43",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -3082,13 +3082,13 @@
       "bicep",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "cosmosdb",
       "aca",
       "managedidentity"
     ],
     "id": "a134f36d-440e-4300-9359-11945e33bba3",
-    "language": [
+    "languages": [
       "nodejs"
     ]
   },
@@ -3103,13 +3103,13 @@
       "bicep",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "cosmosdb",
       "aca",
       "managedidentity"
     ],
     "id": "67254a85-3724-441c-96b5-a4e82f1b575d",
-    "language": [
+    "languages": [
       "java"
     ]
   },
@@ -3124,13 +3124,13 @@
       "bicep",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "cosmosdb",
       "aca",
       "managedidentity"
     ],
     "id": "af305758-e11a-44fd-a666-8500d0c3f4af",
-    "language": [
+    "languages": [
       "go"
     ]
   },
@@ -3145,14 +3145,14 @@
       "msft",
       "bicep"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions",
       "managedidentity",
       "vnets",
       "appinsights"
     ],
     "id": "abb7db72-cb12-45a4-b7e0-93bf219eaadb",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -3167,14 +3167,14 @@
       "msft",
       "bicep"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions",
       "managedidentity",
       "vnets",
       "appinsights"
     ],
     "id": "b2211e06-4c92-4659-8c88-156831f808d8",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -3189,14 +3189,14 @@
       "msft",
       "bicep"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions",
       "managedidentity",
       "vnets",
       "appinsights"
     ],
     "id": "d04fd66f-f5a8-42ce-ac42-b65a65a759b8",
-    "language": [
+    "languages": [
       "javascript"
     ]
   },
@@ -3211,14 +3211,14 @@
       "msft",
       "bicep"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions",
       "managedidentity",
       "vnets",
       "appinsights"
     ],
     "id": "918e8160-bd61-40db-b924-3cc404139a19",
-    "language": [
+    "languages": [
       "typescript"
     ]
   },
@@ -3233,14 +3233,14 @@
       "msft",
       "bicep"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions",
       "managedidentity",
       "vnets",
       "appinsights"
     ],
     "id": "29b0f634-57ca-4b32-bd53-5d4af5250bda",
-    "language": [
+    "languages": [
       "java"
     ]
   },
@@ -3256,7 +3256,7 @@
       "msft",
       "bicep"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions",
       "managedidentity",
       "vnets",
@@ -3276,7 +3276,7 @@
       "bicep",
       "ai"
     ],
-    "azure_service": [
+    "azureServices": [
       "cosmosdb",
       "functions",
       "serviceprincipal",
@@ -3302,13 +3302,13 @@
       "msft",
       "aicollection"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "azureai",
       "managedidentity"
     ],
     "id": "3f3f82ee-8982-4343-a231-069591a8d531",
-    "language": [
+    "languages": [
       "javascript",
       "nodejs",
       "typescript"
@@ -3325,12 +3325,12 @@
       "bicep",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions",
       "managedidentity"
     ],
     "id": "48ce5d64-df9b-4546-9ba1-69955e608b98",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -3345,13 +3345,13 @@
       "bicep",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "cosmosdb",
       "aca",
       "managedidentity"
     ],
     "id": "a03287e5-bc90-4062-8c6b-3b65045d5310",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -3366,13 +3366,13 @@
       "bicep",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "cosmosdb",
       "aca",
       "managedidentity"
     ],
     "id": "43cd8998-653c-4c97-8ca5-ac463ca88900",
-    "language": [
+    "languages": [
       "nodejs"
     ]
   },
@@ -3388,7 +3388,7 @@
       "powershell",
       "bicep"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions",
       "servicebus",
       "logicapps",
@@ -3397,7 +3397,7 @@
       "appservice"
     ],
     "id": "958495bd-80ef-45b1-828a-ef921a66aeb4",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -3412,7 +3412,7 @@
       "community",
       "bicep"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions",
       "logicapps",
       "keyvault",
@@ -3420,7 +3420,7 @@
       "appservice"
     ],
     "id": "a90195f5-07fa-48a3-a27f-e216de708e11",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -3435,7 +3435,7 @@
       "community",
       "bicep"
     ],
-    "azure_service": [
+    "azureServices": [
       "logicapps",
       "keyvault",
       "monitor"
@@ -3455,7 +3455,7 @@
       "bicep",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca",
       "azuredb-postgreSQL",
       "azuredb-mySQL",
@@ -3463,7 +3463,7 @@
       "managedidentity"
     ],
     "id": "cf2b4744-6b65-492a-bb3a-871fdc7a0a6d",
-    "language": [
+    "languages": [
       "java"
     ]
   },
@@ -3479,7 +3479,7 @@
       "msft",
       "aicollection"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca",
       "azuredb-mySQL",
       "monitor",
@@ -3489,7 +3489,7 @@
       "openai"
     ],
     "id": "267dd459-3127-4ab0-a0fa-3f3b79f5e734",
-    "language": [
+    "languages": [
       "java"
     ]
   },
@@ -3505,11 +3505,11 @@
       "bicep",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca"
     ],
     "id": "10541f55-54fd-4382-9e2e-88b70e9a7087",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -3524,13 +3524,13 @@
       "bicep",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca",
       "managedidentity",
       "openai"
     ],
     "id": "9cb76b7b-c6f2-4742-829f-34765f335457",
-    "language": [
+    "languages": [
       "java"
     ]
   },
@@ -3545,13 +3545,13 @@
       "bicep",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "apim",
       "managedidentity",
       "openai"
     ],
     "id": "edb77f4f-ddcc-4ecc-a025-70e3397bea31",
-    "language": [
+    "languages": [
       "javascript"
     ]
   },
@@ -3567,7 +3567,7 @@
       "reactjs",
       "bicep"
     ],
-    "azure_service": [
+    "azureServices": [
       "appservice",
       "swa",
       "appinsights",
@@ -3576,7 +3576,7 @@
       "keyvault"
     ],
     "id": "fdddba67-e186-402d-ac95-059c93f05533",
-    "language": [
+    "languages": [
       "javascript",
       "nodejs"
     ]
@@ -3595,14 +3595,14 @@
       "bicep",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "azuredb-postgreSQL",
       "openai",
       "aks",
       "managedidentity"
     ],
     "id": "84555da7-3f3a-4451-9b10-cb083e481a41",
-    "language": [
+    "languages": [
       "java"
     ]
   },
@@ -3618,7 +3618,7 @@
       "msft",
       "autogen"
     ],
-    "azure_service": [
+    "azureServices": [
       "managedidentity",
       "openai",
       "aca",
@@ -3627,7 +3627,7 @@
       "appinsights"
     ],
     "id": "1e29650e-c24c-41c0-a037-2c1352c40cc3",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -3643,11 +3643,11 @@
       "msft",
       "bicep"
     ],
-    "azure_service": [
+    "azureServices": [
       "appservice"
     ],
     "id": "5fa2b466-8e1f-48ca-91e0-2e259d89985f",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -3664,13 +3664,13 @@
       "bicep",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "cosmosdb",
       "aca",
       "managedidentity"
     ],
     "id": "85c20504-7cd8-4550-bdea-5c300f52c70b",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -3687,13 +3687,13 @@
       "bicep",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "azuresql",
       "aca",
       "managedidentity"
     ],
     "id": "d8e9bdd8-2874-4e4a-8cf7-3d32b72f9a69",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -3708,14 +3708,14 @@
       "bicep",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca",
       "azureai",
       "managedidentity",
       "openai"
     ],
     "id": "ffb0128a-3b8d-4683-8500-bdf7df27da1b",
-    "language": [
+    "languages": [
       "javascript",
       "typescript",
       "nodejs"
@@ -3732,7 +3732,7 @@
       "bicep",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions",
       "managedidentity",
       "azurestorage",
@@ -3742,7 +3742,7 @@
       "loganalytics"
     ],
     "id": "8f5c1792-be93-4d58-bb4d-f1df07c71b91",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -3758,13 +3758,13 @@
       "bicep",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions",
       "managedidentity",
       "appinsights"
     ],
     "id": "1d5dcde7-eac8-440f-8b47-dbe9f2d267ba",
-    "language": [
+    "languages": [
       "typescript",
       "javascript"
     ]
@@ -3779,7 +3779,7 @@
     "tags": [
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "appservice",
       "managedidentity",
       "keyvault",
@@ -3797,7 +3797,7 @@
     "tags": [
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "appservice",
       "apim",
       "monitor",
@@ -3816,7 +3816,7 @@
     "tags": [
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "azureai",
       "monitor"
@@ -3834,7 +3834,7 @@
       "community",
       "webapps"
     ],
-    "azure_service": [
+    "azureServices": [
       "keyvault",
       "cosmosdb",
       "appinsights",
@@ -3856,7 +3856,7 @@
       "webapps",
       "blazor"
     ],
-    "azure_service": [
+    "azureServices": [
       "azureai",
       "monitor",
       "azurestorage"
@@ -3873,7 +3873,7 @@
     "tags": [
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "keyvault",
       "appinsights",
       "vnets",
@@ -3893,7 +3893,7 @@
     "tags": [
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "monitor",
       "keyvault",
       "vnets"
@@ -3910,7 +3910,7 @@
     "tags": [
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "managedidentity"
     ],
     "id": "c0a8a207-61b1-4a66-b9bf-efd5910bdc47"
@@ -3925,7 +3925,7 @@
     "tags": [
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca",
       "managedidentity"
     ],
@@ -3941,7 +3941,7 @@
     "tags": [
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "aks",
       "managedidentity",
       "monitor"
@@ -3959,13 +3959,13 @@
       "bicep",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "cosmosdb",
       "aca",
       "managedidentity"
     ],
     "id": "b9091b21-1948-4912-ad51-466a12201758",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -3980,13 +3980,13 @@
       "bicep",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "cosmosdb",
       "aca",
       "managedidentity"
     ],
     "id": "c7d0d95e-5a3c-43f3-9af1-9a2752f5a68e",
-    "language": [
+    "languages": [
       "go"
     ]
   },
@@ -4001,13 +4001,13 @@
       "bicep",
       "msft"
     ],
-    "azure_service": [
+    "azureServices": [
       "cosmosdb",
       "aca",
       "managedidentity"
     ],
     "id": "e6b9ab59-b166-456b-a72b-14acc89ce210",
-    "language": [
+    "languages": [
       "java"
     ]
   },
@@ -4021,7 +4021,7 @@
     "tags": [
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "frontdoor"
     ],
     "id": "d2e8d2a8-af7c-43f2-9580-cbccd0a5eb57"
@@ -4036,7 +4036,7 @@
     "tags": [
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "appservice",
       "azuresql"
     ],
@@ -4052,7 +4052,7 @@
     "tags": [
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "eventhub"
     ],
     "id": "52a954f8-1b21-4d9a-8851-b42ae168bb96"
@@ -4067,7 +4067,7 @@
     "tags": [
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "vnets"
     ],
     "id": "9b954e02-8447-44d0-8b5f-ed7802bd88f2"
@@ -4082,7 +4082,7 @@
     "tags": [
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "vnets"
     ],
     "id": "9a2acebe-8400-48c5-b836-0a7ead8a73b9"
@@ -4097,7 +4097,7 @@
     "tags": [
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions"
     ],
     "id": "95e9ffd4-58b5-47ac-a6b9-057ad54ef40d"
@@ -4112,7 +4112,7 @@
     "tags": [
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "sentinel"
     ],
     "id": "5a6a8d26-baf4-423f-9750-96bcc8520e39"
@@ -4127,7 +4127,7 @@
     "tags": [
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "trafficmgr"
     ],
     "id": "9af797ad-ede8-45e3-922c-c878c71efdd3"
@@ -4145,13 +4145,13 @@
       "ai",
       "spring"
     ],
-    "azure_service": [
+    "azureServices": [
       "managedidentity",
       "openai",
       "appservice"
     ],
     "id": "c8d9a65a-282e-4d6d-a1e4-6248952a1e32",
-    "language": [
+    "languages": [
       "java"
     ]
   },
@@ -4168,14 +4168,14 @@
       "bicep",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "cosmosdb",
       "appinsights",
       "azurestorage",
       "aca"
     ],
     "id": "691b7df7-ae12-42a8-9186-d812cc93ad90",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -4193,14 +4193,14 @@
       "langchain4j",
       "rag"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca",
       "managedidentity",
       "openai",
       "monitor"
     ],
     "id": "2d0a9297-4d1f-4e0c-b708-3a9f49967274",
-    "language": [
+    "languages": [
       "java"
     ]
   },
@@ -4215,7 +4215,7 @@
       "bicep",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "apim",
       "appinsights",
       "azurestorage",
@@ -4228,7 +4228,7 @@
       "servicebus"
     ],
     "id": "55a520f0-06d1-4856-8820-44cb74a4d92d",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -4244,11 +4244,11 @@
       "aspire",
       "bicep"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca"
     ],
     "id": "c9e16274-a367-4140-aab1-64bb117d67ba",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -4263,14 +4263,14 @@
       "msft",
       "bicep"
     ],
-    "azure_service": [
+    "azureServices": [
       "aisearch",
       "azureai",
       "blobstorage",
       "functions"
     ],
     "id": "6b87a038-c8fd-45fd-9362-c98d20cee4ca",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -4284,7 +4284,7 @@
     "tags": [
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "purview",
       "azuresql",
       "keyvault",
@@ -4304,7 +4304,7 @@
     "tags": [
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "vnets",
       "azurestorage",
       "virtualmachine"
@@ -4321,7 +4321,7 @@
     "tags": [
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "hyperv",
       "vnets",
       "virtualmachine",
@@ -4339,7 +4339,7 @@
     "tags": [
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "vnets",
       "virtualmachine",
       "azurestorage"
@@ -4369,7 +4369,7 @@
       "community",
       "mongodb"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions",
       "vnets",
       "azurestorage",
@@ -4395,7 +4395,7 @@
     "tags": [
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "agw",
       "vnets",
       "virtualmachine"
@@ -4414,12 +4414,12 @@
       "community",
       "bicep"
     ],
-    "azure_service": [
+    "azureServices": [
       "appservice",
       "monitor"
     ],
     "id": "02a02124-4966-48af-8479-75d34d2f0f26",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -4435,13 +4435,13 @@
       "bicep",
       "ai"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai",
       "azuredb-postgreSQL",
       "aca"
     ],
     "id": "db0c39ff-cd8a-45d4-84b3-348aa9e5ae3b",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -4458,11 +4458,11 @@
       "bicep",
       "ai"
     ],
-    "azure_service": [
+    "azureServices": [
       "aca"
     ],
     "id": "60bd90f8-b04b-46a1-bfa0-f74b0d669375",
-    "language": [
+    "languages": [
       "nodejs",
       "typescript"
     ]
@@ -4478,7 +4478,7 @@
       "new",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "loadtesting",
       "appservice",
       "appinsights"
@@ -4496,7 +4496,7 @@
       "new",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "blobstorage",
       "azurestorage"
     ],
@@ -4513,7 +4513,7 @@
       "new",
       "community"
     ],
-    "azure_service": [
+    "azureServices": [
       "azurestorage",
       "keyvault",
       "cosmosdb",
@@ -4534,11 +4534,11 @@
       "ai",
       "new"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions"
     ],
     "id": "d7da481d-769d-4a79-aba6-9370acc41c2a",
-    "language": [
+    "languages": [
       "typescript",
       "nodejs"
     ]
@@ -4556,11 +4556,11 @@
       "ai",
       "new"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions"
     ],
     "id": "5276cdee-61d6-49a5-add1-2c5693e6577c",
-    "language": [
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -4577,11 +4577,11 @@
       "ai",
       "new"
     ],
-    "azure_service": [
+    "azureServices": [
       "functions"
     ],
     "id": "e11bb59e-5df9-4fa7-8839-7bc5c384a6ff",
-    "language": [
+    "languages": [
       "python"
     ]
   },
@@ -4598,13 +4598,13 @@
       "msft",
       "new"
     ],
-    "azure_service": [
+    "azureServices": [
       "managedidentity",
       "openai",
       "loganalytics"
     ],
     "id": "f9dd77f7-0a8d-4025-9785-fb3d8fdb7198",
-    "language": [
+    "languages": [
       "dotnetCsharp",
       "typescript",
       "javascript"
@@ -4623,7 +4623,7 @@
       "msft",
       "new"
     ],
-    "azure_service": [
+    "azureServices": [
       "managedidentity",
       "aisearch",
       "azuresql",
@@ -4631,7 +4631,7 @@
       "loganalytics"
     ],
     "id": "92a49f6d-772c-4d40-ac4e-6dbbb29a7320",
-    "language": [
+    "languages": [
       "dotnetCsharp",
       "typescript",
       "javascript"
@@ -4653,11 +4653,11 @@
       "rag",
       "new"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai"
     ],
     "id": "ffe86fd0-7394-4c28-a1ce-9ae7115254cc",
-    "language": [
+    "languages": [
       "python",
       "javascript"
     ]
@@ -4678,11 +4678,11 @@
       "rag",
       "new"
     ],
-    "azure_service": [
+    "azureServices": [
       "openai"
     ],
     "id": "6ea9084f-92cb-4e70-bece-608138754978",
-    "language": [
+    "languages": [
       "javascript",
       "typescript",
       "nodejs"
@@ -4696,13 +4696,18 @@
     "author": "Julia Kasper",
     "source": "https://github.com/Azure-Samples/remote-mcp-apim-functions-python",
     "tags": [
-      "apim",
-      "functions",
-      "python",
       "bicep",
       "msft",
       "ai",
       "new"
+    ],
+    "azureServices": [
+      "apim",
+      "functions"
+    ],
+    "id": "d31149d5-3c9a-47d5-9f28-629890dbe1f2",
+    "languages": [
+      "python"
     ]
   },
   {
@@ -4716,8 +4721,13 @@
       "community",
       "new",
       "bicep",
-      "ai",
-      "aca",
+      "ai"
+    ],
+    "azureServices": [
+      "aca"
+    ],
+    "id": "2912362d-7bf2-4091-8910-d6e22fd76618",
+    "languages": [
       "dotnetCsharp"
     ]
   },
@@ -4730,11 +4740,49 @@
     "source": "https://github.com/erudinsky/azd-static-web-vuejs",
     "tags": [
       "vuejs",
-      "swa",
       "bicep",
       "community",
       "new"
-    ]
+    ],
+    "azureServices": [
+      "swa"
+    ],
+    "id": "ce524ab6-db44-48c6-a299-daa462987ad0"
+  },
+  {
+    "title": "Deploy DeepSeek-R1 on Azure Container Apps with Serverless GPUs.",
+    "description": "This scenario deploys deploy DeepSeek-R1 on Azure Container Apps with Serverless GPUs",
+    "preview": "./templates/images/deepseekr1.jpg",
+    "website": "https://github.com/daverendon",
+    "author": "Dave Rendon",
+    "source": "https://github.com/daverendon/azd-deepseek-r1-on-azure-container-apps",
+    "tags": [
+      "community",
+      "new"
+    ],
+    "azureServices": [
+      "loganalytics",
+      "aca"
+    ],
+    "id": "16dde382-f20b-4c29-ad9b-e11ea0be715e"
+  },
+  {
+    "title": "YouTube Summarizer with OpenAI and Blazor .NET",
+    "description": "This scenario deploys a Blazor .NET FrontEnd application, together with Azure OpenAI Service, to provide a summary of YouTube videos in 5 bullet points",
+    "preview": "./templates/images/YoutubeSummarizer.png",
+    "website": "https://github.com/petender",
+    "author": "Peter De Tender",
+    "source": "https://github.com/petender/azd-youtubesummarizer-openai",
+    "tags": [
+      "community",
+      "new"
+    ],
+    "azureServices": [
+      "azureai",
+      "managedidentity",
+      "openai"
+    ],
+    "id": "c8a63813-80dc-435f-ba93-e5d82ed5a2b2"
   },
   {
     "title": "Vite + Lit AI Chat UI Starter",
@@ -4744,11 +4792,16 @@
     "author": "Julia Muiruri",
     "source": "https://github.com/juliamuiruri4/vite-chat-interface",
     "tags": [
-      "javascript",
-      "swa",
       "bicep",
       "community",
       "new"
+    ],
+    "azureServices": [
+      "swa"
+    ],
+    "id": "cbb98c98-07f3-4cc8-a361-00c8e6895018",
+    "languages": [
+      "javascript"
     ]
   },
   {

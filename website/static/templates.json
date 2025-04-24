@@ -4829,5 +4829,20 @@
     "language": [
       "dotnetCsharp"
     ]
+  },
+  {
+    "title": "C# API App with Swagger UI deployed to Azure App Service",
+    "description": "A simple C# .NET 9 API app with Swagger UI deployed to Azure App Service. The app is a simple REST API with 'TODO' endpoints as a starting point for your own API app.",
+    "preview": "./templates/images/build5nines-azd-csharp-api-swagger.png",
+    "website": "https://build5nines.com",
+    "author": "Build5Nines",
+    "source": "https://github.com/Build5Nines/azd-csharp-api-swagger",
+    "tags": [
+      "new",
+      "community",
+      "dotnetCsharp",
+      "bicep",
+      "appservice"
+    ]
   }
 ]

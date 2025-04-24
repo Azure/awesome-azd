@@ -4765,7 +4765,6 @@
       "ai",
       "rag",
       "semantickernel",
-      "azuresql"
     ],
     "azure_service": [
       "managedidentity",

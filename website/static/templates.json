@@ -4760,6 +4760,7 @@
     "source": "https://github.com/Azure-Samples/blazor-azure-sql-vector-search",
     "tags": [
       "msft",
+      "new",
       "bicep",
       "ai",
       "rag",

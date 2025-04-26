@@ -4828,6 +4828,10 @@
     "tags": [
       "community", 
       "new", 
+      "appservice",
+      "loganalytics",
+      "azuresql",
+      "keyvault",
       "appservice"
     ]
   },

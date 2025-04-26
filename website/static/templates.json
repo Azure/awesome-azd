@@ -4842,7 +4842,9 @@
       "community", 
       "new", 
       "appservice",
-      "python"
+      "python",
+      "vnets",
+      "openai"
     ]
   }
 ]

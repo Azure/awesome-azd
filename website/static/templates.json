@@ -4805,6 +4805,53 @@
     ]
   },
   {
+    "title": "International Space Station (ISS) Tracker with Fabric and Event Hubs",
+    "description": "This scenario deploys an Azure Fabric Cluster with a sample application that tracks the International Space Station (ISS) using Azure Event Hubs and Azure LogicApps.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/petender",
+    "author": "Peter De Tender",
+    "source": "https://github.com/petender/issdata",
+    "tags": [
+      "community", 
+      "new", 
+      "fabric", 
+      "eventhub"
+    ] 
+  },
+  {
+    "title": "Deploy a baseline web application",
+    "description": "This repository provides a baseline for deploying web applications with Deployment Slots, Azure SQL Connectivity and KeyVault.",
+    "preview": "./templates/images/baseline-webapp.png",
+    "website": "https://github.com/daverendon",
+    "author": "Dave Rendon",
+    "source": "https://github.com/daverendon/azd-baseline-webapp",
+    "tags": [
+      "community", 
+      "new", 
+      "appservice",
+      "loganalytics",
+      "azuresql",
+      "keyvault",
+      "appservice"
+    ]
+  },
+  {
+    "title": "Cognitive Services Python App with ServiceEndpoint",
+    "description": "This sample scenario deploys Microsoft.CognitiveServices (Face API, Speech, Vision, OpenAI) with a sample Python app. It also showcases a secure setup, where connectivity to the Cognitive Services is only allowed from a Client IP or the webapp Service Endpoint, not public network.",
+    "preview": "./templates/images/azd-vision-face-diagram.png",
+    "website": "https://github.com/petender",
+    "author": "Peter De Tender",
+    "source": "https://github.com/petender/azd-vision-face",
+    "tags": [
+      "community", 
+      "new", 
+      "appservice",
+      "python",
+      "vnets",
+      "openai"
+     ]
+  },
+  {
     "title": "Azure SQL w/ Azure OpenAI Blazor chat app on Azure App Service",
     "description": "Create a .NET Blazor chat app with Azure SQL data using a hybrid vector search and Azure OpenAI.",
     "preview": "./templates/images/test.png",

@@ -9,6 +9,8 @@ import { translate } from "@docusaurus/Translate";
 import NavbarMobileSidebar from "@theme/Navbar/MobileSidebar";
 import styles from "./styles.module.css";
 import { manageCookieLabel, manageCookieId } from "../../../../constants.js";
+import Clarity from '@microsoft/clarity';
+
 function NavbarBackdrop(props) {
   return (
     <div
@@ -28,7 +30,7 @@ function removeItem(id) {
   }
 }
 
-const adobeInit = () => {
+const telemetryInit = () => {
   // Adobe Analytics
   // WCP initialization
   const SET = "set";
@@ -50,6 +52,8 @@ const adobeInit = () => {
       onConsentChanged
     );
 
+  Clarity.init("r8ugpuymsy");
+  
   function onConsentChanged(categoryPreferences) {
     setNonEssentialCookies(categoryPreferences);
   }
@@ -57,8 +61,10 @@ const adobeInit = () => {
   function setNonEssentialCookies(categoryPreferences) {
     if (categoryPreferences.Analytics) {
       AnalyticsCookies(SET);
+      Clarity.consent();
     } else {
       AnalyticsCookies(RESET);
+      Clarity.consent(false);
     }
 
     if (categoryPreferences.SocialMedia) {
@@ -140,8 +146,8 @@ const adobeInit = () => {
       // Print out a message if user uses a ad blocker
       console.log(
         "The oneDS functionality is currently unavailable. This could be caused by an active ad blocker. " +
-          "As a result, telemetry provided by Adobe Analytics has been disabled. Please consider " +
-          "disabling your ad blocker or whitelisting our site if you wish to enable this functionality."
+        "As a result, telemetry provided by Adobe Analytics has been disabled. Please consider " +
+        "disabling your ad blocker or whitelisting our site if you wish to enable this functionality."
       );
     } else {
       // Throw other errors
@@ -158,7 +164,7 @@ export default function NavbarLayout({ children }) {
   const { navbarRef, isNavbarVisible } = useHideableNavbar(hideOnScroll);
 
   useEffect(() => {
-    adobeInit();
+    telemetryInit();
   }, []);
 
   return (

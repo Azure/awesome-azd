@@ -145,6 +145,7 @@ export type TagType =
   | "fabric"
   | "sqlserver"
   | "avset"
+  | "bastion"
   ;
 
 
@@ -846,6 +847,13 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture for Availability Set",
     azureIcon: "./img/VM-AVSets.svg",
     url: "https://learn.microsoft.com/azure/virtual-machines/availability-set-overview",
+    type: "Service",
+  },
+  bastion: {
+    label: "Azure Bastion",
+    description: "Template architecture for Azure Bastion",
+    azureIcon: "./img/Azure-Bastion.svg",
+    url: "https://azure.microsoft.com/products/azure-bastion",
     type: "Service",
   },
 

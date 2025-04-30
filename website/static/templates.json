@@ -4798,11 +4798,14 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/issdata",
     "tags": [
-      "community", 
-      "new", 
-      "fabric", 
+      "community",
+      "new",
+      "fabric"
+    ],
+    "azureServices": [
       "eventhub"
-    ] 
+    ],
+    "id": "8f0eb1ed-2f29-4d40-b197-08859b1dd2db"
   },
   {
     "title": "Deploy a baseline web application",
@@ -4812,14 +4815,17 @@
     "author": "Dave Rendon",
     "source": "https://github.com/daverendon/azd-baseline-webapp",
     "tags": [
-      "community", 
-      "new", 
+      "community",
+      "new"
+    ],
+    "azureServices": [
       "appservice",
       "loganalytics",
       "azuresql",
       "keyvault",
       "appservice"
-    ]
+    ],
+    "id": "2a093492-1042-48ba-a67e-fab226d25c59"
   },
   {
     "title": "Cognitive Services Python App with ServiceEndpoint",
@@ -4829,13 +4835,18 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-vision-face",
     "tags": [
-      "community", 
-      "new", 
+      "community",
+      "new"
+    ],
+    "azureServices": [
       "appservice",
-      "python",
       "vnets",
       "openai"
-     ]
+    ],
+    "id": "64073610-c2b2-4bc4-8b4f-4f497bbcbd12",
+    "languages": [
+      "python"
+    ]
   },
   {
     "title": "Azure SQL w/ Azure OpenAI Blazor chat app on Azure App Service",
@@ -4873,9 +4884,14 @@
     "tags": [
       "new",
       "community",
-      "dotnetCsharp",
-      "bicep",
+      "bicep"
+    ],
+    "azureServices": [
       "appservice"
+    ],
+    "id": "faab6d9e-ce20-41b0-bdf6-f4acc9741763",
+    "languages": [
+      "dotnetCsharp"
     ]
   }
 ]

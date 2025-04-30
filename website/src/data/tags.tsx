@@ -143,6 +143,8 @@ export type TagType =
   | "loadtesting"
   | "hyperv"
   | "fabric"
+  | "sqlserver"
+  | "avset"
   ;
 
 
@@ -831,6 +833,20 @@ export const Tags: { [type in TagType]: Tag } = {
     azureIcon: "./img/Azure-Fabric.png",
     url: "https://www.microsoft.com/microsoft-fabric",
     type: "Service", 
+  },
+  sqlserver: {
+    label: "SQL Server",
+    description: "Template architecture for SQL Server",
+    azureIcon: "./img/SQL-Server-Database.svg",
+    url: "https://azure.microsoft.com/products/virtual-machines/sql-server/",
+    type: "Service",
+  },
+  avset: {
+    label: "Availability Set",
+    description: "Template architecture for Availability Set",
+    azureIcon: "./img/VM-AVSets.svg",
+    url: "https://learn.microsoft.com/azure/virtual-machines/availability-set-overview",
+    type: "Service",
   },
 
   // For Topics

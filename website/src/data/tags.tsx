@@ -20,8 +20,8 @@ export type User = {
   author: string;
   source: string;
   tags: TagType[];
-  language?: TagType[];
-  azure_service?: TagType[];
+  languages?: TagType[];
+  azureServices?: TagType[];
 };
 
 // NN: Updated TagType to suit Static Web Apps
@@ -141,7 +141,9 @@ export type TagType =
   | "purview"
   | "vpngw"
   | "loadtesting"
-  | "hyperv";
+  | "hyperv"
+  | "fabric"
+  ;
 
 
 // LIST OF AVAILABLE TAGS
@@ -822,6 +824,13 @@ export const Tags: { [type in TagType]: Tag } = {
     azureIcon: "./img/Azure-Hyper-V-Host.svg",
     url: "https://learn.microsoft.com/azure/migrate/tutorial-migrate-hyper-v?tabs=UI",
     type: "Service",
+  },
+  fabric: {
+    label: "Microsoft Fabric",
+    description: "Template architecture for Microsoft Fabric",
+    azureIcon: "./img/Azure-Fabric.png",
+    url: "https://www.microsoft.com/microsoft-fabric",
+    type: "Service", 
   },
 
   // For Topics

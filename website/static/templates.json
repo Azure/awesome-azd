@@ -4454,7 +4454,6 @@
     "source": "https://github.com/powergentic/azd-mcp-ts",
     "tags": [
       "community",
-      "new",
       "bicep",
       "ai"
     ],
@@ -4475,7 +4474,6 @@
     "author": "Maarten van Diemen",
     "source": "https://github.com/maartenvandiemen/azd-loadtest/",
     "tags": [
-      "new",
       "community"
     ],
     "azureServices": [
@@ -4493,7 +4491,6 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-storaccnt/",
     "tags": [
-      "new",
       "community"
     ],
     "azureServices": [
@@ -4510,7 +4507,6 @@
     "author": "Alex Ivanov",
     "source": "https://github.com/true-while/secure-data-solutions/",
     "tags": [
-      "new",
       "community"
     ],
     "azureServices": [
@@ -4531,8 +4527,7 @@
     "tags": [
       "bicep",
       "msft",
-      "ai",
-      "new"
+      "ai"
     ],
     "azureServices": [
       "functions"
@@ -4553,8 +4548,7 @@
     "tags": [
       "bicep",
       "msft",
-      "ai",
-      "new"
+      "ai"
     ],
     "azureServices": [
       "functions"
@@ -4574,8 +4568,7 @@
     "tags": [
       "bicep",
       "msft",
-      "ai",
-      "new"
+      "ai"
     ],
     "azureServices": [
       "functions"
@@ -4595,8 +4588,7 @@
     "tags": [
       "bicep",
       "ai",
-      "msft",
-      "new"
+      "msft"
     ],
     "azureServices": [
       "managedidentity",
@@ -4620,8 +4612,7 @@
     "tags": [
       "bicep",
       "ai",
-      "msft",
-      "new"
+      "msft"
     ],
     "azureServices": [
       "managedidentity",
@@ -4650,8 +4641,7 @@
       "bicep",
       "ai",
       "community",
-      "rag",
-      "new"
+      "rag"
     ],
     "azureServices": [
       "openai"
@@ -4675,8 +4665,7 @@
       "bicep",
       "ai",
       "community",
-      "rag",
-      "new"
+      "rag"
     ],
     "azureServices": [
       "openai"
@@ -4698,8 +4687,7 @@
     "tags": [
       "bicep",
       "msft",
-      "ai",
-      "new"
+      "ai"
     ],
     "azureServices": [
       "apim",
@@ -4719,7 +4707,6 @@
     "source": "https://github.com/powergentic/azd-mcp-csharp",
     "tags": [
       "community",
-      "new",
       "bicep",
       "ai"
     ],
@@ -4741,8 +4728,7 @@
     "tags": [
       "vuejs",
       "bicep",
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "swa"

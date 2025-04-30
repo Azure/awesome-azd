@@ -4454,7 +4454,6 @@
     "source": "https://github.com/powergentic/azd-mcp-ts",
     "tags": [
       "community",
-      "new",
       "bicep",
       "ai"
     ],
@@ -4475,7 +4474,6 @@
     "author": "Maarten van Diemen",
     "source": "https://github.com/maartenvandiemen/azd-loadtest/",
     "tags": [
-      "new",
       "community"
     ],
     "azureServices": [
@@ -4493,7 +4491,6 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-storaccnt/",
     "tags": [
-      "new",
       "community"
     ],
     "azureServices": [
@@ -4510,7 +4507,6 @@
     "author": "Alex Ivanov",
     "source": "https://github.com/true-while/secure-data-solutions/",
     "tags": [
-      "new",
       "community"
     ],
     "azureServices": [
@@ -4531,8 +4527,7 @@
     "tags": [
       "bicep",
       "msft",
-      "ai",
-      "new"
+      "ai"
     ],
     "azureServices": [
       "functions"
@@ -4553,8 +4548,7 @@
     "tags": [
       "bicep",
       "msft",
-      "ai",
-      "new"
+      "ai"
     ],
     "azureServices": [
       "functions"
@@ -4574,8 +4568,7 @@
     "tags": [
       "bicep",
       "msft",
-      "ai",
-      "new"
+      "ai"
     ],
     "azureServices": [
       "functions"
@@ -4595,8 +4588,7 @@
     "tags": [
       "bicep",
       "ai",
-      "msft",
-      "new"
+      "msft"
     ],
     "azureServices": [
       "managedidentity",
@@ -4620,8 +4612,7 @@
     "tags": [
       "bicep",
       "ai",
-      "msft",
-      "new"
+      "msft"
     ],
     "azureServices": [
       "managedidentity",
@@ -4650,8 +4641,7 @@
       "bicep",
       "ai",
       "community",
-      "rag",
-      "new"
+      "rag"
     ],
     "azureServices": [
       "openai"
@@ -4675,8 +4665,7 @@
       "bicep",
       "ai",
       "community",
-      "rag",
-      "new"
+      "rag"
     ],
     "azureServices": [
       "openai"
@@ -4698,8 +4687,7 @@
     "tags": [
       "bicep",
       "msft",
-      "ai",
-      "new"
+      "ai"
     ],
     "azureServices": [
       "apim",
@@ -4719,7 +4707,6 @@
     "source": "https://github.com/powergentic/azd-mcp-csharp",
     "tags": [
       "community",
-      "new",
       "bicep",
       "ai"
     ],
@@ -4741,8 +4728,7 @@
     "tags": [
       "vuejs",
       "bicep",
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "swa"
@@ -4802,6 +4788,110 @@
     "id": "cbb98c98-07f3-4cc8-a361-00c8e6895018",
     "languages": [
       "javascript"
+    ]
+  },
+  {
+    "title": "International Space Station (ISS) Tracker with Fabric and Event Hubs",
+    "description": "This scenario deploys an Azure Fabric Cluster with a sample application that tracks the International Space Station (ISS) using Azure Event Hubs and Azure LogicApps.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/petender",
+    "author": "Peter De Tender",
+    "source": "https://github.com/petender/issdata",
+    "tags": [
+      "community",
+      "new",
+      "fabric"
+    ],
+    "azureServices": [
+      "eventhub"
+    ],
+    "id": "8f0eb1ed-2f29-4d40-b197-08859b1dd2db"
+  },
+  {
+    "title": "Deploy a baseline web application",
+    "description": "This repository provides a baseline for deploying web applications with Deployment Slots, Azure SQL Connectivity and KeyVault.",
+    "preview": "./templates/images/baseline-webapp.png",
+    "website": "https://github.com/daverendon",
+    "author": "Dave Rendon",
+    "source": "https://github.com/daverendon/azd-baseline-webapp",
+    "tags": [
+      "community",
+      "new"
+    ],
+    "azureServices": [
+      "appservice",
+      "loganalytics",
+      "azuresql",
+      "keyvault",
+      "appservice"
+    ],
+    "id": "2a093492-1042-48ba-a67e-fab226d25c59"
+  },
+  {
+    "title": "Cognitive Services Python App with ServiceEndpoint",
+    "description": "This sample scenario deploys Microsoft.CognitiveServices (Face API, Speech, Vision, OpenAI) with a sample Python app. It also showcases a secure setup, where connectivity to the Cognitive Services is only allowed from a Client IP or the webapp Service Endpoint, not public network.",
+    "preview": "./templates/images/azd-vision-face-diagram.png",
+    "website": "https://github.com/petender",
+    "author": "Peter De Tender",
+    "source": "https://github.com/petender/azd-vision-face",
+    "tags": [
+      "community",
+      "new"
+    ],
+    "azureServices": [
+      "appservice",
+      "vnets",
+      "openai"
+    ],
+    "id": "64073610-c2b2-4bc4-8b4f-4f497bbcbd12",
+    "languages": [
+      "python"
+    ]
+  },
+  {
+    "title": "Azure SQL w/ Azure OpenAI Blazor chat app on Azure App Service",
+    "description": "Create a .NET Blazor chat app with Azure SQL data using a hybrid vector search and Azure OpenAI.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/jeffwmartinez",
+    "author": "Jeff Martinez",
+    "source": "https://github.com/Azure-Samples/blazor-azure-sql-vector-search",
+    "tags": [
+      "msft",
+      "new",
+      "bicep",
+      "ai",
+      "rag",
+      "semantickernel"
+    ],
+    "azure_service": [
+      "managedidentity",
+      "openai",
+      "appservice",
+      "azuresql"
+    ],
+    "id": "7e574780-0f87-42e8-af8c-5e8cb7d3540a",
+    "language": [
+      "dotnetCsharp"
+    ]
+  },
+  {
+    "title": "C# API App with Swagger UI deployed to Azure App Service",
+    "description": "A simple C# .NET 9 API app with Swagger UI deployed to Azure App Service. The app is a simple REST API with 'TODO' endpoints as a starting point for your own API app.",
+    "preview": "./templates/images/build5nines-azd-csharp-api-swagger.png",
+    "website": "https://build5nines.com",
+    "author": "Build5Nines",
+    "source": "https://github.com/Build5Nines/azd-csharp-api-swagger",
+    "tags": [
+      "new",
+      "community",
+      "bicep"
+    ],
+    "azureServices": [
+      "appservice"
+    ],
+    "id": "faab6d9e-ce20-41b0-bdf6-f4acc9741763",
+    "languages": [
+      "dotnetCsharp"
     ]
   }
 ]

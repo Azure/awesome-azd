@@ -4893,5 +4893,28 @@
     "languages": [
       "dotnetCsharp"
     ]
+  },
+  {
+    "title": "AI-Powered Code Snippet Manager with Azure Functions and MCP",
+    "description": "Build a modern code snippet management system using an MCP server built on Azure Functions with bindings to Cosmos DB DiskANN vector search and AI Agents Service for deep wiki and code style generation. This solution enables intelligent code snippet discovery and reuse through GitHub Copilot integration.",
+    "preview": "./templates/images/snippy-architecture.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Govind Kamtamneni",
+    "source": "https://github.com/Azure-Samples/snippy",
+    "tags": [
+      "bicep",
+      "msft",
+      "ai"
+    ],
+    "azureServices": [
+      "functions",
+      "aiagents",
+      "openai",
+      "cosmosdb",
+      "azureai"
+    ],
+    "languages": [
+      "python"
+    ]
   }
 ]

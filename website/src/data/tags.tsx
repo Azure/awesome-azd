@@ -836,7 +836,7 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Service", 
   },
   vmsqlserver: {
-    label: "SQL Server on Azure Virtual Machines,
+    label: "SQL Server on Azure Virtual Machines",
     description: "Template architecture for SQL Server",
     azureIcon: "./img/SQL-Server-Database.svg",
     url: "https://azure.microsoft.com/products/virtual-machines/sql-server/",

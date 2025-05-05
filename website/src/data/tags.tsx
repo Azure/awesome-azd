@@ -143,7 +143,7 @@ export type TagType =
   | "loadtesting"
   | "hyperv"
   | "fabric"
-  | "sqlserver"
+  | "vmsqlserver"
   | "avset"
   | "bastion"
   ;

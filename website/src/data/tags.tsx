@@ -835,7 +835,7 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://www.microsoft.com/microsoft-fabric",
     type: "Service", 
   },
-  sqlserver: {
+  vmsqlserver: {
     label: "SQL Server",
     description: "Template architecture for SQL Server",
     azureIcon: "./img/SQL-Server-Database.svg",

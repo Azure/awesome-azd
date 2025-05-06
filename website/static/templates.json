@@ -4776,10 +4776,10 @@
     "preview": "./templates/images/vite-lit-ai-chat-interface.png",
     "website": "https://github.com/juliamuiruri4",
     "author": "Julia Muiruri",
-    "source": "https://github.com/juliamuiruri4/vite-chat-interface",
+    "source": "https://github.com/Azure-Samples/vite-chat-interface",
     "tags": [
       "bicep",
-      "community",
+      "msft",
       "new"
     ],
     "azureServices": [

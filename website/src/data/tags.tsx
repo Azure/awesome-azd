@@ -838,14 +838,14 @@ export const Tags: { [type in TagType]: Tag } = {
   vmsqlserver: {
     label: "SQL Server on Azure Virtual Machines",
     description: "Template architecture for SQL Server",
-    azureIcon: "./img/SQL-Server-Database.svg",
+    azureIcon: "./img/Azure-SQL-Server.svg",
     url: "https://azure.microsoft.com/products/virtual-machines/sql-server/",
     type: "Service",
   },
   avset: {
-    label: "Availability Set",
+    label: "Azure Availability Set",
     description: "Template architecture for Availability Set",
-    azureIcon: "./img/VM-AVSets.svg",
+    azureIcon: "./img/Azure-Availability-Set.svg",
     url: "https://learn.microsoft.com/azure/virtual-machines/availability-set-overview",
     type: "Service",
   },

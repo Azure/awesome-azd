@@ -4779,7 +4779,7 @@
     "source": "https://github.com/Azure-Samples/vite-chat-interface",
     "tags": [
       "bicep",
-      "community",
+      "msft",
       "new"
     ],
     "azureServices": [

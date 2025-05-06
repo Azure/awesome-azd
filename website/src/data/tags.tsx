@@ -143,6 +143,9 @@ export type TagType =
   | "loadtesting"
   | "hyperv"
   | "fabric"
+  | "vmsqlserver"
+  | "avset"
+  | "bastion"
   ;
 
 
@@ -831,6 +834,27 @@ export const Tags: { [type in TagType]: Tag } = {
     azureIcon: "./img/Azure-Fabric.png",
     url: "https://www.microsoft.com/microsoft-fabric",
     type: "Service", 
+  },
+  vmsqlserver: {
+    label: "SQL Server on Azure Virtual Machines",
+    description: "Template architecture for SQL Server",
+    azureIcon: "./img/SQL-Server-Database.svg",
+    url: "https://azure.microsoft.com/products/virtual-machines/sql-server/",
+    type: "Service",
+  },
+  avset: {
+    label: "Availability Set",
+    description: "Template architecture for Availability Set",
+    azureIcon: "./img/VM-AVSets.svg",
+    url: "https://learn.microsoft.com/azure/virtual-machines/availability-set-overview",
+    type: "Service",
+  },
+  bastion: {
+    label: "Azure Bastion",
+    description: "Template architecture for Azure Bastion",
+    azureIcon: "./img/Azure-Bastion.svg",
+    url: "https://azure.microsoft.com/products/azure-bastion",
+    type: "Service",
   },
 
   // For Topics

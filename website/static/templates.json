@@ -4919,7 +4919,7 @@
       "new",
       "virtualmachine",
       "bastion",
-      "sqlserver",
+      "vmsqlserver",
       "avset"
     ]
   }

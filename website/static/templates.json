@@ -4902,12 +4902,15 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-addsvm",
     "tags": [
-      "community", 
-      "new", 
-      "virtualmachine", 
+      "community",
+      "new"
+    ],
+    "azureServices": [
+      "virtualmachine",
       "vnets",
       "bastion"
-    ]
+    ],
+    "id": "d9af81f9-ffb7-4047-807a-412651b776da"
   },
   {
     "title": "SQL Server 2019 AlwaysOn Cluster with ADDS VM and Management VM, secured by Bastion",
@@ -4917,12 +4920,15 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-sqlao",
     "tags": [
-      "community", 
-      "new",
+      "community",
+      "new"
+    ],
+    "azureServices": [
       "virtualmachine",
       "bastion",
       "vmsqlserver",
       "avset"
-    ]
+    ],
+    "id": "e4909150-dce8-4854-a2bf-b0e051893413"
   }
 ]

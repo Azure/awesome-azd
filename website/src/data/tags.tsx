@@ -16,10 +16,12 @@ export type User = {
   title: string;
   description: string;
   preview: string;
-  website: string;
+  authorUrl: string;
   author: string;
-  source: string | null;
+  source: string;
   tags: TagType[];
+  languages?: TagType[];
+  azureServices?: TagType[];
 };
 
 // NN: Updated TagType to suit Static Web Apps
@@ -50,6 +52,7 @@ export type TagType =
   | "keyvault"
   | "aca"
   | "mongodb"
+  | "neondb"
   | "functions"
   | "blobstorage"
   | "azuredb-postgreSQL"
@@ -70,6 +73,7 @@ export type TagType =
   | "apim"
   | "spring"
   | "quarkus"
+  | "javaee"
   | "thymeleaf"
   | "sap"
   | "sapcap"
@@ -121,10 +125,29 @@ export type TagType =
   | "kernelmemory"
   | "promptengineering"
   | "rag"
+  | "langchain4j"
   | "featureExperimentation"
   | "featuremanagement"
   | "go"
-  | "powershell";
+  | "powershell"
+  | "autogen"
+  | "dab"
+  | "sharepoint"
+  | "virtualmachine"
+  | "sentinel"
+  | "trafficmgr"
+  | "chainlit"
+  | "aspire"
+  | "purview"
+  | "vpngw"
+  | "loadtesting"
+  | "hyperv"
+  | "fabric"
+  | "vmsqlserver"
+  | "avset"
+  | "bastion"
+  ;
+
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -287,6 +310,16 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses PowerShell",
     type: "Tools",
   },
+  dab: {
+    label: "Data API builder",
+    description: "Template architecture uses Data API builder (DAB)",
+    type: "Tools",
+  },
+  aspire: {
+    label: ".NET Aspire",
+    description: "Set of tools, templates, and packages for building observable, production ready apps.",
+    type: "Tools",
+  },
 
   // ---- Infrastructure as Code
   bicep: {
@@ -306,6 +339,11 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses MongoDB",
     type: "Database",
   },
+  neondb: {
+    label: "Neon Serverless Postgres",
+    description: "Template architecture uses Neon",
+    type: "Database",
+  },
   prometheus: {
     label: "Prometheus",
     description: "Template architecture uses Prometheus",
@@ -314,6 +352,34 @@ export const Tags: { [type in TagType]: Tag } = {
   pinecone: {
     label: "Pinecone",
     description: "Template architecture uses Pinecone",
+    type: "Database",
+  },
+  cosmosdb: {
+    label: "Azure Cosmos DB",
+    description: "Template architecture uses Azure Cosmos DB",
+    azureIcon: "./img/Azure-Cosmos-DB.svg",
+    url: "https://azure.microsoft.com/products/cosmos-db/",
+    type: "Database",
+  },
+  azuresql: {
+    label: "Azure SQL",
+    description: "Template architecture uses Azure SQL",
+    azureIcon: "./img/Azure-SQL.svg",
+    url: "https://azure.microsoft.com/products/azure-sql/database",
+    type: "Database",
+  },
+  "azuredb-postgreSQL": {
+    label: "Azure PostgreSQL",
+    description: "Template architecture uses Azure Database for PostgreSQL",
+    azureIcon: "./img/Azure-PostgreSQL.svg",
+    url: "https://azure.microsoft.com/products/postgresql",
+    type: "Database",
+  },
+  "azuredb-mySQL": {
+    label: "Azure MySQL",
+    description: "Template architecture uses Azure Database for MySQL",
+    azureIcon: "./img/Azure-MySQL.svg",
+    url: "https://azure.microsoft.com/products/mysql",
     type: "Database",
   },
 
@@ -346,6 +412,11 @@ export const Tags: { [type in TagType]: Tag } = {
   quarkus: {
     label: "Quarkus",
     description: "Template architecture uses Quarkus framework",
+    type: "Framework",
+  },
+  javaee: {
+    label: "JavaEE",
+    description: "Template architecture uses Jakarta EE framework",
     type: "Framework",
   },
   vuejs: {
@@ -409,6 +480,21 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Retrieval-Augmented Generation",
     type: "Framework",
   },
+  langchain4j: {
+    label: "LangChain4j",
+    description: "Template architecture uses LangChain4j framework",
+    type: "Framework",
+   },
+  autogen: {
+    label: "Microsoft AutoGen",
+    description: "Template architecture uses Microsoft AutoGen",
+    type: "Framework",
+  },
+  chainlit: {
+    label: "Microsoft AutoGen",
+    description: "Template architecture uses Microsoft AutoGen",
+    type: "Framework",
+  },
 
   // ---- Platform
   kubernetes: {
@@ -431,6 +517,11 @@ export const Tags: { [type in TagType]: Tag } = {
   serverlessapi: {
     label: "Serverless API",
     description: "Template architecture uses Serverless API",
+    type: "Service",
+  },
+  sharepoint: {
+    label: "SharePoint",
+    description: "Template architecture involves a connection to SharePoint",
     type: "Service",
   },
 
@@ -477,13 +568,6 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/products/container-apps",
     type: "Service",
   },
-  cosmosdb: {
-    label: "Azure Cosmos DB",
-    description: "Template architecture uses Azure Cosmos DB",
-    azureIcon: "./img/Azure-Cosmos-DB.svg",
-    url: "https://azure.microsoft.com/products/cosmos-db/",
-    type: "Service",
-  },
   functions: {
     label: "Azure Functions",
     description: "Template architecture uses Azure Functions",
@@ -497,27 +581,6 @@ export const Tags: { [type in TagType]: Tag } = {
     azureIcon: "./img/Azure-Storage.svg",
     url: "https://azure.microsoft.com/products/storage/blobs",
     type: "Service",
-  },
-  azuresql: {
-    label: "Azure SQL",
-    description: "Template architecture uses Azure SQL",
-    azureIcon: "./img/Azure-SQL.svg",
-    url: "https://azure.microsoft.com/products/azure-sql/database",
-    type: "Database",
-  },
-  "azuredb-postgreSQL": {
-    label: "Azure PostgreSQL",
-    description: "Template architecture uses Azure Database for PostgreSQL",
-    azureIcon: "./img/Azure-PostgreSQL.svg",
-    url: "https://azure.microsoft.com/products/postgresql",
-    type: "Database",
-  },
-  "azuredb-mySQL": {
-    label: "Azure MySQL",
-    description: "Template architecture uses Azure Database for MySQL",
-    azureIcon: "./img/Azure-MySQL.svg",
-    url: "https://azure.microsoft.com/products/mysql",
-    type: "Database",
   },
   swa: {
     label: "Azure Static Web Apps",
@@ -714,6 +777,83 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure Data Factory",
     azureIcon: "./img/Azure-Data-Factory.svg",
     url: "https://learn.microsoft.com/azure/data-factory/introduction",
+    type: "Service",
+  },
+  virtualmachine: {
+    label: "Azure Virtual Machine",
+    description: "Template architecture uses Azure Virtual Machine",
+    azureIcon: "./img/Azure-Virtual-Machine.svg",
+    url: "https://azure.microsoft.com/azure/virtual-machines",
+    type: "Service",
+  },
+  sentinel: {
+    label: "Azure Sentinel",
+    description: "Template architecture uses Azure Sentinel",
+    azureIcon: "./img/Microsoft-Sentinel.svg",
+    url: "https://azure.microsoft.com/en-us/products/microsoft-sentinel/",
+    type: "Service",
+  },
+  trafficmgr: {
+    label: "Azure Traffic Manager",
+    description: "Template architecture uses Azure Traffic Manager",
+    azureIcon: "./img/trafficmgr.svg",
+    url: "https://azure.microsoft.com/products/traffic-manager",
+    type: "Service",
+  },
+  purview: {
+    label: "Azure Purview",
+    description: "Template architecture uses Azure Purview",
+    azureIcon: "./img/Azure-Purview.svg",
+    url: "https://azure.microsoft.com/products/purview",
+    type: "Service",
+  },
+  vpngw: {
+    label: "Azure VPN Gateway",
+    description: "Template architecture uses Azure VPN Gateway",
+    azureIcon: "./img/Azure-VPN-GW.svg",
+    url: "https://azure.microsoft.com/products/vpn-gateway",
+    type: "Service",
+  },
+  loadtesting: {
+    label: "Azure Load Testing",
+    description: "Template architecture for Azure Load Testing",
+    azureIcon: "./img/Azure-Load-Testing.svg",
+    url: "https://azure.microsoft.com/products/load-testing",
+    type: "Service", 
+  },
+  hyperv: {
+    label: "Azure Hyper-V Host",
+    description: "Template for Azure Hyper-V Host",
+    azureIcon: "./img/Azure-Hyper-V-Host.svg",
+    url: "https://learn.microsoft.com/azure/migrate/tutorial-migrate-hyper-v?tabs=UI",
+    type: "Service",
+  },
+  fabric: {
+    label: "Microsoft Fabric",
+    description: "Template architecture for Microsoft Fabric",
+    azureIcon: "./img/Azure-Fabric.png",
+    url: "https://www.microsoft.com/microsoft-fabric",
+    type: "Service", 
+  },
+  vmsqlserver: {
+    label: "SQL Server on Azure Virtual Machines",
+    description: "Template architecture for SQL Server",
+    azureIcon: "./img/Azure-SQL-Server.svg",
+    url: "https://azure.microsoft.com/products/virtual-machines/sql-server/",
+    type: "Service",
+  },
+  avset: {
+    label: "Azure Availability Set",
+    description: "Template architecture for Availability Set",
+    azureIcon: "./img/Azure-Availability-Set.svg",
+    url: "https://learn.microsoft.com/azure/virtual-machines/availability-set-overview",
+    type: "Service",
+  },
+  bastion: {
+    label: "Azure Bastion",
+    description: "Template architecture for Azure Bastion",
+    azureIcon: "./img/Azure-Bastion.svg",
+    url: "https://azure.microsoft.com/products/azure-bastion",
     type: "Service",
   },
 

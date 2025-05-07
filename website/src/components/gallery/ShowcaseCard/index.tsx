@@ -63,7 +63,11 @@ const darkTheme: PartialTheme = {
 function ShowcaseCard({ user }: { user: User }): JSX.Element {
   const styles = useStyles();
   const title = user.title;
-  const tags = user.tags;
+  const tags = [
+    ...user.tags,
+    ...(user.languages || []),
+    ...(user.azureServices || []),
+  ];
   const source = user.source;
   const star = useBaseUrl("/img/Sparkle.svg");
   const fire = useBaseUrl("/img/Fire.svg");
@@ -209,6 +213,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
           position: "relative",
           maxHeight: "inherit",
         }}
+        className={styleCSS.cardBody}
       >
         <FluentUILink className={styleCSS.cardTitle} onClick={openPanel}>
           {title}

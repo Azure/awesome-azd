@@ -22,6 +22,7 @@ import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
 import ShowcaseCardPage from "./ShowcaseCardPage";
 import { useLocation } from "@docusaurus/router";
+import Clarity from '@microsoft/clarity';
 
 initializeIcons();
 
@@ -54,6 +55,7 @@ const App = () => {
   const [selectedCheckbox, setSelectedCheckbox] = useState<TagType[]>([]);
   const location = useLocation<UserState>();
   const [selectedTags, setSelectedTags] = useState<TagType[]>([]);
+  Clarity.init("r8ugpuymsy");
 
   useEffect(() => {
     setSelectedTags(readSearchTags(location.search));
@@ -67,32 +69,34 @@ const App = () => {
     <FluentProvider
       theme={colorMode == "dark" ? teamsDarkTheme : teamsLightTheme}
     >
-      <ShowcaseTemplateSearch />
-      <div className={styles.filterAndCard}>
-        <div className={styles.filter}>
-          <ShowcaseLeftFilters
-            activeTags={activeTags}
-            selectedCheckbox={selectedCheckbox}
-            setSelectedCheckbox={setSelectedCheckbox}
-            location={location}
-            setSelectedTags={setSelectedTags}
-            selectedTags={selectedTags}
-            readSearchTags={readSearchTags}
-            replaceSearchTags={replaceSearchTags}
-          />
+      <main>
+        <ShowcaseTemplateSearch />
+        <div className={styles.filterAndCard}>
+          <div className={styles.filter}>
+            <ShowcaseLeftFilters
+              activeTags={activeTags}
+              selectedCheckbox={selectedCheckbox}
+              setSelectedCheckbox={setSelectedCheckbox}
+              location={location}
+              setSelectedTags={setSelectedTags}
+              selectedTags={selectedTags}
+              readSearchTags={readSearchTags}
+              replaceSearchTags={replaceSearchTags}
+            />
+          </div>
+          <div className={styles.card}>
+            <ShowcaseCardPage
+              setActiveTags={setActiveTags}
+              selectedTags={selectedTags}
+              setSelectedCheckbox={setSelectedCheckbox}
+              location={location}
+              setSelectedTags={setSelectedTags}
+              readSearchTags={readSearchTags}
+              replaceSearchTags={replaceSearchTags}
+            />
+          </div>
         </div>
-        <div className={styles.card}>
-          <ShowcaseCardPage
-            setActiveTags={setActiveTags}
-            selectedTags={selectedTags}
-            setSelectedCheckbox={setSelectedCheckbox}
-            location={location}
-            setSelectedTags={setSelectedTags}
-            readSearchTags={readSearchTags}
-            replaceSearchTags={replaceSearchTags}
-          />
-        </div>
-      </div>
+      </main>
     </FluentProvider>
   ) : null;
 };

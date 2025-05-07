@@ -4,17 +4,21 @@ View this site here: [aka.ms/awesome-azd](https://aka.ms/awesome-azd)
 
 ## 1. Introduction
 
+The Azure Developer CLI (`azd`) is an open-source tool developer-friendly commands that map to key stages in your workflow (code, build, deploy, monitor) to deploy to Azure. 
+
+Start from an azd application templates that include everything you need to get up and running on Azure, or start from your code base, and make changes from there. Templates include application code and infrastructure as code assets written in Bicep or Terraform and are infused with recommended practices for the cloud. These templates cover end-to-end scenarios that go far beyond "Hello World!".
+
+<img src="https://raw.githubusercontent.com/github/explore/a8036e684c6a96e4656252a806f21d332bc4d4e1/topics/azd-templates/azd-templates.png" alt="Azure Developer CLI Templates" style="width:10%;height:10%;">
+
+📖 [**azd** Overview](https://learn.microsoft.com/azure/developer/azure-developer-cli/overview) | 🚀 [**azd** Quickstart](https://learn.microsoft.com/azure/developer/azure-developer-cli/get-started?tabs=localinstall&pivots=programming-language-nodejs) | 📚 [**azd** Reference](https://learn.microsoft.com/azure/developer/azure-developer-cli/reference)
+
 New to `azd`? Check out the `azd` videos in the Open at Microsoft series:
 
 [![Image of Intro to Azure Developer CLI (azd)](https://img.youtube.com/vi/KDgR-TXtOgM/0.jpg)](https://www.youtube.com/embed/KDgR-TXtOgM)
 
 [![Image of How to deploy to Azure with the Azure Developer CLI](https://img.youtube.com/vi/f_HpDpEmWZ4/0.jpg)](https://www.youtube.com/embed/f_HpDpEmWZ4)
 
-The Azure Developer CLI (`azd`) is an open-source tool that accelerates the time it takes for developers to get started on Azure by using developer-friendly commands that map to key stages in your workflow (code, build, deploy, monitor). The Azure Developer CLI uses application templates that include everything you need to get up and running on Azure, then allows you to customize them. The templates include application code and reusable infrastructure as code assets written in Bicep or Terraform and are infused with cloud best practices.  More than that, they cover end-to-end scenarios that go far beyond "Hello World!".
-
-![Azure Developer CLI Templates](https://raw.githubusercontent.com/github/explore/a8036e684c6a96e4656252a806f21d332bc4d4e1/topics/azd-templates/azd-templates.png)
-
-📖 [**azd** Overview](https://learn.microsoft.com/azure/developer/azure-developer-cli/overview) | 🚀 [**azd** Quickstart](https://learn.microsoft.com/azure/developer/azure-developer-cli/get-started?tabs=localinstall&pivots=programming-language-nodejs) | 📚 [**azd** Reference](https://learn.microsoft.com/azure/developer/azure-developer-cli/reference)
+[![Image of Get started with AI application templates](https://img.youtube.com/vi/NNy6qPMAg60/0.jpg)](https://www.youtube.com/embed/NNy6qPMAg60)
 
 ## 2. Resources
 

@@ -4776,10 +4776,10 @@
     "preview": "./templates/images/vite-lit-ai-chat-interface.png",
     "website": "https://github.com/juliamuiruri4",
     "author": "Julia Muiruri",
-    "source": "https://github.com/juliamuiruri4/vite-chat-interface",
+    "source": "https://github.com/Azure-Samples/vite-chat-interface",
     "tags": [
       "bicep",
-      "community",
+      "msft",
       "new"
     ],
     "azureServices": [
@@ -4893,5 +4893,42 @@
     "languages": [
       "dotnetCsharp"
     ]
+  },
+  {
+    "title": "Azure VM Win2022 as ADDS Domain Controller, secured by Bastion",
+    "description": "This scenario deploys an Azure Bastion Host Service, allowing secured connectivity to a Windows Server 2022 running as Active Directory Domain Controller, deployed through DSC VM Extensions. An internal DNS domain gets created, but no other OUs or User accounts. You will get prompted for administrative credentials during the azd setup.",
+    "preview": "./templates/images/addsvm_with_bastion.png",
+    "website": "https://github.com/petender",
+    "author": "Peter De Tender",
+    "source": "https://github.com/petender/azd-addsvm",
+    "tags": [
+      "community",
+      "new"
+    ],
+    "azureServices": [
+      "virtualmachine",
+      "vnets",
+      "bastion"
+    ],
+    "id": "d9af81f9-ffb7-4047-807a-412651b776da"
+  },
+  {
+    "title": "SQL Server 2019 AlwaysOn Cluster with ADDS VM and Management VM, secured by Bastion",
+    "description": "This scenario deploys a SQL Server 2019 Always On Cluster, together with the required Active Directory Domain Controller VM, a remote Management VM Host, protected by Bastion Host. You will get prompted for administrative credentials during the azd setup.",
+    "preview": "./templates/images/SQLAO_with_Bastion.png",
+    "website": "https://github.com/petender",
+    "author": "Peter De Tender",
+    "source": "https://github.com/petender/azd-sqlao",
+    "tags": [
+      "community",
+      "new"
+    ],
+    "azureServices": [
+      "virtualmachine",
+      "bastion",
+      "vmsqlserver",
+      "avset"
+    ],
+    "id": "e4909150-dce8-4854-a2bf-b0e051893413"
   }
 ]

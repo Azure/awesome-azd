@@ -4455,7 +4455,8 @@
     "tags": [
       "community",
       "bicep",
-      "ai"
+      "ai",
+      "mcp"
     ],
     "azureServices": [
       "aca"
@@ -4527,7 +4528,8 @@
     "tags": [
       "bicep",
       "msft",
-      "ai"
+      "ai",
+      "mcp"
     ],
     "azureServices": [
       "functions"
@@ -4548,7 +4550,8 @@
     "tags": [
       "bicep",
       "msft",
-      "ai"
+      "ai",
+      "mcp"
     ],
     "azureServices": [
       "functions"
@@ -4568,7 +4571,8 @@
     "tags": [
       "bicep",
       "msft",
-      "ai"
+      "ai",
+      "mcp"
     ],
     "azureServices": [
       "functions"
@@ -4687,7 +4691,8 @@
     "tags": [
       "bicep",
       "msft",
-      "ai"
+      "ai",
+      "mcp"
     ],
     "azureServices": [
       "apim",
@@ -4708,7 +4713,8 @@
     "tags": [
       "community",
       "bicep",
-      "ai"
+      "ai",
+      "mcp"
     ],
     "azureServices": [
       "aca"

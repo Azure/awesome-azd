@@ -4949,7 +4949,8 @@
       "bicep",
       "ai",
       "mcp",
-      "blazor"
+      "blazor",
+      "new"
     ],
     "azureServices": [
       "aca",

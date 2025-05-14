@@ -1772,8 +1772,8 @@
     ]
   },
   {
-    "title": "Multi-repo ChatGPT and Enterprise data with Azure OpenAI and AI Search",
-    "description": "Azure OpenAI at scale in a secure manner.",
+    "title": "GPT-RAG: Enterprise GenAI Chat Accelerator",
+    "description": "PT-RAG offers a robust architecture tailored for enterprise-grade deployment of the GenAI Solutions. It ensures grounded responses and is built on Zero-trust security and Responsible AI, ensuring availability, scalability, and auditability. Ideal for organizations transitioning from exploration and PoC stages to full-scale production and MVPs",
     "preview": "./templates/images/GPT-Rag-Architecture-Zero-Trust.png",
     "authorUrl": "https://github.com/Azure",
     "author": "Azure Content Team",

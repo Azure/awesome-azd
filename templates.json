@@ -1772,8 +1772,8 @@
     ]
   },
   {
-    "title": "Multi-repo ChatGPT and Enterprise data with Azure OpenAI and AI Search",
-    "description": "Azure OpenAI at scale in a secure manner.",
+    "title": "GPT-RAG: Enterprise GenAI Chat Accelerator",
+    "description": "PT-RAG offers a robust architecture tailored for enterprise-grade deployment of the GenAI Solutions. It ensures grounded responses and is built on Zero-trust security and Responsible AI, ensuring availability, scalability, and auditability. Ideal for organizations transitioning from exploration and PoC stages to full-scale production and MVPs",
     "preview": "./templates/images/GPT-Rag-Architecture-Zero-Trust.png",
     "authorUrl": "https://github.com/Azure",
     "author": "Azure Content Team",
@@ -4936,5 +4936,34 @@
       "avset"
     ],
     "id": "e4909150-dce8-4854-a2bf-b0e051893413"
+  },
+  {
+    "title": ".NET OpenAI MCP Agent",
+    "description": "This is an MCP agent app written in .NET, using Azure OpenAI, with a remote MCP server written in TypeScript.",
+    "preview": "./templates/images/openai-mcp-agent-dotnet.png",
+    "authorUrl": "https://github.com/justinyoo",
+    "author": "Justin Yoo",
+    "source": "https://github.com/Azure-Samples/openai-mcp-agent-dotnet",
+    "tags": [
+      "msft",
+      "bicep",
+      "ai",
+      "mcp",
+      "blazor",
+      "new"
+    ],
+    "azureServices": [
+      "aca",
+      "azureai",
+      "openai",
+      "loganalytics",
+      "managedidentity",
+      "appinsights",
+      "diagnosticsettings"
+    ],
+    "id": "7157a845-772d-4f21-a071-cb118fd09354",
+    "languages": [
+      "dotnetCsharp"
+    ]
   }
 ]

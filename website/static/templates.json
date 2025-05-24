@@ -4901,6 +4901,31 @@
     ]
   },
   {
+    "title": "AI-Powered Code Snippet Manager with Azure Functions and MCP",
+    "description": "Build a modern code snippet management system using an MCP server built on Azure Functions with bindings to Cosmos DB DiskANN vector search and AI Agents Service for deep wiki and code style generation. This solution enables intelligent code snippet discovery and reuse through GitHub Copilot integration.",
+    "preview": "./templates/images/snippy-architecture.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Govind Kamtamneni",
+    "source": "https://github.com/Azure-Samples/snippy",
+    "tags": [
+      "bicep",
+      "msft",
+      "new",
+      "ai"
+    ],
+    "azureServices": [
+      "functions",
+      "aistudio",
+      "openai",
+      "cosmosdb",
+      "azureai",
+      "fabric"
+    ],
+    "languages": [
+      "python"
+    ]
+  },
+  {
     "title": "Azure VM Win2022 as ADDS Domain Controller, secured by Bastion",
     "description": "This scenario deploys an Azure Bastion Host Service, allowing secured connectivity to a Windows Server 2022 running as Active Directory Domain Controller, deployed through DSC VM Extensions. An internal DNS domain gets created, but no other OUs or User accounts. You will get prompted for administrative credentials during the azd setup.",
     "preview": "./templates/images/addsvm_with_bastion.png",

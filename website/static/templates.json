@@ -4914,7 +4914,6 @@
       "cosmosdb",
       "azureai",
       "fabric",
-      "bicep"
     ],
     "languages": [
       "python"

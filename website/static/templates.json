@@ -4919,7 +4919,7 @@
       "openai",
       "cosmosdb",
       "azureai",
-      "fabric",
+      "fabric"
     ],
     "languages": [
       "python"

@@ -4909,10 +4909,12 @@
     ],
     "azureServices": [
       "functions",
-      "aiagents",
+      "aistudio",
       "openai",
       "cosmosdb",
-      "azureai"
+      "azureai",
+      "fabric",
+      "bicep"
     ],
     "languages": [
       "python"

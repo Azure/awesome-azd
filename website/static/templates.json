@@ -5004,7 +5004,6 @@
       "new"
     ],
     "azureServices": [
-      "aspire",
       "keyvault",
       "azureappconfig",
       "servicebus",

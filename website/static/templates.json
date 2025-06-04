@@ -4990,5 +4990,33 @@
     "languages": [
       "dotnetCsharp"
     ]
+  },
+  {
+    "title": "Aspire with Key Vault + App Config + Service Bus/RabbitMQ",
+    "description": "Containerized ASP.NET apps with Key Vault, App Config and Service Bus and orchestrated using Aspire. Supports completely disconnected local development using RabbitMQ",
+    "preview": "./templates/images/azd-aspire-basic.png",
+    "authorUrl": "https://github.com/fabio-marini",
+    "author": "Fabio Marini",
+    "source": "https://github.com/fabio-marini/azd-aspire-basic",
+    "tags": [
+      "bicep",
+      "community",
+      "new",
+      "aspire"
+    ],
+    "azureServices": [
+      "keyvault",
+      "azureappconfig",
+      "servicebus",
+      "webapps",
+      "serviceprincipal",
+      "aca",
+      "loganalytics",
+      "managedidentity"
+    ],
+    "id": "6d1f791c-5216-43aa-a5be-574fa3e0fa16",
+    "languages": [
+      "dotnetCsharp"
+    ]
   }
 ]

@@ -5028,7 +5028,8 @@
     "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd-eventgrid-blob",
     "tags": [
       "msft",
-      "bicep"
+      "bicep",
+      "new"
     ],
     "azureServices": [
       "functions",

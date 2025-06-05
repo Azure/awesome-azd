@@ -5051,7 +5051,7 @@
     ],
     "azureServices": [
         "azurestorage"
-      ],
+    ],
     "id": "64364f59-8884-4f61-8b35-3ed011b9ee6b"
   },
   {
@@ -5065,7 +5065,7 @@
       "community", 
       "new",
       "bicep"
-      ],
+    ],
     "azureServices": [
       "vnets"
     ],
@@ -5082,7 +5082,10 @@
       "community",
       "new",
       "bicep"
-      ],
+    ],
+    "languages": [
+      "dotnetCsharp"
+    ]
     "azureServices": [
       "semantic-kernel",
       "openai",
@@ -5121,7 +5124,7 @@
       "community", 
       "new",
       "bicep"
-      ],
+    ],
     "azureServices": [
       "privatelink", 
       "vnets"
@@ -5129,21 +5132,21 @@
     "id": "9e7ee586-fde1-467d-8555-3b2aad3cdbea"
   },
   {
-  "title": "Azure SQL Workload Simulator Demo",
-  "description": "This project sets up an Azure environment with a SQL workload simulator, After 24 hrs you will be able to demo Azure SQL Database Performance Recommendations.",
-  "preview": "./templates/images/sql_workload_simulator.png",
-  "website": "https://github.com/koenraadhaedens",
-  "author": "Koenraad Haedens",
-  "source": "https://github.com/koenraadhaedens/azd-sqlworloadsim",
-  "tags": [
-    "community", 
-    "new"
-  ], 
-  "azureServices": [
-      "azuresql", 
-      "keyvault",
-      "bicep"
-  ],
-  "id": "4c901c4a-bd10-45e1-a6b2-e34a4248041e"
+    "title": "Azure SQL Workload Simulator Demo",
+    "description": "This project sets up an Azure environment with a SQL workload simulator, After 24 hrs you will be able to demo Azure SQL Database Performance Recommendations.",
+    "preview": "./templates/images/sql_workload_simulator.png",
+    "website": "https://github.com/koenraadhaedens",
+    "author": "Koenraad Haedens",
+    "source": "https://github.com/koenraadhaedens/azd-sqlworloadsim",
+    "tags": [
+      "community", 
+      "new"
+    ], 
+    "azureServices": [
+        "azuresql", 
+        "keyvault",
+        "bicep"
+    ],
+    "id": "4c901c4a-bd10-45e1-a6b2-e34a4248041e"
   }
 ]

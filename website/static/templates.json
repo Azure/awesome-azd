@@ -5028,7 +5028,8 @@
     "source": "https://github.com/trainerkrunal/azd-vmwithlb",
     "tags": [
       "community",
-      "new"
+      "new",
+      "bicep"
     ],
     "azureServices": [
         "virtualmachine",
@@ -5045,7 +5046,8 @@
     "source": "https://github.com/daverendon/azd-service-endpoints-and-securing-storage",
     "tags": [
       "community",
-      "new"
+      "new",
+      "bicep"
     ],
     "azureServices": [
         "azurestorage"
@@ -5061,7 +5063,8 @@
     "source": "https://github.com/daverendon/azd-intersite-connectivity",
     "tags": [
       "community", 
-      "new"
+      "new",
+      "bicep"
       ],
     "azureServices": [
       "vnets"
@@ -5077,7 +5080,8 @@
     "source": "https://github.com/michelmsft/GoodFood/",
     "tags": [
       "community",
-      "new"
+      "new",
+      "bicep"
       ],
     "azureServices": [
       "semantic-kernel",
@@ -5095,7 +5099,9 @@
     "author": "Maarten van Diemen",
     "source": "https://github.com/maartenvandiemen/AZD-AppConfiguration",
     "tags": [
-      "community", "new"
+      "community",
+      "new",
+      "bicep"
       ],
     "azureServices": [
       "functions", 
@@ -5113,7 +5119,8 @@
     "source": "https://github.com/daverendon/azd-private-link",
     "tags": [
       "community", 
-      "new"
+      "new",
+      "bicep"
       ],
     "azureServices": [
       "privatelink", 
@@ -5134,7 +5141,8 @@
   ], 
   "azureServices": [
       "azuresql", 
-      "keyvault"
+      "keyvault",
+      "bicep"
   ],
   "id": "4c901c4a-bd10-45e1-a6b2-e34a4248041e"
   }

@@ -5129,7 +5129,10 @@
       "bicep"
     ],
     "azureServices": [
-      "privatelink", 
+      "azurestorage", 
+      "azureappconfig",
+      "functions",
+      "managedidentity"
       "vnets"
     ],
     "id": "9e7ee586-fde1-467d-8555-3b2aad3cdbea"

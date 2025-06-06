@@ -5145,7 +5145,8 @@
     "source": "https://github.com/koenraadhaedens/azd-sqlworloadsim",
     "tags": [
       "community", 
-      "new"
+      "new",
+      "bicep"
     ], 
     "azureServices": [
         "azuresql", 

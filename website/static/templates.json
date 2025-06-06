@@ -5155,5 +5155,30 @@
         "vnets"
     ],
     "id": "4c901c4a-bd10-45e1-a6b2-e34a4248041e"
+  },
+{
+    "title": "Azure Functions C# Event Grid Blob Trigger using Azure Developer CLI",
+    "description": "This template repository contains a Blob trigger with the Event Grid source type reference sample for functions written in C# (isolated process mode) and deployed to Azure using the Azure Developer CLI (azd).",
+    "preview": "./templates/images/azure-functions-eventgrid-blob-csharp.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd-eventgrid-blob",
+    "tags": [
+      "msft",
+      "bicep",
+      "new"
+    ],
+    "azureServices": [
+      "functions",
+      "managedidentity",
+      "vnets",
+      "blobstorage",
+      "eventgrid",
+      "appinsights"
+    ],
+    "id": "7932e353-5974-4a4f-9956-259bb5e1c64a",
+    "languages": [
+      "dotnetCsharp"
+    ]
   }
 ]

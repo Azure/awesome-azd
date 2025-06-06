@@ -5092,7 +5092,7 @@
       "semantic-kernel",
       "openai",
       "azureai",
-      "dotnet"
+      "cosmosdb"
     ],
     "id": "c70f20a9-25e0-451c-838a-c33a7e2ed943"      
   },

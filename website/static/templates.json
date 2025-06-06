@@ -5069,7 +5069,8 @@
       "bicep"
     ],
     "azureServices": [
-      "vnets"
+      "vnets",
+      "virtualmachine"
     ],
     "id": "0334e348-f635-40c6-851d-67402679bd2c"
   },

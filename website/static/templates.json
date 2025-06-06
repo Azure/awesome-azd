@@ -5151,7 +5151,8 @@
     "azureServices": [
         "azuresql", 
         "keyvault",
-        "bicep"
+        "virtualmachine",
+        "vnets"
     ],
     "id": "4c901c4a-bd10-45e1-a6b2-e34a4248041e"
   }

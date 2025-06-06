@@ -5050,7 +5050,9 @@
       "bicep"
     ],
     "azureServices": [
-        "azurestorage"
+        "azurestorage",
+        "vnets",
+        "virtualmachine"
     ],
     "id": "64364f59-8884-4f61-8b35-3ed011b9ee6b"
   },

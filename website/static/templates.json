@@ -5032,8 +5032,8 @@
       "bicep"
     ],
     "azureServices": [
-        "virtualmachine",
-        "vnets"
+      "virtualmachine",
+      "vnets"
     ],
     "id": "f08ac122-43dc-427c-89c1-487c512997d9"
   },
@@ -5050,21 +5050,21 @@
       "bicep"
     ],
     "azureServices": [
-        "azurestorage",
-        "vnets",
-        "virtualmachine"
+      "azurestorage",
+      "vnets",
+      "virtualmachine"
     ],
     "id": "64364f59-8884-4f61-8b35-3ed011b9ee6b"
   },
   {
-     "title": "Implement Intersite Connectivity with Azure VMs",
-     "description": "This scenario set up and test global VNet peering, configures intersite connectivity with multiple VMs.",
+    "title": "Implement Intersite Connectivity with Azure VMs",
+    "description": "This scenario set up and test global VNet peering, configures intersite connectivity with multiple VMs.",
     "preview": "./templates/images/diagram-intersite-connectivity.png",
     "website": "https://github.com/daverendon",
     "author": "Dave Rendon",
     "source": "https://github.com/daverendon/azd-intersite-connectivity",
     "tags": [
-      "community", 
+      "community",
       "new",
       "bicep"
     ],
@@ -5088,14 +5088,14 @@
     ],
     "languages": [
       "dotnetCsharp"
-    ]
+    ],
     "azureServices": [
       "semantickernel",
       "openai",
       "azureai",
       "cosmosdb"
     ],
-    "id": "c70f20a9-25e0-451c-838a-c33a7e2ed943"      
+    "id": "c70f20a9-25e0-451c-838a-c33a7e2ed943"
   },
   {
     "title": "Azure App Configuration",
@@ -5108,10 +5108,10 @@
       "community",
       "new",
       "bicep"
-      ],
+    ],
     "azureServices": [
-      "functions", 
-      "dotnet", 
+      "functions",
+      "dotnet",
       "azureappconfig"
     ],
     "id": "39b30820-7291-4dfa-907e-10eaba4b9d84"
@@ -5124,12 +5124,12 @@
     "author": "Dave Rendon",
     "source": "https://github.com/daverendon/azd-private-link",
     "tags": [
-      "community", 
+      "community",
       "new",
       "bicep"
     ],
     "azureServices": [
-      "azurestorage", 
+      "azurestorage",
       "azureappconfig",
       "functions",
       "managedidentity"
@@ -5144,19 +5144,19 @@
     "author": "Koenraad Haedens",
     "source": "https://github.com/koenraadhaedens/azd-sqlworloadsim",
     "tags": [
-      "community", 
+      "community",
       "new",
       "bicep"
-    ], 
+    ],
     "azureServices": [
-        "azuresql", 
-        "keyvault",
-        "virtualmachine",
-        "vnets"
+      "azuresql",
+      "keyvault",
+      "virtualmachine",
+      "vnets"
     ],
     "id": "4c901c4a-bd10-45e1-a6b2-e34a4248041e"
   },
-{
+  {
     "title": "Azure Functions C# Event Grid Blob Trigger using Azure Developer CLI",
     "description": "This template repository contains a Blob trigger with the Event Grid source type reference sample for functions written in C# (isolated process mode) and deployed to Azure using the Azure Developer CLI (azd).",
     "preview": "./templates/images/azure-functions-eventgrid-blob-csharp.png",

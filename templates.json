@@ -4749,8 +4749,7 @@
     "author": "Dave Rendon",
     "source": "https://github.com/daverendon/azd-deepseek-r1-on-azure-container-apps",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "loganalytics",
@@ -4766,8 +4765,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-youtubesummarizer-openai",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "azureai",
@@ -4785,8 +4783,7 @@
     "source": "https://github.com/Azure-Samples/vite-chat-interface",
     "tags": [
       "bicep",
-      "msft",
-      "new"
+      "msft"
     ],
     "azureServices": [
       "swa"
@@ -4821,8 +4818,7 @@
     "author": "Dave Rendon",
     "source": "https://github.com/daverendon/azd-baseline-webapp",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "appservice",
@@ -4841,8 +4837,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-vision-face",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "appservice",
@@ -4863,7 +4858,6 @@
     "source": "https://github.com/Azure-Samples/blazor-azure-sql-vector-search",
     "tags": [
       "msft",
-      "new",
       "bicep",
       "ai",
       "rag",
@@ -4888,7 +4882,6 @@
     "author": "Build5Nines",
     "source": "https://github.com/Build5Nines/azd-csharp-api-swagger",
     "tags": [
-      "new",
       "community",
       "bicep"
     ],
@@ -4910,7 +4903,6 @@
     "tags": [
       "bicep",
       "msft",
-      "new",
       "ai"
     ],
     "azureServices": [
@@ -4923,7 +4915,8 @@
     ],
     "languages": [
       "python"
-    ]
+    ],
+    "id": "865306bb-9213-4037-9dae-4bf001f457d2"
   },
   {
     "title": "Azure VM Win2022 as ADDS Domain Controller, secured by Bastion",
@@ -4933,8 +4926,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-addsvm",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "virtualmachine",
@@ -4951,8 +4943,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-sqlao",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "virtualmachine",
@@ -4974,8 +4965,7 @@
       "bicep",
       "ai",
       "mcp",
-      "blazor",
-      "new"
+      "blazor"
     ],
     "azureServices": [
       "aca",
@@ -5015,6 +5005,170 @@
       "managedidentity"
     ],
     "id": "6d1f791c-5216-43aa-a5be-574fa3e0fa16",
+    "languages": [
+      "dotnetCsharp"
+    ]
+  },
+  {
+    "title": "Windows 2019 IIS Servers with Load Balancer",
+    "description": "This scenario deploys 2 Win2019 VMs running IIS Default WebSite, behind a Load Balancer and required Network Security Group rules.",
+    "preview": "./templates/images/vmwithlb.png",
+    "website": "https://github.com/trainerkrunal",
+    "author": "Krunal Trivedi",
+    "source": "https://github.com/trainerkrunal/azd-vmwithlb",
+    "tags": [
+      "community",
+      "new",
+      "bicep"
+    ],
+    "azureServices": [
+      "virtualmachine",
+      "vnets"
+    ],
+    "id": "f08ac122-43dc-427c-89c1-487c512997d9"
+  },
+  {
+    "title": "Service Endpoints and Securing Storage",
+    "description": "This demo guides you through a hands-on exercise to build and secure a networked environment in Azure. You will start by creating a virtual network and adding a subnet with a configured storage endpoint. Next, you will implement network security groups. Following this, you will create a storage account with a file share and deploy virtual machines into their respective subnets. Finally, you will test the storage connection from both the private and public subnets to verify that access is correctly allowed from the private subnet and denied from the public subnet.",
+    "preview": "./templates/images/diagram-service-endpoints-and-securing-storage.png",
+    "website": "https://github.com/daverendon",
+    "author": "Dave Rendon",
+    "source": "https://github.com/daverendon/azd-service-endpoints-and-securing-storage",
+    "tags": [
+      "community",
+      "new",
+      "bicep"
+    ],
+    "azureServices": [
+      "azurestorage",
+      "vnets",
+      "virtualmachine"
+    ],
+    "id": "64364f59-8884-4f61-8b35-3ed011b9ee6b"
+  },
+  {
+    "title": "Implement Intersite Connectivity with Azure VMs",
+    "description": "This scenario set up and test global VNet peering, configures intersite connectivity with multiple VMs.",
+    "preview": "./templates/images/diagram-intersite-connectivity.png",
+    "website": "https://github.com/daverendon",
+    "author": "Dave Rendon",
+    "source": "https://github.com/daverendon/azd-intersite-connectivity",
+    "tags": [
+      "community",
+      "new",
+      "bicep"
+    ],
+    "azureServices": [
+      "vnets",
+      "virtualmachine"
+    ],
+    "id": "0334e348-f635-40c6-851d-67402679bd2c"
+  },
+  {
+    "title": "Fast Food Drive thru Operator Ai Agent with Semantic Kernel and GPT 3.5 Turbo",
+    "description": "This AI-powered Fast Food Drive-Thru Operator leverages Semantic Kernel and Azure OpenAI GPT-3.5 turbo to streamline customer interactions, improve efficiency, and automate order processing.",
+    "preview": "./templates/images/michelmsft_GoodFood.png",
+    "website": "https://github.com/michelmsft",
+    "author": "Michel Agah",
+    "source": "https://github.com/michelmsft/GoodFood/",
+    "tags": [
+      "community",
+      "new",
+      "bicep"
+    ],
+    "languages": [
+      "dotnetCsharp"
+    ],
+    "azureServices": [
+      "semantickernel",
+      "openai",
+      "azureai",
+      "cosmosdb"
+    ],
+    "id": "c70f20a9-25e0-451c-838a-c33a7e2ed943"
+  },
+  {
+    "title": "Azure App Configuration",
+    "description": "Demo to show possibilities of Azure App Configuration",
+    "preview": "./templates/images/AZD-AppConfiguration_mvd.png",
+    "website": "https://github.com/maartenvandiemen",
+    "author": "Maarten van Diemen",
+    "source": "https://github.com/maartenvandiemen/AZD-AppConfiguration",
+    "tags": [
+      "community",
+      "new",
+      "bicep"
+    ],
+    "azureServices": [
+      "functions",
+      "azureappconfig"
+    ],
+    "languages": [
+      "dotnetCsharp"
+    ],
+    "id": "39b30820-7291-4dfa-907e-10eaba4b9d84"
+  },
+  {
+    "title": "Utilize Private Link for accessing apps on networks with overlapping addresses",
+    "description": "This scenario is aligned with the Az-104 and Az-700 path and provides a demo solution for managing overlapping IP address spaces with Azure Private Link.",
+    "preview": "./templates/images/diagram-private-link.png",
+    "website": "https://github.com/daverendon",
+    "author": "Dave Rendon",
+    "source": "https://github.com/daverendon/azd-private-link",
+    "tags": [
+      "community",
+      "new",
+      "bicep"
+    ],
+    "azureServices": [
+      "azurestorage",
+      "azureappconfig",
+      "functions",
+      "managedidentity"
+    ],
+    "id": "9e7ee586-fde1-467d-8555-3b2aad3cdbea"
+  },
+  {
+    "title": "Azure SQL Workload Simulator Demo",
+    "description": "This project sets up an Azure environment with a SQL workload simulator, After 24 hrs you will be able to demo Azure SQL Database Performance Recommendations.",
+    "preview": "./templates/images/sql_workload_simulator.png",
+    "website": "https://github.com/koenraadhaedens",
+    "author": "Koenraad Haedens",
+    "source": "https://github.com/koenraadhaedens/azd-sqlworloadsim",
+    "tags": [
+      "community",
+      "new",
+      "bicep"
+    ],
+    "azureServices": [
+      "azuresql",
+      "keyvault",
+      "virtualmachine",
+      "vnets"
+    ],
+    "id": "4c901c4a-bd10-45e1-a6b2-e34a4248041e"
+  },
+  {
+    "title": "Azure Functions C# Event Grid Blob Trigger using Azure Developer CLI",
+    "description": "This template repository contains a Blob trigger with the Event Grid source type reference sample for functions written in C# (isolated process mode) and deployed to Azure using the Azure Developer CLI (azd).",
+    "preview": "./templates/images/azure-functions-eventgrid-blob-csharp.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd-eventgrid-blob",
+    "tags": [
+      "msft",
+      "bicep",
+      "new"
+    ],
+    "azureServices": [
+      "functions",
+      "managedidentity",
+      "vnets",
+      "blobstorage",
+      "eventgrid",
+      "appinsights"
+    ],
+    "id": "7932e353-5974-4a4f-9956-259bb5e1c64a",
     "languages": [
       "dotnetCsharp"
     ]

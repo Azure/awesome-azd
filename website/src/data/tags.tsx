@@ -146,6 +146,7 @@ export type TagType =
   | "vmsqlserver"
   | "avset"
   | "bastion"
+  | "mcp"
   ;
 
 
@@ -318,6 +319,11 @@ export const Tags: { [type in TagType]: Tag } = {
   aspire: {
     label: ".NET Aspire",
     description: "Set of tools, templates, and packages for building observable, production ready apps.",
+    type: "Tools",
+  },
+  mcp: {
+    label: "Model Context Protocol",
+    description: "Template architecture uses Model Context Protocol (MCP)",
     type: "Tools",
   },
 

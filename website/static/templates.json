@@ -4749,8 +4749,7 @@
     "author": "Dave Rendon",
     "source": "https://github.com/daverendon/azd-deepseek-r1-on-azure-container-apps",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "loganalytics",
@@ -4766,8 +4765,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-youtubesummarizer-openai",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "azureai",
@@ -4785,8 +4783,7 @@
     "source": "https://github.com/Azure-Samples/vite-chat-interface",
     "tags": [
       "bicep",
-      "msft",
-      "new"
+      "msft"
     ],
     "azureServices": [
       "swa"
@@ -4821,8 +4818,7 @@
     "author": "Dave Rendon",
     "source": "https://github.com/daverendon/azd-baseline-webapp",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "appservice",
@@ -4841,8 +4837,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-vision-face",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "appservice",
@@ -4863,7 +4858,6 @@
     "source": "https://github.com/Azure-Samples/blazor-azure-sql-vector-search",
     "tags": [
       "msft",
-      "new",
       "bicep",
       "ai",
       "rag",
@@ -4888,7 +4882,6 @@
     "author": "Build5Nines",
     "source": "https://github.com/Build5Nines/azd-csharp-api-swagger",
     "tags": [
-      "new",
       "community",
       "bicep"
     ],
@@ -4910,7 +4903,6 @@
     "tags": [
       "bicep",
       "msft",
-      "new",
       "ai"
     ],
     "azureServices": [
@@ -4923,7 +4915,8 @@
     ],
     "languages": [
       "python"
-    ]
+    ],
+    "id": "865306bb-9213-4037-9dae-4bf001f457d2"
   },
   {
     "title": "Azure VM Win2022 as ADDS Domain Controller, secured by Bastion",
@@ -4933,8 +4926,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-addsvm",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "virtualmachine",
@@ -4951,8 +4943,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-sqlao",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "virtualmachine",
@@ -4974,8 +4965,7 @@
       "bicep",
       "ai",
       "mcp",
-      "blazor",
-      "new"
+      "blazor"
     ],
     "azureServices": [
       "aca",
@@ -5111,8 +5101,10 @@
     ],
     "azureServices": [
       "functions",
-      "dotnet",
       "azureappconfig"
+    ],
+    "languages": [
+      "dotnetCsharp"
     ],
     "id": "39b30820-7291-4dfa-907e-10eaba4b9d84"
   },

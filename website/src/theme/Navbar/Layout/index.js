@@ -52,8 +52,11 @@ const telemetryInit = () => {
       onConsentChanged
     );
 
+  // Microsoft Clarity initialization
   Clarity.init("r8ugpuymsy");
-  
+  // This is to ensure that Clarity does not track any data before consent is given
+  Clarity.consent(false);
+
   function onConsentChanged(categoryPreferences) {
     setNonEssentialCookies(categoryPreferences);
   }

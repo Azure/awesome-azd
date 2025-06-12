@@ -55,7 +55,46 @@ const App = () => {
   const [selectedCheckbox, setSelectedCheckbox] = useState<TagType[]>([]);
   const location = useLocation<UserState>();
   const [selectedTags, setSelectedTags] = useState<TagType[]>([]);
-  Clarity.init("r8ugpuymsy");
+  // Country lists that cookie banner will show up for
+  // https://microsoft.sharepoint.com/sites/CELAWeb-Compliance/SitePages/Cookie-Banner-Countries-Locales.aspx
+  const countryList = [
+    "Austria",
+    "Belgium",
+    "Brazil",
+    "Bulgaria",
+    "Canada",
+    "Croatia",
+    "Cyprus",
+    "Czech Republic",
+    "Denmark",
+    "Estonia",
+    "Finland",
+    "France",
+    "Germany",
+    "Greece",
+    "Hungary",
+    "Iceland",
+    "Ireland",
+    "Italy",
+    "Latvia",
+    "Liechtenstein",
+    "Lithuania",
+    "Luxembourg",
+    "Malta",
+    "Netherlands",
+    "Norway",
+    "People's Republic of China",
+    "Poland",
+    "Portugal",
+    "Romania",
+    "Slovakia",
+    "Slovenia",
+    "Spain",
+    "Sweden",
+    "Switzerland",
+    "Turkey",
+    "United Kingdom"
+  ];
 
   useEffect(() => {
     setSelectedTags(readSearchTags(location.search));
@@ -63,6 +102,21 @@ const App = () => {
     setTimeout(() => {
       setLoading(false);
     }, 500);
+    // Initialize Clarity for users that cookie consent banners not showing up
+    if (ExecutionEnvironment.canUseDOM && navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(pos => {
+        const { latitude, longitude } = pos.coords;
+        const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
+        fetch(url)
+          .then(res => res.json())
+          .then(data => {
+            const userCountry = data.country;
+            if (userCountry && !countryList.some(country => country.toLowerCase().includes(userCountry.toLowerCase()))) {
+              Clarity.init('r8ugpuymsy');
+            }
+          });
+      });
+    }
   }, [location]);
 
   return !loading ? (

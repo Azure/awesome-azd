@@ -64,7 +64,7 @@ const telemetryInit = () => {
   function setNonEssentialCookies(categoryPreferences) {
     if (categoryPreferences.Analytics) {
       AnalyticsCookies(SET);
-      Clarity.consent();
+      Clarity.consent(true);
     } else {
       AnalyticsCookies(RESET);
       Clarity.consent(false);

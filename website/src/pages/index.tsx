@@ -22,7 +22,6 @@ import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
 import ShowcaseCardPage from "./ShowcaseCardPage";
 import { useLocation } from "@docusaurus/router";
-import Clarity from '@microsoft/clarity';
 
 initializeIcons();
 
@@ -55,7 +54,6 @@ const App = () => {
   const [selectedCheckbox, setSelectedCheckbox] = useState<TagType[]>([]);
   const location = useLocation<UserState>();
   const [selectedTags, setSelectedTags] = useState<TagType[]>([]);
-  Clarity.init("r8ugpuymsy");
 
   useEffect(() => {
     setSelectedTags(readSearchTags(location.search));

@@ -52,7 +52,10 @@ const telemetryInit = () => {
       onConsentChanged
     );
 
+  // Clarity initialization
   Clarity.init("r8ugpuymsy");
+  // Disable Clarity consent until user consents
+  Clarity.consent(false);
   
   function onConsentChanged(categoryPreferences) {
     setNonEssentialCookies(categoryPreferences);
@@ -61,7 +64,7 @@ const telemetryInit = () => {
   function setNonEssentialCookies(categoryPreferences) {
     if (categoryPreferences.Analytics) {
       AnalyticsCookies(SET);
-      Clarity.consent();
+      Clarity.consent(true);
     } else {
       AnalyticsCookies(RESET);
       Clarity.consent(false);

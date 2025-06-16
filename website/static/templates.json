@@ -3265,6 +3265,26 @@
     "id": "018854d1-117c-45d6-a3c8-1f3222b87d26"
   },
   {
+    "title": "Azure Functions C# Timer Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions Timer trigger quickstart written in C# and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (AZD). This sample uses managed identity and a virtual network to insure it's secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd-timer",
+    "tags": [
+      "csharp",
+      "msft",
+      "bicep"
+    ],
+    "azureServices": [
+      "functions",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "id": "b7e6c2e2-5e2e-4c8e-8e6e-2e2c8e5e6c2e"
+  },
+  {
     "title": "Doc Intelligence-In-A-Box",
     "description": "The Doc Intelligence in-a-Box project leverages Azure AI Document Intelligence to extract data from PDF forms and store the data in a Azure Cosmos DB. This solution, part of the AI-in-a-Box framework by Microsoft Customer Engineers and Architects, ensures quality, efficiency, and rapid deployment of AI and ML solutions across various industries.",
     "preview": "./templates/images/doc-intelligence-in-a-box.png",

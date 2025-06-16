@@ -3274,7 +3274,8 @@
     "tags": [
       "csharp",
       "msft",
-      "bicep"
+      "bicep",
+      "new"
     ],
     "azureServices": [
       "functions",

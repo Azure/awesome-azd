@@ -55,6 +55,7 @@
   "dependencies": {
     "@microsoft/clarity": "^1.0.0",
     "@popperjs/core": "^2.11.8",
+    "js-cookie": "^3.0.5",
     "scheduler": "^0.20.2",
     "search-insights": "^2.11.0"
   }

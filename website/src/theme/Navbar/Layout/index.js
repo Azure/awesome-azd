@@ -10,6 +10,7 @@ import NavbarMobileSidebar from "@theme/Navbar/MobileSidebar";
 import styles from "./styles.module.css";
 import { manageCookieLabel, manageCookieId } from "../../../../constants.js";
 import Clarity from '@microsoft/clarity';
+import Cookies from 'js-cookie';
 
 function NavbarBackdrop(props) {
   return (
@@ -52,11 +53,6 @@ const telemetryInit = () => {
       onConsentChanged
     );
 
-  // Clarity initialization
-  Clarity.init("r8ugpuymsy");
-  // Disable Clarity consent until user consents
-  Clarity.consent(false);
-  
   function onConsentChanged(categoryPreferences) {
     setNonEssentialCookies(categoryPreferences);
   }
@@ -64,10 +60,8 @@ const telemetryInit = () => {
   function setNonEssentialCookies(categoryPreferences) {
     if (categoryPreferences.Analytics) {
       AnalyticsCookies(SET);
-      Clarity.consent(true);
     } else {
       AnalyticsCookies(RESET);
-      Clarity.consent(false);
     }
 
     if (categoryPreferences.SocialMedia) {
@@ -83,9 +77,21 @@ const telemetryInit = () => {
     }
   }
 
+  function setClarity(setString) {
+    if (setString === SET) {
+      Clarity.init("r8ugpuymsy");
+      Clarity.consent(true);
+    } else {
+      Cookies.remove("_clck", { domain: ".microsoft.com" });
+      Cookies.remove("_clsk", { domain: ".microsoft.com" });
+    }
+  }
+
   function AnalyticsCookies(setString) {
     if (setString === SET) {
+      setClarity(SET);
     } else {
+      setClarity(RESET);
     }
   }
 

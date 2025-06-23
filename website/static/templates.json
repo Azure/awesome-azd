@@ -5182,7 +5182,7 @@
     "source": "https://github.com/SQLtattoo/azd-az104-all-in-one",
     "tags": [
     	"community", 
-    	"new",
+    	"new"
     ],
     "azureServices": [ 
     	"virtualmachine", 

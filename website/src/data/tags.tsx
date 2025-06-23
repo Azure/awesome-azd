@@ -147,6 +147,10 @@ export type TagType =
   | "avset"
   | "bastion"
   | "mcp"
+  | "appgateway"
+  | "privateendpoint"
+  | "privatelink"
+  | "loadbalancer"
   ;
 
 
@@ -860,6 +864,34 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture for Azure Bastion",
     azureIcon: "./img/Azure-Bastion.svg",
     url: "https://azure.microsoft.com/products/azure-bastion",
+    type: "Service",
+  },
+  appgateway: {
+    label: "Azure Application Gateway",
+    description: "Template architecture for Azure Application Gateway",
+    azureIcon: "./img/Azure-Application-Gateway.svg",
+    url: "https://azure.microsoft.com/products/application-gateway",
+    type: "Service",
+  },
+  privateendpoint: {
+    label: "Azure Private Endpoint",
+    description: "Template architecture for Azure Private Endpoint",
+    azureIcon: "./img/Azure-Private-Endpoint.svg",
+    url: "https://learn.microsoft.com/azure/private-link/private-endpoint-overview",
+    type: "Service",
+  },
+  privatelink: {
+    label: "Azure Private Link",
+    description: "Template architecture for Azure Private Link",
+    azureIcon: "./img/Azure-Private-Link.svg",
+    url: "https://azure.microsoft.com/products/private-link",
+    type: "Service",
+  },
+  loadbalancer: {
+    label: "Azure Load Balancer",
+    description: "Template architecture for Azure Load Balancer",
+    azureIcon: "./img/Azure-Load-Balancer.svg",
+    url: "https://azure.microsoft.com/products/load-balancer",
     type: "Service",
   },
 

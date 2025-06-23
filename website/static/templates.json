@@ -3271,8 +3271,10 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd-timer",
+    "languages": [
+      "dotnetCsharp"
+    ],
     "tags": [
-      "csharp",
       "msft",
       "bicep",
       "new"

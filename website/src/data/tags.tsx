@@ -111,7 +111,7 @@ export type TagType =
   | "serverlessapi"
   | "langchain"
   | "aicollection"
-  | "aistudio"
+  | "aifoundry"
   | "apicenter"
   | "eventgrid"
   | "diagnosticsettings"
@@ -147,8 +147,7 @@ export type TagType =
   | "avset"
   | "bastion"
   | "mcp"
-  | "appgateway"
-  | "privateendpoint"
+  | "privateEndpoints"
   | "privatelink"
   | "loadbalancer"
   ;
@@ -733,9 +732,9 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/products/app-configuration",
     type: "Service",
   },
-  aistudio: {
-    label: "Azure AI Studio",
-    description: "Template architecture uses Azure AI Studio",
+  aifoundry: {
+    label: "Azure AI Foundry",
+    description: "Template architecture uses Azure AI Foundry",
     azureIcon: "./img/Azure-AI-Studio.svg",
     url: "https://azure.microsoft.com/products/ai-studio",
     type: "Service",
@@ -866,17 +865,10 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/products/azure-bastion",
     type: "Service",
   },
-  appgateway: {
-    label: "Azure Application Gateway",
-    description: "Template architecture for Azure Application Gateway",
-    azureIcon: "./img/Azure-Application-Gateway.svg",
-    url: "https://azure.microsoft.com/products/application-gateway",
-    type: "Service",
-  },
-  privateendpoint: {
-    label: "Azure Private Endpoint",
-    description: "Template architecture for Azure Private Endpoint",
-    azureIcon: "./img/Azure-Private-Endpoint.svg",
+  privateEndpoints: {
+    label: "Azure Private Endpoints",
+    description: "Template architecture for Azure Private Endpoints",
+    azureIcon: "./img/Azure-Private-Endpoints.svg",
     url: "https://learn.microsoft.com/azure/private-link/private-endpoint-overview",
     type: "Service",
   },

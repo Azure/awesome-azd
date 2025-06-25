@@ -497,8 +497,8 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Framework",
   },
   chainlit: {
-    label: "Microsoft AutoGen",
-    description: "Template architecture uses Microsoft AutoGen",
+    label: "Chainlit",
+    description: "Template architecture uses Chainlit",
     type: "Framework",
   },
 

@@ -4802,7 +4802,6 @@
     "source": "https://github.com/petender/issdata",
     "tags": [
       "community",
-      "new",
       "fabric"
     ],
     "azureServices": [
@@ -4991,7 +4990,6 @@
     "tags": [
       "bicep",
       "community",
-      "new",
       "aspire"
     ],
     "azureServices": [

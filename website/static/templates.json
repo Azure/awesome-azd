@@ -3179,6 +3179,28 @@
     ]
   },
   {
+    "title": "Azure Functions Python with SQL Triggers and Bindings using Azure Developer CLI",
+    "description": "This repository demonstrates how to use both SQL Triggers and SQL Output Bindings with Azure Functions in Python. Shows event-driven integration with Azure SQL Database using the Azure Developer CLI (azd) for rapid deployment to Azure Functions Flex Consumption.",
+    "preview": "./templates/images/functions-quickstart-python-azd-sql.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-python-azd-sql",
+    "tags": [
+      "msft",
+      "bicep",
+      "new"
+    ],
+    "azureServices": [
+      "functions",
+      "azuresql",
+      "appinsights"
+    ],
+    "id": "1d2dde64-c7c1-4f91-92fe-6b2bd39c6ce5",
+    "languages": [
+      "python"
+    ]
+  },
+  {
     "title": "Azure Functions JavaScript HTTP Trigger using Azure Developer CLI",
     "description": "This repository contains an Azure Functions HTTP trigger quickstart written in JavaScript and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
     "preview": "./templates/images/test.png",

@@ -2488,7 +2488,7 @@
     ],
     "azureServices": [
       "openai",
-      "aistudio",
+      "aifoundry",
       "cosmosdb",
       "aisearch"
     ],
@@ -4907,7 +4907,7 @@
     ],
     "azureServices": [
       "functions",
-      "aistudio",
+      "aifoundry",
       "openai",
       "cosmosdb",
       "azureai",
@@ -5172,5 +5172,62 @@
     "languages": [
       "dotnetCsharp"
     ]
+  },
+  {
+    "title": "AZ-104 All-in-one demo",
+    "description": "This project sets up an Azure environment for AZ-104 course demo purposes.",
+    "preview": "https://github.com/SQLtattoo/azd-az104-all-in-one/blob/master/demoguide/images/az104allinone-diagram.png?raw=true",
+    "website": "https://github.com/SQLtattoo",
+    "author": "Vassilis Ioannidis",
+    "source": "https://github.com/SQLtattoo/azd-az104-all-in-one",
+    "tags": [
+      "community",
+      "new"
+    ],
+    "azureServices": [
+      "virtualmachine",
+      "agw",
+      "loadbalancer",
+      "vnets",
+      "privatelink",
+      "keyvault"
+    ],
+    "id": "c893c207-13dd-4bf9-b471-d96b4c67009a"
+  },
+  {
+    "title": "Azure AI Foundry Agent Service",
+    "description": "This scenario deploys an Azure AI Foundry Hub and Project, as well as an AI Services Agent. You still need to add an Agent description, knowledge and actions to build something useful with it",
+    "preview": "https://github.com/petender/azd-ai-agent-service/blob/main/demoguide/AIFoundrywithAgent.png?raw=true",
+    "website": "https://github.com/petender",
+    "author": "Peter De Tender",
+    "source": "https://github.com/petender/azd-ai-agent-service",
+    "tags": [
+      "new",
+      "community"
+    ],
+    "azureServices": [
+      "azureai",
+      "aifoundry",
+      "openai"
+    ],
+    "id": "b00a6197-ad6d-4c99-b2a8-5e18da8ecb49"
+  },
+  {
+    "title": "Azure AI Foundry with Sora Video Generation Model",
+    "description": "This scenario deploys an Azure AI Foundry Hub and Project, with the Sora Video Generation Model. The demo scenario relies on the Video Playground, but you could also use it in your own application.",
+    "preview": "https://github.com/petender/azd-foundrysora/blob/main/demoguide/AIFoundrywithSora.png?raw=true",
+    "website": "https://github.com/petender",
+    "author": "Peter De Tender",
+    "source": "https://github.com/petender/azd-foundrysora",
+    "tags": [
+      "new",
+      "community"
+    ],
+    "azureServices": [
+      "azureai",
+      "aifoundry",
+      "openai"
+    ],
+    "id": "9150216e-8078-4796-945f-a28e7b754a90"
   }
 ]

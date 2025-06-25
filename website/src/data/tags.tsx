@@ -139,7 +139,7 @@ export type TagType =
   | "chainlit"
   | "aspire"
   | "purview"
-  | "vpngw"
+  // | "vpngw"
   | "loadtesting"
   | "hyperv"
   | "fabric"
@@ -147,7 +147,7 @@ export type TagType =
   | "avset"
   | "bastion"
   | "mcp"
-  | "privateEndpoints"
+  // | "privateEndpoints"
   | "privatelink"
   | "loadbalancer"
   ;
@@ -500,8 +500,8 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Framework",
   },
   chainlit: {
-    label: "Microsoft AutoGen",
-    description: "Template architecture uses Microsoft AutoGen",
+    label: "Chainlit",
+    description: "Template architecture uses Chainlit",
     type: "Framework",
   },
 
@@ -816,13 +816,13 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/products/purview",
     type: "Service",
   },
-  vpngw: {
-    label: "Azure VPN Gateway",
-    description: "Template architecture uses Azure VPN Gateway",
-    azureIcon: "./img/Azure-VPN-GW.svg",
-    url: "https://azure.microsoft.com/products/vpn-gateway",
-    type: "Service",
-  },
+  // vpngw: {
+  //   label: "Azure VPN Gateway",
+  //   description: "Template architecture uses Azure VPN Gateway",
+  //   azureIcon: "./img/Azure-VPN-GW.svg",
+  //   url: "https://azure.microsoft.com/products/vpn-gateway",
+  //   type: "Service",
+  // },
   loadtesting: {
     label: "Azure Load Testing",
     description: "Template architecture for Azure Load Testing",
@@ -865,13 +865,13 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/products/azure-bastion",
     type: "Service",
   },
-  privateEndpoints: {
-    label: "Azure Private Endpoints",
-    description: "Template architecture for Azure Private Endpoints",
-    azureIcon: "./img/Azure-Private-Endpoints.svg",
-    url: "https://learn.microsoft.com/azure/private-link/private-endpoint-overview",
-    type: "Service",
-  },
+  // privateEndpoints: {
+  //   label: "Azure Private Endpoints",
+  //   description: "Template architecture for Azure Private Endpoints",
+  //   azureIcon: "./img/Azure-Private-Endpoints.svg",
+  //   url: "https://learn.microsoft.com/azure/private-link/private-endpoint-overview",
+  //   type: "Service",
+  // },
   privatelink: {
     label: "Azure Private Link",
     description: "Template architecture for Azure Private Link",

@@ -3201,6 +3201,28 @@
     ]
   },
   {
+    "title": "Azure Functions Python with Cosmos DB Triggers and Bindings using Azure Developer CLI",
+    "description": "This repository demonstrates how to use both Cosmos DB Triggers and Output Bindings with Azure Functions in Python. Shows event-driven integration with Azure Cosmos DB using the Azure Developer CLI (azd) for rapid deployment to Azure Functions Flex Consumption.",
+    "preview": "./templates/images/functions-quickstart-python-azd-cosmosdb.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-python-azd-cosmosdb",
+    "tags": [
+      "msft",
+      "bicep",
+      "new"
+    ],
+    "azureServices": [
+      "functions",
+      "cosmosdb",
+      "appinsights"
+    ],
+    "id": "8cd5c836-6739-47cb-8799-6b428763f90b",
+    "languages": [
+      "python"
+    ]
+  },
+  {
     "title": "Azure Functions JavaScript HTTP Trigger using Azure Developer CLI",
     "description": "This repository contains an Azure Functions HTTP trigger quickstart written in JavaScript and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
     "preview": "./templates/images/test.png",

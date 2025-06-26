@@ -5294,5 +5294,26 @@
       "typescript",
       "nodejs"
     ]
+  },
+  {
+    "title": "Azure Functions with Cosmos DB Bindings (.NET)",
+    "description": "An Azure Functions QuickStart project that demonstrates how to use Cosmos DB bindings with the Azure Developer CLI (azd) for rapid, event-driven integration with Azure Cosmos DB.",
+    "preview": "./templates/images/functions-quickstart-dotnet-azd-cosmosdb.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Dev",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd-cosmosdb",
+    "tags": [
+      "bicep",
+      "msft"
+    ],
+    "azureServices": [
+      "functions",
+      "cosmosdb",
+      "monitor"
+    ],
+    "id": "d6ea732b-b1b8-4f55-8ee5-da65c1a14123",
+    "languages": [
+      "dotnetCsharp"
+    ]
   }
 ]

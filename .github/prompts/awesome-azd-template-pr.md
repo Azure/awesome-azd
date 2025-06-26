@@ -90,6 +90,19 @@ When given a template repository URL, analyze the repository to determine:
 - Dapr configuration → add `dapr` tag
 - Kubernetes manifests → add `kubernetes` tag
 
+**Architecture Image Detection:**
+
+- Check README.md for embedded images (look for architecture diagrams, screenshots)
+- Search for common image files in repository:
+  - `architecture.png`, `architecture.jpg`, `architecture.svg`
+  - `diagram.png`, `diagram.jpg`, `diagram.svg`
+  - `overview.png`, `overview.jpg`, `overview.svg`
+  - `screenshot.png`, `screenshot.jpg`
+- Check common directories:
+  - `/diagrams/`, `/images/`, `/assets/`, `/docs/`, `/pictures/`
+- Prioritize architecture diagrams over screenshots
+- If multiple images found, prefer the most comprehensive architecture diagram
+
 ### 2. Author Type Detection
 
 Determine author type based on:
@@ -107,7 +120,7 @@ Generate a JSON entry with this structure:
 {
   "title": "[Generated from repository name/description]",
   "description": "[1-2 sentence description of architecture]",
-  "preview": "./templates/images/[template-name].png",
+  "preview": "./templates/images/[repository-name].png",
   "authorUrl": "[Author GitHub profile or provided URL]",
   "author": "[Author name from repository or provided]",
   "source": "[Repository URL]",
@@ -172,69 +185,60 @@ When creating or updating the submission:
    - Maintain alphabetical order by title
    - Ensure valid JSON formatting
 
-2. **Image Placeholder:**
-   - Set preview path to `./templates/images/[template-name].png`
-   - Note that image file will be added separately by contributor
+2. **Image Handling:**
+   - Check the repository for existing architecture diagrams or images:
+     - Look for images in README.md (architecture diagrams, screenshots)
+     - Check for common image files: `architecture.png`, `diagram.png`, `overview.png`, `screenshot.png`
+     - Look in common directories: `/diagrams/`, `/images/`, `/assets/`, `/docs/`
+   - If image found:
+     - Download and add to `website/static/templates/images/[template-name].png`
+     - Set preview path to `./templates/images/[template-name].png`
+     - Note in PR that image was sourced from repository
+   - If no image found:
+     - Set preview path to `./templates/images/[template-name].png`
+     - Note that image file needs to be added by contributor
 
 ### Step 4: PR Creation and Formatting
 
 1. **PR Title Format:**
    ```
-   Adding [TEMPLATE_TITLE] to Awesome AZD Gallery
-
+   adds the `[template-name]` template to the awesome-azd gallery
    ```
 
 2. **PR Description Template:**
 
    ```markdown
-   ## Template Information
+   This PR adds the `[template-name]` template to the awesome-azd gallery as requested in the issue.
 
-   **Repository:** [REPOSITORY_URL]
+   ## Changes Made
 
-   **Description:** [GENERATED_DESCRIPTION]
+   • Added new template entry to `website/static/templates.json` with the following details:
+     ◦ Title: "[GENERATED_TITLE]"
+     ◦ Description: [GENERATED_DESCRIPTION]
+     ◦ Architecture Image: [If found: "Downloaded and added from the source repository (`path/to/image`)" | If not found: "[template-name].png (to be added by contributor)"]
+     ◦ Author: [AUTHOR_NAME]
+     ◦ Source: [REPOSITORY_URL]
+     ◦ Tags: [comma-separated list of tags]
+     ◦ Languages: [comma-separated list of languages]
+     ◦ Azure Services: [comma-separated list of Azure services]
+     ◦ ID: `[GENERATED_UUID]`
 
-   **Detected Technologies:**
-   - Infrastructure: [bicep/terraform]
-   - Languages: [comma-separated list]
-   - Azure Services: [comma-separated list]
-   - Frameworks: [comma-separated list]
+   ## Template Overview
 
-   ## Auto-generated Entry
+   [Generated overview based on repository analysis describing what the template demonstrates, including key features and technologies used]
 
-   Added an entry to templates.json that includes:
-   - ✅ Template title reflecting the application stack
-   - ✅ 1-2 sentence description of the architecture
-   - ✅ Author attribution and URL
-   - ✅ Link to template source repository
-   - ✅ Appropriate tags including:
-     - ✅ IaC provider (`[bicep/terraform]`)
-     - ✅ Author type (`[msft/community]`)
-     - ✅ `new` tag for newly authored templates
-     - ✅ Language tags: [list]
-     - ✅ Azure service tags: [list]
-     - ✅ Framework tags: [list]
-   - ✅ Unique UUID: `[GENERATED_UUID]`
+   ## Validation
 
-   ## Generated JSON Entry
-   ```json
-   [COMPLETE_JSON_ENTRY]
-   ```
+   • ✅ All tests pass (`npm test`)
+   • ✅ Site builds successfully (`npm run build`)
+   • ✅ JSON structure is valid
+   • ✅ No duplicate IDs or sources
+   • ✅ All required template fields present
+   • ✅ Tags match existing tag definitions
 
-   ## Next Steps
+   The template follows the established pattern of other templates in the gallery and provides a comprehensive example for developers.
 
-   - [ ] Contributor needs to add architecture diagram to `website/static/templates/images/[template-name].png`
-   - [ ] Template has been validated to work with `azd up`
-   - [ ] All required tags have been automatically detected and applied
-
-   ## Validation Results
-
-   - ✅ Repository is accessible
-   - ✅ Contains azure.yaml (azd compatible)
-   - ✅ Contains infrastructure files
-   - ✅ Has README.md
-   - ✅ UUID is unique
-   - ✅ JSON entry is valid   ---
-   *This submission was automatically processed by GitHub Copilot*
+   Fixes #[ISSUE_NUMBER].
    ```
 
 ## Error Handling
@@ -276,9 +280,8 @@ Before finalizing submission:
 Always respond with:
 
 1. **Analysis Summary:** Brief summary of what was detected
-2. **Generated Entry:** The complete JSON entry
-3. **Action Taken:** What files were modified or what PR was created
-4. **Next Steps:** What the contributor needs to do next
+2. **Action Taken:** What files were modified and what PR was created
+3. **Next Steps:** What the contributor needs to do next
 
 Example response:
 
@@ -287,17 +290,21 @@ Example response:
 
 **Detected:**
 - Infrastructure: Bicep
-- Languages: TypeScript, C#
-- Azure Services: App Service, Cosmos DB, Key Vault
-- Frameworks: React, FastAPI
+- Languages: Python
+- Azure Services: Azure Functions, Azure SQL, Application Insights
+- Frameworks: Azure Functions v2 programming model
 
-**Generated JSON entry** and added to templates.json with UUID: `[uuid]`
-
-**Created PR:** "Adding React FastAPI App with Cosmos DB to Awesome AZD Gallery"
+**Actions taken:**
+- Added template entry to website/static/templates.json
+- Downloaded architecture diagram from repository (diagrams/architecture.png)
+- Added image as website/static/templates/images/functions-quickstart-python-azd-sql.png
+- Created PR: "adds the `functions-quickstart-python-azd-sql` template to the awesome-azd gallery"
+- Generated UUID: 1d2dde64-c7c1-4f91-92fe-6b2bd39c6ce5
 
 **Next steps for contributor:**
-- Add architecture diagram to `website/static/templates/images/react-fastapi-cosmosdb.png`
 - Review the auto-generated entry for accuracy
+- Verify the architecture diagram is correct and properly displays
+- Respond to any reviewer feedback
 ```
 
 ## Important Notes

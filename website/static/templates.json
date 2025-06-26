@@ -5227,5 +5227,29 @@
       "openai"
     ],
     "id": "9150216e-8078-4796-945f-a28e7b754a90"
+  },
+  {
+    "title": "Azure Functions with SQL Triggers and Bindings (Python)",
+    "description": "An Azure Functions QuickStart template demonstrating SQL Triggers and SQL Output Bindings with Azure SQL Database using Python v2 programming model. Features event-driven integration for both writing to and reacting to changes in SQL Database.",
+    "preview": "./templates/images/functions-quickstart-python-azd-sql.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Samples",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-python-azd-sql",
+    "tags": [
+      "bicep",
+      "msft"
+    ],
+    "azureServices": [
+      "functions",
+      "azuresql",
+      "monitor",
+      "keyvault",
+      "loganalytics",
+      "azurestorage"
+    ],
+    "languages": [
+      "python"
+    ],
+    "id": "72a85172-4c98-4f01-9127-b17c7f8afc88"
   }
 ]

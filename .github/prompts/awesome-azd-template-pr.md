@@ -107,7 +107,7 @@ Generate a JSON entry with this structure:
 {
   "title": "[Generated from repository name/description]",
   "description": "[1-2 sentence description of architecture]",
-  "preview": "./templates/images/[repository-name].png",
+  "preview": "./templates/images/[template-name].png",
   "authorUrl": "[Author GitHub profile or provided URL]",
   "author": "[Author name from repository or provided]",
   "source": "[Repository URL]",

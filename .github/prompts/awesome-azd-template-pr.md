@@ -155,22 +155,20 @@ Generate a JSON entry with this structure:
 ### Step 2: Generate Template Entry
 
 1. **Title Generation:**
-   - Use repository description if available
-   - Fall back to repository name (cleaned up)
-   - Ensure it reflects the application stack
-   - Format: "Technology Stack with Azure Services"
+   - Follow the title guidelines from [awesome-azd contribution guidelines](https://azure.github.io/awesome-azd/docs/contribute/)
+   - Ensure title reflects the local application stack and technologies used
+   - Use repository description or name as base, following established patterns
 
 2. **Description Generation:**
+   - Follow the description guidelines from [awesome-azd contribution guidelines](https://azure.github.io/awesome-azd/docs/contribute/)
    - Extract from README.md or repository description
-   - Keep to 1-2 sentences
-   - Focus on architecture and Azure services used
+   - Keep to 1-2 sentences focusing on architecture and Azure services
 
 3. **Tag Selection:**
-   - Always include infrastructure tag (`bicep` or `terraform`)
-   - Always include author type (`msft` or `community`)
-   - Always include `new` tag for new submissions
-   - Add all detected technology tags
-   - Ensure no duplicate tags
+   - Follow the tagging guidelines from [awesome-azd contribution guidelines](https://azure.github.io/awesome-azd/docs/contribute/)
+   - Always include required tags: infrastructure (`bicep` or `terraform`), author type (`msft` or `community`), and `new`
+   - Add all detected technology, service, and pattern tags
+   - Ensure no duplicate tags and verify all tags exist in official tags list
 
 4. **UUID Generation:**
    - Generate a new UUID v4
@@ -259,21 +257,22 @@ If issues are encountered:
 
 ## Quality Assurance
 
-Before finalizing submission:
+Before finalizing submission, ensure compliance with [awesome-azd contribution guidelines](https://azure.github.io/awesome-azd/docs/contribute/):
 
 1. **Validate JSON:**
-   - Ensure JSON is properly formatted
-   - Check all required fields are present
-   - Verify tags exist in the official tags list
+   - Ensure JSON is properly formatted according to schema
+   - Check all required fields are present per guidelines
+   - Verify tags exist in the official tags list from [tags.tsx](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx)
 
 2. **Check Completeness:**
-   - All detected services are tagged
-   - All languages are identified
-   - Description is meaningful and accurate
+   - All detected services are properly tagged per guidelines
+   - All languages are correctly identified and tagged
+   - Description follows the format requirements from contribution guidelines
 
-3. **Verify Guidelines:**
-   - Follows awesome-azd contribution guidelines
-   - Meets all requirements for template submissions
+3. **Verify Guidelines Compliance:**
+   - Template meets all awesome-azd contribution requirements
+   - Follows established patterns and conventions
+   - Includes all mandatory fields and proper formatting
 
 ## Response Format
 
@@ -309,9 +308,10 @@ Example response:
 
 ## Important Notes
 
-- Always generate a unique UUID for each template
-- Ensure all detected tags are valid (check against official tags list)
-- Maintain the existing alphabetical order in templates.json
-- Include comprehensive error checking and validation
-- Provide clear next steps for contributors
-- Follow the established patterns in existing templates.json entries
+- Always follow the [awesome-azd contribution guidelines](https://azure.github.io/awesome-azd/docs/contribute/) for all submission requirements
+- Generate a unique UUID for each template using standard UUID v4 format
+- Verify all detected tags exist in the [official tags list](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx)
+- Maintain the existing alphabetical order in templates.json per guidelines
+- Include comprehensive error checking and validation at each step
+- Provide clear next steps for contributors based on what was automated vs. manual tasks remaining
+- Follow the established patterns in existing templates.json entries for consistency

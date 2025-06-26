@@ -105,7 +105,30 @@ When given a template repository URL, analyze the repository to determine:
 
 ### 2. Author Type Detection
 
-Determine author type based on:
+Determine author type based on `../src/data/tags.tsx` attributes:
+
+ ```json
+  // Special Tag
+  msft: {
+    label: "Microsoft Authored",
+    description: "This tag is used for Microsoft azd templates.",
+  },
+  community: {
+    label: "Community Authored",
+    description: "This tag is used for community templates.",
+  },
+  new: {
+    label: "New",
+    description: "This tag is used for new templates.",
+  },
+  popular: {
+    label: "Popular",
+    description: "This tag is used for popular templates.",
+  },
+  aicollection: {
+    label: "AI Collection",
+    description: "This tag is used for templates included in the Microsoft-curated AI collection.",
+  },
 
 - Repository owner is "Azure-Samples" or "Azure" → `msft`
 - Repository owner is "microsoft" → `msft`

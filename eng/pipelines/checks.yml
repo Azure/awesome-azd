@@ -13,8 +13,8 @@ trigger:
 jobs:
   - job: PoliCheck
     pool:
-      name: azsdk-pool-mms-win-2022-general
-      vmImage: windows-2022
+      name: azsdk-pool
+      demands: ImageOverride -equals windows-2022
     timeoutInMinutes: 120
     steps:
       - template: /eng/common/pipelines/templates/steps/policheck.yml
@@ -24,8 +24,8 @@ jobs:
 
   - job: CGScan
     pool:
-      name: azsdk-pool-mms-win-2022-general
-      vmImage: windows-2022
+      name: azsdk-pool
+      demands: ImageOverride -equals windows-2022
 
     variables:
       CLI_VERSION: 1.0.0-alpha.1
@@ -41,8 +41,8 @@ jobs:
 
   - job: GenerateNoticeTxt
     pool:
-      name: azsdk-pool-mms-ubuntu-2004-general
-      OSVmImage: MMSUbuntu20.04
+      name: azsdk-pool
+      demands: ImageOverride -equals ubuntu-24.04
 
     steps:
       - task: ComponentGovernanceComponentDetection@0

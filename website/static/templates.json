@@ -5237,7 +5237,8 @@
     "source": "https://github.com/Azure-Samples/functions-quickstart-python-azd-sql",
     "tags": [
       "bicep",
-      "msft"
+      "msft",
+      "sqltriggers"
     ],
     "azureServices": [
       "azuresql",

@@ -5240,12 +5240,12 @@
       "msft"
     ],
     "azureServices": [
-      "functions",
       "azuresql",
-      "monitor",
+      "azurestorage",
+      "functions",
       "keyvault",
       "loganalytics",
-      "azurestorage"
+      "monitor"
     ],
     "languages": [
       "python"

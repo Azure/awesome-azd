@@ -5282,6 +5282,7 @@
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd-sql",
     "tags": [
+      "new",
       "bicep",
       "msft"
     ],

@@ -150,7 +150,6 @@ export type TagType =
   // | "privateEndpoints"
   | "privatelink"
   | "loadbalancer"
-  | "sqltriggers"
   ;
 
 
@@ -885,11 +884,6 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture for Azure Load Balancer",
     azureIcon: "./img/Azure-Load-Balancer.svg",
     url: "https://azure.microsoft.com/products/load-balancer",
-    type: "Service",
-  },
-  sqltriggers: {
-    label: "SQL Triggers",
-    description: "Template architecture uses SQL triggers and database event-driven patterns",
     type: "Service",
   },
 

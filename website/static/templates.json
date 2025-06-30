@@ -5289,7 +5289,7 @@
     "azureServices": [
       "functions",
       "azuresql",
-      "monitor"
+      "appinsights"
     ],
     "id": "d6f09cec-111b-43f4-aa56-46faf5827df6",
     "languages": [

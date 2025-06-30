@@ -5257,7 +5257,7 @@
     "title": "Azure Functions TypeScript CosmosDB Trigger",
     "description": "An Azure Functions quickstart project that demonstrates how to use a Cosmos DB Trigger with Azure Developer CLI (azd) for quick and easy deployment, using TypeScript and Node.js. The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
     "preview": "./templates/images/functions-quickstart-typescript-azd-cosmosdb.png",
-    "authorUrl": "https://github.com/Azure/azure-dev",
+    "authorUrl": "https://github.com/Azure/Azure-Samples",
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/functions-quickstart-typescript-azd-cosmosdb",
     "tags": [

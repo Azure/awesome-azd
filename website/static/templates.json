@@ -5305,7 +5305,8 @@
     "source": "https://github.com/Azure-Samples/functions-quickstart-typescript-azd-sql",
     "tags": [
       "bicep",
-      "msft"
+      "msft",
+      "new"
     ],
     "azureServices": [
       "functions",

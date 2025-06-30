@@ -5300,7 +5300,7 @@
     "title": "Azure Functions with SQL Triggers and Bindings (TypeScript)",
     "description": "An Azure Functions QuickStart project that demonstrates how to use both SQL Triggers and SQL Output Bindings with the Azure Developer CLI (azd) for rapid, event-driven integration with Azure SQL Database.",
     "preview": "./templates/images/functions-quickstart-typescript-azd-sql.png",
-    "authorUrl": "https://github.com/Azure/azure-dev",
+    "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/functions-quickstart-typescript-azd-sql",
     "tags": [

@@ -5328,7 +5328,8 @@
     "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd-cosmosdb",
     "tags": [
       "bicep",
-      "msft"
+      "msft",
+      "new"
     ],
     "azureServices": [
       "functions",

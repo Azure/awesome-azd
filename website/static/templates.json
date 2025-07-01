@@ -5198,7 +5198,7 @@
       "appinsights",
       "entraid",
       "purview",
-      "cosmos"
+      "cosmosdb"
     ],
     "id": "348AFC2B-8A26-4C0C-91C8-4F04F4D937FD",
     "languages": [

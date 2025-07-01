@@ -108,10 +108,15 @@ function filterUsers(
     return users;
   }
   return users.filter((user) => {
-    if (!user && !user.tags && user.tags.length === 0) {
+    const tags = [
+      ...user.tags,
+      ...(user.languages || []),
+      ...(user.azureServices || []),
+    ];
+    if (!user && !tags && tags.length === 0) {
       return false;
     }
-    return selectedTags.every((tag) => user.tags.includes(tag));
+    return selectedTags.every((tag) => tags.includes(tag));
   });
 }
 
@@ -221,7 +226,14 @@ export default function ShowcaseCardPage({
 
   useEffect(() => {
     const unionTags = new Set<TagType>();
-    cards.forEach((user) => user.tags.forEach((tag) => unionTags.add(tag)));
+    cards.forEach((user) => {
+      const tags = [
+        ...user.tags,
+        ...(user.languages || []),
+        ...(user.azureServices || []),
+      ];
+      tags.forEach((tag) => unionTags.add(tag))
+    });
     setActiveTags(Array.from(unionTags));
   }, [cards]);
 
@@ -275,8 +287,9 @@ export default function ShowcaseCardPage({
           <Combobox
             style={{ minWidth: "unset" }}
             input={{ style: { width: "130px" } }}
-            aria-labelledby="combo-default"
-            placeholder={SORT_BY_OPTIONS[2]}
+            defaultValue={SORT_BY_OPTIONS[2]}
+            defaultSelectedOptions={[SORT_BY_OPTIONS[2]]}
+            aria-label="Sort by"
             onOptionSelect={sortByOnSelect}
           >
             {SORT_BY_OPTIONS.map((option) => (

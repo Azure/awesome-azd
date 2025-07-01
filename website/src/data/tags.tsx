@@ -16,10 +16,12 @@ export type User = {
   title: string;
   description: string;
   preview: string;
-  website: string;
+  authorUrl: string;
   author: string;
-  source: string | null;
+  source: string;
   tags: TagType[];
+  languages?: TagType[];
+  azureServices?: TagType[];
 };
 
 // NN: Updated TagType to suit Static Web Apps
@@ -50,6 +52,7 @@ export type TagType =
   | "keyvault"
   | "aca"
   | "mongodb"
+  | "neondb"
   | "functions"
   | "blobstorage"
   | "azuredb-postgreSQL"
@@ -108,7 +111,7 @@ export type TagType =
   | "serverlessapi"
   | "langchain"
   | "aicollection"
-  | "aistudio"
+  | "aifoundry"
   | "apicenter"
   | "eventgrid"
   | "diagnosticsettings"
@@ -122,6 +125,7 @@ export type TagType =
   | "kernelmemory"
   | "promptengineering"
   | "rag"
+  | "langchain4j"
   | "featureExperimentation"
   | "featuremanagement"
   | "go"
@@ -129,9 +133,26 @@ export type TagType =
   | "autogen"
   | "dab"
   | "rust"
+  | "sharepoint"
   | "virtualmachine"
   | "sentinel"
-  | "trafficmgr";
+  | "trafficmgr"
+  | "chainlit"
+  | "aspire"
+  | "purview"
+  // | "vpngw"
+  | "loadtesting"
+  | "hyperv"
+  | "fabric"
+  | "vmsqlserver"
+  | "avset"
+  | "bastion"
+  | "mcp"
+  // | "privateEndpoints"
+  | "privatelink"
+  | "loadbalancer"
+  ;
+
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -304,6 +325,16 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Data API builder (DAB)",
     type: "Tools",
   },
+  aspire: {
+    label: ".NET Aspire",
+    description: "Set of tools, templates, and packages for building observable, production ready apps.",
+    type: "Tools",
+  },
+  mcp: {
+    label: "Model Context Protocol",
+    description: "Template architecture uses Model Context Protocol (MCP)",
+    type: "Tools",
+  },
 
   // ---- Infrastructure as Code
   bicep: {
@@ -321,6 +352,11 @@ export const Tags: { [type in TagType]: Tag } = {
   mongodb: {
     label: "MongoDB",
     description: "Template architecture uses MongoDB",
+    type: "Database",
+  },
+  neondb: {
+    label: "Neon Serverless Postgres",
+    description: "Template architecture uses Neon",
     type: "Database",
   },
   prometheus: {
@@ -459,9 +495,19 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Retrieval-Augmented Generation",
     type: "Framework",
   },
+  langchain4j: {
+    label: "LangChain4j",
+    description: "Template architecture uses LangChain4j framework",
+    type: "Framework",
+   },
   autogen: {
     label: "Microsoft AutoGen",
     description: "Template architecture uses Microsoft AutoGen",
+    type: "Framework",
+  },
+  chainlit: {
+    label: "Chainlit",
+    description: "Template architecture uses Chainlit",
     type: "Framework",
   },
 
@@ -486,6 +532,11 @@ export const Tags: { [type in TagType]: Tag } = {
   serverlessapi: {
     label: "Serverless API",
     description: "Template architecture uses Serverless API",
+    type: "Service",
+  },
+  sharepoint: {
+    label: "SharePoint",
+    description: "Template architecture involves a connection to SharePoint",
     type: "Service",
   },
 
@@ -687,9 +738,9 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/products/app-configuration",
     type: "Service",
   },
-  aistudio: {
-    label: "Azure AI Studio",
-    description: "Template architecture uses Azure AI Studio",
+  aifoundry: {
+    label: "Azure AI Foundry",
+    description: "Template architecture uses Azure AI Foundry",
     azureIcon: "./img/Azure-AI-Studio.svg",
     url: "https://azure.microsoft.com/products/ai-studio",
     type: "Service",
@@ -757,11 +808,88 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/en-us/products/microsoft-sentinel/",
     type: "Service",
   },
-trafficmgr: {
+  trafficmgr: {
     label: "Azure Traffic Manager",
     description: "Template architecture uses Azure Traffic Manager",
     azureIcon: "./img/trafficmgr.svg",
     url: "https://azure.microsoft.com/products/traffic-manager",
+    type: "Service",
+  },
+  purview: {
+    label: "Azure Purview",
+    description: "Template architecture uses Azure Purview",
+    azureIcon: "./img/Azure-Purview.svg",
+    url: "https://azure.microsoft.com/products/purview",
+    type: "Service",
+  },
+  // vpngw: {
+  //   label: "Azure VPN Gateway",
+  //   description: "Template architecture uses Azure VPN Gateway",
+  //   azureIcon: "./img/Azure-VPN-GW.svg",
+  //   url: "https://azure.microsoft.com/products/vpn-gateway",
+  //   type: "Service",
+  // },
+  loadtesting: {
+    label: "Azure Load Testing",
+    description: "Template architecture for Azure Load Testing",
+    azureIcon: "./img/Azure-Load-Testing.svg",
+    url: "https://azure.microsoft.com/products/load-testing",
+    type: "Service", 
+  },
+  hyperv: {
+    label: "Azure Hyper-V Host",
+    description: "Template for Azure Hyper-V Host",
+    azureIcon: "./img/Azure-Hyper-V-Host.svg",
+    url: "https://learn.microsoft.com/azure/migrate/tutorial-migrate-hyper-v?tabs=UI",
+    type: "Service",
+  },
+  fabric: {
+    label: "Microsoft Fabric",
+    description: "Template architecture for Microsoft Fabric",
+    azureIcon: "./img/Azure-Fabric.png",
+    url: "https://www.microsoft.com/microsoft-fabric",
+    type: "Service", 
+  },
+  vmsqlserver: {
+    label: "SQL Server on Azure Virtual Machines",
+    description: "Template architecture for SQL Server",
+    azureIcon: "./img/Azure-SQL-Server.svg",
+    url: "https://azure.microsoft.com/products/virtual-machines/sql-server/",
+    type: "Service",
+  },
+  avset: {
+    label: "Azure Availability Set",
+    description: "Template architecture for Availability Set",
+    azureIcon: "./img/Azure-Availability-Set.svg",
+    url: "https://learn.microsoft.com/azure/virtual-machines/availability-set-overview",
+    type: "Service",
+  },
+  bastion: {
+    label: "Azure Bastion",
+    description: "Template architecture for Azure Bastion",
+    azureIcon: "./img/Azure-Bastion.svg",
+    url: "https://azure.microsoft.com/products/azure-bastion",
+    type: "Service",
+  },
+  // privateEndpoints: {
+  //   label: "Azure Private Endpoints",
+  //   description: "Template architecture for Azure Private Endpoints",
+  //   azureIcon: "./img/Azure-Private-Endpoints.svg",
+  //   url: "https://learn.microsoft.com/azure/private-link/private-endpoint-overview",
+  //   type: "Service",
+  // },
+  privatelink: {
+    label: "Azure Private Link",
+    description: "Template architecture for Azure Private Link",
+    azureIcon: "./img/Azure-Private-Link.svg",
+    url: "https://azure.microsoft.com/products/private-link",
+    type: "Service",
+  },
+  loadbalancer: {
+    label: "Azure Load Balancer",
+    description: "Template architecture for Azure Load Balancer",
+    azureIcon: "./img/Azure-Load-Balancer.svg",
+    url: "https://azure.microsoft.com/products/load-balancer",
     type: "Service",
   },
 

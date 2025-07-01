@@ -63,8 +63,8 @@ export default function ShowcaseTagSelect({
         onKeyDown={(e) => {
           if (e.key === "Enter") {
             toggleTag();
+            toggleCheck(tag);
           }
-          toggleCheck(tag);
         }}
         onChange={() => {
           toggleTag();

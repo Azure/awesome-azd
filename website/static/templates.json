@@ -5268,7 +5268,7 @@
     "azureServices": [
       "functions",
       "cosmosdb",
-      "storage",
+      "azurestorage",
       "loganalytics",
       "managedidentity"
     ],

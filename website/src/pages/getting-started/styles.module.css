@@ -50,6 +50,18 @@
   color: black;
 }
 
+.heroText {
+  color: #000000;
+}
+
+[data-theme="dark"] .description {
+  color: white;
+}
+
+[data-theme="dark"] .heroText {
+  color: #ffffff;
+}
+
 .container {
   margin: 0 auto;
   max-width: 1340px;

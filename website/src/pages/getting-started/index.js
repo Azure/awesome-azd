@@ -45,13 +45,13 @@ function HomepageHeader({ colorMode }) {
         <div className={styles.description}>
           <h1>
             <Text
-              className={style.largeTitle}
-              style={{ marginBottom: "6px", color: "#242424" }}
+              className={`${style.largeTitle} ${styles.heroText}`}
+              style={{ marginBottom: "6px" }}
             >
               Accelerate your journey to the cloud with azd
             </Text>
           </h1>
-          <Text className={style.title3} style={{ color: "#242424" }}>
+          <Text className={`${style.title3} ${styles.heroText}`}>
             Azure Developer CLI (azd) is an open-source tool that accelerates
             your application’s journey from local development to Azure.
           </Text>

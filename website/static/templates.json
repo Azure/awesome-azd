@@ -5177,7 +5177,7 @@
     "title": "Purview API integration in Serverless AI Chat with RAG using LangChain.js",
     "description": "This sample showcases how Purview API can be integrated to audit and secure AI prompts and responses.",
     "preview": "./docs/images/architecture.drawio.png",
-    "authorUrl": "https://github.com/Azure-Samples,https://github.com/PramodKumarHK89",
+    "authorUrl": "https://github.com/PramodKumarHK89",
     "author": "Purview P4AI Team",
     "source": "https://github.com/Azure-Samples/serverless-chat-langchainjs-purview",
     "tags": [
@@ -5189,9 +5189,8 @@
       "functions",
       "managedidentity",
       "vnets",
-      "blobstorage",      
+      "blobstorage",
       "appinsights",
-      "entraid",
       "purview",
       "cosmosdb"
     ],
@@ -5204,27 +5203,21 @@
     "title": "Purview API integration in RAG chat app with Azure OpenAI and Azure AI Search (Python)",
     "description": "This sample showcases how Purview API can be integrated to audit and secure AI prompts and responses.",
     "preview": "./docs/images/appcomponents.png",
-    "authorUrl": "https://github.com/Azure-Samples,https://github.com/PramodKumarHK89",
+    "authorUrl": "https://github.com/PramodKumarHK89",
     "author": "Purview P4AI Team",
     "source": "https://github.com/Azure-Samples/azure-search-openai-demo-purviewdatasecurity",
     "tags": [
       "msft",
       "bicep",
-      "purview",
-      "security",
-      "python",
-      "chatbot",      
-      "entra-id",
       "new"
     ],
-    "azureServices": [      
+    "azureServices": [
       "managedidentity",
       "vnets",
       "blobstorage",
       "eventgrid",
       "appinsights",
-      "entraid",
-      "purview",      
+      "purview"
     ],
     "id": "F5B15030-D351-462E-8F5F-A054EEBEFCA3",
     "languages": [

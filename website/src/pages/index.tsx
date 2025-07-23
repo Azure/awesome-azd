@@ -36,6 +36,23 @@ export function prepareUserState(): UserState | undefined {
   return undefined;
 }
 
+const BackToTopButton = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  return (
+    <button 
+      className={styles.backToTopButton}
+      onClick={scrollToTop}
+      aria-label="Back to top"
+      title="Back to top"
+    >
+      ↑
+    </button>
+  );
+};
+
 const TagQueryStringKey = "tags";
 const readSearchTags = (search: string): TagType[] => {
   return new URLSearchParams(search).getAll(TagQueryStringKey) as TagType[];
@@ -94,6 +111,7 @@ const App = () => {
             />
           </div>
         </div>
+        <BackToTopButton />
       </main>
     </FluentProvider>
   ) : null;

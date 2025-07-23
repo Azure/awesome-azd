@@ -39,12 +39,6 @@ const telemetryInit = () => {
   var siteConsent = null;
   var WcpConsent = window.WcpConsent;
 
-  // Check if WcpConsent is available (may not be in development)
-  if (!WcpConsent) {
-    console.log("WcpConsent not available - likely in development mode");
-    return;
-  }
-
   WcpConsent &&
     WcpConsent.init(
       "en-US",

@@ -17,6 +17,7 @@ import {
   Spinner,
   Badge,
   Body1,
+  Button,
 } from "@fluentui/react-components";
 import ShowcaseCards from "./ShowcaseCards";
 import useBaseUrl from "@docusaurus/useBaseUrl";
@@ -177,6 +178,90 @@ function FilterAppliedBar({
   ) : null;
 }
 
+function PaginationControls({
+  currentPage,
+  totalPages,
+  onPageChange,
+}: {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+}) {
+  const getVisiblePages = () => {
+    const delta = 2;
+    const range = [];
+    
+    for (let i = Math.max(2, currentPage - delta); 
+         i <= Math.min(totalPages - 1, currentPage + delta); 
+         i++) {
+      range.push(i);
+    }
+
+    if (currentPage - delta > 2) {
+      range.unshift("...");
+    }
+    if (currentPage + delta < totalPages - 1) {
+      range.push("...");
+    }
+
+    range.unshift(1);
+    if (totalPages > 1) {
+      range.push(totalPages);
+    }
+
+    return range;
+  };
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: "8px",
+        margin: "24px 0",
+      }}
+    >
+      <Button
+        appearance="outline"
+        disabled={currentPage === 1}
+        onClick={() => onPageChange(currentPage - 1)}
+      >
+        Previous
+      </Button>
+      
+      {getVisiblePages().map((page, index) => {
+        if (page === "...") {
+          return (
+            <Text key={`ellipsis-${index}`} size={400} style={{ padding: "8px" }}>
+              ...
+            </Text>
+          );
+        }
+        
+        return (
+          <Button
+            key={page}
+            appearance={currentPage === page ? "primary" : "outline"}
+            onClick={() => onPageChange(Number(page))}
+            style={{ minWidth: "40px" }}
+          >
+            {page}
+          </Button>
+        );
+      })}
+      
+      <Button
+        appearance="outline"
+        disabled={currentPage === totalPages}
+        onClick={() => onPageChange(currentPage + 1)}
+      >
+        Next
+      </Button>
+    </div>
+  );
+}
+
 export default function ShowcaseCardPage({
   setActiveTags,
   selectedTags,
@@ -198,6 +283,8 @@ export default function ShowcaseCardPage({
   const [loading, setLoading] = useState(true);
   const [searchName, setSearchName] = useState<string | null>(null);
   const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 20;
   const history = useHistory();
   const searchParams = new URLSearchParams(location.search);
   const clearAll = () => {
@@ -224,6 +311,18 @@ export default function ShowcaseCardPage({
     [selectedUsers, selectedTags, searchName]
   );
 
+  // Reset to first page when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedTags, searchName, selectedUsers]);
+
+  // Calculate pagination
+  const totalTemplates = cards ? cards.length : 0;
+  const totalPages = Math.ceil(totalTemplates / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedCards = cards.slice(startIndex, endIndex);
+
   useEffect(() => {
     const unionTags = new Set<TagType>();
     cards.forEach((user) => {
@@ -241,7 +340,10 @@ export default function ShowcaseCardPage({
     setLoading(true);
     setSelectedOptions(data.selectedOptions);
   };
-  const templateNumber = cards ? cards.length : 0;
+
+  // Template count display logic
+  const currentStart = totalTemplates > 0 ? startIndex + 1 : 0;
+  const currentEnd = Math.min(endIndex, totalTemplates);
 
   return (
     <>
@@ -260,9 +362,13 @@ export default function ShowcaseCardPage({
         >
           <Text size={400}>Viewing</Text>
           <Text size={400} weight="bold">
-            {templateNumber}
+            {totalTemplates > 0 ? `${currentStart}-${currentEnd}` : '0'}
           </Text>
-          {templateNumber != 1 ? (
+          <Text size={400}>of</Text>
+          <Text size={400} weight="bold">
+            {totalTemplates}
+          </Text>
+          {totalTemplates != 1 ? (
             <Text size={400}>templates</Text>
           ) : (
             <Text size={400}>template</Text>
@@ -307,7 +413,16 @@ export default function ShowcaseCardPage({
       {loading ? (
         <Spinner labelPosition="below" label="Loading..." />
       ) : (
-        <ShowcaseCards filteredUsers={cards} />
+        <>
+          <ShowcaseCards filteredUsers={paginatedCards} />
+          {totalPages > 1 && (
+            <PaginationControls
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
+          )}
+        </>
       )}
     </>
   );

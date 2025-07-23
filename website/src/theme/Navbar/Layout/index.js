@@ -107,18 +107,26 @@ const telemetryInit = () => {
     }
   }
 
-  if (WcpConsent.siteConsent.isConsentRequired) {
+  if (WcpConsent && WcpConsent.siteConsent && WcpConsent.siteConsent.isConsentRequired) {
     var manageCookies = document.getElementById("manage_cookie");
-    manageCookies.addEventListener("click", function (e) {
-      e.preventDefault();
-      WcpConsent.siteConsent.manageConsent();
-    });
+    if (manageCookies) {
+      manageCookies.addEventListener("click", function (e) {
+        e.preventDefault();
+        WcpConsent.siteConsent.manageConsent();
+      });
+    }
   } else {
     // remove Manage Cookie and separator in footer
-    removeItem("footer__links_" + manageCookieLabel);
-    removeItem(manageCookieId);
+    try {
+      removeItem("footer__links_" + manageCookieLabel);
+      removeItem(manageCookieId);
+    } catch (e) {
+      // ignore if elements don't exist
+    }
   }
-  setNonEssentialCookies(WcpConsent.siteConsent.getConsent());
+  if (WcpConsent && WcpConsent.siteConsent) {
+    setNonEssentialCookies(WcpConsent.siteConsent.getConsent());
+  }
 
   // 1DS initialization
   try {

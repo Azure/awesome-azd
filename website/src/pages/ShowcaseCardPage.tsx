@@ -361,7 +361,12 @@ export default function ShowcaseCardPage({
           }}
         >
           <Text size={400}>Viewing</Text>
-          {totalTemplates === 1 ? (
+          {totalTemplates === 0 ? (
+            <>
+              <Text size={400} weight="bold">0</Text>
+              <Text size={400}>template</Text>
+            </>
+          ) : totalTemplates === 1 ? (
             <>
               <Text size={400} weight="bold">1</Text>
               <Text size={400}>template</Text>
@@ -369,7 +374,7 @@ export default function ShowcaseCardPage({
           ) : (
             <>
               <Text size={400} weight="bold">
-                {totalTemplates > 0 ? `${currentStart}-${currentEnd}` : '0'}
+                {`${currentStart}-${currentEnd}`}
               </Text>
               <Text size={400}>of</Text>
               <Text size={400} weight="bold">

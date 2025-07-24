@@ -1,5 +1,11 @@
 # Release History
 
+## Unreleased
+
+### Features Added
+
+- [[631]](https://github.com/Azure/awesome-azd/pull/631) Add pagination support for template gallery with 248+ templates.
+
 ## 0.5.0 (2024-07-31)
 
 ### Features Added

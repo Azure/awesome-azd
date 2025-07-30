@@ -2043,25 +2043,6 @@
     "id": "087c35ef-edc0-4794-8bf5-51bc265269b0"
   },
   {
-    "title": "Langfuse on Azure",
-    "description": "Deploy Langfuse (open-source LLM observability platform) to Azure Container Apps with PostgreSQL Flexible Server.",
-    "preview": "./templates/images/aca_postgres_keyvault.png",
-    "authorUrl": "https://github.com/pamelafox",
-    "author": "Pamela Fox",
-    "source": "https://github.com/Azure-Samples/langfuse-on-azure",
-    "tags": [
-      "ai",
-      "msft",
-      "bicep"
-    ],
-    "azureServices": [
-      "aca",
-      "azuredb-postgreSQL",
-      "keyvault"
-    ],
-    "id": "d76ccdef-e735-4891-af13-b54e14f1a3fb"
-  },
-  {
     "title": "PostgreSQL + Pgvector",
     "description": "Deploy a PostgreSQL Flexible Server with Pgvector extension and keyless auth, then access it from Python scripts.",
     "preview": "./templates/images/postgres_entra.png",

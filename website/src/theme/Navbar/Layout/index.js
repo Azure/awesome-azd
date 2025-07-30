@@ -117,44 +117,44 @@ const telemetryInit = () => {
     }
   } else {
     // remove Manage Cookie and separator in footer
-    try {
-      removeItem("footer__links_" + manageCookieLabel);
-      removeItem(manageCookieId);
-    } catch (e) {
-      // ignore if elements don't exist
-    }
-  }
-  if (WcpConsent && WcpConsent.siteConsent) {
-    setNonEssentialCookies(WcpConsent.siteConsent.getConsent());
-  }
+try {
+    // Remove both footer links and manage cookie ID
+    removeItem("footer__links_" + manageCookieLabel);
+    removeItem(manageCookieId);
+} catch (e) {
+    // Ignore if elements don't exist - this is expected behavior
+    // when cookies/elements have already been removed or don't exist
+}
 
   // 1DS initialization
   try {
-    const analytics = new oneDS.ApplicationInsights();
-    var config = {
-      instrumentationKey:
-        "41c1099574f14f06bdce4f80fcd0a65c-4a29467c-f5d4-4151-8e8b-62c0a3515947-7118",
-      propertyConfiguration: {
-        // Properties Plugin configuration
-        callback: {
-          userConsentDetails: siteConsent ? siteConsent.getConsent : null,
+    if (typeof oneDS !== 'undefined') {
+      const analytics = new oneDS.ApplicationInsights();
+      var config = {
+        instrumentationKey:
+          "41c1099574f14f06bdce4f80fcd0a65c-4a29467c-f5d4-4151-8e8b-62c0a3515947-7118",
+        propertyConfiguration: {
+          // Properties Plugin configuration
+          callback: {
+            userConsentDetails: siteConsent ? siteConsent.getConsent : null,
+          },
         },
-      },
-      webAnalyticsConfiguration: {
-        // Web Analytics Plugin configuration
-        autoCapture: {
-          scroll: true,
-          pageView: true,
-          onLoad: true,
-          onUnload: true,
-          click: true,
-          resize: true,
-          jsError: true,
+        webAnalyticsConfiguration: {
+          // Web Analytics Plugin configuration
+          autoCapture: {
+            scroll: true,
+            pageView: true,
+            onLoad: true,
+            onUnload: true,
+            click: true,
+            resize: true,
+            jsError: true,
+          },
         },
-      },
-    };
-    //Initialize SDK
-    analytics.initialize(config, []);
+      };
+      //Initialize SDK
+      analytics.initialize(config, []);
+    }
   } catch (error) {
     if (
       error instanceof ReferenceError &&

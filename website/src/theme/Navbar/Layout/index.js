@@ -118,10 +118,12 @@ const telemetryInit = () => {
   } else {
     // remove Manage Cookie and separator in footer
     try {
+      // Remove both footer links and manage cookie ID
       removeItem("footer__links_" + manageCookieLabel);
       removeItem(manageCookieId);
-    } catch (error) {
-      // Ignore errors if elements don't exist
+    } catch (e) {
+      // Ignore if elements don't exist - this is expected behavior
+      // when cookies/elements have already been removed or don't exist
     }
   }
   

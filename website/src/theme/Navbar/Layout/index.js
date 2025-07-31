@@ -126,7 +126,10 @@ const telemetryInit = () => {
       // when cookies/elements have already been removed or don't exist
     }
   }
-  setNonEssentialCookies(WcpConsent.siteConsent.getConsent());
+  
+  if (WcpConsent && WcpConsent.siteConsent) {
+    setNonEssentialCookies(WcpConsent.siteConsent.getConsent());
+  }
 
   // 1DS initialization
   try {

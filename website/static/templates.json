@@ -5398,5 +5398,81 @@
     "languages": [
       "python"
     ]
-  }
+  },
+  {
+"title": "Azure Monitor custom logs, and external telemetry",
+"description": "This scenario deploys an Log Analytics workspace with a custom table to ingest logs and external telemetry.",
+"preview": "./templates/images/monitor-diagram.png",
+"website": "https://github.com/kareldewinter",
+"author": "Karel De Winter",
+"source": "https://github.com/kareldewinter/tdd-azd-monitor",
+"tags": [
+	"community", 
+	"new", 
+	],
+"azureServices": [
+	"monitor", 
+	"appinsights",
+	"loganalytics"
+	],
+"id": "5a9ce880-cba7-4aaf-84f2-dd8e01d8102f",
+"languages": [
+	]
+},
+{
+"title": "API Management with ConferenceAPI and OAuth",
+"description": "Deploy Azure API Management with OAuth2-Protected Conference API and Entra ID Integration Using AZD",
+"preview": "./templates/images/test.png",
+"website": "https://github.com/rob-foulkrod",
+"author": "Rob Foulkrod",
+"source": "https://github.com/rob-foulkrod/azd-apimwithconfAPI-OAuth",
+"tags": [
+	"community",  
+	"new"
+	],
+"azureServices": [
+	"appservice", 
+	"apim"
+	],
+"id": "d1f73aed-d74d-424c-a727-5fb066a0a714",
+"languages": [
+	"dotnet"
+	]
+
+},
+{
+"title": "Microsoft Sentinel-based threat detection and response",
+"description": "This scenario is aligned with the AZ-500 and AZ-104 path and provides a demo solution for a proof of concept of Microsoft Sentinel-based threat detection and response.",
+"preview": "./templates/images/azd-microsoft-sentinel-diagram.png",
+"website": "https://github.com/daverendon",
+"author": "Dave Rendon",
+"source": "https://github.com/daverendon/azd-microsoft.sentinel",
+"tags": [
+	"community", 
+	"new" 
+	],
+"azureServices": [
+	"sentinel"
+	],
+"id": "ef0e4c32-aa34-4470-95fb-bb6829f0d098",
+"languages": []
+},
+{
+"title": "Introduction to Azure PostgreSQL and AI",
+"description": "Azure PostgreSQL & AI Demo offers step-by-step guidance for connecting, configuring, and integrating AI with PostgreSQL in Azure using modern tools.",
+"preview": "./templates/images/pgdemo.png",
+"website": "https://github.com/true-while",
+"author": "Alex Ivanov",
+"source": "https://github.com/true-while/pg-ai-azd",
+"tags": [
+	"community", 
+	"new"
+	],
+"azureServices": [
+	"azureai",
+	"azuredb-postgreSQL"
+	],
+"id": "166f7044-0400-4b84-88e6-1acb5a6e9f86",
+"languages": []
+}
 ]

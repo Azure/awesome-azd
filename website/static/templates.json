@@ -5408,7 +5408,7 @@
 "source": "https://github.com/kareldewinter/tdd-azd-monitor",
 "tags": [
 	"community", 
-	"new", 
+	"new" 
 	],
 "azureServices": [
 	"monitor", 

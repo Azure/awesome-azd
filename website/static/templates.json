@@ -5391,6 +5391,7 @@
     "source": "https://github.com/kareldewinter/tdd-azd-monitor",
     "tags": [
       "community",
+      "bicep",
       "new"
     ],
     "azureServices": [
@@ -5410,6 +5411,7 @@
     "source": "https://github.com/rob-foulkrod/azd-apimwithconfAPI-OAuth",
     "tags": [
       "community",
+      "bicep",
       "new"
     ],
     "azureServices": [
@@ -5427,9 +5429,10 @@
     "preview": "./templates/images/azd-microsoft-sentinel-diagram.png",
     "website": "https://github.com/daverendon",
     "author": "Dave Rendon",
-    "source": "https://github.com/daverendon/azd-microsoft.sentinel",
+    "source": "https://github.com/daverendon/azd-microsoft-sentinel",
     "tags": [
       "community",
+      "bicep",
       "new"
     ],
     "azureServices": [
@@ -5447,6 +5450,7 @@
     "source": "https://github.com/true-while/pg-ai-azd",
     "tags": [
       "community",
+      "bicep",
       "new"
     ],
     "azureServices": [

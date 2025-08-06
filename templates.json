@@ -4997,7 +4997,6 @@
     "source": "https://github.com/trainerkrunal/azd-vmwithlb",
     "tags": [
       "community",
-      "new",
       "bicep"
     ],
     "azureServices": [
@@ -5015,7 +5014,6 @@
     "source": "https://github.com/daverendon/azd-service-endpoints-and-securing-storage",
     "tags": [
       "community",
-      "new",
       "bicep"
     ],
     "azureServices": [
@@ -5034,7 +5032,6 @@
     "source": "https://github.com/daverendon/azd-intersite-connectivity",
     "tags": [
       "community",
-      "new",
       "bicep"
     ],
     "azureServices": [
@@ -5052,7 +5049,6 @@
     "source": "https://github.com/michelmsft/GoodFood/",
     "tags": [
       "community",
-      "new",
       "bicep"
     ],
     "languages": [
@@ -5075,7 +5071,6 @@
     "source": "https://github.com/maartenvandiemen/AZD-AppConfiguration",
     "tags": [
       "community",
-      "new",
       "bicep"
     ],
     "azureServices": [
@@ -5096,7 +5091,6 @@
     "source": "https://github.com/daverendon/azd-private-link",
     "tags": [
       "community",
-      "new",
       "bicep"
     ],
     "azureServices": [
@@ -5116,7 +5110,6 @@
     "source": "https://github.com/koenraadhaedens/azd-sqlworloadsim",
     "tags": [
       "community",
-      "new",
       "bicep"
     ],
     "azureServices": [
@@ -5136,8 +5129,7 @@
     "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd-eventgrid-blob",
     "tags": [
       "msft",
-      "bicep",
-      "new"
+      "bicep"
     ],
     "azureServices": [
       "functions",
@@ -5160,8 +5152,7 @@
     "author": "Vassilis Ioannidis",
     "source": "https://github.com/SQLtattoo/azd-az104-all-in-one",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "virtualmachine",
@@ -5181,7 +5172,6 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-ai-agent-service",
     "tags": [
-      "new",
       "community"
     ],
     "azureServices": [
@@ -5199,7 +5189,6 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-foundrysora",
     "tags": [
-      "new",
       "community"
     ],
     "azureServices": [
@@ -5218,8 +5207,7 @@
     "source": "https://github.com/Azure-Samples/functions-quickstart-python-azd-sql",
     "tags": [
       "bicep",
-      "msft",
-      "new"
+      "msft"
     ],
     "azureServices": [
       "azuresql",
@@ -5243,8 +5231,7 @@
     "source": "https://github.com/Azure-Samples/functions-quickstart-typescript-azd-cosmosdb",
     "tags": [
       "bicep",
-      "msft",
-      "new"
+      "msft"
     ],
     "azureServices": [
       "functions",
@@ -5268,8 +5255,7 @@
     "source": "https://github.com/Azure-Samples/functions-quickstart-python-azd-cosmosdb",
     "tags": [
       "msft",
-      "bicep",
-      "new"
+      "bicep"
     ],
     "azureServices": [
       "functions",
@@ -5289,7 +5275,6 @@
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd-sql",
     "tags": [
-      "new",
       "bicep",
       "msft"
     ],
@@ -5312,8 +5297,7 @@
     "source": "https://github.com/Azure-Samples/functions-quickstart-typescript-azd-sql",
     "tags": [
       "bicep",
-      "msft",
-      "new"
+      "msft"
     ],
     "azureServices": [
       "functions",
@@ -5335,8 +5319,7 @@
     "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd-cosmosdb",
     "tags": [
       "bicep",
-      "msft",
-      "new"
+      "msft"
     ],
     "azureServices": [
       "functions",
@@ -5398,5 +5381,83 @@
     "languages": [
       "python"
     ]
+  },
+  {
+    "title": "Azure Monitor custom logs and external telemetry",
+    "description": "This scenario deploys an Log Analytics workspace with a custom table to ingest logs and external telemetry.",
+    "preview": "./templates/images/monitor-diagram.png",
+    "website": "https://github.com/kareldewinter",
+    "author": "Karel De Winter",
+    "source": "https://github.com/kareldewinter/tdd-azd-monitor",
+    "tags": [
+      "community",
+      "bicep",
+      "new"
+    ],
+    "azureServices": [
+      "monitor",
+      "appinsights",
+      "loganalytics"
+    ],
+    "id": "5a9ce880-cba7-4aaf-84f2-dd8e01d8102f",
+    "languages": []
+  },
+  {
+    "title": "API Management with ConferenceAPI and OAuth",
+    "description": "Deploy Azure API Management with OAuth2-Protected Conference API and Entra ID Integration Using AZD",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/rob-foulkrod",
+    "author": "Rob Foulkrod",
+    "source": "https://github.com/rob-foulkrod/azd-apimwithconfAPI-OAuth",
+    "tags": [
+      "community",
+      "bicep",
+      "new"
+    ],
+    "azureServices": [
+      "appservice",
+      "apim"
+    ],
+    "id": "d1f73aed-d74d-424c-a727-5fb066a0a714",
+    "languages": [
+      "dotnetCsharp"
+    ]
+  },
+  {
+    "title": "Microsoft Sentinel-based threat detection and response",
+    "description": "This scenario is aligned with the AZ-500 and AZ-104 path and provides a demo solution for a proof of concept of Microsoft Sentinel-based threat detection and response.",
+    "preview": "./templates/images/azd-microsoft-sentinel-diagram.png",
+    "website": "https://github.com/daverendon",
+    "author": "Dave Rendon",
+    "source": "https://github.com/daverendon/azd-microsoft-sentinel",
+    "tags": [
+      "community",
+      "bicep",
+      "new"
+    ],
+    "azureServices": [
+      "sentinel"
+    ],
+    "id": "ef0e4c32-aa34-4470-95fb-bb6829f0d098",
+    "languages": []
+  },
+  {
+    "title": "Introduction to Azure PostgreSQL and AI",
+    "description": "Azure PostgreSQL & AI Demo offers step-by-step guidance for connecting, configuring, and integrating AI with PostgreSQL in Azure using modern tools.",
+    "preview": "./templates/images/pgdemo.png",
+    "website": "https://github.com/true-while",
+    "author": "Alex Ivanov",
+    "source": "https://github.com/true-while/pg-ai-azd",
+    "tags": [
+      "community",
+      "bicep",
+      "new"
+    ],
+    "azureServices": [
+      "azureai",
+      "azuredb-postgreSQL"
+    ],
+    "id": "166f7044-0400-4b84-88e6-1acb5a6e9f86",
+    "languages": []
   }
 ]

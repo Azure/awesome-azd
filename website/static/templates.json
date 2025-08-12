@@ -3266,7 +3266,7 @@
   },
   {
     "title": "Azure Functions C# Timer Trigger using Azure Developer CLI",
-    "description": "This repository contains an Azure Functions Timer trigger quickstart written in C# and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (AZD). This sample uses managed identity and a virtual network to insure it's secure by default.",
+    "description": "This repository contains an Azure Functions Timer trigger quickstart written in C# and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (AZD). This sample uses managed identity and a virtual network to ensure it's secure by default.",
     "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",

@@ -5474,8 +5474,7 @@
       "community"
     ],
     "azureServices": [
-      "appservice",
-      "openai"
+      "appservice"
     ],
     "id": "22810f32-474d-41c0-9090-f5731e6a9de5",
     "languages": [

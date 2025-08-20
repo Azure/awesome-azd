@@ -5459,5 +5459,38 @@
     ],
     "id": "166f7044-0400-4b84-88e6-1acb5a6e9f86",
     "languages": []
-  }
+  },
+  {
+  "title": "Containerized A2A Translation Service with Azure AI Translator",
+  "description": "Complete Agent-to-Agent translation service using Azure Container Apps, Storage Queues, and AI Translator. Features async processing, managed identity authentication, and a web GUI for file uploads.",
+  "authorUrl": "https://github.com/passadis",
+  "author": "Konstantinos Passadis",
+  "source": "https://github.com/passadis/azure-a2a-translation",
+  "preview": "https://github.com/passadis/azure-a2a-translation/images/a2a-translation-architecture.png",
+  "tags": [
+    "Terraform",
+    "Container Apps",
+    "AI/ML",
+    "Microservices",
+    "Queue Processing",
+    "Managed Identity",
+    "Web Application"
+  ],
+  
+  "languages": [
+    "Python",
+    "HTML/CSS",
+    "JavaScript"
+  ],
+  "azureServices": [
+    "Azure Container Apps",
+    "Azure AI Translator",
+    "Azure Storage Queue",
+    "Azure Storage Blob",
+    "Azure Container Registry",
+    "Azure Log Analytics",
+    "Azure Managed Identity"
+  ],
+  "id": "3bfa9f47-fff4-4c1e-ac60-42236f343374"
+}
 ]

@@ -5459,5 +5459,26 @@
     ],
     "id": "166f7044-0400-4b84-88e6-1acb5a6e9f86",
     "languages": []
+  },
+  {
+    "title": "Simple FastMCP with Azure OpenAI",
+    "description": "A minimal FastMCP application template that deploys to Azure App Service. FastMCP provides Model Context Protocol server capabilities, enabling AI assistants to interact with external systems and data sources through a standardized interface.",
+    "preview": "https://raw.githubusercontent.com/MiguelElGallo/myfirstmcp-openai/main/diagram.png",
+    "authorUrl": "https://github.com/MiguelElGallo",
+    "author": "Miguel P. Z.",
+    "source": "https://github.com/MiguelElGallo/myfirstmcp-openai",
+    "tags": [
+      "mcp",
+      "bicep",
+      "ai",
+      "community"
+    ],
+    "azureServices": [
+      "appservice"
+    ],
+    "id": "22810f32-474d-41c0-9090-f5731e6a9de5",
+    "languages": [
+      "python"
+    ]
   }
 ]

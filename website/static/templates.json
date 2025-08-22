@@ -5340,8 +5340,7 @@
     "source": "https://github.com/Azure-Samples/serverless-chat-langchainjs-purview",
     "tags": [
       "msft",
-      "bicep",
-      "new"
+      "bicep"
     ],
     "azureServices": [
       "functions",
@@ -5366,8 +5365,7 @@
     "source": "https://github.com/Azure-Samples/azure-search-openai-demo-purviewdatasecurity",
     "tags": [
       "msft",
-      "bicep",
-      "new"
+      "bicep"
     ],
     "azureServices": [
       "managedidentity",
@@ -5471,7 +5469,8 @@
       "mcp",
       "bicep",
       "ai",
-      "community"
+      "community",
+      "new"
     ],
     "azureServices": [
       "appservice"

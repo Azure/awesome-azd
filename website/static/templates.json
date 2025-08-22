@@ -5468,13 +5468,13 @@
   "source": "https://github.com/passadis/azure-a2a-translation",
   "preview": "https://github.com/passadis/azure-a2a-translation/images/a2a-translation-architecture.png",
   "tags": [
-    "Terraform",
-    "Container Apps",
-    "AI/ML",
-    "Microservices",
-    "Queue Processing",
-    "Managed Identity",
-    "Web Application",
+    "terraform",
+    "aca",
+    "aifoundry",
+    "fastapi",
+    "openai",
+    "azureai",
+    "flask",
     "new"
   ],
   

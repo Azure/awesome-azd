@@ -5469,7 +5469,7 @@
   "preview": "https://github.com/passadis/azure-a2a-translation/images/a2a-translation-architecture.png",
   "tags": [
     "Terraform",
-    "Container Apps",
+    "aca",
     "AI/ML",
     "Microservices",
     "Queue Processing",

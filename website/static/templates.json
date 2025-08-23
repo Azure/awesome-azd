@@ -5340,8 +5340,7 @@
     "source": "https://github.com/Azure-Samples/serverless-chat-langchainjs-purview",
     "tags": [
       "msft",
-      "bicep",
-      "new"
+      "bicep"
     ],
     "azureServices": [
       "functions",
@@ -5366,8 +5365,7 @@
     "source": "https://github.com/Azure-Samples/azure-search-openai-demo-purviewdatasecurity",
     "tags": [
       "msft",
-      "bicep",
-      "new"
+      "bicep"
     ],
     "azureServices": [
       "managedidentity",
@@ -5490,4 +5488,26 @@
     ],
   "id": "3bfa9f47-fff4-4c1e-ac60-42236f343374"
 }
+    "title": "Simple FastMCP with Azure OpenAI",
+    "description": "A minimal FastMCP application template that deploys to Azure App Service. FastMCP provides Model Context Protocol server capabilities, enabling AI assistants to interact with external systems and data sources through a standardized interface.",
+    "preview": "https://raw.githubusercontent.com/MiguelElGallo/myfirstmcp-openai/main/diagram.png",
+    "authorUrl": "https://github.com/MiguelElGallo",
+    "author": "Miguel P. Z.",
+    "source": "https://github.com/MiguelElGallo/myfirstmcp-openai",
+    "tags": [
+      "mcp",
+      "bicep",
+      "ai",
+      "community",
+      "new"
+    ],
+    "azureServices": [
+      "appservice"
+    ],
+    "id": "22810f32-474d-41c0-9090-f5731e6a9de5",
+    "languages": [
+      "python"
+    ]
+  }
 ]
+

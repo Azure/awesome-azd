@@ -5467,31 +5467,27 @@
   "author": "Konstantinos Passadis",
   "source": "https://github.com/passadis/azure-a2a-translation",
   "preview": "https://github.com/passadis/azure-a2a-translation/images/a2a-translation-architecture.png",
-  "tags": [
-    "terraform",
-    "aca",
-    "aifoundry",
-    "fastapi",
-    "openai",
-    "azureai",
-    "flask",
-    "new"
-  ],
-  
-  "languages": [
-    "Python",
-    "HTML/CSS",
-    "JavaScript"
-  ],
-  "azureServices": [
-    "Azure Container Apps",
-    "Azure AI Translator",
-    "Azure Storage Queue",
-    "Azure Storage Blob",
-    "Azure Container Registry",
-    "Azure Log Analytics",
-    "Azure Managed Identity"
-  ],
+    "tags": [
+      "terraform",
+      "fastapi",
+      "flask",
+      "community",
+      "new"
+    ],
+    "languages": [
+      "python",
+      "javascript"
+    ],
+    "azureServices": [
+      "aca",
+      "aifoundry",
+      "openai",
+      "azureai",
+      "azurestorage",
+      "blobstorage",
+      "loganalytics",
+      "managedidentity"
+    ],
   "id": "3bfa9f47-fff4-4c1e-ac60-42236f343374"
 }
 ]

@@ -5487,7 +5487,8 @@
       "managedidentity"
     ],
   "id": "3bfa9f47-fff4-4c1e-ac60-42236f343374"
-}
+},
+{
     "title": "Simple FastMCP with Azure OpenAI",
     "description": "A minimal FastMCP application template that deploys to Azure App Service. FastMCP provides Model Context Protocol server capabilities, enabling AI assistants to interact with external systems and data sources through a standardized interface.",
     "preview": "https://raw.githubusercontent.com/MiguelElGallo/myfirstmcp-openai/main/diagram.png",

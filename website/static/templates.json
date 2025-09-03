@@ -5509,6 +5509,24 @@
     "languages": [
       "python"
     ]
-  }
+  },
+  {
+    "title": "Python (FastAPI) Web App with PostgreSQL in VNet",
+    "description": "A restaurants review web app with a PostgreSQL database, written in the Python FastAPI framework plus SQLModel for database interactions. Ready for deployment on App Service with a PostgreSQL Flexible Server inside a VNet.",
+    "preview": "./templates/images/msdocs-fastapi-postgresql-sample-app.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/msdocs-fastapi-postgresql-sample-app",
+    "tags": [
+      "python",
+      "webapps",
+      "azuredb-postgreSQL",
+      "appservice",
+      "vnets",
+      "fastapi",
+      "msft",
+      "new"
+    ]
+  }  
 ]
 

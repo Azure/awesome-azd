@@ -5459,6 +5459,36 @@
     "languages": []
   },
   {
+  "title": "Containerized A2A Translation Service with Azure AI Translator",
+  "description": "Complete Agent-to-Agent translation service using Azure Container Apps, Storage Queues, and AI Translator. Features async processing, managed identity authentication, and a web GUI for file uploads.",
+  "authorUrl": "https://github.com/passadis",
+  "author": "Konstantinos Passadis",
+  "source": "https://github.com/passadis/azure-a2a-translation",
+  "preview": "https://github.com/passadis/azure-a2a-translation/images/a2a-translation-architecture.png",
+    "tags": [
+      "terraform",
+      "fastapi",
+      "flask",
+      "community",
+      "new"
+    ],
+    "languages": [
+      "python",
+      "javascript"
+    ],
+    "azureServices": [
+      "aca",
+      "aifoundry",
+      "openai",
+      "azureai",
+      "azurestorage",
+      "blobstorage",
+      "loganalytics",
+      "managedidentity"
+    ],
+  "id": "3bfa9f47-fff4-4c1e-ac60-42236f343374"
+},
+{
     "title": "Simple FastMCP with Azure OpenAI",
     "description": "A minimal FastMCP application template that deploys to Azure App Service. FastMCP provides Model Context Protocol server capabilities, enabling AI assistants to interact with external systems and data sources through a standardized interface.",
     "preview": "https://raw.githubusercontent.com/MiguelElGallo/myfirstmcp-openai/main/diagram.png",
@@ -5481,3 +5511,4 @@
     ]
   }
 ]
+

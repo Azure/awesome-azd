@@ -3352,10 +3352,12 @@
   {
     "title": "Semantic Kernel Function App (.NET). OpenAI chat stream from an http trigger with an Angular client",
     "description": "An end-to-end sample showing a streaming chat experience powered by Azure OpenAI (via Microsoft.SemanticKernel) exposed through a .NET 9 isolated Azure Function and consumed by an Angular Universal (SSR) front end. Provisioning, configuration, networking, and identity are fully automated with the Azure Developer CLI (azd) and Bicep.",
-    "author": "JayChase",
+    "author": "Jay Chase",
     "authorUrl": "https://github.com/JayChase",
     "source": "https://github.com/JayChase/semantic-kernel-function-app",
     "tags": [
+      "community",
+      "new",
       "dotnet",
       "csharp",
       "angular",

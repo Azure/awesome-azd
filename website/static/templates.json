@@ -5524,7 +5524,6 @@
       "semantickernel",
       "azure-functions",
       "azure-openai",
-      "azd-template",
       "bicep",
       "streaming"
     ],

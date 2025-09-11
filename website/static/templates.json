@@ -5522,7 +5522,6 @@
       "angular",
       "semantickernel",
       "azure-functions",
-      "azure-openai",
       "bicep",
     ],
     "azureServices": [

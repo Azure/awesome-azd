@@ -5524,7 +5524,6 @@
       "azure-functions",
       "azure-openai",
       "bicep",
-      "streaming"
     ],
     "azureServices": [
       "appservice",

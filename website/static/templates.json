@@ -5528,7 +5528,7 @@
       "appservice",
       "functions",
       "openai",
-      "storage",
+      "azurestorage",
       "vnets",
       "monitor"
     ],

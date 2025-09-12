@@ -5509,6 +5509,40 @@
     "languages": [
       "python"
     ]
-  }
+  },
+  {
+  "title": "Agentic Azure Architecture Document and Diagram Generator with MCP Validation",
+  "description": "Intelligent Azure architecture document and diagram generator using AI Foundry agents, MCP service validation, and comprehensive Azure component library. Features automatic import correction, smart component validation using MCP, Dapr for secure and easy Service to Service communications, and professional document and diagram rendering. A must have tool for every Azure Architect and Engineer",
+  "authorUrl": "https://github.com/passadis",
+  "author": "Konstantinos Passadis", 
+  "source": "https://github.com/passadis/ai-architect-webapp",
+  "preview": "https://github.com/passadis/ai-architect-webapp/images/ai-architect-architecture.png",
+  "tags": [
+    "terraform",
+    "fastapi",
+    "ai",
+    "dapr",
+    "reactjs",
+    "mcp",
+    "community",
+    "new"
+  ],
+  "languages": [
+    "python",
+    "javascript",
+    "nodejs"
+  ],
+  "azureServices": [
+    "aca",
+    "azureai", 
+    "openai",
+    "cosmosdb",
+    "loganalytics",
+    "managedidentity",
+    "keyvault",
+    "aifoundry"
+  ],
+  "id": "4cbf9f47-fdf4-4c2e-ac61-52236f344375"
+}
 ]
 

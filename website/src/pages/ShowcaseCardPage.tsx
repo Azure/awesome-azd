@@ -102,7 +102,8 @@ function filterUsers(
   if (searchName) {
     // eslint-disable-next-line no-param-reassign
     users = users.filter((user) =>
-      user.title.toLowerCase().includes(searchName.toLowerCase())
+      user.title.toLowerCase().includes(searchName.toLowerCase()) ||
+      user.author.toLowerCase().includes(searchName.toLowerCase())
     );
   }
   if (!selectedTags || selectedTags.length === 0) {

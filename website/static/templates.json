@@ -5553,7 +5553,8 @@
   "source": "https://github.com/Azure-Samples/durable-functions-quickstart-dotnet-azd",
   "tags": [
     "bicep",
-    "msft"
+    "msft",
+    "new"
   ],
   "azureServices": [
     "functions",

@@ -5543,6 +5543,30 @@
     "aifoundry"
   ],
   "id": "4cbf9f47-fdf4-4c2e-ac61-52236f344375"
+},
+{
+  "title": "Durable Functions Fan-Out/Fan-In using Azure Developer CLI",
+  "description": "A Durable Functions quickstart written in C# demonstrating the fan-out/fan-in pattern. It's deployed to Azure Functions Flex Consumption plan using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+  "preview": "./templates/images/durable-functions-quickstart-dotnet.png",
+  "authorUrl": "https://github.com/Azure-Samples",
+  "author": "Azure Functions Team",
+  "source": "https://github.com/Azure-Samples/durable-functions-quickstart-dotnet-azd",
+  "tags": [
+    "bicep",
+    "msft",
+    "new"
+  ],
+  "azureServices": [
+    "functions",
+    "azurestorage",
+    "managedidentity",
+    "vnets",
+    "appinsights"
+  ],
+  "id": "4bcf47ff-d0c5-496b-b1c0-03b74ca54ec8",
+  "languages": [
+    "dotnetCsharp"
+  ]
 }
 ]
 

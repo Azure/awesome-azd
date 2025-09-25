@@ -69,7 +69,7 @@ function FilterBar(): React.JSX.Element {
         }}
         id="filterBar"
         value={readSearchName(location.search) != null ? value : ""}
-        placeholder="Search for an azd template..."
+        placeholder="Search for an azd template or author..."
         role="search"
         onClear={(e) => {
           setValue(null);

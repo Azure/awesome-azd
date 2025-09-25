@@ -54,13 +54,27 @@ const BackToTopButton = () => {
 };
 
 const TagQueryStringKey = "tags";
+const AuthorQueryStringKey = "authors";
+
 const readSearchTags = (search: string): TagType[] => {
   return new URLSearchParams(search).getAll(TagQueryStringKey) as TagType[];
 };
+
+const readSearchAuthors = (search: string): string[] => {
+  return new URLSearchParams(search).getAll(AuthorQueryStringKey);
+};
+
 const replaceSearchTags = (search: string, newTags: TagType[]) => {
   const searchParams = new URLSearchParams(search);
   searchParams.delete(TagQueryStringKey);
   newTags.forEach((tag) => searchParams.append(TagQueryStringKey, tag));
+  return searchParams.toString();
+};
+
+const replaceSearchAuthors = (search: string, newAuthors: string[]) => {
+  const searchParams = new URLSearchParams(search);
+  searchParams.delete(AuthorQueryStringKey);
+  newAuthors.forEach((author) => searchParams.append(AuthorQueryStringKey, author));
   return searchParams.toString();
 };
 
@@ -71,10 +85,17 @@ const App = () => {
   const [selectedCheckbox, setSelectedCheckbox] = useState<TagType[]>([]);
   const location = useLocation<UserState>();
   const [selectedTags, setSelectedTags] = useState<TagType[]>([]);
+  
+  // Author filter states
+  const [activeAuthors, setActiveAuthors] = useState<string[]>([]);
+  const [selectedAuthors, setSelectedAuthors] = useState<string[]>([]);
+  const [selectedAuthorCheckbox, setSelectedAuthorCheckbox] = useState<string[]>([]);
 
   useEffect(() => {
     setSelectedTags(readSearchTags(location.search));
     setSelectedCheckbox(readSearchTags(location.search));
+    setSelectedAuthors(readSearchAuthors(location.search));
+    setSelectedAuthorCheckbox(readSearchAuthors(location.search));
     setTimeout(() => {
       setLoading(false);
     }, 500);
@@ -97,6 +118,13 @@ const App = () => {
               selectedTags={selectedTags}
               readSearchTags={readSearchTags}
               replaceSearchTags={replaceSearchTags}
+              activeAuthors={activeAuthors}
+              selectedAuthors={selectedAuthors}
+              selectedAuthorCheckbox={selectedAuthorCheckbox}
+              setSelectedAuthorCheckbox={setSelectedAuthorCheckbox}
+              setSelectedAuthors={setSelectedAuthors}
+              readSearchAuthors={readSearchAuthors}
+              replaceSearchAuthors={replaceSearchAuthors}
             />
           </div>
           <div className={styles.card}>
@@ -108,6 +136,12 @@ const App = () => {
               setSelectedTags={setSelectedTags}
               readSearchTags={readSearchTags}
               replaceSearchTags={replaceSearchTags}
+              setActiveAuthors={setActiveAuthors}
+              selectedAuthors={selectedAuthors}
+              setSelectedAuthorCheckbox={setSelectedAuthorCheckbox}
+              setSelectedAuthors={setSelectedAuthors}
+              readSearchAuthors={readSearchAuthors}
+              replaceSearchAuthors={replaceSearchAuthors}
             />
           </div>
         </div>

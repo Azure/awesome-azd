@@ -24,7 +24,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
 import { useHistory } from "@docusaurus/router";
-import { toggleListItem } from "@site/src/utils/jsUtils";
+import { toggleListItem, splitAuthors } from "@site/src/utils/jsUtils";
 import { prepareUserState } from "./index";
 import { Dismiss20Filled } from "@fluentui/react-icons";
 
@@ -111,7 +111,14 @@ function filterUsers(
   // Filter by selected authors
   if (selectedAuthors && selectedAuthors.length > 0) {
     // eslint-disable-next-line no-param-reassign
-    users = users.filter((user) => selectedAuthors.includes(user.author));
+    users = users.filter((user) => {
+      // Split the author field to handle multiple authors
+      const userAuthors = splitAuthors(user.author);
+      // Check if any of the selected authors match any of the user's authors
+      return selectedAuthors.some(selectedAuthor => 
+        userAuthors.includes(selectedAuthor)
+      );
+    });
   }
   
   // Filter by selected tags
@@ -405,7 +412,9 @@ export default function ShowcaseCardPage({
   useEffect(() => {
     const unionAuthors = new Set<string>();
     cards.forEach((user) => {
-      unionAuthors.add(user.author);
+      // Split authors to handle multiple authors per template
+      const authors = splitAuthors(user.author);
+      authors.forEach(author => unionAuthors.add(author));
     });
     setActiveAuthors(Array.from(unionAuthors));
   }, [cards]);

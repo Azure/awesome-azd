@@ -1,5 +1,6 @@
 import { describe, expect, test } from '@jest/globals';
 import { User, TagType } from '../src/data/tags';
+import { splitAuthors } from '../src/utils/jsUtils';
 
 // Mock implementation of the filterUsers function to test author filtering
 function filterUsers(
@@ -27,6 +28,23 @@ function filterUsers(
       return false;
     }
     return selectedTags.every((tag) => tags.includes(tag));
+  });
+}
+
+// Filter function with author selection support
+function filterUsersByAuthor(
+  users: User[],
+  selectedAuthors: string[]
+) {
+  if (!selectedAuthors || selectedAuthors.length === 0) {
+    return users;
+  }
+  
+  return users.filter((user) => {
+    const userAuthors = splitAuthors(user.author);
+    return selectedAuthors.some(selectedAuthor => 
+      userAuthors.includes(selectedAuthor)
+    );
   });
 }
 
@@ -115,5 +133,80 @@ describe('Author filtering tests', () => {
     test('No matches returns empty array', () => {
         const result = filterUsers(mockUsers, [], "nonexistent");
         expect(result).toHaveLength(0);
+    });
+});
+
+describe('Author splitting and filtering tests', () => {
+    test('splitAuthors splits comma-separated authors correctly', () => {
+        expect(splitAuthors("John Doe, Jane Smith")).toEqual(["John Doe", "Jane Smith"]);
+        expect(splitAuthors("John Doe,Jane Smith")).toEqual(["John Doe", "Jane Smith"]);
+        expect(splitAuthors("John Doe")).toEqual(["John Doe"]);
+        expect(splitAuthors("")).toEqual([]);
+    });
+
+    test('Filter by individual author when template has multiple authors', () => {
+        const multiAuthorUsers: User[] = [
+            {
+                title: "Multi-author Template",
+                description: "Template with multiple authors",
+                preview: "./images/test.png",
+                authorUrl: "https://github.com/user1, https://github.com/user2",
+                author: "Andre Dewes, Chris Ayers",
+                source: "https://github.com/example/multi-author",
+                tags: ["msft"]
+            },
+            {
+                title: "Single Author Template",
+                description: "Template with single author",
+                preview: "./images/test.png",
+                authorUrl: "https://github.com/user1",
+                author: "Andre Dewes",
+                source: "https://github.com/example/single-author",
+                tags: ["community"]
+            }
+        ];
+
+        // Filter by "Andre Dewes" should return both templates
+        const andreResult = filterUsersByAuthor(multiAuthorUsers, ["Andre Dewes"]);
+        expect(andreResult).toHaveLength(2);
+        expect(andreResult.map(u => u.title)).toContain("Multi-author Template");
+        expect(andreResult.map(u => u.title)).toContain("Single Author Template");
+
+        // Filter by "Chris Ayers" should return only the multi-author template
+        const chrisResult = filterUsersByAuthor(multiAuthorUsers, ["Chris Ayers"]);
+        expect(chrisResult).toHaveLength(1);
+        expect(chrisResult[0].title).toBe("Multi-author Template");
+    });
+
+    test('Extract individual authors from templates with multiple authors', () => {
+        const users: User[] = [
+            {
+                title: "Template 1",
+                description: "desc",
+                preview: "./images/test.png",
+                authorUrl: "url",
+                author: "Author A, Author B",
+                source: "source",
+                tags: ["msft"]
+            },
+            {
+                title: "Template 2",
+                description: "desc",
+                preview: "./images/test.png",
+                authorUrl: "url",
+                author: "Author B, Author C",
+                source: "source",
+                tags: ["community"]
+            }
+        ];
+
+        const allAuthors = new Set<string>();
+        users.forEach(user => {
+            const authors = splitAuthors(user.author);
+            authors.forEach(author => allAuthors.add(author));
+        });
+
+        expect(allAuthors.size).toBe(3);
+        expect(Array.from(allAuthors).sort()).toEqual(["Author A", "Author B", "Author C"]);
     });
 });

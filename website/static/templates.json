@@ -4140,7 +4140,7 @@
     "title": "Agentic Voice Assistant based on Azure Container Apps, Azure OpenAI and Azure Logic Apps",
     "description": "This demo deploys a voice based interface to agentic system that uses Azure Logic Apps as the execution mechanism.",
     "preview": "./templates/images/agentic-voice-assistant.png",
-    "authorUrl": "https://github.com/eminkevich",
+    "authorUrl": "https://github.com/evmin",
     "author": "Evgeny Minkevich",
     "source": "https://github.com/Azure-Samples/agentic-voice-assistant",
     "tags": [

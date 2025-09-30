@@ -21,6 +21,7 @@ import { useColorMode } from "@docusaurus/theme-common";
 import { useHistory } from "@docusaurus/router";
 import { prepareUserState } from "@site/src/pages/index";
 import { UserState } from "../ShowcaseTemplateSearch";
+import { splitAuthors } from "@site/src/utils/jsUtils";
 
 function ShowcaseAuthorFilterViewAll({
   authors,
@@ -331,9 +332,13 @@ export default function ShowcaseLeftFilters({
 }) {
   const sortTagList = TagList.sort();
   
-  // Extract unique authors from templates
-  const allAuthors = [...new Set(unsortedUsers.map(user => user.author))];
-  const sortedAuthors = allAuthors.sort();
+  // Extract unique authors from templates, splitting comma-separated authors
+  const allAuthors = new Set<string>();
+  unsortedUsers.forEach(user => {
+    const authors = splitAuthors(user.author);
+    authors.forEach(author => allAuthors.add(author));
+  });
+  const sortedAuthors = Array.from(allAuthors).sort();
   const uncategoryTag = TagList.filter((tag) => {
     const tagObject = Tags[tag];
     return tagObject.type === undefined;

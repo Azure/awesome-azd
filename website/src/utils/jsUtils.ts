@@ -25,3 +25,16 @@ export function sortBy<T>(
     newList.splice(itemIndex, 1);
     return newList;
   }
+
+  /**
+   * Split comma-separated authors into an array of individual author names.
+   * Trims whitespace from each author name.
+   * @param authorString - The comma-separated author string (e.g., "John Doe, Jane Smith")
+   * @returns Array of individual author names
+   */
+  export function splitAuthors(authorString: string): string[] {
+    if (!authorString || authorString.trim() === '') {
+      return [];
+    }
+    return authorString.split(',').map(author => author.trim()).filter(author => author.length > 0);
+  }

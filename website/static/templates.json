@@ -5567,6 +5567,45 @@
   "languages": [
     "dotnetCsharp"
   ]
-}
+},
+{
+  "title": "Deploy a Network-hardened web app with private PaaS datastore",
+  "description": "This scenario is aligned with the AZ-500 and AZ-104 path and provides a demo solution for creating an Azure App Service web app in a tightly controlled network environment with strict inbound and outbound network policies.",
+  "preview": "./templates/images/azd-hardened-webapp-diagram.png",
+  "website": "https://github.com/daverendon",
+  "author": "Dave Rendon",
+  "source": "https://github.com/daverendon/azd-hardened-webapp",
+  "tags": [
+    "community",
+    "new"
+  ],
+  "azureservices": [
+    "appservice",
+    "vnets"
+  ],
+  "id": "eabd4fa2-7948-4ba5-23de-f9gmffe46b1f"
+},
+{
+  "title": "AI Foundry Agent Service with Bing Search Grounding and OpenAI Deep Research LLM",
+  "description": "This scenario deploys an Azure AI Foundry Project, an Azure AI Foundry Agent Service and Bing Search Grounding. A Python with Flask Web App offers a use case to perform Deep Research",
+  "preview": "./templates/images/DeepResearcherArchitecture.png",
+  "website": "https://github.com/petender",
+  "author": "Peter De Tender",
+  "source": "https://github.com/petender/azd-researcher",
+  "tags": [
+    "community", 
+    "new"
+  ],
+  "azureservices": [
+    "azureai", 
+    "aifoundry",
+    "openai",
+    "appservice"
+  ],
+  "languages": [
+    "python"
+  ],
+  "id": "c9056294-ec1d-420c-acb0-fe2dcdd4b7b5"
+}  
 ]
 

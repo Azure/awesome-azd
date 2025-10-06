@@ -24,7 +24,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
 import { useHistory } from "@docusaurus/router";
-import { toggleListItem } from "@site/src/utils/jsUtils";
+import { toggleListItem, splitAuthors } from "@site/src/utils/jsUtils";
 import { prepareUserState } from "./index";
 import { Dismiss20Filled } from "@fluentui/react-icons";
 
@@ -97,14 +97,31 @@ function readSearchName(search: string) {
 function filterUsers(
   users: User[],
   selectedTags: TagType[],
+  selectedAuthors: string[],
   searchName: string | null
 ) {
   if (searchName) {
     // eslint-disable-next-line no-param-reassign
     users = users.filter((user) =>
-      user.title.toLowerCase().includes(searchName.toLowerCase())
+      user.title.toLowerCase().includes(searchName.toLowerCase()) ||
+      user.author.toLowerCase().includes(searchName.toLowerCase())
     );
   }
+  
+  // Filter by selected authors
+  if (selectedAuthors && selectedAuthors.length > 0) {
+    // eslint-disable-next-line no-param-reassign
+    users = users.filter((user) => {
+      // Split the author field to handle multiple authors
+      const userAuthors = splitAuthors(user.author);
+      // Check if any of the selected authors match any of the user's authors
+      return selectedAuthors.some(selectedAuthor => 
+        userAuthors.includes(selectedAuthor)
+      );
+    });
+  }
+  
+  // Filter by selected tags
   if (!selectedTags || selectedTags.length === 0) {
     return users;
   }
@@ -124,13 +141,21 @@ function filterUsers(
 function FilterAppliedBar({
   clearAll,
   selectedTags,
+  selectedAuthors,
   readSearchTags,
   replaceSearchTags,
+  readSearchAuthors,
+  replaceSearchAuthors,
+  location,
 }: {
   clearAll;
   selectedTags: TagType[];
+  selectedAuthors: string[];
   readSearchTags: (search: string) => TagType[];
   replaceSearchTags: (search: string, newTags: TagType[]) => string;
+  readSearchAuthors: (search: string) => string[];
+  replaceSearchAuthors: (search: string, newAuthors: string[]) => string;
+  location;
 }) {
   const history = useHistory();
   const toggleTag = (tag: TagType, location: Location) => {
@@ -144,7 +169,18 @@ function FilterAppliedBar({
     });
   }
 
-  return selectedTags && selectedTags.length > 0 ? (
+  const toggleAuthor = (author: string, location: Location) => {
+    const authors = readSearchAuthors(location.search);
+    const newAuthors = toggleListItem(authors, author);
+    const newSearch = replaceSearchAuthors(location.search, newAuthors);
+    history.push({
+      ...location,
+      search: newSearch,
+      state: prepareUserState(),
+    });
+  }
+
+  return selectedTags && selectedTags.length > 0 || selectedAuthors && selectedAuthors.length > 0 ? (
     <div className={styles.filterAppliedBar}>
       <Body1>
         Filters applied:
@@ -156,6 +192,7 @@ function FilterAppliedBar({
 
         return (
           <Badge
+            key={key}
             appearance="tint"
             size="extra-large"
             color="brand"
@@ -168,6 +205,27 @@ function FilterAppliedBar({
             }}
           >
             {tagObject.label}
+          </Badge>
+        );
+      })}
+      {selectedAuthors.map((author, index) => {
+        const key = `showcase_checkbox_author_key_${author}`;
+
+        return (
+          <Badge
+            key={key}
+            appearance="tint"
+            size="extra-large"
+            color="brand"
+            shape="rounded"
+            icon={<Dismiss20Filled />}
+            iconPosition="after"
+            className={styles.filterBadge}
+            onClick={() => {
+              toggleAuthor(author, location);
+            }}
+          >
+            {author}
           </Badge>
         );
       })}
@@ -270,6 +328,12 @@ export default function ShowcaseCardPage({
   readSearchTags,
   replaceSearchTags,
   setSelectedCheckbox,
+  setActiveAuthors,
+  selectedAuthors,
+  setSelectedAuthorCheckbox,
+  setSelectedAuthors,
+  readSearchAuthors,
+  replaceSearchAuthors,
 }: {
   setActiveTags: React.Dispatch<React.SetStateAction<TagType[]>>;
   selectedTags: TagType[];
@@ -278,6 +342,12 @@ export default function ShowcaseCardPage({
   readSearchTags: (search: string) => TagType[];
   replaceSearchTags: (search: string, newTags: TagType[]) => string;
   setSelectedCheckbox: React.Dispatch<React.SetStateAction<TagType[]>>;
+  setActiveAuthors: React.Dispatch<React.SetStateAction<string[]>>;
+  selectedAuthors: string[];
+  setSelectedAuthorCheckbox: React.Dispatch<React.SetStateAction<string[]>>;
+  setSelectedAuthors: React.Dispatch<React.SetStateAction<string[]>>;
+  readSearchAuthors: (search: string) => string[];
+  replaceSearchAuthors: (search: string, newAuthors: string[]) => string;
 }) {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
@@ -290,7 +360,10 @@ export default function ShowcaseCardPage({
   const clearAll = () => {
     setSelectedTags([]);
     setSelectedCheckbox([]);
+    setSelectedAuthors([]);
+    setSelectedAuthorCheckbox([]);
     searchParams.delete("tags");
+    searchParams.delete("authors");
     history.push({
       ...location,
       search: searchParams.toString(),
@@ -307,8 +380,8 @@ export default function ShowcaseCardPage({
   }, [location, selectedOptions]);
 
   var cards = useMemo(
-    () => filterUsers(selectedUsers, selectedTags, searchName),
-    [selectedUsers, selectedTags, searchName]
+    () => filterUsers(selectedUsers, selectedTags, selectedAuthors, searchName),
+    [selectedUsers, selectedTags, selectedAuthors, searchName]
   );
 
   // Reset to first page when filters change
@@ -334,6 +407,16 @@ export default function ShowcaseCardPage({
       tags.forEach((tag) => unionTags.add(tag))
     });
     setActiveTags(Array.from(unionTags));
+  }, [cards]);
+
+  useEffect(() => {
+    const unionAuthors = new Set<string>();
+    cards.forEach((user) => {
+      // Split authors to handle multiple authors per template
+      const authors = splitAuthors(user.author);
+      authors.forEach(author => unionAuthors.add(author));
+    });
+    setActiveAuthors(Array.from(unionAuthors));
   }, [cards]);
 
   const sortByOnSelect = (event, data) => {
@@ -417,8 +500,12 @@ export default function ShowcaseCardPage({
       <FilterAppliedBar
         clearAll={clearAll}
         selectedTags={selectedTags}
+        selectedAuthors={selectedAuthors}
         readSearchTags={readSearchTags}
         replaceSearchTags={replaceSearchTags}
+        readSearchAuthors={readSearchAuthors}
+        replaceSearchAuthors={replaceSearchAuthors}
+        location={location}
       />
       {loading ? (
         <Spinner labelPosition="below" label="Loading..." />

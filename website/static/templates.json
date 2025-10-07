@@ -5577,7 +5577,8 @@
   "source": "https://github.com/daverendon/azd-hardened-webapp",
   "tags": [
     "community",
-    "new"
+    "new",
+    "bicep"
   ],
   "azureservices": [
     "appservice",

@@ -5594,7 +5594,8 @@
   "source": "https://github.com/petender/azd-researcher",
   "tags": [
     "community", 
-    "new"
+    "new",
+    "bicep"
   ],
   "azureservices": [
     "azureai", 

@@ -102,9 +102,9 @@ When making changes:
 ## CI/CD Pipeline
 
 The repository uses GitHub Actions:
-- `test-deploy.yml` - Runs on PRs (build + test)
-- `release.yml` - Manual deployment to GitHub Pages
-- Both workflows require Node 20 and run same build sequence
+- `test-deploy.yml` - Runs automatically on PRs (build + test)
+- `release.yml` - **DO NOT RUN** - Manual deployment workflow restricted to maintainers only for deploying to GitHub Pages
+- Your changes will be validated by `test-deploy.yml` automatically when you open a PR
 
 ## Known Limitations
 

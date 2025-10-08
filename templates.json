@@ -3997,7 +3997,7 @@
     "description": "This template deploys an Azure FrontDoor CDN, with a sample HTML-based webapp. The webapp allows you to load sample images from different endpoints, one is from within the webapp storage itself, a second one loads from Azure Storage Account Blobs and the last one loads from Azure Frontdoor CDN. This demo shows how static data such as image files can optimize site loading time when using CDN caching.",
     "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/petender",
-    "author": "petender",
+    "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-fdcdn",
     "tags": [
       "community"
@@ -4012,7 +4012,7 @@
     "description": "This template deploys the EShopOnWeb .NET 8 application in Azure App Services, connecting to a SQL Azure database instance.",
     "preview": "./templates/images/eshoponweb_paas.png",
     "authorUrl": "https://github.com/maartenvandiemen",
-    "author": "maartenvandiemen",
+    "author": "Maarten van Diemen",
     "source": "https://github.com/maartenvandiemen/AZD-PaaS-Demo",
     "tags": [
       "community"
@@ -4028,7 +4028,7 @@
     "description": "This template deploys Azure Event Hub, as well as runs a local Console app on your machine to interact with Publisher and Subscriber events.",
     "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/true-while",
-    "author": "true-while",
+    "author": "Alex Ivanov",
     "source": "https://github.com/true-while/event-hub-azd",
     "tags": [
       "community"
@@ -4043,7 +4043,7 @@
     "description": "This scenario deploys an Azure VNET Hub & Spoke architecture including VNET Peering, VPN Gateway and a Windows Server 2022 JumpVM.",
     "preview": "./templates/images/HubSpokewithJumpVM.png",
     "authorUrl": "https://github.com/petender",
-    "author": "petender",
+    "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-hubspoke",
     "tags": [
       "community"
@@ -4058,7 +4058,7 @@
     "description": "This scenario deploys 3 Azure VPN Gateways in 3 different regions (West Europe, Central US and East Asia) and establishes the connections across all 3 of them.",
     "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/petender",
-    "author": "petender",
+    "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-site2sitevpn/",
     "tags": [
       "community"
@@ -4073,7 +4073,7 @@
     "description": "This scenario deploys an Azure Functions App, which provides a Blob Trigger. When an image file is uploaded to the /input container, the Function gets triggered and adds a watermark text to the image file. The new image file getes saved into an /output container. Application Insights is also deployed, so you can showcase the necessary monitoring features of Azure Functions monitor, as well as more detailed in App Insights itself.",
     "preview": "./templates/images/WaterMarkFunction.png",
     "authorUrl": "https://github.com/maartenvandiemen",
-    "author": "maartenvandiemen",
+    "author": "Maarten van Diemen",
     "source": "https://github.com/maartenvandiemen/AZD-WatermarkFunction",
     "tags": [
       "community"
@@ -4088,7 +4088,7 @@
     "description": "This scenario deploys an Azure Sentinel workspace, including a few sample data connectors (AWS, M365, Entra Id and LogicApps.",
     "preview": "./templates/images/Sentinel.png",
     "authorUrl": "https://github.com/petender",
-    "author": "petender",
+    "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-sentinel",
     "tags": [
       "community"
@@ -4103,7 +4103,7 @@
     "description": "This scenario deploys Azure Traffic Manager with WebApps in 3 regions.",
     "preview": "./templates/images/trafficmgr.png",
     "authorUrl": "https://github.com/petender",
-    "author": "petender",
+    "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-trafficmgr",
     "tags": [
       "community"
@@ -4140,8 +4140,8 @@
     "title": "Agentic Voice Assistant based on Azure Container Apps, Azure OpenAI and Azure Logic Apps",
     "description": "This demo deploys a voice based interface to agentic system that uses Azure Logic Apps as the execution mechanism.",
     "preview": "./templates/images/agentic-voice-assistant.png",
-    "authorUrl": "https://github.com/Azure-Samples/agentic-voice-assistant",
-    "author": "eminkevich",
+    "authorUrl": "https://github.com/evmin",
+    "author": "Evgeny Minkevich",
     "source": "https://github.com/Azure-Samples/agentic-voice-assistant",
     "tags": [
       "ai",
@@ -5567,6 +5567,47 @@
   "languages": [
     "dotnetCsharp"
   ]
-}
+},
+{
+  "title": "Deploy a Network-hardened web app with private PaaS datastore",
+  "description": "This scenario is aligned with the AZ-500 and AZ-104 path and provides a demo solution for creating an Azure App Service web app in a tightly controlled network environment with strict inbound and outbound network policies.",
+  "preview": "./templates/images/azd-hardened-webapp-diagram.png",
+  "website": "https://github.com/daverendon",
+  "author": "Dave Rendon",
+  "source": "https://github.com/daverendon/azd-hardened-webapp",
+  "tags": [
+    "community",
+    "new",
+    "bicep"
+  ],
+  "azureservices": [
+    "appservice",
+    "vnets"
+  ],
+  "id": "eabd4fa2-7948-4ba5-a3de-f9afffe46b1f"
+},
+{
+  "title": "AI Foundry Agent Service with Bing Search Grounding and OpenAI Deep Research LLM",
+  "description": "This scenario deploys an Azure AI Foundry Project, an Azure AI Foundry Agent Service and Bing Search Grounding. A Python with Flask Web App offers a use case to perform Deep Research",
+  "preview": "./templates/images/DeepResearcherArchitecture.png",
+  "website": "https://github.com/petender",
+  "author": "Peter De Tender",
+  "source": "https://github.com/petender/azd-researcher",
+  "tags": [
+    "community", 
+    "new",
+    "bicep"
+  ],
+  "azureservices": [
+    "azureai", 
+    "aifoundry",
+    "openai",
+    "appservice"
+  ],
+  "languages": [
+    "python"
+  ],
+  "id": "c9056294-ec1d-420c-acb0-fe2dcdd4b7b5"
+}  
 ]
 

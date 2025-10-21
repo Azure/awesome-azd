@@ -5459,12 +5459,12 @@
     "languages": []
   },
   {
-  "title": "Containerized A2A Translation Service with Azure AI Translator",
-  "description": "Complete Agent-to-Agent translation service using Azure Container Apps, Storage Queues, and AI Translator. Features async processing, managed identity authentication, and a web GUI for file uploads.",
-  "authorUrl": "https://github.com/passadis",
-  "author": "Konstantinos Passadis",
-  "source": "https://github.com/passadis/azure-a2a-translation",
-  "preview": "https://github.com/passadis/azure-a2a-translation/images/a2a-translation-architecture.png",
+    "title": "Containerized A2A Translation Service with Azure AI Translator",
+    "description": "Complete Agent-to-Agent translation service using Azure Container Apps, Storage Queues, and AI Translator. Features async processing, managed identity authentication, and a web GUI for file uploads.",
+    "authorUrl": "https://github.com/passadis",
+    "author": "Konstantinos Passadis",
+    "source": "https://github.com/passadis/azure-a2a-translation",
+    "preview": "https://github.com/passadis/azure-a2a-translation/images/a2a-translation-architecture.png",
     "tags": [
       "terraform",
       "fastapi",
@@ -5486,9 +5486,9 @@
       "loganalytics",
       "managedidentity"
     ],
-  "id": "3bfa9f47-fff4-4c1e-ac60-42236f343374"
-},
-{
+    "id": "3bfa9f47-fff4-4c1e-ac60-42236f343374"
+  },
+  {
     "title": "Simple FastMCP with Azure OpenAI",
     "description": "A minimal FastMCP application template that deploys to Azure App Service. FastMCP provides Model Context Protocol server capabilities, enabling AI assistants to interact with external systems and data sources through a standardized interface.",
     "preview": "https://raw.githubusercontent.com/MiguelElGallo/myfirstmcp-openai/main/diagram.png",
@@ -5511,103 +5511,129 @@
     ]
   },
   {
-  "title": "Agentic Azure Architecture Document and Diagram Generator with MCP Validation",
-  "description": "Intelligent Azure architecture document and diagram generator using AI Foundry agents, MCP service validation, and comprehensive Azure component library. Features automatic import correction, smart component validation using MCP, Dapr for secure and easy Service to Service communications, and professional document and diagram rendering. A must have tool for every Azure Architect and Engineer",
-  "authorUrl": "https://github.com/passadis",
-  "author": "Konstantinos Passadis", 
-  "source": "https://github.com/passadis/ai-architect-webapp",
-  "preview": "https://github.com/passadis/ai-architect-webapp/images/ai-architect-architecture.png",
-  "tags": [
-    "terraform",
-    "fastapi",
-    "ai",
-    "dapr",
-    "reactjs",
-    "mcp",
-    "community",
-    "new"
-  ],
-  "languages": [
-    "python",
-    "javascript",
-    "nodejs"
-  ],
-  "azureServices": [
-    "aca",
-    "azureai", 
-    "openai",
-    "cosmosdb",
-    "loganalytics",
-    "managedidentity",
-    "keyvault",
-    "aifoundry"
-  ],
-  "id": "4cbf9f47-fdf4-4c2e-ac61-52236f344375"
-},
-{
-  "title": "Durable Functions Fan-Out/Fan-In using Azure Developer CLI",
-  "description": "A Durable Functions quickstart written in C# demonstrating the fan-out/fan-in pattern. It's deployed to Azure Functions Flex Consumption plan using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
-  "preview": "./templates/images/durable-functions-quickstart-dotnet.png",
-  "authorUrl": "https://github.com/Azure-Samples",
-  "author": "Azure Functions Team",
-  "source": "https://github.com/Azure-Samples/durable-functions-quickstart-dotnet-azd",
-  "tags": [
-    "bicep",
-    "msft",
-    "new"
-  ],
-  "azureServices": [
-    "functions",
-    "azurestorage",
-    "managedidentity",
-    "vnets",
-    "appinsights"
-  ],
-  "id": "4bcf47ff-d0c5-496b-b1c0-03b74ca54ec8",
-  "languages": [
-    "dotnetCsharp"
-  ]
-},
-{
-  "title": "Deploy a Network-hardened web app with private PaaS datastore",
-  "description": "This scenario is aligned with the AZ-500 and AZ-104 path and provides a demo solution for creating an Azure App Service web app in a tightly controlled network environment with strict inbound and outbound network policies.",
-  "preview": "./templates/images/azd-hardened-webapp-diagram.png",
-  "website": "https://github.com/daverendon",
-  "author": "Dave Rendon",
-  "source": "https://github.com/daverendon/azd-hardened-webapp",
-  "tags": [
-    "community",
-    "new",
-    "bicep"
-  ],
-  "azureservices": [
-    "appservice",
-    "vnets"
-  ],
-  "id": "eabd4fa2-7948-4ba5-a3de-f9afffe46b1f"
-},
-{
-  "title": "AI Foundry Agent Service with Bing Search Grounding and OpenAI Deep Research LLM",
-  "description": "This scenario deploys an Azure AI Foundry Project, an Azure AI Foundry Agent Service and Bing Search Grounding. A Python with Flask Web App offers a use case to perform Deep Research",
-  "preview": "./templates/images/DeepResearcherArchitecture.png",
-  "website": "https://github.com/petender",
-  "author": "Peter De Tender",
-  "source": "https://github.com/petender/azd-researcher",
-  "tags": [
-    "community", 
-    "new",
-    "bicep"
-  ],
-  "azureservices": [
-    "azureai", 
-    "aifoundry",
-    "openai",
-    "appservice"
-  ],
-  "languages": [
-    "python"
-  ],
-  "id": "c9056294-ec1d-420c-acb0-fe2dcdd4b7b5"
-}  
+    "title": "Agentic Azure Architecture Document and Diagram Generator with MCP Validation",
+    "description": "Intelligent Azure architecture document and diagram generator using AI Foundry agents, MCP service validation, and comprehensive Azure component library. Features automatic import correction, smart component validation using MCP, Dapr for secure and easy Service to Service communications, and professional document and diagram rendering. A must have tool for every Azure Architect and Engineer",
+    "authorUrl": "https://github.com/passadis",
+    "author": "Konstantinos Passadis",
+    "source": "https://github.com/passadis/ai-architect-webapp",
+    "preview": "https://github.com/passadis/ai-architect-webapp/images/ai-architect-architecture.png",
+    "tags": [
+      "terraform",
+      "fastapi",
+      "ai",
+      "dapr",
+      "reactjs",
+      "mcp",
+      "community",
+      "new"
+    ],
+    "languages": [
+      "python",
+      "javascript",
+      "nodejs"
+    ],
+    "azureServices": [
+      "aca",
+      "azureai",
+      "openai",
+      "cosmosdb",
+      "loganalytics",
+      "managedidentity",
+      "keyvault",
+      "aifoundry"
+    ],
+    "id": "4cbf9f47-fdf4-4c2e-ac61-52236f344375"
+  },
+  {
+    "title": "Durable Functions Fan-Out/Fan-In using Azure Developer CLI",
+    "description": "A Durable Functions quickstart written in C# demonstrating the fan-out/fan-in pattern. It's deployed to Azure Functions Flex Consumption plan using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/durable-functions-quickstart-dotnet.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/durable-functions-quickstart-dotnet-azd",
+    "tags": [
+      "bicep",
+      "msft",
+      "new"
+    ],
+    "azureServices": [
+      "functions",
+      "azurestorage",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "id": "4bcf47ff-d0c5-496b-b1c0-03b74ca54ec8",
+    "languages": [
+      "dotnetCsharp"
+    ]
+  },
+  {
+    "title": "Deploy a Network-hardened web app with private PaaS datastore",
+    "description": "This scenario is aligned with the AZ-500 and AZ-104 path and provides a demo solution for creating an Azure App Service web app in a tightly controlled network environment with strict inbound and outbound network policies.",
+    "preview": "./templates/images/azd-hardened-webapp-diagram.png",
+    "website": "https://github.com/daverendon",
+    "author": "Dave Rendon",
+    "source": "https://github.com/daverendon/azd-hardened-webapp",
+    "tags": [
+      "community",
+      "new",
+      "bicep"
+    ],
+    "azureservices": [
+      "appservice",
+      "vnets"
+    ],
+    "id": "eabd4fa2-7948-4ba5-a3de-f9afffe46b1f"
+  },
+  {
+    "title": "AI Foundry Agent Service with Bing Search Grounding and OpenAI Deep Research LLM",
+    "description": "This scenario deploys an Azure AI Foundry Project, an Azure AI Foundry Agent Service and Bing Search Grounding. A Python with Flask Web App offers a use case to perform Deep Research",
+    "preview": "./templates/images/DeepResearcherArchitecture.png",
+    "website": "https://github.com/petender",
+    "author": "Peter De Tender",
+    "source": "https://github.com/petender/azd-researcher",
+    "tags": [
+      "community",
+      "new",
+      "bicep"
+    ],
+    "azureservices": [
+      "azureai",
+      "aifoundry",
+      "openai",
+      "appservice"
+    ],
+    "languages": [
+      "python"
+    ],
+    "id": "c9056294-ec1d-420c-acb0-fe2dcdd4b7b5"
+  },
+  {
+    "title": "Semantic Kernel Function App (.NET). OpenAI chat stream from an http trigger with an Angular client",
+    "description": "An end-to-end sample showing a streaming chat experience powered by Azure OpenAI (via Microsoft.SemanticKernel) exposed through a .NET 9 isolated Azure Function and consumed by an Angular Universal (SSR) front end. Provisioning, configuration, networking, and identity are fully automated with the Azure Developer CLI (azd) and Bicep.",
+    "author": "Jay Chase",
+    "authorUrl": "https://github.com/JayChase",
+    "source": "https://github.com/JayChase/semantic-kernel-function-app",
+    "tags": [
+      "community",
+      "new",
+      "angular",
+      "semantickernel",
+      "bicep"
+    ],
+    "azureServices": [
+      "appservice",
+      "functions",
+      "openai",
+      "azurestorage",
+      "vnets",
+      "monitor"
+    ],
+    "languages": [
+      "dotnetCsharp",
+      "typescript"
+    ],
+    "id": "698e78dc-226c-40ed-8599-9ed4ce5116c9"
+  }
 ]
-

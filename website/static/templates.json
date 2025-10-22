@@ -4864,7 +4864,8 @@
     "tags": [
       "msft",
       "bicep",
-      "ai"
+      "ai",
+      "new"
     ],
     "azure_service": [
       "managedidentity",

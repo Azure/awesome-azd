@@ -5635,5 +5635,28 @@
       "typescript"
     ],
     "id": "698e78dc-226c-40ed-8599-9ed4ce5116c9"
+  },
+  {
+    "title": "Deploy Label Studio directly from Docker Hub on Azure Container Apps",
+    "description": "An end-to-end sample deploying a public image (Label Studio) directly to Azure Container Apps with a persistent storage volume.",
+    "preview": "./templates/images/aca-public-image-arch.png",
+    "author": "Bill DeRusha",
+    "authorUrl": "https://github.com/bderusha",
+    "source": "https://github.com/bderusha/azd-label-studio",
+    "tags": [
+      "community",
+      "new",
+      "bicep"
+    ],
+    "azureServices": [
+      "aca",
+      "blobstorage",
+      "appinsights",
+      "loganalytics",
+      "managedidentity"
+    ],
+    "languages": [
+    ],
+    "id": "f3e2f3e1-5d4c-4e2e-9f4a-3c6e2f3e4b5c"
   }
 ]

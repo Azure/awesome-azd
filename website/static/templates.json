@@ -5591,7 +5591,7 @@
     "description": "This scenario deploys an Azure AI Foundry Project, an Azure AI Foundry Agent Service and Bing Search Grounding. A Python with Flask Web App offers a use case to perform Deep Research",
     "preview": "./templates/images/DeepResearcherArchitecture.png",
     "website": "https://github.com/petender",
-    "author": "Marnix Cox",
+    "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-researcher",
     "tags": [
       "community",

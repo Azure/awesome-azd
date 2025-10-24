@@ -4867,7 +4867,7 @@
       "ai",
       "new"
     ],
-    "azure_service": [
+    "azureServices": [
       "managedidentity",
       "openai",
       "aca"

@@ -3407,7 +3407,7 @@
   },
   {
     "title": "Logic App Consumption",
-    "description": "Template to deploy Logic App Consumption for (legacy) application integrations.",
+    "description": "Template to deploy Logic App Comsumption for (legacy) application integrations.",
     "preview": "./templates/images/logicapp-standard-func.png",
     "authorUrl": "https://github.com/marnixcox",
     "author": "Marnix Cox",
@@ -5608,6 +5608,33 @@
       "python"
     ],
     "id": "c9056294-ec1d-420c-acb0-fe2dcdd4b7b5"
+  },
+  {
+    "title": "Semantic Kernel Function App (.NET). OpenAI chat stream from an http trigger with an Angular client",
+    "description": "An end-to-end sample showing a streaming chat experience powered by Azure OpenAI (via Microsoft.SemanticKernel) exposed through a .NET 9 isolated Azure Function and consumed by an Angular Universal (SSR) front end. Provisioning, configuration, networking, and identity are fully automated with the Azure Developer CLI (azd) and Bicep.",
+    "author": "Jay Chase",
+    "authorUrl": "https://github.com/JayChase",
+    "source": "https://github.com/JayChase/semantic-kernel-function-app",
+    "tags": [
+      "community",
+      "new",
+      "angular",
+      "semantickernel",
+      "bicep"
+    ],
+    "azureServices": [
+      "appservice",
+      "functions",
+      "openai",
+      "azurestorage",
+      "vnets",
+      "monitor"
+    ],
+    "languages": [
+      "dotnetCsharp",
+      "typescript"
+    ],
+    "id": "698e78dc-226c-40ed-8599-9ed4ce5116c9"
   },
   {
     "title": "Logic App AI Agents and AI Foundry",

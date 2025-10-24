@@ -3407,7 +3407,7 @@
   },
   {
     "title": "Logic App Consumption",
-    "description": "Template to deploy Logic App Comsumption for (legacy) application integrations.",
+    "description": "Template to deploy Logic App Consumption for (legacy) application integrations.",
     "preview": "./templates/images/logicapp-standard-func.png",
     "authorUrl": "https://github.com/marnixcox",
     "author": "Marnix Cox",

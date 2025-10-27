@@ -849,7 +849,8 @@
       "bicep",
       "ai",
       "msft",
-      "aicollection"
+      "aicollection",
+      "new"
     ],
     "azureServices": [
       "openai",

@@ -4855,6 +4855,29 @@
     ]
   },
   {
+    "title": "Azure Container Apps dynamic sessions with a Python code interpreter",
+    "description": "This project demonstrates how to use Azure Container Apps dynamic sessions with a Python code interpreter to create an AI-powered application that can execute Python code securely and return results in real-time.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/jeffwmartinez",
+    "author": "Jeff Martinez",
+    "source": "https://github.com/Azure-Samples/aca-python-code-interpreter-session",
+    "tags": [
+      "msft",
+      "bicep",
+      "ai",
+      "new"
+    ],
+    "azureServices": [
+      "managedidentity",
+      "openai",
+      "aca"
+    ],
+    "id": "9153c2d5-acfd-4c68-bc9b-25865d5ac2a8",
+    "languages": [
+      "python"
+    ]
+  },
+  {
     "title": "C# API App with Swagger UI deployed to Azure App Service",
     "description": "A simple C# .NET 9 API app with Swagger UI deployed to Azure App Service. The app is a simple REST API with 'TODO' endpoints as a starting point for your own API app.",
     "preview": "./templates/images/build5nines-azd-csharp-api-swagger.png",

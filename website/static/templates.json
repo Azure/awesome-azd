@@ -3407,7 +3407,7 @@
   },
   {
     "title": "Logic App Consumption",
-    "description": "Template to deploy Logic App Comsumption for (legacy) application integrations.",
+    "description": "Template to deploy Logic App Consumption for (legacy) application integrations.",
     "preview": "./templates/images/logicapp-standard-func.png",
     "authorUrl": "https://github.com/marnixcox",
     "author": "Marnix Cox",
@@ -5660,6 +5660,30 @@
     "id": "698e78dc-226c-40ed-8599-9ed4ce5116c9"
   },
   {
+    "title": "Logic App AI Agents and AI Foundry",
+    "description": "Template for deploying Logic App Standard Autonomous and Conversational AI Agents and AI Foundry.",
+    "preview": "./templates/images/logicapp-ai-agent.png",
+    "website": "https://github.com/marnixcox",
+    "author": "Marnix Cox",
+    "source": "https://github.com/marnixcox/logicapp-ai-agent",
+    "tags": [
+      "community",
+      "new",
+      "bicep",
+      "ai",
+      "gpt"
+    ],
+    "azureservices": [
+      "azureai",
+      "aifoundry",
+      "openai",
+      "logicapps",
+      "keyvault",
+      "monitor"
+    ],
+    "id": "778bea03-523e-4bcb-b555-e8de18333a60"
+   },
+   {
     "title": "Deploy Label Studio directly from Docker Hub on Azure Container Apps",
     "description": "An end-to-end sample deploying a public image (Label Studio) directly to Azure Container Apps with a persistent storage volume.",
     "preview": "./templates/images/aca-public-image-arch.png",

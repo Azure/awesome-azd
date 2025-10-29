@@ -5762,6 +5762,7 @@
     "tags": [
       "msft",
       "bicep",
+      "powershell",
       "new"
     ],
     "azureServices": [

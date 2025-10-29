@@ -5580,7 +5580,7 @@
       "new",
       "bicep"
     ],
-    "azureservices": [
+    "azureServices": [
       "appservice",
       "vnets"
     ],
@@ -5598,7 +5598,7 @@
       "new",
       "bicep"
     ],
-    "azureservices": [
+    "azureServices": [
       "azureai",
       "aifoundry",
       "openai",
@@ -5650,7 +5650,7 @@
       "ai",
       "gpt"
     ],
-    "azureservices": [
+    "azureServices": [
       "azureai",
       "aifoundry",
       "openai",

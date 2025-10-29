@@ -3407,7 +3407,7 @@
   },
   {
     "title": "Logic App Consumption",
-    "description": "Template to deploy Logic App Comsumption for (legacy) application integrations.",
+    "description": "Template to deploy Logic App Consumption for (legacy) application integrations.",
     "preview": "./templates/images/logicapp-standard-func.png",
     "authorUrl": "https://github.com/marnixcox",
     "author": "Marnix Cox",
@@ -5389,8 +5389,7 @@
     "source": "https://github.com/kareldewinter/tdd-azd-monitor",
     "tags": [
       "community",
-      "bicep",
-      "new"
+      "bicep"
     ],
     "azureServices": [
       "monitor",
@@ -5409,8 +5408,7 @@
     "source": "https://github.com/rob-foulkrod/azd-apimwithconfAPI-OAuth",
     "tags": [
       "community",
-      "bicep",
-      "new"
+      "bicep"
     ],
     "azureServices": [
       "appservice",
@@ -5430,8 +5428,7 @@
     "source": "https://github.com/daverendon/azd-microsoft-sentinel",
     "tags": [
       "community",
-      "bicep",
-      "new"
+      "bicep"
     ],
     "azureServices": [
       "sentinel"
@@ -5448,8 +5445,7 @@
     "source": "https://github.com/true-while/pg-ai-azd",
     "tags": [
       "community",
-      "bicep",
-      "new"
+      "bicep"
     ],
     "azureServices": [
       "azureai",
@@ -5469,8 +5465,7 @@
       "terraform",
       "fastapi",
       "flask",
-      "community",
-      "new"
+      "community"
     ],
     "languages": [
       "python",
@@ -5499,8 +5494,7 @@
       "mcp",
       "bicep",
       "ai",
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "appservice"
@@ -5635,5 +5629,75 @@
       "typescript"
     ],
     "id": "698e78dc-226c-40ed-8599-9ed4ce5116c9"
+  },
+  {
+    "title": "Logic App AI Agents and AI Foundry",
+    "description": "Template for deploying Logic App Standard Autonomous and Conversational AI Agents and AI Foundry.",
+    "preview": "./templates/images/logicapp-ai-agent.png",
+    "website": "https://github.com/marnixcox",
+    "author": "Marnix Cox",
+    "source": "https://github.com/marnixcox/logicapp-ai-agent",
+    "tags": [
+      "community",
+      "new",
+      "bicep",
+      "ai",
+      "gpt"
+    ],
+    "azureservices": [
+      "azureai",
+      "aifoundry",
+      "openai",
+      "logicapps",
+      "keyvault",
+      "monitor"
+    ],
+    "id": "778bea03-523e-4bcb-b555-e8de18333a60"
+   },
+   {
+    "title": "Deploy Label Studio directly from Docker Hub on Azure Container Apps",
+    "description": "An end-to-end sample deploying a public image (Label Studio) directly to Azure Container Apps with a persistent storage volume.",
+    "preview": "./templates/images/aca-public-image-arch.png",
+    "author": "Bill DeRusha",
+    "authorUrl": "https://github.com/bderusha",
+    "source": "https://github.com/bderusha/azd-label-studio",
+    "tags": [
+      "community",
+      "new",
+      "bicep"
+    ],
+    "azureServices": [
+      "aca",
+      "blobstorage",
+      "appinsights",
+      "loganalytics",
+      "managedidentity"
+    ],
+    "languages": [
+    ],
+    "id": "f3e2f3e1-5d4c-4e2e-9f4a-3c6e2f3e4b5c"
+  },
+  {
+    "title": "Azure Container Apps dynamic sessions with a Python code interpreter",
+    "description": "This project demonstrates how to use Azure Container Apps dynamic sessions with a Python code interpreter to create an AI-powered application that can execute Python code securely and return results in real-time.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/jeffwmartinez",
+    "author": "Jeff Martinez",
+    "source": "https://github.com/Azure-Samples/aca-python-code-interpreter-session",
+    "tags": [
+      "msft",
+      "bicep",
+      "ai",
+      "new"
+    ],
+    "azureServices": [
+      "managedidentity",
+      "openai",
+      "aca"
+    ],
+    "id": "9153c2d5-acfd-4c68-bc9b-25865d5ac2a8",
+    "languages": [
+      "python"
+    ]
   }
 ]

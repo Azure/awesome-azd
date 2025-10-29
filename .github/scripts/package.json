@@ -1,0 +1,9 @@
+{
+  "name": "awesome-azd-scripts",
+  "version": "1.0.0",
+  "description": "GitHub Action scripts for awesome-azd",
+  "private": true,
+  "dependencies": {
+    "@octokit/rest": "^20.0.0"
+  }
+}

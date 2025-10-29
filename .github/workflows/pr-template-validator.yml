@@ -54,11 +54,12 @@ jobs:
           HEAD_REF: ${{ github.head_ref }}
 
       - name: Run template tests
+        if: contains(steps.changed-files.outputs.files, 'website/static/templates.json')
         working-directory: website
         run: npm test
 
       - name: Assign reviewer for manual testing
-        if: steps.validate.outcome == 'success'
+        if: contains(steps.changed-files.outputs.files, 'website/static/templates.json')
         uses: actions/github-script@v7
         with:
           script: |

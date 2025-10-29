@@ -5668,7 +5668,8 @@
     "source": "https://github.com/Azure-Samples/functions-quickstart-typescript-azd-eventgrid-blob",
     "tags": [
       "msft",
-      "bicep"
+      "bicep",
+      "new"
     ],
     "azureServices": [
       "functions",
@@ -5692,7 +5693,8 @@
     "source": "https://github.com/Azure-Samples/functions-quickstart-python-azd-eventgrid-blob",
     "tags": [
       "msft",
-      "bicep"
+      "bicep",
+      "new"
     ],
     "azureServices": [
       "functions",
@@ -5716,7 +5718,8 @@
     "source": "https://github.com/Azure-Samples/functions-quickstart-javascript-azd-eventgrid-blob",
     "tags": [
       "msft",
-      "bicep"
+      "bicep",
+      "new"
     ],
     "azureServices": [
       "functions",
@@ -5740,7 +5743,8 @@
     "source": "https://github.com/Azure-Samples/functions-quickstart-powershell-azd-eventgrid-blob",
     "tags": [
       "msft",
-      "bicep"
+      "bicep",
+      "new"
     ],
     "azureServices": [
       "functions",

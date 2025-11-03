@@ -5714,7 +5714,8 @@
     "copilot-studio",
     "power-platform",
     "enterprise",
-    "security"
+    "security",
+    "new"
   ],
   "azureServices": [
     "aisearch",

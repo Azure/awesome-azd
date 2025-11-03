@@ -5709,6 +5709,7 @@
   "source": "https://github.com/Azure-Samples/Copilot-Studio-with-Azure-AI-Search",
   "tags": [
     "terraform",
+    "powershell",
     "msft",
     "ai",
     "new"

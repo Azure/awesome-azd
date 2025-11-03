@@ -5699,5 +5699,38 @@
     "languages": [
       "python"
     ]
-  }
+  },
+  {
+  "title": "Copilot Studio with Azure AI Search using Azure Developer CLI",
+  "description": "An enterprise-ready template demonstrating secure integration between Microsoft Copilot Studio and Azure AI Search. Features private networking, Power Platform integration, and comprehensive AI search capabilities with enterprise-grade security and governance. Deployed using Azure Developer CLI (azd) with Terraform infrastructure-as-code.",
+  "preview": "./templates/images/copilot-studio-azure-ai-search.png",
+  "authorUrl": "https://github.com/Azure-Samples",
+  "author": "ISE Scale",
+  "source": "https://github.com/Azure-Samples/Copilot-Studio-with-Azure-AI-Search",
+  "tags": [
+    "terraform",
+    "msft",
+    "ai",
+    "copilot-studio",
+    "power-platform",
+    "enterprise",
+    "security"
+  ],
+  "azureServices": [
+    "aisearch",
+    "cognitiveservices", 
+    "azurestorage",
+    "vnets",
+    "privateendpoints",
+    "managedidentity",
+    "appinsights",
+    "powerplatform"
+  ],
+  "id": "b6399e1c-612b-4d43-8eda-ccf226213fe6",
+  "languages": [
+    "python",
+    "powershell", 
+    "terraform"
+  ]
+}
 ]

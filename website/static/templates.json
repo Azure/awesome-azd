@@ -5718,7 +5718,7 @@
     "azureai",
     "azurestorage",
     "vnets",
-    "privatelink",
+    "privateEndpoints",
     "managedidentity",
     "appinsights"
   ],

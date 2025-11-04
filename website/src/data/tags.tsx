@@ -147,7 +147,7 @@ export type TagType =
   | "avset"
   | "bastion"
   | "mcp"
-  // | "privateEndpoints"
+  | "privateEndpoints"
   | "privatelink"
   | "loadbalancer"
   ;
@@ -865,13 +865,13 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/products/azure-bastion",
     type: "Service",
   },
-  // privateEndpoints: {
-  //   label: "Azure Private Endpoints",
-  //   description: "Template architecture for Azure Private Endpoints",
-  //   azureIcon: "./img/Azure-Private-Endpoints.svg",
-  //   url: "https://learn.microsoft.com/azure/private-link/private-endpoint-overview",
-  //   type: "Service",
-  // },
+  privateEndpoints: {
+    label: "Azure Private Endpoints",
+    description: "Template architecture for Azure Private Endpoints",
+    azureIcon: "./img/Azure-Private-Endpoints.svg",
+    url: "https://learn.microsoft.com/azure/private-link/private-endpoint-overview",
+    type: "Service",
+  },
   privatelink: {
     label: "Azure Private Link",
     description: "Template architecture for Azure Private Link",

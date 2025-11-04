@@ -5678,6 +5678,131 @@
     "id": "f3e2f3e1-5d4c-4e2e-9f4a-3c6e2f3e4b5c"
   },
   {
+    "title": "Azure Functions TypeScript Event Grid Blob Trigger using Azure Developer CLI",
+    "description": "This template repository contains an Azure Functions reference sample using the Blob trigger with Event Grid source type, written in TypeScript (v4 programming model) and deployed to Azure using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "author": "Azure Functions Team",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-typescript-azd-eventgrid-blob",
+    "tags": [
+      "msft",
+      "bicep",
+      "new"
+    ],
+    "azureServices": [
+      "functions",
+      "blobstorage",
+      "eventgrid",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "languages": [
+      "typescript"
+    ],
+    "id": "c39c0965-d81b-43b6-ab70-fedaa8f5a2f6"
+  },
+  {
+    "title": "Azure Functions Python Event Grid Blob Trigger using Azure Developer CLI",
+    "description": "This template repository contains an Azure Functions reference sample using the Blob trigger with Event Grid source type, written in Python (v2 programming model) and deployed to Azure using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "author": "Azure Functions Team",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-python-azd-eventgrid-blob",
+    "tags": [
+      "msft",
+      "bicep",
+      "new"
+    ],
+    "azureServices": [
+      "functions",
+      "blobstorage",
+      "eventgrid",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "languages": [
+      "python"
+    ],
+    "id": "30dd5984-ec08-4e66-afd7-95115a5a6b84"
+  },
+  {
+    "title": "Azure Functions JavaScript Event Grid Blob Trigger using Azure Developer CLI",
+    "description": "This template repository contains an Azure Functions reference sample using the Blob trigger with Event Grid source type, written in JavaScript (v4 programming model) and deployed to Azure using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "author": "Azure Functions Team",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-javascript-azd-eventgrid-blob",
+    "tags": [
+      "msft",
+      "bicep",
+      "new"
+    ],
+    "azureServices": [
+      "functions",
+      "blobstorage",
+      "eventgrid",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "languages": [
+      "javascript"
+    ],
+    "id": "0708474f-4259-4368-b545-d3cfcf2a481b"
+  },
+  {
+    "title": "Azure Functions PowerShell Event Grid Blob Trigger using Azure Developer CLI",
+    "description": "This template repository contains an Azure Functions reference sample using the Blob trigger with Event Grid source type, written in PowerShell 7.4 (isolated process mode) and deployed to Azure using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "author": "Azure Functions Team",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-powershell-azd-eventgrid-blob",
+    "tags": [
+      "msft",
+      "bicep",
+      "powershell",
+      "new"
+    ],
+    "azureServices": [
+      "functions",
+      "blobstorage",
+      "eventgrid",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "languages": [
+    ],
+    "id": "d0d40d21-8951-4421-ac04-a929dcbb357e"
+  },
+  {
+    "title": "Azure Functions Java Event Grid Blob Trigger using Azure Developer CLI",
+    "description": "This template repository contains an Azure Functions reference sample using the Blob trigger with Event Grid source type, written in Java and deployed to Azure using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "author": "Azure Functions Team",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-java-azd-eventgrid-blob",
+    "tags": [
+      "msft",
+      "bicep",
+      "new"
+    ],
+    "azureServices": [
+      "functions",
+      "blobstorage",
+      "eventgrid",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "languages": [
+      "java"
+    ],
+    "id": "717e7e23-666c-49c5-8546-03772992e065"
+  },
+  {
     "title": "Azure Container Apps dynamic sessions with a Python code interpreter",
     "description": "This project demonstrates how to use Azure Container Apps dynamic sessions with a Python code interpreter to create an AI-powered application that can execute Python code securely and return results in real-time.",
     "preview": "./templates/images/test.png",

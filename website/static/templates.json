@@ -5778,6 +5778,31 @@
     "id": "d0d40d21-8951-4421-ac04-a929dcbb357e"
   },
   {
+    "title": "Azure Functions Java Event Grid Blob Trigger using Azure Developer CLI",
+    "description": "This template repository contains an Azure Functions reference sample using the Blob trigger with Event Grid source type, written in Java and deployed to Azure using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "author": "Azure Functions Team",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-java-azd-eventgrid-blob",
+    "tags": [
+      "msft",
+      "bicep",
+      "new"
+    ],
+    "azureServices": [
+      "functions",
+      "blobstorage",
+      "eventgrid",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "languages": [
+      "java"
+    ],
+    "id": "717e7e23-666c-49c5-8546-03772992e065"
+  },
+  {
     "title": "Azure Container Apps dynamic sessions with a Python code interpreter",
     "description": "This project demonstrates how to use Azure Container Apps dynamic sessions with a Python code interpreter to create an AI-powered application that can execute Python code securely and return results in real-time.",
     "preview": "./templates/images/test.png",

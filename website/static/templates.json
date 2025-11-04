@@ -5715,13 +5715,12 @@
   ],
   "azureServices": [
     "aisearch",
-    "cognitiveservices", 
+    "azureai",
     "azurestorage",
     "vnets",
-    "privateendpoints",
+    "privatelink",
     "managedidentity",
-    "appinsights",
-    "powerplatform"
+    "appinsights"
   ],
   "id": "b6399e1c-612b-4d43-8eda-ccf226213fe6",
   "languages": [

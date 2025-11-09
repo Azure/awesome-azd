@@ -1,0 +1,215 @@
+[
+  {
+    "id": "microsoft.azd.demo",
+    "namespace": "demo",
+    "title": "Demo Extension",
+    "description": "This extension provides examples of the AZD extension framework.",
+    "preview": "./templates/images/extension-default.png",
+    "author": "Microsoft",
+    "authorUrl": "https://github.com/Azure/azure-dev",
+    "source": "https://github.com/Azure/azure-dev",
+    "tags": [
+      "msft",
+      "official"
+    ],
+    "capabilities": [
+      "custom-commands",
+      "lifecycle-events",
+      "mcp-server"
+    ],
+    "latestVersion": {
+      "version": "0.3.0",
+      "usage": "azd demo <command> [options]",
+      "examples": [
+        {
+          "name": "context",
+          "description": "Displays the current `azd` project & environment context.",
+          "usage": "azd demo context"
+        },
+        {
+          "name": "prompt",
+          "description": "Display prompt capabilities.",
+          "usage": "azd demo prompt"
+        },
+        {
+          "name": "mcp",
+          "description": "Start MCP server with demo tools.",
+          "usage": "azd demo mcp start"
+        }
+      ]
+    }
+  },
+  {
+    "id": "microsoft.azd.extensions",
+    "namespace": "x",
+    "title": "AZD Extensions Developer Kit",
+    "description": "This extension provides a set of tools for AZD extension developers to test and debug their extensions.",
+    "preview": "./templates/images/extension-default.png",
+    "author": "Microsoft",
+    "authorUrl": "https://github.com/Azure/azure-dev",
+    "source": "https://github.com/Azure/azure-dev",
+    "tags": [
+      "msft",
+      "official"
+    ],
+    "capabilities": [
+      "custom-commands"
+    ],
+    "latestVersion": {
+      "version": "0.6.0",
+      "usage": "azd x <command> [options]",
+      "examples": [
+        {
+          "name": "init",
+          "description": "Initialize a new AZD extension project.",
+          "usage": "azd x init"
+        },
+        {
+          "name": "build",
+          "description": "Build the AZD extension project.",
+          "usage": "azd x build"
+        },
+        {
+          "name": "pack",
+          "description": "Package the AZD extension project into a distributable format and add to local registry.",
+          "usage": "azd x pack"
+        },
+        {
+          "name": "publish",
+          "description": "Publish the AZD extension project to an extension source.",
+          "usage": "azd x publish"
+        },
+        {
+          "name": "release",
+          "description": "Create an new release of the AZD extension project to a Github repository.",
+          "usage": "azd x release"
+        },
+        {
+          "name": "watch",
+          "description": "Watch for changes in the extension project and automatically rebuild and reload the extension.",
+          "usage": "azd x watch"
+        }
+      ]
+    }
+  },
+  {
+    "id": "azure.coding-agent",
+    "namespace": "coding-agent",
+    "title": "Coding agent configuration extension",
+    "description": "This extension configures GitHub Copilot Coding Agent access to Azure",
+    "preview": "./templates/images/extension-default.png",
+    "author": "Microsoft",
+    "authorUrl": "https://github.com/Azure/azure-dev",
+    "source": "https://github.com/Azure/azure-dev",
+    "tags": [
+      "msft",
+      "official"
+    ],
+    "capabilities": [
+      "custom-commands"
+    ],
+    "latestVersion": {
+      "version": "0.5.1",
+      "usage": "azd coding-agent <command> [options]",
+      "examples": []
+    }
+  },
+  {
+    "id": "azure.ai.agents",
+    "namespace": "ai.agent",
+    "title": "AI Foundry Agents",
+    "description": "This extension provides custom commands for working with agents using Azure Developer CLI.",
+    "preview": "./templates/images/extension-default.png",
+    "author": "Microsoft",
+    "authorUrl": "https://github.com/Azure/azure-dev",
+    "source": "https://github.com/Azure/azure-dev",
+    "tags": [
+      "msft",
+      "official"
+    ],
+    "capabilities": [
+      "custom-commands",
+      "lifecycle-events",
+      "mcp-server",
+      "service-target-provider"
+    ],
+    "latestVersion": {
+      "version": "0.0.5",
+      "usage": "azd ai agent <command> [options]",
+      "examples": [
+        {
+          "name": "init",
+          "description": "Initialize a new AI agent project.",
+          "usage": "azd ai agent init"
+        },
+        {
+          "name": "mcp",
+          "description": "Start MCP server with AI Foundry agent tools.",
+          "usage": "azd ai agent mcp start"
+        }
+      ]
+    }
+  },
+  {
+    "id": "community.azd.terraform-validator",
+    "namespace": "tf-validate",
+    "title": "Terraform Validator",
+    "description": "Validates Terraform configurations before deployment with custom rules and best practices checks.",
+    "preview": "./templates/images/extension-default.png",
+    "author": "Community",
+    "authorUrl": "https://github.com/example-community",
+    "source": "https://github.com/example-community/azd-terraform-validator",
+    "tags": [
+      "community",
+      "featured"
+    ],
+    "capabilities": [
+      "lifecycle-events"
+    ],
+    "latestVersion": {
+      "version": "1.0.0",
+      "usage": "Automatically runs during azd provision",
+      "examples": [
+        {
+          "name": "validate",
+          "description": "Validate Terraform configuration",
+          "usage": "Triggered automatically on preprovision event"
+        }
+      ]
+    }
+  },
+  {
+    "id": "community.azd.cost-estimator",
+    "namespace": "cost",
+    "title": "Azure Cost Estimator",
+    "description": "Estimates Azure deployment costs before provisioning resources.",
+    "preview": "./templates/images/extension-default.png",
+    "author": "Community",
+    "authorUrl": "https://github.com/example-community",
+    "source": "https://github.com/example-community/azd-cost-estimator",
+    "tags": [
+      "community",
+      "featured"
+    ],
+    "capabilities": [
+      "custom-commands",
+      "lifecycle-events"
+    ],
+    "latestVersion": {
+      "version": "2.1.0",
+      "usage": "azd cost <command> [options]",
+      "examples": [
+        {
+          "name": "estimate",
+          "description": "Estimate deployment costs",
+          "usage": "azd cost estimate"
+        },
+        {
+          "name": "report",
+          "description": "Generate cost report",
+          "usage": "azd cost report"
+        }
+      ]
+    }
+  }
+]

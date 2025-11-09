@@ -85,6 +85,11 @@ const config = {
             position: "left",
           },
           {
+            to: "/extensions",
+            label: "Extensions",
+            position: "left",
+          },
+          {
             label: "Contribute",
             position: "left",
             type: "doc",

@@ -1,0 +1,214 @@
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background-color: var(--ifm-background-color);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-color: var(--ifm-color-primary);
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.namespace {
+  font-family: monospace;
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+.authorInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.version {
+  font-family: monospace;
+  background-color: var(--ifm-color-emphasis-200);
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+}
+
+.cardBody {
+  padding: 1rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.description {
+  line-height: 1.5;
+  color: var(--ifm-font-color-base);
+}
+
+.capabilities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.capabilityBadge {
+  padding: 0.25rem 0.75rem;
+  background-color: var(--ifm-color-primary-lightest);
+  color: var(--ifm-color-primary-darkest);
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tagBadge {
+  padding: 0.125rem 0.5rem;
+  background-color: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-800);
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.cardFooter {
+  padding: 1rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.installSection {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.installCommand {
+  flex-grow: 1;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--ifm-code-background);
+  border-radius: 4px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  overflow-x: auto;
+}
+
+.installCommand code {
+  font-size: 0.875rem;
+  color: var(--ifm-font-color-base);
+  font-family: var(--ifm-font-family-monospace);
+}
+
+.copyButton {
+  min-width: 80px;
+}
+
+.links {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-start;
+}
+
+.examples {
+  margin-top: 0.5rem;
+}
+
+.examplesSummary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  font-size: 0.875rem;
+  padding: 0.5rem 0;
+  list-style: none;
+}
+
+.examplesSummary::-webkit-details-marker {
+  display: none;
+}
+
+.examplesSummary::before {
+  content: "▶";
+  display: inline-block;
+  margin-right: 0.5rem;
+  transition: transform 0.2s;
+}
+
+.examples[open] .examplesSummary::before {
+  transform: rotate(90deg);
+}
+
+.examplesContent {
+  padding: 1rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.example {
+  padding: 0.75rem;
+  background-color: var(--ifm-background-surface-color);
+  border-radius: 4px;
+  border-left: 3px solid var(--ifm-color-primary);
+}
+
+.exampleDescription {
+  margin: 0.25rem 0 0.5rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.exampleUsage {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--ifm-code-background);
+  border-radius: 4px;
+  font-size: 0.8rem;
+  overflow-x: auto;
+  font-family: var(--ifm-font-family-monospace);
+}
+
+/* Dark mode specific styles */
+[data-theme='dark'] .capabilityBadge {
+  background-color: var(--ifm-color-primary-dark);
+  color: var(--ifm-color-primary-lightest);
+}
+
+[data-theme='dark'] .card {
+  background-color: var(--ifm-background-surface-color);
+}
+
+[data-theme='dark'] .tagBadge {
+  background-color: var(--ifm-color-emphasis-300);
+  color: var(--ifm-color-emphasis-900);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .installSection {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .copyButton {
+    width: 100%;
+  }
+
+  .installCommand {
+    width: 100%;
+  }
+}

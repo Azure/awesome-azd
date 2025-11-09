@@ -59,6 +59,12 @@ function ExtensionsHeader({ colorMode }) {
           >
             Build an Extension
           </Link>
+          <Link
+            className={`button button--outline button--lg ${styles.heroButton}`}
+            to="https://github.com/Azure/awesome-azd/issues/new?template=submit-extension.md&title=%5BExtension%5D+"
+          >
+            Submit Your Extension
+          </Link>
         </div>
       </div>
     </header>
@@ -238,6 +244,57 @@ function GettingStarted() {
             </p>
           </div>
         </div>
+        
+        <div className={styles.contributeSection}>
+          <h2 className={style.title1}>Share Your Extension</h2>
+          <p className={style.body1}>
+            Built an extension? Share it with the community! The submission process is quick and easy.
+          </p>
+          <div className={styles.contributeSteps}>
+            <div className={styles.contributeStep}>
+              <span className={styles.contributeIcon}>📝</span>
+              <div>
+                <h3 className={style.title3}>Submit Your Extension</h3>
+                <p className={style.body1}>
+                  Fill out our simple submission form with your extension details.
+                </p>
+              </div>
+            </div>
+            <div className={styles.contributeStep}>
+              <span className={styles.contributeIcon}>✅</span>
+              <div>
+                <h3 className={style.title3}>Quick Review</h3>
+                <p className={style.body1}>
+                  Our team reviews submissions within 1-2 business days.
+                </p>
+              </div>
+            </div>
+            <div className={styles.contributeStep}>
+              <span className={styles.contributeIcon}>🚀</span>
+              <div>
+                <h3 className={style.title3}>Go Live</h3>
+                <p className={style.body1}>
+                  Your extension appears in the gallery for the community to discover.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className={styles.submitButtonContainer}>
+            <Link
+              className="button button--primary button--lg"
+              to="https://github.com/Azure/awesome-azd/issues/new?template=submit-extension.md&title=%5BExtension%5D+"
+            >
+              Submit Your Extension
+            </Link>
+            <Link
+              className="button button--secondary button--lg"
+              to="/docs/submit-extension"
+            >
+              View Submission Guide
+            </Link>
+          </div>
+        </div>
+        
         <div className={styles.learnMoreLinks}>
           <Link
             to="https://github.com/Azure/azure-dev/blob/main/cli/azd/docs/extension-framework.md"

@@ -303,6 +303,68 @@
   color: var(--ifm-color-primary-darkest);
 }
 
+/* Contribute Section */
+.contributeSection {
+  margin-top: 4rem;
+  padding-top: 4rem;
+  border-top: 2px solid var(--ifm-color-emphasis-200);
+  text-align: center;
+}
+
+.contributeSection h2 {
+  margin-bottom: 1rem;
+}
+
+.contributeSection > p {
+  margin-bottom: 2rem;
+}
+
+.contributeSteps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0 3rem;
+  text-align: left;
+}
+
+.contributeStep {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+  background-color: var(--ifm-background-surface-color);
+  border-radius: 8px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.contributeIcon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.contributeStep h3 {
+  margin-bottom: 0.5rem;
+  color: var(--ifm-heading-color);
+}
+
+.contributeStep p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.submitButtonContainer {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.submitButtonContainer .button {
+  min-width: 200px;
+}
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .heroBanner {

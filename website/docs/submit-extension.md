@@ -15,6 +15,34 @@ Before submitting your extension:
 2. **Publish your extension** to a GitHub repository with releases
 3. **Test your extension** to ensure it works correctly with `azd`
 
+## Important: Extensions are Currently in Alpha
+
+`azd` extensions are currently an **alpha feature**. Users who want to install extensions from the gallery must first:
+
+### Enable Alpha Features
+
+Enable alpha features in azd configuration:
+
+```bash
+azd config set alpha.extensions on
+```
+
+### Add Extension Source
+
+Add the official extension registry (if not already present):
+
+```bash
+azd extension source add -n azd -t url -l "https://aka.ms/azd/extensions/registry"
+```
+
+Or for the development registry with experimental extensions:
+
+```bash
+azd extension source add -n dev -t url -l "https://aka.ms/azd/extensions/registry/dev"
+```
+
+**Note:** These steps are only required once per azd installation. After configuration, users can install extensions normally using `azd extension install <namespace>`.
+
 ## Submission Process
 
 ### Option 1: Quick Submit (Recommended)

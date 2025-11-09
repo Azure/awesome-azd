@@ -81,7 +81,7 @@
         },
         {
           "name": "release",
-          "description": "Create an new release of the AZD extension project to a Github repository.",
+          "description": "Create a new release of the AZD extension project to a Github repository.",
           "usage": "azd x release"
         },
         {

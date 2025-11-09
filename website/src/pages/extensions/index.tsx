@@ -4,9 +4,7 @@
  */
 
 import React, { useState, useEffect } from "react";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
-import useBaseUrl from "@docusaurus/useBaseUrl";
 import Link from "@docusaurus/Link";
 import {
   Text,
@@ -218,6 +216,27 @@ function GettingStarted() {
     <section className={styles.gettingStartedSection}>
       <div className={styles.sectionContent}>
         <h2 className={style.title1}>Getting Started with Extensions</h2>
+        
+        <div className={styles.alphaNotice}>
+          <h3 className={style.title3}>⚠️ Extensions are Currently in Alpha</h3>
+          <p className={style.body1}>
+            Before installing extensions, you must enable alpha features and configure the extension registry:
+          </p>
+          <div className={styles.setupCommands}>
+            <div className={styles.setupCommand}>
+              <Text weight="semibold" className={styles.setupLabel}>1. Enable alpha features:</Text>
+              <code className={styles.codeBlock}>azd config set alpha.extensions on</code>
+            </div>
+            <div className={styles.setupCommand}>
+              <Text weight="semibold" className={styles.setupLabel}>2. Add the extension registry:</Text>
+              <code className={styles.codeBlock}>azd extension source add -n azd -t url -l "https://aka.ms/azd/extensions/registry"</code>
+            </div>
+          </div>
+          <p className={style.body1} style={{ fontSize: '0.9rem', marginTop: '1rem' }}>
+            <em>Note: These steps are only required once per azd installation.</em>
+          </p>
+        </div>
+
         <div className={styles.stepsGrid}>
           <div className={styles.step}>
             <div className={styles.stepNumber}>1</div>
@@ -341,7 +360,6 @@ const ExtensionsApp = () => {
 };
 
 export default function Extensions() {
-  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
       title="Azure Developer CLI Extensions"

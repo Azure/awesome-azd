@@ -12,7 +12,6 @@ import {
   CardHeader,
   CardFooter,
   Button,
-  CardPreview,
   Text,
 } from "@fluentui/react-components";
 import { Copy16Regular, Open16Regular } from "@fluentui/react-icons";

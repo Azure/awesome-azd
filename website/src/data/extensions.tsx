@@ -4,7 +4,7 @@
  */
 
 import { sortBy } from '../utils/jsUtils';
-import { Extension, TagType, Tags } from './tags';
+import { Extension, TagType } from './tags';
 import extensionsData from '../../static/extensions.json';
 
 // Extension data loaded from JSON file

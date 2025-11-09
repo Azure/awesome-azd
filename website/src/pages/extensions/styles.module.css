@@ -232,6 +232,49 @@
   background-color: var(--ifm-background-surface-color);
 }
 
+.alphaNotice {
+  background: linear-gradient(135deg, #fff3cd 0%, #fff8e1 100%);
+  border-left: 4px solid #ffc107;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+[data-theme='dark'] .alphaNotice {
+  background: linear-gradient(135deg, #664d03 0%, #7a5c0f 100%);
+  border-left-color: #ffc107;
+}
+
+.alphaNotice h3 {
+  margin-bottom: 1rem;
+  color: var(--ifm-heading-color);
+}
+
+.alphaNotice p {
+  margin-bottom: 1.5rem;
+}
+
+.setupCommands {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.setupCommand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.setupLabel {
+  color: var(--ifm-color-emphasis-800);
+  font-size: 0.95rem;
+}
+
 .stepsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

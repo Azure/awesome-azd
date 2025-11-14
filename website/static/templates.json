@@ -5879,15 +5879,15 @@
     "source": "https://github.com/ronaldbosma/call-apim-with-managed-identity",
     "tags": [
       "bicep",
-      "community"
+      "community",
+      "new"
     ],
     "azureServices": [
       "apim",
       "functions",
       "logicapps",
       "managedidentity",
-      "serviceprincipal",
-      "new"
+      "serviceprincipal"
     ],
     "id": "4f2b8805-14fb-49de-acc5-fe9e2e8ae295",
     "languages": [

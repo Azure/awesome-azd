@@ -5855,7 +5855,7 @@
 },
   {
     "title": "Protect API Management with OAuth",
-    "description": "A demo that shows how to secure an API in Azure API Management with OAuth, including Entra ID app registration examples.",
+    "description": "Demonstrates how to secure an API in Azure API Management with OAuth, including Entra ID app registration examples.",
     "preview": "./templates/images/protect-apim-with-oauth.png",
     "authorUrl": "https://github.com/ronaldbosma",
     "author": "Ronald Bosma",
@@ -5894,5 +5894,22 @@
     "languages": [
       "dotnetCsharp"
     ]
+  },
+  {
+    "title": "Call API Management backend with OAuth",
+    "description": "Demonstrates multiple ways to call OAuth-protected backend APIs through Azure API Management. This template demonstrates three authentication scenarios: Credential Manager, send-request policy with client secret and send-request policy with client certificate (client assertion).",
+    "preview": "./templates/images/call-apim-backend-with-oauth.png",
+    "authorUrl": "https://github.com/ronaldbosma",
+    "author": "Ronald Bosma",
+    "source": "https://github.com/ronaldbosma/call-apim-backend-with-oauth",
+    "tags": [
+      "bicep",
+      "community"
+    ],
+    "azureServices": [
+      "apim",
+      "keyvault"
+    ],
+    "id": "af9e410f-96f1-419d-ba27-2ff8a77b24d0"
   }
 ]

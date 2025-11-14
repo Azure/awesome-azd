@@ -5862,7 +5862,8 @@
     "source": "https://github.com/ronaldbosma/protect-apim-with-oauth",
     "tags": [
       "bicep",
-      "community"
+      "community",
+      "new"
     ],
     "azureServices": [
       "apim"
@@ -5885,7 +5886,8 @@
       "functions",
       "logicapps",
       "managedidentity",
-      "serviceprincipal"
+      "serviceprincipal",
+      "new"
     ],
     "id": "4f2b8805-14fb-49de-acc5-fe9e2e8ae295",
     "languages": [
@@ -5901,7 +5903,8 @@
     "source": "https://github.com/ronaldbosma/call-apim-backend-with-oauth",
     "tags": [
       "bicep",
-      "community"
+      "community",
+      "new"
     ],
     "azureServices": [
       "apim",

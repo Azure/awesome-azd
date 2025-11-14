@@ -5907,6 +5907,9 @@
       "apim",
       "keyvault"
     ],
-    "id": "af9e410f-96f1-419d-ba27-2ff8a77b24d0"
+    "id": "af9e410f-96f1-419d-ba27-2ff8a77b24d0",
+    "languages": [
+      "dotnetCsharp"
+    ]
   }
 ]

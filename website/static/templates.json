@@ -5852,5 +5852,26 @@
   "languages": [
     "python"
   ]
-}
+},
+  {
+    "title": "Protect API Management with OAuth",
+    "description": "A demo that shows how to secure an API in Azure API Management with OAuth, including Entra ID app registration examples.",
+    "preview": "./templates/images/protect-apim-with-oauth.png",
+    "authorUrl": "https://github.com/ronaldbosma",
+    "author": "Ronald Bosma",
+    "source": "https://github.com/ronaldbosma/protect-apim-with-oauth",
+    "tags": [
+      "bicep",
+      "community"
+    ],
+    "azureServices": [
+      "apim",
+      "appinsights",
+      "entraid"
+    ],
+    "id": "55a520f0-06d1-4856-8820-44cb74a4d92d",
+    "languages": [
+      "dotnetCsharp"
+    ]
+  }
 ]

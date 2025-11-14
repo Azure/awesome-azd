@@ -5873,5 +5873,28 @@
     "languages": [
       "dotnetCsharp"
     ]
+  },
+  {
+    "title": "Call OAuth-Protected APIs on API Management with Managed Identity",
+    "description": "Demonstrates OAuth-protected API calls using managed identities and federated credentials. Shows Azure Functions, Logic Apps and API Management calling protected APIs without secrets. Includes CI/CD pipelines for GitHub Actions and Azure DevOps using federated credentials for secure, secret-free authentication.",
+    "preview": "./templates/images/call-apim-with-managed-identity.png",
+    "authorUrl": "https://github.com/ronaldbosma",
+    "author": "Ronald Bosma",
+    "source": "https://github.com/ronaldbosma/call-apim-with-managed-identity",
+    "tags": [
+      "bicep",
+      "community"
+    ],
+    "azureServices": [
+      "apim",
+      "functions",
+      "logicapps",
+      "managedidentity",
+      "serviceprincipal"
+    ],
+    "id": "4f2b8805-14fb-49de-acc5-fe9e2e8ae295",
+    "languages": [
+      "dotnetCsharp"
+    ]
   }
 ]

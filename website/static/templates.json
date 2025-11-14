@@ -5867,10 +5867,7 @@
     "azureServices": [
       "apim"
     ],
-    "id": "66cdab60-61e3-498a-9103-a9f316e58a6f",
-    "languages": [
-      "dotnetCsharp"
-    ]
+    "id": "66cdab60-61e3-498a-9103-a9f316e58a6f"
   },
   {
     "title": "Call OAuth-Protected APIs on API Management with Managed Identity",

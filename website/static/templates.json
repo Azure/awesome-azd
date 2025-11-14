@@ -5865,11 +5865,9 @@
       "community"
     ],
     "azureServices": [
-      "apim",
-      "appinsights",
-      "entraid"
+      "apim"
     ],
-    "id": "55a520f0-06d1-4856-8820-44cb74a4d92d",
+    "id": "66cdab60-61e3-498a-9103-a9f316e58a6f",
     "languages": [
       "dotnetCsharp"
     ]

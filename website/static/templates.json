@@ -5854,10 +5854,10 @@
     ]
   },
   {
-    "title": "Remote Azure MCP Server with managed identity for Copilot Studio integration",
-    "description": "This template demonstrates how to host a remote Azure MCP Server as an Azure Container App which can use its managed identity to read Azure resources. This template also creates Entra app registrations for connecting Copilot Studio to this remote Azure MCP Server.",
+    "title": "Remote self-hosted Azure MCP Server with managed identity for Copilot Studio integration",
+    "description": "This template demonstrates how to self-host a remote Azure MCP Server as an Azure Container App which can use its managed identity to read Azure resources. This template also creates Entra app registrations for connecting Copilot Studio to this remote Azure MCP Server.",
     "preview": "./templates/images/azmcp-copilot-studio-aca-mi.png",
-    "authorUrl": "https://github.com/JasonYeMSFT",
+    "authorUrl": "https://github.com/microsoft/mcp",
     "author": "Chunan Ye",
     "source": "https://github.com/Azure-Samples/azmcp-copilot-studio-aca-mi",
     "tags": [

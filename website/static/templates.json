@@ -839,6 +839,32 @@
       "nodejs"
     ]
   },
+    {
+    "title": "Semantic image search",
+    "description": "A sample full-stack app for searching images using Azure AI Vision multi-modal embeddings API and Azure AI Search integrated vectorization.",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/image-search-aisearch",
+    "tags": [
+      "bicep",
+      "ai",
+      "msft",
+      "aicollection",
+      "new"
+    ],
+    "azureServices": [
+      "openai",
+      "aisearch",
+      "blobstorage",
+      "containerapps"
+    ],
+    "id": "2c8e6731-cd95-445a-a3df-e78151e124f4",
+    "languages": [
+      "python",
+      "typescript",
+      "nodejs"
+    ]
+  },
   {
     "title": "FastAPI on Azure Functions",
     "description": "A simple FastAPI app deployed to Azure Functions. Can also be run and debugged locally with the Azure Functions Core Tool emulator.",

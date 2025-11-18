@@ -1,0 +1,66 @@
+name: Stale PR Management
+
+on:
+  schedule:
+    # Run daily at 00:00 UTC
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  pull-requests: write
+  issues: write
+
+jobs:
+  stale:
+    name: Check for Stale PRs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mark stale PRs
+        uses: actions/stale@v9
+        with:
+          # Number of days of inactivity before an issue or PR becomes stale
+          days-before-stale: 90
+          # Number of days of inactivity after being marked stale before closing
+          days-before-close: 7
+          
+          # Stale PR configuration
+          stale-pr-message: |
+            👋 Hi there! This pull request has been inactive for 90 days.
+            
+            We'd love to keep this contribution moving forward! Could you please:
+            - Respond to any outstanding review comments
+            - Rebase on the latest main branch if needed
+            - Let us know if you need any help or have questions
+            
+            If we don't hear back within 7 days, this PR will be automatically closed. You can always reopen it later when you're ready to continue.
+            
+            Thank you for your contribution! 🙏
+          
+          close-pr-message: |
+            This pull request has been automatically closed due to inactivity. 
+            
+            Thank you for your interest in contributing to awesome-azd! If you'd like to continue working on this, please feel free to reopen the PR or create a new one.
+            
+            We're always happy to review contributions when you're ready. 😊
+          
+          stale-pr-label: 'stale'
+          close-pr-label: 'auto-closed'
+          
+          # Don't mark issues as stale (only PRs)
+          days-before-issue-stale: -1
+          days-before-issue-close: -1
+          
+          # Labels that prevent marking as stale
+          exempt-pr-labels: 'work-in-progress,blocked,needs-review'
+          
+          # Process only PRs, not issues
+          only-pr-labels: ''
+          
+          # Remove stale label when PR is updated
+          remove-stale-when-updated: true
+          
+          # Order to process PRs (oldest first)
+          ascending: true
+          
+          # Maximum number of operations per run (to avoid rate limits)
+          operations-per-run: 100

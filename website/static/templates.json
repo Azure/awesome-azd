@@ -2698,7 +2698,7 @@
     "title": "Serverless Azure OpenAI Quick Start with LlamaIndex (JavaScript)",
     "description": "This sample shows how to quickly get started with LlamaIndex.ai on Azure. The application is hosted on Azure Container Apps. You can use it as a starting point for building more complex RAG applications.",
     "preview": "./templates/images/llama-index-javascript-architecture-diagram.png",
-    "authorUrl": "https://github.com/Azure-Samples/gpt-video-analysis-in-a-box",
+    "authorUrl": "https://github.com/manekinekko",
     "author": "Wassim Chegham",
     "source": "https://github.com/Azure-Samples/llama-index-javascript",
     "tags": [
@@ -3682,7 +3682,7 @@
     "title": "LlamaIndex RAG chat app with Azure OpenAI and Azure AI Search (JavaScript)",
     "description": "This solution creates a ChatGPT-like, Retrieval Augmented Generation (RAG) agentic application, over your own documents, powered by Llamaindex (TypeScript). It uses Azure OpenAI Service to access GPT models and embedding, and Azure AI Search for data indexing and retrieval.",
     "preview": "./templates/images/llama-index-vector-search-javascript.png",
-    "authorUrl": "https://github.com/Azure-Samples",
+    "authorUrl": "https://github.com/manekinekko",
     "author": "Wassim Chegham",
     "source": "https://github.com/Azure-Samples/llama-index-vector-search-javascript",
     "tags": [
@@ -5875,5 +5875,43 @@
     "languages": [
       "bicep"
     ]
-  }
+  },
+  {
+       "title": "AI Travel Agents - Multi-Agent MCP Orchestration with LangChain.js, LlamaIndex.TS, and Microsoft Agent Framework",
+       "description": "A comprehensive reference application demonstrating multi-agent AI orchestration for travel agency operations using three orchestration frameworks (LangChain.js, LlamaIndex.TS, and Microsoft Agent Framework). Features MCP (Model Context Protocol) servers built in TypeScript, Python, Java, and .NET, deployed as serverless Azure Container Apps with OpenTelemetry monitoring.",
+       "preview": "./templates/images/ai-travel-agents-architecture-diagram.png",
+       "authorUrl": "https://github.com/Azure-Samples/azure-ai-travel-agents",
+       "author": "Microsoft DevRel",
+       "source": "https://github.com/Azure-Samples/azure-ai-travel-agents",
+       "tags": [
+         "bicep",
+         "mcp",
+         "msft",
+         "ai",
+         "agents",
+         "langchain",
+         "llamaindex",
+         "opentelemetry",
+         "typescript",
+         "python",
+         "java",
+         "dotnet",
+         "new"
+       ],
+       "azureServices": [
+         "aca",
+         "acr",
+         "openai",
+         "monitor",
+         "managedidentity"
+       ],
+       "id": "178c3fdb-04b5-4423-b451-5f7dc7d097fff",
+       "languages": [
+         "bicep",
+         "typescript",
+         "python",
+         "java",
+         "csharp"
+       ]
+     }
 ]

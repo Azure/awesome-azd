@@ -5877,49 +5877,49 @@
     ]
   },
   {
-       "title": "AI Travel Agents - Multi-Agent MCP Orchestration with LangChain.js, LlamaIndex.TS, and Microsoft Agent Framework",
-       "description": "A comprehensive reference application demonstrating multi-agent AI orchestration for travel agency operations using three orchestration frameworks (LangChain.js, LlamaIndex.TS, and Microsoft Agent Framework). Features MCP (Model Context Protocol) servers built in TypeScript, Python, Java, and .NET, deployed as serverless Azure Container Apps with OpenTelemetry monitoring.",
-       "preview": "./templates/images/ai-travel-agents-architecture-diagram.png",
-       "authorUrl": "https://github.com/Azure-Samples/azure-ai-travel-agents",
-       "author": "Microsoft DevRel",
-       "source": "https://github.com/Azure-Samples/azure-ai-travel-agents",
-       "tags": [
-         "msft",
-         "ai",
-         "new",
-         "bicep",
-         "typescript",
-         "python",
-         "java",
-         "dotnetCsharp",
-         "angular",
-         "nodejs",
-         "aca",
-         "openai",
-         "azureai",
-         "monitor",
-         "managedidentity",
-         "langchain",
-         "mcp",
-         "aifoundry",
-         "aicollection"
-       ],
-       "azureServices": [
-         "aca",
-         "acr",
-         "openai",
-         "monitor",
-         "managedidentity"
-       ],
-       "id": "178c3fdb-04b5-4423-b451-5f7dc7d097fff",
-       "languages": [
-         "bicep",
-         "nodejs",
-         "javascript",
-         "typescript",
-         "python",
-         "java",
-         "csharp"
-       ]
-     }
+    "title": "AI Travel Agents - Multi-Agent MCP Orchestration with LangChain.js, LlamaIndex.TS, and Microsoft Agent Framework",
+    "description": "A comprehensive reference application demonstrating multi-agent AI orchestration for travel agency operations using three orchestration frameworks (LangChain.js, LlamaIndex.TS, and Microsoft Agent Framework). Features MCP (Model Context Protocol) servers built in TypeScript, Python, Java, and .NET, deployed as serverless Azure Container Apps with OpenTelemetry monitoring.",
+    "preview": "./templates/images/ai-travel-agents-architecture-diagram.png",
+    "authorUrl": "https://github.com/Azure-Samples/azure-ai-travel-agents",
+    "author": "Microsoft DevRel",
+    "source": "https://github.com/Azure-Samples/azure-ai-travel-agents",
+    "tags": [
+      "msft",
+      "ai",
+      "new",
+      "bicep",
+      "typescript",
+      "python",
+      "java",
+      "dotnetCsharp",
+      "angular",
+      "nodejs",
+      "aca",
+      "openai",
+      "azureai",
+      "monitor",
+      "managedidentity",
+      "langchain",
+      "mcp",
+      "aifoundry",
+      "aicollection"
+    ],
+    "azureServices": [
+      "aca",
+      "acr",
+      "openai",
+      "monitor",
+      "managedidentity"
+    ],
+    "id": "178c3fdb-04b5-4423-b451-5f7dc7d097fff",
+    "languages": [
+      "bicep",
+      "nodejs",
+      "javascript",
+      "typescript",
+      "python",
+      "java",
+      "csharp"
+    ]
+  }
 ]

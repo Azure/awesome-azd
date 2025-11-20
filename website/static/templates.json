@@ -500,7 +500,6 @@
       "gpt",
       "ai",
       "msft",
-      "popular",
       "aicollection"
     ],
     "azureServices": [
@@ -571,8 +570,7 @@
     "tags": [
       "django",
       "webapps",
-      "msft",
-      "popular"
+      "msft"
     ],
     "azureServices": [
       "azuredb-postgreSQL",
@@ -615,8 +613,7 @@
     "tags": [
       "webapps",
       "flask",
-      "msft",
-      "popular"
+      "msft"
     ],
     "azureServices": [
       "azuredb-postgreSQL",
@@ -848,7 +845,8 @@
     "source": "https://github.com/Azure-Samples/fastapi-on-azure-functions",
     "tags": [
       "fastapi",
-      "msft"
+      "msft",
+      "popular"
     ],
     "azureServices": [
       "functions"
@@ -2094,7 +2092,8 @@
     "tags": [
       "reactjs",
       "bicep",
-      "community"
+      "community",
+      "popular"
     ],
     "azureServices": [
       "aca",
@@ -2852,7 +2851,8 @@
     "source": "https://github.com/Azure-Samples/azure-openai-chat-frontend",
     "tags": [
       "aicollection",
-      "msft"
+      "msft",
+      "popular"
     ],
     "azureServices": [
       "openai",
@@ -4532,7 +4532,8 @@
       "bicep",
       "msft",
       "ai",
-      "mcp"
+      "mcp",
+      "popular"
     ],
     "azureServices": [
       "functions"

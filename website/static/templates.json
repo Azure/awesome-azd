@@ -5906,7 +5906,9 @@
     "source": "https://github.com/EstopaceMA/fastapi-postgres-aca",
     "tags": [
       "aca",
+      "community",
       "fastapi",
+      "new",
       "postgres",
       "terraform"
     ],

@@ -5921,5 +5921,28 @@
       "java",
       "csharp"
     ]
+  },
+  {
+    "title": "Remote self-hosted Azure MCP Server with managed identity for Microsoft Foundry integration",
+    "description": "This template demonstrates how to self-host a remote Azure MCP Server as an Azure Container App which can use its managed identity to read Azure resources. This template also creates Entra app registrations for connecting Microsoft Foundry agent to this remote Azure MCP Server.",
+    "preview": "./templates/images/azmcp-foundry-aca-mi.png",
+    "authorUrl": "https://github.com/microsoft/mcp/tree/main/servers/Azure.Mcp.Server",
+    "author": "Anu Thomas",
+    "source": "https://github.com/Azure-Samples/azmcp-foundry-aca-mi",
+    "tags": [
+      "bicep",
+      "mcp",
+      "msft",
+      "ai",
+      "new"
+    ],
+    "azureServices": [
+      "aca",
+      "managedidentity"
+    ],
+    "id": "e74a8685-a7b7-44bd-b5ac-9312b555b551",
+    "languages": [
+      "bicep"
+    ]
   }
 ]

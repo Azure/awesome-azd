@@ -5909,7 +5909,7 @@
       "community",
       "fastapi",
       "new",
-      "postgres",
+      "azuredb-postgreSQL",
       "terraform"
     ],
     "azureServices": [

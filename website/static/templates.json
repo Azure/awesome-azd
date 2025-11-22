@@ -5653,8 +5653,8 @@
       "monitor"
     ],
     "id": "778bea03-523e-4bcb-b555-e8de18333a60"
-   },
-   {
+  },
+  {
     "title": "Deploy Label Studio directly from Docker Hub on Azure Container Apps",
     "description": "An end-to-end sample deploying a public image (Label Studio) directly to Azure Container Apps with a persistent storage volume.",
     "preview": "./templates/images/aca-public-image-arch.png",
@@ -5673,8 +5673,7 @@
       "loganalytics",
       "managedidentity"
     ],
-    "languages": [
-    ],
+    "languages": [],
     "id": "f3e2f3e1-5d4c-4e2e-9f4a-3c6e2f3e4b5c"
   },
   {
@@ -5773,8 +5772,7 @@
       "vnets",
       "appinsights"
     ],
-    "languages": [
-    ],
+    "languages": [],
     "id": "d0d40d21-8951-4421-ac04-a929dcbb357e"
   },
   {
@@ -5877,26 +5875,25 @@
     ]
   },
   {
-    "title": "Remote self-hosted Azure MCP Server with managed identity for Microsoft Foundry integration",
-    "description": "This template demonstrates how to self-host a remote Azure MCP Server as an Azure Container App which can use its managed identity to read Azure resources. This template also creates Entra app registrations for connecting Microsoft Foundry agent to this remote Azure MCP Server.",
-    "preview": "./templates/images/azmcp-foundry-aca-mi.png",
-    "authorUrl": "https://github.com/microsoft/mcp/tree/main/servers/Azure.Mcp.Server",
-    "author": "Anu Thomas",
-    "source": "https://github.com/Azure-Samples/azmcp-foundry-aca-mi",
+    "title": "Getting Started with Remote MCP Servers using Azure Functions (Java)",
+    "description": "A quick-start showing how to build and deploy a remote MCP server with Azure Functions (Java). Run it locally for debugging, then ship it to the cloud with azd up in minutes. The server is secured by design (system keys + HTTPS), supports OAuth via EasyAuth or API Management, and can be isolated inside a VNet.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Samples",
+    "source": "https://github.com/Azure-Samples/remote-mcp-functions-java",
     "tags": [
       "bicep",
-      "mcp",
       "msft",
       "ai",
+      "mcp",
       "new"
     ],
     "azureServices": [
-      "aca",
-      "managedidentity"
+      "functions"
     ],
-    "id": "e74a8685-a7b7-44bd-b5ac-9312b555b551",
+    "id": "ff25faa6-9536-4881-a2f0-98e20bb32048",
     "languages": [
-      "bicep"
+      "java"
     ]
   }
 ]

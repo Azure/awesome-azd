@@ -5653,8 +5653,8 @@
       "monitor"
     ],
     "id": "778bea03-523e-4bcb-b555-e8de18333a60"
-   },
-   {
+  },
+  {
     "title": "Deploy Label Studio directly from Docker Hub on Azure Container Apps",
     "description": "An end-to-end sample deploying a public image (Label Studio) directly to Azure Container Apps with a persistent storage volume.",
     "preview": "./templates/images/aca-public-image-arch.png",
@@ -5673,8 +5673,7 @@
       "loganalytics",
       "managedidentity"
     ],
-    "languages": [
-    ],
+    "languages": [],
     "id": "f3e2f3e1-5d4c-4e2e-9f4a-3c6e2f3e4b5c"
   },
   {
@@ -5773,8 +5772,7 @@
       "vnets",
       "appinsights"
     ],
-    "languages": [
-    ],
+    "languages": [],
     "id": "d0d40d21-8951-4421-ac04-a929dcbb357e"
   },
   {
@@ -5888,38 +5886,26 @@
       "ai",
       "new",
       "bicep",
-      "typescript",
-      "python",
-      "java",
-      "dotnetCsharp",
       "angular",
-      "nodejs",
-      "aca",
-      "openai",
-      "azureai",
-      "monitor",
-      "managedidentity",
       "langchain",
-      "mcp",
-      "aifoundry",
-      "aicollection"
+      "mcp"
     ],
     "azureServices": [
       "aca",
-      "acr",
+      "azureai",
+      "aifoundry",
       "openai",
       "monitor",
       "managedidentity"
     ],
     "id": "178c3fdb-04b5-4423-b451-5f7dc7d097fff",
     "languages": [
-      "bicep",
       "nodejs",
       "javascript",
       "typescript",
       "python",
       "java",
-      "csharp"
+      "dotnetCsharp"
     ]
   },
   {

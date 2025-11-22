@@ -873,7 +873,6 @@
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/get-started-with-ai-agents",
     "tags": [
-      "python",
       "bicep",
       "ai",
       "msft",

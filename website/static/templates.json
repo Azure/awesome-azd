@@ -844,7 +844,6 @@
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/aisearch-openai-rag-audio",
     "tags": [
-      "python",
       "bicep",
       "ai",
       "msft",

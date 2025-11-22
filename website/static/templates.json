@@ -500,7 +500,6 @@
       "gpt",
       "ai",
       "msft",
-      "popular",
       "aicollection"
     ],
     "azureServices": [
@@ -571,8 +570,7 @@
     "tags": [
       "django",
       "webapps",
-      "msft",
-      "popular"
+      "msft"
     ],
     "azureServices": [
       "azuredb-postgreSQL",
@@ -615,8 +613,7 @@
     "tags": [
       "webapps",
       "flask",
-      "msft",
-      "popular"
+      "msft"
     ],
     "azureServices": [
       "azuredb-postgreSQL",
@@ -840,6 +837,60 @@
     ]
   },
   {
+    "title": "VoiceRAG: RAG + Voice Using Azure AI Search and GPT-4o Realtime API",
+    "description": "An application pattern for RAG + Voice using Azure AI Search and the GPT-4o Realtime API for Audio. Features voice interface with microphone input, RAG with Azure AI Search, audio output, and citations.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/aisearch-openai-rag-audio",
+    "tags": [
+      "bicep",
+      "ai",
+      "msft",
+      "popular",
+      "aicollection",
+      "rag",
+      "gpt"
+    ],
+    "azureServices": [
+      "openai",
+      "aisearch",
+      "aca"
+    ],
+    "id": "91c1f2a8-d8ef-40f7-b5fd-35c86fb454f1",
+    "languages": [
+      "python",
+      "typescript",
+      "javascript"
+    ]
+  },
+  {
+    "title": "Getting Started with AI Agents Using Azure AI Foundry",
+    "description": "A web-based chat application with an AI agent running in Azure Container App. The agent leverages Foundry Agent Service and Azure AI Search for knowledge retrieval from uploaded files, with built-in monitoring and tracing capabilities.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/get-started-with-ai-agents",
+    "tags": [
+      "bicep",
+      "ai",
+      "msft",
+      "popular",
+      "aicollection"
+    ],
+    "azureServices": [
+      "aca",
+      "aifoundry",
+      "aisearch",
+      "appinsights",
+      "blobstorage"
+    ],
+    "id": "35fede2d-4da6-43e2-b679-c593c6fd40da",
+    "languages": [
+      "python"
+    ]
+  },
+  {
     "title": "FastAPI on Azure Functions",
     "description": "A simple FastAPI app deployed to Azure Functions. Can also be run and debugged locally with the Azure Functions Core Tool emulator.",
     "preview": "./templates/images/fastapi-on-azure-functions.png",
@@ -848,7 +899,8 @@
     "source": "https://github.com/Azure-Samples/fastapi-on-azure-functions",
     "tags": [
       "fastapi",
-      "msft"
+      "msft",
+      "popular"
     ],
     "azureServices": [
       "functions"
@@ -2094,7 +2146,8 @@
     "tags": [
       "reactjs",
       "bicep",
-      "community"
+      "community",
+      "popular"
     ],
     "azureServices": [
       "aca",
@@ -2852,7 +2905,8 @@
     "source": "https://github.com/Azure-Samples/azure-openai-chat-frontend",
     "tags": [
       "aicollection",
-      "msft"
+      "msft",
+      "popular"
     ],
     "azureServices": [
       "openai",
@@ -4532,7 +4586,8 @@
       "bicep",
       "msft",
       "ai",
-      "mcp"
+      "mcp",
+      "popular"
     ],
     "azureServices": [
       "functions"

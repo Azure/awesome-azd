@@ -5997,6 +5997,31 @@
     ]
   },
   {
+    "title": "Semantic image search",
+    "description": "A sample full-stack app for searching images using Azure AI Vision multi-modal embeddings API and Azure AI Search integrated vectorization.",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/image-search-aisearch",
+    "tags": [
+      "bicep",
+      "ai",
+      "msft",
+      "new"
+    ],
+    "azureServices": [
+      "openai",
+      "aisearch",
+      "blobstorage",
+      "aca"
+    ],
+    "id": "2c8e6731-cd95-445a-a3df-e78151e124f4",
+    "languages": [
+      "python",
+      "typescript",
+      "nodejs"
+    ]
+  },
+  {
     "title": "Call API Management backend with OAuth",
     "description": "Demonstrates multiple ways to call OAuth-protected backend APIs through Azure API Management. This template demonstrates three authentication scenarios: Credential Manager, send-request policy with client secret and send-request policy with client certificate (client assertion).",
     "preview": "./templates/images/call-apim-backend-with-oauth.png",

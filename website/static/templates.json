@@ -5905,16 +5905,13 @@
     "author": "Mark Anthony Estopace",
     "source": "https://github.com/EstopaceMA/fastapi-postgres-aca",
     "tags": [
-      "aca",
       "community",
       "fastapi",
       "new",
-      "azuredb-postgreSQL",
       "terraform"
     ],
     "azureServices": [
       "aca",
-      "acr",
       "azuredb-postgreSQL",
       "keyvault",
       "vnets"

@@ -839,32 +839,6 @@
       "nodejs"
     ]
   },
-    {
-    "title": "Semantic image search",
-    "description": "A sample full-stack app for searching images using Azure AI Vision multi-modal embeddings API and Azure AI Search integrated vectorization.",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Azure Content Team",
-    "source": "https://github.com/Azure-Samples/image-search-aisearch",
-    "tags": [
-      "bicep",
-      "ai",
-      "msft",
-      "aicollection",
-      "new"
-    ],
-    "azureServices": [
-      "openai",
-      "aisearch",
-      "blobstorage",
-      "containerapps"
-    ],
-    "id": "2c8e6731-cd95-445a-a3df-e78151e124f4",
-    "languages": [
-      "python",
-      "typescript",
-      "nodejs"
-    ]
-  },
   {
     "title": "FastAPI on Azure Functions",
     "description": "A simple FastAPI app deployed to Azure Functions. Can also be run and debugged locally with the Azure Functions Core Tool emulator.",
@@ -5663,6 +5637,31 @@
     "id": "698e78dc-226c-40ed-8599-9ed4ce5116c9"
   },
   {
+    "title": "Semantic image search",
+    "description": "A sample full-stack app for searching images using Azure AI Vision multi-modal embeddings API and Azure AI Search integrated vectorization.",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/image-search-aisearch",
+    "tags": [
+      "bicep",
+      "ai",
+      "msft",
+      "new"
+    ],
+    "azureServices": [
+      "openai",
+      "aisearch",
+      "blobstorage",
+      "aca"
+    ],
+    "id": "2c8e6731-cd95-445a-a3df-e78151e124f4",
+    "languages": [
+      "python",
+      "typescript",
+      "nodejs"
+    ]
+  },
+  {
     "title": "Deploy Label Studio directly from Docker Hub on Azure Container Apps",
     "description": "An end-to-end sample deploying a public image (Label Studio) directly to Azure Container Apps with a persistent storage volume.",
     "preview": "./templates/images/aca-public-image-arch.png",
@@ -5681,8 +5680,7 @@
       "loganalytics",
       "managedidentity"
     ],
-    "languages": [
-    ],
+    "languages": [],
     "id": "f3e2f3e1-5d4c-4e2e-9f4a-3c6e2f3e4b5c"
   }
 ]

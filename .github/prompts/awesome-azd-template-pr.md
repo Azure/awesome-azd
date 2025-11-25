@@ -125,19 +125,30 @@ Generate a JSON entry with this structure:
   "author": "[Author name from repository or provided]",
   "source": "[Repository URL]",
   "tags": [
-    "[Infrastructure tag: bicep/terraform]",
     "[Author type: msft/community]",
     "new",
-    "[All detected language tags]",
-    "[All detected framework tags]",
-    "[All detected service tags]",
-    "[All detected pattern tags]"
-  ],
-  "azureServices": [
-    "[All detected Azure services]"
+    "[Other special tags that don't fit in categories below]"
   ],
   "languages": [
     "[All detected programming languages]"
+  ],
+  "frameworks": [
+    "[All detected frameworks]"
+  ],
+  "services": [
+    "[All detected Azure and other services]"
+  ],
+  "databases": [
+    "[All detected databases]"
+  ],
+  "IaC": [
+    "[Infrastructure as Code: bicep/terraform]"
+  ],
+  "tools": [
+    "[All detected tools and utilities]"
+  ],
+  "topics": [
+    "[All detected topic/pattern tags like ai, enterprisepatterns, etc.]"
   ],
   "id": "[Generated UUID v4]"
 }
@@ -218,7 +229,12 @@ When creating or updating the submission:
      ◦ Source: [REPOSITORY_URL]
      ◦ Tags: [comma-separated list of tags]
      ◦ Languages: [comma-separated list of languages]
-     ◦ Azure Services: [comma-separated list of Azure services]
+     ◦ Frameworks: [comma-separated list of frameworks]
+     ◦ Services: [comma-separated list of Azure and other services]
+     ◦ Databases: [comma-separated list of databases]
+     ◦ IaC: [comma-separated list of IaC tools]
+     ◦ Tools: [comma-separated list of tools]
+     ◦ Topics: [comma-separated list of topics/patterns]
      ◦ ID: `[GENERATED_UUID]`
 
    ## Template Overview

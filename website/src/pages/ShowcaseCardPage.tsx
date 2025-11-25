@@ -129,7 +129,12 @@ function filterUsers(
     const tags = [
       ...user.tags,
       ...(user.languages || []),
-      ...(user.azureServices || []),
+      ...(user.frameworks || []),
+      ...(user.services || []),
+      ...(user.databases || []),
+      ...(user.IaC || []),
+      ...(user.tools || []),
+      ...(user.topics || []),
     ];
     if (!user && !tags && tags.length === 0) {
       return false;
@@ -402,7 +407,12 @@ export default function ShowcaseCardPage({
       const tags = [
         ...user.tags,
         ...(user.languages || []),
-        ...(user.azureServices || []),
+        ...(user.frameworks || []),
+        ...(user.services || []),
+        ...(user.databases || []),
+        ...(user.IaC || []),
+        ...(user.tools || []),
+        ...(user.topics || []),
       ];
       tags.forEach((tag) => unionTags.add(tag))
     });

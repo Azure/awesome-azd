@@ -66,7 +66,12 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
   const tags = [
     ...user.tags,
     ...(user.languages || []),
-    ...(user.azureServices || []),
+    ...(user.frameworks || []),
+    ...(user.services || []),
+    ...(user.databases || []),
+    ...(user.IaC || []),
+    ...(user.tools || []),
+    ...(user.topics || []),
   ];
   const source = user.source;
   const star = useBaseUrl("/img/Sparkle.svg");

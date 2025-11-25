@@ -5898,6 +5898,71 @@
     ]
   },
   {
+    "title": "Protect API Management with OAuth",
+    "description": "Demonstrates how to secure an API in Azure API Management with OAuth, including Entra ID app registration examples.",
+    "preview": "./templates/images/protect-apim-with-oauth.png",
+    "authorUrl": "https://github.com/ronaldbosma",
+    "author": "Ronald Bosma",
+    "source": "https://github.com/ronaldbosma/protect-apim-with-oauth",
+    "tags": [
+      "bicep",
+      "community",
+      "new"
+    ],
+    "azureServices": [
+      "apim"
+    ],
+    "id": "66cdab60-61e3-498a-9103-a9f316e58a6f",
+    "languages": [
+      "dotnetCsharp"
+    ]
+  },
+  {
+    "title": "Call OAuth-Protected APIs on API Management with Managed Identity",
+    "description": "Demonstrates OAuth-protected API calls using managed identities. Shows Azure Functions, Logic Apps and API Management calling APIs without secrets, plus CI/CD pipelines using federated credentials to call OAuth-protected APIs from integration tests.",
+    "preview": "./templates/images/call-apim-with-managed-identity.png",
+    "authorUrl": "https://github.com/ronaldbosma",
+    "author": "Ronald Bosma",
+    "source": "https://github.com/ronaldbosma/call-apim-with-managed-identity",
+    "tags": [
+      "bicep",
+      "community",
+      "new"
+    ],
+    "azureServices": [
+      "apim",
+      "functions",
+      "logicapps",
+      "managedidentity",
+      "serviceprincipal"
+    ],
+    "id": "4f2b8805-14fb-49de-acc5-fe9e2e8ae295",
+    "languages": [
+      "dotnetCsharp"
+    ]
+  },
+  {
+    "title": "Call API Management backend with OAuth",
+    "description": "Demonstrates multiple ways to call OAuth-protected backend APIs through Azure API Management. This template demonstrates three authentication scenarios: Credential Manager, send-request policy with client secret and send-request policy with client certificate (client assertion).",
+    "preview": "./templates/images/call-apim-backend-with-oauth.png",
+    "authorUrl": "https://github.com/ronaldbosma",
+    "author": "Ronald Bosma",
+    "source": "https://github.com/ronaldbosma/call-apim-backend-with-oauth",
+    "tags": [
+      "bicep",
+      "community",
+      "new"
+    ],
+    "azureServices": [
+      "apim",
+      "keyvault"
+    ],
+    "id": "af9e410f-96f1-419d-ba27-2ff8a77b24d0",
+    "languages": [
+      "dotnetCsharp"
+    ]
+  },
+  {
     "title": "FastAPI Membership API Template for Azure Container Apps",
     "description": "This template allows you to deploy a membership API built with FastAPI to Azure Container Apps, using Azure Database for PostgreSQL",
     "preview": "./templates/images/fastapi-postgres-aca.png",

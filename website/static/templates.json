@@ -5878,7 +5878,7 @@
     "title": "AI Travel Agents - Multi-Agent MCP Orchestration with LangChain.js, LlamaIndex.TS, and Microsoft Agent Framework",
     "description": "A comprehensive reference application demonstrating multi-agent AI orchestration for travel agency operations using three orchestration frameworks (LangChain.js, LlamaIndex.TS, and Microsoft Agent Framework). Features MCP (Model Context Protocol) servers built in TypeScript, Python, Java, and .NET, deployed as serverless Azure Container Apps with OpenTelemetry monitoring.",
     "preview": "./templates/images/ai-travel-agents-architecture-diagram.png",
-    "authorUrl": "https://github.com/Azure-Samples/azure-ai-travel-agents",
+    "authorUrl": "https://github.com/Azure-Samples",
     "author": "Microsoft DevRel",
     "source": "https://github.com/Azure-Samples/azure-ai-travel-agents",
     "tags": [

@@ -20,6 +20,7 @@ const sidebars = {
 
   docs: [
     'contribute',
+    'submit-extension',
     {
       type: 'category',
       label: 'FAQ',

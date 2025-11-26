@@ -500,7 +500,6 @@
       "gpt",
       "ai",
       "msft",
-      "popular",
       "aicollection"
     ],
     "azureServices": [
@@ -571,8 +570,7 @@
     "tags": [
       "django",
       "webapps",
-      "msft",
-      "popular"
+      "msft"
     ],
     "azureServices": [
       "azuredb-postgreSQL",
@@ -615,8 +613,7 @@
     "tags": [
       "webapps",
       "flask",
-      "msft",
-      "popular"
+      "msft"
     ],
     "azureServices": [
       "azuredb-postgreSQL",
@@ -840,6 +837,60 @@
     ]
   },
   {
+    "title": "VoiceRAG: RAG + Voice Using Azure AI Search and GPT-4o Realtime API",
+    "description": "An application pattern for RAG + Voice using Azure AI Search and the GPT-4o Realtime API for Audio. Features voice interface with microphone input, RAG with Azure AI Search, audio output, and citations.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/aisearch-openai-rag-audio",
+    "tags": [
+      "bicep",
+      "ai",
+      "msft",
+      "popular",
+      "aicollection",
+      "rag",
+      "gpt"
+    ],
+    "azureServices": [
+      "openai",
+      "aisearch",
+      "aca"
+    ],
+    "id": "91c1f2a8-d8ef-40f7-b5fd-35c86fb454f1",
+    "languages": [
+      "python",
+      "typescript",
+      "javascript"
+    ]
+  },
+  {
+    "title": "Getting Started with AI Agents Using Azure AI Foundry",
+    "description": "A web-based chat application with an AI agent running in Azure Container App. The agent leverages Foundry Agent Service and Azure AI Search for knowledge retrieval from uploaded files, with built-in monitoring and tracing capabilities.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/get-started-with-ai-agents",
+    "tags": [
+      "bicep",
+      "ai",
+      "msft",
+      "popular",
+      "aicollection"
+    ],
+    "azureServices": [
+      "aca",
+      "aifoundry",
+      "aisearch",
+      "appinsights",
+      "blobstorage"
+    ],
+    "id": "35fede2d-4da6-43e2-b679-c593c6fd40da",
+    "languages": [
+      "python"
+    ]
+  },
+  {
     "title": "FastAPI on Azure Functions",
     "description": "A simple FastAPI app deployed to Azure Functions. Can also be run and debugged locally with the Azure Functions Core Tool emulator.",
     "preview": "./templates/images/fastapi-on-azure-functions.png",
@@ -848,7 +899,8 @@
     "source": "https://github.com/Azure-Samples/fastapi-on-azure-functions",
     "tags": [
       "fastapi",
-      "msft"
+      "msft",
+      "popular"
     ],
     "azureServices": [
       "functions"
@@ -2094,7 +2146,8 @@
     "tags": [
       "reactjs",
       "bicep",
-      "community"
+      "community",
+      "popular"
     ],
     "azureServices": [
       "aca",
@@ -2698,7 +2751,7 @@
     "title": "Serverless Azure OpenAI Quick Start with LlamaIndex (JavaScript)",
     "description": "This sample shows how to quickly get started with LlamaIndex.ai on Azure. The application is hosted on Azure Container Apps. You can use it as a starting point for building more complex RAG applications.",
     "preview": "./templates/images/llama-index-javascript-architecture-diagram.png",
-    "authorUrl": "https://github.com/Azure-Samples/gpt-video-analysis-in-a-box",
+    "authorUrl": "https://github.com/manekinekko",
     "author": "Wassim Chegham",
     "source": "https://github.com/Azure-Samples/llama-index-javascript",
     "tags": [
@@ -2852,7 +2905,8 @@
     "source": "https://github.com/Azure-Samples/azure-openai-chat-frontend",
     "tags": [
       "aicollection",
-      "msft"
+      "msft",
+      "popular"
     ],
     "azureServices": [
       "openai",
@@ -3682,7 +3736,7 @@
     "title": "LlamaIndex RAG chat app with Azure OpenAI and Azure AI Search (JavaScript)",
     "description": "This solution creates a ChatGPT-like, Retrieval Augmented Generation (RAG) agentic application, over your own documents, powered by Llamaindex (TypeScript). It uses Azure OpenAI Service to access GPT models and embedding, and Azure AI Search for data indexing and retrieval.",
     "preview": "./templates/images/llama-index-vector-search-javascript.png",
-    "authorUrl": "https://github.com/Azure-Samples",
+    "authorUrl": "https://github.com/manekinekko",
     "author": "Wassim Chegham",
     "source": "https://github.com/Azure-Samples/llama-index-vector-search-javascript",
     "tags": [
@@ -4532,7 +4586,8 @@
       "bicep",
       "msft",
       "ai",
-      "mcp"
+      "mcp",
+      "popular"
     ],
     "azureServices": [
       "functions"
@@ -5653,8 +5708,8 @@
       "monitor"
     ],
     "id": "778bea03-523e-4bcb-b555-e8de18333a60"
-   },
-   {
+  },
+  {
     "title": "Deploy Label Studio directly from Docker Hub on Azure Container Apps",
     "description": "An end-to-end sample deploying a public image (Label Studio) directly to Azure Container Apps with a persistent storage volume.",
     "preview": "./templates/images/aca-public-image-arch.png",
@@ -5673,8 +5728,7 @@
       "loganalytics",
       "managedidentity"
     ],
-    "languages": [
-    ],
+    "languages": [],
     "id": "f3e2f3e1-5d4c-4e2e-9f4a-3c6e2f3e4b5c"
   },
   {
@@ -5773,8 +5827,7 @@
       "vnets",
       "appinsights"
     ],
-    "languages": [
-    ],
+    "languages": [],
     "id": "d0d40d21-8951-4421-ac04-a929dcbb357e"
   },
   {
@@ -5877,6 +5930,40 @@
     ]
   },
   {
+    "title": "AI Travel Agents - Multi-Agent MCP Orchestration with LangChain.js, LlamaIndex.TS, and Microsoft Agent Framework",
+    "description": "A comprehensive reference application demonstrating multi-agent AI orchestration for travel agency operations using three orchestration frameworks (LangChain.js, LlamaIndex.TS, and Microsoft Agent Framework). Features MCP (Model Context Protocol) servers built in TypeScript, Python, Java, and .NET, deployed as serverless Azure Container Apps with OpenTelemetry monitoring.",
+    "preview": "./templates/images/ai-travel-agents-architecture-diagram.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Microsoft DevRel",
+    "source": "https://github.com/Azure-Samples/azure-ai-travel-agents",
+    "tags": [
+      "msft",
+      "ai",
+      "new",
+      "bicep",
+      "angular",
+      "langchain",
+      "mcp"
+    ],
+    "azureServices": [
+      "aca",
+      "azureai",
+      "aifoundry",
+      "openai",
+      "monitor",
+      "managedidentity"
+    ],
+    "id": "178c3fdb-04b5-4423-b451-5f7dc7d097fff",
+    "languages": [
+      "nodejs",
+      "javascript",
+      "typescript",
+      "python",
+      "java",
+      "dotnetCsharp"
+    ]
+  },
+  {
     "title": "Remote self-hosted Azure MCP Server with managed identity for Microsoft Foundry integration",
     "description": "This template demonstrates how to self-host a remote Azure MCP Server as an Azure Container App which can use its managed identity to read Azure resources. This template also creates Entra app registrations for connecting Microsoft Foundry agent to this remote Azure MCP Server.",
     "preview": "./templates/images/azmcp-foundry-aca-mi.png",
@@ -5897,6 +5984,120 @@
     "id": "e74a8685-a7b7-44bd-b5ac-9312b555b551",
     "languages": [
       "bicep"
+    ]
+  },
+  {
+    "title": "Protect API Management with OAuth",
+    "description": "Demonstrates how to secure an API in Azure API Management with OAuth, including Entra ID app registration examples.",
+    "preview": "./templates/images/protect-apim-with-oauth.png",
+    "authorUrl": "https://github.com/ronaldbosma",
+    "author": "Ronald Bosma",
+    "source": "https://github.com/ronaldbosma/protect-apim-with-oauth",
+    "tags": [
+      "bicep",
+      "community",
+      "new"
+    ],
+    "azureServices": [
+      "apim"
+    ],
+    "id": "66cdab60-61e3-498a-9103-a9f316e58a6f",
+    "languages": [
+      "dotnetCsharp"
+    ]
+  },
+  {
+    "title": "Call OAuth-Protected APIs on API Management with Managed Identity",
+    "description": "Demonstrates OAuth-protected API calls using managed identities. Shows Azure Functions, Logic Apps and API Management calling APIs without secrets, plus CI/CD pipelines using federated credentials to call OAuth-protected APIs from integration tests.",
+    "preview": "./templates/images/call-apim-with-managed-identity.png",
+    "authorUrl": "https://github.com/ronaldbosma",
+    "author": "Ronald Bosma",
+    "source": "https://github.com/ronaldbosma/call-apim-with-managed-identity",
+    "tags": [
+      "bicep",
+      "community",
+      "new"
+    ],
+    "azureServices": [
+      "apim",
+      "functions",
+      "logicapps",
+      "managedidentity",
+      "serviceprincipal"
+    ],
+    "id": "4f2b8805-14fb-49de-acc5-fe9e2e8ae295",
+    "languages": [
+      "dotnetCsharp"
+    ]
+  },
+  {
+    "title": "Semantic image search",
+    "description": "A sample full-stack app for searching images using Azure AI Vision multi-modal embeddings API and Azure AI Search integrated vectorization.",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/image-search-aisearch",
+    "tags": [
+      "bicep",
+      "ai",
+      "msft",
+      "new"
+    ],
+    "azureServices": [
+      "openai",
+      "aisearch",
+      "blobstorage",
+      "aca"
+    ],
+    "id": "2c8e6731-cd95-445a-a3df-e78151e124f4",
+    "languages": [
+      "python",
+      "typescript",
+      "nodejs"
+    ]
+  },
+  {
+    "title": "Call API Management backend with OAuth",
+    "description": "Demonstrates multiple ways to call OAuth-protected backend APIs through Azure API Management. This template demonstrates three authentication scenarios: Credential Manager, send-request policy with client secret and send-request policy with client certificate (client assertion).",
+    "preview": "./templates/images/call-apim-backend-with-oauth.png",
+    "authorUrl": "https://github.com/ronaldbosma",
+    "author": "Ronald Bosma",
+    "source": "https://github.com/ronaldbosma/call-apim-backend-with-oauth",
+    "tags": [
+      "bicep",
+      "community",
+      "new"
+    ],
+    "azureServices": [
+      "apim",
+      "keyvault"
+    ],
+    "id": "af9e410f-96f1-419d-ba27-2ff8a77b24d0",
+    "languages": [
+      "dotnetCsharp"
+    ]
+  },
+  {
+    "title": "FastAPI Membership API Template for Azure Container Apps",
+    "description": "This template allows you to deploy a membership API built with FastAPI to Azure Container Apps, using Azure Database for PostgreSQL",
+    "preview": "./templates/images/fastapi-postgres-aca.png",
+    "authorUrl": "https://github.com/EstopaceMA",
+    "author": "Mark Anthony Estopace",
+    "source": "https://github.com/EstopaceMA/fastapi-postgres-aca",
+    "tags": [
+      "community",
+      "fastapi",
+      "new",
+      "terraform"
+    ],
+    "azureServices": [
+      "aca",
+      "azuredb-postgreSQL",
+      "keyvault",
+      "vnets"
+    ],
+    "id": "d9663d15-fd8f-4e74-8200-6221f63c3ce8",
+    "languages": [
+      "python"
     ]
   }
 ]

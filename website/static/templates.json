@@ -1185,32 +1185,6 @@
     ]
   },
   {
-    "title": "Reliable Web App Pattern for .NET",
-    "description": "A multi-region enterprise web app with a 99.9% SLO and a focus on 12-factor apps and the well-architected framework. The sample app creates a concert booking application.",
-    "preview": "./templates/images/reliable-web-app-for-dotnet.png",
-    "authorUrl": "https://github.com/Azure",
-    "author": "Azure Content Team",
-    "source": "https://github.com/Azure/reliable-web-app-pattern-dotnet",
-    "tags": [
-      "bicep",
-      "webapps",
-      "enterprisepatterns",
-      "msft"
-    ],
-    "azureServices": [
-      "appservice",
-      "keyvault",
-      "frontdoor",
-      "azuresql",
-      "appinsights",
-      "blobstorage"
-    ],
-    "id": "81076d3c-f8bb-4653-827c-71854ac4e3ae",
-    "languages": [
-      "dotnetCsharp"
-    ]
-  },
-  {
     "title": "FastAPI on Azure Container Apps",
     "description": "A simple JSON API using the Python FastAPI app framework, designed for deployment on Azure Container Apps. Includes auto-configuration of gunicorn with uvicorn worker count based on CPUs available.",
     "preview": "./templates/images/simple-fastapi-container.png",

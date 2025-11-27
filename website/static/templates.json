@@ -985,28 +985,6 @@
     ]
   },
   {
-    "title": "Service Bus messages processing to Dataverse",
-    "description": "Starter solution to process Service Bus messages to Dataverse, C# for the Azure Functions app processing the messages, Azure Service Bus for the reception of the messages, and Azure Monitor for monitoring and logging.",
-    "preview": "./templates/images/servicebus-csharp-function-dataverse.jpg",
-    "authorUrl": "https://github.com/rpothin",
-    "author": "Raphael Pothin",
-    "source": "https://github.com/rpothin/servicebus-csharp-function-dataverse",
-    "tags": [
-      "dataverse",
-      "community"
-    ],
-    "azureServices": [
-      "functions",
-      "servicebus",
-      "monitor",
-      "keyvault"
-    ],
-    "id": "c5301f33-e7d0-4a18-9588-c3f1eff51845",
-    "languages": [
-      "dotnetCsharp"
-    ]
-  },
-  {
     "title": "AZD Simple Flask app on Azure App Service",
     "description": "A tiny, no-frills, template to deploy Python's Flask web framework to Azure App Service in the free tier.",
     "preview": "./templates/images/simple-flask-azd.png",
@@ -5044,23 +5022,6 @@
     ]
   },
   {
-    "title": "Windows 2019 IIS Servers with Load Balancer",
-    "description": "This scenario deploys 2 Win2019 VMs running IIS Default WebSite, behind a Load Balancer and required Network Security Group rules.",
-    "preview": "./templates/images/vmwithlb.png",
-    "website": "https://github.com/trainerkrunal",
-    "author": "Krunal Trivedi",
-    "source": "https://github.com/trainerkrunal/azd-vmwithlb",
-    "tags": [
-      "community",
-      "bicep"
-    ],
-    "azureServices": [
-      "virtualmachine",
-      "vnets"
-    ],
-    "id": "f08ac122-43dc-427c-89c1-487c512997d9"
-  },
-  {
     "title": "Service Endpoints and Securing Storage",
     "description": "This demo guides you through a hands-on exercise to build and secure a networked environment in Azure. You will start by creating a virtual network and adding a subnet with a configured storage endpoint. Next, you will implement network security groups. Following this, you will create a storage account with a file share and deploy virtual machines into their respective subnets. Finally, you will test the storage connection from both the private and public subnets to verify that access is correctly allowed from the private subnet and denied from the public subnet.",
     "preview": "./templates/images/diagram-service-endpoints-and-securing-storage.png",
@@ -5077,23 +5038,6 @@
       "virtualmachine"
     ],
     "id": "64364f59-8884-4f61-8b35-3ed011b9ee6b"
-  },
-  {
-    "title": "Implement Intersite Connectivity with Azure VMs",
-    "description": "This scenario set up and test global VNet peering, configures intersite connectivity with multiple VMs.",
-    "preview": "./templates/images/diagram-intersite-connectivity.png",
-    "website": "https://github.com/daverendon",
-    "author": "Dave Rendon",
-    "source": "https://github.com/daverendon/azd-intersite-connectivity",
-    "tags": [
-      "community",
-      "bicep"
-    ],
-    "azureServices": [
-      "vnets",
-      "virtualmachine"
-    ],
-    "id": "0334e348-f635-40c6-851d-67402679bd2c"
   },
   {
     "title": "Fast Food Drive thru Operator Ai Agent with Semantic Kernel and GPT 3.5 Turbo",
@@ -5874,34 +5818,6 @@
       "aca"
     ],
     "id": "9153c2d5-acfd-4c68-bc9b-25865d5ac2a8",
-    "languages": [
-      "python"
-    ]
-  },
-  {
-    "title": "Copilot Studio with Azure AI Search using Azure Developer CLI",
-    "description": "An enterprise-ready template demonstrating secure integration between Microsoft Copilot Studio and Azure AI Search. Features private networking, Power Platform integration, and comprehensive AI search capabilities with enterprise-grade security and governance. Deployed using Azure Developer CLI (azd) with Terraform infrastructure-as-code.",
-    "preview": "./templates/images/copilot-studio-azure-ai-search.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "ISE Scale",
-    "source": "https://github.com/Azure-Samples/Copilot-Studio-with-Azure-AI-Search",
-    "tags": [
-      "terraform",
-      "powershell",
-      "msft",
-      "ai",
-      "new"
-    ],
-    "azureServices": [
-      "aisearch",
-      "azureai",
-      "azurestorage",
-      "vnets",
-      "privateEndpoints",
-      "managedidentity",
-      "appinsights"
-    ],
-    "id": "b6399e1c-612b-4d43-8eda-ccf226213fe6",
     "languages": [
       "python"
     ]

@@ -201,59 +201,6 @@
     ]
   },
   {
-    "title": "React Web App with Python API and MongoDB - Terraform",
-    "description": "A blueprint for getting a React.js web app with Python (FastAPI) API and a MongoDB API in Cosmos database onto Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Terraform) to get up and running quickly. This architecture is for hosting web apps and APIs without worrying about the infrastructure.",
-    "preview": "./templates/images/todo-python-terraform.png",
-    "authorUrl": "https://github.com/Azure/azure-dev",
-    "author": "Azure Dev",
-    "source": "https://github.com/Azure-Samples/todo-python-mongo-terraform",
-    "tags": [
-      "mongodb",
-      "reactjs",
-      "terraform",
-      "fastapi",
-      "msft"
-    ],
-    "azureServices": [
-      "cosmosdb",
-      "monitor",
-      "keyvault",
-      "appservice"
-    ],
-    "id": "f36282ac-e3db-475a-8030-ede81da41eb4",
-    "languages": [
-      "python",
-      "typescript",
-      "javascript"
-    ]
-  },
-  {
-    "title": "React Web App with Node.js API and MongoDB - Terraform",
-    "description": "A blueprint for getting a React web app with a Node.js API and a MongoDB database on Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Terraform) to get up and running quickly. This architecture is for hosting web apps and APIs without worrying about the infrastructure.",
-    "preview": "./templates/images/todo-nodejs-mongo-terraform.png",
-    "authorUrl": "https://github.com/Azure/azure-dev",
-    "author": "Azure Dev",
-    "source": "https://github.com/Azure-Samples/todo-nodejs-mongo-terraform",
-    "tags": [
-      "mongodb",
-      "reactjs",
-      "terraform",
-      "msft"
-    ],
-    "azureServices": [
-      "cosmosdb",
-      "monitor",
-      "keyvault",
-      "appservice"
-    ],
-    "id": "523cbcd0-e0c3-44e1-b552-abf9b12ed577",
-    "languages": [
-      "nodejs",
-      "typescript",
-      "javascript"
-    ]
-  },
-  {
     "title": "React Web App with Python API and MongoDB",
     "description": "A blueprint for getting a React.js web app with Python (FastAPI) API and a MongoDB API in Cosmos database onto Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly. This architecture is for hosting web apps and APIs without worrying about the infrastructure.",
     "preview": "./templates/images/todo-python.png",
@@ -1411,28 +1358,6 @@
     ]
   },
   {
-    "title": "Azure API Management with Azure OpenAI",
-    "description": "Unleash the power of Azure OpenAI to your application developers in a secure & manageable way with Azure API Management.",
-    "preview": "./templates/images/apim-openai.png",
-    "authorUrl": "https://github.com/pascalvanderheiden",
-    "author": "Pascal van der Heiden",
-    "source": "https://github.com/pascalvanderheiden/ais-apim-openai",
-    "tags": [
-      "bicep",
-      "ai",
-      "enterprisepatterns",
-      "community"
-    ],
-    "azureServices": [
-      "apim",
-      "openai",
-      "appinsights",
-      "monitor",
-      "keyvault"
-    ],
-    "id": "7ae56a8e-19c6-44d5-9fa5-ac8defc0a01b"
-  },
-  {
     "title": "Docusaurus with Azure Container Apps",
     "description": "A blueprint to easily and quickly create and deploy your product documentation in Docusaurus using Azure Container Apps.",
     "preview": "./templates/images/docusaurus-aca-template.png",
@@ -1997,31 +1922,6 @@
       "openai"
     ],
     "id": "737e54ad-b7e4-4a27-909b-cc0234f2ebd5"
-  },
-  {
-    "title": "Setting up Azure OpenAI as a central capability within your organization",
-    "description": "Unleash the power of Azure AI to all your application developers in a secure & manageable way with Azure API Management and Azure Container Apps, utilizing Azure OpenAI PTUs across your organization with chargeback capabilities.",
-    "preview": "./templates/images/enterprise-azureai.png",
-    "authorUrl": "https://github.com/Azure, https://github.com/azureholic, https://github.com/iMicknl, https://github.com/pascalvanderheiden",
-    "author": "Azure AI Content Team, Remco Brosky, Mick Vleeshouwer, Pascal van der Heiden",
-    "source": "https://github.com/Azure/enterprise-azureai",
-    "tags": [
-      "bicep",
-      "ai",
-      "enterprisepatterns",
-      "msft"
-    ],
-    "azureServices": [
-      "apim",
-      "openai",
-      "appinsights",
-      "monitor",
-      "aca"
-    ],
-    "id": "c5c49771-d402-4b5a-9cdc-5e61292bd5af",
-    "languages": [
-      "dotnetCsharp"
-    ]
   },
   {
     "title": "SAP Cloud SDK on Azure Functions Quickstart (TypeScript)",

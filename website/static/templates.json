@@ -5754,6 +5754,35 @@
     ]
   },
   {
+    "title": "MCP Container TS - Model Context Protocol in TypeScript",
+    "description": "A reference implementation of a Model Context Protocol (MCP) server using Node.js and TypeScript. Demonstrates tool orchestration, authorization and authentication, in-memory SQLite state, OpenTelemetry tracing, and deployment to Azure Container Apps. Integrates with OpenAI, VS Code MCP client, and supports local and cloud workflows.",
+    "preview": "./templates/images/mcp-container-typescript-diagram.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Microsoft DevRel",
+    "source": "https://github.com/Azure-Samples/mcp-container-ts",
+    "tags": [
+      "msft",
+      "ai",
+      "new",
+      "mcp",
+      "bicep"
+    ],
+    "azureServices": [
+      "aca",
+      "azureai",
+      "aifoundry",
+      "openai",
+      "monitor",
+      "managedidentity"
+    ],
+    "id": "b7e2c1a2-1f2b-4e3a-9c7d-2e8f7c9d1234",
+    "languages": [
+      "nodejs",
+      "typescript",
+      "javascript"
+    ]
+  },
+  {
     "title": "Remote self-hosted Azure MCP Server with managed identity for Microsoft Foundry integration",
     "description": "This template demonstrates how to self-host a remote Azure MCP Server as an Azure Container App which can use its managed identity to read Azure resources. This template also creates Entra app registrations for connecting Microsoft Foundry agent to this remote Azure MCP Server.",
     "preview": "./templates/images/azmcp-foundry-aca-mi.png",

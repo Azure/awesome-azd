@@ -241,71 +241,6 @@
     "id": "deb89dec-3275-48e5-b5c0-830fb59743e6"
   },
   {
-    "title": "React Web App with Python API and MongoDB - Terraform",
-    "description": "A blueprint for getting a React.js web app with Python (FastAPI) API and a MongoDB API in Cosmos database onto Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Terraform) to get up and running quickly. This architecture is for hosting web apps and APIs without worrying about the infrastructure.",
-    "preview": "./templates/images/todo-python-terraform.png",
-    "authorUrl": "https://github.com/Azure/azure-dev",
-    "author": "Azure Dev",
-    "source": "https://github.com/Azure-Samples/todo-python-mongo-terraform",
-    "tags": [
-      "msft"
-    ],
-    "languages": [
-      "python",
-      "typescript",
-      "javascript"
-    ],
-    "frameworks": [
-      "reactjs",
-      "fastapi"
-    ],
-    "services": [
-      "monitor",
-      "keyvault",
-      "appservice"
-    ],
-    "databases": [
-      "mongodb",
-      "cosmosdb"
-    ],
-    "IaC": [
-      "terraform"
-    ],
-    "id": "f36282ac-e3db-475a-8030-ede81da41eb4"
-  },
-  {
-    "title": "React Web App with Node.js API and MongoDB - Terraform",
-    "description": "A blueprint for getting a React web app with a Node.js API and a MongoDB database on Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Terraform) to get up and running quickly. This architecture is for hosting web apps and APIs without worrying about the infrastructure.",
-    "preview": "./templates/images/todo-nodejs-mongo-terraform.png",
-    "authorUrl": "https://github.com/Azure/azure-dev",
-    "author": "Azure Dev",
-    "source": "https://github.com/Azure-Samples/todo-nodejs-mongo-terraform",
-    "tags": [
-      "msft"
-    ],
-    "languages": [
-      "nodejs",
-      "typescript",
-      "javascript"
-    ],
-    "frameworks": [
-      "reactjs"
-    ],
-    "services": [
-      "monitor",
-      "keyvault",
-      "appservice"
-    ],
-    "databases": [
-      "mongodb",
-      "cosmosdb"
-    ],
-    "IaC": [
-      "terraform"
-    ],
-    "id": "523cbcd0-e0c3-44e1-b552-abf9b12ed577"
-  },
-  {
     "title": "React Web App with Python API and MongoDB",
     "description": "A blueprint for getting a React.js web app with Python (FastAPI) API and a MongoDB API in Cosmos database onto Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly. This architecture is for hosting web apps and APIs without worrying about the infrastructure.",
     "preview": "./templates/images/todo-python.png",
@@ -603,7 +538,6 @@
     "tags": [
       "kubernetes",
       "msft",
-      "popular",
       "aicollection"
     ],
     "languages": [
@@ -695,8 +629,9 @@
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/msdocs-django-postgresql-sample-app",
     "tags": [
-      "msft",
-      "popular"
+      "django",
+      "webapps",
+      "msft"
     ],
     "languages": [
       "python"
@@ -749,8 +684,9 @@
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/msdocs-flask-postgresql-sample-app",
     "tags": [
-      "msft",
-      "popular"
+      "webapps",
+      "flask",
+      "msft"
     ],
     "languages": [
       "python"
@@ -1004,16 +940,66 @@
       "appservice",
       "speechservice"
     ],
-    "IaC": [
-      "bicep"
-    ],
-    "tools": [
+    "id": "5f6de8e1-9742-4888-ae09-30347b4f4445",
+    "languages": [
+      "python",
+      "typescript",
+      "nodejs"
+    ]
+  },
+  {
+    "title": "VoiceRAG: RAG + Voice Using Azure AI Search and GPT-4o Realtime API",
+    "description": "An application pattern for RAG + Voice using Azure AI Search and the GPT-4o Realtime API for Audio. Features voice interface with microphone input, RAG with Azure AI Search, audio output, and citations.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/aisearch-openai-rag-audio",
+    "tags": [
+      "bicep",
+      "ai",
+      "msft",
+      "popular",
+      "aicollection",
+      "rag",
       "gpt"
     ],
-    "topics": [
-      "ai"
+    "azureServices": [
+      "openai",
+      "aisearch",
+      "aca"
     ],
-    "id": "5f6de8e1-9742-4888-ae09-30347b4f4445"
+    "id": "91c1f2a8-d8ef-40f7-b5fd-35c86fb454f1",
+    "languages": [
+      "python",
+      "typescript",
+      "javascript"
+    ]
+  },
+  {
+    "title": "Getting Started with AI Agents Using Azure AI Foundry",
+    "description": "A web-based chat application with an AI agent running in Azure Container App. The agent leverages Foundry Agent Service and Azure AI Search for knowledge retrieval from uploaded files, with built-in monitoring and tracing capabilities.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/get-started-with-ai-agents",
+    "tags": [
+      "bicep",
+      "ai",
+      "msft",
+      "popular",
+      "aicollection"
+    ],
+    "azureServices": [
+      "aca",
+      "aifoundry",
+      "aisearch",
+      "appinsights",
+      "blobstorage"
+    ],
+    "id": "35fede2d-4da6-43e2-b679-c593c6fd40da",
+    "languages": [
+      "python"
+    ]
   },
   {
     "title": "FastAPI on Azure Functions",
@@ -1023,7 +1009,9 @@
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/fastapi-on-azure-functions",
     "tags": [
-      "msft"
+      "fastapi",
+      "msft",
+      "popular"
     ],
     "languages": [
       "python"
@@ -1127,28 +1115,6 @@
       "sapcloudsdk"
     ],
     "id": "bcb1fed3-63ff-4f1b-a72b-638f548651bf"
-  },
-  {
-    "title": "Service Bus messages processing to Dataverse",
-    "description": "Starter solution to process Service Bus messages to Dataverse, C# for the Azure Functions app processing the messages, Azure Service Bus for the reception of the messages, and Azure Monitor for monitoring and logging.",
-    "preview": "./templates/images/servicebus-csharp-function-dataverse.jpg",
-    "authorUrl": "https://github.com/rpothin",
-    "author": "Raphael Pothin",
-    "source": "https://github.com/rpothin/servicebus-csharp-function-dataverse",
-    "tags": [
-      "community"
-    ],
-    "languages": [
-      "dotnetCsharp"
-    ],
-    "services": [
-      "dataverse",
-      "functions",
-      "servicebus",
-      "monitor",
-      "keyvault"
-    ],
-    "id": "c5301f33-e7d0-4a18-9588-c3f1eff51845"
   },
   {
     "title": "AZD Simple Flask app on Azure App Service",
@@ -1416,38 +1382,6 @@
     "id": "f8ac8c5b-c769-4c68-9a9c-487aeaedd2fb"
   },
   {
-    "title": "Reliable Web App Pattern for .NET",
-    "description": "A multi-region enterprise web app with a 99.9% SLO and a focus on 12-factor apps and the well-architected framework. The sample app creates a concert booking application.",
-    "preview": "./templates/images/reliable-web-app-for-dotnet.png",
-    "authorUrl": "https://github.com/Azure",
-    "author": "Azure Content Team",
-    "source": "https://github.com/Azure/reliable-web-app-pattern-dotnet",
-    "tags": [
-      "msft"
-    ],
-    "languages": [
-      "dotnetCsharp"
-    ],
-    "services": [
-      "webapps",
-      "appservice",
-      "keyvault",
-      "frontdoor",
-      "appinsights",
-      "blobstorage"
-    ],
-    "databases": [
-      "azuresql"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "topics": [
-      "enterprisepatterns"
-    ],
-    "id": "81076d3c-f8bb-4653-827c-71854ac4e3ae"
-  },
-  {
     "title": "FastAPI on Azure Container Apps",
     "description": "A simple JSON API using the Python FastAPI app framework, designed for deployment on Azure Container Apps. Includes auto-configuration of gunicorn with uvicorn worker count based on CPUs available.",
     "preview": "./templates/images/simple-fastapi-container.png",
@@ -1625,32 +1559,6 @@
       "appservice"
     ],
     "id": "6eef1213-03ed-49ba-937f-c1d471b3775e"
-  },
-  {
-    "title": "Azure API Management with Azure OpenAI",
-    "description": "Unleash the power of Azure OpenAI to your application developers in a secure & manageable way with Azure API Management.",
-    "preview": "./templates/images/apim-openai.png",
-    "authorUrl": "https://github.com/pascalvanderheiden",
-    "author": "Pascal van der Heiden",
-    "source": "https://github.com/pascalvanderheiden/ais-apim-openai",
-    "tags": [
-      "community"
-    ],
-    "services": [
-      "apim",
-      "openai",
-      "appinsights",
-      "monitor",
-      "keyvault"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "topics": [
-      "ai",
-      "enterprisepatterns"
-    ],
-    "id": "7ae56a8e-19c6-44d5-9fa5-ac8defc0a01b"
   },
   {
     "title": "Docusaurus with Azure Container Apps",
@@ -2327,35 +2235,6 @@
     "id": "737e54ad-b7e4-4a27-909b-cc0234f2ebd5"
   },
   {
-    "title": "Setting up Azure OpenAI as a central capability within your organization",
-    "description": "Unleash the power of Azure AI to all your application developers in a secure & manageable way with Azure API Management and Azure Container Apps, utilizing Azure OpenAI PTUs across your organization with chargeback capabilities.",
-    "preview": "./templates/images/enterprise-azureai.png",
-    "authorUrl": "https://github.com/Azure, https://github.com/azureholic, https://github.com/iMicknl, https://github.com/pascalvanderheiden",
-    "author": "Azure AI Content Team, Remco Brosky, Mick Vleeshouwer, Pascal van der Heiden",
-    "source": "https://github.com/Azure/enterprise-azureai",
-    "tags": [
-      "msft"
-    ],
-    "languages": [
-      "dotnetCsharp"
-    ],
-    "services": [
-      "apim",
-      "openai",
-      "appinsights",
-      "monitor",
-      "aca"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "topics": [
-      "ai",
-      "enterprisepatterns"
-    ],
-    "id": "c5c49771-d402-4b5a-9cdc-5e61292bd5af"
-  },
-  {
     "title": "SAP Cloud SDK on Azure Functions Quickstart (TypeScript)",
     "description": "This repos serves as quick-start project showcasing SAP Cloud SDK for JavaScript OData consumption running on Azure Functions. Its primary purpose is to set you up for success for your SAP extension project on Azure and reduce the lead time to your first successful deployment as much as possible with developer friendly commands.",
     "preview": "./templates/images/functions-javascript-sap-cloud-sdk-quickstart.png",
@@ -2502,7 +2381,10 @@
     "author": "Chris Meagher",
     "source": "https://github.com/CMeeg/remix-aca",
     "tags": [
-      "community"
+      "reactjs",
+      "bicep",
+      "community",
+      "popular"
     ],
     "languages": [
       "typescript",
@@ -3253,7 +3135,7 @@
     "title": "Serverless Azure OpenAI Quick Start with LlamaIndex (JavaScript)",
     "description": "This sample shows how to quickly get started with LlamaIndex.ai on Azure. The application is hosted on Azure Container Apps. You can use it as a starting point for building more complex RAG applications.",
     "preview": "./templates/images/llama-index-javascript-architecture-diagram.png",
-    "authorUrl": "https://github.com/Azure-Samples/gpt-video-analysis-in-a-box",
+    "authorUrl": "https://github.com/manekinekko",
     "author": "Wassim Chegham",
     "source": "https://github.com/Azure-Samples/llama-index-javascript",
     "tags": [
@@ -3447,7 +3329,8 @@
     "source": "https://github.com/Azure-Samples/azure-openai-chat-frontend",
     "tags": [
       "aicollection",
-      "msft"
+      "msft",
+      "popular"
     ],
     "languages": [
       "javascript",
@@ -4424,7 +4307,7 @@
     "title": "LlamaIndex RAG chat app with Azure OpenAI and Azure AI Search (JavaScript)",
     "description": "This solution creates a ChatGPT-like, Retrieval Augmented Generation (RAG) agentic application, over your own documents, powered by Llamaindex (TypeScript). It uses Azure OpenAI Service to access GPT models and embedding, and Azure AI Search for data indexing and retrieval.",
     "preview": "./templates/images/llama-index-vector-search-javascript.png",
-    "authorUrl": "https://github.com/Azure-Samples",
+    "authorUrl": "https://github.com/manekinekko",
     "author": "Wassim Chegham",
     "source": "https://github.com/Azure-Samples/llama-index-vector-search-javascript",
     "tags": [
@@ -5348,7 +5231,11 @@
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/remote-mcp-functions-dotnet",
     "tags": [
-      "msft"
+      "bicep",
+      "msft",
+      "ai",
+      "mcp",
+      "popular"
     ],
     "languages": [
       "dotnetCsharp"
@@ -5874,24 +5761,6 @@
     "id": "6d1f791c-5216-43aa-a5be-574fa3e0fa16"
   },
   {
-    "title": "Windows 2019 IIS Servers with Load Balancer",
-    "description": "This scenario deploys 2 Win2019 VMs running IIS Default WebSite, behind a Load Balancer and required Network Security Group rules.",
-    "preview": "./templates/images/vmwithlb.png",
-    "author": "Krunal Trivedi",
-    "source": "https://github.com/trainerkrunal/azd-vmwithlb",
-    "tags": [
-      "community"
-    ],
-    "services": [
-      "virtualmachine",
-      "vnets"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "f08ac122-43dc-427c-89c1-487c512997d9"
-  },
-  {
     "title": "Service Endpoints and Securing Storage",
     "description": "This demo guides you through a hands-on exercise to build and secure a networked environment in Azure. You will start by creating a virtual network and adding a subnet with a configured storage endpoint. Next, you will implement network security groups. Following this, you will create a storage account with a file share and deploy virtual machines into their respective subnets. Finally, you will test the storage connection from both the private and public subnets to verify that access is correctly allowed from the private subnet and denied from the public subnet.",
     "preview": "./templates/images/diagram-service-endpoints-and-securing-storage.png",
@@ -5909,24 +5778,6 @@
       "bicep"
     ],
     "id": "64364f59-8884-4f61-8b35-3ed011b9ee6b"
-  },
-  {
-    "title": "Implement Intersite Connectivity with Azure VMs",
-    "description": "This scenario set up and test global VNet peering, configures intersite connectivity with multiple VMs.",
-    "preview": "./templates/images/diagram-intersite-connectivity.png",
-    "author": "Dave Rendon",
-    "source": "https://github.com/daverendon/azd-intersite-connectivity",
-    "tags": [
-      "community"
-    ],
-    "services": [
-      "vnets",
-      "virtualmachine"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "0334e348-f635-40c6-851d-67402679bd2c"
   },
   {
     "title": "Fast Food Drive thru Operator Ai Agent with Semantic Kernel and GPT 3.5 Turbo",
@@ -6635,9 +6486,7 @@
       "loganalytics",
       "managedidentity"
     ],
-    "IaC": [
-      "bicep"
-    ],
+    "languages": [],
     "id": "f3e2f3e1-5d4c-4e2e-9f4a-3c6e2f3e4b5c"
   },
   {
@@ -6740,12 +6589,7 @@
       "vnets",
       "appinsights"
     ],
-    "IaC": [
-      "bicep"
-    ],
-    "tools": [
-      "powershell"
-    ],
+    "languages": [],
     "id": "d0d40d21-8951-4421-ac04-a929dcbb357e"
   },
   {
@@ -6803,40 +6647,6 @@
     "id": "9153c2d5-acfd-4c68-bc9b-25865d5ac2a8"
   },
   {
-    "title": "Copilot Studio with Azure AI Search using Azure Developer CLI",
-    "description": "An enterprise-ready template demonstrating secure integration between Microsoft Copilot Studio and Azure AI Search. Features private networking, Power Platform integration, and comprehensive AI search capabilities with enterprise-grade security and governance. Deployed using Azure Developer CLI (azd) with Terraform infrastructure-as-code.",
-    "preview": "./templates/images/copilot-studio-azure-ai-search.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "ISE Scale",
-    "source": "https://github.com/Azure-Samples/Copilot-Studio-with-Azure-AI-Search",
-    "tags": [
-      "msft",
-      "new"
-    ],
-    "languages": [
-      "python"
-    ],
-    "services": [
-      "aisearch",
-      "azureai",
-      "azurestorage",
-      "vnets",
-      "privateEndpoints",
-      "managedidentity",
-      "appinsights"
-    ],
-    "IaC": [
-      "terraform"
-    ],
-    "tools": [
-      "powershell"
-    ],
-    "topics": [
-      "ai"
-    ],
-    "id": "b6399e1c-612b-4d43-8eda-ccf226213fe6"
-  },
-  {
     "title": "Remote self-hosted Azure MCP Server with managed identity for Copilot Studio integration",
     "description": "This template demonstrates how to self-host a remote Azure MCP Server as an Azure Container App which can use its managed identity to read Azure resources. This template also creates Entra app registrations for connecting Copilot Studio to this remote Azure MCP Server.",
     "preview": "./templates/images/azmcp-copilot-studio-aca-mi.png",
@@ -6844,23 +6654,82 @@
     "author": "Chunan Ye",
     "source": "https://github.com/Azure-Samples/azmcp-copilot-studio-aca-mi",
     "tags": [
+      "bicep",
+      "mcp",
       "msft",
       "new"
     ],
-    "services": [
+    "azureServices": [
       "aca",
       "managedidentity"
     ],
-    "IaC": [
+    "id": "178c6fdb-03b5-4453-b351-5fddcd0b7f95",
+    "languages": [
       "bicep"
-    ],
-    "tools": [
+    ]
+  },
+  {
+    "title": "AI Travel Agents - Multi-Agent MCP Orchestration with LangChain.js, LlamaIndex.TS, and Microsoft Agent Framework",
+    "description": "A comprehensive reference application demonstrating multi-agent AI orchestration for travel agency operations using three orchestration frameworks (LangChain.js, LlamaIndex.TS, and Microsoft Agent Framework). Features MCP (Model Context Protocol) servers built in TypeScript, Python, Java, and .NET, deployed as serverless Azure Container Apps with OpenTelemetry monitoring.",
+    "preview": "./templates/images/ai-travel-agents-architecture-diagram.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Microsoft DevRel",
+    "source": "https://github.com/Azure-Samples/azure-ai-travel-agents",
+    "tags": [
+      "msft",
+      "ai",
+      "new",
+      "bicep",
+      "angular",
+      "langchain",
       "mcp"
     ],
-    "topics": [
-      "ai"
+    "services": [
+      "aca",
+      "azureai",
+      "aifoundry",
+      "openai",
+      "monitor",
+      "managedidentity"
     ],
-    "id": "178c6fdb-03b5-4453-b351-5fddcd0b7f95"
+    "id": "178c3fdb-04b5-4423-b451-5f7dc7d097fff",
+    "languages": [
+      "nodejs",
+      "javascript",
+      "typescript",
+      "python",
+      "java",
+      "dotnetCsharp"
+    ]
+  },
+  {
+    "title": "MCP Container TS - Model Context Protocol in TypeScript",
+    "description": "A reference implementation of a Model Context Protocol (MCP) server using Node.js and TypeScript. Demonstrates tool orchestration, authorization and authentication, in-memory SQLite state, OpenTelemetry tracing, and deployment to Azure Container Apps. Integrates with OpenAI, VS Code MCP client, and supports local and cloud workflows.",
+    "preview": "./templates/images/mcp-container-typescript-diagram.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Microsoft DevRel",
+    "source": "https://github.com/Azure-Samples/mcp-container-ts",
+    "tags": [
+      "msft",
+      "ai",
+      "new",
+      "mcp",
+      "bicep"
+    ],
+    "azureServices": [
+      "aca",
+      "azureai",
+      "aifoundry",
+      "openai",
+      "monitor",
+      "managedidentity"
+    ],
+    "id": "b7e2c1a2-1f2b-4e3a-9c7d-2e8f7c9d1234",
+    "languages": [
+      "nodejs",
+      "typescript",
+      "javascript"
+    ]
   },
   {
     "title": "Remote self-hosted Azure MCP Server with managed identity for Microsoft Foundry integration",
@@ -6931,10 +6800,35 @@
       "managedidentity",
       "serviceprincipal"
     ],
-    "IaC": [
-      "bicep"
+    "id": "4f2b8805-14fb-49de-acc5-fe9e2e8ae295",
+    "languages": [
+      "dotnetCsharp"
+    ]
+  },
+  {
+    "title": "Semantic image search",
+    "description": "A sample full-stack app for searching images using Azure AI Vision multi-modal embeddings API and Azure AI Search integrated vectorization.",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/image-search-aisearch",
+    "tags": [
+      "bicep",
+      "ai",
+      "msft",
+      "new"
     ],
-    "id": "4f2b8805-14fb-49de-acc5-fe9e2e8ae295"
+    "azureServices": [
+      "openai",
+      "aisearch",
+      "blobstorage",
+      "aca"
+    ],
+    "id": "2c8e6731-cd95-445a-a3df-e78151e124f4",
+    "languages": [
+      "python",
+      "typescript",
+      "nodejs"
+    ]
   },
   {
     "title": "Call API Management backend with OAuth",
@@ -6954,9 +6848,33 @@
       "apim",
       "keyvault"
     ],
-    "IaC": [
-      "bicep"
+    "id": "af9e410f-96f1-419d-ba27-2ff8a77b24d0",
+    "languages": [
+      "dotnetCsharp"
+    ]
+  },
+  {
+    "title": "FastAPI Membership API Template for Azure Container Apps",
+    "description": "This template allows you to deploy a membership API built with FastAPI to Azure Container Apps, using Azure Database for PostgreSQL",
+    "preview": "./templates/images/fastapi-postgres-aca.png",
+    "authorUrl": "https://github.com/EstopaceMA",
+    "author": "Mark Anthony Estopace",
+    "source": "https://github.com/EstopaceMA/fastapi-postgres-aca",
+    "tags": [
+      "community",
+      "fastapi",
+      "new",
+      "terraform"
     ],
-    "id": "af9e410f-96f1-419d-ba27-2ff8a77b24d0"
+    "azureServices": [
+      "aca",
+      "azuredb-postgreSQL",
+      "keyvault",
+      "vnets"
+    ],
+    "id": "d9663d15-fd8f-4e74-8200-6221f63c3ce8",
+    "languages": [
+      "python"
+    ]
   }
 ]

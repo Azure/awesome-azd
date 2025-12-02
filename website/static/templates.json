@@ -5918,5 +5918,23 @@
     "languages": [
       "python"
     ]
+  },
+  {
+    "title": "Microservices App - Dapr Albums ACA",
+    "description": "Create two Dapr-enabled microservices - album viewer (Node.js) and the album API (C#) and have them communicate using Dapr in an Azure Container Apps environment.",
+    "preview": "./templates/images/dapr-albums-diagram.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Paul Yuknewicz",
+    "source": "https://github.com/Azure-Samples/containerapps-dapralbums",
+    "tags": ["dapr", "dotnetCsharp", "aca", "nodejs", "msft", "new"]
+  },
+  {
+    "title": "Azure Functions - Chat using ChatGPT (.NET C# v4 Isolated Function)",
+    "description": "This sample shows how to take a ChatGPT prompt as HTTP Get or Post input, calculates the completions using OpenAI ChatGPT service, and then returns the output plus caches in a Blob state store.",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Paul Yuknewicz",
+    "source": "https://github.com/Azure-Samples/function-csharp-ai-openai-chatgpt",
+    "tags": ["functions", "openai", "dotnetCsharp", "ai", "chatgpt", "msft", "new"]
   }
 ]

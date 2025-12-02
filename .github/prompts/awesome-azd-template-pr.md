@@ -127,9 +127,11 @@ Generate a JSON entry with this structure:
   "tags": [
     "[Author type: msft/community]",
     "new",
-    "[services like mongodb, kubernetes]",
+    "popular",
+    "[Services like mongodb, kubernetes]",
     "[Tools like dapr, helm, aspire]",
-    "[Topics like ai, enterprisepatterns, datascience]"
+    "[Topics like ai, enterprisepatterns, datascience]",
+    "[Other tags]"
   ],
   "languages": [
     "[All detected programming languages]"

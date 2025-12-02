@@ -24,7 +24,7 @@ To submit a template:
     - **Tags** - Special [tags](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) like msft, community, new, popular, aicollection, and services/tools/topics (e.g., mongodb, kubernetes, dapr, helm, ai, enterprisepatterns). If you don't see a relevant tag? Feel free to add one!
     - **Languages** - [Tags for languages](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) used in the template (e.g., python, javascript, dotnetCsharp).
     - **Frameworks** - [Tags for frameworks](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) used in the template (e.g., reactjs, fastapi, django).
-    - **Azure Services** - [Tags for Azure services](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) (e.g., aca, functions, openai, cosmosdb, azuresql).
+    - **Azure Services** - [Tags for Azure services](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) used in the template (e.g., aca, functions, openai, cosmosdb, azuresql).
     - **IaC** - [Infrastructure as Code tag](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) (bicep or terraform).
     - **ID** - Please provide a unique uuid.
 2. If the template is Microsoft-authored, we encourage you to also [publish it to learn.microsoft.com/samples](https://review.learn.microsoft.com/en-us/help/contribute/samples/process/onboarding?branch=main). 

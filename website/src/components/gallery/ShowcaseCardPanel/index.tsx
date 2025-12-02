@@ -154,11 +154,8 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
     ...user.tags,
     ...(user.languages || []),
     ...(user.frameworks || []),
-    ...(user.services || []),
-    ...(user.databases || []),
+    ...(user.azureServices || []),
     ...(user.IaC || []),
-    ...(user.tools || []),
-    ...(user.topics || []),
   ];
   return (
     <div>

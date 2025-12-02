@@ -26,6 +26,28 @@ export type User = {
   IaC?: TagType[];
 };
 
+export type Extension = {
+  id: string;
+  namespace: string;
+  title: string;
+  description: string;
+  preview: string;
+  author: string;
+  authorUrl: string;
+  source: string;
+  tags: TagType[];
+  capabilities: string[];
+  latestVersion?: {
+    version: string;
+    usage: string;
+    examples?: {
+      name: string;
+      description: string;
+      usage: string;
+    }[];
+  };
+};
+
 // NN: Updated TagType to suit Static Web Apps
 export type TagType =
   | "msft"
@@ -152,6 +174,9 @@ export type TagType =
   | "privateEndpoints"
   | "privatelink"
   | "loadbalancer"
+  // Extension-specific tags
+  | "official"
+  | "featured"
   ;
 
 
@@ -920,5 +945,17 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Feature Experimentation",
     description: "Template architecture involves Feature Experimentation",
     type: "Topic",
+  },
+  
+  // Extension Tags
+  official: {
+    label: "Official",
+    description: "Extension from official azd registry",
+    type: "Extension Source",
+  },
+  featured: {
+    label: "Featured",
+    description: "Featured extension",
+    type: "Extension Status",
   },
 };

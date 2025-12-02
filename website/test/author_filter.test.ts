@@ -22,7 +22,9 @@ function filterUsers(
     const tags = [
       ...user.tags,
       ...(user.languages || []),
+      ...(user.frameworks || []),
       ...(user.azureServices || []),
+      ...(user.IaC || []),
     ];
     if (!user && !tags && tags.length === 0) {
       return false;

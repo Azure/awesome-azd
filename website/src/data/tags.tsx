@@ -15,13 +15,15 @@ export type Tag = {
 export type User = {
   title: string;
   description: string;
-  preview: string;
+  preview?: string;
   authorUrl: string;
   author: string;
   source: string;
   tags: TagType[];
   languages?: TagType[];
+  frameworks?: TagType[];
   azureServices?: TagType[];
+  IaC?: TagType[];
 };
 
 // NN: Updated TagType to suit Static Web Apps
@@ -493,7 +495,7 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "LangChain4j",
     description: "Template architecture uses LangChain4j framework",
     type: "Framework",
-   },
+  },
   autogen: {
     label: "Microsoft AutoGen",
     description: "Template architecture uses Microsoft AutoGen",
@@ -828,7 +830,7 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture for Azure Load Testing",
     azureIcon: "./img/Azure-Load-Testing.svg",
     url: "https://azure.microsoft.com/products/load-testing",
-    type: "Service", 
+    type: "Service",
   },
   hyperv: {
     label: "Azure Hyper-V Host",
@@ -842,7 +844,7 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture for Microsoft Fabric",
     azureIcon: "./img/Azure-Fabric.png",
     url: "https://www.microsoft.com/microsoft-fabric",
-    type: "Service", 
+    type: "Service",
   },
   vmsqlserver: {
     label: "SQL Server on Azure Virtual Machines",

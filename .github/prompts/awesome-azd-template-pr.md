@@ -127,7 +127,9 @@ Generate a JSON entry with this structure:
   "tags": [
     "[Author type: msft/community]",
     "new",
-    "[Other special tags that don't fit in categories below]"
+    "[services like mongodb, kubernetes]",
+    "[Tools like dapr, helm, aspire]",
+    "[Topics like ai, enterprisepatterns, datascience]"
   ],
   "languages": [
     "[All detected programming languages]"
@@ -135,20 +137,11 @@ Generate a JSON entry with this structure:
   "frameworks": [
     "[All detected frameworks]"
   ],
-  "services": [
-    "[All detected Azure and other services]"
-  ],
-  "databases": [
-    "[All detected databases]"
+  "azureServices": [
+    "[All detected Azure services in tags.tsx]"
   ],
   "IaC": [
-    "[Infrastructure as Code: bicep/terraform]"
-  ],
-  "tools": [
-    "[All detected tools and utilities]"
-  ],
-  "topics": [
-    "[All detected topic/pattern tags like ai, enterprisepatterns, etc.]"
+    "[Infrastructure as Code: bicep or terraform]"
   ],
   "id": "[Generated UUID v4]"
 }
@@ -227,14 +220,11 @@ When creating or updating the submission:
      ◦ Architecture Image: [If found: "Downloaded and added from the source repository (`path/to/image`)" | If not found: "[template-name].png (to be added by contributor)"]
      ◦ Author: [AUTHOR_NAME]
      ◦ Source: [REPOSITORY_URL]
-     ◦ Tags: [comma-separated list of tags]
-     ◦ Languages: [comma-separated list of languages]
+     ◦ Tags: [comma-separated list of special tags and services/tools/topics]
+     ◦ Languages: [comma-separated list of programming languages]
      ◦ Frameworks: [comma-separated list of frameworks]
-     ◦ Services: [comma-separated list of Azure and other services]
-     ◦ Databases: [comma-separated list of databases]
-     ◦ IaC: [comma-separated list of IaC tools]
-     ◦ Tools: [comma-separated list of tools]
-     ◦ Topics: [comma-separated list of topics/patterns]
+     ◦ Azure Services: [comma-separated list of Azure services]
+     ◦ IaC: [bicep or terraform]
      ◦ ID: `[GENERATED_UUID]`
 
    ## Template Overview

@@ -15,19 +15,15 @@ export type Tag = {
 export type User = {
   title: string;
   description: string;
-  preview: string;
+  preview?: string;
   authorUrl: string;
   author: string;
   source: string;
   tags: TagType[];
   languages?: TagType[];
   frameworks?: TagType[];
-  services?: TagType[];
-  databases?: TagType[];
+  azureServices?: TagType[];
   IaC?: TagType[];
-  tools?: TagType[];
-  topics?: TagType[];
-
 };
 
 // NN: Updated TagType to suit Static Web Apps

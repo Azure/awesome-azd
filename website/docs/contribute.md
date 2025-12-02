@@ -21,14 +21,11 @@ To submit a template:
     - **Link to Author's GitHub or other relevant website** - Used for attribution.
     - **Author's Name** - Name to credit on the gallery card
     - **Link to template source** - Link to the template GitHub repo
-    - **Tags** - One or more [tags](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) for tags like msft, community, new, popular, etc. If you don't see a relevant tag for your template? Feel free to add one!
+    - **Tags** - Special [tags](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) like msft, community, new, popular, aicollection, and services/tools/topics (e.g., mongodb, kubernetes, dapr, helm, ai, enterprisepatterns). If you don't see a relevant tag? Feel free to add one!
     - **Languages** - [Tags for languages](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) used in the template (e.g., python, javascript, dotnetCsharp).
     - **Frameworks** - [Tags for frameworks](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) used in the template (e.g., reactjs, fastapi, django).
-    - **Services** - [Tags for Azure and other services](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) used in the template (e.g., aca, functions, openai).
-    - **Databases** - [Tags for databases](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) used in the template (e.g., cosmosdb, azuresql, mongodb).
-    - **IaC** - [Tags for Infrastructure as Code](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) provider (bicep or terraform).
-    - **Tools** - [Tags for tools](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) used in the template (e.g., dapr, helm, aspire).
-    - **Topics** - [Tags for topics](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) the template demonstrates (e.g., ai, enterprisepatterns, datascience).
+    - **Azure Services** - [Tags for Azure services](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) (e.g., aca, functions, openai, cosmosdb, azuresql).
+    - **IaC** - [Infrastructure as Code tag](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) (bicep or terraform).
     - **ID** - Please provide a unique uuid.
 2. If the template is Microsoft-authored, we encourage you to also [publish it to learn.microsoft.com/samples](https://review.learn.microsoft.com/en-us/help/contribute/samples/process/onboarding?branch=main). 
 3. Open a PR!

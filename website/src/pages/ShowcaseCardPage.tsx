@@ -127,14 +127,11 @@ function filterUsers(
   }
   return users.filter((user) => {
     const tags = [
-      ...user.tags,
+      ...(user.tags || []),
       ...(user.languages || []),
       ...(user.frameworks || []),
-      ...(user.services || []),
-      ...(user.databases || []),
+      ...(user.azureServices || []),
       ...(user.IaC || []),
-      ...(user.tools || []),
-      ...(user.topics || []),
     ];
     if (!user && !tags && tags.length === 0) {
       return false;
@@ -405,14 +402,11 @@ export default function ShowcaseCardPage({
     const unionTags = new Set<TagType>();
     cards.forEach((user) => {
       const tags = [
-        ...user.tags,
+        ...(user.tags || []),
         ...(user.languages || []),
         ...(user.frameworks || []),
-        ...(user.services || []),
-        ...(user.databases || []),
+        ...(user.azureServices || []),
         ...(user.IaC || []),
-        ...(user.tools || []),
-        ...(user.topics || []),
       ];
       tags.forEach((tag) => unionTags.add(tag))
     });

@@ -6305,7 +6305,8 @@
       "new"
     ],
     "azureServices": [
-      "functions"
+      "aca",
+      "managedidentity"
     ],
     "IaC": [
       "bicep"

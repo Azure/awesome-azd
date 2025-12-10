@@ -6302,7 +6302,6 @@
       "mcp",
       "msft",
       "ai",
-      "mcp",
       "new"
     ],
     "azureServices": [
@@ -6447,18 +6446,20 @@
     "author": "Azure Samples",
     "source": "https://github.com/Azure-Samples/remote-mcp-functions-java",
     "tags": [
-      "bicep",
       "msft",
       "ai",
       "mcp",
       "new"
     ],
+    "languages": [
+      "java"
+    ],
     "azureServices": [
       "functions"
     ],
-    "id": "ff25faa6-9536-4881-a2f0-98e20bb32048",
-    "languages": [
-      "java"
-    ]
+    "IaC": [
+      "bicep"
+    ],
+    "id": "ff25faa6-9536-4881-a2f0-98e20bb32048"
   }
 ]

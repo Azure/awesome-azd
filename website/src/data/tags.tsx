@@ -152,6 +152,7 @@ export type TagType =
   | "privateEndpoints"
   | "privatelink"
   | "loadbalancer"
+  | "hls"
   ;
 
 
@@ -921,4 +922,9 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture involves Feature Experimentation",
     type: "Topic",
   },
+  hls: {
+    label: "Healthcare and Life Sciences",
+    description: " Template architecture targeted for Healthcare related use-cases",
+    type: "Topic"
+  }
 };

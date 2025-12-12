@@ -122,4 +122,25 @@ The repository uses GitHub Actions:
 - Main pages: `website/src/pages/`
 - Site configuration: `website/docusaurus.config.js`
 
+## Contributing Guidelines
+
+When working on contributions:
+- Review the [Contributor Guide](website/docs/contribute.md) for template submission requirements
+- Follow the [PR template](.github/PULL_REQUEST_TEMPLATE.md) when creating pull requests
+- Check [SECURITY.md](SECURITY.md) for security vulnerability reporting procedures
+- Use appropriate [issue templates](.github/ISSUE_TEMPLATE/) for bugs, features, or template requests
+
+## Specialized Copilot Prompts
+
+The `.github/prompts/` directory contains specialized prompts for specific tasks:
+- `awesome-azd-template-pr.md` - Automated template submission processor for handling new azd template contributions
+
+## External Resources
+
+Key Azure Developer CLI (azd) documentation:
+- [azd Overview](https://learn.microsoft.com/azure/developer/azure-developer-cli/overview)
+- [azd Quickstart](https://learn.microsoft.com/azure/developer/azure-developer-cli/get-started)
+- [azd Reference](https://learn.microsoft.com/azure/developer/azure-developer-cli/reference)
+- [Making projects azd compatible](https://learn.microsoft.com/azure/developer/azure-developer-cli/make-azd-compatible)
+
 The build succeeds reliably and the website functions correctly when all steps are followed precisely.

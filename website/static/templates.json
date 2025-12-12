@@ -6438,5 +6438,47 @@
       "terraform"
     ],
     "id": "d9663d15-fd8f-4e74-8200-6221f63c3ce8"
+  },
+  {
+    "title": "Healthcare AI Model Evaluator",
+    "description": "An accelerator for benchmarking medical AI models with Human-in-the-loop and Model-as-Judge. The template deploys a DotNet and React app, using Python Azure Functions as evaluation engine.",
+    "preview": "./templates/images/haime-solution.png",
+    "authorUrl": "https://www.microsoft.com/en-us/research/project/multimodal-hls-foundation-models/, https://github.com/mertoezdev, https://github.com/vgfitzger-microsoft, https://github.com/sashimono-san, https://github.com/raulista1997",
+    "author": "HLS AI Frontiers, Mert Öz, Vincent Fitzgerald, Leonardo Schettini, Hao Qiu",
+    "source": "https://github.com/microsoft/healthcare-ai-model-evaluator",
+    "tags": [
+      "ai",
+      "msft",
+      "aicollection",
+      "webapps",
+      "gpt",
+      "hls",
+      "new",
+      "datascience",
+      "msal"
+    ],
+    "languages": [
+      "python",
+      "dotnetCsharp",
+      "typescript"
+    ],
+    "frameworks": [
+      "reactjs"
+    ],
+    "azureServices": [
+      "keyvault",
+      "cosmosdb",
+      "appservice",
+      "functions",
+      "openai",
+      "blobstorage",
+      "azureai",
+      "aifoundry",
+      "managedidentity"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "019b11fe-3da6-7f83-b455-f4dd7243a8d7"
   }
 ]

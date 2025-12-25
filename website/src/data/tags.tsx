@@ -152,6 +152,8 @@ export type TagType =
   | "privateEndpoints"
   | "privatelink"
   | "loadbalancer"
+  | "backup"
+  | "recoveryvault"
   ;
 
 
@@ -920,5 +922,19 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Feature Experimentation",
     description: "Template architecture involves Feature Experimentation",
     type: "Topic",
+  },
+  backup: {
+    label: "Azure Backup",
+    description: "Template architecture for Azure Backup",
+    azureIcon: "./img/Azure-Backup.svg",
+    url: "https://azure.microsoft.com/products/backup",
+    type: "Service",
+  },
+  recoveryvault: {
+    label: "Azure Site Recovery Vault",
+    description: "Template architecture for Azure Site Recovery Vault",
+    azureIcon: "./img/Azure-Recovery-Vault.svg",
+    url: "https://azure.microsoft.com/products/site-recovery",
+    type: "Service",
   },
 };

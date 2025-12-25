@@ -6438,5 +6438,183 @@
       "terraform"
     ],
     "id": "d9663d15-fd8f-4e74-8200-6221f63c3ce8"
+  },
+  {
+    "title": "Azure Storage Account with Blobs and File Share",
+    "description": "This scenario deploys an Azure Storage Account with Blob and File Share, as well as sample data (Seattle scenery images).",
+    "preview": "./templates/images/azstorage.png",
+    "authorUrl": "https://github.com/petender",
+    "author": "Peter De Tender",
+    "source": "https://github.com/petender/azd-storaccnt",
+    "tags": [
+      "community",
+      "new"
+    ],
+    "azureServices": [
+      "azurestorage",
+      "blobstorage"
+    ],
+    "id": "8f3c9d5e-2a1b-4e6f-9c7d-3e8a5b9f1c2d"
+  },
+  {
+    "title": "Azure Monitor custom logs, and external telemetry",
+    "description": "This scenario deploys an Log Analytics workspace with a custom table to ingest logs and external telemetry.",
+    "preview": "./templates/images/monitor-diagram.png",
+    "authorUrl": "https://github.com/kareldewinter",
+    "author": "Karel De Winter",
+    "source": "https://github.com/kareldewinter/tdd-azd-monitor",
+    "tags": [
+      "community",
+      "new"
+    ],
+    "azureServices": [
+      "monitor",
+      "appinsights",
+      "loganalytics"
+    ],
+    "id": "4d7a9b2c-3f5e-4a8d-b6c9-1e4f7a9b3d5c"
+  },
+  {
+    "title": "Call API Management with Managed Identity",
+    "description": "Demonstrates calling Azure API Management from Azure Functions and Logic Apps using managed identities with OAuth, including one APIM API securely calling another without secrets.",
+    "preview": "https://raw.githubusercontent.com/ronaldbosma/call-apim-with-managed-identity/refs/heads/main/images/diagrams-overview.png",
+    "authorUrl": "https://github.com/ronaldbosma",
+    "author": "Ronald Bosma",
+    "source": "https://github.com/ronaldbosma/call-apim-with-managed-identity",
+    "tags": [
+      "community",
+      "new"
+    ],
+    "azureServices": [
+      "apim",
+      "appinsights",
+      "functions",
+      "logicapps"
+    ],
+    "id": "2b5c8e9a-6d4f-4b2e-8a7c-9f3d5e1b4a6c"
+  },
+  {
+    "title": "Building a Multi-Agent Support Triage System with AZD and Azure AI Foundry",
+    "description": "This scenario demonstrates a full implementation of a production-ready multi-agent solution on Azure using Azure AI Foundry Agent Service.",
+    "preview": "./templates/images/azd-multiagent-resource-group.png",
+    "authorUrl": "https://github.com/daverendon",
+    "author": "Dave Rendon",
+    "source": "https://github.com/daverendon/azd-multiagent",
+    "tags": [
+      "community",
+      "new"
+    ],
+    "azureServices": [
+      "azureai",
+      "aca",
+      "aifoundry",
+      "openai"
+    ],
+    "id": "7e9f2d4a-5c8b-4e3d-9a6f-2b7c4e8d1a5f"
+  },
+  {
+    "title": "Emulated Firewall sending Syslog to linux VM",
+    "description": "infrastructure setup to simulate firewall syslog messages for Microsoft Sentinel training purposes. It consists of an emulated firewall (containerized application) that sends realistic firewall logs as syslog messages to a VM, which can then be ingested by Microsoft Sentinel for analysis and parser development. (the Data Collection Rule is not created, you should do this as a demo)",
+    "authorUrl": "https://github.com/koenraadhaedens",
+    "author": "Koenraad Haedens",
+    "source": "https://github.com/koenraadhaedens/azd-firewall-send-syslog-messages",
+    "preview": "https://raw.githubusercontent.com/koenraadhaedens/azd-firewall-send-syslog-messages/main/media/fwsysdiagram.png",
+    "tags": [
+      "community",
+      "new"
+    ],
+    "azureServices": [
+      "sentinel",
+      "aca"
+    ],
+    "id": "6a3d8f5b-4e2c-4b9f-8d7e-1c5a9b3f6e2d"
+  },
+  {
+    "title": "Azure App Service as MCP Back-End with Product Catalog sample data",
+    "description": "This scenario deploys an Azure App Service back-end as MCP Server, with sample product catalog data. The app can be used with Microsoft Foundry MCP Client, Copilot Studio or any other MCP Scenario.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/petender/",
+    "author": "Peter De Tender",
+    "source": "https://github.com/petender/demo-mcp-productcatalog",
+    "tags": [
+      "community",
+      "new"
+    ],
+    "azureServices": [
+      "azureai",
+      "aifoundry",
+      "appservice"
+    ],
+    "id": "9b4e7f2a-6d8c-4e5b-9a3f-7e2d5c8b1a4f"
+  },
+  {
+    "title": "Azure Document Intelligence for your custom PDF, Docx or images text transformation",
+    "description": "This scenario deploys an Azure Document Intelligence solution for extracting and transforming text from your custom PDF, Docx, or image files.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/petender/",
+    "author": "Peter De Tender",
+    "source": "https://github.com/petender/azd-betternotes-ai",
+    "tags": [
+      "community",
+      "new"
+    ],
+    "azureServices": [
+      "azureai",
+      "aifoundry",
+      "appservice"
+    ],
+    "id": "3f8d5b9a-2e6c-4b7f-9d3e-6a8c2f5b9e1d"
+  },
+  {
+    "title": "Azure VM Backup with Recovery Services Vault",
+    "description": "This template can be used as a demo scenario for Azure Backup to showcase a Windows VM backup protection. It deploys all necessary resources such as Azure Recovery Services Vault, a Windows Server 2022 Virtual Machine and the necessary backup job.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/petender/",
+    "author": "Peter De Tender",
+    "source": "https://github.com/petender/azd-vmbackup",
+    "tags": [
+      "community",
+      "new"
+    ],
+    "azureServices": [
+      "backup",
+      "recoveryvault",
+      "virtualmachine"
+    ],
+    "id": "5c2e9f7b-4d8a-4b6e-9f3c-7e5d2a8b4f6c"
+  },
+  {
+    "title": "Azure VM Disaster Recovery with Recovery Services Vault (ASR)",
+    "description": "This template can be used as a demo scenario for Azure Recovery Vault to showcase a Windows VM disaster recovery protection. It deploys all necessary resources such as Azure Recovery Services Vault, a Windows Server 2022 Virtual Machine and the necessary recovery job.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/petender/",
+    "author": "Peter De Tender",
+    "source": "https://github.com/petender/azd-asrdemo",
+    "tags": [
+      "community",
+      "new"
+    ],
+    "azureServices": [
+      "recoveryvault",
+      "virtualmachine"
+    ],
+    "id": "8d4f9b2e-6c3a-4e7f-9b5d-2f7e4c9a3b6d"
+  },
+  {
+    "title": "Azure Routing Demo",
+    "description": "This scenario deploys an Azure Hub & Spoke VNet example topology and 3 Windows Server VMs. You can use it to demonstrate VNet-Peerings and Route Tables.",
+    "preview": "./templates/images/AzureRoutingDemo.png",
+    "authorUrl": "https://github.com/jmenne",
+    "author": "Joerg Menne",
+    "source": "https://github.com/jmenne/azd-routingdemo",
+    "tags": [
+      "community",
+      "new"
+    ],
+    "azureServices": [
+      "vnets",
+      "virtualmachine"
+    ],
+    "id": "1e9c5f3d-7b4a-4e2c-8f6d-9a3c7e5b2f4d"
   }
 ]

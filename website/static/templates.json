@@ -6438,5 +6438,29 @@
       "terraform"
     ],
     "id": "d9663d15-fd8f-4e74-8200-6221f63c3ce8"
+  },
+  {
+    "title": "Getting Started with Remote MCP Servers using Azure Functions (Java)",
+    "description": "A quick-start showing how to build and deploy a remote MCP server with Azure Functions (Java). Run it locally for debugging, then ship it to the cloud with azd up in minutes. The server is secured by design (system keys + HTTPS), supports OAuth via EasyAuth or API Management, and can be isolated inside a VNet.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Samples",
+    "source": "https://github.com/Azure-Samples/remote-mcp-functions-java",
+    "tags": [
+      "msft",
+      "ai",
+      "mcp",
+      "new"
+    ],
+    "languages": [
+      "java"
+    ],
+    "azureServices": [
+      "functions"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "ff25faa6-9536-4881-a2f0-98e20bb32048"
   }
 ]

@@ -152,6 +152,8 @@ export type TagType =
   | "privateEndpoints"
   | "privatelink"
   | "loadbalancer"
+  | "backup"
+  | "recoveryvault"
   ;
 
 
@@ -816,6 +818,20 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure Purview",
     azureIcon: "./img/Azure-Purview.svg",
     url: "https://azure.microsoft.com/products/purview",
+    type: "Service",
+  },
+  backup: {
+    label: "Azure Backup",
+    description: "Template architecture uses Azure Backup",
+    azureIcon: "./img/Azure-Backup.svg",
+    url: "https://azure.microsoft.com/products/backup",
+    type: "Service",
+  },
+  recoveryvault: {
+    label: "Azure Site Recovery Vault",
+    description: "Template architecture uses Azure Recovery Services Vault",
+    azureIcon: "./img/Azure-Recovery-Services-Vaults.svg",
+    url: "https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview",
     type: "Service",
   },
   // vpngw: {

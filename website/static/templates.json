@@ -6412,6 +6412,31 @@
     "id": "af9e410f-96f1-419d-ba27-2ff8a77b24d0"
   },
   {
+    "title": "Azure Functions C# Timer Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions Timer trigger quickstart written in C# and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (AZD). This sample uses managed identity and a virtual network to ensure it's secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd-timer",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "dotnetCsharp"
+    ],
+    "azureServices": [
+      "functions",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "b7e6c2e2-5e2e-4c8e-8e6e-2e2c8e5e6c2e"
+  },
+  {
     "title": "FastAPI Membership API Template for Azure Container Apps",
     "description": "This template allows you to deploy a membership API built with FastAPI to Azure Container Apps, using Azure Database for PostgreSQL",
     "preview": "./templates/images/fastapi-postgres-aca.png",

@@ -820,6 +820,20 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/products/purview",
     type: "Service",
   },
+  backup: {
+    label: "Azure Backup",
+    description: "Template architecture uses Azure Backup",
+    azureIcon: "./img/Azure-Backup.svg",
+    url: "https://azure.microsoft.com/products/backup",
+    type: "Service",
+  },
+  recoveryvault: {
+    label: "Azure Site Recovery Vault",
+    description: "Template architecture uses Azure Recovery Services Vault",
+    azureIcon: "./img/Azure-Recovery-Services-Vaults.svg",
+    url: "https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview",
+    type: "Service",
+  },
   // vpngw: {
   //   label: "Azure VPN Gateway",
   //   description: "Template architecture uses Azure VPN Gateway",
@@ -922,19 +936,5 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Feature Experimentation",
     description: "Template architecture involves Feature Experimentation",
     type: "Topic",
-  },
-  backup: {
-    label: "Azure Backup",
-    description: "Template architecture for Azure Backup",
-    azureIcon: "./img/Azure-Backup.svg",
-    url: "https://azure.microsoft.com/products/backup",
-    type: "Service",
-  },
-  recoveryvault: {
-    label: "Azure Site Recovery Vault",
-    description: "Template architecture for Azure Site Recovery Vault",
-    azureIcon: "./img/Azure-Recovery-Vault.svg",
-    url: "https://azure.microsoft.com/products/site-recovery",
-    type: "Service",
   },
 };

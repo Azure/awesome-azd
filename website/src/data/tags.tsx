@@ -15,13 +15,15 @@ export type Tag = {
 export type User = {
   title: string;
   description: string;
-  preview: string;
+  preview?: string;
   authorUrl: string;
   author: string;
   source: string;
   tags: TagType[];
   languages?: TagType[];
+  frameworks?: TagType[];
   azureServices?: TagType[];
+  IaC?: TagType[];
 };
 
 // NN: Updated TagType to suit Static Web Apps
@@ -111,7 +113,7 @@ export type TagType =
   | "serverlessapi"
   | "langchain"
   | "aicollection"
-  | "aistudio"
+  | "aifoundry"
   | "apicenter"
   | "eventgrid"
   | "diagnosticsettings"
@@ -139,7 +141,7 @@ export type TagType =
   | "chainlit"
   | "aspire"
   | "purview"
-  | "vpngw"
+  // | "vpngw"
   | "loadtesting"
   | "hyperv"
   | "fabric"
@@ -147,6 +149,9 @@ export type TagType =
   | "avset"
   | "bastion"
   | "mcp"
+  | "privateEndpoints"
+  | "privatelink"
+  | "loadbalancer"
   ;
 
 
@@ -490,15 +495,15 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "LangChain4j",
     description: "Template architecture uses LangChain4j framework",
     type: "Framework",
-   },
+  },
   autogen: {
     label: "Microsoft AutoGen",
     description: "Template architecture uses Microsoft AutoGen",
     type: "Framework",
   },
   chainlit: {
-    label: "Microsoft AutoGen",
-    description: "Template architecture uses Microsoft AutoGen",
+    label: "Chainlit",
+    description: "Template architecture uses Chainlit",
     type: "Framework",
   },
 
@@ -729,9 +734,9 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/products/app-configuration",
     type: "Service",
   },
-  aistudio: {
-    label: "Azure AI Studio",
-    description: "Template architecture uses Azure AI Studio",
+  aifoundry: {
+    label: "Azure AI Foundry",
+    description: "Template architecture uses Azure AI Foundry",
     azureIcon: "./img/Azure-AI-Studio.svg",
     url: "https://azure.microsoft.com/products/ai-studio",
     type: "Service",
@@ -813,19 +818,19 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/products/purview",
     type: "Service",
   },
-  vpngw: {
-    label: "Azure VPN Gateway",
-    description: "Template architecture uses Azure VPN Gateway",
-    azureIcon: "./img/Azure-VPN-GW.svg",
-    url: "https://azure.microsoft.com/products/vpn-gateway",
-    type: "Service",
-  },
+  // vpngw: {
+  //   label: "Azure VPN Gateway",
+  //   description: "Template architecture uses Azure VPN Gateway",
+  //   azureIcon: "./img/Azure-VPN-GW.svg",
+  //   url: "https://azure.microsoft.com/products/vpn-gateway",
+  //   type: "Service",
+  // },
   loadtesting: {
     label: "Azure Load Testing",
     description: "Template architecture for Azure Load Testing",
     azureIcon: "./img/Azure-Load-Testing.svg",
     url: "https://azure.microsoft.com/products/load-testing",
-    type: "Service", 
+    type: "Service",
   },
   hyperv: {
     label: "Azure Hyper-V Host",
@@ -839,7 +844,7 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture for Microsoft Fabric",
     azureIcon: "./img/Azure-Fabric.png",
     url: "https://www.microsoft.com/microsoft-fabric",
-    type: "Service", 
+    type: "Service",
   },
   vmsqlserver: {
     label: "SQL Server on Azure Virtual Machines",
@@ -860,6 +865,27 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture for Azure Bastion",
     azureIcon: "./img/Azure-Bastion.svg",
     url: "https://azure.microsoft.com/products/azure-bastion",
+    type: "Service",
+  },
+  privateEndpoints: {
+    label: "Azure Private Endpoints",
+    description: "Template architecture for Azure Private Endpoints",
+    azureIcon: "./img/Azure-Private-Endpoints.svg",
+    url: "https://learn.microsoft.com/azure/private-link/private-endpoint-overview",
+    type: "Service",
+  },
+  privatelink: {
+    label: "Azure Private Link",
+    description: "Template architecture for Azure Private Link",
+    azureIcon: "./img/Azure-Private-Link.svg",
+    url: "https://azure.microsoft.com/products/private-link",
+    type: "Service",
+  },
+  loadbalancer: {
+    label: "Azure Load Balancer",
+    description: "Template architecture for Azure Load Balancer",
+    azureIcon: "./img/Azure-Load-Balancer.svg",
+    url: "https://azure.microsoft.com/products/load-balancer",
     type: "Service",
   },
 

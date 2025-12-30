@@ -10,6 +10,7 @@ import NavbarMobileSidebar from "@theme/Navbar/MobileSidebar";
 import styles from "./styles.module.css";
 import { manageCookieLabel, manageCookieId } from "../../../../constants.js";
 import Clarity from '@microsoft/clarity';
+import Cookies from 'js-cookie';
 
 function NavbarBackdrop(props) {
   return (
@@ -52,11 +53,6 @@ const telemetryInit = () => {
       onConsentChanged
     );
 
-  // Clarity initialization
-  Clarity.init("r8ugpuymsy");
-  // Disable Clarity consent until user consents
-  Clarity.consent(false);
-  
   function onConsentChanged(categoryPreferences) {
     setNonEssentialCookies(categoryPreferences);
   }
@@ -64,10 +60,8 @@ const telemetryInit = () => {
   function setNonEssentialCookies(categoryPreferences) {
     if (categoryPreferences.Analytics) {
       AnalyticsCookies(SET);
-      Clarity.consent(true);
     } else {
       AnalyticsCookies(RESET);
-      Clarity.consent(false);
     }
 
     if (categoryPreferences.SocialMedia) {
@@ -83,9 +77,21 @@ const telemetryInit = () => {
     }
   }
 
+  function setClarity(setString) {
+    if (setString === SET) {
+      Clarity.init("r8ugpuymsy");
+      Clarity.consent(true);
+    } else {
+      Cookies.remove("_clck", { domain: ".microsoft.com" });
+      Cookies.remove("_clsk", { domain: ".microsoft.com" });
+    }
+  }
+
   function AnalyticsCookies(setString) {
     if (setString === SET) {
+      setClarity(SET);
     } else {
+      setClarity(RESET);
     }
   }
 
@@ -101,46 +107,59 @@ const telemetryInit = () => {
     }
   }
 
-  if (WcpConsent.siteConsent.isConsentRequired) {
+  if (WcpConsent && WcpConsent.siteConsent && WcpConsent.siteConsent.isConsentRequired) {
     var manageCookies = document.getElementById("manage_cookie");
-    manageCookies.addEventListener("click", function (e) {
-      e.preventDefault();
-      WcpConsent.siteConsent.manageConsent();
-    });
+    if (manageCookies) {
+      manageCookies.addEventListener("click", function (e) {
+        e.preventDefault();
+        WcpConsent.siteConsent.manageConsent();
+      });
+    }
   } else {
     // remove Manage Cookie and separator in footer
-    removeItem("footer__links_" + manageCookieLabel);
-    removeItem(manageCookieId);
+    try {
+      // Remove both footer links and manage cookie ID
+      removeItem("footer__links_" + manageCookieLabel);
+      removeItem(manageCookieId);
+    } catch (e) {
+      // Ignore if elements don't exist - this is expected behavior
+      // when cookies/elements have already been removed or don't exist
+    }
   }
-  setNonEssentialCookies(WcpConsent.siteConsent.getConsent());
+  
+  if (WcpConsent && WcpConsent.siteConsent) {
+    setNonEssentialCookies(WcpConsent.siteConsent.getConsent());
+  }
 
   // 1DS initialization
   try {
-    const analytics = new oneDS.ApplicationInsights();
-    var config = {
-      instrumentationKey:
-        "41c1099574f14f06bdce4f80fcd0a65c-4a29467c-f5d4-4151-8e8b-62c0a3515947-7118",
-      propertyConfiguration: {
-        // Properties Plugin configuration
-        callback: {
-          userConsentDetails: siteConsent ? siteConsent.getConsent : null,
+    if (typeof oneDS !== 'undefined') {
+      const analytics = new oneDS.ApplicationInsights();
+      var config = {
+        instrumentationKey:
+          "41c1099574f14f06bdce4f80fcd0a65c-4a29467c-f5d4-4151-8e8b-62c0a3515947-7118",
+        propertyConfiguration: {
+          // Properties Plugin configuration
+          callback: {
+            userConsentDetails: siteConsent ? siteConsent.getConsent : null,
+          },
         },
-      },
-      webAnalyticsConfiguration: {
-        // Web Analytics Plugin configuration
-        autoCapture: {
-          scroll: true,
-          pageView: true,
-          onLoad: true,
-          onUnload: true,
-          click: true,
-          resize: true,
-          jsError: true,
+        webAnalyticsConfiguration: {
+          // Web Analytics Plugin configuration
+          autoCapture: {
+            scroll: true,
+            pageView: true,
+            onLoad: true,
+            onUnload: true,
+            click: true,
+            resize: true,
+            jsError: true,
+          },
         },
-      },
-    };
-    //Initialize SDK
-    analytics.initialize(config, []);
+      };
+      //Initialize SDK
+      analytics.initialize(config, []);
+    }
   } catch (error) {
     if (
       error instanceof ReferenceError &&

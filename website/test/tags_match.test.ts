@@ -7,7 +7,15 @@ describe('Template tests', () => {
         // Get the unique tags from all templates by iterating all templates and taking the tags into a map
         var tags = new Array<string>();
         Templates.forEach(template => {
-            template.tags.forEach(tag => {
+            // Collect tags from all arrays
+            const allTags = [
+                ...(template.tags || []),
+                ...(template.languages || []),
+                ...(template.frameworks || []),
+                ...(template.azureServices || []),
+                ...(template.IaC || []),
+            ];
+            allTags.forEach(tag => {
                 if (!tags.includes(tag)) {
                     tags.push(tag);
                 }

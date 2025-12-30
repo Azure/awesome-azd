@@ -17,11 +17,11 @@
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.4",
-    "@docusaurus/core": "^3.7.0",
+    "@docusaurus/core": "^3.9.2",
     "@docusaurus/module-type-aliases": "^3.7.0",
-    "@docusaurus/plugin-client-redirects": "^3.7.0",
-    "@docusaurus/plugin-ideal-image": "^3.7.0",
-    "@docusaurus/preset-classic": "^3.7.0",
+    "@docusaurus/plugin-client-redirects": "^3.9.2",
+    "@docusaurus/plugin-ideal-image": "^3.9.2",
+    "@docusaurus/preset-classic": "^3.9.2",
     "@fluentui/react": "^8.112.9",
     "@fluentui/react-components": "^9.42.0",
     "@mdx-js/react": "^3.0.0",
@@ -55,6 +55,7 @@
   "dependencies": {
     "@microsoft/clarity": "^1.0.0",
     "@popperjs/core": "^2.11.8",
+    "js-cookie": "^3.0.5",
     "scheduler": "^0.20.2",
     "search-insights": "^2.11.0"
   }

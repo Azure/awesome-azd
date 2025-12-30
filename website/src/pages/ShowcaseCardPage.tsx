@@ -17,13 +17,14 @@ import {
   Spinner,
   Badge,
   Body1,
+  Button,
 } from "@fluentui/react-components";
 import ShowcaseCards from "./ShowcaseCards";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
 import { useHistory } from "@docusaurus/router";
-import { toggleListItem } from "@site/src/utils/jsUtils";
+import { toggleListItem, splitAuthors } from "@site/src/utils/jsUtils";
 import { prepareUserState } from "./index";
 import { Dismiss20Filled } from "@fluentui/react-icons";
 
@@ -96,22 +97,41 @@ function readSearchName(search: string) {
 function filterUsers(
   users: User[],
   selectedTags: TagType[],
+  selectedAuthors: string[],
   searchName: string | null
 ) {
   if (searchName) {
     // eslint-disable-next-line no-param-reassign
     users = users.filter((user) =>
-      user.title.toLowerCase().includes(searchName.toLowerCase())
+      user.title.toLowerCase().includes(searchName.toLowerCase()) ||
+      user.author.toLowerCase().includes(searchName.toLowerCase())
     );
   }
+  
+  // Filter by selected authors
+  if (selectedAuthors && selectedAuthors.length > 0) {
+    // eslint-disable-next-line no-param-reassign
+    users = users.filter((user) => {
+      // Split the author field to handle multiple authors
+      const userAuthors = splitAuthors(user.author);
+      // Check if any of the selected authors match any of the user's authors
+      return selectedAuthors.some(selectedAuthor => 
+        userAuthors.includes(selectedAuthor)
+      );
+    });
+  }
+  
+  // Filter by selected tags
   if (!selectedTags || selectedTags.length === 0) {
     return users;
   }
   return users.filter((user) => {
     const tags = [
-      ...user.tags,
+      ...(user.tags || []),
       ...(user.languages || []),
+      ...(user.frameworks || []),
       ...(user.azureServices || []),
+      ...(user.IaC || []),
     ];
     if (!user && !tags && tags.length === 0) {
       return false;
@@ -123,13 +143,21 @@ function filterUsers(
 function FilterAppliedBar({
   clearAll,
   selectedTags,
+  selectedAuthors,
   readSearchTags,
   replaceSearchTags,
+  readSearchAuthors,
+  replaceSearchAuthors,
+  location,
 }: {
   clearAll;
   selectedTags: TagType[];
+  selectedAuthors: string[];
   readSearchTags: (search: string) => TagType[];
   replaceSearchTags: (search: string, newTags: TagType[]) => string;
+  readSearchAuthors: (search: string) => string[];
+  replaceSearchAuthors: (search: string, newAuthors: string[]) => string;
+  location;
 }) {
   const history = useHistory();
   const toggleTag = (tag: TagType, location: Location) => {
@@ -143,7 +171,18 @@ function FilterAppliedBar({
     });
   }
 
-  return selectedTags && selectedTags.length > 0 ? (
+  const toggleAuthor = (author: string, location: Location) => {
+    const authors = readSearchAuthors(location.search);
+    const newAuthors = toggleListItem(authors, author);
+    const newSearch = replaceSearchAuthors(location.search, newAuthors);
+    history.push({
+      ...location,
+      search: newSearch,
+      state: prepareUserState(),
+    });
+  }
+
+  return selectedTags && selectedTags.length > 0 || selectedAuthors && selectedAuthors.length > 0 ? (
     <div className={styles.filterAppliedBar}>
       <Body1>
         Filters applied:
@@ -155,6 +194,7 @@ function FilterAppliedBar({
 
         return (
           <Badge
+            key={key}
             appearance="tint"
             size="extra-large"
             color="brand"
@@ -170,11 +210,116 @@ function FilterAppliedBar({
           </Badge>
         );
       })}
+      {selectedAuthors.map((author, index) => {
+        const key = `showcase_checkbox_author_key_${author}`;
+
+        return (
+          <Badge
+            key={key}
+            appearance="tint"
+            size="extra-large"
+            color="brand"
+            shape="rounded"
+            icon={<Dismiss20Filled />}
+            iconPosition="after"
+            className={styles.filterBadge}
+            onClick={() => {
+              toggleAuthor(author, location);
+            }}
+          >
+            {author}
+          </Badge>
+        );
+      })}
       <div className={styles.clearAll} onClick={clearAll}>
         Clear all
       </div>
     </div>
   ) : null;
+}
+
+function PaginationControls({
+  currentPage,
+  totalPages,
+  onPageChange,
+}: {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+}) {
+  const getVisiblePages = () => {
+    const delta = 2;
+    const range = [];
+    
+    for (let i = Math.max(2, currentPage - delta); 
+         i <= Math.min(totalPages - 1, currentPage + delta); 
+         i++) {
+      range.push(i);
+    }
+
+    if (currentPage - delta > 2) {
+      range.unshift("...");
+    }
+    if (currentPage + delta < totalPages - 1) {
+      range.push("...");
+    }
+
+    range.unshift(1);
+    if (totalPages > 1) {
+      range.push(totalPages);
+    }
+
+    return range;
+  };
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: "8px",
+        margin: "24px 0",
+      }}
+    >
+      <Button
+        appearance="outline"
+        disabled={currentPage === 1}
+        onClick={() => onPageChange(currentPage - 1)}
+      >
+        Previous
+      </Button>
+      
+      {getVisiblePages().map((page, index) => {
+        if (page === "...") {
+          return (
+            <Text key={`ellipsis-${index}`} size={400} style={{ padding: "8px" }}>
+              ...
+            </Text>
+          );
+        }
+        
+        return (
+          <Button
+            key={page}
+            appearance={currentPage === page ? "primary" : "outline"}
+            onClick={() => onPageChange(Number(page))}
+            style={{ minWidth: "40px" }}
+          >
+            {page}
+          </Button>
+        );
+      })}
+      
+      <Button
+        appearance="outline"
+        disabled={currentPage === totalPages}
+        onClick={() => onPageChange(currentPage + 1)}
+      >
+        Next
+      </Button>
+    </div>
+  );
 }
 
 export default function ShowcaseCardPage({
@@ -185,6 +330,12 @@ export default function ShowcaseCardPage({
   readSearchTags,
   replaceSearchTags,
   setSelectedCheckbox,
+  setActiveAuthors,
+  selectedAuthors,
+  setSelectedAuthorCheckbox,
+  setSelectedAuthors,
+  readSearchAuthors,
+  replaceSearchAuthors,
 }: {
   setActiveTags: React.Dispatch<React.SetStateAction<TagType[]>>;
   selectedTags: TagType[];
@@ -193,17 +344,28 @@ export default function ShowcaseCardPage({
   readSearchTags: (search: string) => TagType[];
   replaceSearchTags: (search: string, newTags: TagType[]) => string;
   setSelectedCheckbox: React.Dispatch<React.SetStateAction<TagType[]>>;
+  setActiveAuthors: React.Dispatch<React.SetStateAction<string[]>>;
+  selectedAuthors: string[];
+  setSelectedAuthorCheckbox: React.Dispatch<React.SetStateAction<string[]>>;
+  setSelectedAuthors: React.Dispatch<React.SetStateAction<string[]>>;
+  readSearchAuthors: (search: string) => string[];
+  replaceSearchAuthors: (search: string, newAuthors: string[]) => string;
 }) {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchName, setSearchName] = useState<string | null>(null);
   const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 20;
   const history = useHistory();
   const searchParams = new URLSearchParams(location.search);
   const clearAll = () => {
     setSelectedTags([]);
     setSelectedCheckbox([]);
+    setSelectedAuthors([]);
+    setSelectedAuthorCheckbox([]);
     searchParams.delete("tags");
+    searchParams.delete("authors");
     history.push({
       ...location,
       search: searchParams.toString(),
@@ -220,28 +382,55 @@ export default function ShowcaseCardPage({
   }, [location, selectedOptions]);
 
   var cards = useMemo(
-    () => filterUsers(selectedUsers, selectedTags, searchName),
-    [selectedUsers, selectedTags, searchName]
+    () => filterUsers(selectedUsers, selectedTags, selectedAuthors, searchName),
+    [selectedUsers, selectedTags, selectedAuthors, searchName]
   );
+
+  // Reset to first page when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedTags, searchName, selectedUsers]);
+
+  // Calculate pagination
+  const totalTemplates = cards ? cards.length : 0;
+  const totalPages = Math.ceil(totalTemplates / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedCards = cards.slice(startIndex, endIndex);
 
   useEffect(() => {
     const unionTags = new Set<TagType>();
     cards.forEach((user) => {
       const tags = [
-        ...user.tags,
+        ...(user.tags || []),
         ...(user.languages || []),
+        ...(user.frameworks || []),
         ...(user.azureServices || []),
+        ...(user.IaC || []),
       ];
       tags.forEach((tag) => unionTags.add(tag))
     });
     setActiveTags(Array.from(unionTags));
   }, [cards]);
 
+  useEffect(() => {
+    const unionAuthors = new Set<string>();
+    cards.forEach((user) => {
+      // Split authors to handle multiple authors per template
+      const authors = splitAuthors(user.author);
+      authors.forEach(author => unionAuthors.add(author));
+    });
+    setActiveAuthors(Array.from(unionAuthors));
+  }, [cards]);
+
   const sortByOnSelect = (event, data) => {
     setLoading(true);
     setSelectedOptions(data.selectedOptions);
   };
-  const templateNumber = cards ? cards.length : 0;
+
+  // Template count display logic
+  const currentStart = totalTemplates > 0 ? startIndex + 1 : 0;
+  const currentEnd = Math.min(endIndex, totalTemplates);
 
   return (
     <>
@@ -259,13 +448,27 @@ export default function ShowcaseCardPage({
           }}
         >
           <Text size={400}>Viewing</Text>
-          <Text size={400} weight="bold">
-            {templateNumber}
-          </Text>
-          {templateNumber != 1 ? (
-            <Text size={400}>templates</Text>
+          {totalTemplates === 0 ? (
+            <>
+              <Text size={400} weight="bold">0</Text>
+              <Text size={400}>template</Text>
+            </>
+          ) : totalTemplates === 1 ? (
+            <>
+              <Text size={400} weight="bold">1</Text>
+              <Text size={400}>template</Text>
+            </>
           ) : (
-            <Text size={400}>template</Text>
+            <>
+              <Text size={400} weight="bold">
+                {`${currentStart}-${currentEnd}`}
+              </Text>
+              <Text size={400}>of</Text>
+              <Text size={400} weight="bold">
+                {totalTemplates}
+              </Text>
+              <Text size={400}>templates</Text>
+            </>
           )}
           {InputValue != null ? (
             <>
@@ -301,13 +504,26 @@ export default function ShowcaseCardPage({
       <FilterAppliedBar
         clearAll={clearAll}
         selectedTags={selectedTags}
+        selectedAuthors={selectedAuthors}
         readSearchTags={readSearchTags}
         replaceSearchTags={replaceSearchTags}
+        readSearchAuthors={readSearchAuthors}
+        replaceSearchAuthors={replaceSearchAuthors}
+        location={location}
       />
       {loading ? (
         <Spinner labelPosition="below" label="Loading..." />
       ) : (
-        <ShowcaseCards filteredUsers={cards} />
+        <>
+          <ShowcaseCards filteredUsers={paginatedCards} />
+          {totalPages > 1 && (
+            <PaginationControls
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
+          )}
+        </>
       )}
     </>
   );

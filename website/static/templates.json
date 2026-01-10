@@ -6683,7 +6683,8 @@
     "azureServices": [
       "managedidentity",
       "openai",
-      "aca"
+      "aca",
+      "new"
     ],
     "IaC": [
       "bicep"

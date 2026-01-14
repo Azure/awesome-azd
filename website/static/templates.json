@@ -6675,7 +6675,8 @@
     "source": "https://github.com/Azure-Samples/dynamic-sessions-custom-container",
     "tags": [
       "msft",
-      "ai"
+      "ai",
+      "new"
     ],
     "languages": [
       "python"

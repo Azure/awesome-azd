@@ -6684,7 +6684,6 @@
       "managedidentity",
       "openai",
       "aca",
-      "new"
     ],
     "IaC": [
       "bicep"

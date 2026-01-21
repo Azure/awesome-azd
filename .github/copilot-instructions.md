@@ -156,15 +156,16 @@ If the PR makes changes to `website/static/templates.json`, perform the followin
 4. **Testing Requirements Based on Template Type**:
    
    **For Community Templates (tags do NOT contain "msft"):**
-   - @ mention **@v-xuto** in a PR comment to request manual testing of the template
+   - @ mention the manual test team member **@v-xuto** in a PR comment to request testing of the template
    - Example comment: "@v-xuto Please test this community template to ensure it works as expected."
    
    **For Microsoft Templates (tags contain "msft"):**
-   - @ mention the **PR author** requesting they provide proof of successful testing
+   - @ mention the **PR author** (use their actual GitHub username) requesting they provide proof of successful testing
    - Request either:
      - A link to a test pipeline that validates the template
      - Screenshots or other proof showing the template deploys successfully
-   - Example comment: "@[author] Please provide a test pipeline link or proof of success for this Microsoft-authored template."
+   - Example comment: "@{PR_AUTHOR_USERNAME} Please provide a test pipeline link or proof of success for this Microsoft-authored template."
+   - Note: Replace {PR_AUTHOR_USERNAME} with the actual GitHub username of the PR author
 
 ### Stale Pull Request Management
 
@@ -172,8 +173,9 @@ Monitor and manage inactive pull requests:
 
 1. **90-Day Inactivity Check**:
    - If a PR has been open with no activity for more than 90 days:
-   - @ mention the **PR author** with a reminder
-   - Example comment: "@[author] This PR has been inactive for over 90 days. Are you still planning to proceed with these changes? Please provide an update within 7 days, or this PR will be closed."
+   - @ mention the **PR author** (use their actual GitHub username) with a reminder
+   - Example comment: "@{PR_AUTHOR_USERNAME} This PR has been inactive for over 90 days. Are you still planning to proceed with these changes? Please provide an update within 7 days, or this PR will be closed."
+   - Note: Replace {PR_AUTHOR_USERNAME} with the actual GitHub username of the PR author
 
 2. **7-Day Grace Period**:
    - After posting the 90-day inactivity reminder, wait 7 days for a response

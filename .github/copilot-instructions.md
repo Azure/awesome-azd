@@ -151,9 +151,11 @@ If the PR makes changes to `website/static/templates.json`, perform the followin
    - Check tags in the `azureServices` array
    - Check tags in the `IaC` array
    - If any tag is not defined in `tags.tsx`, request that the tag be added to that file first
-   - Run `npm test` to automatically validate tags against the defined list
+   - Run `npm test` from the `website/` directory to automatically validate tags against the defined list
 
 4. **Testing Requirements Based on Template Type**:
+   
+   Template type is determined by checking if the `"msft"` tag is present in the template's `tags` array.
    
    **For Community Templates (tags do NOT contain "msft"):**
    - @ mention the manual test team member **@v-xuto** in a PR comment to request testing of the template
@@ -164,8 +166,8 @@ If the PR makes changes to `website/static/templates.json`, perform the followin
    - Request either:
      - A link to a test pipeline that validates the template
      - Screenshots or other proof showing the template deploys successfully
-   - Example comment: "@{PR_AUTHOR_USERNAME} Please provide a test pipeline link or proof of success for this Microsoft-authored template."
-   - Note: Replace {PR_AUTHOR_USERNAME} with the actual GitHub username of the PR author
+   - Example comment: "@author_username Please provide a test pipeline link or proof of success for this Microsoft-authored template."
+   - Note: Replace `author_username` with the actual GitHub username of the PR author (e.g., @johndoe)
 
 ### Stale Pull Request Management
 
@@ -174,8 +176,8 @@ Monitor and manage inactive pull requests:
 1. **90-Day Inactivity Check**:
    - If a PR has been open with no activity for more than 90 days:
    - @ mention the **PR author** (use their actual GitHub username) with a reminder
-   - Example comment: "@{PR_AUTHOR_USERNAME} This PR has been inactive for over 90 days. Are you still planning to proceed with these changes? Please provide an update within 7 days, or this PR will be closed."
-   - Note: Replace {PR_AUTHOR_USERNAME} with the actual GitHub username of the PR author
+   - Example comment: "@author_username This PR has been inactive for over 90 days. Are you still planning to proceed with these changes? Please provide an update within 7 days, or this PR will be closed."
+   - Note: Replace `author_username` with the actual GitHub username of the PR author (e.g., @johndoe)
 
 2. **7-Day Grace Period**:
    - After posting the 90-day inactivity reminder, wait 7 days for a response

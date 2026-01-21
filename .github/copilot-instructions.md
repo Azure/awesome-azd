@@ -77,6 +77,45 @@ The template gallery is driven by:
 - `website/src/components/gallery/` - Gallery components
 - `website/static/templates/images/` - Template preview images
 
+### AI Gallery Template Requirements
+
+Templates tagged with `aicollection` must meet Microsoft-curated AI collection standards:
+
+**README Requirements:**
+- Standard structure with project name, use case, features, and architecture diagram
+- Step-by-step deployment and customization instructions
+- Getting started section with quick setup options (GitHub Codespaces, Dev Containers, local)
+- Clear feature list highlighting AI capabilities
+- CI/CD pipeline setup guidance using azd commands
+
+**Security Best Practices:**
+- Use Managed Identity (keyless authentication) instead of API keys
+- Implement Role-Based Access Control (RBAC) for resource access
+- Enable data encryption at rest and in transit
+- Use Azure Key Vault for secrets management
+- Configure network isolation with private endpoints where applicable
+- Include monitoring with Azure Monitor and Application Insights
+- Add Responsible AI governance controls (content safety filters, etc.)
+- Include SECURITY.md file with security reporting procedures
+
+**azure.yaml Metadata Requirements:**
+- **name** field (required): Unique app/template name using lowercase, numbers, dashes
+- **metadata.template** field (recommended): Template identifier with version (e.g., `app-name@1.0.0`)
+- List all Azure services and dependencies
+- Include infrastructure as code (Bicep or Terraform) configuration
+
+Example azure.yaml structure:
+```yaml
+name: my-ai-app
+metadata:
+  template: my-ai-app@1.0.0
+services:
+  web:
+    project: ./src/web
+    language: python
+    host: appservice
+```
+
 ## Contributing Workflow
 
 When making changes:

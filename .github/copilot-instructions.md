@@ -123,3 +123,69 @@ The repository uses GitHub Actions:
 - Site configuration: `website/docusaurus.config.js`
 
 The build succeeds reliably and the website functions correctly when all steps are followed precisely.
+
+## Pull Request Review Guidelines
+
+When reviewing pull requests for this repository, follow these guidelines:
+
+### Changes to templates.json
+
+If the PR makes changes to `website/static/templates.json`, perform the following checks:
+
+1. **Validate Template Syntax**: Review each new template entry to ensure:
+   - All required fields are present: `title`, `description`, `preview`, `authorUrl`, `author`, `source`, `tags`, `id`
+   - The `id` field is a unique UUID
+   - The `preview` path points to an existing image file or uses the default test image
+   - The `source` URL is a valid GitHub repository URL
+   - JSON syntax is correct (proper quotes, commas, brackets)
+
+2. **Check for "new" Tag**: If a template is being added for the first time or is newly featured:
+   - Verify whether the `"new"` tag has been added to the template's `tags` array
+   - The "new" tag should be included for templates that are being newly showcased
+   - Example: `"tags": ["msft", "new"]` or `"tags": ["community", "new"]`
+
+3. **Validate All Tags**: Ensure all tags used in the template are defined in `website/src/data/tags.tsx`:
+   - Check tags in the `tags` array
+   - Check tags in the `languages` array
+   - Check tags in the `frameworks` array
+   - Check tags in the `azureServices` array
+   - Check tags in the `IaC` array
+   - If any tag is not defined in `tags.tsx`, request that the tag be added to that file first
+   - Run `npm test` to automatically validate tags against the defined list
+
+4. **Testing Requirements Based on Template Type**:
+   
+   **For Community Templates (tags do NOT contain "msft"):**
+   - @ mention **@v-xuto** in a PR comment to request manual testing of the template
+   - Example comment: "@v-xuto Please test this community template to ensure it works as expected."
+   
+   **For Microsoft Templates (tags contain "msft"):**
+   - @ mention the **PR author** requesting they provide proof of successful testing
+   - Request either:
+     - A link to a test pipeline that validates the template
+     - Screenshots or other proof showing the template deploys successfully
+   - Example comment: "@[author] Please provide a test pipeline link or proof of success for this Microsoft-authored template."
+
+### Stale Pull Request Management
+
+Monitor and manage inactive pull requests:
+
+1. **90-Day Inactivity Check**:
+   - If a PR has been open with no activity for more than 90 days:
+   - @ mention the **PR author** with a reminder
+   - Example comment: "@[author] This PR has been inactive for over 90 days. Are you still planning to proceed with these changes? Please provide an update within 7 days, or this PR will be closed."
+
+2. **7-Day Grace Period**:
+   - After posting the 90-day inactivity reminder, wait 7 days for a response
+   - If the author does not respond within 7 days:
+   - Close the PR with a comment explaining the closure
+   - Example comment: "Closing this PR due to inactivity. The PR has been open for over 90 days with no recent updates, and there has been no response to our reminder. The PR can be reopened if work resumes."
+
+### General PR Review Best Practices
+
+- Always be respectful and constructive in your feedback
+- Provide specific examples when requesting changes
+- Acknowledge good work and improvements made by contributors
+- Run the test suite (`npm test`) to catch issues automatically
+- Check that CI/CD workflows pass successfully
+- Verify that documentation is updated if the changes affect user-facing features

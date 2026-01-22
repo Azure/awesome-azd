@@ -80,13 +80,13 @@ configuration:
       - isNotLabeledWith:
           label: no-recent-activity
       - noActivitySince:
-          days: 7
+          days: 60
       - isPullRequest
       actions:
       - addLabel:
           label: no-recent-activity
       - addReply:
-          reply: Hi @${issueAuthor}.  Thank you for your interest in helping to improve the Azure Developer CLI experience and for your contribution.  We've noticed that there hasn't been recent engagement on this pull request.  If this is still an active work stream, please let us know by pushing some changes or leaving a comment.  Otherwise, we'll close this out in 7 days.
+          reply: Hi @${issueAuthor}.  Thank you for your interest in helping to improve the awesome-azd experience and for your contribution.  We've noticed that there hasn't been recent engagement on this pull request.  If this is still an active work stream, please let us know by pushing some changes or leaving a comment.  Otherwise, we'll close this out in 7 days.
     eventResponderTasks:
     - if:
       - payloadType: Issues
@@ -164,7 +164,7 @@ configuration:
       - addLabel:
           label: customer-reported
       - addReply:
-          reply: Thank you for your contribution ${issueAuthor}! We will review the pull request and get back to you soon.
+          reply: Thank you for your contribution @${issueAuthor}! We will review the pull request and get back to you soon.
       description: 
     - if:
       - payloadType: Issues

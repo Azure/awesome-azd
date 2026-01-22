@@ -66,7 +66,7 @@ configuration:
           label: no-recent-activity
       - isPullRequest
       - noActivitySince:
-          days: 7
+          days: 60
       actions:
       - closeIssue
       - addReply:
@@ -86,7 +86,7 @@ configuration:
       - addLabel:
           label: no-recent-activity
       - addReply:
-          reply: Hi @${issueAuthor}.  Thank you for your interest in helping to improve the awesome-azd experience and for your contribution.  We've noticed that there hasn't been recent engagement on this pull request.  If this is still an active work stream, please let us know by pushing some changes or leaving a comment.  Otherwise, we'll close this out in 7 days.
+          reply: Hi @${issueAuthor}.  Thank you for your interest in helping to improve the awesome-azd experience and for your contribution.  We've noticed that there hasn't been recent engagement on this pull request.  If this is still an active work stream, please let us know by pushing some changes or leaving a comment.  Otherwise, we'll close this out in 60 days.
     eventResponderTasks:
     - if:
       - payloadType: Issues

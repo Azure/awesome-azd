@@ -80,7 +80,7 @@ configuration:
       - isNotLabeledWith:
           label: no-recent-activity
       - noActivitySince:
-          days: 7
+          days: 60
       - isPullRequest
       actions:
       - addLabel:

@@ -152,6 +152,23 @@ If the PR makes changes to `website/static/templates.json`, perform the followin
    - Check tags in the `IaC` array
    - If any tag is not defined in `tags.tsx`, request that the tag be added to that file first
    - Run `npm test` from the `website/` directory to automatically validate tags against the defined list
+   
+   **Verify Correct Tag Placement by Category**:
+   - Each tag in `tags.tsx` has a `type` field that indicates its category
+   - Tags should be placed in the appropriate array based on their `type`:
+     - Tags with `type: "Language"` → should ONLY be in the `languages` array
+     - Tags with `type: "Framework"` → should ONLY be in the `frameworks` array
+     - Tags with `type: "Infrastructure as Code"` → should ONLY be in the `IaC` array
+     - Tags with `type: "Service"` (including Azure services) → should ONLY be in the `azureServices` array
+     - Special tags (`msft`, `community`, `new`, `popular`, `aicollection`) → should be in the `tags` array
+   - Example: `appservice` has `type: "Service"`, so it belongs in `azureServices`, NOT in `tags` or any other array
+   
+   **Check for Duplicate Tags Across Arrays**:
+   - Verify that no tag appears in multiple arrays
+   - If a tag is duplicated (e.g., `appservice` in both `tags` and `azureServices`):
+     - Request removal from the incorrect array
+     - Keep it only in the correct array based on its `type` field
+   - Example: If `appservice` appears in both `tags` and `azureServices`, suggest removing it from `tags` and keeping it only in `azureServices`
 
 4. **Testing Requirements Based on Template Type**:
    

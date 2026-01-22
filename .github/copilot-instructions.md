@@ -189,34 +189,6 @@ If the PR makes changes to `website/static/templates.json`, perform the followin
    - Example comment: "@author_username Please provide a test pipeline link or proof of success for this Microsoft-authored template."
    - Note: Replace `author_username` with the actual GitHub username of the PR author (e.g., @johndoe)
 
-### Stale Pull Request Management
-
-**Recommended Approach: Automated Policy File**
-
-For reliable and consistent stale PR management, this repository should use GitHub's automated policy system via `.github/policies/resourceManagement.yml` (similar to [Azure/azure-dev](https://github.com/Azure/azure-dev/blob/main/.github/policies/resourceManagement.yml)).
-
-The automated policy should:
-- Add a `no-recent-activity` label to PRs with no activity for 7 days
-- Send a warning comment to the author when the label is added
-- Automatically close PRs after 14 days of inactivity (7 days after warning)
-- Remove the `no-recent-activity` label when new activity occurs
-
-**Manual Monitoring (Fallback)**
-
-If the automated policy is not yet implemented, monitor and manage inactive pull requests manually:
-
-1. **90-Day Inactivity Check**:
-   - If a PR has been open with no activity for more than 90 days:
-   - @ mention the **PR author** (use their actual GitHub username) with a reminder
-   - Example comment: "@author_username This PR has been inactive for over 90 days. Are you still planning to proceed with these changes? Please provide an update within 7 days, or this PR will be closed."
-   - Note: Replace `author_username` with the actual GitHub username of the PR author (e.g., @johndoe)
-
-2. **7-Day Grace Period**:
-   - After posting the 90-day inactivity reminder, wait 7 days for a response
-   - If the author does not respond within 7 days:
-   - Close the PR with a comment explaining the closure
-   - Example comment: "Closing this PR due to inactivity. The PR has been open for over 90 days with no recent updates, and there has been no response to our reminder. The PR can be reopened if work resumes."
-
 ### General PR Review Best Practices
 
 - Always be respectful and constructive in your feedback

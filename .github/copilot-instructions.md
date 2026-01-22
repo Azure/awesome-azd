@@ -123,3 +123,77 @@ The repository uses GitHub Actions:
 - Site configuration: `website/docusaurus.config.js`
 
 The build succeeds reliably and the website functions correctly when all steps are followed precisely.
+
+## Pull Request Review Guidelines
+
+When reviewing pull requests for this repository, follow these guidelines:
+
+### Changes to templates.json
+
+If the PR makes changes to `website/static/templates.json`, perform the following checks:
+
+1. **Validate Template Syntax**: Review each new template entry to ensure:
+   - All required fields are present: `title`, `description`, `preview`, `authorUrl`, `author`, `source`, `tags`, `id`
+   - The `id` field is a unique UUID
+   - The `preview` path points to an existing image file or uses the default test image
+   - The `source` URL is a valid GitHub repository URL
+   - JSON syntax is correct (proper quotes, commas, brackets)
+
+2. **Check for "new" Tag**: If a template is being added for the first time or is newly featured:
+   - Verify whether the `"new"` tag has been added to the template's `tags` array
+   - The "new" tag should be included for templates that are being newly showcased
+   - Example: `"tags": ["msft", "new"]` or `"tags": ["community", "new"]`
+
+3. **Validate All Tags**: Ensure all tags used in the template are defined in `website/src/data/tags.tsx`:
+   - Check tags in the `tags` array
+   - Check tags in the `languages` array
+   - Check tags in the `frameworks` array
+   - Check tags in the `azureServices` array
+   - Check tags in the `IaC` array
+   - If any tag is not defined in `tags.tsx`, request that the tag be added to that file first
+   - Run `npm test` from the `website/` directory to automatically validate tags against the defined list
+   
+   **Verify Correct Tag Placement by Category**:
+   - Each tag in `tags.tsx` has a `type` field that indicates its category
+   - Tags should be placed in the appropriate array based on their `type`:
+     - Tags with `type: "Language"` → should ONLY be in the `languages` array
+     - Tags with `type: "Framework"` → should ONLY be in the `frameworks` array
+     - Tags with `type: "Infrastructure as Code"` → should ONLY be in the `IaC` array
+     - Tags with `type: "Service"` AND have `azureIcon` property (Azure services) → should ONLY be in the `azureServices` array
+     - Tags with `type: "Service"` WITHOUT `azureIcon` property (non-Azure services) → should be in the `tags` array
+     - Special tags (`msft`, `community`, `new`, `popular`, `aicollection`) → should be in the `tags` array
+   - Example: `appservice` has `type: "Service"` AND `azureIcon`, so it belongs in `azureServices`, NOT in `tags`
+   - Example: `sharepoint` has `type: "Service"` but NO `azureIcon`, so it belongs in `tags`, NOT in `azureServices`
+   
+   **Check for Duplicate Tags Across Arrays**:
+   - Verify that no tag appears in multiple arrays
+   - If a tag is duplicated (e.g., `appservice` in both `tags` and `azureServices`):
+     - Request removal from the incorrect array
+     - Keep it only in the correct array based on its `type` field and presence of `azureIcon`
+   - Example: If `appservice` (has `azureIcon`) appears in both `tags` and `azureServices`, suggest removing it from `tags` and keeping it only in `azureServices`
+   - Example: If `sharepoint` (no `azureIcon`) appears in both `tags` and `azureServices`, suggest removing it from `azureServices` and keeping it only in `tags`
+
+4. **Testing Requirements Based on Template Type**:
+   
+   Template type is determined by checking if the `"msft"` tag is present in the template's `tags` array.
+   
+   **For Community Templates (tags do NOT contain "msft"):**
+   - @ mention the manual test team member **@v-xuto** in a PR comment to request testing of the template
+   - Example comment: "@v-xuto Please test this community template to ensure it works as expected."
+   
+   **For Microsoft Templates (tags contain "msft"):**
+   - @ mention the **PR author** (use their actual GitHub username) requesting they provide proof of successful testing
+   - Request either:
+     - A link to a test pipeline that validates the template
+     - Screenshots or other proof showing the template deploys successfully
+   - Example comment: "@author_username Please provide a test pipeline link or proof of success for this Microsoft-authored template."
+   - Note: Replace `author_username` with the actual GitHub username of the PR author (e.g., @johndoe)
+
+### General PR Review Best Practices
+
+- Always be respectful and constructive in your feedback
+- Provide specific examples when requesting changes
+- Acknowledge good work and improvements made by contributors
+- Run the test suite (`npm test`) to catch issues automatically
+- Check that CI/CD workflows pass successfully
+- Verify that documentation is updated if the changes affect user-facing features

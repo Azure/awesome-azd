@@ -77,9 +77,9 @@ The template gallery is driven by:
 - `website/src/components/gallery/` - Gallery components
 - `website/static/templates/images/` - Template preview images
 
-### AI Gallery Template Requirements
+### Template Requirements
 
-Templates tagged with `aicollection` must meet Microsoft-curated AI collection standards:
+Templates must meet these standards to be included in the collection:
 
 **README Requirements:**
 - Standard structure with project name, use case, features, and architecture diagram
@@ -88,8 +88,8 @@ Templates tagged with `aicollection` must meet Microsoft-curated AI collection s
 - Clear feature list highlighting AI capabilities
 - CI/CD pipeline setup guidance using azd commands
 
-**Security Best Practices:**
-- Use Managed Identity (keyless authentication) instead of API keys
+**Security Recommended Practices:**
+- Use a keyless authentication (Managed Identity preferred or Key Vault) instead of API keys
 - Implement Role-Based Access Control (RBAC) for resource access
 - Enable data encryption at rest and in transit
 - Use Azure Key Vault for secrets management

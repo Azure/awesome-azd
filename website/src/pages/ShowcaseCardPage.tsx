@@ -446,6 +446,9 @@ export default function ShowcaseCardPage({
             gap: "4px",
             flex: 1,
           }}
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
         >
           <Text size={400}>Viewing</Text>
           {totalTemplates === 0 ? (

@@ -164,10 +164,10 @@ The repository uses GitHub Actions:
 ## Contributing Guidelines
 
 When working on contributions:
-- Review the [Contributor Guide](website/docs/contribute.md) for template submission requirements
-- Follow the [PR template](.github/PULL_REQUEST_TEMPLATE.md) when creating pull requests
-- Check [SECURITY.md](SECURITY.md) for security vulnerability reporting procedures
-- Use appropriate [issue templates](.github/ISSUE_TEMPLATE/) for bugs, features, or template requests
+- Review the [Contributor Guide](../website/docs/contribute.md) for template submission requirements
+- Follow the [PR template](./PULL_REQUEST_TEMPLATE.md) when creating pull requests
+- Check [SECURITY.md](../SECURITY.md) for security vulnerability reporting procedures
+- Use appropriate [issue templates](./ISSUE_TEMPLATE/) for bugs, features, or template requests
 
 ## Specialized Copilot Prompts
 

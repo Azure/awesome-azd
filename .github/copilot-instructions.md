@@ -171,8 +171,8 @@ When working on contributions:
 
 ## Specialized Copilot Prompts
 
-The `.github/prompts/` directory contains specialized prompts for specific tasks:
-- `awesome-azd-template-pr.md` - Automated template submission processor for handling new azd template contributions
+The [`prompts/` directory](./prompts/) contains specialized prompts for specific tasks:
+- [`awesome-azd-template-pr.md`](./prompts/awesome-azd-template-pr.md) - Automated template submission processor for handling new azd template contributions
 
 ## External Resources
 

@@ -77,6 +77,45 @@ The template gallery is driven by:
 - `website/src/components/gallery/` - Gallery components
 - `website/static/templates/images/` - Template preview images
 
+### Template Requirements
+
+Templates must meet these standards to be included in the collection:
+
+**README Requirements:**
+- Standard structure with project name, use case, features, and architecture diagram
+- Step-by-step deployment and customization instructions
+- Getting started section with quick setup options (GitHub Codespaces, Dev Containers, local)
+- Clear feature list highlighting AI capabilities
+- CI/CD pipeline setup guidance using azd commands
+
+**Security Recommended Practices:**
+- Use keyless authentication (Managed Identity preferred or Key Vault) instead of API keys
+- Implement Role-Based Access Control (RBAC) for resource access
+- Enable data encryption at rest and in transit
+- Use Azure Key Vault for secrets management
+- Configure network isolation with private endpoints where applicable
+- Include monitoring with Azure Monitor and Application Insights
+- Add Responsible AI governance controls (content safety filters, etc.)
+- Include SECURITY.md file with security reporting procedures
+
+**azure.yaml Metadata Requirements:**
+- **name** field (required): Unique app/template name using lowercase, numbers, dashes
+- **metadata.template** field (recommended): Template identifier with version (e.g., `app-name@1.0.0`)
+- List all Azure services and dependencies
+- Include infrastructure as code (Bicep or Terraform) configuration
+
+Example azure.yaml structure:
+```yaml
+name: my-ai-app
+metadata:
+  template: my-ai-app@1.0.0
+services:
+  web:
+    project: ./src/web
+    language: python
+    host: appservice
+```
+
 ## Contributing Workflow
 
 When making changes:
@@ -122,6 +161,28 @@ The repository uses GitHub Actions:
 - Main pages: `website/src/pages/`
 - Site configuration: `website/docusaurus.config.js`
 
+## Contributing Guidelines
+
+When working on contributions:
+- Review the [Contributor Guide](../website/docs/contribute.md) for template submission requirements
+- Follow the [PR template](./PULL_REQUEST_TEMPLATE.md) when creating pull requests
+- Check [SECURITY.md](../SECURITY.md) for security vulnerability reporting procedures
+- Use appropriate [issue templates](./ISSUE_TEMPLATE/) for bugs, features, or template requests
+
+## Specialized Copilot Prompts
+
+The [`prompts/` directory](./prompts/) contains specialized prompts for specific tasks:
+- [`awesome-azd-template-pr.md`](./prompts/awesome-azd-template-pr.md) - Automated template submission processor for handling new azd template contributions
+
+## External Resources
+
+Key Azure Developer CLI (azd) documentation:
+- [azd Overview](https://learn.microsoft.com/azure/developer/azure-developer-cli/overview)
+- [azd Quickstart](https://learn.microsoft.com/azure/developer/azure-developer-cli/get-started)
+- [azd Reference](https://learn.microsoft.com/azure/developer/azure-developer-cli/reference)
+- [Making projects azd compatible](https://learn.microsoft.com/azure/developer/azure-developer-cli/make-azd-compatible)
+
+The build succeeds reliably and the website functions correctly when all steps are followed precisely.
 The build succeeds reliably and the website functions correctly when all steps are followed precisely.
 
 ## Pull Request Review Guidelines

@@ -89,7 +89,7 @@ Templates must meet these standards to be included in the collection:
 - CI/CD pipeline setup guidance using azd commands
 
 **Security Recommended Practices:**
-- Use a keyless authentication (Managed Identity preferred or Key Vault) instead of API keys
+- Use keyless authentication (Managed Identity preferred or Key Vault) instead of API keys
 - Implement Role-Based Access Control (RBAC) for resource access
 - Enable data encryption at rest and in transit
 - Use Azure Key Vault for secrets management

@@ -6665,5 +6665,31 @@
       "virtualmachine"
     ],
     "id": "1e9c5f3d-7b4a-4e2c-8f6d-9a3c7e5b2f4d"
+  },
+  {
+    "title": "Quarkus Todo API Template for Azure Container Apps",
+    "description": "This template allows you to deploy a Todo API built with Quarkus to Azure Container Apps, using Azure Database for PostgreSQL",
+    "preview": "./templates/images/quarkus-postgres-aca-architecture.png",
+    "authorUrl": "https://github.com/EstopaceMA",
+    "author": "Mark Anthony Estopace",
+    "source": "https://github.com/EstopaceMA/quarkus-postgres-aca",
+    "tags": [
+      "community",
+      "new"
+    ],
+    "languages": [
+      "java"
+    ],
+    "frameworks": [
+      "quarkus"
+    ],
+    "azureServices": [
+      "aca",
+      "azuredb-postgreSQL"
+    ],
+    "IaC": [
+      "terraform"
+    ],
+    "id": "8c0f50a9-21fd-4c11-91be-bb37aca93be4"
   }
 ]

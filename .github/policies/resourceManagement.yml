@@ -352,5 +352,14 @@ configuration:
       - assignTo:
           author: True
       description: 
+    - if:
+      - payloadType: Pull_Request
+      - isAction:
+          action: Opened
+      then:
+      - assignTo:
+          users:
+          - copilot
+      description: Auto-assign GitHub Copilot to all pull requests
 onFailure: 
 onSuccess: 

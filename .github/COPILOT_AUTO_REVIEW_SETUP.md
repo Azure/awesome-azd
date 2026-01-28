@@ -13,8 +13,30 @@ After investigating the repository configuration:
    - GitHub Copilot can be assigned to **Issues** (to work on them and create PRs)
    - GitHub Copilot **code review** on PRs is NOT configured through GitOps policies
    - There is no GitHub user account named "copilot" that can be assigned to PRs
+   - Attempting to add `assignTo: users: [copilot]` in GitOps policy will fail because:
+     * The username "copilot" does not exist as a GitHub user
+     * GitOps policy cannot trigger Copilot code review functionality
 
 3. **Correct Configuration Method**: Automatic Copilot code review must be configured through **GitHub Repository Rulesets**, not through the GitOps policy file.
+
+## ❌ What Does NOT Work
+
+**Do NOT modify `.github/policies/resourceManagement.yml` to add:**
+```yaml
+- if:
+  - payloadType: Pull_Request
+  - isAction:
+      action: Opened
+  then:
+  - assignTo:
+      users:
+      - copilot
+```
+
+**Why this doesn't work:**
+- There is no GitHub user named "copilot"
+- GitOps policies manage issue/PR automation, not Copilot code review
+- This approach was tested and does not enable Copilot code review
 
 ## Solution: Enable Automatic Copilot Code Review
 

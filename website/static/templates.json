@@ -6723,7 +6723,7 @@
   },
   {
     "title": "Azure App Service + Foundry Chat Starter",
-    "description": "A one-click Azure Developer CLI (`azd`) template that deploys Azure App Service with Foundry, complete with VNet integration, managed identity, Application Insights, and a Blazor Server chat application for validation. Sample application code is included in this project. You can use or modify this app code or you can rip it out and include your own.",
+    "description": "One-click azd template that deploys a Blazor Server chat app on Azure App Service integrated with Azure Foundry, VNet, managed identity, and Application Insights.",
     "preview": "./templates/images/app-service-foundry.png",
     "authorUrl": "https://github.com/seligj95",
     "author": "Jordan Selig",

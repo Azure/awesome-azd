@@ -6737,7 +6737,7 @@
       "dotnetCsharp"
     ],
     "frameworks": [
-      "fastapi"
+      "blazor"
     ],
     "azureServices": [
       "appservice",

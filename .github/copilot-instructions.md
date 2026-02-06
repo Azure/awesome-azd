@@ -205,6 +205,14 @@ If the PR makes changes to `website/static/templates.json`, perform the followin
    - The "new" tag should be included for templates that are being newly showcased
    - Example: `"tags": ["msft", "new"]` or `"tags": ["community", "new"]`
 
+2a. **Verify "aicollection" Tag**: If a template includes the `"aicollection"` tag:
+   - This tag is reserved for templates that are part of the Microsoft-curated AI collection
+   - Verify the template is listed at https://azure.github.io/ai-app-templates/
+   - If the template is NOT found in the AI collection website:
+     - Request the user to remove the `"aicollection"` tag from the template's `tags` array
+     - Example comment: "The `aicollection` tag is reserved for templates included in the Microsoft-curated AI collection at https://azure.github.io/ai-app-templates/. Since this template is not listed there, please remove the `aicollection` tag."
+   - If unable to verify due to site access issues, note this limitation in your review
+
 3. **Validate All Tags**: Ensure all tags used in the template are defined in `website/src/data/tags.tsx`:
    - Check tags in the `tags` array
    - Check tags in the `languages` array

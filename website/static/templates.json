@@ -6691,5 +6691,34 @@
       "terraform"
     ],
     "id": "8c0f50a9-21fd-4c11-91be-bb37aca93be4"
+  },
+  {
+    "title": "MCP Server with OAuth 2.1 and On-Behalf-Of Flow",
+    "description": "An Azure Developer CLI (azd) ready template for deploying an MCP (Model Context Protocol) server with OAuth 2.1 authentication and On-Behalf-Of (OBO) flow to Azure Container Apps. Features full authentication with Azure AD (Entra ID), On-Behalf-Of flow for Microsoft Graph API, RFC 9728 compliance, secretless deployment using Federated Identity Credentials, and serverless auto-scaling deployment.",
+    "preview": "./templates/images/mcp-obo-aca.png",
+    "authorUrl": "https://github.com/jsburckhardt",
+    "author": "jsburckhardt",
+    "source": "https://github.com/jsburckhardt/mcp-obo-aca",
+    "tags": [
+      "community",
+      "new",
+      "mcp"
+    ],
+    "languages": [
+      "python"
+    ],
+    "frameworks": [
+      "fastapi"
+    ],
+    "azureServices": [
+      "aca",
+      "keyvault",
+      "loganalytics",
+      "managedidentity"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "143a572d-ec0d-4021-99b2-ee76733489c1"
   }
 ]

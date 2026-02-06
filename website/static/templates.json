@@ -6741,7 +6741,7 @@
     ],
     "azureServices": [
       "appservice",
-      "foundry",
+      "aifoundry",
       "loganalytics",
       "managedidentity"
     ],

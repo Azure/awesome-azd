@@ -250,6 +250,24 @@ If the PR makes changes to `website/static/templates.json`, perform the followin
    - Example comment: "@author_username Please provide a test pipeline link or proof of success for this Microsoft-authored template."
    - Note: Replace `author_username` with the actual GitHub username of the PR author (e.g., @johndoe)
 
+5. **Validate "aicollection" Tag Usage**:
+   
+   If a template includes the `"aicollection"` tag in its `tags` array, verify that the template is actually listed in the AI App Templates gallery at https://azure.github.io/ai-app-templates/.
+   
+   **Validation Steps**:
+   - Visit https://azure.github.io/ai-app-templates/ and search for the template
+   - Check if the template's repository URL or template name matches any entry in the AI App Templates gallery
+   - The template should be findable either by browsing the gallery or using the search functionality
+   
+   **If Template is NOT Found in AI App Templates**:
+   - Request that the user remove the `"aicollection"` tag from the template entry
+   - Example comment: "The `aicollection` tag should only be used for templates that are featured in the AI App Templates gallery at https://azure.github.io/ai-app-templates/. Since this template is not listed there, please remove the `aicollection` tag from the `tags` array."
+   
+   **If Template IS Found in AI App Templates**:
+   - No action needed; the `"aicollection"` tag is appropriate
+   
+   **Note**: The `"aicollection"` tag is specifically for templates that are part of the curated AI App Templates collection. Templates with AI capabilities that are not in that collection should use other appropriate tags (e.g., `"ai"`, `"openai"`, `"azureopenai"`) instead.
+
 ### General PR Review Best Practices
 
 - Always be respectful and constructive in your feedback

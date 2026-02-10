@@ -6823,9 +6823,6 @@
       "bicep"
     ],
     "id": "eea2eb42-9e90-409f-85a4-007cefb0eac6"
-  }
-]
-
   },
   {
     "title": "AKS KEDA Prometheus Scaler Demo",

@@ -6802,5 +6802,33 @@
       "bicep"
     ],
     "id": "eea2eb42-9e90-409f-85a4-007cefb0eac6"
+  },
+  {
+    "title": "Azure App Service + Foundry Chat Starter",
+    "description": "One-click azd template that deploys a Blazor Server chat app on Azure App Service integrated with Azure Foundry, VNet, managed identity, and Application Insights.",
+    "preview": "./templates/images/app-service-foundry.png",
+    "authorUrl": "https://github.com/seligj95",
+    "author": "Jordan Selig",
+    "source": "https://github.com/seligj95/app-service-foundry-chat",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "dotnetCsharp"
+    ],
+    "frameworks": [
+      "blazor"
+    ],
+    "azureServices": [
+      "appservice",
+      "aifoundry",
+      "loganalytics",
+      "managedidentity"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "185a572d-ec0d-4021-99b2-ee76733489d2"
   }
 ]

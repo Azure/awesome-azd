@@ -6667,6 +6667,31 @@
     "id": "1e9c5f3d-7b4a-4e2c-8f6d-9a3c7e5b2f4d"
   },
   {
+    "title": "Azure Container Apps dynamic sessions with a custom container and Microsoft Agent Framework",
+    "description": "This project demonstrates how to use Azure Container Apps dynamic sessions with a custom container to create an AI-powered agent using Microsoft Agent Framework that can execute Python code securely with pre-installed libraries",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/jeffwmartinez",
+    "author": "Jeff Martinez",
+    "source": "https://github.com/Azure-Samples/dynamic-sessions-custom-container",
+    "tags": [
+      "msft",
+      "ai",
+      "new"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "managedidentity",
+      "openai",
+      "aca"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "1153c2d5-acfd-4c68-bc9b-25865d5ac2a9"
+  },
+  {
     "title": "Quarkus Todo API Template for Azure Container Apps",
     "description": "This template allows you to deploy a Todo API built with Quarkus to Azure Container Apps, using Azure Database for PostgreSQL",
     "preview": "./templates/images/quarkus-postgres-aca-architecture.png",

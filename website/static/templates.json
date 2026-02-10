@@ -3360,6 +3360,22 @@
     "id": "af305758-e11a-44fd-a666-8500d0c3f4af"
   },
   {
+    "title": "Azure Cosmos DB for NoSQL Quickstart - Rust",
+    "description": "A quick application to get started using Azure Cosmos DB for NoSQL with the Azure SDK for Rust.",
+    "preview": "./templates/images/cosmos-db-nosql-rust-quickstart.png",
+    "website": "https://learn.microsoft.com/azure/cosmos-db/nosql/quickstart-rust",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-nosql-rust-quickstart",
+    "tags": [
+      "cosmosdb",
+      "rust",
+      "managedidentity",
+      "bicep",
+      "msft",
+      "new"
+    ]
+  },
+  {
     "title": "Azure Functions C# HTTP Trigger using Azure Developer CLI",
     "description": "This repository contains an Azure Functions HTTP trigger quickstart written in C# and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
     "preview": "./templates/images/test.png",

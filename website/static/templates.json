@@ -6210,8 +6210,7 @@
     "tags": [
       "mcp",
       "msft",
-      "ai",
-      "new"
+      "ai"
     ],
     "azureServices": [
       "aca",
@@ -6232,7 +6231,6 @@
     "tags": [
       "msft",
       "ai",
-      "new",
       "mcp"
     ],
     "languages": [
@@ -6270,7 +6268,6 @@
     "tags": [
       "msft",
       "ai",
-      "new",
       "mcp"
     ],
     "languages": [
@@ -6301,8 +6298,7 @@
     "tags": [
       "mcp",
       "msft",
-      "ai",
-      "new"
+      "ai"
     ],
     "azureServices": [
       "aca",
@@ -6321,8 +6317,7 @@
     "author": "Ronald Bosma",
     "source": "https://github.com/ronaldbosma/protect-apim-with-oauth",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "languages": [
       "dotnetCsharp"
@@ -6343,8 +6338,7 @@
     "author": "Ronald Bosma",
     "source": "https://github.com/ronaldbosma/call-apim-with-managed-identity",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "languages": [
       "dotnetCsharp"
@@ -6369,8 +6363,7 @@
     "source": "https://github.com/Azure-Samples/image-search-aisearch",
     "tags": [
       "ai",
-      "msft",
-      "new"
+      "msft"
     ],
     "languages": [
       "python",
@@ -6396,8 +6389,7 @@
     "author": "Ronald Bosma",
     "source": "https://github.com/ronaldbosma/call-apim-backend-with-oauth",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "languages": [
       "dotnetCsharp"
@@ -6419,8 +6411,7 @@
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd-timer",
     "tags": [
-      "msft",
-      "new"
+      "msft"
     ],
     "languages": [
       "dotnetCsharp"
@@ -6444,8 +6435,7 @@
     "author": "Mark Anthony Estopace",
     "source": "https://github.com/EstopaceMA/fastapi-postgres-aca",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "languages": [
       "python"
@@ -6474,8 +6464,7 @@
     "tags": [
       "msft",
       "ai",
-      "mcp",
-      "new"
+      "mcp"
     ],
     "languages": [
       "java"
@@ -6496,8 +6485,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-storaccnt",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "azurestorage",
@@ -6513,8 +6501,7 @@
     "author": "Karel De Winter",
     "source": "https://github.com/kareldewinter/tdd-azd-monitor",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "monitor",
@@ -6531,8 +6518,7 @@
     "author": "Ronald Bosma",
     "source": "https://github.com/ronaldbosma/call-apim-with-managed-identity",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "apim",
@@ -6550,8 +6536,7 @@
     "author": "Dave Rendon",
     "source": "https://github.com/daverendon/azd-multiagent",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "azureai",
@@ -6569,8 +6554,7 @@
     "source": "https://github.com/koenraadhaedens/azd-firewall-send-syslog-messages",
     "preview": "https://raw.githubusercontent.com/koenraadhaedens/azd-firewall-send-syslog-messages/main/media/fwsysdiagram.png",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "sentinel",
@@ -6586,8 +6570,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/demo-mcp-productcatalog",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "azureai",
@@ -6604,8 +6587,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-betternotes-ai",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "azureai",
@@ -6622,8 +6604,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-vmbackup",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "backup",
@@ -6640,8 +6621,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-asrdemo",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "recoveryvault",
@@ -6657,8 +6637,7 @@
     "author": "Joerg Menne",
     "source": "https://github.com/jmenne/azd-routingdemo",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "vnets",

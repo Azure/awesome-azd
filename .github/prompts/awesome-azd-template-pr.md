@@ -90,6 +90,13 @@ When given a template repository URL, analyze the repository to determine:
 - Dapr configuration → add `dapr` tag
 - Kubernetes manifests → add `kubernetes` tag
 
+**Important Note on "aicollection" Tag:**
+
+- The `aicollection` tag is **reserved** for templates included in the Microsoft-curated AI collection
+- **DO NOT** automatically add the `aicollection` tag during automated processing
+- This tag should only be added if the template is confirmed to be listed at https://azure.github.io/ai-app-templates/
+- If a user requests adding this tag, verify the template exists in the AI collection first
+
 **Architecture Image Detection:**
 
 - Check README.md for embedded images (look for architecture diagrams, screenshots)

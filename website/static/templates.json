@@ -6667,6 +6667,167 @@
     "id": "1e9c5f3d-7b4a-4e2c-8f6d-9a3c7e5b2f4d"
   },
   {
+    "title": "Azure Container Apps dynamic sessions with a custom container and Microsoft Agent Framework",
+    "description": "This project demonstrates how to use Azure Container Apps dynamic sessions with a custom container to create an AI-powered agent using Microsoft Agent Framework that can execute Python code securely with pre-installed libraries",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/jeffwmartinez",
+    "author": "Jeff Martinez",
+    "source": "https://github.com/Azure-Samples/dynamic-sessions-custom-container",
+    "tags": [
+      "msft",
+      "ai",
+      "new"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "managedidentity",
+      "openai",
+      "aca"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "1153c2d5-acfd-4c68-bc9b-25865d5ac2a9"
+  },
+  {
+    "title": "Quarkus Todo API Template for Azure Container Apps",
+    "description": "This template allows you to deploy a Todo API built with Quarkus to Azure Container Apps, using Azure Database for PostgreSQL",
+    "preview": "./templates/images/quarkus-postgres-aca-architecture.png",
+    "authorUrl": "https://github.com/EstopaceMA",
+    "author": "Mark Anthony Estopace",
+    "source": "https://github.com/EstopaceMA/quarkus-postgres-aca",
+    "tags": [
+      "community",
+      "new"
+    ],
+    "languages": [
+      "java"
+    ],
+    "frameworks": [
+      "quarkus"
+    ],
+    "azureServices": [
+      "aca",
+      "azuredb-postgreSQL"
+    ],
+    "IaC": [
+      "terraform"
+    ],
+    "id": "8c0f50a9-21fd-4c11-91be-bb37aca93be4"
+  },
+  {
+    "title": "MCP Server with OAuth 2.1 and On-Behalf-Of Flow",
+    "description": "An Azure Developer CLI (azd) ready template for deploying an MCP (Model Context Protocol) server with OAuth 2.1 authentication and On-Behalf-Of (OBO) flow to Azure Container Apps. Features full authentication with Azure AD (Entra ID), On-Behalf-Of flow for Microsoft Graph API, RFC 9728 compliance, secretless deployment using Federated Identity Credentials, and serverless auto-scaling deployment.",
+    "preview": "./templates/images/mcp-obo-aca.png",
+    "authorUrl": "https://github.com/jsburckhardt",
+    "author": "jsburckhardt",
+    "source": "https://github.com/jsburckhardt/mcp-obo-aca",
+    "tags": [
+      "community",
+      "new",
+      "mcp"
+    ],
+    "languages": [
+      "python"
+    ],
+    "frameworks": [
+      "fastapi"
+    ],
+    "azureServices": [
+      "aca",
+      "keyvault",
+      "loganalytics",
+      "managedidentity"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "143a572d-ec0d-4021-99b2-ee76733489c1"
+  },
+  {
+    "title": "Azure Functions TypeScript Event Hub Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions Event Hub trigger quickstart written in TypeScript and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-typescript-azd-eventhub",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "typescript"
+    ],
+    "azureServices": [
+      "functions",
+      "eventhub",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "e6c539bb-959f-4f44-b699-e7f1cfa40e88"
+  },
+  {
+    "title": "Azure Functions Python Event Hub Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions Event Hub trigger quickstart written in Python and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-python-azd-eventhub",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "functions",
+      "eventhub",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "e6ccf658-a10f-4078-be91-9cc167c83e22"
+  },
+  {
+    "title": "Azure Functions .NET Event Hub Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions Event Hub trigger quickstart written in .NET and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd-eventhub",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "dotnetCsharp"
+    ],
+    "azureServices": [
+      "functions",
+      "eventhub",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "eea2eb42-9e90-409f-85a4-007cefb0eac6"
+  }
+]
+
+  },
+  {
     "title": "AKS KEDA Prometheus Scaler Demo",
     "description": "A sample multi app deployment to get started with KEDA scale rules in AKS. Save on costs testing scale locally or in AKS with public IP nginx ingress controller or private IP via VNET + load balancer. Options available to add Azure Container Registry, Azure Managed Grafana and the AKS App Routing Addon",
     "preview": "./templates/images/aks-kedaprometheus-demo.png",

@@ -6839,7 +6839,8 @@
     "author": "Ronald Bosma",
     "source": "https://github.com/ronaldbosma/track-availability-in-app-insights",
     "tags": [
-      "community"
+      "community",
+      "new"
     ],
     "languages": [
       "dotnetCsharp"

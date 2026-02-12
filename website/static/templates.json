@@ -6846,9 +6846,9 @@
       "dotnetCsharp"
     ],
     "azureServices": [
-      "appinsights", 
-      "functions", 
-      "logicapps", 
+      "appinsights",
+      "functions",
+      "logicapps",
       "monitor"
     ],
     "IaC": [

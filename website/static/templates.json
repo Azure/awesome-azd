@@ -6847,7 +6847,6 @@
     ],
     "azureServices": [
       "appinsights", 
-      "dotnet", 
       "functions", 
       "logicapps", 
       "monitor"

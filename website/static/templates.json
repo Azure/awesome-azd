@@ -6331,31 +6331,6 @@
     "id": "66cdab60-61e3-498a-9103-a9f316e58a6f"
   },
   {
-    "title": "Call OAuth-Protected APIs on API Management with Managed Identity",
-    "description": "Demonstrates OAuth-protected API calls using managed identities. Shows Azure Functions, Logic Apps and API Management calling APIs without secrets, plus CI/CD pipelines using federated credentials to call OAuth-protected APIs from integration tests.",
-    "preview": "./templates/images/call-apim-with-managed-identity.png",
-    "authorUrl": "https://github.com/ronaldbosma",
-    "author": "Ronald Bosma",
-    "source": "https://github.com/ronaldbosma/call-apim-with-managed-identity",
-    "tags": [
-      "community"
-    ],
-    "languages": [
-      "dotnetCsharp"
-    ],
-    "azureServices": [
-      "apim",
-      "functions",
-      "logicapps",
-      "managedidentity",
-      "serviceprincipal"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "4f2b8805-14fb-49de-acc5-fe9e2e8ae295"
-  },
-  {
     "title": "Semantic image search",
     "description": "A sample full-stack app for searching images using Azure AI Vision multi-modal embeddings API and Azure AI Search integrated vectorization.",
     "authorUrl": "https://github.com/Azure-Samples",

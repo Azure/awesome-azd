@@ -6805,5 +6805,36 @@
       "bicep"
     ],
     "id": "185a572d-ec0d-4021-99b2-ee76733489d2"
+  },
+  {
+    "title": "AKS KEDA Prometheus Scaler Demo",
+    "description": "A sample multi app deployment to get started with KEDA scale rules in AKS. Save on costs testing scale locally or in AKS with public IP nginx ingress controller or private IP via VNET + load balancer. Options available to add Azure Container Registry, Azure Managed Grafana and the AKS App Routing Addon",
+    "preview": "./templates/images/aks-kedaprometheus-demo.png",
+    "authorUrl": "https://github.com/degero",
+    "author": "Chad Paynter",
+    "source": "https://github.com/degero-examples/azure-akskedaprometheus-demo",
+    "tags": [
+      "community",
+      "new",
+      "kubernetes",
+      "helm",
+      "prometheus"
+    ],
+    "azureServices": [
+      "aks",
+      "managedidentity",
+      "grafana",
+      "loadbalancer",
+      "azurestorage",
+      "vnets",
+      "monitor",
+      "loganalytics"
+    ],
+    "languages": [
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "f4c8a9b2-7d3e-4f6a-9c1b-8e2d5a3f6c7b"
   }
 ]

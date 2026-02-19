@@ -6700,12 +6700,11 @@
     "author": "Mike Swantek",
     "source": "https://github.com/microsoft/Data-and-Agent-Governance-and-Security-Accelerator",
     "tags": [
-      "aigovernance",
-      "datagovernance",
-      "security",
-      "foundry",
-      "purview",
-      "dspmforai"
+      "new",
+      "msft",
+      "platformengineering",
+      "governance",
+      "datasecurity"
     ],
     "languages": [
       "PowerShell"

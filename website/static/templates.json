@@ -6702,20 +6702,15 @@
     "tags": [
       "new",
       "msft",
-      "platformengineering",
-      "governance",
-      "datasecurity"
+      "powershell"
     ],
-    "languages": [
-      "PowerShell"
-    ],
-    "Iac": [
+    "languages": [],
+    "IaC": [
       "bicep"
     ],
     "azureServices":[
       "purview",
-      "foundry",
-      "defender",
+      "aifoundry",
       "loganalytics"
     ],
     "id": "4f2b8e6a-3d9c-4a1f-b7e5-2c8d6f4a9e1b"

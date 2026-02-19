@@ -6694,6 +6694,7 @@
     ],
     "id": "4f2b8e6a-3d9c-4a1f-b7e5-2c8d6f4a9e1b"
   },
+  {
     "title": "MCP Server with OAuth 2.1 and On-Behalf-Of Flow",
     "description": "An Azure Developer CLI (azd) ready template for deploying an MCP (Model Context Protocol) server with OAuth 2.1 authentication and On-Behalf-Of (OBO) flow to Azure Container Apps. Features full authentication with Azure AD (Entra ID), On-Behalf-Of flow for Microsoft Graph API, RFC 9728 compliance, secretless deployment using Federated Identity Credentials, and serverless auto-scaling deployment.",
     "preview": "./templates/images/mcp-obo-aca.png",

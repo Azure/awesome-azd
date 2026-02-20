@@ -6830,6 +6830,32 @@
     "id": "185a572d-ec0d-4021-99b2-ee76733489d2"
   },
   {
+    "title": "Unified AI Gateway Design Pattern with Azure API Management",
+    "description": "Demonstrates the Unified AI Gateway design pattern using Azure API Management to route requests to multiple AI services (Microsoft Foundry and Google Gemini) through a single endpoint with authentication, load balancing, and token limiting.",
+    "preview": "./templates/images/apim-unified-ai-gateway.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure API Management Team",
+    "source": "https://github.com/Azure-Samples/APIM-Unified-AI-Gateway-Sample",
+    "tags": [
+      "msft",
+      "ai",
+      "enterprisepatterns",
+      "new"
+    ],
+    "azureServices": [
+      "apim",
+      "openai",
+      "aifoundry",
+      "appinsights",
+      "keyvault",
+      "managedidentity"
+    ],
+    "IaC": [
+      "terraform"
+    ],
+    "id": "3a3b32d5-27de-47ff-8e56-b4b1b520634c"
+  },
+  {
     "title": "AKS KEDA Prometheus Scaler Demo",
     "description": "A sample multi app deployment to get started with KEDA scale rules in AKS. Save on costs testing scale locally or in AKS with public IP nginx ingress controller or private IP via VNET + load balancer. Options available to add Azure Container Registry, Azure Managed Grafana and the AKS App Routing Addon",
     "preview": "./templates/images/aks-kedaprometheus-demo.png",

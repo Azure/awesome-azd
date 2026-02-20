@@ -6672,6 +6672,29 @@
     "id": "8c0f50a9-21fd-4c11-91be-bb37aca93be4"
   },
   {
+    "title": "Data and Agent Governance and Security",
+    "description": "Automates governance deployment for Microsoft Foundry, M365 Copilot and Fabric—configures Purview DSPM, sensitivity labels, DLP policies, Data Map scans, Defender for AI, and audit logging from a single spec file.",
+    "preview": "./templates/images/architectureDAGSA.png",
+    "authorUrl": "https://github.com/microsoft/Data-and-Agent-Governance-and-Security-Accelerator",
+    "author": "Mike Swantek",
+    "source": "https://github.com/microsoft/Data-and-Agent-Governance-and-Security-Accelerator",
+    "tags": [
+      "new",
+      "msft",
+      "powershell"
+    ],
+    "languages": [],
+    "IaC": [
+      "bicep"
+    ],
+    "azureServices":[
+      "purview",
+      "aifoundry",
+      "loganalytics"
+    ],
+    "id": "4f2b8e6a-3d9c-4a1f-b7e5-2c8d6f4a9e1b"
+  },
+  {
     "title": "MCP Server with OAuth 2.1 and On-Behalf-Of Flow",
     "description": "An Azure Developer CLI (azd) ready template for deploying an MCP (Model Context Protocol) server with OAuth 2.1 authentication and On-Behalf-Of (OBO) flow to Azure Container Apps. Features full authentication with Azure AD (Entra ID), On-Behalf-Of flow for Microsoft Graph API, RFC 9728 compliance, secretless deployment using Federated Identity Credentials, and serverless auto-scaling deployment.",
     "preview": "./templates/images/mcp-obo-aca.png",

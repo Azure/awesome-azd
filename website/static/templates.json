@@ -6687,7 +6687,7 @@
     "IaC": [
       "bicep"
     ],
-    "azureServices":[
+    "azureServices": [
       "purview",
       "aifoundry",
       "loganalytics"
@@ -6879,11 +6879,36 @@
       "monitor",
       "loganalytics"
     ],
-    "languages": [
-    ],
+    "languages": [],
     "IaC": [
       "bicep"
     ],
     "id": "f4c8a9b2-7d3e-4f6a-9c1b-8e2d5a3f6c7b"
+  },
+  {
+    "title": "Azure Cosmos DB MCP Toolkit",
+    "description": "An MCP Toolkit enabling agents and agentic apps to work with Azure Cosmos DB.",
+    "preview": "./templates/images/mcp-kit-aca-cosmos.png",
+    "authorUrl": "https://github.com/AzureCosmosDB",
+    "author": "Azure Cosmos DB",
+    "source": "https://github.com/AzureCosmosDB/MCPToolKit",
+    "tags": [
+      "community",
+      "mcp",
+      "new"
+    ],
+    "azureServices": [
+      "aca",
+      "aifoundry",
+      "cosmosdb",
+      "serviceprincipal"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "d9663d15-fd8f-4e74-8200-6221f63c3ce9",
+    "languages": [
+      "dotnetCsharp"
+    ]
   }
 ]

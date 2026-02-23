@@ -6887,7 +6887,7 @@
   },
   {
     "title": "Azure Cosmos DB MCP Toolkit",
-    "description": "An MCP ToolKit enabling agents and agentic apps to work with Azure Cosmos DB.",
+    "description": "An MCP Toolkit enabling agents and agentic apps to work with Azure Cosmos DB.",
     "preview": "./templates/images/mcp-kit-aca-cosmos.png",
     "authorUrl": "https://github.com/AzureCosmosDB",
     "author": "Azure Cosmos DB",

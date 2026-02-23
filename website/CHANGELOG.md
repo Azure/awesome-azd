@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## 0.7.0 (2025-12-03)
+
+### Other changes
+
+- [[684]](https://github.com/Azure/awesome-azd/pull/684) Refactor templates.json metadata fields.
+
+## 0.6.0 (2025-07-30)
+
 ### Features Added
 
 - [[631]](https://github.com/Azure/awesome-azd/pull/631) Add pagination support for template gallery with 248+ templates.

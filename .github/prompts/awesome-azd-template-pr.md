@@ -90,6 +90,13 @@ When given a template repository URL, analyze the repository to determine:
 - Dapr configuration → add `dapr` tag
 - Kubernetes manifests → add `kubernetes` tag
 
+**Important Note on "aicollection" Tag:**
+
+- The `aicollection` tag is **reserved** for templates included in the Microsoft-curated AI collection
+- **DO NOT** automatically add the `aicollection` tag during automated processing
+- This tag should only be added if the template is confirmed to be listed at https://azure.github.io/ai-app-templates/
+- If a user requests adding this tag, verify the template exists in the AI collection first
+
 **Architecture Image Detection:**
 
 - Check README.md for embedded images (look for architecture diagrams, screenshots)
@@ -125,19 +132,25 @@ Generate a JSON entry with this structure:
   "author": "[Author name from repository or provided]",
   "source": "[Repository URL]",
   "tags": [
-    "[Infrastructure tag: bicep/terraform]",
     "[Author type: msft/community]",
     "new",
-    "[All detected language tags]",
-    "[All detected framework tags]",
-    "[All detected service tags]",
-    "[All detected pattern tags]"
-  ],
-  "azureServices": [
-    "[All detected Azure services]"
+    "popular",
+    "[Services like mongodb, kubernetes]",
+    "[Tools like dapr, helm, aspire]",
+    "[Topics like ai, enterprisepatterns, datascience]",
+    "[Other tags]"
   ],
   "languages": [
     "[All detected programming languages]"
+  ],
+  "frameworks": [
+    "[All detected frameworks]"
+  ],
+  "azureServices": [
+    "[All detected Azure services in tags.tsx]"
+  ],
+  "IaC": [
+    "[Infrastructure as Code: bicep or terraform]"
   ],
   "id": "[Generated UUID v4]"
 }
@@ -216,9 +229,11 @@ When creating or updating the submission:
      ◦ Architecture Image: [If found: "Downloaded and added from the source repository (`path/to/image`)" | If not found: "[template-name].png (to be added by contributor)"]
      ◦ Author: [AUTHOR_NAME]
      ◦ Source: [REPOSITORY_URL]
-     ◦ Tags: [comma-separated list of tags]
-     ◦ Languages: [comma-separated list of languages]
+     ◦ Tags: [comma-separated list of special tags and services/tools/topics]
+     ◦ Languages: [comma-separated list of programming languages]
+     ◦ Frameworks: [comma-separated list of frameworks]
      ◦ Azure Services: [comma-separated list of Azure services]
+     ◦ IaC: [bicep or terraform]
      ◦ ID: `[GENERATED_UUID]`
 
    ## Template Overview

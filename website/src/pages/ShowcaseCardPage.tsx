@@ -127,9 +127,11 @@ function filterUsers(
   }
   return users.filter((user) => {
     const tags = [
-      ...user.tags,
+      ...(user.tags || []),
       ...(user.languages || []),
+      ...(user.frameworks || []),
       ...(user.azureServices || []),
+      ...(user.IaC || []),
     ];
     if (!user && !tags && tags.length === 0) {
       return false;
@@ -400,9 +402,11 @@ export default function ShowcaseCardPage({
     const unionTags = new Set<TagType>();
     cards.forEach((user) => {
       const tags = [
-        ...user.tags,
+        ...(user.tags || []),
         ...(user.languages || []),
+        ...(user.frameworks || []),
         ...(user.azureServices || []),
+        ...(user.IaC || []),
       ];
       tags.forEach((tag) => unionTags.add(tag))
     });
@@ -442,6 +446,9 @@ export default function ShowcaseCardPage({
             gap: "4px",
             flex: 1,
           }}
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
         >
           <Text size={400}>Viewing</Text>
           {totalTemplates === 0 ? (

@@ -6895,14 +6895,16 @@
     "tags": [
       "community",
       "mcp",
-      "new",
-      "bicep"
+      "new"
     ],
     "azureServices": [
       "aca",
       "aifoundry",
       "cosmosdb",
       "serviceprincipal"
+    ],
+    "IaC": [
+      "bicep"
     ],
     "id": "d9663d15-fd8f-4e74-8200-6221f63c3ce9",
     "languages": [

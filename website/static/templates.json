@@ -6910,5 +6910,37 @@
     "languages": [
       "dotnetCsharp"
     ]
+  },
+  {
+    "title": "Copilot SDK Service — Chat API with React UI on Azure Container Apps",
+    "description": "A full-stack TypeScript template using the GitHub Copilot SDK with SSE streaming chat and summarize endpoints, deployed to Azure Container Apps. Supports GitHub models and Azure Bring Your Own Model (BYOM).",
+    "preview": "./templates/images/copilot-sdk-service.png",
+    "authorUrl": "https://github.com/jongio",
+    "author": "Jon Gallant",
+    "source": "https://github.com/Azure-Samples/copilot-sdk-service",
+    "tags": [
+      "msft",
+      "new",
+      "ai",
+      "aicollection"
+    ],
+    "languages": [
+      "typescript",
+      "javascript",
+      "nodejs"
+    ],
+    "frameworks": [
+      "reactjs"
+    ],
+    "azureServices": [
+      "aca",
+      "keyvault",
+      "monitor",
+      "openai"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "13f1caf6-0609-48ca-88ed-10f1c76d63af"
   }
 ]

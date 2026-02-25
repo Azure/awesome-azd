@@ -16,7 +16,19 @@ const { getLatestVersion } = require("./semver-utils");
 const EXTENSIONS_PATH = path.join(__dirname, "..", "static", "extensions.json");
 
 async function fetchRegistry(url) {
-  const response = await fetch(url);
+  // Validate URL protocol to prevent SSRF
+  const parsed = new URL(url);
+  if (!['http:', 'https:'].includes(parsed.protocol)) {
+    throw new Error(`Unsafe protocol "${parsed.protocol}" in ${url}`);
+  }
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 30000);
+  let response;
+  try {
+    response = await fetch(url, { signal: controller.signal });
+  } finally {
+    clearTimeout(timeout);
+  }
   if (!response.ok) {
     throw new Error(`HTTP ${response.status} fetching ${url}`);
   }

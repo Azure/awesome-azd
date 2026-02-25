@@ -332,6 +332,8 @@ export default function ShowcaseLeftFilters({
   replaceSearchAuthors: (search: string, newAuthors: string[]) => string;
 }) {
   const sortTagList = TagList.sort();
+  const searchParams = new URLSearchParams(location.search);
+  const isExtensions = searchParams.get("type") === "extensions";
   
   // Extract unique authors based on content type
   const allAuthors = new Set<string>();
@@ -388,8 +390,6 @@ export default function ShowcaseLeftFilters({
     setOpenItems(data.openItems);
   };
   const history = useHistory();
-  const searchParams = new URLSearchParams(location.search);
-  const isExtensions = searchParams.get("type") === "extensions";
   const clearAll = () => {
     setSelectedCheckbox([]);
     setSelectedTags([]);

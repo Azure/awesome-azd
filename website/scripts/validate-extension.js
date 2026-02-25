@@ -83,7 +83,27 @@ function validateExtension(ext) {
 const { getLatestVersion } = require("./semver-utils");
 
 async function fetchAndValidate(registryUrl) {
-  const response = await fetch(registryUrl);
+  // Validate URL protocol to prevent SSRF
+  try {
+    const parsed = new URL(registryUrl);
+    if (!['http:', 'https:'].includes(parsed.protocol)) {
+      throw new Error(`Unsafe protocol "${parsed.protocol}". Only http: and https: are allowed.`);
+    }
+  } catch (err) {
+    if (err.code === 'ERR_INVALID_URL') {
+      throw new Error(`Invalid registry URL: "${registryUrl}"`);
+    }
+    throw err;
+  }
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 30000);
+  let response;
+  try {
+    response = await fetch(registryUrl, { signal: controller.signal });
+  } finally {
+    clearTimeout(timeout);
+  }
   if (!response.ok) {
     throw new Error(`Failed to fetch registry: ${response.status} ${response.statusText}`);
   }

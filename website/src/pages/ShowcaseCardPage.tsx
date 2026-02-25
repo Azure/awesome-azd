@@ -527,6 +527,8 @@ export default function ShowcaseCardPage({
     <>
       {/* Content Type Toggle */}
       <div
+        role="group"
+        aria-label="Content type"
         style={{
           display: "flex",
           gap: "4px",

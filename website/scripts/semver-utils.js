@@ -9,9 +9,10 @@
  */
 function getLatestVersion(versions) {
   if (!versions || versions.length === 0) return null;
-  return versions.reduce((latest, v) => {
+  const valid = versions.filter(v => v && v.version);
+  if (valid.length === 0) return null;
+  return valid.reduce((latest, v) => {
     if (!latest) return v;
-    if (!v || !v.version) return latest;
     const aParts = latest.version.split("-");
     const bParts = v.version.split("-");
     const aNumeric = aParts[0].split(".").map(Number);

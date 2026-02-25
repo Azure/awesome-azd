@@ -42,31 +42,38 @@ async function fetchRegistry(url) {
   return response.json();
 }
 
+const CONCURRENCY_LIMIT = 5;
+
 async function main() {
   const extensions = JSON.parse(fs.readFileSync(EXTENSIONS_PATH, "utf-8"));
   const updates = [];
 
-  for (const ext of extensions) {
-    if (!ext.registryUrl) continue;
-    try {
-      const registry = await fetchRegistry(ext.registryUrl);
-      // registry.json can be {extensions: [...]}, an array, or a single object
-      const entries = registry.extensions || (Array.isArray(registry) ? registry : [registry]);
-      const match = entries.find((e) => e.id === ext.id);
-      if (!match || !match.versions || match.versions.length === 0) continue;
+  const tasks = extensions
+    .filter((ext) => ext.registryUrl)
+    .map((ext) => async () => {
+      try {
+        const registry = await fetchRegistry(ext.registryUrl);
+        // registry.json can be {extensions: [...]}, an array, or a single object
+        const entries = registry.extensions || (Array.isArray(registry) ? registry : [registry]);
+        const match = entries.find((e) => e.id === ext.id);
+        if (!match || !match.versions || match.versions.length === 0) return;
 
-      const latest = getLatestVersion(match.versions);
-      if (latest && latest.version !== ext.latestVersion) {
-        updates.push({
-          id: ext.id,
-          oldVersion: ext.latestVersion,
-          newVersion: latest.version,
-        });
-        ext.latestVersion = latest.version;
+        const latest = getLatestVersion(match.versions);
+        if (latest && latest.version !== ext.latestVersion) {
+          updates.push({
+            id: ext.id,
+            oldVersion: ext.latestVersion,
+            newVersion: latest.version,
+          });
+          ext.latestVersion = latest.version;
+        }
+      } catch (err) {
+        console.error(`Warning: Failed to fetch registry for ${ext.id}: ${err.message}`);
       }
-    } catch (err) {
-      console.error(`Warning: Failed to fetch registry for ${ext.id}: ${err.message}`);
-    }
+    });
+
+  for (let i = 0; i < tasks.length; i += CONCURRENCY_LIMIT) {
+    await Promise.all(tasks.slice(i, i + CONCURRENCY_LIMIT).map((t) => t()));
   }
 
   if (updates.length > 0) {

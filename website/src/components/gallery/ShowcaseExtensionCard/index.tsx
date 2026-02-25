@@ -41,7 +41,10 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
   const headerLogo = isMsft ? msftLogo : communityLogo;
   const headerText = isMsft ? "Microsoft Extension" : "Community Extension";
 
-  const contentForAdobeAnalytics = `{"id":"${extension.displayName}","cN":"Copy Button (azd extension install)"}`;
+  const contentForAdobeAnalytics = JSON.stringify({
+    id: extension.displayName,
+    cN: "Copy Button (azd extension install)",
+  });
 
   return (
     <Card key={extension.id} className={styleCSS.card}>

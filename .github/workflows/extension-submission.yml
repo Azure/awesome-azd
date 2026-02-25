@@ -152,6 +152,18 @@ jobs:
             const fs = require('fs');
             const path = require('path');
             
+            function validateUrl(value, label) {
+              if (!value) return;
+              try {
+                const u = new URL(value);
+                if (!['http:', 'https:'].includes(u.protocol)) {
+                  throw new Error(`unsafe protocol "${u.protocol}"`);
+                }
+              } catch (err) {
+                throw new Error(`Invalid ${label} URL "${value}": ${err.message}`);
+              }
+            }
+            
             const extensionsPath = path.join('website', 'static', 'extensions.json');
             const extensions = JSON.parse(fs.readFileSync(extensionsPath, 'utf8'));
             const validatedExtensions = JSON.parse(process.env.VALIDATION_RESULT);
@@ -162,6 +174,12 @@ jobs:
             const registryUrl = process.env.EXT_REGISTRY_URL;
             const authorType = process.env.EXT_AUTHOR_TYPE;
             const website = process.env.EXT_WEBSITE;
+            
+            // Validate all user-provided URLs
+            validateUrl(authorUrl, 'author');
+            validateUrl(sourceRepo, 'source repo');
+            validateUrl(website, 'website');
+            validateUrl(registryUrl, 'registry');
             
             let added = [];
             let skipped = [];
@@ -211,7 +229,7 @@ jobs:
 
       - name: Create Pull Request
         if: steps.validate.outputs.valid == 'true'
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Add extension(s) from ${{ github.event_name == 'workflow_dispatch' && 'manual dispatch' || format('issue #{0}', github.event.issue.number) }}"

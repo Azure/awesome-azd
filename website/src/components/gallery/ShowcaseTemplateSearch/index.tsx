@@ -12,15 +12,15 @@ import styles from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useColorMode } from "@docusaurus/theme-common";
 
-const TITLES = {
+const TITLES: Record<string, string> = {
   templates: "Template Library",
   extensions: "Extension Gallery",
 };
-const DESCRIPTIONS = {
+const DESCRIPTIONS: Record<string, string> = {
   templates: "An open-source template gallery to get started with Azure.",
   extensions: "Discover azd extensions that add new capabilities to your workflow.",
 };
-const PLACEHOLDERS = {
+const PLACEHOLDERS: Record<string, string> = {
   templates: "Search for an azd template or author...",
   extensions: "Search for an azd extension, capability, or author...",
 };

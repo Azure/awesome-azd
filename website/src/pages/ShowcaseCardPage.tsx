@@ -132,6 +132,7 @@ function filterUsers(
 function filterExtensions(
   extensions: Extension[],
   selectedTags: TagType[],
+  selectedAuthors: string[],
   searchName: string | null
 ) {
   if (searchName) {
@@ -144,6 +145,13 @@ function filterExtensions(
       ext.id.toLowerCase().includes(q) ||
       (ext.website && ext.website.toLowerCase().includes(q))
     );
+  }
+
+  if (selectedAuthors && selectedAuthors.length > 0) {
+    extensions = extensions.filter((ext) => {
+      const extAuthors = splitAuthors(ext.author);
+      return selectedAuthors.some((a) => extAuthors.includes(a));
+    });
   }
 
   if (!selectedTags || selectedTags.length === 0) {
@@ -440,9 +448,10 @@ export default function ShowcaseCardPage({
         ? (selectedOptions[0] === SORT_BY_OPTIONS[3] ? [...sortedExtensions].reverse() : sortedExtensions)
         : (selectedOptions[0] === SORT_BY_OPTIONS[0] ? [...unsortedExtensions].reverse() : unsortedExtensions),
       selectedTags,
+      selectedUsers,
       searchName
     ),
-    [selectedTags, searchName, selectedOptions]
+    [selectedTags, selectedUsers, searchName, selectedOptions]
   );
 
   const isExtensions = contentType === "extensions";

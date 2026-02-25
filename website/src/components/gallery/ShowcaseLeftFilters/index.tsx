@@ -16,6 +16,7 @@ import {
 } from "@fluentui/react-components";
 import { Tags, type TagType } from "../../../data/tags";
 import { TagList, unsortedUsers } from "../../../data/users";
+import { unsortedExtensions } from "../../../data/extensions";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
 import { useHistory } from "@docusaurus/router";
@@ -332,12 +333,19 @@ export default function ShowcaseLeftFilters({
 }) {
   const sortTagList = TagList.sort();
   
-  // Extract unique authors from templates, splitting comma-separated authors
+  // Extract unique authors based on content type
   const allAuthors = new Set<string>();
-  unsortedUsers.forEach(user => {
-    const authors = splitAuthors(user.author);
-    authors.forEach(author => allAuthors.add(author));
-  });
+  if (isExtensions) {
+    unsortedExtensions.forEach(ext => {
+      const authors = splitAuthors(ext.author);
+      authors.forEach(author => allAuthors.add(author));
+    });
+  } else {
+    unsortedUsers.forEach(user => {
+      const authors = splitAuthors(user.author);
+      authors.forEach(author => allAuthors.add(author));
+    });
+  }
   const sortedAuthors = Array.from(allAuthors).sort();
   const uncategoryTag = TagList.filter((tag) => {
     const tagObject = Tags[tag];
@@ -639,7 +647,6 @@ export default function ShowcaseLeftFilters({
         </AccordionItem>
       )}
 
-      {!isExtensions && (
       <AccordionItem value="8">
         <AccordionHeader
           expandIconPosition="end"
@@ -663,7 +670,6 @@ export default function ShowcaseLeftFilters({
           />
         </AccordionPanel>
       </AccordionItem>
-      )}
     </Accordion>
   );
 }

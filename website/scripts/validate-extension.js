@@ -30,7 +30,7 @@ const VALID_PLATFORMS = [
   "linux/arm64",
 ];
 
-const SEMVER_REGEX = /^\d+\.\d+\.\d+(-[a-zA-Z0-9.]+)?$/;
+const SEMVER_REGEX = /^\d+\.\d+\.\d+(-[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*)?$/;
 
 function validateExtension(ext) {
   const errors = [];

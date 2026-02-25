@@ -11,7 +11,7 @@
     "latestVersion": "0.12.6",
     "capabilities": ["custom-commands", "lifecycle-events", "metadata"],
     "platforms": ["windows/amd64", "windows/arm64", "darwin/amd64", "darwin/arm64", "linux/amd64", "linux/arm64"],
-    "tags": ["new"],
+    "tags": ["community", "new"],
     "website": "https://jongio.github.io/azd-app",
     "installCommand": "azd extension install jongio.azd.app"
   },
@@ -27,7 +27,7 @@
     "latestVersion": "0.1.9",
     "capabilities": ["custom-commands", "lifecycle-events", "mcp-server", "metadata"],
     "platforms": ["windows/amd64", "windows/arm64", "darwin/amd64", "darwin/arm64", "linux/amd64", "linux/arm64"],
-    "tags": ["new"],
+    "tags": ["community", "new"],
     "website": "https://jongio.github.io/azd-copilot",
     "installCommand": "azd extension install jongio.azd.copilot"
   },
@@ -43,7 +43,7 @@
     "latestVersion": "0.3.8",
     "capabilities": ["custom-commands", "lifecycle-events"],
     "platforms": ["windows/amd64", "windows/arm64", "darwin/amd64", "darwin/arm64", "linux/amd64", "linux/arm64"],
-    "tags": ["new"],
+    "tags": ["community", "new"],
     "installCommand": "azd extension install jongio.azd.exec"
   },
   {
@@ -58,7 +58,7 @@
     "latestVersion": "0.1.1",
     "capabilities": ["custom-commands", "lifecycle-events", "mcp-server", "metadata"],
     "platforms": ["windows/amd64", "windows/arm64", "darwin/amd64", "darwin/arm64", "linux/amd64", "linux/arm64"],
-    "tags": ["new"],
+    "tags": ["community", "new"],
     "installCommand": "azd extension install jongio.azd.rest"
   },
   {

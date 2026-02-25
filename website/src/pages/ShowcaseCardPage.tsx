@@ -529,6 +529,7 @@ export default function ShowcaseCardPage({
           size="medium"
           checked={!isExtensions}
           onClick={() => setContentType("templates")}
+          aria-label="Switch to templates view"
         >
           Templates
         </ToggleButton>
@@ -537,6 +538,7 @@ export default function ShowcaseCardPage({
           size="medium"
           checked={isExtensions}
           onClick={() => setContentType("extensions")}
+          aria-label="Switch to extensions view"
         >
           Extensions
         </ToggleButton>

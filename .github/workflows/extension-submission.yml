@@ -107,10 +107,18 @@ jobs:
           node website/scripts/validate-extension.js "$REGISTRY_URL" > validation_result.json 2>validation_errors.log
           if [ $? -ne 0 ]; then
             echo "valid=false" >> $GITHUB_OUTPUT
-            echo "errors=$(cat validation_result.json validation_errors.log)" >> $GITHUB_OUTPUT
+            {
+              echo 'errors<<EOF'
+              cat validation_result.json validation_errors.log
+              echo 'EOF'
+            } >> $GITHUB_OUTPUT
           else
             echo "valid=true" >> $GITHUB_OUTPUT
-            echo "result=$(cat validation_result.json)" >> $GITHUB_OUTPUT
+            {
+              echo 'result<<EOF'
+              cat validation_result.json
+              echo 'EOF'
+            } >> $GITHUB_OUTPUT
           fi
 
       - name: Comment on validation failure
@@ -128,6 +136,7 @@ jobs:
           ERRORS: ${{ steps.validate.outputs.errors }}
 
       - name: Update extensions.json
+        id: update
         if: steps.validate.outputs.valid == 'true'
         uses: actions/github-script@v7
         env:
@@ -212,8 +221,8 @@ jobs:
             This PR was automatically generated${{ github.event_name != 'workflow_dispatch' && format(' from issue #{0}', github.event.issue.number) || '' }}.
             
             **Registry URL**: ${{ steps.parse.outputs.registry_url }}
-            **Extensions added**: ${{ steps.validate.outputs.added || 'None' }}
-            **Extensions skipped**: ${{ steps.validate.outputs.skipped || 'None' }}
+            **Extensions added**: ${{ steps.update.outputs.added || 'None' }}
+            **Extensions skipped**: ${{ steps.update.outputs.skipped || 'None' }}
             
             Please review the changes to `website/static/extensions.json`.
           labels: extension-submission

@@ -48,7 +48,7 @@ function validateExtension(ext) {
     errors.push("Missing or empty 'versions' array");
   }
 
-  if (ext.versions) {
+  if (ext.versions && Array.isArray(ext.versions)) {
     ext.versions.forEach((ver, i) => {
       if (!ver.version || !SEMVER_REGEX.test(ver.version)) {
         errors.push(`Version[${i}]: Invalid semver format '${ver.version}'`);
@@ -80,26 +80,7 @@ function validateExtension(ext) {
   return errors;
 }
 
-function getLatestVersion(versions) {
-  if (!versions || versions.length === 0) return null;
-  return versions.reduce((latest, v) => {
-    if (!latest) return v;
-    const aParts = latest.version.split("-");
-    const bParts = v.version.split("-");
-    const aNumeric = aParts[0].split(".").map(Number);
-    const bNumeric = bParts[0].split(".").map(Number);
-    for (let i = 0; i < 3; i++) {
-      if ((bNumeric[i] || 0) > (aNumeric[i] || 0)) return v;
-      if ((bNumeric[i] || 0) < (aNumeric[i] || 0)) return latest;
-    }
-    // Same numeric version: stable (no pre-release) beats pre-release
-    const aIsPreRelease = aParts.length > 1;
-    const bIsPreRelease = bParts.length > 1;
-    if (aIsPreRelease && !bIsPreRelease) return v;
-    if (!aIsPreRelease && bIsPreRelease) return latest;
-    return latest;
-  });
-}
+const { getLatestVersion } = require("./semver-utils");
 
 async function fetchAndValidate(registryUrl) {
   const response = await fetch(registryUrl);
@@ -108,7 +89,14 @@ async function fetchAndValidate(registryUrl) {
   }
 
   const data = await response.json();
-  const extensions = data.extensions || (Array.isArray(data) ? data : [data]);
+  let extensions;
+  if (Array.isArray(data.extensions)) {
+    extensions = data.extensions;
+  } else if (typeof data.extensions === "undefined") {
+    extensions = Array.isArray(data) ? data : [data];
+  } else {
+    throw new Error("Invalid registry format: 'extensions' must be an array.");
+  }
   const results = [];
 
   for (const ext of extensions) {

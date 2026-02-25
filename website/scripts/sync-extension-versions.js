@@ -11,28 +11,9 @@
 
 const fs = require("fs");
 const path = require("path");
+const { getLatestVersion } = require("./semver-utils");
 
 const EXTENSIONS_PATH = path.join(__dirname, "..", "static", "extensions.json");
-
-function getLatestVersion(versions) {
-  if (!versions || versions.length === 0) return null;
-  return versions.reduce((latest, v) => {
-    if (!latest) return v;
-    const aParts = latest.version.split("-");
-    const bParts = v.version.split("-");
-    const aNumeric = aParts[0].split(".").map(Number);
-    const bNumeric = bParts[0].split(".").map(Number);
-    for (let i = 0; i < 3; i++) {
-      if ((bNumeric[i] || 0) > (aNumeric[i] || 0)) return v;
-      if ((bNumeric[i] || 0) < (aNumeric[i] || 0)) return latest;
-    }
-    const aIsPreRelease = aParts.length > 1;
-    const bIsPreRelease = bParts.length > 1;
-    if (aIsPreRelease && !bIsPreRelease) return v;
-    if (!aIsPreRelease && bIsPreRelease) return latest;
-    return latest;
-  });
-}
 
 async function fetchRegistry(url) {
   const response = await fetch(url);

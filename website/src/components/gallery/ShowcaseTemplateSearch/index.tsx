@@ -12,9 +12,18 @@ import styles from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useColorMode } from "@docusaurus/theme-common";
 
-const TITLE = "Template Library";
-const DESCRIPTION =
-  "An open-source template gallery to get started with Azure.";
+const TITLES = {
+  templates: "Template Library",
+  extensions: "Extension Gallery",
+};
+const DESCRIPTIONS = {
+  templates: "An open-source template gallery to get started with Azure.",
+  extensions: "Discover azd extensions that add new capabilities to your workflow.",
+};
+const PLACEHOLDERS = {
+  templates: "Search for an azd template or author...",
+  extensions: "Search for an azd extension, capability, or author...",
+};
 const ADD_URL = "https://aka.ms/azd";
 export var InputValue: string | null = null;
 
@@ -48,6 +57,8 @@ function FilterBar(): React.JSX.Element {
     setValue(readSearchName(location.search));
   }, [location]);
   InputValue = value;
+  const contentType = new URLSearchParams(location.search).get("type") || "templates";
+  const placeholder = PLACEHOLDERS[contentType] || PLACEHOLDERS.templates;
   return (
     <>
       <SearchBox
@@ -69,7 +80,7 @@ function FilterBar(): React.JSX.Element {
         }}
         id="filterBar"
         value={readSearchName(location.search) != null ? value : ""}
-        placeholder="Search for an azd template or author..."
+        placeholder={placeholder}
         role="search"
         onClear={(e) => {
           setValue(null);
@@ -108,6 +119,10 @@ function FilterBar(): React.JSX.Element {
 
 export default function ShowcaseTemplateSearch() {
   const { colorMode } = useColorMode();
+  const location = useLocation();
+  const contentType = new URLSearchParams(location.search).get("type") || "templates";
+  const title = TITLES[contentType] || TITLES.templates;
+  const description = DESCRIPTIONS[contentType] || DESCRIPTIONS.templates;
   return (
     <div className={styles.searchContainer}>
       <img
@@ -141,7 +156,7 @@ export default function ShowcaseTemplateSearch() {
                 WebkitTextFillColor: "transparent",
               }}
             >
-              {TITLE}
+              {title}
             </Text>
           </h1>
           <Text
@@ -152,7 +167,7 @@ export default function ShowcaseTemplateSearch() {
               padding: "10px 0 20px 0",
             }}
           >
-            {DESCRIPTION}
+            {description}
           </Text>
           <FilterBar />
           <Text
@@ -163,8 +178,9 @@ export default function ShowcaseTemplateSearch() {
               paddingTop: "20px",
             }}
           >
-            Each template is a fully working, cloud-ready application deployable
-            with the Azure Developer CLI (azd).{" "}
+            {contentType === "extensions"
+              ? "Extensions add new commands, lifecycle hooks, and capabilities to azd. "
+              : "Each template is a fully working, cloud-ready application deployable with the Azure Developer CLI (azd). "}
           </Text>
           <Text
             align="center"

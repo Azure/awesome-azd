@@ -371,6 +371,10 @@ export default function ShowcaseLeftFilters({
     const tagObject = Tags[tag];
     return tagObject.type === "Topic";
   });
+  const extensionCapabilityTag = sortTagList.filter((tag) => {
+    const tagObject = Tags[tag];
+    return tagObject.type === "Extension Capability";
+  });
   const [openItems, setOpenItems] = React.useState([]);
   const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
     setOpenItems(data.openItems);
@@ -601,6 +605,34 @@ export default function ShowcaseLeftFilters({
           />
         </AccordionPanel>
       </AccordionItem>
+
+      {extensionCapabilityTag.length > 0 && (
+        <AccordionItem value="9">
+          <AccordionHeader
+            expandIconPosition="end"
+            style={{
+              background:
+                "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
+            }}
+          >
+            <div style={{ fontSize: "16px", fontWeight: "500" }}>
+              Extension Capabilities
+            </div>
+          </AccordionHeader>
+          <AccordionPanel>
+            <ShowcaseFilterViewAll
+              tags={extensionCapabilityTag}
+              number={"9"}
+              activeTags={activeTags}
+              selectedCheckbox={selectedCheckbox}
+              setSelectedCheckbox={setSelectedCheckbox}
+              location={location}
+              readSearchTags={readSearchTags}
+              replaceSearchTags={replaceSearchTags}
+            />
+          </AccordionPanel>
+        </AccordionItem>
+      )}
 
       <AccordionItem value="8">
         <AccordionHeader

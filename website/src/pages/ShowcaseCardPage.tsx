@@ -3,7 +3,7 @@
  * Licensed under the MIT License.
  */
 
-import React, { useState, useMemo, useEffect, useCallback } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import {
   UserState,
   InputValue,
@@ -43,21 +43,6 @@ function replaceSearchTags(search: string, newTags: TagType[]) {
   searchParams.delete(TagQueryStringKey2);
   newTags.forEach((tag) => searchParams.append(TagQueryStringKey2, tag));
   return searchParams.toString();
-}
-
-// updates only the url query
-const toggleTag = (tag: TagType, location: Location) => {
-  const history = useHistory();
-  return useCallback(() => {
-    const tags = readSearchTags2(location.search);
-    const newTags = toggleListItem(tags, tag);
-    const newSearch = replaceSearchTags(location.search, newTags);
-    history.push({
-      ...location,
-      search: newSearch,
-      state: prepareUserState(),
-    });
-  }, [tag, location, history]);
 }
 
 function restoreUserState(userState: UserState | null) {
@@ -187,14 +172,14 @@ function FilterAppliedBar({
   replaceSearchAuthors,
   location,
 }: {
-  clearAll;
+  clearAll: () => void;
   selectedTags: TagType[];
   selectedAuthors: string[];
   readSearchTags: (search: string) => TagType[];
   replaceSearchTags: (search: string, newTags: TagType[]) => string;
   readSearchAuthors: (search: string) => string[];
   replaceSearchAuthors: (search: string, newAuthors: string[]) => string;
-  location;
+  location: ReturnType<typeof useHistory> extends { location: infer L } ? L : unknown;
 }) {
   const history = useHistory();
   const toggleTag = (tag: TagType, location: Location) => {
@@ -219,7 +204,7 @@ function FilterAppliedBar({
     });
   }
 
-  return selectedTags && selectedTags.length > 0 || selectedAuthors && selectedAuthors.length > 0 ? (
+  return selectedTags && selectedTags.length > 0 || (selectedAuthors && selectedAuthors.length > 0) ? (
     <div className={styles.filterAppliedBar}>
       <Body1>
         Filters applied:
@@ -268,9 +253,13 @@ function FilterAppliedBar({
           </Badge>
         );
       })}
-      <div className={styles.clearAll} onClick={clearAll}>
+      <button
+        type="button"
+        className={styles.clearAll}
+        onClick={clearAll}
+      >
         Clear all
-      </div>
+      </button>
     </div>
   ) : null;
 }
@@ -331,7 +320,7 @@ function PaginationControls({
         if (page === "...") {
           return (
             <Text key={`ellipsis-${index}`} size={400} style={{ padding: "8px" }}>
-              ...
+              …
             </Text>
           );
         }
@@ -376,7 +365,7 @@ export default function ShowcaseCardPage({
 }: {
   setActiveTags: React.Dispatch<React.SetStateAction<TagType[]>>;
   selectedTags: TagType[];
-  location;
+  location: Location & { state?: UserState | null; search: string };
   setSelectedTags: React.Dispatch<React.SetStateAction<TagType[]>>;
   readSearchTags: (search: string) => TagType[];
   replaceSearchTags: (search: string, newTags: TagType[]) => string;

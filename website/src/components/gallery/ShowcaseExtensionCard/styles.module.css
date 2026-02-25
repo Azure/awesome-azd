@@ -80,6 +80,11 @@
   background-color: #5a4cb9 !important;
 }
 
+.copyIconButton:focus-visible {
+  outline: 2px solid var(--ifm-color-purple) !important;
+  outline-offset: 2px;
+}
+
 .cardTitle {
   vertical-align: middle !important;
   font-size: 16px !important;
@@ -89,6 +94,16 @@
 
 [data-theme="dark"] .cardTitle {
   color: #a79cf1 !important;
+}
+
+.newBadge {
+  color: #11910D;
+  font-weight: 600;
+  font-size: 10px;
+}
+
+[data-theme="dark"] .newBadge {
+  color: #4caf50;
 }
 
 [data-theme="dark"] .copyIconButton {

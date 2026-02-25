@@ -57,8 +57,9 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
           >
             <img
               src={headerLogo}
+              width={16}
               height={16}
-              alt="logo"
+              alt={headerText}
               className={styleCSS.headerLogo}
             />
             <div className={styleCSS.headerText}>{headerText}</div>
@@ -66,17 +67,13 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
               <>
                 <img
                   src={star}
-                  alt="Star"
+                  alt=""
+                  aria-hidden="true"
+                  width={16}
                   height={16}
                   style={{ paddingLeft: "10px" }}
                 />
-                <div
-                  style={{
-                    color: "#11910D",
-                    fontWeight: "600",
-                    fontSize: "10px",
-                  }}
-                >
+                <div className={styleCSS.newBadge}>
                   New
                 </div>
               </>
@@ -98,6 +95,7 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
           className={styleCSS.cardTitle}
           href={extension.website || extension.source}
           target="_blank"
+          rel="noopener noreferrer"
         >
           {extension.displayName}
         </FluentUILink>
@@ -106,6 +104,7 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
             <FluentUILink
               href={extension.website}
               target="_blank"
+              rel="noopener noreferrer"
               className={styleCSS.cardMetaLink}
               title="Documentation website"
             >
@@ -116,6 +115,7 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
           <FluentUILink
             href={extension.source}
             target="_blank"
+            rel="noopener noreferrer"
             className={styleCSS.cardMetaLink}
             title="Source repository"
           >
@@ -136,6 +136,7 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
           <FluentUILink
             href={extension.authorUrl}
             target="_blank"
+            rel="noopener noreferrer"
             className={styleCSS.authorLink}
           >
             {extension.author}
@@ -184,12 +185,12 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
           spellCheck={false}
           defaultValue={extension.installCommand}
           className={styleCSS.input}
-          placeholder={extension.installCommand}
           aria-label={`Install command for ${extension.displayName}`}
         />
         <Popover trapFocus withArrow size="small">
           <PopoverTrigger disableButtonEnhancement>
             <Button
+              role="button"
               size="small"
               className={styleCSS.copyIconButton}
               aria-label={`Copy install command for ${extension.displayName}`}
@@ -202,7 +203,7 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
             </Button>
           </PopoverTrigger>
           <PopoverSurface style={{ padding: "5px", fontSize: "12px" }}>
-            <div>Copied!</div>
+            <div role="status" aria-live="polite">Copied!</div>
           </PopoverSurface>
         </Popover>
       </CardFooter>

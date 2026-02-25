@@ -9,9 +9,23 @@
     "source": "https://github.com/jongio/azd-app",
     "registryUrl": "https://raw.githubusercontent.com/jongio/azd-app/main/registry.json",
     "latestVersion": "0.12.6",
-    "capabilities": ["custom-commands", "lifecycle-events", "metadata"],
-    "platforms": ["windows/amd64", "windows/arm64", "darwin/amd64", "darwin/arm64", "linux/amd64", "linux/arm64"],
-    "tags": ["community", "new"],
+    "capabilities": [
+      "custom-commands",
+      "lifecycle-events",
+      "metadata"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "community",
+      "new"
+    ],
     "website": "https://jongio.github.io/azd-app",
     "installCommand": "azd extension install jongio.azd.app"
   },
@@ -25,9 +39,24 @@
     "source": "https://github.com/jongio/azd-copilot",
     "registryUrl": "https://raw.githubusercontent.com/jongio/azd-copilot/main/registry.json",
     "latestVersion": "0.1.9",
-    "capabilities": ["custom-commands", "lifecycle-events", "mcp-server", "metadata"],
-    "platforms": ["windows/amd64", "windows/arm64", "darwin/amd64", "darwin/arm64", "linux/amd64", "linux/arm64"],
-    "tags": ["community", "new"],
+    "capabilities": [
+      "custom-commands",
+      "lifecycle-events",
+      "mcp-server",
+      "metadata"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "community",
+      "new"
+    ],
     "website": "https://jongio.github.io/azd-copilot",
     "installCommand": "azd extension install jongio.azd.copilot"
   },
@@ -41,9 +70,22 @@
     "source": "https://github.com/jongio/azd-exec",
     "registryUrl": "https://raw.githubusercontent.com/jongio/azd-exec/main/registry.json",
     "latestVersion": "0.3.8",
-    "capabilities": ["custom-commands", "lifecycle-events"],
-    "platforms": ["windows/amd64", "windows/arm64", "darwin/amd64", "darwin/arm64", "linux/amd64", "linux/arm64"],
-    "tags": ["community", "new"],
+    "capabilities": [
+      "custom-commands",
+      "lifecycle-events"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "community",
+      "new"
+    ],
     "installCommand": "azd extension install jongio.azd.exec"
   },
   {
@@ -56,9 +98,24 @@
     "source": "https://github.com/jongio/azd-rest",
     "registryUrl": "https://raw.githubusercontent.com/jongio/azd-rest/main/registry.json",
     "latestVersion": "0.1.1",
-    "capabilities": ["custom-commands", "lifecycle-events", "mcp-server", "metadata"],
-    "platforms": ["windows/amd64", "windows/arm64", "darwin/amd64", "darwin/arm64", "linux/amd64", "linux/arm64"],
-    "tags": ["community", "new"],
+    "capabilities": [
+      "custom-commands",
+      "lifecycle-events",
+      "mcp-server",
+      "metadata"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "community",
+      "new"
+    ],
     "installCommand": "azd extension install jongio.azd.rest"
   },
   {
@@ -70,10 +127,25 @@
     "authorUrl": "https://github.com/Azure",
     "source": "https://github.com/Azure/azure-dev",
     "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
-    "latestVersion": "0.4.0",
-    "capabilities": ["custom-commands", "lifecycle-events", "mcp-server", "service-target-provider", "framework-service-provider"],
-    "platforms": ["windows/amd64", "windows/arm64", "darwin/amd64", "darwin/arm64", "linux/amd64", "linux/arm64"],
-    "tags": ["msft"],
+    "latestVersion": "0.5.0",
+    "capabilities": [
+      "custom-commands",
+      "lifecycle-events",
+      "mcp-server",
+      "service-target-provider",
+      "framework-service-provider"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "msft"
+    ],
     "installCommand": "azd extension install microsoft.azd.demo"
   }
 ]

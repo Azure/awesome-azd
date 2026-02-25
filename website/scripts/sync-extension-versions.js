@@ -50,8 +50,8 @@ async function main() {
     if (!ext.registryUrl) continue;
     try {
       const registry = await fetchRegistry(ext.registryUrl);
-      // registry.json can contain a single extension or an array
-      const entries = Array.isArray(registry) ? registry : [registry];
+      // registry.json can be {extensions: [...]}, an array, or a single object
+      const entries = registry.extensions || (Array.isArray(registry) ? registry : [registry]);
       const match = entries.find((e) => e.id === ext.id);
       if (!match || !match.versions || match.versions.length === 0) continue;
 

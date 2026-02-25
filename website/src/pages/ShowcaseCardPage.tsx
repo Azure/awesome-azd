@@ -28,6 +28,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
 import { useHistory } from "@docusaurus/router";
+import type { Location } from "history";
 import { toggleListItem, splitAuthors } from "@site/src/utils/jsUtils";
 import { prepareUserState } from "./index";
 import { Dismiss20Filled } from "@fluentui/react-icons";
@@ -187,7 +188,7 @@ function FilterAppliedBar({
   replaceSearchTags: (search: string, newTags: TagType[]) => string;
   readSearchAuthors: (search: string) => string[];
   replaceSearchAuthors: (search: string, newAuthors: string[]) => string;
-  location: ReturnType<typeof useHistory> extends { location: infer L } ? L : unknown;
+  location: Location;
 }) {
   const history = useHistory();
   const toggleTag = (tag: TagType, location: Location) => {
@@ -448,10 +449,10 @@ export default function ShowcaseCardPage({
         ? (selectedOptions[0] === SORT_BY_OPTIONS[3] ? [...sortedExtensions].reverse() : sortedExtensions)
         : (selectedOptions[0] === SORT_BY_OPTIONS[0] ? [...unsortedExtensions].reverse() : unsortedExtensions),
       selectedTags,
-      selectedUsers,
+      selectedAuthors,
       searchName
     ),
-    [selectedTags, selectedUsers, searchName, selectedOptions]
+    [selectedTags, selectedAuthors, searchName, selectedOptions]
   );
 
   const isExtensions = contentType === "extensions";

@@ -146,4 +146,4 @@ if (typeof require !== "undefined" && require.main === module) {
     });
 }
 
-module.exports = { fetchAndValidate, validateExtension, getLatestVersion };
+module.exports = { fetchAndValidate, validateExtension };

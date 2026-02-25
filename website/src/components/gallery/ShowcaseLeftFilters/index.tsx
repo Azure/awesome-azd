@@ -381,6 +381,7 @@ export default function ShowcaseLeftFilters({
   };
   const history = useHistory();
   const searchParams = new URLSearchParams(location.search);
+  const isExtensions = searchParams.get("type") === "extensions";
   const clearAll = () => {
     setSelectedCheckbox([]);
     setSelectedTags([]);
@@ -436,177 +437,181 @@ export default function ShowcaseLeftFilters({
           );
         })}
       </div>
-      <AccordionItem value="1">
-        <AccordionHeader
-          expandIconPosition="end"
-          style={{
-            background:
-              "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
-          }}
-        >
-          <div style={{ fontSize: "16px", fontWeight: "500" }}>Language</div>
-        </AccordionHeader>
-        <AccordionPanel>
-          <ShowcaseFilterViewAll
-            tags={languageTag}
-            number={"1"}
-            activeTags={activeTags}
-            selectedCheckbox={selectedCheckbox}
-            setSelectedCheckbox={setSelectedCheckbox}
-            location={location}
-            readSearchTags={readSearchTags}
-            replaceSearchTags={replaceSearchTags}
-          />
-        </AccordionPanel>
-      </AccordionItem>
+      {!isExtensions && (
+        <>
+          <AccordionItem value="1">
+            <AccordionHeader
+              expandIconPosition="end"
+              style={{
+                background:
+                  "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
+              }}
+            >
+              <div style={{ fontSize: "16px", fontWeight: "500" }}>Language</div>
+            </AccordionHeader>
+            <AccordionPanel>
+              <ShowcaseFilterViewAll
+                tags={languageTag}
+                number={"1"}
+                activeTags={activeTags}
+                selectedCheckbox={selectedCheckbox}
+                setSelectedCheckbox={setSelectedCheckbox}
+                location={location}
+                readSearchTags={readSearchTags}
+                replaceSearchTags={replaceSearchTags}
+              />
+            </AccordionPanel>
+          </AccordionItem>
 
-      <AccordionItem value="2">
-        <AccordionHeader
-          expandIconPosition="end"
-          style={{
-            background:
-              "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
-          }}
-        >
-          <div style={{ fontSize: "16px", fontWeight: "500" }}>Framework</div>
-        </AccordionHeader>
-        <AccordionPanel>
-          <ShowcaseFilterViewAll
-            tags={frameworkTag}
-            number={"2"}
-            activeTags={activeTags}
-            selectedCheckbox={selectedCheckbox}
-            setSelectedCheckbox={setSelectedCheckbox}
-            location={location}
-            readSearchTags={readSearchTags}
-            replaceSearchTags={replaceSearchTags}
-          />
-        </AccordionPanel>
-      </AccordionItem>
+          <AccordionItem value="2">
+            <AccordionHeader
+              expandIconPosition="end"
+              style={{
+                background:
+                  "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
+              }}
+            >
+              <div style={{ fontSize: "16px", fontWeight: "500" }}>Framework</div>
+            </AccordionHeader>
+            <AccordionPanel>
+              <ShowcaseFilterViewAll
+                tags={frameworkTag}
+                number={"2"}
+                activeTags={activeTags}
+                selectedCheckbox={selectedCheckbox}
+                setSelectedCheckbox={setSelectedCheckbox}
+                location={location}
+                readSearchTags={readSearchTags}
+                replaceSearchTags={replaceSearchTags}
+              />
+            </AccordionPanel>
+          </AccordionItem>
 
-      <AccordionItem value="3">
-        <AccordionHeader
-          expandIconPosition="end"
-          style={{
-            background:
-              "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
-          }}
-        >
-          <div style={{ fontSize: "16px", fontWeight: "500" }}>Services</div>
-        </AccordionHeader>
-        <AccordionPanel>
-          <ShowcaseFilterViewAll
-            tags={servicesTag}
-            number={"3"}
-            activeTags={activeTags}
-            selectedCheckbox={selectedCheckbox}
-            setSelectedCheckbox={setSelectedCheckbox}
-            location={location}
-            readSearchTags={readSearchTags}
-            replaceSearchTags={replaceSearchTags}
-          />
-        </AccordionPanel>
-      </AccordionItem>
+          <AccordionItem value="3">
+            <AccordionHeader
+              expandIconPosition="end"
+              style={{
+                background:
+                  "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
+              }}
+            >
+              <div style={{ fontSize: "16px", fontWeight: "500" }}>Services</div>
+            </AccordionHeader>
+            <AccordionPanel>
+              <ShowcaseFilterViewAll
+                tags={servicesTag}
+                number={"3"}
+                activeTags={activeTags}
+                selectedCheckbox={selectedCheckbox}
+                setSelectedCheckbox={setSelectedCheckbox}
+                location={location}
+                readSearchTags={readSearchTags}
+                replaceSearchTags={replaceSearchTags}
+              />
+            </AccordionPanel>
+          </AccordionItem>
 
-      <AccordionItem value="4">
-        <AccordionHeader
-          expandIconPosition="end"
-          style={{
-            background:
-              "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
-          }}
-        >
-          <div style={{ fontSize: "16px", fontWeight: "500" }}>Database</div>
-        </AccordionHeader>
-        <AccordionPanel>
-          <ShowcaseFilterViewAll
-            tags={databaseTag}
-            number={"4"}
-            activeTags={activeTags}
-            selectedCheckbox={selectedCheckbox}
-            setSelectedCheckbox={setSelectedCheckbox}
-            location={location}
-            readSearchTags={readSearchTags}
-            replaceSearchTags={replaceSearchTags}
-          />
-        </AccordionPanel>
-      </AccordionItem>
+          <AccordionItem value="4">
+            <AccordionHeader
+              expandIconPosition="end"
+              style={{
+                background:
+                  "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
+              }}
+            >
+              <div style={{ fontSize: "16px", fontWeight: "500" }}>Database</div>
+            </AccordionHeader>
+            <AccordionPanel>
+              <ShowcaseFilterViewAll
+                tags={databaseTag}
+                number={"4"}
+                activeTags={activeTags}
+                selectedCheckbox={selectedCheckbox}
+                setSelectedCheckbox={setSelectedCheckbox}
+                location={location}
+                readSearchTags={readSearchTags}
+                replaceSearchTags={replaceSearchTags}
+              />
+            </AccordionPanel>
+          </AccordionItem>
 
-      <AccordionItem value="5">
-        <AccordionHeader
-          expandIconPosition="end"
-          style={{
-            background:
-              "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
-          }}
-        >
-          <div style={{ fontSize: "16px", fontWeight: "500" }}>
-            Infrastructure as Code
-          </div>
-        </AccordionHeader>
-        <AccordionPanel>
-          <ShowcaseFilterViewAll
-            tags={infrastructureAsCodeTag}
-            number={"5"}
-            activeTags={activeTags}
-            selectedCheckbox={selectedCheckbox}
-            setSelectedCheckbox={setSelectedCheckbox}
-            location={location}
-            readSearchTags={readSearchTags}
-            replaceSearchTags={replaceSearchTags}
-          />
-        </AccordionPanel>
-      </AccordionItem>
+          <AccordionItem value="5">
+            <AccordionHeader
+              expandIconPosition="end"
+              style={{
+                background:
+                  "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
+              }}
+            >
+              <div style={{ fontSize: "16px", fontWeight: "500" }}>
+                Infrastructure as Code
+              </div>
+            </AccordionHeader>
+            <AccordionPanel>
+              <ShowcaseFilterViewAll
+                tags={infrastructureAsCodeTag}
+                number={"5"}
+                activeTags={activeTags}
+                selectedCheckbox={selectedCheckbox}
+                setSelectedCheckbox={setSelectedCheckbox}
+                location={location}
+                readSearchTags={readSearchTags}
+                replaceSearchTags={replaceSearchTags}
+              />
+            </AccordionPanel>
+          </AccordionItem>
 
-      <AccordionItem value="6">
-        <AccordionHeader
-          expandIconPosition="end"
-          style={{
-            background:
-              "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
-          }}
-        >
-          <div style={{ fontSize: "16px", fontWeight: "500" }}>Tools</div>
-        </AccordionHeader>
-        <AccordionPanel>
-          <ShowcaseFilterViewAll
-            tags={otherTag}
-            number={"6"}
-            activeTags={activeTags}
-            selectedCheckbox={selectedCheckbox}
-            setSelectedCheckbox={setSelectedCheckbox}
-            location={location}
-            readSearchTags={readSearchTags}
-            replaceSearchTags={replaceSearchTags}
-          />
-        </AccordionPanel>
-      </AccordionItem>
+          <AccordionItem value="6">
+            <AccordionHeader
+              expandIconPosition="end"
+              style={{
+                background:
+                  "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
+              }}
+            >
+              <div style={{ fontSize: "16px", fontWeight: "500" }}>Tools</div>
+            </AccordionHeader>
+            <AccordionPanel>
+              <ShowcaseFilterViewAll
+                tags={otherTag}
+                number={"6"}
+                activeTags={activeTags}
+                selectedCheckbox={selectedCheckbox}
+                setSelectedCheckbox={setSelectedCheckbox}
+                location={location}
+                readSearchTags={readSearchTags}
+                replaceSearchTags={replaceSearchTags}
+              />
+            </AccordionPanel>
+          </AccordionItem>
 
-      <AccordionItem value="7">
-        <AccordionHeader
-          expandIconPosition="end"
-          style={{
-            background:
-              "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
-          }}
-        >
-          <div style={{ fontSize: "16px", fontWeight: "500" }}>Topic</div>
-        </AccordionHeader>
-        <AccordionPanel>
-          <ShowcaseFilterViewAll
-            tags={topicTag}
-            number={"7"}
-            activeTags={activeTags}
-            selectedCheckbox={selectedCheckbox}
-            setSelectedCheckbox={setSelectedCheckbox}
-            location={location}
-            readSearchTags={readSearchTags}
-            replaceSearchTags={replaceSearchTags}
-          />
-        </AccordionPanel>
-      </AccordionItem>
+          <AccordionItem value="7">
+            <AccordionHeader
+              expandIconPosition="end"
+              style={{
+                background:
+                  "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
+              }}
+            >
+              <div style={{ fontSize: "16px", fontWeight: "500" }}>Topic</div>
+            </AccordionHeader>
+            <AccordionPanel>
+              <ShowcaseFilterViewAll
+                tags={topicTag}
+                number={"7"}
+                activeTags={activeTags}
+                selectedCheckbox={selectedCheckbox}
+                setSelectedCheckbox={setSelectedCheckbox}
+                location={location}
+                readSearchTags={readSearchTags}
+                replaceSearchTags={replaceSearchTags}
+              />
+            </AccordionPanel>
+          </AccordionItem>
+        </>
+      )}
 
-      {extensionCapabilityTag.length > 0 && (
+      {isExtensions && extensionCapabilityTag.length > 0 && (
         <AccordionItem value="9">
           <AccordionHeader
             expandIconPosition="end"
@@ -634,6 +639,7 @@ export default function ShowcaseLeftFilters({
         </AccordionItem>
       )}
 
+      {!isExtensions && (
       <AccordionItem value="8">
         <AccordionHeader
           expandIconPosition="end"
@@ -657,6 +663,7 @@ export default function ShowcaseLeftFilters({
           />
         </AccordionPanel>
       </AccordionItem>
+      )}
     </Accordion>
   );
 }

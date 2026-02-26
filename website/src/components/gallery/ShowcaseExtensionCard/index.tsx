@@ -193,7 +193,6 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
         <Popover trapFocus withArrow size="small">
           <PopoverTrigger disableButtonEnhancement>
             <Button
-              role="button"
               size="small"
               className={styleCSS.copyIconButton}
               aria-label={`Copy install command for ${extension.displayName}`}
@@ -202,7 +201,7 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
               }}
               data-m={contentForAdobeAnalytics}
             >
-              <img src={copyIcon} height={20} alt="Copy" />
+              <img src={copyIcon} width={20} height={20} alt="Copy" />
             </Button>
           </PopoverTrigger>
           <PopoverSurface style={{ padding: "5px", fontSize: "12px" }}>

@@ -233,9 +233,18 @@ function FilterAppliedBar({
             icon={<Dismiss20Filled />}
             iconPosition="after"
             className={styles.filterBadge}
+            role="button"
+            tabIndex={0}
             onClick={() => {
               toggleTag(tag, location);
             }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                toggleTag(tag, location);
+              }
+            }}
+            aria-label={`Remove ${tagObject.label} filter`}
           >
             {tagObject.label}
           </Badge>
@@ -254,9 +263,18 @@ function FilterAppliedBar({
             icon={<Dismiss20Filled />}
             iconPosition="after"
             className={styles.filterBadge}
+            role="button"
+            tabIndex={0}
             onClick={() => {
               toggleAuthor(author, location);
             }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                toggleAuthor(author, location);
+              }
+            }}
+            aria-label={`Remove ${author} filter`}
           >
             {author}
           </Badge>

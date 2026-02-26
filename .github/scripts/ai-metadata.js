@@ -78,7 +78,21 @@ async function callGitHubModels(messages) {
   }
 
   const data = await response.json();
-  return JSON.parse(data.choices[0].message.content);
+
+  const content = data?.choices?.[0]?.message?.content;
+  if (!content) {
+    throw new Error(
+      "GitHub Models returned no content (empty choices or missing message)",
+    );
+  }
+
+  try {
+    return JSON.parse(content);
+  } catch (parseErr) {
+    throw new Error(
+      `Failed to parse AI response as JSON: ${parseErr.message}. Raw content: ${content.substring(0, 200)}`,
+    );
+  }
 }
 
 /**

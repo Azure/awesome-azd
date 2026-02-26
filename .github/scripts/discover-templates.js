@@ -14,79 +14,19 @@ const path = require("path");
 const fs = require("fs");
 const { assessTemplateQuality, generateTemplateMetadata } = require("./ai-metadata");
 const crypto = require("crypto");
-
-const MICROSOFT_ORGS = new Set([
-  "azure", "azure-samples", "microsoft", "microsoftdocs",
-  "azure-app-service", "azure-for-startups",
-]);
+const {
+  MICROSOFT_ORGS,
+  sleep,
+  normalizeUrl,
+  githubApi,
+  searchCode,
+  getRepoDetails,
+  deduplicateByRepo,
+} = require("./github-utils");
 
 const SEARCH_QUERIES = [
   'filename:azure.yaml path:/ language:YAML',
 ];
-
-const MAX_RESULTS_PER_QUERY = 300;
-const API_DELAY_MS = 6000;
-const PER_PAGE = 100;
-
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-function normalizeUrl(url) {
-  if (!url) return "";
-  return url.toLowerCase().replace(/\/+$/, "").replace(/\.git$/, "");
-}
-
-async function githubApi(endpoint, token) {
-  const url = endpoint.startsWith("http")
-    ? endpoint
-    : `https://api.github.com${endpoint}`;
-
-  const response = await fetch(url, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      Accept: "application/vnd.github+json",
-      "X-GitHub-Api-Version": "2022-11-28",
-    },
-  });
-
-  if (!response.ok) {
-    const body = await response.text();
-    throw new Error(`GitHub API error ${response.status}: ${body}`);
-  }
-
-  return response.json();
-}
-
-async function searchCode(query, token) {
-  const results = [];
-  let page = 1;
-
-  while (results.length < MAX_RESULTS_PER_QUERY) {
-    await sleep(API_DELAY_MS);
-    try {
-      const data = await githubApi(
-        `/search/code?q=${encodeURIComponent(query)}&per_page=${PER_PAGE}&page=${page}`,
-        token
-      );
-
-      if (!data.items || data.items.length === 0) break;
-
-      results.push(...data.items);
-      if (data.items.length < PER_PAGE) break;
-      page++;
-    } catch (err) {
-      console.error(`Search error on page ${page}: ${err.message}`);
-      break;
-    }
-  }
-
-  return results;
-}
-
-async function getRepoDetails(owner, repo, token) {
-  return githubApi(`/repos/${owner}/${repo}`, token);
-}
 
 async function getFileContent(owner, repo, filePath, token) {
   try {
@@ -136,12 +76,25 @@ async function main() {
 
   // Load existing templates
   const templatesPath = path.resolve(__dirname, "../../website/static/templates.json");
-  const templates = JSON.parse(fs.readFileSync(templatesPath, "utf-8"));
+  let templates;
+  try {
+    templates = JSON.parse(fs.readFileSync(templatesPath, "utf-8"));
+  } catch (err) {
+    console.error(`Failed to read templates.json: ${err.message}`);
+    process.exit(1);
+  }
   const existingSources = new Set(templates.map((t) => normalizeUrl(t.source)));
 
-  // Load ignore list
+  // Load ignore list with fallback
   const ignorePath = path.resolve(__dirname, "../discovery-ignore.json");
-  const ignoreList = JSON.parse(fs.readFileSync(ignorePath, "utf-8"));
+  let ignoreList = { templates: [], extensions: [] };
+  if (fs.existsSync(ignorePath)) {
+    try {
+      ignoreList = JSON.parse(fs.readFileSync(ignorePath, "utf-8"));
+    } catch (err) {
+      console.warn(`Failed to parse discovery-ignore.json, using empty list: ${err.message}`);
+    }
+  }
   const ignoredTemplates = new Set(
     (ignoreList.templates || []).map((entry) => normalizeUrl(entry.source))
   );
@@ -159,14 +112,7 @@ async function main() {
   }
 
   // Deduplicate by repo
-  const seenRepos = new Set();
-  const uniqueRepos = [];
-  for (const item of allResults) {
-    const repoFullName = item.repository.full_name;
-    if (seenRepos.has(repoFullName)) continue;
-    seenRepos.add(repoFullName);
-    uniqueRepos.push(item);
-  }
+  const uniqueRepos = deduplicateByRepo(allResults);
 
   console.log(`Unique repos found: ${uniqueRepos.length}`);
 
@@ -309,7 +255,7 @@ async function main() {
   console.log(`\nTotal discovered: ${discovered.length}`);
   // Write to file for the workflow to consume
   const outputPath = path.resolve(__dirname, "../../discovered-templates.json");
-  fs.writeFileSync(outputPath, JSON.stringify(discovered, null, 2));
+  fs.writeFileSync(outputPath, JSON.stringify(discovered, null, 2) + "\n");
   console.log(`Results written to ${outputPath}`);
 }
 

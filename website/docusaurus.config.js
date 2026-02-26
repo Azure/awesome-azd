@@ -30,7 +30,14 @@ const config = {
 
   // CONFIG: Early detection for site health
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
+
+  // CONFIG: Markdown hooks
+  //    See: https://docusaurus.io/docs/api/docusaurus-config#markdown
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: "warn",
+    },
+  },
 
   // CONFIG: Localization if supporting multiple languages
   i18n: {

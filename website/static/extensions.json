@@ -86,6 +86,7 @@
       "community",
       "new"
     ],
+    "website": "https://jongio.github.io/azd-exec",
     "installCommand": "azd extension install jongio.azd.exec"
   },
   {
@@ -116,6 +117,7 @@
       "community",
       "new"
     ],
+    "website": "https://jongio.github.io/azd-rest",
     "installCommand": "azd extension install jongio.azd.rest"
   },
   {

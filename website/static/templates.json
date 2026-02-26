@@ -3624,6 +3624,57 @@
     "id": "43cd8998-653c-4c97-8ca5-ac463ca88900"
   },
   {
+    "title": "Azure Cosmos DB for MongoDB Quickstart - .NET",
+    "description": "A quick application to get started using Azure Cosmos DB for MongoDB with the Azure SDK for .NET.",
+    "preview": "./templates/images/cosmos-db-mongodb-dotnet-quickstart.png",
+    "website": "https://learn.microsoft.com/azure/cosmos-db/mongodb/quickstart-dotnet",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-mongodb-dotnet-quickstart",
+    "tags": [
+      "cosmosdb",
+      "dotnetCsharp",
+      "aca",
+      "managedidentity",
+      "bicep",
+      "msft",
+      "new"
+    ]
+  },
+  {
+    "title": "Azure Cosmos DB for MongoDB Quickstart - Node.js",
+    "description": "A quick application to get started using Azure Cosmos DB for MongoDB with the Azure SDK for Node.js.",
+    "preview": "./templates/images/cosmos-db-mongodb-nodejs-quickstart.png",
+    "website": "https://learn.microsoft.com/azure/cosmos-db/mongodb/quickstart-nodejs",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-mongodb-nodejs-quickstart",
+    "tags": [
+      "cosmosdb",
+      "nodejs",
+      "aca",
+      "managedidentity",
+      "bicep",
+      "msft",
+      "new"
+    ]
+  },
+  {
+    "title": "Azure Cosmos DB for MongoDB Quickstart - Python",
+    "description": "A quick application to get started using Azure Cosmos DB for MongoDB with the Azure SDK for Python.",
+    "preview": "./templates/images/cosmos-db-mongodb-python-quickstart.png",
+    "website": "https://learn.microsoft.com/azure/cosmos-db/mongodb/quickstart-python",
+    "author": "Azure Cosmos DB Content Team",
+    "source": "https://github.com/azure-samples/cosmos-db-mongodb-python-quickstart",
+    "tags": [
+      "cosmosdb",
+      "python",
+      "aca",
+      "managedidentity",
+      "bicep",
+      "msft",
+      "new"
+    ]
+  },
+  {
     "title": "Integration Hub with Logic App Standard",
     "description": "Template to deploy shared components like Logic App Standard Plan, Service Bus and Azure Artifacts for an integration platform.",
     "preview": "./templates/images/integration-hub.png",

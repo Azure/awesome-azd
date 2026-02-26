@@ -37,8 +37,10 @@
 
 .learnMoreColor {
   color: #7160e8 !important;
+  text-decoration: underline !important;
 }
 
 [data-theme="dark"] .learnMoreColor {
   color: #5649b0 !important;
+  text-decoration: underline !important;
 }

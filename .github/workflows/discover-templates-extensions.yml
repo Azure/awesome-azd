@@ -1,0 +1,387 @@
+name: Discover Templates & Extensions
+
+on:
+  schedule:
+    - cron: "0 8 * * *" # Daily at 8 AM UTC
+  workflow_dispatch:
+    inputs:
+      discover_templates:
+        description: "Discover new templates"
+        required: true
+        default: true
+        type: boolean
+      discover_extensions:
+        description: "Discover new extensions"
+        required: true
+        default: true
+        type: boolean
+
+permissions:
+  contents: write
+  pull-requests: write
+  models: read
+
+jobs:
+  discover-templates:
+    if: >-
+      github.event_name == 'schedule' ||
+      (github.event_name == 'workflow_dispatch' && inputs.discover_templates)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run template discovery
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_OWNER: ${{ github.repository_owner }}
+          REPO_NAME: ${{ github.event.repository.name }}
+        run: node .github/scripts/discover-templates.js
+
+      - name: Create PRs for discovered templates
+        uses: actions/github-script@v7
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+
+            const discoveredPath = path.join(process.cwd(), 'discovered-templates.json');
+            if (!fs.existsSync(discoveredPath)) {
+              console.log('No discovered templates file found');
+              return;
+            }
+
+            const discovered = JSON.parse(fs.readFileSync(discoveredPath, 'utf-8'));
+            if (discovered.length === 0) {
+              console.log('No new templates discovered');
+              return;
+            }
+
+            console.log(`Creating PRs for ${discovered.length} discovered templates`);
+
+            const templatesPath = path.join(process.cwd(), 'website', 'static', 'templates.json');
+            const baseTemplates = JSON.parse(fs.readFileSync(templatesPath, 'utf-8'));
+
+            for (const item of discovered) {
+              const { repoFullName, repoUrl, quality, reasoning, entry } = item;
+              const [owner, repo] = repoFullName.split('/');
+              const branchName = `discover/template-${owner}-${repo}`.substring(0, 60);
+
+              try {
+                // Get the default branch SHA
+                const { data: ref } = await github.rest.git.getRef({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  ref: 'heads/main',
+                });
+
+                // Create branch
+                try {
+                  await github.rest.git.createRef({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    ref: `refs/heads/${branchName}`,
+                    sha: ref.object.sha,
+                  });
+                } catch (err) {
+                  if (err.status === 422) {
+                    console.log(`Branch ${branchName} already exists, skipping`);
+                    continue;
+                  }
+                  throw err;
+                }
+
+                // Add the new template entry
+                const updatedTemplates = [...baseTemplates, entry];
+
+                // Get the current file to find its SHA
+                const { data: fileData } = await github.rest.repos.getContent({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  path: 'website/static/templates.json',
+                  ref: branchName,
+                });
+
+                // Update the file on the branch
+                await github.rest.repos.createOrUpdateFileContents({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  path: 'website/static/templates.json',
+                  message: `feat: add discovered template - ${repo}`,
+                  content: Buffer.from(JSON.stringify(updatedTemplates, null, 2) + '\n').toString('base64'),
+                  sha: fileData.sha,
+                  branch: branchName,
+                });
+
+                const tags = entry.tags || [];
+                const languages = entry.languages || [];
+                const frameworks = entry.frameworks || [];
+                const azureServices = entry.azureServices || [];
+                const iac = entry.IaC || [];
+
+                // Create PR
+                await github.rest.pulls.create({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  title: `feat: add discovered template - ${repo}`,
+                  head: branchName,
+                  base: 'main',
+                  body: `## 🔍 Auto-Discovered Template
+
+            This PR was automatically generated by the template discovery workflow.
+
+            ### Template Details
+
+            | Field | Value |
+            |-------|-------|
+            | **Repository** | [${repoFullName}](${repoUrl}) |
+            | **Title** | ${entry.title} |
+            | **Description** | ${entry.description} |
+            | **Author** | ${entry.author} |
+            | **Quality Score** | ${quality}/10 |
+            | **Tags** | ${tags.join(', ')} |
+            | **Languages** | ${languages.join(', ') || 'None detected'} |
+            | **Frameworks** | ${frameworks.join(', ') || 'None detected'} |
+            | **Azure Services** | ${azureServices.join(', ') || 'None detected'} |
+            | **IaC** | ${iac.join(', ') || 'None detected'} |
+
+            ### AI Quality Assessment
+            > ${reasoning}
+
+            ### How This Was Discovered
+
+            \`\`\`mermaid
+            flowchart TD
+                A[⏰ Daily Cron] --> B[Search GitHub API]
+                B --> |"filename:azure.yaml path:/"| C[Raw Results]
+                C --> D{Filter}
+                D --> |Fork/Archived/Duplicate?| X1[❌ Skip]
+                D --> |In ignore list?| X2[❌ Skip]
+                D --> |Pass filters| E[Fetch Repo Data]
+                E --> F[🤖 AI Quality Assessment]
+                F --> G{Quality ≥ 6?}
+                G --> |No| X3[❌ Skip]
+                G --> |Yes| H[Generate Metadata]
+                H --> I[📋 This PR]
+                I --> J{👤 Team Review}
+                J --> |✅ Merge| K[Added to Gallery]
+                J --> |❌ Close| L[Add to ignore list]
+
+                style I fill:#0078d4,stroke:#005a9e,color:#fff
+            \`\`\`
+
+            ### 👤 Review Checklist
+
+            - [ ] Template title and description are accurate
+            - [ ] Tags are correctly categorized (languages, frameworks, azureServices, IaC)
+            - [ ] No duplicate tags across arrays
+            - [ ] Repository is a legitimate, maintained azd template
+            - [ ] Preview image should be updated (currently using default test.png)
+
+            ### ⚠️ If Closing This PR
+
+            Please add the repo to \`.github/discovery-ignore.json\` with a justification:
+            \`\`\`json
+            {
+              "source": "${repoUrl}",
+              "reason": "<your reason here>",
+              "addedBy": "<your-github-username>",
+              "addedDate": "${new Date().toISOString().split('T')[0]}"
+            }
+            \`\`\`
+            `,
+                  labels: ['template-discovery', 'automated'],
+                });
+
+                console.log(`✓ Created PR for ${repoFullName}`);
+              } catch (err) {
+                console.error(`✗ Failed to create PR for ${repoFullName}: ${err.message}`);
+              }
+            }
+
+  discover-extensions:
+    if: >-
+      github.event_name == 'schedule' ||
+      (github.event_name == 'workflow_dispatch' && inputs.discover_extensions)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run extension discovery
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_OWNER: ${{ github.repository_owner }}
+          REPO_NAME: ${{ github.event.repository.name }}
+        run: node .github/scripts/discover-extensions.js
+
+      - name: Create PRs for discovered extensions
+        uses: actions/github-script@v7
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+
+            const discoveredPath = path.join(process.cwd(), 'discovered-extensions.json');
+            if (!fs.existsSync(discoveredPath)) {
+              console.log('No discovered extensions file found');
+              return;
+            }
+
+            const discovered = JSON.parse(fs.readFileSync(discoveredPath, 'utf-8'));
+            if (discovered.length === 0) {
+              console.log('No new extensions discovered');
+              return;
+            }
+
+            console.log(`Creating PRs for ${discovered.length} discovered extensions`);
+
+            const extensionsPath = path.join(process.cwd(), 'website', 'static', 'extensions.json');
+            const baseExtensions = JSON.parse(fs.readFileSync(extensionsPath, 'utf-8'));
+
+            for (const item of discovered) {
+              const { repoFullName, repoUrl, extensionId, entry } = item;
+              const safeName = extensionId.replace(/[^a-zA-Z0-9.-]/g, '-');
+              const branchName = `discover/extension-${safeName}`.substring(0, 60);
+
+              try {
+                // Get the default branch SHA
+                const { data: ref } = await github.rest.git.getRef({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  ref: 'heads/main',
+                });
+
+                // Create branch
+                try {
+                  await github.rest.git.createRef({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    ref: `refs/heads/${branchName}`,
+                    sha: ref.object.sha,
+                  });
+                } catch (err) {
+                  if (err.status === 422) {
+                    console.log(`Branch ${branchName} already exists, skipping`);
+                    continue;
+                  }
+                  throw err;
+                }
+
+                // Add the new extension entry
+                const updatedExtensions = [...baseExtensions, entry];
+
+                // Get the current file to find its SHA
+                const { data: fileData } = await github.rest.repos.getContent({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  path: 'website/static/extensions.json',
+                  ref: branchName,
+                });
+
+                // Update the file on the branch
+                await github.rest.repos.createOrUpdateFileContents({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  path: 'website/static/extensions.json',
+                  message: `feat: add discovered extension - ${extensionId}`,
+                  content: Buffer.from(JSON.stringify(updatedExtensions, null, 2) + '\n').toString('base64'),
+                  sha: fileData.sha,
+                  branch: branchName,
+                });
+
+                const capabilities = entry.capabilities || [];
+                const platforms = entry.platforms || [];
+
+                // Create PR
+                await github.rest.pulls.create({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  title: `feat: add discovered extension - ${extensionId}`,
+                  head: branchName,
+                  base: 'main',
+                  body: `## 🔍 Auto-Discovered Extension
+
+            This PR was automatically generated by the extension discovery workflow.
+
+            ### Extension Details
+
+            | Field | Value |
+            |-------|-------|
+            | **Repository** | [${repoFullName}](${repoUrl}) |
+            | **Extension ID** | \`${extensionId}\` |
+            | **Display Name** | ${entry.displayName} |
+            | **Description** | ${entry.description} |
+            | **Author** | ${entry.author} |
+            | **Version** | ${entry.latestVersion} |
+            | **Capabilities** | ${capabilities.join(', ')} |
+            | **Platforms** | ${platforms.join(', ')} |
+            | **Install** | \`${entry.installCommand}\` |
+
+            ### Registry URL
+            \`${entry.registryUrl}\`
+
+            ### How This Was Discovered
+
+            \`\`\`mermaid
+            flowchart TD
+                A[⏰ Daily Cron] --> B[Search GitHub API]
+                B --> |"filename:registry.json"| C[Raw Results]
+                C --> D{Filter}
+                D --> |Fork/Archived/Duplicate?| X1[❌ Skip]
+                D --> |In ignore list?| X2[❌ Skip]
+                D --> |Pass filters| E[Fetch registry.json]
+                E --> F[🔍 validate-extension.js]
+                F --> G{Valid?}
+                G --> |No| X3[❌ Skip]
+                G --> |Yes| H[Extract Metadata]
+                H --> I[📋 This PR]
+                I --> J{👤 Team Review}
+                J --> |✅ Merge| K[Added to Gallery]
+                J --> |❌ Close| L[Add to ignore list]
+
+                style I fill:#0078d4,stroke:#005a9e,color:#fff
+            \`\`\`
+
+            ### 👤 Review Checklist
+
+            - [ ] Extension ID and display name are appropriate
+            - [ ] Registry.json is valid and accessible
+            - [ ] Extension is production-ready (not a test or demo)
+            - [ ] Capabilities are correctly detected
+            - [ ] Author information is accurate
+
+            ### ⚠️ If Closing This PR
+
+            Please add the repo to \`.github/discovery-ignore.json\` with a justification:
+            \`\`\`json
+            {
+              "source": "${repoUrl}",
+              "reason": "<your reason here>",
+              "addedBy": "<your-github-username>",
+              "addedDate": "${new Date().toISOString().split('T')[0]}"
+            }
+            \`\`\`
+            `,
+                  labels: ['extension-discovery', 'automated'],
+                });
+
+                console.log(`✓ Created PR for ${extensionId}`);
+              } catch (err) {
+                console.error(`✗ Failed to create PR for ${extensionId}: ${err.message}`);
+              }
+            }

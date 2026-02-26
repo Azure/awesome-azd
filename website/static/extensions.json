@@ -1,0 +1,153 @@
+[
+  {
+    "id": "jongio.azd.app",
+    "namespace": "app",
+    "displayName": "App Extension",
+    "description": "A collection of developer productivity commands for Azure Developer CLI. Run, test, monitor, and manage all project services locally.",
+    "author": "Jon Gallant",
+    "authorUrl": "https://github.com/jongio",
+    "source": "https://github.com/jongio/azd-app",
+    "registryUrl": "https://raw.githubusercontent.com/jongio/azd-app/main/registry.json",
+    "latestVersion": "0.12.6",
+    "capabilities": [
+      "custom-commands",
+      "lifecycle-events",
+      "metadata"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "community",
+      "new"
+    ],
+    "website": "https://jongio.github.io/azd-app",
+    "installCommand": "azd extension install jongio.azd.app"
+  },
+  {
+    "id": "jongio.azd.copilot",
+    "namespace": "copilot",
+    "displayName": "Azure Copilot CLI",
+    "description": "AI-powered Azure development assistant. Describe what you want to build, and Copilot builds and deploys it to Azure. Includes 16 specialized agents and 29 Azure skills.",
+    "author": "Jon Gallant",
+    "authorUrl": "https://github.com/jongio",
+    "source": "https://github.com/jongio/azd-copilot",
+    "registryUrl": "https://raw.githubusercontent.com/jongio/azd-copilot/main/registry.json",
+    "latestVersion": "0.1.9",
+    "capabilities": [
+      "custom-commands",
+      "lifecycle-events",
+      "mcp-server",
+      "metadata"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "community",
+      "new"
+    ],
+    "website": "https://jongio.github.io/azd-copilot",
+    "installCommand": "azd extension install jongio.azd.copilot"
+  },
+  {
+    "id": "jongio.azd.exec",
+    "namespace": "exec",
+    "displayName": "Exec Extension",
+    "description": "Run any script with azd environment and Azure credentials. Database migrations, setup automation, CI/CD workflows - with seamless Key Vault integration.",
+    "author": "Jon Gallant",
+    "authorUrl": "https://github.com/jongio",
+    "source": "https://github.com/jongio/azd-exec",
+    "registryUrl": "https://raw.githubusercontent.com/jongio/azd-exec/main/registry.json",
+    "latestVersion": "0.3.8",
+    "capabilities": [
+      "custom-commands",
+      "lifecycle-events"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "community",
+      "new"
+    ],
+    "website": "https://jongio.github.io/azd-exec",
+    "installCommand": "azd extension install jongio.azd.exec"
+  },
+  {
+    "id": "jongio.azd.rest",
+    "namespace": "rest",
+    "displayName": "REST API Extension",
+    "description": "Execute REST API calls with automatic Azure authentication and scope detection. Supports Azure Management, Key Vault, Microsoft Graph, and custom APIs.",
+    "author": "Jon Gallant",
+    "authorUrl": "https://github.com/jongio",
+    "source": "https://github.com/jongio/azd-rest",
+    "registryUrl": "https://raw.githubusercontent.com/jongio/azd-rest/main/registry.json",
+    "latestVersion": "0.1.1",
+    "capabilities": [
+      "custom-commands",
+      "lifecycle-events",
+      "mcp-server",
+      "metadata"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "community",
+      "new"
+    ],
+    "website": "https://jongio.github.io/azd-rest",
+    "installCommand": "azd extension install jongio.azd.rest"
+  },
+  {
+    "id": "microsoft.azd.demo",
+    "namespace": "demo",
+    "displayName": "Demo Extension",
+    "description": "Example extension showcasing the azd extension framework. Demonstrates custom commands, lifecycle events, MCP server, and provider capabilities.",
+    "author": "Microsoft",
+    "authorUrl": "https://github.com/Azure",
+    "source": "https://github.com/Azure/azure-dev",
+    "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
+    "latestVersion": "0.5.0",
+    "capabilities": [
+      "custom-commands",
+      "lifecycle-events",
+      "mcp-server",
+      "service-target-provider",
+      "framework-service-provider"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "msft"
+    ],
+    "installCommand": "azd extension install microsoft.azd.demo"
+  }
+]

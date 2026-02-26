@@ -1,0 +1,258 @@
+name: Extension Submission
+
+on:
+  issues:
+    types: [labeled]
+  workflow_dispatch:
+    inputs:
+      registry_url:
+        description: "URL to the extension's registry.json"
+        required: true
+      source_repo:
+        description: "GitHub repository URL"
+        required: true
+      author:
+        description: "Author name"
+        required: true
+      author_url:
+        description: "Author GitHub URL"
+        required: true
+      author_type:
+        description: "Microsoft or Community"
+        required: true
+        default: "Community"
+        type: choice
+        options:
+          - Community
+          - Microsoft
+      website:
+        description: "Extension documentation website URL (optional)"
+        required: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  process-extension:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      contains(github.event.issue.labels.*.name, 'extension-submission')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Parse issue body
+        id: parse
+        uses: actions/github-script@v7
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body || '' }}
+          INPUT_REGISTRY_URL: ${{ inputs.registry_url }}
+          INPUT_SOURCE_REPO: ${{ inputs.source_repo }}
+          INPUT_AUTHOR: ${{ inputs.author }}
+          INPUT_AUTHOR_URL: ${{ inputs.author_url }}
+          INPUT_AUTHOR_TYPE: ${{ inputs.author_type }}
+          INPUT_WEBSITE: ${{ inputs.website }}
+        with:
+          script: |
+            if (context.eventName === 'workflow_dispatch') {
+              core.setOutput('registry_url', process.env.INPUT_REGISTRY_URL);
+              core.setOutput('source_repo', process.env.INPUT_SOURCE_REPO);
+              core.setOutput('author', process.env.INPUT_AUTHOR);
+              core.setOutput('author_url', process.env.INPUT_AUTHOR_URL);
+              core.setOutput('author_type', process.env.INPUT_AUTHOR_TYPE);
+              core.setOutput('website', process.env.INPUT_WEBSITE || '');
+              return;
+            }
+            
+            const body = process.env.ISSUE_BODY;
+            
+            function extractField(body, fieldName) {
+              const regex = new RegExp(`### ${fieldName}\\s*\\n\\s*([^\\n]+)`, 'i');
+              const match = body.match(regex);
+              return match ? match[1].trim() : '';
+            }
+            
+            const registryUrl = extractField(body, 'Registry URL');
+            const sourceRepo = extractField(body, 'Source Repository');
+            const author = extractField(body, 'Author');
+            const authorUrl = extractField(body, 'Author URL');
+            const authorType = extractField(body, 'Author Type');
+            const website = extractField(body, 'Extension Website');
+            
+            if (!registryUrl || !sourceRepo || !author || !authorUrl) {
+              core.setFailed('Missing required fields in issue body');
+              return;
+            }
+            
+            core.setOutput('registry_url', registryUrl);
+            core.setOutput('source_repo', sourceRepo);
+            core.setOutput('author', author);
+            core.setOutput('author_url', authorUrl);
+            core.setOutput('author_type', authorType);
+            core.setOutput('website', website);
+
+      - name: Validate and fetch registry
+        id: validate
+        env:
+          REGISTRY_URL: ${{ steps.parse.outputs.registry_url }}
+        run: |
+          node website/scripts/validate-extension.js "$REGISTRY_URL" > validation_result.json 2>validation_errors.log
+          if [ $? -ne 0 ]; then
+            echo "valid=false" >> $GITHUB_OUTPUT
+            {
+              echo 'errors<<EOF'
+              cat validation_result.json validation_errors.log
+              echo 'EOF'
+            } >> $GITHUB_OUTPUT
+          else
+            echo "valid=true" >> $GITHUB_OUTPUT
+            {
+              echo 'result<<EOF'
+              cat validation_result.json
+              echo 'EOF'
+            } >> $GITHUB_OUTPUT
+          fi
+
+      - name: Comment on validation failure
+        if: steps.validate.outputs.valid == 'false' && github.event_name != 'workflow_dispatch'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              body: `❌ **Extension validation failed**\n\nPlease check your registry.json and try again.\n\n\`\`\`\n${process.env.ERRORS}\n\`\`\``
+            });
+        env:
+          ERRORS: ${{ steps.validate.outputs.errors }}
+
+      - name: Update extensions.json
+        id: update
+        if: steps.validate.outputs.valid == 'true'
+        uses: actions/github-script@v7
+        env:
+          VALIDATION_RESULT: ${{ steps.validate.outputs.result }}
+          EXT_AUTHOR: ${{ steps.parse.outputs.author }}
+          EXT_AUTHOR_URL: ${{ steps.parse.outputs.author_url }}
+          EXT_SOURCE_REPO: ${{ steps.parse.outputs.source_repo }}
+          EXT_REGISTRY_URL: ${{ steps.parse.outputs.registry_url }}
+          EXT_AUTHOR_TYPE: ${{ steps.parse.outputs.author_type }}
+          EXT_WEBSITE: ${{ steps.parse.outputs.website }}
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            
+            function validateUrl(value, label) {
+              if (!value) return;
+              try {
+                const u = new URL(value);
+                if (!['http:', 'https:'].includes(u.protocol)) {
+                  throw new Error(`unsafe protocol "${u.protocol}"`);
+                }
+              } catch (err) {
+                throw new Error(`Invalid ${label} URL "${value}": ${err.message}`);
+              }
+            }
+            
+            const extensionsPath = path.join('website', 'static', 'extensions.json');
+            const extensions = JSON.parse(fs.readFileSync(extensionsPath, 'utf8'));
+            const validatedExtensions = JSON.parse(process.env.VALIDATION_RESULT);
+            
+            const author = process.env.EXT_AUTHOR;
+            const authorUrl = process.env.EXT_AUTHOR_URL;
+            const sourceRepo = process.env.EXT_SOURCE_REPO;
+            const registryUrl = process.env.EXT_REGISTRY_URL;
+            const authorType = process.env.EXT_AUTHOR_TYPE;
+            const website = process.env.EXT_WEBSITE;
+            
+            // Validate all user-provided URLs
+            validateUrl(authorUrl, 'author');
+            validateUrl(sourceRepo, 'source repo');
+            validateUrl(website, 'website');
+            validateUrl(registryUrl, 'registry');
+            
+            let added = [];
+            let skipped = [];
+            
+            for (const ext of validatedExtensions) {
+              if (!ext.valid) {
+                skipped.push(`${ext.id} (validation errors)`);
+                continue;
+              }
+              
+              const existingIndex = extensions.findIndex(e => e.id === ext.id);
+              const tags = authorType === 'Microsoft' ? ['msft', 'new'] : ['community', 'new'];
+              
+              const entry = {
+                id: ext.id,
+                namespace: ext.namespace,
+                displayName: ext.displayName,
+                description: ext.description,
+                author: author,
+                authorUrl: authorUrl,
+                source: sourceRepo,
+                registryUrl: registryUrl,
+                latestVersion: ext.latestVersion,
+                capabilities: ext.capabilities,
+                platforms: ext.platforms,
+                tags: tags,
+                installCommand: `azd extension install ${ext.id}`
+              };
+              
+              if (website) {
+                entry.website = website;
+              }
+              
+              if (existingIndex >= 0) {
+                extensions[existingIndex] = entry;
+                added.push(`${ext.id} (updated)`);
+              } else {
+                extensions.push(entry);
+                added.push(`${ext.id} (new)`);
+              }
+            }
+            
+            fs.writeFileSync(extensionsPath, JSON.stringify(extensions, null, 2) + '\n');
+            
+            core.setOutput('added', added.join(', '));
+            core.setOutput('skipped', skipped.join(', '));
+
+      - name: Create Pull Request
+        if: steps.validate.outputs.valid == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Add extension(s) from ${{ github.event_name == 'workflow_dispatch' && 'manual dispatch' || format('issue #{0}', github.event.issue.number) }}"
+          branch: "extension-submission-${{ github.event_name == 'workflow_dispatch' && github.run_id || github.event.issue.number }}"
+          title: "Add extension(s) from ${{ github.event_name == 'workflow_dispatch' && 'manual dispatch' || format('#{0}', github.event.issue.number) }}"
+          body: |
+            This PR was automatically generated${{ github.event_name != 'workflow_dispatch' && format(' from issue #{0}', github.event.issue.number) || '' }}.
+            
+            **Registry URL**: ${{ steps.parse.outputs.registry_url }}
+            **Extensions added**: ${{ steps.update.outputs.added || 'None' }}
+            **Extensions skipped**: ${{ steps.update.outputs.skipped || 'None' }}
+            
+            Please review the changes to `website/static/extensions.json`.
+          labels: extension-submission
+
+      - name: Comment on success
+        if: steps.validate.outputs.valid == 'true' && github.event_name != 'workflow_dispatch'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              body: `✅ **Extension validated successfully!**\n\nA pull request has been created to add your extension to the gallery. It will be reviewed by the maintainers shortly.`
+            });

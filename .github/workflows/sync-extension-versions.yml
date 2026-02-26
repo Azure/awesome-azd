@@ -1,0 +1,52 @@
+name: Sync Extension Versions
+
+on:
+  schedule:
+    - cron: "0 6 * * *" # Daily at 6 AM UTC
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync-versions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Sync extension versions
+        id: sync
+        run: |
+          OUTPUT=$(node website/scripts/sync-extension-versions.js 2>&1)
+          echo "$OUTPUT"
+          if git diff --quiet website/static/extensions.json; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            {
+              echo 'summary<<EOF'
+              echo "$OUTPUT"
+              echo 'EOF'
+            } >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Pull Request
+        if: steps.sync.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "chore: sync extension versions"
+          title: "chore: sync extension versions"
+          body: |
+            Automated daily sync of extension versions from their registries.
+
+            ${{ steps.sync.outputs.summary }}
+          branch: chore/sync-extension-versions
+          delete-branch: true
+          labels: automated

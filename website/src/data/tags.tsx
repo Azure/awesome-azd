@@ -134,6 +134,7 @@ export type TagType =
   | "powershell"
   | "autogen"
   | "dab"
+  | "rust"
   | "sharepoint"
   | "virtualmachine"
   | "sentinel"
@@ -246,6 +247,11 @@ export const Tags: { [type in TagType]: Tag } = {
   go: {
     label: "Go",
     description: "Template contains Go app code",
+    type: "Language",
+  },
+  rust: {
+    label: "Rust",
+    description: "Template contains Rust app code",
     type: "Language",
   },
 

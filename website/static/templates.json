@@ -6941,5 +6941,30 @@
       "bicep"
     ],
     "id": "13f1caf6-0609-48ca-88ed-10f1c76d63af"
+  },
+  {
+    "title": "Track Availability in Application Insights using Standard Test, Azure Function and Logic App Workflow",
+    "description": "A demo that shows three different ways to track availability in Application Insights using a standard test (webtest), an Azure Function (.NET) and a Logic App workflow",
+    "preview": "https://raw.githubusercontent.com/ronaldbosma/track-availability-in-app-insights/main/images/diagrams-overview.png",
+    "authorUrl": "https://github.com/ronaldbosma",
+    "author": "Ronald Bosma",
+    "source": "https://github.com/ronaldbosma/track-availability-in-app-insights",
+    "tags": [
+      "community",
+      "new"
+    ],
+    "languages": [
+      "dotnetCsharp"
+    ],
+    "azureServices": [
+      "appinsights",
+      "functions",
+      "logicapps",
+      "monitor"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "19c0c243-d5de-4dc1-9944-9a3c86566348"
   }
 ]

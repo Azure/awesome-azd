@@ -1,0 +1,73 @@
+name: "🧩 Submit an azd Extension"
+description: "Add your azd extension to the Awesome azd gallery"
+title: "[Extension]: "
+labels: ["extension-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for submitting your azd extension! Please fill out the information below.
+        Your extension's registry.json will be fetched and validated automatically.
+
+  - type: input
+    id: registry-url
+    attributes:
+      label: "Registry URL"
+      description: "URL to your extension's registry.json file (raw GitHub URL recommended)"
+      placeholder: "https://raw.githubusercontent.com/org/repo/main/registry.json"
+    validations:
+      required: true
+
+  - type: input
+    id: source-repo
+    attributes:
+      label: "Source Repository"
+      description: "GitHub repository URL for your extension"
+      placeholder: "https://github.com/org/repo"
+    validations:
+      required: true
+
+  - type: input
+    id: author
+    attributes:
+      label: "Author"
+      description: "Your name or organization"
+    validations:
+      required: true
+
+  - type: input
+    id: author-url
+    attributes:
+      label: "Author URL"
+      description: "URL to your GitHub profile or organization page"
+      placeholder: "https://github.com/username"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: author-type
+    attributes:
+      label: "Author Type"
+      description: "Is this a Microsoft-authored or community extension?"
+      options:
+        - Community
+        - Microsoft
+    validations:
+      required: true
+
+  - type: input
+    id: website
+    attributes:
+      label: "Extension Website"
+      description: "URL to your extension's documentation website (optional). If your registry contains multiple extensions, this will be applied to all of them."
+      placeholder: "https://jongio.github.io/azd-app"
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: "Additional Information"
+      description: "Any additional context about your extension (optional)"
+    validations:
+      required: false

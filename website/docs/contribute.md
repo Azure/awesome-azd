@@ -39,7 +39,33 @@ If you would like to contribute a template but are not sure where to start, [mak
 ### [Submit a Resource](https://github.com/Azure/awesome-azd/compare)
 Did you write or find an article that helped you get started with `azd`? Or maybe you created or found a video that showed you how to create an azd template? Whatever the resource might be, we would love for you to share it with our community! Submit content you think should be included in `awesome-azd/README.md`
 
-## Other Ways To Help 
+## Submit an azd Extension
+
+Have you built an azd extension? Share it with the community! Extensions expand `azd` with custom commands, lifecycle events, MCP servers, and more.
+
+### How to submit
+
+1. **Ensure your extension has a `registry.json`** — This is the standard metadata file for azd extensions. You can generate it with `azd x publish`.
+2. **[Submit an extension issue](https://github.com/Azure/awesome-azd/issues/new?template=extension-submission.yml)** — Fill out the form with:
+   - **Registry URL** — Raw GitHub URL to your `registry.json` (e.g., `https://raw.githubusercontent.com/org/repo/main/registry.json`)
+   - **Source Repository** — Your extension's GitHub repo URL
+   - **Author** — Your name or organization
+   - **Author URL** — Link to your GitHub profile
+   - **Author Type** — Microsoft or Community
+   - **Extension Website** — Link to your extension's documentation site (optional)
+3. **Automatic validation** — A workflow will fetch your registry, validate the extension metadata, and create a PR automatically.
+4. **Review & merge** — Maintainers will review the PR and merge it. Your extension will then appear in the gallery!
+
+### What makes a good extension listing?
+
+- A clear `displayName` and `description` in your `registry.json`
+- At least one published version with platform artifacts
+- A well-documented README in your source repository
+- Valid capabilities declared (e.g., `custom-commands`, `lifecycle-events`, `mcp-server`)
+
+Learn more about azd extensions in the [Extensions documentation](./extensions.md).
+
+## Other Ways To Help
 Other than these, we always welcome feedback through a:
  - [**request a template**](https://github.com/Azure/awesome-azd/issues/new?assignees=kristenwomack&labels=requested-contribution&template=%F0%9F%A4%94-submit-a-template-request.md&title=%5BIdea%5D+%3Cyour-template-name%3E): if you cannot find a template with architecture that works for you-- you can submit a request for that template
     - Keep in mind, templates are made to be flexible and extensible. You can use a template's architecture and swap out the source code. For example, if you want to create a grocery list making application using Azure SQL and Azure App service, you can use the React Web App with C# API and SQL Database on Azure template and swap out the source code.

@@ -131,6 +131,9 @@
   text-decoration-line: underline;
   cursor: pointer;
   color: var(--ifm-color-purple);
+  background: none;
+  border: none;
+  padding: 0;
 }
 
 .filterBadge {

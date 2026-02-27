@@ -3,13 +3,15 @@
  * Licensed under the MIT License.
  */
 
-import React, { useState, useMemo, useEffect, useCallback } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import {
   UserState,
   InputValue,
 } from "../components/gallery/ShowcaseTemplateSearch";
 import { Tags, type User, type TagType } from "../data/tags";
 import { sortedUsers, unsortedUsers } from "../data/users";
+import { type Extension } from "../data/extensionTypes";
+import { sortedExtensions, unsortedExtensions } from "../data/extensions";
 import {
   Text,
   Combobox,
@@ -18,12 +20,15 @@ import {
   Badge,
   Body1,
   Button,
+  ToggleButton,
 } from "@fluentui/react-components";
 import ShowcaseCards from "./ShowcaseCards";
+import ShowcaseExtensionCards from "./ShowcaseExtensionCards";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
 import { useHistory } from "@docusaurus/router";
+import type { Location } from "history";
 import { toggleListItem, splitAuthors } from "@site/src/utils/jsUtils";
 import { prepareUserState } from "./index";
 import { Dismiss20Filled } from "@fluentui/react-icons";
@@ -39,21 +44,6 @@ function replaceSearchTags(search: string, newTags: TagType[]) {
   searchParams.delete(TagQueryStringKey2);
   newTags.forEach((tag) => searchParams.append(TagQueryStringKey2, tag));
   return searchParams.toString();
-}
-
-// updates only the url query
-const toggleTag = (tag: TagType, location: Location) => {
-  const history = useHistory();
-  return useCallback(() => {
-    const tags = readSearchTags2(location.search);
-    const newTags = toggleListItem(tags, tag);
-    const newSearch = replaceSearchTags(location.search, newTags);
-    history.push({
-      ...location,
-      search: newSearch,
-      state: prepareUserState(),
-    });
-  }, [tag, location, history]);
 }
 
 function restoreUserState(userState: UserState | null) {
@@ -140,6 +130,47 @@ function filterUsers(
   });
 }
 
+function filterExtensions(
+  extensions: Extension[],
+  selectedTags: TagType[],
+  selectedAuthors: string[],
+  searchName: string | null
+) {
+  if (searchName) {
+    const q = searchName.toLowerCase();
+    extensions = extensions.filter((ext) =>
+      ext.displayName.toLowerCase().includes(q) ||
+      ext.description.toLowerCase().includes(q) ||
+      ext.author.toLowerCase().includes(q) ||
+      ext.namespace.toLowerCase().includes(q) ||
+      ext.id.toLowerCase().includes(q) ||
+      (ext.website && ext.website.toLowerCase().includes(q))
+    );
+  }
+
+  if (selectedAuthors && selectedAuthors.length > 0) {
+    extensions = extensions.filter((ext) => {
+      const extAuthors = splitAuthors(ext.author);
+      return selectedAuthors.some((a) => extAuthors.includes(a));
+    });
+  }
+
+  if (!selectedTags || selectedTags.length === 0) {
+    return extensions;
+  }
+
+  return extensions.filter((ext) => {
+    const allTags = [...ext.tags];
+    // Map capabilities to tag names
+    ext.capabilities.forEach((cap) => {
+      allTags.push(("ext-" + cap) as TagType);
+    });
+    return selectedTags.every((tag) => allTags.includes(tag));
+  });
+}
+
+const ContentTypeQueryKey = "type";
+
 function FilterAppliedBar({
   clearAll,
   selectedTags,
@@ -150,14 +181,14 @@ function FilterAppliedBar({
   replaceSearchAuthors,
   location,
 }: {
-  clearAll;
+  clearAll: () => void;
   selectedTags: TagType[];
   selectedAuthors: string[];
   readSearchTags: (search: string) => TagType[];
   replaceSearchTags: (search: string, newTags: TagType[]) => string;
   readSearchAuthors: (search: string) => string[];
   replaceSearchAuthors: (search: string, newAuthors: string[]) => string;
-  location;
+  location: Location;
 }) {
   const history = useHistory();
   const toggleTag = (tag: TagType, location: Location) => {
@@ -182,7 +213,7 @@ function FilterAppliedBar({
     });
   }
 
-  return selectedTags && selectedTags.length > 0 || selectedAuthors && selectedAuthors.length > 0 ? (
+  return selectedTags && selectedTags.length > 0 || (selectedAuthors && selectedAuthors.length > 0) ? (
     <div className={styles.filterAppliedBar}>
       <Body1>
         Filters applied:
@@ -202,9 +233,18 @@ function FilterAppliedBar({
             icon={<Dismiss20Filled />}
             iconPosition="after"
             className={styles.filterBadge}
+            role="button"
+            tabIndex={0}
             onClick={() => {
               toggleTag(tag, location);
             }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                toggleTag(tag, location);
+              }
+            }}
+            aria-label={`Remove ${tagObject.label} filter`}
           >
             {tagObject.label}
           </Badge>
@@ -223,17 +263,30 @@ function FilterAppliedBar({
             icon={<Dismiss20Filled />}
             iconPosition="after"
             className={styles.filterBadge}
+            role="button"
+            tabIndex={0}
             onClick={() => {
               toggleAuthor(author, location);
             }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                toggleAuthor(author, location);
+              }
+            }}
+            aria-label={`Remove ${author} filter`}
           >
             {author}
           </Badge>
         );
       })}
-      <div className={styles.clearAll} onClick={clearAll}>
+      <button
+        type="button"
+        className={styles.clearAll}
+        onClick={clearAll}
+      >
         Clear all
-      </div>
+      </button>
     </div>
   ) : null;
 }
@@ -294,7 +347,7 @@ function PaginationControls({
         if (page === "...") {
           return (
             <Text key={`ellipsis-${index}`} size={400} style={{ padding: "8px" }}>
-              ...
+              …
             </Text>
           );
         }
@@ -339,7 +392,7 @@ export default function ShowcaseCardPage({
 }: {
   setActiveTags: React.Dispatch<React.SetStateAction<TagType[]>>;
   selectedTags: TagType[];
-  location;
+  location: Location & { state?: UserState | null; search: string };
   setSelectedTags: React.Dispatch<React.SetStateAction<TagType[]>>;
   readSearchTags: (search: string) => TagType[];
   replaceSearchTags: (search: string, newTags: TagType[]) => string;
@@ -359,6 +412,26 @@ export default function ShowcaseCardPage({
   const itemsPerPage = 20;
   const history = useHistory();
   const searchParams = new URLSearchParams(location.search);
+
+  // Content type toggle
+  const contentType = searchParams.get(ContentTypeQueryKey) || "templates";
+  const setContentType = (type: string) => {
+    const newParams = new URLSearchParams(location.search);
+    newParams.set(ContentTypeQueryKey, type);
+    // Clear tag/author filters when switching content type
+    newParams.delete("tags");
+    newParams.delete("authors");
+    setSelectedTags([]);
+    setSelectedCheckbox([]);
+    setSelectedAuthors([]);
+    setSelectedAuthorCheckbox([]);
+    history.push({
+      ...location,
+      search: newParams.toString(),
+      state: prepareUserState(),
+    });
+  };
+
   const clearAll = () => {
     setSelectedTags([]);
     setSelectedCheckbox([]);
@@ -381,59 +454,139 @@ export default function ShowcaseCardPage({
     setLoading(false);
   }, [location, selectedOptions]);
 
-  var cards = useMemo(
+  // Template filtering
+  const cards = useMemo(
     () => filterUsers(selectedUsers, selectedTags, selectedAuthors, searchName),
     [selectedUsers, selectedTags, selectedAuthors, searchName]
   );
 
+  // Extension filtering
+  const extensionCards = useMemo(
+    () => filterExtensions(
+      selectedOptions[0] === SORT_BY_OPTIONS[2] || selectedOptions[0] === SORT_BY_OPTIONS[3]
+        ? (selectedOptions[0] === SORT_BY_OPTIONS[3] ? [...sortedExtensions].reverse() : sortedExtensions)
+        : (selectedOptions[0] === SORT_BY_OPTIONS[0] ? [...unsortedExtensions].reverse() : unsortedExtensions),
+      selectedTags,
+      selectedAuthors,
+      searchName
+    ),
+    [selectedTags, selectedAuthors, searchName, selectedOptions]
+  );
+
+  const isExtensions = contentType === "extensions";
+  const activeItems = isExtensions ? extensionCards : cards;
+  const totalItems = activeItems ? activeItems.length : 0;
+
   // Reset to first page when filters change
   useEffect(() => {
     setCurrentPage(1);
-  }, [selectedTags, searchName, selectedUsers]);
+  }, [selectedTags, searchName, selectedUsers, contentType]);
 
   // Calculate pagination
-  const totalTemplates = cards ? cards.length : 0;
-  const totalPages = Math.ceil(totalTemplates / itemsPerPage);
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const paginatedCards = cards.slice(startIndex, endIndex);
+
+  // Paginated items
+  const paginatedTemplates = cards.slice(startIndex, endIndex);
+  const paginatedExtensions = extensionCards.slice(startIndex, endIndex);
 
   useEffect(() => {
-    const unionTags = new Set<TagType>();
-    cards.forEach((user) => {
-      const tags = [
-        ...(user.tags || []),
-        ...(user.languages || []),
-        ...(user.frameworks || []),
-        ...(user.azureServices || []),
-        ...(user.IaC || []),
-      ];
-      tags.forEach((tag) => unionTags.add(tag))
-    });
-    setActiveTags(Array.from(unionTags));
-  }, [cards]);
+    if (isExtensions) {
+      const unionTags = new Set<TagType>();
+      extensionCards.forEach((ext) => {
+        ext.tags.forEach((tag) => unionTags.add(tag));
+        ext.capabilities.forEach((cap) => unionTags.add(("ext-" + cap) as TagType));
+      });
+      setActiveTags(Array.from(unionTags));
+    } else {
+      const unionTags = new Set<TagType>();
+      cards.forEach((user) => {
+        const tags = [
+          ...(user.tags || []),
+          ...(user.languages || []),
+          ...(user.frameworks || []),
+          ...(user.azureServices || []),
+          ...(user.IaC || []),
+        ];
+        tags.forEach((tag) => unionTags.add(tag));
+      });
+      setActiveTags(Array.from(unionTags));
+    }
+  }, [cards, extensionCards, isExtensions]);
 
   useEffect(() => {
-    const unionAuthors = new Set<string>();
-    cards.forEach((user) => {
-      // Split authors to handle multiple authors per template
-      const authors = splitAuthors(user.author);
-      authors.forEach(author => unionAuthors.add(author));
-    });
-    setActiveAuthors(Array.from(unionAuthors));
-  }, [cards]);
+    if (isExtensions) {
+      const unionAuthors = new Set<string>();
+      extensionCards.forEach((ext) => unionAuthors.add(ext.author));
+      setActiveAuthors(Array.from(unionAuthors));
+    } else {
+      const unionAuthors = new Set<string>();
+      cards.forEach((user) => {
+        const authors = splitAuthors(user.author);
+        authors.forEach(author => unionAuthors.add(author));
+      });
+      setActiveAuthors(Array.from(unionAuthors));
+    }
+  }, [cards, extensionCards, isExtensions]);
 
   const sortByOnSelect = (event, data) => {
     setLoading(true);
     setSelectedOptions(data.selectedOptions);
   };
 
-  // Template count display logic
-  const currentStart = totalTemplates > 0 ? startIndex + 1 : 0;
-  const currentEnd = Math.min(endIndex, totalTemplates);
+  // Count display logic
+  const currentStart = totalItems > 0 ? startIndex + 1 : 0;
+  const currentEnd = Math.min(endIndex, totalItems);
+  const itemLabel = isExtensions ? "extension" : "template";
+  const itemLabelPlural = isExtensions ? "extensions" : "templates";
 
   return (
     <>
+      {/* Content Type Toggle */}
+      <div
+        role="group"
+        aria-label="Content type"
+        style={{
+          display: "flex",
+          gap: "4px",
+          marginBottom: "16px",
+          alignItems: "center",
+        }}
+      >
+        <ToggleButton
+          appearance={!isExtensions ? "primary" : "outline"}
+          size="medium"
+          checked={!isExtensions}
+          onClick={() => setContentType("templates")}
+          aria-label="Switch to templates view"
+        >
+          Templates
+        </ToggleButton>
+        <ToggleButton
+          appearance={isExtensions ? "primary" : "outline"}
+          size="medium"
+          checked={isExtensions}
+          onClick={() => setContentType("extensions")}
+          aria-label="Switch to extensions view"
+        >
+          Extensions
+        </ToggleButton>
+        {isExtensions && (
+          <Text size={300} style={{ marginLeft: "auto" }}>
+            Built an extension?{" "}
+            <a
+              href="https://github.com/Azure/awesome-azd/issues/new?template=extension-submission.yml"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "var(--ifm-color-purple-light)", textDecoration: "none" }}
+            >
+              Submit it here →
+            </a>
+          </Text>
+        )}
+      </div>
+
       <div
         style={{
           display: "flex",
@@ -451,15 +604,15 @@ export default function ShowcaseCardPage({
           aria-atomic="true"
         >
           <Text size={400}>Viewing</Text>
-          {totalTemplates === 0 ? (
+          {totalItems === 0 ? (
             <>
               <Text size={400} weight="bold">0</Text>
-              <Text size={400}>template</Text>
+              <Text size={400}>{itemLabelPlural}</Text>
             </>
-          ) : totalTemplates === 1 ? (
+          ) : totalItems === 1 ? (
             <>
               <Text size={400} weight="bold">1</Text>
-              <Text size={400}>template</Text>
+              <Text size={400}>{itemLabel}</Text>
             </>
           ) : (
             <>
@@ -468,9 +621,9 @@ export default function ShowcaseCardPage({
               </Text>
               <Text size={400}>of</Text>
               <Text size={400} weight="bold">
-                {totalTemplates}
+                {totalItems}
               </Text>
-              <Text size={400}>templates</Text>
+              <Text size={400}>{itemLabelPlural}</Text>
             </>
           )}
           {InputValue != null ? (
@@ -518,7 +671,11 @@ export default function ShowcaseCardPage({
         <Spinner labelPosition="below" label="Loading..." />
       ) : (
         <>
-          <ShowcaseCards filteredUsers={paginatedCards} />
+          {isExtensions ? (
+            <ShowcaseExtensionCards filteredExtensions={paginatedExtensions} />
+          ) : (
+            <ShowcaseCards filteredUsers={paginatedTemplates} />
+          )}
           {totalPages > 1 && (
             <PaginationControls
               currentPage={currentPage}

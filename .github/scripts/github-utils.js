@@ -158,6 +158,29 @@ function deduplicateByRepo(items) {
   return unique;
 }
 
+/**
+ * Parse MAX_PRS env var and return a capped slice of the discovered array.
+ * Handles NaN and negative values safely.
+ * @param {Array} discovered - Full array of discovered items
+ * @param {string} label - Human label for logging (e.g., "templates")
+ * @returns {Array} Capped array of items to process
+ */
+function applyCap(discovered, label) {
+  const raw = process.env.MAX_PRS || "0";
+  let maxPRs = parseInt(raw, 10);
+  if (isNaN(maxPRs) || maxPRs < 0) {
+    console.warn(`Invalid MAX_PRS="${raw}" — defaulting to 5`);
+    maxPRs = 5;
+  }
+  const limit = maxPRs > 0 ? maxPRs : discovered.length;
+  const candidates = discovered.slice(0, limit);
+  console.log(
+    `Creating PRs for ${candidates.length} of ${discovered.length} ${label}` +
+      (maxPRs > 0 ? ` (capped at ${maxPRs})` : ""),
+  );
+  return candidates;
+}
+
 module.exports = {
   MAX_RESULTS_PER_QUERY,
   API_DELAY_MS,
@@ -172,4 +195,5 @@ module.exports = {
   sanitizeBranchName,
   escapeMarkdown,
   deduplicateByRepo,
+  applyCap,
 };

@@ -37,3 +37,14 @@
   font-weight: 600;
   line-height: 28px;
 }
+
+.filterCount {
+  font-size: 12px;
+  font-weight: 400;
+  color: #8a8a8a;
+  margin-left: 6px;
+}
+
+[data-theme="dark"] .filterCount {
+  color: #8a8a8a;
+}

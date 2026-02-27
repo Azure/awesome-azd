@@ -33,19 +33,19 @@ export default function ShowcaseEmptyResult({ id }: { id: string }) {
         {InputValue != null ? (
           <>
             <Text size={500} weight="bold" align="center">
-              We couldn’t find any results for '{InputValue}'
+              No templates found for '{InputValue}'
             </Text>
             <Text size={400} align="center">
-              Check for spelling or try searching for another term.
+              Try a different search term or browse all templates.
             </Text>
           </>
         ) : (
           <>
             <Text size={500} weight="bold" align="center">
-              We couldn’t find any results.
+              No templates match your filters.
             </Text>
             <Text size={400} align="center">
-              Check for tags or try filtering for another tag.
+              Try broadening your search or clear filters to browse all templates.
             </Text>
           </>
         )}

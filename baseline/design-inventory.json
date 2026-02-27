@@ -1,0 +1,67 @@
+{
+  "colorPalette": {
+    "light": {
+      "primary": "#6b5bdc",
+      "primaryDark": "#205585",
+      "purple": "#6b5bdc",
+      "purpleLight": "#6656d1",
+      "buttonBg": "#7160e8",
+      "buttonHover": "#5a4cb9",
+      "navbarLinkColor": "#242424",
+      "newBadge": "#11910D",
+      "popularBadge": "#F7630C",
+      "cardTagText": "#606060",
+      "cardFooterText": "#424242"
+    },
+    "dark": {
+      "primary": "#a79cf1",
+      "purple": "#a79cf1",
+      "buttonBg": "#5649b0",
+      "buttonHover": "#443a8c",
+      "navbarLinkColor": "white"
+    }
+  },
+  "typography": {
+    "framework": "Infima (system font stack)",
+    "fluentUI": ["largeTitle", "title3", "subtitle1"],
+    "navbar": "16px",
+    "cardTags": "10px",
+    "customFonts": "none"
+  },
+  "components": {
+    "docusaurus": ["Layout", "Navbar", "Footer", "Sidebar"],
+    "fluentUIv9": ["Card", "CardHeader", "CardFooter", "CardPreview", "Button", "Input", "Link", "FluentProvider", "Popover", "Text"],
+    "fluentUIv8": ["Panel", "PanelType", "ThemeProvider"],
+    "custom": [
+      "ShowcaseTemplateSearch",
+      "ShowcaseLeftFilters",
+      "ShowcaseCardPage",
+      "ShowcaseCard",
+      "ShowcaseCardPanel",
+      "ShowcaseCardTag",
+      "ShowcaseMultipleAuthors",
+      "ShowcaseTagSelect",
+      "ShowcaseAuthorSelect",
+      "ShowcaseEmptyResult",
+      "ShowcaseExtensionCard",
+      "ShowcaseExtensionCards",
+      "ShowcaseSurveyCard",
+      "HomepageFeatures",
+      "Feature",
+      "BackToTopButton"
+    ]
+  },
+  "staticAssets": {
+    "templateImages": "static/templates/images/ (~280+ files)",
+    "azureIcons": "static/img/Azure-*.svg (~50+ files)",
+    "branding": ["static/img/logo.png", "static/img/favicon.ico"],
+    "featureCards": ["static/img/home-discover.svg", "static/img/home-learn.svg", "static/img/home-create.svg", "static/img/home-contribute.svg"],
+    "backgrounds": ["static/img/coverBackground.png", "static/img/coverBackgroundDark.png"],
+    "misc": ["static/img/Sparkle.svg", "static/img/Fire.svg", "static/img/Copy.svg", "static/img/Community.svg", "static/img/Microsoft.svg"]
+  },
+  "cssCustomization": {
+    "file": "src/css/custom.css",
+    "lines": 98,
+    "scope": "minimal - mostly color overrides and navbar styling"
+  }
+}

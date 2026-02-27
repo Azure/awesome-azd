@@ -8,6 +8,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
+  display: none; /* Hide the old gradient image — replaced by CSS gradient */
 }
 
 .searchContainer {
@@ -15,36 +16,41 @@
   overflow: hidden;
   position: relative;
   width: 100%;
+  background: var(--site-hero-gradient);
 }
 
 .searchArea {
   position: relative;
   width: 100%;
-  min-height: 340px;
+  min-height: 380px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem 1rem;
+  padding: 3rem 1.5rem 2rem;
 }
 
 .heroBar {
-  max-width: 740px;
+  max-width: 800px;
   text-align: center;
+  margin-bottom: 4px;
 }
 
 .heroDescription {
-  color: #242424;
-  padding: 10px 0 20px 0;
+  color: #444;
+  padding: 8px 0 24px 0;
   text-align: center;
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.6;
 }
 
 [data-theme="dark"] .heroDescription {
-  color: #d1d1d1;
+  color: #c8c8c8;
 }
 
 .heroSubtext {
   color: #616161;
-  padding-top: 8px;
+  padding-top: 12px;
   padding-bottom: 20px;
   text-align: center;
 }
@@ -57,8 +63,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 24px;
-  padding: 16px 0 8px 0;
+  gap: 32px;
+  padding: 20px 0 4px 0;
 }
 
 .statItem {
@@ -69,7 +75,8 @@
 }
 
 .statNumber {
-  color: #6b5bdc;
+  color: #5b4ec9;
+  font-size: 1.5rem !important;
 }
 
 [data-theme="dark"] .statNumber {
@@ -77,21 +84,23 @@
 }
 
 .statLabel {
-  color: #616161;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 [data-theme="dark"] .statLabel {
-  color: #adadad;
+  color: #999;
 }
 
 .statDivider {
   width: 1px;
-  height: 32px;
-  background-color: #d1d1d1;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="dark"] .statDivider {
-  background-color: #444444;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .color {
@@ -99,7 +108,8 @@
 }
 
 .learnMoreColor {
-  color: #7160e8 !important;
+  color: #5b4ec9 !important;
+  font-weight: 600;
 }
 
 [data-theme="dark"] .learnMoreColor {

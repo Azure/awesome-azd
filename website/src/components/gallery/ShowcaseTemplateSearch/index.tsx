@@ -146,14 +146,16 @@ export default function ShowcaseTemplateSearch() {
         >
           <h1 className={styles.heroBar}>
             <Text
-              size={800}
+              size={900}
               align="center"
-              weight="semibold"
+              weight="bold"
               style={{
                 background:
-                  "linear-gradient(90deg, rgb(112.68, 94.63, 239.06) 0%, rgb(41.21, 120.83, 190.19) 100%)",
+                  "linear-gradient(135deg, #5b4ec9 0%, #2878be 50%, #c94eb8 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
+                fontSize: "2.75rem",
+                lineHeight: "1.15",
               }}
             >
               {title}

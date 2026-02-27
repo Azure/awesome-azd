@@ -6,28 +6,51 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #6b5bdc;
-  --ifm-color-primary-dark: #205585;
-  --ifm-color-primary-darker: #1f507e;
-  --ifm-color-primary-darkest: #194268;
-  --ifm-color-primary-light: #2867a3;
-  --ifm-color-primary-lighter: #296caa;
-  --ifm-color-primary-lightest: #2f7ac0;
+  --ifm-color-primary: #5b4ec9;
+  --ifm-color-primary-dark: #4a3fb5;
+  --ifm-color-primary-darker: #4539a6;
+  --ifm-color-primary-darkest: #382f88;
+  --ifm-color-primary-light: #6e62d2;
+  --ifm-color-primary-lighter: #7a6fd8;
+  --ifm-color-primary-lightest: #9a92e2;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --ifm-navbar-link-color: #242424;
-  --ifm-color-purple: #6b5bdc;
+  --ifm-color-purple: #5b4ec9;
   --ifm-color-purple-light: #6656d1;
+  --ifm-font-family-base: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --ifm-heading-font-weight: 700;
+  --ifm-font-weight-semibold: 600;
+  --site-hero-gradient: linear-gradient(135deg, #f0edff 0%, #e8f4fd 50%, #fce8f3 100%);
+  --site-card-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --site-card-shadow-hover: 0 10px 30px rgba(91, 78, 201, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
+  --site-card-radius: 16px;
+  --site-section-bg: #f8f7ff;
+}
+
+/* Smoother font rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .navbar {
-  font-size: 16px;
+  font-size: 15px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+[data-theme="dark"] .navbar {
+  background: rgba(30, 30, 30, 0.92);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .navbar .navbar__inner .navbar__items .navbar__link--active {
   text-decoration-line: underline;
   text-underline-offset: 20px;
-  text-decoration-thickness: 4px;
+  text-decoration-thickness: 3px;
+  text-decoration-color: var(--ifm-color-primary);
 }
 
 [data-theme="dark"] {
@@ -36,6 +59,10 @@
   --ifm-color-purple: #a79cf1;
   --ifm-color-purple-light: #a79cf1;
   --ifm-color-primary: #a79cf1;
+  --site-hero-gradient: linear-gradient(135deg, #1a1730 0%, #1a2332 50%, #241a2e 100%);
+  --site-card-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --site-card-shadow-hover: 0 10px 30px rgba(167, 156, 241, 0.15), 0 4px 12px rgba(0, 0, 0, 0.2);
+  --site-section-bg: #1a1a1a;
 }
 
 .header-github-link:hover {
@@ -52,13 +79,19 @@
 }
 
 .button {
-  background-color: #7160e8;
+  background-color: var(--ifm-color-primary);
   color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 8px 20px;
+  transition: all 0.2s ease;
 }
 
 .button:hover {
-  background-color: #5a4cb9;
+  background-color: var(--ifm-color-primary-dark);
   color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(91, 78, 201, 0.3);
 }
 
 [data-theme="dark"] .button {
@@ -67,7 +100,7 @@
 }
 
 [data-theme="dark"] .button:hover {
-  background-color: #443a8c;
+  background-color: #6a5cc8;
   color: white;
 }
 
@@ -77,21 +110,20 @@ html[data-theme="dark"] .header-github-link:before {
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
-/* [data-theme='dark'] {
-  --ifm-color-primary: #7160E8;
-  --ifm-color-primary-dark: #17cef2;
-  --ifm-color-primary-darker: #0dc9ee;
-  --ifm-color-primary-darkest: #0ba5c4;
-  --ifm-color-primary-light: #4fdaf6;
-  --ifm-color-primary-lighter: #5dddf6;
-  --ifm-color-primary-lightest: #87e6f9;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-} */
-
-/* For readability - FIXME: is there a better way to handle it? */
 .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.1);
   display: block;
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
+}
+
+/* Modern footer */
+.footer {
+  background: #fafafe;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] .footer {
+  background: #141414;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }

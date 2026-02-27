@@ -86,3 +86,119 @@
     flex-direction: column;
   }
 }
+
+/* Step-by-step section */
+.stepsSection {
+  padding: 3rem 2rem;
+}
+
+.sectionHeading {
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: #242424;
+}
+
+[data-theme="dark"] .sectionHeading {
+  color: #f5f5f5;
+}
+
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.stepCard {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: box-shadow 0.2s ease;
+}
+
+.stepCard:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .stepCard {
+  border-color: #444;
+  background-color: #292929;
+}
+
+[data-theme="dark"] .stepCard:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.stepNumber {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6b5bdc, #2578be);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.stepTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 4px 0;
+  color: #242424;
+}
+
+[data-theme="dark"] .stepTitle {
+  color: #f5f5f5;
+}
+
+.stepDescription {
+  font-size: 0.875rem;
+  color: #616161;
+  line-height: 1.5;
+  margin: 0;
+}
+
+[data-theme="dark"] .stepDescription {
+  color: #adadad;
+}
+
+.stepCommand {
+  background-color: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 0.8125rem;
+  font-family: 'Cascadia Code', 'Fira Code', Consolas, monospace;
+  color: #6b5bdc;
+  word-break: break-all;
+}
+
+[data-theme="dark"] .stepCommand {
+  background-color: #1a1a2e;
+  border-color: #444;
+  color: #a79cf1;
+}
+
+.stepLink {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #7160e8;
+  text-decoration: none;
+  margin-top: auto;
+}
+
+.stepLink:hover {
+  text-decoration: underline;
+}
+
+[data-theme="dark"] .stepLink {
+  color: #a79cf1;
+}

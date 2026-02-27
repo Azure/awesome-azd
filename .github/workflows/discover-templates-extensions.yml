@@ -1,0 +1,137 @@
+name: Discover Templates & Extensions
+
+on:
+  # Daily cron disabled during trial period — use manual dispatch to test
+  # schedule:
+  #   - cron: "0 8 * * *" # Daily at 8 AM UTC
+  workflow_dispatch:
+    inputs:
+      discover_templates:
+        description: "Discover new templates"
+        required: true
+        default: true
+        type: boolean
+      discover_extensions:
+        description: "Discover new extensions"
+        required: true
+        default: true
+        type: boolean
+      dry_run:
+        description: "Dry run — log discoveries without creating PRs"
+        required: true
+        default: true
+        type: boolean
+      max_prs:
+        description: "Maximum PRs to create per run (0 = unlimited)"
+        required: true
+        default: 5
+        type: number
+
+concurrency:
+  group: discover-templates-extensions
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  models: read
+
+jobs:
+  # Note: When the schedule trigger is re-enabled, inputs are undefined.
+  # This means: dry_run=false (PRs created), max_prs=0 (unlimited).
+  # This is intentional — the daily cron should process all discoveries.
+  discover-templates:
+    if: >-
+      github.event_name == 'schedule' ||
+      (github.event_name == 'workflow_dispatch' && inputs.discover_templates)
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run template discovery
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_OWNER: ${{ github.repository_owner }}
+          REPO_NAME: ${{ github.event.repository.name }}
+        run: node .github/scripts/discover-templates.js
+
+      - name: Create PRs for discovered templates
+        if: ${{ inputs.dry_run != true }}
+        uses: actions/github-script@v7
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MAX_PRS: ${{ inputs.max_prs }}
+        with:
+          script: |
+            const script = require('./.github/scripts/create-template-prs.js');
+            await script({ github, context });
+
+      - name: Dry run summary
+        if: ${{ inputs.dry_run == true }}
+        run: |
+          echo "🔍 DRY RUN — no PRs were created"
+          if [ -f discovered-templates.json ]; then
+            count=$(node -e "console.log(JSON.parse(require('fs').readFileSync('discovered-templates.json','utf-8')).length)")
+            echo "Templates that would be proposed: $count"
+            node -e "
+              const d = JSON.parse(require('fs').readFileSync('discovered-templates.json','utf-8'));
+              d.forEach((t,i) => console.log('  ' + (i+1) + '. ' + t.repoFullName + ' (quality: ' + t.quality + '/10)'));
+            "
+          else
+            echo "No templates discovered"
+          fi
+
+  discover-extensions:
+    if: >-
+      github.event_name == 'schedule' ||
+      (github.event_name == 'workflow_dispatch' && inputs.discover_extensions)
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run extension discovery
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_OWNER: ${{ github.repository_owner }}
+          REPO_NAME: ${{ github.event.repository.name }}
+        run: node .github/scripts/discover-extensions.js
+
+      - name: Create PRs for discovered extensions
+        if: ${{ inputs.dry_run != true }}
+        uses: actions/github-script@v7
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MAX_PRS: ${{ inputs.max_prs }}
+        with:
+          script: |
+            const script = require('./.github/scripts/create-extension-prs.js');
+            await script({ github, context });
+
+      - name: Dry run summary
+        if: ${{ inputs.dry_run == true }}
+        run: |
+          echo "🔍 DRY RUN — no PRs were created"
+          if [ -f discovered-extensions.json ]; then
+            count=$(node -e "console.log(JSON.parse(require('fs').readFileSync('discovered-extensions.json','utf-8')).length)")
+            echo "Extensions that would be proposed: $count"
+            node -e "
+              const d = JSON.parse(require('fs').readFileSync('discovered-extensions.json','utf-8'));
+              d.forEach((e,i) => console.log('  ' + (i+1) + '. ' + e.extensionId + ' (' + e.repoFullName + ')'));
+            "
+          else
+            echo "No extensions discovered"
+          fi

@@ -37,12 +37,12 @@ The awesome-azd gallery site (https://azure.github.io/awesome-azd/) has become o
 
 | # | Deliverable | Owner | Status |
 |---|-------------|-------|--------|
-| D1 | Playwright baseline crawl (screenshots, sitemap, content inventory) | 🕷️ Crawler | ⬜ Not Started |
-| D2 | Information architecture & content plan | 📝 Content Strategist | ⬜ Not Started |
-| D3 | Getting started page rewrite | 📝 Content Strategist | ⬜ Not Started |
-| D4 | Visual design system (colors, typography, components) | 🎨 UX/Design | ⬜ Not Started |
-| D5 | Homepage redesign with hero section | 🎨 UX/Design + 💻 Frontend | ⬜ Not Started |
-| D6 | Template card redesign | 🎨 UX/Design + 💻 Frontend | ⬜ Not Started |
+| D1 | Playwright baseline crawl (screenshots, sitemap, content inventory) | 🕷️ Crawler | ✅ Complete |
+| D2 | Information architecture & content plan | 📝 Content Strategist | ✅ Complete |
+| D3 | Getting started page rewrite | 📝 Content Strategist | ✅ Complete |
+| D4 | Visual design system (colors, typography, components) | 🎨 UX/Design | ✅ Complete |
+| D5 | Homepage redesign with hero section | 🎨 UX/Design + 💻 Frontend | ✅ Complete |
+| D6 | Template card redesign | 🎨 UX/Design + 💻 Frontend | ✅ Complete |
 
 ### P1 — Should Have
 
@@ -50,7 +50,7 @@ The awesome-azd gallery site (https://azure.github.io/awesome-azd/) has become o
 |---|-------------|-------|--------|
 | D7 | Improved filtering & search | 💻 Frontend Developer | ⬜ Not Started |
 | D9 | Playwright test suite (visual regression, a11y, perf) | 🧪 QA/Testing | ⬜ Not Started |
-| D10 | Voice & tone guide for site copy | 📝 Content Strategist | ⬜ Not Started |
+| D10 | Voice & tone guide for site copy | 📝 Content Strategist | ✅ Complete |
 
 ### P2 — Nice to Have
 

@@ -21,7 +21,7 @@ const {
   githubApi,
   searchCode,
   getRepoDetails,
-  sanitizeBranchName,
+  extensionBranchName,
   deduplicateByRepo,
 } = require("./github-utils");
 
@@ -31,8 +31,7 @@ const SEARCH_QUERIES = [
 
 async function checkExistingPRs(repoOwner, repoName, extensionId, token) {
   try {
-    const safeName = sanitizeBranchName(extensionId);
-    const branchName = `discover/extension-${safeName}`;
+    const branchName = extensionBranchName(extensionId);
     const data = await githubApi(
       `/repos/${repoOwner}/${repoName}/pulls?state=open&head=${repoOwner}:${branchName}&per_page=1`,
       token

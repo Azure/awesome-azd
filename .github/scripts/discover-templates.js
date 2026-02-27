@@ -21,6 +21,7 @@ const {
   githubApi,
   searchCode,
   getRepoDetails,
+  templateBranchName,
   deduplicateByRepo,
 } = require("./github-utils");
 
@@ -53,7 +54,7 @@ async function getRepoLanguages(owner, repo, token) {
 
 async function checkExistingPRs(owner, repo, searchOwner, searchRepo, token) {
   try {
-    const branchName = `discover/template-${searchOwner}-${searchRepo}`;
+    const branchName = templateBranchName(searchOwner, searchRepo);
     const data = await githubApi(
       `/repos/${owner}/${repo}/pulls?state=open&head=${owner}:${branchName}&per_page=1`,
       token

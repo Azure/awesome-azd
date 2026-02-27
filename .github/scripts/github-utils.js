@@ -121,13 +121,37 @@ function sanitizeBranchName(name) {
 }
 
 /**
- * Escape markdown special characters in a string to prevent
- * table breakage and formatting injection.
- * Escapes: | [ ] ( ) ` * _ ~ > #
+ * Generate the canonical branch name for a discovered template PR.
+ * Must be used consistently in both discovery (existing-PR check)
+ * and PR creation to avoid mismatches.
+ */
+function templateBranchName(owner, repo) {
+  const safeName = sanitizeBranchName(`${owner}-${repo}`);
+  return `discover/template-${safeName}`.substring(0, 60);
+}
+
+/**
+ * Generate the canonical branch name for a discovered extension PR.
+ * Must be used consistently in both discovery (existing-PR check)
+ * and PR creation to avoid mismatches.
+ */
+function extensionBranchName(extensionId) {
+  const safeName = sanitizeBranchName(extensionId);
+  return `discover/extension-${safeName}`.substring(0, 60);
+}
+
+/**
+ * Escape markdown special characters and dangerous HTML in a string to prevent
+ * table breakage, formatting injection, and HTML injection from untrusted content.
+ * Handles: newlines (collapsed), & < (HTML entities), | [ ] ( ) ` * _ ~ > # (backslash),
+ * @ (zero-width space to break mention parsing)
  */
 function escapeMarkdown(text) {
   if (!text) return "";
   return String(text)
+    .replace(/[\r\n]+/g, " ")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
     .replace(/\|/g, "\\|")
     .replace(/\[/g, "\\[")
     .replace(/\]/g, "\\]")
@@ -138,7 +162,8 @@ function escapeMarkdown(text) {
     .replace(/_/g, "\\_")
     .replace(/~/g, "\\~")
     .replace(/>/g, "\\>")
-    .replace(/#/g, "\\#");
+    .replace(/#/g, "\\#")
+    .replace(/@/g, "@\u200B");
 }
 
 /**
@@ -181,6 +206,33 @@ function applyCap(discovered, label) {
   return candidates;
 }
 
+/**
+ * Validate that a template entry has the required fields before
+ * committing it to templates.json and creating a PR.
+ */
+function validateTemplateEntry(entry) {
+  if (!entry || typeof entry !== "object") return false;
+  if (typeof entry.title !== "string" || !entry.title) return false;
+  if (typeof entry.description !== "string") return false;
+  if (typeof entry.source !== "string" || !entry.source) return false;
+  if (!Array.isArray(entry.tags)) return false;
+  return true;
+}
+
+/**
+ * Validate that an extension entry has the required fields before
+ * committing it to extensions.json and creating a PR.
+ */
+function validateExtensionEntry(entry) {
+  if (!entry || typeof entry !== "object") return false;
+  if (typeof entry.id !== "string" || !entry.id) return false;
+  if (typeof entry.displayName !== "string" || !entry.displayName) return false;
+  if (typeof entry.description !== "string") return false;
+  if (typeof entry.installCommand !== "string" || !entry.installCommand) return false;
+  if (!Array.isArray(entry.capabilities)) return false;
+  return true;
+}
+
 module.exports = {
   MAX_RESULTS_PER_QUERY,
   API_DELAY_MS,
@@ -191,9 +243,11 @@ module.exports = {
   githubApi,
   searchCode,
   getRepoDetails,
-  safeJsonParse,
-  sanitizeBranchName,
+  templateBranchName,
+  extensionBranchName,
   escapeMarkdown,
   deduplicateByRepo,
   applyCap,
+  validateTemplateEntry,
+  validateExtensionEntry,
 };

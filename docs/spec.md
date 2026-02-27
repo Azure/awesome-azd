@@ -56,7 +56,7 @@ The awesome-azd gallery site (https://azure.github.io/awesome-azd/) has become o
 
 | # | Deliverable | Owner | Status |
 |---|-------------|-------|--------|
-| D8 | Interior page template (1-2 service pages) | All agents | ⬜ Not Started |
+| D8 | Interior page template (1-2 service pages) | All agents | ✅ Complete |
 
 ## 6. User Stories
 

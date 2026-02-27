@@ -13,11 +13,11 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useColorMode } from "@docusaurus/theme-common";
 
 const TITLES: Record<string, string> = {
-  templates: "Template Library",
+  templates: "From code to cloud in minutes",
   extensions: "Extension Gallery",
 };
 const DESCRIPTIONS: Record<string, string> = {
-  templates: "An open-source template gallery to get started with Azure.",
+  templates: "Production-ready templates with infrastructure, CI/CD, and monitoring — all deployable with a single command.",
   extensions: "Discover azd extensions that add new capabilities to your workflow.",
 };
 const PLACEHOLDERS: Record<string, string> = {
@@ -162,42 +162,44 @@ export default function ShowcaseTemplateSearch() {
           <Text
             align="center"
             size={400}
-            style={{
-              color: "#242424",
-              padding: "10px 0 20px 0",
-            }}
+            className={styles.heroDescription}
           >
             {description}
           </Text>
           <FilterBar />
+          {contentType === "templates" && (
+            <div className={styles.statsBar}>
+              <div className={styles.statItem}>
+                <Text weight="bold" size={500} className={styles.statNumber}>290+</Text>
+                <Text size={200} className={styles.statLabel}>Templates</Text>
+              </div>
+              <div className={styles.statDivider} />
+              <div className={styles.statItem}>
+                <Text weight="bold" size={500} className={styles.statNumber}>50+</Text>
+                <Text size={200} className={styles.statLabel}>Azure Services</Text>
+              </div>
+              <div className={styles.statDivider} />
+              <div className={styles.statItem}>
+                <Text weight="bold" size={500} className={styles.statNumber}>9</Text>
+                <Text size={200} className={styles.statLabel}>Languages</Text>
+              </div>
+            </div>
+          )}
           <Text
             align="center"
             size={300}
-            style={{
-              color: "#242424",
-              paddingTop: "20px",
-            }}
+            className={styles.heroSubtext}
           >
             {contentType === "extensions"
               ? "Extensions add new commands, lifecycle hooks, and capabilities to azd. "
-              : "Each template is a fully working, cloud-ready application deployable with the Azure Developer CLI (azd). "}
-          </Text>
-          <Text
-            align="center"
-            size={300}
-            style={{
-              color: "#242424",
-              paddingBottom: "20px",
-            }}
-          >
-            New to azd? Welcome!
+              : "New to azd? "}
             <FluentUILink
-              href={ADD_URL}
-              target="_blank"
+              href={contentType === "extensions" ? ADD_URL : "/awesome-azd/getting-started"}
+              target={contentType === "extensions" ? "_blank" : "_self"}
               style={{ paddingLeft: "3px" }}
               className={styles.learnMoreColor}
             >
-              Learn more in our docs.
+              {contentType === "extensions" ? "Learn more in our docs." : "Get started in minutes →"}
             </FluentUILink>
           </Text>
         </div>

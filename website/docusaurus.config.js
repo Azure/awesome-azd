@@ -113,7 +113,7 @@ const config = {
           // Make sure you have class defined in src/css/custom.css
           {
             to: "https://azure.github.io/awesome-azd/docs/contribute",
-            label: "Submit your template!",
+            label: "Add a template",
             position: "right",
             className: "button",
           },

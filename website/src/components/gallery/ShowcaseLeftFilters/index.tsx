@@ -169,6 +169,7 @@ function ShowcaseFilterViewAll({
   location,
   readSearchTags,
   replaceSearchTags,
+  tagCounts,
 }: {
   tags: TagType[];
   number: string;
@@ -178,6 +179,7 @@ function ShowcaseFilterViewAll({
   location;
   readSearchTags: (search: string) => TagType[];
   replaceSearchTags: (search: string, newTags: TagType[]) => string;
+  tagCounts?: Record<string, number>;
 }) {
   const [openItems, setOpenItems] = React.useState(["0"]);
   const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
@@ -226,6 +228,7 @@ function ShowcaseFilterViewAll({
               location={location}
               readSearchTags={readSearchTags}
               replaceSearchTags={replaceSearchTags}
+              count={tagCounts?.[tag]}
             />
           </div>
         ) : (
@@ -240,6 +243,7 @@ function ShowcaseFilterViewAll({
               location={location}
               readSearchTags={readSearchTags}
               replaceSearchTags={replaceSearchTags}
+              count={tagCounts?.[tag]}
             />
           </div>
         );
@@ -335,6 +339,32 @@ export default function ShowcaseLeftFilters({
   const searchParams = new URLSearchParams(location.search);
   const isExtensions = searchParams.get("type") === "extensions";
   
+  // Compute template counts per tag for display
+  const tagCounts = React.useMemo(() => {
+    const counts: Record<string, number> = {};
+    const items = isExtensions ? unsortedExtensions : unsortedUsers;
+    items.forEach((item) => {
+      let allTags: TagType[];
+      if (isExtensions) {
+        const ext = item as any;
+        allTags = [...ext.tags, ...ext.capabilities.map((c: string) => ("ext-" + c) as TagType)];
+      } else {
+        const user = item as any;
+        allTags = [
+          ...(user.tags || []),
+          ...(user.languages || []),
+          ...(user.frameworks || []),
+          ...(user.azureServices || []),
+          ...(user.IaC || []),
+        ];
+      }
+      allTags.forEach((tag) => {
+        counts[tag] = (counts[tag] || 0) + 1;
+      });
+    });
+    return counts;
+  }, [isExtensions]);
+
   // Extract unique authors based on content type
   const allAuthors = new Set<string>();
   if (isExtensions) {
@@ -455,7 +485,10 @@ export default function ShowcaseLeftFilters({
                   "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
               }}
             >
-              <div style={{ fontSize: "16px", fontWeight: "500" }}>Language</div>
+              <div style={{ fontSize: "16px", fontWeight: "500" }}>
+                Language
+                <span className={styles.filterCount}>{languageTag.length}</span>
+              </div>
             </AccordionHeader>
             <AccordionPanel>
               <ShowcaseFilterViewAll
@@ -467,6 +500,7 @@ export default function ShowcaseLeftFilters({
                 location={location}
                 readSearchTags={readSearchTags}
                 replaceSearchTags={replaceSearchTags}
+                tagCounts={tagCounts}
               />
             </AccordionPanel>
           </AccordionItem>
@@ -479,7 +513,10 @@ export default function ShowcaseLeftFilters({
                   "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
               }}
             >
-              <div style={{ fontSize: "16px", fontWeight: "500" }}>Framework</div>
+              <div style={{ fontSize: "16px", fontWeight: "500" }}>
+                Framework
+                <span className={styles.filterCount}>{frameworkTag.length}</span>
+              </div>
             </AccordionHeader>
             <AccordionPanel>
               <ShowcaseFilterViewAll
@@ -491,6 +528,7 @@ export default function ShowcaseLeftFilters({
                 location={location}
                 readSearchTags={readSearchTags}
                 replaceSearchTags={replaceSearchTags}
+                tagCounts={tagCounts}
               />
             </AccordionPanel>
           </AccordionItem>
@@ -503,7 +541,10 @@ export default function ShowcaseLeftFilters({
                   "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
               }}
             >
-              <div style={{ fontSize: "16px", fontWeight: "500" }}>Services</div>
+              <div style={{ fontSize: "16px", fontWeight: "500" }}>
+                Services
+                <span className={styles.filterCount}>{servicesTag.length}</span>
+              </div>
             </AccordionHeader>
             <AccordionPanel>
               <ShowcaseFilterViewAll
@@ -515,6 +556,7 @@ export default function ShowcaseLeftFilters({
                 location={location}
                 readSearchTags={readSearchTags}
                 replaceSearchTags={replaceSearchTags}
+                tagCounts={tagCounts}
               />
             </AccordionPanel>
           </AccordionItem>
@@ -527,7 +569,10 @@ export default function ShowcaseLeftFilters({
                   "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
               }}
             >
-              <div style={{ fontSize: "16px", fontWeight: "500" }}>Database</div>
+              <div style={{ fontSize: "16px", fontWeight: "500" }}>
+                Database
+                <span className={styles.filterCount}>{databaseTag.length}</span>
+              </div>
             </AccordionHeader>
             <AccordionPanel>
               <ShowcaseFilterViewAll
@@ -539,6 +584,7 @@ export default function ShowcaseLeftFilters({
                 location={location}
                 readSearchTags={readSearchTags}
                 replaceSearchTags={replaceSearchTags}
+                tagCounts={tagCounts}
               />
             </AccordionPanel>
           </AccordionItem>
@@ -565,6 +611,7 @@ export default function ShowcaseLeftFilters({
                 location={location}
                 readSearchTags={readSearchTags}
                 replaceSearchTags={replaceSearchTags}
+                tagCounts={tagCounts}
               />
             </AccordionPanel>
           </AccordionItem>
@@ -589,6 +636,7 @@ export default function ShowcaseLeftFilters({
                 location={location}
                 readSearchTags={readSearchTags}
                 replaceSearchTags={replaceSearchTags}
+                tagCounts={tagCounts}
               />
             </AccordionPanel>
           </AccordionItem>
@@ -613,6 +661,7 @@ export default function ShowcaseLeftFilters({
                 location={location}
                 readSearchTags={readSearchTags}
                 replaceSearchTags={replaceSearchTags}
+                tagCounts={tagCounts}
               />
             </AccordionPanel>
           </AccordionItem>
@@ -642,6 +691,7 @@ export default function ShowcaseLeftFilters({
               location={location}
               readSearchTags={readSearchTags}
               replaceSearchTags={replaceSearchTags}
+              tagCounts={tagCounts}
             />
           </AccordionPanel>
         </AccordionItem>

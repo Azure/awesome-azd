@@ -48,8 +48,8 @@ The awesome-azd gallery site (https://azure.github.io/awesome-azd/) has become o
 
 | # | Deliverable | Owner | Status |
 |---|-------------|-------|--------|
-| D7 | Improved filtering & search | 💻 Frontend Developer | ⬜ Not Started |
-| D9 | Playwright test suite (visual regression, a11y, perf) | 🧪 QA/Testing | ⬜ Not Started |
+| D7 | Improved filtering & search | 💻 Frontend Developer | ✅ Complete |
+| D9 | Playwright test suite (visual regression, a11y, perf) | 🧪 QA/Testing | ✅ Complete |
 | D10 | Voice & tone guide for site copy | 📝 Content Strategist | ✅ Complete |
 
 ### P2 — Nice to Have

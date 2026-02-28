@@ -9,7 +9,7 @@
 
 .card {
   background: linear-gradient(#fafafa 0 0) bottom/100% 48px no-repeat;
-  border-radius: 8px;
+  border-radius: var(--site-card-radius, 12px);
   padding: 12px;
   width: 350px;
   height: 368px;
@@ -47,7 +47,7 @@
 
 .authorLink {
   font-size: 12px;
-  color: var(--ifm-color-purple-light) !important;
+  color: var(--ifm-color-primary) !important;
   text-decoration: none !important;
 }
 
@@ -64,7 +64,7 @@
   flex: 1;
   border: 1px solid #d1d1d1 !important;
   font-size: 11px;
-  font-family: Consolas, Courier New, Courier, monospace !important;
+  font-family: var(--ifm-font-family-monospace, 'JetBrains Mono', Consolas, monospace) !important;
   -webkit-text-fill-color: #707070;
 }
 
@@ -72,28 +72,28 @@
   padding: 0px !important;
   min-height: 20px !important;
   min-width: 23px !important;
-  background-color: var(--ifm-color-purple) !important;
-  border-color: var(--ifm-color-purple) !important;
+  background-color: var(--ifm-color-primary) !important;
+  border-color: var(--ifm-color-primary) !important;
 }
 
 .copyIconButton:hover {
-  background-color: #5a4cb9 !important;
+  background-color: #02598a !important;
 }
 
 .copyIconButton:focus-visible {
-  outline: 2px solid var(--ifm-color-purple) !important;
+  outline: 2px solid var(--ifm-color-primary) !important;
   outline-offset: 2px;
 }
 
 .cardTitle {
   vertical-align: middle !important;
   font-size: 16px !important;
-  color: var(--ifm-color-purple-light) !important;
+  color: var(--ifm-color-primary) !important;
   font-weight: 600 !important;
 }
 
 [data-theme="dark"] .cardTitle {
-  color: #a79cf1 !important;
+  color: #38BDF8 !important;
 }
 
 .newBadge {
@@ -148,7 +148,7 @@
 }
 
 [data-theme="dark"] .authorLink {
-  color: #a79cf1 !important;
+  color: #38BDF8 !important;
 }
 
 .cardMetaLink {
@@ -160,7 +160,7 @@
 }
 
 .cardMetaLink:hover {
-  color: var(--ifm-color-purple-light) !important;
+  color: var(--ifm-color-primary) !important;
 }
 
 [data-theme="dark"] .cardMetaLink {
@@ -168,5 +168,5 @@
 }
 
 [data-theme="dark"] .cardMetaLink:hover {
-  color: #a79cf1 !important;
+  color: #38BDF8 !important;
 }

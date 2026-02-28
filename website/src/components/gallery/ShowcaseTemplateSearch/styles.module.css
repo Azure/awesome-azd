@@ -1,6 +1,6 @@
 /**
-* Copyright (c) Microsoft Corporation. All rights reserved.
-* Licensed under the MIT License.
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
  */
 
 .searchContainer {
@@ -8,55 +8,56 @@
   overflow: hidden;
   position: relative;
   width: 100%;
-  background: var(--site-hero-gradient);
+  background: var(--site-hero-bg);
 }
 
 .searchArea {
   position: relative;
   width: 100%;
-  min-height: 380px;
+  min-height: 340px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 3rem 1.5rem 2rem;
+  padding: var(--space-3xl) var(--space-lg) var(--space-2xl);
 }
 
 .heroBar {
-  max-width: 800px;
+  max-width: 720px;
   text-align: center;
   margin-bottom: 4px;
 }
 
 .heroDescription {
-  color: #444;
-  padding: 8px 0 24px 0;
+  color: var(--site-color-text-muted);
+  padding: var(--space-sm) 0 var(--space-lg) 0;
   text-align: center;
-  max-width: 560px;
+  max-width: 520px;
   margin: 0 auto;
   line-height: 1.6;
+  font-size: 1.0625rem;
 }
 
 [data-theme="dark"] .heroDescription {
-  color: #c8c8c8;
+  color: var(--site-color-text-muted);
 }
 
 .heroSubtext {
-  color: #616161;
-  padding-top: 12px;
-  padding-bottom: 20px;
+  color: var(--site-color-text-muted);
+  padding-top: var(--space-md);
+  padding-bottom: var(--space-lg);
   text-align: center;
 }
 
 [data-theme="dark"] .heroSubtext {
-  color: #adadad;
+  color: var(--site-color-text-muted);
 }
 
 .statsBar {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 32px;
-  padding: 20px 0 4px 0;
+  gap: var(--space-xl);
+  padding: var(--space-lg) 0 var(--space-xs) 0;
 }
 
 .statItem {
@@ -67,43 +68,49 @@
 }
 
 .statNumber {
-  color: #5b4ec9;
-  font-size: 1.5rem !important;
+  color: var(--ifm-color-primary);
+  font-size: 1.75rem !important;
+  font-family: var(--ifm-heading-font-family);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
 }
 
 [data-theme="dark"] .statNumber {
-  color: #a79cf1;
+  color: var(--ifm-color-primary);
 }
 
 .statLabel {
-  color: #666;
+  color: var(--site-color-text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
+  font-size: 0.6875rem;
+  font-weight: 500;
 }
 
 [data-theme="dark"] .statLabel {
-  color: #999;
+  color: var(--site-color-text-muted);
 }
 
 .statDivider {
   width: 1px;
-  height: 40px;
-  background-color: rgba(0, 0, 0, 0.1);
+  height: 36px;
+  background-color: var(--site-color-border);
 }
 
 [data-theme="dark"] .statDivider {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--site-color-border);
 }
 
 .color {
-  color: var(--ifm-color-purple);
+  color: var(--ifm-color-primary);
 }
 
 .learnMoreColor {
-  color: #5b4ec9 !important;
+  color: var(--ifm-color-primary) !important;
   font-weight: 600;
 }
 
 [data-theme="dark"] .learnMoreColor {
-  color: #a79cf1 !important;
+  color: var(--ifm-color-primary) !important;
 }

@@ -26,6 +26,7 @@
   --site-card-shadow-hover: 0 10px 30px rgba(91, 78, 201, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
   --site-card-radius: 16px;
   --site-section-bg: #f8f7ff;
+  color-scheme: light dark;
 }
 
 /* Smoother font rendering */
@@ -84,7 +85,7 @@ body {
   border-radius: 8px;
   font-weight: 600;
   padding: 8px 20px;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .button:hover {
@@ -126,4 +127,16 @@ html[data-theme="dark"] .header-github-link:before {
 [data-theme="dark"] .footer {
   background: #141414;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

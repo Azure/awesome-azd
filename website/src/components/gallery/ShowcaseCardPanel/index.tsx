@@ -265,12 +265,14 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                     padding: "0px",
                     height: "20px",
                   }}
+                  onClick={toggleIsPopupVisibleTemplateDetails}
+                  aria-label="Toggle template details"
                 >
                   <img
-                    onClick={toggleIsPopupVisibleTemplateDetails}
                     src={chevronSVG}
+                    width={20}
                     height={20}
-                    alt="Expand"
+                    alt=""
                   />
                 </DefaultButton>
               </div>
@@ -429,12 +431,14 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                     padding: "0px",
                     height: "20px",
                   }}
+                  onClick={toggleIsPopupVisibleAzureCalculator}
+                  aria-label="Toggle included services"
                 >
                   <img
-                    onClick={toggleIsPopupVisibleAzureCalculator}
                     src={chevronSVG}
+                    width={20}
                     height={20}
-                    alt="Expand"
+                    alt=""
                   />
                 </DefaultButton>
               </div>
@@ -575,6 +579,7 @@ function ShowcaseCardAzureTag({
                 : useBaseUrl(tagObject.darkModeAzureIcon)
             }
             alt="Azure Service Icon"
+            width={20}
             height={20}
           />
         </div>

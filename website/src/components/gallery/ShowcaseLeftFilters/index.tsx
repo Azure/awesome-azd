@@ -50,20 +50,22 @@ function ShowcaseAuthorFilterViewAll({
   const { colorMode } = useColorMode();
   const chevronDownSmall =
     colorMode != "dark" ? (
-      <img src={useBaseUrl("/img/smallChevron.svg")} />
+      <img src={useBaseUrl("/img/smallChevron.svg")} width={16} height={16} alt="" />
     ) : (
-      <img src={useBaseUrl("/img/smallChevronDark.svg")} />
+      <img src={useBaseUrl("/img/smallChevronDark.svg")} width={16} height={16} alt="" />
     );
   const chevronUpSmall =
     colorMode != "dark" ? (
       <img
         style={{ transform: "rotate(180deg)" }}
         src={useBaseUrl("/img/smallChevron.svg")}
+        width={16} height={16} alt=""
       />
     ) : (
       <img
         style={{ transform: "rotate(180deg)" }}
         src={useBaseUrl("/img/smallChevronDark.svg")}
+        width={16} height={16} alt=""
       />
     );
   let value = number + "2";
@@ -188,20 +190,22 @@ function ShowcaseFilterViewAll({
   const { colorMode } = useColorMode();
   const chevronDownSmall =
     colorMode != "dark" ? (
-      <img src={useBaseUrl("/img/smallChevron.svg")} />
+      <img src={useBaseUrl("/img/smallChevron.svg")} width={16} height={16} alt="" />
     ) : (
-      <img src={useBaseUrl("/img/smallChevronDark.svg")} />
+      <img src={useBaseUrl("/img/smallChevronDark.svg")} width={16} height={16} alt="" />
     );
   const chevronUpSmall =
     colorMode != "dark" ? (
       <img
         style={{ transform: "rotate(180deg)" }}
         src={useBaseUrl("/img/smallChevron.svg")}
+        width={16} height={16} alt=""
       />
     ) : (
       <img
         style={{ transform: "rotate(180deg)" }}
         src={useBaseUrl("/img/smallChevronDark.svg")}
+        width={16} height={16} alt=""
       />
     );
   let value = number + "2";
@@ -444,7 +448,7 @@ export default function ShowcaseLeftFilters({
         <div className={styles.filterTop}>
           <div className={styles.filterBy}>Filter by</div>
           {selectedTags.length > 0 || selectedAuthors.length > 0 ? (
-            <div className={styles.clearAll} onClick={clearAll}>
+            <div className={styles.clearAll} onClick={clearAll} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); clearAll(); } }}>
               Clear all
             </div>
           ) : null}

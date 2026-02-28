@@ -29,18 +29,6 @@ function HomepageHeader({ colorMode }) {
   const style = useStyles();
   return (
     <header className={styles.heroBanner}>
-      <img
-        src={
-          colorMode != "dark"
-            ? useBaseUrl("/img/coverBackground.png")
-            : useBaseUrl("/img/coverBackgroundDark.png")
-        }
-        className={styles.cover}
-        onError={({ currentTarget }) => {
-          currentTarget.style.display = "none";
-        }}
-        alt=""
-      />
       <div className={styles.section}>
         <div className={styles.description}>
           <h1>
@@ -60,6 +48,7 @@ function HomepageHeader({ colorMode }) {
         <div className={styles.video}>
           <iframe
             className={styles.iframe}
+            loading="lazy"
             src="https://www.youtube.com/embed/9z3PiHSCcYs?si=F1yKpoiOQnzb4o-K"
             title="Azure Developer CLI: GitHub to cloud in minutes"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

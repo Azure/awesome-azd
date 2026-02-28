@@ -59,6 +59,7 @@ export default function ShowcaseEmptyResult({ id }: { id: string }) {
         >
           <img
             height={50}
+            width={50}
             src={useBaseUrl("/img/smile.svg")}
             alt="smile"
             style={{ flex: 1 }}

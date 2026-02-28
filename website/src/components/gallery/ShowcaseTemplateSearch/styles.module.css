@@ -3,14 +3,6 @@
 * Licensed under the MIT License.
  */
 
-.cover {
-  pointer-events: none;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: none; /* Hide the old gradient image — replaced by CSS gradient */
-}
-
 .searchContainer {
   display: inline-block;
   overflow: hidden;

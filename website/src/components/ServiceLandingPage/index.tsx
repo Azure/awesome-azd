@@ -6,7 +6,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import Layout from "@theme/Layout";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import { Text, Button } from "@fluentui/react-components";
 import { useColorMode } from "@docusaurus/theme-common";
 import {
   FluentProvider,

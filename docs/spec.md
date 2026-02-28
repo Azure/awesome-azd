@@ -94,7 +94,7 @@ The awesome-azd gallery site (https://azure.github.io/awesome-azd/) has become o
 **Acceptance Criteria:**
 - [ ] Getting started page completely rewritten with clear, concise steps
 - [ ] Includes `azd` installation instructions (or clear links)
-- [ ] Showcases 2-3 "hero" templates that demonstrate the breadth of azd
+- [x] Showcases 2-3 "hero" templates that demonstrate the breadth of azd
 - [ ] Interactive or visual flow showing: install → init → deploy → monitor
 - [ ] Time-to-first-deploy is minimized
 - [ ] Tone is energetic, welcoming, and developer-friendly
@@ -109,7 +109,7 @@ The awesome-azd gallery site (https://azure.github.io/awesome-azd/) has become o
 - [ ] Updated color palette, typography, and spacing
 - [ ] Hero section on homepage that clearly communicates what azd is and why it matters
 - [ ] Template cards redesigned with visual hierarchy
-- [ ] Responsive design works on mobile, tablet, and desktop
+- [x] Responsive design works on mobile, tablet, and desktop
 - [ ] Dark mode support
 - [ ] Visual design system documented for consistency
 
@@ -136,7 +136,7 @@ The awesome-azd gallery site (https://azure.github.io/awesome-azd/) has become o
 - [ ] Template/framework for interior pages that can be reused across services
 - [ ] Initial prototype for 1-2 services (e.g., Azure Functions, Azure Container Apps)
 - [ ] Each page includes: service overview, curated templates, quick-start steps, related resources
-- [ ] Pages linked from main navigation and from template tags
+- [x] Pages linked from main navigation and from template tags
 - [ ] Content is maintainable (markdown-based or data-driven)
 
 ## 7. Technical Constraints

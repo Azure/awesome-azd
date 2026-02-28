@@ -43,7 +43,7 @@ export default function Feature({ Svg, title, description, link, content }) {
         <Link
           className={style.body2}
           style={
-            colorMode != "dark" ? { color: "#7160E8" } : { color: "#A79CF1" }
+            colorMode != "dark" ? { color: "#0369A1" } : { color: "#38BDF8" }
           }
           href={link}
         >

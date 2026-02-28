@@ -27,7 +27,16 @@
 }
 
 [data-theme="dark"] .card {
-  background-color: #292929;
+  background-color: #1A1A1A;
+  color: #E7E5E4;
+}
+
+[data-theme="dark"] .cardContent {
+  color: #D6D3D1;
+}
+
+[data-theme="dark"] .cardContent div {
+  color: #D6D3D1 !important;
 }
 
 @media screen and (max-width: 996px) {

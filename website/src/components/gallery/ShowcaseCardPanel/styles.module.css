@@ -41,7 +41,7 @@
 }
 
 .color {
-  color: var(--ifm-color-purple-light) !important;
+  color: var(--ifm-color-primary) !important;
 }
 
 .purple {

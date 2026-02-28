@@ -25,6 +25,7 @@
 }
 
 .heroTitle {
+  font-family: var(--ifm-heading-font-family);
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 8px;
@@ -64,6 +65,7 @@
 }
 
 .sectionTitle {
+  font-family: var(--ifm-heading-font-family);
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 24px;
@@ -128,11 +130,12 @@
   overflow: hidden;
   text-decoration: none;
   color: inherit;
-  transition: box-shadow 0.2s, transform 0.2s;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
 }
 
 .templateCard:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border-color: var(--ifm-color-primary);
+  box-shadow: var(--site-card-shadow-hover);
   transform: translateY(-2px);
   text-decoration: none;
   color: inherit;
@@ -202,11 +205,11 @@
   border-radius: 12px;
   text-decoration: none;
   color: inherit;
-  transition: box-shadow 0.2s;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
 }
 
 .resourceCard:hover {
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border-color: var(--ifm-color-primary);
   text-decoration: none;
   color: inherit;
 }

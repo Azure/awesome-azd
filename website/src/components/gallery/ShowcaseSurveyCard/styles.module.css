@@ -9,7 +9,7 @@
   width: 350px;
   height: 368px;
   max-width: 100%;
-  border-radius: 8px;
+  border-radius: var(--site-card-radius, 12px);
   max-height: 100%;
   min-width: 300px;
   padding: 20px !important;
@@ -24,11 +24,12 @@
 }
 
 .surveyButton {
-  background-color: #7160e8 !important;
+  background-color: var(--ifm-color-primary) !important;
+  border-radius: 8px !important;
 }
 
 .surveyButton:hover {
-  background-color: #5a4cb9 !important;
+  background-color: var(--ifm-color-primary-dark) !important;
 }
 
 .closeButton {

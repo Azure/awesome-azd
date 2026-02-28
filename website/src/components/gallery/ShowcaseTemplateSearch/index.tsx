@@ -64,10 +64,11 @@ function FilterBar(): React.JSX.Element {
       <SearchBox
         styles={{
           root: {
-            border: "1px solid #D1D1D1",
+            border: "1px solid #D6D3D1",
             height: "52px",
-            maxWidth: "740px",
-            borderRadius: "4px",
+            maxWidth: "640px",
+            borderRadius: "8px",
+            background: "var(--site-color-surface)",
           },
           icon: {
             fontSize: "24px",
@@ -139,12 +140,11 @@ export default function ShowcaseTemplateSearch() {
               align="center"
               weight="bold"
               style={{
-                background:
-                  "linear-gradient(135deg, #5b4ec9 0%, #2878be 50%, #c94eb8 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                fontSize: "2.75rem",
+                color: "var(--site-color-text)",
+                fontSize: "2.5rem",
                 lineHeight: "1.15",
+                letterSpacing: "-0.03em",
+                fontFamily: "var(--ifm-heading-font-family)",
               }}
             >
               {title}

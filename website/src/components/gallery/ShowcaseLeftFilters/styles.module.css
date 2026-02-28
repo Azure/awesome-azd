@@ -13,7 +13,7 @@
 }
 
 .color {
-  color: var(--ifm-color-purple);
+  color: var(--ifm-color-primary);
 }
 
 .filterTop {
@@ -29,7 +29,7 @@
   line-height: 20px;
   text-decoration-line: underline;
   cursor: pointer;
-  color: var(--ifm-color-purple);
+  color: var(--ifm-color-primary);
 }
 
 .filterBy {

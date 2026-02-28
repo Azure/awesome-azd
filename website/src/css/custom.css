@@ -21,8 +21,8 @@
   --ifm-color-accent-light: #0284C7;
 
   /* Typography */
-  --ifm-font-family-base: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
-  --ifm-heading-font-family: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
+  --ifm-font-family-base: 'DM Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --ifm-heading-font-family: 'DM Sans', 'Segoe UI', system-ui, sans-serif;
   --ifm-heading-font-weight: 700;
   --ifm-font-weight-semibold: 600;
   --ifm-font-family-monospace: 'JetBrains Mono', 'Cascadia Code', Consolas, monospace;

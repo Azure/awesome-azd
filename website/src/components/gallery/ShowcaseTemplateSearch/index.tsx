@@ -122,6 +122,7 @@ function FilterBar(): React.JSX.Element {
 export default function ShowcaseTemplateSearch() {
   const { colorMode } = useColorMode();
   const location = useLocation();
+  const gettingStartedUrl = useBaseUrl("/getting-started");
   const contentType = new URLSearchParams(location.search).get("type") || "templates";
   const title = TITLES[contentType] || TITLES.templates;
   const description = DESCRIPTIONS[contentType] || DESCRIPTIONS.templates;
@@ -194,7 +195,7 @@ export default function ShowcaseTemplateSearch() {
                   </FluentUILink>
                 </>
               : <a
-                  href="/awesome-azd/getting-started"
+                  href={gettingStartedUrl}
                   className={styles.heroCta}
                 >
                   Get Started in Minutes →

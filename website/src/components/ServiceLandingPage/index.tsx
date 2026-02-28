@@ -3,9 +3,10 @@
  * Licensed under the MIT License.
  */
 
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useMemo } from "react";
 import Layout from "@theme/Layout";
 import useBaseUrl from "@docusaurus/useBaseUrl";
+import BrowserOnly from "@docusaurus/BrowserOnly";
 import { useColorMode } from "@docusaurus/theme-common";
 import {
   FluentProvider,
@@ -44,8 +45,8 @@ function TemplateCard({ template }: { template: any }) {
 }
 
 function ServicePageContent({ config }: { config: ServicePageConfig }) {
-  const { colorMode } = useColorMode();
   const icon = useBaseUrl(config.icon);
+  const baseUrl = useBaseUrl("/");
 
   const filteredTemplates = useMemo(() => {
     return allTemplates.filter(
@@ -58,8 +59,7 @@ function ServicePageContent({ config }: { config: ServicePageConfig }) {
   const featured = filteredTemplates.slice(0, 6);
   const hasMore = filteredTemplates.length > 6;
 
-  return (
-    <FluentProvider theme={colorMode === "dark" ? teamsDarkTheme : teamsLightTheme}>
+  const content = (
       <main className={styles.page}>
         {/* Hero */}
         <section className={styles.hero}>
@@ -95,13 +95,13 @@ function ServicePageContent({ config }: { config: ServicePageConfig }) {
           <h2 className={styles.sectionTitle}>Featured templates</h2>
           <div className={styles.templateGrid}>
             {featured.map((t: any) => (
-              <TemplateCard key={t.title} template={t} />
+              <TemplateCard key={t.source || t.title} template={t} />
             ))}
           </div>
           {hasMore && (
             <div className={styles.viewAll}>
               <a
-                href={`/awesome-azd/?tags=${config.serviceTag}`}
+                href={`${baseUrl}?tags=${config.serviceTag}`}
                 className={styles.viewAllLink}
               >
                 View all {filteredTemplates.length} templates →
@@ -123,20 +123,26 @@ function ServicePageContent({ config }: { config: ServicePageConfig }) {
           </div>
         </section>
       </main>
-    </FluentProvider>
+  );
+
+  return (
+    <BrowserOnly fallback={content}>
+      {() => {
+        const { colorMode } = useColorMode();
+        return (
+          <FluentProvider theme={colorMode === "dark" ? teamsDarkTheme : teamsLightTheme}>
+            {content}
+          </FluentProvider>
+        );
+      }}
+    </BrowserOnly>
   );
 }
 
 export default function ServiceLandingPage({ config }: { config: ServicePageConfig }) {
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    setLoaded(true);
-  }, []);
-
   return (
     <Layout title={config.title} description={config.description}>
-      {loaded && <ServicePageContent config={config} />}
+      <ServicePageContent config={config} />
     </Layout>
   );
 }

@@ -65,7 +65,7 @@ const steps = [
     number: "1",
     title: "Install the Azure Developer CLI",
     description:
-      "Get azd on your machine with a single command. Works on Windows, macOS, and Linux.",
+      "Install azd with a single command. See the install page for macOS, Linux, and other options.",
     command: "winget install microsoft.azd",
     link: "https://aka.ms/azd-install",
     linkText: "All install options →",
@@ -141,6 +141,7 @@ function FeaturedTemplates() {
 }
 
 function StepByStep() {
+  const browseUrl = useBaseUrl("/");
   return (
     <section className={styles.stepsSection}>
       <h2 className={styles.sectionHeading}>Get started in 3 steps</h2>
@@ -151,7 +152,7 @@ function StepByStep() {
             <h3 className={styles.stepTitle}>{step.title}</h3>
             <p className={styles.stepDescription}>{step.description}</p>
             <code className={styles.stepCommand}>{step.command}</code>
-            <a href={step.link} className={styles.stepLink}>
+            <a href={step.link === "/awesome-azd/" ? browseUrl : step.link} className={styles.stepLink}>
               {step.linkText}
             </a>
           </div>
@@ -179,6 +180,7 @@ const HomeApp = () => {
       <main className={styles.container}>
         <HomepageHeader colorMode={colorMode} />
         <StepByStep />
+        <FeaturedTemplates />
         <HomepageFeatures />
       </main>
     </FluentProvider>

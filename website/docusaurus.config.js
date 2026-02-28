@@ -100,6 +100,21 @@ const config = {
             label: "Resources",
             position: "left",
           },
+          {
+            type: "dropdown",
+            label: "Services",
+            position: "left",
+            items: [
+              {
+                to: "/services/container-apps",
+                label: "Azure Container Apps",
+              },
+              {
+                to: "/services/azure-functions",
+                label: "Azure Functions",
+              },
+            ],
+          },
 
           // right
           {

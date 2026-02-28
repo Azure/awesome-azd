@@ -101,6 +101,56 @@ const steps = [
   },
 ];
 
+
+const heroTemplates = [
+  {
+    title: "React Web App with Node.js API and MongoDB",
+    description: "Full-stack JavaScript app with React frontend, Node.js API, and Azure Cosmos DB.",
+    command: "azd init --template todo-nodejs-mongo",
+    source: "https://github.com/Azure-Samples/todo-nodejs-mongo",
+    tags: ["JavaScript", "React", "Cosmos DB"],
+  },
+  {
+    title: "Chat with AI using Python",
+    description: "Use Azure OpenAI GPT models to build an AI-powered chat application.",
+    command: "azd init --template openai-chat-app-quickstart",
+    source: "https://github.com/Azure-Samples/openai-chat-app-quickstart",
+    tags: ["Python", "Azure OpenAI", "AI"],
+  },
+  {
+    title: "Containerized App on Azure",
+    description: "Deploy a container app with Azure Container Apps, Key Vault, and monitoring.",
+    command: "azd init --template todo-python-mongo-aca",
+    source: "https://github.com/Azure-Samples/todo-python-mongo-aca",
+    tags: ["Python", "Container Apps", "Cosmos DB"],
+  },
+];
+
+function FeaturedTemplates() {
+  return (
+    <section className={styles.featuredSection}>
+      <h2 className={styles.sectionHeading}>Start with a featured template</h2>
+      <p className={styles.featuredSubtext}>
+        These popular templates cover common scenarios and are a great way to see azd in action.
+      </p>
+      <div className={styles.featuredGrid}>
+        {heroTemplates.map((tmpl) => (
+          <a key={tmpl.title} href={tmpl.source} target="_blank" rel="noopener noreferrer" className={styles.featuredCard}>
+            <h3 className={styles.featuredTitle}>{tmpl.title}</h3>
+            <p className={styles.featuredDescription}>{tmpl.description}</p>
+            <code className={styles.stepCommand}>{tmpl.command}</code>
+            <div className={styles.featuredTags}>
+              {tmpl.tags.map((tag) => (
+                <span key={tag} className={styles.featuredTag}>{tag}</span>
+              ))}
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function StepByStep() {
   return (
     <section className={styles.stepsSection}>

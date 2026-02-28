@@ -4,38 +4,109 @@
  * work well for content-centric websites.
  */
 
-/* You can override the default Infima variables here. */
+/* Warm Precision Design System */
 :root {
-  --ifm-color-primary: #6b5bdc;
-  --ifm-color-primary-dark: #205585;
-  --ifm-color-primary-darker: #1f507e;
-  --ifm-color-primary-darkest: #194268;
-  --ifm-color-primary-light: #2867a3;
-  --ifm-color-primary-lighter: #296caa;
-  --ifm-color-primary-lightest: #2f7ac0;
+  /* Primary palette */
+  --ifm-color-primary: #0369A1;
+  --ifm-color-primary-dark: #02598a;
+  --ifm-color-primary-darker: #025482;
+  --ifm-color-primary-darkest: #02456b;
+  --ifm-color-primary-light: #0479b8;
+  --ifm-color-primary-lighter: #047ec0;
+  --ifm-color-primary-lightest: #058ed7;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-  --ifm-navbar-link-color: #242424;
-  --ifm-color-purple: #6b5bdc;
-  --ifm-color-purple-light: #6656d1;
+  --ifm-navbar-link-color: #1C1917;
+  --ifm-color-accent: #0369A1;
+  --ifm-color-accent-light: #0284C7;
+
+  /* Typography */
+  --ifm-font-family-base: 'DM Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --ifm-heading-font-family: 'DM Sans', 'Segoe UI', system-ui, sans-serif;
+  --ifm-heading-font-weight: 700;
+  --ifm-font-weight-semibold: 600;
+  --ifm-font-family-monospace: 'JetBrains Mono', 'Cascadia Code', Consolas, monospace;
+
+  /* Surfaces */
+  --site-color-bg: #FAFAF8;
+  --site-color-surface: #FFFFFF;
+  --site-color-text: #1C1917;
+  --site-color-text-muted: #78716C;
+  --site-color-border: #E7E5E4;
+
+  /* Component tokens */
+  --site-hero-bg: #F5F3EF;
+  --site-card-shadow: none;
+  --site-card-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --site-card-radius: 12px;
+  --site-section-bg: #F5F3EF;
+
+  /* Spacing scale (8px base) */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+
+  color-scheme: light dark;
+}
+
+/* Smoother font rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--site-color-bg);
+}
+
+/* Heading font family */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ifm-heading-font-family);
+  letter-spacing: -0.02em;
 }
 
 .navbar {
-  font-size: 16px;
+  font-size: 15px;
+  font-family: var(--ifm-font-family-base);
+  box-shadow: none;
+  border-bottom: 1px solid var(--site-color-border);
+  background: var(--site-color-surface);
+  backdrop-filter: none;
+}
+
+[data-theme="dark"] .navbar {
+  background: #1A1A1A;
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+  box-shadow: none;
 }
 
 .navbar .navbar__inner .navbar__items .navbar__link--active {
   text-decoration-line: underline;
   text-underline-offset: 20px;
-  text-decoration-thickness: 4px;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--ifm-color-primary);
 }
 
 [data-theme="dark"] {
-  --ifm-navbar-link-color: white;
+  --ifm-navbar-link-color: #E7E5E4;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-  --ifm-color-purple: #a79cf1;
-  --ifm-color-purple-light: #a79cf1;
-  --ifm-color-primary: #a79cf1;
+  --ifm-color-accent: #38BDF8;
+  --ifm-color-accent-light: #7DD3FC;
+  --ifm-color-primary: #38BDF8;
+  --site-color-bg: #111111;
+  --site-color-surface: #1A1A1A;
+  --site-color-text: #E7E5E4;
+  --site-color-text-muted: #A8A29E;
+  --site-color-border: rgba(255, 255, 255, 0.08);
+  --site-hero-bg: #161616;
+  --site-card-shadow: none;
+  --site-card-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --site-section-bg: #161616;
 }
 
 .header-github-link:hover {
@@ -52,22 +123,36 @@
 }
 
 .button {
-  background-color: #7160e8;
+  background-color: var(--ifm-color-primary);
   color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  font-family: var(--ifm-heading-font-family);
+  padding: 10px 24px;
+  transition: background-color var(--transition-base), transform var(--transition-fast);
+  border: none;
 }
 
-.button:hover {
-  background-color: #5a4cb9;
+.button:hover,
+.button:focus-visible {
+  background-color: var(--ifm-color-primary-dark);
   color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(3, 105, 161, 0.2);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
 }
 
 [data-theme="dark"] .button {
-  background-color: #5649b0;
+  background-color: #0284C7;
   color: white;
 }
 
 [data-theme="dark"] .button:hover {
-  background-color: #443a8c;
+  background-color: #0369A1;
   color: white;
 }
 
@@ -77,21 +162,32 @@ html[data-theme="dark"] .header-github-link:before {
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
-/* [data-theme='dark'] {
-  --ifm-color-primary: #7160E8;
-  --ifm-color-primary-dark: #17cef2;
-  --ifm-color-primary-darker: #0dc9ee;
-  --ifm-color-primary-darkest: #0ba5c4;
-  --ifm-color-primary-light: #4fdaf6;
-  --ifm-color-primary-lighter: #5dddf6;
-  --ifm-color-primary-lightest: #87e6f9;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-} */
-
-/* For readability - FIXME: is there a better way to handle it? */
 .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.1);
   display: block;
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
+}
+
+/* Modern footer */
+.footer {
+  background: var(--site-color-surface);
+  border-top: 1px solid var(--site-color-border);
+}
+
+[data-theme="dark"] .footer {
+  background: #141414;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

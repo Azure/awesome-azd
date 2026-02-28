@@ -27,6 +27,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
+  display: none;
 }
 
 .searchContainer {
@@ -34,26 +35,27 @@
   overflow: hidden;
   position: relative;
   width: 100%;
+  background: var(--site-hero-bg);
 }
 
 .searchArea {
   position: relative;
-  position: relative;
   width: 100%;
-  height: 300px;
+  min-height: 340px;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: var(--space-3xl) var(--space-lg) var(--space-2xl);
 }
 
 .heroBar {
-  width: 740px;
+  max-width: 720px;
 }
 
 .showcaseList {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
-  gap: 24px;
+  gap: var(--space-lg);
 }
 
 .showcaseFavorite {
@@ -92,24 +94,34 @@
 
 .filterAndCard {
   display: flex;
-  padding: 30px;
+  padding: var(--space-xl) 40px;
+  background: var(--site-color-bg);
 }
 
 [data-theme="dark"] .filterAndCard {
-  background-color: #1f1f1f;
+  background-color: var(--site-color-bg);
 }
 
 .filter {
   flex: 2;
-  margin: 0px 25px;
-  max-width: 256px;
+  margin: 0px 20px 0 0;
+  max-width: 260px;
+  background: var(--site-color-surface);
+  border-radius: var(--site-card-radius, 12px);
+  padding: 20px;
+  border: 1px solid var(--site-color-border);
+  align-self: flex-start;
+}
+
+[data-theme="dark"] .filter {
+  background: var(--site-color-surface);
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 .card {
   flex: 8;
   min-width: 15rem;
-  margin: 0px 25px;
-  margin: 0px 25px;
+  margin: 0px 0px 0 20px;
 }
 
 .load {
@@ -130,47 +142,48 @@
   line-height: 20px;
   text-decoration-line: underline;
   cursor: pointer;
-  color: var(--ifm-color-purple);
+  color: var(--ifm-color-primary);
   background: none;
   border: none;
   padding: 0;
 }
 
 .filterBadge {
-  color: var(--ifm-color-purple-light) !important;
+  color: var(--ifm-color-primary) !important;
   cursor: pointer;
-  border-color: #d2ccf8 !important;
-  background: #f9f8fe !important;
+  border-color: #BAE6FD !important;
+  background: #F0F9FF !important;
+  border-radius: 20px !important;
+  font-weight: 500;
 }
 
 .filterAppliedBar {
-  padding-top: 24px;
+  padding-top: var(--space-lg);
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-md);
 }
 
 .clearAll {
-  color: #6656d1;
+  color: var(--ifm-color-primary);
   cursor: pointer;
 }
 
 [data-theme="dark"] .clearAll {
-  color: #a79cf1;
+  color: var(--ifm-color-primary);
   cursor: pointer;
 }
 
 [data-theme="dark"] .filterBadge {
-  border-color: #221d46 !important;
-  background: #3f3682 !important;
+  border-color: #164E63 !important;
+  background: #083344 !important;
 }
 
 /* Desktop-only sticky positioning for filter */
 @media screen and (min-width: 997px) {
   .filter {
     position: sticky;
-    top: 1rem;
-    align-self: flex-start;
+    top: 5rem;
   }
 }
 
@@ -179,7 +192,7 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: var(--ifm-color-purple);
+  background-color: var(--ifm-color-primary);
   color: white;
   border: none;
   border-radius: 50%;
@@ -190,20 +203,26 @@
   justify-content: center;
   cursor: pointer;
   z-index: 1000;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: background-color var(--transition-base);
 }
 
-.backToTopButton:hover {
-  background-color: var(--ifm-color-purple-light);
+.backToTopButton:hover,
+.backToTopButton:focus-visible {
+  background-color: var(--ifm-color-primary-dark);
+}
+
+.backToTopButton:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
 }
 
 [data-theme="dark"] .backToTopButton {
-  background-color: var(--ifm-color-purple);
+  background-color: #0284C7;
 }
 
 [data-theme="dark"] .backToTopButton:hover {
-  background-color: var(--ifm-color-purple-light);
+  background-color: #0369A1;
 }
 
 @media screen and (max-width: 996px) {
@@ -223,6 +242,7 @@
 
   .heroBar {
     width: 100%;
+    padding: 0 16px;
   }
 
   .cardLoad {

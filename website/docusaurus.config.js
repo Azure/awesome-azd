@@ -38,6 +38,14 @@ const config = {
     locales: ["en"],
   },
 
+  // CONFIG: Google Fonts for Warm Precision design
+  stylesheets: [
+    {
+      href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap",
+      type: "text/css",
+    },
+  ],
+
   // CONFIG: scripts
   scripts: [
     "https://js.monitor.azure.com/scripts/c/ms.analytics-web-4.min.js",
@@ -100,6 +108,21 @@ const config = {
             label: "Resources",
             position: "left",
           },
+          {
+            type: "dropdown",
+            label: "Services",
+            position: "left",
+            items: [
+              {
+                to: "/services/container-apps",
+                label: "Azure Container Apps",
+              },
+              {
+                to: "/services/azure-functions",
+                label: "Azure Functions",
+              },
+            ],
+          },
 
           // right
           {
@@ -113,7 +136,7 @@ const config = {
           // Make sure you have class defined in src/css/custom.css
           {
             to: "https://azure.github.io/awesome-azd/docs/contribute",
-            label: "Submit your template!",
+            label: "Add a template",
             position: "right",
             className: "button",
           },

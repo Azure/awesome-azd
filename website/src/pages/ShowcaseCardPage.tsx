@@ -579,7 +579,7 @@ export default function ShowcaseCardPage({
               href="https://github.com/Azure/awesome-azd/issues/new?template=extension-submission.yml"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ color: "var(--ifm-color-purple-light)", textDecoration: "none" }}
+              style={{ color: "var(--ifm-color-primary)", textDecoration: "none" }}
             >
               Submit it here →
             </a>

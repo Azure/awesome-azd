@@ -13,11 +13,11 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useColorMode } from "@docusaurus/theme-common";
 
 const TITLES: Record<string, string> = {
-  templates: "Template Library",
+  templates: "From code to cloud in minutes",
   extensions: "Extension Gallery",
 };
 const DESCRIPTIONS: Record<string, string> = {
-  templates: "An open-source template gallery to get started with Azure.",
+  templates: "Production-ready templates with infrastructure, CI/CD, and monitoring — all deployable with a single command.",
   extensions: "Discover azd extensions that add new capabilities to your workflow.",
 };
 const PLACEHOLDERS: Record<string, string> = {
@@ -64,10 +64,11 @@ function FilterBar(): React.JSX.Element {
       <SearchBox
         styles={{
           root: {
-            border: "1px solid #D1D1D1",
+            border: "1px solid var(--site-color-border)",
             height: "52px",
-            maxWidth: "740px",
-            borderRadius: "4px",
+            maxWidth: "640px",
+            borderRadius: "8px",
+            background: "var(--site-color-surface)",
           },
           icon: {
             fontSize: "24px",
@@ -82,6 +83,7 @@ function FilterBar(): React.JSX.Element {
         value={readSearchName(location.search) != null ? value : ""}
         placeholder={placeholder}
         role="search"
+        ariaLabel="Search templates and extensions"
         onClear={(e) => {
           setValue(null);
           const newSearch = new URLSearchParams(location.search);
@@ -109,7 +111,7 @@ function FilterBar(): React.JSX.Element {
             state: prepareUserState(),
           });
           setTimeout(() => {
-            document.getElementById("searchbar")?.focus();
+            document.getElementById("filterBar")?.focus();
           }, 0);
         }}
       />
@@ -120,23 +122,12 @@ function FilterBar(): React.JSX.Element {
 export default function ShowcaseTemplateSearch() {
   const { colorMode } = useColorMode();
   const location = useLocation();
+  const gettingStartedUrl = useBaseUrl("/getting-started");
   const contentType = new URLSearchParams(location.search).get("type") || "templates";
   const title = TITLES[contentType] || TITLES.templates;
   const description = DESCRIPTIONS[contentType] || DESCRIPTIONS.templates;
   return (
     <div className={styles.searchContainer}>
-      <img
-        src={
-          colorMode != "dark"
-            ? useBaseUrl("/img/coverBackground.png")
-            : useBaseUrl("/img/coverBackgroundDark.png")
-        }
-        className={styles.cover}
-        onError={({ currentTarget }) => {
-          currentTarget.style.display = "none";
-        }}
-        alt=""
-      />
       <div className={styles.searchArea}>
         <div
           style={{
@@ -146,14 +137,15 @@ export default function ShowcaseTemplateSearch() {
         >
           <h1 className={styles.heroBar}>
             <Text
-              size={800}
+              size={900}
               align="center"
-              weight="semibold"
+              weight="bold"
               style={{
-                background:
-                  "linear-gradient(90deg, rgb(112.68, 94.63, 239.06) 0%, rgb(41.21, 120.83, 190.19) 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
+                color: "var(--site-color-text)",
+                fontSize: "2.5rem",
+                lineHeight: "1.15",
+                letterSpacing: "-0.03em",
+                fontFamily: "var(--ifm-heading-font-family)",
               }}
             >
               {title}
@@ -162,43 +154,53 @@ export default function ShowcaseTemplateSearch() {
           <Text
             align="center"
             size={400}
-            style={{
-              color: "#242424",
-              padding: "10px 0 20px 0",
-            }}
+            className={styles.heroDescription}
           >
             {description}
           </Text>
           <FilterBar />
+          {contentType === "templates" && (
+            <div className={styles.statsBar}>
+              <div className={styles.statItem}>
+                <Text weight="bold" size={500} className={styles.statNumber}>290+</Text>
+                <Text size={200} className={styles.statLabel}>Templates</Text>
+              </div>
+              <div className={styles.statDivider} />
+              <div className={styles.statItem}>
+                <Text weight="bold" size={500} className={styles.statNumber}>50+</Text>
+                <Text size={200} className={styles.statLabel}>Azure Services</Text>
+              </div>
+              <div className={styles.statDivider} />
+              <div className={styles.statItem}>
+                <Text weight="bold" size={500} className={styles.statNumber}>9</Text>
+                <Text size={200} className={styles.statLabel}>Languages</Text>
+              </div>
+            </div>
+          )}
           <Text
             align="center"
             size={300}
-            style={{
-              color: "#242424",
-              paddingTop: "20px",
-            }}
+            className={styles.heroSubtext}
           >
             {contentType === "extensions"
-              ? "Extensions add new commands, lifecycle hooks, and capabilities to azd. "
-              : "Each template is a fully working, cloud-ready application deployable with the Azure Developer CLI (azd). "}
-          </Text>
-          <Text
-            align="center"
-            size={300}
-            style={{
-              color: "#242424",
-              paddingBottom: "20px",
-            }}
-          >
-            New to azd? Welcome!
-            <FluentUILink
-              href={ADD_URL}
-              target="_blank"
-              style={{ paddingLeft: "3px" }}
-              className={styles.learnMoreColor}
-            >
-              Learn more in our docs.
-            </FluentUILink>
+              ? <>
+                  Extensions add new commands, lifecycle hooks, and capabilities to azd.{" "}
+                  <FluentUILink
+                    href={ADD_URL}
+                    target="_blank"
+                    style={{ paddingLeft: "3px" }}
+                    className={styles.learnMoreColor}
+                  >
+                    Learn more in our docs.
+                  </FluentUILink>
+                </>
+              : <a
+                  href={gettingStartedUrl}
+                  className={styles.heroCta}
+                >
+                  Get Started in Minutes →
+                </a>
+            }
           </Text>
         </div>
       </div>

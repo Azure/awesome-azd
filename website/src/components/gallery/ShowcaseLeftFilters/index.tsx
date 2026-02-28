@@ -278,6 +278,7 @@ function ShowcaseFilterViewAll({
                       location={location}
                       readSearchTags={readSearchTags}
                       replaceSearchTags={replaceSearchTags}
+                      count={tagCounts?.[tag]}
                     />
                   </div>
                 );

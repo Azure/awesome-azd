@@ -223,7 +223,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
         }}
         className={styleCSS.cardBody}
       >
-        <FluentUILink className={styleCSS.cardTitle} onClick={openPanel} role="button" tabIndex={0}>
+        <FluentUILink className={styleCSS.cardTitle} onClick={openPanel} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPanel(); } }}>
           {title}
         </FluentUILink>
         <div

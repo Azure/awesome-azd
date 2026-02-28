@@ -182,16 +182,24 @@ export default function ShowcaseTemplateSearch() {
             className={styles.heroSubtext}
           >
             {contentType === "extensions"
-              ? "Extensions add new commands, lifecycle hooks, and capabilities to azd. "
-              : "New to azd? "}
-            <FluentUILink
-              href={contentType === "extensions" ? ADD_URL : "/awesome-azd/getting-started"}
-              target={contentType === "extensions" ? "_blank" : "_self"}
-              style={{ paddingLeft: "3px" }}
-              className={styles.learnMoreColor}
-            >
-              {contentType === "extensions" ? "Learn more in our docs." : "Get started in minutes →"}
-            </FluentUILink>
+              ? <>
+                  Extensions add new commands, lifecycle hooks, and capabilities to azd.{" "}
+                  <FluentUILink
+                    href={ADD_URL}
+                    target="_blank"
+                    style={{ paddingLeft: "3px" }}
+                    className={styles.learnMoreColor}
+                  >
+                    Learn more in our docs.
+                  </FluentUILink>
+                </>
+              : <a
+                  href="/awesome-azd/getting-started"
+                  className={styles.heroCta}
+                >
+                  Get Started in Minutes →
+                </a>
+            }
           </Text>
         </div>
       </div>

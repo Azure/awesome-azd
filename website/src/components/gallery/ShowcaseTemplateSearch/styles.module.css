@@ -42,10 +42,49 @@
 }
 
 .heroSubtext {
-  color: var(--site-color-text-muted);
-  padding-top: var(--space-md);
+  padding-top: var(--space-lg);
   padding-bottom: var(--space-lg);
   text-align: center;
+}
+
+.heroCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--ifm-color-primary);
+  color: white;
+  font-family: var(--ifm-heading-font-family);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color var(--transition-base), transform var(--transition-fast);
+  border: none;
+  cursor: pointer;
+}
+
+.heroCta:hover,
+.heroCta:focus-visible {
+  background-color: var(--ifm-color-primary-dark);
+  color: white;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(3, 105, 161, 0.25);
+}
+
+.heroCta:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+[data-theme="dark"] .heroCta {
+  background-color: #0284C7;
+}
+
+[data-theme="dark"] .heroCta:hover,
+[data-theme="dark"] .heroCta:focus-visible {
+  background-color: #0369A1;
 }
 
 [data-theme="dark"] .heroSubtext {

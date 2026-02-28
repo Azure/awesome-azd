@@ -82,6 +82,7 @@ function FilterBar(): React.JSX.Element {
         value={readSearchName(location.search) != null ? value : ""}
         placeholder={placeholder}
         role="search"
+        ariaLabel="Search templates and extensions"
         onClear={(e) => {
           setValue(null);
           const newSearch = new URLSearchParams(location.search);
@@ -109,7 +110,7 @@ function FilterBar(): React.JSX.Element {
             state: prepareUserState(),
           });
           setTimeout(() => {
-            document.getElementById("searchbar")?.focus();
+            document.getElementById("filterBar")?.focus();
           }, 0);
         }}
       />
@@ -125,18 +126,6 @@ export default function ShowcaseTemplateSearch() {
   const description = DESCRIPTIONS[contentType] || DESCRIPTIONS.templates;
   return (
     <div className={styles.searchContainer}>
-      <img
-        src={
-          colorMode != "dark"
-            ? useBaseUrl("/img/coverBackground.png")
-            : useBaseUrl("/img/coverBackgroundDark.png")
-        }
-        className={styles.cover}
-        onError={({ currentTarget }) => {
-          currentTarget.style.display = "none";
-        }}
-        alt=""
-      />
       <div className={styles.searchArea}>
         <div
           style={{

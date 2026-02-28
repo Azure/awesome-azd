@@ -17,7 +17,7 @@
   max-width: 100%;
   max-height: 100%;
   min-width: 300px;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: var(--site-card-shadow, 0 1px 3px rgba(0, 0, 0, 0.06));
   border: 1px solid rgba(0, 0, 0, 0.06);
   overflow: hidden;

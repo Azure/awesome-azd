@@ -107,6 +107,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
             <img
               src={headerLogo}
               alt="Logo"
+              width={16}
               height={16}
               style={{ margin: "5px 0px", fontWeight: "550" }}
             />
@@ -116,6 +117,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
                 <img
                   src={star}
                   alt="Star"
+                  width={16}
                   height={16}
                   style={{ paddingLeft: "10px" }}
                 />
@@ -128,6 +130,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
                 <img
                   src={fire}
                   alt="Fire"
+                  width={16}
                   height={16}
                   style={{ paddingLeft: "10px" }}
                 />
@@ -161,6 +164,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
           >
             <img
               src={headerLogo}
+              width={16}
               height={16}
               alt="logo"
               className={styleCSS.headerLogo}
@@ -171,6 +175,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
                 <img
                   src={star}
                   alt="Star"
+                  width={16}
                   height={16}
                   style={{ paddingLeft: "10px" }}
                 />
@@ -190,6 +195,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
                 <img
                   src={fire}
                   alt="Fire"
+                  width={16}
                   height={16}
                   style={{ paddingLeft: "10px" }}
                 />
@@ -217,7 +223,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
         }}
         className={styleCSS.cardBody}
       >
-        <FluentUILink className={styleCSS.cardTitle} onClick={openPanel}>
+        <FluentUILink className={styleCSS.cardTitle} onClick={openPanel} role="button" tabIndex={0}>
           {title}
         </FluentUILink>
         <div
@@ -282,18 +288,20 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
           defaultValue={azdInitCommand}
           className={styleCSS.input}
           placeholder={azdInitCommand}
+          aria-label={`azd init command for ${title}`}
         />
         <Popover trapFocus withArrow size="small">
           <PopoverTrigger disableButtonEnhancement>
             <Button
               size="small"
               className={styleCSS.copyIconButton}
+              aria-label={`Copy azd init command for ${title}`}
               onClick={() => {
                 navigator.clipboard.writeText(azdInitCommand);
               }}
               data-m={contentForAdobeAnalytics}
             >
-              <img src={useBaseUrl("/img/Copy.svg")} height={20} alt="Copy" />
+              <img src={useBaseUrl("/img/Copy.svg")} width={20} height={20} alt="" />
             </Button>
           </PopoverTrigger>
 

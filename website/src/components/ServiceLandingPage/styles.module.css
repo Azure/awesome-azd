@@ -133,12 +133,18 @@
   transition: border-color var(--transition-base), box-shadow var(--transition-base);
 }
 
-.templateCard:hover {
+.templateCard:hover,
+.templateCard:focus-visible {
   border-color: var(--ifm-color-primary);
   box-shadow: var(--site-card-shadow-hover);
   transform: translateY(-2px);
   text-decoration: none;
   color: inherit;
+}
+
+.templateCard:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
 }
 
 .templateImage {
@@ -208,10 +214,16 @@
   transition: border-color var(--transition-base), box-shadow var(--transition-base);
 }
 
-.resourceCard:hover {
+.resourceCard:hover,
+.resourceCard:focus-visible {
   border-color: var(--ifm-color-primary);
   text-decoration: none;
   color: inherit;
+}
+
+.resourceCard:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
 }
 
 .resourceTitle {

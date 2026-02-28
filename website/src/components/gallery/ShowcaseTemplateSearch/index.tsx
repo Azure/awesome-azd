@@ -64,7 +64,7 @@ function FilterBar(): React.JSX.Element {
       <SearchBox
         styles={{
           root: {
-            border: "1px solid #D6D3D1",
+            border: "1px solid var(--site-color-border)",
             height: "52px",
             maxWidth: "640px",
             borderRadius: "8px",

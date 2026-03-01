@@ -8,7 +8,7 @@
     "authorUrl": "https://github.com/jongio",
     "source": "https://github.com/jongio/azd-app",
     "registryUrl": "https://raw.githubusercontent.com/jongio/azd-app/main/registry.json",
-    "latestVersion": "0.12.6",
+    "latestVersion": "0.12.8",
     "capabilities": [
       "custom-commands",
       "lifecycle-events",

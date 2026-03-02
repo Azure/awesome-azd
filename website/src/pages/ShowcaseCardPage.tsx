@@ -543,7 +543,7 @@ export default function ShowcaseCardPage({
 
   return (
     <>
-      {/* Content Type Toggle */}
+      {/* Content Type Toggle - Extension gallery hidden pending release
       <div
         role="group"
         aria-label="Content type"
@@ -586,6 +586,7 @@ export default function ShowcaseCardPage({
           </Text>
         )}
       </div>
+      */}
 
       <div
         style={{
@@ -671,11 +672,14 @@ export default function ShowcaseCardPage({
         <Spinner labelPosition="below" label="Loading..." />
       ) : (
         <>
+          {/* Extension gallery hidden pending release
           {isExtensions ? (
             <ShowcaseExtensionCards filteredExtensions={paginatedExtensions} />
           ) : (
             <ShowcaseCards filteredUsers={paginatedTemplates} />
           )}
+          */}
+          <ShowcaseCards filteredUsers={paginatedTemplates} />
           {totalPages > 1 && (
             <PaginationControls
               currentPage={currentPage}

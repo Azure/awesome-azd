@@ -1,9 +1,10 @@
 name: Sync Extension Versions
 
-on:
-  schedule:
-    - cron: "0 6 * * *" # Daily at 6 AM UTC
-  workflow_dispatch: # Allow manual trigger
+# on:
+#   schedule:
+#     - cron: "0 6 * * *" # Daily at 6 AM UTC
+#   workflow_dispatch: # Allow manual trigger
+on: []
 
 permissions:
   contents: write

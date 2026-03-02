@@ -619,6 +619,7 @@ export default function ShowcaseLeftFilters({
         </>
       )}
 
+      {/* Extension Capabilities filter hidden pending release
       {isExtensions && extensionCapabilityTag.length > 0 && (
         <AccordionItem value="9">
           <AccordionHeader
@@ -646,6 +647,7 @@ export default function ShowcaseLeftFilters({
           </AccordionPanel>
         </AccordionItem>
       )}
+      */}
 
       <AccordionItem value="8">
         <AccordionHeader

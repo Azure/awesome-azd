@@ -1,33 +1,34 @@
 name: Extension Submission
 
-on:
-  issues:
-    types: [labeled]
-  workflow_dispatch:
-    inputs:
-      registry_url:
-        description: "URL to the extension's registry.json"
-        required: true
-      source_repo:
-        description: "GitHub repository URL"
-        required: true
-      author:
-        description: "Author name"
-        required: true
-      author_url:
-        description: "Author GitHub URL"
-        required: true
-      author_type:
-        description: "Microsoft or Community"
-        required: true
-        default: "Community"
-        type: choice
-        options:
-          - Community
-          - Microsoft
-      website:
-        description: "Extension documentation website URL (optional)"
-        required: false
+# on:
+#   issues:
+#     types: [labeled]
+#   workflow_dispatch:
+#     inputs:
+#       registry_url:
+#         description: "URL to the extension's registry.json"
+#         required: true
+#       source_repo:
+#         description: "GitHub repository URL"
+#         required: true
+#       author:
+#         description: "Author name"
+#         required: true
+#       author_url:
+#         description: "Author GitHub URL"
+#         required: true
+#       author_type:
+#         description: "Microsoft or Community"
+#         required: true
+#         default: "Community"
+#         type: choice
+#         options:
+#           - Community
+#           - Microsoft
+#       website:
+#         description: "Extension documentation website URL (optional)"
+#         required: false
+on: []
 
 permissions:
   contents: write

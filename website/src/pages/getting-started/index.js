@@ -27,6 +27,7 @@ const useStyles = makeStyles({
 
 function HomepageHeader({ colorMode }) {
   const style = useStyles();
+  const browseUrl = useBaseUrl("/");
   return (
     <header className={styles.heroBanner}>
       <div className={styles.section}>
@@ -44,16 +45,19 @@ function HomepageHeader({ colorMode }) {
             a local dev environment to Azure with just a few commands. Pick a
             template, run azd up, and you’re live.
           </Text>
-        </div>
-        <div className={styles.video}>
-          <iframe
-            className={styles.iframe}
-            loading="lazy"
-            src="https://www.youtube.com/embed/9z3PiHSCcYs?si=F1yKpoiOQnzb4o-K"
-            title="Azure Developer CLI: GitHub to cloud in minutes"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
+          <div className={styles.heroActions}>
+            <a href={browseUrl} className={styles.heroPrimaryButton}>
+              Browse templates
+            </a>
+            <a
+              href="https://aka.ms/azd-install"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.heroSecondaryButton}
+            >
+              Get started
+            </a>
+          </div>
         </div>
       </div>
     </header>

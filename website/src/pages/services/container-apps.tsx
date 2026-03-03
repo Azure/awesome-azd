@@ -9,9 +9,9 @@ import ServiceLandingPage from "@site/src/components/ServiceLandingPage";
 const config = {
   serviceTag: "aca",
   title: "Azure Container Apps",
-  tagline: "Deploy containerized apps without managing infrastructure",
+  tagline: "Get started quickly with ready-to-deploy templates",
   description:
-    "Azure Container Apps lets you run microservices and containerized applications on a serverless platform. Build and deploy modern apps with autoscaling, Dapr integration, and KEDA event-driven scaling — all without managing Kubernetes clusters.",
+    "Browse templates for microservices and containerized applications on Azure Container Apps \u2014 a serverless platform with built-in autoscaling, Dapr integration, and KEDA event-driven scaling. Pick a template and deploy.",
   icon: "/img/Azure-Container-Apps.svg",
   quickStart: [
     {

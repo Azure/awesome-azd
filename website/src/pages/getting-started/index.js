@@ -23,7 +23,7 @@ function HomepageHeader() {
       <div className={styles.section}>
         <div className={styles.description}>
           <span className={styles.openSourceBadge}>
-            &#9733; 290+ production ready templates
+            &#9679; 290+ production-ready templates
           </span>
           <h1 className={styles.heroTitle}>
             Pick a template.<br />

@@ -23,12 +23,13 @@
 }
 
 .description {
-  max-width: 34rem;
+  max-width: 42rem;
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   flex-flow: column;
+  text-align: center;
   color: var(--site-color-text);
 }
 
@@ -151,7 +152,6 @@
   border-radius: 2em;
   padding: 4px 12px;
   margin-bottom: var(--space-md);
-  text-transform: uppercase;
 }
 
 [data-theme="dark"] .openSourceBadge {
@@ -199,7 +199,6 @@
 .heroTitle {
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 700;
-  font-style: italic;
   font-family: var(--ifm-heading-font-family);
   letter-spacing: -0.02em;
   line-height: 1.15;

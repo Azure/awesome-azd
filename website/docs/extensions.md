@@ -1,5 +1,6 @@
 ---
 title: azd Extensions
+draft: true
 ---
 
 # azd Extensions

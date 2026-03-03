@@ -39,7 +39,7 @@ If you would like to contribute a template but are not sure where to start, [mak
 ### [Submit a Resource](https://github.com/Azure/awesome-azd/compare)
 Did you write or find an article that helped you get started with `azd`? Or maybe you created or found a video that showed you how to create an azd template? Whatever the resource might be, we would love for you to share it with our community! Submit content you think should be included in `awesome-azd/README.md`
 
-## Submit an azd Extension
+{/* ## Submit an azd Extension
 
 Have you built an azd extension? Share it with the community! Extensions expand `azd` with custom commands, lifecycle events, MCP servers, and more.
 
@@ -63,7 +63,7 @@ Have you built an azd extension? Share it with the community! Extensions expand 
 - A well-documented README in your source repository
 - Valid capabilities declared (e.g., `custom-commands`, `lifecycle-events`, `mcp-server`)
 
-Learn more about azd extensions in the [Extensions documentation](./extensions.md).
+Learn more about azd extensions in the [Extensions documentation](./extensions.md). */}
 
 ## Other Ways To Help
 Other than these, we always welcome feedback through a:

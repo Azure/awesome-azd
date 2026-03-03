@@ -18,7 +18,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: var(--space-3xl) var(--space-2xl);
+  padding: var(--space-xl) var(--space-2xl);
   gap: var(--space-2xl);
 }
 
@@ -135,6 +135,65 @@
   background-color: rgba(56, 189, 248, 0.08);
   color: var(--ifm-color-primary);
   border-color: var(--ifm-color-primary);
+}
+
+.openSourceBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--ifm-heading-font-family);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #1C1917;
+  background: #F5F3EF;
+  border: 1px solid var(--site-color-border);
+  border-radius: 2em;
+  padding: 4px 12px;
+  margin-bottom: var(--space-md);
+  text-transform: uppercase;
+}
+
+[data-theme="dark"] .openSourceBadge {
+  color: #e7e5e4;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.heroCommandButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #1C1917;
+  color: #22d3ee;
+  font-family: var(--ifm-font-family-monospace);
+  font-weight: 500;
+  font-size: 0.875rem;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color var(--transition-base), transform var(--transition-fast);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+.heroCommandButton:hover,
+.heroCommandButton:focus-visible {
+  background-color: #292524;
+  color: #22d3ee;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.heroCommandButton:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+.heroCommandPrompt {
+  color: #78716c;
 }
 
 .container {

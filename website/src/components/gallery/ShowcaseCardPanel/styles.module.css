@@ -45,24 +45,24 @@
 }
 
 .purple {
-  filter: invert(37%) sepia(47%) saturate(1651%) hue-rotate(221deg)
-    brightness(86%) contrast(90%) !important;
+  filter: invert(27%) sepia(96%) saturate(1200%) hue-rotate(176deg)
+    brightness(97%) contrast(101%) !important;
   color: black;
 }
 
 .purple:hover {
-  filter: invert(34%) sepia(15%) saturate(4006%) hue-rotate(217deg)
-    brightness(90%) contrast(93%) !important;
+  filter: invert(22%) sepia(96%) saturate(1400%) hue-rotate(176deg)
+    brightness(90%) contrast(101%) !important;
 }
 
 [data-theme="dark"] .purple {
-  filter: invert(82%) sepia(32%) saturate(6544%) hue-rotate(203deg)
-    brightness(101%) contrast(89%) !important;
+  filter: invert(55%) sepia(60%) saturate(800%) hue-rotate(176deg)
+    brightness(105%) contrast(95%) !important;
 }
 
 [data-theme="dark"] .purple:hover {
-  filter: invert(34%) sepia(15%) saturate(4006%) hue-rotate(217deg)
-    brightness(90%) contrast(93%) !important;
+  filter: invert(22%) sepia(96%) saturate(1400%) hue-rotate(176deg)
+    brightness(90%) contrast(101%) !important;
 }
 
 [data-theme="dark"] .commandColor {

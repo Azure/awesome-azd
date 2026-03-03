@@ -32,6 +32,9 @@ function HomepageHeader({ colorMode }) {
     <header className={styles.heroBanner}>
       <div className={styles.section}>
         <div className={styles.description}>
+          <span className={styles.openSourceBadge}>
+            &#9679; Proudly open-source
+          </span>
           <h1>
             <Text
               className={`${style.largeTitle} ${styles.heroText}`}
@@ -41,9 +44,7 @@ function HomepageHeader({ colorMode }) {
             </Text>
           </h1>
           <Text className={`${style.title3} ${styles.heroText}`}>
-            Azure Developer CLI (azd) is an open-source tool that takes you from
-            a local dev environment to Azure with just a few commands. Pick a
-            template, run azd up, and you’re live.
+            Pick a template, run azd up, and you’re live.
           </Text>
           <div className={styles.heroActions}>
             <a href={browseUrl} className={styles.heroPrimaryButton}>
@@ -53,9 +54,9 @@ function HomepageHeader({ colorMode }) {
               href="https://aka.ms/azd-install"
               target="_blank"
               rel="noopener noreferrer"
-              className={styles.heroSecondaryButton}
+              className={styles.heroCommandButton}
             >
-              Get started
+              <span className={styles.heroCommandPrompt}>$</span> azd init
             </a>
           </div>
         </div>

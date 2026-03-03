@@ -73,4 +73,4 @@ Other than these, we always welcome feedback through a:
  - [**feature request**](https://github.com/Azure/awesome-azd/issues/new?assignees=&labels=&template=feature_request.md&title=): for improvements to our awesome-azd site
 
 ## Next Steps
-- Visit our [FAQ](./1-faq/1-what-is-azd.md)
+- Visit our [FAQ](./faq.md)

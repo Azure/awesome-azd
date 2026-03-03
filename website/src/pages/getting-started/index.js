@@ -9,54 +9,42 @@ import Layout from "@theme/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import {
-  Text,
   teamsLightTheme,
   teamsDarkTheme,
-  makeStyles,
-  typographyStyles,
   FluentProvider,
 } from "@fluentui/react-components";
 import { useColorMode } from "@docusaurus/theme-common";
 import styles from "./styles.module.css";
 
-const useStyles = makeStyles({
-  largeTitle: typographyStyles.largeTitle,
-  title3: typographyStyles.title3,
-  subtitle1: typographyStyles.subtitle1,
-});
-
-function HomepageHeader({ colorMode }) {
-  const style = useStyles();
+function HomepageHeader() {
   const browseUrl = useBaseUrl("/");
   return (
     <header className={styles.heroBanner}>
       <div className={styles.section}>
         <div className={styles.description}>
           <span className={styles.openSourceBadge}>
-            &#9679; Proudly open-source
+            &#9733; 290+ production ready templates
           </span>
-          <h1>
-            <Text
-              className={`${style.largeTitle} ${styles.heroText}`}
-              style={{ marginBottom: "6px" }}
-            >
-              Ship to Azure in minutes, not days
-            </Text>
+          <h1 className={styles.heroTitle}>
+            Pick a template.<br />
+            Deploy to Azure.<br />
+            <span className={styles.heroTitleAccent}>Ship in minutes.</span>
           </h1>
-          <Text className={`${style.title3} ${styles.heroText}`}>
-            Pick a template, run azd up, and you’re live.
-          </Text>
+          <p className={styles.heroSubtitle}>
+            The Azure Developer CLI takes your code from local dev to Azure.
+            Initialize with <code className={styles.heroInlineCode}>azd init</code>,
+            deploy with <code className={styles.heroInlineCode}>azd up</code> &#8212; infrastructure and
+            app, all at once.
+          </p>
           <div className={styles.heroActions}>
             <a href={browseUrl} className={styles.heroPrimaryButton}>
-              Browse templates
+              &#9654; Browse templates
             </a>
             <a
-              href="https://aka.ms/azd-install"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.heroCommandButton}
+              href="https://learn.microsoft.com/azure/developer/azure-developer-cli/get-started"
+              className={styles.heroSecondaryButton}
             >
-              <span className={styles.heroCommandPrompt}>$</span> azd init
+              Get started &#8594;
             </a>
           </div>
         </div>
@@ -70,28 +58,22 @@ const steps = [
     number: "1",
     title: "Install the Azure Developer CLI",
     description:
-      "Install azd with a single command. See the install page for macOS, Linux, and other options.",
+      "One-line install for macOS, Linux, and Windows.",
     command: "winget install microsoft.azd",
-    link: "https://aka.ms/azd-install",
-    linkText: "All install options →",
   },
   {
     number: "2",
     title: "Pick a template",
     description:
-      "Browse 290+ production-ready templates covering web apps, APIs, AI, microservices, and more.",
-    command: "azd init --template todo-nodejs-mongo",
-    link: "/awesome-azd/",
-    linkText: "Browse templates →",
+      "Browse 290+ templates covering web apps, APIs, AI, microservices, and more.",
+    command: "azd init --template todo-nodejs",
   },
   {
     number: "3",
     title: "Deploy to Azure",
     description:
-      "One command provisions your infrastructure, builds your app, and deploys everything to Azure.",
+      "Provisions your infrastructure, builds your app, and deploys everything to Azure.",
     command: "azd up",
-    link: "https://learn.microsoft.com/azure/developer/azure-developer-cli/get-started",
-    linkText: "Read the full guide →",
   },
 ];
 
@@ -146,10 +128,9 @@ function FeaturedTemplates() {
 }
 
 function StepByStep() {
-  const browseUrl = useBaseUrl("/");
   return (
     <section className={styles.stepsSection}>
-      <h2 className={styles.sectionHeading}>Get started in 3 steps</h2>
+      <h2 className={styles.stepsLabel}>Get started in 3 steps</h2>
       <div className={styles.stepsGrid}>
         {steps.map((step) => (
           <div key={step.number} className={styles.stepCard}>
@@ -157,9 +138,6 @@ function StepByStep() {
             <h3 className={styles.stepTitle}>{step.title}</h3>
             <p className={styles.stepDescription}>{step.description}</p>
             <code className={styles.stepCommand}>{step.command}</code>
-            <a href={step.link === "/awesome-azd/" ? browseUrl : step.link} className={styles.stepLink}>
-              {step.linkText}
-            </a>
           </div>
         ))}
       </div>
@@ -183,7 +161,7 @@ const HomeApp = () => {
       className={styles.backgroundColor}
     >
       <main className={styles.container}>
-        <HomepageHeader colorMode={colorMode} />
+        <HomepageHeader />
         <StepByStep />
         <FeaturedTemplates />
         <HomepageFeatures />

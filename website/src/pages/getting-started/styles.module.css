@@ -196,6 +196,53 @@
   color: #78716c;
 }
 
+.heroTitle {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  font-style: italic;
+  font-family: var(--ifm-heading-font-family);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--site-color-text);
+  margin: 0 0 var(--space-md) 0;
+}
+
+[data-theme="dark"] .heroTitle {
+  color: var(--site-color-text);
+}
+
+.heroTitleAccent {
+  color: #818cf8;
+}
+
+[data-theme="dark"] .heroTitleAccent {
+  color: #818cf8;
+}
+
+.heroSubtitle {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--site-color-text-muted);
+  margin: 0 0 var(--space-md) 0;
+  max-width: 480px;
+}
+
+[data-theme="dark"] .heroSubtitle {
+  color: var(--site-color-text-muted);
+}
+
+.heroInlineCode {
+  background: rgba(0, 0, 0, 0.06);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.875em;
+}
+
+[data-theme="dark"] .heroInlineCode {
+  background: rgba(255, 255, 255, 0.1);
+}
+
 .container {
   margin: 0 auto;
   max-width: 1200px;
@@ -244,6 +291,21 @@
 
 [data-theme="dark"] .sectionHeading {
   color: var(--site-color-text);
+}
+
+.stepsLabel {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: var(--ifm-heading-font-family);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-2xl);
+  color: var(--site-color-text-muted);
+}
+
+[data-theme="dark"] .stepsLabel {
+  color: var(--site-color-text-muted);
 }
 
 .stepsGrid {

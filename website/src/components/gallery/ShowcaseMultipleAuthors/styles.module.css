@@ -7,10 +7,12 @@
 
 .cardAuthor {
   color: #616161 !important;
+  text-decoration: underline !important;
 }
 
 .cardAuthorPanel {
   color: var(--ifm-color-purple-light) !important;
+  text-decoration: underline !important;
 }
 
 .cardAuthor:hover {
@@ -19,6 +21,7 @@
 
 [data-theme="dark"] .cardAuthor {
   color: #707070 !important;
+  text-decoration: underline !important;
 }
 
 [data-theme="dark"] .cardAuthor:hover {

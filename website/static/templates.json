@@ -1566,31 +1566,6 @@
     "id": "56053f9b-9406-40be-9a33-842548870d3f"
   },
   {
-    "title": "Hello world Java Application on Azure Spring Apps",
-    "description": "A complete hello-world application that includes everything you need to build, deploy, and run an Azure Spring Apps solution.",
-    "preview": "./templates/images/asa-helloworld.png",
-    "authorUrl": "https://github.com/spring-guides/",
-    "author": "Yi Liu",
-    "source": "https://github.com/spring-guides/gs-spring-boot-for-azure",
-    "tags": [
-      "webapps",
-      "community"
-    ],
-    "languages": [
-      "java"
-    ],
-    "frameworks": [
-      "spring"
-    ],
-    "azureServices": [
-      "azurespringapps"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "e7e67e8f-cb48-4cd3-ae54-493aad4faa1a"
-  },
-  {
     "title": "Terraform template to bootstrap Azure Deployment Environments",
     "description": "A template to deploy Azure DevCenter with the minimun configuration to start using Azure Deployment Environments and supercharge your platform engineering story. Infrastructure as Code (written in Terraform) will get you started quickly to enable developers to self-serve environments via the Developer Portal, Azure CLI or CI/CD pipelines.",
     "preview": "./templates/images/azure-deployment-environments.png",
@@ -6210,8 +6185,7 @@
     "tags": [
       "mcp",
       "msft",
-      "ai",
-      "new"
+      "ai"
     ],
     "azureServices": [
       "aca",
@@ -6232,7 +6206,6 @@
     "tags": [
       "msft",
       "ai",
-      "new",
       "mcp"
     ],
     "languages": [
@@ -6270,7 +6243,6 @@
     "tags": [
       "msft",
       "ai",
-      "new",
       "mcp"
     ],
     "languages": [
@@ -6301,8 +6273,7 @@
     "tags": [
       "mcp",
       "msft",
-      "ai",
-      "new"
+      "ai"
     ],
     "azureServices": [
       "aca",
@@ -6321,8 +6292,7 @@
     "author": "Ronald Bosma",
     "source": "https://github.com/ronaldbosma/protect-apim-with-oauth",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "languages": [
       "dotnetCsharp"
@@ -6336,32 +6306,6 @@
     "id": "66cdab60-61e3-498a-9103-a9f316e58a6f"
   },
   {
-    "title": "Call OAuth-Protected APIs on API Management with Managed Identity",
-    "description": "Demonstrates OAuth-protected API calls using managed identities. Shows Azure Functions, Logic Apps and API Management calling APIs without secrets, plus CI/CD pipelines using federated credentials to call OAuth-protected APIs from integration tests.",
-    "preview": "./templates/images/call-apim-with-managed-identity.png",
-    "authorUrl": "https://github.com/ronaldbosma",
-    "author": "Ronald Bosma",
-    "source": "https://github.com/ronaldbosma/call-apim-with-managed-identity",
-    "tags": [
-      "community",
-      "new"
-    ],
-    "languages": [
-      "dotnetCsharp"
-    ],
-    "azureServices": [
-      "apim",
-      "functions",
-      "logicapps",
-      "managedidentity",
-      "serviceprincipal"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "4f2b8805-14fb-49de-acc5-fe9e2e8ae295"
-  },
-  {
     "title": "Semantic image search",
     "description": "A sample full-stack app for searching images using Azure AI Vision multi-modal embeddings API and Azure AI Search integrated vectorization.",
     "authorUrl": "https://github.com/Azure-Samples",
@@ -6369,8 +6313,7 @@
     "source": "https://github.com/Azure-Samples/image-search-aisearch",
     "tags": [
       "ai",
-      "msft",
-      "new"
+      "msft"
     ],
     "languages": [
       "python",
@@ -6396,8 +6339,7 @@
     "author": "Ronald Bosma",
     "source": "https://github.com/ronaldbosma/call-apim-backend-with-oauth",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "languages": [
       "dotnetCsharp"
@@ -6412,6 +6354,30 @@
     "id": "af9e410f-96f1-419d-ba27-2ff8a77b24d0"
   },
   {
+    "title": "Azure Functions C# Timer Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions Timer trigger quickstart written in C# and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (AZD). This sample uses managed identity and a virtual network to ensure it's secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd-timer",
+    "tags": [
+      "msft"
+    ],
+    "languages": [
+      "dotnetCsharp"
+    ],
+    "azureServices": [
+      "functions",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "b7e6c2e2-5e2e-4c8e-8e6e-2e2c8e5e6c2e"
+  },
+  {
     "title": "FastAPI Membership API Template for Azure Container Apps",
     "description": "This template allows you to deploy a membership API built with FastAPI to Azure Container Apps, using Azure Database for PostgreSQL",
     "preview": "./templates/images/fastapi-postgres-aca.png",
@@ -6419,8 +6385,7 @@
     "author": "Mark Anthony Estopace",
     "source": "https://github.com/EstopaceMA/fastapi-postgres-aca",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "languages": [
       "python"

@@ -8,9 +8,11 @@
   display: inline-block;
   overflow: hidden;
   position: relative;
-  width: 100%;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
   min-width: 309px;
   background: var(--site-hero-bg);
+  border-bottom: 1px solid var(--site-color-border);
 }
 
 .section {
@@ -270,12 +272,16 @@
 
 /* Step-by-step section */
 .stepsSection {
-  padding: var(--space-3xl) var(--space-xl);
-  background: var(--site-color-bg);
+  padding: var(--space-xl) var(--space-xl) var(--space-3xl);
+  margin-top: var(--space-2xl);
+  background: #f7f7f8;
+  border: 1px solid var(--site-color-border);
+  border-radius: var(--site-card-radius, 12px);
 }
 
 [data-theme="dark"] .stepsSection {
-  background: var(--site-color-bg);
+  background: #1a1a1c;
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 .sectionHeading {
@@ -284,7 +290,7 @@
   font-weight: 700;
   font-family: var(--ifm-heading-font-family);
   letter-spacing: -0.02em;
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-xl);
   color: var(--site-color-text);
 }
 
@@ -305,6 +311,17 @@
 
 [data-theme="dark"] .stepsLabel {
   color: var(--site-color-text-muted);
+}
+
+.sectionDivider {
+  border: none;
+  border-top: 1px solid var(--site-color-border);
+  max-width: 200px;
+  margin: 0 auto var(--space-xl);
+}
+
+[data-theme="dark"] .sectionDivider {
+  border-top-color: rgba(255, 255, 255, 0.12);
 }
 
 .stepsGrid {
@@ -352,6 +369,7 @@
 .stepNumber {
   width: 36px;
   height: 36px;
+  min-width: 36px;
   border-radius: 50%;
   background: var(--ifm-color-primary);
   color: white;
@@ -363,11 +381,17 @@
   font-family: var(--ifm-heading-font-family);
 }
 
+.stepHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
 .stepTitle {
   font-size: 1.125rem;
   font-weight: 600;
   font-family: var(--ifm-heading-font-family);
-  margin: 4px 0;
+  margin: 0;
   color: var(--site-color-text);
 }
 
@@ -384,6 +408,42 @@
 
 [data-theme="dark"] .stepDescription {
   color: var(--site-color-text-muted);
+}
+
+.commandWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.commandWrapper .stepCommand {
+  flex: 1;
+  padding-right: 40px;
+}
+
+.copyButton {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: var(--site-color-text-muted);
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+  line-height: 1;
+}
+
+.copyButton:hover,
+.copyButton:focus-visible {
+  color: var(--ifm-color-primary);
+  background-color: rgba(3, 105, 161, 0.08);
+}
+
+[data-theme="dark"] .copyButton:hover,
+[data-theme="dark"] .copyButton:focus-visible {
+  background-color: rgba(56, 189, 248, 0.1);
 }
 
 .stepCommand {
@@ -434,9 +494,10 @@
   color: var(--site-color-text-muted);
   font-size: 1rem;
   margin-bottom: var(--space-xl);
-  max-width: 600px;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
+  white-space: nowrap;
 }
 
 [data-theme="dark"] .featuredSubtext {

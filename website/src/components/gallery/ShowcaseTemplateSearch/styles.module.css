@@ -21,10 +21,59 @@
   padding: var(--space-3xl) var(--space-lg) var(--space-2xl);
 }
 
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 720px;
+  width: 100%;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--ifm-heading-font-family);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #1C1917;
+  background: #F5F3EF;
+  border: 1px solid var(--site-color-border);
+  border-radius: 2em;
+  padding: 4px 12px;
+  margin-bottom: var(--space-md);
+}
+
+[data-theme="dark"] .heroBadge {
+  color: #e7e5e4;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
 .heroBar {
   max-width: 720px;
   text-align: center;
   margin-bottom: 4px;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  font-family: var(--ifm-heading-font-family);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--site-color-text);
+}
+
+[data-theme="dark"] .heroBar {
+  color: var(--site-color-text);
+}
+
+.heroAccent {
+  color: #818cf8;
+}
+
+[data-theme="dark"] .heroAccent {
+  color: #818cf8;
 }
 
 .heroDescription {
@@ -34,23 +83,25 @@
   max-width: 520px;
   margin: 0 auto;
   line-height: 1.6;
-  font-size: 1.0625rem;
+  font-size: 1rem;
 }
 
 [data-theme="dark"] .heroDescription {
   color: var(--site-color-text-muted);
 }
 
-.heroSubtext {
-  padding-top: var(--space-lg);
-  padding-bottom: var(--space-lg);
-  text-align: center;
+.heroActions {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.heroCta {
+.heroPrimaryButton {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
   background-color: var(--ifm-color-primary);
   color: white;
   font-family: var(--ifm-heading-font-family);
@@ -64,8 +115,8 @@
   cursor: pointer;
 }
 
-.heroCta:hover,
-.heroCta:focus-visible {
+.heroPrimaryButton:hover,
+.heroPrimaryButton:focus-visible {
   background-color: var(--ifm-color-primary-dark);
   color: white;
   text-decoration: none;
@@ -73,18 +124,68 @@
   box-shadow: 0 4px 12px rgba(3, 105, 161, 0.25);
 }
 
-.heroCta:focus-visible {
+.heroPrimaryButton:focus-visible {
   outline: 2px solid var(--ifm-color-primary);
   outline-offset: 2px;
 }
 
-[data-theme="dark"] .heroCta {
+[data-theme="dark"] .heroPrimaryButton {
   background-color: #0284C7;
 }
 
-[data-theme="dark"] .heroCta:hover,
-[data-theme="dark"] .heroCta:focus-visible {
+[data-theme="dark"] .heroPrimaryButton:hover,
+[data-theme="dark"] .heroPrimaryButton:focus-visible {
   background-color: #0369A1;
+}
+
+.heroSecondaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: var(--ifm-color-primary);
+  font-family: var(--ifm-heading-font-family);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color var(--transition-base), transform var(--transition-fast),
+    border-color var(--transition-base);
+  border: 2px solid var(--ifm-color-primary);
+  cursor: pointer;
+}
+
+.heroSecondaryButton:hover,
+.heroSecondaryButton:focus-visible {
+  background-color: rgba(3, 105, 161, 0.06);
+  color: var(--ifm-color-primary-dark);
+  text-decoration: none;
+  transform: translateY(-1px);
+  border-color: var(--ifm-color-primary-dark);
+}
+
+.heroSecondaryButton:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+[data-theme="dark"] .heroSecondaryButton {
+  color: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+}
+
+[data-theme="dark"] .heroSecondaryButton:hover,
+[data-theme="dark"] .heroSecondaryButton:focus-visible {
+  background-color: rgba(56, 189, 248, 0.08);
+  color: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+}
+
+.heroSubtext {
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-lg);
+  text-align: center;
 }
 
 [data-theme="dark"] .heroSubtext {

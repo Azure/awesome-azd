@@ -3,7 +3,7 @@
  * Licensed under the MIT License.
  */
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
@@ -15,6 +15,39 @@ import {
 } from "@fluentui/react-components";
 import { useColorMode } from "@docusaurus/theme-common";
 import styles from "./styles.module.css";
+
+function CopyableCommand({ command }) {
+  const [copied, setCopied] = useState(false);
+  const handleCopy = useCallback((e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigator.clipboard.writeText(command);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }, [command]);
+  return (
+    <div className={styles.commandWrapper}>
+      <code className={styles.stepCommand}>{command}</code>
+      <button
+        className={styles.copyButton}
+        onClick={handleCopy}
+        aria-label={`Copy command: ${command}`}
+        title="Copy to clipboard"
+      >
+        {copied ? (
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0z" fill="currentColor"/>
+          </svg>
+        ) : (
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 4h1V3H4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-1H9v1H4V4z" fill="currentColor"/>
+            <path d="M7 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H7zm0 1h5v8H7V2z" fill="currentColor"/>
+          </svg>
+        )}
+      </button>
+    </div>
+  );
+}
 
 function HomepageHeader() {
   const browseUrl = useBaseUrl("/");
@@ -114,7 +147,7 @@ function FeaturedTemplates() {
           <a key={tmpl.title} href={tmpl.source} target="_blank" rel="noopener noreferrer" className={styles.featuredCard}>
             <h3 className={styles.featuredTitle}>{tmpl.title}</h3>
             <p className={styles.featuredDescription}>{tmpl.description}</p>
-            <code className={styles.stepCommand}>{tmpl.command}</code>
+            <CopyableCommand command={tmpl.command} />
             <div className={styles.featuredTags}>
               {tmpl.tags.map((tag) => (
                 <span key={tag} className={styles.featuredTag}>{tag}</span>
@@ -130,14 +163,16 @@ function FeaturedTemplates() {
 function StepByStep() {
   return (
     <section className={styles.stepsSection}>
-      <h2 className={styles.stepsLabel}>Get started in 3 steps</h2>
+      <h2 className={styles.sectionHeading}>Get started in 3 steps</h2>
       <div className={styles.stepsGrid}>
         {steps.map((step) => (
           <div key={step.number} className={styles.stepCard}>
-            <div className={styles.stepNumber}>{step.number}</div>
-            <h3 className={styles.stepTitle}>{step.title}</h3>
+            <div className={styles.stepHeader}>
+              <div className={styles.stepNumber}>{step.number}</div>
+              <h3 className={styles.stepTitle}>{step.title}</h3>
+            </div>
             <p className={styles.stepDescription}>{step.description}</p>
-            <code className={styles.stepCommand}>{step.command}</code>
+            <CopyableCommand command={step.command} />
           </div>
         ))}
       </div>

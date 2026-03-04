@@ -66,7 +66,8 @@ function FilterBar(): React.JSX.Element {
           root: {
             border: "1px solid var(--site-color-border)",
             height: "52px",
-            maxWidth: "640px",
+            maxWidth: "100%",
+            width: "100%",
             borderRadius: "8px",
             background: "var(--site-color-surface)",
           },
@@ -129,35 +130,20 @@ export default function ShowcaseTemplateSearch() {
   return (
     <div className={styles.searchContainer}>
       <div className={styles.searchArea}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
+        <div className={styles.heroContent}>
           <h1 className={styles.heroBar}>
-            <Text
-              size={900}
-              align="center"
-              weight="bold"
-              style={{
-                color: "var(--site-color-text)",
-                fontSize: "2.5rem",
-                lineHeight: "1.15",
-                letterSpacing: "-0.03em",
-                fontFamily: "var(--ifm-heading-font-family)",
-              }}
-            >
-              {title}
-            </Text>
+            {contentType === "templates" ? (
+              <>
+                From code to cloud<br />
+                <span className={styles.heroAccent}>in minutes.</span>
+              </>
+            ) : (
+              <>{title}</>
+            )}
           </h1>
-          <Text
-            align="center"
-            size={400}
-            className={styles.heroDescription}
-          >
+          <p className={styles.heroDescription}>
             {description}
-          </Text>
+          </p>
           <FilterBar />
           {contentType === "templates" && (
             <div className={styles.statsBar}>
@@ -177,31 +163,29 @@ export default function ShowcaseTemplateSearch() {
               </div>
             </div>
           )}
-          <Text
-            align="center"
-            size={300}
-            className={styles.heroSubtext}
-          >
+          <div className={styles.heroActions}>
             {contentType === "extensions"
               ? <>
-                  Extensions add new commands, lifecycle hooks, and capabilities to azd.{" "}
-                  <FluentUILink
-                    href={ADD_URL}
-                    target="_blank"
-                    style={{ paddingLeft: "3px" }}
-                    className={styles.learnMoreColor}
-                  >
-                    Learn more in our docs.
-                  </FluentUILink>
+                  <Text size={300} className={styles.heroSubtext}>
+                    Extensions add new commands, lifecycle hooks, and capabilities to azd.{" "}
+                    <FluentUILink
+                      href={ADD_URL}
+                      target="_blank"
+                      style={{ paddingLeft: "3px" }}
+                      className={styles.learnMoreColor}
+                    >
+                      Learn more in our docs.
+                    </FluentUILink>
+                  </Text>
                 </>
               : <a
-                  href={gettingStartedUrl}
-                  className={styles.heroCta}
-                >
-                  Get Started in Minutes →
-                </a>
+                    href={gettingStartedUrl}
+                    className={styles.heroPrimaryButton}
+                  >
+                    Get Started in Minutes →
+                  </a>
             }
-          </Text>
+          </div>
         </div>
       </div>
     </div>

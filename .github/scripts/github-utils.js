@@ -143,7 +143,7 @@ function extensionBranchName(extensionId) {
 /**
  * Escape markdown special characters and dangerous HTML in a string to prevent
  * table breakage, formatting injection, and HTML injection from untrusted content.
- * Handles: newlines (collapsed), & < (HTML entities), | [ ] ( ) ` * _ ~ > # (backslash),
+ * Handles: newlines (collapsed), & < (HTML entities), \ | [ ] ( ) ` * _ ~ > # (backslash),
  * @ (zero-width space to break mention parsing)
  */
 function escapeMarkdown(text) {
@@ -152,6 +152,7 @@ function escapeMarkdown(text) {
     .replace(/[\r\n]+/g, " ")
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
+    .replace(/\\/g, "\\\\")
     .replace(/\|/g, "\\|")
     .replace(/\[/g, "\\[")
     .replace(/\]/g, "\\]")

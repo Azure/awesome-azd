@@ -28,18 +28,18 @@
   --ifm-font-family-monospace: 'JetBrains Mono', 'Cascadia Code', Consolas, monospace;
 
   /* Surfaces */
-  --site-color-bg: #FAFAF8;
+  --site-color-bg: #FAFAFA;
   --site-color-surface: #FFFFFF;
   --site-color-text: #1C1917;
   --site-color-text-muted: #78716C;
   --site-color-border: #E7E5E4;
 
   /* Component tokens */
-  --site-hero-bg: #F5F3EF;
+  --site-hero-bg: #F5F5F5;
   --site-card-shadow: none;
   --site-card-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.06);
   --site-card-radius: 12px;
-  --site-section-bg: #F5F3EF;
+  --site-section-bg: #F5F5F5;
 
   /* Spacing scale (8px base) */
   --space-xs: 4px;

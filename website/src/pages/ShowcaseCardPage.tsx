@@ -571,6 +571,14 @@ export default function ShowcaseCardPage({
           aria-label="Switch to extensions view"
         >
           Extensions
+          <Badge
+            size="small"
+            appearance="tint"
+            color="informative"
+            style={{ marginLeft: 6, fontSize: "10px", verticalAlign: "middle" }}
+          >
+            Preview
+          </Badge>
         </ToggleButton>
         {isExtensions && (
           <Text size={300} style={{ marginLeft: "auto" }}>

@@ -14,7 +14,7 @@ import { useColorMode } from "@docusaurus/theme-common";
 
 const TITLES: Record<string, string> = {
   templates: "From code to cloud in minutes",
-  extensions: "Extension Gallery",
+  extensions: "Extension Gallery (Preview)",
 };
 const DESCRIPTIONS: Record<string, string> = {
   templates: "Production-ready templates with infrastructure, CI/CD, and monitoring — all deployable with a single command.",

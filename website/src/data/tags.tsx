@@ -152,7 +152,15 @@ export type TagType =
   | "privateEndpoints"
   | "privatelink"
   | "loadbalancer"
-  | "hls"
+  | "backup"
+  | "recoveryvault"
+  // Extension capability tags
+  | "ext-custom-commands"
+  | "ext-lifecycle-events"
+  | "ext-mcp-server"
+  | "ext-service-target-provider"
+  | "ext-framework-service-provider"
+  | "ext-metadata"
   ;
 
 
@@ -819,6 +827,20 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/products/purview",
     type: "Service",
   },
+  backup: {
+    label: "Azure Backup",
+    description: "Template architecture uses Azure Backup",
+    azureIcon: "./img/Azure-Backup.svg",
+    url: "https://azure.microsoft.com/products/backup",
+    type: "Service",
+  },
+  recoveryvault: {
+    label: "Azure Site Recovery Vault",
+    description: "Template architecture uses Azure Recovery Services Vault",
+    azureIcon: "./img/Azure-Recovery-Services-Vaults.svg",
+    url: "https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview",
+    type: "Service",
+  },
   // vpngw: {
   //   label: "Azure VPN Gateway",
   //   description: "Template architecture uses Azure VPN Gateway",
@@ -922,9 +944,36 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture involves Feature Experimentation",
     type: "Topic",
   },
-  hls: {
-    label: "Healthcare and Life Sciences",
-    description: " Template architecture targeted for Healthcare related use-cases",
-    type: "Topic"
-  }
+
+  // Extension Capability Tags
+  "ext-custom-commands": {
+    label: "Custom Commands",
+    description: "Extension provides custom azd commands",
+    type: "Extension Capability",
+  },
+  "ext-lifecycle-events": {
+    label: "Lifecycle Events",
+    description: "Extension hooks into azd lifecycle events",
+    type: "Extension Capability",
+  },
+  "ext-mcp-server": {
+    label: "MCP Server",
+    description: "Extension provides a Model Context Protocol server",
+    type: "Extension Capability",
+  },
+  "ext-service-target-provider": {
+    label: "Service Target Provider",
+    description: "Extension provides custom service deployment targets",
+    type: "Extension Capability",
+  },
+  "ext-framework-service-provider": {
+    label: "Framework Service Provider",
+    description: "Extension provides framework service integration",
+    type: "Extension Capability",
+  },
+  "ext-metadata": {
+    label: "Metadata",
+    description: "Extension provides metadata capabilities",
+    type: "Extension Capability",
+  },
 };

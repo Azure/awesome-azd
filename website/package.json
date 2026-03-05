@@ -50,7 +50,7 @@
     ]
   },
   "engines": {
-    "node": ">=18.0"
+    "node": ">=20.0"
   },
   "dependencies": {
     "@microsoft/clarity": "^1.0.0",
@@ -58,5 +58,8 @@
     "js-cookie": "^3.0.5",
     "scheduler": "^0.20.2",
     "search-insights": "^2.11.0"
+  },
+  "overrides": {
+    "serialize-javascript": "^7.0.4"
   }
 }

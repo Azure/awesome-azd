@@ -1,0 +1,104 @@
+name: PR Inactivity Reminder
+
+on:
+  schedule:
+    - cron: "0 8 * * *" # Daily at 8 AM UTC
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run — log results without adding labels or comments"
+        required: true
+        default: true
+        type: boolean
+      days_inactive:
+        description: "Number of days without activity to consider a PR inactive"
+        required: true
+        default: 60
+        type: number
+
+permissions:
+  pull-requests: write
+  issues: write
+
+jobs:
+  notify-inactive-prs:
+    name: Notify authors of inactive PRs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Find and notify inactive PRs
+        uses: actions/github-script@v7
+        env:
+          DRY_RUN: ${{ inputs.dry_run || 'false' }}
+          DAYS_INACTIVE: ${{ inputs.days_inactive || '60' }}
+        with:
+          script: |
+            const dryRun = process.env.DRY_RUN === 'true';
+            const daysInactive = parseInt(process.env.DAYS_INACTIVE || '60', 10);
+            const inactivityLabel = 'no-recent-activity';
+
+            const cutoffDate = new Date();
+            cutoffDate.setDate(cutoffDate.getDate() - daysInactive);
+
+            core.info(`Looking for open PRs with no activity since ${cutoffDate.toISOString()} (${daysInactive} days ago)`);
+            core.info(`Dry run: ${dryRun}`);
+
+            // Fetch all open pull requests
+            const pullRequests = await github.paginate(github.rest.pulls.list, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              per_page: 100,
+            });
+
+            core.info(`Found ${pullRequests.length} open pull requests`);
+
+            let notified = 0;
+            let skipped = 0;
+
+            for (const pr of pullRequests) {
+              const updatedAt = new Date(pr.updated_at);
+              const alreadyLabeled = pr.labels.some(label => label.name === inactivityLabel);
+
+              if (updatedAt >= cutoffDate) {
+                core.info(`Skipping PR #${pr.number} — recently updated at ${pr.updated_at}`);
+                skipped++;
+                continue;
+              }
+
+              if (alreadyLabeled) {
+                core.info(`Skipping PR #${pr.number} — already has '${inactivityLabel}' label`);
+                skipped++;
+                continue;
+              }
+
+              core.info(`Processing inactive PR #${pr.number}: "${pr.title}" (last updated: ${pr.updated_at}, author: @${pr.user.login})`);
+
+              if (!dryRun) {
+                // Add the no-recent-activity label
+                await github.rest.issues.addLabels({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: pr.number,
+                  labels: [inactivityLabel],
+                });
+
+                // Comment mentioning the author
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: pr.number,
+                  body: `Hi @${pr.user.login}. Thank you for your interest in helping to improve the awesome-azd experience and for your contribution. We've noticed that there hasn't been recent engagement on this pull request for over ${daysInactive} days. If this is still an active work stream, please let us know by pushing some changes or leaving a comment. Otherwise, we'll close this out in 7 days.`,
+                });
+
+                core.info(`  ✅ Added label '${inactivityLabel}' and commented on PR #${pr.number}`);
+              } else {
+                core.info(`  🔍 DRY RUN — would add label '${inactivityLabel}' and comment on PR #${pr.number}`);
+              }
+
+              notified++;
+            }
+
+            core.info(`\nSummary: ${notified} PR(s) notified, ${skipped} PR(s) skipped`);
+            if (dryRun && notified > 0) {
+              core.info('Run with dry_run=false to apply labels and comments.');
+            }

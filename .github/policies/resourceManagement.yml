@@ -309,7 +309,11 @@ configuration:
               isRegex: False
         - not:
             commentContains:
-              pattern: Since there hasn't been recent engagement, this is being closed out.
+              pattern: we're going to close this out
+              isRegex: False
+        - not:
+            commentContains:
+              pattern: there hasn't been recent engagement on this pull request
               isRegex: False
       then:
       - removeLabel:

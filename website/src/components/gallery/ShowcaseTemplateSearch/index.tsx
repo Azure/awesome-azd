@@ -12,6 +12,8 @@ import styles from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useColorMode } from "@docusaurus/theme-common";
 
+const allTemplates: any[] = require("@site/static/templates.json");
+
 const TITLES: Record<string, string> = {
   templates: "From code to cloud in minutes",
   extensions: "Extension Gallery (Preview)",
@@ -120,6 +122,11 @@ function FilterBar(): React.JSX.Element {
   );
 }
 
+// Compute stats dynamically from template data
+const templateCount = allTemplates.length;
+const uniqueAzureServices = new Set(allTemplates.flatMap((t: any) => t.azureServices || []));
+const uniqueLanguages = new Set(allTemplates.flatMap((t: any) => t.languages || []));
+
 export default function ShowcaseTemplateSearch() {
   const { colorMode } = useColorMode();
   const location = useLocation();
@@ -148,17 +155,17 @@ export default function ShowcaseTemplateSearch() {
           {contentType === "templates" && (
             <div className={styles.statsBar}>
               <div className={styles.statItem}>
-                <Text weight="bold" size={500} className={styles.statNumber}>290+</Text>
+                <Text weight="bold" size={500} className={styles.statNumber}>{templateCount}+</Text>
                 <Text size={200} className={styles.statLabel}>Templates</Text>
               </div>
               <div className={styles.statDivider} />
               <div className={styles.statItem}>
-                <Text weight="bold" size={500} className={styles.statNumber}>50+</Text>
+                <Text weight="bold" size={500} className={styles.statNumber}>{uniqueAzureServices.size}+</Text>
                 <Text size={200} className={styles.statLabel}>Azure Services</Text>
               </div>
               <div className={styles.statDivider} />
               <div className={styles.statItem}>
-                <Text weight="bold" size={500} className={styles.statNumber}>9</Text>
+                <Text weight="bold" size={500} className={styles.statNumber}>{uniqueLanguages.size}</Text>
                 <Text size={200} className={styles.statLabel}>Languages</Text>
               </div>
             </div>

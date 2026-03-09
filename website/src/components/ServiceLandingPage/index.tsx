@@ -44,6 +44,16 @@ function TemplateCard({ template }: { template: any }) {
   );
 }
 
+// Wrapper component so useColorMode() is called at the top level (Rules of Hooks)
+function FluentWrapper({ children }: { children: React.ReactNode }) {
+  const { colorMode } = useColorMode();
+  return (
+    <FluentProvider theme={colorMode === "dark" ? teamsDarkTheme : teamsLightTheme}>
+      {children}
+    </FluentProvider>
+  );
+}
+
 function ServicePageContent({ config }: { config: ServicePageConfig }) {
   const icon = useBaseUrl(config.icon);
   const baseUrl = useBaseUrl("/");
@@ -127,14 +137,9 @@ function ServicePageContent({ config }: { config: ServicePageConfig }) {
 
   return (
     <BrowserOnly fallback={content}>
-      {() => {
-        const { colorMode } = useColorMode();
-        return (
-          <FluentProvider theme={colorMode === "dark" ? teamsDarkTheme : teamsLightTheme}>
-            {content}
-          </FluentProvider>
-        );
-      }}
+      {() => (
+        <FluentWrapper>{content}</FluentWrapper>
+      )}
     </BrowserOnly>
   );
 }

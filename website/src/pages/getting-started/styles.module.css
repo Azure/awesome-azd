@@ -57,109 +57,15 @@
 }
 
 .heroPrimaryButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--ifm-color-primary);
-  color: white;
-  font-family: var(--ifm-heading-font-family);
-  font-weight: 600;
-  font-size: 0.9375rem;
-  padding: 12px 28px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background-color var(--transition-base), transform var(--transition-fast);
-  border: none;
-  cursor: pointer;
-}
-
-.heroPrimaryButton:hover,
-.heroPrimaryButton:focus-visible {
-  background-color: var(--ifm-color-primary-dark);
-  color: white;
-  text-decoration: none;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(3, 105, 161, 0.25);
-}
-
-.heroPrimaryButton:focus-visible {
-  outline: 2px solid var(--ifm-color-primary);
-  outline-offset: 2px;
-}
-
-[data-theme="dark"] .heroPrimaryButton {
-  background-color: #0284C7;
-}
-
-[data-theme="dark"] .heroPrimaryButton:hover,
-[data-theme="dark"] .heroPrimaryButton:focus-visible {
-  background-color: #0369A1;
+  composes: heroPrimaryButton from "../../css/hero-buttons.module.css";
 }
 
 .heroSecondaryButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background-color: transparent;
-  color: var(--ifm-color-primary);
-  font-family: var(--ifm-heading-font-family);
-  font-weight: 600;
-  font-size: 0.9375rem;
-  padding: 12px 28px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background-color var(--transition-base), transform var(--transition-fast),
-    border-color var(--transition-base);
-  border: 2px solid var(--ifm-color-primary);
-  cursor: pointer;
-}
-
-.heroSecondaryButton:hover,
-.heroSecondaryButton:focus-visible {
-  background-color: rgba(3, 105, 161, 0.06);
-  color: var(--ifm-color-primary-dark);
-  text-decoration: none;
-  transform: translateY(-1px);
-  border-color: var(--ifm-color-primary-dark);
-}
-
-.heroSecondaryButton:focus-visible {
-  outline: 2px solid var(--ifm-color-primary);
-  outline-offset: 2px;
-}
-
-[data-theme="dark"] .heroSecondaryButton {
-  color: var(--ifm-color-primary);
-  border-color: var(--ifm-color-primary);
-}
-
-[data-theme="dark"] .heroSecondaryButton:hover,
-[data-theme="dark"] .heroSecondaryButton:focus-visible {
-  background-color: rgba(56, 189, 248, 0.08);
-  color: var(--ifm-color-primary);
-  border-color: var(--ifm-color-primary);
+  composes: heroSecondaryButton from "../../css/hero-buttons.module.css";
 }
 
 .openSourceBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--ifm-heading-font-family);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  color: #1C1917;
-  background: #F5F5F5;
-  border: 1px solid var(--site-color-border);
-  border-radius: 2em;
-  padding: 4px 12px;
-  margin-bottom: var(--space-md);
-}
-
-[data-theme="dark"] .openSourceBadge {
-  color: #e7e5e4;
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.15);
+  composes: heroBadge from "../../css/hero-buttons.module.css";
 }
 
 .heroCommandButton {

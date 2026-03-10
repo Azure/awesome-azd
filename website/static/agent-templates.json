@@ -1,0 +1,154 @@
+[
+  {
+    "title": "Echo Agent",
+    "description": "A custom AI agent that echoes user input. Useful for testing, debugging, and learning how to build custom agents.",
+    "language": "python",
+    "framework": "Agent Framework",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/agent-framework/echo-agent/agent.yaml",
+    "tags": ["example", "learning"]
+  },
+  {
+    "title": "Agent with Foundry Tools",
+    "description": "An AI agent that uses Azure OpenAI with a Hosted Model Context Protocol (MCP) server. The agent answers questions by searching Microsoft Learn documentation using MCP tools.",
+    "language": "python",
+    "framework": "Agent Framework",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/agent-framework/agent-with-foundry-tools/agent.yaml",
+    "tags": ["MCP", "Microsoft Learn"]
+  },
+  {
+    "title": "Agent with Local Tools",
+    "description": "A travel assistant agent that helps users find hotels in Seattle. Demonstrates local Python tool execution - a key advantage of code-based hosted agents over prompt agents.",
+    "language": "python",
+    "framework": "Agent Framework",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/agent-framework/agent-with-local-tools/agent.yaml",
+    "tags": ["local tools", "travel assistant"]
+  },
+  {
+    "title": "Agent with Text Search RAG",
+    "description": "An AI agent that uses a ContextProvider for retrieval augmented generation (RAG) capabilities. Runs searches against an external knowledge base before each model invocation.",
+    "language": "python",
+    "framework": "Agent Framework",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/agent-framework/agent-with-text-search-rag/agent.yaml",
+    "tags": ["RAG", "text search"]
+  },
+  {
+    "title": "Agents in Workflow",
+    "description": "A workflow agent that responds to product launch strategy inquiries by concurrently leveraging insights from three specialized agents.",
+    "language": "python",
+    "framework": "Agent Framework",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/agent-framework/agents-in-workflow/agent.yaml",
+    "tags": ["workflows", "multi-agent"]
+  },
+  {
+    "title": "Human in the Loop (Thread)",
+    "description": "Demonstrates how to integrate human-in-the-loop functionality using AI Functions. Example: adding calendar appointments with human approval.",
+    "language": "python",
+    "framework": "Agent Framework",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/agent-framework/human-in-the-loop/agent-with-thread-and-hitl/agent.yaml",
+    "tags": ["HITL", "human-in-the-loop"]
+  },
+  {
+    "title": "Human in the Loop (Checkpoint)",
+    "description": "A workflow agent built using the Microsoft Agent Framework that includes checkpointing and human-in-the-loop (HITL) capabilities.",
+    "language": "python",
+    "framework": "Agent Framework",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/agent-framework/human-in-the-loop/workflow-agent-with-checkpoint-and-hitl/agent.yaml",
+    "tags": ["HITL", "checkpointing", "workflows"]
+  },
+  {
+    "title": "Web Search Agent",
+    "description": "An agent that can perform web searches and retrieve the latest information from Bing.",
+    "language": "python",
+    "framework": "Agent Framework",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/agent-framework/web-search-agent/agent.yaml",
+    "tags": ["Bing", "web search", "grounding"]
+  },
+  {
+    "title": "Calculator Agent",
+    "description": "A LangGraph agent that can perform arithmetic calculations such as addition, subtraction, multiplication, and division.",
+    "language": "python",
+    "framework": "LangGraph",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/langgraph/calculator-agent/agent.yaml",
+    "tags": ["example", "learning"]
+  },
+  {
+    "title": "Human in the Loop",
+    "description": "A LangGraph agent that demonstrates human-in-the-loop capabilities.",
+    "language": "python",
+    "framework": "LangGraph",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/langgraph/human-in-the-loop/agent.yaml",
+    "tags": ["HITL", "human-in-the-loop"]
+  },
+  {
+    "title": "ReAct Agent with Foundry Tools",
+    "description": "A LangGraph agent that uses Foundry tools to perform tasks such as interpreting Python code.",
+    "language": "python",
+    "framework": "LangGraph",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/langgraph/react-agent-with-foundry-tools/agent.yaml",
+    "tags": ["code interpreter", "Foundry tools"]
+  },
+  {
+    "title": "System Utility Agent",
+    "description": "System Utility Agent (cross-OS, container-aware). Includes tools for system info, resource snapshots, process listing, port checking, DNS lookup, and environment variables.",
+    "language": "python",
+    "framework": "Custom",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/custom/system-utility-agent/agent.yaml",
+    "tags": ["system utilities", "custom framework"]
+  },
+  {
+    "title": "Agent with Tools",
+    "description": "An AI agent that uses Foundry tools (MCP and code interpreter) with Azure OpenAI Responses. The agent can fetch Microsoft Learn documentation and run code when needed.",
+    "language": "csharp",
+    "framework": "Agent Framework",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/AgentFramework/AgentWithTools/agent.yaml",
+    "tags": ["MCP", "code interpreter"]
+  },
+  {
+    "title": "Agent with Local Tools",
+    "description": "A travel assistant agent that helps users find hotels in Seattle. Demonstrates local C# tool execution - a key advantage of code-based hosted agents over prompt agents.",
+    "language": "csharp",
+    "framework": "Agent Framework",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/AgentFramework/AgentWithLocalTools/agent.yaml",
+    "tags": ["local tools", "travel assistant"]
+  },
+  {
+    "title": "Agent with Text Search RAG",
+    "description": "An AI agent that uses TextSearchProvider for retrieval augmented generation (RAG) capabilities. Runs searches against an external knowledge base and injects results into model context.",
+    "language": "csharp",
+    "framework": "Agent Framework",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/AgentFramework/AgentWithTextSearchRag/agent.yaml",
+    "tags": ["RAG", "text search"]
+  },
+  {
+    "title": "Agent with Hosted MCP",
+    "description": "An AI agent that uses Azure OpenAI Responses with a Hosted Model Context Protocol (MCP) server. Answers questions by searching Microsoft Learn documentation using MCP tools.",
+    "language": "csharp",
+    "framework": "Agent Framework",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/AgentFramework/AgentWithHostedMCP/agent.yaml",
+    "tags": ["MCP", "Microsoft Learn"]
+  },
+  {
+    "title": "Agents in Workflows",
+    "description": "A workflow agent that performs sequential translation through multiple languages. Translates text from English to French, then to Spanish, and finally back to English.",
+    "language": "csharp",
+    "framework": "Agent Framework",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/AgentFramework/AgentsInWorkflows/agent.yaml",
+    "tags": ["workflows", "translation"]
+  },
+  {
+    "title": "Agent Thread and HITL",
+    "description": "A Weather Assistant Agent that provides weather information and forecasts. Demonstrates how to use Azure AI AgentServer with Human-in-the-Loop (HITL) capabilities.",
+    "language": "csharp",
+    "framework": "Agent Framework",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/AgentFramework/AgentThreadAndHITL/agent.yaml",
+    "tags": ["HITL", "weather"]
+  },
+  {
+    "title": "System Utility Agent",
+    "description": "System Utility Agent (cross-OS, container-aware). Includes tools for system info, resource snapshots, process listing, port checking, DNS lookup, and environment variables.",
+    "language": "csharp",
+    "framework": "Custom",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/AgentWithCustomFramework/SystemUtilityAgent/agent.yaml",
+    "tags": ["system utilities", "custom framework"]
+  }
+]

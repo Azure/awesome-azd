@@ -12,12 +12,14 @@ import styles from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useColorMode } from "@docusaurus/theme-common";
 
+const allTemplates: any[] = require("@site/static/templates.json");
+
 const TITLES: Record<string, string> = {
-  templates: "Template Library",
-  extensions: "Extension Gallery",
+  templates: "From code to cloud in minutes",
+  extensions: "Extension Gallery (Preview)",
 };
 const DESCRIPTIONS: Record<string, string> = {
-  templates: "An open-source template gallery to get started with Azure.",
+  templates: "Production-ready templates with infrastructure, CI/CD, and monitoring — all deployable with a single command.",
   extensions: "Discover azd extensions that add new capabilities to your workflow.",
 };
 const PLACEHOLDERS: Record<string, string> = {
@@ -64,10 +66,12 @@ function FilterBar(): React.JSX.Element {
       <SearchBox
         styles={{
           root: {
-            border: "1px solid #D1D1D1",
+            border: "1px solid var(--site-color-border)",
             height: "52px",
-            maxWidth: "740px",
-            borderRadius: "4px",
+            maxWidth: "100%",
+            width: "100%",
+            borderRadius: "8px",
+            background: "var(--site-color-surface)",
           },
           icon: {
             fontSize: "24px",
@@ -82,6 +86,7 @@ function FilterBar(): React.JSX.Element {
         value={readSearchName(location.search) != null ? value : ""}
         placeholder={placeholder}
         role="search"
+        ariaLabel="Search templates and extensions"
         onClear={(e) => {
           setValue(null);
           const newSearch = new URLSearchParams(location.search);
@@ -109,7 +114,7 @@ function FilterBar(): React.JSX.Element {
             state: prepareUserState(),
           });
           setTimeout(() => {
-            document.getElementById("searchbar")?.focus();
+            document.getElementById("filterBar")?.focus();
           }, 0);
         }}
       />
@@ -117,89 +122,77 @@ function FilterBar(): React.JSX.Element {
   );
 }
 
+// Compute stats dynamically from template data
+const templateCount = allTemplates.length;
+const uniqueAzureServices = new Set(allTemplates.flatMap((t: any) => t.azureServices || []));
+const uniqueLanguages = new Set(allTemplates.flatMap((t: any) => t.languages || []));
+
 export default function ShowcaseTemplateSearch() {
   const { colorMode } = useColorMode();
   const location = useLocation();
+  const gettingStartedUrl = useBaseUrl("/getting-started");
   const contentType = new URLSearchParams(location.search).get("type") || "templates";
   const title = TITLES[contentType] || TITLES.templates;
   const description = DESCRIPTIONS[contentType] || DESCRIPTIONS.templates;
   return (
     <div className={styles.searchContainer}>
-      <img
-        src={
-          colorMode != "dark"
-            ? useBaseUrl("/img/coverBackground.png")
-            : useBaseUrl("/img/coverBackgroundDark.png")
-        }
-        className={styles.cover}
-        onError={({ currentTarget }) => {
-          currentTarget.style.display = "none";
-        }}
-        alt=""
-      />
       <div className={styles.searchArea}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
+        <div className={styles.heroContent}>
           <h1 className={styles.heroBar}>
-            <Text
-              size={800}
-              align="center"
-              weight="semibold"
-              style={{
-                background:
-                  "linear-gradient(90deg, rgb(112.68, 94.63, 239.06) 0%, rgb(41.21, 120.83, 190.19) 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
-              {title}
-            </Text>
+            {contentType === "templates" ? (
+              <>
+                From code to cloud<br />
+                <span className={styles.heroAccent}>in minutes.</span>
+              </>
+            ) : (
+              <>{title}</>
+            )}
           </h1>
-          <Text
-            align="center"
-            size={400}
-            style={{
-              color: "#242424",
-              padding: "10px 0 20px 0",
-            }}
-          >
+          <p className={styles.heroDescription}>
             {description}
-          </Text>
+          </p>
           <FilterBar />
-          <Text
-            align="center"
-            size={300}
-            style={{
-              color: "#242424",
-              paddingTop: "20px",
-            }}
-          >
+          {contentType === "templates" && (
+            <div className={styles.statsBar}>
+              <div className={styles.statItem}>
+                <Text weight="bold" size={500} className={styles.statNumber}>{templateCount}+</Text>
+                <Text size={200} className={styles.statLabel}>Templates</Text>
+              </div>
+              <div className={styles.statDivider} />
+              <div className={styles.statItem}>
+                <Text weight="bold" size={500} className={styles.statNumber}>{uniqueAzureServices.size}+</Text>
+                <Text size={200} className={styles.statLabel}>Azure Services</Text>
+              </div>
+              <div className={styles.statDivider} />
+              <div className={styles.statItem}>
+                <Text weight="bold" size={500} className={styles.statNumber}>{uniqueLanguages.size}</Text>
+                <Text size={200} className={styles.statLabel}>Languages</Text>
+              </div>
+            </div>
+          )}
+          <div className={styles.heroActions}>
             {contentType === "extensions"
-              ? "Extensions add new commands, lifecycle hooks, and capabilities to azd. "
-              : "Each template is a fully working, cloud-ready application deployable with the Azure Developer CLI (azd). "}
-          </Text>
-          <Text
-            align="center"
-            size={300}
-            style={{
-              color: "#242424",
-              paddingBottom: "20px",
-            }}
-          >
-            New to azd? Welcome!
-            <FluentUILink
-              href={ADD_URL}
-              target="_blank"
-              style={{ paddingLeft: "3px" }}
-              className={styles.learnMoreColor}
-            >
-              Learn more in our docs.
-            </FluentUILink>
-          </Text>
+              ? <>
+                  <Text size={300} className={styles.heroSubtext}>
+                    Extensions add new commands, lifecycle hooks, and capabilities to azd.{" "}
+                    <FluentUILink
+                      href={ADD_URL}
+                      target="_blank"
+                      style={{ paddingLeft: "3px" }}
+                      className={styles.learnMoreColor}
+                    >
+                      Learn more in our docs.
+                    </FluentUILink>
+                  </Text>
+                </>
+              : <a
+                    href={gettingStartedUrl}
+                    className={styles.heroPrimaryButton}
+                  >
+                    Get Started in Minutes →
+                  </a>
+            }
+          </div>
         </div>
       </div>
     </div>

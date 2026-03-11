@@ -571,6 +571,14 @@ export default function ShowcaseCardPage({
           aria-label="Switch to extensions view"
         >
           Extensions
+          <Badge
+            size="small"
+            appearance="tint"
+            color="informative"
+            style={{ marginLeft: 6, fontSize: "10px", verticalAlign: "middle" }}
+          >
+            Preview
+          </Badge>
         </ToggleButton>
         {isExtensions && (
           <Text size={300} style={{ marginLeft: "auto" }}>
@@ -579,7 +587,7 @@ export default function ShowcaseCardPage({
               href="https://github.com/Azure/awesome-azd/issues/new?template=extension-submission.yml"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ color: "var(--ifm-color-purple-light)", textDecoration: "none" }}
+              style={{ color: "var(--ifm-color-primary)", textDecoration: "none" }}
             >
               Submit it here →
             </a>

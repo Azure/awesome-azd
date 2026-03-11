@@ -1,9 +1,11 @@
 ---
-title: azd Extensions
+title: azd Extensions (Preview)
 draft: true
 ---
 
-# azd Extensions
+# azd Extensions (Preview)
+
+> **Preview**: azd extensions are currently in preview. The extension gallery and submission process may change before general availability.
 
 Azure Developer CLI (azd) extensions expand the capabilities of `azd` with custom commands, lifecycle events, MCP servers, and more.
 

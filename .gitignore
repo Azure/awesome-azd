@@ -1,3 +1,16 @@
 test-results/
 node_modules/
 *.png
+
+# Squad / DevX tooling
+.squad/
+.squad-templates/
+.github/agents/
+.github/workflows/squad-*.yml
+.github/workflows/sync-squad-labels.yml
+
+# Copilot session state
+.copilot/
+
+# Coverage output
+website/coverage/

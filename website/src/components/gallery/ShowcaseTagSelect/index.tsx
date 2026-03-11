@@ -20,6 +20,7 @@ export default function ShowcaseTagSelect({
   location,
   readSearchTags,
   replaceSearchTags,
+  count,
 }: {
   label: string;
   tag: TagType;
@@ -30,6 +31,7 @@ export default function ShowcaseTagSelect({
   location;
   readSearchTags: (search: string) => TagType[];
   replaceSearchTags: (search: string, newTags: TagType[]) => string;
+  count?: number;
 }): JSX.Element {
   const history = useHistory();
   // updates only the url query
@@ -71,7 +73,7 @@ export default function ShowcaseTagSelect({
           toggleCheck(tag);
         }}
         checked={selectedCheckbox.includes(tag)}
-        label={label}
+        label={count !== undefined ? `${label} (${count})` : label}
         disabled={!activeTags?.includes(tag)}
       />
     </>

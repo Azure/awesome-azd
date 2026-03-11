@@ -124,8 +124,8 @@ export default function ShowcaseMultipleAuthors({
   let i = 0;
 
   if (authors.includes(", ")) {
-    var multiWebsites = websites.split(", ");
-    var multiAuthors = authors.split(", ");
+    const multiWebsites = websites.split(", ");
+    const multiAuthors = authors.split(", ");
 
     if (multiWebsites.length != multiAuthors.length) {
       throw new Error(

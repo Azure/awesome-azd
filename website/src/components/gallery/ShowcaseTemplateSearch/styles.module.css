@@ -155,8 +155,10 @@
 .learnMoreColor {
   color: var(--ifm-color-primary) !important;
   font-weight: 600;
+  text-decoration: underline !important;
 }
 
 [data-theme="dark"] .learnMoreColor {
   color: var(--ifm-color-primary) !important;
+  text-decoration: underline !important;
 }

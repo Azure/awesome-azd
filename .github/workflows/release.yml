@@ -10,6 +10,10 @@ permissions:
   pages: write
   deployments: write
 
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   deploy:
     name: Deploy Site To GitHub Pages

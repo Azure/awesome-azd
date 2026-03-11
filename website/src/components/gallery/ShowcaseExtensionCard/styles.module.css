@@ -83,7 +83,7 @@
   border: 1px solid var(--site-color-border) !important;
   font-size: 11px;
   font-family: var(--ifm-font-family-monospace, 'JetBrains Mono', Consolas, monospace) !important;
-  -webkit-text-fill-color: #57534E;
+  -webkit-text-fill-color: var(--site-color-text-muted);
   border-radius: 6px;
   background: var(--site-hero-bg);
 }

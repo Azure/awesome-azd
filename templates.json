@@ -1566,31 +1566,6 @@
     "id": "56053f9b-9406-40be-9a33-842548870d3f"
   },
   {
-    "title": "Hello world Java Application on Azure Spring Apps",
-    "description": "A complete hello-world application that includes everything you need to build, deploy, and run an Azure Spring Apps solution.",
-    "preview": "./templates/images/asa-helloworld.png",
-    "authorUrl": "https://github.com/spring-guides/",
-    "author": "Yi Liu",
-    "source": "https://github.com/spring-guides/gs-spring-boot-for-azure",
-    "tags": [
-      "webapps",
-      "community"
-    ],
-    "languages": [
-      "java"
-    ],
-    "frameworks": [
-      "spring"
-    ],
-    "azureServices": [
-      "azurespringapps"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "e7e67e8f-cb48-4cd3-ae54-493aad4faa1a"
-  },
-  {
     "title": "Terraform template to bootstrap Azure Deployment Environments",
     "description": "A template to deploy Azure DevCenter with the minimun configuration to start using Azure Deployment Environments and supercharge your platform engineering story. Infrastructure as Code (written in Terraform) will get you started quickly to enable developers to self-serve environments via the Developer Portal, Azure CLI or CI/CD pipelines.",
     "preview": "./templates/images/azure-deployment-environments.png",

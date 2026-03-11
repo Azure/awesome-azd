@@ -7,6 +7,7 @@
 
 .cardAuthor {
   color: #616161 !important;
+  text-decoration: underline !important;
 }
 
 .cardAuthorPanel {

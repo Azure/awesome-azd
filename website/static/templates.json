@@ -6980,12 +6980,10 @@
     "author": "Curity Team",
     "source": "https://github.com/curityio/azd-ai-autonomous-agent",
     "tags": [
-      "curity",
-      "a2a",
-      "mcp",
-      "ai",
-      "oauth2"
-      ],
+      "community",
+      "new",
+      "ai"
+    ],
     "languages": [
       "dotnetCsharp"
     ],

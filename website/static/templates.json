@@ -6973,7 +6973,7 @@
     ]
   },
   {
-    "title": "Demonstrates Azure AI integration of customer users with enterprise data, using token intelligence",
+    "title": "Demonstrates Azure AI integration of customer users with enterprise data, using OAuth 2.0 token intelligence",
     "description": "A secured A2A and MCP flow, where customer users send commands to backend agents and resource servers apply token-based authorization. Includes a secure deployment where tokens enable agents to complete complex flows, while resource servers and gateways can apply dynamic access controls.",
     "preview": "./templates/images/curity-autonomous-ai-agent.png",
     "authorUrl": "https://curity.io",

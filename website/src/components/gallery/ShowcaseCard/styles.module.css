@@ -106,6 +106,8 @@
   display: -webkit-box !important;
   -webkit-line-clamp: 3 !important;
   -webkit-box-orient: vertical !important;
+  line-clamp: 3 !important;
+  max-height: calc(1.3em * 3) !important;
 }
 
 [data-theme="dark"] .cardTitle {

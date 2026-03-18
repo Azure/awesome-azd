@@ -63,7 +63,7 @@ export default function ShowcaseCardTag({
   const length = tagObjectsSorted.length;
   let number = 10;
   if (checkAzureTag.length >= 5) {
-    number = 7;
+    number = 6;
   }
   const rest = length - number;
 

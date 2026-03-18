@@ -261,8 +261,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
         <div
           style={{
             paddingTop: "10px",
-            position: "absolute",
-            bottom: "0px",
+            marginTop: "auto",
             width: "100%",
           }}
         >

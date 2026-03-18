@@ -44,6 +44,17 @@ const useStyles = makeStyles({
     color: "#424242",
     fontWeight: "600",
   },
+  cardTagContainer: {
+    paddingTop: "10px",
+    marginTop: "auto",
+    width: "100%",
+  },
+  cardTagsWrapper: {
+    display: "flex",
+    overflow: "hidden",
+    gap: "4px",
+    flexFlow: "wrap",
+  },
 });
 
 const lightTheme: PartialTheme = {
@@ -258,22 +269,8 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
             <ShowcaseCardPanel user={user} />
           </Panel>
         </ThemeProvider>
-        <div
-          style={{
-            paddingTop: "10px",
-            marginTop: "auto",
-            width: "100%",
-          }}
-        >
-          <div
-            className={styles.cardTag}
-            style={{
-              display: "flex",
-              overflow: "hidden",
-              gap: "4px",
-              flexFlow: "wrap",
-            }}
-          >
+        <div className={styles.cardTagContainer}>
+          <div className={`${styles.cardTag} ${styles.cardTagsWrapper}`}>
             <ShowcaseCardTag key={title} tags={tags} moreTag={true} />
           </div>
         </div>

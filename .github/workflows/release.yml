@@ -5,22 +5,16 @@ on:
   workflow_dispatch:
 
 permissions:
-  id-token: write
-  contents: read
-  pages: write
-  deployments: write
+  contents: write
 
 concurrency:
-  group: pages
+  group: gh-pages-deployment
   cancel-in-progress: true
 
 jobs:
   deploy:
     name: Deploy Site To GitHub Pages
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -37,10 +31,8 @@ jobs:
         working-directory: website
         run: |
           npm test
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./website/build
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: website/build
+          branch: gh-pages

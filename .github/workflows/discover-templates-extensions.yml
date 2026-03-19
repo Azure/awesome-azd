@@ -48,12 +48,12 @@ jobs:
     timeout-minutes: 60
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: "20"
+          node-version: "24"
 
       - name: Run template discovery
         env:
@@ -64,7 +64,7 @@ jobs:
 
       - name: Create PRs for discovered templates
         if: ${{ inputs.dry_run != true }}
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MAX_PRS: ${{ inputs.max_prs }}
@@ -96,12 +96,12 @@ jobs:
     timeout-minutes: 60
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: "20"
+          node-version: "24"
 
       - name: Run extension discovery
         env:
@@ -112,7 +112,7 @@ jobs:
 
       - name: Create PRs for discovered extensions
         if: ${{ inputs.dry_run != true }}
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MAX_PRS: ${{ inputs.max_prs }}

@@ -19,4 +19,4 @@ jobs:
           ref: main
           fetch-depth: 0
       - name: Push main to gh-pages
-        run: git push origin main:gh-pages --force
+        run: git push origin main:gh-pages --force-with-lease

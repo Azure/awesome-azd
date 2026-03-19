@@ -6,7 +6,7 @@ on:
 
 permissions:
   id-token: write
-  contents: read
+  contents: write
   pages: write
   deployments: write
 
@@ -15,14 +15,23 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  sync:
+    name: Sync Main to GH-Pages
+    uses: ./.github/workflows/sync-gh-pages.yml
+    permissions:
+      contents: write
+
   deploy:
     name: Deploy Site To GitHub Pages
+    needs: sync
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
       - uses: actions/setup-node@v4
         with:
           node-version: 20

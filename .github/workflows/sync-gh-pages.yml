@@ -4,6 +4,7 @@ name: Sync Main to GH-Pages
 # can be triggered from gh-pages (required by environment protection rules).
 on:
   workflow_dispatch:
+  workflow_call:
 
 permissions:
   contents: write

@@ -1,0 +1,22 @@
+name: Sync Main to GH-Pages
+
+# Syncs the main branch to gh-pages so that the release workflow
+# can be triggered from gh-pages (required by environment protection rules).
+on:
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    name: Sync Main to GH-Pages Branch
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Push main to gh-pages
+        run: git push origin main:gh-pages --force-with-lease

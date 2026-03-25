@@ -7049,7 +7049,7 @@
     "title": "Real-time GenAI enhanced communication app with SignalR",
     "description": "This project integrates SignalR with Azure OpenAI. It showcases how to create a seamless group chat experience using SignalR for real-time communication, enhanced by the intelligence of Azure OpenAI.",
     "preview": "./templates/images/test.png",
-    "authorUrl": "https://github.com/Azure-Samples, https://github.com/Azure-Samples",
+    "authorUrl": "https://github.com/Azure-Samples",
     "author": "Kevin Guo, Chenyang Liu",
     "source": "https://github.com/Azure-Samples/signalr-ai-streaming",
     "tags": [

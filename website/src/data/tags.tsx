@@ -154,7 +154,6 @@ export type TagType =
   | "loadbalancer"
   | "backup"
   | "recoveryvault"
-  | "openai"
   // Extension capability tags
   | "ext-custom-commands"
   | "ext-lifecycle-events"

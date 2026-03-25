@@ -6981,7 +6981,7 @@
     "source": "https://github.com/Azure-Samples/agent-openai-java-banking-assistant",
     "tags": [
       "aicollection",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"
@@ -7007,7 +7007,7 @@
     "source": "https://github.com/Azure-Samples/ai-chat-quickstart-csharp",
     "tags": [
       "aicollection",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"
@@ -7031,7 +7031,7 @@
     "source": "https://github.com/Azure-Samples/azure-openai-keyless-python",
     "tags": [
       "aicollection",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"
@@ -7054,7 +7054,7 @@
     "source": "https://github.com/Azure-Samples/signalr-ai-streaming",
     "tags": [
       "aicollection",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"
@@ -7068,8 +7068,7 @@
     "azureServices": [
       "managedidentity",
       "openai",
-      "aca",
-      "azuresignalr"
+      "aca"
     ]
   },
   {
@@ -7081,7 +7080,7 @@
     "source": "https://github.com/Azure-Samples/ai-chat-aspire-meai-csharp",
     "tags": [
       "aicollection",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"
@@ -7106,7 +7105,7 @@
     "source": "https://github.com/Azure-Samples/azure-openai-entity-extraction",
     "tags": [
       "aicollection",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"
@@ -7128,14 +7127,14 @@
     "source": "https://github.com/Azure-Samples/azure-openai-keyless-go",
     "tags": [
       "aicollection",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"
     ],
     "id": "a22c0a97-a7b3-5c5c-8b31-2abb453a51f2",
     "languages": [
-      "golang"
+      "go"
     ],
     "azureServices": [
       "managedidentity",
@@ -7151,7 +7150,7 @@
     "source": "https://github.com/Azure-Samples/semantic-kernel-customer-assistant-demo-java",
     "tags": [
       "aicollection",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"
@@ -7177,7 +7176,7 @@
     "source": "https://github.com/Azure-Samples/contoso-creative-writer",
     "tags": [
       "aicollection",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"
@@ -7205,7 +7204,7 @@
     "source": "https://github.com/Azure-Samples/aspire-semantic-kernel-creative-writer",
     "tags": [
       "aicollection",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"
@@ -7232,7 +7231,7 @@
     "source": "https://github.com/Azure-Samples/azure-functions-openai-aisearch-node",
     "tags": [
       "aicollection",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"
@@ -7263,7 +7262,7 @@
     "source": "https://github.com/Azure-Samples/azure-redis-dalle-semantic-caching",
     "tags": [
       "aicollection",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"
@@ -7289,7 +7288,7 @@
     "source": "https://github.com/Azure-Samples/azure-functions-completion-openai-java",
     "tags": [
       "aicollection",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"
@@ -7314,7 +7313,7 @@
     "source": "https://github.com/microsoft/Conversation-Knowledge-Mining-Solution-Accelerator",
     "tags": [
       "aicollection",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"
@@ -7349,8 +7348,7 @@
     "source": "https://github.com/Azure-Samples/get-started-with-ai-chat",
     "tags": [
       "aicollection",
-      "featured",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"
@@ -7376,7 +7374,7 @@
     "source": "https://github.com/microsoft/Deploy-Your-AI-Application-In-Production",
     "tags": [
       "aicollection",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"
@@ -7408,7 +7406,7 @@
     "source": "https://github.com/Azure-Samples/Azure-Language-OpenAI-Conversational-Agent-Accelerator",
     "tags": [
       "aicollection",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"
@@ -7438,7 +7436,7 @@
     "source": "https://github.com/microsoft/content-processing-solution-accelerator",
     "tags": [
       "aicollection",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"
@@ -7468,7 +7466,7 @@
     "source": "https://github.com/microsoft/content-generation-solution-accelerator",
     "tags": [
       "aicollection",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"
@@ -7504,7 +7502,7 @@
     "source": "https://github.com/microsoft/Modernize-your-code-solution-accelerator",
     "tags": [
       "aicollection",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"
@@ -7554,14 +7552,14 @@
   },
   {
     "title": "Chainlit Agent",
-    "description": "Chainlit Agent: Intelligent Assistant with Azure AI Agent. With Frontend with chainlit and backend with fastapi. Using Azure AI Agent service for RAG pattern. ",
+    "description": "Chainlit Agent: Intelligent Assistant with Azure AI Agent. With Frontend with chainlit and backend with fastapi. Using Azure AI Agent service for RAG pattern.",
     "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/zhenbzha/",
     "author": "Zhenbo Zhang",
     "source": "https://github.com/zhenbzha/chainlit-agent",
     "tags": [
       "aicollection",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"
@@ -7671,7 +7669,7 @@
     "source": "https://github.com/Azure-Samples/healthcare-agent-orchestrator",
     "tags": [
       "aicollection",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"
@@ -7700,7 +7698,7 @@
     "source": "https://github.com/microsoft/agentic-applications-for-unified-data-foundation-solution-accelerator",
     "tags": [
       "aicollection",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"
@@ -7719,7 +7717,7 @@
   },
   {
     "title": "Create Medallion Architecture for Unified Data Foundation with Fabric Solution Accelerator",
-    "description": "This template creates a working medallion architecture in Microsoft Fabric with data models in multiple domains (customer, product, sales, finance), sample data uploaded bronze lakehouse, PySpark notebooks with automated execution to load data into bronze, validate in silver, and be ready in gold. Pre-built Power BI dashboard for sales analysis is created and uploaded to Fabric, ready for sales analysis. ",
+    "description": "This template creates a working medallion architecture in Microsoft Fabric with data models in multiple domains (customer, product, sales, finance), sample data uploaded bronze lakehouse, PySpark notebooks with automated execution to load data into bronze, validate in silver, and be ready in gold. Pre-built Power BI dashboard for sales analysis is created and uploaded to Fabric, ready for sales analysis.",
     "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/alguadam, https://github.com/microsoft",
     "author": "Alvaro Guadamillas Herranz, Gaiye Zhou",
@@ -7747,7 +7745,7 @@
     "source": "https://github.com/microsoft/Container-Migration-Solution-Accelerator",
     "tags": [
       "aicollection",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"
@@ -7780,7 +7778,7 @@
     "source": "https://github.com/microsoft/release-manager-assistant",
     "tags": [
       "aicollection",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"
@@ -7815,7 +7813,7 @@
     "source": "https://github.com/Azure-Samples/call-center-voice-agent-accelerator",
     "tags": [
       "aicollection",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"
@@ -7843,7 +7841,7 @@
     "source": "https://github.com/microsoft/app-with-sharepoint-knowledge",
     "tags": [
       "aicollection",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"
@@ -7889,7 +7887,7 @@
     "source": "https://github.com/microsoft/customer-chatbot-solution-accelerator",
     "tags": [
       "aicollection",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"
@@ -7937,7 +7935,7 @@
     "source": "https://github.com/Azure-Samples/agent-openai-python-banking-assistant",
     "tags": [
       "aicollection",
-      "azureopenai"
+      "openai"
     ],
     "IaC": [
       "bicep"

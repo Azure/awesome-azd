@@ -36,6 +36,16 @@ If you would like to contribute a template but are not sure where to start, [mak
 2.  Add Bicep files
 3.  Update azure.yaml 
 
+### Automated Template Submission (Recommended for Trusted Publishers)
+
+For a faster submission experience, use the automated pipeline:
+
+1. **[Submit a template issue](https://github.com/Azure/awesome-azd/issues/new?template=template-submission.yml)** - Fill out the form with your template details
+2. **Automatic validation** - A workflow validates your repository and creates a PR automatically
+3. **Review & merge** - Maintainers review the PR. Trusted publishers get expedited auto-merge after CI passes.
+
+This is the fastest path to getting your template in the gallery.
+
 ### [Submit a Resource](https://github.com/Azure/awesome-azd/compare)
 Did you write or find an article that helped you get started with `azd`? Or maybe you created or found a video that showed you how to create an azd template? Whatever the resource might be, we would love for you to share it with our community! Submit content you think should be included in `awesome-azd/README.md`
 

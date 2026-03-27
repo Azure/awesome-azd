@@ -1,0 +1,122 @@
+name: "📦 Submit an azd Template"
+description: "Add your azd template to the Awesome azd gallery"
+title: "[Template]: "
+labels: ["template-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for submitting your azd template! Please fill out the information below.
+        Your repository will be validated automatically and a PR will be created to add it to the gallery.
+
+  - type: input
+    id: source-repo
+    attributes:
+      label: "Source Repository"
+      description: "GitHub repository URL for your template"
+      placeholder: "https://github.com/Azure-Samples/my-template"
+    validations:
+      required: true
+
+  - type: input
+    id: title
+    attributes:
+      label: "Template Title"
+      description: "A short, descriptive title for your template"
+      placeholder: "Containerized React Web App with Java API and MongoDB"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      description: "1-2 sentence description of the architecture or solution defined by this template"
+      placeholder: "A full-stack template using React frontend with a Java Spring Boot API, backed by MongoDB on Azure Container Apps."
+    validations:
+      required: true
+
+  - type: input
+    id: author
+    attributes:
+      label: "Author"
+      description: "Your name or organization"
+    validations:
+      required: true
+
+  - type: input
+    id: author-url
+    attributes:
+      label: "Author URL"
+      description: "URL to your GitHub profile or organization page"
+      placeholder: "https://github.com/username"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: author-type
+    attributes:
+      label: "Author Type"
+      description: "Is this a Microsoft-authored or community template?"
+      options:
+        - Community
+        - Microsoft
+    validations:
+      required: true
+
+  - type: input
+    id: preview-image
+    attributes:
+      label: "Preview Image URL"
+      description: "Raw URL to an architecture diagram or screenshot (optional). Falls back to a default image if not provided."
+      placeholder: "https://raw.githubusercontent.com/Azure-Samples/my-template/main/assets/architecture.png"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: iac-provider
+    attributes:
+      label: "IaC Provider"
+      description: "Infrastructure as Code provider used by this template"
+      options:
+        - Bicep
+        - Terraform
+        - Both
+    validations:
+      required: true
+
+  - type: input
+    id: languages
+    attributes:
+      label: "Languages"
+      description: "Comma-separated language tags (e.g., python, typescript, dotnetCsharp)"
+      placeholder: "python, typescript"
+    validations:
+      required: false
+
+  - type: input
+    id: frameworks
+    attributes:
+      label: "Frameworks"
+      description: "Comma-separated framework tags (e.g., reactjs, fastapi, django)"
+      placeholder: "reactjs, fastapi"
+    validations:
+      required: false
+
+  - type: input
+    id: azure-services
+    attributes:
+      label: "Azure Services"
+      description: "Comma-separated Azure service tags (e.g., aca, openai, cosmosdb, keyvault)"
+      placeholder: "aca, openai, cosmosdb"
+    validations:
+      required: false
+
+  - type: input
+    id: additional-tags
+    attributes:
+      label: "Additional Tags"
+      description: "Comma-separated extra tags (e.g., ai, mongodb, kubernetes)"
+      placeholder: "ai, mongodb"
+    validations:
+      required: false

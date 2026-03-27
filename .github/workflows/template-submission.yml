@@ -1,0 +1,383 @@
+name: Template Submission
+
+on:
+  issues:
+    types: [labeled]
+  workflow_dispatch:
+    inputs:
+      source_repo:
+        description: "GitHub repository URL"
+        required: true
+      title:
+        description: "Template title"
+        required: true
+      description:
+        description: "Template description"
+        required: true
+      author:
+        description: "Author name"
+        required: true
+      author_url:
+        description: "Author GitHub URL"
+        required: true
+      author_type:
+        description: "Microsoft or Community"
+        required: true
+        default: "Community"
+        type: choice
+        options:
+          - Community
+          - Microsoft
+      preview_image:
+        description: "Preview image URL (optional)"
+        required: false
+      iac_provider:
+        description: "IaC provider"
+        required: true
+        default: "Bicep"
+        type: choice
+        options:
+          - Bicep
+          - Terraform
+          - Both
+      languages:
+        description: "Comma-separated language tags (optional)"
+        required: false
+      frameworks:
+        description: "Comma-separated framework tags (optional)"
+        required: false
+      azure_services:
+        description: "Comma-separated Azure service tags (optional)"
+        required: false
+      additional_tags:
+        description: "Comma-separated extra tags (optional)"
+        required: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  process-template:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      contains(github.event.issue.labels.*.name, 'template-submission')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Parse issue body
+        id: parse
+        uses: actions/github-script@v7
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body || '' }}
+          INPUT_SOURCE_REPO: ${{ inputs.source_repo }}
+          INPUT_TITLE: ${{ inputs.title }}
+          INPUT_DESCRIPTION: ${{ inputs.description }}
+          INPUT_AUTHOR: ${{ inputs.author }}
+          INPUT_AUTHOR_URL: ${{ inputs.author_url }}
+          INPUT_AUTHOR_TYPE: ${{ inputs.author_type }}
+          INPUT_PREVIEW_IMAGE: ${{ inputs.preview_image }}
+          INPUT_IAC_PROVIDER: ${{ inputs.iac_provider }}
+          INPUT_LANGUAGES: ${{ inputs.languages }}
+          INPUT_FRAMEWORKS: ${{ inputs.frameworks }}
+          INPUT_AZURE_SERVICES: ${{ inputs.azure_services }}
+          INPUT_ADDITIONAL_TAGS: ${{ inputs.additional_tags }}
+        with:
+          script: |
+            if (context.eventName === 'workflow_dispatch') {
+              core.setOutput('source_repo', process.env.INPUT_SOURCE_REPO);
+              core.setOutput('title', process.env.INPUT_TITLE);
+              core.setOutput('description', process.env.INPUT_DESCRIPTION);
+              core.setOutput('author', process.env.INPUT_AUTHOR);
+              core.setOutput('author_url', process.env.INPUT_AUTHOR_URL);
+              core.setOutput('author_type', process.env.INPUT_AUTHOR_TYPE);
+              core.setOutput('preview_image', process.env.INPUT_PREVIEW_IMAGE || '');
+              core.setOutput('iac_provider', process.env.INPUT_IAC_PROVIDER);
+              core.setOutput('languages', process.env.INPUT_LANGUAGES || '');
+              core.setOutput('frameworks', process.env.INPUT_FRAMEWORKS || '');
+              core.setOutput('azure_services', process.env.INPUT_AZURE_SERVICES || '');
+              core.setOutput('additional_tags', process.env.INPUT_ADDITIONAL_TAGS || '');
+              return;
+            }
+
+            const body = process.env.ISSUE_BODY;
+
+            function extractField(body, fieldName) {
+              const regex = new RegExp(`### ${fieldName}\\s*\\n\\s*([^\\n]+)`, 'i');
+              const match = body.match(regex);
+              return match ? match[1].trim() : '';
+            }
+
+            function extractTextarea(body, fieldName) {
+              const regex = new RegExp(`### ${fieldName}\\s*\\n\\s*([\\s\\S]*?)(?=\\n###|$)`, 'i');
+              const match = body.match(regex);
+              return match ? match[1].trim() : '';
+            }
+
+            const sourceRepo = extractField(body, 'Source Repository');
+            const title = extractField(body, 'Template Title');
+            const description = extractTextarea(body, 'Description');
+            const author = extractField(body, 'Author');
+            const authorUrl = extractField(body, 'Author URL');
+            const authorType = extractField(body, 'Author Type');
+            const previewImage = extractField(body, 'Preview Image URL');
+            const iacProvider = extractField(body, 'IaC Provider');
+            const languages = extractField(body, 'Languages');
+            const frameworks = extractField(body, 'Frameworks');
+            const azureServices = extractField(body, 'Azure Services');
+            const additionalTags = extractField(body, 'Additional Tags');
+
+            if (!sourceRepo || !title || !description || !author || !authorUrl) {
+              core.setFailed('Missing required fields in issue body');
+              return;
+            }
+
+            core.setOutput('source_repo', sourceRepo);
+            core.setOutput('title', title);
+            core.setOutput('description', description);
+            core.setOutput('author', author);
+            core.setOutput('author_url', authorUrl);
+            core.setOutput('author_type', authorType);
+            core.setOutput('preview_image', previewImage);
+            core.setOutput('iac_provider', iacProvider);
+            core.setOutput('languages', languages);
+            core.setOutput('frameworks', frameworks);
+            core.setOutput('azure_services', azureServices);
+            core.setOutput('additional_tags', additionalTags);
+
+      - name: Validate template repository
+        id: validate
+        env:
+          SOURCE_REPO: ${{ steps.parse.outputs.source_repo }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          node website/scripts/validate-template.js "$SOURCE_REPO" > validation_result.json 2>validation_errors.log
+          if [ $? -ne 0 ]; then
+            echo "valid=false" >> $GITHUB_OUTPUT
+            {
+              echo 'errors<<EOF'
+              cat validation_result.json validation_errors.log
+              echo 'EOF'
+            } >> $GITHUB_OUTPUT
+          else
+            echo "valid=true" >> $GITHUB_OUTPUT
+            {
+              echo 'result<<EOF'
+              cat validation_result.json
+              echo 'EOF'
+            } >> $GITHUB_OUTPUT
+          fi
+
+      - name: Comment on validation failure
+        if: steps.validate.outputs.valid == 'false' && github.event_name != 'workflow_dispatch'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              body: `❌ **Template validation failed**\n\nPlease check your repository URL and try again.\n\n\`\`\`\n${process.env.ERRORS}\n\`\`\``
+            });
+        env:
+          ERRORS: ${{ steps.validate.outputs.errors }}
+
+      - name: Check trusted publishers
+        id: trust
+        if: steps.validate.outputs.valid == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const trustedPath = '.github/trusted-publishers.json';
+            let isTrusted = false;
+
+            if (fs.existsSync(trustedPath)) {
+              const config = JSON.parse(fs.readFileSync(trustedPath, 'utf8'));
+              const submitter = context.eventName === 'workflow_dispatch'
+                ? context.actor
+                : (context.payload.issue && context.payload.issue.user.login) || '';
+              isTrusted = Array.isArray(config.publishers) && config.publishers.includes(submitter);
+              core.info(`Submitter "${submitter}" trusted: ${isTrusted}`);
+            }
+
+            core.setOutput('is_trusted', isTrusted.toString());
+
+      - name: Update templates.json
+        id: update
+        if: steps.validate.outputs.valid == 'true'
+        uses: actions/github-script@v7
+        env:
+          VALIDATION_RESULT: ${{ steps.validate.outputs.result }}
+          TPL_TITLE: ${{ steps.parse.outputs.title }}
+          TPL_DESCRIPTION: ${{ steps.parse.outputs.description }}
+          TPL_AUTHOR: ${{ steps.parse.outputs.author }}
+          TPL_AUTHOR_URL: ${{ steps.parse.outputs.author_url }}
+          TPL_SOURCE_REPO: ${{ steps.parse.outputs.source_repo }}
+          TPL_AUTHOR_TYPE: ${{ steps.parse.outputs.author_type }}
+          TPL_PREVIEW_IMAGE: ${{ steps.parse.outputs.preview_image }}
+          TPL_IAC_PROVIDER: ${{ steps.parse.outputs.iac_provider }}
+          TPL_LANGUAGES: ${{ steps.parse.outputs.languages }}
+          TPL_FRAMEWORKS: ${{ steps.parse.outputs.frameworks }}
+          TPL_AZURE_SERVICES: ${{ steps.parse.outputs.azure_services }}
+          TPL_ADDITIONAL_TAGS: ${{ steps.parse.outputs.additional_tags }}
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+
+            function validateUrl(value, label) {
+              if (!value) return;
+              try {
+                const u = new URL(value);
+                if (!['http:', 'https:'].includes(u.protocol)) {
+                  throw new Error(`unsafe protocol "${u.protocol}"`);
+                }
+              } catch (err) {
+                throw new Error(`Invalid ${label} URL "${value}": ${err.message}`);
+              }
+            }
+
+            function parseCsvTags(value) {
+              if (!value || value === '_No response_') return [];
+              return value
+                .split(',')
+                .map(t => t.trim())
+                .filter(t => t.length > 0);
+            }
+
+            const templatesPath = path.join('website', 'static', 'templates.json');
+            const templates = JSON.parse(fs.readFileSync(templatesPath, 'utf8'));
+            const validation = JSON.parse(process.env.VALIDATION_RESULT);
+
+            const sourceRepo = process.env.TPL_SOURCE_REPO;
+            const authorUrl = process.env.TPL_AUTHOR_URL;
+            const previewImage = process.env.TPL_PREVIEW_IMAGE;
+
+            // Validate all user-provided URLs
+            validateUrl(sourceRepo, 'source repo');
+            validateUrl(authorUrl, 'author');
+            if (previewImage) {
+              validateUrl(previewImage, 'preview image');
+            }
+
+            // Check for duplicate source URLs
+            const normalizedSource = sourceRepo.replace(/\/+$/, '').toLowerCase();
+            const duplicate = templates.find(
+              t => t.source && t.source.replace(/\/+$/, '').toLowerCase() === normalizedSource
+            );
+            if (duplicate) {
+              core.setOutput('skipped', `Duplicate source URL: ${sourceRepo}`);
+              core.info(`Template with source "${sourceRepo}" already exists, skipping.`);
+              return;
+            }
+
+            // Build tags array
+            const authorType = process.env.TPL_AUTHOR_TYPE;
+            const tags = authorType === 'Microsoft' ? ['msft', 'new'] : ['community', 'new'];
+            const additionalTags = parseCsvTags(process.env.TPL_ADDITIONAL_TAGS);
+            for (const tag of additionalTags) {
+              if (!tags.includes(tag)) {
+                tags.push(tag);
+              }
+            }
+
+            // Build IaC array
+            const iacProvider = process.env.TPL_IAC_PROVIDER;
+            let iac;
+            if (iacProvider === 'Both') {
+              iac = ['bicep', 'terraform'];
+            } else {
+              iac = [iacProvider.toLowerCase()];
+            }
+
+            // Build template entry matching existing schema
+            const entry = {
+              title: process.env.TPL_TITLE,
+              description: process.env.TPL_DESCRIPTION,
+              preview: previewImage || './templates/images/test.png',
+              authorUrl: authorUrl,
+              author: process.env.TPL_AUTHOR,
+              source: sourceRepo,
+              tags: tags,
+              id: validation.generatedId
+            };
+
+            // Add optional array fields only when non-empty
+            const languages = parseCsvTags(process.env.TPL_LANGUAGES);
+            if (languages.length > 0) {
+              entry.languages = languages;
+            }
+
+            const frameworks = parseCsvTags(process.env.TPL_FRAMEWORKS);
+            if (frameworks.length > 0) {
+              entry.frameworks = frameworks;
+            }
+
+            const azureServices = parseCsvTags(process.env.TPL_AZURE_SERVICES);
+            if (azureServices.length > 0) {
+              entry.azureServices = azureServices;
+            }
+
+            entry.IaC = iac;
+
+            templates.push(entry);
+            fs.writeFileSync(templatesPath, JSON.stringify(templates, null, 2) + '\n');
+
+            core.setOutput('added', process.env.TPL_TITLE);
+            core.setOutput('skipped', '');
+
+      - name: Create Pull Request
+        id: create-pr
+        if: steps.validate.outputs.valid == 'true' && steps.update.outputs.added
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Add template: ${{ steps.parse.outputs.title }} from ${{ github.event_name == 'workflow_dispatch' && 'manual dispatch' || format('issue #{0}', github.event.issue.number) }}"
+          branch: "template-submission-${{ github.event_name == 'workflow_dispatch' && github.run_id || github.event.issue.number }}"
+          title: "Add template: ${{ steps.parse.outputs.title }}"
+          body: |
+            This PR was automatically generated${{ github.event_name != 'workflow_dispatch' && format(' from issue #{0}', github.event.issue.number) || '' }}.
+
+            **Source Repository**: ${{ steps.parse.outputs.source_repo }}
+            **Template Title**: ${{ steps.parse.outputs.title }}
+            **Author**: ${{ steps.parse.outputs.author }}
+            **Author Type**: ${{ steps.parse.outputs.author_type }}
+            **IaC Provider**: ${{ steps.parse.outputs.iac_provider }}
+            **Template added**: ${{ steps.update.outputs.added || 'None' }}
+            **Skipped**: ${{ steps.update.outputs.skipped || 'None' }}
+
+            Please review the changes to `website/static/templates.json`.
+          labels: "template-submission${{ steps.trust.outputs.is_trusted == 'true' && ',trusted-publisher' || '' }}"
+
+      - name: Comment on success
+        if: steps.validate.outputs.valid == 'true' && steps.update.outputs.added && github.event_name != 'workflow_dispatch'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              body: `✅ **Template validated successfully!**\n\nA pull request has been created to add your template to the gallery. It will be reviewed by the maintainers shortly.`
+            });
+
+      - name: Comment on duplicate
+        if: steps.validate.outputs.valid == 'true' && steps.update.outputs.skipped && !steps.update.outputs.added && github.event_name != 'workflow_dispatch'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              body: `⚠️ **Template already exists**\n\nA template with the same source repository URL is already in the gallery. If you need to update it, please submit a PR directly.`
+            });

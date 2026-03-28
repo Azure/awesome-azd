@@ -64,18 +64,21 @@ jobs:
       github.event_name == 'workflow_dispatch' ||
       contains(github.event.issue.labels.*.name, 'template-submission')
     runs-on: ubuntu-latest
+    concurrency:
+      group: template-submission
+      cancel-in-progress: false
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: "20"
+          node-version: "24"
 
       - name: Parse issue body
         id: parse
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         env:
           ISSUE_BODY: ${{ github.event.issue.body || '' }}
           INPUT_SOURCE_REPO: ${{ inputs.source_repo }}
@@ -159,26 +162,26 @@ jobs:
           SOURCE_REPO: ${{ steps.parse.outputs.source_repo }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          node website/scripts/validate-template.js "$SOURCE_REPO" > validation_result.json 2>validation_errors.log
-          if [ $? -ne 0 ]; then
-            echo "valid=false" >> $GITHUB_OUTPUT
-            {
-              echo 'errors<<EOF'
-              cat validation_result.json validation_errors.log
-              echo 'EOF'
-            } >> $GITHUB_OUTPUT
-          else
+          DELIMITER="VALIDATION_OUTPUT_$(date +%s%N)"
+          if node website/scripts/validate-template.js "$SOURCE_REPO" > validation_result.json 2>validation_errors.log; then
             echo "valid=true" >> $GITHUB_OUTPUT
             {
-              echo 'result<<EOF'
+              echo "result<<${DELIMITER}"
               cat validation_result.json
-              echo 'EOF'
+              echo "${DELIMITER}"
+            } >> $GITHUB_OUTPUT
+          else
+            echo "valid=false" >> $GITHUB_OUTPUT
+            {
+              echo "errors<<${DELIMITER}"
+              cat validation_result.json validation_errors.log
+              echo "${DELIMITER}"
             } >> $GITHUB_OUTPUT
           fi
 
       - name: Comment on validation failure
         if: steps.validate.outputs.valid == 'false' && github.event_name != 'workflow_dispatch'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             await github.rest.issues.createComment({
@@ -193,7 +196,7 @@ jobs:
       - name: Check trusted publishers
         id: trust
         if: steps.validate.outputs.valid == 'true'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const fs = require('fs');
@@ -201,7 +204,13 @@ jobs:
             let isTrusted = false;
 
             if (fs.existsSync(trustedPath)) {
-              const config = JSON.parse(fs.readFileSync(trustedPath, 'utf8'));
+              let config;
+              try {
+                config = JSON.parse(fs.readFileSync(trustedPath, 'utf8'));
+              } catch (err) {
+                core.setFailed(`Failed to parse trusted-publishers.json: ${err.message}`);
+                return;
+              }
               const submitter = context.eventName === 'workflow_dispatch'
                 ? context.actor
                 : (context.payload.issue && context.payload.issue.user.login) || '';
@@ -214,7 +223,7 @@ jobs:
       - name: Update templates.json
         id: update
         if: steps.validate.outputs.valid == 'true'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         env:
           VALIDATION_RESULT: ${{ steps.validate.outputs.result }}
           TPL_TITLE: ${{ steps.parse.outputs.title }}
@@ -234,12 +243,13 @@ jobs:
             const fs = require('fs');
             const path = require('path');
 
+            // NOTE: Mirrors protocol check in website/scripts/validate-template.js — keep in sync
             function validateUrl(value, label) {
               if (!value) return;
               try {
                 const u = new URL(value);
-                if (!['http:', 'https:'].includes(u.protocol)) {
-                  throw new Error(`unsafe protocol "${u.protocol}"`);
+                if (u.protocol !== 'https:') {
+                  throw new Error(`unsafe protocol "${u.protocol}". Only https: is allowed.`);
                 }
               } catch (err) {
                 throw new Error(`Invalid ${label} URL "${value}": ${err.message}`);
@@ -255,8 +265,21 @@ jobs:
             }
 
             const templatesPath = path.join('website', 'static', 'templates.json');
-            const templates = JSON.parse(fs.readFileSync(templatesPath, 'utf8'));
-            const validation = JSON.parse(process.env.VALIDATION_RESULT);
+            let templates;
+            try {
+              templates = JSON.parse(fs.readFileSync(templatesPath, 'utf8'));
+            } catch (err) {
+              core.setFailed(`Failed to parse templates.json: ${err.message}`);
+              return;
+            }
+
+            let validation;
+            try {
+              validation = JSON.parse(process.env.VALIDATION_RESULT);
+            } catch (err) {
+              core.setFailed(`Failed to parse validation result: ${err.message}`);
+              return;
+            }
 
             const sourceRepo = process.env.TPL_SOURCE_REPO;
             const authorUrl = process.env.TPL_AUTHOR_URL;
@@ -269,10 +292,20 @@ jobs:
               validateUrl(previewImage, 'preview image');
             }
 
-            // Check for duplicate source URLs
-            const normalizedSource = sourceRepo.replace(/\/+$/, '').toLowerCase();
+            // Check for duplicate source URLs (canonicalize for robust matching)
+            function canonicalizeForMatch(url) {
+              try {
+                const parsed = new URL(url);
+                const hostname = parsed.hostname.replace(/^www\./, '');
+                const cleanPath = parsed.pathname.replace(/^\/+/, '').replace(/\/+$/, '').replace(/\.git$/, '');
+                return `https://${hostname}/${cleanPath}`.toLowerCase();
+              } catch {
+                return url.replace(/\/+$/, '').toLowerCase();
+              }
+            }
+            const normalizedSource = canonicalizeForMatch(sourceRepo);
             const duplicate = templates.find(
-              t => t.source && t.source.replace(/\/+$/, '').toLowerCase() === normalizedSource
+              t => t.source && canonicalizeForMatch(t.source) === normalizedSource
             );
             if (duplicate) {
               core.setOutput('skipped', `Duplicate source URL: ${sourceRepo}`);
@@ -284,7 +317,12 @@ jobs:
             const authorType = process.env.TPL_AUTHOR_TYPE;
             const tags = authorType === 'Microsoft' ? ['msft', 'new'] : ['community', 'new'];
             const additionalTags = parseCsvTags(process.env.TPL_ADDITIONAL_TAGS);
+            const adminOnlyTags = ['aicollection', 'popular', 'featured'];
             for (const tag of additionalTags) {
+              if (adminOnlyTags.includes(tag.toLowerCase())) {
+                core.info(`Skipping admin-only tag: "${tag}"`);
+                continue;
+              }
               if (!tags.includes(tag)) {
                 tags.push(tag);
               }
@@ -335,10 +373,14 @@ jobs:
             core.setOutput('added', process.env.TPL_TITLE);
             core.setOutput('skipped', '');
 
+      # NOTE: GITHUB_TOKEN-triggered events do not trigger other workflows.
+      # Auto-merge via template-auto-merge.yml requires a maintainer to manually
+      # apply the 'trusted-publisher' label on the created PR, or alternatively
+      # use a workflow_run trigger. See: https://docs.github.com/en/actions/security-guides/automatic-token-authentication#using-the-github_token-in-a-workflow
       - name: Create Pull Request
         id: create-pr
         if: steps.validate.outputs.valid == 'true' && steps.update.outputs.added
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Add template: ${{ steps.parse.outputs.title }} from ${{ github.event_name == 'workflow_dispatch' && 'manual dispatch' || format('issue #{0}', github.event.issue.number) }}"
@@ -360,7 +402,7 @@ jobs:
 
       - name: Comment on success
         if: steps.validate.outputs.valid == 'true' && steps.update.outputs.added && github.event_name != 'workflow_dispatch'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             await github.rest.issues.createComment({
@@ -372,7 +414,7 @@ jobs:
 
       - name: Comment on duplicate
         if: steps.validate.outputs.valid == 'true' && steps.update.outputs.skipped && !steps.update.outputs.added && github.event_name != 'workflow_dispatch'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             await github.rest.issues.createComment({

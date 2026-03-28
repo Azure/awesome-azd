@@ -16,38 +16,69 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Verify trusted publisher
         id: verify
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const fs = require('fs');
             const trustedPath = '.github/trusted-publishers.json';
+
+            // Security: Verify this PR was created by the template-submission workflow
+            // to prevent PR body forgery by arbitrary collaborators.
+            const pr = context.payload.pull_request;
+            const prAuthor = pr.user.login;
+            const prBranch = pr.head.ref;
+
+            if (prAuthor !== 'github-actions[bot]') {
+              core.setFailed(`PR author "${prAuthor}" is not github-actions[bot]. Only workflow-created PRs are eligible for auto-merge.`);
+              return;
+            }
+
+            if (!/^template-submission-\d+$/.test(prBranch)) {
+              core.setFailed(`PR branch "${prBranch}" does not match expected pattern "template-submission-{N}".`);
+              return;
+            }
 
             if (!fs.existsSync(trustedPath)) {
               core.setFailed('trusted-publishers.json not found');
               return;
             }
 
-            const config = JSON.parse(fs.readFileSync(trustedPath, 'utf8'));
+            let config;
+            try {
+              config = JSON.parse(fs.readFileSync(trustedPath, 'utf8'));
+            } catch (err) {
+              core.setFailed(`Failed to parse trusted-publishers.json: ${err.message}`);
+              return;
+            }
 
             // The submission PR is created by peter-evans/create-pull-request (github-actions[bot]),
             // so we must check the *original issue submitter*, not the PR author.
-            const prBody = context.payload.pull_request.body || '';
+            const prBody = pr.body || '';
             const issueMatch = prBody.match(/from issue #(\d+)/);
             if (!issueMatch) {
-              core.setFailed('Could not determine originating issue from PR body');
+              // workflow_dispatch-created PRs legitimately have no issue reference
+              core.info('No "from issue #NNN" reference found in PR body (likely workflow_dispatch). Skipping auto-merge.');
               return;
             }
 
             const issueNumber = parseInt(issueMatch[1], 10);
-            const { data: issue } = await github.rest.issues.get({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: issueNumber,
-            });
+            let issue;
+            try {
+              const response = await github.rest.issues.get({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+              });
+              issue = response.data;
+            } catch (err) {
+              core.setFailed(`Failed to fetch issue #${issueNumber}: ${err.status || err.message}`);
+              return;
+            }
+
             const submitter = issue.user.login;
 
             if (!Array.isArray(config.publishers) || !config.publishers.includes(submitter)) {
@@ -60,6 +91,7 @@ jobs:
 
       - name: Wait for CI checks
         if: steps.verify.outputs.verified == 'true'
+        timeout-minutes: 30
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -70,7 +102,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh pr review ${{ github.event.pull_request.number }} --approve --body "Auto-approved: PR author is a trusted publisher."
+          gh pr review ${{ github.event.pull_request.number }} --approve --body "Auto-approved: originating issue submitter is a trusted publisher."
 
       - name: Enable auto-merge
         if: steps.verify.outputs.verified == 'true'

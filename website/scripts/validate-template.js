@@ -13,6 +13,35 @@
 const crypto = require("crypto");
 
 /**
+ * Canonicalizes a GitHub repository URL to https://github.com/{owner}/{repo}.
+ * Strips www. prefix, removes .git suffix and trailing slashes,
+ * and rejects extra path segments (e.g. /tree/main).
+ * @param {string} rawUrl - Raw GitHub URL
+ * @returns {string} Canonical URL
+ * @throws {Error} If the URL is malformed or has extra path segments
+ */
+function canonicalizeUrl(rawUrl) {
+  const parsed = new URL(rawUrl);
+  const hostname = parsed.hostname.replace(/^www\./, "");
+  const cleanPath = parsed.pathname
+    .replace(/^\/+/, "")
+    .replace(/\/+$/, "")
+    .replace(/\.git$/, "");
+  const parts = cleanPath.split("/").filter(Boolean);
+  if (parts.length < 2) {
+    throw new Error(
+      "Invalid GitHub repository URL. Expected format: https://github.com/{owner}/{repo}"
+    );
+  }
+  if (parts.length > 2) {
+    throw new Error(
+      `URL contains extra path segments beyond /{owner}/{repo}. Got: "${parsed.pathname}"`
+    );
+  }
+  return `https://${hostname}/${parts[0]}/${parts[1]}`;
+}
+
+/**
  * Validates and fetches a GitHub repository to confirm it exists.
  * @param {string} sourceUrl - GitHub repository URL
  * @returns {Promise<{valid: boolean, repoExists: boolean, sourceUrl: string, generatedId: string, errors: string[]}>}
@@ -64,12 +93,12 @@ async function validateTemplate(sourceUrl) {
     };
   }
 
-  // Extract owner/repo from path
-  const pathParts = parsed.pathname.replace(/^\//, "").replace(/\/$/, "").replace(/\.git$/, "").split("/");
-  if (pathParts.length < 2 || !pathParts[0] || !pathParts[1]) {
-    errors.push(
-      `Invalid GitHub repository URL. Expected format: https://github.com/{owner}/{repo}`
-    );
+  // Canonicalize URL: strip www., remove .git suffix, trailing slashes, reject extra segments
+  let canonicalUrl;
+  try {
+    canonicalUrl = canonicalizeUrl(sourceUrl);
+  } catch (err) {
+    errors.push(err.message);
     return {
       valid: false,
       repoExists: false,
@@ -79,8 +108,9 @@ async function validateTemplate(sourceUrl) {
     };
   }
 
-  const owner = pathParts[0];
-  const repo = pathParts[1];
+  const canonicalParts = canonicalUrl.replace("https://github.com/", "").split("/");
+  const owner = canonicalParts[0];
+  const repo = canonicalParts[1];
   const apiUrl = `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}`;
 
   // Fetch repository to verify it exists
@@ -125,7 +155,7 @@ async function validateTemplate(sourceUrl) {
   return {
     valid: errors.length === 0,
     repoExists,
-    sourceUrl,
+    sourceUrl: canonicalUrl,
     generatedId,
     errors,
   };
@@ -150,4 +180,4 @@ if (typeof require !== "undefined" && require.main === module) {
     });
 }
 
-module.exports = { validateTemplate };
+module.exports = { validateTemplate, canonicalizeUrl };

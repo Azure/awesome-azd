@@ -1,0 +1,115 @@
+name: "Submit an azd Template"
+description: "Add your azd template to the Awesome azd gallery"
+title: "[Template]: "
+labels: ["template-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for submitting your azd template! Please fill out the information below.
+        Your template repository will be validated automatically.
+
+  - type: input
+    id: source-repo
+    attributes:
+      label: "Source Repository"
+      description: "GitHub repository URL for your template"
+      placeholder: "https://github.com/org/repo"
+    validations:
+      required: true
+
+  - type: input
+    id: template-title
+    attributes:
+      label: "Template Title"
+      description: "Short title for your template"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      description: "1-2 sentence description of your template"
+    validations:
+      required: true
+
+  - type: input
+    id: author
+    attributes:
+      label: "Author"
+      description: "Your name or organization"
+    validations:
+      required: true
+
+  - type: input
+    id: author-url
+    attributes:
+      label: "Author URL"
+      description: "URL to your GitHub profile or organization page"
+      placeholder: "https://github.com/username"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: author-type
+    attributes:
+      label: "Author Type"
+      description: "Is this a Microsoft-authored or community template?"
+      options:
+        - Community
+        - Microsoft
+    validations:
+      required: true
+
+  - type: input
+    id: preview-image
+    attributes:
+      label: "Preview Image URL"
+      description: "URL to an architecture diagram or screenshot (optional)"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: iac-provider
+    attributes:
+      label: "IaC Provider"
+      description: "Infrastructure as Code provider used by your template"
+      options:
+        - Bicep
+        - Terraform
+        - Both
+    validations:
+      required: true
+
+  - type: input
+    id: languages
+    attributes:
+      label: "Languages"
+      description: "Comma-separated language tags (e.g., python, javascript)"
+    validations:
+      required: false
+
+  - type: input
+    id: frameworks
+    attributes:
+      label: "Frameworks"
+      description: "Comma-separated framework tags (e.g., reactjs, fastapi)"
+    validations:
+      required: false
+
+  - type: input
+    id: azure-services
+    attributes:
+      label: "Azure Services"
+      description: "Comma-separated Azure service tags (e.g., aca, openai)"
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: "Additional Information"
+      description: "Any additional context about your template (optional)"
+    validations:
+      required: false

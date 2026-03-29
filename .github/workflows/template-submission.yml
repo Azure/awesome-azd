@@ -225,33 +225,6 @@ jobs:
         env:
           ERRORS: ${{ steps.validate.outputs.errors }}
 
-      - name: Check trusted publishers
-        id: trust
-        if: steps.validate.outputs.valid == 'true'
-        uses: actions/github-script@v8
-        with:
-          script: |
-            const fs = require('fs');
-            const trustedPath = '.github/trusted-publishers.json';
-            let isTrusted = false;
-
-            if (fs.existsSync(trustedPath)) {
-              let config;
-              try {
-                config = JSON.parse(fs.readFileSync(trustedPath, 'utf8'));
-              } catch (err) {
-                core.setFailed(`Failed to parse trusted-publishers.json: ${err.message}`);
-                return;
-              }
-              const submitter = context.eventName === 'workflow_dispatch'
-                ? context.actor
-                : (context.payload.issue && context.payload.issue.user.login) || '';
-              isTrusted = Array.isArray(config.publishers) && config.publishers.includes(submitter);
-              core.info(`Submitter "${submitter}" trusted: ${isTrusted}`);
-            }
-
-            core.setOutput('is_trusted', isTrusted.toString());
-
       - name: Update templates.json
         id: update
         if: steps.validate.outputs.valid == 'true'
@@ -421,10 +394,6 @@ jobs:
             core.setOutput('added', process.env.TPL_TITLE);
             core.setOutput('skipped', '');
 
-      # NOTE: GITHUB_TOKEN-triggered events do not trigger other workflows.
-      # Auto-merge via template-auto-merge.yml requires a maintainer to manually
-      # apply the 'trusted-publisher' label on the created PR, or alternatively
-      # use a workflow_run trigger. See: https://docs.github.com/en/actions/security-guides/automatic-token-authentication#using-the-github_token-in-a-workflow
       - name: Create Pull Request
         id: create-pr
         if: steps.validate.outputs.valid == 'true' && steps.update.outputs.added
@@ -446,7 +415,7 @@ jobs:
             **Skipped**: ${{ steps.update.outputs.skipped || 'None' }}
 
             Please review the changes to `website/static/templates.json`.
-          labels: "template-submission${{ steps.trust.outputs.is_trusted == 'true' && ',trusted-publisher' || '' }}"
+          labels: "template-submission"
 
       - name: Comment on success
         if: steps.validate.outputs.valid == 'true' && steps.update.outputs.added && github.event_name != 'workflow_dispatch'

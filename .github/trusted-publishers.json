@@ -1,9 +1,0 @@
-{
-  "publishers": [
-    "jongio",
-    "paulyuk",
-    "nzthiago",
-    "MadhuraBharadwaj-MSFT"
-  ],
-  "description": "GitHub usernames whose template submissions are eligible for auto-merge. Changes to this file require PR review from repo maintainers."
-}

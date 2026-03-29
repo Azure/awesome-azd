@@ -42,7 +42,7 @@ For a faster submission experience, use the automated pipeline:
 
 1. **[Submit a template issue](https://github.com/Azure/awesome-azd/issues/new?template=template-submission.yml)** - Fill out the form with your template details
 2. **Automatic validation** - A workflow validates your repository and creates a PR automatically
-3. **Review & merge** - Maintainers review the PR. Trusted publishers get expedited auto-merge after CI passes.
+3. **Review & merge** - A maintainer reviews and approves the PR
 
 This is the fastest path to getting your template in the gallery.
 

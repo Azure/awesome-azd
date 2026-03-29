@@ -90,6 +90,26 @@ function isPrivateHost(hostname) {
 function safeLookup(hostname, options, callback) {
   dns.lookup(hostname, options, (err, address, family) => {
     if (err) return callback(err);
+
+    // Node 24+ passes {all:true} from https.request, yielding an array
+    // of {address, family} objects. We must validate each and return the
+    // same array format the caller expects.
+    if (Array.isArray(address)) {
+      for (const entry of address) {
+        if (isPrivateIP(entry.address)) {
+          return callback(
+            new Error(
+              `Hostname "${hostname}" resolves to private/reserved IP: ${entry.address}`
+            )
+          );
+        }
+      }
+      if (address.length === 0) {
+        return callback(new Error(`No DNS results for "${hostname}"`));
+      }
+      return callback(null, address, family);
+    }
+
     if (isPrivateIP(address)) {
       return callback(
         new Error(

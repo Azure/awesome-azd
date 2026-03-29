@@ -51,7 +51,7 @@ async function main() {
       process.env.FORM_AUTHOR_URL || extracted.authorUrl || "",
     author_type:
       process.env.FORM_AUTHOR_TYPE || extracted.authorType || "",
-    preview_image: process.env.FORM_PREVIEW_IMAGE || "",
+    preview_image: process.env.FORM_PREVIEW_IMAGE || extracted.previewImage || "",
     iac_provider:
       process.env.FORM_IAC_PROVIDER || extracted.iacProvider || "",
     languages:

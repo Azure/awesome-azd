@@ -15,10 +15,15 @@ const {
   fetchGitHubApi,
   fetchAzureYaml,
   fetchReadmeTitle,
+  fetchReadme,
+  extractReadmeTitle,
+  extractReadmeImage,
+  detectFrameworks,
   extractMetadata,
   LANGUAGE_MAP,
   AZURE_SERVICE_MAP,
   MICROSOFT_ORGS,
+  FRAMEWORK_DETECTORS,
 } = require("../scripts/extract-template-metadata");
 
 // ---------------------------------------------------------------------------
@@ -496,6 +501,319 @@ describe("fetchReadmeTitle", () => {
 });
 
 // ===========================================================================
+// extractReadmeTitle (pure function)
+// ===========================================================================
+describe("extractReadmeTitle", () => {
+  test("extracts first # heading from content", () => {
+    expect(extractReadmeTitle("# Hello World\nsome text")).toBe("Hello World");
+  });
+
+  test("returns empty string when no heading", () => {
+    expect(extractReadmeTitle("No heading here")).toBe("");
+  });
+
+  test("strips markdown links", () => {
+    expect(
+      extractReadmeTitle("# [My App](https://example.com)\n")
+    ).toBe("My App");
+  });
+});
+
+// ===========================================================================
+// extractReadmeImage
+// ===========================================================================
+describe("extractReadmeImage", () => {
+  test("extracts first markdown image and returns absolute URL", () => {
+    const content = "# Title\n\n![screenshot](https://example.com/img.png)\n";
+    const result = extractReadmeImage(content, "owner", "repo", "main");
+    expect(result).toBe("https://example.com/img.png");
+  });
+
+  test("extracts HTML img src with double quotes", () => {
+    const content =
+      '# Title\n\n<img src="https://example.com/photo.jpg" alt="photo">\n';
+    const result = extractReadmeImage(content, "owner", "repo", "main");
+    expect(result).toBe("https://example.com/photo.jpg");
+  });
+
+  test("extracts HTML img src with single quotes", () => {
+    const content =
+      "# Title\n\n<img src='https://example.com/photo.jpg' alt='photo'>\n";
+    const result = extractReadmeImage(content, "owner", "repo", "main");
+    expect(result).toBe("https://example.com/photo.jpg");
+  });
+
+  test("converts relative path to raw.githubusercontent.com URL", () => {
+    const content = "# Title\n\n![preview](docs/images/preview.png)\n";
+    const result = extractReadmeImage(content, "owner", "repo", "main");
+    expect(result).toBe(
+      "https://raw.githubusercontent.com/owner/repo/main/docs/images/preview.png"
+    );
+  });
+
+  test("handles ./ prefix in relative paths", () => {
+    const content = "# Title\n\n![preview](./assets/demo.gif)\n";
+    const result = extractReadmeImage(content, "owner", "repo", "main");
+    expect(result).toBe(
+      "https://raw.githubusercontent.com/owner/repo/main/assets/demo.gif"
+    );
+  });
+
+  test("handles / prefix in absolute paths", () => {
+    const content = "# Title\n\n![preview](/assets/demo.gif)\n";
+    const result = extractReadmeImage(content, "owner", "repo", "main");
+    expect(result).toBe(
+      "https://raw.githubusercontent.com/owner/repo/main/assets/demo.gif"
+    );
+  });
+
+  test("returns empty string when no images in README", () => {
+    const content = "# Title\n\nJust text, no images.\n";
+    const result = extractReadmeImage(content, "owner", "repo", "main");
+    expect(result).toBe("");
+  });
+
+  test("returns empty string for empty content", () => {
+    expect(extractReadmeImage("", "owner", "repo", "main")).toBe("");
+  });
+
+  test("skips shields.io badge images", () => {
+    const content =
+      "# Title\n\n![badge](https://img.shields.io/badge/build-passing-green)\n![real](./screenshot.png)\n";
+    const result = extractReadmeImage(content, "owner", "repo", "main");
+    expect(result).toBe(
+      "https://raw.githubusercontent.com/owner/repo/main/screenshot.png"
+    );
+  });
+
+  test("skips codecov badge images", () => {
+    const content =
+      "# Title\n\n![coverage](https://codecov.io/gh/owner/repo/graph/badge.svg)\n![real](https://example.com/preview.png)\n";
+    const result = extractReadmeImage(content, "owner", "repo", "main");
+    expect(result).toBe("https://example.com/preview.png");
+  });
+
+  test("prefers first non-badge image when multiple badges precede real image", () => {
+    const content = [
+      "# Title",
+      "![badge1](https://img.shields.io/badge/one)",
+      "![badge2](https://img.shields.io/badge/two)",
+      "![preview](./docs/preview.png)",
+      "![another](./docs/another.png)",
+    ].join("\n");
+    const result = extractReadmeImage(content, "owner", "repo", "main");
+    expect(result).toBe(
+      "https://raw.githubusercontent.com/owner/repo/main/docs/preview.png"
+    );
+  });
+
+  test("strips query params from relative paths", () => {
+    const content = "# Title\n\n![img](./docs/img.png?raw=true)\n";
+    const result = extractReadmeImage(content, "owner", "repo", "main");
+    expect(result).toBe(
+      "https://raw.githubusercontent.com/owner/repo/main/docs/img.png"
+    );
+  });
+
+  test("handles HTML img with additional attributes before src", () => {
+    const content =
+      '# Title\n\n<img width="600" src="https://example.com/wide.png" />\n';
+    const result = extractReadmeImage(content, "owner", "repo", "main");
+    expect(result).toBe("https://example.com/wide.png");
+  });
+});
+
+// ===========================================================================
+// detectFrameworks
+// ===========================================================================
+describe("detectFrameworks", () => {
+  test("detects fastapi from requirements.txt", async () => {
+    setupMock({
+      "raw.githubusercontent.com/owner/repo/main/requirements.txt": {
+        status: 200,
+        body: "fastapi==0.100.0\nuvicorn>=0.22\n",
+      },
+    });
+
+    const result = await detectFrameworks("owner", "repo", "main", [], "");
+    expect(result).toContain("fastapi");
+  });
+
+  test("detects react from package.json", async () => {
+    setupMock({
+      "raw.githubusercontent.com/owner/repo/main/package.json": {
+        status: 200,
+        body: JSON.stringify({
+          dependencies: { "react": "^18.2.0", "react-dom": "^18.2.0" },
+        }),
+      },
+    });
+
+    const result = await detectFrameworks("owner", "repo", "main", [], "");
+    expect(result).toContain("reactjs");
+  });
+
+  test("detects spring from pom.xml", async () => {
+    setupMock({
+      "raw.githubusercontent.com/owner/repo/main/pom.xml": {
+        status: 200,
+        body: "<dependency><groupId>org.springframework.boot</groupId></dependency>",
+      },
+    });
+
+    const result = await detectFrameworks("owner", "repo", "main", [], "");
+    expect(result).toContain("spring");
+  });
+
+  test("detects django from pyproject.toml", async () => {
+    setupMock({
+      "raw.githubusercontent.com/owner/repo/main/pyproject.toml": {
+        status: 200,
+        body: '[project]\ndependencies = [\n  "django>=4.2",\n]\n',
+      },
+    });
+
+    const result = await detectFrameworks("owner", "repo", "main", [], "");
+    expect(result).toContain("django");
+  });
+
+  test("detects rails from Gemfile", async () => {
+    setupMock({
+      "raw.githubusercontent.com/owner/repo/main/Gemfile": {
+        status: 200,
+        body: 'source "https://rubygems.org"\ngem "rails", "~> 7.0"\n',
+      },
+    });
+
+    const result = await detectFrameworks("owner", "repo", "main", [], "");
+    expect(result).toContain("rubyonrails");
+  });
+
+  test("detects multiple frameworks", async () => {
+    setupMock({
+      "raw.githubusercontent.com/owner/repo/main/requirements.txt": {
+        status: 200,
+        body: "fastapi\nlangchain\nstreamlit\n",
+      },
+    });
+
+    const result = await detectFrameworks("owner", "repo", "main", [], "");
+    expect(result).toContain("fastapi");
+    expect(result).toContain("langchain");
+    expect(result).toContain("streamlit");
+  });
+
+  test("returns empty array when no frameworks detected", async () => {
+    setupMock({}); // all 404s
+
+    const result = await detectFrameworks("owner", "repo", "main", [], "");
+    expect(result).toEqual([]);
+  });
+
+  test("detects from GitHub topics", async () => {
+    setupMock({}); // no dependency files
+
+    const result = await detectFrameworks(
+      "owner",
+      "repo",
+      "main",
+      ["fastapi", "some-other-topic"],
+      ""
+    );
+    expect(result).toContain("fastapi");
+  });
+
+  test("deduplicates results from topics and file content", async () => {
+    setupMock({
+      "raw.githubusercontent.com/owner/repo/main/requirements.txt": {
+        status: 200,
+        body: "fastapi>=0.100\n",
+      },
+    });
+
+    const result = await detectFrameworks(
+      "owner",
+      "repo",
+      "main",
+      ["fastapi"],
+      ""
+    );
+    // Should contain fastapi only once
+    const count = result.filter((f: string) => f === "fastapi").length;
+    expect(count).toBe(1);
+  });
+
+  test("case-insensitive matching in file content", async () => {
+    setupMock({
+      "raw.githubusercontent.com/owner/repo/main/requirements.txt": {
+        status: 200,
+        body: "FastAPI==0.100.0\n",
+      },
+    });
+
+    const result = await detectFrameworks("owner", "repo", "main", [], "");
+    expect(result).toContain("fastapi");
+  });
+
+  test("detects framework from README as fallback", async () => {
+    setupMock({}); // no dependency files
+
+    const result = await detectFrameworks(
+      "owner",
+      "repo",
+      "main",
+      [],
+      "# My App\n\nBuilt with Django and deployed on Azure.\n"
+    );
+    expect(result).toContain("django");
+  });
+
+  test("detects spring from build.gradle", async () => {
+    setupMock({
+      "raw.githubusercontent.com/owner/repo/main/build.gradle": {
+        status: 200,
+        body: "implementation 'org.springframework.boot:spring-boot-starter-web'\n",
+      },
+    });
+
+    const result = await detectFrameworks("owner", "repo", "main", [], "");
+    expect(result).toContain("spring");
+  });
+
+  test("detects nextjs from package.json", async () => {
+    setupMock({
+      "raw.githubusercontent.com/owner/repo/main/package.json": {
+        status: 200,
+        body: JSON.stringify({
+          dependencies: { "next": "^14.0.0" },
+        }),
+      },
+    });
+
+    const result = await detectFrameworks("owner", "repo", "main", [], "");
+    expect(result).toContain("nextjs");
+  });
+});
+
+// ===========================================================================
+// FRAMEWORK_DETECTORS
+// ===========================================================================
+describe("FRAMEWORK_DETECTORS", () => {
+  test("is a non-empty array", () => {
+    expect(Array.isArray(FRAMEWORK_DETECTORS)).toBe(true);
+    expect(FRAMEWORK_DETECTORS.length).toBeGreaterThan(0);
+  });
+
+  test("every detector has tag, patterns, and files", () => {
+    for (const d of FRAMEWORK_DETECTORS) {
+      expect(typeof d.tag).toBe("string");
+      expect(Array.isArray(d.patterns)).toBe(true);
+      expect(Array.isArray(d.files)).toBe(true);
+    }
+  });
+});
+
+// ===========================================================================
 // extractMetadata — integration of all sub-fetches
 // ===========================================================================
 describe("extractMetadata", () => {
@@ -524,7 +842,13 @@ describe("extractMetadata", () => {
     "    language: python",
   ].join("\n");
 
-  const README = "# Todo Python Mongo\n\nA sample template.";
+  const README =
+    "# Todo Python Mongo\n\nA sample template.\n\n![screenshot](./docs/screenshot.png)\n";
+
+  const PACKAGE_JSON = JSON.stringify({
+    dependencies: { "react": "^18.2.0", "next": "^14.0.0" },
+    devDependencies: {},
+  });
 
   function setupFullMock(overrides: Record<string, MockEntry> = {}) {
     const defaults: Record<string, MockEntry> = {
@@ -543,6 +867,10 @@ describe("extractMetadata", () => {
       "raw.githubusercontent.com/Azure-Samples/todo-python-mongo/main/README.md": {
         status: 200,
         body: README,
+      },
+      "raw.githubusercontent.com/Azure-Samples/todo-python-mongo/main/package.json": {
+        status: 200,
+        body: PACKAGE_JSON,
       },
       "raw.githubusercontent.com/Azure-Samples/todo-python-mongo/main/infra/main.bicep": {
         status: 200,
@@ -614,7 +942,12 @@ describe("extractMetadata", () => {
     expect(meta.azureServices).toContain("aca");
     expect(meta.azureServices).toContain("openai");
     expect(meta.iacProvider).toBe("Bicep");
-    expect(meta.frameworks).toEqual([]);
+    expect(meta.previewImage).toBe(
+      "https://raw.githubusercontent.com/Azure-Samples/todo-python-mongo/main/docs/screenshot.png"
+    );
+    expect(meta.frameworks).toEqual(
+      expect.arrayContaining(["reactjs", "nextjs"])
+    );
   });
 
   test("uses README title when azure.yaml has no name", async () => {
@@ -859,8 +1192,8 @@ describe("error handling", () => {
 // ===========================================================================
 describe("size limits", () => {
   test("rejects when response exceeds maxSize", async () => {
-    // Create a response body larger than 4KB (the README limit)
-    const largeBody = "# Title\n" + "x".repeat(5 * 1024);
+    // Create a response body larger than 50KB (the README limit)
+    const largeBody = "# Title\n" + "x".repeat(55 * 1024);
 
     setupMock({
       "raw.githubusercontent.com/owner/repo/main/README.md": {
@@ -869,7 +1202,7 @@ describe("size limits", () => {
       },
     });
 
-    // fetchReadmeTitle uses MAX_README_BYTES = 4KB
+    // fetchReadmeTitle uses MAX_README_BYTES = 50KB
     await expect(
       fetchReadmeTitle("owner", "repo", "main")
     ).rejects.toThrow(/byte limit/);

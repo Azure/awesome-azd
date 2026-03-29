@@ -49,9 +49,70 @@ const AZURE_SERVICE_MAP = {
  */
 const MICROSOFT_ORGS = ["azure", "azure-samples", "microsoft"];
 
+/**
+ * Map dependency-file patterns to gallery framework tags.
+ *
+ * Each detector lists:
+ *   tag      – the gallery tag name (must exist in tags.tsx)
+ *   patterns – substrings to search for (case-insensitive)
+ *   files    – which dependency files to search in
+ */
+const FRAMEWORK_DETECTORS = [
+  // Python frameworks (check requirements.txt, pyproject.toml)
+  { tag: "fastapi", patterns: ["fastapi"], files: ["requirements.txt", "pyproject.toml"] },
+  { tag: "flask", patterns: ["flask"], files: ["requirements.txt", "pyproject.toml"] },
+  { tag: "django", patterns: ["django"], files: ["requirements.txt", "pyproject.toml"] },
+  { tag: "streamlit", patterns: ["streamlit"], files: ["requirements.txt", "pyproject.toml"] },
+  { tag: "langchain", patterns: ["langchain"], files: ["requirements.txt", "pyproject.toml"] },
+  { tag: "chainlit", patterns: ["chainlit"], files: ["requirements.txt", "pyproject.toml"] },
+  { tag: "autogen", patterns: ["autogen", "pyautogen"], files: ["requirements.txt", "pyproject.toml"] },
+
+  // JavaScript/TypeScript frameworks (check package.json)
+  { tag: "reactjs", patterns: ['"react"'], files: ["package.json"] },
+  { tag: "vuejs", patterns: ['"vue"'], files: ["package.json"] },
+  { tag: "angular", patterns: ['"@angular/core"'], files: ["package.json"] },
+  { tag: "nextjs", patterns: ['"next"'], files: ["package.json"] },
+  { tag: "nestjs", patterns: ['"@nestjs/core"'], files: ["package.json"] },
+
+  // Java frameworks (check pom.xml, build.gradle)
+  { tag: "spring", patterns: ["spring-boot", "spring-framework", "org.springframework"], files: ["pom.xml", "build.gradle", "build.gradle.kts"] },
+  { tag: "quarkus", patterns: ["quarkus", "io.quarkus"], files: ["pom.xml", "build.gradle", "build.gradle.kts"] },
+  { tag: "javaee", patterns: ["jakarta.", "javax.servlet", "jakarta.servlet"], files: ["pom.xml", "build.gradle", "build.gradle.kts"] },
+  { tag: "langchain4j", patterns: ["langchain4j"], files: ["pom.xml", "build.gradle", "build.gradle.kts"] },
+
+  // .NET frameworks (detected from topics / README)
+  { tag: "blazor", patterns: ["blazor", "Microsoft.AspNetCore.Components"], files: ["package.json"] },
+  { tag: "semantickernel", patterns: ["semantic-kernel", "Microsoft.SemanticKernel", "semantic_kernel"], files: ["requirements.txt", "pyproject.toml", "package.json"] },
+
+  // Ruby frameworks
+  { tag: "rubyonrails", patterns: ["rails", 'gem "rails"', "gem 'rails'"], files: ["Gemfile"] },
+
+  // AI/ML frameworks (cross-language — detected from topics only)
+  { tag: "rag", patterns: ["retrieval", "rag", "vector-search", "embedding"], files: [] },
+  { tag: "kernelmemory", patterns: ["kernel-memory", "Microsoft.KernelMemory"], files: ["package.json"] },
+];
+
+/**
+ * Badge-image hostname patterns to skip when looking for a preview image.
+ */
+const BADGE_PATTERNS = [
+  "shields.io",
+  "img.shields.io",
+  "badge",
+  "codecov.io",
+  "travis-ci.org",
+  "travis-ci.com",
+  "github.com/workflows",
+  "github.com/actions",
+  "coveralls.io",
+  "david-dm.org",
+  "snyk.io",
+];
+
 const REQUEST_TIMEOUT_MS = 10000;
 const MAX_AZURE_YAML_BYTES = 100 * 1024; // 100 KB
-const MAX_README_BYTES = 4 * 1024; // 4 KB
+const MAX_README_BYTES = 50 * 1024; // 50 KB
+const MAX_DEP_FILE_BYTES = 100 * 1024; // 100 KB
 const DEFAULT_MAX_BYTES = 512 * 1024; // 512 KB
 
 // ---------------------------------------------------------------------------
@@ -257,37 +318,47 @@ async function fetchAzureYaml(owner, repo, branch) {
 }
 
 /**
- * Fetch the first `# Heading` from README.md (limited to 4 KB).
+ * Fetch the full README.md content (up to 50 KB).
+ *
+ * The content is shared between title extraction and image extraction to
+ * avoid a duplicate HTTP request.
  *
  * @param {string} owner
  * @param {string} repo
  * @param {string} [branch]
  * @returns {Promise<string>}
  */
-async function fetchReadmeTitle(owner, repo, branch) {
+async function fetchReadme(owner, repo, branch) {
   const eo = encodeURIComponent(owner);
   const er = encodeURIComponent(repo);
 
-  let content;
   if (branch) {
-    content = await fetchHttps(
+    return fetchHttps(
       `https://raw.githubusercontent.com/${eo}/${er}/${encodeURIComponent(branch)}/README.md`,
       { maxSize: MAX_README_BYTES }
     );
-  } else {
-    try {
-      content = await fetchHttps(
-        `https://raw.githubusercontent.com/${eo}/${er}/main/README.md`,
-        { maxSize: MAX_README_BYTES }
-      );
-    } catch {
-      content = await fetchHttps(
-        `https://raw.githubusercontent.com/${eo}/${er}/master/README.md`,
-        { maxSize: MAX_README_BYTES }
-      );
-    }
   }
 
+  try {
+    return await fetchHttps(
+      `https://raw.githubusercontent.com/${eo}/${er}/main/README.md`,
+      { maxSize: MAX_README_BYTES }
+    );
+  } catch {
+    return fetchHttps(
+      `https://raw.githubusercontent.com/${eo}/${er}/master/README.md`,
+      { maxSize: MAX_README_BYTES }
+    );
+  }
+}
+
+/**
+ * Extract the first `# Heading` from README content.
+ *
+ * @param {string} content — raw README.md text
+ * @returns {string}
+ */
+function extractReadmeTitle(content) {
   const match = content.match(/^#\s+(.+)$/m);
   if (!match) return "";
 
@@ -295,6 +366,217 @@ async function fetchReadmeTitle(owner, repo, branch) {
     .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1") // strip markdown links
     .replace(/[*_`~]/g, "") // strip emphasis / code markers
     .trim();
+}
+
+/**
+ * Backwards-compatible wrapper — fetches the README and returns the title.
+ *
+ * @param {string} owner
+ * @param {string} repo
+ * @param {string} [branch]
+ * @returns {Promise<string>}
+ */
+async function fetchReadmeTitle(owner, repo, branch) {
+  const content = await fetchReadme(owner, repo, branch);
+  return extractReadmeTitle(content);
+}
+
+/**
+ * Determine whether a URL looks like a CI/CD badge image.
+ *
+ * @param {string} url
+ * @returns {boolean}
+ */
+function isBadgeUrl(url) {
+  const lower = url.toLowerCase();
+  return BADGE_PATTERNS.some((p) => lower.includes(p));
+}
+
+/**
+ * Convert a (possibly relative) image path to an absolute raw.githubusercontent URL.
+ *
+ * @param {string} rawUrl  — the URL as written in the README
+ * @param {string} owner
+ * @param {string} repo
+ * @param {string} branch
+ * @returns {string}  absolute URL or empty string when invalid
+ */
+function resolveImageUrl(rawUrl, owner, repo, branch) {
+  if (!rawUrl) return "";
+
+  const trimmed = rawUrl.trim();
+  if (!trimmed) return "";
+
+  // Absolute URL — use as-is after SSRF validation
+  if (/^https?:\/\//i.test(trimmed)) {
+    try {
+      validateUrl(trimmed, "Preview image");
+      return trimmed;
+    } catch {
+      return "";
+    }
+  }
+
+  // Relative path → convert to raw.githubusercontent.com
+  let relPath = trimmed;
+
+  // Strip query params / fragment
+  relPath = relPath.split("?")[0].split("#")[0];
+
+  // Normalise leading ./  ../ or /
+  if (relPath.startsWith("./")) {
+    relPath = relPath.slice(2);
+  } else if (relPath.startsWith("/")) {
+    relPath = relPath.slice(1);
+  }
+  // ../path stays as-is (raw.githubusercontent will resolve it)
+
+  if (!relPath) return "";
+
+  const eo = encodeURIComponent(owner);
+  const er = encodeURIComponent(repo);
+  const eb = encodeURIComponent(branch);
+
+  // Encode each path segment individually so slashes are preserved
+  const encodedPath = relPath
+    .split("/")
+    .map(encodeURIComponent)
+    .join("/");
+
+  return `https://raw.githubusercontent.com/${eo}/${er}/${eb}/${encodedPath}`;
+}
+
+/**
+ * Extract the first non-badge image from README content.
+ *
+ * Supports both markdown `![alt](url)` and HTML `<img src="url">` formats.
+ *
+ * @param {string} content — raw README.md text
+ * @param {string} owner
+ * @param {string} repo
+ * @param {string} branch
+ * @returns {string}  absolute image URL or empty string
+ */
+function extractReadmeImage(content, owner, repo, branch) {
+  if (!content) return "";
+
+  // Collect candidate image URLs from markdown and HTML patterns
+  const candidates = [];
+
+  // Markdown images: ![alt](url)
+  const mdImageRe = /!\[[^\]]*\]\(([^)]+)\)/g;
+  let match;
+  while ((match = mdImageRe.exec(content)) !== null) {
+    candidates.push(match[1].trim());
+  }
+
+  // HTML img tags: <img src="url"> or <img ... src='url'> or <img ... src=url>
+  const htmlImageRe = /<img\s[^>]*?src\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]*))/gi;
+  while ((match = htmlImageRe.exec(content)) !== null) {
+    const src = (match[1] || match[2] || match[3] || "").trim();
+    if (src) candidates.push(src);
+  }
+
+  // Return the first non-badge image
+  for (const raw of candidates) {
+    if (isBadgeUrl(raw)) continue;
+
+    const resolved = resolveImageUrl(raw, owner, repo, branch);
+    if (resolved) return resolved;
+  }
+
+  return "";
+}
+
+/**
+ * Detect frameworks by scanning dependency files and GitHub topics.
+ *
+ * Every individual file fetch is non-fatal — a 404 is silently skipped.
+ *
+ * @param {string} owner
+ * @param {string} repo
+ * @param {string} branch
+ * @param {string[]} topics        — GitHub repository topics
+ * @param {string}   readmeContent — already-fetched README text
+ * @returns {Promise<string[]>}  deduplicated array of framework tag names
+ */
+async function detectFrameworks(owner, repo, branch, topics, readmeContent) {
+  const eo = encodeURIComponent(owner);
+  const er = encodeURIComponent(repo);
+  const eb = encodeURIComponent(branch);
+
+  // Determine which files we actually need to fetch
+  const neededFiles = new Set();
+  for (const d of FRAMEWORK_DETECTORS) {
+    for (const f of d.files) neededFiles.add(f);
+  }
+
+  // Fetch all dependency files in parallel (non-fatal)
+  /** @type {Record<string, string>} */
+  const fileContents = {};
+
+  const fetchPromises = Array.from(neededFiles).map(async (filename) => {
+    const maxSize =
+      filename === "package.json" || filename === "pom.xml"
+        ? MAX_DEP_FILE_BYTES
+        : MAX_README_BYTES; // 50 KB for others
+    try {
+      const body = await fetchHttps(
+        `https://raw.githubusercontent.com/${eo}/${er}/${eb}/${encodeURIComponent(filename)}`,
+        { maxSize }
+      );
+      fileContents[filename] = body;
+    } catch {
+      // File not found or error — skip silently
+    }
+  });
+
+  await Promise.all(fetchPromises);
+
+  const detected = new Set();
+  const topicsLower = (topics || []).map((t) => t.toLowerCase());
+  const readmeLower = (readmeContent || "").toLowerCase();
+
+  for (const detector of FRAMEWORK_DETECTORS) {
+    // Check GitHub topics
+    if (topicsLower.includes(detector.tag.toLowerCase())) {
+      detected.add(detector.tag);
+      continue;
+    }
+
+    // Check dependency file contents
+    let found = false;
+    for (const filename of detector.files) {
+      const content = fileContents[filename];
+      if (!content) continue;
+
+      const contentLower = content.toLowerCase();
+      for (const pattern of detector.patterns) {
+        if (contentLower.includes(pattern.toLowerCase())) {
+          found = true;
+          break;
+        }
+      }
+      if (found) break;
+    }
+
+    if (found) {
+      detected.add(detector.tag);
+      continue;
+    }
+
+    // Fallback: check README for prominent mention
+    if (readmeLower) {
+      for (const pattern of detector.patterns) {
+        if (readmeLower.includes(pattern.toLowerCase())) {
+          detected.add(detector.tag);
+          break;
+        }
+      }
+    }
+  }
+
+  return Array.from(detected);
 }
 
 /**
@@ -328,9 +610,11 @@ async function extractMetadata(repoUrl) {
     frameworks: [],
     azureServices: [],
     iacProvider: "",
+    previewImage: "",
   };
 
   let defaultBranch = "main";
+  let topics = [];
 
   // ---- GitHub API ---------------------------------------------------------
   try {
@@ -356,7 +640,7 @@ async function extractMetadata(repoUrl) {
       .filter((lang) => LANGUAGE_MAP[lang])
       .map((lang) => LANGUAGE_MAP[lang]);
 
-    const topics = repoData.topics || [];
+    topics = repoData.topics || [];
     result.azureServices = topics
       .filter((topic) => AZURE_SERVICE_MAP[topic])
       .map((topic) => AZURE_SERVICE_MAP[topic])
@@ -396,18 +680,41 @@ async function extractMetadata(repoUrl) {
     // azure.yaml not found or invalid — non-fatal
   }
 
-  // ---- README title -------------------------------------------------------
+  // ---- README (title + preview image) --------------------------------------
+  let readmeContent = "";
   try {
-    const readmeTitle = await fetchReadmeTitle(
+    readmeContent = await fetchReadme(owner, repo, defaultBranch);
+    if (!result.title) {
+      const readmeTitle = extractReadmeTitle(readmeContent);
+      if (readmeTitle) {
+        result.title = sanitize(readmeTitle, 200);
+      }
+    }
+
+    const previewImage = extractReadmeImage(
+      readmeContent,
       owner,
       repo,
       defaultBranch
     );
-    if (!result.title && readmeTitle) {
-      result.title = sanitize(readmeTitle, 200);
+    if (previewImage) {
+      result.previewImage = previewImage;
     }
   } catch {
     // README not available — non-fatal
+  }
+
+  // ---- Framework detection ------------------------------------------------
+  try {
+    result.frameworks = await detectFrameworks(
+      owner,
+      repo,
+      defaultBranch,
+      topics,
+      readmeContent
+    );
+  } catch {
+    // Framework detection failed — non-fatal
   }
 
   // ---- IaC detection ------------------------------------------------------
@@ -466,8 +773,13 @@ module.exports = {
   parseRepoUrl,
   fetchGitHubApi,
   fetchAzureYaml,
+  fetchReadme,
   fetchReadmeTitle,
+  extractReadmeTitle,
+  extractReadmeImage,
+  detectFrameworks,
   LANGUAGE_MAP,
   AZURE_SERVICE_MAP,
   MICROSOFT_ORGS,
+  FRAMEWORK_DETECTORS,
 };

@@ -66,6 +66,16 @@ jobs:
             }
 
             const issueNumber = parseInt(issueMatch[1], 10);
+
+            // Cross-validate: branch number must match the referenced issue number.
+            // Prevents a crafted PR body from referencing a different issue than
+            // the one that actually triggered the submission workflow.
+            const branchNumber = prBranch.replace('template-submission-', '');
+            if (String(issueNumber) !== branchNumber) {
+              core.setFailed(`Branch "${prBranch}" (submission ${branchNumber}) does not match PR body issue #${issueNumber}`);
+              return;
+            }
+
             let issue;
             try {
               const response = await github.rest.issues.get({

@@ -95,19 +95,62 @@ jobs:
           INPUT_ADDITIONAL_TAGS: ${{ inputs.additional_tags }}
         with:
           script: |
+            // ── Security: shared validation and sanitization helpers ──
+            // Strip HTML tags from free-text fields (defense-in-depth against stored XSS)
+            function stripHtml(s) {
+              return s ? s.replace(/<[^>]*>/g, '').trim() : '';
+            }
+            const MAX_FIELD_LEN = { title: 200, description: 2000, author: 100, url: 500 };
+            const VALID_AUTHOR_TYPES = ['Community', 'Microsoft'];
+            const VALID_IAC_PROVIDERS = ['Bicep', 'Terraform', 'Both'];
+
+            // Validates field lengths, enum values; sanitizes text; emits step outputs.
+            // Used by both workflow_dispatch and issue-trigger paths.
+            function validateAndEmit(f) {
+              if (!f.sourceRepo || !f.title || !f.description || !f.author || !f.authorUrl) {
+                core.setFailed('Missing required fields');
+                return;
+              }
+              if (f.title.length > MAX_FIELD_LEN.title) { core.setFailed(`Title exceeds ${MAX_FIELD_LEN.title} chars`); return; }
+              if (f.description.length > MAX_FIELD_LEN.description) { core.setFailed(`Description exceeds ${MAX_FIELD_LEN.description} chars`); return; }
+              if (f.author.length > MAX_FIELD_LEN.author) { core.setFailed(`Author exceeds ${MAX_FIELD_LEN.author} chars`); return; }
+              if (f.sourceRepo.length > MAX_FIELD_LEN.url) { core.setFailed('Source repo URL too long'); return; }
+              if (f.authorUrl.length > MAX_FIELD_LEN.url) { core.setFailed('Author URL too long'); return; }
+
+              // Validate enums — blocks textarea header-injection attacks where
+              // an attacker injects e.g. "### Author Type\nMicrosoft" in Description
+              const safeAuthorType = VALID_AUTHOR_TYPES.includes(f.authorType) ? f.authorType : 'Community';
+              const safeIac = VALID_IAC_PROVIDERS.includes(f.iacProvider) ? f.iacProvider : 'Bicep';
+
+              core.setOutput('source_repo', f.sourceRepo);
+              core.setOutput('title', stripHtml(f.title));
+              core.setOutput('description', stripHtml(f.description));
+              core.setOutput('author', stripHtml(f.author));
+              core.setOutput('author_url', f.authorUrl);
+              core.setOutput('author_type', safeAuthorType);
+              core.setOutput('preview_image', f.previewImage || '');
+              core.setOutput('iac_provider', safeIac);
+              core.setOutput('languages', f.languages || '');
+              core.setOutput('frameworks', f.frameworks || '');
+              core.setOutput('azure_services', f.azureServices || '');
+              core.setOutput('additional_tags', f.additionalTags || '');
+            }
+
             if (context.eventName === 'workflow_dispatch') {
-              core.setOutput('source_repo', process.env.INPUT_SOURCE_REPO);
-              core.setOutput('title', process.env.INPUT_TITLE);
-              core.setOutput('description', process.env.INPUT_DESCRIPTION);
-              core.setOutput('author', process.env.INPUT_AUTHOR);
-              core.setOutput('author_url', process.env.INPUT_AUTHOR_URL);
-              core.setOutput('author_type', process.env.INPUT_AUTHOR_TYPE);
-              core.setOutput('preview_image', process.env.INPUT_PREVIEW_IMAGE || '');
-              core.setOutput('iac_provider', process.env.INPUT_IAC_PROVIDER);
-              core.setOutput('languages', process.env.INPUT_LANGUAGES || '');
-              core.setOutput('frameworks', process.env.INPUT_FRAMEWORKS || '');
-              core.setOutput('azure_services', process.env.INPUT_AZURE_SERVICES || '');
-              core.setOutput('additional_tags', process.env.INPUT_ADDITIONAL_TAGS || '');
+              validateAndEmit({
+                sourceRepo: process.env.INPUT_SOURCE_REPO,
+                title: process.env.INPUT_TITLE,
+                description: process.env.INPUT_DESCRIPTION,
+                author: process.env.INPUT_AUTHOR,
+                authorUrl: process.env.INPUT_AUTHOR_URL,
+                authorType: process.env.INPUT_AUTHOR_TYPE,
+                previewImage: process.env.INPUT_PREVIEW_IMAGE,
+                iacProvider: process.env.INPUT_IAC_PROVIDER,
+                languages: process.env.INPUT_LANGUAGES,
+                frameworks: process.env.INPUT_FRAMEWORKS,
+                azureServices: process.env.INPUT_AZURE_SERVICES,
+                additionalTags: process.env.INPUT_ADDITIONAL_TAGS,
+              });
               return;
             }
 
@@ -138,23 +181,10 @@ jobs:
             const azureServices = extractField(body, 'Azure Services');
             const additionalTags = extractField(body, 'Additional Tags');
 
-            if (!sourceRepo || !title || !description || !author || !authorUrl) {
-              core.setFailed('Missing required fields in issue body');
-              return;
-            }
-
-            core.setOutput('source_repo', sourceRepo);
-            core.setOutput('title', title);
-            core.setOutput('description', description);
-            core.setOutput('author', author);
-            core.setOutput('author_url', authorUrl);
-            core.setOutput('author_type', authorType);
-            core.setOutput('preview_image', previewImage);
-            core.setOutput('iac_provider', iacProvider);
-            core.setOutput('languages', languages);
-            core.setOutput('frameworks', frameworks);
-            core.setOutput('azure_services', azureServices);
-            core.setOutput('additional_tags', additionalTags);
+            validateAndEmit({
+              sourceRepo, title, description, author, authorUrl, authorType,
+              previewImage, iacProvider, languages, frameworks, azureServices, additionalTags,
+            });
 
       - name: Validate template repository
         id: validate
@@ -184,11 +214,13 @@ jobs:
         uses: actions/github-script@v8
         with:
           script: |
+            // Sanitize error output to prevent markdown code-fence breakout
+            const sanitizedErrors = (process.env.ERRORS || '').replace(/`/g, "'");
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.payload.issue.number,
-              body: `❌ **Template validation failed**\n\nPlease check your repository URL and try again.\n\n\`\`\`\n${process.env.ERRORS}\n\`\`\``
+              body: `❌ **Template validation failed**\n\nPlease check your repository URL and try again.\n\n\`\`\`\n${sanitizedErrors}\n\`\`\``
             });
         env:
           ERRORS: ${{ steps.validate.outputs.errors }}
@@ -260,8 +292,9 @@ jobs:
               if (!value || value === '_No response_') return [];
               return value
                 .split(',')
-                .map(t => t.trim())
-                .filter(t => t.length > 0);
+                .map(t => t.replace(/<[^>]*>/g, '').trim())
+                .filter(t => t.length > 0 && t.length <= 50)
+                .slice(0, 20);
             }
 
             const templatesPath = path.join('website', 'static', 'templates.json');
@@ -313,8 +346,19 @@ jobs:
               return;
             }
 
-            // Build tags array
+            // Defense-in-depth: re-sanitize free-text and re-validate enums
+            function sanitizeText(v) {
+              return v ? v.replace(/<[^>]*>/g, '').trim() : '';
+            }
+            const validAuthorTypes = ['Community', 'Microsoft'];
+            const validIacProviders = ['Bicep', 'Terraform', 'Both'];
             const authorType = process.env.TPL_AUTHOR_TYPE;
+            if (!validAuthorTypes.includes(authorType)) {
+              core.setFailed(`Invalid author type: "${authorType}". Must be Community or Microsoft.`);
+              return;
+            }
+
+            // Build tags array
             const tags = authorType === 'Microsoft' ? ['msft', 'new'] : ['community', 'new'];
             const additionalTags = parseCsvTags(process.env.TPL_ADDITIONAL_TAGS);
             const adminOnlyTags = ['aicollection', 'popular', 'featured'];
@@ -328,8 +372,12 @@ jobs:
               }
             }
 
-            // Build IaC array
+            // Build IaC array (re-validate enum)
             const iacProvider = process.env.TPL_IAC_PROVIDER;
+            if (!validIacProviders.includes(iacProvider)) {
+              core.setFailed(`Invalid IaC provider: "${iacProvider}". Must be Bicep, Terraform, or Both.`);
+              return;
+            }
             let iac;
             if (iacProvider === 'Both') {
               iac = ['bicep', 'terraform'];
@@ -339,11 +387,11 @@ jobs:
 
             // Build template entry matching existing schema
             const entry = {
-              title: process.env.TPL_TITLE,
-              description: process.env.TPL_DESCRIPTION,
+              title: sanitizeText(process.env.TPL_TITLE),
+              description: sanitizeText(process.env.TPL_DESCRIPTION),
               preview: previewImage || './templates/images/test.png',
               authorUrl: authorUrl,
-              author: process.env.TPL_AUTHOR,
+              author: sanitizeText(process.env.TPL_AUTHOR),
               source: sourceRepo,
               tags: tags,
               id: validation.generatedId

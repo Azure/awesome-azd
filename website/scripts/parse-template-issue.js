@@ -16,7 +16,13 @@ const fs = require("fs");
  * @returns {string} The extracted value, or empty string if not found.
  */
 function extractField(body, fieldName) {
-  const regex = new RegExp(`### ${fieldName}\\s*\\n\\s*([^\\n]+)`, "i");
+  // Match heading exactly, allowing an optional " (...)" parenthetical suffix
+  // added by the auto-detection form.  This prevents "Author" from matching
+  // "Author URL" or "Author Type" headings.
+  const regex = new RegExp(
+    `### ${fieldName}(?:\\s*\\n|\\s+\\([^\\n]*\\n)\\s*([^\\n]+)`,
+    "i"
+  );
   const match = body.match(regex);
   if (!match) return "";
   const value = match[1].trim();
@@ -63,13 +69,8 @@ function parseIssueBody({ eventName, issueBody, inputs }) {
     fields.azure_services = extractField(body, "Azure Services");
   }
 
-  const required = [
-    "source_repo",
-    "template_title",
-    "description",
-    "author",
-    "author_url",
-  ];
+  // Only the repository URL is required — the rest can be auto-extracted.
+  const required = ["source_repo"];
   const missing = required.filter((k) => !fields[k]);
   if (missing.length > 0) {
     return {

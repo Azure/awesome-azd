@@ -6,14 +6,14 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for submitting your azd template! Please fill out the information below.
-        Your template repository will be validated automatically.
+        Thanks for submitting your azd template! Just provide the repository URL below.
+        Most fields are **auto-detected** from your repo — only fill them in if you want to override the detected values.
 
   - type: input
     id: source-repo
     attributes:
       label: "Source Repository"
-      description: "GitHub repository URL for your template"
+      description: "GitHub repository URL for your template (we'll auto-detect the rest!)"
       placeholder: "https://github.com/org/repo"
     validations:
       required: true
@@ -21,71 +21,72 @@ body:
   - type: input
     id: template-title
     attributes:
-      label: "Template Title"
-      description: "Short title for your template"
+      label: "Template Title (optional — auto-detected from repo)"
+      description: "Override the auto-detected title"
     validations:
-      required: true
+      required: false
 
   - type: textarea
     id: description
     attributes:
-      label: "Description"
-      description: "1-2 sentence description of your template"
+      label: "Description (optional — auto-detected from repo)"
+      description: "Override the auto-detected description"
     validations:
-      required: true
+      required: false
 
   - type: input
     id: author
     attributes:
-      label: "Author"
-      description: "Your name or organization"
+      label: "Author (optional — auto-detected from repo owner)"
+      description: "Override the auto-detected author name"
     validations:
-      required: true
+      required: false
 
   - type: input
     id: author-url
     attributes:
-      label: "Author URL"
-      description: "URL to your GitHub profile or organization page"
-      placeholder: "https://github.com/username"
+      label: "Author URL (optional — auto-detected from repo owner)"
+      description: "Override the auto-detected author URL"
     validations:
-      required: true
+      required: false
 
   - type: dropdown
     id: author-type
     attributes:
-      label: "Author Type"
-      description: "Is this a Microsoft-authored or community template?"
+      label: "Author Type (optional — auto-detected)"
+      description: "Override the auto-detected author type"
       options:
+        - ""
         - Community
         - Microsoft
     validations:
-      required: true
+      required: false
 
   - type: input
     id: preview-image
     attributes:
-      label: "Preview Image URL"
-      description: "URL to an architecture diagram or screenshot (optional)"
+      label: "Preview Image URL (optional)"
+      description: "URL to an architecture diagram or screenshot"
     validations:
       required: false
 
   - type: dropdown
     id: iac-provider
     attributes:
-      label: "IaC Provider"
-      description: "Infrastructure as Code provider used by your template"
+      label: "IaC Provider (optional — auto-detected from infra/ directory)"
+      description: "Override the auto-detected IaC provider"
       options:
+        - ""
         - Bicep
         - Terraform
         - Both
     validations:
-      required: true
+      required: false
 
   - type: input
     id: languages
     attributes:
-      label: "Languages"
+      label: "Languages (optional — auto-detected from repo)"
       description: "Comma-separated language tags (e.g., python, javascript)"
     validations:
       required: false
@@ -93,7 +94,7 @@ body:
   - type: input
     id: frameworks
     attributes:
-      label: "Frameworks"
+      label: "Frameworks (optional)"
       description: "Comma-separated framework tags (e.g., reactjs, fastapi)"
     validations:
       required: false
@@ -101,7 +102,7 @@ body:
   - type: input
     id: azure-services
     attributes:
-      label: "Azure Services"
+      label: "Azure Services (optional — auto-detected from repo topics)"
       description: "Comma-separated Azure service tags (e.g., aca, openai)"
     validations:
       required: false

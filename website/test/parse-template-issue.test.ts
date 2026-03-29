@@ -145,7 +145,7 @@ describe("parseIssueBody (issues event)", () => {
     expect(fields.azure_services).toBe("App Service, Cosmos DB");
   });
 
-  test("returns error when required fields are missing", () => {
+  test("succeeds when only source_repo is provided (other fields optional)", () => {
     const partialBody = [
       "### Source Repository",
       "https://github.com/org/repo",
@@ -154,22 +154,26 @@ describe("parseIssueBody (issues event)", () => {
       "My Template",
     ].join("\n");
 
-    const { error } = parseIssueBody({
+    const { fields, error } = parseIssueBody({
       eventName: "issues",
       issueBody: partialBody,
     });
-    expect(error).toMatch(/Missing required fields/);
-    expect(error).toMatch(/description/);
-    expect(error).toMatch(/author/);
-    expect(error).toMatch(/author_url/);
+    expect(error).toBeUndefined();
+    expect(fields.source_repo).toBe("https://github.com/org/repo");
+    expect(fields.template_title).toBe("My Template");
+    // Optional fields that were not in the body are empty strings
+    expect(fields.description).toBe("");
+    expect(fields.author).toBe("");
+    expect(fields.author_url).toBe("");
   });
 
-  test("returns error when body is empty", () => {
+  test("returns error when body is empty (source_repo missing)", () => {
     const { error } = parseIssueBody({
       eventName: "issues",
       issueBody: "",
     });
     expect(error).toMatch(/Missing required fields/);
+    expect(error).toMatch(/source_repo/);
   });
 
   test("treats _No response_ in required fields as missing", () => {
@@ -236,7 +240,7 @@ describe("parseIssueBody (workflow_dispatch)", () => {
     expect(fields.preview_image).toBe("");
   });
 
-  test("returns error when required dispatch inputs are empty", () => {
+  test("returns error when source_repo is empty", () => {
     const { error } = parseIssueBody({
       eventName: "workflow_dispatch",
       inputs: {
@@ -248,7 +252,8 @@ describe("parseIssueBody (workflow_dispatch)", () => {
       },
     });
     expect(error).toMatch(/source_repo/);
-    expect(error).toMatch(/author_url/);
+    // author_url is no longer required — should not appear in error
+    expect(error).not.toMatch(/author_url/);
   });
 
   test("handles undefined inputs gracefully", () => {
@@ -257,6 +262,7 @@ describe("parseIssueBody (workflow_dispatch)", () => {
       inputs: {},
     });
     expect(error).toMatch(/Missing required fields/);
+    expect(error).toMatch(/source_repo/);
   });
 
   test("trims whitespace from input values", () => {
@@ -278,5 +284,88 @@ describe("parseIssueBody (workflow_dispatch)", () => {
     });
     expect(fields.source_repo).toBe("https://github.com/org/repo");
     expect(fields.template_title).toBe("My Template");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// parseIssueBody — new heading format with "(optional ...)" suffixes
+// ---------------------------------------------------------------------------
+describe("parseIssueBody (auto-detect heading format)", () => {
+  const autoDetectBody = [
+    "### Source Repository",
+    "https://github.com/org/repo",
+    "",
+    "### Template Title (optional \u2014 auto-detected from repo)",
+    "My Custom Title",
+    "",
+    "### Description (optional \u2014 auto-detected from repo)",
+    "A great template",
+    "",
+    "### Author (optional \u2014 auto-detected from repo owner)",
+    "Jane Doe",
+    "",
+    "### Author URL (optional \u2014 auto-detected from repo owner)",
+    "https://github.com/janedoe",
+    "",
+    "### Author Type (optional \u2014 auto-detected)",
+    "Community",
+    "",
+    "### Preview Image URL (optional)",
+    "_No response_",
+    "",
+    "### IaC Provider (optional \u2014 auto-detected from infra/ directory)",
+    "Bicep",
+    "",
+    "### Languages (optional \u2014 auto-detected from repo)",
+    "Python, JavaScript",
+    "",
+    "### Frameworks (optional)",
+    "_No response_",
+    "",
+    "### Azure Services (optional \u2014 auto-detected from repo topics)",
+    "aca, openai",
+  ].join("\n");
+
+  test("parses all fields from auto-detect heading format", () => {
+    const { fields, error } = parseIssueBody({
+      eventName: "issues",
+      issueBody: autoDetectBody,
+    });
+    expect(error).toBeUndefined();
+    expect(fields.source_repo).toBe("https://github.com/org/repo");
+    expect(fields.template_title).toBe("My Custom Title");
+    expect(fields.description).toBe("A great template");
+    expect(fields.author).toBe("Jane Doe");
+    expect(fields.author_url).toBe("https://github.com/janedoe");
+    expect(fields.author_type).toBe("Community");
+    expect(fields.preview_image).toBe("");
+    expect(fields.iac_provider).toBe("Bicep");
+    expect(fields.languages).toBe("Python, JavaScript");
+    expect(fields.frameworks).toBe("");
+    expect(fields.azure_services).toBe("aca, openai");
+  });
+
+  test("empty optional fields are returned as empty strings", () => {
+    const minimalBody = [
+      "### Source Repository",
+      "https://github.com/org/repo",
+    ].join("\n");
+
+    const { fields, error } = parseIssueBody({
+      eventName: "issues",
+      issueBody: minimalBody,
+    });
+    expect(error).toBeUndefined();
+    expect(fields.source_repo).toBe("https://github.com/org/repo");
+    expect(fields.template_title).toBe("");
+    expect(fields.description).toBe("");
+    expect(fields.author).toBe("");
+    expect(fields.author_url).toBe("");
+    expect(fields.author_type).toBe("");
+    expect(fields.preview_image).toBe("");
+    expect(fields.iac_provider).toBe("");
+    expect(fields.languages).toBe("");
+    expect(fields.frameworks).toBe("");
+    expect(fields.azure_services).toBe("");
   });
 });

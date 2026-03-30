@@ -16,18 +16,18 @@ const fs = require("fs");
  * @returns {string} The extracted value, or empty string if not found.
  */
 function extractField(body, fieldName) {
-  // Match heading exactly, allowing an optional " (...)" parenthetical suffix
-  // added by the auto-detection form.  This prevents "Author" from matching
-  // "Author URL" or "Author Type" headings.
+  // Capture everything after the heading up to the next heading or end of body.
+  // Allows an optional parenthetical suffix on the heading line.
   const regex = new RegExp(
-    `### ${fieldName}(?:\\s*\\n|\\s+\\([^\\n]*\\n)\\s*([^\\n]+)`,
+    `### ${fieldName}(?:\\s*\\([^)]*\\))?\\s*\\n([\\s\\S]*?)(?=\\n### |$)`,
     "i"
   );
   const match = body.match(regex);
   if (!match) return "";
   const value = match[1].trim();
   // Treat GitHub's default placeholder as empty
-  return value === "_No response_" ? "" : value;
+  if (!value || value === "_No response_") return "";
+  return value;
 }
 
 /**
@@ -83,13 +83,24 @@ function parseIssueBody({ eventName, issueBody, inputs }) {
 }
 
 /**
+ * Sanitize a value for safe use as a GitHub Actions single-line output.
+ * Newlines are replaced with spaces to prevent output injection.
+ * @param {unknown} value
+ * @returns {string}
+ */
+function sanitizeOutputValue(value) {
+  if (value === null || value === undefined) return "";
+  return String(value).replace(/[\r\n]+/g, " ").trim();
+}
+
+/**
  * Write key=value pairs to the GITHUB_OUTPUT file.
  * @param {string} outputPath - File path from $GITHUB_OUTPUT
  * @param {Record<string, string>} fields
  */
 function writeOutputs(outputPath, fields) {
   const lines = Object.entries(fields)
-    .map(([k, v]) => `${k}=${v}`)
+    .map(([k, v]) => `${k}=${sanitizeOutputValue(v)}`)
     .join("\n");
   fs.appendFileSync(outputPath, lines + "\n");
 }

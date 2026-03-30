@@ -6,12 +6,32 @@ const net = require("net");
 const { URL } = require("url");
 
 const PRIVATE_IPV4_RANGES = [
+  // Loopback
   /^127\./,
+  // RFC1918 private space
   /^10\./,
   /^172\.(1[6-9]|2\d|3[01])\./,
   /^192\.168\./,
+  // Link-local
   /^169\.254\./,
+  // "This" network
   /^0\./,
+  // Carrier-Grade NAT (RFC 6598) 100.64.0.0/10
+  /^100\.(6[4-9]|[7-9]\d|1[01]\d|12[0-7])\./,
+  // IETF protocol assignments 192.0.0.0/24
+  /^192\.0\.0\./,
+  // Deprecated 6to4 relay anycast 192.88.99.0/24
+  /^192\.88\.99\./,
+  // Documentation ranges (RFC 5737)
+  /^192\.0\.2\./,
+  /^198\.51\.100\./,
+  /^203\.0\.113\./,
+  // Benchmarking (RFC 2544) 198.18.0.0/15
+  /^198\.1[89]\./,
+  // Multicast 224.0.0.0/4
+  /^(22[4-9]|23\d)\./,
+  // Reserved for future use 240.0.0.0/4 (includes broadcast)
+  /^(24\d|25[0-5])\./,
 ];
 
 /**
@@ -67,17 +87,9 @@ function isPrivateHost(hostname) {
 
   // Strip brackets for IPv6 literal check
   const bare = hostname.replace(/^\[|\]$/g, "");
+  // net.isIP detects real IP literals (URL parser normalises hex/octal);
+  // safeLookup catches DNS-resolved private IPs for non-literal hostnames.
   if (net.isIP(bare)) return isPrivateIP(bare);
-
-  // IPv4 patterns (URL parser normalises hex/octal to dotted decimal)
-  if (PRIVATE_IPV4_RANGES.some((re) => re.test(hostname))) return true;
-
-  // Bracketed IPv6 patterns the URL parser produces
-  if (/^\[::1\]$/.test(hostname)) return true;
-  if (/^\[::\]$/.test(hostname)) return true;
-  if (/^\[fe[89ab]/i.test(hostname)) return true;
-  if (/^\[f[cd]/i.test(hostname)) return true;
-  if (/^\[::ffff:/i.test(hostname)) return true;
 
   return false;
 }
@@ -149,6 +161,12 @@ function validateUrl(value, label) {
   if (parsed.protocol !== "https:") {
     throw new Error(
       `${label} URL must use HTTPS (got "${parsed.protocol}")`
+    );
+  }
+  // Reject credentials in URLs to prevent accidental token leakage
+  if (parsed.username || parsed.password) {
+    throw new Error(
+      `${label} URL must not contain credentials (userinfo)`
     );
   }
   if (isPrivateHost(parsed.hostname)) {

@@ -123,7 +123,7 @@ function updateTemplatesJson({
     preview: previewImage || "templates/images/default-template.png",
     authorUrl,
     author,
-    source: sourceRepo,
+    source: canonicalSource,
     tags,
     IaC: iac,
     id: generateId(),
@@ -141,12 +141,16 @@ function updateTemplatesJson({
 
 /**
  * Write key=value pairs to the GITHUB_OUTPUT file.
+ * Normalizes values to a single line to prevent output injection.
  * @param {string} outputPath
  * @param {Record<string, string>} outputs
  */
 function writeOutputs(outputPath, outputs) {
   const lines = Object.entries(outputs)
-    .map(([k, v]) => `${k}=${v}`)
+    .map(([k, v]) => {
+      const safeValue = String(v).replace(/[\r\n]+/g, " ").trim();
+      return `${k}=${safeValue}`;
+    })
     .join("\n");
   fs.appendFileSync(outputPath, lines + "\n");
 }

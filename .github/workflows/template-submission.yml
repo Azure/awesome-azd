@@ -2,7 +2,7 @@ name: Template Submission
 
 on:
   issues:
-    types: [labeled]
+    types: [opened, labeled]
   workflow_dispatch:
     inputs:
       source_repo:
@@ -133,17 +133,20 @@ jobs:
 
       - name: Comment on validation failure
         if: steps.validate.outputs.valid == 'false' && github.event_name != 'workflow_dispatch'
-        uses: actions/github-script@7888e9ef07d6bca382a90e753d77e014ff4fd756 # v8
         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ERRORS: ${{ steps.validate.outputs.errors }}
-        with:
-          script: |
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.payload.issue.number,
-              body: `❌ **Template validation failed**\n\nPlease check your repository URL and try again.\n\n\`\`\`\n${process.env.ERRORS}\n\`\`\``
-            });
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh issue comment "$ISSUE_NUMBER" \
+            --repo "$GITHUB_REPOSITORY" \
+            --body "❌ **Template validation failed**
+
+          Please check your repository URL and try again.
+
+          \`\`\`
+          $ERRORS
+          \`\`\`"
 
       - name: Update templates.json
         id: update
@@ -185,26 +188,27 @@ jobs:
 
       - name: Comment on success
         if: steps.validate.outputs.valid == 'true' && steps.update.outputs.skipped != 'true' && github.event_name != 'workflow_dispatch'
-        uses: actions/github-script@7888e9ef07d6bca382a90e753d77e014ff4fd756 # v8
-        with:
-          script: |
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.payload.issue.number,
-              body: `✅ **Template validated successfully!**\n\nA pull request has been created to add your template to the gallery. It will be reviewed by the maintainers shortly.`
-            });
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh issue comment "$ISSUE_NUMBER" \
+            --repo "$GITHUB_REPOSITORY" \
+            --body "✅ **Template validated successfully!**
+
+          A pull request has been created to add your template to the gallery. It will be reviewed by the maintainers shortly."
 
       - name: Comment on duplicate
         if: steps.update.outputs.skipped == 'true' && github.event_name != 'workflow_dispatch'
-        uses: actions/github-script@7888e9ef07d6bca382a90e753d77e014ff4fd756 # v8
         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SKIP_REASON: ${{ steps.update.outputs.skip_reason }}
-        with:
-          script: |
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.payload.issue.number,
-              body: `⚠️ **Template submission skipped**\n\n${process.env.SKIP_REASON}\n\nIf you believe this is an error, please comment on this issue.`
-            });
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh issue comment "$ISSUE_NUMBER" \
+            --repo "$GITHUB_REPOSITORY" \
+            --body "⚠️ **Template submission skipped**
+
+          $SKIP_REASON
+
+          If you believe this is an error, please comment on this issue."

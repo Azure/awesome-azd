@@ -65,8 +65,9 @@ async function main() {
       (extracted.azureServices || []).join(", "),
   };
 
+  // Sanitize newlines to prevent output injection
   const lines = Object.entries(merged)
-    .map(([k, v]) => `${k}=${v}`)
+    .map(([k, v]) => `${k}=${String(v).replace(/[\r\n]+/g, " ").trim()}`)
     .join("\n");
   fs.appendFileSync(outputPath, lines + "\n");
 

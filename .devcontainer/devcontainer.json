@@ -3,8 +3,9 @@
     "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "features": {
         "ghcr.io/devcontainers/features/node:1": {
-            "version": "24"
+            "version": "lts"
         },
+        "ghcr.io/devcontainers/features/git:1": {},
         "ghcr.io/devcontainers/features/github-cli:1": {}
     },
     "customizations": {
@@ -15,6 +16,5 @@
                 "eamodio.gitlens"
             ]
         }
-    },
-    "postCreateCommand": "cd website && npm ci"
+    }
 }

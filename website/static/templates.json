@@ -7001,68 +7001,9 @@
     "id": "4218b822-4eca-451e-8b9b-c89a9be0dec5"
   },
   {
-    "title": "Host MCP SDK Server on Azure Functions - Python",
-    "description": "Host remote MCP servers built with the official Python MCP SDK on Azure Functions as custom handlers. Demonstrates weather tools and On-Behalf-Of (OBO) flow for Microsoft Graph API access.",
-    "preview": "./templates/images/test.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Azure Samples",
-    "source": "https://github.com/Azure-Samples/mcp-sdk-functions-hosting-python",
-    "tags": [
-      "msft",
-      "ai",
-      "mcp",
-      "new"
-    ],
-    "languages": [
-      "python"
-    ],
-    "azureServices": [
-      "functions",
-      "keyvault",
-      "monitor",
-      "appinsights",
-      "vnets",
-      "privateEndpoints"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "51895539-40d7-4113-92bc-9c4c32f6cab4"
-  },
-  {
-    "title": "Host MCP SDK Server on Azure Functions - TypeScript",
-    "description": "Host remote MCP servers built with the official Node MCP SDK on Azure Functions as custom handlers. Demonstrates weather tools and On-Behalf-Of (OBO) flow for Microsoft Graph API access.",
-    "preview": "./templates/images/test.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Azure Samples",
-    "source": "https://github.com/Azure-Samples/mcp-sdk-functions-hosting-node",
-    "tags": [
-      "msft",
-      "ai",
-      "mcp",
-      "new"
-    ],
-    "languages": [
-      "typescript",
-      "nodejs"
-    ],
-    "azureServices": [
-      "functions",
-      "keyvault",
-      "monitor",
-      "appinsights",
-      "vnets",
-      "privateEndpoints"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "2685af36-bbad-4276-9cd5-b7a2c09febd7"
-  },
-  {
     "title": "Host MCP SDK Server on Azure Functions - .NET/C#",
     "description": "Host remote MCP servers built with the official C# (.NET) MCP SDK on Azure Functions as custom handlers. Demonstrates weather tools and On-Behalf-Of (OBO) flow for Microsoft Graph API access.",
-    "preview": "./templates/images/test.png",
+    "preview": "./templates/images/azure-functions-mcp-server-dotnet.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Samples",
     "source": "https://github.com/Azure-Samples/mcp-sdk-functions-hosting-dotnet",

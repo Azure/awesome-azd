@@ -56,15 +56,14 @@ export default function ShowcaseCardTag({
   const tagObjectsSorted = sortBy(tagObjects, (tagObject) =>
     TagList.indexOf(tagObject.tag)
   );
-
   const checkAzureTag = tagObjectsSorted.filter((tag) =>
     tag.label.includes("Azure")
   );
 
   const length = tagObjectsSorted.length;
   let number = 10;
-  if (checkAzureTag.length > 5) {
-    number = 7;
+  if (checkAzureTag.length >= 5) {
+    number = 6;
   }
   const rest = length - number;
 

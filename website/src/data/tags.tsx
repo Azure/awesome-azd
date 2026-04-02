@@ -154,6 +154,13 @@ export type TagType =
   | "loadbalancer"
   | "backup"
   | "recoveryvault"
+  // Extension capability tags
+  | "ext-custom-commands"
+  | "ext-lifecycle-events"
+  | "ext-mcp-server"
+  | "ext-service-target-provider"
+  | "ext-framework-service-provider"
+  | "ext-metadata"
   ;
 
 
@@ -936,5 +943,37 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Feature Experimentation",
     description: "Template architecture involves Feature Experimentation",
     type: "Topic",
+  },
+
+  // Extension Capability Tags
+  "ext-custom-commands": {
+    label: "Custom Commands",
+    description: "Extension provides custom azd commands",
+    type: "Extension Capability",
+  },
+  "ext-lifecycle-events": {
+    label: "Lifecycle Events",
+    description: "Extension hooks into azd lifecycle events",
+    type: "Extension Capability",
+  },
+  "ext-mcp-server": {
+    label: "MCP Server",
+    description: "Extension provides a Model Context Protocol server",
+    type: "Extension Capability",
+  },
+  "ext-service-target-provider": {
+    label: "Service Target Provider",
+    description: "Extension provides custom service deployment targets",
+    type: "Extension Capability",
+  },
+  "ext-framework-service-provider": {
+    label: "Framework Service Provider",
+    description: "Extension provides framework service integration",
+    type: "Extension Capability",
+  },
+  "ext-metadata": {
+    label: "Metadata",
+    description: "Extension provides metadata capabilities",
+    type: "Extension Capability",
   },
 };

@@ -7,14 +7,15 @@
 
 .cardAuthor {
   color: #616161 !important;
+  text-decoration: underline !important;
 }
 
 .cardAuthorPanel {
-  color: var(--ifm-color-purple-light) !important;
+  color: var(--ifm-color-primary) !important;
 }
 
 .cardAuthor:hover {
-  color: var(--ifm-color-purple-light) !important;
+  color: var(--ifm-color-primary) !important;
 }
 
 [data-theme="dark"] .cardAuthor {
@@ -22,5 +23,5 @@
 }
 
 [data-theme="dark"] .cardAuthor:hover {
-  color: var(--ifm-color-purple-light) !important;
+  color: var(--ifm-color-primary) !important;
 }

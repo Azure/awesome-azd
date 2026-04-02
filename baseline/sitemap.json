@@ -1,0 +1,142 @@
+{
+  "generated": "2026-02-27",
+  "site": {
+    "url": "https://azure.github.io/awesome-azd/",
+    "framework": "Docusaurus 3.7.0",
+    "hosting": "GitHub Pages"
+  },
+  "pages": [
+    {
+      "path": "/",
+      "title": "Template Gallery",
+      "type": "page",
+      "components": ["ShowcaseTemplateSearch", "ShowcaseLeftFilters", "ShowcaseCardPage", "BackToTopButton"],
+      "description": "Main landing page with searchable, filterable template gallery"
+    },
+    {
+      "path": "/getting-started",
+      "title": "Getting Started",
+      "type": "page",
+      "components": ["HomepageHeader", "HomepageFeatures"],
+      "description": "Hero banner with video and 4 action cards"
+    },
+    {
+      "path": "/docs/contribute",
+      "title": "Contributor Guide",
+      "type": "doc",
+      "description": "Instructions for submitting templates to the gallery"
+    },
+    {
+      "path": "/docs/extensions",
+      "title": "Extensions",
+      "type": "doc",
+      "description": "azd extensions documentation"
+    },
+    {
+      "path": "/docs/faq/what-is-azd",
+      "title": "What is azd?",
+      "type": "doc",
+      "description": "FAQ about Azure Developer CLI"
+    },
+    {
+      "path": "/docs/faq/what-is-an-azd-template",
+      "title": "What is an azd template?",
+      "type": "doc",
+      "description": "FAQ about azd templates"
+    },
+    {
+      "path": "/docs/faq/how-to-use-azd-templates",
+      "title": "How to use azd templates?",
+      "type": "doc",
+      "description": "FAQ about using azd templates"
+    },
+    {
+      "path": "/docs/faq/discover-azd",
+      "title": "Discover azd",
+      "type": "doc",
+      "description": "FAQ about discovering azd"
+    },
+    {
+      "path": "/docs/faq/create-template",
+      "title": "Create a template",
+      "type": "doc",
+      "description": "FAQ about creating templates"
+    },
+    {
+      "path": "/docs/faq/contribute-template",
+      "title": "Contribute a template",
+      "type": "doc",
+      "description": "FAQ about contributing templates"
+    },
+    {
+      "path": "/docs/faq/rate-template",
+      "title": "Rate a template",
+      "type": "doc",
+      "description": "FAQ about rating templates"
+    },
+    {
+      "path": "/docs/faq/request-a-template",
+      "title": "Request a template",
+      "type": "doc",
+      "description": "FAQ about requesting templates"
+    }
+  ],
+  "navigation": {
+    "navbar": {
+      "left": [
+        {"label": "awesome-azd", "type": "logo", "to": "/"},
+        {"label": "Getting Started", "to": "/getting-started"},
+        {"label": "Contribute", "to": "/docs/contribute"},
+        {"label": "Docs", "to": "https://aka.ms/azd", "external": true},
+        {"label": "Resources", "to": "https://learn.microsoft.com/azure/architecture/browse/", "external": true}
+      ],
+      "right": [
+        {"label": "GitHub", "to": "https://github.com/Azure/awesome-azd", "external": true},
+        {"label": "Submit your template!", "to": "/docs/contribute", "type": "button"}
+      ]
+    },
+    "footer": [
+      {"label": "azd-templates", "to": "https://github.com/topics/azd-templates"},
+      {"label": "azd Reference", "to": "https://learn.microsoft.com/azure/developer/azure-developer-cli/reference"},
+      {"label": "Privacy Statement", "to": "https://privacy.microsoft.com/privacystatement"},
+      {"label": "Built With Docusaurus", "to": "https://docusaurus.io"}
+    ]
+  },
+  "templateStats": {
+    "total": 292,
+    "microsoftAuthored": 163,
+    "communityAuthored": 129,
+    "taggedNew": 12,
+    "taggedPopular": 7,
+    "taggedAI": 80,
+    "aiCollection": 21
+  },
+  "topLanguages": {
+    "python": 82,
+    "dotnetCsharp": 60,
+    "typescript": 50,
+    "javascript": 41,
+    "nodejs": 34,
+    "java": 23,
+    "go": 2,
+    "php": 1,
+    "ruby": 1
+  },
+  "topAzureServices": {
+    "aca": 90,
+    "managedidentity": 82,
+    "openai": 77,
+    "functions": 69,
+    "appinsights": 55,
+    "keyvault": 53,
+    "appservice": 53,
+    "monitor": 48,
+    "cosmosdb": 45,
+    "vnets": 44
+  },
+  "iac": {
+    "bicep": 204,
+    "terraform": 9,
+    "untagged": 79
+  }
+}

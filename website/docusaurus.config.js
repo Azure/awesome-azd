@@ -30,13 +30,28 @@ const config = {
 
   // CONFIG: Early detection for site health
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
+
+  // CONFIG: Markdown hooks
+  //    See: https://docusaurus.io/docs/api/docusaurus-config#markdown
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: "warn",
+    },
+  },
 
   // CONFIG: Localization if supporting multiple languages
   i18n: {
     defaultLocale: "en",
     locales: ["en"],
   },
+
+  // CONFIG: Google Fonts for Warm Precision design
+  stylesheets: [
+    {
+      href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap",
+      type: "text/css",
+    },
+  ],
 
   // CONFIG: scripts
   scripts: [
@@ -100,6 +115,21 @@ const config = {
             label: "Resources",
             position: "left",
           },
+          {
+            type: "dropdown",
+            label: "Services",
+            position: "left",
+            items: [
+              {
+                to: "/services/container-apps",
+                label: "Azure Container Apps",
+              },
+              {
+                to: "/services/azure-functions",
+                label: "Azure Functions",
+              },
+            ],
+          },
 
           // right
           {
@@ -113,7 +143,7 @@ const config = {
           // Make sure you have class defined in src/css/custom.css
           {
             to: "https://azure.github.io/awesome-azd/docs/contribute",
-            label: "Submit your template!",
+            label: "Add a template",
             position: "right",
             className: "button",
           },
@@ -191,20 +221,21 @@ const config = {
             from: "/docs/intro",
           },
           {
-            to: "/docs/faq/what-is-azd",
-            from: "/docs/faq/azd",
-          },
-          {
-            to: "/docs/faq/what-is-an-azd-template",
-            from: "/docs/faq/azd-template",
-          },
-          {
-            to: "/docs/faq/how-to-use-azd-templates",
-            from: "/docs/faq/use-azd-templates",
-          },
-          {
-            to: "/docs/faq/request-a-template",
-            from: "/docs/faq/request-template",
+            to: "/docs/faq",
+            from: [
+              "/docs/faq/azd",
+              "/docs/faq/what-is-azd",
+              "/docs/faq/azd-template",
+              "/docs/faq/what-is-an-azd-template",
+              "/docs/faq/use-azd-templates",
+              "/docs/faq/how-to-use-azd-templates",
+              "/docs/faq/request-template",
+              "/docs/faq/request-a-template",
+              "/docs/faq/discover-azd",
+              "/docs/faq/create-template",
+              "/docs/faq/contribute-template",
+              "/docs/faq/rate-template",
+            ],
           },
         ],
       },

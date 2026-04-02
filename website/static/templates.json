@@ -1566,31 +1566,6 @@
     "id": "56053f9b-9406-40be-9a33-842548870d3f"
   },
   {
-    "title": "Hello world Java Application on Azure Spring Apps",
-    "description": "A complete hello-world application that includes everything you need to build, deploy, and run an Azure Spring Apps solution.",
-    "preview": "./templates/images/asa-helloworld.png",
-    "authorUrl": "https://github.com/spring-guides/",
-    "author": "Yi Liu",
-    "source": "https://github.com/spring-guides/gs-spring-boot-for-azure",
-    "tags": [
-      "webapps",
-      "community"
-    ],
-    "languages": [
-      "java"
-    ],
-    "frameworks": [
-      "spring"
-    ],
-    "azureServices": [
-      "azurespringapps"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "e7e67e8f-cb48-4cd3-ae54-493aad4faa1a"
-  },
-  {
     "title": "Terraform template to bootstrap Azure Deployment Environments",
     "description": "A template to deploy Azure DevCenter with the minimun configuration to start using Azure Deployment Environments and supercharge your platform engineering story. Infrastructure as Code (written in Terraform) will get you started quickly to enable developers to self-serve environments via the Developer Portal, Azure CLI or CI/CD pipelines.",
     "preview": "./templates/images/azure-deployment-environments.png",
@@ -6210,8 +6185,7 @@
     "tags": [
       "mcp",
       "msft",
-      "ai",
-      "new"
+      "ai"
     ],
     "azureServices": [
       "aca",
@@ -6232,7 +6206,6 @@
     "tags": [
       "msft",
       "ai",
-      "new",
       "mcp"
     ],
     "languages": [
@@ -6270,7 +6243,6 @@
     "tags": [
       "msft",
       "ai",
-      "new",
       "mcp"
     ],
     "languages": [
@@ -6301,8 +6273,7 @@
     "tags": [
       "mcp",
       "msft",
-      "ai",
-      "new"
+      "ai"
     ],
     "azureServices": [
       "aca",
@@ -6321,8 +6292,7 @@
     "author": "Ronald Bosma",
     "source": "https://github.com/ronaldbosma/protect-apim-with-oauth",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "languages": [
       "dotnetCsharp"
@@ -6336,32 +6306,6 @@
     "id": "66cdab60-61e3-498a-9103-a9f316e58a6f"
   },
   {
-    "title": "Call OAuth-Protected APIs on API Management with Managed Identity",
-    "description": "Demonstrates OAuth-protected API calls using managed identities. Shows Azure Functions, Logic Apps and API Management calling APIs without secrets, plus CI/CD pipelines using federated credentials to call OAuth-protected APIs from integration tests.",
-    "preview": "./templates/images/call-apim-with-managed-identity.png",
-    "authorUrl": "https://github.com/ronaldbosma",
-    "author": "Ronald Bosma",
-    "source": "https://github.com/ronaldbosma/call-apim-with-managed-identity",
-    "tags": [
-      "community",
-      "new"
-    ],
-    "languages": [
-      "dotnetCsharp"
-    ],
-    "azureServices": [
-      "apim",
-      "functions",
-      "logicapps",
-      "managedidentity",
-      "serviceprincipal"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "4f2b8805-14fb-49de-acc5-fe9e2e8ae295"
-  },
-  {
     "title": "Semantic image search",
     "description": "A sample full-stack app for searching images using Azure AI Vision multi-modal embeddings API and Azure AI Search integrated vectorization.",
     "authorUrl": "https://github.com/Azure-Samples",
@@ -6369,8 +6313,7 @@
     "source": "https://github.com/Azure-Samples/image-search-aisearch",
     "tags": [
       "ai",
-      "msft",
-      "new"
+      "msft"
     ],
     "languages": [
       "python",
@@ -6396,8 +6339,7 @@
     "author": "Ronald Bosma",
     "source": "https://github.com/ronaldbosma/call-apim-backend-with-oauth",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "languages": [
       "dotnetCsharp"
@@ -6419,8 +6361,7 @@
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd-timer",
     "tags": [
-      "msft",
-      "new"
+      "msft"
     ],
     "languages": [
       "dotnetCsharp"
@@ -6444,8 +6385,7 @@
     "author": "Mark Anthony Estopace",
     "source": "https://github.com/EstopaceMA/fastapi-postgres-aca",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "languages": [
       "python"
@@ -6474,8 +6414,7 @@
     "tags": [
       "msft",
       "ai",
-      "mcp",
-      "new"
+      "mcp"
     ],
     "languages": [
       "java"
@@ -6496,8 +6435,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-storaccnt",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "azurestorage",
@@ -6513,8 +6451,7 @@
     "author": "Karel De Winter",
     "source": "https://github.com/kareldewinter/tdd-azd-monitor",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "monitor",
@@ -6531,8 +6468,7 @@
     "author": "Ronald Bosma",
     "source": "https://github.com/ronaldbosma/call-apim-with-managed-identity",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "apim",
@@ -6550,8 +6486,7 @@
     "author": "Dave Rendon",
     "source": "https://github.com/daverendon/azd-multiagent",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "azureai",
@@ -6569,8 +6504,7 @@
     "source": "https://github.com/koenraadhaedens/azd-firewall-send-syslog-messages",
     "preview": "https://raw.githubusercontent.com/koenraadhaedens/azd-firewall-send-syslog-messages/main/media/fwsysdiagram.png",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "sentinel",
@@ -6586,8 +6520,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/demo-mcp-productcatalog",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "azureai",
@@ -6604,8 +6537,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-betternotes-ai",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "azureai",
@@ -6622,8 +6554,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-vmbackup",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "backup",
@@ -6640,8 +6571,7 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-asrdemo",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "recoveryvault",
@@ -6657,8 +6587,7 @@
     "author": "Joerg Menne",
     "source": "https://github.com/jmenne/azd-routingdemo",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "vnets",
@@ -6785,5 +6714,410 @@
       "bicep"
     ],
     "id": "c7bdb456-e76e-4645-9b5d-26b1df04a339"
+  },
+  {
+    "title": "Azure Container Apps dynamic sessions with a custom container and Microsoft Agent Framework",
+    "description": "This project demonstrates how to use Azure Container Apps dynamic sessions with a custom container to create an AI-powered agent using Microsoft Agent Framework that can execute Python code securely with pre-installed libraries",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/jeffwmartinez",
+    "author": "Jeff Martinez",
+    "source": "https://github.com/Azure-Samples/dynamic-sessions-custom-container",
+    "tags": [
+      "msft",
+      "ai",
+      "new"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "managedidentity",
+      "openai",
+      "aca"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "1153c2d5-acfd-4c68-bc9b-25865d5ac2a9"
+  },
+  {
+    "title": "Quarkus Todo API Template for Azure Container Apps",
+    "description": "This template allows you to deploy a Todo API built with Quarkus to Azure Container Apps, using Azure Database for PostgreSQL",
+    "preview": "./templates/images/quarkus-postgres-aca-architecture.png",
+    "authorUrl": "https://github.com/EstopaceMA",
+    "author": "Mark Anthony Estopace",
+    "source": "https://github.com/EstopaceMA/quarkus-postgres-aca",
+    "tags": [
+      "community",
+      "new"
+    ],
+    "languages": [
+      "java"
+    ],
+    "frameworks": [
+      "quarkus"
+    ],
+    "azureServices": [
+      "aca",
+      "azuredb-postgreSQL"
+    ],
+    "IaC": [
+      "terraform"
+    ],
+    "id": "8c0f50a9-21fd-4c11-91be-bb37aca93be4"
+  },
+  {
+    "title": "Data and Agent Governance and Security",
+    "description": "Automates governance deployment for Microsoft Foundry, M365 Copilot and Fabric—configures Purview DSPM, sensitivity labels, DLP policies, Data Map scans, Defender for AI, and audit logging from a single spec file.",
+    "preview": "./templates/images/architectureDAGSA.png",
+    "authorUrl": "https://github.com/microsoft/Data-and-Agent-Governance-and-Security-Accelerator",
+    "author": "Mike Swantek",
+    "source": "https://github.com/microsoft/Data-and-Agent-Governance-and-Security-Accelerator",
+    "tags": [
+      "new",
+      "msft",
+      "powershell"
+    ],
+    "languages": [],
+    "IaC": [
+      "bicep"
+    ],
+    "azureServices": [
+      "purview",
+      "aifoundry",
+      "loganalytics"
+    ],
+    "id": "4f2b8e6a-3d9c-4a1f-b7e5-2c8d6f4a9e1b"
+  },
+  {
+    "title": "MCP Server with OAuth 2.1 and On-Behalf-Of Flow",
+    "description": "An Azure Developer CLI (azd) ready template for deploying an MCP (Model Context Protocol) server with OAuth 2.1 authentication and On-Behalf-Of (OBO) flow to Azure Container Apps. Features full authentication with Azure AD (Entra ID), On-Behalf-Of flow for Microsoft Graph API, RFC 9728 compliance, secretless deployment using Federated Identity Credentials, and serverless auto-scaling deployment.",
+    "preview": "./templates/images/mcp-obo-aca.png",
+    "authorUrl": "https://github.com/jsburckhardt",
+    "author": "jsburckhardt",
+    "source": "https://github.com/jsburckhardt/mcp-obo-aca",
+    "tags": [
+      "community",
+      "new",
+      "mcp"
+    ],
+    "languages": [
+      "python"
+    ],
+    "frameworks": [
+      "fastapi"
+    ],
+    "azureServices": [
+      "aca",
+      "keyvault",
+      "loganalytics",
+      "managedidentity"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "143a572d-ec0d-4021-99b2-ee76733489c1"
+  },
+  {
+    "title": "Azure Functions TypeScript Event Hub Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions Event Hub trigger quickstart written in TypeScript and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-typescript-azd-eventhub",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "typescript"
+    ],
+    "azureServices": [
+      "functions",
+      "eventhub",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "e6c539bb-959f-4f44-b699-e7f1cfa40e88"
+  },
+  {
+    "title": "Azure Functions Python Event Hub Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions Event Hub trigger quickstart written in Python and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-python-azd-eventhub",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "functions",
+      "eventhub",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "e6ccf658-a10f-4078-be91-9cc167c83e22"
+  },
+  {
+    "title": "Azure Functions .NET Event Hub Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions Event Hub trigger quickstart written in .NET and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd-eventhub",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "dotnetCsharp"
+    ],
+    "azureServices": [
+      "functions",
+      "eventhub",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "eea2eb42-9e90-409f-85a4-007cefb0eac6"
+  },
+  {
+    "title": "Azure App Service + Foundry Chat Starter",
+    "description": "One-click azd template that deploys a Blazor Server chat app on Azure App Service integrated with Azure Foundry, VNet, managed identity, and Application Insights.",
+    "preview": "./templates/images/app-service-foundry.png",
+    "authorUrl": "https://github.com/seligj95",
+    "author": "Jordan Selig",
+    "source": "https://github.com/seligj95/app-service-foundry-chat",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "dotnetCsharp"
+    ],
+    "frameworks": [
+      "blazor"
+    ],
+    "azureServices": [
+      "appservice",
+      "aifoundry",
+      "loganalytics",
+      "managedidentity"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "185a572d-ec0d-4021-99b2-ee76733489d2"
+  },
+  {
+    "title": "Unified AI Gateway Design Pattern with Azure API Management",
+    "description": "Demonstrates the Unified AI Gateway design pattern using Azure API Management to route requests to multiple AI services (Microsoft Foundry and Google Gemini) through a single endpoint with authentication, load balancing, and token limiting.",
+    "preview": "./templates/images/apim-unified-ai-gateway.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure API Management Team",
+    "source": "https://github.com/Azure-Samples/APIM-Unified-AI-Gateway-Sample",
+    "tags": [
+      "msft",
+      "ai",
+      "enterprisepatterns",
+      "new"
+    ],
+    "azureServices": [
+      "apim",
+      "openai",
+      "aifoundry",
+      "appinsights",
+      "keyvault",
+      "managedidentity"
+    ],
+    "IaC": [
+      "terraform"
+    ],
+    "id": "3a3b32d5-27de-47ff-8e56-b4b1b520634c"
+  },
+  {
+    "title": "AKS KEDA Prometheus Scaler Demo",
+    "description": "A sample multi app deployment to get started with KEDA scale rules in AKS. Save on costs testing scale locally or in AKS with public IP nginx ingress controller or private IP via VNET + load balancer. Options available to add Azure Container Registry, Azure Managed Grafana and the AKS App Routing Addon",
+    "preview": "./templates/images/aks-kedaprometheus-demo.png",
+    "authorUrl": "https://github.com/degero",
+    "author": "Chad Paynter",
+    "source": "https://github.com/degero-examples/azure-akskedaprometheus-demo",
+    "tags": [
+      "community",
+      "new",
+      "kubernetes",
+      "helm",
+      "prometheus"
+    ],
+    "azureServices": [
+      "aks",
+      "managedidentity",
+      "grafana",
+      "loadbalancer",
+      "azurestorage",
+      "vnets",
+      "monitor",
+      "loganalytics"
+    ],
+    "languages": [],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "f4c8a9b2-7d3e-4f6a-9c1b-8e2d5a3f6c7b"
+  },
+  {
+    "title": "Azure Cosmos DB MCP Toolkit",
+    "description": "An MCP Toolkit enabling agents and agentic apps to work with Azure Cosmos DB.",
+    "preview": "./templates/images/mcp-kit-aca-cosmos.png",
+    "authorUrl": "https://github.com/AzureCosmosDB",
+    "author": "Azure Cosmos DB",
+    "source": "https://github.com/AzureCosmosDB/MCPToolKit",
+    "tags": [
+      "community",
+      "mcp",
+      "new"
+    ],
+    "azureServices": [
+      "aca",
+      "aifoundry",
+      "cosmosdb",
+      "serviceprincipal"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "d9663d15-fd8f-4e74-8200-6221f63c3ce9",
+    "languages": [
+      "dotnetCsharp"
+    ]
+  },
+  {
+    "title": "Copilot SDK Service — Chat API with React UI on Azure Container Apps",
+    "description": "A full-stack TypeScript template using the GitHub Copilot SDK with SSE streaming chat and summarize endpoints, deployed to Azure Container Apps. Supports GitHub models and Azure Bring Your Own Model (BYOM).",
+    "preview": "./templates/images/copilot-sdk-service.png",
+    "authorUrl": "https://github.com/jongio",
+    "author": "Jon Gallant",
+    "source": "https://github.com/Azure-Samples/copilot-sdk-service",
+    "tags": [
+      "msft",
+      "new",
+      "ai"
+    ],
+    "languages": [
+      "typescript",
+      "javascript",
+      "nodejs"
+    ],
+    "frameworks": [
+      "reactjs"
+    ],
+    "azureServices": [
+      "aca",
+      "keyvault",
+      "monitor",
+      "openai"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "13f1caf6-0609-48ca-88ed-10f1c76d63af"
+  },
+  {
+    "title": "Track Availability in Application Insights using Standard Test, Azure Function and Logic App Workflow",
+    "description": "A demo that shows three different ways to track availability in Application Insights using a standard test (webtest), an Azure Function (.NET) and a Logic App workflow",
+    "preview": "https://raw.githubusercontent.com/ronaldbosma/track-availability-in-app-insights/main/images/diagrams-overview.png",
+    "authorUrl": "https://github.com/ronaldbosma",
+    "author": "Ronald Bosma",
+    "source": "https://github.com/ronaldbosma/track-availability-in-app-insights",
+    "tags": [
+      "community",
+      "new"
+    ],
+    "languages": [
+      "dotnetCsharp"
+    ],
+    "azureServices": [
+      "appinsights",
+      "functions",
+      "logicapps",
+      "monitor"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "19c0c243-d5de-4dc1-9944-9a3c86566348"
+  },
+  {
+    "title": "Copilot Studio with Azure AI Search using Azure Developer CLI",
+    "description": "An enterprise-ready template demonstrating secure integration between Microsoft Copilot Studio and Azure AI Search. Features private networking, Power Platform integration, and comprehensive AI search capabilities with enterprise-grade security and governance. Deployed using Azure Developer CLI (azd) with Terraform infrastructure-as-code.",
+    "preview": "./templates/images/copilot-studio-azure-ai-search.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "ISE Scale",
+    "source": "https://github.com/Azure-Samples/Copilot-Studio-with-Azure-AI-Search",
+    "tags": [
+      "msft",
+      "ai",
+      "new"
+    ],
+    "azureServices": [
+      "aisearch",
+      "azureai",
+      "azurestorage",
+      "vnets",
+      "privateEndpoints",
+      "managedidentity",
+      "appinsights"
+    ],
+    "id": "b6399e1c-612b-4d43-8eda-ccf226213fe6",
+    "languages": [
+      "python",
+      "powershell"
+    ],
+    "IaC": [
+      "terraform"
+    ]
+  },
+  {
+    "title": "Azure AI integration of customer users with C# applications and enterprise data, using OAuth 2.0 token intelligence.",
+    "description": "A secured A2A and MCP flow, where customer users send commands to backend agents and resource servers apply token-based authorization. Includes a container apps deployment where tokens enable agents to complete complex flows, while resource servers and API gateways can apply dynamic access controls.",
+    "preview": "./templates/images/curity-autonomous-ai-agent.jpg",
+    "authorUrl": "https://curity.io",
+    "author": "Curity Team",
+    "source": "https://github.com/curityio/azd-ai-autonomous-agent",
+    "tags": [
+      "community",
+      "new",
+      "ai"
+    ],
+    "languages": [
+      "dotnetCsharp"
+    ],
+    "azureServices": [
+      "aca",
+      "aifoundry",
+      "azurestorage",
+      "managedidentity",
+      "azuresql",
+      "vnets"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "4218b822-4eca-451e-8b9b-c89a9be0dec5"
   }
 ]

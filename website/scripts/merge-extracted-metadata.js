@@ -4,6 +4,7 @@
 
 const fs = require("fs");
 const { extractMetadata } = require("./extract-template-metadata");
+const { writeOutputs } = require("./github-output");
 
 /**
  * Merge form-supplied values with auto-extracted metadata.
@@ -53,7 +54,7 @@ async function mergeMetadata({ sourceRepo, formValues = {}, extractFn }) {
   };
 }
 
-if (typeof require !== "undefined" && require.main === module) {
+if (require.main === module) {
   (async () => {
     const outputPath = process.env.GITHUB_OUTPUT;
     if (!outputPath) {
@@ -89,11 +90,7 @@ if (typeof require !== "undefined" && require.main === module) {
       JSON.stringify(merged, null, 2)
     );
 
-    // Sanitize newlines to prevent output injection
-    const lines = Object.entries(merged)
-      .map(([k, v]) => `${k}=${String(v).replace(/[\r\n]+/g, " ").trim()}`)
-      .join("\n");
-    fs.appendFileSync(outputPath, lines + "\n");
+    writeOutputs(outputPath, merged);
 
     console.log("Merged metadata written to GITHUB_OUTPUT");
   })().catch((err) => {

@@ -91,6 +91,11 @@ describe("extractField", () => {
   test("handles body with only heading, no value line", () => {
     expect(extractField("### Field\n", "Field")).toBe("");
   });
+
+  test("rejects body exceeding 100 KB", () => {
+    const bigBody = "### Title\nA".repeat(100001);
+    expect(() => extractField(bigBody, "Title")).toThrow("too large");
+  });
 });
 
 // ---------------------------------------------------------------------------

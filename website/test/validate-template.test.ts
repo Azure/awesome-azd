@@ -571,4 +571,42 @@ describe('isPrivateIP - edge cases', () => {
     test('rejects broadcast-range 255.255.255.255', () => {
         expect(isPrivateIP('255.255.255.255')).toBe(true);
     });
+
+    test('rejects IPv4-compatible IPv6 private ::192.168.1.1 (SSRF bypass)', () => {
+        expect(isPrivateIP('::192.168.1.1')).toBe(true);
+    });
+
+    test('allows IPv4-compatible IPv6 public ::8.8.8.8', () => {
+        expect(isPrivateIP('::8.8.8.8')).toBe(false);
+    });
+
+    test('denies by default for unknown format (not-an-ip)', () => {
+        expect(isPrivateIP('not-an-ip')).toBe(true);
+    });
+});
+
+describe('validateTemplate - too many redirects', () => {
+    afterEach(() => {
+        if (requestSpy) requestSpy.mockRestore();
+    });
+
+    test('rejects after more than 5 redirects', async () => {
+        const req = {
+            on: jest.fn().mockReturnThis() as any,
+            end: jest.fn() as any,
+            destroy: jest.fn() as any,
+        };
+        requestSpy = jest.spyOn(https, 'request').mockImplementation((_opts: any, callback: any) => {
+            process.nextTick(() =>
+                callback({
+                    statusCode: 302,
+                    headers: { location: 'https://github.com/org/repo' },
+                })
+            );
+            return req;
+        });
+        const result = await validateTemplate('https://github.com/org/repo');
+        expect(result.valid).toBe(false);
+        expect(result.errors[0]).toMatch(/Too many redirects/i);
+    });
 });

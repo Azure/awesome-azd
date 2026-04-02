@@ -3,6 +3,7 @@
 "use strict";
 
 const fs = require("fs");
+const { sanitizeOutputValue, writeOutputs } = require("./github-output");
 
 /**
  * Extract a field value from a GitHub issue body.
@@ -87,31 +88,10 @@ function parseIssueBody({ eventName, issueBody, inputs }) {
   return { fields };
 }
 
-/**
- * Sanitize a value for safe use as a GitHub Actions single-line output.
- * Newlines are replaced with spaces to prevent output injection.
- * @param {unknown} value
- * @returns {string}
- */
-function sanitizeOutputValue(value) {
-  if (value === null || value === undefined) return "";
-  return String(value).replace(/[\r\n]+/g, " ").trim();
-}
-
-/**
- * Write key=value pairs to the GITHUB_OUTPUT file.
- * @param {string} outputPath - File path from $GITHUB_OUTPUT
- * @param {Record<string, string>} fields
- */
-function writeOutputs(outputPath, fields) {
-  const lines = Object.entries(fields)
-    .map(([k, v]) => `${k}=${sanitizeOutputValue(v)}`)
-    .join("\n");
-  fs.appendFileSync(outputPath, lines + "\n");
-}
+// sanitizeOutputValue and writeOutputs imported from ./github-output
 
 // --- CLI entry point ---
-if (typeof require !== "undefined" && require.main === module) {
+if (require.main === module) {
   const outputPath = process.env.GITHUB_OUTPUT;
   if (!outputPath) {
     console.error("GITHUB_OUTPUT environment variable is not set");

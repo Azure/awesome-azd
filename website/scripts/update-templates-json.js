@@ -9,6 +9,7 @@ const {
   validateUrl,
   canonicalizeUrl,
 } = require("./validate-template");
+const { writeOutputs } = require("./github-output");
 
 /**
  * Strip HTML tags and angle brackets, trim, and truncate.
@@ -154,27 +155,10 @@ function updateTemplatesJson({
   return { skipped: false, added: title };
 }
 
-/**
- * Write key=value pairs to the GITHUB_OUTPUT file.
- * Normalizes values to a single line to prevent output injection.
- * @param {string} outputPath
- * @param {Record<string, string>} outputs
- */
-function writeOutputs(outputPath, outputs) {
-  const lines = Object.entries(outputs)
-    .map(([k, v]) => {
-      if (!/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(k)) {
-        throw new Error(`Invalid output key: "${k}"`);
-      }
-      const safeValue = String(v).replace(/[\r\n]+/g, " ").trim();
-      return `${k}=${safeValue}`;
-    })
-    .join("\n");
-  fs.appendFileSync(outputPath, lines + "\n");
-}
+// writeOutputs imported from ./github-output
 
 // --- CLI entry point ---
-if (typeof require !== "undefined" && require.main === module) {
+if (require.main === module) {
   const outputPath = process.env.GITHUB_OUTPUT;
   if (!outputPath) {
     console.error("GITHUB_OUTPUT environment variable is not set");

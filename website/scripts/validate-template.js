@@ -211,9 +211,6 @@ async function validateTemplate(repoUrl) {
     if (parsed.hostname !== "github.com") {
       errors.push("Repository URL must be a GitHub repository (github.com)");
     }
-    if (parsed.port && parsed.port !== "443") {
-      errors.push("Repository URL must not specify a non-standard port");
-    }
   } catch {
     // URL parsing already failed in validateUrl above
   }
@@ -301,7 +298,7 @@ async function validateTemplate(repoUrl) {
   });
 }
 
-if (typeof require !== "undefined" && require.main === module) {
+if (require.main === module) {
   const url = process.argv[2];
   if (!url) {
     console.error("Usage: node validate-template.js <repo-url>");

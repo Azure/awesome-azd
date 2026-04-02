@@ -20,7 +20,8 @@ const {
 const { writeOutputs } = require("./github-output");
 
 /**
- * Strip HTML tags and angle brackets, trim, and truncate.
+ * Strip HTML tags, angle brackets, null bytes, and Unicode bidi overrides.
+ * Trim and truncate to maxLength.
  * @param {string} value
  * @param {number} maxLength
  * @returns {string}
@@ -28,6 +29,7 @@ const { writeOutputs } = require("./github-output");
 function sanitize(value, maxLength) {
   return value
     .replace(/\x00/g, "")
+    .replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u2069\uFEFF]/g, "")
     .replace(/<[^>]*>?/g, "")
     .replace(/[<>]/g, "")
     .trim()

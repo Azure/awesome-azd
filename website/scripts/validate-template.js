@@ -71,6 +71,12 @@ function isPrivateIP(ip) {
       }`;
       return PRIVATE_IPV4_RANGES.some((re) => re.test(mapped));
     }
+    // 6to4 (2002::/16) — encapsulates IPv4 addresses
+    if (/^2002:/i.test(ip)) return true;
+    // Teredo (2001:0000::/32) — tunneling protocol
+    if (/^2001:0?0?0?0?:/i.test(ip)) return true;
+    // NAT64 well-known prefix (64:ff9b::/96)
+    if (/^64:ff9b:/i.test(ip)) return true;
     return false;
   }
 
@@ -169,12 +175,17 @@ function validateUrl(value, label) {
       `${label} URL must not contain credentials (userinfo)`
     );
   }
+  if (parsed.port && parsed.port !== "443") {
+    throw new Error(
+      `${label} URL must not specify a non-standard port`
+    );
+  }
   if (isPrivateHost(parsed.hostname)) {
     throw new Error(`${label} URL points to a private/reserved address`);
   }
 }
 
-function validateTemplate(repoUrl) {
+async function validateTemplate(repoUrl) {
   if (!repoUrl || typeof repoUrl !== "string" || !repoUrl.trim()) {
     return { valid: false, errors: ["Repository URL is required"] };
   }
@@ -187,40 +198,92 @@ function validateTemplate(repoUrl) {
     errors.push(err.message);
   }
 
+  try {
+    const parsed = new URL(repoUrl);
+    if (parsed.hostname !== "github.com") {
+      errors.push("Repository URL must be a GitHub repository (github.com)");
+    }
+    if (parsed.port && parsed.port !== "443") {
+      errors.push("Repository URL must not specify a non-standard port");
+    }
+  } catch {
+    // URL parsing already failed in validateUrl above
+  }
+
   if (errors.length > 0) {
     return { valid: false, errors };
   }
 
+  const HARD_TIMEOUT_MS = 30000;
   return new Promise((resolve) => {
-    const parsed = new URL(repoUrl);
-    const req = https.request(
-      {
-        hostname: parsed.hostname,
-        path: parsed.pathname,
-        method: "HEAD",
-        timeout: 10000,
-        lookup: safeLookup,
-      },
-      (res) => {
-        // Accept only 2xx — reject redirects (3xx) to prevent open-redirect abuse
-        if (res.statusCode >= 200 && res.statusCode < 300) {
-          resolve({ valid: true });
-        } else {
-          resolve({
-            valid: false,
-            errors: [`Repository returned HTTP ${res.statusCode}`],
-          });
+    const deadline = setTimeout(() => {
+      resolve({ valid: false, errors: ["Validation timed out after 30s"] });
+    }, HARD_TIMEOUT_MS);
+
+    const MAX_REDIRECTS = 5;
+    let redirectCount = 0;
+
+    function done(result) {
+      clearTimeout(deadline);
+      resolve(result);
+    }
+
+    function makeRequest(url) {
+      const parsed = new URL(url);
+      const req = https.request(
+        {
+          hostname: parsed.hostname,
+          path: parsed.pathname + parsed.search,
+          method: "HEAD",
+          timeout: 10000,
+          lookup: safeLookup,
+        },
+        (res) => {
+          if (res.statusCode >= 200 && res.statusCode < 300) {
+            done({ valid: true });
+          } else if (
+            res.statusCode >= 300 &&
+            res.statusCode < 400 &&
+            res.headers.location
+          ) {
+            redirectCount++;
+            if (redirectCount > MAX_REDIRECTS) {
+              done({
+                valid: false,
+                errors: ["Too many redirects (max 5)"],
+              });
+              return;
+            }
+            const target = new URL(res.headers.location, url);
+            if (target.hostname !== "github.com") {
+              done({
+                valid: false,
+                errors: [
+                  "Redirect target is not github.com: " + target.hostname,
+                ],
+              });
+              return;
+            }
+            makeRequest(target.href);
+          } else {
+            done({
+              valid: false,
+              errors: [`Repository returned HTTP ${res.statusCode}`],
+            });
+          }
         }
-      }
-    );
-    req.on("timeout", () => {
-      req.destroy();
-      resolve({ valid: false, errors: ["Request timed out after 10s"] });
-    });
-    req.on("error", (err) => {
-      resolve({ valid: false, errors: [`Request failed: ${err.message}`] });
-    });
-    req.end();
+      );
+      req.on("timeout", () => {
+        req.destroy();
+        done({ valid: false, errors: ["Request timed out after 10s"] });
+      });
+      req.on("error", (err) => {
+        done({ valid: false, errors: [`Request failed: ${err.message}`] });
+      });
+      req.end();
+    }
+
+    makeRequest(repoUrl);
   });
 }
 
@@ -231,9 +294,12 @@ if (typeof require !== "undefined" && require.main === module) {
     process.exit(1);
   }
 
-  Promise.resolve(validateTemplate(url)).then((result) => {
+  validateTemplate(url).then((result) => {
     console.log(JSON.stringify(result));
     process.exit(result.valid ? 0 : 1);
+  }).catch((err) => {
+    console.error(JSON.stringify({ valid: false, errors: [err.message] }));
+    process.exit(1);
   });
 }
 

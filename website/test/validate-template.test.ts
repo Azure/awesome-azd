@@ -6,14 +6,14 @@ const { validateTemplate, canonicalizeUrl, validateUrl, isPrivateIP, isPrivateHo
 
 let requestSpy: ReturnType<typeof jest.spyOn>;
 
-function mockRequestResponse(statusCode: number) {
+function mockRequestResponse(statusCode: number, headers: Record<string, string> = {}) {
     const req = {
         on: jest.fn().mockReturnThis() as any,
         end: jest.fn() as any,
         destroy: jest.fn() as any,
     };
     requestSpy = jest.spyOn(https, 'request').mockImplementation((_opts: any, callback: any) => {
-        process.nextTick(() => callback({ statusCode }));
+        process.nextTick(() => callback({ statusCode, headers }));
         return req;
     });
     return req;
@@ -369,5 +369,142 @@ describe('canonicalizeUrl - security', () => {
         expect(canonicalizeUrl('https://github.com/org/repo?ref=main#section')).toBe(
             'https://github.com/org/repo'
         );
+    });
+});
+
+describe('isPrivateIP - IPv6 tunnel addresses (#22)', () => {
+    test('detects 6to4 address 2002::', () => {
+        expect(isPrivateIP('2002:c0a8:101::1')).toBe(true);
+    });
+
+    test('detects Teredo address 2001:0000::', () => {
+        expect(isPrivateIP('2001:0000:4136:e378:8000:63bf:3fff:fdd2')).toBe(true);
+    });
+
+    test('detects NAT64 prefix 64:ff9b::', () => {
+        expect(isPrivateIP('64:ff9b::192.168.1.1')).toBe(true);
+    });
+});
+
+describe('safeLookup - array addresses (#14)', () => {
+    let lookupSpy: ReturnType<typeof jest.spyOn>;
+
+    afterEach(() => {
+        if (lookupSpy) lookupSpy.mockRestore();
+    });
+
+    test('rejects when all addresses are private (array)', (done) => {
+        lookupSpy = jest.spyOn(dns, 'lookup').mockImplementation(
+            (_hostname: string, options: any, callback: any) => {
+                if (options && options.all) {
+                    callback(null, [
+                        { address: '10.0.0.1', family: 4 },
+                        { address: '192.168.1.1', family: 4 },
+                    ]);
+                } else {
+                    callback(null, '10.0.0.1', 4);
+                }
+            }
+        );
+        safeLookup('evil.com', { all: true }, (err: any) => {
+            expect(err).toBeTruthy();
+            expect(err.message).toMatch(/private\/reserved/);
+            done();
+        });
+    });
+
+    test('rejects when any address is private in array (mixed public+private)', (done) => {
+        lookupSpy = jest.spyOn(dns, 'lookup').mockImplementation(
+            (_hostname: string, options: any, callback: any) => {
+                if (options && options.all) {
+                    callback(null, [
+                        { address: '10.0.0.1', family: 4 },
+                        { address: '140.82.121.4', family: 4 },
+                    ]);
+                } else {
+                    callback(null, '140.82.121.4', 4);
+                }
+            }
+        );
+        safeLookup('github.com', { all: true }, (err: any) => {
+            expect(err).toBeTruthy();
+            expect(err.message).toMatch(/private\/reserved/);
+            done();
+        });
+    });
+
+    test('rejects empty array result', (done) => {
+        lookupSpy = jest.spyOn(dns, 'lookup').mockImplementation(
+            (_hostname: string, options: any, callback: any) => {
+                if (options && options.all) {
+                    callback(null, []);
+                } else {
+                    callback(new Error('ENOTFOUND'));
+                }
+            }
+        );
+        safeLookup('empty.com', { all: true }, (err: any) => {
+            expect(err).toBeTruthy();
+            done();
+        });
+    });
+
+    test('accepts array with all public addresses', (done) => {
+        lookupSpy = jest.spyOn(dns, 'lookup').mockImplementation(
+            (_hostname: string, options: any, callback: any) => {
+                if (options && options.all) {
+                    callback(null, [
+                        { address: '140.82.121.4', family: 4 },
+                        { address: '140.82.121.5', family: 4 },
+                    ]);
+                } else {
+                    callback(null, '140.82.121.4', 4);
+                }
+            }
+        );
+        safeLookup('github.com', { all: true }, (err: any, addresses: any) => {
+            expect(err).toBeNull();
+            expect(Array.isArray(addresses)).toBe(true);
+            expect(addresses.length).toBe(2);
+            done();
+        });
+    });
+});
+
+describe('validateUrl - port restriction (#28)', () => {
+    test('rejects URL with non-standard port', () => {
+        expect(() => validateUrl('https://github.com:8443/org/repo', 'test')).toThrow('port');
+    });
+
+    test('accepts URL with default HTTPS port 443', () => {
+        expect(() => validateUrl('https://github.com:443/org/repo', 'test')).not.toThrow();
+    });
+
+    test('accepts URL without explicit port', () => {
+        expect(() => validateUrl('https://github.com/org/repo', 'test')).not.toThrow();
+    });
+});
+
+describe('validateUrl - credential rejection', () => {
+    test('rejects URL with username', () => {
+        expect(() => validateUrl('https://user@github.com/org/repo', 'test')).toThrow('credentials');
+    });
+
+    test('rejects URL with username and password', () => {
+        expect(() => validateUrl('https://user:pass@github.com/org/repo', 'test')).toThrow('credentials');
+    });
+});
+
+describe('validateTemplate - non-github.com hostname', () => {
+    test('rejects non-github.com URL', async () => {
+        const result = await validateTemplate('https://gitlab.com/org/repo');
+        expect(result.valid).toBe(false);
+        expect(result.errors.some((e: string) => e.includes('github.com'))).toBe(true);
+    });
+
+    test('rejects URL with non-standard port', async () => {
+        const result = await validateTemplate('https://github.com:8443/org/repo');
+        expect(result.valid).toBe(false);
+        expect(result.errors.some((e: string) => e.includes('port'))).toBe(true);
     });
 });

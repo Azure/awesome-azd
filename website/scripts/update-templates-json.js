@@ -43,6 +43,8 @@ function parseTags(csv) {
     .map((t) =>
       t
         .replace(/[^a-zA-Z0-9._\-+ ]/g, "")
+        .replace(/\s+/g, "")
+        .toLowerCase()
         .trim()
         .slice(0, 50)
     )
@@ -69,6 +71,7 @@ function parseTags(csv) {
  * @param {function} [options.uuidGenerator] - Override UUID generation for testing
  * @returns {{ skipped: boolean, skipReason?: string, added?: string }}
  */
+
 function updateTemplatesJson({
   sourceRepo,
   title,
@@ -84,13 +87,22 @@ function updateTemplatesJson({
   templatesPath,
   uuidGenerator,
 }) {
+  // Defense-in-depth: sanitize fields even if caller already cleaned them
+  const _sanitize = (v, max) => sanitize(String(v || ""), max);
+
   validateUrl(sourceRepo, "Source repo");
+  if (!authorUrl) throw new Error("Author URL is required");
   validateUrl(authorUrl, "Author");
   if (previewImage) validateUrl(previewImage, "Preview image");
 
   const resolvedPath =
     templatesPath || path.join("website", "static", "templates.json");
-  const templates = JSON.parse(fs.readFileSync(resolvedPath, "utf8"));
+  let templates;
+  try {
+    templates = JSON.parse(fs.readFileSync(resolvedPath, "utf8"));
+  } catch (err) {
+    throw new Error(`Failed to parse ${resolvedPath}: ${err.message}`);
+  }
 
   const canonicalSource = canonicalizeUrl(sourceRepo);
   const duplicate = templates.find(
@@ -108,8 +120,10 @@ function updateTemplatesJson({
     iac = ["bicep", "terraform"];
   } else if (iacProvider === "Terraform") {
     iac = ["terraform"];
-  } else {
+  } else if (iacProvider === "Bicep") {
     iac = ["bicep"];
+  } else {
+    iac = [];
   }
 
   const tags =
@@ -118,11 +132,11 @@ function updateTemplatesJson({
   const generateId = uuidGenerator || (() => crypto.randomUUID());
 
   const entry = {
-    title,
-    description,
-    preview: previewImage || "templates/images/default-template.png",
+    title: _sanitize(title, 200),
+    description: _sanitize(description, 500),
+    preview: previewImage || "",
     authorUrl,
-    author,
+    author: _sanitize(author, 100),
     source: canonicalSource,
     tags,
     IaC: iac,

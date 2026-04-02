@@ -42,31 +42,30 @@ function extractField(body, fieldName) {
 function parseIssueBody({ eventName, issueBody, inputs }) {
   const fields = {};
 
+  const FIELD_MAP = [
+    ["source_repo", "Source Repository"],
+    ["template_title", "Template Title"],
+    ["description", "Description"],
+    ["author", "Author"],
+    ["author_url", "Author URL"],
+    ["author_type", "Author Type"],
+    ["preview_image", "Preview Image URL"],
+    ["iac_provider", "IaC Provider"],
+    ["languages", "Languages"],
+    ["frameworks", "Frameworks"],
+    ["azure_services", "Azure Services"],
+  ];
+
   if (eventName === "workflow_dispatch") {
-    fields.source_repo = (inputs.source_repo || "").trim();
-    fields.template_title = (inputs.template_title || "").trim();
-    fields.description = (inputs.description || "").trim();
-    fields.author = (inputs.author || "").trim();
-    fields.author_url = (inputs.author_url || "").trim();
-    fields.author_type = (inputs.author_type || "").trim();
-    fields.preview_image = (inputs.preview_image || "").trim();
-    fields.iac_provider = (inputs.iac_provider || "").trim();
-    fields.languages = (inputs.languages || "").trim();
-    fields.frameworks = (inputs.frameworks || "").trim();
-    fields.azure_services = (inputs.azure_services || "").trim();
+    const inp = inputs || {};
+    for (const [key] of FIELD_MAP) {
+      fields[key] = (inp[key] || "").trim();
+    }
   } else {
     const body = issueBody || "";
-    fields.source_repo = extractField(body, "Source Repository");
-    fields.template_title = extractField(body, "Template Title");
-    fields.description = extractField(body, "Description");
-    fields.author = extractField(body, "Author");
-    fields.author_url = extractField(body, "Author URL");
-    fields.author_type = extractField(body, "Author Type");
-    fields.preview_image = extractField(body, "Preview Image URL");
-    fields.iac_provider = extractField(body, "IaC Provider");
-    fields.languages = extractField(body, "Languages");
-    fields.frameworks = extractField(body, "Frameworks");
-    fields.azure_services = extractField(body, "Azure Services");
+    for (const [key, heading] of FIELD_MAP) {
+      fields[key] = extractField(body, heading);
+    }
   }
 
   // Only the repository URL is required — the rest can be auto-extracted.
@@ -136,7 +135,12 @@ if (typeof require !== "undefined" && require.main === module) {
     process.exit(1);
   }
 
-  writeOutputs(outputPath, result.fields);
+  try {
+    writeOutputs(outputPath, result.fields);
+  } catch (err) {
+    console.error(`Failed to write outputs: ${err.message}`);
+    process.exit(1);
+  }
 }
 
 module.exports = { extractField, parseIssueBody };

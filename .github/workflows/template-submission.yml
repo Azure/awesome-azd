@@ -1,4 +1,9 @@
 name: Template Submission
+# NOTE: Known limitation — concurrent runs for different issues use separate
+# branches, but each run reads and rewrites templates.json on main.
+# If two runs merge close together, the second PR may need a rebase.
+# The per-issue concurrency group below prevents duplicate runs for the
+# *same* issue, but cross-issue races remain a low-probability edge case.
 
 on:
   issues:
@@ -58,8 +63,8 @@ permissions:
   issues: write
 
 concurrency:
-  group: template-submission
-  cancel-in-progress: false
+  group: template-submission-${{ github.event.issue.number || github.run_id }}
+  cancel-in-progress: true
 
 jobs:
   process-template:
@@ -75,6 +80,8 @@ jobs:
         uses: actions/setup-node@53b83942660f83e34d4f35ba9a3125d67d943f4c # v6
         with:
           node-version: "24"
+          cache: "npm"
+          cache-dependency-path: website/package-lock.json
 
       - name: Parse issue body
         id: parse
@@ -119,16 +126,16 @@ jobs:
         env:
           SOURCE_REPO: ${{ steps.extract.outputs.source_repo }}
         run: |
-          node website/scripts/validate-template.js "$SOURCE_REPO" > validation_result.json 2>validation_errors.log
-          if [ $? -ne 0 ]; then
+          DELIM="EOF_$(openssl rand -hex 8)"
+          if node website/scripts/validate-template.js "$SOURCE_REPO" > validation_result.json 2>validation_errors.log; then
+            echo "valid=true" >> $GITHUB_OUTPUT
+          else
             echo "valid=false" >> $GITHUB_OUTPUT
             {
-              echo 'errors<<EOF'
+              echo "errors<<$DELIM"
               cat validation_result.json validation_errors.log
-              echo 'EOF'
+              echo "$DELIM"
             } >> $GITHUB_OUTPUT
-          else
-            echo "valid=true" >> $GITHUB_OUTPUT
           fi
 
       - name: Comment on validation failure
@@ -187,7 +194,7 @@ jobs:
           labels: template-submission
 
       - name: Comment on success
-        if: steps.validate.outputs.valid == 'true' && steps.update.outputs.skipped != 'true' && github.event_name != 'workflow_dispatch'
+        if: steps.validate.outputs.valid == 'true' && steps.update.outputs.skipped != 'true' && steps.create-pr.outputs.pull-request-number && github.event_name != 'workflow_dispatch'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
@@ -212,3 +219,13 @@ jobs:
           $SKIP_REASON
 
           If you believe this is an error, please comment on this issue."
+
+      - name: Comment on unexpected failure
+        if: always() && failure() && github.event_name != 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh issue comment "$ISSUE_NUMBER" \
+            --repo "$GITHUB_REPOSITORY" \
+            --body "❌ **Template processing failed unexpectedly.** The maintainers have been notified. Please try again later or comment on this issue."

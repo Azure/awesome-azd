@@ -52,11 +52,11 @@ describe("sanitize", () => {
 // parseTags
 // ---------------------------------------------------------------------------
 describe("parseTags", () => {
-  test("parses comma-separated values", () => {
+  test("parses comma-separated values and normalizes to lowercase", () => {
     expect(parseTags("Python, JavaScript, Go")).toEqual([
-      "Python",
-      "JavaScript",
-      "Go",
+      "python",
+      "javascript",
+      "go",
     ]);
   });
 
@@ -74,11 +74,11 @@ describe("parseTags", () => {
   });
 
   test("strips disallowed characters", () => {
-    expect(parseTags("Node.js, C++, C#")).toEqual(["Node.js", "C++", "C"]);
+    expect(parseTags("Node.js, C++, C#")).toEqual(["node.js", "c++", "c"]);
   });
 
   test("filters out empty tags after cleaning", () => {
-    expect(parseTags("Python, , , Go")).toEqual(["Python", "Go"]);
+    expect(parseTags("Python, , , Go")).toEqual(["python", "go"]);
   });
 
   test("truncates individual tags to 50 chars", () => {
@@ -92,16 +92,16 @@ describe("parseTags", () => {
     expect(parseTags(csv).length).toBe(20);
   });
 
-  test("trims whitespace on each tag", () => {
-    expect(parseTags("  Python ,  Go  ")).toEqual(["Python", "Go"]);
+  test("trims whitespace on each tag and strips spaces", () => {
+    expect(parseTags("  Python ,  Go  ")).toEqual(["python", "go"]);
   });
 
-  test("allows dots, dashes, plus signs, and spaces", () => {
+  test("allows dots, dashes, plus signs; strips spaces and lowercases", () => {
     expect(parseTags("ASP.NET, Vue.js, C++, Azure App Service")).toEqual([
-      "ASP.NET",
-      "Vue.js",
-      "C++",
-      "Azure App Service",
+      "asp.net",
+      "vue.js",
+      "c++",
+      "azureappservice",
     ]);
   });
 });
@@ -233,12 +233,10 @@ describe("updateTemplatesJson", () => {
     expect(templates[1].tags).toEqual(["community", "new"]);
   });
 
-  test("uses default preview image when none provided", () => {
+  test("uses empty preview when none provided", () => {
     updateTemplatesJson(defaultOpts());
     const templates = readTemplates();
-    expect(templates[1].preview).toBe(
-      "templates/images/default-template.png"
-    );
+    expect(templates[1].preview).toBe("");
   });
 
   test("uses provided preview image", () => {
@@ -251,15 +249,15 @@ describe("updateTemplatesJson", () => {
 
   test("includes optional tag arrays only when non-empty", () => {
     const opts = defaultOpts();
-    opts.languages = ["Python"];
+    opts.languages = ["python"];
     opts.frameworks = [];
-    opts.azureServices = ["App Service", "Cosmos DB"];
+    opts.azureServices = ["appservice", "cosmosdb"];
     updateTemplatesJson(opts);
     const templates = readTemplates();
     const entry = templates[1];
-    expect(entry.languages).toEqual(["Python"]);
+    expect(entry.languages).toEqual(["python"]);
     expect(entry.frameworks).toBeUndefined();
-    expect(entry.azureServices).toEqual(["App Service", "Cosmos DB"]);
+    expect(entry.azureServices).toEqual(["appservice", "cosmosdb"]);
   });
 
   test("throws on invalid source repo URL", () => {
@@ -296,5 +294,40 @@ describe("updateTemplatesJson", () => {
     updateTemplatesJson(defaultOpts());
     const templates = readTemplates();
     expect(templates[0]).toEqual(baseTemplates[0]);
+  });
+
+  test("throws descriptive error when templates.json is missing (#16)", () => {
+    const opts = defaultOpts();
+    opts.templatesPath = path.join(tmpDir, "nonexistent.json");
+    expect(() => updateTemplatesJson(opts)).toThrow(/Failed to parse.*nonexistent\.json/);
+  });
+
+  test("throws descriptive error when templates.json contains invalid JSON (#16)", () => {
+    const badPath = path.join(tmpDir, "bad.json");
+    fs.writeFileSync(badPath, "{ not valid json !!!", "utf8");
+    const opts = defaultOpts();
+    opts.templatesPath = badPath;
+    expect(() => updateTemplatesJson(opts)).toThrow(/Failed to parse.*bad\.json/);
+  });
+
+  test("throws when authorUrl is empty (#4)", () => {
+    const opts = defaultOpts();
+    opts.authorUrl = "";
+    expect(() => updateTemplatesJson(opts)).toThrow(/Author URL is required/);
+  });
+
+  test("sanitizes title and description in output entry (#19)", () => {
+    const opts = defaultOpts();
+    opts.sourceRepo = "https://github.com/org/sanitize-test";
+    opts.title = "<script>alert('xss')</script>My Template";
+    opts.description = "A <b>bold</b> description";
+    const result = updateTemplatesJson(opts);
+    expect(result.skipped).toBeFalsy();
+    const templates = readTemplates();
+    const entry = templates[templates.length - 1];
+    expect(entry.title).not.toContain("<script>");
+    expect(entry.title).toContain("My Template");
+    expect(entry.description).not.toContain("<b>");
+    expect(entry.description).toContain("bold");
   });
 });

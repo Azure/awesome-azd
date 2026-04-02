@@ -11,70 +11,95 @@ const { extractMetadata } = require("./extract-template-metadata");
  * Form values (FORM_*) always take precedence.  Empty / missing form values
  * fall back to the corresponding auto-extracted value.
  *
- * The merged output is appended to $GITHUB_OUTPUT.
+ * @param {Object} opts
+ * @param {string} opts.sourceRepo - The template source repository URL
+ * @param {Object} opts.formValues - Form-supplied values (FORM_*)
+ * @param {Function} opts.extractFn - Metadata extraction function
+ * @returns {Promise<Object>} Merged metadata fields
  */
-async function main() {
-  const outputPath = process.env.GITHUB_OUTPUT;
-  if (!outputPath) {
-    console.error("GITHUB_OUTPUT environment variable is not set");
-    process.exit(1);
-  }
-
-  const sourceRepo = (process.env.SOURCE_REPO || "").trim();
-  if (!sourceRepo) {
-    console.error("SOURCE_REPO environment variable is required");
-    process.exit(1);
-  }
-
+async function mergeMetadata({ sourceRepo, formValues = {}, extractFn }) {
   let extracted = {};
   try {
-    extracted = await extractMetadata(sourceRepo);
-    console.log(
-      "Auto-extracted metadata:",
-      JSON.stringify(extracted, null, 2)
-    );
+    extracted = await extractFn(sourceRepo);
   } catch (err) {
     console.warn(
       `Metadata extraction failed (non-fatal): ${err.message}`
     );
   }
 
-  // Form values take precedence; fall back to extracted values
-  const merged = {
+  return {
     source_repo: sourceRepo,
     template_title:
-      process.env.FORM_TITLE || extracted.title || "",
+      formValues.title || extracted.title || "",
     description:
-      process.env.FORM_DESCRIPTION || extracted.description || "",
-    author: process.env.FORM_AUTHOR || extracted.author || "",
+      formValues.description || extracted.description || "",
+    author: formValues.author || extracted.author || "",
     author_url:
-      process.env.FORM_AUTHOR_URL || extracted.authorUrl || "",
+      formValues.authorUrl || extracted.authorUrl || "",
     author_type:
-      process.env.FORM_AUTHOR_TYPE || extracted.authorType || "",
-    preview_image: process.env.FORM_PREVIEW_IMAGE || extracted.previewImage || "",
+      formValues.authorType || extracted.authorType || "",
+    preview_image: formValues.previewImage || extracted.previewImage || "",
     iac_provider:
-      process.env.FORM_IAC_PROVIDER || extracted.iacProvider || "",
+      formValues.iacProvider || extracted.iacProvider || "",
     languages:
-      process.env.FORM_LANGUAGES ||
+      formValues.languages ||
       (extracted.languages || []).join(", "),
     frameworks:
-      process.env.FORM_FRAMEWORKS ||
+      formValues.frameworks ||
       (extracted.frameworks || []).join(", "),
     azure_services:
-      process.env.FORM_AZURE_SERVICES ||
+      formValues.azureServices ||
       (extracted.azureServices || []).join(", "),
   };
-
-  // Sanitize newlines to prevent output injection
-  const lines = Object.entries(merged)
-    .map(([k, v]) => `${k}=${String(v).replace(/[\r\n]+/g, " ").trim()}`)
-    .join("\n");
-  fs.appendFileSync(outputPath, lines + "\n");
-
-  console.log("Merged metadata written to GITHUB_OUTPUT");
 }
 
-main().catch((err) => {
-  console.error(err.message);
-  process.exit(1);
-});
+if (typeof require !== "undefined" && require.main === module) {
+  (async () => {
+    const outputPath = process.env.GITHUB_OUTPUT;
+    if (!outputPath) {
+      console.error("GITHUB_OUTPUT environment variable is not set");
+      process.exit(1);
+    }
+
+    const sourceRepo = (process.env.SOURCE_REPO || "").trim();
+    if (!sourceRepo) {
+      console.error("SOURCE_REPO environment variable is required");
+      process.exit(1);
+    }
+
+    const merged = await mergeMetadata({
+      sourceRepo,
+      formValues: {
+        title: process.env.FORM_TITLE,
+        description: process.env.FORM_DESCRIPTION,
+        author: process.env.FORM_AUTHOR,
+        authorUrl: process.env.FORM_AUTHOR_URL,
+        authorType: process.env.FORM_AUTHOR_TYPE,
+        previewImage: process.env.FORM_PREVIEW_IMAGE,
+        iacProvider: process.env.FORM_IAC_PROVIDER,
+        languages: process.env.FORM_LANGUAGES,
+        frameworks: process.env.FORM_FRAMEWORKS,
+        azureServices: process.env.FORM_AZURE_SERVICES,
+      },
+      extractFn: extractMetadata,
+    });
+
+    console.log(
+      "Auto-extracted metadata:",
+      JSON.stringify(merged, null, 2)
+    );
+
+    // Sanitize newlines to prevent output injection
+    const lines = Object.entries(merged)
+      .map(([k, v]) => `${k}=${String(v).replace(/[\r\n]+/g, " ").trim()}`)
+      .join("\n");
+    fs.appendFileSync(outputPath, lines + "\n");
+
+    console.log("Merged metadata written to GITHUB_OUTPUT");
+  })().catch((err) => {
+    console.error(err.message);
+    process.exit(1);
+  });
+}
+
+module.exports = { mergeMetadata };

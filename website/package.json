@@ -62,6 +62,6 @@
     "search-insights": "^2.11.0"
   },
   "overrides": {
-    "serialize-javascript": "^7.0.4"
+    "serialize-javascript": "^7.0.5"
   }
 }

@@ -145,15 +145,8 @@ jobs:
           ERRORS: ${{ steps.validate.outputs.errors }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
-          gh issue comment "$ISSUE_NUMBER" \
-            --repo "$GITHUB_REPOSITORY" \
-            --body "❌ **Template validation failed**
-
-          Please check your repository URL and try again.
-
-          \`\`\`
-          $ERRORS
-          \`\`\`"
+          printf '❌ **Template validation failed**\n\nPlease check your repository URL and try again.\n\n```\n%s\n```' "$ERRORS" | \
+            gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file -
 
       - name: Update templates.json
         id: update
@@ -212,13 +205,8 @@ jobs:
           SKIP_REASON: ${{ steps.update.outputs.skip_reason }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
-          gh issue comment "$ISSUE_NUMBER" \
-            --repo "$GITHUB_REPOSITORY" \
-            --body "⚠️ **Template submission skipped**
-
-          $SKIP_REASON
-
-          If you believe this is an error, please comment on this issue."
+          printf '⚠️ **Template submission skipped**\n\n%s\n\nIf you believe this is an error, please comment on this issue.' "$SKIP_REASON" | \
+            gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file -
 
       - name: Comment on unexpected failure
         if: always() && failure() && github.event_name != 'workflow_dispatch'

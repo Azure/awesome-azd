@@ -136,7 +136,7 @@ function updateTemplatesJson({
     title: _sanitize(title, 200),
     description: _sanitize(description, 500),
     preview: previewImage || "",
-    authorUrl,
+    authorUrl: _sanitize(authorUrl, 500),
     author: _sanitize(author, 100),
     source: canonicalSource,
     tags,
@@ -163,6 +163,9 @@ function updateTemplatesJson({
 function writeOutputs(outputPath, outputs) {
   const lines = Object.entries(outputs)
     .map(([k, v]) => {
+      if (!/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(k)) {
+        throw new Error(`Invalid output key: "${k}"`);
+      }
       const safeValue = String(v).replace(/[\r\n]+/g, " ").trim();
       return `${k}=${safeValue}`;
     })

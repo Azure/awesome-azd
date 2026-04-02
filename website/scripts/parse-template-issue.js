@@ -16,6 +16,10 @@ const fs = require("fs");
  * @returns {string} The extracted value, or empty string if not found.
  */
 function extractField(body, fieldName) {
+  // Guard against pathological input that could cause ReDoS
+  if (body.length > 100000) {
+    throw new Error("Issue body too large (max 100 KB)");
+  }
   // Capture everything after the heading up to the next heading or end of body.
   // Allows an optional parenthetical suffix on the heading line.
   // Escape regex metacharacters in fieldName to prevent regex injection.

@@ -7,6 +7,7 @@ const {
   sanitize,
   parseTags,
   updateTemplatesJson,
+  writeOutputs,
 } = require("../scripts/update-templates-json");
 
 // ---------------------------------------------------------------------------
@@ -322,12 +323,83 @@ describe("updateTemplatesJson", () => {
     opts.title = "<script>alert('xss')</script>My Template";
     opts.description = "A <b>bold</b> description";
     const result = updateTemplatesJson(opts);
-    expect(result.skipped).toBeFalsy();
+    expect(result.skipped).toBe(false);
     const templates = readTemplates();
     const entry = templates[templates.length - 1];
     expect(entry.title).not.toContain("<script>");
     expect(entry.title).toContain("My Template");
     expect(entry.description).not.toContain("<b>");
     expect(entry.description).toContain("bold");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// sanitize — null bytes and edge cases
+// ---------------------------------------------------------------------------
+describe("sanitize — security edge cases", () => {
+  test("strips null bytes", () => {
+    const result = sanitize("hello\x00world", 200);
+    expect(result).not.toContain("\x00");
+  });
+
+  test("handles unicode combining characters", () => {
+    // Zero-width joiner and combining marks should not crash
+    const input = "test\u200D\u0301value";
+    expect(() => sanitize(input, 200)).not.toThrow();
+  });
+
+  test("handles RTL override characters", () => {
+    const input = "normal \u202Eesrever text";
+    const result = sanitize(input, 200);
+    expect(typeof result).toBe("string");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// parseTags — unicode and null byte edge cases
+// ---------------------------------------------------------------------------
+describe("parseTags — security edge cases", () => {
+  test("strips null bytes from tags", () => {
+    const result = parseTags("python\x00, go");
+    expect(result[0]).not.toContain("\x00");
+  });
+
+  test("handles unicode homoglyph characters by stripping them", () => {
+    // Cyrillic 'а' (U+0430) looks like Latin 'a' but is not alphanumeric ASCII
+    const result = parseTags("\u0430pp");
+    // The allowlist filter strips non-ASCII, leaving "pp"
+    expect(result[0]).toBe("pp");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// writeOutputs — output injection prevention (update-templates-json variant)
+// ---------------------------------------------------------------------------
+describe("writeOutputs (update-templates-json)", () => {
+  let tmpDir: string;
+  let outputPath: string;
+
+  beforeEach(() => {
+    tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "utj-output-"));
+    outputPath = path.join(tmpDir, "GITHUB_OUTPUT");
+    fs.writeFileSync(outputPath, "");
+  });
+
+  afterEach(() => {
+    fs.rmSync(tmpDir, { recursive: true, force: true });
+  });
+
+  test("prevents newline injection in output values", () => {
+    writeOutputs(outputPath, { added: "template\nevil=injected" });
+    const content = fs.readFileSync(outputPath, "utf8");
+    const lines = content.trim().split("\n");
+    expect(lines.length).toBe(1);
+    expect(lines[0]).toBe("added=template evil=injected");
+  });
+
+  test("handles heredoc-style delimiter in value", () => {
+    writeOutputs(outputPath, { result: "<<EOF\nevil\nEOF" });
+    const content = fs.readFileSync(outputPath, "utf8");
+    expect(content).not.toContain("\nevil\n");
   });
 });

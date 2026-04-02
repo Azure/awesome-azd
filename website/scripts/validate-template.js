@@ -71,6 +71,14 @@ function isPrivateIP(ip) {
       }`;
       return PRIVATE_IPV4_RANGES.some((re) => re.test(mapped));
     }
+    // IPv4-compatible IPv6 dotted form (::x.x.x.x) — deprecated by RFC 4291
+    // but still recognised by Node.js net.isIPv6 and some DNS resolvers.
+    const v4compat = ip.match(
+      /^::(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})$/
+    );
+    if (v4compat) {
+      return PRIVATE_IPV4_RANGES.some((re) => re.test(v4compat[1]));
+    }
     // 6to4 (2002::/16) — encapsulates IPv4 addresses
     if (/^2002:/i.test(ip)) return true;
     // Teredo (2001:0000::/32) — tunneling protocol
@@ -255,6 +263,12 @@ async function validateTemplate(repoUrl) {
               return;
             }
             const target = new URL(res.headers.location, url);
+            try {
+              validateUrl(target.href, "Redirect target");
+            } catch (e) {
+              done({ valid: false, errors: [e.message] });
+              return;
+            }
             if (target.hostname !== "github.com") {
               done({
                 valid: false,

@@ -1,8 +1,14 @@
 import { describe, expect, test } from "@jest/globals";
 
+import * as fs from "fs";
+import * as path from "path";
+import * as os from "os";
+
 const {
   extractField,
   parseIssueBody,
+  sanitizeOutputValue,
+  writeOutputs,
 } = require("../scripts/parse-template-issue");
 
 // ---------------------------------------------------------------------------
@@ -367,5 +373,102 @@ describe("parseIssueBody (auto-detect heading format)", () => {
     expect(fields.languages).toBe("");
     expect(fields.frameworks).toBe("");
     expect(fields.azure_services).toBe("");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// sanitizeOutputValue — output injection prevention
+// ---------------------------------------------------------------------------
+describe("sanitizeOutputValue", () => {
+  test("strips newline characters to prevent output injection", () => {
+    expect(sanitizeOutputValue("line1\nline2")).toBe("line1 line2");
+  });
+
+  test("strips carriage return + newline", () => {
+    expect(sanitizeOutputValue("line1\r\nline2")).toBe("line1 line2");
+  });
+
+  test("collapses consecutive newlines", () => {
+    expect(sanitizeOutputValue("a\n\n\nb")).toBe("a b");
+  });
+
+  test("strips heredoc delimiter to prevent multiline output hijack", () => {
+    const payload = "value\nmalicious_key=injected";
+    expect(sanitizeOutputValue(payload)).not.toContain("\n");
+    expect(sanitizeOutputValue(payload)).toBe("value malicious_key=injected");
+  });
+
+  test("returns empty string for null", () => {
+    expect(sanitizeOutputValue(null)).toBe("");
+  });
+
+  test("returns empty string for undefined", () => {
+    expect(sanitizeOutputValue(undefined)).toBe("");
+  });
+
+  test("converts non-string to string", () => {
+    expect(sanitizeOutputValue(42)).toBe("42");
+    expect(sanitizeOutputValue(true)).toBe("true");
+  });
+
+  test("trims whitespace", () => {
+    expect(sanitizeOutputValue("  hello  ")).toBe("hello");
+  });
+
+  test("neutralizes GITHUB_OUTPUT key injection via newline", () => {
+    // Attacker tries: "innocent\nskipped=true" to set a second output key
+    const payload = "innocent\nskipped=true";
+    const result = sanitizeOutputValue(payload);
+    expect(result).not.toMatch(/\n/);
+    expect(result).toBe("innocent skipped=true");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// writeOutputs — file-level output injection prevention
+// ---------------------------------------------------------------------------
+describe("writeOutputs", () => {
+  let tmpDir: string;
+  let outputPath: string;
+
+  beforeEach(() => {
+    tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "output-test-"));
+    outputPath = path.join(tmpDir, "GITHUB_OUTPUT");
+    fs.writeFileSync(outputPath, "");
+  });
+
+  afterEach(() => {
+    fs.rmSync(tmpDir, { recursive: true, force: true });
+  });
+
+  test("writes key=value pairs to file", () => {
+    writeOutputs(outputPath, { key1: "value1", key2: "value2" });
+    const content = fs.readFileSync(outputPath, "utf8");
+    expect(content).toContain("key1=value1");
+    expect(content).toContain("key2=value2");
+  });
+
+  test("prevents newline injection in values", () => {
+    writeOutputs(outputPath, { result: "safe\nevil_key=evil_value" });
+    const content = fs.readFileSync(outputPath, "utf8");
+    // The injected newline should be replaced, so there's no "evil_key=" on its own line
+    const lines = content.trim().split("\n");
+    expect(lines.length).toBe(1);
+    expect(lines[0]).toBe("result=safe evil_key=evil_value");
+  });
+
+  test("prevents CR+LF injection in values", () => {
+    writeOutputs(outputPath, { result: "safe\r\nevil_key=evil_value" });
+    const content = fs.readFileSync(outputPath, "utf8");
+    const lines = content.trim().split("\n");
+    expect(lines.length).toBe(1);
+  });
+
+  test("handles shell metacharacters in values (passes through safely)", () => {
+    writeOutputs(outputPath, { cmd: "$(whoami) `id` | cat /etc/passwd" });
+    const content = fs.readFileSync(outputPath, "utf8");
+    // Shell metacharacters are safe in GITHUB_OUTPUT key=value format
+    // because they are not evaluated; but newlines must be stripped
+    expect(content.trim()).toBe("cmd=$(whoami) `id` | cat /etc/passwd");
   });
 });

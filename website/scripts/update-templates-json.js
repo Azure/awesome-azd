@@ -18,6 +18,7 @@ const {
  */
 function sanitize(value, maxLength) {
   return value
+    .replace(/\x00/g, "")
     .replace(/<[^>]*>?/g, "")
     .replace(/[<>]/g, "")
     .trim()
@@ -209,4 +210,4 @@ if (typeof require !== "undefined" && require.main === module) {
   }
 }
 
-module.exports = { sanitize, parseTags, updateTemplatesJson };
+module.exports = { sanitize, parseTags, updateTemplatesJson, writeOutputs };

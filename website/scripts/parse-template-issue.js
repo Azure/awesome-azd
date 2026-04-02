@@ -18,8 +18,10 @@ const fs = require("fs");
 function extractField(body, fieldName) {
   // Capture everything after the heading up to the next heading or end of body.
   // Allows an optional parenthetical suffix on the heading line.
+  // Escape regex metacharacters in fieldName to prevent regex injection.
+  const escaped = fieldName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const regex = new RegExp(
-    `### ${fieldName}(?:\\s*\\([^)]*\\))?\\s*\\n([\\s\\S]*?)(?=\\n### |$)`,
+    `### ${escaped}(?:\\s*\\([^)]*\\))?\\s*\\n([\\s\\S]*?)(?=\\n### |$)`,
     "i"
   );
   const match = body.match(regex);
@@ -143,4 +145,4 @@ if (typeof require !== "undefined" && require.main === module) {
   }
 }
 
-module.exports = { extractField, parseIssueBody };
+module.exports = { extractField, parseIssueBody, sanitizeOutputValue, writeOutputs };

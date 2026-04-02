@@ -293,7 +293,7 @@ describe('safeLookup', () => {
             }
         );
         safeLookup('evil.com', {}, (err: any) => {
-            expect(err).toBeTruthy();
+            expect(err).toBeInstanceOf(Error);
             expect(err.message).toMatch(/private\/reserved/);
             done();
         });
@@ -306,7 +306,7 @@ describe('safeLookup', () => {
             }
         );
         safeLookup('evil.com', {}, (err: any) => {
-            expect(err).toBeTruthy();
+            expect(err).toBeInstanceOf(Error);
             expect(err.message).toMatch(/private\/reserved/);
             done();
         });
@@ -319,7 +319,7 @@ describe('safeLookup', () => {
             }
         );
         safeLookup('evil.com', {}, (err: any) => {
-            expect(err).toBeTruthy();
+            expect(err).toBeInstanceOf(Error);
             expect(err.message).toMatch(/private\/reserved/);
             done();
         });
@@ -345,7 +345,7 @@ describe('safeLookup', () => {
             }
         );
         safeLookup('nonexistent.invalid', {}, (err: any) => {
-            expect(err).toBeTruthy();
+            expect(err).toBeInstanceOf(Error);
             expect(err.message).toBe('ENOTFOUND');
             done();
         });
@@ -407,7 +407,7 @@ describe('safeLookup - array addresses (#14)', () => {
             }
         );
         safeLookup('evil.com', { all: true }, (err: any) => {
-            expect(err).toBeTruthy();
+            expect(err).toBeInstanceOf(Error);
             expect(err.message).toMatch(/private\/reserved/);
             done();
         });
@@ -427,7 +427,7 @@ describe('safeLookup - array addresses (#14)', () => {
             }
         );
         safeLookup('github.com', { all: true }, (err: any) => {
-            expect(err).toBeTruthy();
+            expect(err).toBeInstanceOf(Error);
             expect(err.message).toMatch(/private\/reserved/);
             done();
         });
@@ -444,7 +444,7 @@ describe('safeLookup - array addresses (#14)', () => {
             }
         );
         safeLookup('empty.com', { all: true }, (err: any) => {
-            expect(err).toBeTruthy();
+            expect(err).toBeInstanceOf(Error);
             done();
         });
     });
@@ -506,5 +506,69 @@ describe('validateTemplate - non-github.com hostname', () => {
         const result = await validateTemplate('https://github.com:8443/org/repo');
         expect(result.valid).toBe(false);
         expect(result.errors.some((e: string) => e.includes('port'))).toBe(true);
+    });
+});
+
+describe('validateTemplate - redirect safety', () => {
+    afterEach(() => {
+        if (requestSpy) requestSpy.mockRestore();
+    });
+
+    test('rejects redirect to non-github.com host', async () => {
+        const req = {
+            on: jest.fn().mockReturnThis() as any,
+            end: jest.fn() as any,
+            destroy: jest.fn() as any,
+        };
+        requestSpy = jest.spyOn(https, 'request').mockImplementation((_opts: any, callback: any) => {
+            process.nextTick(() =>
+                callback({
+                    statusCode: 302,
+                    headers: { location: 'https://evil.com/payload' },
+                })
+            );
+            return req;
+        });
+        const result = await validateTemplate('https://github.com/org/repo');
+        expect(result.valid).toBe(false);
+        expect(result.errors[0]).toMatch(/not github\.com/i);
+    });
+
+    test('rejects redirect to private IP address', async () => {
+        const req = {
+            on: jest.fn().mockReturnThis() as any,
+            end: jest.fn() as any,
+            destroy: jest.fn() as any,
+        };
+        requestSpy = jest.spyOn(https, 'request').mockImplementation((_opts: any, callback: any) => {
+            process.nextTick(() =>
+                callback({
+                    statusCode: 301,
+                    headers: { location: 'https://10.0.0.1/internal' },
+                })
+            );
+            return req;
+        });
+        const result = await validateTemplate('https://github.com/org/repo');
+        expect(result.valid).toBe(false);
+        expect(result.errors[0]).toMatch(/private|not github\.com/i);
+    });
+});
+
+describe('isPrivateIP - edge cases', () => {
+    test('rejects 0.0.0.0 ("this" network)', () => {
+        expect(isPrivateIP('0.0.0.0')).toBe(true);
+    });
+
+    test('rejects 100.64.0.1 (Carrier-Grade NAT)', () => {
+        expect(isPrivateIP('100.64.0.1')).toBe(true);
+    });
+
+    test('rejects multicast 224.0.0.1', () => {
+        expect(isPrivateIP('224.0.0.1')).toBe(true);
+    });
+
+    test('rejects broadcast-range 255.255.255.255', () => {
+        expect(isPrivateIP('255.255.255.255')).toBe(true);
     });
 });

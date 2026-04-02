@@ -6999,7 +6999,8 @@
       "bicep"
     ],
     "id": "4218b822-4eca-451e-8b9b-c89a9be0dec5"
-  }{
+  },
+  {
     "title": "Host MCP SDK Server on Azure Functions - Python",
     "description": "Host remote MCP servers built with the official Python MCP SDK on Azure Functions as custom handlers. Demonstrates weather tools and On-Behalf-Of (OBO) flow for Microsoft Graph API access.",
     "preview": "./templates/images/test.png",

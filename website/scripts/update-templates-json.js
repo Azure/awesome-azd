@@ -2,6 +2,14 @@
 
 "use strict";
 
+/**
+ * @module update-templates-json
+ * @description
+ * Appends a validated template entry to website/static/templates.json.
+ * Performs duplicate detection via URL canonicalization, input sanitization,
+ * and URL safety validation before writing.
+ */
+
 const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
@@ -154,8 +162,6 @@ function updateTemplatesJson({
 
   return { skipped: false, added: title };
 }
-
-// writeOutputs imported from ./github-output
 
 // --- CLI entry point ---
 if (require.main === module) {

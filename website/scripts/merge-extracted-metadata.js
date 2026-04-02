@@ -2,6 +2,13 @@
 
 "use strict";
 
+/**
+ * @module merge-extracted-metadata
+ * @description
+ * Merges user-supplied form values with auto-extracted repository metadata.
+ * Form values always take precedence; gaps are filled by metadata extraction.
+ */
+
 const fs = require("fs");
 const { extractMetadata } = require("./extract-template-metadata");
 const { writeOutputs } = require("./github-output");

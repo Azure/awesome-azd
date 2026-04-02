@@ -2,6 +2,13 @@
 
 "use strict";
 
+/**
+ * @module github-output
+ * @description
+ * Safe helpers for writing key=value pairs to the $GITHUB_OUTPUT file.
+ * Sanitizes values to prevent GitHub Actions output injection via newlines.
+ */
+
 const fs = require("fs");
 
 /**

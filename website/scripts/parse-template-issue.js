@@ -2,6 +2,14 @@
 
 "use strict";
 
+/**
+ * @module parse-template-issue
+ * @description
+ * Parses template submission fields from GitHub issue bodies or
+ * workflow_dispatch inputs. Extracts structured field values using
+ * heading-based pattern matching with guards against ReDoS and regex injection.
+ */
+
 const fs = require("fs");
 const { sanitizeOutputValue, writeOutputs } = require("./github-output");
 
@@ -87,8 +95,6 @@ function parseIssueBody({ eventName, issueBody, inputs }) {
 
   return { fields };
 }
-
-// sanitizeOutputValue and writeOutputs imported from ./github-output
 
 // --- CLI entry point ---
 if (require.main === module) {

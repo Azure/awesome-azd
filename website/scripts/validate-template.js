@@ -1,10 +1,31 @@
 #!/usr/bin/env node
 
+"use strict";
+
+/**
+ * @module validate-template
+ * @description
+ * URL and repository validation for the template submission pipeline.
+ *
+ * Provides multi-layered SSRF prevention:
+ *   1. URL scheme / credential / port checks  (validateUrl)
+ *   2. Private-IP hostname pre-check          (isPrivateHost)
+ *   3. DNS-rebinding-safe lookup              (safeLookup)
+ *   4. Private-IP range matching              (isPrivateIP)
+ *
+ * Also validates that repositories are publicly reachable on github.com.
+ */
+
 const https = require("https");
 const dns = require("dns");
 const net = require("net");
 const { URL } = require("url");
 
+/**
+ * IPv4 CIDR ranges classified as private, reserved, or non-routable.
+ * Used by isPrivateIP() for SSRF prevention.
+ * @type {RegExp[]}
+ */
 const PRIVATE_IPV4_RANGES = [
   // Loopback
   /^127\./,
@@ -95,6 +116,9 @@ function isPrivateIP(ip) {
 /**
  * Fast pre-check: does the hostname string (as returned by WHATWG URL parser)
  * point to an obviously private/reserved address?
+ *
+ * @param {string} hostname
+ * @returns {boolean} `true` if the hostname is a known private address
  */
 function isPrivateHost(hostname) {
   if (/^localhost$/i.test(hostname)) return true;
@@ -147,6 +171,13 @@ function safeLookup(hostname, options, callback) {
   });
 }
 
+/**
+ * Normalize a repository URL into a canonical form for deduplication.
+ * Strips trailing slashes, `.git` suffix, query strings, and fragments.
+ *
+ * @param {string} url — raw URL to canonicalize
+ * @returns {string} canonical URL suitable for equality comparison
+ */
 function canonicalizeUrl(url) {
   let normalized = url.trim().toLowerCase();
   normalized = normalized.replace(/\/+$/, "");
@@ -164,6 +195,15 @@ function canonicalizeUrl(url) {
   }
 }
 
+/**
+ * Validate that a URL is safe for server-side use.
+ * Enforces HTTPS, no credentials, no non-standard ports, no private hosts.
+ *
+ * @security Primary SSRF defence gate. Every user-supplied URL must pass through this.
+ * @param {string} value — URL string to validate
+ * @param {string} label — human-readable label for error messages
+ * @throws {Error} if any validation rule is violated
+ */
 function validateUrl(value, label) {
   if (!value) return;
   let parsed;
@@ -193,6 +233,14 @@ function validateUrl(value, label) {
   }
 }
 
+/**
+ * Validate a GitHub repository URL for template submission.
+ * Performs URL safety checks then an async HTTP HEAD to verify reachability.
+ * Follows up to 5 redirects, validating each target for SSRF safety.
+ *
+ * @param {string} repoUrl — GitHub repository URL to validate
+ * @returns {Promise<{ valid: boolean, errors?: string[] }>}
+ */
 async function validateTemplate(repoUrl) {
   if (!repoUrl || typeof repoUrl !== "string" || !repoUrl.trim()) {
     return { valid: false, errors: ["Repository URL is required"] };

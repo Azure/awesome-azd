@@ -665,6 +665,22 @@ describe('isPrivateIP - expanded IPv6 and SIIT forms', () => {
     test('allows public IPv6 address (not in any private range)', () => {
         expect(isPrivateIP('2607:f8b0:4004:800::200e')).toBe(false);
     });
+
+    test('blocks fully expanded loopback (0:0:0:0:0:0:0:1 — 7 zero groups)', () => {
+        expect(isPrivateIP('0:0:0:0:0:0:0:1')).toBe(true);
+    });
+
+    test('blocks fully expanded IPv4-compatible (0:0:0:0:0:0:127.0.0.1 — 6 zero groups)', () => {
+        expect(isPrivateIP('0:0:0:0:0:0:127.0.0.1')).toBe(true);
+    });
+
+    test('does not false-positive block 2001:0b8:: (not in doc range)', () => {
+        expect(isPrivateIP('2001:0b8::1')).toBe(false);
+    });
+
+    test('does not false-positive block 2001:b8:: (not in doc range)', () => {
+        expect(isPrivateIP('2001:b8::1')).toBe(false);
+    });
 });
 
 // ---------------------------------------------------------------------------

@@ -316,7 +316,7 @@ async function fetchAzureYaml(owner, repo, branch) {
     }
   }
 
-  return yaml.load(content, { schema: yaml.FAILSAFE_SCHEMA });
+  return yaml.load(content, { schema: yaml.FAILSAFE_SCHEMA, maxAliasCount: 100 });
 }
 
 /**

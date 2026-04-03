@@ -78,7 +78,9 @@ function isPrivateIP(ip) {
     // Normalize expanded-form IPv6 to compressed form so embedded IPv4
     // patterns are detected regardless of how the DNS resolver formats them.
     // e.g. 0:0:0:0:0:ffff:7f00:1 → ::ffff:7f00:1
-    const norm = ip.replace(/^(?:0{1,4}:){1,5}/i, "::");
+    const norm = ip.replace(/^(?:0{1,4}:){1,7}/i, "::");
+    // Re-check loopback/unspecified after normalization (e.g. 0:0:0:0:0:0:0:1 → ::1)
+    if (norm === "::1" || norm === "::") return true;
     // IPv4-mapped IPv6 dotted form (::ffff:x.x.x.x)
     const v4mapped = norm.match(
       /^::ffff:(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})$/i
@@ -116,7 +118,7 @@ function isPrivateIP(ip) {
     // Teredo (2001:0000::/32) — tunneling protocol
     if (/^2001:0?0?0?0?:/i.test(ip)) return true;
     // Documentation range (2001:db8::/32) — RFC 3849
-    if (/^2001:0?d?b8:/i.test(ip)) return true;
+    if (/^2001:0?db8:/i.test(ip)) return true;
     // NAT64 well-known prefix (64:ff9b::/96)
     if (/^64:ff9b:/i.test(ip)) return true;
     return false;
@@ -291,7 +293,9 @@ async function validateTemplate(repoUrl) {
 
   const HARD_TIMEOUT_MS = 30000;
   return new Promise((resolve) => {
+    let currentReq = null;
     const deadline = setTimeout(() => {
+      if (currentReq) currentReq.destroy();
       resolve({ valid: false, errors: ["Validation timed out after 30s"] });
     }, HARD_TIMEOUT_MS);
 
@@ -305,7 +309,7 @@ async function validateTemplate(repoUrl) {
 
     function makeRequest(url) {
       const parsed = new URL(url);
-      const req = https.request(
+      currentReq = https.request(
         {
           hostname: parsed.hostname,
           path: parsed.pathname + parsed.search,
@@ -360,14 +364,14 @@ async function validateTemplate(repoUrl) {
           }
         }
       );
-      req.on("timeout", () => {
-        req.destroy();
+      currentReq.on("timeout", () => {
+        currentReq.destroy();
         done({ valid: false, errors: ["Request timed out after 10s"] });
       });
-      req.on("error", (err) => {
+      currentReq.on("error", (err) => {
         done({ valid: false, errors: [`Request failed: ${err.message}`] });
       });
-      req.end();
+      currentReq.end();
     }
 
     makeRequest(repoUrl);

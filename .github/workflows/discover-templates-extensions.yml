@@ -1,5 +1,10 @@
 name: Discover Templates & Extensions
 
+# NOTE: GitHub Actions are pinned to full commit SHAs for supply-chain security.
+# To update a pinned action: find the new SHA for the desired tag/version at
+# https://github.com/<owner>/<action>/tags, then replace the SHA and version comment.
+# Consider enabling Dependabot or Renovate to automate these updates.
+
 on:
   # Daily cron disabled during trial period — use manual dispatch to test
   # schedule:

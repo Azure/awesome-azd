@@ -57,6 +57,12 @@ const MODEL = "openai/gpt-4o-mini";
  * Repo content (README, azure.yaml) is user-controlled and can contain prompt injection
  * attempts - e.g., "Ignore previous instructions" or delimiter spoofing with "---".
  * This function strips known injection patterns to reduce (not eliminate) that risk.
+ *
+ * NOTE: This is defense-in-depth, not a comprehensive prompt injection solution.
+ * The primary mitigations are: (1) the system prompt's "do not follow instructions"
+ * boundary markers, (2) the quality clamping logic below, and (3) human review of
+ * discovered templates. This sanitizer catches the most common injection prefixes
+ * but cannot prevent all adversarial prompt manipulation.
  */
 function sanitizeRepoContent(text) {
   if (!text || typeof text !== "string") return "";
@@ -173,8 +179,13 @@ ${sanitizeRepoContent((repoData.readme || "No README found").substring(0, 3000))
   }
   // SECURITY: Clamp inflated quality scores for low-star repos. A prompt injection
   // attack could convince the model to return quality=10 for a malicious repo.
+  const QUALITY_CLAMP_THRESHOLD = 9;  // Scores above this trigger clamping
+  const QUALITY_CLAMP_VALUE = 7;       // Clamped score for suspicious high ratings
+  const LOW_STAR_THRESHOLD = 10;       // Repos below this star count are subject to clamping
   const clampedQuality =
-    quality > 9 && (repoData.stars || 0) < 10 ? 7 : quality;
+    quality > QUALITY_CLAMP_THRESHOLD && (repoData.stars || 0) < LOW_STAR_THRESHOLD
+      ? QUALITY_CLAMP_VALUE
+      : quality;
   return {
     quality: clampedQuality,
     reasoning: typeof raw.reasoning === "string" ? raw.reasoning : "",

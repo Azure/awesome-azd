@@ -12,8 +12,16 @@ import extensionsData from '../../static/extensions.json';
 // Shell metacharacters (;|&$`\) are rejected to prevent command injection.
 const SAFE_INSTALL_CMD = /^[a-zA-Z0-9.\-_/@\s]+$/;
 
-function validateExtensions(raw: unknown[]): Extension[] {
+function validateExtensions(raw: unknown): Extension[] {
+  if (!Array.isArray(raw)) {
+    console.warn('Extensions data is not an array, returning empty list');
+    return [];
+  }
   return (raw as Record<string, unknown>[]).filter((entry, i) => {
+    if (typeof entry !== 'object' || entry === null) {
+      console.warn(`Extension[${i}]: not a valid object, skipping`);
+      return false;
+    }
     const id = entry.id;
     const displayName = entry.displayName;
     const description = entry.description;
@@ -30,7 +38,11 @@ function validateExtensions(raw: unknown[]): Extension[] {
       return false;
     }
     const installCommand = entry.installCommand;
-    if (typeof installCommand === 'string' && !SAFE_INSTALL_CMD.test(installCommand)) {
+    if (typeof installCommand !== 'string' || !installCommand) {
+      console.warn(`Extension[${i}]: missing or invalid 'installCommand', skipping`);
+      return false;
+    }
+    if (!SAFE_INSTALL_CMD.test(installCommand)) {
       console.warn(`Extension[${i}]: unsafe characters in 'installCommand', skipping`);
       return false;
     }
@@ -38,7 +50,7 @@ function validateExtensions(raw: unknown[]): Extension[] {
   }) as Extension[];
 }
 
-export const unsortedExtensions: Extension[] = validateExtensions(extensionsData as unknown[]);
+export const unsortedExtensions: Extension[] = validateExtensions(extensionsData);
 
 function sortExtensions() {
   let result = unsortedExtensions;

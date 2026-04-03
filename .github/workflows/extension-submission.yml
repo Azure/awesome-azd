@@ -153,41 +153,7 @@ jobs:
             const fs = require('fs');
             const path = require('path');
             
-            function validateUrl(value, label) {
-              if (!value) return;
-              try {
-                const u = new URL(value);
-                if (!['http:', 'https:'].includes(u.protocol)) {
-                  throw new Error(`unsafe protocol "${u.protocol}"`);
-                }
-                // SECURITY: Host allowlist to prevent SSRF
-                const ALLOWED_HOSTS = [
-                  'raw.githubusercontent.com',
-                  'github.com',
-                  'marketplace.visualstudio.com',
-                  'registry.npmjs.org',
-                ];
-                if (!ALLOWED_HOSTS.includes(u.hostname)) {
-                  throw new Error(`host "${u.hostname}" is not in the allowlist`);
-                }
-                // SECURITY: Reject private/internal IPs
-                const ipv4 = u.hostname.match(/^(\d+)\.(\d+)\.(\d+)\.(\d+)$/);
-                if (ipv4) {
-                  const [, a, b] = ipv4.map(Number);
-                  if (a === 127 || a === 10 || a === 0 ||
-                      (a === 172 && b >= 16 && b <= 31) ||
-                      (a === 192 && b === 168) ||
-                      (a === 169 && b === 254)) {
-                    throw new Error('URL resolves to a private/internal address');
-                  }
-                }
-                if (u.hostname === 'localhost' || u.hostname === '[::1]') {
-                  throw new Error('URL resolves to a private/internal address');
-                }
-              } catch (err) {
-                throw new Error(`Invalid ${label} URL "${value}": ${err.message}`);
-              }
-            }
+            const { validateUrl } = require('./.github/scripts/url-validation');
             
             const extensionsPath = path.join('website', 'static', 'extensions.json');
             const extensions = JSON.parse(fs.readFileSync(extensionsPath, 'utf8'));

@@ -30,32 +30,8 @@ const VALID_PLATFORMS = [
   "linux/arm64",
 ];
 
-// SECURITY: Host allowlist to prevent SSRF attacks. Only allow fetching
-// registry.json from known, trusted hosts.
-const ALLOWED_HOSTS = [
-  "raw.githubusercontent.com",
-  "github.com",
-  "marketplace.visualstudio.com",
-  "registry.npmjs.org",
-];
-
-// SECURITY: Reject URLs that resolve to private/internal IP ranges.
-function isPrivateHostname(hostname) {
-  // Block obvious loopback/private hostnames
-  if (hostname === "localhost" || hostname === "[::1]") return true;
-  // Check numeric IPv4 patterns (doesn't resolve DNS - just catches literals)
-  const ipv4Match = hostname.match(/^(\d+)\.(\d+)\.(\d+)\.(\d+)$/);
-  if (ipv4Match) {
-    const [, a, b] = ipv4Match.map(Number);
-    if (a === 127) return true;                     // 127.x.x.x loopback
-    if (a === 10) return true;                       // 10.x.x.x private
-    if (a === 172 && b >= 16 && b <= 31) return true; // 172.16-31.x.x private
-    if (a === 192 && b === 168) return true;          // 192.168.x.x private
-    if (a === 169 && b === 254) return true;          // 169.254.x.x link-local
-    if (a === 0) return true;                          // 0.x.x.x
-  }
-  return false;
-}
+// SECURITY: Shared URL validation utilities (host allowlist, private IP detection)
+const { ALLOWED_HOSTS, isPrivateHostname } = require("../../.github/scripts/url-validation");
 
 const SEMVER_REGEX = /^\d+\.\d+\.\d+(-[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*)?$/;
 
@@ -142,10 +118,22 @@ async function fetchAndValidate(registryUrl) {
   try {
     response = await fetch(registryUrl, {
       signal: controller.signal,
-      redirect: 'error',  // SECURITY: Disable redirects to prevent SSRF via open redirect
+      redirect: 'follow',
     });
   } finally {
     clearTimeout(timeout);
+  }
+
+  // SECURITY: After following redirects, re-validate the final URL is still
+  // on an allowed host (prevents SSRF via open redirect on an allowed domain).
+  const finalUrl = new URL(response.url);
+  if (!ALLOWED_HOSTS.includes(finalUrl.hostname)) {
+    throw new Error(
+      `Redirect led to disallowed host "${finalUrl.hostname}". Allowed: ${ALLOWED_HOSTS.join(", ")}`
+    );
+  }
+  if (isPrivateHostname(finalUrl.hostname)) {
+    throw new Error(`Redirect led to a private/internal address. Refusing to process.`);
   }
   if (!response.ok) {
     throw new Error(`Failed to fetch registry: ${response.status} ${response.statusText}`);

@@ -39,7 +39,7 @@ const readSearchTags2 = (search: string): TagType[] => {
   // SECURITY: Filter out query param tag values that don't exist in the Tags
   // object to prevent prototype pollution or undefined property access.
   const rawTags = new URLSearchParams(search).getAll(TagQueryStringKey2);
-  return rawTags.filter((tag): tag is TagType => tag in Tags);
+  return rawTags.filter((tag): tag is TagType => Object.hasOwn(Tags, tag));
 }
 
 function replaceSearchTags(search: string, newTags: TagType[]) {

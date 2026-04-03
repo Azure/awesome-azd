@@ -153,6 +153,8 @@ function fetchHttps(url, options = {}) {
         const chunks = [];
         let size = 0;
 
+        res.on("error", (err) => reject(new Error(`Response stream error: ${err.message}`)));
+
         res.on("data", (chunk) => {
           size += chunk.length;
           if (size > maxSize) {

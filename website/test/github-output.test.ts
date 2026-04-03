@@ -81,6 +81,26 @@ describe("sanitizeOutputValue", () => {
     const result = sanitizeOutputValue(payload);
     expect(result).not.toContain("\n");
   });
+
+  // --- C0 control character stripping (hack fix) ---
+  test("strips null bytes", () => {
+    expect(sanitizeOutputValue("abc\x00def")).toBe("abc def");
+  });
+
+  test("strips vertical tab and form feed", () => {
+    expect(sanitizeOutputValue("abc\x0Bdef\x0Cghi")).toBe("abc def ghi");
+  });
+
+  test("strips all C0 control chars (0x01-0x1F) and DEL (0x7F)", () => {
+    // Build a string with every C0 control char
+    let payload = "";
+    for (let i = 0; i <= 0x1f; i++) payload += String.fromCharCode(i);
+    payload += String.fromCharCode(0x7f);
+    const result = sanitizeOutputValue("start" + payload + "end");
+    expect(result).toBe("start end");
+    // No control chars remain
+    expect(result).toMatch(/^[\x20-\x7e]+$/);
+  });
 });
 
 // ---------------------------------------------------------------------------

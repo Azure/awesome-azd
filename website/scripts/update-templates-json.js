@@ -29,7 +29,7 @@ const { writeOutputs } = require("./github-output");
 function sanitize(value, maxLength) {
   return value
     .replace(/\x00/g, "")
-    .replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u2069\uFEFF]/g, "")
+    .replace(/[\u00AD\u034F\u061C\u180E\u200B-\u200F\u202A-\u202E\u2060-\u2069\uFEFF]/g, "")
     .replace(/<[^>]*>?/g, "")
     .replace(/[<>]/g, "")
     .trim()
@@ -146,7 +146,7 @@ function updateTemplatesJson({
   const entry = {
     title: _sanitize(title, 200),
     description: _sanitize(description, 500),
-    preview: previewImage || "",
+    preview: previewImage ? _sanitize(previewImage, 500) : "",
     authorUrl: _sanitize(authorUrl, 500),
     author: _sanitize(author, 100),
     source: canonicalSource,

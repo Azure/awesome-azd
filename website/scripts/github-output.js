@@ -13,13 +13,13 @@ const fs = require("fs");
 
 /**
  * Sanitize a value for safe inclusion in GITHUB_OUTPUT.
- * Strips newlines to prevent output injection.
+ * Strips all C0/C1 control characters to prevent output injection.
  * @param {*} value
  * @returns {string}
  */
 function sanitizeOutputValue(value) {
   if (value === null || value === undefined) return "";
-  return String(value).replace(/[\r\n]+/g, " ").trim();
+  return String(value).replace(/[\x00-\x1f\x7f]+/g, " ").trim();
 }
 
 /**

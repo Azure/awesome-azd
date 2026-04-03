@@ -186,7 +186,14 @@ function canonicalizeUrl(url) {
   // Strip query string and fragment to prevent duplicate-detection bypass
   try {
     const parsed = new URL(normalized);
-    return `${parsed.protocol}//${parsed.host}${parsed.pathname}`.replace(
+    let pathname = parsed.pathname;
+    // Strip GitHub sub-paths (/tree/..., /blob/..., /issues, /pulls, etc.)
+    // to normalize to owner/repo for reliable duplicate detection.
+    const ghSubpath =
+      /^(\/[^/]+\/[^/]+)\/(?:tree|blob|commits?|issues|pulls?|actions|releases|wiki|settings|discussions)\b/;
+    const match = pathname.match(ghSubpath);
+    if (match) pathname = match[1];
+    return `${parsed.protocol}//${parsed.host}${pathname}`.replace(
       /\/+$/,
       ""
     );
@@ -293,6 +300,7 @@ async function validateTemplate(repoUrl) {
         },
         (res) => {
           if (res.statusCode >= 200 && res.statusCode < 300) {
+            res.resume();
             done({ valid: true });
           } else if (
             res.statusCode >= 300 &&
@@ -323,8 +331,10 @@ async function validateTemplate(repoUrl) {
               });
               return;
             }
+            res.resume();
             makeRequest(target.href);
           } else {
+            res.resume();
             done({
               valid: false,
               errors: [`Repository returned HTTP ${res.statusCode}`],

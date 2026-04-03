@@ -13,7 +13,7 @@ function mockRequestResponse(statusCode: number, headers: Record<string, string>
         destroy: jest.fn() as any,
     };
     requestSpy = jest.spyOn(https, 'request').mockImplementation((_opts: any, callback: any) => {
-        process.nextTick(() => callback({ statusCode, headers }));
+        process.nextTick(() => callback({ statusCode, headers, resume: jest.fn() }));
         return req;
     });
     return req;
@@ -370,6 +370,49 @@ describe('canonicalizeUrl - security', () => {
             'https://github.com/org/repo'
         );
     });
+
+    // --- Duplicate bypass via GitHub sub-path (hack fix) ---
+    test('strips /tree/main to prevent duplicate bypass', () => {
+        expect(canonicalizeUrl('https://github.com/org/repo/tree/main')).toBe(
+            'https://github.com/org/repo'
+        );
+    });
+
+    test('strips /blob/main/README.md to prevent duplicate bypass', () => {
+        expect(canonicalizeUrl('https://github.com/org/repo/blob/main/README.md')).toBe(
+            'https://github.com/org/repo'
+        );
+    });
+
+    test('strips /issues sub-path', () => {
+        expect(canonicalizeUrl('https://github.com/org/repo/issues')).toBe(
+            'https://github.com/org/repo'
+        );
+    });
+
+    test('strips /pulls sub-path', () => {
+        expect(canonicalizeUrl('https://github.com/org/repo/pulls')).toBe(
+            'https://github.com/org/repo'
+        );
+    });
+
+    test('strips /actions sub-path', () => {
+        expect(canonicalizeUrl('https://github.com/org/repo/actions')).toBe(
+            'https://github.com/org/repo'
+        );
+    });
+
+    test('strips /commit/sha sub-path', () => {
+        expect(canonicalizeUrl('https://github.com/org/repo/commit/abc123')).toBe(
+            'https://github.com/org/repo'
+        );
+    });
+
+    test('preserves plain owner/repo URL', () => {
+        expect(canonicalizeUrl('https://github.com/org/repo')).toBe(
+            'https://github.com/org/repo'
+        );
+    });
 });
 
 describe('isPrivateIP - IPv6 tunnel addresses (#22)', () => {
@@ -601,6 +644,7 @@ describe('validateTemplate - too many redirects', () => {
                 callback({
                     statusCode: 302,
                     headers: { location: 'https://github.com/org/repo' },
+                    resume: jest.fn(),
                 })
             );
             return req;

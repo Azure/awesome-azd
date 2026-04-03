@@ -47,6 +47,27 @@ describe("sanitize", () => {
   test("strips self-closing tags", () => {
     expect(sanitize("before<br/>after", 200)).toBe("beforeafter");
   });
+
+  // --- Bidi/invisible char stripping (hack fix) ---
+  test("strips standard bidi overrides (U+200B-U+200F, U+202A-U+202E)", () => {
+    expect(sanitize("a\u200Eb\u202Ac", 200)).toBe("abc");
+  });
+
+  test("strips Arabic Letter Mark U+061C", () => {
+    expect(sanitize("hello\u061Cworld", 200)).toBe("helloworld");
+  });
+
+  test("strips Mongolian vowel separator U+180E", () => {
+    expect(sanitize("hello\u180Eworld", 200)).toBe("helloworld");
+  });
+
+  test("strips soft hyphen U+00AD", () => {
+    expect(sanitize("he\u00ADllo", 200)).toBe("hello");
+  });
+
+  test("strips combining grapheme joiner U+034F", () => {
+    expect(sanitize("he\u034Fllo", 200)).toBe("hello");
+  });
 });
 
 // ---------------------------------------------------------------------------
@@ -330,6 +351,44 @@ describe("updateTemplatesJson", () => {
     expect(entry.title).toContain("My Template");
     expect(entry.description).not.toContain("<b>");
     expect(entry.description).toContain("bold");
+  });
+
+  // --- Preview image sanitization (hack fix) ---
+  test("sanitizes preview image URL — strips bidi overrides and null bytes", () => {
+    const opts = defaultOpts();
+    opts.sourceRepo = "https://github.com/org/preview-test";
+    opts.previewImage = "https://github.com/img\u200E.png";
+    const result = updateTemplatesJson(opts);
+    expect(result.skipped).toBe(false);
+    const templates = readTemplates();
+    const entry = templates[templates.length - 1];
+    expect(entry.preview).not.toContain("\u200E");
+    expect(entry.preview).toContain("img.png");
+  });
+
+  test("preview field is empty string when previewImage is empty", () => {
+    const result = updateTemplatesJson(defaultOpts());
+    expect(result.skipped).toBe(false);
+    const templates = readTemplates();
+    const entry = templates[templates.length - 1];
+    expect(entry.preview).toBe("");
+  });
+
+  // --- Duplicate bypass via sub-path URL (hack fix) ---
+  test("detects duplicate when source URL has /tree/main suffix", () => {
+    const opts = defaultOpts();
+    opts.sourceRepo = "https://github.com/org/existing-repo/tree/main";
+    const result = updateTemplatesJson(opts);
+    expect(result.skipped).toBe(true);
+    expect(result.skipReason).toContain("already exists");
+  });
+
+  test("detects duplicate when source URL has /blob/main/README.md suffix", () => {
+    const opts = defaultOpts();
+    opts.sourceRepo = "https://github.com/org/existing-repo/blob/main/README.md";
+    const result = updateTemplatesJson(opts);
+    expect(result.skipped).toBe(true);
+    expect(result.skipReason).toContain("already exists");
   });
 });
 

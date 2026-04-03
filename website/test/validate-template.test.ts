@@ -568,6 +568,7 @@ describe('validateTemplate - redirect safety', () => {
                 callback({
                     statusCode: 302,
                     headers: { location: 'https://evil.com/payload' },
+                    resume: jest.fn(),
                 })
             );
             return req;
@@ -588,6 +589,7 @@ describe('validateTemplate - redirect safety', () => {
                 callback({
                     statusCode: 301,
                     headers: { location: 'https://10.0.0.1/internal' },
+                    resume: jest.fn(),
                 })
             );
             return req;
@@ -625,6 +627,60 @@ describe('isPrivateIP - edge cases', () => {
 
     test('denies by default for unknown format (not-an-ip)', () => {
         expect(isPrivateIP('not-an-ip')).toBe(true);
+    });
+});
+
+// ---------------------------------------------------------------------------
+// isPrivateIP - expanded/SIIT/doc-range IPv6 forms (hack cycle 2)
+// ---------------------------------------------------------------------------
+describe('isPrivateIP - expanded IPv6 and SIIT forms', () => {
+    test('blocks expanded-form IPv4-mapped loopback (0:0:0:0:0:ffff:7f00:1)', () => {
+        expect(isPrivateIP('0:0:0:0:0:ffff:7f00:1')).toBe(true);
+    });
+
+    test('blocks expanded-form IPv4-mapped 10.x (0:0:0:0:0:ffff:a00:1)', () => {
+        expect(isPrivateIP('0:0:0:0:0:ffff:a00:1')).toBe(true);
+    });
+
+    test('blocks SIIT/IPv4-translated form (::ffff:0:127.0.0.1)', () => {
+        expect(isPrivateIP('::ffff:0:127.0.0.1')).toBe(true);
+    });
+
+    test('blocks SIIT/IPv4-translated form (::ffff:0:10.0.0.1)', () => {
+        expect(isPrivateIP('::ffff:0:10.0.0.1')).toBe(true);
+    });
+
+    test('blocks documentation range 2001:db8::/32 (RFC 3849)', () => {
+        expect(isPrivateIP('2001:db8::1')).toBe(true);
+    });
+
+    test('blocks documentation range 2001:0db8:: expanded form', () => {
+        expect(isPrivateIP('2001:0db8::1')).toBe(true);
+    });
+
+    test('blocks expanded-form IPv4-mapped dotted (0:0:0:0:0:ffff:192.168.1.1)', () => {
+        expect(isPrivateIP('0:0:0:0:0:ffff:192.168.1.1')).toBe(true);
+    });
+
+    test('allows public IPv6 address (not in any private range)', () => {
+        expect(isPrivateIP('2607:f8b0:4004:800::200e')).toBe(false);
+    });
+});
+
+// ---------------------------------------------------------------------------
+// canonicalizeUrl - double-slash collapse (hack cycle 2)
+// ---------------------------------------------------------------------------
+describe('canonicalizeUrl - path normalization', () => {
+    test('collapses double slashes in path', () => {
+        expect(canonicalizeUrl('https://github.com/org/repo//issues')).toBe(
+            'https://github.com/org/repo'
+        );
+    });
+
+    test('collapses triple slashes in path', () => {
+        expect(canonicalizeUrl('https://github.com/org///repo')).toBe(
+            'https://github.com/org/repo'
+        );
     });
 });
 

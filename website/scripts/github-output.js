@@ -19,7 +19,10 @@ const fs = require("fs");
  */
 function sanitizeOutputValue(value) {
   if (value === null || value === undefined) return "";
-  return String(value).replace(/[\x00-\x1f\x7f]+/g, " ").trim();
+  return String(value)
+    .replace(/[\x00-\x1f\x7f]+/g, " ")
+    .replace(/[\u200B-\u200F\u2028-\u202F\uFEFF\u2060-\u2064\u2066-\u2069]+/g, "")
+    .trim();
 }
 
 /**

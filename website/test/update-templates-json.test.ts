@@ -390,6 +390,21 @@ describe("updateTemplatesJson", () => {
     expect(result.skipped).toBe(true);
     expect(result.skipReason).toContain("already exists");
   });
+
+  // Array.isArray guard (hack cycle 2)
+  test("throws when templates.json contains an object instead of array", () => {
+    fs.writeFileSync(templatesPath, JSON.stringify({ notAnArray: true }));
+    expect(() => updateTemplatesJson(defaultOpts())).toThrow(
+      /must contain a JSON array/
+    );
+  });
+
+  test("throws when templates.json contains a string instead of array", () => {
+    fs.writeFileSync(templatesPath, JSON.stringify("just a string"));
+    expect(() => updateTemplatesJson(defaultOpts())).toThrow(
+      /must contain a JSON array/
+    );
+  });
 });
 
 // ---------------------------------------------------------------------------

@@ -101,6 +101,23 @@ describe("sanitizeOutputValue", () => {
     // No control chars remain
     expect(result).toMatch(/^[\x20-\x7e]+$/);
   });
+
+  // Bidi/invisible unicode stripping (hack cycle 2)
+  test("strips bidi override characters (U+202A-U+202E)", () => {
+    expect(sanitizeOutputValue("hello\u202Aworld\u202E")).toBe("helloworld");
+  });
+
+  test("strips zero-width spaces and BOM", () => {
+    expect(sanitizeOutputValue("abc\u200Bdef\uFEFF")).toBe("abcdef");
+  });
+
+  test("strips directional isolates (U+2066-U+2069)", () => {
+    expect(sanitizeOutputValue("\u2066admin\u2069")).toBe("admin");
+  });
+
+  test("strips word joiner and invisible separators", () => {
+    expect(sanitizeOutputValue("a\u2060b\u2063c")).toBe("abc");
+  });
 });
 
 // ---------------------------------------------------------------------------

@@ -112,6 +112,9 @@ function updateTemplatesJson({
   let templates;
   try {
     templates = JSON.parse(fs.readFileSync(resolvedPath, "utf8"));
+    if (!Array.isArray(templates)) {
+      throw new Error("templates.json must contain a JSON array");
+    }
   } catch (err) {
     throw new Error(`Failed to parse ${resolvedPath}: ${err.message}`);
   }

@@ -75,15 +75,19 @@ function isPrivateIP(ip) {
     if (/^fe[89ab]/i.test(ip)) return true;
     // Unique local (fc00::/7 — fc00:: through fdff::)
     if (/^f[cd]/i.test(ip)) return true;
+    // Normalize expanded-form IPv6 to compressed form so embedded IPv4
+    // patterns are detected regardless of how the DNS resolver formats them.
+    // e.g. 0:0:0:0:0:ffff:7f00:1 → ::ffff:7f00:1
+    const norm = ip.replace(/^(?:0{1,4}:){1,5}/i, "::");
     // IPv4-mapped IPv6 dotted form (::ffff:x.x.x.x)
-    const v4mapped = ip.match(
+    const v4mapped = norm.match(
       /^::ffff:(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})$/i
     );
     if (v4mapped) {
       return PRIVATE_IPV4_RANGES.some((re) => re.test(v4mapped[1]));
     }
     // IPv4-mapped IPv6 hex form (::ffff:HHHH:HHHH)
-    const v4hex = ip.match(/^::ffff:([0-9a-f]{1,4}):([0-9a-f]{1,4})$/i);
+    const v4hex = norm.match(/^::ffff:([0-9a-f]{1,4}):([0-9a-f]{1,4})$/i);
     if (v4hex) {
       const hi = parseInt(v4hex[1], 16);
       const lo = parseInt(v4hex[2], 16);
@@ -92,9 +96,16 @@ function isPrivateIP(ip) {
       }`;
       return PRIVATE_IPV4_RANGES.some((re) => re.test(mapped));
     }
+    // IPv4-translated/SIIT (::ffff:0:x.x.x.x) — RFC 6052
+    const v4siit = norm.match(
+      /^::ffff:0:(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})$/i
+    );
+    if (v4siit) {
+      return PRIVATE_IPV4_RANGES.some((re) => re.test(v4siit[1]));
+    }
     // IPv4-compatible IPv6 dotted form (::x.x.x.x) — deprecated by RFC 4291
     // but still recognised by Node.js net.isIPv6 and some DNS resolvers.
-    const v4compat = ip.match(
+    const v4compat = norm.match(
       /^::(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})$/
     );
     if (v4compat) {
@@ -104,6 +115,8 @@ function isPrivateIP(ip) {
     if (/^2002:/i.test(ip)) return true;
     // Teredo (2001:0000::/32) — tunneling protocol
     if (/^2001:0?0?0?0?:/i.test(ip)) return true;
+    // Documentation range (2001:db8::/32) — RFC 3849
+    if (/^2001:0?d?b8:/i.test(ip)) return true;
     // NAT64 well-known prefix (64:ff9b::/96)
     if (/^64:ff9b:/i.test(ip)) return true;
     return false;
@@ -187,6 +200,8 @@ function canonicalizeUrl(url) {
   try {
     const parsed = new URL(normalized);
     let pathname = parsed.pathname;
+    // Collapse multiple consecutive slashes to prevent path-based bypasses
+    pathname = pathname.replace(/\/{2,}/g, "/");
     // Strip GitHub sub-paths (/tree/..., /blob/..., /issues, /pulls, etc.)
     // to normalize to owner/repo for reliable duplicate detection.
     const ghSubpath =
@@ -313,6 +328,7 @@ async function validateTemplate(repoUrl) {
                 valid: false,
                 errors: ["Too many redirects (max 5)"],
               });
+              res.resume();
               return;
             }
             const target = new URL(res.headers.location, url);
@@ -320,6 +336,7 @@ async function validateTemplate(repoUrl) {
               validateUrl(target.href, "Redirect target");
             } catch (e) {
               done({ valid: false, errors: [e.message] });
+              res.resume();
               return;
             }
             if (target.hostname !== "github.com") {
@@ -329,6 +346,7 @@ async function validateTemplate(repoUrl) {
                   "Redirect target is not github.com: " + target.hostname,
                 ],
               });
+              res.resume();
               return;
             }
             res.resume();

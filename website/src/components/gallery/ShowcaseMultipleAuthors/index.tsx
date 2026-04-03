@@ -30,6 +30,7 @@ function ShowcaseMultipleWebsites(
         href={websiteLink}
         className={styles.cardAuthorPanel}
         target="_blank"
+        rel="noopener noreferrer"
         style={{
           display: "flex",
           alignItems: "center",
@@ -61,6 +62,7 @@ function ShowcaseMultipleWebsites(
         className={styles.cardAuthor}
         href={websiteLink}
         target="_blank"
+        rel="noopener noreferrer"
         style={{ flexShrink: 0, fontSize: "12px" }}
       >
         {authorName},
@@ -73,6 +75,7 @@ function ShowcaseMultipleWebsites(
         className={styles.cardAuthorPanel}
         href={websiteLink}
         target="_blank"
+        rel="noopener noreferrer"
         style={{
           display: "flex",
           alignItems: "center",
@@ -103,6 +106,7 @@ function ShowcaseMultipleWebsites(
         className={styles.cardAuthor}
         href={websiteLink}
         target="_blank"
+        rel="noopener noreferrer"
         style={{ flexShrink: 0, fontSize: "12px" }}
       >
         {authorName}
@@ -150,6 +154,7 @@ export default function ShowcaseMultipleAuthors({
       className={styles.cardAuthorPanel}
       href={websites}
       target="_blank"
+      rel="noopener noreferrer"
       style={{
         display: "flex",
         alignItems: "center",
@@ -175,6 +180,7 @@ export default function ShowcaseMultipleAuthors({
       className={styles.cardAuthor}
       href={websites}
       target="_blank"
+      rel="noopener noreferrer"
       style={{ fontSize: "12px", flexShrink: 0 }}
     >
       {authors}

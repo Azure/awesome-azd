@@ -17,7 +17,35 @@ import templates from '../../static/templates.json'
 // Add your site to this list
 // prettier-ignore
 
-export const unsortedUsers: User[] = templates as User[]
+// SECURITY: Runtime validation of JSON template data to catch malformed or
+// tampered entries before they reach the UI.
+function validateTemplates(raw: unknown[]): User[] {
+  return (raw as Record<string, unknown>[]).filter((entry, i) => {
+    const title = entry.title;
+    const description = entry.description;
+    const source = entry.source;
+    const author = entry.author;
+    if (typeof title !== 'string' || !title) {
+      console.warn(`Template[${i}]: missing or invalid 'title', skipping`);
+      return false;
+    }
+    if (typeof description !== 'string' || !description) {
+      console.warn(`Template[${i}]: missing or invalid 'description', skipping`);
+      return false;
+    }
+    if (typeof source !== 'string' || !source.startsWith('https://github.com/')) {
+      console.warn(`Template[${i}]: invalid 'source' URL "${source}", skipping`);
+      return false;
+    }
+    if (typeof author !== 'string' || !author) {
+      console.warn(`Template[${i}]: missing or invalid 'author', skipping`);
+      return false;
+    }
+    return true;
+  }) as User[];
+}
+
+export const unsortedUsers: User[] = validateTemplates(templates as unknown[])
 
 export const TagList = Object.keys(Tags) as TagType[];
 function sortUsers() {

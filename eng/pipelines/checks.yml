@@ -33,7 +33,7 @@ jobs:
     steps:
       - checkout: self
 
-      - pwsh: npm install && npm run build
+      - pwsh: npm ci && npm run build
         workingDirectory: website/
         displayName: Build site
 

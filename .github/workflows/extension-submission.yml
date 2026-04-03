@@ -43,16 +43,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f  # v6
         with:
           node-version: "24"
 
       - name: Parse issue body
         id: parse
-        uses: actions/github-script@v8
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd  # v8
         env:
           ISSUE_BODY: ${{ github.event.issue.body || '' }}
           INPUT_REGISTRY_URL: ${{ inputs.registry_url }}
@@ -124,7 +124,7 @@ jobs:
 
       - name: Comment on validation failure
         if: steps.validate.outputs.valid == 'false' && github.event_name != 'workflow_dispatch'
-        uses: actions/github-script@v8
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd  # v8
         with:
           script: |
             await github.rest.issues.createComment({
@@ -139,7 +139,7 @@ jobs:
       - name: Update extensions.json
         id: update
         if: steps.validate.outputs.valid == 'true'
-        uses: actions/github-script@v8
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd  # v8
         env:
           VALIDATION_RESULT: ${{ steps.validate.outputs.result }}
           EXT_AUTHOR: ${{ steps.parse.outputs.author }}
@@ -159,6 +159,30 @@ jobs:
                 const u = new URL(value);
                 if (!['http:', 'https:'].includes(u.protocol)) {
                   throw new Error(`unsafe protocol "${u.protocol}"`);
+                }
+                // SECURITY: Host allowlist to prevent SSRF
+                const ALLOWED_HOSTS = [
+                  'raw.githubusercontent.com',
+                  'github.com',
+                  'marketplace.visualstudio.com',
+                  'registry.npmjs.org',
+                ];
+                if (!ALLOWED_HOSTS.includes(u.hostname)) {
+                  throw new Error(`host "${u.hostname}" is not in the allowlist`);
+                }
+                // SECURITY: Reject private/internal IPs
+                const ipv4 = u.hostname.match(/^(\d+)\.(\d+)\.(\d+)\.(\d+)$/);
+                if (ipv4) {
+                  const [, a, b] = ipv4.map(Number);
+                  if (a === 127 || a === 10 || a === 0 ||
+                      (a === 172 && b >= 16 && b <= 31) ||
+                      (a === 192 && b === 168) ||
+                      (a === 169 && b === 254)) {
+                    throw new Error('URL resolves to a private/internal address');
+                  }
+                }
+                if (u.hostname === 'localhost' || u.hostname === '[::1]') {
+                  throw new Error('URL resolves to a private/internal address');
                 }
               } catch (err) {
                 throw new Error(`Invalid ${label} URL "${value}": ${err.message}`);
@@ -230,7 +254,7 @@ jobs:
 
       - name: Create Pull Request
         if: steps.validate.outputs.valid == 'true'
-        uses: peter-evans/create-pull-request@v8
+        uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0  # v8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Add extension(s) from ${{ github.event_name == 'workflow_dispatch' && 'manual dispatch' || format('issue #{0}', github.event.issue.number) }}"
@@ -248,7 +272,7 @@ jobs:
 
       - name: Comment on success
         if: steps.validate.outputs.valid == 'true' && github.event_name != 'workflow_dispatch'
-        uses: actions/github-script@v8
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd  # v8
         with:
           script: |
             await github.rest.issues.createComment({

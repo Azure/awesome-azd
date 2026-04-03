@@ -30,6 +30,33 @@ const VALID_PLATFORMS = [
   "linux/arm64",
 ];
 
+// SECURITY: Host allowlist to prevent SSRF attacks. Only allow fetching
+// registry.json from known, trusted hosts.
+const ALLOWED_HOSTS = [
+  "raw.githubusercontent.com",
+  "github.com",
+  "marketplace.visualstudio.com",
+  "registry.npmjs.org",
+];
+
+// SECURITY: Reject URLs that resolve to private/internal IP ranges.
+function isPrivateHostname(hostname) {
+  // Block obvious loopback/private hostnames
+  if (hostname === "localhost" || hostname === "[::1]") return true;
+  // Check numeric IPv4 patterns (doesn't resolve DNS - just catches literals)
+  const ipv4Match = hostname.match(/^(\d+)\.(\d+)\.(\d+)\.(\d+)$/);
+  if (ipv4Match) {
+    const [, a, b] = ipv4Match.map(Number);
+    if (a === 127) return true;                     // 127.x.x.x loopback
+    if (a === 10) return true;                       // 10.x.x.x private
+    if (a === 172 && b >= 16 && b <= 31) return true; // 172.16-31.x.x private
+    if (a === 192 && b === 168) return true;          // 192.168.x.x private
+    if (a === 169 && b === 254) return true;          // 169.254.x.x link-local
+    if (a === 0) return true;                          // 0.x.x.x
+  }
+  return false;
+}
+
 const SEMVER_REGEX = /^\d+\.\d+\.\d+(-[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*)?$/;
 
 function validateExtension(ext) {
@@ -84,8 +111,9 @@ const { getLatestVersion } = require("./semver-utils");
 
 async function fetchAndValidate(registryUrl) {
   // Validate URL protocol to prevent SSRF
+  let parsed;
   try {
-    const parsed = new URL(registryUrl);
+    parsed = new URL(registryUrl);
     if (!['http:', 'https:'].includes(parsed.protocol)) {
       throw new Error(`Unsafe protocol "${parsed.protocol}". Only http: and https: are allowed.`);
     }
@@ -96,11 +124,26 @@ async function fetchAndValidate(registryUrl) {
     throw err;
   }
 
+  // SECURITY: Enforce host allowlist - only fetch from trusted origins
+  if (!ALLOWED_HOSTS.includes(parsed.hostname)) {
+    throw new Error(
+      `Host "${parsed.hostname}" is not in the allowlist. Allowed: ${ALLOWED_HOSTS.join(", ")}`
+    );
+  }
+
+  // SECURITY: Reject private/internal IPs to prevent SSRF
+  if (isPrivateHostname(parsed.hostname)) {
+    throw new Error(`URL resolves to a private/internal address. Refusing to fetch.`);
+  }
+
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 30000);
   let response;
   try {
-    response = await fetch(registryUrl, { signal: controller.signal });
+    response = await fetch(registryUrl, {
+      signal: controller.signal,
+      redirect: 'error',  // SECURITY: Disable redirects to prevent SSRF via open redirect
+    });
   } finally {
     clearTimeout(timeout);
   }

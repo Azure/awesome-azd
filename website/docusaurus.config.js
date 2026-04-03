@@ -46,6 +46,9 @@ const config = {
   },
 
   // CONFIG: Google Fonts for Warm Precision design
+  // NOTE: SRI cannot be used for Google Fonts because responses vary by user-agent
+  // (different font formats for different browsers). Self-hosting fonts is an
+  // alternative but requires ongoing maintenance for updates.
   stylesheets: [
     {
       href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap",
@@ -54,9 +57,20 @@ const config = {
   ],
 
   // CONFIG: scripts
+  // SECURITY: External scripts use SRI (Subresource Integrity) hashes to prevent
+  // tampering. If a script is updated at the CDN, the hash must be recomputed:
+  //   openssl dgst -sha384 -binary <script> | openssl base64 -A
   scripts: [
-    "https://js.monitor.azure.com/scripts/c/ms.analytics-web-4.min.js",
-    "https://wcpstatic.microsoft.com/mscc/lib/v2/wcp-consent.js",
+    {
+      src: "https://js.monitor.azure.com/scripts/c/ms.analytics-web-4.min.js",
+      integrity: "sha384-8WeOGat/2EQBPlBpKV76/+6LPhK20Pmn2nmnuB6k1wg8Hih1nYFu8l8l7xd+HOOw",
+      crossOrigin: "anonymous",
+    },
+    {
+      src: "https://wcpstatic.microsoft.com/mscc/lib/v2/wcp-consent.js",
+      integrity: "sha384-KjrOYIQAJ7b8Lj+NMikxVZ7DPdSoWFR0hdI3aLBOZ1ZgypozA/whqu48qc1q59sf",
+      crossOrigin: "anonymous",
+    },
   ],
 
   // CONFIG: theme = set properties for UI like navbar, footer, docs, copyright etc.

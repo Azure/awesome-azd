@@ -1,7 +1,7 @@
 name: "Submit an azd Template"
 description: "Add your azd template to the Awesome azd gallery"
 title: "[Template]: "
-labels: ["template-submission"]
+labels: []
 body:
   - type: markdown
     attributes:

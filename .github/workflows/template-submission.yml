@@ -118,7 +118,6 @@ jobs:
           FORM_FRAMEWORKS: ${{ steps.parse.outputs.frameworks }}
           FORM_AZURE_SERVICES: ${{ steps.parse.outputs.azure_services }}
           FORM_PREVIEW_IMAGE: ${{ steps.parse.outputs.preview_image }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node website/scripts/merge-extracted-metadata.js
 
       - name: Validate template repository

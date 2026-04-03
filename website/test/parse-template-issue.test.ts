@@ -7,9 +7,11 @@ import * as os from "os";
 const {
   extractField,
   parseIssueBody,
+} = require("../scripts/parse-template-issue");
+const {
   sanitizeOutputValue,
   writeOutputs,
-} = require("../scripts/parse-template-issue");
+} = require("../scripts/github-output");
 
 // ---------------------------------------------------------------------------
 // extractField

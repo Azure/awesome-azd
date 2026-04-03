@@ -135,4 +135,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { extractField, parseIssueBody, sanitizeOutputValue, writeOutputs };
+module.exports = { extractField, parseIssueBody };

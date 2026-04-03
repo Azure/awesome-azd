@@ -7,8 +7,8 @@ const {
   sanitize,
   parseTags,
   updateTemplatesJson,
-  writeOutputs,
 } = require("../scripts/update-templates-json");
+const { writeOutputs } = require("../scripts/github-output");
 
 // ---------------------------------------------------------------------------
 // sanitize

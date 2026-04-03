@@ -81,7 +81,7 @@ const FRAMEWORK_DETECTORS = [
   { tag: "langchain4j", patterns: ["langchain4j"], files: ["pom.xml", "build.gradle", "build.gradle.kts"] },
 
   // .NET frameworks (detected from topics / README)
-  { tag: "blazor", patterns: ["blazor", "Microsoft.AspNetCore.Components"], files: ["package.json"] },
+  { tag: "blazor", patterns: ["blazor", "Microsoft.AspNetCore.Components"], files: [] },
   { tag: "semantickernel", patterns: ["semantic-kernel", "Microsoft.SemanticKernel", "semantic_kernel"], files: ["requirements.txt", "pyproject.toml", "package.json"] },
 
   // Ruby frameworks

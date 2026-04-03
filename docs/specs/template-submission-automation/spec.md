@@ -20,7 +20,7 @@ Partners can `npm publish` faster than they can get a template into the gallery.
 
 Mirror the extension submission model for templates. Create an automated pipeline:
 
-**Issue Form** -> **Validation** -> **Auto-PR** -> **Trusted Publisher Auto-Merge**
+**Issue Form** -> **Validation** -> **Auto-PR** -> **Maintainer Review & Merge**
 
 ### Components
 
@@ -60,38 +60,28 @@ Steps:
 4. On success: update `templates.json` with new entry
 5. Create a PR with the changes
 6. Comment on issue with success message and PR link
-7. If submitter is in trusted publishers list: add `auto-merge` label
 
-#### 4. Trusted Publishers Configuration (`.github/trusted-publishers.json`)
+### Security Model
 
-JSON file listing GitHub usernames authorized for fast-track publishing:
+- Everything is rollbackable (git revert)
+- The workflow only has `contents: write`, `pull-requests: write`, `issues: write`
+- URL validation prevents SSRF (only https GitHub URLs accepted)
+- Branch protection rules still apply
 
-```json
-{
-  "publishers": [
-    "jongio"
-  ],
-  "description": "GitHub usernames whose template submissions get auto-merge label. Managed by repo maintainers."
-}
-```
+### Future Work
 
-When a trusted publisher submits, the PR gets an `auto-merge` label. A separate workflow (or branch protection rule) can auto-merge PRs with this label after CI passes.
+The following features are described here for future consideration but are **not implemented in the current PR**:
 
-#### 5. Auto-Merge Workflow (`template-auto-merge.yml`)
+#### Trusted Publishers Configuration (`.github/trusted-publishers.json`)
+
+JSON file listing GitHub usernames authorized for fast-track publishing. When a trusted publisher submits, the PR would get an `auto-merge` label.
+
+#### Auto-Merge Workflow (`template-auto-merge.yml`)
 
 For PRs with `auto-merge` label from trusted publishers:
 - Verify CI passes (build + test)
 - Verify the PR author matches a trusted publisher
 - Auto-approve and merge
-
-### Security Model
-
-- Everything is rollbackable (git revert)
-- Trusted publishers list is version-controlled and requires PR to modify
-- The workflow only has `contents: write`, `pull-requests: write`, `issues: write`
-- URL validation prevents SSRF (only https GitHub URLs accepted)
-- The auto-merge workflow double-checks the submitter against the trusted list
-- Branch protection rules still apply
 
 ## Out of Scope
 
@@ -101,7 +91,6 @@ For PRs with `auto-merge` label from trusted publishers:
 
 ## Success Criteria
 
-- A trusted partner can submit a template via issue form and have it live on the site within minutes (after CI + auto-merge + manual deploy)
+- A trusted partner can submit a template via issue form and have a PR created within minutes
 - The PR creation is fully automated - no manual JSON editing required
-- The trusted publishers list is maintainer-controlled and auditable
 - Existing manual PR submission path continues to work unchanged

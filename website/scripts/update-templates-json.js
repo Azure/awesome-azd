@@ -20,6 +20,22 @@ const {
 const { writeOutputs } = require("./github-output");
 
 /**
+ * Load the set of known tag keys from tags.tsx TagType union.
+ * Returns a Set of lowercase tag strings, or null if the file cannot be read.
+ */
+function loadKnownTags() {
+  try {
+    const tagsPath = path.resolve(__dirname, "../src/data/tags.tsx");
+    const content = fs.readFileSync(tagsPath, "utf8");
+    const matches = content.match(/\|\s*"([^"]+)"/g);
+    if (!matches) return null;
+    return new Set(matches.map((m) => m.replace(/\|\s*"/, "").replace(/"$/, "")));
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Strip HTML tags, angle brackets, null bytes, and Unicode bidi overrides.
  * Trim and truncate to maxLength.
  * @param {string} value
@@ -48,6 +64,7 @@ function sanitize(value, maxLength) {
  */
 function parseTags(csv) {
   if (!csv || csv === "_No response_") return [];
+  const knownTags = loadKnownTags();
   return csv
     .split(",")
     .map((t) => t.trim())
@@ -61,6 +78,12 @@ function parseTags(csv) {
         .slice(0, 50)
     )
     .filter((t) => t.length > 0)
+    .filter((t) => {
+      if (knownTags && !knownTags.has(t)) {
+        console.warn(`Warning: unknown tag "${t}" is not defined in tags.tsx`);
+      }
+      return true;
+    })
     .slice(0, 20);
 }
 
@@ -208,4 +231,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { sanitize, parseTags, updateTemplatesJson, writeOutputs };
+module.exports = { sanitize, parseTags, updateTemplatesJson };

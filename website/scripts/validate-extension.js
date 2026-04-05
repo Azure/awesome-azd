@@ -31,7 +31,7 @@ const VALID_PLATFORMS = [
 ];
 
 // SECURITY: Shared URL validation utilities (host allowlist, private IP detection)
-const { ALLOWED_HOSTS, isPrivateHostname } = require("../../.github/scripts/url-validation");
+const { ALLOWED_HOSTS, isPrivateHostname, validateUrl } = require("../../.github/scripts/url-validation");
 
 const SEMVER_REGEX = /^\d+\.\d+\.\d+(-[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*)?$/;
 
@@ -86,31 +86,8 @@ function validateExtension(ext) {
 const { getLatestVersion } = require("./semver-utils");
 
 async function fetchAndValidate(registryUrl) {
-  // Validate URL protocol to prevent SSRF
-  let parsed;
-  try {
-    parsed = new URL(registryUrl);
-    if (!['http:', 'https:'].includes(parsed.protocol)) {
-      throw new Error(`Unsafe protocol "${parsed.protocol}". Only http: and https: are allowed.`);
-    }
-  } catch (err) {
-    if (err.code === 'ERR_INVALID_URL') {
-      throw new Error(`Invalid registry URL: "${registryUrl}"`);
-    }
-    throw err;
-  }
-
-  // SECURITY: Enforce host allowlist - only fetch from trusted origins
-  if (!ALLOWED_HOSTS.includes(parsed.hostname)) {
-    throw new Error(
-      `Host "${parsed.hostname}" is not in the allowlist. Allowed: ${ALLOWED_HOSTS.join(", ")}`
-    );
-  }
-
-  // SECURITY: Reject private/internal IPs to prevent SSRF
-  if (isPrivateHostname(parsed.hostname)) {
-    throw new Error(`URL resolves to a private/internal address. Refusing to fetch.`);
-  }
+  // SECURITY: Validate URL via shared utility (protocol, host allowlist, private IP)
+  validateUrl(registryUrl, 'registry');
 
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 30000);

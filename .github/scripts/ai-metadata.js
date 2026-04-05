@@ -52,6 +52,13 @@ const VALID_TAGS = {
 const GITHUB_MODELS_ENDPOINT = "https://models.github.ai/inference/chat/completions";
 const MODEL = "openai/gpt-4o-mini";
 
+// SECURITY: Quality-clamp constants for prompt injection mitigation.
+// A prompt injection attack could convince the model to return quality=10
+// for a malicious repo. Clamping limits the blast radius.
+const QUALITY_CLAMP_THRESHOLD = 9;  // Scores above this trigger clamping
+const QUALITY_CLAMP_VALUE = 7;       // Clamped score for suspicious high ratings
+const LOW_STAR_THRESHOLD = 10;       // Repos below this star count are subject to clamping
+
 /**
  * SECURITY: Sanitize untrusted repository content before embedding in LLM prompts.
  * Repo content (README, azure.yaml) is user-controlled and can contain prompt injection
@@ -179,9 +186,6 @@ ${sanitizeRepoContent((repoData.readme || "No README found").substring(0, 3000))
   }
   // SECURITY: Clamp inflated quality scores for low-star repos. A prompt injection
   // attack could convince the model to return quality=10 for a malicious repo.
-  const QUALITY_CLAMP_THRESHOLD = 9;  // Scores above this trigger clamping
-  const QUALITY_CLAMP_VALUE = 7;       // Clamped score for suspicious high ratings
-  const LOW_STAR_THRESHOLD = 10;       // Repos below this star count are subject to clamping
   const clampedQuality =
     quality > QUALITY_CLAMP_THRESHOLD && (repoData.stars || 0) < LOW_STAR_THRESHOLD
       ? QUALITY_CLAMP_VALUE

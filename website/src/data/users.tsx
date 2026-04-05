@@ -55,6 +55,10 @@ function validateTemplates(raw: unknown): User[] {
       console.warn(`Template[${i}]: invalid 'authorUrl' type, skipping`);
       return false;
     }
+    // Coerce missing authorUrl to empty string for type safety
+    if (authorUrl == null) {
+      (entry as Record<string, unknown>).authorUrl = '';
+    }
     if (!Array.isArray(tags) || tags.length === 0) {
       console.warn(`Template[${i}]: missing or empty 'tags', skipping`);
       return false;

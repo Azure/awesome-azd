@@ -16,15 +16,20 @@ const ALLOWED_HOSTS = [
  */
 function isPrivateHostname(hostname) {
   if (hostname === "localhost" || hostname === "[::1]") return true;
+  // IPv6 private ranges
+  const lower = hostname.toLowerCase();
+  if (lower.startsWith('::ffff:')) return true;     // IPv4-mapped IPv6 (RFC 4291 §2.5.5.2)
+  if (lower.startsWith('fc') || lower.startsWith('fd')) return true;  // unique-local fc00::/7 (RFC 4193)
+  if (lower.startsWith('fe80:')) return true;         // link-local fe80::/10 (RFC 4291 §2.5.6)
   const ipv4Match = hostname.match(/^(\d+)\.(\d+)\.(\d+)\.(\d+)$/);
   if (ipv4Match) {
     const [, a, b] = ipv4Match.map(Number);
-    if (a === 127) return true;                       // 127.x.x.x loopback
-    if (a === 10) return true;                         // 10.x.x.x private
-    if (a === 172 && b >= 16 && b <= 31) return true;  // 172.16-31.x.x private
-    if (a === 192 && b === 168) return true;            // 192.168.x.x private
-    if (a === 169 && b === 254) return true;            // 169.254.x.x link-local
-    if (a === 0) return true;                            // 0.x.x.x
+    if (a === 127) return true;                       // 127.0.0.0/8 loopback (RFC 1122 §3.2.1.3)
+    if (a === 10) return true;                         // 10.0.0.0/8 private (RFC 1918)
+    if (a === 172 && b >= 16 && b <= 31) return true;  // 172.16.0.0/12 private (RFC 1918)
+    if (a === 192 && b === 168) return true;            // 192.168.0.0/16 private (RFC 1918)
+    if (a === 169 && b === 254) return true;            // 169.254.0.0/16 link-local (RFC 3927)
+    if (a === 0) return true;                            // 0.0.0.0/8 "this network" (RFC 791)
   }
   return false;
 }
@@ -36,7 +41,10 @@ function isPrivateHostname(hostname) {
  * @throws {Error} if the URL fails any check
  */
 function validateUrl(value, label) {
-  if (!value) return;
+  if (value === null || value === undefined) return null; // intentional skip
+  if (typeof value !== 'string' || value.trim() === '') {
+    throw new Error(`Invalid ${label} URL: value must be a non-empty string`);
+  }
   let u;
   try {
     u = new URL(value);
@@ -58,6 +66,7 @@ function validateUrl(value, label) {
       `Invalid ${label} URL "${value}": resolves to a private/internal address`
     );
   }
+  return u;
 }
 
 module.exports = { ALLOWED_HOSTS, isPrivateHostname, validateUrl };

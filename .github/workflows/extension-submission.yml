@@ -169,7 +169,17 @@ jobs:
             // Validate all user-provided URLs
             validateUrl(authorUrl, 'author');
             validateUrl(sourceRepo, 'source repo');
-            validateUrl(website, 'website');
+            // Website can be on any domain (e.g. *.github.io), so only check protocol
+            if (website) {
+              try {
+                const u = new URL(website);
+                if (!['http:', 'https:'].includes(u.protocol)) {
+                  throw new Error('unsafe protocol');
+                }
+              } catch (err) {
+                throw new Error('Invalid website URL: ' + err.message);
+              }
+            }
             validateUrl(registryUrl, 'registry');
             
             let added = [];

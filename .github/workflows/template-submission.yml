@@ -195,7 +195,9 @@ jobs:
             --repo "$GITHUB_REPOSITORY" \
             --body "✅ **Template validated successfully!**
 
-          A pull request has been created to add your template to the gallery. It will be reviewed by the maintainers shortly."
+          A pull request has been created to add your template to the gallery: #${{ steps.create-pr.outputs.pull-request-number }}
+
+          It will be reviewed by the maintainers shortly."
 
       - name: Comment on duplicate
         if: steps.update.outputs.skipped == 'true' && github.event_name != 'workflow_dispatch'

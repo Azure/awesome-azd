@@ -188,7 +188,7 @@ describe("LANGUAGE_MAP", () => {
   test("maps known GitHub languages to gallery tags", () => {
     expect(LANGUAGE_MAP["Python"]).toBe("python");
     expect(LANGUAGE_MAP["TypeScript"]).toBe("typescript");
-    expect(LANGUAGE_MAP["C#"]).toBe("csharp");
+    expect(LANGUAGE_MAP["C#"]).toBe("dotnetCsharp");
     expect(LANGUAGE_MAP["Go"]).toBe("go");
   });
 

@@ -16,14 +16,10 @@ const LANGUAGE_MAP = {
   JavaScript: "javascript",
   TypeScript: "typescript",
   Java: "java",
-  "C#": "csharp",
+  "C#": "dotnetCsharp",
   Go: "go",
-  Rust: "rust",
   PHP: "php",
   Ruby: "ruby",
-  Swift: "swift",
-  Kotlin: "kotlin",
-  Dart: "dart",
 };
 
 /**

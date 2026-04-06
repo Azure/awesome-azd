@@ -1,0 +1,220 @@
+name: Template Submission
+# NOTE: Known limitation — concurrent runs for different issues use separate
+# branches, but each run reads and rewrites templates.json on main.
+# If two runs merge close together, the second PR may need a rebase.
+# The per-issue concurrency group below prevents duplicate runs for the
+# *same* issue, but cross-issue races remain a low-probability edge case.
+
+on:
+  issues:
+    types: [opened, labeled]
+  workflow_dispatch:
+    inputs:
+      source_repo:
+        description: "GitHub repository URL"
+        required: true
+      template_title:
+        description: "Template title (optional - auto-detected)"
+        required: false
+      description:
+        description: "Description (optional - auto-detected)"
+        required: false
+      author:
+        description: "Author name (optional - auto-detected)"
+        required: false
+      author_url:
+        description: "Author GitHub URL (optional - auto-detected)"
+        required: false
+      author_type:
+        description: "Microsoft or Community (optional - auto-detected)"
+        required: false
+        default: ""
+        type: choice
+        options:
+          - ""
+          - Community
+          - Microsoft
+      preview_image:
+        description: "Preview image URL (optional)"
+        required: false
+      iac_provider:
+        description: "IaC provider (optional - auto-detected)"
+        required: false
+        default: ""
+        type: choice
+        options:
+          - ""
+          - Bicep
+          - Terraform
+          - Both
+      languages:
+        description: "Comma-separated language tags (optional - auto-detected)"
+        required: false
+      frameworks:
+        description: "Comma-separated framework tags (optional)"
+        required: false
+      azure_services:
+        description: "Comma-separated Azure service tags (optional - auto-detected)"
+        required: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: template-submission-${{ github.event.issue.number || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  process-template:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      contains(github.event.issue.labels.*.name, 'template-submission')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@eca02f6b962f33b848cbe9e9f4dd5d23a0b61747 # v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@53b83942660f83e34d4f35ba9a3125d67d943f4c # v6
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: website/package-lock.json
+
+      - name: Parse issue body
+        id: parse
+        env:
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
+          ISSUE_BODY: ${{ github.event.issue.body || '' }}
+          INPUT_SOURCE_REPO: ${{ inputs.source_repo }}
+          INPUT_TEMPLATE_TITLE: ${{ inputs.template_title }}
+          INPUT_DESCRIPTION: ${{ inputs.description }}
+          INPUT_AUTHOR: ${{ inputs.author }}
+          INPUT_AUTHOR_URL: ${{ inputs.author_url }}
+          INPUT_AUTHOR_TYPE: ${{ inputs.author_type }}
+          INPUT_PREVIEW_IMAGE: ${{ inputs.preview_image }}
+          INPUT_IAC_PROVIDER: ${{ inputs.iac_provider }}
+          INPUT_LANGUAGES: ${{ inputs.languages }}
+          INPUT_FRAMEWORKS: ${{ inputs.frameworks }}
+          INPUT_AZURE_SERVICES: ${{ inputs.azure_services }}
+        run: node website/scripts/parse-template-issue.js
+
+      - name: Install extraction dependencies
+        run: cd website && npm ci --ignore-scripts
+
+      - name: Auto-extract metadata from repository
+        id: extract
+        env:
+          SOURCE_REPO: ${{ steps.parse.outputs.source_repo }}
+          FORM_TITLE: ${{ steps.parse.outputs.template_title }}
+          FORM_DESCRIPTION: ${{ steps.parse.outputs.description }}
+          FORM_AUTHOR: ${{ steps.parse.outputs.author }}
+          FORM_AUTHOR_URL: ${{ steps.parse.outputs.author_url }}
+          FORM_AUTHOR_TYPE: ${{ steps.parse.outputs.author_type }}
+          FORM_IAC_PROVIDER: ${{ steps.parse.outputs.iac_provider }}
+          FORM_LANGUAGES: ${{ steps.parse.outputs.languages }}
+          FORM_FRAMEWORKS: ${{ steps.parse.outputs.frameworks }}
+          FORM_AZURE_SERVICES: ${{ steps.parse.outputs.azure_services }}
+          FORM_PREVIEW_IMAGE: ${{ steps.parse.outputs.preview_image }}
+        run: node website/scripts/merge-extracted-metadata.js
+
+      - name: Validate template repository
+        id: validate
+        env:
+          SOURCE_REPO: ${{ steps.extract.outputs.source_repo }}
+        run: |
+          DELIM="EOF_$(openssl rand -hex 8)"
+          if node website/scripts/validate-template.js "$SOURCE_REPO" > validation_result.json 2>validation_errors.log; then
+            echo "valid=true" >> $GITHUB_OUTPUT
+          else
+            echo "valid=false" >> $GITHUB_OUTPUT
+            {
+              echo "errors<<$DELIM"
+              cat validation_result.json validation_errors.log
+              echo "$DELIM"
+            } >> $GITHUB_OUTPUT
+          fi
+
+      - name: Comment on validation failure
+        if: steps.validate.outputs.valid == 'false' && github.event_name != 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ERRORS: ${{ steps.validate.outputs.errors }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          printf '❌ **Template validation failed**\n\nPlease check your repository URL and try again.\n\n```\n%s\n```' "$ERRORS" | \
+            gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file -
+
+      - name: Update templates.json
+        id: update
+        if: steps.validate.outputs.valid == 'true'
+        env:
+          TPL_SOURCE_REPO: ${{ steps.extract.outputs.source_repo }}
+          TPL_TITLE: ${{ steps.extract.outputs.template_title }}
+          TPL_DESCRIPTION: ${{ steps.extract.outputs.description }}
+          TPL_AUTHOR: ${{ steps.extract.outputs.author }}
+          TPL_AUTHOR_URL: ${{ steps.extract.outputs.author_url }}
+          TPL_AUTHOR_TYPE: ${{ steps.extract.outputs.author_type }}
+          TPL_PREVIEW_IMAGE: ${{ steps.extract.outputs.preview_image }}
+          TPL_IAC_PROVIDER: ${{ steps.extract.outputs.iac_provider }}
+          TPL_LANGUAGES: ${{ steps.extract.outputs.languages }}
+          TPL_FRAMEWORKS: ${{ steps.extract.outputs.frameworks }}
+          TPL_AZURE_SERVICES: ${{ steps.extract.outputs.azure_services }}
+        run: node website/scripts/update-templates-json.js
+
+      - name: Create Pull Request
+        id: create-pr
+        if: steps.validate.outputs.valid == 'true' && steps.update.outputs.skipped != 'true'
+        uses: peter-evans/create-pull-request@e0fcfd740c5df573cb2b99ba5cf7bd41528dd2b3 # v8
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Add template from ${{ github.event_name == 'workflow_dispatch' && 'manual dispatch' || format('issue #{0}', github.event.issue.number) }}"
+          branch: "template-submission-${{ github.event_name == 'workflow_dispatch' && github.run_id || github.event.issue.number }}"
+          title: "Add template: ${{ steps.extract.outputs.template_title }}"
+          body: |
+            This PR was automatically generated${{ github.event_name != 'workflow_dispatch' && format(' from issue #{0}', github.event.issue.number) || '' }}.
+
+            **Source Repository**: ${{ steps.extract.outputs.source_repo }}
+            **Title**: ${{ steps.extract.outputs.template_title }}
+            **Author**: ${{ steps.extract.outputs.author }}
+            **IaC**: ${{ steps.extract.outputs.iac_provider }}
+            **Added**: ${{ steps.update.outputs.added || 'None' }}
+
+            Please review the changes to `website/static/templates.json`.
+          labels: template-submission
+
+      - name: Comment on success
+        if: steps.validate.outputs.valid == 'true' && steps.update.outputs.skipped != 'true' && steps.create-pr.outputs.pull-request-number && github.event_name != 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh issue comment "$ISSUE_NUMBER" \
+            --repo "$GITHUB_REPOSITORY" \
+            --body "✅ **Template validated successfully!**
+
+          A pull request has been created to add your template to the gallery: #${{ steps.create-pr.outputs.pull-request-number }}
+
+          It will be reviewed by the maintainers shortly."
+
+      - name: Comment on duplicate
+        if: steps.update.outputs.skipped == 'true' && github.event_name != 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SKIP_REASON: ${{ steps.update.outputs.skip_reason }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          printf '⚠️ **Template submission skipped**\n\n%s\n\nIf you believe this is an error, please comment on this issue.' "$SKIP_REASON" | \
+            gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file -
+
+      - name: Comment on unexpected failure
+        if: always() && failure() && github.event_name != 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh issue comment "$ISSUE_NUMBER" \
+            --repo "$GITHUB_REPOSITORY" \
+            --body "❌ **Template processing failed unexpectedly.** The maintainers have been notified. Please try again later or comment on this issue."

@@ -31,6 +31,7 @@
     "babel-jest": "^29.7.0",
     "clsx": "^2.0.0",
     "jest": "^29.7.0",
+    "js-yaml": "^4.1.1",
     "prism-react-renderer": "^2.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -147,7 +147,7 @@ async function fetchAndValidate(registryUrl) {
 }
 
 // CLI entry point
-if (typeof require !== "undefined" && require.main === module) {
+if (require.main === module) {
   const url = process.argv[2];
   if (!url) {
     console.error("Usage: node validate-extension.js <registry-url>");

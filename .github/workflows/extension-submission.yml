@@ -28,7 +28,8 @@ name: Extension Submission
 #       website:
 #         description: "Extension documentation website URL (optional)"
 #         required: false
-on: []
+on:
+  workflow_dispatch: {}
 
 permissions:
   contents: write

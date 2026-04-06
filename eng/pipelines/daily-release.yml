@@ -14,7 +14,7 @@ jobs:
       - checkout: self
 
       - script: |
-          npm install
+          npm ci
           npm run build
         workingDirectory: website/
         displayName: 'Build Website'
@@ -23,7 +23,8 @@ jobs:
           mkdir daily-fork
           cd daily-fork
           git init
-          git remote add origin "https://$(azuresdk-github-pat)@github.com/azure-sdk/awesome-azd.git"
+          git remote add origin "https://github.com/azure-sdk/awesome-azd.git"
+          git config http.https://github.com/.extraheader "Authorization: bearer $(azuresdk-github-pat)"
           git fetch --no-tags origin gh-pages
           git checkout gh-pages
           cp -R ../website/build/* .

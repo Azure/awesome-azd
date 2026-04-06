@@ -1,11 +1,14 @@
 {
     "name": "Awesome AZD",
-    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "image": "mcr.microsoft.com/devcontainers/base:1-ubuntu-24.04",
     "features": {
         "ghcr.io/devcontainers/features/node:1": {},
         "ghcr.io/devcontainers/features/git:1": {},
         "ghcr.io/devcontainers/features/github-cli:1": {}
     },
+    // NOTE: For production environments, pin images to SHA256 digests
+    // (e.g., mcr.microsoft.com/devcontainers/base@sha256:...) for
+    // reproducible builds. Version tags are used here for readability.
     "customizations": {
         "vscode": {
             "extensions": [

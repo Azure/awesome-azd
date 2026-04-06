@@ -7,7 +7,10 @@ function SimpleLinkItem({item}) {
   return item.html ? (
     <span
       className="footer__link-item"
-      // Developer provided the HTML, so assume it's safe.
+      // SECURITY: item.html comes from docusaurus.config.js which is
+      // maintainer-controlled. Do NOT use this pattern with user-supplied
+      // content - it would create an XSS vulnerability. If this ever reads
+      // from external/user input, sanitize with DOMPurify first.
       // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{__html: item.html}}
     />

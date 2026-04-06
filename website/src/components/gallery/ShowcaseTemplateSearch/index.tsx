@@ -178,6 +178,7 @@ export default function ShowcaseTemplateSearch() {
                     <FluentUILink
                       href={ADD_URL}
                       target="_blank"
+                      rel="noopener noreferrer"
                       style={{ paddingLeft: "3px" }}
                     >
                       Learn more in our docs.

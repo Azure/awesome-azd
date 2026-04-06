@@ -30,6 +30,9 @@ const VALID_PLATFORMS = [
   "linux/arm64",
 ];
 
+// SECURITY: Shared URL validation utilities (host allowlist, private IP detection)
+const { ALLOWED_HOSTS, isPrivateHostname, validateUrl } = require("../../.github/scripts/url-validation");
+
 const SEMVER_REGEX = /^\d+\.\d+\.\d+(-[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*)?$/;
 
 function validateExtension(ext) {
@@ -83,26 +86,31 @@ function validateExtension(ext) {
 const { getLatestVersion } = require("./semver-utils");
 
 async function fetchAndValidate(registryUrl) {
-  // Validate URL protocol to prevent SSRF
-  try {
-    const parsed = new URL(registryUrl);
-    if (!['http:', 'https:'].includes(parsed.protocol)) {
-      throw new Error(`Unsafe protocol "${parsed.protocol}". Only http: and https: are allowed.`);
-    }
-  } catch (err) {
-    if (err.code === 'ERR_INVALID_URL') {
-      throw new Error(`Invalid registry URL: "${registryUrl}"`);
-    }
-    throw err;
-  }
+  // SECURITY: Validate URL via shared utility (protocol, host allowlist, private IP)
+  validateUrl(registryUrl, 'registry');
 
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 30000);
   let response;
   try {
-    response = await fetch(registryUrl, { signal: controller.signal });
+    response = await fetch(registryUrl, {
+      signal: controller.signal,
+      redirect: 'follow',
+    });
   } finally {
     clearTimeout(timeout);
+  }
+
+  // SECURITY: After following redirects, re-validate the final URL is still
+  // on an allowed host (prevents SSRF via open redirect on an allowed domain).
+  const finalUrl = new URL(response.url);
+  if (!ALLOWED_HOSTS.includes(finalUrl.hostname)) {
+    throw new Error(
+      `Redirect led to disallowed host "${finalUrl.hostname}". Allowed: ${ALLOWED_HOSTS.join(", ")}`
+    );
+  }
+  if (isPrivateHostname(finalUrl.hostname)) {
+    throw new Error(`Redirect led to a private/internal address. Refusing to process.`);
   }
   if (!response.ok) {
     throw new Error(`Failed to fetch registry: ${response.status} ${response.statusText}`);

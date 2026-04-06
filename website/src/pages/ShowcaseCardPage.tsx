@@ -36,7 +36,10 @@ import { Dismiss20Filled } from "@fluentui/react-icons";
 const TagQueryStringKey2 = "tags";
 
 const readSearchTags2 = (search: string): TagType[] => {
-  return new URLSearchParams(search).getAll(TagQueryStringKey2) as TagType[];
+  // SECURITY: Filter out query param tag values that don't exist in the Tags
+  // object to prevent prototype pollution or undefined property access.
+  const rawTags = new URLSearchParams(search).getAll(TagQueryStringKey2);
+  return rawTags.filter((tag): tag is TagType => Object.hasOwn(Tags, tag));
 }
 
 function replaceSearchTags(search: string, newTags: TagType[]) {

@@ -180,6 +180,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
         <FluentUILink
           href={user.source}
           target="_blank"
+          rel="noopener noreferrer"
           style={{
             display: "flex",
             alignItems: "center",
@@ -354,6 +355,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                         "https://marketplace.visualstudio.com/items?itemName=ms-azuretools.azure-dev"
                       }
                       target="_blank"
+                      rel="noopener noreferrer"
                       className={styles.color}
                     >
                       azd VS Code extension
@@ -458,6 +460,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                     <a
                       href="https://azure.microsoft.com/en-us/pricing/calculator/"
                       target="_blank"
+                      rel="noopener noreferrer"
                       className={styles.color}
                     >
                       Azure Pricing Calculator
@@ -620,6 +623,7 @@ function ShowcaseCardAzureTag({
             <a
               href={tagObject.url}
               target="_blank"
+              rel="noopener noreferrer"
               style={{
                 fontSize: "12px",
                 fontWeight: "400",

@@ -7129,16 +7129,12 @@
     "source": "https://github.com/massimobonanni/AZD-ToDoList",
     "tags": [
       "community",
-      "dotnetCsharp",
       "serverlessapi",
-      "appservice",
-      "functions",
-      "azurestorage",
-      "managedidentity",
       "new"
     ],
     "languages": [
       "dotnetCsharp"
+    ],
     "azureServices": [
       "functions",
       "appservice",

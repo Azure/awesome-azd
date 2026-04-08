@@ -7119,5 +7119,36 @@
       "bicep"
     ],
     "id": "c7bdb456-e76e-4645-9b5d-26b1df04a339"
+  },
+  {
+    "title": "ToDo list - Razor Pages + Azure Functions + Storage Table (Managed Identity access)",
+    "description": "A complete ToDo app with front-end in Razor pages hosted in App Service, backend in Azure Functions hosted in function app and data in Azure Table Storage. Using of Managed Identity to access data (no connection string and keys). Uses Azure Developer CLI (azd) to build, deploy, and monitor.",
+    "preview": "./templates/images/todo-razorpages-azurefunctions-table.png",
+    "authorUrl": "https://github.com/massimobonanni",
+    "author": "Massimo Bonanni",
+    "source": "https://github.com/massimobonanni/AZD-ToDoList",
+    "tags": [
+      "c#",
+      "appservice",
+      "azurefunctions",
+      "storagetable"
+    ],
+    "languages": [
+      "c#"
+    ],
+    "frameworks": [
+      "razor pages"
+    ],
+    "azureServices": [
+      "functions",
+      "appservice",
+      "appinsights",
+      "managedidentity",
+      "storageaccount"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "ad77e6e6-af2c-4390-bb8c-8ca64cf540ce"
   }
 ]

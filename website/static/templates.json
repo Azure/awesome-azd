@@ -7128,23 +7128,26 @@
     "author": "Massimo Bonanni",
     "source": "https://github.com/massimobonanni/AZD-ToDoList",
     "tags": [
-      "c#",
+      "community",
+      "dotnetCsharp",
+      "serverlessapi",
       "appservice",
-      "azurefunctions",
-      "storagetable"
+      "functions",
+      "azurestorage",
+      "managedidentity",
+      "new"
     ],
     "languages": [
-      "c#"
+      "dotnetCsharp"
     ],
     "frameworks": [
-      "razor pages"
     ],
     "azureServices": [
       "functions",
       "appservice",
       "appinsights",
       "managedidentity",
-      "storageaccount"
+      "azurestorage"
     ],
     "IaC": [
       "bicep"

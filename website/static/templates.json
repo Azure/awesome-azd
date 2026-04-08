@@ -7139,9 +7139,6 @@
     ],
     "languages": [
       "dotnetCsharp"
-    ],
-    "frameworks": [
-    ],
     "azureServices": [
       "functions",
       "appservice",

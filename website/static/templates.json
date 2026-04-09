@@ -6837,9 +6837,7 @@
     "source": "https://github.com/Azure-Samples/functions-quickstart-powershell-azd-eventhub",
     "tags": [
       "msft",
-      "new"
-    ],
-    "languages": [
+      "new",
       "powershell"
     ],
     "azureServices": [

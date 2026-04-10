@@ -159,3 +159,13 @@
 [data-theme="dark"] .headerText {
   color: #A8A29E;
 }
+
+.newBadge {
+  color: #0f850c;
+  font-weight: 600;
+  font-size: 10px;
+}
+
+[data-theme="dark"] .newBadge {
+  color: #4caf50;
+}

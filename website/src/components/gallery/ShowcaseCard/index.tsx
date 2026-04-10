@@ -82,7 +82,6 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
     ...(user.IaC || []),
   ];
   const source = user.source;
-  const star = useBaseUrl("/img/Sparkle.svg");
   const fire = useBaseUrl("/img/Fire.svg");
   let azdInitCommand =
     "azd init -t " + source.replace("https://github.com/", "").toLowerCase();
@@ -124,17 +123,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
             />
             <div className={styleCSS.headerTextCardPanel}>{headerText}</div>
             {tags.includes("new") ? (
-              <>
-                <img
-                  src={star}
-                  alt=""
-                  aria-hidden="true"
-                  width={16}
-                  height={16}
-                  style={{ paddingLeft: "10px" }}
-                />
-                <div style={{ color: colorMode !== "dark" ? "#107C10" : "#36B536", fontSize: "10px" }}>New</div>
-              </>
+              <div style={{ color: colorMode !== "dark" ? "#107C10" : "#36B536", fontSize: "10px", paddingLeft: "10px" }}>New</div>
             ) : null}
 
             {tags.includes("popular") ? (
@@ -184,25 +173,16 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
             />
             <div className={styleCSS.headerText}>{headerText}</div>
             {tags.includes("new") ? (
-              <>
-                <img
-                  src={star}
-                  alt=""
-                  aria-hidden="true"
-                  width={16}
-                  height={16}
-                  style={{ paddingLeft: "10px" }}
-                />
-                <div
-                  style={{
-                    color: colorMode !== "dark" ? "#107C10" : "#36B536",
-                    fontWeight: "600",
-                    fontSize: "10px",
-                  }}
-                >
-                  New
-                </div>
-              </>
+              <div
+                style={{
+                  color: colorMode !== "dark" ? "#107C10" : "#36B536",
+                  fontWeight: "600",
+                  fontSize: "10px",
+                  paddingLeft: "10px",
+                }}
+              >
+                New
+              </div>
             ) : null}
             {tags.includes("popular") ? (
               <>

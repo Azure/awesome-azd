@@ -6777,6 +6777,82 @@
     "id": "eea2eb42-9e90-409f-85a4-007cefb0eac6"
   },
   {
+    "title": "Azure Functions Java Event Hub Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions Event Hub trigger quickstart written in Java and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-java-azd-eventhub",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "java"
+    ],
+    "azureServices": [
+      "functions",
+      "eventhub",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "d7191e5b-5a2f-4180-b75a-fc7373ce6a5f"
+  },
+  {
+    "title": "Azure Functions JavaScript Event Hub Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions Event Hub trigger quickstart written in JavaScript and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-javascript-azd-eventhub",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "javascript"
+    ],
+    "azureServices": [
+      "functions",
+      "eventhub",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "f7ab4715-9761-41fc-bc38-7f17bdbde329"
+  },
+  {
+    "title": "Azure Functions PowerShell Event Hub Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions Event Hub trigger quickstart written in PowerShell and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-powershell-azd-eventhub",
+    "tags": [
+      "msft",
+      "new",
+      "powershell"
+    ],
+    "azureServices": [
+      "functions",
+      "eventhub",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "8a38b396-f88b-472a-b81c-a30e81ca8414"
+  },
+  {
     "title": "Azure App Service + Foundry Chat Starter",
     "description": "One-click azd template that deploys a Blazor Server chat app on Azure App Service integrated with Azure Foundry, VNet, managed identity, and Application Insights.",
     "preview": "./templates/images/app-service-foundry.png",

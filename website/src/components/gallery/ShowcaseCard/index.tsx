@@ -132,7 +132,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
                   height={16}
                   style={{ paddingLeft: "10px" }}
                 />
-                <div style={{ color: "#0f850c", fontSize: "10px" }}>New</div>
+                <div className={styleCSS.newBadge}>New</div>
               </>
             ) : null}
 
@@ -191,11 +191,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
                   style={{ paddingLeft: "10px" }}
                 />
                 <div
-                  style={{
-                    color: "#0f850c",
-                    fontWeight: "600",
-                    fontSize: "10px",
-                  }}
+                  className={styleCSS.newBadge}
                 >
                   New
                 </div>

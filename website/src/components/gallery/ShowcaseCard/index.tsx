@@ -117,7 +117,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
           >
             <img
               src={headerLogo}
-              alt="Logo"
+              alt={headerText}
               width={16}
               height={16}
               style={{ margin: "5px 0px", fontWeight: "550" }}
@@ -127,12 +127,13 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
               <>
                 <img
                   src={star}
-                  alt="Star"
+                  alt=""
+                  aria-hidden="true"
                   width={16}
                   height={16}
                   style={{ paddingLeft: "10px" }}
                 />
-                <div style={{ color: "#11910D", fontSize: "10px" }}>New</div>
+                <div style={{ color: colorMode !== "dark" ? "#107C10" : "#36B536", fontSize: "10px" }}>New</div>
               </>
             ) : null}
 
@@ -140,12 +141,13 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
               <>
                 <img
                   src={fire}
-                  alt="Fire"
+                  alt=""
+                  aria-hidden="true"
                   width={16}
                   height={16}
                   style={{ paddingLeft: "10px" }}
                 />
-                <div style={{ color: "#F7630C", fontSize: "10px" }}>
+                <div style={{ color: colorMode !== "dark" ? "#DA3B01" : "#F7630C", fontSize: "10px" }}>
                   Popular
                 </div>
               </>
@@ -177,7 +179,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
               src={headerLogo}
               width={16}
               height={16}
-              alt="logo"
+              alt={headerText}
               className={styleCSS.headerLogo}
             />
             <div className={styleCSS.headerText}>{headerText}</div>
@@ -185,14 +187,15 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
               <>
                 <img
                   src={star}
-                  alt="Star"
+                  alt=""
+                  aria-hidden="true"
                   width={16}
                   height={16}
                   style={{ paddingLeft: "10px" }}
                 />
                 <div
                   style={{
-                    color: "#11910D",
+                    color: colorMode !== "dark" ? "#107C10" : "#36B536",
                     fontWeight: "600",
                     fontSize: "10px",
                   }}
@@ -205,14 +208,15 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
               <>
                 <img
                   src={fire}
-                  alt="Fire"
+                  alt=""
+                  aria-hidden="true"
                   width={16}
                   height={16}
                   style={{ paddingLeft: "10px" }}
                 />
                 <div
                   style={{
-                    color: "#F7630C",
+                    color: colorMode !== "dark" ? "#DA3B01" : "#F7630C",
                     fontWeight: "600",
                     fontSize: "10px",
                   }}
@@ -297,7 +301,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
               }}
               data-m={contentForAdobeAnalytics}
             >
-              <img src={useBaseUrl("/img/Copy.svg")} width={20} height={20} alt="" />
+              <img src={useBaseUrl("/img/Copy.svg")} width={20} height={20} alt="" aria-hidden="true" />
             </Button>
           </PopoverTrigger>
 

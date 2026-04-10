@@ -50,22 +50,22 @@ function ShowcaseAuthorFilterViewAll({
   const { colorMode } = useColorMode();
   const chevronDownSmall =
     colorMode != "dark" ? (
-      <img src={useBaseUrl("/img/smallChevron.svg")} width={16} height={16} alt="" />
+      <img src={useBaseUrl("/img/smallChevron.svg")} width={16} height={16} alt="" aria-hidden="true" />
     ) : (
-      <img src={useBaseUrl("/img/smallChevronDark.svg")} width={16} height={16} alt="" />
+      <img src={useBaseUrl("/img/smallChevronDark.svg")} width={16} height={16} alt="" aria-hidden="true" />
     );
   const chevronUpSmall =
     colorMode != "dark" ? (
       <img
         style={{ transform: "rotate(180deg)" }}
         src={useBaseUrl("/img/smallChevron.svg")}
-        width={16} height={16} alt=""
+        width={16} height={16} alt="" aria-hidden="true"
       />
     ) : (
       <img
         style={{ transform: "rotate(180deg)" }}
         src={useBaseUrl("/img/smallChevronDark.svg")}
-        width={16} height={16} alt=""
+        width={16} height={16} alt="" aria-hidden="true"
       />
     );
   let value = number + "2";
@@ -190,22 +190,22 @@ function ShowcaseFilterViewAll({
   const { colorMode } = useColorMode();
   const chevronDownSmall =
     colorMode != "dark" ? (
-      <img src={useBaseUrl("/img/smallChevron.svg")} width={16} height={16} alt="" />
+      <img src={useBaseUrl("/img/smallChevron.svg")} width={16} height={16} alt="" aria-hidden="true" />
     ) : (
-      <img src={useBaseUrl("/img/smallChevronDark.svg")} width={16} height={16} alt="" />
+      <img src={useBaseUrl("/img/smallChevronDark.svg")} width={16} height={16} alt="" aria-hidden="true" />
     );
   const chevronUpSmall =
     colorMode != "dark" ? (
       <img
         style={{ transform: "rotate(180deg)" }}
         src={useBaseUrl("/img/smallChevron.svg")}
-        width={16} height={16} alt=""
+        width={16} height={16} alt="" aria-hidden="true"
       />
     ) : (
       <img
         style={{ transform: "rotate(180deg)" }}
         src={useBaseUrl("/img/smallChevronDark.svg")}
-        width={16} height={16} alt=""
+        width={16} height={16} alt="" aria-hidden="true"
       />
     );
   let value = number + "2";

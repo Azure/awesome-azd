@@ -12,12 +12,13 @@ export default function FooterLinkItem({ item }) {
   const toUrl = useBaseUrl(to);
   const normalizedHref = useBaseUrl(href, { forcePrependBaseUrl: true });
   return label === manageCookieLabel ? (
-    <a
+    <button
       className={clsx(styles.manageCookies, "footer__link-item")}
       id={manageCookieId}
+      type="button"
     >
       {manageCookieLabel}
-    </a>
+    </button>
   ) : (
     <Link
       className="footer__link-item"

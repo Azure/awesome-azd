@@ -274,6 +274,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                     width={20}
                     height={20}
                     alt=""
+                    aria-hidden="true"
                   />
                 </DefaultButton>
               </div>
@@ -441,6 +442,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                     width={20}
                     height={20}
                     alt=""
+                    aria-hidden="true"
                   />
                 </DefaultButton>
               </div>

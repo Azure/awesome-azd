@@ -60,7 +60,7 @@ export default function ShowcaseSurveyCard(): React.ReactElement {
             ? useBaseUrl("/img/chatPencil.svg")
             : useBaseUrl("/img/chatPencilDark.svg")
         }
-        alt="surveyCard"
+        alt="Survey illustration"
         height={128}
         width={128}
       />
@@ -82,7 +82,8 @@ export default function ShowcaseSurveyCard(): React.ReactElement {
           icon={
             <Image
               src={useBaseUrl("/img/openLink.svg")}
-              alt="surveyCard"
+              alt=""
+              aria-hidden="true"
               height={20}
               width={20}
             />

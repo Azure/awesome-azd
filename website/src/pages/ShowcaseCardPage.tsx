@@ -329,7 +329,8 @@ function PaginationControls({
   };
 
   return (
-    <div
+    <nav
+      aria-label="Pagination"
       style={{
         display: "flex",
         justifyContent: "center",
@@ -374,7 +375,7 @@ function PaginationControls({
       >
         Next
       </Button>
-    </div>
+    </nav>
   );
 }
 

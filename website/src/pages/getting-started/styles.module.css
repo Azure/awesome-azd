@@ -119,11 +119,7 @@
 }
 
 .heroTitleAccent {
-  color: #6366f1;
-}
-
-[data-theme="dark"] .heroTitleAccent {
-  color: #6366f1;
+  color: var(--site-hero-accent);
 }
 
 .heroSubtitle {

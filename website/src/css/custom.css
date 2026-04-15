@@ -31,10 +31,11 @@
   --site-color-bg: #FAFAFA;
   --site-color-surface: #FFFFFF;
   --site-color-text: #1C1917;
-  --site-color-text-muted: #736c67;
+  --site-color-text-muted: #6b6560;
   --site-color-border: #E7E5E4;
 
   /* Component tokens */
+  --site-hero-accent: #6366f1;
   --site-hero-bg: #F5F5F5;
   --site-card-shadow: none;
   --site-card-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.06);
@@ -103,6 +104,7 @@ h1, h2, h3, h4, h5, h6 {
   --site-color-text: #E7E5E4;
   --site-color-text-muted: #A8A29E;
   --site-color-border: rgba(255, 255, 255, 0.08);
+  --site-hero-accent: #7683ec;
   --site-hero-bg: #161616;
   --site-card-shadow: none;
   --site-card-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.3);

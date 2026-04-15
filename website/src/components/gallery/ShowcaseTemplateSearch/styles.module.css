@@ -51,11 +51,7 @@
 }
 
 .heroAccent {
-  color: #7683ec;
-}
-
-[data-theme="dark"] .heroAccent {
-  color: #7683ec;
+  color: var(--site-hero-accent);
 }
 
 .heroDescription {

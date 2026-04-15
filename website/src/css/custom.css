@@ -171,9 +171,8 @@ html[data-theme="dark"] .header-github-link:before {
 
 /* Accessibility: underline links in doc/markdown content so they are
    distinguishable from surrounding text without relying on color alone
-   (WCAG 1.4.1 — Use of Color). */
-.markdown a,
-.theme-doc-markdown a {
+   (WCAG 1.4.1 — Use of Color). Exclude Docusaurus heading permalinks. */
+:where(.markdown, .theme-doc-markdown) a:not(.hash-link) {
   text-decoration: underline;
 }
 

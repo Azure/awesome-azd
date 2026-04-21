@@ -7225,24 +7225,25 @@
   },
   {
     "title": "functions-e2e-sb-vnet-powershell",
-    "description": "",
+    "description": "End-to-end PowerShell sample demonstrating secure triggering of a Flex Consumption function app from a Service Bus instance secured in a virtual network, using managed identity and VNet integration.",
     "preview": "https://raw.githubusercontent.com/Azure-Samples/functions-quickstart-powershell-azd-service-bus/main/img/SB-VNET.png",
     "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Azure-Samples",
+    "author": "Anthony Chu",
     "source": "https://github.com/azure-samples/functions-quickstart-powershell-azd-service-bus",
     "tags": [
       "msft",
-      "new"
+      "new",
+      "powershell"
     ],
     "IaC": [
       "bicep"
     ],
     "id": "51f10949-c699-4a42-88ab-84e48b7c7a6e",
-    "frameworks": [
-      "rag"
-    ],
     "azureServices": [
-      "functions"
+      "functions",
+      "servicebus",
+      "vnets",
+      "managedidentity"
     ]
   }
 ]

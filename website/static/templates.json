@@ -7228,7 +7228,7 @@
     "description": "",
     "preview": "https://raw.githubusercontent.com/Azure-Samples/functions-quickstart-python-azd-service-bus/main/img/SB-VNET.png",
     "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Azure-Samples",
+    "author": "Anthony Chu",
     "source": "https://github.com/azure-samples/functions-quickstart-python-azd-service-bus",
     "tags": [
       "msft",
@@ -7241,11 +7241,11 @@
     "languages": [
       "python"
     ],
-    "frameworks": [
-      "rag"
-    ],
     "azureServices": [
-      "functions"
+      "functions",
+      "servicebus",
+      "vnets",
+      "managedidentity"
     ]
   }
 ]

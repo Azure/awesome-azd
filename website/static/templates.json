@@ -7222,5 +7222,30 @@
       "bicep"
     ],
     "id": "ad77e6e6-af2c-4390-bb8c-8ca64cf540ce"
+  },
+  {
+    "title": "functions-e2e-sb-vnet-typescript",
+    "description": "",
+    "preview": "https://raw.githubusercontent.com/Azure-Samples/functions-quickstart-typescript-azd-service-bus/main/img/SB-VNET.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure-Samples",
+    "source": "https://github.com/azure-samples/functions-quickstart-typescript-azd-service-bus",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "24281657-9ae3-4aa3-9dfb-b832f69f408f",
+    "languages": [
+      "typescript"
+    ],
+    "frameworks": [
+      "rag"
+    ],
+    "azureServices": [
+      "functions"
+    ]
   }
 ]

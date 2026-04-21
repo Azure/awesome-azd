@@ -74,10 +74,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@eca02f6b962f33b848cbe9e9f4dd5d23a0b61747 # v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6
 
       - name: Setup Node.js
-        uses: actions/setup-node@53b83942660f83e34d4f35ba9a3125d67d943f4c # v6
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f  # v6
         with:
           node-version: "24"
           cache: "npm"
@@ -167,7 +167,7 @@ jobs:
       - name: Create Pull Request
         id: create-pr
         if: steps.validate.outputs.valid == 'true' && steps.update.outputs.skipped != 'true'
-        uses: peter-evans/create-pull-request@e0fcfd740c5df573cb2b99ba5cf7bd41528dd2b3 # v8
+        uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0  # v8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Add template from ${{ github.event_name == 'workflow_dispatch' && 'manual dispatch' || format('issue #{0}', github.event.issue.number) }}"

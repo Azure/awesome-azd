@@ -1,154 +1,258 @@
 [
   {
-    "title": "Echo Agent",
-    "description": "A custom AI agent that echoes user input. Useful for testing, debugging, and learning how to build custom agents.",
-    "language": "python",
+    "title": "Hello World (.NET, Agent Framework)",
+    "description": "Minimal Hello World agent using the Responses protocol with the Agent Framework approach in C#. Uses Microsoft.Agents.AI to create an AIAgent backed by a Foundry model.",
+    "language": "csharp",
     "framework": "Agent Framework",
-    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/agent-framework/echo-agent/agent.yaml",
-    "tags": ["example", "learning"]
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/agent-framework/HelloWorld/agent.manifest.yaml",
+    "tags": ["example", "Responses Protocol"]
   },
   {
-    "title": "Agent with Foundry Tools",
-    "description": "An AI agent that uses Azure OpenAI with a Hosted Model Context Protocol (MCP) server. The agent answers questions by searching Microsoft Learn documentation using MCP tools.",
-    "language": "python",
+    "title": "Foundry Agent",
+    "description": "A hosted agent that delegates to a Foundry-managed agent definition, retrieving the agent by name from the platform.",
+    "language": "csharp",
     "framework": "Agent Framework",
-    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/agent-framework/agent-with-foundry-tools/agent.yaml",
-    "tags": ["MCP", "Microsoft Learn"]
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/agent-framework/foundry-agent/agent.manifest.yaml",
+    "tags": ["Foundry Agent", "Responses Protocol"]
   },
   {
-    "title": "Agent with Local Tools",
-    "description": "A travel assistant agent that helps users find hotels in Seattle. Demonstrates local Python tool execution - a key advantage of code-based hosted agents over prompt agents.",
-    "language": "python",
+    "title": "Invocations Echo Agent",
+    "description": "A minimal echo agent hosted as a Foundry Hosted Agent using the Invocations protocol and the Agent Framework. No LLM or Azure credentials required.",
+    "language": "csharp",
     "framework": "Agent Framework",
-    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/agent-framework/agent-with-local-tools/agent.yaml",
-    "tags": ["local tools", "travel assistant"]
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/agent-framework/invocations-echo-agent/agent.manifest.yaml",
+    "tags": ["example", "Invocations Protocol"]
   },
   {
-    "title": "Agent with Text Search RAG",
-    "description": "An AI agent that uses a ContextProvider for retrieval augmented generation (RAG) capabilities. Runs searches against an external knowledge base before each model invocation.",
-    "language": "python",
+    "title": "Local Tools Agent",
+    "description": "A travel assistant agent with local C# function tools for hotel search in Seattle.",
+    "language": "csharp",
     "framework": "Agent Framework",
-    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/agent-framework/agent-with-text-search-rag/agent.yaml",
-    "tags": ["RAG", "text search"]
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/agent-framework/local-tools/agent.manifest.yaml",
+    "tags": ["local tools", "Responses Protocol"]
   },
   {
-    "title": "Agents in Workflow",
-    "description": "A workflow agent that responds to product launch strategy inquiries by concurrently leveraging insights from three specialized agents.",
-    "language": "python",
+    "title": "MCP Tools Agent",
+    "description": "A developer assistant with remote MCP tools connecting to GitHub and Microsoft Learn documentation servers.",
+    "language": "csharp",
     "framework": "Agent Framework",
-    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/agent-framework/agents-in-workflow/agent.yaml",
-    "tags": ["workflows", "multi-agent"]
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/agent-framework/mcp-tools/agent.manifest.yaml",
+    "tags": ["MCP", "Responses Protocol"]
   },
   {
-    "title": "Human in the Loop (Thread)",
-    "description": "Demonstrates how to integrate human-in-the-loop functionality using AI Functions. Example: adding calendar appointments with human approval.",
-    "language": "python",
+    "title": "Simple Agent",
+    "description": "A simple general-purpose AI assistant hosted as a Foundry Hosted Agent using the Agent Framework.",
+    "language": "csharp",
     "framework": "Agent Framework",
-    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/agent-framework/human-in-the-loop/agent-with-thread-and-hitl/agent.yaml",
-    "tags": ["HITL", "human-in-the-loop"]
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/agent-framework/simple-agent/agent.manifest.yaml",
+    "tags": ["example", "Responses Protocol"]
   },
   {
-    "title": "Human in the Loop (Checkpoint)",
-    "description": "A workflow agent built using the Microsoft Agent Framework that includes checkpointing and human-in-the-loop (HITL) capabilities.",
-    "language": "python",
+    "title": "Text Search RAG Agent",
+    "description": "A support specialist agent with RAG capabilities using TextSearchProvider to ground answers in product documentation.",
+    "language": "csharp",
     "framework": "Agent Framework",
-    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/agent-framework/human-in-the-loop/workflow-agent-with-checkpoint-and-hitl/agent.yaml",
-    "tags": ["HITL", "checkpointing", "workflows"]
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/agent-framework/text-search-rag/agent.manifest.yaml",
+    "tags": ["RAG", "text search", "Responses Protocol"]
   },
   {
-    "title": "Web Search Agent",
-    "description": "An agent that can perform web searches and retrieve the latest information from Bing.",
-    "language": "python",
+    "title": "Translation Workflow Agent",
+    "description": "A workflow agent that performs sequential translation through multiple languages (English to French to Spanish to English).",
+    "language": "csharp",
     "framework": "Agent Framework",
-    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/agent-framework/web-search-agent/agent.yaml",
-    "tags": ["Bing", "web search", "grounding"]
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/agent-framework/workflows/agent.manifest.yaml",
+    "tags": ["workflows", "translation", "Responses Protocol"]
   },
   {
-    "title": "Calculator Agent",
-    "description": "A LangGraph agent that can perform arithmetic calculations such as addition, subtraction, multiplication, and division.",
+    "title": "Hello World (.NET, Invocations)",
+    "description": "Minimal Hello World agent using the Invocations protocol with a bring-your-own approach in C#. Calls a Foundry model via the Responses API and returns the response as a streaming SSE event stream.",
+    "language": "csharp",
+    "framework": "Bring Your Own",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/bring-your-own/invocations/HelloWorld/agent.manifest.yaml",
+    "tags": ["example", "Invocations Protocol"]
+  },
+  {
+    "title": "Human-in-the-Loop (.NET, Invocations)",
+    "description": "A human-in-the-loop agent that demonstrates the approval-gate pattern using the Azure.AI.AgentServer.Invocations SDK with Azure OpenAI.",
+    "language": "csharp",
+    "framework": "Bring Your Own",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/bring-your-own/invocations/human-in-the-loop/agent.manifest.yaml",
+    "tags": ["HITL", "human-in-the-loop", "Invocations Protocol"]
+  },
+  {
+    "title": "Notetaking Agent (.NET, Invocations)",
+    "description": "A note-taking agent using the Invocations protocol with Azure OpenAI function calling in C#. Demonstrates tool use with per-session JSONL persistence and SSE streaming.",
+    "language": "csharp",
+    "framework": "Bring Your Own",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/bring-your-own/invocations/notetaking-agent/agent.manifest.yaml",
+    "tags": ["function calling", "Invocations Protocol"]
+  },
+  {
+    "title": "Hello World (.NET, Responses)",
+    "description": "Minimal Hello World agent using the Responses protocol with a bring-your-own approach in C#. Calls a Foundry model via the Responses API and returns the response.",
+    "language": "csharp",
+    "framework": "Bring Your Own",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/bring-your-own/responses/HelloWorld/agent.manifest.yaml",
+    "tags": ["example", "Responses Protocol"]
+  },
+  {
+    "title": "Background Agent (.NET, Responses)",
+    "description": "A long-running research agent that demonstrates the background execution pattern using the Azure.AI.AgentServer.Responses SDK with Azure OpenAI.",
+    "language": "csharp",
+    "framework": "Bring Your Own",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/bring-your-own/responses/background-agent/agent.manifest.yaml",
+    "tags": ["background mode", "Responses Protocol"]
+  },
+  {
+    "title": "Notetaking Agent (.NET, Responses)",
+    "description": "A note-taking agent using the Responses protocol with Azure OpenAI function calling in C#. Demonstrates tool use with per-session JSONL persistence.",
+    "language": "csharp",
+    "framework": "Bring Your Own",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/bring-your-own/responses/notetaking-agent/agent.manifest.yaml",
+    "tags": ["function calling", "Responses Protocol"]
+  },
+  {
+    "title": "Basic Agent (Invocations)",
+    "description": "A basic Agent Framework agent hosted by Foundry using the Invocations protocol.",
+    "language": "python",
+    "framework": "Agent Framework",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/agent-framework/invocations/01-basic/agent.manifest.yaml",
+    "tags": ["example", "Invocations Protocol"]
+  },
+  {
+    "title": "Basic Agent (Responses)",
+    "description": "A basic Agent Framework agent hosted by Foundry using the Responses protocol.",
+    "language": "python",
+    "framework": "Agent Framework",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/agent-framework/responses/01-basic/agent.manifest.yaml",
+    "tags": ["example", "Responses Protocol"]
+  },
+  {
+    "title": "Agent with Local Tools (Responses)",
+    "description": "An Agent Framework agent with local tools hosted by Foundry.",
+    "language": "python",
+    "framework": "Agent Framework",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/agent-framework/responses/02-tools/agent.manifest.yaml",
+    "tags": ["local tools", "Responses Protocol"]
+  },
+  {
+    "title": "Agent with Remote MCP Tools",
+    "description": "An Agent Framework agent with remote MCP tools hosted by Foundry.",
+    "language": "python",
+    "framework": "Agent Framework",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/agent-framework/responses/03-mcp/agent.manifest.yaml",
+    "tags": ["MCP", "Responses Protocol"]
+  },
+  {
+    "title": "Agent with Foundry Toolbox",
+    "description": "An Agent Framework agent with Foundry Toolbox integration.",
+    "language": "python",
+    "framework": "Agent Framework",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/agent-framework/responses/04-foundry-toolbox/agent.manifest.yaml",
+    "tags": ["Foundry Toolbox", "Responses Protocol"]
+  },
+  {
+    "title": "Workflow Agent",
+    "description": "An Agent Framework workflow hosted by Foundry.",
+    "language": "python",
+    "framework": "Agent Framework",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/agent-framework/responses/05-workflows/agent.manifest.yaml",
+    "tags": ["workflows", "Responses Protocol"]
+  },
+  {
+    "title": "AG-UI (Invocations)",
+    "description": "AG-UI protocol over Foundry invocations using Pydantic AI with Azure OpenAI. Streams standard AG-UI events with zero manual event translation.",
+    "language": "python",
+    "framework": "Bring Your Own",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/bring-your-own/invocations/ag-ui/agent.manifest.yaml",
+    "tags": ["AG-UI", "Pydantic AI", "Invocations Protocol"]
+  },
+  {
+    "title": "GitHub Copilot (Invocations)",
+    "description": "A getting-started agent that uses the GitHub Copilot SDK with the azure-ai-agentserver-invocations protocol, streaming raw session events as SSE.",
+    "language": "python",
+    "framework": "Bring Your Own",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/bring-your-own/invocations/github-copilot/agent.manifest.yaml",
+    "tags": ["GitHub Copilot SDK", "Invocations Protocol"]
+  },
+  {
+    "title": "Hello World (Python, Invocations)",
+    "description": "Minimal Hello World agent using the Invocations protocol with a bring-your-own approach. Calls a Foundry model via the Responses API and returns the response as a streaming SSE event stream.",
+    "language": "python",
+    "framework": "Bring Your Own",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/bring-your-own/invocations/hello-world/agent.manifest.yaml",
+    "tags": ["example", "Invocations Protocol"]
+  },
+  {
+    "title": "Human In The Loop (Invocations)",
+    "description": "A human-in-the-loop agent that demonstrates the approval-gate pattern using the azure-ai-agentserver-invocations SDK.",
+    "language": "python",
+    "framework": "Bring Your Own",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/bring-your-own/invocations/human-in-the-loop/agent.manifest.yaml",
+    "tags": ["HITL", "human-in-the-loop", "Invocations Protocol"]
+  },
+  {
+    "title": "LangGraph Chat (Invocations)",
+    "description": "Multi-turn chat agent built with LangGraph and the Invocations protocol. Demonstrates a tool-calling agent graph with get_current_time and calculator tools.",
     "language": "python",
     "framework": "LangGraph",
-    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/langgraph/calculator-agent/agent.yaml",
-    "tags": ["example", "learning"]
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/bring-your-own/invocations/langgraph-chat/agent.manifest.yaml",
+    "tags": ["LangGraph", "tool calling", "Invocations Protocol"]
   },
   {
-    "title": "Human in the Loop",
-    "description": "A LangGraph agent that demonstrates human-in-the-loop capabilities.",
+    "title": "Notetaking Agent (Invocations)",
+    "description": "Note-taking agent using the Invocations protocol. Demonstrates function calling (save_note/get_notes tools) with per-session JSONL persistence and SSE streaming.",
+    "language": "python",
+    "framework": "Bring Your Own",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/bring-your-own/invocations/notetaking-agent/agent.manifest.yaml",
+    "tags": ["function calling", "Invocations Protocol"]
+  },
+  {
+    "title": "Toolbox (Python, Invocations)",
+    "description": "Bring-your-own agent using the Invocations protocol with Foundry Toolbox MCP integration. Connects to a toolbox at startup, discovers tools, and lets the model call them during conversation.",
+    "language": "python",
+    "framework": "Bring Your Own",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/bring-your-own/invocations/toolbox/agent.manifest.yaml",
+    "tags": ["Foundry Toolbox", "Invocations Protocol"]
+  },
+  {
+    "title": "Background Agent (Responses)",
+    "description": "A long-running agent that demonstrates the background execution pattern using the azure-ai-agentserver-responses SDK. Supports polling and cancellation.",
+    "language": "python",
+    "framework": "Bring Your Own",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/bring-your-own/responses/background-agent/agent.manifest.yaml",
+    "tags": ["background mode", "Responses Protocol"]
+  },
+  {
+    "title": "Hello World (Python, Responses)",
+    "description": "Minimal Hello World agent using the Responses protocol with a bring-your-own approach. Calls a Foundry model via the Responses API and returns the response.",
+    "language": "python",
+    "framework": "Bring Your Own",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/bring-your-own/responses/hello-world/agent.manifest.yaml",
+    "tags": ["example", "Responses Protocol"]
+  },
+  {
+    "title": "LangGraph Chat (Responses)",
+    "description": "Multi-turn chat agent built with LangGraph using the Responses protocol. Demonstrates a tool-calling agent graph with server-side conversation state.",
     "language": "python",
     "framework": "LangGraph",
-    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/langgraph/human-in-the-loop/agent.yaml",
-    "tags": ["HITL", "human-in-the-loop"]
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/bring-your-own/responses/langgraph-chat/agent.manifest.yaml",
+    "tags": ["LangGraph", "tool calling", "Responses Protocol"]
   },
   {
-    "title": "ReAct Agent with Foundry Tools",
-    "description": "A LangGraph agent that uses Foundry tools to perform tasks such as interpreting Python code.",
+    "title": "Notetaking Agent (Responses)",
+    "description": "Note-taking agent using the Responses protocol. Demonstrates function calling (save_note/get_notes tools) with per-session JSONL persistence and streaming responses.",
     "language": "python",
-    "framework": "LangGraph",
-    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/langgraph/react-agent-with-foundry-tools/agent.yaml",
-    "tags": ["code interpreter", "Foundry tools"]
+    "framework": "Bring Your Own",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/bring-your-own/responses/notetaking-agent/agent.manifest.yaml",
+    "tags": ["function calling", "Responses Protocol"]
   },
   {
-    "title": "System Utility Agent",
-    "description": "System Utility Agent (cross-OS, container-aware). Includes tools for system info, resource snapshots, process listing, port checking, DNS lookup, and environment variables.",
+    "title": "Toolbox (Python, Responses)",
+    "description": "Bring-your-own agent using the Responses protocol with Foundry Toolbox MCP integration. Connects to a toolbox at startup, discovers tools, and lets the model call them during conversation.",
     "language": "python",
-    "framework": "Custom",
-    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/custom/system-utility-agent/agent.yaml",
-    "tags": ["system utilities", "custom framework"]
-  },
-  {
-    "title": "Agent with Tools",
-    "description": "An AI agent that uses Foundry tools (MCP and code interpreter) with Azure OpenAI Responses. The agent can fetch Microsoft Learn documentation and run code when needed.",
-    "language": "csharp",
-    "framework": "Agent Framework",
-    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/AgentFramework/AgentWithTools/agent.yaml",
-    "tags": ["MCP", "code interpreter"]
-  },
-  {
-    "title": "Agent with Local Tools",
-    "description": "A travel assistant agent that helps users find hotels in Seattle. Demonstrates local C# tool execution - a key advantage of code-based hosted agents over prompt agents.",
-    "language": "csharp",
-    "framework": "Agent Framework",
-    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/AgentFramework/AgentWithLocalTools/agent.yaml",
-    "tags": ["local tools", "travel assistant"]
-  },
-  {
-    "title": "Agent with Text Search RAG",
-    "description": "An AI agent that uses TextSearchProvider for retrieval augmented generation (RAG) capabilities. Runs searches against an external knowledge base and injects results into model context.",
-    "language": "csharp",
-    "framework": "Agent Framework",
-    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/AgentFramework/AgentWithTextSearchRag/agent.yaml",
-    "tags": ["RAG", "text search"]
-  },
-  {
-    "title": "Agent with Hosted MCP",
-    "description": "An AI agent that uses Azure OpenAI Responses with a Hosted Model Context Protocol (MCP) server. Answers questions by searching Microsoft Learn documentation using MCP tools.",
-    "language": "csharp",
-    "framework": "Agent Framework",
-    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/AgentFramework/AgentWithHostedMCP/agent.yaml",
-    "tags": ["MCP", "Microsoft Learn"]
-  },
-  {
-    "title": "Agents in Workflows",
-    "description": "A workflow agent that performs sequential translation through multiple languages. Translates text from English to French, then to Spanish, and finally back to English.",
-    "language": "csharp",
-    "framework": "Agent Framework",
-    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/AgentFramework/AgentsInWorkflows/agent.yaml",
-    "tags": ["workflows", "translation"]
-  },
-  {
-    "title": "Agent Thread and HITL",
-    "description": "A Weather Assistant Agent that provides weather information and forecasts. Demonstrates how to use Azure AI AgentServer with Human-in-the-Loop (HITL) capabilities.",
-    "language": "csharp",
-    "framework": "Agent Framework",
-    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/AgentFramework/AgentThreadAndHITL/agent.yaml",
-    "tags": ["HITL", "weather"]
-  },
-  {
-    "title": "System Utility Agent",
-    "description": "System Utility Agent (cross-OS, container-aware). Includes tools for system info, resource snapshots, process listing, port checking, DNS lookup, and environment variables.",
-    "language": "csharp",
-    "framework": "Custom",
-    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/AgentWithCustomFramework/SystemUtilityAgent/agent.yaml",
-    "tags": ["system utilities", "custom framework"]
+    "framework": "Bring Your Own",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/bring-your-own/responses/toolbox/agent.manifest.yaml",
+    "tags": ["Foundry Toolbox", "Responses Protocol"]
   }
 ]

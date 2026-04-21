@@ -7239,7 +7239,7 @@
     ],
     "id": "b3929371-f9cf-4e9e-a9ad-6c37553afd17",
     "languages": [
-      "dotnetcsharp"
+      "dotnetCsharp"
     ],
     "azureServices": [
       "functions",

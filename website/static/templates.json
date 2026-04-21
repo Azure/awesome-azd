@@ -7225,7 +7225,7 @@
   },
   {
     "title": "functions-e2e-sb-vnet",
-    "description": "",
+    "description": "End-to-end Python sample demonstrating secure triggering of a Flex Consumption plan app from a Service Bus instance secured in a virtual network, using managed identity and VNet integration.",
     "preview": "https://raw.githubusercontent.com/Azure-Samples/functions-quickstart-python-azd-service-bus/main/img/SB-VNET.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Anthony Chu",

@@ -7222,5 +7222,30 @@
       "bicep"
     ],
     "id": "ad77e6e6-af2c-4390-bb8c-8ca64cf540ce"
+  },
+  {
+    "title": "functions-e2e-sb-vnet",
+    "description": "",
+    "preview": "https://raw.githubusercontent.com/Azure-Samples/functions-quickstart-dotnet-azd-service-bus/main/img/SB-VNET.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure-Samples",
+    "source": "https://github.com/azure-samples/functions-quickstart-dotnet-azd-service-bus",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "b3929371-f9cf-4e9e-a9ad-6c37553afd17",
+    "languages": [
+      "dotnetcsharp"
+    ],
+    "frameworks": [
+      "rag"
+    ],
+    "azureServices": [
+      "functions"
+    ]
   }
 ]

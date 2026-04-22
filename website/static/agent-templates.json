@@ -184,7 +184,7 @@
     "tags": ["example", "Invocations Protocol"]
   },
   {
-    "title": "Human In The Loop (Invocations)",
+    "title": "Human-in-the-Loop (Invocations)",
     "description": "A human-in-the-loop agent that demonstrates the approval-gate pattern using the azure-ai-agentserver-invocations SDK.",
     "language": "python",
     "framework": "Bring Your Own",

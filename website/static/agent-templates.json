@@ -4,16 +4,8 @@
     "description": "Minimal Hello World agent using the Responses protocol with the Agent Framework approach in C#. Uses Microsoft.Agents.AI to create an AIAgent backed by a Foundry model.",
     "language": "csharp",
     "framework": "Agent Framework",
-    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/agent-framework/HelloWorld/agent.manifest.yaml",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/agent-framework/hello-world/agent.manifest.yaml",
     "tags": ["example", "Responses Protocol"]
-  },
-  {
-    "title": "Foundry Agent",
-    "description": "A hosted agent that delegates to a Foundry-managed agent definition, retrieving the agent by name from the platform.",
-    "language": "csharp",
-    "framework": "Agent Framework",
-    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/agent-framework/foundry-agent/agent.manifest.yaml",
-    "tags": ["Foundry Agent", "Responses Protocol"]
   },
   {
     "title": "Invocations Echo Agent",

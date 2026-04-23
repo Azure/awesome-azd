@@ -1,10 +1,25 @@
 import { describe, expect, test } from '@jest/globals';
+import { createHash } from 'crypto';
 import Templates from '../static/templates.json';
 
 // Agent templates are now unified into templates.json and discriminated by
 // `templateType: "extension.ai.agent"`. Consumers like `azd ai agent init`
 // filter the shared manifest by this field rather than reading a separate file.
 const AGENT_TYPE = 'extension.ai.agent';
+
+// Deterministic UUID v5 derivation used at migration time. Recompute it in the
+// test so regressions in the id pipeline (e.g. a source URL change) are caught.
+// Input: "awesome-azd:agent:" + source. Output: RFC 4122 UUID v5 string.
+function deterministicAgentId(source: string): string {
+    const hash = createHash('sha1').update(`awesome-azd:agent:${source}`).digest();
+    const bytes = Buffer.from(hash.subarray(0, 16));
+    bytes[6] = (bytes[6] & 0x0f) | 0x50; // version 5
+    bytes[8] = (bytes[8] & 0x3f) | 0x80; // RFC 4122 variant
+    const hex = bytes.toString('hex');
+    return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20, 32)}`;
+}
+
+const UUID_V5_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
 
 type RawTemplate = Record<string, any>;
 
@@ -75,5 +90,18 @@ describe('Agent template tests (extension.ai.agent)', () => {
     test('agent template ids are unique across the full manifest', () => {
         const allIds = (Templates as RawTemplate[]).map((t) => t.id).filter(Boolean);
         expect(allIds.length).toBe(new Set(allIds).size);
+    });
+
+    test('agent template ids match RFC 4122 UUID v5 format', () => {
+        agents.forEach((template) => {
+            expect(template.id).toMatch(UUID_V5_REGEX);
+        });
+    });
+
+    test('agent template ids are deterministic from source', () => {
+        agents.forEach((template) => {
+            const expected = deterministicAgentId(template.source);
+            expect(template.id).toBe(expected);
+        });
     });
 });

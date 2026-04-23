@@ -24,6 +24,9 @@ export type User = {
   frameworks?: TagType[];
   azureServices?: TagType[];
   IaC?: TagType[];
+  templateType?: string;
+  extensionFramework?: string;
+  extensionTags?: string[];
 };
 
 // NN: Updated TagType to suit Static Web Apps

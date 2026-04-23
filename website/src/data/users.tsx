@@ -59,15 +59,27 @@ function validateTemplates(raw: unknown): User[] {
     if (authorUrl == null) {
       (entry as Record<string, unknown>).authorUrl = '';
     }
-    if (!Array.isArray(tags) || tags.length === 0) {
-      console.warn(`Template[${i}]: missing or empty 'tags', skipping`);
-      return false;
+    
+    const templateType = (entry as Record<string, unknown>).templateType;
+    const isExtensionTemplate =
+      typeof templateType === 'string' && templateType.length > 0;
+    if (!isExtensionTemplate) {
+      if (!Array.isArray(tags) || tags.length === 0) {
+        console.warn(`Template[${i}]: missing or empty 'tags', skipping`);
+        return false;
+      }
     }
     return true;
   }) as User[];
 }
 
-export const unsortedUsers: User[] = validateTemplates(templates)
+// Extension templates (e.g. `azd ai agent init` agents with
+// `templateType: "extension.ai.agent"`) live in the same templates.json
+// manifest so specialized `azd` flows can consume a single source of truth,
+// but they are NOT displayed in the awesome-azd gallery.
+export const unsortedUsers: User[] = validateTemplates(templates).filter(
+  (u) => !u.templateType?.startsWith("extension")
+)
 
 export const TagList = Object.keys(Tags) as TagType[];
 function sortUsers() {

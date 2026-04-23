@@ -1,56 +1,79 @@
 import { describe, expect, test } from '@jest/globals';
-import AgentTemplates from '../static/agent-templates.json';
+import Templates from '../static/templates.json';
 
-describe('Agent template tests', () => {
-    test('Agent templates have required fields', () => {
-        AgentTemplates.forEach((template: any) => {
-            expect(template.title).toBeDefined();
+// Agent templates are now unified into templates.json and discriminated by
+// `templateType: "extension.ai.agent"`. Consumers like `azd ai agent init`
+// filter the shared manifest by this field rather than reading a separate file.
+const AGENT_TYPE = 'extension.ai.agent';
+
+type RawTemplate = Record<string, any>;
+
+const agents: RawTemplate[] = (Templates as RawTemplate[]).filter(
+    (t) => t && t.templateType === AGENT_TYPE
+);
+
+describe('Agent template tests (extension.ai.agent)', () => {
+    test('at least one agent template exists in templates.json', () => {
+        expect(agents.length).toBeGreaterThan(0);
+    });
+
+    test('agent templates have required core fields', () => {
+        agents.forEach((template) => {
             expect(typeof template.title).toBe('string');
-            expect(template.description).toBeDefined();
+            expect(template.title.length).toBeGreaterThan(0);
             expect(typeof template.description).toBe('string');
-            expect(template.language).toBeDefined();
-            expect(typeof template.language).toBe('string');
-            expect(template.framework).toBeDefined();
-            expect(typeof template.framework).toBe('string');
-            expect(template.source).toBeDefined();
+            expect(template.description.length).toBeGreaterThan(0);
             expect(typeof template.source).toBe('string');
-            expect(template.tags).toBeDefined();
-            expect(Array.isArray(template.tags)).toBe(true);
-        });
-    });
-
-    test('Agent template titles are unique', () => {
-        const titles = AgentTemplates.map((t: any) => t.title);
-        const uniqueTitles = new Set(titles);
-        if (titles.length !== uniqueTitles.size) {
-            const duplicates = titles.filter((t: string, i: number) => titles.indexOf(t) !== i);
-            console.error(`Duplicate titles: ${[...new Set(duplicates)].join(', ')}`);
-        }
-        expect(titles.length).toBe(uniqueTitles.size);
-    });
-
-    test('Agent template source URLs are valid GitHub URLs', () => {
-        AgentTemplates.forEach((template: any) => {
             expect(template.source).toMatch(/^https:\/\/github\.com\//);
+            expect(typeof template.author).toBe('string');
+            expect(template.author.length).toBeGreaterThan(0);
+            expect(typeof template.id).toBe('string');
+            expect(template.id.length).toBeGreaterThan(0);
         });
     });
 
-    test('Agent template language values are known', () => {
-        const knownLanguages = ['python', 'csharp', 'javascript', 'typescript', 'java'];
-        AgentTemplates.forEach((template: any) => {
-            if (!knownLanguages.includes(template.language)) {
-                console.error(`Unknown language "${template.language}" in template "${template.title}". Add it to the known list if intentional.`);
+    test('agent templates use the expected templateType namespace', () => {
+        agents.forEach((template) => {
+            expect(template.templateType).toBe(AGENT_TYPE);
+            expect(template.templateType.startsWith('extension.')).toBe(true);
+        });
+    });
+
+    test('agent templates have at least one language', () => {
+        agents.forEach((template) => {
+            expect(Array.isArray(template.languages)).toBe(true);
+            expect(template.languages.length).toBeGreaterThan(0);
+        });
+    });
+
+    test('extensionFramework is a string when present', () => {
+        agents.forEach((template) => {
+            if (template.extensionFramework != null) {
+                expect(typeof template.extensionFramework).toBe('string');
+                expect(template.extensionFramework.length).toBeGreaterThan(0);
             }
-            expect(knownLanguages).toContain(template.language);
         });
     });
 
-    test('Agent template tags are non-empty strings', () => {
-        AgentTemplates.forEach((template: any) => {
-            template.tags.forEach((tag: any) => {
-                expect(typeof tag).toBe('string');
-                expect(tag.length).toBeGreaterThan(0);
-            });
+    test('extensionTags are non-empty strings when present', () => {
+        agents.forEach((template) => {
+            if (template.extensionTags != null) {
+                expect(Array.isArray(template.extensionTags)).toBe(true);
+                template.extensionTags.forEach((tag: unknown) => {
+                    expect(typeof tag).toBe('string');
+                    expect((tag as string).length).toBeGreaterThan(0);
+                });
+            }
         });
+    });
+
+    test('agent template titles are unique', () => {
+        const titles = agents.map((t) => t.title);
+        expect(titles.length).toBe(new Set(titles).size);
+    });
+
+    test('agent template ids are unique across the full manifest', () => {
+        const allIds = (Templates as RawTemplate[]).map((t) => t.id).filter(Boolean);
+        expect(allIds.length).toBe(new Set(allIds).size);
     });
 });

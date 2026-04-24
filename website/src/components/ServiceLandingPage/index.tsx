@@ -13,16 +13,15 @@ import {
   teamsLightTheme,
   teamsDarkTheme,
 } from "@fluentui/react-components";
+import { filterGalleryTemplates } from "@site/src/data/users";
 import styles from "./styles.module.css";
 
 // Lazy-load templates at build time.
-// Exclude extension.* templates (e.g. extension.ai.agent) — they live in
-// templates.json as a manifest for `azd` but must not surface on service
-// landing pages. See `users.tsx` `isGalleryTemplate` for the matching filter.
-const allTemplates = (
-  require("@site/static/templates.json") as any[]
-).filter(
-  (t: any) => !(typeof t?.templateType === "string" && t.templateType.startsWith("extension."))
+// Exclude entries with `templateType` set (e.g. extension.ai.agent) — they
+// live in templates.json as a manifest for `azd` but must not surface on
+// service landing pages. Shared filter keeps this in sync with the gallery.
+const allTemplates = filterGalleryTemplates(
+  require("@site/static/templates.json") as Array<{ templateType?: string }>
 );
 
 export interface ServicePageConfig {

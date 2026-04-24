@@ -8,18 +8,18 @@ import { SearchBox } from "@fluentui/react/lib/SearchBox";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { Text, Link as FluentUILink } from "@fluentui/react-components";
+import { filterGalleryTemplates } from "@site/src/data/users";
 import styles from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useColorMode } from "@docusaurus/theme-common";
 
-// Exclude extension.* templates (e.g. extension.ai.agent) — they live in
-// templates.json as a manifest for `azd` but must not surface in gallery
-// counts, language/service tallies, or search results. See `users.tsx`
-// `isGalleryTemplate` for the matching data-layer filter.
-const allTemplates: any[] = (
-  require("@site/static/templates.json") as any[]
-).filter(
-  (t: any) => !(typeof t?.templateType === "string" && t.templateType.startsWith("extension."))
+// Lazy-load templates at build time.
+// Exclude entries with `templateType` set (e.g. extension.ai.agent) — they
+// live in templates.json as a manifest for `azd` but must not surface in
+// gallery counts, language/service tallies, or search results. Shared filter
+// keeps this in sync with the data layer (`users.tsx`).
+const allTemplates = filterGalleryTemplates(
+  require("@site/static/templates.json") as Array<{ templateType?: string }>
 );
 
 const TITLES: Record<string, string> = {

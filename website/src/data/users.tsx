@@ -59,6 +59,7 @@ function validateTemplates(raw: unknown): User[] {
     if (authorUrl == null) {
       (entry as Record<string, unknown>).authorUrl = '';
     }
+
     if (!Array.isArray(tags) || tags.length === 0) {
       console.warn(`Template[${i}]: missing or empty 'tags', skipping`);
       return false;
@@ -67,7 +68,35 @@ function validateTemplates(raw: unknown): User[] {
   }) as User[];
 }
 
-export const unsortedUsers: User[] = validateTemplates(templates)
+// Extension templates (e.g. `azd ai agent init` agents with
+// `templateType: "extension.ai.agent"`) live in the same templates.json
+// manifest so specialized `azd` flows can consume a single source of truth,
+// but they are NOT displayed in the awesome-azd gallery.
+//
+// Rule: any entry with a `templateType` set is treated as a non-gallery
+// (extension / specialized) entry. This means new extension categories are
+// hidden automatically without having to update the filter.
+//
+// Param is `Pick<User, 'templateType'>` so this helper works against either
+// validated `User` objects or raw JSON entries from `templates.json` (which
+// structurally satisfy `Pick` thanks to TS's structural typing), without
+// casting at the call site.
+export function isGalleryTemplate(entry: Pick<User, 'templateType'>): boolean {
+  return entry.templateType == null || entry.templateType === '';
+}
+
+export function filterGalleryTemplates<T extends Pick<User, 'templateType'>>(entries: T[]): T[] {
+  return entries.filter(isGalleryTemplate);
+}
+
+// Filter out entries with `templateType` set BEFORE gallery validation so
+// future extension categories that don't match the gallery schema (e.g.
+// missing `tags`, non-GitHub `source`) aren't silently dropped by
+// `validateTemplates`. This keeps the promise that adding a new extension
+// category is a data-only change.
+export const unsortedUsers: User[] = validateTemplates(
+  filterGalleryTemplates(templates as Array<Record<string, unknown> & { templateType?: string }>)
+);
 
 export const TagList = Object.keys(Tags) as TagType[];
 function sortUsers() {

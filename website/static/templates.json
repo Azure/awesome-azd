@@ -7224,9 +7224,9 @@
     "id": "ad77e6e6-af2c-4390-bb8c-8ca64cf540ce"
   },
   {
-    "title": "functions-e2e-sb-vnet-typescript",
+    "title": "Azure Functions with Service Bus and VNet (TypeScript)",
     "description": "End-to-end TypeScript sample demonstrating secure triggering of a Flex Consumption function app from a Service Bus instance secured in a virtual network, using managed identity and VNet integration.",
-    "preview": "https://raw.githubusercontent.com/Azure-Samples/functions-quickstart-typescript-azd-service-bus/main/img/SB-VNET.png",
+    "preview": "./templates/images/functions-e2e-sb-vnet.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Anthony Chu",
     "source": "https://github.com/azure-samples/functions-quickstart-typescript-azd-service-bus",

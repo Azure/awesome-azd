@@ -7222,5 +7222,128 @@
       "bicep"
     ],
     "id": "ad77e6e6-af2c-4390-bb8c-8ca64cf540ce"
+  },
+  {
+    "title": "Azure Functions Python Timer Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions Timer trigger quickstart written in Python and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-python-azd-timer",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "functions",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "f7da4cb3-8113-41a2-9ada-9ad3814479b2"
+  },
+  {
+    "title": "Azure Functions JavaScript Timer Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions Timer trigger quickstart written in JavaScript and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-javascript-azd-timer",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "javascript"
+    ],
+    "azureServices": [
+      "functions",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "1bbbfef4-14e8-44de-952f-5300ed58c977"
+  },
+  {
+    "title": "Azure Functions TypeScript Timer Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions Timer trigger quickstart written in TypeScript and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-typescript-azd-timer",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "typescript"
+    ],
+    "azureServices": [
+      "functions",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "4bc9474d-2b13-4bf4-b662-ad8cfc479bb5"
+  },
+  {
+    "title": "Azure Functions PowerShell Timer Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions Timer trigger quickstart written in PowerShell and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-powershell-azd-timer",
+    "tags": [
+      "msft",
+      "new",
+      "powershell"
+    ],
+    "azureServices": [
+      "functions",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "133b3213-c7ed-4388-a7e2-ef511c9c4988"
+  },
+  {
+    "title": "Azure Functions Java Timer Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions Timer trigger quickstart written in Java and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-java-azd-timer",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "java"
+    ],
+    "azureServices": [
+      "functions",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "324956ec-f968-40ec-b9ca-5da58b01f8eb"
   }
 ]

@@ -59,7 +59,7 @@ function validateTemplates(raw: unknown): User[] {
     if (authorUrl == null) {
       (entry as Record<string, unknown>).authorUrl = '';
     }
-    
+
     if (!Array.isArray(tags) || tags.length === 0) {
       console.warn(`Template[${i}]: missing or empty 'tags', skipping`);
       return false;
@@ -72,9 +72,20 @@ function validateTemplates(raw: unknown): User[] {
 // `templateType: "extension.ai.agent"`) live in the same templates.json
 // manifest so specialized `azd` flows can consume a single source of truth,
 // but they are NOT displayed in the awesome-azd gallery.
-export const unsortedUsers: User[] = validateTemplates(templates).filter(
-  (u) => !u.templateType?.startsWith("extension.")
-)
+export function isGalleryTemplate(user: User): boolean {
+  return !(
+    typeof user.templateType === 'string' &&
+    user.templateType.startsWith('extension.')
+  );
+}
+
+export function filterGalleryTemplates(users: User[]): User[] {
+  return users.filter(isGalleryTemplate);
+}
+
+export const unsortedUsers: User[] = filterGalleryTemplates(
+  validateTemplates(templates)
+);
 
 export const TagList = Object.keys(Tags) as TagType[];
 function sortUsers() {

@@ -7,8 +7,11 @@ import Templates from '../static/templates.json';
 // filter the shared manifest by this field rather than reading a separate file.
 const AGENT_TYPE = 'extension.ai.agent';
 
-// Deterministic UUID v5 derivation used at migration time. Recompute it in the
-// test so regressions in the id pipeline (e.g. a source URL change) are caught.
+// Deterministic UUID v5 derivation used at the extension.ai.agent migration.
+// Scope: this function — and the determinism test that uses it — apply ONLY to
+// extension.ai.agent entries. Gallery templates added via the interactive
+// `npm run add-template` script (scripts/update-templates-json.js) get random
+// UUIDs and are intentionally exempt from this check.
 // Input: "awesome-azd:agent:" + source. Output: RFC 4122 UUID v5 string.
 function deterministicAgentId(source: string): string {
     const hash = createHash('sha1').update(`awesome-azd:agent:${source}`).digest();
@@ -98,7 +101,7 @@ describe('Agent template tests (extension.ai.agent)', () => {
         });
     });
 
-    test('agent template ids are deterministic from source', () => {
+    test('extension.ai.agent ids are deterministic from source (agent-only invariant)', () => {
         agents.forEach((template) => {
             const expected = deterministicAgentId(template.source);
             expect(template.id).toBe(expected);

@@ -12,7 +12,15 @@ import styles from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useColorMode } from "@docusaurus/theme-common";
 
-const allTemplates: any[] = require("@site/static/templates.json");
+// Exclude extension.* templates (e.g. extension.ai.agent) — they live in
+// templates.json as a manifest for `azd` but must not surface in gallery
+// counts, language/service tallies, or search results. See `users.tsx`
+// `isGalleryTemplate` for the matching data-layer filter.
+const allTemplates: any[] = (
+  require("@site/static/templates.json") as any[]
+).filter(
+  (t: any) => !(typeof t?.templateType === "string" && t.templateType.startsWith("extension."))
+);
 
 const TITLES: Record<string, string> = {
   templates: "From code to cloud in minutes",

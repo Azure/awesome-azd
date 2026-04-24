@@ -15,8 +15,15 @@ import {
 } from "@fluentui/react-components";
 import styles from "./styles.module.css";
 
-// Lazy-load templates at build time
-const allTemplates = require("@site/static/templates.json");
+// Lazy-load templates at build time.
+// Exclude extension.* templates (e.g. extension.ai.agent) — they live in
+// templates.json as a manifest for `azd` but must not surface on service
+// landing pages. See `users.tsx` `isGalleryTemplate` for the matching filter.
+const allTemplates = (
+  require("@site/static/templates.json") as any[]
+).filter(
+  (t: any) => !(typeof t?.templateType === "string" && t.templateType.startsWith("extension."))
+);
 
 export interface ServicePageConfig {
   serviceTag: string;

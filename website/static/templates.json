@@ -7222,5 +7222,30 @@
       "bicep"
     ],
     "id": "ad77e6e6-af2c-4390-bb8c-8ca64cf540ce"
+  },
+  {
+    "title": "Azure Functions with Service Bus and VNet (JavaScript)",
+    "description": "End-to-end JavaScript sample demonstrating secure triggering of a Flex Consumption function app from a Service Bus instance secured in a virtual network, using managed identity and VNet integration.",
+    "preview": "./templates/images/functions-e2e-sb-vnet.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Anthony Chu",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-javascript-azd-service-bus",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "ad1d6fba-ad78-40a4-9447-6edba1a094f6",
+    "languages": [
+      "javascript"
+    ],
+    "azureServices": [
+      "functions",
+      "servicebus",
+      "vnets",
+      "managedidentity"
+    ]
   }
 ]

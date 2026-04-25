@@ -7222,5 +7222,30 @@
       "bicep"
     ],
     "id": "ad77e6e6-af2c-4390-bb8c-8ca64cf540ce"
+  },
+  {
+    "title": "Azure Functions with Service Bus and VNet (.NET C#)",
+    "description": "End-to-end .NET C# sample demonstrating secure triggering of a Flex Consumption function app from a Service Bus instance secured in a virtual network, using managed identity and VNet integration.",
+    "preview": "./templates/images/functions-e2e-sb-vnet.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Anthony Chu",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd-service-bus",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "b3929371-f9cf-4e9e-a9ad-6c37553afd17",
+    "languages": [
+      "dotnetCsharp"
+    ],
+    "azureServices": [
+      "functions",
+      "servicebus",
+      "vnets",
+      "managedidentity"
+    ]
   }
 ]

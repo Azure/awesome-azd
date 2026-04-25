@@ -7229,7 +7229,7 @@
     "preview": "./templates/images/functions-e2e-sb-vnet.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Anthony Chu",
-    "source": "https://github.com/azure-samples/functions-quickstart-python-azd-service-bus",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-python-azd-service-bus",
     "tags": [
       "msft",
       "new"

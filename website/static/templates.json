@@ -7236,6 +7236,9 @@
       "mcp",
       "ai"
     ],
+    "languages": [
+      "rust"
+    ],
     "azureServices": [
       "aca",
       "loganalytics",

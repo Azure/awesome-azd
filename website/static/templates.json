@@ -7222,5 +7222,36 @@
       "bicep"
     ],
     "id": "ad77e6e6-af2c-4390-bb8c-8ca64cf540ce"
+  },
+  {
+    "title": "Rust MCP Server on Azure Container Apps",
+    "description": "A zero-trust, read-only Model Context Protocol (MCP) server written in Rust on top of axum, deployed to Azure Container Apps with Bicep. Designed as a memory-safe, low-latency option for AI agent tool execution as an alternative to Python or Node.js stacks.",
+    "preview": "./templates/images/rust-mcp-azure.png",
+    "authorUrl": "https://github.com/zubeyralmaho",
+    "author": "zubeyralmaho",
+    "source": "https://github.com/zubeyralmaho/rust-mcp-azure",
+    "tags": [
+      "community",
+      "new",
+      "mcp",
+      "aicollection",
+      "ai"
+    ],
+    "languages": [
+      "rust"
+    ],
+    "frameworks": [
+      "axum"
+    ],
+    "azureServices": [
+      "aca",
+      "loganalytics",
+      "monitor",
+      "managedidentity"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "9fa7012a-4961-46d0-abc9-db9a8ea49f06"
   }
 ]

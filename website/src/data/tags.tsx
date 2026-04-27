@@ -132,6 +132,7 @@ export type TagType =
   | "featuremanagement"
   | "go"
   | "rust"
+  | "axum"
   | "powershell"
   | "autogen"
   | "dab"
@@ -253,6 +254,11 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Rust",
     description: "Template contains Rust app code",
     type: "Language",
+  },
+  axum: {
+    label: "axum",
+    description: "Template architecture uses axum web framework",
+    type: "Framework",
   },
 
   // ---- Tools

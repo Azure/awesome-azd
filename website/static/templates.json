@@ -7264,6 +7264,9 @@
     "languages": [
       "rust"
     ],
+    "frameworks": [
+      "axum"
+    ],
     "azureServices": [
       "aca",
       "loganalytics",

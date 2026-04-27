@@ -7224,6 +7224,31 @@
     "id": "ad77e6e6-af2c-4390-bb8c-8ca64cf540ce"
   },
   {
+    "title": "Azure Functions with Service Bus and VNet (Python)",
+    "description": "End-to-end Python sample demonstrating secure triggering of a Flex Consumption function app from a Service Bus instance secured in a virtual network, using managed identity and VNet integration.",
+    "preview": "./templates/images/functions-e2e-sb-vnet.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Anthony Chu",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-python-azd-service-bus",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "010022ac-b8f5-41d4-8010-61e657591bdb",
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "functions",
+      "servicebus",
+      "vnets",
+      "managedidentity"
+    ]
+  },
+  {
     "title": "Rust MCP Server on Azure Container Apps",
     "description": "A zero-trust, read-only Model Context Protocol (MCP) server written in Rust on top of axum, deployed to Azure Container Apps with Bicep. Designed as a memory-safe, low-latency option for AI agent tool execution as an alternative to Python or Node.js stacks.",
     "preview": "./templates/images/rust-mcp-azure.png",

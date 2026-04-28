@@ -7247,5 +7247,38 @@
       "vnets",
       "managedidentity"
     ]
+  },
+  {
+    "title": "AI Travel Planner with Durable Agents",
+    "description": "A travel planning application that demonstrates how to build durable AI agents using the Durable Task extension for Microsoft Agent Framework. Coordinates multiple specialized AI agents—destination recommendations, itinerary creation, and local insights—through a structured, fault-tolerant workflow with human-in-the-loop approval.",
+    "preview": "https://raw.githubusercontent.com/greenie-msft/ai-agents-travel-planner-dotnet/main/images/architecture.png",
+    "authorUrl": "https://github.com/greenie-msft",
+    "author": "greenie-msft",
+    "source": "https://github.com/greenie-msft/ai-agents-travel-planner-dotnet",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "a691e7af-3b3c-469a-b3bf-981f9c45b5da",
+    "languages": [
+      "c",
+      "javascript"
+    ],
+    "frameworks": [
+      ".net9",
+      "react",
+      "microsoftagentframework",
+      "durabletasksdk"
+    ],
+    "azureServices": [
+      "azurefunctions",
+      "azureopenai",
+      "azurestaticwebapps",
+      "azureblobstorage",
+      "durabletaskscheduler"
+    ]
   }
 ]

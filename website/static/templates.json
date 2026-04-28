@@ -7277,7 +7277,7 @@
       "azurefunctions",
       "azureopenai",
       "azurestaticwebapps",
-      "azureblobstorage",
+      "blobstorage",
       "durabletaskscheduler"
     ]
   }

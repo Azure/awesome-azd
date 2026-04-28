@@ -7247,5 +7247,55 @@
       "vnets",
       "managedidentity"
     ]
+  },
+  {
+    "title": "Azure Functions Flex Consumption - FFmpeg Image Processing with Azure Files OS Mount",
+    "description": "Event-driven image processing using FFmpeg from an Azure Files OS mount. Images uploaded to Blob Storage trigger the function via EventGrid, which processes them using FFmpeg from the mount and saves results to an output container.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Samples",
+    "source": "https://github.com/Azure-Samples/Azure-Functions-Flex-Consumption-with-Azure-Files-OS-Mount-Samples",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "functions",
+      "blobstorage",
+      "azurestorage",
+      "eventgrid",
+      "managedidentity"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "983a69db-309f-45ae-82ec-214e7dcc25f8"
+  },
+  {
+    "title": "Azure Functions Flex Consumption - Durable Text Analysis with Azure Files OS Mount",
+    "description": "Durable Functions fan-out/fan-in orchestration that analyzes text files stored on an Azure Files OS mount. An HTTP trigger starts the orchestration, which fans out to analyze each text file in parallel and aggregates results.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Samples",
+    "source": "https://github.com/Azure-Samples/Azure-Functions-Flex-Consumption-with-Azure-Files-OS-Mount-Samples",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "functions",
+      "azurestorage",
+      "managedidentity"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "af0caae6-c78a-487e-88e7-30a1aa6183f7"
   }
 ]

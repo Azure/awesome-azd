@@ -8,11 +8,11 @@ import { SearchBox } from "@fluentui/react/lib/SearchBox";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { Text, Link as FluentUILink } from "@fluentui/react-components";
+import { galleryTemplates as allTemplates } from "@site/src/data/users";
 import styles from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useColorMode } from "@docusaurus/theme-common";
 
-const allTemplates: any[] = require("@site/static/templates.json");
 
 const TITLES: Record<string, string> = {
   templates: "From code to cloud in minutes",

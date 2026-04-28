@@ -8,19 +8,11 @@ import { SearchBox } from "@fluentui/react/lib/SearchBox";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { Text, Link as FluentUILink } from "@fluentui/react-components";
-import { filterGalleryTemplates } from "@site/src/data/users";
+import { galleryTemplates as allTemplates } from "@site/src/data/users";
 import styles from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useColorMode } from "@docusaurus/theme-common";
 
-// Lazy-load templates at build time.
-// Exclude entries with `templateType` set (e.g. extension.ai.agent) — they
-// live in templates.json as a manifest for `azd` but must not surface in
-// gallery counts, language/service tallies, or search results. Shared filter
-// keeps this in sync with the data layer (`users.tsx`).
-const allTemplates = filterGalleryTemplates(
-  require("@site/static/templates.json") as Array<{ templateType?: string }>
-);
 
 const TITLES: Record<string, string> = {
   templates: "From code to cloud in minutes",

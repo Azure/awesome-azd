@@ -60,7 +60,9 @@ function validateTemplates(raw: unknown): User[] {
       (entry as Record<string, unknown>).authorUrl = '';
     }
 
-    if (!Array.isArray(tags) || tags.length === 0) {
+    const templateType = (entry as Record<string, unknown>).templateType;
+    const isExtensionEntry = typeof templateType === 'string' && templateType !== '';
+    if ((!Array.isArray(tags) || tags.length === 0) && !isExtensionEntry) {
       console.warn(`Template[${i}]: missing or empty 'tags', skipping`);
       return false;
     }
@@ -94,9 +96,18 @@ export function filterGalleryTemplates<T extends Pick<User, 'templateType'>>(ent
 // missing `tags`, non-GitHub `source`) aren't silently dropped by
 // `validateTemplates`. This keeps the promise that adding a new extension
 // category is a data-only change.
-export const unsortedUsers: User[] = validateTemplates(
-  filterGalleryTemplates(templates as Array<Record<string, unknown> & { templateType?: string }>)
+const rawGalleryTemplates = filterGalleryTemplates(
+  templates as Array<Record<string, unknown> & { templateType?: string }>
 );
+
+// Pre-filtered raw template entries for UI consumers (gallery counts,
+// language/service tallies, service landing pages). Using a single shared
+// constant guarantees `users.tsx` is the only place that decides what counts
+// as a gallery template — components never re-implement the filter.
+export const galleryTemplates: ReadonlyArray<Record<string, unknown>> =
+  rawGalleryTemplates;
+
+export const unsortedUsers: User[] = validateTemplates(rawGalleryTemplates);
 
 export const TagList = Object.keys(Tags) as TagType[];
 function sortUsers() {

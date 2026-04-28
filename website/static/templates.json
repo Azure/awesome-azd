@@ -7238,9 +7238,6 @@
     "extensionTags": [
       "example",
       "Responses Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7258,9 +7255,6 @@
     "extensionTags": [
       "example",
       "Invocations Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7278,9 +7272,6 @@
     "extensionTags": [
       "local tools",
       "Responses Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7298,9 +7289,6 @@
     "extensionTags": [
       "MCP",
       "Responses Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7318,9 +7306,6 @@
     "extensionTags": [
       "example",
       "Responses Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7339,9 +7324,6 @@
       "RAG",
       "text search",
       "Responses Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7360,9 +7342,6 @@
       "workflows",
       "translation",
       "Responses Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7380,9 +7359,6 @@
     "extensionTags": [
       "example",
       "Invocations Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7401,9 +7377,6 @@
       "HITL",
       "human-in-the-loop",
       "Invocations Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7421,9 +7394,6 @@
     "extensionTags": [
       "function calling",
       "Invocations Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7441,9 +7411,6 @@
     "extensionTags": [
       "example",
       "Responses Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7461,9 +7428,6 @@
     "extensionTags": [
       "background mode",
       "Responses Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7481,9 +7445,6 @@
     "extensionTags": [
       "function calling",
       "Responses Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7501,9 +7462,6 @@
     "extensionTags": [
       "example",
       "Invocations Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7521,9 +7479,6 @@
     "extensionTags": [
       "example",
       "Responses Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7541,9 +7496,6 @@
     "extensionTags": [
       "local tools",
       "Responses Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7561,9 +7513,6 @@
     "extensionTags": [
       "MCP",
       "Responses Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7581,9 +7530,6 @@
     "extensionTags": [
       "Foundry Toolbox",
       "Responses Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7601,9 +7547,6 @@
     "extensionTags": [
       "workflows",
       "Responses Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7622,9 +7565,6 @@
       "AG-UI",
       "Pydantic AI",
       "Invocations Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7642,9 +7582,6 @@
     "extensionTags": [
       "GitHub Copilot SDK",
       "Invocations Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7662,9 +7599,6 @@
     "extensionTags": [
       "example",
       "Invocations Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7683,9 +7617,6 @@
       "HITL",
       "human-in-the-loop",
       "Invocations Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7704,9 +7635,6 @@
       "LangGraph",
       "tool calling",
       "Invocations Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7724,9 +7652,6 @@
     "extensionTags": [
       "function calling",
       "Invocations Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7744,9 +7669,6 @@
     "extensionTags": [
       "Foundry Toolbox",
       "Invocations Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7764,9 +7686,6 @@
     "extensionTags": [
       "background mode",
       "Responses Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7784,9 +7703,6 @@
     "extensionTags": [
       "example",
       "Responses Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7805,9 +7721,6 @@
       "LangGraph",
       "tool calling",
       "Responses Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7825,9 +7738,6 @@
     "extensionTags": [
       "function calling",
       "Responses Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   },
   {
@@ -7845,9 +7755,6 @@
     "extensionTags": [
       "Foundry Toolbox",
       "Responses Protocol"
-    ],
-    "tags": [
-      "msft"
     ]
   }
 ]

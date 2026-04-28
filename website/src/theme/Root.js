@@ -104,13 +104,8 @@ const telemetryInit = () => {
       // NOTE: the previous unguarded `else` branch also fired when
       // WcpConsent itself was undefined, silently wiping the footer link
       // on every script-load failure. This guard prevents that.
-      try {
-        removeItem("footer__links_" + manageCookieLabel);
-        removeItem(manageCookieId);
-      } catch (e) {
-        // Ignore if elements don't exist - this is expected behavior
-        // when cookies/elements have already been removed or don't exist
-      }
+      removeItem("footer__links_" + manageCookieLabel);
+      removeItem(manageCookieId);
     }
 
     if (WcpConsent.siteConsent) {
@@ -176,51 +171,49 @@ const telemetryInit = () => {
   }
 
   // 1DS initialization
-  try {
-    if (typeof oneDS !== "undefined") {
-      const analytics = new oneDS.ApplicationInsights();
-      var config = {
-        instrumentationKey:
-          "41c1099574f14f06bdce4f80fcd0a65c-4a29467c-f5d4-4151-8e8b-62c0a3515947-7118",
-        propertyConfiguration: {
-          callback: {
-            userConsentDetails: siteConsent ? siteConsent.getConsent : null,
+  if (typeof oneDS !== "undefined") {
+    const analytics = new oneDS.ApplicationInsights();
+    var config = {
+      instrumentationKey:
+        "41c1099574f14f06bdce4f80fcd0a65c-4a29467c-f5d4-4151-8e8b-62c0a3515947-7118",
+      propertyConfiguration: {
+        callback: {
+          userConsentDetails: function () {
+            var latestSiteConsent =
+              siteConsent || (window.WcpConsent && window.WcpConsent.siteConsent);
+            return latestSiteConsent && latestSiteConsent.getConsent
+              ? latestSiteConsent.getConsent()
+              : null;
           },
         },
-        webAnalyticsConfiguration: {
-          autoCapture: {
-            scroll: true,
-            pageView: true,
-            onLoad: true,
-            onUnload: true,
-            click: true,
-            resize: true,
-            jsError: true,
-          },
+      },
+      webAnalyticsConfiguration: {
+        autoCapture: {
+          scroll: true,
+          pageView: true,
+          onLoad: true,
+          onUnload: true,
+          click: true,
+          resize: true,
+          jsError: true,
         },
-      };
-      analytics.initialize(config, []);
-    }
-  } catch (error) {
-    if (
-      error instanceof ReferenceError &&
-      error.message.includes("oneDS is not defined")
-    ) {
-      // Print out a message if user uses an ad blocker
-      console.log(
-        "The oneDS functionality is currently unavailable. This could be caused by an active ad blocker. " +
-          "As a result, telemetry provided by Adobe Analytics has been disabled. Please consider " +
-          "disabling your ad blocker or whitelisting our site if you wish to enable this functionality."
-      );
-    } else {
-      throw error;
-    }
+      },
+    };
+    analytics.initialize(config, []);
+  } else {
+    // oneDS is undefined — most commonly because an ad blocker prevented
+    // ms.analytics-web from loading. Surface a hint to the user.
+    console.log(
+      "The oneDS functionality is currently unavailable. This could be caused by an active ad blocker. " +
+        "As a result, telemetry provided by OneDS (Microsoft analytics) has been disabled. Please consider " +
+        "disabling your ad blocker or whitelisting our site if you wish to enable this functionality."
+    );
   }
 
   return stopWaitingForWcp;
 };
 
-// Exported for behavioral tests in test/consent-banner-behavior.test.ts.
+// Exported for behavioral tests in test/consent-banner.test.ts.
 // Not part of the public API of the Root swizzle — treat as test-only.
 export { telemetryInit };
 

@@ -7249,6 +7249,36 @@
     ]
   },
   {
+    "title": "Rust MCP Server on Azure Container Apps",
+    "description": "A zero-trust, read-only Model Context Protocol (MCP) server written in Rust on top of axum, deployed to Azure Container Apps with Bicep. Designed as a memory-safe, low-latency option for AI agent tool execution as an alternative to Python or Node.js stacks.",
+    "preview": "./templates/images/rust-mcp-azure.png",
+    "authorUrl": "https://github.com/zubeyralmaho",
+    "author": "zubeyralmaho",
+    "source": "https://github.com/zubeyralmaho/rust-mcp-azure",
+    "tags": [
+      "community",
+      "new",
+      "mcp",
+      "ai"
+    ],
+    "languages": [
+      "rust"
+    ],
+    "frameworks": [
+      "axum"
+    ],
+    "azureServices": [
+      "aca",
+      "loganalytics",
+      "monitor",
+      "managedidentity"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "9fa7012a-4961-46d0-abc9-db9a8ea49f06"
+  },
+  {
     "title": "Hello World (.NET, Agent Framework)",
     "description": "Minimal Hello World agent using the Responses protocol with the Agent Framework approach in C#. Uses Microsoft.Agents.AI to create an AIAgent backed by a Foundry model.",
     "authorUrl": "https://github.com/microsoft-foundry",

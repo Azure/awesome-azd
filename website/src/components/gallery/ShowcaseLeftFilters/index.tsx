@@ -20,7 +20,7 @@ import { unsortedExtensions } from "../../../data/extensions";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
 import { useHistory } from "@docusaurus/router";
-import { prepareUserState } from "@site/src/pages/index";
+import { prepareUserState } from "@site/src/pages/templates/index";
 import { UserState } from "../ShowcaseTemplateSearch";
 import { splitAuthors } from "@site/src/utils/jsUtils";
 

@@ -4,11 +4,11 @@
  */
 
 import React from "react";
-import ShowcaseEmptyResult from "../components/gallery/ShowcaseEmptyResult";
-import { type User, type TagType } from "../data/tags";
+import ShowcaseEmptyResult from "../../components/gallery/ShowcaseEmptyResult";
+import { type User, type TagType } from "../../data/tags";
 import styles from "./styles.module.css";
-import ShowcaseCard from "../components/gallery/ShowcaseCard";
-import ShowcaseSurveyCard from "../components/gallery/ShowcaseSurveyCard";
+import ShowcaseCard from "../../components/gallery/ShowcaseCard";
+import ShowcaseSurveyCard from "../../components/gallery/ShowcaseSurveyCard";
 
 export default function ShowcaseCards({
   filteredUsers,

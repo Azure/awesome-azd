@@ -56,7 +56,7 @@ function FluentWrapper({ children }: { children: React.ReactNode }) {
 
 function ServicePageContent({ config }: { config: ServicePageConfig }) {
   const icon = useBaseUrl(config.icon);
-  const baseUrl = useBaseUrl("/");
+  const baseUrl = useBaseUrl("/templates");
 
   const filteredTemplates = useMemo(() => {
     return allTemplates.filter(

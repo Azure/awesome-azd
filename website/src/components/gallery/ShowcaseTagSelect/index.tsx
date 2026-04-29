@@ -6,7 +6,7 @@
 import React, { useCallback, useEffect } from "react";
 import { useHistory } from "@docusaurus/router";
 import { toggleListItem } from "@site/src/utils/jsUtils";
-import { prepareUserState } from "@site/src/pages/index";
+import { prepareUserState } from "@site/src/pages/templates/index";
 import { type TagType } from "@site/src/data/tags";
 import { Checkbox } from "@fluentui/react-components";
 

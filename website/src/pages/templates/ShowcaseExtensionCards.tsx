@@ -4,10 +4,10 @@
  */
 
 import React from "react";
-import ShowcaseEmptyResult from "../components/gallery/ShowcaseEmptyResult";
-import { type Extension } from "../data/extensionTypes";
+import ShowcaseEmptyResult from "../../components/gallery/ShowcaseEmptyResult";
+import { type Extension } from "../../data/extensionTypes";
 import styles from "./styles.module.css";
-import ShowcaseExtensionCard from "../components/gallery/ShowcaseExtensionCard";
+import ShowcaseExtensionCard from "../../components/gallery/ShowcaseExtensionCard";
 
 export default function ShowcaseExtensionCards({
   filteredExtensions,

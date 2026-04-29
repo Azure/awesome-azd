@@ -1,0 +1,251 @@
+/**
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
+ */
+
+.checkboxList {
+  flex-wrap: wrap;
+}
+
+.checkboxList,
+.showcaseList {
+  padding: 0;
+  list-style: none;
+}
+
+.checkboxListItem {
+  user-select: none;
+  white-space: nowrap;
+}
+
+.checkboxListItem:last-child {
+  margin-right: 0;
+}
+
+.cover {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.searchContainer {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  background: var(--site-hero-bg);
+}
+
+.searchArea {
+  position: relative;
+  width: 100%;
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3xl) var(--space-lg) var(--space-2xl);
+}
+
+.heroBar {
+  max-width: 720px;
+}
+
+.showcaseList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
+  gap: var(--space-lg);
+}
+
+.showcaseFavorite {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background-color: var(--site-color-favorite-background);
+}
+
+.showcaseHelpWanted {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background-color: #33d4f4;
+}
+
+.helpText {
+  color: #245e94;
+}
+
+.showcaseFavoriteHeader {
+  display: flex;
+}
+
+.svgIconFavoriteXs,
+.svgIconFavorite {
+  color: var(--site-color-svg-icon-favorite);
+}
+
+.svgIconFavoriteXs {
+  margin-left: 0.625rem;
+  font-size: 1rem;
+}
+
+.svgIconFavorite {
+  margin-left: 1rem;
+}
+
+.filterAndCard {
+  display: flex;
+  padding: var(--space-xl) 40px;
+  background: var(--site-color-bg);
+}
+
+[data-theme="dark"] .filterAndCard {
+  background-color: var(--site-color-bg);
+}
+
+.filter {
+  flex: 2;
+  margin: 0px 20px 0 0;
+  max-width: 260px;
+  background: var(--site-color-surface);
+  border-radius: var(--site-card-radius, 12px);
+  padding: 20px;
+  border: 1px solid var(--site-color-border);
+  align-self: flex-start;
+}
+
+[data-theme="dark"] .filter {
+  background: var(--site-color-surface);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.card {
+  flex: 8;
+  min-width: 15rem;
+  margin: 0px 0px 0 20px;
+}
+
+.load {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.cardLoad {
+  margin-top: 15rem;
+  width: 100%;
+}
+
+.clearAll {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-decoration-line: underline;
+  cursor: pointer;
+  color: var(--ifm-color-primary);
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.filterBadge {
+  color: var(--ifm-color-primary) !important;
+  cursor: pointer;
+  border-color: #BAE6FD !important;
+  background: #F0F9FF !important;
+  border-radius: 20px !important;
+  font-weight: 500;
+}
+
+.filterAppliedBar {
+  padding-top: var(--space-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.clearAll {
+  color: var(--ifm-color-primary);
+  cursor: pointer;
+}
+
+[data-theme="dark"] .clearAll {
+  color: var(--ifm-color-primary);
+  cursor: pointer;
+}
+
+[data-theme="dark"] .filterBadge {
+  border-color: #164E63 !important;
+  background: #083344 !important;
+}
+
+/* Desktop-only sticky positioning for filter */
+@media screen and (min-width: 997px) {
+  .filter {
+    position: sticky;
+    top: 5rem;
+  }
+}
+
+/* Back to top button for mobile */
+.backToTopButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--ifm-color-primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: background-color var(--transition-base);
+}
+
+.backToTopButton:hover,
+.backToTopButton:focus-visible {
+  background-color: var(--ifm-color-primary-dark);
+}
+
+.backToTopButton:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+[data-theme="dark"] .backToTopButton {
+  background-color: #0284C7;
+}
+
+[data-theme="dark"] .backToTopButton:hover {
+  background-color: #0369A1;
+}
+
+@media screen and (max-width: 996px) {
+  .backToTopButton {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 996px) {
+  .filterAndCard {
+    flex-direction: column;
+  }
+
+  .filter {
+    max-width: 100%;
+  }
+
+  .heroBar {
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  .cardLoad {
+    margin-top: 1rem;
+  }
+}

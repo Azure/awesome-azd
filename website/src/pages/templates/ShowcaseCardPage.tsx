@@ -7,11 +7,11 @@ import React, { useState, useMemo, useEffect } from "react";
 import {
   UserState,
   InputValue,
-} from "../components/gallery/ShowcaseTemplateSearch";
-import { Tags, type User, type TagType } from "../data/tags";
-import { sortedUsers, unsortedUsers } from "../data/users";
-import { type Extension } from "../data/extensionTypes";
-import { sortedExtensions, unsortedExtensions } from "../data/extensions";
+} from "../../components/gallery/ShowcaseTemplateSearch";
+import { Tags, type User, type TagType } from "../../data/tags";
+import { sortedUsers, unsortedUsers } from "../../data/users";
+import { type Extension } from "../../data/extensionTypes";
+import { sortedExtensions, unsortedExtensions } from "../../data/extensions";
 import {
   Text,
   Combobox,

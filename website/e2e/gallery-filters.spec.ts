@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test.describe("Gallery Filtering", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("./");
+    await page.goto("./templates");
   });
 
   test("filter panel is visible with category headings", async ({ page }) => {
@@ -19,7 +19,6 @@ test.describe("Gallery Filtering", () => {
   });
 
   test("filter checkboxes show template counts", async ({ page }) => {
-    // Filter labels should contain count in parentheses, e.g., "Python (82)"
     const filterLabels = page.locator('[class*="checkboxLabel"]');
     const firstLabel = filterLabels.first();
     if (await firstLabel.isVisible()) {

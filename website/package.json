@@ -65,6 +65,7 @@
   },
   "overrides": {
     "serialize-javascript": "^7.0.5",
-    "@tootallnate/once": "3.0.1"
+    "@tootallnate/once": "3.0.1",
+    "uuid": "^14.0.0"
   }
 }

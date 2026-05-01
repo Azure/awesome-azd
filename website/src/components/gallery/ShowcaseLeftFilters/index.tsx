@@ -22,7 +22,6 @@ import { useColorMode } from "@docusaurus/theme-common";
 import { useHistory } from "@docusaurus/router";
 import { prepareUserState } from "@site/src/pages/index";
 import { UserState } from "../ShowcaseTemplateSearch";
-import { splitAuthors } from "@site/src/utils/jsUtils";
 
 function ShowcaseAuthorFilterViewAll({
   authors,
@@ -371,19 +370,6 @@ export default function ShowcaseLeftFilters({
   }, [isExtensions]);
 
   // Extract unique authors based on content type
-  const allAuthors = new Set<string>();
-  if (isExtensions) {
-    unsortedExtensions.forEach(ext => {
-      const authors = splitAuthors(ext.author);
-      authors.forEach(author => allAuthors.add(author));
-    });
-  } else {
-    unsortedUsers.forEach(user => {
-      const authors = splitAuthors(user.author);
-      authors.forEach(author => allAuthors.add(author));
-    });
-  }
-  const sortedAuthors = Array.from(allAuthors).sort();
   const MIN_TEMPLATE_COUNT = 3;
   const applyMinCountThreshold = React.useCallback(
     (tags: TagType[]): TagType[] =>
@@ -487,6 +473,7 @@ export default function ShowcaseLeftFilters({
           {languageTag.length > 0 && (
             <AccordionItem value="1">
               <AccordionHeader
+                className={styles.categoryHeader}
                 expandIconPosition="end"
                 style={{
                   background:
@@ -517,6 +504,7 @@ export default function ShowcaseLeftFilters({
           {frameworkTag.length > 0 && (
             <AccordionItem value="2">
               <AccordionHeader
+                className={styles.categoryHeader}
                 expandIconPosition="end"
                 style={{
                   background:
@@ -547,6 +535,7 @@ export default function ShowcaseLeftFilters({
           {servicesTag.length > 0 && (
             <AccordionItem value="3">
               <AccordionHeader
+                className={styles.categoryHeader}
                 expandIconPosition="end"
                 style={{
                   background:
@@ -577,6 +566,7 @@ export default function ShowcaseLeftFilters({
           {databaseTag.length > 0 && (
             <AccordionItem value="4">
               <AccordionHeader
+                className={styles.categoryHeader}
                 expandIconPosition="end"
                 style={{
                   background:
@@ -607,6 +597,7 @@ export default function ShowcaseLeftFilters({
           {otherTag.length > 0 && (
             <AccordionItem value="5">
               <AccordionHeader
+                className={styles.categoryHeader}
                 expandIconPosition="end"
                 style={{
                   background:
@@ -637,6 +628,7 @@ export default function ShowcaseLeftFilters({
           {infrastructureAsCodeTag.length > 0 && (
             <AccordionItem value="6">
               <AccordionHeader
+                className={styles.categoryHeader}
                 expandIconPosition="end"
                 style={{
                   background:
@@ -667,6 +659,7 @@ export default function ShowcaseLeftFilters({
           {topicTag.length > 0 && (
             <AccordionItem value="7">
               <AccordionHeader
+                className={styles.categoryHeader}
                 expandIconPosition="end"
                 style={{
                   background:

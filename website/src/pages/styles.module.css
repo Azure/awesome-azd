@@ -237,16 +237,16 @@
     gap: 32px;
   }
 
-  .filter :global(.fui-AccordionHeader) {
-    background: linear-gradient(#D1D1D1 0 0) top / 100% 1px no-repeat !important;
-  }
-
   .filter {
     max-width: 100%;
     width: 100%;
     align-self: stretch;
     margin: 0;
     position: static;
+  }
+
+  .card {
+    margin: 0;
   }
 
   .heroBar {

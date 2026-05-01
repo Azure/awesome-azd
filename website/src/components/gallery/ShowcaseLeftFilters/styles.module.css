@@ -5,7 +5,13 @@
 
 .checkboxListItem {
   user-select: none;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.checkboxListItem :global(.fui-Checkbox__label) {
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .checkboxListItem:last-child {

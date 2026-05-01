@@ -11,6 +11,7 @@ import { Text, Link as FluentUILink } from "@fluentui/react-components";
 import styles from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useColorMode } from "@docusaurus/theme-common";
+import Clarity from "@microsoft/clarity";
 
 const allTemplates: any[] = require("@site/static/templates.json");
 
@@ -61,6 +62,25 @@ function FilterBar(): React.JSX.Element {
   InputValue = value;
   const contentType = new URLSearchParams(location.search).get("type") || "templates";
   const placeholder = PLACEHOLDERS[contentType] || PLACEHOLDERS.templates;
+
+  // Log the search query to Clarity only when the user explicitly submits the
+  // search. Clarity masks form inputs by default, so search text is never
+  // recorded in session replays unless explicitly emitted via setTag/event.
+  const logSearchToClarity = (query: string | null) => {
+    if (!ExecutionEnvironment.canUseDOM) return;
+    const trimmed = (query ?? "").trim();
+    if (trimmed.length < 2) return;
+    try {
+      const eventName = contentType === "extensions" ? "extension_search" : "template_search";
+      Clarity.event(eventName);
+      Clarity.setTag("search_query", trimmed.toLowerCase());
+      Clarity.setTag("search_type", contentType);
+    } catch {
+      // Clarity may not be initialized (e.g., user declined analytics consent).
+      // Failing silently is the right behavior here.
+    }
+  };
+
   return (
     <>
       <SearchBox
@@ -97,6 +117,9 @@ function FilterBar(): React.JSX.Element {
             search: newSearch.toString(),
             state: prepareUserState(),
           });
+        }}
+        onSearch={(newValue) => {
+          logSearchToClarity(typeof newValue === "string" ? newValue : value);
         }}
         onChange={(e) => {
           if (!e) {

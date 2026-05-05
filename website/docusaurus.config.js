@@ -98,9 +98,9 @@ const config = {
       // CONFIG: navbar logo, items, style, stickiness
       //    See: https://docusaurus.io/docs/next/api/themes/configuration#navbar
       navbar: {
-        title: "awesome-azd",
+        title: "Azure Developer CLI",
         logo: {
-          alt: "Awesome Azd logo",
+          alt: "Azure Developer CLI logo",
           src: "img/logo.png",
           href: "/",
           target: "_self",
@@ -109,9 +109,24 @@ const config = {
         },
         items: [
           {
-            to: "/getting-started",
-            label: "Getting Started",
+            type: "dropdown",
+            label: "Templates",
             position: "left",
+            items: [
+              {
+                to: "/templates",
+                label: "All templates",
+                activeBaseRegex: "/templates/?$",
+              },
+              {
+                to: "/templates/azure-container-apps",
+                label: "Azure Container Apps",
+              },
+              {
+                to: "/templates/azure-functions",
+                label: "Azure Functions",
+              },
+            ],
           },
           {
             label: "Contribute",
@@ -129,21 +144,6 @@ const config = {
             label: "Resources",
             position: "left",
           },
-          {
-            type: "dropdown",
-            label: "Services",
-            position: "left",
-            items: [
-              {
-                to: "/services/container-apps",
-                label: "Azure Container Apps",
-              },
-              {
-                to: "/services/azure-functions",
-                label: "Azure Functions",
-              },
-            ],
-          },
 
           // right
           {
@@ -156,7 +156,7 @@ const config = {
           // CONFIG:
           // Make sure you have class defined in src/css/custom.css
           {
-            to: "https://azure.github.io/awesome-azd/docs/contribute",
+            to: "/docs/contribute",
             label: "Add a template",
             position: "right",
             className: "button",
@@ -227,8 +227,16 @@ const config = {
       {
         redirects: [
           {
-            to: "/getting-started",
-            from: "/about",
+            to: "/",
+            from: ["/about", "/getting-started"],
+          },
+          {
+            to: "/templates/azure-container-apps",
+            from: ["/services/container-apps", "/templates/aca"],
+          },
+          {
+            to: "/templates/azure-functions",
+            from: ["/services/azure-functions", "/templates/functions"],
           },
           {
             to: "/docs/contribute",

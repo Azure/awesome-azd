@@ -130,7 +130,7 @@ const uniqueLanguages = new Set(allTemplates.flatMap((t: any) => t.languages || 
 export default function ShowcaseTemplateSearch() {
   const { colorMode } = useColorMode();
   const location = useLocation();
-  const gettingStartedUrl = useBaseUrl("/getting-started");
+  const homeUrl = useBaseUrl("/");
   const contentType = new URLSearchParams(location.search).get("type") || "templates";
   const title = TITLES[contentType] || TITLES.templates;
   const description = DESCRIPTIONS[contentType] || DESCRIPTIONS.templates;
@@ -186,7 +186,7 @@ export default function ShowcaseTemplateSearch() {
                   </Text>
                 </>
               : <a
-                    href={gettingStartedUrl}
+                    href={homeUrl}
                     className={styles.heroPrimaryButton}
                   >
                     Get Started in Minutes →

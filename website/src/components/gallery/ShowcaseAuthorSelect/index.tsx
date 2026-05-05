@@ -6,7 +6,7 @@
 import React, { useCallback } from "react";
 import { useHistory } from "@docusaurus/router";
 import { toggleListItem } from "@site/src/utils/jsUtils";
-import { prepareUserState } from "@site/src/pages/index";
+import { prepareUserState } from "@site/src/pages/templates/index";
 import { Checkbox } from "@fluentui/react-components";
 
 export default function ShowcaseAuthorSelect({

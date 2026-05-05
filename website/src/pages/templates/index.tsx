@@ -5,10 +5,10 @@
 
 import React, { useState, useEffect } from "react";
 import Layout from "@theme/Layout";
-import ShowcaseLeftFilters from "../components/gallery/ShowcaseLeftFilters";
+import ShowcaseLeftFilters from "../../components/gallery/ShowcaseLeftFilters";
 import ShowcaseTemplateSearch, {
   UserState,
-} from "../components/gallery/ShowcaseTemplateSearch";
+} from "../../components/gallery/ShowcaseTemplateSearch";
 import {
   teamsLightTheme,
   teamsDarkTheme,

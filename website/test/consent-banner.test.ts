@@ -71,14 +71,14 @@ describe('EU cookie consent banner wiring', () => {
     test('docusaurus.config.js does NOT pin SRI on the versionless WCP consent script', () => {
         const config = readRepoFile('docusaurus.config.js');
         expect(config).not.toMatch(
-            /wcp-consent\.js[\s\S]{0,200}?integrity:\s*["']sha384-/
+            /wcp-consent\.js[\s\S]{0,200}?integrity\s*:/
         );
     });
 
     test('docusaurus.config.js does NOT pin SRI on the versionless 1DS analytics script', () => {
         const config = readRepoFile('docusaurus.config.js');
         expect(config).not.toMatch(
-            /ms\.analytics-web-4\.min\.js[\s\S]{0,200}?integrity:\s*["']sha384-/
+            /ms\.analytics-web-4\.min\.js[\s\S]{0,200}?integrity\s*:/
         );
     });
 
@@ -159,15 +159,24 @@ describe('EU cookie consent banner wiring', () => {
         expect(root).toMatch(/useEffect\s*\(\s*\(\s*\)\s*=>\s*\{\s*return\s+telemetryInit\s*\(\s*\)\s*;/);
     });
 
-    test('Root does not delete the Manage Cookies link when WcpConsent failed to load', () => {
+    test('Root only removes the Manage Cookies link inside the !isConsentRequired branch', () => {
         const root = readRepoFile('src/theme/Root.js');
         const initBlock = root.match(
             /WcpConsent\.init\s*\([\s\S]*?onConsentChanged\s*\)\s*;/
         );
         expect(initBlock).not.toBeNull();
         const initBody = initBlock![0];
-        expect(initBody).toMatch(/removeItem\s*\(\s*["']footer__links_/);
-        expect(initBody).toMatch(/removeItem\s*\(\s*manageCookieId\s*\)/);
+        const elseBranch = initBody.match(
+            /if\s*\(\s*siteConsent\.isConsentRequired\s*\)\s*\{[\s\S]*?\}\s*else\s*\{([\s\S]*?)\}/
+        );
+        expect(elseBranch).not.toBeNull();
+        const elseBody = elseBranch![1];
+        expect(elseBody).toMatch(/removeItem\s*\(\s*["']footer__links_/);
+        expect(elseBody).toMatch(/removeItem\s*\(\s*manageCookieId\s*\)/);
+        const removeCallSites = (
+            root.match(/removeItem\s*\(/g) || []
+        ).length - (root.match(/function\s+removeItem\s*\(/g) || []).length;
+        expect(removeCallSites).toBe(2);
     });
 
     test('Root reads siteConsent only from the init callback, never from the global', () => {

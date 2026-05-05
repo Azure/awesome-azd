@@ -63,7 +63,7 @@ const config = {
   scripts: [
     {
       src: "https://js.monitor.azure.com/scripts/c/ms.analytics-web-4.min.js",
-      integrity: "sha384-8WeOGat/2EQBPlBpKV76/+6LPhK20Pmn2nmnuB6k1wg8Hih1nYFu8l8l7xd+HOOw",
+      integrity: "sha384-bOZFdvPm/KMmQLFjVrWrLqdeRzrwwPIMm/zUGqwuJwYdUL3OjSQ8SFOCBBIOsVD3",
       crossOrigin: "anonymous",
     },
     {

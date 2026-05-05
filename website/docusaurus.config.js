@@ -57,18 +57,17 @@ const config = {
   ],
 
   // CONFIG: scripts
-  // SECURITY: External scripts use SRI (Subresource Integrity) hashes to prevent
-  // tampering. If a script is updated at the CDN, the hash must be recomputed:
-  //   openssl dgst -sha384 -binary <script> | openssl base64 -A
+  // NOTE: We deliberately do NOT pin SRI integrity hashes on these scripts.
+  // Both URLs are *versionless* (no semver in the path) and Microsoft updates
+  // them in place. A pinned hash on a moving target silently breaks the script
+  // load whenever the CDN is updated
   scripts: [
     {
       src: "https://js.monitor.azure.com/scripts/c/ms.analytics-web-4.min.js",
-      integrity: "sha384-bOZFdvPm/KMmQLFjVrWrLqdeRzrwwPIMm/zUGqwuJwYdUL3OjSQ8SFOCBBIOsVD3",
       crossOrigin: "anonymous",
     },
     {
       src: "https://wcpstatic.microsoft.com/mscc/lib/v2/wcp-consent.js",
-      integrity: "sha384-KjrOYIQAJ7b8Lj+NMikxVZ7DPdSoWFR0hdI3aLBOZ1ZgypozA/whqu48qc1q59sf",
       crossOrigin: "anonymous",
     },
   ],

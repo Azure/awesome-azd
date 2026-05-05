@@ -68,21 +68,17 @@ describe('EU cookie consent banner wiring', () => {
         );
     });
 
-    test('docusaurus.config.js pins an SRI hash on the WCP consent script entry', () => {
+    test('docusaurus.config.js does NOT pin SRI on the versionless WCP consent script', () => {
         const config = readRepoFile('docusaurus.config.js');
-        // Must include the wcp-consent.js URL AND an integrity pin within
-        // the same scripts[] object. A loose regex that just looks for any
-        // integrity attribute in the file would pass even if the WCP entry
-        // were deleted while the 1DS entry kept its pin.
-        expect(config).toMatch(
-            /wcp-consent\.js[\s\S]{0,200}?integrity:\s*["']sha384-[A-Za-z0-9+/=]+["']/
+        expect(config).not.toMatch(
+            /wcp-consent\.js[\s\S]{0,200}?integrity:\s*["']sha384-/
         );
     });
 
-    test('docusaurus.config.js pins an SRI hash on the 1DS analytics script entry', () => {
+    test('docusaurus.config.js does NOT pin SRI on the versionless 1DS analytics script', () => {
         const config = readRepoFile('docusaurus.config.js');
-        expect(config).toMatch(
-            /ms\.analytics-web-4\.min\.js[\s\S]{0,200}?integrity:\s*["']sha384-[A-Za-z0-9+/=]+["']/
+        expect(config).not.toMatch(
+            /ms\.analytics-web-4\.min\.js[\s\S]{0,200}?integrity:\s*["']sha384-/
         );
     });
 
@@ -164,14 +160,22 @@ describe('EU cookie consent banner wiring', () => {
     });
 
     test('Root does not delete the Manage Cookies link when WcpConsent failed to load', () => {
-        // Regression guard for the bare `else { removeItem(...) }` bug:
-        // if WcpConsent was undefined, the old else branch would execute
-        // anyway and wipe the footer link for every user. The fix narrows
-        // this branch to `else if (WcpConsent.siteConsent)` so the link is
-        // only removed when WCP has positively told us consent is not
-        // required.
         const root = readRepoFile('src/theme/Root.js');
-        expect(root).toMatch(/else\s+if\s*\(\s*WcpConsent\.siteConsent\s*\)/);
+        const initBlock = root.match(
+            /WcpConsent\.init\s*\([\s\S]*?onConsentChanged\s*\)\s*;/
+        );
+        expect(initBlock).not.toBeNull();
+        const initBody = initBlock![0];
+        expect(initBody).toMatch(/removeItem\s*\(\s*["']footer__links_/);
+        expect(initBody).toMatch(/removeItem\s*\(\s*manageCookieId\s*\)/);
+    });
+
+    test('Root reads siteConsent only from the init callback, never from the global', () => {
+        const root = readRepoFile('src/theme/Root.js');
+        const stripped = root
+            .replace(/\/\*[\s\S]*?\*\//g, '')
+            .replace(/(^|[^:])\/\/[^\n]*/g, '$1');
+        expect(stripped).not.toMatch(/WcpConsent\s*\.\s*siteConsent\b/);
     });
 
     test('Navbar Layout no longer owns consent bootstrap', () => {
@@ -214,9 +218,7 @@ function makeWcp(siteConsent: FakeSiteConsent) {
             cb(null, siteConsent);
         }
     );
-    // Match the real wcp-consent.js shape: siteConsent is available on the
-    // global right after init resolves.
-    return { init, siteConsent };
+    return { init };
 }
 
 describe('telemetryInit behavior (jsdom)', () => {

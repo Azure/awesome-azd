@@ -7257,7 +7257,7 @@
     "id": "9fa7012a-4961-46d0-abc9-db9a8ea49f06"
   },
   {
-    "title": "Hello World agent (Responses, Agent Framework)",
+    "title": "Hello World agent (Responses, Agent Framework, C#)",
     "description": "Minimal Hello World agent using the Responses protocol with the Agent Framework approach in C#. Uses Microsoft.Agents.AI to create an AIAgent backed by a Foundry model.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7274,7 +7274,7 @@
     ]
   },
   {
-    "title": "Echo agent (Invocations, Agent Framework)",
+    "title": "Echo agent (Invocations, Agent Framework, C#)",
     "description": "A minimal echo agent hosted as a Foundry Hosted Agent using the Invocations protocol and the Agent Framework. No LLM or Azure credentials required.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7291,7 +7291,7 @@
     ]
   },
   {
-    "title": "Agent with Local Tools (Responses, Agent Framework)",
+    "title": "Agent with Local Tools (Responses, Agent Framework, C#)",
     "description": "A travel assistant agent with local C# function tools for hotel search in Seattle.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7309,7 +7309,7 @@
     ]
   },
   {
-    "title": "Agent with MCP Tools (Responses, Agent Framework)",
+    "title": "Agent with MCP Tools (Responses, Agent Framework, C#)",
     "description": "A developer assistant with remote MCP tools connecting to GitHub and Microsoft Learn documentation servers.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7327,7 +7327,7 @@
     ]
   },
   {
-    "title": "Simple agent (Responses, Agent Framework)",
+    "title": "Simple agent (Responses, Agent Framework, C#)",
     "description": "A simple general-purpose AI assistant hosted as a Foundry Hosted Agent using the Agent Framework.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7344,7 +7344,7 @@
     ]
   },
   {
-    "title": "Text Search RAG agent (Responses, Agent Framework)",
+    "title": "Text Search RAG agent (Responses, Agent Framework, C#)",
     "description": "A support specialist agent with RAG capabilities using TextSearchProvider to ground answers in product documentation.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7362,7 +7362,7 @@
     ]
   },
   {
-    "title": "Translation Workflow agent (Responses, Agent Framework)",
+    "title": "Translation Workflow agent (Responses, Agent Framework, C#)",
     "description": "A workflow agent that performs sequential translation through multiple languages (English to French to Spanish to English).",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7380,7 +7380,7 @@
     ]
   },
   {
-    "title": "Hello World agent (Invocations)",
+    "title": "Hello World agent (Invocations, C#)",
     "description": "Minimal Hello World agent using the Invocations protocol with a bring-your-own approach in C#. Calls a Foundry model via the Responses API and returns the response as a streaming SSE event stream.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7397,7 +7397,7 @@
     ]
   },
   {
-    "title": "Human-in-the-Loop agent (Invocations)",
+    "title": "Human-in-the-Loop agent (Invocations, C#)",
     "description": "A human-in-the-loop agent that demonstrates the approval-gate pattern using the Azure.AI.AgentServer.Invocations SDK with Azure OpenAI.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7415,7 +7415,7 @@
     ]
   },
   {
-    "title": "Note-taking agent (Invocations)",
+    "title": "Note-taking agent (Invocations, C#)",
     "description": "A note-taking agent using the Invocations protocol with Azure OpenAI function calling in C#. Demonstrates tool use with per-session JSONL persistence and SSE streaming.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7432,7 +7432,7 @@
     ]
   },
   {
-    "title": "Hello World agent (Responses)",
+    "title": "Hello World agent (Responses, C#)",
     "description": "Minimal Hello World agent using the Responses protocol with a bring-your-own approach in C#. Calls a Foundry model via the Responses API and returns the response.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7451,7 +7451,7 @@
     ]
   },
   {
-    "title": "Background agent (Responses)",
+    "title": "Background agent (Responses, C#)",
     "description": "A long-running research agent that demonstrates the background execution pattern using the Azure.AI.AgentServer.Responses SDK with Azure OpenAI.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7469,7 +7469,7 @@
     ]
   },
   {
-    "title": "Note-taking agent (Responses)",
+    "title": "Note-taking agent (Responses, C#)",
     "description": "A note-taking agent using the Responses protocol with Azure OpenAI function calling in C#. Demonstrates tool use with per-session JSONL persistence.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7487,7 +7487,7 @@
     ]
   },
   {
-    "title": "Basic agent (Invocations, Agent Framework)",
+    "title": "Basic agent (Invocations, Agent Framework, Python)",
     "description": "A basic Agent Framework agent hosted by Foundry using the Invocations protocol.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7504,7 +7504,7 @@
     ]
   },
   {
-    "title": "Basic agent (Responses, Agent Framework)",
+    "title": "Basic agent (Responses, Agent Framework, Python)",
     "description": "A basic Agent Framework agent hosted by Foundry using the Responses protocol.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7521,7 +7521,7 @@
     ]
   },
   {
-    "title": "Agent with Local Tools (Responses, Agent Framework)",
+    "title": "Agent with Local Tools (Responses, Agent Framework, Python)",
     "description": "An Agent Framework agent with local tools hosted by Foundry.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7539,7 +7539,7 @@
     ]
   },
   {
-    "title": "Agent with MCP Tools (Responses, Agent Framework)",
+    "title": "Agent with MCP Tools (Responses, Agent Framework, Python)",
     "description": "An Agent Framework agent with remote MCP tools hosted by Foundry.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7557,7 +7557,7 @@
     ]
   },
   {
-    "title": "Agent with Foundry Toolbox (Responses, Agent Framework)",
+    "title": "Agent with Foundry Toolbox (Responses, Agent Framework, Python)",
     "description": "An Agent Framework agent with Foundry Toolbox integration.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7574,7 +7574,7 @@
     ]
   },
   {
-    "title": "Workflow agent (Responses, Agent Framework)",
+    "title": "Workflow agent (Responses, Agent Framework, Python)",
     "description": "An Agent Framework workflow hosted by Foundry.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7591,7 +7591,7 @@
     ]
   },
   {
-    "title": "Agent with AG-UI (Invocations, Pydantic AI, AG-UI)",
+    "title": "Agent with AG-UI (Invocations, Pydantic AI, AG-UI, Python)",
     "description": "AG-UI protocol over Foundry invocations using Pydantic AI with Azure OpenAI. Streams standard AG-UI events with zero manual event translation.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7609,7 +7609,7 @@
     ]
   },
   {
-    "title": "Agent with Copilot SDK (Invocations, GitHub Copilot SDK)",
+    "title": "Agent with Copilot SDK (Invocations, GitHub Copilot SDK, Python)",
     "description": "A getting-started agent that uses the GitHub Copilot SDK with the azure-ai-agentserver-invocations protocol, streaming raw session events as SSE.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7627,7 +7627,7 @@
     ]
   },
   {
-    "title": "Hello World agent (Invocations)",
+    "title": "Hello World agent (Invocations, Python)",
     "description": "Minimal Hello World agent using the Invocations protocol with a bring-your-own approach. Calls a Foundry model via the Responses API and returns the response as a streaming SSE event stream.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7644,7 +7644,7 @@
     ]
   },
   {
-    "title": "Human-in-the-Loop agent (Invocations)",
+    "title": "Human-in-the-Loop agent (Invocations, Python)",
     "description": "A human-in-the-loop agent that demonstrates the approval-gate pattern using the azure-ai-agentserver-invocations SDK.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7662,7 +7662,7 @@
     ]
   },
   {
-    "title": "LangGraph Chat agent (Invocations, LangGraph)",
+    "title": "LangGraph Chat agent (Invocations, LangGraph, Python)",
     "description": "Multi-turn chat agent built with LangGraph and the Invocations protocol. Demonstrates a tool-calling agent graph with get_current_time and calculator tools.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7680,7 +7680,7 @@
     ]
   },
   {
-    "title": "Note-taking agent (Invocations)",
+    "title": "Note-taking agent (Invocations, Python)",
     "description": "Note-taking agent using the Invocations protocol. Demonstrates function calling (save_note/get_notes tools) with per-session JSONL persistence and SSE streaming.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7697,7 +7697,7 @@
     ]
   },
   {
-    "title": "Agent with Foundry Toolbox (Invocations)",
+    "title": "Agent with Foundry Toolbox (Invocations, Python)",
     "description": "Bring-your-own agent using the Invocations protocol with Foundry Toolbox MCP integration. Connects to a toolbox at startup, discovers tools, and lets the model call them during conversation.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7714,7 +7714,7 @@
     ]
   },
   {
-    "title": "Background agent (Responses)",
+    "title": "Background agent (Responses, Python)",
     "description": "A long-running agent that demonstrates the background execution pattern using the azure-ai-agentserver-responses SDK. Supports polling and cancellation.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7732,7 +7732,7 @@
     ]
   },
   {
-    "title": "Hello World agent (Responses)",
+    "title": "Hello World agent (Responses, Python)",
     "description": "Minimal Hello World agent using the Responses protocol with a bring-your-own approach. Calls a Foundry model via the Responses API and returns the response.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7751,7 +7751,7 @@
     ]
   },
   {
-    "title": "LangGraph Chat agent (Responses, LangGraph)",
+    "title": "LangGraph Chat agent (Responses, LangGraph, Python)",
     "description": "Multi-turn chat agent built with LangGraph using the Responses protocol. Demonstrates a tool-calling agent graph with server-side conversation state.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7769,7 +7769,7 @@
     ]
   },
   {
-    "title": "Note-taking agent (Responses)",
+    "title": "Note-taking agent (Responses, Python)",
     "description": "Note-taking agent using the Responses protocol. Demonstrates function calling (save_note/get_notes tools) with per-session JSONL persistence and streaming responses.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7787,7 +7787,7 @@
     ]
   },
   {
-    "title": "Agent with Foundry Toolbox (Responses)",
+    "title": "Agent with Foundry Toolbox (Responses, Python)",
     "description": "Bring-your-own agent using the Responses protocol with Foundry Toolbox MCP integration. Connects to a toolbox at startup, discovers tools, and lets the model call them during conversation.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",

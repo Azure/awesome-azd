@@ -338,7 +338,6 @@ Layout (Docusaurus)
 │   ├── ShowcaseTemplateSearch     ← search bar
 │   ├── ShowcaseLeftFilters        ← filter sidebar
 │   │   ├── ShowcaseTagSelect      ← tag checkbox groups
-│   │   └── ShowcaseAuthorSelect   ← author filter
 │   ├── ShowcaseCardPage           ← paginated card grid
 │   │   ├── ShowcaseCard           ← individual template card
 │   │   │   ├── ShowcaseMultipleAuthors

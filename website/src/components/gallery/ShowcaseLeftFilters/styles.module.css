@@ -5,7 +5,13 @@
 
 .checkboxListItem {
   user-select: none;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.checkboxListItem :global(.fui-Checkbox__label) {
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .checkboxListItem:last-child {
@@ -47,4 +53,10 @@
 
 [data-theme="dark"] .filterCount {
   color: #8a8a8a;
+}
+
+@media screen and (max-width: 996px) {
+  .categoryHeader {
+    background: linear-gradient(#D1D1D1 0 0) top / 100% 1px no-repeat !important;
+  }
 }

@@ -78,39 +78,31 @@ const telemetryInit = () => {
       "en-US",
       "cookie-banner",
       function (err, _siteConsent) {
-        if (!err) {
-          siteConsent = _siteConsent;
-        } else {
-          console.log("Error initializing WcpConsent: " + err);
+        if (err) {
+          console.warn("Error initializing WcpConsent: " + err);
+          return;
         }
+        siteConsent = _siteConsent;
+
+        if (siteConsent.isConsentRequired) {
+          var manageCookies = document.getElementById("manage_cookie");
+          if (manageCookies) {
+            manageCookies.addEventListener("click", function (e) {
+              e.preventDefault();
+              siteConsent.manageConsent();
+            });
+          }
+        } else {
+          // Consent confirmed NOT required (non-EU / non-regulated market).
+          // Remove the Manage Cookies link + separator from the footer.
+          removeItem("footer__links_" + manageCookieLabel);
+          removeItem(manageCookieId);
+        }
+
+        setNonEssentialCookies(siteConsent.getConsent());
       },
       onConsentChanged
     );
-
-    if (
-      WcpConsent.siteConsent &&
-      WcpConsent.siteConsent.isConsentRequired
-    ) {
-      var manageCookies = document.getElementById("manage_cookie");
-      if (manageCookies) {
-        manageCookies.addEventListener("click", function (e) {
-          e.preventDefault();
-          WcpConsent.siteConsent.manageConsent();
-        });
-      }
-    } else if (WcpConsent.siteConsent) {
-      // Consent confirmed NOT required (non-EU / non-regulated market).
-      // Remove the Manage Cookies link + separator from the footer.
-      // NOTE: the previous unguarded `else` branch also fired when
-      // WcpConsent itself was undefined, silently wiping the footer link
-      // on every script-load failure. This guard prevents that.
-      removeItem("footer__links_" + manageCookieLabel);
-      removeItem(manageCookieId);
-    }
-
-    if (WcpConsent.siteConsent) {
-      setNonEssentialCookies(WcpConsent.siteConsent.getConsent());
-    }
   }
 
   var wcpInitialized = false;
@@ -179,10 +171,8 @@ const telemetryInit = () => {
       propertyConfiguration: {
         callback: {
           userConsentDetails: function () {
-            var latestSiteConsent =
-              siteConsent || (window.WcpConsent && window.WcpConsent.siteConsent);
-            return latestSiteConsent && latestSiteConsent.getConsent
-              ? latestSiteConsent.getConsent()
+            return siteConsent && siteConsent.getConsent
+              ? siteConsent.getConsent()
               : null;
           },
         },

@@ -600,6 +600,7 @@ export default function ShowcaseCardPage({
       */}
 
       <div
+        className={styles.viewingSortRow}
         style={{
           display: "flex",
           alignItems: "center",

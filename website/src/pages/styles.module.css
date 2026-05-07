@@ -234,7 +234,7 @@
 @media screen and (max-width: 996px) {
   .filterAndCard {
     flex-direction: column;
-    gap: 32px;
+    gap: var(--space-xl);
   }
 
   .filter {

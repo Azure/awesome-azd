@@ -20,7 +20,6 @@ import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
 import { useHistory } from "@docusaurus/router";
 import { prepareUserState } from "@site/src/pages/index";
-import { UserState } from "../ShowcaseTemplateSearch";
 
 function ShowcaseFilterViewAll({
   tags,
@@ -240,6 +239,10 @@ export default function ShowcaseLeftFilters({
     [tagCounts, selectedTags],
   );
 
+  // Uncategorized tags (msft, community, new, popular, aicollection) are
+  // curated/featured collections and are intentionally not run through
+  // applyMinCountThreshold — they should always remain discoverable
+  // regardless of how many templates currently carry them.
   const uncategoryTag = TagList.filter((tag) => {
     const tagObject = Tags[tag];
     return tagObject.type === undefined;
@@ -336,10 +339,6 @@ export default function ShowcaseLeftFilters({
               <AccordionHeader
                 className={styles.categoryHeader}
                 expandIconPosition="end"
-                style={{
-                  background:
-                    "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
-                }}
               >
                 <div style={{ fontSize: "16px", fontWeight: "500" }}>
                   Language
@@ -367,10 +366,6 @@ export default function ShowcaseLeftFilters({
               <AccordionHeader
                 className={styles.categoryHeader}
                 expandIconPosition="end"
-                style={{
-                  background:
-                    "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
-                }}
               >
                 <div style={{ fontSize: "16px", fontWeight: "500" }}>
                   Framework
@@ -398,10 +393,6 @@ export default function ShowcaseLeftFilters({
               <AccordionHeader
                 className={styles.categoryHeader}
                 expandIconPosition="end"
-                style={{
-                  background:
-                    "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
-                }}
               >
                 <div style={{ fontSize: "16px", fontWeight: "500" }}>
                   Services
@@ -429,10 +420,6 @@ export default function ShowcaseLeftFilters({
               <AccordionHeader
                 className={styles.categoryHeader}
                 expandIconPosition="end"
-                style={{
-                  background:
-                    "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
-                }}
               >
                 <div style={{ fontSize: "16px", fontWeight: "500" }}>
                   Database
@@ -460,10 +447,6 @@ export default function ShowcaseLeftFilters({
               <AccordionHeader
                 className={styles.categoryHeader}
                 expandIconPosition="end"
-                style={{
-                  background:
-                    "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
-                }}
               >
                 <div style={{ fontSize: "16px", fontWeight: "500" }}>
                   Tools
@@ -491,10 +474,6 @@ export default function ShowcaseLeftFilters({
               <AccordionHeader
                 className={styles.categoryHeader}
                 expandIconPosition="end"
-                style={{
-                  background:
-                    "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
-                }}
               >
                 <div style={{ fontSize: "16px", fontWeight: "500" }}>
                   Infrastructure as Code
@@ -522,10 +501,6 @@ export default function ShowcaseLeftFilters({
               <AccordionHeader
                 className={styles.categoryHeader}
                 expandIconPosition="end"
-                style={{
-                  background:
-                    "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
-                }}
               >
                 <div style={{ fontSize: "16px", fontWeight: "500" }}>
                   Topic

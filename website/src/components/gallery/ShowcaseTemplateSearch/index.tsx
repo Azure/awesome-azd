@@ -59,6 +59,9 @@ function FilterBar(): React.JSX.Element {
   useEffect(() => {
     setValue(readSearchName(location.search));
   }, [location]);
+  // InputValue reflects the committed (URL-based) search, not the in-progress
+  // typed text. Consumers use it to display "No results for 'X'" which should
+  // match the active filter applied to the gallery.
   InputValue = readSearchName(location.search);
   const contentType = new URLSearchParams(location.search).get("type") || "templates";
   const placeholder = PLACEHOLDERS[contentType] || PLACEHOLDERS.templates;
@@ -77,13 +80,19 @@ function FilterBar(): React.JSX.Element {
   const MAX_QUERY_LENGTH = 100;
   const MAX_QUERY_HISTORY = 20;
   const searchHistoryRef = useRef<string[]>([]);
+
+  // Reset search history when the content type changes (e.g., switching between
+  // templates and extensions) so sessions don't mix unrelated query sequences.
+  useEffect(() => {
+    searchHistoryRef.current = [];
+  }, [contentType]);
   const sanitizeSearchQuery = useCallback((raw: string) => {
     return raw
-      .replace(/[\w.+-]+@[\w-]+(\.[\w-]+)+/gi, "[email]")
-      .replace(/\bhttps?:\/\/\S+/gi, "[url]")
-      .replace(/\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b/gi, "[guid]")
-      .slice(0, MAX_QUERY_LENGTH)
-      .toLowerCase();
+      .toLowerCase()
+      .replace(/[\w.+-]+@[\w-]+(\.[\w-]+)+/g, "[email]")
+      .replace(/\bhttps?:\/\/\S+/g, "[url]")
+      .replace(/\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b/g, "[guid]")
+      .slice(0, MAX_QUERY_LENGTH);
   }, []);
   const logSearchToClarity = useCallback((query: string | null) => {
     if (!ExecutionEnvironment.canUseDOM) return;

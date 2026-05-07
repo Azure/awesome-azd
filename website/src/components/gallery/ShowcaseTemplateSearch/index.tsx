@@ -3,7 +3,7 @@
  * Licensed under the MIT License.
  */
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { SearchBox } from "@fluentui/react/lib/SearchBox";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import { useHistory, useLocation } from "@docusaurus/router";
@@ -12,6 +12,7 @@ import { galleryTemplates as allTemplates } from "@site/src/data/users";
 import styles from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useColorMode } from "@docusaurus/theme-common";
+import Clarity from "@microsoft/clarity";
 
 
 const TITLES: Record<string, string> = {
@@ -58,9 +59,68 @@ function FilterBar(): React.JSX.Element {
   useEffect(() => {
     setValue(readSearchName(location.search));
   }, [location]);
-  InputValue = value;
+  // InputValue reflects the committed (URL-based) search, not the in-progress
+  // typed text. Consumers use it to display "No results for 'X'" which should
+  // match the active filter applied to the gallery.
+  InputValue = readSearchName(location.search);
   const contentType = new URLSearchParams(location.search).get("type") || "templates";
   const placeholder = PLACEHOLDERS[contentType] || PLACEHOLDERS.templates;
+
+  // Log the search query to Clarity only when the user explicitly submits the
+  // search. Clarity masks form inputs by default, so search text is never
+  // recorded in session replays unless explicitly emitted via setTag/event.
+  // The query is sanitized before being sent: emails, URLs, and GUIDs are
+  // redacted and the value is truncated to a fixed length so the literal text
+  // stored in Clarity tags cannot retain sensitive identifiers users may have
+  // pasted into the search box.
+  // Because Clarity.setTag replaces the tag's value on each call, we accumulate
+  // the sanitized queries in a ref and pass the full (capped) array every time
+  // so Clarity retains the full sequence of searches in the session rather than
+  // just the most recent one.
+  const MAX_QUERY_LENGTH = 100;
+  const MAX_QUERY_HISTORY = 20;
+  const searchHistoryRef = useRef<string[]>([]);
+
+  // Reset search history when the content type changes (e.g., switching between
+  // templates and extensions) so sessions don't mix unrelated query sequences.
+  useEffect(() => {
+    searchHistoryRef.current = [];
+  }, [contentType]);
+  const sanitizeSearchQuery = useCallback((raw: string) => {
+    return raw
+      .toLowerCase()
+      .replace(/[\w.+-]+@[\w-]+(\.[\w-]+)+/g, "[email]")
+      .replace(/\bhttps?:\/\/\S+/g, "[url]")
+      .replace(/\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b/g, "[guid]")
+      .slice(0, MAX_QUERY_LENGTH);
+  }, []);
+  const logSearchToClarity = useCallback((query: string | null) => {
+    if (!ExecutionEnvironment.canUseDOM) return;
+    const trimmed = (query ?? "").trim();
+    if (trimmed.length < 2) return;
+    const wcpConsent = (window as any).WcpConsent?.siteConsent;
+    const consent = wcpConsent?.getConsent?.();
+    if (!consent?.Analytics) return;
+    try {
+      const eventName = contentType === "extensions" ? "extension_search" : "template_search";
+      const sanitized = sanitizeSearchQuery(trimmed);
+      const history = searchHistoryRef.current;
+      history.push(sanitized);
+      if (history.length > MAX_QUERY_HISTORY) {
+        history.splice(0, history.length - MAX_QUERY_HISTORY);
+      }
+      Clarity.event(eventName);
+      Clarity.setTag("search_query", history.slice());
+      Clarity.setTag("search_type", contentType);
+    } catch (err) {
+      // Consent has already been verified above, so reaching this catch implies
+      // an unexpected Clarity SDK failure (e.g., the script was blocked after
+      // init or an API contract change). Log at debug level for visibility
+      // without surfacing noise to end users.
+      console.debug("Failed to log search to Clarity", err);
+    }
+  }, [contentType, sanitizeSearchQuery]);
+
   return (
     <>
       <SearchBox
@@ -83,7 +143,7 @@ function FilterBar(): React.JSX.Element {
           },
         }}
         id="filterBar"
-        value={readSearchName(location.search) != null ? value : ""}
+        value={value ?? ""}
         placeholder={placeholder}
         role="search"
         ariaLabel="Search templates and extensions"
@@ -98,24 +158,26 @@ function FilterBar(): React.JSX.Element {
             state: prepareUserState(),
           });
         }}
-        onChange={(e) => {
-          if (!e) {
-            return;
-          }
-          setValue(e.currentTarget.value);
+        onSearch={(newValue) => {
+          const submitted = typeof newValue === "string" ? newValue : (value ?? "");
+          setValue(submitted);
           const newSearch = new URLSearchParams(location.search);
           newSearch.delete(SearchNameQueryKey);
-          if (e.currentTarget.value) {
-            newSearch.set(SearchNameQueryKey, e.currentTarget.value);
+          if (submitted) {
+            newSearch.set(SearchNameQueryKey, submitted);
           }
           history.push({
             ...location,
             search: newSearch.toString(),
             state: prepareUserState(),
           });
-          setTimeout(() => {
-            document.getElementById("filterBar")?.focus();
-          }, 0);
+          logSearchToClarity(submitted);
+        }}
+        onChange={(e) => {
+          if (!e) {
+            return;
+          }
+          setValue(e.currentTarget.value);
         }}
       />
     </>

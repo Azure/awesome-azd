@@ -9,6 +9,12 @@
   overflow-wrap: anywhere;
 }
 
+/*
+ * Allow long checkbox labels (e.g., long template/tag names) to wrap.
+ * NOTE: `.fui-Checkbox__label` targets a Fluent UI internal class name; if
+ * Fluent UI renames or restructures it in a future release, this wrapping
+ * fix will silently stop working. Re-verify after Fluent UI upgrades.
+ */
 .checkboxListItem :global(.fui-Checkbox__label) {
   white-space: normal;
   overflow-wrap: anywhere;
@@ -55,8 +61,17 @@
   color: #8a8a8a;
 }
 
+/*
+ * Top divider line for each top-level category accordion header.
+ * Defined as a CSS class (rather than an inline `style`) so the mobile
+ * media query below can override it without needing `!important`.
+ */
+.categoryHeader {
+  background: linear-gradient(#D1D1D1 0 0) top / 89.8% 0.6px no-repeat;
+}
+
 @media screen and (max-width: 996px) {
   .categoryHeader {
-    background: linear-gradient(#D1D1D1 0 0) top / 100% 1px no-repeat !important;
+    background: linear-gradient(#D1D1D1 0 0) top / 100% 1px no-repeat;
   }
 }

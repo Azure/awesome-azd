@@ -7270,7 +7270,9 @@
     "extensionFramework": "Agent Framework",
     "extensionTags": [
       "example",
-      "Responses Protocol"
+      "Responses Protocol",
+      "recommended",
+      "featured"
     ]
   },
   {
@@ -7380,7 +7382,7 @@
     ]
   },
   {
-    "title": "Hello World agent (Invocations, C#)",
+    "title": "Hello World agent (Invocations, without a framework, C#)",
     "description": "Minimal Hello World agent using the Invocations protocol with a bring-your-own approach in C#. Calls a Foundry model via the Responses API and returns the response as a streaming SSE event stream.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7393,11 +7395,12 @@
     "extensionFramework": "Bring Your Own",
     "extensionTags": [
       "example",
-      "Invocations Protocol"
+      "Invocations Protocol",
+      "featured"
     ]
   },
   {
-    "title": "Human-in-the-Loop agent (Invocations, C#)",
+    "title": "Human-in-the-Loop agent (Invocations, without a framework, C#)",
     "description": "A human-in-the-loop agent that demonstrates the approval-gate pattern using the Azure.AI.AgentServer.Invocations SDK with Azure OpenAI.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7415,7 +7418,7 @@
     ]
   },
   {
-    "title": "Note-taking agent (Invocations, C#)",
+    "title": "Note-taking agent (Invocations, without a framework, C#)",
     "description": "A note-taking agent using the Invocations protocol with Azure OpenAI function calling in C#. Demonstrates tool use with per-session JSONL persistence and SSE streaming.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7432,7 +7435,7 @@
     ]
   },
   {
-    "title": "Hello World agent (Responses, C#)",
+    "title": "Hello World agent (Responses, without a framework, C#)",
     "description": "Minimal Hello World agent using the Responses protocol with a bring-your-own approach in C#. Calls a Foundry model via the Responses API and returns the response.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7445,13 +7448,11 @@
     "extensionFramework": "Bring Your Own",
     "extensionTags": [
       "example",
-      "featured",
-      "recommended",
       "Responses Protocol"
     ]
   },
   {
-    "title": "Background agent (Responses, C#)",
+    "title": "Background agent (Responses, without a framework, C#)",
     "description": "A long-running research agent that demonstrates the background execution pattern using the Azure.AI.AgentServer.Responses SDK with Azure OpenAI.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7464,12 +7465,11 @@
     "extensionFramework": "Bring Your Own",
     "extensionTags": [
       "background mode",
-      "featured",
       "Responses Protocol"
     ]
   },
   {
-    "title": "Note-taking agent (Responses, C#)",
+    "title": "Note-taking agent (Responses, without a framework, C#)",
     "description": "A note-taking agent using the Responses protocol with Azure OpenAI function calling in C#. Demonstrates tool use with per-session JSONL persistence.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7570,7 +7570,8 @@
     "extensionFramework": "Agent Framework",
     "extensionTags": [
       "Foundry Toolbox",
-      "Responses Protocol"
+      "Responses Protocol",
+      "featured"
     ]
   },
   {
@@ -7622,12 +7623,11 @@
     "extensionFramework": "Bring Your Own",
     "extensionTags": [
       "GitHub Copilot SDK",
-      "featured",
       "Invocations Protocol"
     ]
   },
   {
-    "title": "Hello World agent (Invocations, Python)",
+    "title": "Hello World agent (Invocations, without a framework, Python)",
     "description": "Minimal Hello World agent using the Invocations protocol with a bring-your-own approach. Calls a Foundry model via the Responses API and returns the response as a streaming SSE event stream.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7640,11 +7640,12 @@
     "extensionFramework": "Bring Your Own",
     "extensionTags": [
       "example",
-      "Invocations Protocol"
+      "Invocations Protocol",
+      "featured"
     ]
   },
   {
-    "title": "Human-in-the-Loop agent (Invocations, Python)",
+    "title": "Human-in-the-Loop agent (Invocations, without a framework, Python)",
     "description": "A human-in-the-loop agent that demonstrates the approval-gate pattern using the azure-ai-agentserver-invocations SDK.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7680,7 +7681,7 @@
     ]
   },
   {
-    "title": "Note-taking agent (Invocations, Python)",
+    "title": "Note-taking agent (Invocations, without a framework, Python)",
     "description": "Note-taking agent using the Invocations protocol. Demonstrates function calling (save_note/get_notes tools) with per-session JSONL persistence and SSE streaming.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7697,7 +7698,7 @@
     ]
   },
   {
-    "title": "Agent with Foundry Toolbox (Invocations, Python)",
+    "title": "Agent with Foundry Toolbox (Invocations, without a framework, Python)",
     "description": "Bring-your-own agent using the Invocations protocol with Foundry Toolbox MCP integration. Connects to a toolbox at startup, discovers tools, and lets the model call them during conversation.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7714,7 +7715,7 @@
     ]
   },
   {
-    "title": "Background agent (Responses, Python)",
+    "title": "Background agent (Responses, without a framework, Python)",
     "description": "A long-running agent that demonstrates the background execution pattern using the azure-ai-agentserver-responses SDK. Supports polling and cancellation.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7727,12 +7728,11 @@
     "extensionFramework": "Bring Your Own",
     "extensionTags": [
       "background mode",
-      "featured",
       "Responses Protocol"
     ]
   },
   {
-    "title": "Hello World agent (Responses, Python)",
+    "title": "Hello World agent (Responses, without a framework, Python)",
     "description": "Minimal Hello World agent using the Responses protocol with a bring-your-own approach. Calls a Foundry model via the Responses API and returns the response.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7769,7 +7769,7 @@
     ]
   },
   {
-    "title": "Note-taking agent (Responses, Python)",
+    "title": "Note-taking agent (Responses, without a framework, Python)",
     "description": "Note-taking agent using the Responses protocol. Demonstrates function calling (save_note/get_notes tools) with per-session JSONL persistence and streaming responses.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7787,7 +7787,7 @@
     ]
   },
   {
-    "title": "Agent with Foundry Toolbox (Responses, Python)",
+    "title": "Agent with Foundry Toolbox (Responses, without a framework, Python)",
     "description": "Bring-your-own agent using the Responses protocol with Foundry Toolbox MCP integration. Connects to a toolbox at startup, discovers tools, and lets the model call them during conversation.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -7800,7 +7800,6 @@
     "extensionFramework": "Bring Your Own",
     "extensionTags": [
       "Foundry Toolbox",
-      "featured",
       "Responses Protocol"
     ]
   }

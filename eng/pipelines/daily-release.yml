@@ -24,7 +24,7 @@ jobs:
           cd daily-fork
           git init
           git remote add origin "https://github.com/azure-sdk/awesome-azd.git"
-          git config http.https://github.com/.extraheader "Authorization: bearer $(azuresdk-github-pat)"
+          git config http.https://github.com/.extraheader "Authorization: token $(azuresdk-github-pat)"
           git fetch --no-tags origin gh-pages
           git checkout gh-pages
           cp -R ../website/build/* .

@@ -7304,6 +7304,7 @@
     "extensionFramework": "Agent Framework",
     "extensionTags": [
       "local tools",
+      "template",
       "Responses Protocol"
     ]
   },
@@ -7321,6 +7322,7 @@
     "extensionFramework": "Agent Framework",
     "extensionTags": [
       "MCP",
+      "template",
       "Responses Protocol"
     ]
   },
@@ -7443,6 +7445,8 @@
     "extensionFramework": "Bring Your Own",
     "extensionTags": [
       "example",
+      "template",
+      "recommended",
       "Responses Protocol"
     ]
   },
@@ -7460,6 +7464,7 @@
     "extensionFramework": "Bring Your Own",
     "extensionTags": [
       "background mode",
+      "template",
       "Responses Protocol"
     ]
   },
@@ -7477,6 +7482,7 @@
     "extensionFramework": "Bring Your Own",
     "extensionTags": [
       "function calling",
+      "template",
       "Responses Protocol"
     ]
   },
@@ -7528,6 +7534,7 @@
     "extensionFramework": "Agent Framework",
     "extensionTags": [
       "local tools",
+      "template",
       "Responses Protocol"
     ]
   },
@@ -7545,6 +7552,7 @@
     "extensionFramework": "Agent Framework",
     "extensionTags": [
       "MCP",
+      "template",
       "Responses Protocol"
     ]
   },
@@ -7562,6 +7570,7 @@
     "extensionFramework": "Agent Framework",
     "extensionTags": [
       "Foundry Toolbox",
+      "template",
       "Responses Protocol"
     ]
   },
@@ -7614,6 +7623,7 @@
     "extensionFramework": "Bring Your Own",
     "extensionTags": [
       "GitHub Copilot SDK",
+      "template",
       "Invocations Protocol"
     ]
   },
@@ -7718,6 +7728,7 @@
     "extensionFramework": "Bring Your Own",
     "extensionTags": [
       "background mode",
+      "template",
       "Responses Protocol"
     ]
   },
@@ -7735,6 +7746,8 @@
     "extensionFramework": "Bring Your Own",
     "extensionTags": [
       "example",
+      "template",
+      "recommended",
       "Responses Protocol"
     ]
   },
@@ -7770,6 +7783,7 @@
     "extensionFramework": "Bring Your Own",
     "extensionTags": [
       "function calling",
+      "template",
       "Responses Protocol"
     ]
   },
@@ -7787,6 +7801,7 @@
     "extensionFramework": "Bring Your Own",
     "extensionTags": [
       "Foundry Toolbox",
+      "template",
       "Responses Protocol"
     ]
   }

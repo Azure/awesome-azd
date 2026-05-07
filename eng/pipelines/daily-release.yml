@@ -12,6 +12,12 @@ jobs:
 
     steps:
       - checkout: self
+        persistCredentials: false
+
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '24.x'
+        displayName: 'Use Node.js 24'
 
       - script: |
           npm ci
@@ -24,11 +30,12 @@ jobs:
           cd daily-fork
           git init
           git remote add origin "https://github.com/azure-sdk/awesome-azd.git"
+          git config --global --unset-all http.https://github.com/.extraheader || true
           git config http.https://github.com/.extraheader "Authorization: token $(azuresdk-github-pat)"
           git fetch --no-tags origin gh-pages
           git checkout gh-pages
           cp -R ../website/build/* .
           git add .
           git -c user.name="azure-sdk" -c user.email="azuresdk@microsoft.com" commit -a -m "daily release"
-          git push origin gh-pages
+          git push --quiet origin gh-pages
         displayName: 'Commit to Azure SDK Fork'

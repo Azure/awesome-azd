@@ -4,11 +4,6 @@ trigger:
     include:
       - main
 
-pr:
-  branches:
-    include:
-      - main
-
 jobs:
   - job: build_and_commit
     displayName: Build and Commit

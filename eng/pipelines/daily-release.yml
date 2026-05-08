@@ -30,8 +30,13 @@ jobs:
           git remote add origin "https://github.com/azure-sdk/awesome-azd.git"
           git -c http.extraheader="$AUTH_HEADER" fetch --no-tags origin gh-pages
           git checkout gh-pages
-          cp -R ../website/build/* .
-          git add .
-          git -c user.name="azure-sdk" -c user.email="azuresdk@microsoft.com" commit -a -m "daily release"
-          git push origin gh-pages
+          # Sync build output, removing stale files from previous releases (preserve .git)
+          rsync -a --delete --exclude='.git' ../website/build/ .
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to publish — skipping commit and push."
+            exit 0
+          fi
+          git -c user.name="azure-sdk" -c user.email="azuresdk@microsoft.com" commit -m "daily release"
+          git -c http.extraheader="$AUTH_HEADER" push --quiet origin gh-pages
         displayName: 'Commit to Azure SDK Fork'

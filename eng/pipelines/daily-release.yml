@@ -21,64 +21,8 @@ jobs:
         displayName: 'Build Website'
 
       - script: |
-          set +e
-          echo "=== Debug: env var presence ==="
-          if [ -z "$GH_PAT" ]; then
-            echo "GH_PAT: EMPTY (env mapping FAILED)"
-            exit 0
-          fi
-          echo "GH_PAT: SET, length=${#GH_PAT}"
-
-          mkdir -p /tmp/debug-fork && cd /tmp/debug-fork
-          git init -q
-          git remote add origin "https://github.com/azure-sdk/awesome-azd.git"
-
-          echo ""
-          echo "=== Test 1: extraheader 'AUTHORIZATION: bearer' (current, known fail) ==="
-          git -c http.extraheader="AUTHORIZATION: bearer $GH_PAT" ls-remote origin gh-pages >/dev/null 2>&1
-          echo "exit: $?"
-
-          echo ""
-          echo "=== Test 2: extraheader 'Authorization: token' (GitHub native) ==="
-          git -c http.extraheader="Authorization: token $GH_PAT" ls-remote origin gh-pages >/dev/null 2>&1
-          echo "exit: $?"
-
-          echo ""
-          echo "=== Test 3: extraheader 'Authorization: Bearer' (capital B) ==="
-          git -c http.extraheader="Authorization: Bearer $GH_PAT" ls-remote origin gh-pages >/dev/null 2>&1
-          echo "exit: $?"
-
-          echo ""
-          echo "=== Test 4: extraheader 'Authorization: Basic <base64>' (mimics URL-embed) ==="
-          B64=$(printf '%s:' "$GH_PAT" | base64 -w0)
-          git -c http.extraheader="Authorization: Basic $B64" ls-remote origin gh-pages >/dev/null 2>&1
-          echo "exit: $?"
-          unset B64
-
-          echo ""
-          echo "=== Test 5: URL-scoped extraheader (http.https://github.com/.extraheader) ==="
-          git -c "http.https://github.com/.extraheader=Authorization: token $GH_PAT" ls-remote origin gh-pages >/dev/null 2>&1
-          echo "exit: $?"
-
-          echo ""
-          echo "=== Test 6: URL-embed (control - known to work) ==="
-          git -c http.extraheader= ls-remote "https://${GH_PAT}@github.com/azure-sdk/awesome-azd.git" gh-pages >/dev/null 2>&1
-          echo "exit: $?"
-
-          echo ""
-          echo "=== Test 7: GIT_TRACE2 on Test 2 to see what git does ==="
-          GIT_TRACE2=1 git -c http.extraheader="Authorization: token $GH_PAT" ls-remote origin gh-pages 2>&1 | grep -iE 'http|extraheader|auth' | head -40
-
-          cd / && rm -rf /tmp/debug-fork
-          echo ""
-          echo "=== Debug complete ==="
-          exit 0
-        env:
-          GH_PAT: $(azuresdk-github-pat)
-        displayName: 'DEBUG: try multiple auth schemes'
-
-      - script: |
           set -e
+          # GitHub git-smart-HTTP only accepts HTTP Basic auth — Bearer/token schemes fail.
           AUTH_HEADER="Authorization: Basic $(printf '%s:' "$GH_PAT" | base64 -w0)"
           mkdir daily-fork
           cd daily-fork
@@ -88,7 +32,11 @@ jobs:
           git checkout gh-pages
           cp -R ../website/build/* .
           git add .
-          git -c user.name="azure-sdk" -c user.email="azuresdk@microsoft.com" commit -a -m "daily release"
+          if git diff --cached --quiet; then
+            echo "No changes to publish — skipping commit and push."
+            exit 0
+          fi
+          git -c user.name="azure-sdk" -c user.email="azuresdk@microsoft.com" commit -m "daily release"
           git -c http.extraheader="$AUTH_HEADER" push --quiet origin gh-pages
         env:
           GH_PAT: $(azuresdk-github-pat)

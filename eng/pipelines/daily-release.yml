@@ -79,9 +79,7 @@ jobs:
 
       - script: |
           set -e
-          AUTH_HEADER="AUTHORIZATION: bearer $GH_PAT"
-          export GIT_CONFIG_GLOBAL=/dev/null
-          export GIT_CONFIG_SYSTEM=/dev/null
+          AUTH_HEADER="Authorization: Basic $(printf '%s:' "$GH_PAT" | base64 -w0)"
           mkdir daily-fork
           cd daily-fork
           git init

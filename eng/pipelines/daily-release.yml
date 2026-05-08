@@ -23,7 +23,7 @@ jobs:
       - script: |
           set -e
           # GitHub git-smart-HTTP only accepts HTTP Basic auth — Bearer/token schemes fail.
-          AUTH_HEADER="Authorization: Basic $(printf '%s:' "$GH_PAT" | base64 -w0)"
+          AUTH_HEADER="Authorization: Basic $(printf '%s:' "$(azuresdk-github-pat)" | base64 -w0)"
           mkdir daily-fork
           cd daily-fork
           git init
@@ -32,12 +32,6 @@ jobs:
           git checkout gh-pages
           cp -R ../website/build/* .
           git add .
-          if git diff --cached --quiet; then
-            echo "No changes to publish — skipping commit and push."
-            exit 0
-          fi
           git -c user.name="azure-sdk" -c user.email="azuresdk@microsoft.com" commit -a -m "daily release"
           git push origin gh-pages
-        env:
-          GH_PAT: $(azuresdk-github-pat)
         displayName: 'Commit to Azure SDK Fork'

@@ -21,9 +21,55 @@ jobs:
         displayName: 'Build Website'
 
       - script: |
+          set +e
+          echo "=== Debug: env var presence ==="
+          if [ -z "$GH_PAT" ]; then
+            echo "GH_PAT: EMPTY (env mapping FAILED)"
+          else
+            echo "GH_PAT: SET, length=${#GH_PAT}"
+          fi
+
+          echo ""
+          echo "=== Debug: git version ==="
+          git --version
+
+          echo ""
+          echo "=== Debug: global git config (http.* keys only) ==="
+          git config --global --list 2>/dev/null | grep -i '^http\.' | sed 's/=.*/=<REDACTED>/' || echo "(no http.* in global)"
+
+          echo ""
+          echo "=== Debug: system git config (http.* keys only) ==="
+          git config --system --list 2>/dev/null | grep -i '^http\.' | sed 's/=.*/=<REDACTED>/' || echo "(no http.* in system)"
+
+          echo ""
+          echo "=== Debug: try extraheader fetch into throwaway dir ==="
+          mkdir -p /tmp/debug-fork && cd /tmp/debug-fork
+          git init -q
+          git remote add origin "https://github.com/azure-sdk/awesome-azd.git"
+          AUTH_HEADER="AUTHORIZATION: bearer $GH_PAT"
+          echo "Trying: git -c http.extraheader=... ls-remote origin gh-pages"
+          git -c http.extraheader="$AUTH_HEADER" ls-remote origin gh-pages
+          echo "ls-remote exit code: $?"
+
+          echo ""
+          echo "=== Debug: try extraheader with GIT_CONFIG_GLOBAL=/dev/null ==="
+          GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_SYSTEM=/dev/null \
+            git -c http.extraheader="$AUTH_HEADER" ls-remote origin gh-pages
+          echo "isolated ls-remote exit code: $?"
+
+          cd / && rm -rf /tmp/debug-fork
+          echo ""
+          echo "=== Debug: complete (continuing to real step) ==="
+          exit 0
+        env:
+          GH_PAT: $(azuresdk-github-pat)
+        displayName: 'DEBUG: PAT + git config diagnostics'
+
+      - script: |
           set -e
           AUTH_HEADER="AUTHORIZATION: bearer $GH_PAT"
           export GIT_CONFIG_GLOBAL=/dev/null
+          export GIT_CONFIG_SYSTEM=/dev/null
           mkdir daily-fork
           cd daily-fork
           git init

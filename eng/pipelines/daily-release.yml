@@ -12,6 +12,7 @@ jobs:
 
     steps:
       - checkout: self
+        persistCredentials: false
 
       - script: |
           npm ci
@@ -20,15 +21,25 @@ jobs:
         displayName: 'Build Website'
 
       - script: |
-          mkdir daily-fork
+          set -e
+          # GitHub git-smart-HTTP only accepts HTTP Basic auth — Bearer/token schemes fail.
+          # tr -d '\n' (vs base64 -w0) is portable across GNU/BSD coreutils.
+          AUTH_HEADER="Authorization: Basic $(printf '%s:' "$GH_PAT" | base64 | tr -d '\n')"
+          rm -rf daily-fork && mkdir daily-fork
           cd daily-fork
           git init
           git remote add origin "https://github.com/azure-sdk/awesome-azd.git"
-          git config http.https://github.com/.extraheader "Authorization: token $(azuresdk-github-pat)"
-          git fetch --no-tags origin gh-pages
+          git -c http.extraheader="$AUTH_HEADER" fetch --no-tags origin gh-pages
           git checkout gh-pages
-          cp -R ../website/build/* .
-          git add .
-          git -c user.name="azure-sdk" -c user.email="azuresdk@microsoft.com" commit -a -m "daily release"
-          git push origin gh-pages
+          # Sync build output, removing stale files from previous releases (preserve .git)
+          rsync -a --delete --exclude='.git' ../website/build/ .
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to publish — skipping commit and push."
+            exit 0
+          fi
+          git -c user.name="azure-sdk" -c user.email="azuresdk@microsoft.com" commit -m "daily release"
+          git -c http.extraheader="$AUTH_HEADER" push --quiet origin gh-pages
+        env:
+          GH_PAT: $(azuresdk-github-pat)
         displayName: 'Commit to Azure SDK Fork'

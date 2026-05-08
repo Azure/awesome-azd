@@ -21,14 +21,18 @@ jobs:
         displayName: 'Build Website'
 
       - script: |
+          set -e
+          AUTH_HEADER="AUTHORIZATION: bearer $GH_PAT"
           mkdir daily-fork
           cd daily-fork
           git init
-          git remote add origin "https://$(azuresdk-github-pat)@github.com/azure-sdk/awesome-azd.git"
-          git fetch --no-tags origin gh-pages
+          git remote add origin "https://github.com/azure-sdk/awesome-azd.git"
+          git -c http.extraheader="$AUTH_HEADER" fetch --no-tags origin gh-pages
           git checkout gh-pages
           cp -R ../website/build/* .
           git add .
           git -c user.name="azure-sdk" -c user.email="azuresdk@microsoft.com" commit -a -m "daily release"
-          git push --quiet origin gh-pages
+          git -c http.extraheader="$AUTH_HEADER" push --quiet origin gh-pages
+        env:
+          GH_PAT: $(azuresdk-github-pat)
         displayName: 'Commit to Azure SDK Fork'

@@ -36,8 +36,8 @@ jobs:
             echo "No changes to publish — skipping commit and push."
             exit 0
           fi
-          git -c user.name="azure-sdk" -c user.email="azuresdk@microsoft.com" commit -m "daily release"
-          git -c http.extraheader="$AUTH_HEADER" push --quiet origin gh-pages
+          git -c user.name="azure-sdk" -c user.email="azuresdk@microsoft.com" commit -a -m "daily release"
+          git push origin gh-pages
         env:
           GH_PAT: $(azuresdk-github-pat)
         displayName: 'Commit to Azure SDK Fork'

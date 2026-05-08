@@ -23,6 +23,7 @@ jobs:
       - script: |
           set -e
           AUTH_HEADER="AUTHORIZATION: bearer $GH_PAT"
+          export GIT_CONFIG_GLOBAL=/dev/null
           mkdir daily-fork
           cd daily-fork
           git init

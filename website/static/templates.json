@@ -7802,5 +7802,37 @@
       "Foundry Toolbox",
       "Responses Protocol"
     ]
+  },
+  {
+    "title": "Azure Static Web App with NextJS and Postgres",
+    "description": "An Azure Static Web App (SWA) template configured with NextJS, Tailwind, Entra SWA Auth, NodeJS Azure Functions, and Postgres. Great as a Vercel/Supabase alternative that is native to Azure.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/benleane83",
+    "author": "benleane83",
+    "source": "https://github.com/benleane83/azure-swa-nextjs-postgres",
+    "tags": [
+      "community",
+      "new"
+    ],
+    "languages": [
+      "javascript",
+      "typescript"
+    ],
+    "frameworks": [
+      "reactjs",
+      "nextjs"
+    ],
+    "azureServices": [
+      "swa",
+      "functions",
+      "appinsights",
+      "keyvault",
+      "loganalytics",
+      "azuredb-postgreSQL"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "ea8671ae-4dfb-4071-8531-6989e319ab75"
   }
 ]

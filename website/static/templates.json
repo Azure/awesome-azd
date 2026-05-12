@@ -7804,8 +7804,8 @@
     ]
   },
   {
-    "title": "Azure Static Web App with NextJS and Postgres",
-    "description": "An Azure Static Web App (SWA) template configured with NextJS, Tailwind, Entra SWA Auth, NodeJS Azure Functions, and Postgres. Great as a Vercel/Supabase alternative that is native to Azure.",
+    "title": "Azure Static Web App with Next.js and Postgres",
+    "description": "An Azure Static Web App (SWA) template configured with Next.js, Tailwind, Entra SWA Auth, Node.js Azure Functions, and Postgres. Great as a Vercel/Supabase alternative that is native to Azure.",
     "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/benleane83",
     "author": "benleane83",

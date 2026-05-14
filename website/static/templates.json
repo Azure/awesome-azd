@@ -7257,6 +7257,36 @@
     "id": "9fa7012a-4961-46d0-abc9-db9a8ea49f06"
   },
   {
+    "title": "AI Travel Planner with Durable Agents",
+    "description": "A travel planning application that demonstrates how to build durable AI agents using the Durable Task extension for Microsoft Agent Framework. Coordinates multiple specialized AI agents—destination recommendations, itinerary creation, and local insights—through a structured, fault-tolerant workflow with human-in-the-loop approval.",
+    "preview": "./templates/images/ai-agents-travel-planner-dotnet.png",
+    "authorUrl": "https://github.com/greenie-msft",
+    "author": "greenie-msft",
+    "source": "https://github.com/greenie-msft/ai-agents-travel-planner-dotnet",
+    "tags": [
+      "msft",
+      "new",
+      "ai"
+    ],
+    "languages": [
+      "dotnetCsharp",
+      "javascript"
+    ],
+    "frameworks": [
+      "reactjs"
+    ],
+    "azureServices": [
+      "functions",
+      "openai",
+      "swa",
+      "blobstorage"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "a5b0d2dc-7655-4aca-8b93-68f315f7c512"
+  },
+  {
     "title": "Hello World agent (Responses, Agent Framework, C#)",
     "description": "Minimal Hello World agent using the Responses protocol with the Agent Framework approach in C#. Uses Microsoft.Agents.AI to create an AIAgent backed by a Foundry model.",
     "authorUrl": "https://github.com/microsoft-foundry",

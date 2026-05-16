@@ -39,7 +39,7 @@
 
 .heroDescription {
   font-size: 1rem;
-  color: var(--ifm-color-emphasis-600);
+  color: var(--site-color-text-muted);
   line-height: 1.6;
   margin-bottom: 16px;
 }
@@ -168,7 +168,7 @@
 
 .templateDescription {
   font-size: 0.875rem;
-  color: var(--ifm-color-emphasis-600);
+  color: var(--site-color-text-muted);
   line-height: 1.5;
   flex: 1;
   display: -webkit-box;
@@ -180,7 +180,7 @@
 .templateMeta {
   margin-top: 12px;
   font-size: 0.8rem;
-  color: var(--ifm-color-emphasis-500);
+  color: var(--site-color-text-muted);
 }
 
 .author {
@@ -235,7 +235,7 @@
 
 .resourceDescription {
   font-size: 0.875rem;
-  color: var(--ifm-color-emphasis-600);
+  color: var(--site-color-text-muted);
   line-height: 1.5;
   margin: 0;
 }

@@ -35,17 +35,7 @@
   color: var(--site-color-text);
 }
 
-.heroText {
-  color: var(--site-color-text);
-  font-family: var(--ifm-heading-font-family);
-  letter-spacing: -0.02em;
-}
-
 [data-theme="dark"] .description {
-  color: var(--site-color-text);
-}
-
-[data-theme="dark"] .heroText {
   color: var(--site-color-text);
 }
 
@@ -66,42 +56,6 @@
 
 .openSourceBadge {
   composes: heroBadge from "../../css/hero-buttons.module.css";
-}
-
-.heroCommandButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background-color: #1C1917;
-  color: #22d3ee;
-  font-family: var(--ifm-font-family-monospace);
-  font-weight: 500;
-  font-size: 0.875rem;
-  padding: 12px 24px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background-color var(--transition-base), transform var(--transition-fast);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  cursor: pointer;
-}
-
-.heroCommandButton:hover,
-.heroCommandButton:focus-visible {
-  background-color: #292524;
-  color: #22d3ee;
-  text-decoration: none;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.heroCommandButton:focus-visible {
-  outline: 2px solid var(--ifm-color-primary);
-  outline-offset: 2px;
-}
-
-.heroCommandPrompt {
-  color: #918b87;
 }
 
 .heroTitle {
@@ -198,32 +152,6 @@
 
 [data-theme="dark"] .sectionHeading {
   color: var(--site-color-text);
-}
-
-.stepsLabel {
-  text-align: center;
-  font-size: 0.75rem;
-  font-weight: 600;
-  font-family: var(--ifm-heading-font-family);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: var(--space-2xl);
-  color: var(--site-color-text-muted);
-}
-
-[data-theme="dark"] .stepsLabel {
-  color: var(--site-color-text-muted);
-}
-
-.sectionDivider {
-  border: none;
-  border-top: 1px solid var(--site-color-border);
-  max-width: 200px;
-  margin: 0 auto var(--space-xl);
-}
-
-[data-theme="dark"] .sectionDivider {
-  border-top-color: rgba(255, 255, 255, 0.12);
 }
 
 .stepsGrid {
@@ -362,22 +290,6 @@
 [data-theme="dark"] .stepCommand {
   background-color: #111111;
   border-color: rgba(255, 255, 255, 0.08);
-  color: var(--ifm-color-primary);
-}
-
-.stepLink {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--ifm-color-primary);
-  text-decoration: none;
-  margin-top: auto;
-}
-
-.stepLink:hover {
-  text-decoration: underline;
-}
-
-[data-theme="dark"] .stepLink {
   color: var(--ifm-color-primary);
 }
 

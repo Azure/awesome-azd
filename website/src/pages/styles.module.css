@@ -3,16 +3,6 @@
  * Licensed under the MIT License.
  */
 
-.checkboxList {
-  flex-wrap: wrap;
-}
-
-.checkboxList,
-.showcaseList {
-  padding: 0;
-  list-style: none;
-}
-
 .checkboxListItem {
   user-select: none;
   white-space: nowrap;
@@ -20,14 +10,6 @@
 
 .checkboxListItem:last-child {
   margin-right: 0;
-}
-
-.cover {
-  pointer-events: none;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: none;
 }
 
 .searchContainer {
@@ -64,34 +46,6 @@
   background-color: var(--site-color-favorite-background);
 }
 
-.showcaseHelpWanted {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  background-color: #33d4f4;
-}
-
-.helpText {
-  color: #245e94;
-}
-
-.showcaseFavoriteHeader {
-  display: flex;
-}
-
-.svgIconFavoriteXs,
-.svgIconFavorite {
-  color: var(--site-color-svg-icon-favorite);
-}
-
-.svgIconFavoriteXs {
-  margin-left: 0.625rem;
-  font-size: 1rem;
-}
-
-.svgIconFavorite {
-  margin-left: 1rem;
-}
-
 .filterAndCard {
   display: flex;
   padding: var(--space-xl) 40px;
@@ -122,18 +76,6 @@
   flex: 8;
   min-width: 15rem;
   margin: 0px 0px 0 20px;
-}
-
-.load {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.cardLoad {
-  margin-top: 15rem;
-  width: 100%;
 }
 
 .clearAll {
@@ -252,10 +194,6 @@
   .heroBar {
     width: 100%;
     padding: 0 16px;
-  }
-
-  .cardLoad {
-    margin-top: 1rem;
   }
 }
 

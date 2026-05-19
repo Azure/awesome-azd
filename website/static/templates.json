@@ -7843,7 +7843,8 @@
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/functions-quickstart-java-azd-cosmosdb",
     "tags": [
-      "msft"
+      "msft",
+      "new"
     ],
     "languages": [
       "java"

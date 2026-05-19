@@ -7843,11 +7843,11 @@
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/functions-quickstart-javascript-azd-cosmosdb",
     "tags": [
-      "msft"
+      "msft",
+      "nodejs"
     ],
     "languages": [
-      "javascript",
-      "nodejs"
+      "javascript"
     ],
     "azureServices": [
       "functions",

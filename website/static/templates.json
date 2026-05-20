@@ -7840,11 +7840,12 @@
     "description": "An Azure Functions quickstart project that demonstrates how to use a Cosmos DB Trigger with Azure Developer CLI (azd) for quick and easy deployment, using JavaScript and Node.js. The sample uses managed identity to make deployment secure by default.",
     "preview": "./templates/images/functions-quickstart-javascript-azd-cosmosdb.png",
     "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Azure Dev",
+    "author": "Azure Samples",
     "source": "https://github.com/Azure-Samples/functions-quickstart-javascript-azd-cosmosdb",
     "tags": [
       "msft",
-      "nodejs"
+      "nodejs",
+      "new"
     ],
     "languages": [
       "javascript"
@@ -7860,5 +7861,31 @@
       "bicep"
     ],
     "id": "43a1b3d7-38e1-483d-b109-4cec19273a5c"
+  },
+  {
+    "title": "Azure Functions PowerShell Cosmos DB Trigger",
+    "description": "An Azure Functions quickstart project that demonstrates how to use a Cosmos DB Trigger with Azure Developer CLI (azd) for quick and easy deployment, using PowerShell. The sample uses managed identity to make deployment secure by default.",
+    "preview": "./templates/images/functions-quickstart-powershell-azd-cosmosdb.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Samples",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-powershell-azd-cosmosdb",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "powershell"
+    ],
+    "azureServices": [
+      "functions",
+      "cosmosdb",
+      "azurestorage",
+      "loganalytics",
+      "managedidentity"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "5bf546d1-1ce4-4734-93a0-bce61e71aaff"
   }
 ]

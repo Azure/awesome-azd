@@ -19,7 +19,7 @@
 }
 
 [data-theme="dark"] .cardAuthor {
-  color: #707070 !important;
+  color: var(--site-color-text-muted) !important;
 }
 
 [data-theme="dark"] .cardAuthor:hover {

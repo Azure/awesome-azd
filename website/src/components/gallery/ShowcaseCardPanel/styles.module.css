@@ -14,6 +14,19 @@
   color: #606060;
 }
 
+.serviceMetaLabel {
+  color: #707070;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.serviceMetaSeparator {
+  color: #707070;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 0 6px;
+}
+
 .textColor {
   color: #242424;
 }
@@ -78,6 +91,11 @@
 }
 
 [data-theme="dark"] .cardTag {
+  color: #adadad;
+}
+
+[data-theme="dark"] .serviceMetaLabel,
+[data-theme="dark"] .serviceMetaSeparator {
   color: #adadad;
 }
 

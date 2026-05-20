@@ -1,0 +1,77 @@
+name: Website Testing
+
+# Runs on PRs and pushes to validate the website, and is called from
+# release.yml as the pre-deploy gate.
+#
+# All events run: npm ci -> unit tests -> build.
+# Release dispatch / manual dispatch additionally run Playwright e2e.
+# PR / push runs skip the heavier browser suite to keep feedback fast.
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'website/**'
+      - '.github/workflows/website-test.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'website/**'
+      - '.github/workflows/website-test.yml'
+  workflow_call:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-website:
+    name: Test website
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
+        with:
+          ref: ${{ github.sha }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e  # v6.4.0
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: website/package-lock.json
+
+      - name: Install dependencies
+        working-directory: website
+        run: npm ci
+
+      - name: Run unit tests
+        working-directory: website
+        run: npm test
+
+      - name: Build website
+        working-directory: website
+        run: npm run build
+
+      # ----- e2e steps below: only on release dispatch and manual runs -----
+
+      - name: Install Playwright browsers
+        if: ${{ github.event_name == 'workflow_call' || github.event_name == 'workflow_dispatch' }}
+        working-directory: website
+        run: npx playwright install chromium --with-deps
+
+      - name: Run Playwright tests
+        if: ${{ github.event_name == 'workflow_call' || github.event_name == 'workflow_dispatch' }}
+        working-directory: website
+        run: npx playwright test
+
+      - name: Upload Playwright report
+        if: ${{ failure() && (github.event_name == 'workflow_call' || github.event_name == 'workflow_dispatch') }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7.0.1
+        with:
+          name: playwright-report
+          path: website/playwright-report/
+          retention-days: 7

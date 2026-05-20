@@ -13,10 +13,9 @@ import {
   teamsLightTheme,
   teamsDarkTheme,
 } from "@fluentui/react-components";
+import { galleryTemplates as allTemplates } from "@site/src/data/users";
 import styles from "./styles.module.css";
 
-// Lazy-load templates at build time
-const allTemplates = require("@site/static/templates.json");
 
 export interface ServicePageConfig {
   serviceTag: string;

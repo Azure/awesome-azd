@@ -142,6 +142,11 @@ function FilterBar(): React.JSX.Element {
             fontSize: "18px",
             color: "var(--site-color-text)",
             backgroundColor: "transparent",
+            selectors: {
+              "::placeholder": {
+                color: "var(--site-color-text-muted)",
+              },
+            },
           },
         }}
         id="filterBar"

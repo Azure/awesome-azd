@@ -31,14 +31,17 @@ test.describe("Gallery Filtering", () => {
   test("empty state shows actionable message when no results", async ({ page }) => {
     const searchInput = page.getByRole("searchbox");
     await searchInput.fill("zzzznonexistenttemplate");
+    await searchInput.press("Enter");
     await expect(page.locator("text=No templates found")).toBeVisible({ timeout: 10_000 });
   });
 
   test("clear filters resets the view", async ({ page }) => {
     const searchInput = page.getByRole("searchbox");
     await searchInput.fill("python");
+    await searchInput.press("Enter");
     await expect(page).toHaveURL(/name=python/);
-    await searchInput.clear();
+    await searchInput.fill("");
+    await searchInput.press("Enter");
     await expect(page).not.toHaveURL(/name=python/);
   });
 });

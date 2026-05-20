@@ -18,3 +18,14 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Playwright
+/playwright-report
+/test-results
+/playwright/.cache
+
+# Override the root `*.png` rule for the website tree. PNGs under
+# website/static and any future e2e screenshot baselines should be
+# tracked; PNGs inside the ignored directories above remain ignored
+# (parent-dir ignore wins over file-level re-include).
+!*.png

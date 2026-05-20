@@ -16,6 +16,8 @@ test.describe("Homepage", () => {
     const searchInput = page.getByRole("searchbox");
     await expect(searchInput).toBeVisible();
     await searchInput.fill("python");
+    // The SearchBox's onSearch (URL update) only fires on Enter.
+    await searchInput.press("Enter");
     await expect(page).toHaveURL(/name=python/);
   });
 

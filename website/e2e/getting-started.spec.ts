@@ -3,14 +3,16 @@ import { test, expect } from "@playwright/test";
 test.describe("Getting Started Page", () => {
   test("renders hero section", async ({ page }) => {
     await page.goto("getting-started");
-    await expect(page.locator("h1")).toContainText("Ship to Azure", { timeout: 15_000 });
+    await page.waitForLoadState("networkidle");
+    await expect(page.locator("h1")).toContainText("Ship in minutes", { timeout: 15_000 });
   });
 
   test("displays three onboarding steps", async ({ page }) => {
     await page.goto("getting-started");
+    await page.waitForLoadState("networkidle");
     await expect(page.getByRole("heading", { name: "Install the Azure Developer CLI" })).toBeVisible({ timeout: 15_000 });
-    await expect(page.getByRole("heading", { name: "Pick a template" })).toBeVisible();
-    await expect(page.getByRole("heading", { name: "Deploy to Azure" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Pick a template", exact: true })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Deploy to Azure", exact: true })).toBeVisible();
   });
 
   test("shows step cards section", async ({ page }) => {

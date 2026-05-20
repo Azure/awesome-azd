@@ -5546,7 +5546,7 @@
     "description": "An Azure Functions quickstart project that demonstrates how to use a Cosmos DB Trigger with Azure Developer CLI (azd) for quick and easy deployment, using TypeScript and Node.js. The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
     "preview": "./templates/images/functions-quickstart-typescript-azd-cosmosdb.png",
     "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Azure Dev",
+    "author": "Azure Samples",
     "source": "https://github.com/Azure-Samples/functions-quickstart-typescript-azd-cosmosdb",
     "tags": [
       "msft"
@@ -5595,7 +5595,7 @@
     "description": "An Azure Functions QuickStart project that demonstrates how to use both SQL Triggers and SQL Output Bindings with the Azure Developer CLI (azd) for rapid, event-driven integration with Azure SQL Database.",
     "preview": "./templates/images/functions-quickstart-dotnet-azd-sql.png",
     "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Azure Dev",
+    "author": "Azure Samples",
     "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd-sql",
     "tags": [
       "msft"
@@ -5618,7 +5618,7 @@
     "description": "An Azure Functions QuickStart project that demonstrates how to use both SQL Triggers and SQL Output Bindings with the Azure Developer CLI (azd) for rapid, event-driven integration with Azure SQL Database.",
     "preview": "./templates/images/functions-quickstart-typescript-azd-sql.png",
     "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Azure Dev",
+    "author": "Azure Samples",
     "source": "https://github.com/Azure-Samples/functions-quickstart-typescript-azd-sql",
     "tags": [
       "msft"
@@ -5642,7 +5642,7 @@
     "description": "An Azure Functions QuickStart project that demonstrates how to use Cosmos DB bindings with the Azure Developer CLI (azd) for rapid, event-driven integration with Azure Cosmos DB.",
     "preview": "./templates/images/functions-quickstart-dotnet-azd-cosmosdb.png",
     "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Azure Dev",
+    "author": "Azure Samples",
     "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd-cosmosdb",
     "tags": [
       "msft"
@@ -7887,5 +7887,31 @@
       "bicep"
     ],
     "id": "5bf546d1-1ce4-4734-93a0-bce61e71aaff"
+  },
+  {
+    "title": "Azure Functions Java Cosmos DB Trigger",
+    "description": "An Azure Functions quickstart project that demonstrates how to use a Cosmos DB Trigger with Azure Developer CLI (azd) for quick and easy deployment, using Java. The sample uses managed identity to make deployment secure by default.",
+    "preview": "./templates/images/functions-quickstart-java-azd-cosmosdb.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Samples",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-java-azd-cosmosdb",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "java"
+    ],
+    "azureServices": [
+      "functions",
+      "cosmosdb",
+      "azurestorage",
+      "loganalytics",
+      "managedidentity"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "28cc2769-656b-40c3-9585-a26955adb6b3"
   }
 ]

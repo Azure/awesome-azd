@@ -603,7 +603,7 @@ function ShowcaseCardAzureTag({
           >
             <div
               style={{
-                color: "#707070",
+                color: "var(--site-color-text-muted)",
                 fontSize: "12px",
                 fontWeight: "400",
               }}
@@ -612,7 +612,7 @@ function ShowcaseCardAzureTag({
             </div>
             <div
               style={{
-                color: "#707070",
+                color: "var(--site-color-text-muted)",
                 fontSize: "12px",
                 fontWeight: "400",
                 padding: "0 6px",

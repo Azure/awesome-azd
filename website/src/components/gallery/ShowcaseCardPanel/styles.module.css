@@ -6,7 +6,7 @@
 /* Keep for future change on light vs dark theme */
 .cardDescription {
   font-size: 14px;
-  color: #707070;
+  color: var(--site-color-text-muted);
 }
 
 .cardTag {
@@ -71,10 +71,6 @@
 
 [data-theme="dark"] .borderBottomColor {
   border-bottom: 1px solid #666666;
-}
-
-[data-theme="dark"] .cardDescription {
-  color: #adadad;
 }
 
 [data-theme="dark"] .cardTag {

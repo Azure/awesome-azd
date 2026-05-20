@@ -7269,14 +7269,14 @@
     ],
     "frameworks": [
       ".net9",
-      "react",
+      "reactjs",
       "microsoftagentframework",
       "durabletasksdk"
     ],
     "azureServices": [
-      "azurefunctions",
-      "azureopenai",
-      "azurestaticwebapps",
+      "functions",
+      "openai",
+      "swa",
       "blobstorage",
       "durabletaskscheduler"
     ]

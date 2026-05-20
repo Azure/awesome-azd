@@ -32,6 +32,14 @@
   background-color: var(--ifm-color-primary-dark) !important;
 }
 
+[data-theme="dark"] .surveyButton {
+  background-color: #0369A1 !important;
+}
+
+[data-theme="dark"] .surveyButton:hover {
+  background-color: #025482 !important;
+}
+
 .closeButton {
   position: absolute;
   right: 20px;

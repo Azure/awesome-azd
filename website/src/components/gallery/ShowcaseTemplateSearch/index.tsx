@@ -140,6 +140,8 @@ function FilterBar(): React.JSX.Element {
           field: {
             paddingLeft: "20px",
             fontSize: "18px",
+            color: "var(--site-color-text)",
+            backgroundColor: "transparent",
           },
         }}
         id="filterBar"

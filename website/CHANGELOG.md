@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Other changes
+
+- [[860]](https://github.com/Azure/awesome-azd/pull/860) Improve gallery filter sidebar layout and mobile responsiveness.
+
 ## 0.7.0 (2025-12-03)
 
 ### Other changes

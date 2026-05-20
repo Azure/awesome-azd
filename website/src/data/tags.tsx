@@ -24,6 +24,9 @@ export type User = {
   frameworks?: TagType[];
   azureServices?: TagType[];
   IaC?: TagType[];
+  templateType?: string;
+  extensionFramework?: string;
+  extensionTags?: string[];
 };
 
 // NN: Updated TagType to suit Static Web Apps
@@ -134,6 +137,8 @@ export type TagType =
   | "featureExperimentation"
   | "featuremanagement"
   | "go"
+  | "rust"
+  | "axum"
   | "powershell"
   | "autogen"
   | "dab"
@@ -251,6 +256,16 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Go",
     description: "Template contains Go app code",
     type: "Language",
+  },
+  rust: {
+    label: "Rust",
+    description: "Template contains Rust app code",
+    type: "Language",
+  },
+  axum: {
+    label: "axum",
+    description: "Template architecture uses axum web framework",
+    type: "Framework",
   },
 
   // ---- Tools

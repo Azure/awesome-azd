@@ -1,0 +1,81 @@
+name: Validate Template Source URLs
+
+# Verifies that every `source` URL in templates.json and agent-templates.json
+# resolves to a 2xx response. Catches drift caused by upstream repos (e.g.
+# microsoft-foundry/foundry-samples) renaming or removing files we reference.
+#
+# NOTE: GitHub Actions are pinned to full commit SHAs for supply-chain security.
+
+on:
+  pull_request:
+    paths:
+      - "website/static/templates.json"
+      - "website/static/agent-templates.json"
+      - ".github/scripts/validate-template-sources.js"
+      - ".github/workflows/validate-template-sources.yml"
+  schedule:
+    - cron: "0 13 * * 1"  # Mondays 13:00 UTC — weekly drift check
+  workflow_dispatch:
+    inputs:
+      fail_on_broken:
+        description: "Fail the run on any broken source URL (otherwise warn only)"
+        required: true
+        default: true
+        type: boolean
+
+concurrency:
+  group: validate-template-sources-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  issues: write           # for scheduled-run failure issues
+  pull-requests: write    # for PR-run summary comments (future use)
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e  # v6.4.0
+        with:
+          node-version: "24"
+
+      - name: Validate source URLs
+        env:
+          FAIL_ON_BROKEN: ${{ github.event.inputs.fail_on_broken || 'true' }}
+        run: node .github/scripts/validate-template-sources.js
+
+      - name: Open / update tracking issue on scheduled failure
+        if: failure() && github.event_name == 'schedule'
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3  # v9.0.0
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.existsSync('broken-sources.md')
+              ? fs.readFileSync('broken-sources.md', 'utf8')
+              : '_No report file produced._';
+            const title = 'Broken template source URLs detected';
+            const { data: existing } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'broken-source-urls',
+              per_page: 1,
+            });
+            const body = `Scheduled run on ${new Date().toISOString().slice(0,10)} detected broken \`source\` URLs in template manifests.\n\n${report}\n\n_Workflow run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}_`;
+            if (existing.length) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: existing[0].number, body,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo,
+                title, body, labels: ['broken-source-urls'],
+              });
+            }

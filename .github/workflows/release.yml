@@ -15,8 +15,15 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  test-website:
+    name: Website Testing
+    uses: ./.github/workflows/website-test.yml
+    permissions:
+      contents: read
+
   sync:
     name: Sync Main to GH-Pages
+    needs: test-website
     uses: ./.github/workflows/sync-gh-pages.yml
     permissions:
       contents: write
@@ -42,10 +49,6 @@ jobs:
         run: |
           npm ci
           npm run build
-      - name: Test
-        working-directory: website
-        run: |
-          npm test
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b  # v4.0.0
         with:

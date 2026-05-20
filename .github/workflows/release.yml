@@ -18,6 +18,7 @@ jobs:
   guard:
     name: Enforce main-only dispatch
     runs-on: ubuntu-latest
+    permissions: {}
     steps:
       - name: Verify ref is refs/heads/main
         run: |

@@ -11,14 +11,25 @@ test.describe("Gallery functionality (deploy gate)", () => {
     await page.waitForSelector(".fui-Card", { timeout: 15_000 });
   });
 
-  // Reads the integer from the "Viewing N templates" live region.
+  // Reads the total from the "Viewing N templates" live region. The page
+  // has multiple aria-live polite regions (color-mode toggle, copy toast,
+  // status counter) so we filter by the literal "Viewing" text.
+  //
+  // The status string takes three forms depending on totalItems:
+  //   "Viewing 0 templates"           (no results)
+  //   "Viewing 1 template"            (single result)
+  //   "Viewing 1-20 of 290 templates" (paginated, > 1 result)
+  // In every case the LAST integer is the total.
   async function viewingCount(page: import("@playwright/test").Page): Promise<number> {
-    const status = page.locator('[role="status"][aria-live="polite"]').first();
+    const status = page
+      .locator('[role="status"]')
+      .filter({ hasText: /Viewing/ })
+      .first();
     await expect(status).toBeVisible();
     const text = (await status.textContent()) ?? "";
-    const m = text.match(/(\d+)/);
-    expect(m, `expected a number in status: "${text}"`).not.toBeNull();
-    return Number(m![1]);
+    const nums = text.match(/\d+/g);
+    expect(nums, `expected numbers in status: "${text}"`).not.toBeNull();
+    return Number(nums![nums!.length - 1]);
   }
 
   test("homepage renders without 404 / error fallback", async ({ page }) => {
@@ -82,7 +93,24 @@ test.describe("Gallery functionality (deploy gate)", () => {
 
     // The left-side filter panel uses checkboxes; clicking one applies a
     // tag filter and updates the URL with ?tags=...
-    const pythonCheckbox = page.getByLabel(/^python/i).first();
+    // Use the deterministic Fluent UI Checkbox id from ShowcaseLeftFilters
+    // (`showcase_checkbox_id_<tag>`) to avoid matching "Python" mentions
+    // inside template card titles, descriptions, or tag chips.
+    // ShowcaseLeftFilters has two levels of accordions: an outer one per
+    // section (Language, Framework, etc.) and an inner "View All" that
+    // hides tags after the first 6. Python is in the Language section, so
+    // expand that section first, then expand "View All" if needed.
+    const pythonCheckbox = page.locator("#showcase_checkbox_id_python");
+    if (!(await pythonCheckbox.isVisible().catch(() => false))) {
+      await page.getByRole("button", { name: /^Language/ }).first().click();
+    }
+    if (!(await pythonCheckbox.isVisible().catch(() => false))) {
+      const viewAllButtons = page.getByRole("button", { name: /view all/i });
+      const count = await viewAllButtons.count();
+      for (let i = 0; i < count; i++) {
+        await viewAllButtons.nth(i).click();
+      }
+    }
     await expect(pythonCheckbox).toBeVisible({ timeout: 10_000 });
     await pythonCheckbox.click();
 
@@ -108,7 +136,8 @@ test.describe("Gallery functionality (deploy gate)", () => {
       .poll(async () => viewingCount(page), { timeout: 10_000 })
       .not.toBe(initial);
 
-    await searchInput.clear();
+    await searchInput.fill("");
+    await searchInput.press("Enter");
     await expect(page).not.toHaveURL(/name=python/);
     await expect
       .poll(async () => viewingCount(page), { timeout: 10_000 })

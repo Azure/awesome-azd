@@ -40,7 +40,8 @@ test.describe("Gallery Filtering", () => {
     await searchInput.fill("python");
     await searchInput.press("Enter");
     await expect(page).toHaveURL(/name=python/);
-    await searchInput.clear();
+    await searchInput.fill("");
+    await searchInput.press("Enter");
     await expect(page).not.toHaveURL(/name=python/);
   });
 });

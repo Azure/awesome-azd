@@ -11,8 +11,8 @@ test.describe("Getting Started Page", () => {
     await page.goto("getting-started");
     await page.waitForLoadState("networkidle");
     await expect(page.getByRole("heading", { name: "Install the Azure Developer CLI" })).toBeVisible({ timeout: 15_000 });
-    await expect(page.getByRole("heading", { name: "Pick a template" })).toBeVisible();
-    await expect(page.getByRole("heading", { name: "Deploy to Azure" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Pick a template", exact: true })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Deploy to Azure", exact: true })).toBeVisible();
   });
 
   test("shows step cards section", async ({ page }) => {

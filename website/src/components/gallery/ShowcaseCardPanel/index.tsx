@@ -602,21 +602,12 @@ function ShowcaseCardAzureTag({
             }}
           >
             <div
-              style={{
-                color: "#707070",
-                fontSize: "12px",
-                fontWeight: "400",
-              }}
+              className={styles.serviceMetaLabel}
             >
               Azure Service
             </div>
             <div
-              style={{
-                color: "#707070",
-                fontSize: "12px",
-                fontWeight: "400",
-                padding: "0 6px",
-              }}
+              className={styles.serviceMetaSeparator}
             >
               •
             </div>

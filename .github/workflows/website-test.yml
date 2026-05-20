@@ -1,5 +1,11 @@
 name: Website Testing
 
+# Runs on PRs and pushes to validate the website, and is called from
+# release.yml as the pre-deploy gate.
+#
+# All events run: npm ci -> unit tests -> build.
+# Release dispatch / manual dispatch additionally run Playwright e2e.
+# PR / push runs skip the heavier browser suite to keep feedback fast.
 on:
   pull_request:
     branches:
@@ -21,9 +27,9 @@ permissions:
 
 jobs:
   test-website:
-    name: Test Website Functionality
+    name: Test website
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
 
     steps:
       - name: Checkout repository
@@ -50,16 +56,20 @@ jobs:
         working-directory: website
         run: npm run build
 
+      # ----- e2e steps below: only on release dispatch and manual runs -----
+
       - name: Install Playwright browsers
+        if: ${{ github.event_name == 'workflow_call' || github.event_name == 'workflow_dispatch' }}
         working-directory: website
         run: npx playwright install chromium --with-deps
 
       - name: Run Playwright tests
+        if: ${{ github.event_name == 'workflow_call' || github.event_name == 'workflow_dispatch' }}
         working-directory: website
         run: npx playwright test
 
-      - name: Upload test results
-        if: failure()
+      - name: Upload Playwright report
+        if: ${{ failure() && (github.event_name == 'workflow_call' || github.event_name == 'workflow_dispatch') }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7.0.1
         with:
           name: playwright-report

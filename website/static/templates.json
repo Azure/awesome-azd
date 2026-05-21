@@ -7271,8 +7271,8 @@
     "extensionTags": [
       "example",
       "Responses Protocol",
-      "recommended",
-      "featured"
+      "featured",
+      "recommended"
     ]
   },
   {
@@ -7500,7 +7500,8 @@
     "extensionFramework": "Agent Framework",
     "extensionTags": [
       "example",
-      "Invocations Protocol"
+      "Invocations Protocol",
+      "featured"
     ]
   },
   {
@@ -7517,7 +7518,9 @@
     "extensionFramework": "Agent Framework",
     "extensionTags": [
       "example",
-      "Responses Protocol"
+      "Responses Protocol",
+      "featured",
+      "recommended"
     ]
   },
   {
@@ -7640,8 +7643,7 @@
     "extensionFramework": "Bring Your Own",
     "extensionTags": [
       "example",
-      "Invocations Protocol",
-      "featured"
+      "Invocations Protocol"
     ]
   },
   {
@@ -7745,8 +7747,6 @@
     "extensionFramework": "Bring Your Own",
     "extensionTags": [
       "example",
-      "featured",
-      "recommended",
       "Responses Protocol"
     ]
   },

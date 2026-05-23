@@ -28,8 +28,9 @@ jobs:
       - script: |
           set -e
           # GitHub git-smart-HTTP only accepts HTTP Basic auth — Bearer/token schemes fail.
+          # GitHub App installation tokens require "x-access-token" as the username.
           # tr -d '\n' (vs base64 -w0) is portable across GNU/BSD coreutils.
-          AUTH_HEADER="Authorization: Basic $(printf '%s:' "$GH_PAT" | base64 | tr -d '\n')"
+          AUTH_HEADER="Authorization: Basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 | tr -d '\n')"
           rm -rf daily-fork && mkdir daily-fork
           cd daily-fork
           git init
@@ -46,5 +47,5 @@ jobs:
           git -c user.name="azure-sdk" -c user.email="azuresdk@microsoft.com" commit -m "daily release"
           git -c http.extraheader="$AUTH_HEADER" push --quiet origin gh-pages
         env:
-          GH_PAT: $(GH_TOKEN)
+          GH_TOKEN: $(GH_TOKEN)
         displayName: 'Commit to Azure SDK Fork'

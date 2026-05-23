@@ -20,6 +20,11 @@ jobs:
         workingDirectory: website/
         displayName: 'Build Website'
 
+      - template: /eng/common/pipelines/templates/steps/login-to-github.yml
+        parameters:
+          TokenOwners:
+            - azure
+
       - script: |
           set -e
           # GitHub git-smart-HTTP only accepts HTTP Basic auth — Bearer/token schemes fail.
@@ -41,5 +46,5 @@ jobs:
           git -c user.name="azure-sdk" -c user.email="azuresdk@microsoft.com" commit -m "daily release"
           git -c http.extraheader="$AUTH_HEADER" push --quiet origin gh-pages
         env:
-          GH_PAT: $(azuresdk-github-pat)
+          GH_PAT: $(GH_TOKEN)
         displayName: 'Commit to Azure SDK Fork'

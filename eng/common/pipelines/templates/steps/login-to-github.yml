@@ -1,4 +1,9 @@
 # Will output a variable named GH_TOKEN_<Owner> for each owner in TokenOwners if there is only one owner it will just output GH_TOKEN
+#
+# SECURITY: TokenOwners must NOT be sourced from PR-author-controlled input
+# (pull_request triggers, fork branches, etc.). A malicious caller could
+# otherwise request an installation token for any org the GitHub App is
+# installed on. Always set TokenOwners to a hardcoded value at the call site.
 
 parameters:
 - name: TokenOwners
@@ -22,4 +27,3 @@ steps:
     arguments: >
      -InstallationTokenOwners '${{ join(''',''', parameters.TokenOwners) }}'
      -VariableNamePrefix '${{ parameters.VariableNamePrefix }}'
-     

@@ -128,10 +128,12 @@ function Get-GitHubInstallationId {
     $uri = "$ApiBase/app/installations"
     $resp = Invoke-RestMethod -Method Get -Headers $headers -Uri $uri -TimeoutSec 30 -MaximumRetryCount 3
 
-    $resp | Foreach-Object { Write-Host "  $($_.id): $($_.account.login) [$($_.target_type)]" }
+    $resp | Foreach-Object { Write-Verbose "  $($_.id): $($_.account.login) [$($_.target_type)]" }
 
     $resp = $resp | Where-Object { $_.account.login -ieq $InstallationTokenOwner }
-    if (!$resp.id) { throw "No installations found for this App." }
+    if (-not $resp -or -not $resp.id) {
+        throw "No installation found for owner '$InstallationTokenOwner'. Verify the GitHub App is installed on that org/user."
+    }
     return $resp.id
 }
 
@@ -187,12 +189,17 @@ foreach ($InstallationTokenOwner in $InstallationTokenOwners)
   }
 
   try {
-    Write-Host "`n--- gh auth status ---"
-    $gh_token_value_before = $env:GH_TOKEN
+    Write-Verbose "`n--- gh auth status ---"
+    $gh_token_was_set = Test-Path Env:GH_TOKEN
+    $gh_token_value_before = if ($gh_token_was_set) { $env:GH_TOKEN } else { $null }
     $env:GH_TOKEN = $installationToken
     & gh auth status
   }
   finally{
-    $env:GH_TOKEN = $gh_token_value_before
+    if ($gh_token_was_set) {
+      $env:GH_TOKEN = $gh_token_value_before
+    } else {
+      Remove-Item Env:GH_TOKEN -ErrorAction SilentlyContinue
+    }
   }
 }

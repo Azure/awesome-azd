@@ -336,7 +336,7 @@ function FeaturedTemplates({ browseUrl }) {
     <section className={styles.templatesSection}>
       <div className={styles.container}>
         <div className={styles.sectionLabel}>Explore</div>
-        <h2 className={styles.sectionHeading}>Start with a popular template</h2>
+        <h2 className={styles.sectionHeading}>Start with a featured template</h2>
         <p className={styles.sectionSubtext}>
           Battle-tested templates that are great for your first deploy.
         </p>

@@ -169,7 +169,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
                 <img
                   src={star}
                   alt="Star"
-                 width={16}
+                  width={16}
                   height={16}
                 />
                 <div

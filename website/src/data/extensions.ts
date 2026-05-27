@@ -66,12 +66,9 @@ function validateExtensions(raw: unknown): Extension[] {
     if (authorUrl == null) {
       (entry as Record<string, unknown>).authorUrl = '';
     }
-    if (source != null && typeof source !== 'string') {
-      console.warn(`Extension[${i}]: invalid 'source' type, skipping`);
+    if (typeof source !== 'string' || !source) {
+      console.warn(`Extension[${i}]: missing or invalid 'source', skipping`);
       return false;
-    }
-    if (source == null) {
-      (entry as Record<string, unknown>).source = '';
     }
     if (registryUrl != null && typeof registryUrl !== 'string') {
       console.warn(`Extension[${i}]: invalid 'registryUrl' type, skipping`);

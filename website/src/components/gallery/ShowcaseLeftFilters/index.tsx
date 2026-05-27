@@ -298,6 +298,13 @@ export default function ShowcaseLeftFilters({
   const [openItems, setOpenItems] = React.useState<string[]>(
     isExtensions ? ["9"] : [],
   );
+  // Sync the Extension Capabilities accordion's open state with `isExtensions`
+  // because ShowcaseLeftFilters is not remounted when the user toggles between
+  // Templates and Extensions — without this effect the panel would only honor
+  // the default on first mount.
+  React.useEffect(() => {
+    setOpenItems(isExtensions ? ["9"] : []);
+  }, [isExtensions]);
   const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
     setOpenItems(data.openItems);
   };

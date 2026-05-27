@@ -132,7 +132,8 @@
       "lifecycle-events",
       "mcp-server",
       "service-target-provider",
-      "framework-service-provider"
+      "framework-service-provider",
+      "metadata"
     ],
     "platforms": [
       "windows/amd64",

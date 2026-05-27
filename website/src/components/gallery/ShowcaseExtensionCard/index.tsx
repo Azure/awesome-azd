@@ -62,7 +62,7 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
               src={headerLogo}
               width={16}
               height={16}
-              alt="logo"
+              alt={headerText}
               className={styleCSS.headerLogo}
             />
             <div className={styleCSS.headerText}>{headerText}</div>

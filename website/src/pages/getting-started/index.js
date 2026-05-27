@@ -3,7 +3,7 @@
  * Licensed under the MIT License.
  */
 
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import Layout from "@theme/Layout";
@@ -91,7 +91,6 @@ function HeroSection({ browseUrl }) {
       <div className={styles.heroGrid}>
         <div className={styles.heroText}>
           <div className={styles.heroBadge}>
-            <span className={styles.heroBadgeDot} aria-hidden="true" />
             Open-source CLI &middot; 300+ templates
           </div>
           <h1 className={styles.heroTitle}>
@@ -151,6 +150,21 @@ function HeroSection({ browseUrl }) {
 }
 
 /* ─────────── Terminal demo ─────────── */
+function BlinkingCursor() {
+  const [on, setOn] = useState(true);
+  useEffect(() => {
+    const id = setInterval(() => setOn((v) => !v), 530);
+    return () => clearInterval(id);
+  }, []);
+  return (
+    <span
+      className={styles.terminalCursor}
+      data-on={on ? "true" : "false"}
+      aria-hidden="true"
+    />
+  );
+}
+
 function TerminalDemo() {
   return (
     <div className={styles.terminal}>
@@ -188,7 +202,7 @@ function TerminalDemo() {
         <br />
         <div>
           <span className={styles.prompt}>$</span>{" "}
-          <span className={styles.terminalCursor} aria-hidden="true" />
+          <BlinkingCursor />
         </div>
       </div>
     </div>

@@ -832,12 +832,12 @@
 }
 
 .templatesSection .container {
-  max-width: 1280px;
+  max-width: 1440px;
 }
 
 .templatesGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
   gap: 1.25rem;
   width: 100%;
   margin: 0 auto;

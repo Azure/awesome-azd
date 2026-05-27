@@ -369,28 +369,28 @@ function DeploySteps() {
 /* ─────────── Featured templates ─────────── */
 const TEMPLATES = [
   {
-    title: "React Web App + Node.js API + MongoDB",
+    title: "RAG chat app with Azure OpenAI and Azure AI Search",
     description:
-      "Full-stack JavaScript app with React frontend, Node.js API, and Azure Cosmos DB.",
+      "A RAG sample app using Azure AI Search for retrieval and Azure OpenAI to power ChatGPT-style and Q&A experiences over your data.",
+    command: "azd init -t azure-search-openai-demo",
+    source: "https://github.com/Azure-Samples/azure-search-openai-demo",
+    tags: ["Python", "Azure OpenAI", "AI Search"],
+  },
+  {
+    title: "RAG on PostgreSQL",
+    description:
+      "A RAG app to ask questions about rows in a database table. Deployable on Azure Container Apps with PostgreSQL Flexible Server.",
+    command: "azd init -t rag-postgres-openai-python",
+    source: "https://github.com/Azure-Samples/rag-postgres-openai-python",
+    tags: ["Python", "Azure OpenAI", "PostgreSQL"],
+  },
+  {
+    title: "React Web App with Node.js API and MongoDB",
+    description:
+      "A blueprint for a React web app, Node.js API, and Azure Cosmos DB for MongoDB on App Service, with Key Vault and monitoring built in.",
     command: "azd init -t todo-nodejs-mongo",
     source: "https://github.com/Azure-Samples/todo-nodejs-mongo",
-    tags: ["JavaScript", "React", "Cosmos DB"],
-  },
-  {
-    title: "AI Chat App with Python",
-    description:
-      "Use Azure OpenAI GPT models to build an AI-powered chat application.",
-    command: "azd init -t openai-chat-app-quickstart",
-    source: "https://github.com/Azure-Samples/openai-chat-app-quickstart",
-    tags: ["Python", "Azure OpenAI", "AI"],
-  },
-  {
-    title: "Containerized App on Azure",
-    description:
-      "Deploy a container app with Azure Container Apps, Key Vault, and monitoring.",
-    command: "azd init -t todo-python-mongo-aca",
-    source: "https://github.com/Azure-Samples/todo-python-mongo-aca",
-    tags: ["Python", "Container Apps", "Cosmos DB"],
+    tags: ["Node.js", "React", "Cosmos DB"],
   },
 ];
 
@@ -516,9 +516,8 @@ const FAQS = [
     q: "How do I update azd to the latest version?",
     a: (
       <>
-        On Windows: <code>azd update</code> (MSI install required). On
-        macOS/Linux: re-run the install script. Or use <code>azd version</code>{" "}
-        to check your current version.
+        Run <code>azd update</code> on Windows, macOS, and Linux to get the
+        latest version.
       </>
     ),
   },

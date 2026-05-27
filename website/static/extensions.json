@@ -2,13 +2,13 @@
   {
     "id": "jongio.azd.app",
     "namespace": "app",
-    "displayName": "App Extension",
+    "displayName": "App",
     "description": "A collection of developer productivity commands for Azure Developer CLI. Run, test, monitor, and manage all project services locally.",
     "author": "Jon Gallant",
     "authorUrl": "https://github.com/jongio",
     "source": "https://github.com/jongio/azd-app",
     "registryUrl": "https://raw.githubusercontent.com/jongio/azd-app/main/registry.json",
-    "latestVersion": "0.12.6",
+    "latestVersion": "0.14.0",
     "capabilities": [
       "custom-commands",
       "lifecycle-events",
@@ -23,11 +23,9 @@
       "linux/arm64"
     ],
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
-    "website": "https://jongio.github.io/azd-app",
-    "installCommand": "azd extension install jongio.azd.app"
+    "website": "https://jongio.github.io/azd-app"
   },
   {
     "id": "jongio.azd.copilot",
@@ -55,44 +53,14 @@
     ],
     "tags": [
       "community",
-      "new"
+      "ai"
     ],
-    "website": "https://jongio.github.io/azd-copilot",
-    "installCommand": "azd extension install jongio.azd.copilot"
-  },
-  {
-    "id": "jongio.azd.exec",
-    "namespace": "exec",
-    "displayName": "Exec Extension",
-    "description": "Run any script with azd environment and Azure credentials. Database migrations, setup automation, CI/CD workflows - with seamless Key Vault integration.",
-    "author": "Jon Gallant",
-    "authorUrl": "https://github.com/jongio",
-    "source": "https://github.com/jongio/azd-exec",
-    "registryUrl": "https://raw.githubusercontent.com/jongio/azd-exec/main/registry.json",
-    "latestVersion": "0.3.8",
-    "capabilities": [
-      "custom-commands",
-      "lifecycle-events"
-    ],
-    "platforms": [
-      "windows/amd64",
-      "windows/arm64",
-      "darwin/amd64",
-      "darwin/arm64",
-      "linux/amd64",
-      "linux/arm64"
-    ],
-    "tags": [
-      "community",
-      "new"
-    ],
-    "website": "https://jongio.github.io/azd-exec",
-    "installCommand": "azd extension install jongio.azd.exec"
+    "website": "https://jongio.github.io/azd-copilot"
   },
   {
     "id": "jongio.azd.rest",
     "namespace": "rest",
-    "displayName": "REST API Extension",
+    "displayName": "REST API",
     "description": "Execute REST API calls with automatic Azure authentication and scope detection. Supports Azure Management, Key Vault, Microsoft Graph, and custom APIs.",
     "author": "Jon Gallant",
     "authorUrl": "https://github.com/jongio",
@@ -114,28 +82,27 @@
       "linux/arm64"
     ],
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
-    "website": "https://jongio.github.io/azd-rest",
-    "installCommand": "azd extension install jongio.azd.rest"
+    "website": "https://jongio.github.io/azd-rest"
   },
   {
     "id": "microsoft.azd.demo",
     "namespace": "demo",
-    "displayName": "Demo Extension",
-    "description": "Example extension showcasing the azd extension framework. Demonstrates custom commands, lifecycle events, MCP server, and provider capabilities.",
-    "author": "Microsoft",
+    "displayName": "Demo",
+    "description": "This extension provides examples of the azd extension framework.",
+    "author": "Azure Dev",
     "authorUrl": "https://github.com/Azure",
-    "source": "https://github.com/Azure/azure-dev",
+    "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/microsoft.azd.demo",
     "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
-    "latestVersion": "0.5.0",
+    "latestVersion": "0.6.0",
     "capabilities": [
       "custom-commands",
       "lifecycle-events",
       "mcp-server",
       "service-target-provider",
-      "framework-service-provider"
+      "framework-service-provider",
+      "metadata"
     ],
     "platforms": [
       "windows/amd64",
@@ -147,7 +114,227 @@
     ],
     "tags": [
       "msft"
+    ]
+  },
+  {
+    "id": "microsoft.azd.extensions",
+    "namespace": "x",
+    "displayName": "azd Extensions Developer Kit",
+    "description": "This extension provides a set of tools for azd extension developers to test and debug their extensions.",
+    "author": "Azure Dev",
+    "authorUrl": "https://github.com/Azure",
+    "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/microsoft.azd.extensions",
+    "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
+    "latestVersion": "0.11.0",
+    "capabilities": [
+      "custom-commands",
+      "metadata"
     ],
-    "installCommand": "azd extension install microsoft.azd.demo"
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "msft"
+    ]
+  },
+  {
+    "id": "azure.coding-agent",
+    "namespace": "coding-agent",
+    "displayName": "Coding Agent Configuration",
+    "description": "This extension configures GitHub Copilot Coding Agent access to Azure",
+    "author": "Azure Dev",
+    "authorUrl": "https://github.com/Azure",
+    "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.coding-agent",
+    "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
+    "latestVersion": "0.6.1",
+    "capabilities": [
+      "custom-commands",
+      "metadata"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "msft",
+      "ai"
+    ]
+  },
+  {
+    "id": "azure.ai.agents",
+    "namespace": "ai.agent",
+    "displayName": "Foundry agents (Preview)",
+    "description": "Ship agents with Microsoft Foundry from your terminal. (Preview)",
+    "author": "Foundry Team",
+    "authorUrl": "https://github.com/Azure",
+    "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.agents",
+    "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
+    "latestVersion": "0.1.34-preview",
+    "capabilities": [
+      "custom-commands",
+      "lifecycle-events",
+      "mcp-server",
+      "service-target-provider",
+      "metadata"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "msft",
+      "ai",
+      "aifoundry"
+    ]
+  },
+  {
+    "id": "microsoft.azd.concurx",
+    "namespace": "concurx",
+    "displayName": "Concurx",
+    "description": "Concurrent execution for azd deployment",
+    "author": "Azure Dev",
+    "authorUrl": "https://github.com/Azure",
+    "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/microsoft.azd.concurx",
+    "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
+    "latestVersion": "0.1.0",
+    "capabilities": [
+      "custom-commands",
+      "metadata"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "msft"
+    ]
+  },
+  {
+    "id": "azure.ai.finetune",
+    "namespace": "ai.finetuning",
+    "displayName": "Foundry Fine Tuning (Preview)",
+    "description": "Extension for Foundry Fine Tuning. (Preview)",
+    "author": "Foundry Team",
+    "authorUrl": "https://github.com/Azure",
+    "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.finetune",
+    "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
+    "latestVersion": "0.0.17-preview",
+    "capabilities": [
+      "custom-commands",
+      "metadata"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "msft",
+      "ai",
+      "aifoundry"
+    ]
+  },
+  {
+    "id": "azure.ai.models",
+    "namespace": "ai.models",
+    "displayName": "Foundry Custom Models (Preview)",
+    "description": "Extension for managing custom models in Azure AI Foundry. (Preview)",
+    "author": "Foundry Team",
+    "authorUrl": "https://github.com/Azure",
+    "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.models",
+    "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
+    "latestVersion": "0.0.7-preview",
+    "capabilities": [
+      "custom-commands",
+      "metadata"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "msft",
+      "ai",
+      "aifoundry"
+    ]
+  },
+  {
+    "id": "azure.appservice",
+    "namespace": "appservice",
+    "displayName": "Azure App Service",
+    "description": "Extension for managing Azure App Service resources.",
+    "author": "Azure Dev",
+    "authorUrl": "https://github.com/Azure",
+    "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.appservice",
+    "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
+    "latestVersion": "0.1.1",
+    "capabilities": [
+      "custom-commands",
+      "metadata"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "msft",
+      "appservice"
+    ]
+  },
+  {
+    "id": "azure.ai.inspector",
+    "namespace": "ai.inspector",
+    "displayName": "Foundry agent inspector (Preview)",
+    "description": "Browser-based inspector UI for locally running Foundry agents. (Preview)",
+    "author": "Foundry Team",
+    "authorUrl": "https://github.com/Azure",
+    "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.inspector",
+    "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
+    "latestVersion": "0.0.1-preview",
+    "capabilities": [
+      "custom-commands",
+      "metadata"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "msft",
+      "ai",
+      "aifoundry"
+    ]
   }
 ]

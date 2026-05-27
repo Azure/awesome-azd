@@ -239,6 +239,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
           id={"input_" + title}
           size="small"
           spellCheck={false}
+          readOnly
           defaultValue={azdInitCommand}
           className={styleCSS.input}
           placeholder={azdInitCommand}

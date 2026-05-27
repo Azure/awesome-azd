@@ -17,7 +17,7 @@ import Clarity from "@microsoft/clarity";
 
 const TITLES: Record<string, string> = {
   templates: "From code to cloud in minutes",
-  extensions: "Extension Gallery (Preview)",
+  extensions: "Extension Gallery",
 };
 const DESCRIPTIONS: Record<string, string> = {
   templates: "Production-ready templates with infrastructure, CI/CD, and monitoring — all deployable with a single command.",

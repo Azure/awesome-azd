@@ -243,10 +243,34 @@ export default function ShowcaseLeftFilters({
   // curated/featured collections and are intentionally not run through
   // applyMinCountThreshold — they should always remain discoverable
   // regardless of how many templates currently carry them.
+  //
+  // For the extensions view, hide `new`, `popular`, and `aicollection`:
+  // those collections only apply to templates. Keep `msft` / `community`
+  // so users can still filter by author type.
+  const EXTENSION_HIDDEN_UNCATEGORY_TAGS = new Set<string>([
+    "new",
+    "popular",
+    "aicollection",
+  ]);
+  // Explicit display order: surface Microsoft-authored entries before
+  // community-authored so the primary/official source is the first option.
+  const UNCATEGORY_TAG_ORDER: Record<string, number> = {
+    msft: 0,
+    community: 1,
+    new: 2,
+    popular: 3,
+    aicollection: 4,
+  };
   const uncategoryTag = TagList.filter((tag) => {
     const tagObject = Tags[tag];
-    return tagObject.type === undefined;
-  });
+    if (tagObject.type !== undefined) return false;
+    if (isExtensions && EXTENSION_HIDDEN_UNCATEGORY_TAGS.has(tag)) return false;
+    return true;
+  }).sort(
+    (a, b) =>
+      (UNCATEGORY_TAG_ORDER[a] ?? Number.MAX_SAFE_INTEGER) -
+      (UNCATEGORY_TAG_ORDER[b] ?? Number.MAX_SAFE_INTEGER),
+  );
   const languageTag = applyMinCountThreshold(
     sortTagList.filter((tag) => Tags[tag].type === "Language"),
   );
@@ -271,7 +295,9 @@ export default function ShowcaseLeftFilters({
   const extensionCapabilityTag = sortTagList.filter(
     (tag) => Tags[tag].type === "Extension Capability",
   );
-  const [openItems, setOpenItems] = React.useState([]);
+  const [openItems, setOpenItems] = React.useState<string[]>(
+    isExtensions ? ["9"] : [],
+  );
   const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
     setOpenItems(data.openItems);
   };
@@ -525,18 +551,16 @@ export default function ShowcaseLeftFilters({
         </>
       )}
 
-      {/* Extension Capabilities filter hidden pending release
+      {/* Extension Capabilities filter (extensions view only) */}
       {isExtensions && extensionCapabilityTag.length > 0 && (
         <AccordionItem value="9">
           <AccordionHeader
+            className={styles.categoryHeader}
             expandIconPosition="end"
-            style={{
-              background:
-                "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
-            }}
           >
             <div style={{ fontSize: "16px", fontWeight: "500" }}>
               Extension Capabilities
+              <span className={styles.filterCount}>{extensionCapabilityTag.length}</span>
             </div>
           </AccordionHeader>
           <AccordionPanel>
@@ -554,7 +578,6 @@ export default function ShowcaseLeftFilters({
           </AccordionPanel>
         </AccordionItem>
       )}
-      */}
     </Accordion>
   );
 }

@@ -407,7 +407,7 @@ export default function ShowcaseCardPage({
   readSearchAuthors: (search: string) => string[];
   replaceSearchAuthors: (search: string, newAuthors: string[]) => string;
 }) {
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([SORT_BY_OPTIONS[2]]);
   const [loading, setLoading] = useState(true);
   const [searchName, setSearchName] = useState<string | null>(null);
   const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
@@ -546,7 +546,7 @@ export default function ShowcaseCardPage({
 
   return (
     <>
-      {/* Content Type Toggle - Extension gallery hidden pending release
+      {/* Content Type Toggle */}
       <div
         role="group"
         aria-label="Content type"
@@ -559,6 +559,7 @@ export default function ShowcaseCardPage({
       >
         <ToggleButton
           appearance={!isExtensions ? "primary" : "outline"}
+          className={!isExtensions ? styles.contentTypeToggleActive : undefined}
           size="medium"
           checked={!isExtensions}
           onClick={() => setContentType("templates")}
@@ -568,36 +569,28 @@ export default function ShowcaseCardPage({
         </ToggleButton>
         <ToggleButton
           appearance={isExtensions ? "primary" : "outline"}
+          className={isExtensions ? styles.contentTypeToggleActive : undefined}
           size="medium"
           checked={isExtensions}
           onClick={() => setContentType("extensions")}
           aria-label="Switch to extensions view"
         >
           Extensions
-          <Badge
-            size="small"
-            appearance="tint"
-            color="informative"
-            style={{ marginLeft: 6, fontSize: "10px", verticalAlign: "middle" }}
-          >
-            Preview
-          </Badge>
         </ToggleButton>
         {isExtensions && (
-          <Text size={300} style={{ marginLeft: "auto" }}>
+          <Text size={400} style={{ marginLeft: "auto" }}>
             Built an extension?{" "}
             <a
               href="https://github.com/Azure/awesome-azd/issues/new?template=extension-submission.yml"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ color: "var(--ifm-color-primary)", textDecoration: "none" }}
+              style={{ color: "var(--ifm-color-primary)", textDecoration: "underline" }}
             >
-              Submit it here →
+              Submit it here
             </a>
           </Text>
         )}
       </div>
-      */}
 
       <div
         className={styles.viewingSortRow}
@@ -684,14 +677,11 @@ export default function ShowcaseCardPage({
         <Spinner labelPosition="below" label="Loading..." />
       ) : (
         <>
-          {/* Extension gallery hidden pending release
           {isExtensions ? (
             <ShowcaseExtensionCards filteredExtensions={paginatedExtensions} />
           ) : (
             <ShowcaseCards filteredUsers={paginatedTemplates} />
           )}
-          */}
-          <ShowcaseCards filteredUsers={paginatedTemplates} />
           {totalPages > 1 && (
             <PaginationControls
               currentPage={currentPage}

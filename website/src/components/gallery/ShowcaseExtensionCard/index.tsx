@@ -6,6 +6,7 @@
 import React from "react";
 import styleCSS from "./styles.module.css";
 import { type Extension } from "../../../data/extensionTypes";
+import { Tags } from "../../../data/tags";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import {
   Card,
@@ -20,26 +21,25 @@ import {
   Badge,
   Link as FluentUILink,
 } from "@fluentui/react-components";
-import { Open16Regular, Globe16Regular } from "@fluentui/react-icons";
+import { Globe16Regular } from "@fluentui/react-icons";
 
-const CAPABILITY_LABELS: Record<string, { label: string; color: "informative" | "success" | "warning" | "important" | "brand" }> = {
-  "custom-commands": { label: "Commands", color: "brand" },
-  "lifecycle-events": { label: "Lifecycle", color: "success" },
-  "mcp-server": { label: "MCP", color: "important" },
-  "service-target-provider": { label: "Service Target", color: "warning" },
-  "framework-service-provider": { label: "Framework", color: "warning" },
-  "metadata": { label: "Metadata", color: "informative" },
+const CAPABILITY_LABELS: Record<string, { label: string }> = {
+  "custom-commands": { label: "Commands" },
+  "lifecycle-events": { label: "Lifecycle" },
+  "mcp-server": { label: "MCP" },
+  "service-target-provider": { label: "Service Target" },
+  "framework-service-provider": { label: "Framework" },
+  "metadata": { label: "Metadata" },
 };
 
 function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Element {
-  const star = useBaseUrl("/img/Sparkle.svg");
   const communityLogo = useBaseUrl("/img/Community.svg");
   const msftLogo = useBaseUrl("/img/Microsoft.svg");
   const copyIcon = useBaseUrl("/img/Copy.svg");
 
   const isMsft = extension.tags.includes("msft");
   const headerLogo = isMsft ? msftLogo : communityLogo;
-  const headerText = isMsft ? "Microsoft Extension" : "Community Extension";
+  const headerText = isMsft ? "Microsoft Authored" : "Community Authored";
 
   const contentForAdobeAnalytics = JSON.stringify({
     id: extension.displayName,
@@ -62,70 +62,23 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
               src={headerLogo}
               width={16}
               height={16}
-              alt={headerText}
+              alt="logo"
               className={styleCSS.headerLogo}
             />
             <div className={styleCSS.headerText}>{headerText}</div>
-            {extension.tags.includes("new") ? (
-              <>
-                <img
-                  src={star}
-                  alt=""
-                  aria-hidden="true"
-                  width={16}
-                  height={16}
-                  style={{ paddingLeft: "10px" }}
-                />
-                <div className={styleCSS.newBadge}>
-                  New
-                </div>
-              </>
-            ) : null}
           </div>
         }
       />
       <CardPreview className={styleCSS.cardBreakLine} />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          position: "relative",
-          maxHeight: "inherit",
-        }}
-        className={styleCSS.cardBody}
-      >
+      <div className={styleCSS.cardBody}>
         <FluentUILink
           className={styleCSS.cardTitle}
-          href={extension.website || extension.source}
+          href={extension.source}
           target="_blank"
           rel="noopener noreferrer"
         >
           {extension.displayName}
         </FluentUILink>
-        <div style={{ display: "flex", gap: "8px", paddingTop: "4px" }}>
-          {extension.website && (
-            <FluentUILink
-              href={extension.website}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styleCSS.cardMetaLink}
-              title="Documentation website"
-            >
-              <Globe16Regular style={{ verticalAlign: "middle", marginRight: "2px" }} />
-              <span>Website</span>
-            </FluentUILink>
-          )}
-          <FluentUILink
-            href={extension.source}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styleCSS.cardMetaLink}
-            title="Source repository"
-          >
-            <Open16Regular style={{ verticalAlign: "middle", marginRight: "2px" }} />
-            <span>Source</span>
-          </FluentUILink>
-        </div>
         <div
           style={{
             verticalAlign: "middle",
@@ -133,50 +86,83 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
             paddingTop: "2px",
             alignItems: "center",
             columnGap: "3px",
+            overflow: "hidden",
           }}
         >
           <div className={styleCSS.cardTextBy}>by</div>
           <FluentUILink
+            className={styleCSS.authorLink}
             href={extension.authorUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className={styleCSS.authorLink}
+            style={{ fontSize: "12px", flexShrink: 0 }}
           >
             {extension.author}
           </FluentUILink>
-          <div className={styleCSS.versionBadge}>v{extension.latestVersion}</div>
+          {extension.website && (
+            <FluentUILink
+              href={extension.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styleCSS.cardMetaLink}
+              title="Documentation website"
+              style={{ fontSize: "12px", flexShrink: 0, marginLeft: "auto" }}
+            >
+              <Globe16Regular style={{ verticalAlign: "middle", marginRight: "2px" }} />
+              <span>Website</span>
+            </FluentUILink>
+          )}
         </div>
         <div className={styleCSS.cardDescription}>{extension.description}</div>
-        <div
-          style={{
-            paddingTop: "10px",
-            position: "absolute",
-            bottom: "0px",
-            width: "100%",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              overflow: "hidden",
-              gap: "4px",
-              flexFlow: "wrap",
-            }}
-          >
+        <div className={styleCSS.cardTagContainer}>
+          <div className={styleCSS.cardTagsWrapper}>
             {extension.capabilities.map((cap) => {
-              const capInfo = CAPABILITY_LABELS[cap] || { label: cap, color: "informative" as const };
+              const capInfo = CAPABILITY_LABELS[cap] || { label: cap };
               return (
                 <Badge
-                  key={cap}
-                  appearance="tint"
+                  key={`cap-${cap}`}
+                  appearance="outline"
                   size="medium"
-                  color={capInfo.color}
-                  style={{ fontSize: "10px" }}
+                  color="informative"
+                  style={{
+                    alignContent: "center",
+                    fontSize: "10px",
+                    width: "auto",
+                  }}
                 >
                   {capInfo.label}
                 </Badge>
               );
             })}
+            {extension.tags
+              .filter(
+                (tag) =>
+                  tag !== "msft" &&
+                  tag !== "community" &&
+                  tag !== "new" &&
+                  tag !== "popular" &&
+                  tag !== "aicollection" &&
+                  Tags[tag] !== undefined,
+              )
+              .map((tag) => {
+                const tagInfo = Tags[tag];
+                return (
+                  <Badge
+                    key={`tag-${tag}`}
+                    appearance="outline"
+                    size="medium"
+                    color="informative"
+                    title={tagInfo.description}
+                    style={{
+                      alignContent: "center",
+                      fontSize: "10px",
+                      width: "auto",
+                    }}
+                  >
+                    {tagInfo.label}
+                  </Badge>
+                );
+              })}
           </div>
         </div>
       </div>

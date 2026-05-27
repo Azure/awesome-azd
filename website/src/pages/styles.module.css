@@ -167,6 +167,23 @@
   background-color: #0369A1;
 }
 
+/* Content type toggle (Templates / Extensions) — override Fluent UI default
+   brand color so the active state matches the site's --ifm-color-primary blue
+   used by the rest of the brand-colored buttons (hero, pagination, install). */
+.contentTypeToggleActive,
+.contentTypeToggleActive:hover,
+.contentTypeToggleActive:focus,
+.contentTypeToggleActive:active {
+  background-color: var(--ifm-color-primary) !important;
+  border-color: var(--ifm-color-primary) !important;
+  color: #ffffff !important;
+}
+
+.contentTypeToggleActive:hover {
+  background-color: var(--ifm-color-primary-dark) !important;
+  border-color: var(--ifm-color-primary-dark) !important;
+}
+
 @media screen and (max-width: 996px) {
   .backToTopButton {
     display: flex;

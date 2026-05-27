@@ -8,7 +8,7 @@
     "authorUrl": "https://github.com/jongio",
     "source": "https://github.com/jongio/azd-app",
     "registryUrl": "https://raw.githubusercontent.com/jongio/azd-app/main/registry.json",
-    "latestVersion": "0.12.6",
+    "latestVersion": "0.14.0",
     "capabilities": [
       "custom-commands",
       "lifecycle-events",
@@ -23,8 +23,7 @@
       "linux/arm64"
     ],
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "website": "https://jongio.github.io/azd-app",
     "installCommand": "azd extension install jongio.azd.app"
@@ -55,7 +54,7 @@
     ],
     "tags": [
       "community",
-      "new"
+      "ai"
     ],
     "website": "https://jongio.github.io/azd-copilot",
     "installCommand": "azd extension install jongio.azd.copilot"
@@ -83,8 +82,7 @@
       "linux/arm64"
     ],
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "website": "https://jongio.github.io/azd-exec",
     "installCommand": "azd extension install jongio.azd.exec"
@@ -114,8 +112,7 @@
       "linux/arm64"
     ],
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "website": "https://jongio.github.io/azd-rest",
     "installCommand": "azd extension install jongio.azd.rest"
@@ -123,13 +120,13 @@
   {
     "id": "microsoft.azd.demo",
     "namespace": "demo",
-    "displayName": "Demo Extension",
+    "displayName": "azd Demo",
     "description": "Example extension showcasing the azd extension framework. Demonstrates custom commands, lifecycle events, MCP server, and provider capabilities.",
     "author": "Microsoft",
     "authorUrl": "https://github.com/Azure",
-    "source": "https://github.com/Azure/azure-dev",
+    "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/microsoft.azd.demo",
     "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
-    "latestVersion": "0.5.0",
+    "latestVersion": "0.6.0",
     "capabilities": [
       "custom-commands",
       "lifecycle-events",
@@ -149,5 +146,205 @@
       "msft"
     ],
     "installCommand": "azd extension install microsoft.azd.demo"
+  },
+  {
+    "id": "microsoft.azd.extensions",
+    "namespace": "x",
+    "displayName": "azd Extensions Developer Kit",
+    "description": "Tools for azd extension developers to scaffold, build, pack, publish, watch, and release extension projects.",
+    "author": "Microsoft",
+    "authorUrl": "https://github.com/Azure",
+    "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/microsoft.azd.extensions",
+    "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
+    "latestVersion": "0.10.0",
+    "capabilities": [
+      "custom-commands",
+      "metadata"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "msft"
+    ],
+    "installCommand": "azd extension install microsoft.azd.extensions"
+  },
+  {
+    "id": "azure.coding-agent",
+    "namespace": "coding-agent",
+    "displayName": "Azure Coding Agent",
+    "description": "Configures GitHub Copilot Coding Agent access to Azure for use in azd-managed projects.",
+    "author": "Microsoft",
+    "authorUrl": "https://github.com/Azure",
+    "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.coding-agent",
+    "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
+    "latestVersion": "0.6.1",
+    "capabilities": [
+      "custom-commands",
+      "metadata"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "msft",
+      "ai"
+    ],
+    "installCommand": "azd extension install azure.coding-agent"
+  },
+  {
+    "id": "azure.ai.agents",
+    "namespace": "ai.agent",
+    "displayName": "Azure AI Agents",
+    "description": "Ship agents with Microsoft Foundry from your terminal. Initialize, deploy, and manage Foundry Agent Service workloads end-to-end via azd.",
+    "author": "Microsoft",
+    "authorUrl": "https://github.com/Azure",
+    "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.agents",
+    "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
+    "latestVersion": "0.1.32-preview",
+    "capabilities": [
+      "custom-commands",
+      "lifecycle-events",
+      "mcp-server",
+      "service-target-provider",
+      "metadata"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "msft",
+      "ai",
+      "aifoundry"
+    ],
+    "installCommand": "azd extension install azure.ai.agents"
+  },
+  {
+    "id": "microsoft.azd.concurx",
+    "namespace": "concurx",
+    "displayName": "azd Concurx",
+    "description": "Concurrent execution for azd deployment to speed up multi-service provisioning and deploy workflows.",
+    "author": "Microsoft",
+    "authorUrl": "https://github.com/Azure",
+    "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/microsoft.azd.concurx",
+    "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
+    "latestVersion": "0.1.0",
+    "capabilities": [
+      "custom-commands",
+      "metadata"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "msft"
+    ],
+    "installCommand": "azd extension install microsoft.azd.concurx"
+  },
+  {
+    "id": "azure.ai.finetune",
+    "namespace": "ai.finetuning",
+    "displayName": "Azure AI Fine Tuning",
+    "description": "Initialize and deploy fine-tuning jobs to Microsoft Foundry from the azd CLI.",
+    "author": "Microsoft",
+    "authorUrl": "https://github.com/Azure",
+    "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.finetune",
+    "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
+    "latestVersion": "0.0.17-preview",
+    "capabilities": [
+      "custom-commands",
+      "metadata"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "msft",
+      "ai",
+      "aifoundry"
+    ],
+    "installCommand": "azd extension install azure.ai.finetune"
+  },
+  {
+    "id": "azure.ai.models",
+    "namespace": "ai.models",
+    "displayName": "Azure AI Custom Models",
+    "description": "Upload, register, list, update, and delete custom models in Azure AI Foundry from the azd CLI.",
+    "author": "Microsoft",
+    "authorUrl": "https://github.com/Azure",
+    "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.models",
+    "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
+    "latestVersion": "0.0.7-preview",
+    "capabilities": [
+      "custom-commands",
+      "metadata"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "msft",
+      "ai",
+      "aifoundry"
+    ],
+    "installCommand": "azd extension install azure.ai.models"
+  },
+  {
+    "id": "azure.appservice",
+    "namespace": "appservice",
+    "displayName": "Azure App Service",
+    "description": "Manage Azure App Service resources from azd, including deployment slot swaps for blue/green releases.",
+    "author": "Microsoft",
+    "authorUrl": "https://github.com/Azure",
+    "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.appservice",
+    "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
+    "latestVersion": "0.1.1",
+    "capabilities": [
+      "custom-commands",
+      "metadata"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "msft",
+      "appservice"
+    ],
+    "installCommand": "azd extension install azure.appservice"
   }
 ]

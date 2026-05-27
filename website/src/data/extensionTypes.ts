@@ -36,5 +36,4 @@ export type Extension = {
   tags: TagType[];
   preview?: string;
   website?: string;
-  installCommand: string;
 };

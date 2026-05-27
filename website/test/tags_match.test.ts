@@ -63,7 +63,6 @@ describe('Extension tests', () => {
             expect(extension.id).toBeDefined();
             expect(extension.displayName).toBeDefined();
             expect(extension.description).toBeDefined();
-            expect(extension.installCommand).toBeDefined();
             expect(extension.capabilities).toBeDefined();
             expect(Array.isArray(extension.capabilities)).toBe(true);
         });

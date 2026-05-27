@@ -167,6 +167,38 @@
   background-color: #0369A1;
 }
 
+/* Content type toggle (Templates / Extensions) — override Fluent UI default
+   brand color so the active state matches the site's --ifm-color-primary blue
+   used by the rest of the brand-colored buttons (hero, pagination, install). */
+.contentTypeToggleActive,
+.contentTypeToggleActive:hover,
+.contentTypeToggleActive:focus,
+.contentTypeToggleActive:active {
+  background-color: var(--ifm-color-primary) !important;
+  border-color: var(--ifm-color-primary) !important;
+  color: #ffffff !important;
+}
+
+.contentTypeToggleActive:hover {
+  background-color: var(--ifm-color-primary-dark) !important;
+  border-color: var(--ifm-color-primary-dark) !important;
+}
+
+/* WCAG 1.4.3: in dark mode `--ifm-color-primary` is #38BDF8, which only
+   yields 2.14:1 contrast against white text. Use the darker brand variant
+   `#0076B3` (same value the backToTopButton uses) for ~5.5:1 contrast. */
+[data-theme="dark"] .contentTypeToggleActive,
+[data-theme="dark"] .contentTypeToggleActive:focus,
+[data-theme="dark"] .contentTypeToggleActive:active {
+  background-color: #0076B3 !important;
+  border-color: #0076B3 !important;
+}
+
+[data-theme="dark"] .contentTypeToggleActive:hover {
+  background-color: #005A8D !important;
+  border-color: #005A8D !important;
+}
+
 @media screen and (max-width: 996px) {
   .backToTopButton {
     display: flex;

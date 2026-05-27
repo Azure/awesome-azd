@@ -6,6 +6,7 @@
 import React from "react";
 import styleCSS from "./styles.module.css";
 import { type Extension } from "../../../data/extensionTypes";
+import { Tags } from "../../../data/tags";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import {
   Card,
@@ -20,7 +21,7 @@ import {
   Badge,
   Link as FluentUILink,
 } from "@fluentui/react-components";
-import { Open16Regular, Globe16Regular } from "@fluentui/react-icons";
+import { Globe16Regular } from "@fluentui/react-icons";
 
 const CAPABILITY_LABELS: Record<string, { label: string; color: "informative" | "success" | "warning" | "important" | "brand" }> = {
   "custom-commands": { label: "Commands", color: "brand" },
@@ -32,18 +33,30 @@ const CAPABILITY_LABELS: Record<string, { label: string; color: "informative" | 
 };
 
 function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Element {
-  const star = useBaseUrl("/img/Sparkle.svg");
   const communityLogo = useBaseUrl("/img/Community.svg");
   const msftLogo = useBaseUrl("/img/Microsoft.svg");
   const copyIcon = useBaseUrl("/img/Copy.svg");
 
   const isMsft = extension.tags.includes("msft");
   const headerLogo = isMsft ? msftLogo : communityLogo;
-  const headerText = isMsft ? "Microsoft Extension" : "Community Extension";
+  const headerText = isMsft ? "Microsoft Authored" : "Community Authored";
+
+  const installCommand = `azd ext install ${extension.id}`;
+  // For 3P (community) extensions, the user must first register the
+  // extension's registry as a source before `azd ext install` can resolve
+  // the id. Source name uses the id's first segment (e.g. `jongio` for
+  // `jongio.azd.app`). The visible Input still shows the single install
+  // line so the footer stays compact, but the copy button pastes both
+  // lines so the user can run them as a single sequence in their terminal.
+  const sourceName = extension.id.split(".")[0];
+  const clipboardCommand =
+    !isMsft && extension.registryUrl
+      ? `azd ext source add -t url -n ${sourceName} -l ${extension.registryUrl}\n${installCommand}`
+      : installCommand;
 
   const contentForAdobeAnalytics = JSON.stringify({
     id: extension.displayName,
-    cN: "Copy Button (azd extension install)",
+    cN: "Copy Button (azd ext install)",
   });
 
   return (
@@ -66,66 +79,19 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
               className={styleCSS.headerLogo}
             />
             <div className={styleCSS.headerText}>{headerText}</div>
-            {extension.tags.includes("new") ? (
-              <>
-                <img
-                  src={star}
-                  alt=""
-                  aria-hidden="true"
-                  width={16}
-                  height={16}
-                  style={{ paddingLeft: "10px" }}
-                />
-                <div className={styleCSS.newBadge}>
-                  New
-                </div>
-              </>
-            ) : null}
           </div>
         }
       />
       <CardPreview className={styleCSS.cardBreakLine} />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          position: "relative",
-          maxHeight: "inherit",
-        }}
-        className={styleCSS.cardBody}
-      >
+      <div className={styleCSS.cardBody}>
         <FluentUILink
           className={styleCSS.cardTitle}
-          href={extension.website || extension.source}
+          href={extension.source}
           target="_blank"
           rel="noopener noreferrer"
         >
           {extension.displayName}
         </FluentUILink>
-        <div style={{ display: "flex", gap: "8px", paddingTop: "4px" }}>
-          {extension.website && (
-            <FluentUILink
-              href={extension.website}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styleCSS.cardMetaLink}
-              title="Documentation website"
-            >
-              <Globe16Regular style={{ verticalAlign: "middle", marginRight: "2px" }} />
-              <span>Website</span>
-            </FluentUILink>
-          )}
-          <FluentUILink
-            href={extension.source}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styleCSS.cardMetaLink}
-            title="Source repository"
-          >
-            <Open16Regular style={{ verticalAlign: "middle", marginRight: "2px" }} />
-            <span>Source</span>
-          </FluentUILink>
-        </div>
         <div
           style={{
             verticalAlign: "middle",
@@ -133,50 +99,83 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
             paddingTop: "2px",
             alignItems: "center",
             columnGap: "3px",
+            overflow: "hidden",
           }}
         >
           <div className={styleCSS.cardTextBy}>by</div>
           <FluentUILink
+            className={styleCSS.authorLink}
             href={extension.authorUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className={styleCSS.authorLink}
+            style={{ fontSize: "12px", flexShrink: 0 }}
           >
             {extension.author}
           </FluentUILink>
-          <div className={styleCSS.versionBadge}>v{extension.latestVersion}</div>
+          {extension.website && (
+            <FluentUILink
+              href={extension.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styleCSS.cardMetaLink}
+              title="Documentation website"
+              style={{ fontSize: "12px", flexShrink: 0, marginLeft: "auto" }}
+            >
+              <Globe16Regular style={{ verticalAlign: "middle", marginRight: "2px" }} />
+              <span>Website</span>
+            </FluentUILink>
+          )}
         </div>
         <div className={styleCSS.cardDescription}>{extension.description}</div>
-        <div
-          style={{
-            paddingTop: "10px",
-            position: "absolute",
-            bottom: "0px",
-            width: "100%",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              overflow: "hidden",
-              gap: "4px",
-              flexFlow: "wrap",
-            }}
-          >
+        <div className={styleCSS.cardTagContainer}>
+          <div className={styleCSS.cardTagsWrapper}>
             {extension.capabilities.map((cap) => {
               const capInfo = CAPABILITY_LABELS[cap] || { label: cap, color: "informative" as const };
               return (
                 <Badge
-                  key={cap}
-                  appearance="tint"
+                  key={`cap-${cap}`}
+                  appearance="outline"
                   size="medium"
                   color={capInfo.color}
-                  style={{ fontSize: "10px" }}
+                  style={{
+                    alignContent: "center",
+                    fontSize: "10px",
+                    width: "auto",
+                  }}
                 >
                   {capInfo.label}
                 </Badge>
               );
             })}
+            {extension.tags
+              .filter(
+                (tag) =>
+                  tag !== "msft" &&
+                  tag !== "community" &&
+                  tag !== "new" &&
+                  tag !== "popular" &&
+                  tag !== "aicollection" &&
+                  Tags[tag] !== undefined,
+              )
+              .map((tag) => {
+                const tagInfo = Tags[tag];
+                return (
+                  <Badge
+                    key={`tag-${tag}`}
+                    appearance="outline"
+                    size="medium"
+                    color="informative"
+                    title={tagInfo.description}
+                    style={{
+                      alignContent: "center",
+                      fontSize: "10px",
+                      width: "auto",
+                    }}
+                  >
+                    {tagInfo.label}
+                  </Badge>
+                );
+              })}
           </div>
         </div>
       </div>
@@ -186,7 +185,8 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
           id={"input_" + extension.id}
           size="small"
           spellCheck={false}
-          defaultValue={extension.installCommand}
+          readOnly
+          defaultValue={installCommand}
           className={styleCSS.input}
           aria-label={`Install command for ${extension.displayName}`}
         />
@@ -197,7 +197,7 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
               className={styleCSS.copyIconButton}
               aria-label={`Copy install command for ${extension.displayName}`}
               onClick={() => {
-                navigator.clipboard.writeText(extension.installCommand);
+                navigator.clipboard.writeText(clipboardCommand);
               }}
               data-m={contentForAdobeAnalytics}
             >

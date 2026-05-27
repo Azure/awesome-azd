@@ -195,10 +195,42 @@ function TerminalDemo() {
   return (
     <div className={styles.terminal}>
       <div className={styles.terminalTitlebar}>
-        <span className={`${styles.terminalDot} ${styles.dotRed}`} />
-        <span className={`${styles.terminalDot} ${styles.dotYellow}`} />
-        <span className={`${styles.terminalDot} ${styles.dotGreen}`} />
-        <span className={styles.terminalTitle}>Terminal</span>
+        <div className={styles.terminalTab}>
+          <svg
+            className={styles.terminalTabIcon}
+            viewBox="0 0 16 16"
+            aria-hidden="true"
+          >
+            <path
+              d="M2 2.5A1.5 1.5 0 0 1 3.5 1h9A1.5 1.5 0 0 1 14 2.5v11a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5v-11Zm1.5-.5a.5.5 0 0 0-.5.5v11a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-11a.5.5 0 0 0-.5-.5h-9Z"
+              fill="currentColor"
+            />
+            <path
+              d="M4.65 5.1a.5.5 0 0 1 .7-.05l3 2.5a.5.5 0 0 1 0 .77l-3 2.5a.5.5 0 1 1-.64-.77L7.22 7.93 4.7 5.83a.5.5 0 0 1-.05-.73ZM8.5 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1H9a.5.5 0 0 1-.5-.5Z"
+              fill="currentColor"
+            />
+          </svg>
+          <span className={styles.terminalTabLabel}>PowerShell</span>
+          <span className={styles.terminalTabClose} aria-hidden="true">
+            ✕
+          </span>
+        </div>
+        <span className={styles.terminalNewTab} aria-hidden="true">
+          +
+        </span>
+        <span className={styles.terminalTabSpace} />
+        <span className={styles.terminalWinBtn} aria-hidden="true">
+          &#x2014;
+        </span>
+        <span className={styles.terminalWinBtn} aria-hidden="true">
+          &#x25A1;
+        </span>
+        <span
+          className={`${styles.terminalWinBtn} ${styles.terminalWinClose}`}
+          aria-hidden="true"
+        >
+          &#x2715;
+        </span>
       </div>
       <div className={styles.terminalBody}>
         <div>
@@ -207,23 +239,28 @@ function TerminalDemo() {
             azd init -t todo-nodejs-mongo
           </span>
         </div>
+        <div className={styles.output}>Initializing an app to run on Azure...</div>
         <div className={styles.output}>Downloading template...</div>
-        <div className={styles.success}>✔ Project initialized successfully</div>
+        <div className={styles.success}>SUCCESS: New project initialized!</div>
         <br />
         <div>
           <span className={styles.prompt}>$</span>{" "}
           <span className={styles.termCmd}>azd up</span>
         </div>
-        <div className={styles.output}>Packaging app...</div>
         <div className={styles.output}>
-          Provisioning Azure resources (appservice, cosmosdb)...
+          Provisioning Azure resources...
         </div>
-        <div className={styles.output}>Deploying to Azure...</div>
-        <br />
-        <div className={styles.success}>✔ Successfully deployed to Azure!</div>
+        <div className={styles.output}>Deploying services...</div>
         <div className={styles.success}>
-          {"  "}Endpoint:{" "}
-          <span className={styles.url}>https://my-app.azurewebsites.net</span>
+          {"  "}(✓) Done:{" "}
+          <span className={styles.termText}>Deploying service api</span>
+        </div>
+        <div className={styles.termText}>
+          {"  "}- Endpoint:{" "}
+          <span className={styles.url}>https://my-app.azurewebsites.net/</span>
+        </div>
+        <div className={styles.success}>
+          SUCCESS: Your application was provisioned and deployed to Azure.
         </div>
         <br />
         <div>

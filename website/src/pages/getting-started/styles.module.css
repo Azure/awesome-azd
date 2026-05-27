@@ -543,39 +543,107 @@
 }
 
 .terminalTitlebar {
-  padding: 12px 16px;
   display: flex;
-  align-items: center;
-  gap: 8px;
+  align-items: stretch;
+  gap: 0;
+  padding: 0;
+  padding-left: 6px;
+  height: 32px;
   background: var(--gs-terminal-titlebar-bg);
   border-bottom: 1px solid var(--gs-terminal-titlebar-border);
-}
-
-.terminalDot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.dotRed {
-  background: #ef4444;
-}
-
-.dotYellow {
-  background: #f59e0b;
-}
-
-.dotGreen {
-  background: #22c55e;
-}
-
-.terminalTitle {
-  flex: 1;
-  text-align: center;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
   font-size: 0.75rem;
+}
+
+.terminalTab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 28px;
+  margin-top: 4px;
+  padding: 0 10px 0 12px;
+  min-width: 160px;
+  max-width: 220px;
+  background: var(--gs-terminal-surface);
+  color: var(--gs-terminal-text);
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  position: relative;
+}
+
+.terminalTab::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  top: 0;
+  height: 2px;
+  background: var(--gs-terminal-accent);
+  border-radius: 2px;
+}
+
+.terminalTabIcon {
+  width: 14px;
+  height: 14px;
+  color: var(--gs-terminal-accent);
+  flex-shrink: 0;
+}
+
+.terminalTabLabel {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 400;
+}
+
+.terminalTabClose {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  font-size: 10px;
   color: var(--gs-terminal-muted);
-  font-family: var(--ifm-font-family-base);
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.terminalNewTab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin-top: 4px;
+  margin-left: 2px;
+  color: var(--gs-terminal-muted);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1;
+  border-radius: 4px;
+}
+
+.terminalTabSpace {
+  flex: 1;
+}
+
+.terminalWinBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 32px;
+  color: var(--gs-terminal-text);
+  font-size: 10px;
+  line-height: 1;
+  font-family: "Segoe MDL2 Assets", "Segoe Fluent Icons", "Segoe UI Symbol",
+    system-ui, sans-serif;
+}
+
+.terminalWinClose {
+  /* Decorative only — kept neutral; close-button red is reserved for real
+     hover states which this static mockup doesn't support. */
 }
 
 .terminalBody {
@@ -602,6 +670,10 @@
 
 .success {
   color: var(--gs-terminal-success);
+}
+
+.termText {
+  color: var(--gs-terminal-text);
 }
 
 .url {

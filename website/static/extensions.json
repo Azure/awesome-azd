@@ -2,7 +2,7 @@
   {
     "id": "jongio.azd.app",
     "namespace": "app",
-    "displayName": "App Extension",
+    "displayName": "App",
     "description": "A collection of developer productivity commands for Azure Developer CLI. Run, test, monitor, and manage all project services locally.",
     "author": "Jon Gallant",
     "authorUrl": "https://github.com/jongio",
@@ -60,7 +60,7 @@
   {
     "id": "jongio.azd.rest",
     "namespace": "rest",
-    "displayName": "REST API Extension",
+    "displayName": "REST API",
     "description": "Execute REST API calls with automatic Azure authentication and scope detection. Supports Azure Management, Key Vault, Microsoft Graph, and custom APIs.",
     "author": "Jon Gallant",
     "authorUrl": "https://github.com/jongio",

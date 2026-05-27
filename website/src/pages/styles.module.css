@@ -195,8 +195,8 @@
 }
 
 [data-theme="dark"] .contentTypeToggleActive:hover {
-  background-color: #0369A1 !important;
-  border-color: #0369A1 !important;
+  background-color: #005A8D !important;
+  border-color: #005A8D !important;
 }
 
 @media screen and (max-width: 996px) {

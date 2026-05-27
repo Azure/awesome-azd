@@ -564,6 +564,7 @@ export default function ShowcaseCardPage({
           checked={!isExtensions}
           onClick={() => setContentType("templates")}
           aria-label="Switch to templates view"
+          aria-pressed={!isExtensions}
         >
           Templates
         </ToggleButton>
@@ -574,6 +575,7 @@ export default function ShowcaseCardPage({
           checked={isExtensions}
           onClick={() => setContentType("extensions")}
           aria-label="Switch to extensions view"
+          aria-pressed={isExtensions}
         >
           Extensions
         </ToggleButton>

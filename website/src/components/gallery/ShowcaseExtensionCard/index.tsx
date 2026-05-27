@@ -23,13 +23,13 @@ import {
 } from "@fluentui/react-components";
 import { Globe16Regular } from "@fluentui/react-icons";
 
-const CAPABILITY_LABELS: Record<string, { label: string }> = {
-  "custom-commands": { label: "Commands" },
-  "lifecycle-events": { label: "Lifecycle" },
-  "mcp-server": { label: "MCP" },
-  "service-target-provider": { label: "Service Target" },
-  "framework-service-provider": { label: "Framework" },
-  "metadata": { label: "Metadata" },
+const CAPABILITY_LABELS: Record<string, { label: string; color: "informative" | "success" | "warning" | "important" | "brand" }> = {
+  "custom-commands": { label: "Commands", color: "brand" },
+  "lifecycle-events": { label: "Lifecycle", color: "success" },
+  "mcp-server": { label: "MCP", color: "important" },
+  "service-target-provider": { label: "Service Target", color: "warning" },
+  "framework-service-provider": { label: "Framework", color: "warning" },
+  "metadata": { label: "Metadata", color: "informative" },
 };
 
 function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Element {
@@ -117,13 +117,13 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
         <div className={styleCSS.cardTagContainer}>
           <div className={styleCSS.cardTagsWrapper}>
             {extension.capabilities.map((cap) => {
-              const capInfo = CAPABILITY_LABELS[cap] || { label: cap };
+              const capInfo = CAPABILITY_LABELS[cap] || { label: cap, color: "informative" as const };
               return (
                 <Badge
                   key={`cap-${cap}`}
                   appearance="outline"
                   size="medium"
-                  color="informative"
+                  color={capInfo.color}
                   style={{
                     alignContent: "center",
                     fontSize: "10px",

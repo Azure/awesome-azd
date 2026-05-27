@@ -80,6 +80,7 @@
 
 [data-theme="dark"] .authorLink {
   color: var(--site-color-text-muted) !important;
+  text-decoration: underline !important;
 }
 
 [data-theme="dark"] .authorLink:hover {

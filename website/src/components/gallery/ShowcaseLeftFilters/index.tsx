@@ -20,6 +20,7 @@ import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
 import { useHistory } from "@docusaurus/router";
 import { prepareUserState } from "@site/src/pages/index";
+import { getContentType } from "@site/src/utils/contentType";
 
 function ShowcaseFilterViewAll({
   tags,
@@ -201,7 +202,7 @@ export default function ShowcaseLeftFilters({
 }) {
   const sortTagList = TagList.sort();
   const searchParams = new URLSearchParams(location.search);
-  const isExtensions = searchParams.get("type") === "extensions";
+  const isExtensions = getContentType(location) === "extensions";
   
   // Compute template counts per tag for display
   const tagCounts = React.useMemo(() => {

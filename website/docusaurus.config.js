@@ -113,6 +113,11 @@ const config = {
             position: "left",
           },
           {
+            to: "/extensions",
+            label: "Extensions",
+            position: "left",
+          },
+          {
             type: "dropdown",
             label: "Services",
             position: "left",

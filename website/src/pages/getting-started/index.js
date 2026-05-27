@@ -82,8 +82,34 @@ const HERO_INSTALL_CMDS = {
   linux: "curl -fsSL https://aka.ms/install-azd.sh | bash",
 };
 
+// Detect the visitor's OS so the hero install command defaults to the right
+// platform. On mobile devices we always default to Windows since the install
+// commands are desktop-only anyway. Runs only on the client (guarded by an
+// effect) so SSR output stays stable on "windows".
+function detectInstallOs() {
+  if (typeof navigator === "undefined") return "windows";
+  const ua = navigator.userAgent || "";
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
+  if (isMobile) return "windows";
+  // The UA string is the most explicit and observable OS signal and matches
+  // the host OS for real visitors. Check it first, falling back to the
+  // platform APIs only if the UA has no recognizable hint.
+  if (/mac/i.test(ua)) return "mac";
+  if (/linux/i.test(ua)) return "linux";
+  if (/win/i.test(ua)) return "windows";
+  const uaPlatform =
+    (navigator.userAgentData && navigator.userAgentData.platform) || "";
+  const platform = (uaPlatform || navigator.platform || "").toLowerCase();
+  if (platform.includes("mac")) return "mac";
+  if (platform.includes("linux")) return "linux";
+  return "windows";
+}
+
 function HeroSection({ browseUrl }) {
   const [os, setOs] = useState("windows");
+  useEffect(() => {
+    setOs(detectInstallOs());
+  }, []);
   const cmd = HERO_INSTALL_CMDS[os];
   return (
     <header className={styles.hero}>
@@ -178,7 +204,7 @@ function TerminalDemo() {
         <div>
           <span className={styles.prompt}>$</span>{" "}
           <span className={styles.termCmd}>
-            azd init --template todo-nodejs-mongo
+            azd init -t todo-nodejs-mongo
           </span>
         </div>
         <div className={styles.output}>Downloading template...</div>
@@ -263,7 +289,7 @@ const STEPS = [
     title: "Pick a template",
     description:
       "Browse 300+ templates. This one creates a full-stack Node.js + Cosmos DB app.",
-    command: "azd init --template todo-nodejs-mongo",
+    command: "azd init -t todo-nodejs-mongo",
   },
   {
     number: "2",
@@ -309,7 +335,7 @@ const TEMPLATES = [
     title: "React Web App + Node.js API + MongoDB",
     description:
       "Full-stack JavaScript app with React frontend, Node.js API, and Azure Cosmos DB.",
-    command: "azd init --template todo-nodejs-mongo",
+    command: "azd init -t todo-nodejs-mongo",
     source: "https://github.com/Azure-Samples/todo-nodejs-mongo",
     tags: ["JavaScript", "React", "Cosmos DB"],
   },
@@ -317,7 +343,7 @@ const TEMPLATES = [
     title: "AI Chat App with Python",
     description:
       "Use Azure OpenAI GPT models to build an AI-powered chat application.",
-    command: "azd init --template openai-chat-app-quickstart",
+    command: "azd init -t openai-chat-app-quickstart",
     source: "https://github.com/Azure-Samples/openai-chat-app-quickstart",
     tags: ["Python", "Azure OpenAI", "AI"],
   },
@@ -325,7 +351,7 @@ const TEMPLATES = [
     title: "Containerized App on Azure",
     description:
       "Deploy a container app with Azure Container Apps, Key Vault, and monitoring.",
-    command: "azd init --template todo-python-mongo-aca",
+    command: "azd init -t todo-python-mongo-aca",
     source: "https://github.com/Azure-Samples/todo-python-mongo-aca",
     tags: ["Python", "Container Apps", "Cosmos DB"],
   },
@@ -342,14 +368,17 @@ function FeaturedTemplates({ browseUrl }) {
         </p>
         <div className={styles.templatesGrid}>
           {TEMPLATES.map((tmpl) => (
-            <a
-              key={tmpl.title}
-              href={tmpl.source}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.templateCard}
-            >
-              <h3 className={styles.templateTitle}>{tmpl.title}</h3>
+            <div key={tmpl.title} className={styles.templateCard}>
+              <h3 className={styles.templateTitle}>
+                <a
+                  href={tmpl.source}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.templateTitleLink}
+                >
+                  {tmpl.title}
+                </a>
+              </h3>
               <p className={styles.templateDesc}>{tmpl.description}</p>
               <div className={styles.stepCmd}>
                 <code>{tmpl.command}</code>
@@ -362,7 +391,7 @@ function FeaturedTemplates({ browseUrl }) {
                   </span>
                 ))}
               </div>
-            </a>
+            </div>
           ))}
         </div>
         <div className={styles.templatesCta}>

@@ -699,7 +699,7 @@
   justify-content: space-between;
   gap: 8px;
   margin-top: auto;
-  word-break: break-all;
+  overflow-x: auto;
 }
 
 .stepCmd code {
@@ -708,6 +708,10 @@
   padding: 0;
   border: 0;
   font-size: inherit;
+  user-select: text;
+  -webkit-user-select: text;
+  cursor: text;
+  white-space: nowrap;
 }
 
 [data-theme="dark"] .stepCmd {
@@ -755,11 +759,15 @@
   border-bottom: 1px solid var(--site-color-border);
 }
 
+.templatesSection .container {
+  max-width: 1280px;
+}
+
 .templatesGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   gap: 1.25rem;
-  max-width: 1000px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -772,23 +780,13 @@
   flex-direction: column;
   gap: 12px;
   transition: border-color var(--transition-base),
-    box-shadow var(--transition-base), transform var(--transition-fast);
-  text-decoration: none;
-  color: inherit;
+    box-shadow var(--transition-base);
 }
 
 .templateCard:hover,
-.templateCard:focus-visible {
+.templateCard:focus-within {
   border-color: var(--ifm-color-primary);
   box-shadow: var(--gs-shadow-md);
-  transform: translateY(-2px);
-  text-decoration: none;
-  color: inherit;
-}
-
-.templateCard:focus-visible {
-  outline: 2px solid var(--ifm-color-primary);
-  outline-offset: 2px;
 }
 
 [data-theme="dark"] .templateCard {
@@ -801,6 +799,24 @@
   font-family: var(--ifm-heading-font-family);
   margin: 0;
   color: var(--site-color-text);
+}
+
+.templateTitleLink {
+  color: inherit;
+  text-decoration: none;
+}
+
+.templateTitleLink:hover,
+.templateTitleLink:focus-visible {
+  color: var(--ifm-color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.templateTitleLink:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 .templateDesc {

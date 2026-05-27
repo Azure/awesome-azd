@@ -246,7 +246,7 @@ export default function ShowcaseTemplateSearch() {
                   <Text size={300} className={styles.heroSubtext} block>
                     Extensions add new commands, lifecycle hooks, and capabilities to azd.{" "}
                     <FluentUILink
-                      href="https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/extensions/overview"
+                      href="https://learn.microsoft.com/azure/developer/azure-developer-cli/extensions/overview"
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{ paddingLeft: "3px" }}

@@ -12,6 +12,13 @@
 
 .cardAuthorPanel {
   color: var(--ifm-color-primary) !important;
+  text-decoration: underline !important;
+  text-underline-offset: 2px;
+}
+
+.cardAuthorPanel:hover,
+.cardAuthorPanel:focus-visible {
+  text-decoration-thickness: 2px !important;
 }
 
 .cardAuthor:hover {

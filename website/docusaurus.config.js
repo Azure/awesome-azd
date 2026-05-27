@@ -17,7 +17,7 @@ const config = {
   },
 
   // CONFIG: Landing Pages uses this (also globally via siteConfig)
-  title: "Awesome Azure Developer CLI",
+  title: "Azure Developer CLI",
   tagline: "Discover - Create - Contribute",
 
   // CONIFIG: Used for GitHub Pages
@@ -97,9 +97,9 @@ const config = {
       // CONFIG: navbar logo, items, style, stickiness
       //    See: https://docusaurus.io/docs/next/api/themes/configuration#navbar
       navbar: {
-        title: "awesome-azd",
+        title: "Azure Developer CLI",
         logo: {
-          alt: "Awesome Azd logo",
+          alt: "Azure Developer CLI logo",
           src: "img/logo.png",
           href: "/",
           target: "_self",
@@ -108,24 +108,8 @@ const config = {
         },
         items: [
           {
-            to: "/getting-started",
-            label: "Getting Started",
-            position: "left",
-          },
-          {
-            label: "Contribute",
-            position: "left",
-            type: "doc",
-            docId: "contribute",
-          },
-          {
-            to: "https://aka.ms/azd",
-            label: "Docs",
-            position: "left",
-          },
-          {
-            to: "https://learn.microsoft.com/azure/architecture/browse/",
-            label: "Resources",
+            to: "/templates",
+            label: "Templates",
             position: "left",
           },
           {
@@ -142,6 +126,22 @@ const config = {
                 label: "Azure Functions",
               },
             ],
+          },
+          {
+            label: "Contribute",
+            position: "left",
+            type: "doc",
+            docId: "contribute",
+          },
+          {
+            to: "https://aka.ms/azd",
+            label: "Docs",
+            position: "left",
+          },
+          {
+            to: "https://learn.microsoft.com/azure/architecture/browse/",
+            label: "Resources",
+            position: "left",
           },
 
           // right

@@ -83,7 +83,6 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
   ];
   const source = user.source;
   const star = useBaseUrl("/img/Sparkle.svg");
-  const fire = useBaseUrl("/img/Fire.svg");
   let azdInitCommand =
     "azd init -t " + source.replace("https://github.com/", "").toLowerCase();
   if (azdInitCommand.includes("azure-samples/")) {
@@ -130,24 +129,8 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
                   alt="Star"
                   width={16}
                   height={16}
-                  style={{ paddingLeft: "10px" }}
                 />
                 <div className={styleCSS.newBadge}>New</div>
-              </>
-            ) : null}
-
-            {tags.includes("popular") ? (
-              <>
-                <img
-                  src={fire}
-                  alt="Fire"
-                  width={16}
-                  height={16}
-                  style={{ paddingLeft: "10px" }}
-                />
-                <div style={{ color: "#F7630C", fontSize: "10px" }}>
-                  Popular
-                </div>
               </>
             ) : null}
           </div>
@@ -186,34 +169,13 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
                 <img
                   src={star}
                   alt="Star"
-                  width={16}
+                 width={16}
                   height={16}
-                  style={{ paddingLeft: "10px" }}
                 />
                 <div
                   className={styleCSS.newBadge}
                 >
                   New
-                </div>
-              </>
-            ) : null}
-            {tags.includes("popular") ? (
-              <>
-                <img
-                  src={fire}
-                  alt="Fire"
-                  width={16}
-                  height={16}
-                  style={{ paddingLeft: "10px" }}
-                />
-                <div
-                  style={{
-                    color: "#F7630C",
-                    fontWeight: "600",
-                    fontSize: "10px",
-                  }}
-                >
-                  Popular
                 </div>
               </>
             ) : null}

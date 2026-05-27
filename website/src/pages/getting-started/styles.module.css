@@ -154,25 +154,6 @@
   color: var(--ifm-color-primary);
 }
 
-.heroBadgeDot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--ifm-color-primary);
-  display: inline-block;
-  animation: gs-pulse-dot 2s ease-in-out infinite;
-}
-
-@keyframes gs-pulse-dot {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.4;
-  }
-}
-
 .heroTitle {
   font-size: clamp(2.5rem, 5vw, 3.75rem);
   font-weight: 800;
@@ -979,13 +960,5 @@
   .templatesSection,
   .faqSection {
     padding: var(--space-2xl) 0;
-  }
-}
-
-/* Respect reduced motion preference */
-@media (prefers-reduced-motion: reduce) {
-  .heroBadgeDot,
-  .terminalCursor {
-    animation: none;
   }
 }

@@ -499,7 +499,7 @@ function Faq() {
 /* ─────────── Page ─────────── */
 export default function GettingStarted() {
   const { siteConfig } = useDocusaurusContext();
-  const browseUrl = useBaseUrl("/");
+  const browseUrl = useBaseUrl("/templates");
   return (
     <Layout
       title={`Get Started with ${siteConfig.title}`}

@@ -851,7 +851,6 @@
       "gpt",
       "ai",
       "msft",
-      "popular",
       "aicollection"
     ],
     "languages": [
@@ -881,7 +880,6 @@
     "tags": [
       "ai",
       "msft",
-      "popular",
       "aicollection",
       "gpt"
     ],
@@ -913,7 +911,6 @@
     "tags": [
       "ai",
       "msft",
-      "popular",
       "aicollection"
     ],
     "languages": [
@@ -939,8 +936,7 @@
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/fastapi-on-azure-functions",
     "tags": [
-      "msft",
-      "popular"
+      "msft"
     ],
     "languages": [
       "python"
@@ -2191,8 +2187,7 @@
     "author": "Chris Meagher",
     "source": "https://github.com/CMeeg/remix-aca",
     "tags": [
-      "community",
-      "popular"
+      "community"
     ],
     "languages": [
       "typescript",
@@ -3051,8 +3046,7 @@
     "source": "https://github.com/Azure-Samples/azure-openai-chat-frontend",
     "tags": [
       "aicollection",
-      "msft",
-      "popular"
+      "msft"
     ],
     "languages": [
       "javascript",
@@ -4857,8 +4851,7 @@
     "tags": [
       "msft",
       "ai",
-      "mcp",
-      "popular"
+      "mcp"
     ],
     "languages": [
       "dotnetCsharp"

@@ -10,8 +10,8 @@ import BrowserOnly from "@docusaurus/BrowserOnly";
 import { useColorMode } from "@docusaurus/theme-common";
 import {
   FluentProvider,
-  teamsLightTheme,
-  teamsDarkTheme,
+  webLightTheme,
+  webDarkTheme,
 } from "@fluentui/react-components";
 import { galleryTemplates as allTemplates } from "@site/src/data/users";
 import styles from "./styles.module.css";
@@ -47,7 +47,7 @@ function TemplateCard({ template }: { template: any }) {
 function FluentWrapper({ children }: { children: React.ReactNode }) {
   const { colorMode } = useColorMode();
   return (
-    <FluentProvider theme={colorMode === "dark" ? teamsDarkTheme : teamsLightTheme}>
+    <FluentProvider theme={colorMode === "dark" ? webDarkTheme : webLightTheme}>
       {children}
     </FluentProvider>
   );
@@ -55,7 +55,7 @@ function FluentWrapper({ children }: { children: React.ReactNode }) {
 
 function ServicePageContent({ config }: { config: ServicePageConfig }) {
   const icon = useBaseUrl(config.icon);
-  const baseUrl = useBaseUrl("/");
+  const baseUrl = useBaseUrl("/templates");
 
   const filteredTemplates = useMemo(() => {
     return allTemplates.filter(

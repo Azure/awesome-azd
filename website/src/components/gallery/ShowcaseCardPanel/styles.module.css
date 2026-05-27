@@ -55,6 +55,13 @@
 
 .color {
   color: var(--ifm-color-primary) !important;
+  text-decoration: underline !important;
+  text-underline-offset: 2px;
+}
+
+.color:hover,
+.color:focus-visible {
+  text-decoration-thickness: 2px !important;
 }
 
 .purple {
@@ -108,8 +115,8 @@
 }
 
 [data-theme="dark"] .terminalSquareTopColor {
-  background-color: #404040;
-  border: 1px solid #3d3d3d;
+  background-color: #757575;
+  border: 1px solid #5a5a5a;
 }
 
 [data-theme="dark"] .terminalSquareBottomColor {

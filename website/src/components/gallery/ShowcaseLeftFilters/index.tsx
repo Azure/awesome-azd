@@ -239,7 +239,7 @@ export default function ShowcaseLeftFilters({
     [tagCounts, selectedTags],
   );
 
-  // Uncategorized tags (msft, community, new, popular, aicollection) are
+  // Uncategorized tags (msft, community, new, aicollection) are
   // curated/featured collections and are intentionally not run through
   // applyMinCountThreshold — they should always remain discoverable
   // regardless of how many templates currently carry them.

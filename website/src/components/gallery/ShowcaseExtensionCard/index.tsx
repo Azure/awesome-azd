@@ -41,9 +41,22 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
   const headerLogo = isMsft ? msftLogo : communityLogo;
   const headerText = isMsft ? "Microsoft Authored" : "Community Authored";
 
+  const installCommand = `azd ext install ${extension.id}`;
+  // For 3P (community) extensions, the user must first register the
+  // extension's registry as a source before `azd ext install` can resolve
+  // the id. Source name uses the id's first segment (e.g. `jongio` for
+  // `jongio.azd.app`). The visible Input still shows the single install
+  // line so the footer stays compact, but the copy button pastes both
+  // lines so the user can run them as a single sequence in their terminal.
+  const sourceName = extension.id.split(".")[0];
+  const clipboardCommand =
+    !isMsft && extension.registryUrl
+      ? `azd ext source add -t url -n ${sourceName} -l ${extension.registryUrl}\n${installCommand}`
+      : installCommand;
+
   const contentForAdobeAnalytics = JSON.stringify({
     id: extension.displayName,
-    cN: "Copy Button (azd extension install)",
+    cN: "Copy Button (azd ext install)",
   });
 
   return (
@@ -172,7 +185,8 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
           id={"input_" + extension.id}
           size="small"
           spellCheck={false}
-          defaultValue={extension.installCommand}
+          readOnly
+          defaultValue={installCommand}
           className={styleCSS.input}
           aria-label={`Install command for ${extension.displayName}`}
         />
@@ -183,7 +197,7 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
               className={styleCSS.copyIconButton}
               aria-label={`Copy install command for ${extension.displayName}`}
               onClick={() => {
-                navigator.clipboard.writeText(extension.installCommand);
+                navigator.clipboard.writeText(clipboardCommand);
               }}
               data-m={contentForAdobeAnalytics}
             >

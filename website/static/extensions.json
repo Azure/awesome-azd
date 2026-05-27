@@ -25,8 +25,7 @@
     "tags": [
       "community"
     ],
-    "website": "https://jongio.github.io/azd-app",
-    "installCommand": "azd extension install jongio.azd.app"
+    "website": "https://jongio.github.io/azd-app"
   },
   {
     "id": "jongio.azd.copilot",
@@ -56,8 +55,7 @@
       "community",
       "ai"
     ],
-    "website": "https://jongio.github.io/azd-copilot",
-    "installCommand": "azd extension install jongio.azd.copilot"
+    "website": "https://jongio.github.io/azd-copilot"
   },
   {
     "id": "jongio.azd.rest",
@@ -86,8 +84,7 @@
     "tags": [
       "community"
     ],
-    "website": "https://jongio.github.io/azd-rest",
-    "installCommand": "azd extension install jongio.azd.rest"
+    "website": "https://jongio.github.io/azd-rest"
   },
   {
     "id": "microsoft.azd.demo",
@@ -117,8 +114,7 @@
     ],
     "tags": [
       "msft"
-    ],
-    "installCommand": "azd extension install microsoft.azd.demo"
+    ]
   },
   {
     "id": "microsoft.azd.extensions",
@@ -144,8 +140,7 @@
     ],
     "tags": [
       "msft"
-    ],
-    "installCommand": "azd extension install microsoft.azd.extensions"
+    ]
   },
   {
     "id": "azure.coding-agent",
@@ -172,8 +167,7 @@
     "tags": [
       "msft",
       "ai"
-    ],
-    "installCommand": "azd extension install azure.coding-agent"
+    ]
   },
   {
     "id": "azure.ai.agents",
@@ -204,8 +198,7 @@
       "msft",
       "ai",
       "aifoundry"
-    ],
-    "installCommand": "azd extension install azure.ai.agents"
+    ]
   },
   {
     "id": "microsoft.azd.concurx",
@@ -231,8 +224,7 @@
     ],
     "tags": [
       "msft"
-    ],
-    "installCommand": "azd extension install microsoft.azd.concurx"
+    ]
   },
   {
     "id": "azure.ai.finetune",
@@ -260,8 +252,7 @@
       "msft",
       "ai",
       "aifoundry"
-    ],
-    "installCommand": "azd extension install azure.ai.finetune"
+    ]
   },
   {
     "id": "azure.ai.models",
@@ -289,8 +280,7 @@
       "msft",
       "ai",
       "aifoundry"
-    ],
-    "installCommand": "azd extension install azure.ai.models"
+    ]
   },
   {
     "id": "azure.appservice",
@@ -317,8 +307,7 @@
     "tags": [
       "msft",
       "appservice"
-    ],
-    "installCommand": "azd extension install azure.appservice"
+    ]
   },
   {
     "id": "azure.ai.inspector",
@@ -346,7 +335,6 @@
       "msft",
       "ai",
       "aifoundry"
-    ],
-    "installCommand": "azd extension install azure.ai.inspector"
+    ]
   }
 ]

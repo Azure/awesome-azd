@@ -7,10 +7,12 @@ import { sortBy } from '../utils/jsUtils';
 import { type Extension } from './extensionTypes';
 import extensionsData from '../../static/extensions.json';
 
-// SECURITY: Regex for safe installCommand values - only allow alphanumeric,
-// dots, hyphens, underscores, forward slashes, at-signs, and spaces.
-// Shell metacharacters (;|&$`\) are rejected to prevent command injection.
-const SAFE_INSTALL_CMD = /^[a-zA-Z0-9.\-_/@ ]+$/;
+// SECURITY: Regex for safe extension ids — only allow alphanumeric, dots,
+// hyphens, underscores, and at-signs. Ids are used to build the rendered
+// `azd ext install <id>` command displayed on cards, so they must reject
+// shell metacharacters (;|&$`\) and whitespace to prevent command injection
+// if a user copy-pastes the rendered text into a terminal.
+const SAFE_EXTENSION_ID = /^[a-zA-Z0-9.\-_@]+$/;
 
 function validateExtensions(raw: unknown): Extension[] {
   if (!Array.isArray(raw)) {
@@ -29,21 +31,16 @@ function validateExtensions(raw: unknown): Extension[] {
       console.warn(`Extension[${i}]: missing or invalid 'id', skipping`);
       return false;
     }
+    if (!SAFE_EXTENSION_ID.test(id)) {
+      console.warn(`Extension[${i}]: unsafe characters in 'id', skipping`);
+      return false;
+    }
     if (typeof displayName !== 'string' || !displayName) {
       console.warn(`Extension[${i}]: missing or invalid 'displayName', skipping`);
       return false;
     }
     if (typeof description !== 'string' || !description) {
       console.warn(`Extension[${i}]: missing or invalid 'description', skipping`);
-      return false;
-    }
-    const installCommand = entry.installCommand;
-    if (typeof installCommand !== 'string' || !installCommand) {
-      console.warn(`Extension[${i}]: missing or invalid 'installCommand', skipping`);
-      return false;
-    }
-    if (!SAFE_INSTALL_CMD.test(installCommand)) {
-      console.warn(`Extension[${i}]: unsafe characters in 'installCommand', skipping`);
       return false;
     }
     // Validate remaining required string fields (coerce missing to defaults)

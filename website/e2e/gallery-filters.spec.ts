@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test.describe("Gallery Filtering", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("./");
+    await page.goto("templates");
   });
 
   test("filter panel is visible with category headings", async ({ page }) => {

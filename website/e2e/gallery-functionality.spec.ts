@@ -6,7 +6,7 @@ import { test, expect } from "@playwright/test";
 // status text, since the rendered `.fui-Card` count is capped by pagination.
 test.describe("Gallery functionality (deploy gate)", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("./");
+    await page.goto("templates");
     await page.waitForLoadState("networkidle");
     await page.waitForSelector(".fui-Card", { timeout: 15_000 });
   });

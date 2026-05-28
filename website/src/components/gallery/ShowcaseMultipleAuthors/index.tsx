@@ -6,13 +6,7 @@
 import React from "react";
 import styles from "./styles.module.css";
 import { type User } from "../../../data/tags";
-import {
-  makeStyles,
-  Link as FluentUILink,
-  Text,
-} from "@fluentui/react-components";
-import useBaseUrl from "@docusaurus/useBaseUrl";
-import { useColorMode } from "@docusaurus/theme-common";
+import { Link as FluentUILink } from "@fluentui/react-components";
 
 function ShowcaseMultipleWebsites(
   key: number,
@@ -20,8 +14,7 @@ function ShowcaseMultipleWebsites(
   websiteLink: string,
   length: number,
   i: number,
-  cardPanel: boolean,
-  colorMode: string
+  cardPanel: boolean
 ) {
   if (i != length - 1) {
     return cardPanel ? (
@@ -40,21 +33,7 @@ function ShowcaseMultipleWebsites(
           flexShrink: 0,
         }}
       >
-        {authorName}
-        {colorMode != "dark" ? (
-          <img
-            src={useBaseUrl("/img/redirect.svg")}
-            alt="Redirect"
-            height={13}
-          />
-        ) : (
-          <img
-            src={useBaseUrl("/img/redirectDark.svg")}
-            alt="Redirect"
-            height={13}
-          />
-        )}
-        ,
+        {authorName},
       </FluentUILink>
     ) : (
       <FluentUILink
@@ -86,19 +65,6 @@ function ShowcaseMultipleWebsites(
         }}
       >
         {authorName}
-        {colorMode != "dark" ? (
-          <img
-            src={useBaseUrl("/img/redirect.svg")}
-            alt="Redirect"
-            height={13}
-          />
-        ) : (
-          <img
-            src={useBaseUrl("/img/redirectDark.svg")}
-            alt="Redirect"
-            height={13}
-          />
-        )}
       </FluentUILink>
     ) : (
       <FluentUILink
@@ -122,7 +88,6 @@ export default function ShowcaseMultipleAuthors({
   user: User;
   cardPanel: boolean;
 }) {
-  const { colorMode } = useColorMode();
   const authors = user.author;
   const websites = user.authorUrl;
   let i = 0;
@@ -143,8 +108,7 @@ export default function ShowcaseMultipleAuthors({
         multiWebsites[index],
         multiWebsites.length,
         i++,
-        cardPanel,
-        colorMode
+        cardPanel
       );
     });
   }
@@ -165,15 +129,6 @@ export default function ShowcaseMultipleAuthors({
       }}
     >
       {authors}
-      {colorMode != "dark" ? (
-        <img src={useBaseUrl("/img/redirect.svg")} alt="Redirect" height={13} />
-      ) : (
-        <img
-          src={useBaseUrl("/img/redirectDark.svg")}
-          alt="Redirect"
-          height={13}
-        />
-      )}
     </FluentUILink>
   ) : (
     <FluentUILink

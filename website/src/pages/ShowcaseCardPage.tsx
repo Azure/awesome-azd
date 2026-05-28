@@ -20,7 +20,6 @@ import {
   Badge,
   Body1,
   Button,
-  ToggleButton,
 } from "@fluentui/react-components";
 import ShowcaseCards from "./ShowcaseCards";
 import ShowcaseExtensionCards from "./ShowcaseExtensionCards";
@@ -30,6 +29,7 @@ import { useColorMode } from "@docusaurus/theme-common";
 import { useHistory } from "@docusaurus/router";
 import type { Location } from "history";
 import { toggleListItem, splitAuthors } from "@site/src/utils/jsUtils";
+import { getContentType } from "@site/src/utils/contentType";
 import { prepareUserState } from "./index";
 import { Dismiss20Filled } from "@fluentui/react-icons";
 
@@ -172,7 +172,7 @@ function filterExtensions(
   });
 }
 
-const ContentTypeQueryKey = "type";
+const ContentTypeQueryKey = "type"; // retained for backward-compat with getContentType helper
 
 function FilterAppliedBar({
   clearAll,
@@ -416,24 +416,11 @@ export default function ShowcaseCardPage({
   const history = useHistory();
   const searchParams = new URLSearchParams(location.search);
 
-  // Content type toggle
-  const contentType = searchParams.get(ContentTypeQueryKey) || "templates";
-  const setContentType = (type: string) => {
-    const newParams = new URLSearchParams(location.search);
-    newParams.set(ContentTypeQueryKey, type);
-    // Clear tag/author filters when switching content type
-    newParams.delete("tags");
-    newParams.delete("authors");
-    setSelectedTags([]);
-    setSelectedCheckbox([]);
-    setSelectedAuthors([]);
-    setSelectedAuthorCheckbox([]);
-    history.push({
-      ...location,
-      search: newParams.toString(),
-      state: prepareUserState(),
-    });
-  };
+  // Content type is now derived from the URL pathname (`/extensions`) so the
+  // two galleries live at distinct routes accessible via the navbar. The
+  // legacy `?type=extensions` query param is still honored by getContentType
+  // for backward compatibility with old shared links.
+  const contentType = getContentType(location);
 
   const clearAll = () => {
     setSelectedTags([]);
@@ -546,54 +533,6 @@ export default function ShowcaseCardPage({
 
   return (
     <>
-      {/* Content Type Toggle */}
-      <div
-        role="group"
-        aria-label="Content type"
-        style={{
-          display: "flex",
-          gap: "4px",
-          marginBottom: "16px",
-          alignItems: "center",
-        }}
-      >
-        <ToggleButton
-          appearance={!isExtensions ? "primary" : "outline"}
-          className={!isExtensions ? styles.contentTypeToggleActive : undefined}
-          size="medium"
-          checked={!isExtensions}
-          onClick={() => setContentType("templates")}
-          aria-label="Switch to templates view"
-          aria-pressed={!isExtensions}
-        >
-          Templates
-        </ToggleButton>
-        <ToggleButton
-          appearance={isExtensions ? "primary" : "outline"}
-          className={isExtensions ? styles.contentTypeToggleActive : undefined}
-          size="medium"
-          checked={isExtensions}
-          onClick={() => setContentType("extensions")}
-          aria-label="Switch to extensions view"
-          aria-pressed={isExtensions}
-        >
-          Extensions
-        </ToggleButton>
-        {isExtensions && (
-          <Text size={400} style={{ marginLeft: "auto" }}>
-            Built an extension?{" "}
-            <a
-              href="https://github.com/Azure/awesome-azd/issues/new?template=extension-submission.yml"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: "var(--ifm-color-primary)", textDecoration: "underline" }}
-            >
-              Submit it here
-            </a>
-          </Text>
-        )}
-      </div>
-
       <div
         className={styles.viewingSortRow}
         style={{

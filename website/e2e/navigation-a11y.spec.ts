@@ -11,15 +11,24 @@ test.describe("Navigation", () => {
     expect(response?.status()).toBe(200);
   });
 
+  test("templates page loads", async ({ page }) => {
+    const response = await page.goto("templates");
+    expect(response?.status()).toBe(200);
+  });
+
   test("contribute page loads", async ({ page }) => {
     const response = await page.goto("docs/intro");
     expect(response?.status()).toBe(200);
   });
 
-  test("navbar navigates to getting started", async ({ page }) => {
+  test("navbar navigates to templates", async ({ page }) => {
     await page.goto("./");
-    await page.getByRole("link", { name: /getting started/i }).click();
-    await expect(page).toHaveURL(/getting-started/);
+    await page
+      .getByRole("navigation")
+      .getByRole("link", { name: /^templates$/i })
+      .first()
+      .click();
+    await expect(page).toHaveURL(/templates/);
   });
 });
 
@@ -32,18 +41,21 @@ test.describe("Accessibility", () => {
     expect(h1Count).toBe(1);
   });
 
-  test("search input has accessible role", async ({ page }) => {
-    await page.goto("./");
+  test("templates page search input has accessible role", async ({ page }) => {
+    await page.goto("templates");
     const searchInput = page.getByRole("searchbox");
     await expect(searchInput).toBeVisible();
   });
 
   test("images have alt text", async ({ page }) => {
     await page.goto("./");
-    const images = page.locator("img");
-    const count = await images.count();
-    for (let i = 0; i < Math.min(count, 10); i++) {
-      const alt = await images.nth(i).getAttribute("alt");
+    await page.waitForLoadState("networkidle");
+    // Read all alts in a single page.evaluate to avoid auto-wait flakes
+    // when parallel workers stress the test server.
+    const alts = await page.locator("img").evaluateAll((imgs) =>
+      imgs.slice(0, 10).map((img) => img.getAttribute("alt"))
+    );
+    for (const alt of alts) {
       expect(alt).not.toBeNull();
     }
   });

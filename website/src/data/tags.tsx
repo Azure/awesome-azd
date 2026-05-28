@@ -34,7 +34,6 @@ export type TagType =
   | "msft"
   | "community"
   | "new"
-  | "popular"
   | "bicep"
   | "typescript"
   | "javascript"
@@ -194,10 +193,6 @@ export const Tags: { [type in TagType]: Tag } = {
   new: {
     label: "New",
     description: "This tag is used for new templates.",
-  },
-  popular: {
-    label: "Popular",
-    description: "This tag is used for popular templates.",
   },
   aicollection: {
     label: "AI Collection",

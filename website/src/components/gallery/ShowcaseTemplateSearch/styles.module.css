@@ -86,8 +86,12 @@
 
 .heroSubtext {
   padding-top: var(--space-lg);
-  padding-bottom: var(--space-lg);
+  padding-bottom: 0;
   text-align: center;
+}
+
+.heroSubtext + .heroSubtext {
+  padding-top: 0;
 }
 
 [data-theme="dark"] .heroSubtext {

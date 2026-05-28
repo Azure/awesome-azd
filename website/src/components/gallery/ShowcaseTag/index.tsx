@@ -47,8 +47,7 @@ export default function ShowcaseCardTag({
       (tagObject) =>
         tagObject != "msft" &&
         tagObject != "community" &&
-        tagObject != "new" &&
-        tagObject != "popular"
+        tagObject != "new"
     )
     .map((tag) => ({ tag, ...Tags[tag] }));
 

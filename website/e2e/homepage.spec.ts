@@ -5,31 +5,23 @@ test.describe("Homepage", () => {
     await page.goto("./");
   });
 
-  test("renders hero section with title and stats bar", async ({ page }) => {
+  test("renders hero section with title and badge", async ({ page }) => {
     await expect(page.locator("h1")).toContainText("From code to cloud");
-    // Stats bar should show template/service/language counts
-    const statsBar = page.locator('[class*="statsBar"]');
-    await expect(statsBar).toBeVisible();
+    // Hero badge: "Open-source CLI · 300+ templates"
+    const heroBadge = page.locator('[class*="heroBadge"]');
+    await expect(heroBadge.first()).toBeVisible();
   });
 
-  test("search input is visible and functional", async ({ page }) => {
-    const searchInput = page.getByRole("searchbox");
-    await expect(searchInput).toBeVisible();
-    await searchInput.fill("python");
-    // The SearchBox's onSearch (URL update) only fires on Enter.
-    await searchInput.press("Enter");
-    await expect(page).toHaveURL(/name=python/);
-  });
-
-  test("template cards are displayed", async ({ page }) => {
-    const cards = page.locator('[class*="card"]').filter({ has: page.locator("img") });
+  test("featured template cards are displayed", async ({ page }) => {
+    const cards = page.locator('[class*="templateCard"]');
     await expect(cards.first()).toBeVisible({ timeout: 10_000 });
     const count = await cards.count();
     expect(count).toBeGreaterThan(0);
   });
 
   test("navbar links are present", async ({ page }) => {
-    await expect(page.getByRole("link", { name: /getting started/i })).toBeVisible();
-    await expect(page.getByRole("link", { name: /add a template/i })).toBeVisible();
+    const nav = page.getByRole("navigation");
+    await expect(nav.getByRole("link", { name: /^templates$/i }).first()).toBeVisible();
+    await expect(nav.getByRole("link", { name: /add a template/i })).toBeVisible();
   });
 });

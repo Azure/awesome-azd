@@ -189,19 +189,6 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
           className={styles.color}
         >
           View in GitHub
-          {colorMode != "dark" ? (
-            <img
-              src={useBaseUrl("/img/redirect.svg")}
-              alt="Redirect"
-              height={13}
-            />
-          ) : (
-            <img
-              src={useBaseUrl("/img/redirectDark.svg")}
-              alt="Redirect"
-              height={13}
-            />
-          )}
         </FluentUILink>
       </div>
       <div

@@ -9,6 +9,7 @@ import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { Text, Link as FluentUILink } from "@fluentui/react-components";
 import { galleryTemplates as allTemplates } from "@site/src/data/users";
+import { getContentType } from "@site/src/utils/contentType";
 import styles from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useColorMode } from "@docusaurus/theme-common";
@@ -63,7 +64,7 @@ function FilterBar(): React.JSX.Element {
   // typed text. Consumers use it to display "No results for 'X'" which should
   // match the active filter applied to the gallery.
   InputValue = readSearchName(location.search);
-  const contentType = new URLSearchParams(location.search).get("type") || "templates";
+  const contentType = getContentType(location);
   const placeholder = PLACEHOLDERS[contentType] || PLACEHOLDERS.templates;
 
   // Log the search query to Clarity only when the user explicitly submits the
@@ -200,7 +201,7 @@ export default function ShowcaseTemplateSearch() {
   const { colorMode } = useColorMode();
   const location = useLocation();
   const gettingStartedUrl = useBaseUrl("/getting-started");
-  const contentType = new URLSearchParams(location.search).get("type") || "templates";
+  const contentType = getContentType(location);
   const title = TITLES[contentType] || TITLES.templates;
   const description = DESCRIPTIONS[contentType] || DESCRIPTIONS.templates;
   return (
@@ -242,15 +243,30 @@ export default function ShowcaseTemplateSearch() {
           <div className={styles.heroActions}>
             {contentType === "extensions"
               ? <>
-                  <Text size={300} className={styles.heroSubtext}>
+                  <Text size={300} className={styles.heroSubtext} block>
                     Extensions add new commands, lifecycle hooks, and capabilities to azd.{" "}
                     <FluentUILink
-                      href={ADD_URL}
+                      href="https://learn.microsoft.com/azure/developer/azure-developer-cli/extensions/overview"
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{ paddingLeft: "3px" }}
                     >
                       Learn more in our docs.
+                    </FluentUILink>
+                  </Text>
+                  <Text
+                    size={300}
+                    className={styles.heroSubtext}
+                    block
+                    style={{ paddingTop: 0 }}
+                  >
+                    Built an extension?{" "}
+                    <FluentUILink
+                      href="https://github.com/Azure/awesome-azd/issues/new?template=extension-submission.yml"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Submit it here
                     </FluentUILink>
                   </Text>
                 </>

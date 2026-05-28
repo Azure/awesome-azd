@@ -17,7 +17,7 @@ const config = {
   },
 
   // CONFIG: Landing Pages uses this (also globally via siteConfig)
-  title: "Awesome Azure Developer CLI",
+  title: "Azure Developer CLI",
   tagline: "Discover - Create - Contribute",
 
   // CONIFIG: Used for GitHub Pages
@@ -97,9 +97,9 @@ const config = {
       // CONFIG: navbar logo, items, style, stickiness
       //    See: https://docusaurus.io/docs/next/api/themes/configuration#navbar
       navbar: {
-        title: "awesome-azd",
+        title: "Azure Developer CLI",
         logo: {
-          alt: "Awesome Azd logo",
+          alt: "Azure Developer CLI logo",
           src: "img/logo.png",
           href: "/",
           target: "_self",
@@ -108,9 +108,29 @@ const config = {
         },
         items: [
           {
-            to: "/getting-started",
-            label: "Getting Started",
+            to: "/templates",
+            label: "Templates",
             position: "left",
+          },
+          {
+            to: "/extensions",
+            label: "Extensions",
+            position: "left",
+          },
+          {
+            type: "dropdown",
+            label: "Hosting",
+            position: "left",
+            items: [
+              {
+                to: "/services/container-apps",
+                label: "Azure Container Apps",
+              },
+              {
+                to: "/services/azure-functions",
+                label: "Azure Functions",
+              },
+            ],
           },
           {
             label: "Contribute",
@@ -127,21 +147,6 @@ const config = {
             to: "https://learn.microsoft.com/azure/architecture/browse/",
             label: "Resources",
             position: "left",
-          },
-          {
-            type: "dropdown",
-            label: "Services",
-            position: "left",
-            items: [
-              {
-                to: "/services/container-apps",
-                label: "Azure Container Apps",
-              },
-              {
-                to: "/services/azure-functions",
-                label: "Azure Functions",
-              },
-            ],
           },
 
           // right

@@ -82,6 +82,9 @@ const HERO_INSTALL_CMDS = {
   linux: "curl -fsSL https://aka.ms/install-azd.sh | bash",
 };
 
+const MAKE_AZD_COMPATIBLE_URL =
+  "https://learn.microsoft.com/azure/developer/azure-developer-cli/make-azd-compatible";
+
 // Detect the visitor's OS so the hero install command defaults to the right
 // platform. On mobile devices we always default to Windows since the install
 // commands are desktop-only anyway. Runs only on the client (guarded by an
@@ -225,10 +228,7 @@ function TerminalDemo() {
         <span className={styles.terminalWinBtn} aria-hidden="true">
           &#x25A1;
         </span>
-        <span
-          className={`${styles.terminalWinBtn} ${styles.terminalWinClose}`}
-          aria-hidden="true"
-        >
+        <span className={styles.terminalWinBtn} aria-hidden="true">
           &#x2715;
         </span>
       </div>
@@ -456,7 +456,7 @@ const FAQS = [
         React, Next.js, Django, Flask, Spring Boot, ASP.NET, and many other
         frameworks. You can also{" "}
         <a
-          href="https://learn.microsoft.com/azure/developer/azure-developer-cli/make-azd-compatible"
+          href={MAKE_AZD_COMPATIBLE_URL}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -502,7 +502,7 @@ const FAQS = [
         Absolutely. Run <code>azd init</code> in your project directory and
         follow the prompts to add the necessary configuration. See the{" "}
         <a
-          href="https://learn.microsoft.com/azure/developer/azure-developer-cli/make-azd-compatible"
+          href={MAKE_AZD_COMPATIBLE_URL}
           target="_blank"
           rel="noopener noreferrer"
         >

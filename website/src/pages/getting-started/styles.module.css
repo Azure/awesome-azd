@@ -516,20 +516,24 @@
 @media (max-width: 900px) {
   .whyLayout {
     grid-template-columns: 1fr;
-    text-align: center;
+    text-align: left;
     gap: var(--space-2xl);
   }
   .whyHeading {
-    text-align: center;
+    text-align: left;
   }
   .whyHeading .sectionLabel {
-    text-align: center;
+    text-align: left;
   }
   .whyParagraph {
-    margin: 0 auto;
+    margin-left: 0;
+    margin-right: 0;
   }
   .whyChecklist {
-    align-items: center;
+    align-items: flex-start;
+  }
+  .terminalBody {
+    text-align: left;
   }
 }
 
@@ -639,11 +643,6 @@
   line-height: 1;
   font-family: "Segoe MDL2 Assets", "Segoe Fluent Icons", "Segoe UI Symbol",
     system-ui, sans-serif;
-}
-
-.terminalWinClose {
-  /* Decorative only — kept neutral; close-button red is reserved for real
-     hover states which this static mockup doesn't support. */
 }
 
 .terminalBody {
@@ -1046,6 +1045,10 @@
 }
 
 /* ─────────── Responsive ─────────── */
+/* This block must stay AFTER the default .templatesGrid / .templateCard /
+   .stepsGrid / .stepCard / .whyDemo rules above so that the mobile
+   overrides win on equal-specificity selectors in dev (unminified) CSS.
+   Production CSS minification can reorder rules, masking ordering bugs. */
 @media (max-width: 900px) {
   .heroTitle {
     font-size: 2.5rem;
@@ -1053,6 +1056,34 @@
   .heroInstall {
     flex-wrap: wrap;
     justify-content: center;
+  }
+  /* Prevent grid items from blowing the page wider than the viewport.
+     Grid/flex items default to min-width: auto (= min-content); the
+     terminal monospace lines and the step/template commands push that
+     above the viewport on narrow phones, causing horizontal page scroll. */
+  .whyContent,
+  .whyDemo {
+    min-width: 0;
+  }
+  .stepsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  }
+  .stepCard {
+    min-width: 0;
+  }
+  .templatesGrid {
+    grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr));
+  }
+  .templateCard {
+    max-width: 100%;
+    min-width: 0;
+  }
+  .templateCard .stepCmd {
+    overflow-x: visible;
+  }
+  .templateCard .stepCmd code {
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 }
 

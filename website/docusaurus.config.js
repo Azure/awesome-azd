@@ -119,7 +119,7 @@ const config = {
           },
           {
             type: "dropdown",
-            label: "Services",
+            label: "Hosting",
             position: "left",
             items: [
               {

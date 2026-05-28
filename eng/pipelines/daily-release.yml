@@ -23,7 +23,7 @@ jobs:
       - template: /eng/common/pipelines/templates/steps/login-to-github.yml
         parameters:
           TokenOwners:
-            - azure
+            - azure-sdk
 
       - script: |
           set -e

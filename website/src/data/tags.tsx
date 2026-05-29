@@ -123,13 +123,16 @@ export type TagType =
   | "serviceprincipal"
   | "logicapps"
   | "msal"
+  | ".net9"
   | "pinecone"
+  | "microsoftagentframework"
   | "nextjs"
   | "speechservice"
   | "kernelmemory"
   | "promptengineering"
   | "rag"
   | "langchain4j"
+  | "durabletasksdk"
   | "featureExperimentation"
   | "featuremanagement"
   | "go"
@@ -153,6 +156,7 @@ export type TagType =
   | "avset"
   | "bastion"
   | "mcp"
+  | "durabletaskscheduler"
   | "privateEndpoints"
   | "privatelink"
   | "loadbalancer"
@@ -525,6 +529,21 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Chainlit",
     type: "Framework",
   },
+  ".net9": {
+    label: ".NET 9",
+    description: "Template architecture uses .NET 9",
+    type: "Framework",
+  },
+  microsoftagentframework: {
+    label: "Microsoft Agent Framework",
+    description: "Template architecture uses Microsoft Agent Framework",
+    type: "Framework",
+  },
+  durabletasksdk: {
+    label: "Durable Task SDK",
+    description: "Template architecture uses the Durable Task SDK",
+    type: "Framework",
+  },
 
   // ---- Platform
   kubernetes: {
@@ -610,6 +629,13 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure Blob Storage",
     azureIcon: "./img/Azure-Storage.svg",
     url: "https://azure.microsoft.com/products/storage/blobs",
+    type: "Service",
+  },
+  durabletaskscheduler: {
+    label: "Durable Task Scheduler",
+    description: "Template architecture uses Durable Task Scheduler",
+    azureIcon: "./img/Azure-Function.svg",
+    url: "https://learn.microsoft.com/azure/durable-task/scheduler-overview",
     type: "Service",
   },
   swa: {

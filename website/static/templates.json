@@ -7784,11 +7784,11 @@
     "description": "Bring-your-own agent using the Responses protocol with Foundry Toolbox MCP integration. Connects to a toolbox at startup, discovers tools, and lets the model call them during conversation.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
-    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/bring-your-own/responses/toolbox/agent.manifest.yaml",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/bring-your-own/responses/bring-your-own-toolbox/agent.manifest.yaml",
     "languages": [
       "python"
     ],
-    "id": "bfe8fa8a-b1e4-52da-a4fe-5628c8d9bbd0",
+    "id": "6c5e110d-fd0f-5c81-8f7d-9b188257e115",
     "templateType": "extension.ai.agent",
     "extensionFramework": "Bring Your Own",
     "extensionTags": [

@@ -254,7 +254,7 @@ export default function ShowcaseTemplateSearch() {
                       Learn more in our docs.
                     </FluentUILink>
                   </Text>
-                  <Text
+                  {/* <Text
                     size={300}
                     className={styles.heroSubtext}
                     block
@@ -268,7 +268,7 @@ export default function ShowcaseTemplateSearch() {
                     >
                       Submit it here
                     </FluentUILink>
-                  </Text>
+                  </Text> */}
                 </>
               : <a
                     href={gettingStartedUrl}

@@ -7176,8 +7176,8 @@
     "source": "https://github.com/massimobonanni/AZD-ToDoList",
     "tags": [
       "community",
-      "serverlessapi",
-      "new"
+      "serverlessapi"
+
     ],
     "languages": [
       "dotnetCsharp"
@@ -7202,8 +7202,8 @@
     "author": "Anthony Chu",
     "source": "https://github.com/Azure-Samples/functions-quickstart-python-azd-service-bus",
     "tags": [
-      "msft",
-      "new"
+      "msft"
+
     ],
     "IaC": [
       "bicep"
@@ -7228,7 +7228,6 @@
     "source": "https://github.com/zubeyralmaho/rust-mcp-azure",
     "tags": [
       "community",
-      "new",
       "mcp",
       "ai"
     ],
@@ -7804,8 +7803,8 @@
     "author": "benleane83",
     "source": "https://github.com/benleane83/azure-swa-nextjs-postgres",
     "tags": [
-      "community",
-      "new"
+      "community"
+
     ],
     "languages": [
       "javascript",
@@ -7837,8 +7836,8 @@
     "source": "https://github.com/Azure-Samples/functions-quickstart-javascript-azd-cosmosdb",
     "tags": [
       "msft",
-      "nodejs",
-      "new"
+      "nodejs"
+
     ],
     "languages": [
       "javascript"
@@ -7863,8 +7862,8 @@
     "author": "Azure Samples",
     "source": "https://github.com/Azure-Samples/functions-quickstart-powershell-azd-cosmosdb",
     "tags": [
-      "msft",
-      "new"
+      "msft"
+
     ],
     "languages": [
       "powershell"
@@ -7889,8 +7888,8 @@
     "author": "Azure Samples",
     "source": "https://github.com/Azure-Samples/functions-quickstart-java-azd-cosmosdb",
     "tags": [
-      "msft",
-      "new"
+      "msft"
+
     ],
     "languages": [
       "java"
@@ -7915,8 +7914,8 @@
     "author": "Azure Samples",
     "source": "https://github.com/Azure-Samples/Azure-Functions-Flex-Consumption-with-Azure-Files-OS-Mount-Samples",
     "tags": [
-      "msft",
-      "new"
+      "msft"
+
     ],
     "languages": [
       "python"
@@ -7941,8 +7940,8 @@
     "author": "Azure Samples",
     "source": "https://github.com/Azure-Samples/Azure-Functions-Flex-Consumption-with-Azure-Files-OS-Mount-Samples",
     "tags": [
-      "msft",
-      "new"
+      "msft"
+
     ],
     "languages": [
       "python"
@@ -7956,5 +7955,1215 @@
       "bicep"
     ],
     "id": "af0caae6-c78a-487e-88e7-30a1aa6183f7"
+  },
+  {
+    "title": "Banking GenAI multi-agent assistant for transaction review",
+    "description": "Shows how bank users can use GenAI chat to check account balances, review transactions, and initiate payments.",
+    "preview": "./templates/images/agent-openai-java-banking-assistant-arch.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Davide Antelmo",
+    "source": "https://github.com/Azure-Samples/agent-openai-java-banking-assistant",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "java"
+    ],
+    "azureServices": [
+      "aca",
+      "managedidentity",
+      "monitor",
+      "openai",
+      "blobstorage"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "ceff248b-085a-4725-b8f8-2839aa1e95a0"
+  },
+  {
+    "title": "OpenAI + Semantic Kernel chat app quick start",
+    "description": "A simple C#/.NET chat application that uses the Semantic Kernel library and managed identity for Azure OpenAI access.",
+    "preview": "./templates/images/ai-chat-quickstart-csharp.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Jordan Matthiesen",
+    "source": "https://github.com/Azure-Samples/ai-chat-quickstart-csharp",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "dotnetCsharp"
+    ],
+    "frameworks": [
+      "semantickernel"
+    ],
+    "azureServices": [
+      "openai",
+      "aisearch",
+      "aca"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "34160936-7676-49ab-822f-604b3dd68a2e"
+  },
+  {
+    "title": "GenAI app with keyless deployment | Python",
+    "description": "Provision an Azure OpenAI resource with keyless authentication and use the Python OpenAI SDK to connect to it with your locally logged in Azure account.",
+    "preview": "./templates/images/azure-openai-keyless-python.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Pamela Fox",
+    "source": "https://github.com/Azure-Samples/azure-openai-keyless-python",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "managedidentity",
+      "openai"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "10e4f4cf-4efe-44ed-a826-749710c32fe8"
+  },
+  {
+    "title": "Real-time GenAI enhanced communication app with SignalR",
+    "description": "This project integrates SignalR with Azure OpenAI. It showcases how to create a seamless group chat experience using SignalR for real-time communication, enhanced by the intelligence of Azure OpenAI.",
+    "preview": "./templates/images/signalr-ai-streaming.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Kevin Guo",
+    "source": "https://github.com/Azure-Samples/signalr-ai-streaming",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "dotnetCsharp",
+      "javascript",
+      "typescript"
+    ],
+    "azureServices": [
+      "managedidentity",
+      "openai",
+      "aca"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "300b0171-5ed8-46f4-beff-b740aafad8a9"
+  },
+  {
+    "title": "OpenAI chat with .NET Aspire and Microsoft.Extensions.AI",
+    "description": "A C#/.NET chat application using .NET Aspire and the Microsoft.Extensions.AI library with OpenAI. It uses managed identity for Azure OpenAI access",
+    "preview": "./templates/images/ai-chat-aspire-meai-csharp.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Jordan Matthiesen",
+    "source": "https://github.com/Azure-Samples/ai-chat-aspire-meai-csharp",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt",
+      "aspire"
+    ],
+    "languages": [
+      "dotnetCsharp"
+    ],
+    "azureServices": [
+      "managedidentity",
+      "azureai",
+      "aca",
+      "openai"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "5e98ec21-396b-482a-b93e-820e4163ca09"
+  },
+  {
+    "title": "Entity extraction with Azure OpenAI structured outputs",
+    "description": "Perform entity extraction on text, PDFs, images, and webpages using Azure OpenAI structured outputs and the Python openai package.",
+    "preview": "./templates/images/azure-openai-entity-extraction.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Pamela Fox",
+    "source": "https://github.com/Azure-Samples/azure-openai-entity-extraction",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "openai"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "95abca34-e2e8-4e1d-b56c-242133ec07d5"
+  },
+  {
+    "title": "GenAI app with keyless deployment | Go",
+    "description": "Use OpenAI models securely without API keys using keyless (Entra) authentication.",
+    "preview": "./templates/images/azure-openai-keyless-go.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Richard Park",
+    "source": "https://github.com/Azure-Samples/azure-openai-keyless-go",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "go"
+    ],
+    "azureServices": [
+      "managedidentity",
+      "openai"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "7495894d-fc02-4639-83d0-f1c58091e19d"
+  },
+  {
+    "title": "Customer Assistant with Java",
+    "description": "A customer assistant application using Semantic Kernel, that allows a customer support person to query and make changes to customer information.",
+    "preview": "./templates/images/semantic-kernel-customer-assistant-demo-java.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "John Oliver",
+    "source": "https://github.com/Azure-Samples/semantic-kernel-customer-assistant-demo-java",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "java",
+      "typescript",
+      "javascript"
+    ],
+    "frameworks": [
+      "semantickernel"
+    ],
+    "azureServices": [
+      "aca",
+      "managedidentity",
+      "openai"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "b89c8c75-848a-4c4c-b208-38876b419088"
+  },
+  {
+    "title": "Azure AI Basic App Sample | Python",
+    "description": "This project creates an Azure AI Foundry hub, project and connected resources including Azure AI Services, AI Search and more. It also deploys a simple chat application to Azure Container Apps.",
+    "preview": "./templates/images/azureai-basic-python.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Dan Taylor",
+    "source": "https://github.com/Azure-Samples/azureai-basic-python",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "aca",
+      "managedidentity",
+      "openai",
+      "aisearch",
+      "aifoundry",
+      "keyvault",
+      "azureai"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "7846d3e7-d85b-4d52-a544-8238fa19feef"
+  },
+  {
+    "title": "Creative Writing Assistant Python: Working with Agents using Prompty",
+    "description": "Contoso-Creative-Writer: a creative writing assistant that shows how to orchestrate multiple models together using Prompty and Azure OpenAI. Includes the full GenAIOps: CI/CD, evaluation, tracing, monitoring, and experimentation!",
+    "preview": "./templates/images/contoso-creative-writer.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Cassie Breviu",
+    "source": "https://github.com/Azure-Samples/contoso-creative-writer",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt",
+      "promptengineering"
+    ],
+    "languages": [
+      "python",
+      "javascript",
+      "typescript"
+    ],
+    "azureServices": [
+      "managedidentity",
+      "aisearch",
+      "aifoundry",
+      "aca",
+      "openai"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "eb6c5562-f142-4b3c-9e7a-c0ee4096f3c3"
+  },
+  {
+    "title": "Creative Writing Assistant Aspire: Working with Agents using Semantic Kernel",
+    "description": "A creative writing assistant that shows how to orchestrate multiple models together using Semantic Kernel and Azure OpenAI. Includes the full GenAIOps: CI/CD, evaluation, tracing, monitoring, and experimentation!",
+    "preview": "./templates/images/aspire-semantic-kernel-creative-writer.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Ricardo Niepel",
+    "source": "https://github.com/Azure-Samples/aspire-semantic-kernel-creative-writer",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt",
+      "aspire"
+    ],
+    "languages": [
+      "dotnetCsharp",
+      "javascript",
+      "typescript"
+    ],
+    "frameworks": [
+      "semantickernel"
+    ],
+    "azureServices": [
+      "managedidentity",
+      "keyvault",
+      "aisearch",
+      "openai"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "b3abdd34-87fd-4b04-8e44-3cb04dff76a3"
+  },
+  {
+    "title": "Azure Functions OpenAI AI Search Node",
+    "description": "This sample contains a JavaScript Azure Function using OpenAI bindings extension to highlight OpenAI retrieval augmented generation with Azure AI Search.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/MadhuraBharadwaj-MSFT",
+    "author": "Madhura Bharadwaj",
+    "source": "https://github.com/Azure-Samples/azure-functions-openai-aisearch-node",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "javascript"
+    ],
+    "frameworks": [
+      "rag"
+    ],
+    "azureServices": [
+      "aisearch",
+      "functions",
+      "blobstorage",
+      "openai",
+      "vnets",
+      "azurestorage",
+      "managedidentity",
+      "appinsights",
+      "loganalytics",
+      "monitor"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "de50afde-f0a4-4602-a7ec-48884a0fa9c9"
+  },
+  {
+    "title": "Semantic caching with Azure Redis and Dall-E 3",
+    "description": "This template demonstrates Dall-E text to image generation with Azure Redis semantic caching, which enables the same picture to be reused for text inputs that are similar in meaning but different in syntax. Azure Redis semantic cache improves the consistency and performance of the content generation.",
+    "preview": "./templates/images/azure-redis-dalle-semantic-caching-arch.png",
+    "authorUrl": "https://github.com/CawaMS",
+    "author": "Catherine Wang",
+    "source": "https://github.com/Azure-Samples/azure-redis-dalle-semantic-caching",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "dall-e"
+    ],
+    "languages": [
+      "dotnetCsharp"
+    ],
+    "azureServices": [
+      "keyvault",
+      "aca",
+      "openai",
+      "rediscache",
+      "managedidentity"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "46da3763-3935-4c26-b6f1-ba175f5d48b3"
+  },
+  {
+    "title": "Azure Function using OpenAI TextCompletion input binding with Java",
+    "description": "This sample highlights how to use the Azure Functions OpenAI TextCompletion input binding to send content to Azure OpenAI and get a result using Java.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/nzthiago",
+    "author": "Thiago Almeida",
+    "source": "https://github.com/Azure-Samples/azure-functions-completion-openai-java",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "java"
+    ],
+    "azureServices": [
+      "functions",
+      "openai",
+      "azurestorage",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "9c9a4eff-c2ea-493e-b50e-1502c93ec3d7"
+  },
+  {
+    "title": "Conversation Knowledge Mining",
+    "description": "Leverage advanced content understanding capabilities to uncover insights, relationships, and patterns from large audio and text-based data sets.",
+    "preview": "./templates/images/Conversation-Knowledge-Mining-Solution-Accelerator-arch.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Malory Rose",
+    "source": "https://github.com/microsoft/Conversation-Knowledge-Mining-Solution-Accelerator",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "javascript",
+      "typescript",
+      "python"
+    ],
+    "azureServices": [
+      "aisearch",
+      "appservice",
+      "keyvault",
+      "appinsights",
+      "functions",
+      "blobstorage",
+      "openai",
+      "azureai",
+      "azurecdn",
+      "azurestorage",
+      "azureappconfig",
+      "aifoundry"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "96005af9-c851-47c0-8cef-d7e9b067647d"
+  },
+  {
+    "title": "Get Started with Chat",
+    "description": "This solution contains a simple chat application that is deployed to Azure Container Apps. There are instructions for deployment through GitHub Codespaces, VS Code Dev Containers, and your local development environment.",
+    "preview": "./templates/images/get-started-with-ai-chat-arch.png",
+    "authorUrl": "https://github.com/howieleung",
+    "author": "Howie Leung",
+    "source": "https://github.com/Azure-Samples/get-started-with-ai-chat",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "python",
+      "javascript"
+    ],
+    "azureServices": [
+      "aisearch",
+      "appinsights",
+      "openai",
+      "aifoundry"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "1b9bcb52-0c7a-459f-bb90-085ec0c64558"
+  },
+  {
+    "title": "Deploy Your AI Application in Production",
+    "description": "A deployment of a secure, extensible and integrated environment for running AI Foundry workloads in Production. It simplifies the process of including essential Azure services necessary to run mission-critical AI applications and adhere to Microsoft Well Architected Framework recommendations.",
+    "preview": "./templates/images/Deploy-Your-AI-Application-In-Production-arch.png",
+    "authorUrl": "https://github.com/mswantek68",
+    "author": "Mike Swantek",
+    "source": "https://github.com/microsoft/Deploy-Your-AI-Application-In-Production",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "azureServices": [
+      "aisearch",
+      "monitor",
+      "keyvault",
+      "appinsights",
+      "loganalytics",
+      "blobstorage",
+      "vnets",
+      "openai",
+      "azureai",
+      "apim",
+      "azurestorage",
+      "aifoundry",
+      "diagnosticsettings",
+      "managedidentity"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "a183b814-51d8-402d-b3bc-991294169877"
+  },
+  {
+    "title": "Azure Language OpenAI Conversational Agent Accelerator",
+    "description": "A solution accelerator project harnessing the capabilities of Azure AI Language to augment an existing Azure OpenAI RAG chat app. Utilize Conversational Language Understanding (CLU) and Custom Question Answering (CQA) to dynamically improve a RAG chat experience.",
+    "preview": "./templates/images/Azure-Language-OpenAI-Conversational-Agent-Accelerator-arch.png",
+    "authorUrl": "https://github.com/murraysean",
+    "author": "Sean Murray",
+    "source": "https://github.com/Azure-Samples/Azure-Language-OpenAI-Conversational-Agent-Accelerator",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "python",
+      "javascript"
+    ],
+    "frameworks": [
+      "rag"
+    ],
+    "azureServices": [
+      "aisearch",
+      "aca",
+      "blobstorage",
+      "openai",
+      "azurestorage",
+      "managedidentity",
+      "azureai",
+      "aifoundry"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "38638d5c-e5af-4733-878a-6c50df50fc3b"
+  },
+  {
+    "title": "Multi-modal Content Processing",
+    "description": "Process claims, invoices, contracts and other documents with speed and accuracy by extracting information from unstructured content and mapping to a structured format.",
+    "preview": "./templates/images/content-processing-solution-accelerator-arch.png",
+    "authorUrl": "https://github.com/microsoft/solution-accelerators",
+    "author": "Todd Herman",
+    "source": "https://github.com/microsoft/content-processing-solution-accelerator",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "python",
+      "typescript"
+    ],
+    "azureServices": [
+      "keyvault",
+      "blobstorage",
+      "openai",
+      "azureai",
+      "azurestorage",
+      "aifoundry",
+      "azureappconfig",
+      "serviceprincipal"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "301cc025-6d90-483f-a69a-709f0a97b7f5"
+  },
+  {
+    "title": "Document Generation and Summarization",
+    "description": "Generate templates and draft content from your data by identifying relevant documents and summarizing unstructured information​",
+    "preview": "./templates/images/document-generation-solution-accelerator-arch.png",
+    "authorUrl": "https://github.com/microsoft",
+    "author": "Blessing Sanusi",
+    "source": "https://github.com/microsoft/document-generation-solution-accelerator",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "python",
+      "typescript",
+      "javascript"
+    ],
+    "azureServices": [
+      "aisearch",
+      "appservice",
+      "keyvault",
+      "appinsights",
+      "functions",
+      "blobstorage",
+      "openai",
+      "azureai",
+      "azurestorage",
+      "azureappconfig",
+      "aifoundry",
+      "managedidentity",
+      "serviceprincipal"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "c1eb70c0-7938-479c-a775-df060465ec4e"
+  },
+  {
+    "title": "Modernize your code with agents",
+    "description": "Accelerate the migration of legacy code to modern languages by leveraging a team of autonomous agents",
+    "preview": "./templates/images/Modernize-your-code-solution-accelerator-arch.png",
+    "authorUrl": "https://github.com/microsoft/Modernize-your-code-solution-accelerator",
+    "author": "Mark Taylor",
+    "source": "https://github.com/microsoft/Modernize-your-code-solution-accelerator",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "python",
+      "typescript"
+    ],
+    "azureServices": [
+      "blobstorage",
+      "openai",
+      "aifoundry",
+      "keyvault"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "844b9db1-9c39-4d98-9c7a-f929d2ae9643"
+  },
+  {
+    "title": "Build Your Own Copilot Solution Accelerator",
+    "description": "This solution accelerator is a powerful tool that helps you create your own copilots. The accelerator can be used by any customer looking for reusable architecture and code snippets to build custom copilots with their own enterprise data.",
+    "preview": "./templates/images/Build-your-own-copilot-Solution-Accelerator-arch.png",
+    "authorUrl": "https://github.com/brittneek",
+    "author": "Brittneé Keller",
+    "source": "https://github.com/microsoft/Build-your-own-copilot-Solution-Accelerator",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "python",
+      "typescript"
+    ],
+    "azureServices": [
+      "aisearch",
+      "appservice",
+      "keyvault",
+      "loganalytics",
+      "blobstorage",
+      "azureai",
+      "azurestorage",
+      "aifoundry",
+      "managedidentity",
+      "serviceprincipal"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "54496217-f166-481e-860e-037da03b7545"
+  },
+  {
+    "title": "Chainlit Agent",
+    "description": "Chainlit Agent: Intelligent Assistant with Azure AI Agent. With Frontend with chainlit and backend with fastapi. Using Azure AI Agent service for RAG pattern. ",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/zhenbzha/",
+    "author": "Zhenbo Zhang",
+    "source": "https://github.com/zhenbzha/chainlit-agent",
+    "tags": [
+      "community",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "python"
+    ],
+    "frameworks": [
+      "chainlit",
+      "rag",
+      "fastapi"
+    ],
+    "azureServices": [
+      "aisearch",
+      "monitor",
+      "keyvault",
+      "appinsights",
+      "loganalytics",
+      "aca",
+      "blobstorage",
+      "openai",
+      "azureai",
+      "azurestorage",
+      "aifoundry",
+      "managedidentity",
+      "serviceprincipal"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "7172a823-3b01-4fd3-ab57-a94b7813c77c"
+  },
+  {
+    "title": "Multi Agents Banking Assistant with .NET and Semantic Kernel",
+    "description": "This project is designed as a Proof of Concept (PoC) to explore the innovative realm of generative AI within the context of multi-agent architectures. By leveraging .NET and Microsoft Semantic Kernel AI orchestration framework.",
+    "preview": "./templates/images/agent-openai-banking-assistant-csharp-arch.png",
+    "authorUrl": "https://github.com/dminkovski",
+    "author": "David Minkovski",
+    "source": "https://github.com/dminkovski/agent-openai-banking-assistant-csharp",
+    "tags": [
+      "community",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "dotnetCsharp",
+      "typescript"
+    ],
+    "frameworks": [
+      "semantickernel"
+    ],
+    "azureServices": [
+      "aca",
+      "blobstorage",
+      "azureai",
+      "managedidentity",
+      "serviceprincipal"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "99452db8-12d6-4b0f-8240-98323826cd65"
+  },
+  {
+    "title": "Multi Agent Custom Automation Engine Solution Accelerator",
+    "description": "The Multi-Agent Custom Automation Engine Solution Accelerator is an AI-driven orchestration system that manages a group of AI agents to accomplish tasks based on user input. Powered by AutoGen, Azure OpenAI, Cosmos, and infrastructure services, it provides a ready to go application to use as a reference, allowing you to hit the ground running.",
+    "preview": "./templates/images/Multi-Agent-Custom-Automation-Engine-Solution-Accelerator-arch.png",
+    "authorUrl": "https://github.com/marktayl1",
+    "author": "Mark Taylor",
+    "source": "https://github.com/microsoft/Multi-Agent-Custom-Automation-Engine-Solution-Accelerator",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "python"
+    ],
+    "frameworks": [
+      "autogen"
+    ],
+    "azureServices": [
+      "appservice",
+      "keyvault",
+      "azureai",
+      "aifoundry",
+      "serviceprincipal",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "8620033b-474a-471c-9601-48c84a632576"
+  },
+  {
+    "title": "LLM Chat Memory with Azure Managed Redis",
+    "description": "Enable intelligent, memory-enhanced LLM chat experiences using Azure Managed Redis. This template demonstrates how to persist and recall user conversations using AMR as a vector database or key-value store—ideal for building contextual, stateful AI assistants. Built with Azure Developer CLI (azd) for streamlined deployment.",
+    "preview": "./templates/images/Redis_LLMmemory-arch.png",
+    "authorUrl": "https://github.com/robertopc1",
+    "author": "Roberto Perez",
+    "source": "https://github.com/robertopc1/Redis_LLMmemory",
+    "tags": [
+      "community",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "rediscache",
+      "aifoundry",
+      "managedidentity",
+      "appservice"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "a5373179-d11a-4ccf-8fbf-066c09f5bf6d"
+  },
+  {
+    "title": "Healthcare Agent Orchestrator",
+    "description": "Healthcare Agent Orchestrator is a multi-agent accelerator that coordinates modular specialized agents across diverse data types and tools like M365 and Teams to assist multi-disciplinary healthcare workflows—such as cancer care.",
+    "preview": "./templates/images/healthcare-agent-orchestrator-arch.png",
+    "authorUrl": "https://github.com/matthiasblondeel",
+    "author": "Matthias Blondeel",
+    "source": "https://github.com/Azure-Samples/healthcare-agent-orchestrator",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "appservice",
+      "openai",
+      "keyvault",
+      "blobstorage",
+      "azureai",
+      "azurebot",
+      "azurestorage",
+      "managedidentity"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "0b0d1958-9798-4695-abdb-b197391b04ff"
+  },
+  {
+    "title": "Agentic Applications for Unified Data Foundation Solution Accelerator",
+    "description": "This solution accelerator empowers organizations to make faster, smarter decisions at scale by leveraging agentic AI solutions built on a unified data foundation with Microsoft Fabric. With seamless integration of Azure AI Foundry agents and Semantic Kernel orchestration, teams can design intelligent workflows that automate routine processes, streamline operations, and enable natural language querying across enterprise datasets. This ensures that governed, high-quality data is accessible not only to technical specialists but also to business users, creating a shared environment where insights are surfaced more easily and decisions are grounded in trusted information. By unifying data access and applying AI in the flow of work, organizations gain the agility to respond rapidly to changing business needs, foster collaboration across teams, and drive innovation with greater confidence.",
+    "preview": "./templates/images/agentic-applications-for-unified-data-foundation-solution-accelerator.png",
+    "authorUrl": "https://github.com/malrose07",
+    "author": "Malory Rose",
+    "source": "https://github.com/microsoft/agentic-applications-for-unified-data-foundation-solution-accelerator",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "python"
+    ],
+    "frameworks": [
+      "semantickernel"
+    ],
+    "azureServices": [
+      "appservice",
+      "openai",
+      "aifoundry",
+      "managedidentity",
+      "keyvault"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "bde9074d-fd19-4bad-b9b2-39167d948708"
+  },
+  {
+    "title": "Create Medallion Architecture for Unified Data Foundation with Fabric Solution Accelerator",
+    "description": "This template creates a working medallion architecture in Microsoft Fabric with data models in multiple domains (customer, product, sales, finance), sample data uploaded bronze lakehouse, PySpark notebooks with automated execution to load data into bronze, validate in silver, and be ready in gold. Pre-built Power BI dashboard for sales analysis is created and uploaded to Fabric, ready for sales analysis. ",
+    "preview": "./templates/images/unified-data-foundation-with-fabric-solution-accelerator-arch.png",
+    "authorUrl": "https://github.com/alguadam",
+    "author": "Alvaro Guadamillas Herranz",
+    "source": "https://github.com/microsoft/unified-data-foundation-with-fabric-solution-accelerator",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "fabric"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "c61ce07d-3a76-4181-bbe2-35a43bce0a10"
+  },
+  {
+    "title": "Container Migration Solution Accelerator",
+    "description": "This accelerator is a multi-service application that provides a multi-agent, AI-driven migration solution for users moving container service configurations from a cloud platform to Azure Kubernetes Service.",
+    "preview": "./templates/images/Container-Migration-Solution-Accelerator-arch.png",
+    "authorUrl": "https://github.com/sethsteenken",
+    "author": "Seth Steenken",
+    "source": "https://github.com/microsoft/Container-Migration-Solution-Accelerator",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "python",
+      "typescript"
+    ],
+    "azureServices": [
+      "appinsights",
+      "loganalytics",
+      "aca",
+      "blobstorage",
+      "openai",
+      "azureai",
+      "azureappconfig",
+      "aifoundry",
+      "diagnosticsettings",
+      "managedidentity",
+      "azurestorage"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "4648af12-015b-4c5d-94ab-893c5c5fc2bb"
+  },
+  {
+    "title": "Release Manager Assistant",
+    "description": "The Release Manager Assistant (RMA) is a solution accelerator designed to augment release managers with AI-driven intelligence, multi-system integration, and real-time decision support. It simplifies the release lifecycle from planning to post-deployment analysis, all through a unified and contextual interface.",
+    "preview": "./templates/images/release-manager-assistant-arch.png",
+    "authorUrl": "https://github.com/shshr",
+    "author": "Shivam Shrivastava",
+    "source": "https://github.com/microsoft/release-manager-assistant",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "python",
+      "typescript"
+    ],
+    "azureServices": [
+      "monitor",
+      "keyvault",
+      "appinsights",
+      "loganalytics",
+      "aca",
+      "blobstorage",
+      "swa",
+      "openai",
+      "azureai",
+      "rediscache",
+      "azurestorage",
+      "aifoundry",
+      "managedidentity"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "b3ba80ee-65e8-463e-a3ce-ff1172b043e1"
+  },
+  {
+    "title": "Call Center Voice Agent Accelerator with Azure Voice Live API",
+    "description": "Call Center Real-time Voice Agent solution accelerator is a lightweight template to create speech-to-speech voice agents that deliver personalized self-service experiences and natural-sounding voices, seamlessly integrated with telephony systems. This solution accelerator uses Azure Voice Live API and Azure Communication Services.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Emma-ms",
+    "author": "Emma Chen",
+    "source": "https://github.com/Azure-Samples/call-center-voice-agent-accelerator",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "keyvault",
+      "azureai",
+      "azurestorage",
+      "eventgrid",
+      "logicapps",
+      "aifoundry",
+      "openai"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "52a503ba-66bf-449e-9c74-bc6bf54302b4"
+  },
+  {
+    "title": "AI application with SharePoint knowledge and actions",
+    "description": "This project features a web application and an agent designed to help users process information from their SharePoint content and generate summary reports. The application leverages the Azure AI Foundry SDK to host and communicate with the agent, which utilizes the Copilot Retrieval API for semantic queries of relevant SharePoint content. The Retrieval API relies on SharePoint’s built-in semantic index and access control.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/tmarwendo-microsoft",
+    "author": "Yogesh Ratnaparkhi",
+    "source": "https://github.com/microsoft/app-with-sharepoint-knowledge",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "dotnetCsharp"
+    ],
+    "azureServices": [
+      "openai",
+      "aifoundry"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "aa5062a0-6e08-48f6-b2f1-ccb9b51b0538"
+  },
+  {
+    "title": "NLWeb Agent Demo",
+    "description": "NLWeb is an open project developed by Microsoft that aims to make it simple to create a rich, natural language interface for websites using the model of their choice and their own data. This sample demonstrates developers can easily deploy the NLWeb as a foundry agent.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/hengyl",
+    "author": "Heng-yi Liu",
+    "source": "https://github.com/hengyl/nlweb-agent-demo",
+    "tags": [
+      "community",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "aisearch",
+      "appinsights",
+      "aifoundry"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "7dbcc4a1-ae8c-4838-be66-ca999656ea57"
+  },
+  {
+    "title": "Customer Chatbot Solution Accelerator",
+    "description": "This solution accelerator empowers organizations to build intelligent, conversational customer service experiences by leveraging Azure AI Foundry's agent framework. With seamless integration of specialized AI agents, and enterprise-grade data services, teams can create chatbots that provide personalized product recommendations, answer policy questions, and deliver exceptional customer support. The solution combines a modern e-commerce frontend with an intelligent backend that uses an orchestrator agent to route customer queries to specialized agents (Product Lookup and Policy/Knowledge), ensuring accurate, contextual responses grounded in product catalogs and policy documents. By unifying AI capabilities with scalable cloud infrastructure, organizations can deliver 24/7 customer support that understands context, maintains conversation history, and provides actionable insights to improve customer satisfaction and operational efficiency.",
+    "preview": "./templates/images/customer-chatbot-solution-accelerator-arch.png",
+    "authorUrl": "https://github.com/TravisHilbert",
+    "author": "Travis Hilbert",
+    "source": "https://github.com/microsoft/customer-chatbot-solution-accelerator",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "aisearch",
+      "appservice",
+      "aifoundry",
+      "openai",
+      "managedidentity"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "249c8387-2972-4280-b103-6698ef4729f3"
+  },
+  {
+    "title": "Real-Time Intelligence for Operations Solution Accelerator",
+    "description": "This solution accelerator provides a working solution for manufacturing asset performance monitoring, real-time anomaly detection, and anomaly notification. The manufacturing facility telemetry data is synthetically generated with the Telemetry Data Simulator. This architecture can be extended to other industries as long as the appropriate data is generated or actual operations data is ingested into the Azure Event Hub, and related component configurations and Kusto Query Language (KQL) code are updated accordingly.",
+    "preview": "./templates/images/real-time-intelligence-operations-solution-accelerator-arch.png",
+    "authorUrl": "https://github.com/alguadam",
+    "author": "Alvaro Guadamillas Herranz",
+    "source": "https://github.com/microsoft/real-time-intelligence-operations-solution-accelerator",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "eventhub",
+      "fabric"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "10274e4d-410d-403c-a82f-b682445294d9"
+  },
+  {
+    "title": "Home Banking Assistant",
+    "description": "Shows how bank users can use conversational agents to check account balances, credit cards, review transactions, and initiate payments. It's built with Microsoft Agent Framework (python) and Microsoft Foundry.",
+    "preview": "./templates/images/agent-openai-python-banking-assistant.png",
+    "authorUrl": "https://github.com/dantelmomsft",
+    "author": "Davide Antelmo",
+    "source": "https://github.com/Azure-Samples/agent-openai-python-banking-assistant",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "appinsights",
+      "aca",
+      "aifoundry",
+      "managedidentity",
+      "serviceprincipal",
+      "blobstorage",
+      "openai"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "bff7086b-ad44-4978-acaf-9b383f9f5914"
+  },
+  {
+    "title": "Prior Authorization Multi-Agent Solution Accelerator",
+    "description": "A multi-agent AI solution that automates prior authorization for health plan payers. Four specialized Foundry Hosted Agents — Compliance, Clinical Reviewer, Coverage, and Synthesis — evaluate PA requests against coverage policies and produce auditable approve/pend recommendations in under 2 minutes. Built with Microsoft Foundry, Microsoft Agent Framework, Azure Container Apps, and MCP healthcare data servers. Deploy with a single azd up command.",
+    "preview": "./templates/images/Prior-Authorization-Multi-Agent-Solution-Accelerator-arch.png",
+    "authorUrl": "https://github.com/microsoft-foundry",
+    "author": "Microsoft Foundry Team",
+    "source": "https://github.com/microsoft/Prior-Authorization-Multi-Agent-Solution-Accelerator",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt",
+      "mcp"
+    ],
+    "languages": [
+      "python",
+      "typescript",
+      "javascript"
+    ],
+    "azureServices": [
+      "monitor",
+      "appinsights",
+      "aca",
+      "openai",
+      "aifoundry",
+      "managedidentity"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "af79e745-3513-45ff-a5d1-845cdc627c7d"
+  },
+  {
+    "title": "Sovereign Chat Experience Starter",
+    "description": "A reusable Chat UI for AI experiences, built on the Azure OpenAI Responses API standard and Fluent AI components. It connects to a Microsoft Foundry project and is designed to be deployed on Azure Kubernetes Service (AKS) clusters. The application features a chat interface, chat history, streaming responses, and a pluggable provider architecture that supports both live Microsoft Foundry backends and an in-memory mock mode for offline development.",
+    "preview": "./templates/images/Sovereign-Chat-Experience-Starter-arch.png",
+    "authorUrl": "https://github.com/microsoft-foundry",
+    "author": "Microsoft Foundry Team",
+    "source": "https://github.com/Azure-Samples/sovereign-chat-experience-starter",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "typescript"
+    ],
+    "azureServices": [
+      "aks",
+      "openai",
+      "aifoundry"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "7d053418-950f-4007-8bd9-a49881298910"
+  },
+  {
+    "title": "Video Agents Foundry Solution",
+    "description": "Deploy AI-powered video analysis at the edge using Azure Video Indexer on Arc-enabled AKS clusters with GPU support, combined with AI agents built on Azure OpenAI for automated video analysis workflows.",
+    "preview": "./templates/images/Video-Agents-Foundry-Solution-arch.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Video Indexer",
+    "source": "https://github.com/Azure-Samples/Video-Agents-Foundry-Solution",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "dotnetCsharp",
+      "python"
+    ],
+    "azureServices": [
+      "aks",
+      "managedidentity",
+      "azurestorage",
+      "azureai",
+      "openai"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "88c10b7d-ae42-4b31-8666-ff3971ec4d1a"
   }
 ]

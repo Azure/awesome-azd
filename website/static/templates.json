@@ -9165,5 +9165,32 @@
       "bicep"
     ],
     "id": "88c10b7d-ae42-4b31-8666-ff3971ec4d1a"
+  },
+  {
+    "title": "Microsoft IQ Solution Accelerator",
+    "description": "An AI-powered enterprise intelligence accelerator that unifies enterprise data, business knowledge, and execution workflows into a shared context. It connects unified data, semantic models and ontologies in Fabric IQ, enterprise knowledge and retrieval in Foundry IQ, and work context in Work IQ to identify signals, assess impact, and recommend disruption mitigation.",
+    "preview": "./templates/images/microsoft-iq-solution-accelerator-arch.png",
+    "authorUrl": "https://github.com/microsoft",
+    "author": "Microsoft",
+    "source": "https://github.com/microsoft/microsoft-iq-solution-accelerator",
+    "tags": [
+      "msft",
+      "aicollection",
+      "ai",
+      "gpt"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "aisearch",
+      "loganalytics",
+      "azurestorage",
+      "aifoundry"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "7061e7cc-bdf1-4e77-83b0-6ca3d78a6c1a"
   }
 ]

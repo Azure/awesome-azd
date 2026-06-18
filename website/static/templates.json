@@ -2557,7 +2557,6 @@
     "source": "https://github.com/Azure-Samples/agent-openai-python-prompty",
     "tags": [
       "msft",
-      "aicollection",
       "ai"
     ],
     "languages": [
@@ -2582,7 +2581,6 @@
     "source": "https://github.com/Azure-Samples/summarization-openai-python-promptflow",
     "tags": [
       "msft",
-      "aicollection",
       "ai"
     ],
     "languages": [
@@ -2765,7 +2763,8 @@
     "tags": [
       "msft",
       "gpt",
-      "ai"
+      "ai",
+      "aicollection"
     ],
     "languages": [
       "dotnetCsharp"
@@ -2849,7 +2848,8 @@
     "tags": [
       "community",
       "pinecone",
-      "ai"
+      "ai",
+      "aicollection"
     ],
     "languages": [
       "typescript"
@@ -3023,7 +3023,8 @@
     "tags": [
       "community",
       "pinecone",
-      "ai"
+      "ai",
+      "aicollection"
     ],
     "languages": [
       "typescript",
@@ -3831,7 +3832,8 @@
     "tags": [
       "gpt",
       "ai",
-      "msft"
+      "msft",
+      "aicollection"
     ],
     "languages": [
       "java"
@@ -4952,7 +4954,8 @@
       "gpt",
       "neondb",
       "ai",
-      "community"
+      "community",
+      "aicollection"
     ],
     "languages": [
       "python",
@@ -5661,7 +5664,8 @@
     "author": "Purview P4AI Team",
     "source": "https://github.com/Azure-Samples/serverless-chat-langchainjs-purview",
     "tags": [
-      "msft"
+      "msft",
+      "aicollection"
     ],
     "languages": [
       "typescript"
@@ -5688,7 +5692,8 @@
     "author": "Purview P4AI Team",
     "source": "https://github.com/Azure-Samples/azure-search-openai-demo-purviewdatasecurity",
     "tags": [
-      "msft"
+      "msft",
+      "aicollection"
     ],
     "languages": [
       "python"
@@ -6646,7 +6651,8 @@
     "source": "https://github.com/microsoft/Data-and-Agent-Governance-and-Security-Accelerator",
     "tags": [
       "msft",
-      "powershell"
+      "powershell",
+      "aicollection"
     ],
     "languages": [],
     "IaC": [
@@ -7004,7 +7010,8 @@
     "source": "https://github.com/Azure-Samples/Copilot-Studio-with-Azure-AI-Search",
     "tags": [
       "msft",
-      "ai"
+      "ai",
+      "aicollection"
     ],
     "azureServices": [
       "aisearch",
@@ -7177,7 +7184,6 @@
     "tags": [
       "community",
       "serverlessapi"
-
     ],
     "languages": [
       "dotnetCsharp"
@@ -7203,7 +7209,6 @@
     "source": "https://github.com/Azure-Samples/functions-quickstart-python-azd-service-bus",
     "tags": [
       "msft"
-
     ],
     "IaC": [
       "bicep"
@@ -7804,7 +7809,6 @@
     "source": "https://github.com/benleane83/azure-swa-nextjs-postgres",
     "tags": [
       "community"
-
     ],
     "languages": [
       "javascript",
@@ -7837,7 +7841,6 @@
     "tags": [
       "msft",
       "nodejs"
-
     ],
     "languages": [
       "javascript"
@@ -7863,7 +7866,6 @@
     "source": "https://github.com/Azure-Samples/functions-quickstart-powershell-azd-cosmosdb",
     "tags": [
       "msft"
-
     ],
     "languages": [
       "powershell"
@@ -7889,7 +7891,6 @@
     "source": "https://github.com/Azure-Samples/functions-quickstart-java-azd-cosmosdb",
     "tags": [
       "msft"
-
     ],
     "languages": [
       "java"
@@ -7915,7 +7916,6 @@
     "source": "https://github.com/Azure-Samples/Azure-Functions-Flex-Consumption-with-Azure-Files-OS-Mount-Samples",
     "tags": [
       "msft"
-
     ],
     "languages": [
       "python"
@@ -7941,7 +7941,6 @@
     "source": "https://github.com/Azure-Samples/Azure-Functions-Flex-Consumption-with-Azure-Files-OS-Mount-Samples",
     "tags": [
       "msft"
-
     ],
     "languages": [
       "python"
@@ -8267,42 +8266,6 @@
       "bicep"
     ],
     "id": "b3abdd34-87fd-4b04-8e44-3cb04dff76a3"
-  },
-  {
-    "title": "Azure Functions OpenAI AI Search Node",
-    "description": "This sample contains a JavaScript Azure Function using OpenAI bindings extension to highlight OpenAI retrieval augmented generation with Azure AI Search.",
-    "preview": "./templates/images/test.png",
-    "authorUrl": "https://github.com/MadhuraBharadwaj-MSFT",
-    "author": "Madhura Bharadwaj",
-    "source": "https://github.com/Azure-Samples/azure-functions-openai-aisearch-node",
-    "tags": [
-      "msft",
-      "aicollection",
-      "ai",
-      "gpt"
-    ],
-    "languages": [
-      "javascript"
-    ],
-    "frameworks": [
-      "rag"
-    ],
-    "azureServices": [
-      "aisearch",
-      "functions",
-      "blobstorage",
-      "openai",
-      "vnets",
-      "azurestorage",
-      "managedidentity",
-      "appinsights",
-      "loganalytics",
-      "monitor"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "de50afde-f0a4-4602-a7ec-48884a0fa9c9"
   },
   {
     "title": "Semantic caching with Azure Redis and Dall-E 3",

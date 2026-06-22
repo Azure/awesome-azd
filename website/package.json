@@ -16,7 +16,7 @@
     "test:e2e": "playwright test"
   },
   "devDependencies": {
-    "@babel/core": "^7.25.2",
+    "@babel/core": "^7.29.6",
     "@babel/preset-env": "^7.25.4",
     "@docusaurus/core": "^3.9.2",
     "@docusaurus/module-type-aliases": "^3.7.0",

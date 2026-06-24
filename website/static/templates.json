@@ -9155,5 +9155,186 @@
       "bicep"
     ],
     "id": "7061e7cc-bdf1-4e77-83b0-6ca3d78a6c1a"
+  },
+  {
+    "title": "Durable Functions Fan-Out/Fan-In using Azure Developer CLI (Java)",
+    "description": "A Durable Functions quickstart written in Java demonstrating the fan-out/fan-in pattern. It's deployed to Azure Functions Flex Consumption plan using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/durable-functions-quickstart-java-azd",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "java"
+    ],
+    "azureServices": [
+      "functions",
+      "azurestorage",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "d7c28fd1-531b-41ec-9a8f-7a3f7bb3d69f"
+  },
+  {
+    "title": "Durable Functions Fan-Out/Fan-In using Azure Developer CLI (JavaScript)",
+    "description": "A Durable Functions quickstart written in JavaScript demonstrating the fan-out/fan-in pattern. It's deployed to Azure Functions Flex Consumption plan using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/durable-functions-quickstart-javascript-azd",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "javascript",
+      "nodejs"
+    ],
+    "azureServices": [
+      "functions",
+      "azurestorage",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "9ecf7695-b6ef-4f90-aa15-e7ebac78d5a7"
+  },
+  {
+    "title": "Durable Functions Fan-Out/Fan-In using Azure Developer CLI (PowerShell)",
+    "description": "A Durable Functions quickstart written in PowerShell demonstrating the fan-out/fan-in pattern. It's deployed to Azure Functions Flex Consumption plan using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/durable-functions-quickstart-powershell-azd",
+    "tags": [
+      "msft",
+      "powershell",
+      "new"
+    ],
+    "azureServices": [
+      "functions",
+      "azurestorage",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "f47c517f-2b8d-4db4-80b3-2ca5d3661d3c"
+  },
+  {
+    "title": "Durable Functions Fan-Out/Fan-In using Azure Developer CLI (Python)",
+    "description": "A Durable Functions quickstart written in Python demonstrating the fan-out/fan-in pattern. It's deployed to Azure Functions Flex Consumption plan using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/durable-functions-quickstart-python-azd",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "functions",
+      "azurestorage",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "4f49a0af-f832-409a-9aab-7c74c59fd849"
+  },
+  {
+    "title": "Durable Functions Fan-Out/Fan-In using Azure Developer CLI (TypeScript)",
+    "description": "A Durable Functions quickstart written in TypeScript demonstrating the fan-out/fan-in pattern. It's deployed to Azure Functions Flex Consumption plan using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/durable-functions-quickstart-typescript-azd",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "typescript",
+      "nodejs"
+    ],
+    "azureServices": [
+      "functions",
+      "azurestorage",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "6dc88f32-c97d-447d-b2e1-2f57485293a5"
+  },
+  {
+    "title": "Remote MCP Functions with JavaScript",
+    "description": "This scenario demonstrates how to easily build and deploy a custom remote MCP (Model Context Protocol) server to the cloud using Azure Functions and JavaScript. The MCP server is configured with built-in authentication using Microsoft Entra as the identity provider.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/remote-mcp-functions-javascript",
+    "tags": [
+      "msft",
+      "ai",
+      "mcp",
+      "new"
+    ],
+    "languages": [
+      "javascript",
+      "nodejs"
+    ],
+    "azureServices": [
+      "functions"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "f14a75e4-d293-4990-bb5c-59149e9ee1a3"
+  },
+  {
+    "title": "Long-running MCP tools using Durable Functions (.NET/C#)",
+    "description": "A sample Azure Functions MCP server (.NET isolated) that shows how to run long-running MCP tools by backing them with Durable Functions and a budgeted start and poll pattern. It's deployed using the Azure Developer CLI (azd) and uses the Durable Task Scheduler backend with managed identity in Azure.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/mcp-functions-long-running-tools",
+    "tags": [
+      "msft",
+      "ai",
+      "mcp",
+      "new"
+    ],
+    "languages": [
+      "dotnetCsharp"
+    ],
+    "azureServices": [
+      "functions",
+      "azurestorage",
+      "managedidentity"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "1e89afe2-59d7-481f-ae63-749888d6de48"
   }
 ]

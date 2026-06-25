@@ -9159,7 +9159,7 @@
   {
     "title": "mTLS with Azure API Management and Application Gateway",
     "description": "A demo that shows how to use mutual TLS (mTLS) with Azure API Management and Application Gateway. It shows how to validate client certificates when calling API Management directly and when API Management is behind an Application Gateway. It also demonstrates how to secure connections from API Management to backend systems using mTLS.",
-    "preview": "https://raw.githubusercontent.com/ronaldbosma/mtls-with-apim-and-agw/refs/heads/main/images/diagrams-overview.drawio.svg",
+    "preview": "./templates/images/mtls-with-apim-and-agw.png",
     "authorUrl": "https://github.com/ronaldbosma",
     "author": "Ronald Bosma",
     "source": "https://github.com/ronaldbosma/mtls-with-apim-and-agw",

@@ -9155,5 +9155,30 @@
       "bicep"
     ],
     "id": "7061e7cc-bdf1-4e77-83b0-6ca3d78a6c1a"
+  },
+  {
+    "title": "mTLS with Azure API Management and Application Gateway",
+    "description": "A demo that shows how to use mutual TLS (mTLS) with Azure API Management and Application Gateway. It shows how to validate client certificates when calling API Management directly and when API Management is behind an Application Gateway. It also demonstrates how to secure connections from API Management to backend systems using mTLS.",
+    "preview": "https://raw.githubusercontent.com/ronaldbosma/mtls-with-apim-and-agw/refs/heads/main/images/diagrams-overview.drawio.svg",
+    "authorUrl": "https://github.com/ronaldbosma",
+    "author": "Ronald Bosma",
+    "source": "https://github.com/ronaldbosma/mtls-with-apim-and-agw",
+    "tags": [
+      "community"
+    ],
+    "languages": [
+      "dotnetCsharp"
+    ],
+    "azureServices": [
+      "apim",
+      "appinsights",
+      "agw",
+      "keyvault",
+      "loganalytics"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "a4f1db9e-ae2d-41db-8f49-33bc702d4653"
   }
 ]

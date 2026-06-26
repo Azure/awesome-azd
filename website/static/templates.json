@@ -9157,6 +9157,81 @@
     "id": "7061e7cc-bdf1-4e77-83b0-6ca3d78a6c1a"
   },
   {
+    "title": "Azure Functions Python Timer Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions Timer trigger quickstart written in Python and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (AZD). This sample uses managed identity and a virtual network to ensure it's secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-python-azd-timer",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "functions",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "f7da4cb3-8113-41a2-9ada-9ad3814479b2"
+  },
+  {
+    "title": "Azure Functions JavaScript Timer Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions Timer trigger quickstart written in JavaScript and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (AZD). This sample uses managed identity and a virtual network to ensure it's secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-javascript-azd-timer",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "javascript"
+    ],
+    "azureServices": [
+      "functions",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "1bbbfef4-14e8-44de-952f-5300ed58c977"
+  },
+  {
+    "title": "Azure Functions TypeScript Timer Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions Timer trigger quickstart written in TypeScript and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (AZD). This sample uses managed identity and a virtual network to ensure it's secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-typescript-azd-timer",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "typescript"
+    ],
+    "azureServices": [
+      "functions",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "4bc9474d-2b13-4bf4-b662-ad8cfc479bb5"
+  },
+  {
     "title": "Durable Functions Fan-Out/Fan-In using Azure Developer CLI (Java)",
     "description": "A Durable Functions quickstart written in Java demonstrating the fan-out/fan-in pattern. It's deployed to Azure Functions Flex Consumption plan using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
     "preview": "./templates/images/test.png",

@@ -9446,10 +9446,8 @@
     "source": "https://github.com/Azure-Samples/functions-quickstart-powershell-azd-timer",
     "tags": [
       "msft",
+      "powershell",
       "new"
-    ],
-    "languages": [
-      "powershell"
     ],
     "azureServices": [
       "functions",

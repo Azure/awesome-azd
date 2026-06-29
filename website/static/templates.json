@@ -9411,5 +9411,55 @@
       "bicep"
     ],
     "id": "1e89afe2-59d7-481f-ae63-749888d6de48"
+  },
+  {
+    "title": "Azure Functions Java Timer Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions Timer trigger quickstart written in Java and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (AZD). This sample uses managed identity and a virtual network to ensure it's secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-java-azd-timer",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "java"
+    ],
+    "azureServices": [
+      "functions",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "b2f795d2-9e27-4232-be88-e2ef71518dae"
+  },
+  {
+    "title": "Azure Functions PowerShell Timer Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions Timer trigger quickstart written in PowerShell and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (AZD). This sample uses managed identity and a virtual network to ensure it's secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-powershell-azd-timer",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "powershell"
+    ],
+    "azureServices": [
+      "functions",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "8b91b751-45bf-4e9a-9a51-f072018ecee2"
   }
 ]

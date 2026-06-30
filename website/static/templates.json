@@ -1639,38 +1639,6 @@
     "id": "e8b16cf8-d0c6-4548-a337-1c1ade5b7a0b"
   },
   {
-    "title": "ChatGPT and RAG with Azure OpenAI and AI Search for JavaScript",
-    "description": "A reference sample to build Retrieval Augmented Generation applications using Azure AI Search and Azure OpenAI.",
-    "preview": "./templates/images/azure-search-openai-javascript.png",
-    "authorUrl": "https://github.com/Azure-Samples, https://github.com/anfibiacreativa, https://github.com/shibbas",
-    "author": "JavaScript Advocacy Team, Natalia Venditto, Shibani Basava",
-    "source": "https://github.com/Azure-Samples/azure-search-openai-javascript",
-    "tags": [
-      "ai",
-      "gpt",
-      "webcomponents",
-      "msft",
-      "aicollection"
-    ],
-    "languages": [
-      "javascript",
-      "nodejs",
-      "typescript"
-    ],
-    "frameworks": [
-      "microfrontend",
-      "rag"
-    ],
-    "azureServices": [
-      "aisearch",
-      "openai"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "9b2cfe95-02be-4c62-8733-1dab7434b65b"
-  },
-  {
     "title": "Bicep template to bootstrap Azure Deployment Environments",
     "description": "A template to deploy Azure DevCenter with the minimun configuration to start using Azure Deployment Environments and supercharge your platform engineering story. Infrastructure as Code (written in Bicep) will get you started quickly to enable developers to self-serve environments via the Developer Portal, Azure CLI or CI/CD pipelines.",
     "preview": "./templates/images/azure-deployment-environments.png",
@@ -9411,6 +9379,54 @@
       "bicep"
     ],
     "id": "1e89afe2-59d7-481f-ae63-749888d6de48"
+  },
+  {
+    "title": "Azure Functions Java Timer Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions Timer trigger quickstart written in Java and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (AZD). This sample uses managed identity and a virtual network to ensure it's secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-java-azd-timer",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "java"
+    ],
+    "azureServices": [
+      "functions",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "b2f795d2-9e27-4232-be88-e2ef71518dae"
+  },
+  {
+    "title": "Azure Functions PowerShell Timer Trigger using Azure Developer CLI",
+    "description": "This repository contains an Azure Functions Timer trigger quickstart written in PowerShell and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (AZD). This sample uses managed identity and a virtual network to ensure it's secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-powershell-azd-timer",
+    "tags": [
+      "msft",
+      "powershell",
+      "new"
+    ],
+    "azureServices": [
+      "functions",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "8b91b751-45bf-4e9a-9a51-f072018ecee2"
   },
   {
     "title": "mTLS with Azure API Management and Application Gateway",

@@ -9427,5 +9427,28 @@
       "bicep"
     ],
     "id": "8b91b751-45bf-4e9a-9a51-f072018ecee2"
+  },
+  {
+    "title": "Azure Functions C# HTTP Trigger using Azure Developer CLI (Terraform)",
+    "description": "This repository contains an Azure Functions HTTP trigger quickstart written in C# (isolated process mode) and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd) with Terraform as the IaC provider. The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd-tf",
+    "tags": [
+      "msft",
+      "terraform",
+      "new"
+    ],
+    "azureServices": [
+      "functions",
+      "managedidentity",
+      "vnets",
+      "appinsights"
+    ],
+    "id": "cff3f8db-2d8c-425e-b377-67f434df2187",
+    "languages": [
+      "dotnetCsharp"
+    ]
   }
 ]

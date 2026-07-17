@@ -14,6 +14,9 @@ const telemetryInit = () => {
   const SET = "set";
   const RESET = "reset";
   var siteConsent = null;
+  // Guard so Clarity initializes at most once even if the consent callback
+  // fires repeatedly (e.g. via the "Manage Cookies" dialog).
+  var clarityInitialized = false;
 
   function onConsentChanged(categoryPreferences) {
     setNonEssentialCookies(categoryPreferences);
@@ -41,11 +44,21 @@ const telemetryInit = () => {
 
   function setClarity(setString) {
     if (setString === SET) {
-      Clarity.init("r8ugpuymsy");
+      if (!clarityInitialized) {
+        Clarity.init("r8ugpuymsy");
+        clarityInitialized = true;
+      }
       Clarity.consent(true);
     } else {
-      Cookies.remove("_clck", { domain: ".microsoft.com" });
-      Cookies.remove("_clsk", { domain: ".microsoft.com" });
+      if (clarityInitialized) {
+        Clarity.consent(false);
+      }
+      // Clarity sets _clck/_clsk on the current host (e.g. azure.github.io), so
+      // remove without a domain as well as with .microsoft.com for safety.
+      ["_clck", "_clsk"].forEach(function (cookieName) {
+        Cookies.remove(cookieName);
+        Cookies.remove(cookieName, { domain: ".microsoft.com" });
+      });
     }
   }
 
@@ -54,6 +67,12 @@ const telemetryInit = () => {
       setClarity(SET);
     } else {
       setClarity(RESET);
+      // Analytics not consented: 1DS keeps running so its essential Required
+      // telemetry (MicrosoftApplicationsTelemetry* device cookies) continues,
+      // but best-effort remove the non-essential dual-purpose MSFPC identity
+      // cookie so it never persists without consent.
+      Cookies.remove("MSFPC");
+      Cookies.remove("MSFPC", { domain: ".microsoft.com" });
     }
   }
 
@@ -171,9 +190,18 @@ const telemetryInit = () => {
       propertyConfiguration: {
         callback: {
           userConsentDetails: function () {
-            return siteConsent && siteConsent.getConsent
-              ? siteConsent.getConsent()
-              : null;
+            // Live consent lookup. Until WCP resolves, report non-essential
+            // categories as denied so 1DS collects only Required telemetry and
+            // writes no analytics cookies (e.g. MSFPC) before the user consents.
+            if (siteConsent && siteConsent.getConsent) {
+              return siteConsent.getConsent();
+            }
+            return {
+              Required: true,
+              Analytics: false,
+              SocialMedia: false,
+              Advertising: false,
+            };
           },
         },
       },

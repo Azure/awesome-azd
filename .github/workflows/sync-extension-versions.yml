@@ -20,7 +20,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  sync-catalog:
+  sync-extension-catalog:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:

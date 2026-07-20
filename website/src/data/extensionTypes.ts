@@ -22,7 +22,7 @@ export type Extension = {
   author: string;
   authorUrl?: string;
   source: string;
-  registryUrl?: string;
+  registryUrl: string;
   capabilities: ExtensionCapability[];
   tags: TagType[];
   website?: string;

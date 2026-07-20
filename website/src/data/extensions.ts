@@ -48,12 +48,9 @@ function validateExtensions(raw: unknown): Extension[] {
     const authorUrl = entry.authorUrl;
     const source = entry.source;
     const registryUrl = entry.registryUrl;
-    if (author != null && typeof author !== 'string') {
-      console.warn(`Extension[${i}]: invalid 'author' type, skipping`);
+    if (typeof author !== 'string' || !author) {
+      console.warn(`Extension[${i}]: missing or invalid 'author', skipping`);
       return false;
-    }
-    if (author == null) {
-      (entry as Record<string, unknown>).author = '';
     }
     if (authorUrl != null && typeof authorUrl !== 'string') {
       console.warn(`Extension[${i}]: invalid 'authorUrl' type, skipping`);
@@ -63,8 +60,8 @@ function validateExtensions(raw: unknown): Extension[] {
       console.warn(`Extension[${i}]: missing or invalid 'source', skipping`);
       return false;
     }
-    if (registryUrl != null && typeof registryUrl !== 'string') {
-      console.warn(`Extension[${i}]: invalid 'registryUrl' type, skipping`);
+    if (typeof registryUrl !== 'string' || !registryUrl) {
+      console.warn(`Extension[${i}]: missing or invalid 'registryUrl', skipping`);
       return false;
     }
     // Validate required array fields (coerce missing to empty arrays).

@@ -53,7 +53,7 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
   // lines so the user can run them as a single sequence in their terminal.
   const sourceName = extension.id.split(".")[0];
   const clipboardCommand =
-    !isBuiltIn && extension.registryUrl
+    !isBuiltIn
       ? `azd ext source add -t url -n ${sourceName} -l ${extension.registryUrl}\n${installCommand}`
       : installCommand;
 

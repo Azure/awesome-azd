@@ -65,9 +65,7 @@ describe('Extension catalog synchronization', () => {
       },
     ];
 
-    const result = syncBuiltInExtensions(current, registry, {
-      allowLargeRemoval: true,
-    });
+    const result = syncBuiltInExtensions(current, registry);
 
     expect(result.extensions.map((extension: { id: string }) => extension.id)).toEqual([
       'microsoft.azd.existing',
@@ -125,7 +123,7 @@ describe('Extension catalog synchronization', () => {
     ).toThrow('conflicts with a community extension');
   });
 
-  test('rejects unexpectedly large registry removals', () => {
+  test('includes registry removals in the synchronized catalog', () => {
     const current = Array.from({ length: 8 }, (_, index) => ({
       id: `microsoft.azd.${index}`,
       displayName: `Extension ${index}`,
@@ -143,12 +141,15 @@ describe('Extension catalog synchronization', () => {
       capabilities: [],
     }));
 
-    expect(() => syncBuiltInExtensions(current, registry)).toThrow(
-      'would remove 4 of 8 extensions',
-    );
-    expect(() =>
-      syncBuiltInExtensions(current, registry, { allowLargeRemoval: true }),
-    ).not.toThrow();
+    const result = syncBuiltInExtensions(current, registry);
+
+    expect(result.extensions).toHaveLength(4);
+    expect(result.changes.removed).toEqual([
+      'microsoft.azd.4',
+      'microsoft.azd.5',
+      'microsoft.azd.6',
+      'microsoft.azd.7',
+    ]);
   });
 
   test('replaces the catalog atomically', () => {

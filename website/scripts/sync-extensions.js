@@ -14,7 +14,6 @@ const EXTENSIONS_PATH = path.join(__dirname, "..", "static", "extensions.json");
 const BUILT_IN_REGISTRY_URL = extensionRegistries.builtIn;
 const BUILT_IN_SOURCE_ROOT =
   "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions";
-const MAX_REMOVAL_RATIO = 0.25;
 const OBSOLETE_FIELDS = new Set([
   "namespace",
   "latestVersion",
@@ -50,11 +49,7 @@ function createBuiltInExtension(extension) {
   };
 }
 
-function syncBuiltInExtensions(
-  currentExtensions,
-  registryExtensions,
-  { allowLargeRemoval = false } = {},
-) {
+function syncBuiltInExtensions(currentExtensions, registryExtensions) {
   if (!Array.isArray(currentExtensions) || !Array.isArray(registryExtensions)) {
     throw new Error("Extension catalog and registry results must both be arrays.");
   }
@@ -121,13 +116,6 @@ function syncBuiltInExtensions(
   });
 
   const removed = Array.from(builtIns.keys()).filter((id) => !registryIds.has(id));
-  const removalRatio = builtIns.size === 0 ? 0 : removed.length / builtIns.size;
-  if (removalRatio > MAX_REMOVAL_RATIO && !allowLargeRemoval) {
-    throw new Error(
-      `Built-in registry would remove ${removed.length} of ${builtIns.size} extensions. ` +
-        "Re-run with --allow-large-removal after confirming the upstream change.",
-    );
-  }
   // Built-ins follow upstream registry order; community entries retain their
   // relative order after the built-in catalog.
   const extensions = [...syncedBuiltIns, ...cleanedCommunityExtensions];
@@ -175,14 +163,6 @@ function writeCatalogAtomically(extensions, outputPath = EXTENSIONS_PATH) {
 }
 
 async function main() {
-  const supportedArguments = new Set(["--allow-large-removal"]);
-  const unknownArguments = process.argv.slice(2).filter(
-    (argument) => !supportedArguments.has(argument),
-  );
-  if (unknownArguments.length > 0) {
-    throw new Error(`Unknown argument(s): ${unknownArguments.join(", ")}`);
-  }
-
   const currentExtensions = JSON.parse(fs.readFileSync(EXTENSIONS_PATH, "utf-8"));
   const registryExtensions = await fetchAndValidate(BUILT_IN_REGISTRY_URL);
   const invalid = registryExtensions.filter((extension) => !extension.valid);
@@ -193,9 +173,7 @@ async function main() {
     throw new Error(`Built-in registry validation failed:\n${details}`);
   }
 
-  const result = syncBuiltInExtensions(currentExtensions, registryExtensions, {
-    allowLargeRemoval: process.argv.includes("--allow-large-removal"),
-  });
+  const result = syncBuiltInExtensions(currentExtensions, registryExtensions);
   if (result.changed) {
     writeCatalogAtomically(result.extensions);
   }

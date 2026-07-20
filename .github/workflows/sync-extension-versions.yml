@@ -3,13 +3,7 @@ name: Sync Extension Catalog
 on:
   schedule:
     - cron: "0 6 * * 1"
-  workflow_dispatch:
-    inputs:
-      allow_large_removal:
-        description: Allow removal of more than 25% of built-in extensions
-        required: false
-        default: false
-        type: boolean
+  workflow_dispatch: {}
 
 permissions:
   contents: write
@@ -38,15 +32,9 @@ jobs:
       - name: Sync extension catalog
         id: sync
         shell: bash
-        env:
-          ALLOW_LARGE_REMOVAL: ${{ inputs.allow_large_removal || false }}
         run: |
           set -euo pipefail
-          arguments=()
-          if [[ "$ALLOW_LARGE_REMOVAL" == "true" ]]; then
-            arguments+=(--allow-large-removal)
-          fi
-          node website/scripts/sync-extensions.js "${arguments[@]}" | tee "$RUNNER_TEMP/extension-sync-summary.md"
+          node website/scripts/sync-extensions.js | tee "$RUNNER_TEMP/extension-sync-summary.md"
           if git diff --quiet website/static/extensions.json; then
             echo "changed=false" >> $GITHUB_OUTPUT
           else

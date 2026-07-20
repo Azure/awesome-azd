@@ -164,6 +164,8 @@ export type TagType =
   | "ext-mcp-server"
   | "ext-service-target-provider"
   | "ext-framework-service-provider"
+  | "ext-provisioning-provider"
+  | "ext-validation-provider"
   | "ext-metadata"
   ;
 
@@ -979,6 +981,16 @@ export const Tags: { [type in TagType]: Tag } = {
   "ext-framework-service-provider": {
     label: "Framework Service Provider",
     description: "Extension provides framework service integration",
+    type: "Extension Capability",
+  },
+  "ext-provisioning-provider": {
+    label: "Provisioning Provider",
+    description: "Extension provides custom infrastructure provisioning",
+    type: "Extension Capability",
+  },
+  "ext-validation-provider": {
+    label: "Validation Provider",
+    description: "Extension provides project validation",
     type: "Extension Capability",
   },
   "ext-metadata": {

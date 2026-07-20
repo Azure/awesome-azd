@@ -36,7 +36,8 @@
 
 .showcaseList {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(285px, 100%), 350px));
+  justify-content: start;
   gap: var(--space-lg);
 }
 

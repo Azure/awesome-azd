@@ -2,19 +2,21 @@
   {
     "id": "microsoft.azd.demo",
     "namespace": "demo",
-    "displayName": "Demo",
+    "displayName": "Demo Extension",
     "description": "This extension provides examples of the azd extension framework.",
     "author": "Azure Dev",
     "authorUrl": "https://github.com/Azure",
     "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/microsoft.azd.demo",
     "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
-    "latestVersion": "0.6.0",
+    "latestVersion": "0.7.0",
     "capabilities": [
       "custom-commands",
       "lifecycle-events",
       "mcp-server",
       "service-target-provider",
       "framework-service-provider",
+      "provisioning-provider",
+      "validation-provider",
       "metadata"
     ],
     "platforms": [
@@ -38,7 +40,7 @@
     "authorUrl": "https://github.com/Azure",
     "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/microsoft.azd.extensions",
     "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
-    "latestVersion": "0.11.0",
+    "latestVersion": "0.12.0",
     "capabilities": [
       "custom-commands",
       "metadata"
@@ -85,18 +87,20 @@
   {
     "id": "azure.ai.agents",
     "namespace": "ai.agent",
-    "displayName": "Foundry agents (Preview)",
-    "description": "Ship agents with Microsoft Foundry from your terminal. (Preview)",
+    "displayName": "Foundry agents (Beta)",
+    "description": "Ship agents with Microsoft Foundry from your terminal. (Beta)",
     "author": "Foundry Team",
     "authorUrl": "https://github.com/Azure",
     "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.agents",
     "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
-    "latestVersion": "0.1.34-preview",
+    "latestVersion": "1.0.0-beta.6",
     "capabilities": [
       "custom-commands",
       "lifecycle-events",
       "mcp-server",
       "service-target-provider",
+      "provisioning-provider",
+      "validation-provider",
       "metadata"
     ],
     "platforms": [
@@ -225,15 +229,178 @@
   {
     "id": "azure.ai.inspector",
     "namespace": "ai.inspector",
-    "displayName": "Foundry agent inspector (Preview)",
-    "description": "Browser-based inspector UI for locally running Foundry agents. (Preview)",
+    "displayName": "Foundry Agent Inspector (Beta)",
+    "description": "Browser-based inspector UI for locally running Foundry agents. (Beta)",
     "author": "Foundry Team",
     "authorUrl": "https://github.com/Azure",
     "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.inspector",
     "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
-    "latestVersion": "0.0.1-preview",
+    "latestVersion": "1.0.0-beta.2",
     "capabilities": [
       "custom-commands",
+      "metadata"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "msft",
+      "ai",
+      "aifoundry"
+    ]
+  },
+  {
+    "id": "microsoft.foundry",
+    "namespace": "foundry",
+    "displayName": "Microsoft Foundry (Beta)",
+    "description": "A meta-package, bundling together all of the Microsoft Foundry AZD extensions for easy install. (Beta)",
+    "author": "Foundry Team",
+    "authorUrl": "https://github.com/Azure",
+    "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/microsoft.foundry",
+    "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
+    "latestVersion": "1.0.0-beta.1",
+    "capabilities": [],
+    "platforms": [],
+    "tags": [
+      "msft",
+      "ai",
+      "aifoundry"
+    ]
+  },
+  {
+    "id": "azure.ai.connections",
+    "namespace": "ai.connection",
+    "displayName": "Foundry Connections (Beta)",
+    "description": "Manage Microsoft Foundry Connections from your terminal. (Beta)",
+    "author": "Foundry Team",
+    "authorUrl": "https://github.com/Azure",
+    "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.connections",
+    "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
+    "latestVersion": "1.0.0-beta.3",
+    "capabilities": [
+      "custom-commands",
+      "service-target-provider",
+      "metadata"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "msft",
+      "ai",
+      "aifoundry"
+    ]
+  },
+  {
+    "id": "azure.ai.projects",
+    "namespace": "ai.project",
+    "displayName": "Foundry Projects (Beta)",
+    "description": "Manage Microsoft Foundry Project resources from your terminal. (Beta)",
+    "author": "Foundry Team",
+    "authorUrl": "https://github.com/Azure",
+    "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.projects",
+    "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
+    "latestVersion": "1.0.0-beta.2",
+    "capabilities": [
+      "custom-commands",
+      "service-target-provider",
+      "metadata"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "msft",
+      "ai",
+      "aifoundry"
+    ]
+  },
+  {
+    "id": "azure.ai.routines",
+    "namespace": "ai.routine",
+    "displayName": "Foundry Routines (Beta)",
+    "description": "Manage Microsoft Foundry Routines from your terminal. (Beta)",
+    "author": "Foundry Team",
+    "authorUrl": "https://github.com/Azure",
+    "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.routines",
+    "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
+    "latestVersion": "1.0.0-beta.3",
+    "capabilities": [
+      "custom-commands",
+      "service-target-provider",
+      "metadata"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "msft",
+      "ai",
+      "aifoundry"
+    ]
+  },
+  {
+    "id": "azure.ai.skills",
+    "namespace": "ai.skill",
+    "displayName": "Foundry skills (Beta)",
+    "description": "Manage Microsoft Foundry skills (reusable agent behavioral guidelines) from your terminal. (Beta)",
+    "author": "Foundry Team",
+    "authorUrl": "https://github.com/Azure",
+    "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.skills",
+    "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
+    "latestVersion": "1.0.0-beta.2",
+    "capabilities": [
+      "custom-commands",
+      "service-target-provider",
+      "metadata"
+    ],
+    "platforms": [
+      "windows/amd64",
+      "windows/arm64",
+      "darwin/amd64",
+      "darwin/arm64",
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "tags": [
+      "msft",
+      "ai",
+      "aifoundry"
+    ]
+  },
+  {
+    "id": "azure.ai.toolboxes",
+    "namespace": "ai.toolbox",
+    "displayName": "Foundry Toolboxes (Beta)",
+    "description": "Manage Microsoft Foundry Toolboxes from your terminal. (Beta)",
+    "author": "Foundry Team",
+    "authorUrl": "https://github.com/Azure",
+    "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.toolboxes",
+    "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
+    "latestVersion": "1.0.0-beta.3",
+    "capabilities": [
+      "custom-commands",
+      "service-target-provider",
       "metadata"
     ],
     "platforms": [

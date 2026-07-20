@@ -18,6 +18,8 @@ const VALID_CAPABILITIES = [
   "mcp-server",
   "service-target-provider",
   "framework-service-provider",
+  "provisioning-provider",
+  "validation-provider",
   "metadata",
 ];
 
@@ -166,11 +168,11 @@ if (require.main === module) {
     .then((results) => {
       console.log(JSON.stringify(results, null, 2));
       const hasErrors = results.some((r) => !r.valid);
-      process.exit(hasErrors ? 1 : 0);
+      process.exitCode = hasErrors ? 1 : 0;
     })
     .catch((err) => {
       console.error(`Error: ${err.message}`);
-      process.exit(1);
+      process.exitCode = 1;
     });
 }
 

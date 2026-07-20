@@ -50,7 +50,7 @@ Populate every field required by `Extension`: `id`, `namespace`, `displayName`, 
 
 Use registry metadata when available and verify repository URLs. Derive a namespace from documented `usage` only when unambiguous; ask the user rather than inventing author, source, namespace, or tag metadata.
 
-For Microsoft built-ins, include `msft`, add topic tags such as `ai` and `aifoundry` only when clearly applicable, use the extension directory in Azure/azure-dev as `source`, and use the built-in registry URL as `registryUrl`. Keep built-ins in registry order unless the file has a deliberate alternative, and preserve community entry ordering.
+For entries sourced from the built-in Azure/azure-dev registry, identified by an exact `registryUrl` match, include `msft`, add topic tags such as `ai` and `aifoundry` only when clearly applicable, and use the extension directory in Azure/azure-dev as `source`. Keep these entries in registry order unless the file has a deliberate alternative, and preserve community entry ordering.
 
 ### 5. Wire new capabilities through every surface
 

@@ -14,7 +14,6 @@ import {
   CardFooter,
   Button,
   CardPreview,
-  Input,
   Popover,
   PopoverTrigger,
   PopoverSurface,
@@ -29,6 +28,8 @@ const CAPABILITY_LABELS: Record<string, { label: string; color: "informative" | 
   "mcp-server": { label: "MCP", color: "important" },
   "service-target-provider": { label: "Service Target", color: "warning" },
   "framework-service-provider": { label: "Framework", color: "warning" },
+  "provisioning-provider": { label: "Provisioning", color: "warning" },
+  "validation-provider": { label: "Validation", color: "success" },
   "metadata": { label: "Metadata", color: "informative" },
 };
 
@@ -181,15 +182,14 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
       </div>
       <CardPreview className={styleCSS.cardBreakLine} />
       <CardFooter>
-        <Input
-          id={"input_" + extension.id}
-          size="small"
-          spellCheck={false}
-          readOnly
-          defaultValue={installCommand}
-          className={styleCSS.input}
+        <code
+          id={"command_" + extension.id}
+          className={styleCSS.command}
           aria-label={`Install command for ${extension.displayName}`}
-        />
+          data-testid="extension-command"
+        >
+          {installCommand}
+        </code>
         <Popover trapFocus withArrow size="small">
           <PopoverTrigger disableButtonEnhancement>
             <Button

@@ -22,7 +22,7 @@ export default function ShowcaseExtensionCards({
   return (
     <section>
       <div className={styles.showcaseFavorite}>
-        <div className={styles.showcaseList}>
+        <div className={styles.showcaseList} data-testid="showcase-list">
           {filteredExtensions.map((extension) => (
             <React.Fragment key={extension.id}>
               <ShowcaseExtensionCard extension={extension} />

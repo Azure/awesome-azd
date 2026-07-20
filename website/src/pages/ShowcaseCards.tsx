@@ -23,7 +23,7 @@ export default function ShowcaseCards({
   return (
     <section>
       <div className={styles.showcaseFavorite}>
-        <div className={styles.showcaseList}>
+        <div className={styles.showcaseList} data-testid="showcase-list">
           {filteredUsers.map((user, index) => (
             <React.Fragment key={index}>
               {(len < 6 && index === len - 1) || index === 4 ? (

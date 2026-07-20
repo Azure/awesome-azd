@@ -11,6 +11,8 @@ export type ExtensionCapability =
   | "mcp-server"
   | "service-target-provider"
   | "framework-service-provider"
+  | "provisioning-provider"
+  | "validation-provider"
   | "metadata";
 
 export type ExtensionPlatform =

@@ -228,8 +228,11 @@ function validateExtensionEntry(entry) {
   if (typeof entry.id !== "string" || !entry.id) return false;
   if (typeof entry.displayName !== "string" || !entry.displayName) return false;
   if (typeof entry.description !== "string") return false;
-  if (typeof entry.installCommand !== "string" || !entry.installCommand) return false;
+  if (typeof entry.author !== "string" || !entry.author) return false;
+  if (typeof entry.source !== "string" || !entry.source) return false;
+  if (typeof entry.registryUrl !== "string" || !entry.registryUrl) return false;
   if (!Array.isArray(entry.capabilities)) return false;
+  if (!Array.isArray(entry.tags)) return false;
   return true;
 }
 

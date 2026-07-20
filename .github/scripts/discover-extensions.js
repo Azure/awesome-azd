@@ -226,18 +226,14 @@ async function main() {
 
       const entry = {
         id: ext.id,
-        namespace: ext.namespace,
         displayName: ext.displayName,
         description: ext.description,
         author: repoDetails.owner.login,
         authorUrl: `https://github.com/${repoDetails.owner.login}`,
         source: repoUrl,
         registryUrl: registryUrl,
-        latestVersion: ext.latestVersion,
         capabilities: ext.capabilities,
-        platforms: ext.platforms,
         tags,
-        installCommand: `azd extension install ${ext.id}`,
       };
 
       discovered.push({

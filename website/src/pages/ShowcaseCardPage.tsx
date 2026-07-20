@@ -145,7 +145,6 @@ function filterExtensions(
       ext.displayName.toLowerCase().includes(q) ||
       ext.description.toLowerCase().includes(q) ||
       ext.author.toLowerCase().includes(q) ||
-      ext.namespace.toLowerCase().includes(q) ||
       ext.id.toLowerCase().includes(q) ||
       (ext.website && ext.website.toLowerCase().includes(q))
     );

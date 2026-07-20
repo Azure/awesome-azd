@@ -197,18 +197,14 @@ jobs:
               
               const entry = {
                 id: ext.id,
-                namespace: ext.namespace,
                 displayName: ext.displayName,
                 description: ext.description,
                 author: author,
                 authorUrl: authorUrl,
                 source: sourceRepo,
                 registryUrl: registryUrl,
-                latestVersion: ext.latestVersion,
                 capabilities: ext.capabilities,
-                platforms: ext.platforms,
-                tags: tags,
-                installCommand: `azd extension install ${ext.id}`
+                tags: tags
               };
               
               if (website) {

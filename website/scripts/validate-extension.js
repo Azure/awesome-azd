@@ -127,26 +127,23 @@ async function fetchAndValidate(registryUrl) {
   } else {
     throw new Error("Invalid registry format: 'extensions' must be an array.");
   }
+  if (extensions.length === 0) {
+    throw new Error("Invalid registry format: 'extensions' must not be empty.");
+  }
   const results = [];
 
   for (const ext of extensions) {
     const errors = validateExtension(ext);
     const latestVersion = getLatestVersion(ext.versions);
-    const platforms = latestVersion && latestVersion.artifacts
-      ? Object.keys(latestVersion.artifacts)
-      : [];
     const capabilities = latestVersion && latestVersion.capabilities
       ? latestVersion.capabilities
       : [];
 
     results.push({
       id: ext.id,
-      namespace: ext.namespace || "",
       displayName: ext.displayName || "",
       description: ext.description || "",
-      latestVersion: latestVersion ? latestVersion.version : "0.0.0",
       capabilities,
-      platforms,
       tags: ext.tags || [],
       errors,
       valid: errors.length === 0,

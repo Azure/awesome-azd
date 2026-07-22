@@ -7,7 +7,7 @@
 
 const fs = require("fs");
 const path = require("path");
-const { fetchAndValidate } = require("./validate-extension");
+const { readExtensionRegistry } = require("./read-extension-registry");
 const extensionRegistries = require("../src/data/extensionRegistries.json");
 
 const EXTENSIONS_PATH = path.join(__dirname, "..", "static", "extensions.json");
@@ -71,11 +71,12 @@ function syncBuiltInExtensions(currentExtensions, registryExtensions) {
     (extension) => extension.registryUrl !== BUILT_IN_REGISTRY_URL,
   );
   const communityIds = new Set(communityExtensions.map((extension) => extension.id));
+  const registryById = new Map();
   const registryIds = new Set();
   const added = [];
   const updated = [];
 
-  const syncedBuiltIns = registryExtensions.map((registryExtension) => {
+  for (const registryExtension of registryExtensions) {
     if (registryIds.has(registryExtension.id)) {
       throw new Error(`Duplicate extension id in built-in registry: ${registryExtension.id}`);
     }
@@ -85,11 +86,14 @@ function syncBuiltInExtensions(currentExtensions, registryExtensions) {
       );
     }
     registryIds.add(registryExtension.id);
+    registryById.set(registryExtension.id, registryExtension);
+  }
 
-    const existing = builtIns.get(registryExtension.id);
-    if (!existing) {
-      added.push(registryExtension.id);
-      return createBuiltInExtension(registryExtension);
+  const syncedBuiltIns = [];
+  for (const existing of builtIns.values()) {
+    const registryExtension = registryById.get(existing.id);
+    if (!registryExtension) {
+      continue;
     }
 
     const cleaned = stripObsoleteFields(existing);
@@ -103,8 +107,18 @@ function syncBuiltInExtensions(currentExtensions, registryExtensions) {
     if (fields.length > 0) {
       updated.push({ id: registryExtension.id, fields });
     }
-    return synced;
-  });
+    syncedBuiltIns.push(synced);
+  }
+
+  for (const registryExtension of registryExtensions) {
+    const existing = builtIns.get(registryExtension.id);
+    if (existing) {
+      continue;
+    }
+
+    added.push(registryExtension.id);
+    syncedBuiltIns.push(createBuiltInExtension(registryExtension));
+  }
 
   const cleanedCommunityExtensions = communityExtensions.map((extension) => {
     const cleaned = stripObsoleteFields(extension);
@@ -116,8 +130,8 @@ function syncBuiltInExtensions(currentExtensions, registryExtensions) {
   });
 
   const removed = Array.from(builtIns.keys()).filter((id) => !registryIds.has(id));
-  // Built-ins follow upstream registry order; community entries retain their
-  // relative order after the built-in catalog.
+  // Existing entries retain their curated order. New built-ins follow azd's
+  // list order, and community entries remain after the built-in catalog.
   const extensions = [...syncedBuiltIns, ...cleanedCommunityExtensions];
 
   return {
@@ -162,17 +176,9 @@ function writeCatalogAtomically(extensions, outputPath = EXTENSIONS_PATH) {
   }
 }
 
-async function main() {
+function main() {
   const currentExtensions = JSON.parse(fs.readFileSync(EXTENSIONS_PATH, "utf-8"));
-  const registryExtensions = await fetchAndValidate(BUILT_IN_REGISTRY_URL);
-  const invalid = registryExtensions.filter((extension) => !extension.valid);
-  if (invalid.length > 0) {
-    const details = invalid
-      .map((extension) => `${extension.id}: ${extension.errors.join("; ")}`)
-      .join("\n");
-    throw new Error(`Built-in registry validation failed:\n${details}`);
-  }
-
+  const registryExtensions = readExtensionRegistry(BUILT_IN_REGISTRY_URL);
   const result = syncBuiltInExtensions(currentExtensions, registryExtensions);
   if (result.changed) {
     writeCatalogAtomically(result.extensions);
@@ -181,10 +187,12 @@ async function main() {
 }
 
 if (require.main === module) {
-  main().catch((error) => {
+  try {
+    main();
+  } catch (error) {
     console.error(`Error: ${error.message}`);
     process.exitCode = 1;
-  });
+  }
 }
 
 module.exports = {

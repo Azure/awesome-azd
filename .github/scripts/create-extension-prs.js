@@ -211,10 +211,10 @@ flowchart TD
     D --> |Fork/Archived/Duplicate?| X1[❌ Skip]
     D --> |In ignore list?| X2[❌ Skip]
     D --> |Pass filters| E[Fetch registry.json]
-    E --> F[🔍 validate-extension.js]
+    E --> F[🔍 azd source validate]
     F --> G{Valid?}
     G --> |No| X3[❌ Skip]
-    G --> |Yes| H[Extract Metadata]
+    G --> |Yes| H[azd list and show metadata]
     H --> I[📋 This PR]
     I --> J{👤 Team Review}
     J --> |✅ Merge| K[Added to Gallery]

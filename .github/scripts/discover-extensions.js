@@ -2,8 +2,8 @@
 
 /**
  * Discovers new azd extensions on GitHub by searching for repos with registry.json.
- * Validates using the existing validate-extension.js script and filters against
- * existing extensions and ignore list.
+ * Reads registry metadata using azd and filters against existing extensions and
+ * the ignore list.
  *
  * Usage: node discover-extensions.js
  * Env: GITHUB_TOKEN (required)
@@ -58,10 +58,10 @@ async function buildRegistryUrl(owner, repo, filePath, token) {
   return `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${filePath}`;
 }
 
-function validateRegistryWithScript(registryUrl) {
+function readRegistryWithAzd(registryUrl) {
   const scriptPath = path.resolve(
     __dirname,
-    "../../website/scripts/validate-extension.js"
+    "../../website/scripts/read-extension-registry.js"
   );
 
   try {
@@ -187,25 +187,20 @@ async function main() {
     console.log(`  Validating ${repoFullName} (${registryUrl})...`);
 
     // Validate using existing script
-    const validation = validateRegistryWithScript(registryUrl);
+    const validation = readRegistryWithAzd(registryUrl);
 
     if (!validation.valid) {
       console.log(`  Skipping ${repoFullName}: validation failed`);
       continue;
     }
 
-    const validatedExtensions = validation.result;
-    if (!Array.isArray(validatedExtensions) || validatedExtensions.length === 0) {
-      console.log(`  Skipping ${repoFullName}: no valid extensions in registry`);
+    const registryExtensions = validation.result;
+    if (!Array.isArray(registryExtensions) || registryExtensions.length === 0) {
+      console.log(`  Skipping ${repoFullName}: no extensions in registry`);
       continue;
     }
 
-    for (const ext of validatedExtensions) {
-      if (!ext.valid) {
-        console.log(`  Skipping extension ${ext.id}: invalid`);
-        continue;
-      }
-
+    for (const ext of registryExtensions) {
       // Check if this extension ID already exists
       if (existingIds.has(ext.id)) {
         console.log(`  Skipping ${ext.id}: already in extensions.json`);

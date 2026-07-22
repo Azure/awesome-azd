@@ -8,8 +8,53 @@ const {
   syncBuiltInExtensions,
   writeCatalogAtomically,
 } = require('../scripts/sync-extensions');
+const { readExtensionRegistry } = require('../scripts/read-extension-registry');
 
 describe('Extension catalog synchronization', () => {
+  test('reads extension metadata through azd validation, list, and show', () => {
+    const commands: string[][] = [];
+    const execute = (args: string[]) => {
+      commands.push(args);
+      if (args[1] === 'source') {
+        return { valid: true };
+      }
+      if (args[1] === 'list') {
+        return [{ id: 'microsoft.azd.test' }];
+      }
+      return {
+        Id: 'microsoft.azd.test',
+        Name: 'Test extension',
+        Description: 'Test description',
+        Capabilities: ['custom-commands'],
+      };
+    };
+
+    expect(readExtensionRegistry(BUILT_IN_REGISTRY_URL, execute)).toEqual([
+      {
+        id: 'microsoft.azd.test',
+        displayName: 'Test extension',
+        description: 'Test description',
+        capabilities: ['custom-commands'],
+      },
+    ]);
+    expect(commands.map((args) => args.slice(0, 2))).toEqual([
+      ['extension', 'source'],
+      ['extension', 'list'],
+      ['extension', 'show'],
+    ]);
+    expect(commands[0]).toContain('--strict');
+    expect(commands.every((args) => args.includes(BUILT_IN_REGISTRY_URL))).toBe(true);
+  });
+
+  test('rejects an empty registry returned by azd', () => {
+    const execute = (args: string[]) =>
+      args[1] === 'source' ? { valid: true } : [];
+
+    expect(() => readExtensionRegistry(BUILT_IN_REGISTRY_URL, execute)).toThrow(
+      'azd returned no extensions',
+    );
+  });
+
   test('synchronizes built-ins and preserves curated and community metadata', () => {
     const current = [
       {
@@ -52,16 +97,16 @@ describe('Extension catalog synchronization', () => {
     ];
     const registry = [
       {
-        id: 'microsoft.azd.existing',
-        displayName: 'Current name',
-        description: 'Current description',
-        capabilities: ['custom-commands', 'metadata'],
-      },
-      {
         id: 'microsoft.azd.new',
         displayName: 'New extension',
         description: 'New description',
         capabilities: ['metadata'],
+      },
+      {
+        id: 'microsoft.azd.existing',
+        displayName: 'Current name',
+        description: 'Current description',
+        capabilities: ['custom-commands', 'metadata'],
       },
     ];
 

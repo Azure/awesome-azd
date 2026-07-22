@@ -51,6 +51,11 @@ jobs:
         with:
           node-version: "24"
 
+      - name: Setup azd
+        uses: Azure/setup-azd@634ad924cf8baef2257898ba5663be8d19f15aca  # v2.3.0
+        with:
+          version: latest
+
       - name: Parse issue body
         id: parse
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3  # v9.0.0
@@ -101,24 +106,23 @@ jobs:
             core.setOutput('author_type', authorType);
             core.setOutput('website', website);
 
-      - name: Validate and fetch registry
+      - name: Validate and read registry
         id: validate
         env:
           REGISTRY_URL: ${{ steps.parse.outputs.registry_url }}
         run: |
-          node website/scripts/validate-extension.js "$REGISTRY_URL" > validation_result.json 2>validation_errors.log
-          if [ $? -ne 0 ]; then
-            echo "valid=false" >> $GITHUB_OUTPUT
-            {
-              echo 'errors<<EOF'
-              cat validation_result.json validation_errors.log
-              echo 'EOF'
-            } >> $GITHUB_OUTPUT
-          else
+          if node website/scripts/read-extension-registry.js "$REGISTRY_URL" > validation_result.json 2>validation_errors.log; then
             echo "valid=true" >> $GITHUB_OUTPUT
             {
               echo 'result<<EOF'
               cat validation_result.json
+              echo 'EOF'
+            } >> $GITHUB_OUTPUT
+          else
+            echo "valid=false" >> $GITHUB_OUTPUT
+            {
+              echo 'errors<<EOF'
+              cat validation_result.json validation_errors.log
               echo 'EOF'
             } >> $GITHUB_OUTPUT
           fi
@@ -153,12 +157,13 @@ jobs:
           script: |
             const fs = require('fs');
             const path = require('path');
-            
+
+            const { validateExtensionEntry } = require('./.github/scripts/github-utils');
             const { validateUrl } = require('./.github/scripts/url-validation');
             
             const extensionsPath = path.join('website', 'static', 'extensions.json');
             const extensions = JSON.parse(fs.readFileSync(extensionsPath, 'utf8'));
-            const validatedExtensions = JSON.parse(process.env.VALIDATION_RESULT);
+            const registryExtensions = JSON.parse(process.env.VALIDATION_RESULT);
             
             const author = process.env.EXT_AUTHOR;
             const authorUrl = process.env.EXT_AUTHOR_URL;
@@ -184,14 +189,8 @@ jobs:
             validateUrl(registryUrl, 'registry');
             
             let added = [];
-            let skipped = [];
             
-            for (const ext of validatedExtensions) {
-              if (!ext.valid) {
-                skipped.push(`${ext.id} (validation errors)`);
-                continue;
-              }
-              
+            for (const ext of registryExtensions) {
               const existingIndex = extensions.findIndex(e => e.id === ext.id);
               const tags = authorType === 'Microsoft' ? ['msft', 'new'] : ['community', 'new'];
               
@@ -210,7 +209,11 @@ jobs:
               if (website) {
                 entry.website = website;
               }
-              
+
+              if (!validateExtensionEntry(entry)) {
+                throw new Error(`azd returned incomplete metadata for ${ext.id}`);
+              }
+
               if (existingIndex >= 0) {
                 extensions[existingIndex] = entry;
                 added.push(`${ext.id} (updated)`);
@@ -223,7 +226,6 @@ jobs:
             fs.writeFileSync(extensionsPath, JSON.stringify(extensions, null, 2) + '\n');
             
             core.setOutput('added', added.join(', '));
-            core.setOutput('skipped', skipped.join(', '));
 
       - name: Create Pull Request
         if: steps.validate.outputs.valid == 'true'
@@ -238,7 +240,6 @@ jobs:
             
             **Registry URL**: ${{ steps.parse.outputs.registry_url }}
             **Extensions added**: ${{ steps.update.outputs.added || 'None' }}
-            **Extensions skipped**: ${{ steps.update.outputs.skipped || 'None' }}
             
             Please review the changes to `website/static/extensions.json`.
           labels: extension-submission

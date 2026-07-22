@@ -108,6 +108,11 @@ jobs:
         with:
           node-version: "24"
 
+      - name: Setup azd
+        uses: Azure/setup-azd@634ad924cf8baef2257898ba5663be8d19f15aca  # v2.3.0
+        with:
+          version: latest
+
       - name: Run extension discovery
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

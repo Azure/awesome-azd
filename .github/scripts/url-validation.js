@@ -1,6 +1,6 @@
 /**
  * Shared URL validation utilities for SSRF prevention.
- * Used by validate-extension.js and the extension-submission workflow.
+ * Used by the extension registry metadata script and submission workflow.
  */
 
 const ALLOWED_HOSTS = [

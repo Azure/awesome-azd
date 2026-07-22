@@ -1,54 +1,123 @@
-name: Sync Extension Versions
+name: Sync Extension Catalog
 
-# on:
-#   schedule:
-#     - cron: "0 6 * * *" # Daily at 6 AM UTC
-#   workflow_dispatch: # Allow manual trigger
 on:
+  schedule:
+    # Weekly on Monday at 06:00 UTC.
+    - cron: "0 6 * * 1"
   workflow_dispatch: {}
 
 permissions:
   contents: write
   pull-requests: write
 
+concurrency:
+  group: sync-extension-catalog
+  cancel-in-progress: true
+
 jobs:
-  sync-versions:
+  sync-extension-catalog:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.repository.default_branch }}
 
       - name: Setup Node.js
         uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e  # v6.4.0
         with:
           node-version: "24"
 
-      - name: Sync extension versions
+      - name: Setup azd
+        uses: Azure/setup-azd@634ad924cf8baef2257898ba5663be8d19f15aca  # v2.3.0
+        with:
+          version: latest
+
+      - name: Sync extension catalog
         id: sync
+        shell: bash
         run: |
-          OUTPUT=$(node website/scripts/sync-extension-versions.js 2>&1)
-          echo "$OUTPUT"
+          set -euo pipefail
+          node website/scripts/sync-extensions.js | tee "$RUNNER_TEMP/extension-sync-summary.md"
           if git diff --quiet website/static/extensions.json; then
             echo "changed=false" >> $GITHUB_OUTPUT
           else
             echo "changed=true" >> $GITHUB_OUTPUT
-            {
-              echo 'summary<<EOF'
-              echo "$OUTPUT"
-              echo 'EOF'
-            } >> $GITHUB_OUTPUT
           fi
+
+      - name: Install website dependencies
+        if: steps.sync.outputs.changed == 'true'
+        working-directory: website
+        run: npm ci
+
+      - name: Test synchronized catalog
+        if: steps.sync.outputs.changed == 'true'
+        working-directory: website
+        run: npm test -- --runInBand
 
       - name: Create Pull Request
         if: steps.sync.outputs.changed == 'true'
-        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1  # v8.1.1
-        with:
-          commit-message: "chore: sync extension versions"
-          title: "chore: sync extension versions"
-          body: |
-            Automated daily sync of extension versions from their registries.
+        shell: bash
+        env:
+          BASE_BRANCH: ${{ github.event.repository.default_branch }}
+          BRANCH: chore/sync-extension-catalog
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git diff --check
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -C "$BRANCH"
+          git add website/static/extensions.json
+          git commit -m "chore: sync extension catalog"
 
-            ${{ steps.sync.outputs.summary }}
-          branch: chore/sync-extension-versions
-          delete-branch: true
-          labels: automated
+          remote_sha=$(git ls-remote --heads origin "refs/heads/$BRANCH" | awk '{print $1}')
+          if [[ -n "$remote_sha" ]]; then
+            git push --force-with-lease="refs/heads/$BRANCH:$remote_sha" origin "HEAD:refs/heads/$BRANCH"
+          else
+            git push origin "HEAD:refs/heads/$BRANCH"
+          fi
+
+          {
+            echo "### Summary"
+            echo
+            echo "This PR synchronizes the built-in azd extension registry with the awesome-azd gallery while preserving curated metadata and community extensions."
+            echo
+            cat "$RUNNER_TEMP/extension-sync-summary.md"
+            echo
+            echo "### Testing"
+            echo
+            echo "The extension gallery data tests passed."
+          } > "$RUNNER_TEMP/extension-sync-pr.md"
+
+          pr_number=$(gh pr list --repo "$GITHUB_REPOSITORY" --head "$BRANCH" --state open --json number --jq '.[0].number // empty')
+          if [[ -n "$pr_number" ]]; then
+            gh api --method PATCH "repos/$GITHUB_REPOSITORY/pulls/$pr_number" \
+              --raw-field title="chore: sync extension catalog" \
+              --raw-field body="$(cat "$RUNNER_TEMP/extension-sync-pr.md")" >/dev/null
+          else
+            gh pr create \
+              --repo "$GITHUB_REPOSITORY" \
+              --base "$BASE_BRANCH" \
+              --head "$BRANCH" \
+              --title "chore: sync extension catalog" \
+              --body-file "$RUNNER_TEMP/extension-sync-pr.md"
+          fi
+
+      - name: Close stale Pull Request
+        if: steps.sync.outputs.changed == 'false'
+        shell: bash
+        env:
+          BRANCH: chore/sync-extension-catalog
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          pr_number=$(gh pr list --repo "$GITHUB_REPOSITORY" --head "$BRANCH" --state open --json number --jq '.[0].number // empty')
+          if [[ -n "$pr_number" ]]; then
+            gh api --method PATCH "repos/$GITHUB_REPOSITORY/pulls/$pr_number" \
+              --raw-field state=closed >/dev/null
+          fi
+          gh api --method DELETE "repos/$GITHUB_REPOSITORY/git/refs/heads/$BRANCH" \
+            --silent || true

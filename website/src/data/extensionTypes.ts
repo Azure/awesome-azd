@@ -15,27 +15,15 @@ export type ExtensionCapability =
   | "validation-provider"
   | "metadata";
 
-export type ExtensionPlatform =
-  | "windows/amd64"
-  | "windows/arm64"
-  | "darwin/amd64"
-  | "darwin/arm64"
-  | "linux/amd64"
-  | "linux/arm64";
-
 export type Extension = {
   id: string;
-  namespace: string;
   displayName: string;
   description: string;
   author: string;
-  authorUrl: string;
+  authorUrl?: string;
   source: string;
   registryUrl: string;
-  latestVersion: string;
   capabilities: ExtensionCapability[];
-  platforms: ExtensionPlatform[];
   tags: TagType[];
-  preview?: string;
   website?: string;
 };

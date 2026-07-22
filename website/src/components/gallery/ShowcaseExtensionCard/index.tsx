@@ -6,6 +6,7 @@
 import React from "react";
 import styleCSS from "./styles.module.css";
 import { type Extension } from "../../../data/extensionTypes";
+import extensionRegistries from "../../../data/extensionRegistries.json";
 import { Tags } from "../../../data/tags";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import {
@@ -39,6 +40,7 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
   const copyIcon = useBaseUrl("/img/Copy.svg");
 
   const isMsft = extension.tags.includes("msft");
+  const isBuiltIn = extension.registryUrl === extensionRegistries.builtIn;
   const headerLogo = isMsft ? msftLogo : communityLogo;
   const headerText = isMsft ? "Microsoft Authored" : "Community Authored";
 
@@ -51,7 +53,7 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
   // lines so the user can run them as a single sequence in their terminal.
   const sourceName = extension.id.split(".")[0];
   const clipboardCommand =
-    !isMsft && extension.registryUrl
+    !isBuiltIn
       ? `azd ext source add -t url -n ${sourceName} -l ${extension.registryUrl}\n${installCommand}`
       : installCommand;
 
@@ -104,15 +106,19 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
           }}
         >
           <div className={styleCSS.cardTextBy}>by</div>
-          <FluentUILink
-            className={styleCSS.authorLink}
-            href={extension.authorUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ fontSize: "12px", flexShrink: 0 }}
-          >
-            {extension.author}
-          </FluentUILink>
+          {extension.authorUrl ? (
+            <FluentUILink
+              className={styleCSS.authorLink}
+              href={extension.authorUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ fontSize: "12px", flexShrink: 0 }}
+            >
+              {extension.author}
+            </FluentUILink>
+          ) : (
+            <span className={styleCSS.authorLink}>{extension.author}</span>
+          )}
           {extension.website && (
             <FluentUILink
               href={extension.website}

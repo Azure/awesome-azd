@@ -1,14 +1,12 @@
 [
   {
     "id": "microsoft.azd.demo",
-    "namespace": "demo",
     "displayName": "Demo Extension",
     "description": "This extension provides examples of the azd extension framework.",
     "author": "Azure Dev",
     "authorUrl": "https://github.com/Azure",
     "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/microsoft.azd.demo",
     "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
-    "latestVersion": "0.7.0",
     "capabilities": [
       "custom-commands",
       "lifecycle-events",
@@ -19,39 +17,21 @@
       "validation-provider",
       "metadata"
     ],
-    "platforms": [
-      "windows/amd64",
-      "windows/arm64",
-      "darwin/amd64",
-      "darwin/arm64",
-      "linux/amd64",
-      "linux/arm64"
-    ],
     "tags": [
       "msft"
     ]
   },
   {
     "id": "microsoft.azd.extensions",
-    "namespace": "x",
-    "displayName": "azd Extensions Developer Kit",
+    "displayName": "azd extensions Developer Kit",
     "description": "This extension provides a set of tools for azd extension developers to test and debug their extensions.",
     "author": "Azure Dev",
     "authorUrl": "https://github.com/Azure",
     "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/microsoft.azd.extensions",
     "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
-    "latestVersion": "0.12.0",
     "capabilities": [
       "custom-commands",
       "metadata"
-    ],
-    "platforms": [
-      "windows/amd64",
-      "windows/arm64",
-      "darwin/amd64",
-      "darwin/arm64",
-      "linux/amd64",
-      "linux/arm64"
     ],
     "tags": [
       "msft"
@@ -59,25 +39,15 @@
   },
   {
     "id": "azure.coding-agent",
-    "namespace": "coding-agent",
-    "displayName": "Coding Agent Configuration",
+    "displayName": "Coding agent configuration extension",
     "description": "This extension configures GitHub Copilot Coding Agent access to Azure",
     "author": "Azure Dev",
     "authorUrl": "https://github.com/Azure",
     "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.coding-agent",
     "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
-    "latestVersion": "0.6.1",
     "capabilities": [
       "custom-commands",
       "metadata"
-    ],
-    "platforms": [
-      "windows/amd64",
-      "windows/arm64",
-      "darwin/amd64",
-      "darwin/arm64",
-      "linux/amd64",
-      "linux/arm64"
     ],
     "tags": [
       "msft",
@@ -86,14 +56,12 @@
   },
   {
     "id": "azure.ai.agents",
-    "namespace": "ai.agent",
     "displayName": "Foundry agents (Beta)",
     "description": "Ship agents with Microsoft Foundry from your terminal. (Beta)",
     "author": "Foundry Team",
     "authorUrl": "https://github.com/Azure",
     "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.agents",
     "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
-    "latestVersion": "1.0.0-beta.6",
     "capabilities": [
       "custom-commands",
       "lifecycle-events",
@@ -103,14 +71,6 @@
       "validation-provider",
       "metadata"
     ],
-    "platforms": [
-      "windows/amd64",
-      "windows/arm64",
-      "darwin/amd64",
-      "darwin/arm64",
-      "linux/amd64",
-      "linux/arm64"
-    ],
     "tags": [
       "msft",
       "ai",
@@ -119,25 +79,15 @@
   },
   {
     "id": "microsoft.azd.concurx",
-    "namespace": "concurx",
     "displayName": "Concurx",
     "description": "Concurrent execution for azd deployment",
     "author": "Azure Dev",
     "authorUrl": "https://github.com/Azure",
     "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/microsoft.azd.concurx",
     "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
-    "latestVersion": "0.1.0",
     "capabilities": [
       "custom-commands",
       "metadata"
-    ],
-    "platforms": [
-      "windows/amd64",
-      "windows/arm64",
-      "darwin/amd64",
-      "darwin/arm64",
-      "linux/amd64",
-      "linux/arm64"
     ],
     "tags": [
       "msft"
@@ -145,25 +95,15 @@
   },
   {
     "id": "azure.ai.finetune",
-    "namespace": "ai.finetuning",
     "displayName": "Foundry Fine Tuning (Preview)",
     "description": "Extension for Foundry Fine Tuning. (Preview)",
     "author": "Foundry Team",
     "authorUrl": "https://github.com/Azure",
     "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.finetune",
     "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
-    "latestVersion": "0.0.17-preview",
     "capabilities": [
       "custom-commands",
       "metadata"
-    ],
-    "platforms": [
-      "windows/amd64",
-      "windows/arm64",
-      "darwin/amd64",
-      "darwin/arm64",
-      "linux/amd64",
-      "linux/arm64"
     ],
     "tags": [
       "msft",
@@ -173,25 +113,15 @@
   },
   {
     "id": "azure.ai.models",
-    "namespace": "ai.models",
     "displayName": "Foundry Custom Models (Preview)",
     "description": "Extension for managing custom models in Azure AI Foundry. (Preview)",
     "author": "Foundry Team",
     "authorUrl": "https://github.com/Azure",
     "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.models",
     "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
-    "latestVersion": "0.0.7-preview",
     "capabilities": [
       "custom-commands",
       "metadata"
-    ],
-    "platforms": [
-      "windows/amd64",
-      "windows/arm64",
-      "darwin/amd64",
-      "darwin/arm64",
-      "linux/amd64",
-      "linux/arm64"
     ],
     "tags": [
       "msft",
@@ -201,25 +131,15 @@
   },
   {
     "id": "azure.appservice",
-    "namespace": "appservice",
     "displayName": "Azure App Service",
     "description": "Extension for managing Azure App Service resources.",
     "author": "Azure Dev",
     "authorUrl": "https://github.com/Azure",
     "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.appservice",
     "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
-    "latestVersion": "0.1.1",
     "capabilities": [
       "custom-commands",
       "metadata"
-    ],
-    "platforms": [
-      "windows/amd64",
-      "windows/arm64",
-      "darwin/amd64",
-      "darwin/arm64",
-      "linux/amd64",
-      "linux/arm64"
     ],
     "tags": [
       "msft",
@@ -228,25 +148,15 @@
   },
   {
     "id": "azure.ai.inspector",
-    "namespace": "ai.inspector",
     "displayName": "Foundry Agent Inspector (Beta)",
     "description": "Browser-based inspector UI for locally running Foundry agents. (Beta)",
     "author": "Foundry Team",
     "authorUrl": "https://github.com/Azure",
     "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.inspector",
     "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
-    "latestVersion": "1.0.0-beta.2",
     "capabilities": [
       "custom-commands",
       "metadata"
-    ],
-    "platforms": [
-      "windows/amd64",
-      "windows/arm64",
-      "darwin/amd64",
-      "darwin/arm64",
-      "linux/amd64",
-      "linux/arm64"
     ],
     "tags": [
       "msft",
@@ -256,16 +166,13 @@
   },
   {
     "id": "microsoft.foundry",
-    "namespace": "foundry",
     "displayName": "Microsoft Foundry (Beta)",
     "description": "A meta-package, bundling together all of the Microsoft Foundry AZD extensions for easy install. (Beta)",
     "author": "Foundry Team",
     "authorUrl": "https://github.com/Azure",
     "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/microsoft.foundry",
     "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
-    "latestVersion": "1.0.0-beta.1",
     "capabilities": [],
-    "platforms": [],
     "tags": [
       "msft",
       "ai",
@@ -274,26 +181,16 @@
   },
   {
     "id": "azure.ai.connections",
-    "namespace": "ai.connection",
     "displayName": "Foundry Connections (Beta)",
     "description": "Manage Microsoft Foundry Connections from your terminal. (Beta)",
     "author": "Foundry Team",
     "authorUrl": "https://github.com/Azure",
     "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.connections",
     "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
-    "latestVersion": "1.0.0-beta.3",
     "capabilities": [
       "custom-commands",
       "service-target-provider",
       "metadata"
-    ],
-    "platforms": [
-      "windows/amd64",
-      "windows/arm64",
-      "darwin/amd64",
-      "darwin/arm64",
-      "linux/amd64",
-      "linux/arm64"
     ],
     "tags": [
       "msft",
@@ -303,26 +200,16 @@
   },
   {
     "id": "azure.ai.projects",
-    "namespace": "ai.project",
     "displayName": "Foundry Projects (Beta)",
     "description": "Manage Microsoft Foundry Project resources from your terminal. (Beta)",
     "author": "Foundry Team",
     "authorUrl": "https://github.com/Azure",
     "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.projects",
     "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
-    "latestVersion": "1.0.0-beta.2",
     "capabilities": [
       "custom-commands",
       "service-target-provider",
       "metadata"
-    ],
-    "platforms": [
-      "windows/amd64",
-      "windows/arm64",
-      "darwin/amd64",
-      "darwin/arm64",
-      "linux/amd64",
-      "linux/arm64"
     ],
     "tags": [
       "msft",
@@ -332,26 +219,16 @@
   },
   {
     "id": "azure.ai.routines",
-    "namespace": "ai.routine",
     "displayName": "Foundry Routines (Beta)",
     "description": "Manage Microsoft Foundry Routines from your terminal. (Beta)",
     "author": "Foundry Team",
     "authorUrl": "https://github.com/Azure",
     "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.routines",
     "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
-    "latestVersion": "1.0.0-beta.3",
     "capabilities": [
       "custom-commands",
       "service-target-provider",
       "metadata"
-    ],
-    "platforms": [
-      "windows/amd64",
-      "windows/arm64",
-      "darwin/amd64",
-      "darwin/arm64",
-      "linux/amd64",
-      "linux/arm64"
     ],
     "tags": [
       "msft",
@@ -361,26 +238,16 @@
   },
   {
     "id": "azure.ai.skills",
-    "namespace": "ai.skill",
     "displayName": "Foundry skills (Beta)",
     "description": "Manage Microsoft Foundry skills (reusable agent behavioral guidelines) from your terminal. (Beta)",
     "author": "Foundry Team",
     "authorUrl": "https://github.com/Azure",
     "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.skills",
     "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
-    "latestVersion": "1.0.0-beta.2",
     "capabilities": [
       "custom-commands",
       "service-target-provider",
       "metadata"
-    ],
-    "platforms": [
-      "windows/amd64",
-      "windows/arm64",
-      "darwin/amd64",
-      "darwin/arm64",
-      "linux/amd64",
-      "linux/arm64"
     ],
     "tags": [
       "msft",
@@ -390,26 +257,16 @@
   },
   {
     "id": "azure.ai.toolboxes",
-    "namespace": "ai.toolbox",
     "displayName": "Foundry Toolboxes (Beta)",
     "description": "Manage Microsoft Foundry Toolboxes from your terminal. (Beta)",
     "author": "Foundry Team",
     "authorUrl": "https://github.com/Azure",
     "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.toolboxes",
     "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
-    "latestVersion": "1.0.0-beta.3",
     "capabilities": [
       "custom-commands",
       "service-target-provider",
       "metadata"
-    ],
-    "platforms": [
-      "windows/amd64",
-      "windows/arm64",
-      "darwin/amd64",
-      "darwin/arm64",
-      "linux/amd64",
-      "linux/arm64"
     ],
     "tags": [
       "msft",

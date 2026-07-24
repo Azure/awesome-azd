@@ -39,10 +39,10 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
   const msftLogo = useBaseUrl("/img/Microsoft.svg");
   const copyIcon = useBaseUrl("/img/Copy.svg");
 
-  const isMsft = extension.tags.includes("msft");
   const isBuiltIn = extension.registryUrl === extensionRegistries.builtIn;
-  const headerLogo = isMsft ? msftLogo : communityLogo;
-  const headerText = isMsft ? "Microsoft Authored" : "Community Authored";
+  const isMicrosoftAuthored = extension.tags.includes("msft");
+  const headerLogo = isMicrosoftAuthored ? msftLogo : communityLogo;
+  const headerText = isMicrosoftAuthored ? "Microsoft Authored" : "Community Authored";
 
   const installCommand = `azd ext install ${extension.id}`;
   // For 3P (community) extensions, the user must first register the

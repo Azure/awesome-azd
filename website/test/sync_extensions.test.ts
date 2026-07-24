@@ -55,6 +55,15 @@ describe('Extension catalog synchronization', () => {
     );
   });
 
+  test.each([
+    'http://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json',
+    'https://github.com/Azure/azure-dev/raw/main/cli/azd/extensions/registry.json',
+  ])('rejects an unsafe registry URL: %s', (registryUrl) => {
+    expect(() => readExtensionRegistry(registryUrl)).toThrow(
+      'extension registries must use HTTPS on raw.githubusercontent.com',
+    );
+  });
+
   test('synchronizes built-ins and preserves curated and community metadata', () => {
     const current = [
       {

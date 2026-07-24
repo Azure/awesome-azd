@@ -21,7 +21,12 @@ function runAzdJson(args) {
 }
 
 function readExtensionRegistry(registryUrl, execute = runAzdJson) {
-  validateUrl(registryUrl, "registry");
+  const url = validateUrl(registryUrl, "registry");
+  if (url.protocol !== "https:" || url.hostname !== "raw.githubusercontent.com") {
+    throw new Error(
+      "Invalid registry URL: extension registries must use HTTPS on raw.githubusercontent.com",
+    );
+  }
 
   const validation = execute([
     "extension",

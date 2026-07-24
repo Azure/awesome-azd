@@ -67,8 +67,6 @@
       "lifecycle-events",
       "mcp-server",
       "service-target-provider",
-      "provisioning-provider",
-      "validation-provider",
       "metadata"
     ],
     "tags": [
@@ -208,7 +206,10 @@
     "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
     "capabilities": [
       "custom-commands",
+      "lifecycle-events",
       "service-target-provider",
+      "provisioning-provider",
+      "validation-provider",
       "metadata"
     ],
     "tags": [

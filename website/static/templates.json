@@ -9497,8 +9497,8 @@
     ],
     "azureServices": [
       "fabric",
-      "azure sql",
-      "storag account",
+      "azuresql",
+      "azurestorage"
     ],
     "IaC": [
       "terraform"

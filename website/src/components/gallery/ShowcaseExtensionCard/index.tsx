@@ -48,9 +48,9 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
   // For 3P (community) extensions, the user must first register the
   // extension's registry as a source before `azd ext install` can resolve
   // the id. Source name uses the id's first segment (e.g. `jongio` for
-  // `jongio.azd.app`). The visible Input still shows the single install
-  // line so the footer stays compact, but the copy button pastes both
-  // lines so the user can run them as a single sequence in their terminal.
+  // `jongio.azd.app`). The footer still displays only the single install
+  // line so it stays compact, but the copy button pastes both lines so the
+  // user can run them as a single sequence in their terminal.
   const sourceName = extension.id.split(".")[0];
   const clipboardCommand =
     !isBuiltIn

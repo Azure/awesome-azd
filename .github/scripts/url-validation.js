@@ -10,6 +10,11 @@ const ALLOWED_HOSTS = [
   "registry.npmjs.org",
 ];
 
+// Registry URLs are held to a stricter policy than other URLs: their contents
+// are fetched by azd and written straight into the gallery catalog, so an open
+// redirect off an allowed host would land untrusted metadata in the site.
+const REGISTRY_ALLOWED_HOSTS = ["raw.githubusercontent.com"];
+
 /**
  * Check if a hostname resolves to a private/internal IP range.
  * Catches literal IP addresses only — does not perform DNS resolution.
@@ -38,13 +43,15 @@ function isPrivateHostname(hostname) {
  * Validate a URL against protocol, host allowlist, and private IP checks.
  * @param {string} value - The URL to validate
  * @param {string} label - Human-readable label for error messages (e.g., "author", "registry")
+ * @param {{hosts?: string[]}} [options] - Overrides the default host allowlist
  * @throws {Error} if the URL fails any check
  */
-function validateUrl(value, label) {
+function validateUrl(value, label, options = {}) {
   if (value === null || value === undefined) return null; // intentional skip
   if (typeof value !== 'string' || value.trim() === '') {
     throw new Error(`Invalid ${label} URL: value must be a non-empty string`);
   }
+  const allowedHosts = options.hosts || ALLOWED_HOSTS;
   let u;
   try {
     u = new URL(value);
@@ -56,7 +63,7 @@ function validateUrl(value, label) {
       `Invalid ${label} URL "${value}": unsafe protocol "${u.protocol}"`
     );
   }
-  if (!ALLOWED_HOSTS.includes(u.hostname)) {
+  if (!allowedHosts.includes(u.hostname)) {
     throw new Error(
       `Invalid ${label} URL "${value}": host "${u.hostname}" is not in the allowlist`
     );
@@ -69,4 +76,30 @@ function validateUrl(value, label) {
   return u;
 }
 
-module.exports = { ALLOWED_HOSTS, isPrivateHostname, validateUrl };
+/**
+ * Validate an extension registry URL. Unlike {@link validateUrl}, a missing
+ * value is an error rather than an intentional skip, since every registry
+ * consumer needs a concrete location to read from.
+ * @param {string} value - The registry URL to validate
+ * @throws {Error} if the URL is absent or fails the registry host policy
+ */
+function validateRegistryUrl(value) {
+  if (typeof value !== "string" || value.trim() === "") {
+    throw new Error("Invalid registry URL: value must be a non-empty string");
+  }
+  const u = validateUrl(value, "registry", { hosts: REGISTRY_ALLOWED_HOSTS });
+  if (u.protocol !== "https:") {
+    throw new Error(
+      `Invalid registry URL "${value}": extension registries must use HTTPS`
+    );
+  }
+  return u;
+}
+
+module.exports = {
+  ALLOWED_HOSTS,
+  REGISTRY_ALLOWED_HOSTS,
+  isPrivateHostname,
+  validateUrl,
+  validateRegistryUrl,
+};

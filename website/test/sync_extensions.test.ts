@@ -5,10 +5,18 @@ import path from 'node:path';
 
 const {
   BUILT_IN_REGISTRY_URL,
+  serializeCatalog,
   syncBuiltInExtensions,
   writeCatalogAtomically,
 } = require('../scripts/sync-extensions');
 const { readExtensionRegistry } = require('../scripts/read-extension-registry');
+
+const showResult = {
+  Id: 'microsoft.azd.test',
+  Name: 'Test extension',
+  Description: 'Test description',
+  Capabilities: ['custom-commands'],
+};
 
 describe('Extension catalog synchronization', () => {
   test('reads extension metadata through azd validation, list, and show', () => {
@@ -21,12 +29,7 @@ describe('Extension catalog synchronization', () => {
       if (args[1] === 'list') {
         return [{ id: 'microsoft.azd.test' }];
       }
-      return {
-        Id: 'microsoft.azd.test',
-        Name: 'Test extension',
-        Description: 'Test description',
-        Capabilities: ['custom-commands'],
-      };
+      return showResult;
     };
 
     expect(readExtensionRegistry(BUILT_IN_REGISTRY_URL, execute)).toEqual([
@@ -55,29 +58,50 @@ describe('Extension catalog synchronization', () => {
     );
   });
 
+  // `azd extension show` marshals its result without JSON struct tags, so its
+  // key names are an incidental contract that a future azd release could change
+  // without notice. That must fail loudly rather than produce a catalog with
+  // missing display names or descriptions.
   test.each([
-    'http://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json',
-    'https://github.com/Azure/azure-dev/raw/main/cli/azd/extensions/registry.json',
-  ])('rejects an unsafe registry URL: %s', (registryUrl) => {
-    expect(() => readExtensionRegistry(registryUrl)).toThrow(
-      'extension registries must use HTTPS on raw.githubusercontent.com',
+    ['display name', { ...showResult, Name: '' }],
+    ['description', { ...showResult, Description: undefined }],
+  ])('rejects azd show output missing a %s', (field, details) => {
+    const execute = (args: string[]) => {
+      if (args[1] === 'source') return { valid: true };
+      if (args[1] === 'list') return [{ id: 'microsoft.azd.test' }];
+      return details;
+    };
+
+    expect(() => readExtensionRegistry(BUILT_IN_REGISTRY_URL, execute)).toThrow(
+      `azd returned no ${field} for extension "microsoft.azd.test"`,
     );
+  });
+
+  test.each([
+    [
+      'http://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json',
+      'extension registries must use HTTPS',
+    ],
+    [
+      'https://github.com/Azure/azure-dev/raw/main/cli/azd/extensions/registry.json',
+      'host "github.com" is not in the allowlist',
+    ],
+    ['', 'value must be a non-empty string'],
+  ])('rejects an unsafe registry URL: %s', (registryUrl, expectedError) => {
+    expect(() => readExtensionRegistry(registryUrl)).toThrow(expectedError);
   });
 
   test('synchronizes built-ins and preserves curated and community metadata', () => {
     const current = [
       {
         id: 'microsoft.azd.existing',
-        namespace: 'existing',
         displayName: 'Old name',
         description: 'Old description',
         author: 'Curated Team',
         authorUrl: 'https://github.com/Azure',
         source: 'https://example.com/curated-source',
         registryUrl: BUILT_IN_REGISTRY_URL,
-        latestVersion: '1.0.0',
         capabilities: ['custom-commands'],
-        platforms: ['linux/amd64'],
         tags: ['msft', 'ai'],
       },
       {
@@ -92,15 +116,12 @@ describe('Extension catalog synchronization', () => {
       },
       {
         id: 'community.extension',
-        namespace: 'community',
         displayName: 'Community extension',
         description: 'Community description',
         author: 'Community Author',
         source: 'https://example.com/community',
         registryUrl: 'https://example.com/registry.json',
-        latestVersion: '2.0.0',
         capabilities: [],
-        platforms: [],
         tags: ['community'],
       },
     ];
@@ -143,12 +164,12 @@ describe('Extension catalog synchronization', () => {
       registryUrl: BUILT_IN_REGISTRY_URL,
       tags: ['msft', 'new'],
     });
-    expect(result.extensions[2]).not.toHaveProperty('namespace');
-    expect(result.extensions[2]).not.toHaveProperty('latestVersion');
-    expect(result.extensions[2]).not.toHaveProperty('platforms');
+    expect(result.extensions[2]).toEqual(current[2]);
     expect(result.changes.added).toEqual(['microsoft.azd.new']);
     expect(result.changes.removed).toEqual(['microsoft.azd.removed']);
-    expect(result.changed).toBe(true);
+    expect(result.changes.updated).toEqual([
+      { id: 'microsoft.azd.existing', fields: ['displayName', 'description', 'capabilities'] },
+    ]);
   });
 
   test('rejects a built-in id that conflicts with a community extension', () => {
@@ -212,11 +233,11 @@ describe('Extension catalog synchronization', () => {
     fs.writeFileSync(outputPath, '[]\n');
 
     try {
-      writeCatalogAtomically([{ id: 'microsoft.azd.test' }], outputPath);
+      writeCatalogAtomically(serializeCatalog([{ id: 'microsoft.azd.test' }]), outputPath);
 
-      expect(JSON.parse(fs.readFileSync(outputPath, 'utf-8'))).toEqual([
-        { id: 'microsoft.azd.test' },
-      ]);
+      expect(fs.readFileSync(outputPath, 'utf-8')).toBe(
+        '[\n  {\n    "id": "microsoft.azd.test"\n  }\n]\n',
+      );
       expect(fs.readdirSync(directory)).toEqual(['extensions.json']);
     } finally {
       fs.rmSync(directory, { recursive: true, force: true });

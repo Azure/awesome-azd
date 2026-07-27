@@ -14,23 +14,13 @@ const EXTENSIONS_PATH = path.join(__dirname, "..", "static", "extensions.json");
 const BUILT_IN_REGISTRY_URL = extensionRegistries.builtIn;
 const BUILT_IN_SOURCE_ROOT =
   "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions";
-const OBSOLETE_FIELDS = new Set([
-  "namespace",
-  "latestVersion",
-  "platforms",
-  "preview",
-  "installCommand",
-]);
 
-function stripObsoleteFields(extension) {
-  return Object.fromEntries(
-    Object.entries(extension).filter(([field]) => !OBSOLETE_FIELDS.has(field)),
-  );
-}
-
+// Uses an object merge rather than a Set to collect the key union: the site's
+// Babel preset compiles spreads with the iterable-is-array assumption, so
+// `[...someSet]` yields the Set itself under the test transform while behaving
+// correctly under plain Node. Avoiding iterable spread keeps both identical.
 function changedFields(previous, next) {
-  const fields = new Set([...Object.keys(previous), ...Object.keys(next)]);
-  return [...fields].filter(
+  return Object.keys({ ...previous, ...next }).filter(
     (field) => JSON.stringify(previous[field]) !== JSON.stringify(next[field]),
   );
 }
@@ -96,9 +86,8 @@ function syncBuiltInExtensions(currentExtensions, registryExtensions) {
       continue;
     }
 
-    const cleaned = stripObsoleteFields(existing);
     const synced = {
-      ...cleaned,
+      ...existing,
       displayName: registryExtension.displayName,
       description: registryExtension.description,
       capabilities: registryExtension.capabilities || [],
@@ -120,25 +109,12 @@ function syncBuiltInExtensions(currentExtensions, registryExtensions) {
     syncedBuiltIns.push(createBuiltInExtension(registryExtension));
   }
 
-  const cleanedCommunityExtensions = communityExtensions.map((extension) => {
-    const cleaned = stripObsoleteFields(extension);
-    const fields = changedFields(extension, cleaned);
-    if (fields.length > 0) {
-      updated.push({ id: extension.id, fields });
-    }
-    return cleaned;
-  });
-
   const removed = Array.from(builtIns.keys()).filter((id) => !registryIds.has(id));
   // Existing entries retain their curated order. New built-ins follow azd's
   // list order, and community entries remain after the built-in catalog.
-  const extensions = [...syncedBuiltIns, ...cleanedCommunityExtensions];
+  const extensions = [...syncedBuiltIns, ...communityExtensions];
 
-  return {
-    extensions,
-    changes: { added, updated, removed },
-    changed: JSON.stringify(currentExtensions) !== JSON.stringify(extensions),
-  };
+  return { extensions, changes: { added, updated, removed } };
 }
 
 function formatSummary(changes) {
@@ -162,12 +138,16 @@ function formatSummary(changes) {
   return lines.join("\n");
 }
 
-function writeCatalogAtomically(extensions, outputPath = EXTENSIONS_PATH) {
+function serializeCatalog(extensions) {
+  return JSON.stringify(extensions, null, 2) + "\n";
+}
+
+// Replaces the catalog in a single rename so a crashed or cancelled run can
+// never leave a half-written extensions.json behind.
+function writeCatalogAtomically(content, outputPath = EXTENSIONS_PATH) {
   const temporaryPath = `${outputPath}.${process.pid}.tmp`;
   try {
-    const content = JSON.stringify(extensions, null, 2) + "\n";
     fs.writeFileSync(temporaryPath, content);
-    JSON.parse(fs.readFileSync(temporaryPath, "utf-8"));
     fs.renameSync(temporaryPath, outputPath);
   } finally {
     if (fs.existsSync(temporaryPath)) {
@@ -177,13 +157,20 @@ function writeCatalogAtomically(extensions, outputPath = EXTENSIONS_PATH) {
 }
 
 function main() {
-  const currentExtensions = JSON.parse(fs.readFileSync(EXTENSIONS_PATH, "utf-8"));
+  const currentContent = fs.readFileSync(EXTENSIONS_PATH, "utf-8");
   const registryExtensions = readExtensionRegistry(BUILT_IN_REGISTRY_URL);
-  const result = syncBuiltInExtensions(currentExtensions, registryExtensions);
-  if (result.changed) {
-    writeCatalogAtomically(result.extensions);
+  const { extensions, changes } = syncBuiltInExtensions(
+    JSON.parse(currentContent),
+    registryExtensions,
+  );
+
+  // Compare serialized output rather than parsed values so formatting drift in
+  // the committed catalog is normalized rather than silently preserved.
+  const syncedContent = serializeCatalog(extensions);
+  if (syncedContent !== currentContent) {
+    writeCatalogAtomically(syncedContent);
   }
-  console.log(formatSummary(result.changes));
+  console.log(formatSummary(changes));
 }
 
 if (require.main === module) {
@@ -198,6 +185,7 @@ if (require.main === module) {
 module.exports = {
   BUILT_IN_REGISTRY_URL,
   formatSummary,
+  serializeCatalog,
   syncBuiltInExtensions,
   writeCatalogAtomically,
 };

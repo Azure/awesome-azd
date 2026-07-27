@@ -42,6 +42,7 @@ jobs:
       github.event_name == 'workflow_dispatch' ||
       contains(github.event.issue.labels.*.name, 'extension-submission')
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
@@ -159,7 +160,7 @@ jobs:
             const path = require('path');
 
             const { validateExtensionEntry } = require('./.github/scripts/github-utils');
-            const { validateUrl } = require('./.github/scripts/url-validation');
+            const { validateUrl, validateRegistryUrl } = require('./.github/scripts/url-validation');
             
             const extensionsPath = path.join('website', 'static', 'extensions.json');
             const extensions = JSON.parse(fs.readFileSync(extensionsPath, 'utf8'));
@@ -186,7 +187,7 @@ jobs:
                 throw new Error('Invalid website URL: ' + err.message);
               }
             }
-            validateUrl(registryUrl, 'registry');
+            validateRegistryUrl(registryUrl);
             
             let added = [];
             
@@ -211,7 +212,10 @@ jobs:
               }
 
               if (!validateExtensionEntry(entry)) {
-                throw new Error(`azd returned incomplete metadata for ${ext.id}`);
+                // The entry mixes azd-provided metadata (id, displayName,
+                // description, capabilities) with values parsed from the
+                // submission issue, so stay neutral about which is at fault.
+                throw new Error(`Incomplete extension metadata for ${ext.id}`);
               }
 
               if (existingIndex >= 0) {

@@ -65,9 +65,11 @@ function readRegistryWithAzd(registryUrl) {
   );
 
   try {
+    // The script shells out to azd once per extension in the registry, so this
+    // budget covers the whole registry rather than a single azd invocation.
     const output = execFileSync("node", [scriptPath, registryUrl], {
       encoding: "utf-8",
-      timeout: 30000,
+      timeout: 300000,
     });
     return { valid: true, result: JSON.parse(output) };
   } catch (err) {

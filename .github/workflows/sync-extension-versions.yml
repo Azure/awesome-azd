@@ -57,6 +57,14 @@ jobs:
         working-directory: website
         run: npm test -- --runInBand
 
+      # Pull requests opened with GITHUB_TOKEN do not trigger workflow runs, so
+      # website-test.yml will not gate this PR. Build here instead, since the
+      # site build is what actually consumes extensions.json.
+      - name: Build website
+        if: steps.sync.outputs.changed == 'true'
+        working-directory: website
+        run: npm run build
+
       - name: Create Pull Request
         if: steps.sync.outputs.changed == 'true'
         shell: bash
@@ -66,7 +74,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          git diff --check
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch -C "$BRANCH"

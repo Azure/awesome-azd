@@ -7,7 +7,10 @@
 
 const fs = require("fs");
 const path = require("path");
-const { readExtensionRegistry } = require("./read-extension-registry");
+const {
+  readExtensionRegistry,
+  runAzdJson,
+} = require("./read-extension-registry");
 const extensionRegistries = require("../src/data/extensionRegistries.json");
 
 const EXTENSIONS_PATH = path.join(__dirname, "..", "static", "extensions.json");
@@ -25,6 +28,8 @@ function changedFields(previous, next) {
   );
 }
 
+// Registry entries always carry a capabilities array; readExtensionRegistry
+// rejects anything else, so no fallback is applied here.
 function createBuiltInExtension(extension) {
   return {
     id: extension.id,
@@ -34,7 +39,7 @@ function createBuiltInExtension(extension) {
     authorUrl: "https://github.com/Azure",
     source: `${BUILT_IN_SOURCE_ROOT}/${extension.id}`,
     registryUrl: BUILT_IN_REGISTRY_URL,
-    capabilities: extension.capabilities || [],
+    capabilities: extension.capabilities,
     tags: ["msft", "new"],
   };
 }
@@ -90,7 +95,7 @@ function syncBuiltInExtensions(currentExtensions, registryExtensions) {
       ...existing,
       displayName: registryExtension.displayName,
       description: registryExtension.description,
-      capabilities: registryExtension.capabilities || [],
+      capabilities: registryExtension.capabilities,
     };
     const fields = changedFields(existing, synced);
     if (fields.length > 0) {
@@ -144,7 +149,7 @@ function serializeCatalog(extensions) {
 
 // Replaces the catalog in a single rename so a crashed or cancelled run can
 // never leave a half-written extensions.json behind.
-function writeCatalogAtomically(content, outputPath = EXTENSIONS_PATH) {
+function writeCatalogAtomically(content, outputPath) {
   const temporaryPath = `${outputPath}.${process.pid}.tmp`;
   try {
     fs.writeFileSync(temporaryPath, content);
@@ -158,7 +163,10 @@ function writeCatalogAtomically(content, outputPath = EXTENSIONS_PATH) {
 
 function main() {
   const currentContent = fs.readFileSync(EXTENSIONS_PATH, "utf-8");
-  const registryExtensions = readExtensionRegistry(BUILT_IN_REGISTRY_URL);
+  const registryExtensions = readExtensionRegistry(
+    BUILT_IN_REGISTRY_URL,
+    runAzdJson,
+  );
   const { extensions, changes } = syncBuiltInExtensions(
     JSON.parse(currentContent),
     registryExtensions,
@@ -168,7 +176,7 @@ function main() {
   // the committed catalog is normalized rather than silently preserved.
   const syncedContent = serializeCatalog(extensions);
   if (syncedContent !== currentContent) {
-    writeCatalogAtomically(syncedContent);
+    writeCatalogAtomically(syncedContent, EXTENSIONS_PATH);
   }
   console.log(formatSummary(changes));
 }

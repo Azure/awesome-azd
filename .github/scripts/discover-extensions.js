@@ -188,7 +188,9 @@ async function main() {
 
     console.log(`  Validating ${repoFullName} (${registryUrl})...`);
 
-    // Validate using existing script
+    // Validate using existing script. Most third-party registry.json files
+    // found by code search are not azd extension registries, so a failed read
+    // is an expected outcome for a candidate repo rather than a job failure.
     const validation = readRegistryWithAzd(registryUrl);
 
     if (!validation.valid) {
@@ -196,10 +198,16 @@ async function main() {
       continue;
     }
 
+    // read-extension-registry.js exits non-zero when a registry yields no
+    // extensions, so a successful read always carries a non-empty array.
+    // Reaching this means the adapter's contract changed: fail the job loudly
+    // instead of silently skipping every repo.
     const registryExtensions = validation.result;
     if (!Array.isArray(registryExtensions) || registryExtensions.length === 0) {
-      console.log(`  Skipping ${repoFullName}: no extensions in registry`);
-      continue;
+      throw new Error(
+        `Registry adapter reported success but returned no extensions for ${repoFullName}. ` +
+          "read-extension-registry.js should have failed instead."
+      );
     }
 
     for (const ext of registryExtensions) {

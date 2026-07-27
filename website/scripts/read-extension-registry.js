@@ -53,8 +53,21 @@ function requireText(value, field, id) {
   return value;
 }
 
-function readExtensionRegistry(registryUrl, execute = runAzdJson) {
+/**
+ * Reads gallery metadata for every extension in a registry.
+ *
+ * `execute` is a required argument rather than a defaulted one: it is the seam
+ * that decides whether real azd processes are spawned, so each caller states
+ * that choice explicitly. Production callers pass {@link runAzdJson}.
+ *
+ * @param {string} registryUrl - HTTPS raw.githubusercontent.com registry URL
+ * @param {(args: string[]) => unknown} execute - Runs azd and parses its JSON
+ */
+function readExtensionRegistry(registryUrl, execute) {
   validateRegistryUrl(registryUrl);
+  if (typeof execute !== "function") {
+    throw new Error("readExtensionRegistry requires an execute function.");
+  }
 
   const validation = execute([
     "extension",
@@ -115,7 +128,9 @@ function main() {
     throw new Error("Usage: node read-extension-registry.js <registry-url>");
   }
 
-  console.log(JSON.stringify(readExtensionRegistry(registryUrl), null, 2));
+  console.log(
+    JSON.stringify(readExtensionRegistry(registryUrl, runAzdJson), null, 2),
+  );
 }
 
 if (require.main === module) {
@@ -127,4 +142,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { readExtensionRegistry };
+module.exports = { readExtensionRegistry, runAzdJson };

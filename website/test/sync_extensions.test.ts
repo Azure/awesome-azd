@@ -80,7 +80,7 @@ describe('Extension catalog synchronization', () => {
   test.each([
     [
       'http://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json',
-      'extension registries must use HTTPS',
+      'unsafe protocol "http:" (allowed: https:)',
     ],
     [
       'https://github.com/Azure/azure-dev/raw/main/cli/azd/extensions/registry.json',
@@ -88,7 +88,18 @@ describe('Extension catalog synchronization', () => {
     ],
     ['', 'value must be a non-empty string'],
   ])('rejects an unsafe registry URL: %s', (registryUrl, expectedError) => {
-    expect(() => readExtensionRegistry(registryUrl)).toThrow(expectedError);
+    // Rejection must happen before azd is ever invoked, so the stub fails loudly.
+    const execute = () => {
+      throw new Error('azd must not run for a rejected registry URL');
+    };
+
+    expect(() => readExtensionRegistry(registryUrl, execute)).toThrow(expectedError);
+  });
+
+  test('requires an explicit execute function', () => {
+    expect(() => readExtensionRegistry(BUILT_IN_REGISTRY_URL, undefined)).toThrow(
+      'requires an execute function',
+    );
   });
 
   test('synchronizes built-ins and preserves curated and community metadata', () => {

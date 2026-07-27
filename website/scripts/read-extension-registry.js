@@ -69,12 +69,17 @@ function readExtensionRegistry(registryUrl, execute) {
     throw new Error("readExtensionRegistry requires an execute function.");
   }
 
+  // Deliberately not --strict. Strict validation turns a missing artifact
+  // checksum into an error, and it walks every published version rather than
+  // just the latest, so one legacy artifact upstream would block syncing
+  // metadata for the whole catalog on a weekly unattended schedule. The gallery
+  // only consumes latest-version display name, description, and capabilities,
+  // and plain validation already rejects a registry azd considers broken.
   const validation = execute([
     "extension",
     "source",
     "validate",
     registryUrl,
-    "--strict",
     ...JSON_OUTPUT_ARGS,
   ]);
   if (!validation.valid) {

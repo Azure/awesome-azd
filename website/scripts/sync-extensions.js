@@ -28,19 +28,40 @@ function changedFields(previous, next) {
   );
 }
 
+// The azd registry publishes no author or gallery-tag information, so new
+// built-ins are seeded from their extension id. These profiles reproduce the
+// curated author for all 15 extensions in the catalog today, and Foundry's tag
+// set is uniform across its 10 entries. This remains a heuristic rather than a
+// source of truth: the sync opens a pull request, and formatSummary tells the
+// reviewer to confirm author and tags on anything newly added.
+const PUBLISHER_PROFILES = [
+  {
+    name: "Foundry Team",
+    owns: (id) => id.startsWith("azure.ai.") || id === "microsoft.foundry",
+    tags: ["msft", "ai", "aifoundry"],
+  },
+];
+
+const DEFAULT_PUBLISHER = { name: "Azure Dev", tags: ["msft"] };
+
+function publisherFor(id) {
+  return PUBLISHER_PROFILES.find((profile) => profile.owns(id)) || DEFAULT_PUBLISHER;
+}
+
 // Registry entries always carry a capabilities array; readExtensionRegistry
 // rejects anything else, so no fallback is applied here.
 function createBuiltInExtension(extension) {
+  const publisher = publisherFor(extension.id);
   return {
     id: extension.id,
     displayName: extension.displayName,
     description: extension.description,
-    author: "Azure Dev",
+    author: publisher.name,
     authorUrl: "https://github.com/Azure",
     source: `${BUILT_IN_SOURCE_ROOT}/${extension.id}`,
     registryUrl: BUILT_IN_REGISTRY_URL,
     capabilities: extension.capabilities,
-    tags: ["msft", "new"],
+    tags: [...publisher.tags, "new"],
   };
 }
 
@@ -139,6 +160,20 @@ function formatSummary(changes) {
   }
   if (lines.length === 1) {
     lines.push("- No changes.");
+  }
+  // New entries carry an author and tags inferred from their extension id,
+  // since the azd registry publishes neither. Say so, rather than relying on
+  // the reviewer already knowing those values are inferred.
+  if (changes.added.length > 0) {
+    lines.push(
+      "",
+      "> [!IMPORTANT]",
+      `> Confirm \`author\` and \`tags\` on the newly added ${
+        changes.added.length === 1 ? "entry" : "entries"
+      }.`,
+      "> The azd registry publishes neither, so they are inferred from the",
+      "> extension id and may be wrong for a new publisher.",
+    );
   }
   return lines.join("\n");
 }

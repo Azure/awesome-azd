@@ -70,4 +70,23 @@ describe('Extension tests', () => {
             expect(Array.isArray(extension.capabilities)).toBe(true);
         });
     });
+
+    // Capabilities are written straight from azd into the catalog by the sync
+    // workflow, but the gallery renders them via `ext-<capability>` tags. An
+    // unmapped capability degrades silently: the card shows a raw kebab-case
+    // badge and the filter sidebar drops it. Assert the mapping so a new azd
+    // capability fails the sync job instead of shipping a broken badge.
+    test('Extension capabilities map to defined ext- tags', () => {
+        Extensions.forEach((extension: any) => {
+            extension.capabilities.forEach((capability: string) => {
+                const tag = `ext-${capability}`;
+                if (Tags[tag] === undefined) {
+                    console.error(
+                        `Error: capability "${capability}" on extension "${extension.id}" has no "${tag}" entry in ./src/data/tags.tsx.`
+                    );
+                }
+                expect(Tags[tag]).toBeDefined();
+            });
+        });
+    });
 });

@@ -5,6 +5,7 @@ import path from 'node:path';
 
 const {
   BUILT_IN_REGISTRY_URL,
+  formatSummary,
   serializeCatalog,
   syncBuiltInExtensions,
   writeCatalogAtomically,
@@ -45,7 +46,9 @@ describe('Extension catalog synchronization', () => {
       ['extension', 'list'],
       ['extension', 'show'],
     ]);
-    expect(commands[0]).toContain('--strict');
+    // Strict validation would fail the whole sync over a missing checksum on
+    // any published version, including legacy ones this repo cannot fix.
+    expect(commands[0]).not.toContain('--strict');
     expect(commands.every((args) => args.includes(BUILT_IN_REGISTRY_URL))).toBe(true);
   });
 
@@ -236,6 +239,41 @@ describe('Extension catalog synchronization', () => {
       'microsoft.azd.6',
       'microsoft.azd.7',
     ]);
+  });
+
+  // New entries are seeded with a placeholder author and tags because the azd
+  // registry publishes neither, so the summary must tell the reviewer to check.
+  // The azd registry publishes no author, so new built-ins infer one from their
+  // id. These are real ids from both publishers in the catalog today.
+  test.each([
+    ['azure.ai.projects', 'Foundry Team', ['msft', 'ai', 'aifoundry', 'new']],
+    ['microsoft.foundry', 'Foundry Team', ['msft', 'ai', 'aifoundry', 'new']],
+    ['microsoft.azd.demo', 'Azure Dev', ['msft', 'new']],
+    ['azure.appservice', 'Azure Dev', ['msft', 'new']],
+  ])('seeds %s with author %s', (id, author, tags) => {
+    const [entry] = syncBuiltInExtensions(
+      [],
+      [{ id, displayName: 'Name', description: 'Description', capabilities: [] }],
+    ).extensions;
+
+    expect(entry.author).toBe(author);
+    expect(entry.tags).toEqual(tags);
+  });
+
+  test('prompts for author and tag review only when entries were added', () => {
+    const withAdditions = formatSummary({
+      added: ['microsoft.azd.new'],
+      updated: [],
+      removed: [],
+    });
+    expect(withAdditions).toContain('Confirm `author` and `tags`');
+
+    const withoutAdditions = formatSummary({
+      added: [],
+      updated: [{ id: 'microsoft.azd.existing', fields: ['description'] }],
+      removed: ['microsoft.azd.gone'],
+    });
+    expect(withoutAdditions).not.toContain('Confirm `author` and `tags`');
   });
 
   test('replaces the catalog atomically', () => {

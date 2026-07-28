@@ -5804,10 +5804,24 @@
     "authorUrl": "https://github.com/henrikmotzkus",
     "author": "Henrik Motzkus",
     "source": "https://github.com/henrikmotzkus/Microhack-TTYD",
-    "tags": ["ai", "fabric", "msft"],
-    "languages": ["terraform", "nodejs"],
-    "azureServices": ["fabric", "azuresql", "azurestorage"],
-    "IaC": ["terraform"],
+    "tags": [
+      "ai",
+      "fabric",
+      "msft"
+    ],
+    "languages": [
+      "terraform",
+      "nodejs"
+    ],
+    "azureServices": [
+      "fabric",
+      "azuresql",
+      "azurestorage",
+      "appservice"
+    ],
+    "IaC": [
+      "terraform"
+    ],
     "id": "64577715-e9a4-4a65-a514-4233763474c2"
   }
 ]

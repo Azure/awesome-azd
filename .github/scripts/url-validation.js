@@ -1,6 +1,6 @@
 /**
  * Shared URL validation utilities for SSRF prevention.
- * Used by validate-extension.js and the extension-submission workflow.
+ * Used by the extension registry metadata script and submission workflow.
  */
 
 const ALLOWED_HOSTS = [
@@ -9,6 +9,20 @@ const ALLOWED_HOSTS = [
   "marketplace.visualstudio.com",
   "registry.npmjs.org",
 ];
+
+// Each class of URL is checked against a fixed policy. Registries are stricter
+// than everything else because their contents are fetched by azd and written
+// straight into the gallery catalog, so an open redirect off an allowed host
+// would land untrusted metadata in the site.
+const GENERAL_URL_POLICY = {
+  protocols: ["http:", "https:"],
+  hosts: ALLOWED_HOSTS,
+};
+
+const REGISTRY_URL_POLICY = {
+  protocols: ["https:"],
+  hosts: ["raw.githubusercontent.com"],
+};
 
 /**
  * Check if a hostname resolves to a private/internal IP range.
@@ -35,13 +49,15 @@ function isPrivateHostname(hostname) {
 }
 
 /**
- * Validate a URL against protocol, host allowlist, and private IP checks.
- * @param {string} value - The URL to validate
- * @param {string} label - Human-readable label for error messages (e.g., "author", "registry")
+ * Check a URL against a policy's protocol and host allowlists, plus the private
+ * IP check. The policy is a required argument so every caller states which
+ * policy it is applying rather than inheriting an implicit default.
+ * @param {string} value - The URL to check
+ * @param {string} label - Human-readable label for error messages
+ * @param {{protocols: string[], hosts: string[]}} policy - Allowlists to enforce
  * @throws {Error} if the URL fails any check
  */
-function validateUrl(value, label) {
-  if (value === null || value === undefined) return null; // intentional skip
+function checkUrl(value, label, policy) {
   if (typeof value !== 'string' || value.trim() === '') {
     throw new Error(`Invalid ${label} URL: value must be a non-empty string`);
   }
@@ -51,12 +67,13 @@ function validateUrl(value, label) {
   } catch {
     throw new Error(`Invalid ${label} URL "${value}": malformed URL`);
   }
-  if (!["http:", "https:"].includes(u.protocol)) {
+  if (!policy.protocols.includes(u.protocol)) {
     throw new Error(
-      `Invalid ${label} URL "${value}": unsafe protocol "${u.protocol}"`
+      `Invalid ${label} URL "${value}": unsafe protocol "${u.protocol}" ` +
+        `(allowed: ${policy.protocols.join(", ")})`
     );
   }
-  if (!ALLOWED_HOSTS.includes(u.hostname)) {
+  if (!policy.hosts.includes(u.hostname)) {
     throw new Error(
       `Invalid ${label} URL "${value}": host "${u.hostname}" is not in the allowlist`
     );
@@ -69,4 +86,32 @@ function validateUrl(value, label) {
   return u;
 }
 
-module.exports = { ALLOWED_HOSTS, isPrivateHostname, validateUrl };
+/**
+ * Validate an optional URL, such as an author or source repo link. A nullish
+ * value is treated as an intentional skip.
+ * @param {string} value - The URL to validate
+ * @param {string} label - Human-readable label for error messages (e.g., "author")
+ * @throws {Error} if a present URL fails any check
+ */
+function validateUrl(value, label) {
+  if (value === null || value === undefined) return null; // intentional skip
+  return checkUrl(value, label, GENERAL_URL_POLICY);
+}
+
+/**
+ * Validate an extension registry URL. Unlike {@link validateUrl}, a missing
+ * value is an error rather than an intentional skip, since every registry
+ * consumer needs a concrete location to read from.
+ * @param {string} value - The registry URL to validate
+ * @throws {Error} if the URL is absent or fails the registry policy
+ */
+function validateRegistryUrl(value) {
+  return checkUrl(value, "registry", REGISTRY_URL_POLICY);
+}
+
+module.exports = {
+  ALLOWED_HOSTS,
+  isPrivateHostname,
+  validateUrl,
+  validateRegistryUrl,
+};

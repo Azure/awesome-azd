@@ -2,8 +2,8 @@
 
 /**
  * Discovers new azd extensions on GitHub by searching for repos with registry.json.
- * Validates using the existing validate-extension.js script and filters against
- * existing extensions and ignore list.
+ * Reads registry metadata using azd and filters against existing extensions and
+ * the ignore list.
  *
  * Usage: node discover-extensions.js
  * Env: GITHUB_TOKEN (required)
@@ -58,16 +58,18 @@ async function buildRegistryUrl(owner, repo, filePath, token) {
   return `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${filePath}`;
 }
 
-function validateRegistryWithScript(registryUrl) {
+function readRegistryWithAzd(registryUrl) {
   const scriptPath = path.resolve(
     __dirname,
-    "../../website/scripts/validate-extension.js"
+    "../../website/scripts/read-extension-registry.js"
   );
 
   try {
+    // The script shells out to azd once per extension in the registry, so this
+    // budget covers the whole registry rather than a single azd invocation.
     const output = execFileSync("node", [scriptPath, registryUrl], {
       encoding: "utf-8",
-      timeout: 30000,
+      timeout: 300000,
     });
     return { valid: true, result: JSON.parse(output) };
   } catch (err) {
@@ -186,26 +188,29 @@ async function main() {
 
     console.log(`  Validating ${repoFullName} (${registryUrl})...`);
 
-    // Validate using existing script
-    const validation = validateRegistryWithScript(registryUrl);
+    // Validate using existing script. Most third-party registry.json files
+    // found by code search are not azd extension registries, so a failed read
+    // is an expected outcome for a candidate repo rather than a job failure.
+    const validation = readRegistryWithAzd(registryUrl);
 
     if (!validation.valid) {
       console.log(`  Skipping ${repoFullName}: validation failed`);
       continue;
     }
 
-    const validatedExtensions = validation.result;
-    if (!Array.isArray(validatedExtensions) || validatedExtensions.length === 0) {
-      console.log(`  Skipping ${repoFullName}: no valid extensions in registry`);
-      continue;
+    // read-extension-registry.js exits non-zero when a registry yields no
+    // extensions, so a successful read always carries a non-empty array.
+    // Reaching this means the adapter's contract changed: fail the job loudly
+    // instead of silently skipping every repo.
+    const registryExtensions = validation.result;
+    if (!Array.isArray(registryExtensions) || registryExtensions.length === 0) {
+      throw new Error(
+        `Registry adapter reported success but returned no extensions for ${repoFullName}. ` +
+          "read-extension-registry.js should have failed instead."
+      );
     }
 
-    for (const ext of validatedExtensions) {
-      if (!ext.valid) {
-        console.log(`  Skipping extension ${ext.id}: invalid`);
-        continue;
-      }
-
+    for (const ext of registryExtensions) {
       // Check if this extension ID already exists
       if (existingIds.has(ext.id)) {
         console.log(`  Skipping ${ext.id}: already in extensions.json`);
@@ -226,18 +231,14 @@ async function main() {
 
       const entry = {
         id: ext.id,
-        namespace: ext.namespace,
         displayName: ext.displayName,
         description: ext.description,
         author: repoDetails.owner.login,
         authorUrl: `https://github.com/${repoDetails.owner.login}`,
         source: repoUrl,
         registryUrl: registryUrl,
-        latestVersion: ext.latestVersion,
         capabilities: ext.capabilities,
-        platforms: ext.platforms,
         tags,
-        installCommand: `azd extension install ${ext.id}`,
       };
 
       discovered.push({

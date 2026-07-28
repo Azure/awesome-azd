@@ -9478,7 +9478,7 @@
     "id": "a4f1db9e-ae2d-41db-8f49-33bc702d4653"
   },
   {
-    "title": "Microhack - Ask, Analyze, Act - Talk to Your Data in the Era of AI​",
+    "title": "Microhack - Ask, Analyze, Act - Talk to Your Data in the Era of AI",
     "description": "This MicroHack Talk to Your Data in the Era of AI scenario walks through the use of modernizing SQL Server workloads and building an analytics‑ and AI‑ready data foundation using Microsoft Fabric and Azure SQL Managed Instance. Through hands‑on labs, participants will explore how to break down data silos, unify operational and external data, enable governed analytics, and control how AI agents reason and respond. The scenario demonstrates the end‑to‑end journey from database mirroring and analytics enablement to Data Agent configuration and real user interaction via M365 Copilot.",
     "preview": "./templates/images/Microhack-Talktoyourdata.png",
     "authorUrl": "https://github.com/henrikmotzkus",
@@ -9487,12 +9487,11 @@
     "tags": [
       "ai",
       "copilot",
-      "fabric"
+      "fabric",
+      "msft"
     ],
     "languages": [
       "terraform",
-      "powershell",
-      "t-sql",
       "nodejs"
     ],
     "azureServices": [

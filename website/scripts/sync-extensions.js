@@ -163,7 +163,10 @@ function formatSummary(changes) {
   }
   // New entries carry an author and tags inferred from their extension id,
   // since the azd registry publishes neither. Say so, rather than relying on
-  // the reviewer already knowing those values are inferred.
+  // the reviewer already knowing those values are inferred. The merge note
+  // matters because the workflow rebuilds this branch from the default branch
+  // and force-pushes, so corrections pushed here are replaced by the next
+  // scheduled run rather than carried forward.
   if (changes.added.length > 0) {
     lines.push(
       "",
@@ -173,6 +176,10 @@ function formatSummary(changes) {
       }.`,
       "> The azd registry publishes neither, so they are inferred from the",
       "> extension id and may be wrong for a new publisher.",
+      ">",
+      "> Merge before the next scheduled sync: this branch is rebuilt from the",
+      "> default branch each run, so corrections made here are discarded until",
+      "> they land on the default branch.",
     );
   }
   return lines.join("\n");

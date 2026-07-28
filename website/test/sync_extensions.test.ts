@@ -241,8 +241,6 @@ describe('Extension catalog synchronization', () => {
     ]);
   });
 
-  // New entries are seeded with a placeholder author and tags because the azd
-  // registry publishes neither, so the summary must tell the reviewer to check.
   // The azd registry publishes no author, so new built-ins infer one from their
   // id. These are real ids from both publishers in the catalog today.
   test.each([
@@ -260,6 +258,8 @@ describe('Extension catalog synchronization', () => {
     expect(entry.tags).toEqual(tags);
   });
 
+  // Inferred author and tags are only as good as the id heuristic, so the
+  // summary must tell the reviewer to check them whenever entries were added.
   test('prompts for author and tag review only when entries were added', () => {
     const withAdditions = formatSummary({
       added: ['microsoft.azd.new'],

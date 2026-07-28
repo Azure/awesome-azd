@@ -6,6 +6,7 @@
 import React from "react";
 import styleCSS from "./styles.module.css";
 import { type Extension } from "../../../data/extensionTypes";
+import { CAPABILITY_BADGES } from "../../../data/extensionCapabilities";
 import extensionRegistries from "../../../data/extensionRegistries.json";
 import { Tags } from "../../../data/tags";
 import useBaseUrl from "@docusaurus/useBaseUrl";
@@ -22,17 +23,6 @@ import {
   Link as FluentUILink,
 } from "@fluentui/react-components";
 import { Globe16Regular } from "@fluentui/react-icons";
-
-const CAPABILITY_LABELS: Record<string, { label: string; color: "informative" | "success" | "warning" | "important" | "brand" }> = {
-  "custom-commands": { label: "Commands", color: "brand" },
-  "lifecycle-events": { label: "Lifecycle", color: "success" },
-  "mcp-server": { label: "MCP", color: "important" },
-  "service-target-provider": { label: "Service Target", color: "warning" },
-  "framework-service-provider": { label: "Framework", color: "warning" },
-  "provisioning-provider": { label: "Provisioning", color: "warning" },
-  "validation-provider": { label: "Validation", color: "success" },
-  "metadata": { label: "Metadata", color: "informative" },
-};
 
 function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Element {
   const communityLogo = useBaseUrl("/img/Community.svg");
@@ -137,7 +127,7 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
         <div className={styleCSS.cardTagContainer}>
           <div className={styleCSS.cardTagsWrapper}>
             {extension.capabilities.map((cap) => {
-              const capInfo = CAPABILITY_LABELS[cap] || { label: cap, color: "informative" as const };
+              const capInfo = CAPABILITY_BADGES[cap] || { label: cap, color: "informative" as const };
               return (
                 <Badge
                   key={`cap-${cap}`}

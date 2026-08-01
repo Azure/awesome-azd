@@ -9476,5 +9476,24 @@
       "bicep"
     ],
     "id": "a4f1db9e-ae2d-41db-8f49-33bc702d4653"
+  },
+  {
+    "title": "dailydigest",
+    "description": "Build a Python Foundry Hosted Agent that routes model and GitHub MCP calls through Azure AI Gateway.",
+    "preview": "",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure-Samples",
+    "source": "https://github.com/azure-samples/simple-foundry-hosted-agent-python-aigateway",
+    "tags": [
+      "msft",
+      "new"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "82115f41-cad5-43c0-9d92-288b7346eabb",
+    "languages": [
+      "python"
+    ]
   }
 ]

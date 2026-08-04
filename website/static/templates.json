@@ -9476,5 +9476,34 @@
       "bicep"
     ],
     "id": "a4f1db9e-ae2d-41db-8f49-33bc702d4653"
+  },
+  {
+    "title": "Daily Repo Digest with AI Gateway",
+    "description": "A Python Foundry Hosted Agent sample that runs a Microsoft Agent Framework repo-digest agent. Model requests and read-only GitHub MCP calls are routed through Azure AI Gateway, and the template deploys end to end with azd up using Bicep infrastructure. This is the sample used by the AI Gateway quickstart.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Microsoft",
+    "source": "https://github.com/Azure-Samples/simple-foundry-hosted-agent-python-aigateway",
+    "tags": [
+      "msft",
+      "new",
+      "mcp",
+      "ai"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "aifoundry",
+      "apim",
+      "managedidentity",
+      "azurestorage",
+      "appinsights",
+      "loganalytics"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "7c1b3708-a2ba-4000-ba61-df0bc8d7d5ef"
   }
 ]

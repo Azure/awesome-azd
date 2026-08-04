@@ -7560,6 +7560,24 @@
     ]
   },
   {
+    "title": "Echo agent (Activity, without a framework, Python)",
+    "description": "Minimal echo agent using the Activity protocol with a bring-your-own approach. Echoes the user's message back and uses the M365 Agents SDK for activity processing and outbound channel delivery.",
+    "authorUrl": "https://github.com/microsoft-foundry",
+    "author": "Microsoft Foundry Team",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/bring-your-own/activity/echo/azure.yaml",
+    "languages": [
+      "python"
+    ],
+    "id": "981cbc6b-2977-561e-8ee4-7fec8c9f8f7c",
+    "templateType": "extension.ai.agent",
+    "extensionFramework": "Bring Your Own",
+    "extensionTags": [
+      "example",
+      "M365 Agents SDK",
+      "Activity Protocol"
+    ]
+  },
+  {
     "title": "Agent with AG-UI (Invocations, Pydantic AI, AG-UI, Python)",
     "description": "AG-UI protocol over Foundry invocations using Pydantic AI with Azure OpenAI. Streams standard AG-UI events with zero manual event translation.",
     "authorUrl": "https://github.com/microsoft-foundry",
@@ -7574,6 +7592,24 @@
     "extensionTags": [
       "AG-UI",
       "Pydantic AI",
+      "Invocations Protocol"
+    ]
+  },
+  {
+    "title": "Agent with Claude Agent SDK (Invocations, Claude Agent SDK, Python)",
+    "description": "A getting-started agent that uses the Claude Agent SDK with Microsoft Foundry authentication and the azure-ai-agentserver-invocations protocol, streaming assistant deltas as Server-Sent Events (SSE).",
+    "authorUrl": "https://github.com/microsoft-foundry",
+    "author": "Microsoft Foundry Team",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/bring-your-own/invocations/claude-agent-sdk/azure.yaml",
+    "languages": [
+      "python"
+    ],
+    "id": "40b886cf-8b95-5b0b-9055-9aa13bbc3554",
+    "templateType": "extension.ai.agent",
+    "extensionFramework": "Bring Your Own",
+    "extensionTags": [
+      "Claude Agent SDK",
+      "Anthropic",
       "Invocations Protocol"
     ]
   },
@@ -7748,6 +7784,23 @@
     "extensionTags": [
       "function calling",
       "featured",
+      "Responses Protocol"
+    ]
+  },
+  {
+    "title": "Agent with OpenAI Agents SDK (Responses, OpenAI Agents SDK, Python)",
+    "description": "A getting-started agent that uses the OpenAI Agents SDK with Foundry Azure credential flow. The SDK's Agent and Runner drive the agent loop through the Responses protocol, with multi-turn conversation history managed by the platform.",
+    "authorUrl": "https://github.com/microsoft-foundry",
+    "author": "Microsoft Foundry Team",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/bring-your-own/responses/openai-agents-sdk/azure.yaml",
+    "languages": [
+      "python"
+    ],
+    "id": "236caa68-f333-5aa8-919c-56acd20edf78",
+    "templateType": "extension.ai.agent",
+    "extensionFramework": "Bring Your Own",
+    "extensionTags": [
+      "OpenAI Agents SDK",
       "Responses Protocol"
     ]
   },

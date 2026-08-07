@@ -4754,22 +4754,6 @@
     "id": "701855fd-df76-45ce-82c9-8ef5185b11dc"
   },
   {
-    "title": "Azure Storage Account",
-    "description": "This scenario is used to demonstrate Azure Storage Account with Blobs and File Share sample data.",
-    "preview": "./templates/images/test.png",
-    "authorUrl": "https://github.com/petender",
-    "author": "Peter De Tender",
-    "source": "https://github.com/petender/azd-storaccnt/",
-    "tags": [
-      "community"
-    ],
-    "azureServices": [
-      "blobstorage",
-      "azurestorage"
-    ],
-    "id": "3469bc1d-af3a-4512-86b0-ccb4c0ab8c49"
-  },
-  {
     "title": "Azure Secured Data Solutions",
     "description": "This scenario is used to demonstrate different Azure Data Solutions, using secured connectivity.",
     "preview": "./templates/images/test.png",
@@ -5678,25 +5662,6 @@
       "bicep"
     ],
     "id": "F5B15030-D351-462E-8F5F-A054EEBEFCA3"
-  },
-  {
-    "title": "Azure Monitor custom logs and external telemetry",
-    "description": "This scenario deploys an Log Analytics workspace with a custom table to ingest logs and external telemetry.",
-    "preview": "./templates/images/monitor-diagram.png",
-    "author": "Karel De Winter",
-    "source": "https://github.com/kareldewinter/tdd-azd-monitor",
-    "tags": [
-      "community"
-    ],
-    "azureServices": [
-      "monitor",
-      "appinsights",
-      "loganalytics"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "5a9ce880-cba7-4aaf-84f2-dd8e01d8102f"
   },
   {
     "title": "API Management with ConferenceAPI and OAuth",
@@ -7927,31 +7892,6 @@
       "bicep"
     ],
     "id": "28cc2769-656b-40c3-9585-a26955adb6b3"
-  },
-  {
-    "title": "Azure Functions Flex Consumption - FFmpeg Image Processing with Azure Files OS Mount",
-    "description": "Event-driven image processing using FFmpeg from an Azure Files OS mount. Images uploaded to Blob Storage trigger the function via EventGrid, which processes them using FFmpeg from the mount and saves results to an output container.",
-    "preview": "./templates/images/test.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Azure Samples",
-    "source": "https://github.com/Azure-Samples/Azure-Functions-Flex-Consumption-with-Azure-Files-OS-Mount-Samples",
-    "tags": [
-      "msft"
-    ],
-    "languages": [
-      "python"
-    ],
-    "azureServices": [
-      "functions",
-      "blobstorage",
-      "azurestorage",
-      "eventgrid",
-      "managedidentity"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "983a69db-309f-45ae-82ec-214e7dcc25f8"
   },
   {
     "title": "Azure Functions Flex Consumption - Durable Text Analysis with Azure Files OS Mount",

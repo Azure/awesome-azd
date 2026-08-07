@@ -7187,6 +7187,37 @@
     "id": "9fa7012a-4961-46d0-abc9-db9a8ea49f06"
   },
   {
+    "title": "Serverless Repo Digest Agent",
+    "description": "A daily GitHub repository digest agent running on the Azure Functions serverless agents runtime with Azure AI Gateway and GitHub MCP tools.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/paulyuk",
+    "author": "paulyuk",
+    "source": "https://github.com/paulyuk/serverless-repo-digest-agent",
+    "tags": [
+      "community",
+      "new",
+      "ai",
+      "mcp"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "functions",
+      "azureai",
+      "aifoundry",
+      "aca",
+      "azurestorage",
+      "appinsights",
+      "loganalytics",
+      "managedidentity"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "fd6f9d70-eb69-4c47-b899-b6cd300fe752"
+  },
+  {
     "title": "Hello World agent (Responses, Agent Framework, C#)",
     "description": "Minimal Hello World agent using the Responses protocol with the Agent Framework approach in C#. Uses Microsoft.Agents.AI to create an AIAgent backed by a Foundry model.",
     "authorUrl": "https://github.com/microsoft-foundry",

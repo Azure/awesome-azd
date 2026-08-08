@@ -9529,5 +9529,32 @@
       "bicep"
     ],
     "id": "7c1b3708-a2ba-4000-ba61-df0bc8d7d5ef"
+  },
+  {
+    "title": "M365 Inbox Agent for Azure Functions (Python)",
+    "description": "An AI agent that triages a Microsoft 365 inbox, escalating urgent mail to Teams, drafting replies, and sending daily briefings based on rules written in Markdown.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/m365-inbox-serverless-agent-python",
+    "tags": [
+      "msft",
+      "new",
+      "ai"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "functions",
+      "blobstorage",
+      "appinsights",
+      "aifoundry",
+      "managedidentity"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "1806f865-9fa7-4760-9010-aee951d74870"
   }
 ]

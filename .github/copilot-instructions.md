@@ -243,11 +243,17 @@ If the PR makes changes to `website/static/templates.json`, perform the followin
    - Example: If `sharepoint` (no `azureIcon`) appears in both `tags` and `azureServices`, suggest removing it from `azureServices` and keeping it only in `tags`
 
 4. **Testing Requirements Based on Template Type**:
-   
+
    Template type is determined by checking if the `"msft"` tag is present in the template's `tags` array.
-   
+   Before requesting testing, check whether the template submission issue was created by a trusted author. If the issue creator is trusted, do not request manual template testing or deployment proof.
+
+   **Trusted Authors:**
+   - paulyuk
+
+   When mentioning people in PR comments, write mentions as plain text (for example, @v-xuto). Do not wrap mentions in inline code formatting, because that prevents GitHub notifications.
+
    **For Community Templates (tags do NOT contain "msft"):**
-   - @ mention the manual test team member **@v-xuto** in a PR comment to request testing of the template
+   - @ mention the manual test team member @v-xuto in a PR comment to request testing of the template
    - Example comment: "@v-xuto Please test this community template to ensure it works as expected."
    
    **For Microsoft Templates (tags contain "msft"):**

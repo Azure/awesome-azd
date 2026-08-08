@@ -76,6 +76,10 @@ _No response_
 
 _No response_
 
+### Trusted Author
+
+_No response_
+
 ### Preview Image URL
 
 _No response_
@@ -108,6 +112,19 @@ After filing, report the issue URL and explain that:
   processing
 - The pipeline auto-extracts metadata, validates the repo, and creates a PR
 - The user will be notified on the issue when the PR is ready for review
+
+## Trusted authors
+
+Use the **Trusted Author** field only when the GitHub issue creator is a trusted
+author. Trusted authors do not need manual template testing requested from
+@v-xuto or deployment proof requested from the PR author.
+
+Current trusted authors:
+- paulyuk
+
+When mentioning people in issue or PR comments, write the mention as plain text
+such as @v-xuto. Do not wrap mentions in inline code formatting, because that
+prevents GitHub notifications.
 
 ## Handling user overrides
 

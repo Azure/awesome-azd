@@ -4754,22 +4754,6 @@
     "id": "701855fd-df76-45ce-82c9-8ef5185b11dc"
   },
   {
-    "title": "Azure Storage Account",
-    "description": "This scenario is used to demonstrate Azure Storage Account with Blobs and File Share sample data.",
-    "preview": "./templates/images/test.png",
-    "authorUrl": "https://github.com/petender",
-    "author": "Peter De Tender",
-    "source": "https://github.com/petender/azd-storaccnt/",
-    "tags": [
-      "community"
-    ],
-    "azureServices": [
-      "blobstorage",
-      "azurestorage"
-    ],
-    "id": "3469bc1d-af3a-4512-86b0-ccb4c0ab8c49"
-  },
-  {
     "title": "Azure Secured Data Solutions",
     "description": "This scenario is used to demonstrate different Azure Data Solutions, using secured connectivity.",
     "preview": "./templates/images/test.png",
@@ -5678,25 +5662,6 @@
       "bicep"
     ],
     "id": "F5B15030-D351-462E-8F5F-A054EEBEFCA3"
-  },
-  {
-    "title": "Azure Monitor custom logs and external telemetry",
-    "description": "This scenario deploys an Log Analytics workspace with a custom table to ingest logs and external telemetry.",
-    "preview": "./templates/images/monitor-diagram.png",
-    "author": "Karel De Winter",
-    "source": "https://github.com/kareldewinter/tdd-azd-monitor",
-    "tags": [
-      "community"
-    ],
-    "azureServices": [
-      "monitor",
-      "appinsights",
-      "loganalytics"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "5a9ce880-cba7-4aaf-84f2-dd8e01d8102f"
   },
   {
     "title": "API Management with ConferenceAPI and OAuth",
@@ -7222,6 +7187,37 @@
     "id": "9fa7012a-4961-46d0-abc9-db9a8ea49f06"
   },
   {
+    "title": "Serverless Repo Digest Agent",
+    "description": "A daily GitHub repository digest agent running on the Azure Functions serverless agents runtime with Azure AI Gateway and GitHub MCP tools.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/paulyuk",
+    "author": "paulyuk",
+    "source": "https://github.com/paulyuk/serverless-repo-digest-agent",
+    "tags": [
+      "community",
+      "new",
+      "ai",
+      "mcp"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "functions",
+      "azureai",
+      "aifoundry",
+      "aca",
+      "azurestorage",
+      "appinsights",
+      "loganalytics",
+      "managedidentity"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "fd6f9d70-eb69-4c47-b899-b6cd300fe752"
+  },
+  {
     "title": "Hello World agent (Responses, Agent Framework, C#)",
     "description": "Minimal Hello World agent using the Responses protocol with the Agent Framework approach in C#. Uses Microsoft.Agents.AI to create an AIAgent backed by a Foundry model.",
     "authorUrl": "https://github.com/microsoft-foundry",
@@ -7927,31 +7923,6 @@
       "bicep"
     ],
     "id": "28cc2769-656b-40c3-9585-a26955adb6b3"
-  },
-  {
-    "title": "Azure Functions Flex Consumption - FFmpeg Image Processing with Azure Files OS Mount",
-    "description": "Event-driven image processing using FFmpeg from an Azure Files OS mount. Images uploaded to Blob Storage trigger the function via EventGrid, which processes them using FFmpeg from the mount and saves results to an output container.",
-    "preview": "./templates/images/test.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Azure Samples",
-    "source": "https://github.com/Azure-Samples/Azure-Functions-Flex-Consumption-with-Azure-Files-OS-Mount-Samples",
-    "tags": [
-      "msft"
-    ],
-    "languages": [
-      "python"
-    ],
-    "azureServices": [
-      "functions",
-      "blobstorage",
-      "azurestorage",
-      "eventgrid",
-      "managedidentity"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "983a69db-309f-45ae-82ec-214e7dcc25f8"
   },
   {
     "title": "Azure Functions Flex Consumption - Durable Text Analysis with Azure Files OS Mount",
@@ -9586,5 +9557,32 @@
       "bicep"
     ],
     "id": "db15a733-f47f-4bdf-bfa6-372d94effb9b"
+  },
+  {
+    "title": "M365 Inbox Agent for Azure Functions (Python)",
+    "description": "An AI agent that triages a Microsoft 365 inbox, escalating urgent mail to Teams, drafting replies, and sending daily briefings based on rules written in Markdown.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Functions Team",
+    "source": "https://github.com/Azure-Samples/m365-inbox-serverless-agent-python",
+    "tags": [
+      "msft",
+      "new",
+      "ai"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "functions",
+      "blobstorage",
+      "appinsights",
+      "aifoundry",
+      "managedidentity"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "1806f865-9fa7-4760-9010-aee951d74870"
   }
 ]

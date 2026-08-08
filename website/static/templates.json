@@ -9531,6 +9531,34 @@
     "id": "7c1b3708-a2ba-4000-ba61-df0bc8d7d5ef"
   },
   {
+    "title": "Serverless Expense Processor Agent",
+    "description": "A markdown-first Azure Functions serverless agent for queue-driven expense processing. It reads expense requests from Azure Queue Storage in any format, selects and applies the matching policy document from Blob Storage, and routes the decision to an approved, review, or flagged output queue.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Microsoft",
+    "source": "https://github.com/Azure-Samples/expense-processor",
+    "tags": [
+      "msft",
+      "new",
+      "ai"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "functions",
+      "aifoundry",
+      "azurestorage",
+      "managedidentity",
+      "appinsights",
+      "loganalytics"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "db15a733-f47f-4bdf-bfa6-372d94effb9b"
+  },
+  {
     "title": "M365 Inbox Agent for Azure Functions (Python)",
     "description": "An AI agent that triages a Microsoft 365 inbox, escalating urgent mail to Teams, drafting replies, and sending daily briefings based on rules written in Markdown.",
     "preview": "./templates/images/test.png",

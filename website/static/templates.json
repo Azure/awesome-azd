@@ -9584,5 +9584,31 @@
       "bicep"
     ],
     "id": "1806f865-9fa7-4760-9010-aee951d74870"
+  },
+  {
+    "title": "Document Reviewer",
+    "description": "A markdown-first Azure Functions serverless agent that reviews new SharePoint PDF and DOCX files and posts an evidence-backed brief to one Microsoft Teams channel.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/Azure-Samples",
+    "author": "Azure Samples",
+    "source": "https://github.com/Azure-Samples/document-reviewer",
+    "tags": [
+      "msft",
+      "new",
+      "sharepoint",
+      "ai"
+    ],
+    "languages": [
+      "python"
+    ],
+    "azureServices": [
+      "functions",
+      "aifoundry",
+      "azureai"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "63d6be2c-d7f6-4d14-83f2-f0f2d68566e5"
   }
 ]

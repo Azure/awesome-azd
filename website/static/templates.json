@@ -7697,6 +7697,45 @@
     ]
   },
   {
+    "title": "Resilient Approval Gate agent (Invocations, without a framework, Python)",
+    "description": "A long-running, crash-resilient human-in-the-loop agent that plans a goal, gates the plan on human approval, checkpoints each step, and requires confirmation before performing irreversible actions exactly once.",
+    "authorUrl": "https://github.com/microsoft-foundry",
+    "author": "Microsoft Foundry Team",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/bring-your-own/invocations/resilient-approval-gate/azure.yaml",
+    "languages": [
+      "python"
+    ],
+    "id": "8af98e42-c253-5af4-9ff6-e6d18b6d567a",
+    "templateType": "extension.ai.agent",
+    "extensionFramework": "Bring Your Own",
+    "extensionTags": [
+      "human-in-the-loop",
+      "long-running",
+      "resilient tasks",
+      "Invocations Protocol"
+    ]
+  },
+  {
+    "title": "Resilient Research agent (Invocations, without a framework, Python)",
+    "description": "A long-running, crash-resilient deep-research agent that streams multi-phase LLM work over SSE, checkpoints each sub-call for mid-phase recovery, and supports resumable reconnects, cancellation, and steering.",
+    "authorUrl": "https://github.com/microsoft-foundry",
+    "author": "Microsoft Foundry Team",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/bring-your-own/invocations/resilient-research/azure.yaml",
+    "languages": [
+      "python"
+    ],
+    "id": "aae3ddc7-c993-5d15-b821-fc41be8c7ea2",
+    "templateType": "extension.ai.agent",
+    "extensionFramework": "Bring Your Own",
+    "extensionTags": [
+      "long-running",
+      "resilient tasks",
+      "streaming",
+      "steering",
+      "Invocations Protocol"
+    ]
+  },
+  {
     "title": "Agent with Foundry Toolbox (Invocations, without a framework, Python)",
     "description": "Bring-your-own agent using the Invocations protocol with Foundry Toolbox MCP integration. Connects to a toolbox at startup, discovers tools, and lets the model call them during conversation.",
     "authorUrl": "https://github.com/microsoft-foundry",
@@ -7797,6 +7836,26 @@
     "extensionFramework": "Bring Your Own",
     "extensionTags": [
       "OpenAI Agents SDK",
+      "Responses Protocol"
+    ]
+  },
+  {
+    "title": "Resilient Steering agent (Responses, without a framework, Python)",
+    "description": "A crash-resilient, steerable long-running agent that demonstrates how background responses survive process restarts and how cancellation, shutdown, steering, and recovery work together.",
+    "authorUrl": "https://github.com/microsoft-foundry",
+    "author": "Microsoft Foundry Team",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/bring-your-own/responses/resilient-steering/azure.yaml",
+    "languages": [
+      "python"
+    ],
+    "id": "7d12714c-c23d-586d-aa29-b302e1c82195",
+    "templateType": "extension.ai.agent",
+    "extensionFramework": "Bring Your Own",
+    "extensionTags": [
+      "background mode",
+      "long-running",
+      "resilient tasks",
+      "steering",
       "Responses Protocol"
     ]
   },

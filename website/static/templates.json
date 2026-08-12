@@ -9669,5 +9669,22 @@
       "bicep"
     ],
     "id": "63d6be2c-d7f6-4d14-83f2-f0f2d68566e5"
+  },
+  {
+    "title": "azure-landingzone-setup",
+    "description": "This repo is for Azure landing zone automation with hub and spoke architecture with optional components.",
+    "preview": "",
+    "authorUrl": "https://github.com/durga533",
+    "author": "durga533",
+    "source": "https://github.com/durga533/azure-landingzone-setup",
+    "tags": [
+      "community",
+      "new"
+    ],
+    "IaC": [],
+    "id": "c052f4be-edc1-4456-8bff-84677d5fdef3",
+    "frameworks": [
+      "rag"
+    ]
   }
 ]

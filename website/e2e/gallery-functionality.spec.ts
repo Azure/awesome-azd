@@ -53,6 +53,22 @@ test.describe("Gallery functionality (deploy gate)", () => {
     expect(rendered).toBeGreaterThan(0);
   });
 
+  test("template details opens the template in the VS Code azd experience", async ({
+    page,
+  }) => {
+    const firstCard = page.locator(".fui-Card").first();
+    await firstCard.getByRole("button").first().click();
+
+    const openInVSCode = page.getByRole("link", { name: "Open in VS Code" });
+    await expect(openInVSCode).toBeVisible();
+
+    const href = await openInVSCode.getAttribute("href");
+    expect(href).toMatch(
+      /^https:\/\/vscode\.dev\/azure\?vscode-azure-exp=azd&az-referer=awesome-azd&azdTemplateUrl=https%3A%2F%2Fgithub\.com%2F/
+    );
+    await expect(openInVSCode).toHaveAttribute("target", "_blank");
+  });
+
   test('search "azure" narrows results but keeps some', async ({ page }) => {
     const initial = await viewingCount(page);
     expect(initial).toBeGreaterThan(0);

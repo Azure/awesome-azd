@@ -26,6 +26,7 @@ import {
 import ShowcaseMultipleAuthors from "../ShowcaseMultipleAuthors/index";
 import ShowcaseCardTag from "../ShowcaseTag/index";
 import { useColorMode } from "@docusaurus/theme-common";
+import { getOpenInVSCodeUrl } from "../../../utils/vscode";
 
 function CopyButton({ url, colorMode }: { url: string; colorMode: string }) {
   const copySVG = useBaseUrl("/img/purpleCopy.svg");
@@ -105,6 +106,8 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
     templateURL = templateURL.replace("azure-samples/", "");
   }
   const azdInitCommand = "azd init -t " + templateURL;
+  const openInVSCodeUrl = getOpenInVSCodeUrl(user.source);
+  const vsCodeIcon = useBaseUrl("/img/vscode-white.svg");
   let chevronSVG = useBaseUrl("/img/leftChevron.svg");
 
   let pivotTextColor = "black";
@@ -325,7 +328,9 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                       paddingTop: "10px",
                     }}
                   >
-                    <Separator alignContent="start">Or</Separator>
+                    <Separator alignContent="start">
+                      Or using VS Code for the Web
+                    </Separator>
                   </div>
 
                   <div
@@ -336,7 +341,41 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                       padding: "10px 0",
                     }}
                   >
-                    If using the{" "}
+                    Open this template in VS Code for the Web with azd and other
+                    Azure development tools ready to use.
+                  </div>
+                  <a
+                    className={styles.openInVSCodeButton}
+                    href={openInVSCodeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-m={JSON.stringify({
+                      id: user.title,
+                      cN: "Open in VS Code",
+                    })}
+                  >
+                    <img
+                      className={styles.vsCodeIcon}
+                      src={vsCodeIcon}
+                      alt=""
+                      aria-hidden="true"
+                    />
+                    <span>Open in VS Code</span>
+                  </a>
+                  <div className={styles.extensionSeparator}>
+                    <Separator alignContent="start">
+                      Or using the azd extension
+                    </Separator>
+                  </div>
+                  <div
+                    className={styles.textColor}
+                    style={{
+                      fontSize: "14px",
+                      fontWeight: "400",
+                      padding: "10px 0",
+                    }}
+                  >
+                    In the template picker, paste this template identifier.{" "}
                     <a
                       href={
                         "https://marketplace.visualstudio.com/items?itemName=ms-azuretools.azure-dev"
@@ -345,9 +384,9 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                       rel="noopener noreferrer"
                       className={styles.color}
                     >
-                      azd VS Code extension
-                    </a>{" "}
-                    you can paste this URL in the VS Code command terminal.
+                      Learn more about the azd VS Code extension
+                    </a>
+                    .
                   </div>
 
                   <div
@@ -367,7 +406,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                         fontSize: "12px",
                       }}
                     >
-                      Terminal URL
+                      Template Identifier
                     </div>
                     <CopyButton colorMode={colorMode} url={templateURL} />
                   </div>

@@ -9675,7 +9675,7 @@
     "description": "A modular Azure landing zone with hub-spoke networking, optional security controls, monitoring, and a scalable architecture.",
     "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/durga533",
-    "author": "durga533",
+    "author": "Durga Prasad Katrapally",
     "source": "https://github.com/durga533/azure-landingzone-setup",
     "tags": [
       "community",

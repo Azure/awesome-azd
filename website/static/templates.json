@@ -9682,8 +9682,7 @@
       "new"
     ],
     "azureServices": [
-      "bastion",
-      "loganalytics"
+      "vnets"
     ],
     "IaC": [
       "bicep"

@@ -255,6 +255,7 @@ If the PR makes changes to `website/static/templates.json`, perform the followin
    **For Community Templates (tags do NOT contain "msft"):**
    - @ mention the manual test team member @v-xuto in a PR comment to request testing of the template
    - Example comment: "@v-xuto Please test this community template to ensure it works as expected."
+   - Do not suppress this request. Write the mention as plain text, without inline code or quotation marks, so it sends a valid notification.
    
    **For Microsoft Templates (tags contain "msft"):**
    - @ mention the **PR author** (use their actual GitHub username) requesting they provide proof of successful testing

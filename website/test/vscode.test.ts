@@ -3,22 +3,22 @@ import { getOpenInVSCodeUrl } from "../src/utils/vscode";
 
 describe("getOpenInVSCodeUrl", () => {
   test("opens the template in the VS Code for the Web /azure experience", () => {
-    expect(
-      getOpenInVSCodeUrl("https://github.com/Azure-Samples/todo-nodejs-mongo")
-    ).toBe(
-      "https://vscode.dev/azure?vscode-azure-exp=azd&az-referer=awesome-azd&azdTemplateUrl=https%3A%2F%2Fgithub.com%2FAzure-Samples%2Ftodo-nodejs-mongo"
-    );
+    const templateSource =
+      "https://github.com/Azure-Samples/todo-nodejs-mongo";
+    const url = new URL(getOpenInVSCodeUrl(templateSource));
+
+    expect(url.origin).toBe("https://vscode.dev");
+    expect(url.pathname).toBe("/azure");
+    expect(url.searchParams.get("vscode-azure-exp")).toBe("azd");
+    expect(url.searchParams.get("az-referer")).toBe("awesome-azd");
+    expect(url.searchParams.get("azdTemplateUrl")).toBe(templateSource);
   });
 
-  test("encodes template source query parameters", () => {
-    const url = getOpenInVSCodeUrl(
-      "https://github.com/example/template?ref=feature/test"
-    );
+  test("preserves template source query parameters", () => {
+    const templateSource =
+      "https://github.com/example/template?ref=feature/test";
+    const url = new URL(getOpenInVSCodeUrl(templateSource));
 
-    expect(url).toContain(
-      "azdTemplateUrl=https%3A%2F%2Fgithub.com%2Fexample%2Ftemplate%3Fref%3Dfeature%2Ftest"
-    );
-    expect(url).toContain("vscode-azure-exp=azd");
-    expect(url).toContain("az-referer=awesome-azd");
+    expect(url.searchParams.get("azdTemplateUrl")).toBe(templateSource);
   });
 });

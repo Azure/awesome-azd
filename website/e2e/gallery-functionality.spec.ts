@@ -63,8 +63,17 @@ test.describe("Gallery functionality (deploy gate)", () => {
     await expect(openInVSCode).toBeVisible();
 
     const href = await openInVSCode.getAttribute("href");
-    expect(href).toMatch(
-      /^https:\/\/vscode\.dev\/azure\?vscode-azure-exp=azd&az-referer=awesome-azd&azdTemplateUrl=https%3A%2F%2Fgithub\.com%2F/
+    if (href === null) {
+      throw new Error("Open in VS Code link is missing an href");
+    }
+
+    const url = new URL(href);
+    expect(url.origin).toBe("https://vscode.dev");
+    expect(url.pathname).toBe("/azure");
+    expect(url.searchParams.get("vscode-azure-exp")).toBe("azd");
+    expect(url.searchParams.get("az-referer")).toBe("awesome-azd");
+    expect(url.searchParams.get("azdTemplateUrl")).toMatch(
+      /^https:\/\/github\.com\//
     );
     await expect(openInVSCode).toHaveAttribute("target", "_blank");
   });

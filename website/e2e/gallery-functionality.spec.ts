@@ -53,6 +53,31 @@ test.describe("Gallery functionality (deploy gate)", () => {
     expect(rendered).toBeGreaterThan(0);
   });
 
+  test("template details opens the template in the VS Code azd experience", async ({
+    page,
+  }) => {
+    const firstCard = page.locator(".fui-Card").first();
+    await firstCard.getByRole("button").first().click();
+
+    const openInVSCode = page.getByRole("link", { name: "Open in VS Code" });
+    await expect(openInVSCode).toBeVisible();
+
+    const href = await openInVSCode.getAttribute("href");
+    if (href === null) {
+      throw new Error("Open in VS Code link is missing an href");
+    }
+
+    const url = new URL(href);
+    expect(url.origin).toBe("https://vscode.dev");
+    expect(url.pathname).toBe("/azure");
+    expect(url.searchParams.get("vscode-azure-exp")).toBe("azd");
+    expect(url.searchParams.get("az-referer")).toBe("awesome-azd");
+    expect(url.searchParams.get("azdTemplateUrl")).toMatch(
+      /^https:\/\/github\.com\//
+    );
+    await expect(openInVSCode).toHaveAttribute("target", "_blank");
+  });
+
   test('search "azure" narrows results but keeps some', async ({ page }) => {
     const initial = await viewingCount(page);
     expect(initial).toBeGreaterThan(0);

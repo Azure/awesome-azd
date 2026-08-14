@@ -64,6 +64,22 @@
   text-decoration-thickness: 2px !important;
 }
 
+.openInVSCodeButton {
+  composes: heroPrimaryButton from "../../../css/hero-buttons.module.css";
+  margin-bottom: 8px;
+}
+
+.vsCodeIcon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  object-fit: contain;
+}
+
+.extensionSeparator {
+  padding-top: 10px;
+}
+
 .purple {
   filter: invert(27%) sepia(96%) saturate(1200%) hue-rotate(176deg)
     brightness(97%) contrast(101%) !important;

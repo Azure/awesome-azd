@@ -8498,5 +8498,24 @@
       "bicep"
     ],
     "id": "63d6be2c-d7f6-4d14-83f2-f0f2d68566e5"
+  },
+  {
+    "title": "Flexible Azure Landing Zone (Bicep-Based)",
+    "description": "A modular Azure landing zone with hub-spoke networking, optional security controls, monitoring, and a scalable architecture.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/durga533",
+    "author": "Durga Prasad Katrapally",
+    "source": "https://github.com/durga533/azure-landingzone-setup",
+    "tags": [
+      "community",
+      "new"
+    ],
+    "azureServices": [
+      "vnets"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "1d91c0bd-a0aa-436d-818e-08457f9f7323"
   }
 ]

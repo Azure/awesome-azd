@@ -164,71 +164,6 @@
     "id": "d2fbf0ef-693e-48f2-be36-05053201807f"
   },
   {
-    "title": "Static React Web App + Functions with Node.js API and MongoDB",
-    "description": "A blueprint for getting a React web app with a Node.js API and a MongoDB database on Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly. This architecture is for hosting static web apps with serverless logic and functionality.",
-    "preview": "./templates/images/todo-nodejs-mongo-swa-func.png",
-    "authorUrl": "https://github.com/Azure/azure-dev",
-    "author": "Azure Dev",
-    "source": "https://github.com/Azure-Samples/todo-nodejs-mongo-swa-func",
-    "tags": [
-      "mongodb",
-      "msft"
-    ],
-    "languages": [
-      "nodejs",
-      "typescript",
-      "javascript"
-    ],
-    "frameworks": [
-      "reactjs"
-    ],
-    "azureServices": [
-      "swa",
-      "functions",
-      "cosmosdb",
-      "monitor",
-      "keyvault",
-      "appservice"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "ada236c1-2d00-440e-9730-5042a283a409"
-  },
-  {
-    "title": "Static React Web App + Functions with Python API and MongoDB",
-    "description": "A blueprint for getting a React.js web app with Python (FastAPI) API and a MongoDB API in Cosmos database onto Azure. The frontend, currently a ToDo application, is designed as a placeholder that can easily be removed and replaced with your own frontend code. This architecture is for hosting static web apps with serverless logic and functionality.",
-    "preview": "./templates/images/todo-python-mongo-swa-func.png",
-    "authorUrl": "https://github.com/Azure/azure-dev",
-    "author": "Azure Dev",
-    "source": "https://github.com/Azure-Samples/todo-python-mongo-swa-func",
-    "tags": [
-      "mongodb",
-      "msft"
-    ],
-    "languages": [
-      "python",
-      "typescript",
-      "javascript"
-    ],
-    "frameworks": [
-      "reactjs",
-      "fastapi"
-    ],
-    "azureServices": [
-      "swa",
-      "functions",
-      "cosmosdb",
-      "monitor",
-      "keyvault",
-      "appservice"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "deb89dec-3275-48e5-b5c0-830fb59743e6"
-  },
-  {
     "title": "React Web App with Python API and MongoDB",
     "description": "A blueprint for getting a React.js web app with Python (FastAPI) API and a MongoDB API in Cosmos database onto Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly. This architecture is for hosting web apps and APIs without worrying about the infrastructure.",
     "preview": "./templates/images/todo-python.png",
@@ -410,37 +345,6 @@
     "id": "3ffcef92-73e6-49ec-9c35-22a5cfc6ee98"
   },
   {
-    "title": "Static React Web App + Functions with C# API and SQL Database",
-    "description": "A blueprint for getting a React web app with a C# API and a SQL database on Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly. This architecture is for hosting static web apps with serverless logic and functionality.",
-    "preview": "./templates/images/todo-csharp-sql-swa-func.png",
-    "authorUrl": "https://github.com/Azure/azure-dev",
-    "author": "Azure Dev",
-    "source": "https://github.com/Azure-Samples/todo-csharp-sql-swa-func",
-    "tags": [
-      "msft"
-    ],
-    "languages": [
-      "dotnetCsharp",
-      "typescript",
-      "javascript"
-    ],
-    "frameworks": [
-      "reactjs"
-    ],
-    "azureServices": [
-      "swa",
-      "functions",
-      "monitor",
-      "keyvault",
-      "appservice",
-      "azuresql"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "5ea70efc-3ac9-4ce5-87c9-d68200336a89"
-  },
-  {
     "title": "Kubernetes React Web App with Node.js API and MongoDB",
     "description": "A blueprint for getting a React.js web app with a Node.js API and a MongoDB database on Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly. This architecture is for running Kubernetes clusters without setting up the control plane.",
     "preview": "./templates/images/todo-nodejs-mongo-aks.png",
@@ -472,33 +376,6 @@
     "id": "f9936700-5a9a-4bf9-bfe7-e1e10477ba76"
   },
   {
-    "title": "Static React Web App with Java API and PostgreSQL",
-    "description": "A blueprint for getting a React web app with a Java API and a Azure Database for PostgreSQL - Flexible Server on Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly. This architecture is for hosting web apps and APIs without worrying about the infrastructure.",
-    "preview": "./templates/images/todo-java-postgres-asa.png",
-    "authorUrl": "https://github.com/Azure-Samples/",
-    "author": "Yi Liu",
-    "source": "https://github.com/Azure-Samples/ASA-Samples-Web-Application",
-    "tags": [
-      "webapps",
-      "msft"
-    ],
-    "languages": [
-      "java",
-      "nodejs"
-    ],
-    "frameworks": [
-      "spring"
-    ],
-    "azureServices": [
-      "azurespringapps",
-      "azuredb-postgreSQL"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "0c5072fa-a12c-4a5f-a821-ead605c1d10c"
-  },
-  {
     "title": "ChatGPT + Enterprise Data with Azure OpenAI and AI Search",
     "description": "A sample app for the Retrieval-Augmented Generation pattern running in Azure, using Azure AI Search for retrieval and Azure OpenAI large language models to power ChatGPT-style and Q&A experiences.",
     "preview": "./templates/images/chatgpt-enterprise-dotnet.png",
@@ -528,58 +405,6 @@
     "id": "75989eb4-f7e0-4dab-be54-262775942d4e"
   },
   {
-    "title": "Simple Chat Application using Azure OpenAI",
-    "description": "A sample chat app that uses Python and the Flask framework to stream ChatGPT completions as server-sent events to a simple frontend.",
-    "preview": "./templates/images/simplechat-azureopenai.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Azure Content Team",
-    "source": "https://github.com/Azure-Samples/chatgpt-quickstart",
-    "tags": [
-      "gpt",
-      "ai",
-      "msft"
-    ],
-    "languages": [
-      "python"
-    ],
-    "frameworks": [
-      "flask"
-    ],
-    "azureServices": [
-      "openai",
-      "aca"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "b9dc8b04-ecb2-4484-9241-0ec5dcacbdb4"
-  },
-  {
-    "title": "Spring ChatGPT Application using Azure OpenAI on Azure Spring Apps",
-    "description": "A sample that uses Java Spring framework to build ChatGPT-style application running in Azure Spring Apps.",
-    "preview": "./templates/images/asa-chatgpt.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Yi Liu",
-    "source": "https://github.com/Azure-Samples/spring-chatgpt-sample",
-    "tags": [
-      "gpt",
-      "ai",
-      "msft"
-    ],
-    "languages": [
-      "java"
-    ],
-    "azureServices": [
-      "openai",
-      "blobstorage",
-      "azurespringapps"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "609fce57-2f3e-44d7-9fec-162f91fd1f42"
-  },
-  {
     "title": "Python (Django) Web App with PostgreSQL in VNet",
     "description": "A restaurants review web app that uses whitenoise for static assets and PostgreSQL for the database. Ready for deployment on App Service with a PostgreSQL Flexible Server inside a VNet.",
     "preview": "./templates/images/msdocs-django-postgresql-sample-app.png",
@@ -602,31 +427,6 @@
       "vnets"
     ],
     "id": "aca56c78-0e01-4525-b678-c3d5c28be1be"
-  },
-  {
-    "title": "Python (Django) Web App with PostgreSQL via Azure Container Apps",
-    "description": "A space tourism web app that uses PostgreSQL for the database. The web app is containerize and deploy with Azure Container Apps with secrets managed by Azure Key Vault",
-    "preview": "./templates/images/azure-django-postgres-aca.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Azure Content Team",
-    "source": "https://github.com/Azure-Samples/azure-django-postgres-aca",
-    "tags": [
-      "msft"
-    ],
-    "languages": [
-      "python"
-    ],
-    "frameworks": [
-      "django"
-    ],
-    "azureServices": [
-      "aca",
-      "azuredb-postgreSQL"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "0b2fbaad-df80-4f21-a10c-a2739e0fd35b"
   },
   {
     "title": "Python (Flask) Web App with PostgreSQL in VNet",
@@ -929,27 +729,6 @@
     "id": "35fede2d-4da6-43e2-b679-c593c6fd40da"
   },
   {
-    "title": "FastAPI on Azure Functions",
-    "description": "A simple FastAPI app deployed to Azure Functions. Can also be run and debugged locally with the Azure Functions Core Tool emulator.",
-    "preview": "./templates/images/fastapi-on-azure-functions.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Azure Content Team",
-    "source": "https://github.com/Azure-Samples/fastapi-on-azure-functions",
-    "tags": [
-      "msft"
-    ],
-    "languages": [
-      "python"
-    ],
-    "frameworks": [
-      "fastapi"
-    ],
-    "azureServices": [
-      "functions"
-    ],
-    "id": "fcfd9b78-5e57-467e-a6e0-46cb54d1e246"
-  },
-  {
     "title": "Spring PetClinic - Java Spring MySQL",
     "description": "Spring PetClinic application using a set of Azure solutions. Azure App Service for app hosting, Azure Database for MySQL for storage, Azure Key Vault for securing secret and Azure Application Insights for monitoring and logging.",
     "preview": "./templates/images/spring-petclinic-java-mysql.png",
@@ -1055,48 +834,6 @@
       "appservice"
     ],
     "id": "147a3984-3705-4972-8c24-159495676ccc"
-  },
-  {
-    "title": "Azure Functions - Text Summarization using AI Cognitive Language Service (C#-Isolated)",
-    "description": "This sample shows how to take text documents as a input via BlobTrigger, does Text Summarization processing using the AI Congnitive Language service, and then outputs to another text document using BlobOutput binding.",
-    "preview": "./templates/images/test.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Paul Yuknewicz",
-    "source": "https://github.com/Azure-Samples/function-csharp-ai-textsummarize",
-    "tags": [
-      "ai",
-      "msft"
-    ],
-    "languages": [
-      "dotnetCsharp"
-    ],
-    "azureServices": [
-      "functions",
-      "aisearch",
-      "azureai"
-    ],
-    "id": "3dae246d-17c8-4af7-a74d-cc6ece82921b"
-  },
-  {
-    "title": "Azure Functions - Text Summarization using AI Cognitive Language Service (Python v2 Function)",
-    "description": "This sample shows how to take text documents as a input via BlobTrigger, does Text Summarization processing using the AI Congnitive Language service, and then outputs to another text document using BlobOutput binding.",
-    "preview": "./templates/images/test.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Paul Yuknewicz",
-    "source": "https://github.com/Azure-Samples/function-python-ai-textsummarize",
-    "tags": [
-      "ai",
-      "msft"
-    ],
-    "languages": [
-      "python"
-    ],
-    "azureServices": [
-      "functions",
-      "aisearch",
-      "azureai"
-    ],
-    "id": "8d50865f-60f3-4a78-b00c-c185a984cc9a"
   },
   {
     "title": "Flask Container with CDN",
@@ -1333,34 +1070,6 @@
       "bicep"
     ],
     "id": "9dffb7ca-0b35-4d13-bd50-899a904fdac3"
-  },
-  {
-    "title": "React Component Toolkit with ChatGPT and OpenAI ",
-    "description": "A sample demo for building and testing react components and includes a set of unique features including AI component generation and automatic conversion to Azure APIM Widgets",
-    "preview": "./templates/images/react-component-toolkit-openai.png",
-    "authorUrl": "https://github.com/jenny0322",
-    "author": "Jenny Chen",
-    "source": "https://github.com/Azure-Samples/react-component-toolkit-openai-demo",
-    "tags": [
-      "gpt",
-      "ai",
-      "msft"
-    ],
-    "languages": [
-      "typescript",
-      "javascript"
-    ],
-    "frameworks": [
-      "reactjs"
-    ],
-    "azureServices": [
-      "openai",
-      "apim"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "2bda5e52-9786-4900-af96-601ff76218e3"
   },
   {
     "title": "Python (Flask) Web App with PostgreSQL",
@@ -1718,32 +1427,6 @@
     "id": "4dba6803-d1c7-4c75-b250-7a679c38a85c"
   },
   {
-    "title": "Azure OpenAI Conference Session Recommender",
-    "description": "Build a recommender using OpenAI, Azure Functions, Azure Static Web Apps, Azure SQL DB, Data API builder and Text Embeddings",
-    "preview": "./templates/images/session-recommender-architecture.png",
-    "authorUrl": "https://sessionfinder.dotnetconf.net/",
-    "author": "Davide Mauri",
-    "source": "https://github.com/Azure-Samples/azure-sql-db-session-recommender",
-    "tags": [
-      "msft",
-      "enterprisepatterns",
-      "ai"
-    ],
-    "frameworks": [
-      "reactjs"
-    ],
-    "azureServices": [
-      "appservice",
-      "functions",
-      "azuresql",
-      "swa",
-      "appinsights",
-      "openai",
-      "azureai"
-    ],
-    "id": "95b95166-4183-4f4b-94de-15039a7ba3d5"
-  },
-  {
     "title": "Microservices App - Dapr PubSub Java AKS",
     "description": "Demonstrate event-driven communication between microservices by leveraging the pub/sub messaging architecture using Dapr for a Java application running in an AKS cluster.",
     "preview": "./templates/images/dapr-pubsub-java-aks-diagram.png",
@@ -1761,67 +1444,6 @@
       "aks"
     ],
     "id": "8b4c552b-5538-4929-924f-3dffbc6ce0df"
-  },
-  {
-    "title": "Azure Functions - Chat using ChatGPT (Node.js JavaScript Function)",
-    "description": "This sample shows how to take a ChatGPT prompt as HTTP Get or Post input, calculates the completions using OpenAI ChatGPT service, and then returns the output plus caches in a Blob state store.",
-    "preview": "./templates/images/test.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Paul Yuknewicz",
-    "source": "https://github.com/Azure-Samples/function-javascript-ai-openai-chatgpt",
-    "tags": [
-      "ai",
-      "gpt",
-      "msft"
-    ],
-    "languages": [
-      "javascript"
-    ],
-    "azureServices": [
-      "functions",
-      "openai"
-    ],
-    "id": "c8353be4-6a27-4141-8f37-e01268ae3a26"
-  },
-  {
-    "title": "Azure Functions - Chat using ChatGPT (Python v2 Function)",
-    "description": "This sample shows how to take a ChatGPT prompt as HTTP Get or Post input, calculates the completions using OpenAI ChatGPT service, and then returns the output plus caches in a Blob state store.",
-    "preview": "./templates/images/test.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Paul Yuknewicz",
-    "source": "https://github.com/Azure-Samples/function-python-ai-openai-chatgpt",
-    "tags": [
-      "ai",
-      "gpt",
-      "msft"
-    ],
-    "languages": [
-      "python"
-    ],
-    "azureServices": [
-      "functions",
-      "openai"
-    ],
-    "id": "2e8d1ced-9837-4c06-92c8-36c3cb91ff86"
-  },
-  {
-    "title": "Azure Functions - LangChain with Azure OpenAI and ChatGPT (Python v2 Function)",
-    "description": "This sample shows how to take a human prompt as HTTP Get or Post input, calculates the completions using chains of human input and templates. This is a starting point that can be used for more sophisticated chains.",
-    "preview": "./templates/images/test.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Paul Yuknewicz",
-    "source": "https://github.com/Azure-Samples/function-python-ai-langchain",
-    "tags": [
-      "ai",
-      "msft"
-    ],
-    "languages": [
-      "python"
-    ],
-    "azureServices": [
-      "functions"
-    ],
-    "id": "56c75a9b-82e2-403f-8bcb-f612ecfb03fd"
   },
   {
     "title": "GPT-RAG: Enterprise GenAI Chat Accelerator",
@@ -1928,77 +1550,6 @@
     "id": "eef2b875-b618-4978-98a6-d186c4c6113b"
   },
   {
-    "title": "Azure Function with Event Hub with optional virtual network capabilities",
-    "description": "An Azure Function app which sends events to and consumes from an Event Hub. The Function app can optionally be configured to integrate with a virtual network, and dependent resources configured with virtual network private endpoints. Managed identity is used for authentication to dependent resources.",
-    "preview": "./templates/images/function-eventhub-vnet.png",
-    "authorUrl": "https://github.com/Azure-Samples/",
-    "author": "Michael S. Collier",
-    "source": "https://github.com/Azure-Samples/function-eventhub-vnet",
-    "tags": [
-      "msft"
-    ],
-    "languages": [
-      "dotnetCsharp"
-    ],
-    "azureServices": [
-      "functions",
-      "appinsights",
-      "keyvault",
-      "eventhub",
-      "azurestorage",
-      "vnets"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "dd8e6d7a-f915-407d-91cf-8543698a2092"
-  },
-  {
-    "title": "URL Shortener using Microsoft Orleans and Azure for hosting and data",
-    "description": "An ASP.NET Core 8.0 web application to illustrate basic Microsoft Orleans concepts; such as working with Grains, Silos, and persistent state. Uses Azure Developer CLI (azd) to build, deploy, and monitor.",
-    "preview": "./templates/images/test.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Azure Cosmos DB Content Team",
-    "source": "https://github.com/azure-samples/orleans-url-shortener",
-    "tags": [
-      "msft"
-    ],
-    "languages": [
-      "dotnetCsharp"
-    ],
-    "azureServices": [
-      "cosmosdb",
-      "aca"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "0372fd41-52fb-49b2-9c13-55d1f8ea3182"
-  },
-  {
-    "title": "Azure OpenAI priority-based load balancer with Azure Container Apps",
-    "description": "A load balancer crafted specifically for Azure OpenAI, which is aware of 'retry-after' headers and intelligently pause traffic when certain OpenAI endpoints reach maximum capacity.",
-    "preview": "./templates/images/openai-aca-loadbalancer.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Andre Dewes",
-    "source": "https://github.com/Azure-Samples/openai-aca-lb",
-    "tags": [
-      "ai",
-      "msft"
-    ],
-    "languages": [
-      "dotnetCsharp"
-    ],
-    "azureServices": [
-      "aca",
-      "openai"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "0f690ca4-e013-43c7-8848-b4172f321646"
-  },
-  {
     "title": "Azure Kubernetes Service Store Demo",
     "description": "Sample microservices app for AKS demos, tutorials, and experiments.",
     "preview": "./templates/images/aks-store-demo.png",
@@ -2019,36 +1570,6 @@
       "terraform"
     ],
     "id": "737e54ad-b7e4-4a27-909b-cc0234f2ebd5"
-  },
-  {
-    "title": "SAP Cloud SDK on Azure Functions Quickstart (TypeScript)",
-    "description": "This repos serves as quick-start project showcasing SAP Cloud SDK for JavaScript OData consumption running on Azure Functions. Its primary purpose is to set you up for success for your SAP extension project on Azure and reduce the lead time to your first successful deployment as much as possible with developer friendly commands.",
-    "preview": "./templates/images/functions-javascript-sap-cloud-sdk-quickstart.png",
-    "authorUrl": "https://github.com/MartinPankraz, https://github.com/lechnerc77",
-    "author": "Martin Pankraz, Christian Lechner",
-    "source": "https://github.com/Azure-Samples/functions-javascript-sap-cloud-sdk-quickstart",
-    "tags": [
-      "webapps",
-      "sap",
-      "sapcap",
-      "msft"
-    ],
-    "languages": [
-      "typescript",
-      "nodejs"
-    ],
-    "frameworks": [
-      "nestjs"
-    ],
-    "azureServices": [
-      "apim",
-      "keyvault",
-      "appinsights"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "160b1ab0-defa-481a-9092-26938a447bb2"
   },
   {
     "title": "SAP CAP on Azure App Service Quickstart",
@@ -2173,34 +1694,6 @@
       "bicep"
     ],
     "id": "4fc85597-77f8-46ca-b035-3cddf6795f4f"
-  },
-  {
-    "title": ".NET AI samples with Azure OpenAI",
-    "description": ".NET samples demonstrating how to use AI in your .NET applications. Each sample demonstrate a specific AI scenario with only a few lines of code. It consists of a console application, running locally, that will send request(s) to an Azure OpenAI Service deployed in your Azure subscription",
-    "preview": "./templates/images/dotnet-ai-samples.png",
-    "authorUrl": "https://github.com/fboucher",
-    "author": "Frank Boucher",
-    "source": "https://github.com/dotnet/ai-samples",
-    "tags": [
-      "ai",
-      "msft",
-      "gpt",
-      "dall-e"
-    ],
-    "languages": [
-      "dotnetCsharp"
-    ],
-    "frameworks": [
-      "semantickernel"
-    ],
-    "azureServices": [
-      "openai",
-      "azureai"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "6e970d12-ce54-4982-bdd0-051925b0acb8"
   },
   {
     "title": "Azure OpenAI Conference Session Assistant",
@@ -2517,83 +2010,6 @@
     "id": "952bd229-f367-4875-b95c-5c0c430abe45"
   },
   {
-    "title": "Creative Writing Assistant: Working with Agents using Promptflow (Python Implementation)",
-    "description": "A creative writing multi-agent solution to help users write articles.",
-    "preview": "./templates/images/agent-openai-python-prompty-creative_writing.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Azure Content Team",
-    "source": "https://github.com/Azure-Samples/agent-openai-python-prompty",
-    "tags": [
-      "msft",
-      "ai"
-    ],
-    "languages": [
-      "python"
-    ],
-    "azureServices": [
-      "openai",
-      "aks",
-      "aisearch"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "4d1aa700-6936-420a-b853-a3b00124011f"
-  },
-  {
-    "title": "Process Automation: Speech to Text and Summarization with AI Studio",
-    "description": "This solution converts speech to text and then processes and summarizes the text based on the prompt scenario.",
-    "preview": "./templates/images/summarization-openai-python-promptflow-architecture-diagram.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Azure Content Team",
-    "source": "https://github.com/Azure-Samples/summarization-openai-python-promptflow",
-    "tags": [
-      "msft",
-      "ai"
-    ],
-    "languages": [
-      "python"
-    ],
-    "azureServices": [
-      "openai",
-      "aca",
-      "speechservice"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "45d0acf6-4d69-49bd-9b26-5e5e6689a35b"
-  },
-  {
-    "title": "Contoso Chat Retail with Azure AI Studio and Promptflow",
-    "description": "This sample has the full End2End process of creating RAG application with Prompt Flow and AI Studio. It includes GPT 3.5 Turbo LLM application code, evaluations, deployment automation with AZD CLI, GitHub actions for evaluation and deployment and intent mapping for multiple LLM task mapping.",
-    "preview": "./templates/images/contoso-chat-architecture-diagram.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Azure Content Team",
-    "source": "https://github.com/Azure-Samples/contoso-chat",
-    "tags": [
-      "msft",
-      "aicollection",
-      "ai"
-    ],
-    "languages": [
-      "python"
-    ],
-    "frameworks": [
-      "rag"
-    ],
-    "azureServices": [
-      "openai",
-      "aifoundry",
-      "cosmosdb",
-      "aisearch"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "05d97dde-491b-40fe-959f-c8ff19b42e6b"
-  },
-  {
     "title": "API Center Analyzer",
     "description": "This sample provides an Azure API Center along with Azure Functions and Azure Event Grid to analyze API specs when registering or updating API specs to Azure API Center.",
     "preview": "./templates/images/apic-analyzer.png",
@@ -2807,34 +2223,6 @@
     "id": "ef87ec3c-3b34-43c3-920f-16d32130420a"
   },
   {
-    "title": "Pinecone RAG Demo",
-    "description": "This example application sets up an Azure container app with Next.js, linking to a Pinecone index and an OpenAI embedding model for storing and retrieving context for a RAG model.",
-    "preview": "./templates/images/pinecone-rag-demo-azd.png",
-    "authorUrl": "https://pinecone.io",
-    "author": "Pinecone Team",
-    "source": "https://github.com/pinecone-io/pinecone-rag-demo-azd",
-    "tags": [
-      "community",
-      "pinecone",
-      "ai",
-      "aicollection"
-    ],
-    "languages": [
-      "typescript"
-    ],
-    "frameworks": [
-      "nextjs",
-      "rag"
-    ],
-    "azureServices": [
-      "aca"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "85bacd39-d643-4dda-b670-6f4ea771cc93"
-  },
-  {
     "title": "Serverless Azure OpenAI Quick Start with LlamaIndex (JavaScript)",
     "description": "This sample shows how to quickly get started with LlamaIndex.ai on Azure. The application is hosted on Azure Container Apps. You can use it as a starting point for building more complex RAG applications.",
     "preview": "./templates/images/llama-index-javascript-architecture-diagram.png",
@@ -2980,31 +2368,6 @@
       "bicep"
     ],
     "id": "6d9166fa-5793-485d-a918-19b461ca0260"
-  },
-  {
-    "title": "Pinecone Assistant sample app",
-    "description": "This sample app is designed to get you up and running using Pinecone Assistant quickly. It was developed by engineers at Pinecone to help you deploy your first Assistant-based application in minutes.",
-    "preview": "./templates/images/pinecone-assistant-architecture.png",
-    "authorUrl": "https://docs.pinecone.io/guides/assistant/understanding-assistant",
-    "author": "Pinecone Team",
-    "source": "https://github.com/pinecone-io/pinecone-assistant-azd",
-    "tags": [
-      "community",
-      "pinecone",
-      "ai",
-      "aicollection"
-    ],
-    "languages": [
-      "typescript",
-      "python"
-    ],
-    "frameworks": [
-      "rag"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "205ad993-e5bf-4262-a6a5-17dc8749d7db"
   },
   {
     "title": "Azure OpenAI Chat Frontend",
@@ -3181,121 +2544,6 @@
       "bicep"
     ],
     "id": "179f354d-814a-4e5a-b445-244bb227e3be"
-  },
-  {
-    "title": "Azure Cosmos DB for NoSQL Quickstart - .NET",
-    "description": "A quick application to get started using Azure Cosmos DB for NoSQL with the Azure SDK for .NET.",
-    "preview": "./templates/images/cosmos-db-nosql-dotnet-quickstart.png",
-    "authorUrl": "https://learn.microsoft.com/azure/cosmos-db/nosql/quickstart-dotnet",
-    "author": "Azure Cosmos DB Content Team",
-    "source": "https://github.com/azure-samples/cosmos-db-nosql-dotnet-quickstart",
-    "tags": [
-      "msft"
-    ],
-    "languages": [
-      "dotnetCsharp"
-    ],
-    "azureServices": [
-      "cosmosdb",
-      "aca",
-      "managedidentity"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "783418ac-262e-417d-9f7e-0193eec408d2"
-  },
-  {
-    "title": "Azure Cosmos DB for NoSQL Quickstart - Python",
-    "description": "A quick application to get started using Azure Cosmos DB for NoSQL with the Azure SDK for Python.",
-    "preview": "./templates/images/cosmos-db-nosql-python-quickstart.png",
-    "authorUrl": "https://learn.microsoft.com/azure/cosmos-db/nosql/quickstart-python",
-    "author": "Azure Cosmos DB Content Team",
-    "source": "https://github.com/azure-samples/cosmos-db-nosql-python-quickstart",
-    "tags": [
-      "msft"
-    ],
-    "languages": [
-      "python"
-    ],
-    "azureServices": [
-      "cosmosdb",
-      "aca",
-      "managedidentity"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "e0298977-96b5-4f41-a57c-f3238c5bff43"
-  },
-  {
-    "title": "Azure Cosmos DB for NoSQL Quickstart - Node.js",
-    "description": "A quick application to get started using Azure Cosmos DB for NoSQL with the Azure SDK for Node.js.",
-    "preview": "./templates/images/cosmos-db-nosql-nodejs-typescript-quickstart.png",
-    "authorUrl": "https://learn.microsoft.com/azure/cosmos-db/nosql/quickstart-nodejs",
-    "author": "Azure Cosmos DB Content Team",
-    "source": "https://github.com/azure-samples/cosmos-db-nosql-nodejs-quickstart",
-    "tags": [
-      "msft"
-    ],
-    "languages": [
-      "nodejs"
-    ],
-    "azureServices": [
-      "cosmosdb",
-      "aca",
-      "managedidentity"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "a134f36d-440e-4300-9359-11945e33bba3"
-  },
-  {
-    "title": "Azure Cosmos DB for NoSQL Quickstart - Java",
-    "description": "A quick application to get started using Azure Cosmos DB for NoSQL with the Azure SDK for Java.",
-    "preview": "./templates/images/cosmos-db-nosql-java-quickstart.png",
-    "authorUrl": "https://learn.microsoft.com/azure/cosmos-db/nosql/quickstart-java",
-    "author": "Azure Cosmos DB Content Team",
-    "source": "https://github.com/azure-samples/cosmos-db-nosql-java-quickstart",
-    "tags": [
-      "msft"
-    ],
-    "languages": [
-      "java"
-    ],
-    "azureServices": [
-      "cosmosdb",
-      "aca",
-      "managedidentity"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "67254a85-3724-441c-96b5-a4e82f1b575d"
-  },
-  {
-    "title": "Azure Cosmos DB for NoSQL Quickstart - Go",
-    "description": "A quick application to get started using Azure Cosmos DB for NoSQL with the Azure SDK for Go.",
-    "preview": "./templates/images/cosmos-db-nosql-go-quickstart.png",
-    "authorUrl": "https://learn.microsoft.com/azure/cosmos-db/nosql/quickstart-go",
-    "author": "Azure Cosmos DB Content Team",
-    "source": "https://github.com/azure-samples/cosmos-db-nosql-go-quickstart",
-    "tags": [
-      "msft"
-    ],
-    "languages": [
-      "go"
-    ],
-    "azureServices": [
-      "cosmosdb",
-      "aca",
-      "managedidentity"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "af305758-e11a-44fd-a666-8500d0c3f4af"
   },
   {
     "title": "Azure Functions C# HTTP Trigger using Azure Developer CLI",
@@ -3516,52 +2764,6 @@
     "id": "48ce5d64-df9b-4546-9ba1-69955e608b98"
   },
   {
-    "title": "Azure Cosmos DB for Table Quickstart - .NET",
-    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for .NET.",
-    "preview": "./templates/images/cosmos-db-table-dotnet-quickstart.png",
-    "authorUrl": "https://learn.microsoft.com/azure/cosmos-db/table/quickstart-dotnet",
-    "author": "Azure Cosmos DB Content Team",
-    "source": "https://github.com/azure-samples/cosmos-db-table-dotnet-quickstart",
-    "tags": [
-      "msft"
-    ],
-    "languages": [
-      "dotnetCsharp"
-    ],
-    "azureServices": [
-      "cosmosdb",
-      "aca",
-      "managedidentity"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "a03287e5-bc90-4062-8c6b-3b65045d5310"
-  },
-  {
-    "title": "Azure Cosmos DB for Table Quickstart - Node.js",
-    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Node.js.",
-    "preview": "./templates/images/cosmos-db-table-nodejs-typescript-quickstart.png",
-    "authorUrl": "https://learn.microsoft.com/azure/cosmos-db/table/quickstart-nodejs",
-    "author": "Azure Cosmos DB Content Team",
-    "source": "https://github.com/azure-samples/cosmos-db-table-nodejs-quickstart",
-    "tags": [
-      "msft"
-    ],
-    "languages": [
-      "nodejs"
-    ],
-    "azureServices": [
-      "cosmosdb",
-      "aca",
-      "managedidentity"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "43cd8998-653c-4c97-8ca5-ac463ca88900"
-  },
-  {
     "title": "Integration Hub with Logic App Standard",
     "description": "Template to deploy shared components like Logic App Standard Plan, Service Bus and Azure Artifacts for an integration platform.",
     "preview": "./templates/images/integration-hub.png",
@@ -3696,7 +2898,7 @@
     "preview": "./templates/images/aca-githubmodel-marketingwriter.png",
     "authorUrl": "https://github.com/xuhaoruins",
     "author": "Hao Xu",
-    "source": "https://github.com/xuhaoruins/marketingwriter",
+    "source": "https://github.com/haxudev/marketingwriter",
     "tags": [
       "community"
     ],
@@ -3713,29 +2915,6 @@
       "bicep"
     ],
     "id": "10541f55-54fd-4382-9e2e-88b70e9a7087"
-  },
-  {
-    "title": "Sprint Petclinic AI application on Azure Container Apps",
-    "description": "A chat bot using Generative AI to the Spring Petclinic application, running on Azure Container Apps",
-    "preview": "./templates/images/spring-petclinic-ai.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Songbo Wang",
-    "source": "https://github.com/Azure-Samples/spring-petclinic-ai",
-    "tags": [
-      "msft"
-    ],
-    "languages": [
-      "java"
-    ],
-    "azureServices": [
-      "aca",
-      "managedidentity",
-      "openai"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "9cb76b7b-c6f2-4742-829f-34765f335457"
   },
   {
     "title": "Simple Chat App using API Management Gateway and Azure OpenAI",
@@ -3872,60 +3051,6 @@
       "bicep"
     ],
     "id": "5fa2b466-8e1f-48ca-91e0-2e259d89985f"
-  },
-  {
-    "title": "Data API builder Quickstart - Azure Cosmos DB for NoSQL",
-    "description": "A quick application to get started using Data API builder to create a GraphQL API for Azure Cosmos DB for NoSQL.",
-    "preview": "./templates/images/dab-azure-cosmos-db-nosql-quickstart.png",
-    "authorUrl": "https://github.com/azure-samples",
-    "author": "Azure Cosmos DB Content Team",
-    "source": "https://github.com/azure-samples/dab-azure-cosmos-db-nosql-quickstart",
-    "tags": [
-      "dab",
-      "msft"
-    ],
-    "languages": [
-      "dotnetCsharp"
-    ],
-    "frameworks": [
-      "blazor"
-    ],
-    "azureServices": [
-      "cosmosdb",
-      "aca",
-      "managedidentity"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "85c20504-7cd8-4550-bdea-5c300f52c70b"
-  },
-  {
-    "title": "Data API builder Quickstart - Azure SQL",
-    "description": "A quick application to get started using Data API builder to create a REST API for Azure SQL.",
-    "preview": "./templates/images/dab-azure-sql-quickstart.png",
-    "authorUrl": "https://learn.microsoft.com/azure/data-api-builder/quickstart-azure-sql",
-    "author": "Azure SQL Content Team",
-    "source": "https://github.com/azure-samples/dab-azure-sql-quickstart",
-    "tags": [
-      "dab",
-      "msft"
-    ],
-    "languages": [
-      "dotnetCsharp"
-    ],
-    "frameworks": [
-      "blazor"
-    ],
-    "azureServices": [
-      "azuresql",
-      "aca",
-      "managedidentity"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "d8e9bdd8-2874-4e4a-8cf7-3d32b72f9a69"
   },
   {
     "title": "LlamaIndex RAG chat app with Azure OpenAI and Azure AI Search (JavaScript)",
@@ -4184,75 +3309,6 @@
       "monitor"
     ],
     "id": "b88a6ad2-2084-4fe4-b441-3e8b71dcf292"
-  },
-  {
-    "title": "Azure Cosmos DB for Table Quickstart - Python",
-    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Python.",
-    "preview": "./templates/images/cosmos-db-table-python-quickstart.png",
-    "authorUrl": "https://learn.microsoft.com/azure/cosmos-db/table/quickstart-python",
-    "author": "Azure Cosmos DB Content Team",
-    "source": "https://github.com/azure-samples/cosmos-db-table-python-quickstart",
-    "tags": [
-      "msft"
-    ],
-    "languages": [
-      "python"
-    ],
-    "azureServices": [
-      "cosmosdb",
-      "aca",
-      "managedidentity"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "b9091b21-1948-4912-ad51-466a12201758"
-  },
-  {
-    "title": "Azure Cosmos DB for Table Quickstart - Go",
-    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Go.",
-    "preview": "./templates/images/cosmos-db-table-go-quickstart.png",
-    "authorUrl": "https://learn.microsoft.com/azure/cosmos-db/table/quickstart-go",
-    "author": "Azure Cosmos DB Content Team",
-    "source": "https://github.com/azure-samples/cosmos-db-table-go-quickstart",
-    "tags": [
-      "msft"
-    ],
-    "languages": [
-      "go"
-    ],
-    "azureServices": [
-      "cosmosdb",
-      "aca",
-      "managedidentity"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "c7d0d95e-5a3c-43f3-9af1-9a2752f5a68e"
-  },
-  {
-    "title": "Azure Cosmos DB for Table Quickstart - Java",
-    "description": "A quick application to get started using Azure Cosmos DB for Table with the Azure SDK for Java.",
-    "preview": "./templates/images/cosmos-db-table-java-quickstart.png",
-    "authorUrl": "https://learn.microsoft.com/azure/cosmos-db/table/quickstart-java",
-    "author": "Azure Cosmos DB Content Team",
-    "source": "https://github.com/azure-samples/cosmos-db-table-java-quickstart",
-    "tags": [
-      "msft"
-    ],
-    "languages": [
-      "java"
-    ],
-    "azureServices": [
-      "cosmosdb",
-      "aca",
-      "managedidentity"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "e6b9ab59-b166-456b-a72b-14acc89ce210"
   },
   {
     "title": "Azure FrontDoor CDN with sample HTML webapp",
@@ -4842,66 +3898,12 @@
     "id": "e11bb59e-5df9-4fa7-8839-7bc5c384a6ff"
   },
   {
-    "title": ".NET + Semantic Search - eShopLite",
-    "description": "eShopLite - Semantic Search is a reference .NET application implementing an eCommerce site with Search features using Keyword Search and Semantic Search.",
-    "preview": "./templates/images/eshop-semanticsearch.png",
-    "authorUrl": "https://twitter.com/elbruno",
-    "author": "Bruno Capuano",
-    "source": "https://github.com/Azure-Samples/eShopLite-SemanticSearch",
-    "tags": [
-      "ai",
-      "msft"
-    ],
-    "languages": [
-      "dotnetCsharp",
-      "typescript",
-      "javascript"
-    ],
-    "azureServices": [
-      "managedidentity",
-      "openai",
-      "loganalytics"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "f9dd77f7-0a8d-4025-9785-fb3d8fdb7198"
-  },
-  {
-    "title": ".NET + Semantic Search + AI Search - eShopLite",
-    "description": "eShopLite - Semantic Search - Azure AI Search is a reference .NET application implementing an eCommerce site with Search features using Keyword Search with SQL queries, and Semantic Search with Vector Database and Azure AI Search.",
-    "preview": "./templates/images/eshop-semanticsearch-aisearch.png",
-    "authorUrl": "https://twitter.com/elbruno",
-    "author": "Bruno Capuano",
-    "source": "https://github.com/Azure-Samples/eShopLite-SemanticSearch-AzureAISearch",
-    "tags": [
-      "ai",
-      "msft"
-    ],
-    "languages": [
-      "dotnetCsharp",
-      "typescript",
-      "javascript"
-    ],
-    "azureServices": [
-      "managedidentity",
-      "aisearch",
-      "azuresql",
-      "openai",
-      "loganalytics"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "92a49f6d-772c-4d40-ac4e-6dbbb29a7320"
-  },
-  {
     "title": "RAG on Neon Serverless Postgres",
     "description": "This project creates a web-based chat application with an API backend that leverages Azure OpenAI chat models to answer questions using Neon Serverless Postgres. The frontend is built with React and FluentUI, while the backend is written in Python (FastAPI).",
     "preview": "./templates/images/rag-neon-azure-architecture-diagram-v1.png",
     "authorUrl": "https://neon.tech/demos",
     "author": "Bobur Umurzokov",
-    "source": "https://github.com/neondatabase-labs/rag-neon-postgres-openai-azure-python",
+    "source": "https://github.com/neondatabase/rag-neon-postgres-openai-azure-python",
     "tags": [
       "gpt",
       "neondb",
@@ -4930,7 +3932,7 @@
     "preview": "./templates/images/rag-neon-vector-store-per-user.png",
     "authorUrl": "https://neon.tech/demos",
     "author": "Bobur Umurzokov",
-    "source": "https://github.com/neondatabase-labs/azure-tenant-ai-chat",
+    "source": "https://github.com/neondatabase/azure-tenant-ai-chat",
     "tags": [
       "gpt",
       "neondb",
@@ -6992,122 +5994,6 @@
     "id": "4218b822-4eca-451e-8b9b-c89a9be0dec5"
   },
   {
-    "title": "Host MCP SDK Server on Azure Functions - Python",
-    "description": "Host remote MCP servers built with the official Python MCP SDK on Azure Functions as custom handlers. Demonstrates weather tools and On-Behalf-Of (OBO) flow for Microsoft Graph API access.",
-    "preview": "./templates/images/test.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Azure Samples",
-    "source": "https://github.com/Azure-Samples/mcp-sdk-functions-hosting-python",
-    "tags": [
-      "msft",
-      "ai",
-      "mcp"
-    ],
-    "languages": [
-      "python"
-    ],
-    "azureServices": [
-      "functions",
-      "keyvault",
-      "monitor",
-      "appinsights",
-      "vnets",
-      "privateEndpoints"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "51895539-40d7-4113-92bc-9c4c32f6cab4"
-  },
-  {
-    "title": "Host MCP SDK Server on Azure Functions - TypeScript",
-    "description": "Host remote MCP servers built with the official Node MCP SDK on Azure Functions as custom handlers. Demonstrates weather tools and On-Behalf-Of (OBO) flow for Microsoft Graph API access.",
-    "preview": "./templates/images/test.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Azure Samples",
-    "source": "https://github.com/Azure-Samples/mcp-sdk-functions-hosting-node",
-    "tags": [
-      "msft",
-      "ai",
-      "mcp"
-    ],
-    "languages": [
-      "typescript",
-      "nodejs"
-    ],
-    "azureServices": [
-      "functions",
-      "keyvault",
-      "monitor",
-      "appinsights",
-      "vnets",
-      "privateEndpoints"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "2685af36-bbad-4276-9cd5-b7a2c09febd7"
-  },
-  {
-    "title": "Host MCP SDK Server on Azure Functions - .NET/C#",
-    "description": "Host remote MCP servers built with the official C# (.NET) MCP SDK on Azure Functions as custom handlers. Demonstrates weather tools and On-Behalf-Of (OBO) flow for Microsoft Graph API access.",
-    "preview": "./templates/images/test.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Azure Samples",
-    "source": "https://github.com/Azure-Samples/mcp-sdk-functions-hosting-dotnet",
-    "tags": [
-      "msft",
-      "ai",
-      "mcp"
-    ],
-    "languages": [
-      "dotnetCsharp"
-    ],
-    "azureServices": [
-      "functions",
-      "keyvault",
-      "monitor",
-      "appinsights",
-      "vnets",
-      "privateEndpoints"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "d97bbc7d-d118-4f2d-98cf-5f56c9601d9a"
-  },
-  {
-    "title": "Host MCP SDK Server on Azure Functions - Java/Quarkus",
-    "description": "Host remote MCP servers built with Java/Quarkus on Azure Functions as custom handlers. Demonstrates weather tools and built-in server authentication and authorization.",
-    "preview": "./templates/images/test.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Azure Samples",
-    "source": "https://github.com/Azure-Samples/mcp-sdk-functions-hosting-java",
-    "tags": [
-      "msft",
-      "ai",
-      "mcp"
-    ],
-    "languages": [
-      "java"
-    ],
-    "frameworks": [
-      "quarkus"
-    ],
-    "azureServices": [
-      "functions",
-      "keyvault",
-      "monitor",
-      "appinsights",
-      "vnets",
-      "privateEndpoints"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "c7bdb456-e76e-4645-9b5d-26b1df04a339"
-  },
-  {
     "title": "ToDo list - Razor Pages + Azure Functions + Storage Table (Managed Identity access)",
     "description": "A complete ToDo app with front-end in Razor pages hosted in App Service, backend in Azure Functions hosted in function app and data in Azure Table Storage. Uses Managed Identity to access data (no connection strings or keys). Uses Azure Developer CLI (azd) to build, deploy, and monitor.",
     "preview": "./templates/images/todo-razorpages-azurefunctions-table.png",
@@ -8225,36 +7111,6 @@
     "id": "b89c8c75-848a-4c4c-b208-38876b419088"
   },
   {
-    "title": "Azure AI Basic App Sample | Python",
-    "description": "This project creates an Azure AI Foundry hub, project and connected resources including Azure AI Services, AI Search and more. It also deploys a simple chat application to Azure Container Apps.",
-    "preview": "./templates/images/azureai-basic-python.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Dan Taylor",
-    "source": "https://github.com/Azure-Samples/azureai-basic-python",
-    "tags": [
-      "msft",
-      "aicollection",
-      "ai",
-      "gpt"
-    ],
-    "languages": [
-      "python"
-    ],
-    "azureServices": [
-      "aca",
-      "managedidentity",
-      "openai",
-      "aisearch",
-      "aifoundry",
-      "keyvault",
-      "azureai"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "7846d3e7-d85b-4d52-a544-8238fa19feef"
-  },
-  {
     "title": "Creative Writing Assistant Python: Working with Agents using Prompty",
     "description": "Contoso-Creative-Writer: a creative writing assistant that shows how to orchestrate multiple models together using Prompty and Azure OpenAI. Includes the full GenAIOps: CI/CD, evaluation, tracing, monitoring, and experimentation!",
     "preview": "./templates/images/contoso-creative-writer.png",
@@ -8345,33 +7201,6 @@
       "bicep"
     ],
     "id": "46da3763-3935-4c26-b6f1-ba175f5d48b3"
-  },
-  {
-    "title": "Azure Function using OpenAI TextCompletion input binding with Java",
-    "description": "This sample highlights how to use the Azure Functions OpenAI TextCompletion input binding to send content to Azure OpenAI and get a result using Java.",
-    "preview": "./templates/images/test.png",
-    "authorUrl": "https://github.com/nzthiago",
-    "author": "Thiago Almeida",
-    "source": "https://github.com/Azure-Samples/azure-functions-completion-openai-java",
-    "tags": [
-      "msft",
-      "aicollection",
-      "ai",
-      "gpt"
-    ],
-    "languages": [
-      "java"
-    ],
-    "azureServices": [
-      "functions",
-      "openai",
-      "azurestorage",
-      "appinsights"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "9c9a4eff-c2ea-493e-b50e-1502c93ec3d7"
   },
   {
     "title": "Conversation Knowledge Mining",
@@ -8545,7 +7374,7 @@
     "preview": "./templates/images/document-generation-solution-accelerator-arch.png",
     "authorUrl": "https://github.com/microsoft",
     "author": "Blessing Sanusi",
-    "source": "https://github.com/microsoft/document-generation-solution-accelerator",
+    "source": "https://github.com/microsoft/content-generation-solution-accelerator",
     "tags": [
       "msft",
       "aicollection",

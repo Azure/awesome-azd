@@ -8390,30 +8390,6 @@
     "id": "a4f1db9e-ae2d-41db-8f49-33bc702d4653"
   },
   {
-    "title": "Microhack - Ask, Analyze, Act - Talk to Your Data in the Era of AI",
-    "description": "This MicroHack scenario walks through the use of modernizing SQL Server workloads and building an analytics- and AI-ready data foundation using Fabric and SQL Managed Instance. The scenario demonstrates the end-to-end journey from database mirroring and analytics enablement to Data Agent configuration and real user interaction via Copilot.",
-    "preview": "./templates/images/Microhack-Talktoyourdata.png",
-    "authorUrl": "https://github.com/henrikmotzkus",
-    "author": "Henrik Motzkus",
-    "source": "https://github.com/Azure-Samples/Microhack-Ask-Analyze-Act",
-    "tags": [
-      "ai",
-      "msft",
-      "new"
-    ],
-    "languages": [
-      "nodejs"
-    ],
-    "azureServices": [
-      "fabric",
-      "azuresql",
-      "azurestorage",
-      "appservice"
-    ],
-    "IaC": [
-      "terraform"
-    ],
-    "id": "64577715-e9a4-4a65-a514-4233763474c2"
     "title": "Daily Repo Digest with AI Gateway",
     "description": "A Python Foundry Hosted Agent sample that runs a Microsoft Agent Framework repo-digest agent. Model requests and read-only GitHub MCP calls are routed through Azure AI Gateway, and the template deploys end to end with azd up using Bicep infrastructure. This is the sample used by the AI Gateway quickstart.",
     "preview": "./templates/images/test.png",
@@ -8541,5 +8517,31 @@
       "bicep"
     ],
     "id": "1d91c0bd-a0aa-436d-818e-08457f9f7323"
+  },
+  {
+    "title": "Microhack - Ask, Analyze, Act - Talk to Your Data in the Era of AI",
+    "description": "This MicroHack scenario walks through the use of modernizing SQL Server workloads and building an analytics- and AI-ready data foundation using Fabric and SQL Managed Instance. The scenario demonstrates the end-to-end journey from database mirroring and analytics enablement to Data Agent configuration and real user interaction via Copilot.",
+    "preview": "./templates/images/Microhack-Talktoyourdata.png",
+    "authorUrl": "https://github.com/henrikmotzkus",
+    "author": "Henrik Motzkus",
+    "source": "https://github.com/Azure-Samples/Microhack-Ask-Analyze-Act",
+    "tags": [
+      "ai",
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "nodejs"
+    ],
+    "azureServices": [
+      "fabric",
+      "azuresql",
+      "azurestorage",
+      "appservice"
+    ],
+    "IaC": [
+      "terraform"
+    ],
+    "id": "64577715-e9a4-4a65-a514-4233763474c2"
   }
 ]

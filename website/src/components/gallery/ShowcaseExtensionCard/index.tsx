@@ -6,6 +6,8 @@
 import React from "react";
 import styleCSS from "./styles.module.css";
 import { type Extension } from "../../../data/extensionTypes";
+import { CAPABILITY_BADGES } from "../../../data/extensionCapabilities";
+import extensionRegistries from "../../../data/extensionRegistries.json";
 import { Tags } from "../../../data/tags";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import {
@@ -22,36 +24,26 @@ import {
 } from "@fluentui/react-components";
 import { Globe16Regular } from "@fluentui/react-icons";
 
-const CAPABILITY_LABELS: Record<string, { label: string; color: "informative" | "success" | "warning" | "important" | "brand" }> = {
-  "custom-commands": { label: "Commands", color: "brand" },
-  "lifecycle-events": { label: "Lifecycle", color: "success" },
-  "mcp-server": { label: "MCP", color: "important" },
-  "service-target-provider": { label: "Service Target", color: "warning" },
-  "framework-service-provider": { label: "Framework", color: "warning" },
-  "provisioning-provider": { label: "Provisioning", color: "warning" },
-  "validation-provider": { label: "Validation", color: "success" },
-  "metadata": { label: "Metadata", color: "informative" },
-};
-
 function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Element {
   const communityLogo = useBaseUrl("/img/Community.svg");
   const msftLogo = useBaseUrl("/img/Microsoft.svg");
   const copyIcon = useBaseUrl("/img/Copy.svg");
 
-  const isMsft = extension.tags.includes("msft");
-  const headerLogo = isMsft ? msftLogo : communityLogo;
-  const headerText = isMsft ? "Microsoft Authored" : "Community Authored";
+  const isBuiltIn = extension.registryUrl === extensionRegistries.builtIn;
+  const isMicrosoftAuthored = extension.tags.includes("msft");
+  const headerLogo = isMicrosoftAuthored ? msftLogo : communityLogo;
+  const headerText = isMicrosoftAuthored ? "Microsoft Authored" : "Community Authored";
 
   const installCommand = `azd ext install ${extension.id}`;
   // For 3P (community) extensions, the user must first register the
   // extension's registry as a source before `azd ext install` can resolve
   // the id. Source name uses the id's first segment (e.g. `jongio` for
-  // `jongio.azd.app`). The visible Input still shows the single install
-  // line so the footer stays compact, but the copy button pastes both
-  // lines so the user can run them as a single sequence in their terminal.
+  // `jongio.azd.app`). The footer still displays only the single install
+  // line so it stays compact, but the copy button pastes both lines so the
+  // user can run them as a single sequence in their terminal.
   const sourceName = extension.id.split(".")[0];
   const clipboardCommand =
-    !isMsft && extension.registryUrl
+    !isBuiltIn
       ? `azd ext source add -t url -n ${sourceName} -l ${extension.registryUrl}\n${installCommand}`
       : installCommand;
 
@@ -104,15 +96,19 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
           }}
         >
           <div className={styleCSS.cardTextBy}>by</div>
-          <FluentUILink
-            className={styleCSS.authorLink}
-            href={extension.authorUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ fontSize: "12px", flexShrink: 0 }}
-          >
-            {extension.author}
-          </FluentUILink>
+          {extension.authorUrl ? (
+            <FluentUILink
+              className={styleCSS.authorLink}
+              href={extension.authorUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ fontSize: "12px", flexShrink: 0 }}
+            >
+              {extension.author}
+            </FluentUILink>
+          ) : (
+            <span className={styleCSS.authorLink}>{extension.author}</span>
+          )}
           {extension.website && (
             <FluentUILink
               href={extension.website}
@@ -131,7 +127,7 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
         <div className={styleCSS.cardTagContainer}>
           <div className={styleCSS.cardTagsWrapper}>
             {extension.capabilities.map((cap) => {
-              const capInfo = CAPABILITY_LABELS[cap] || { label: cap, color: "informative" as const };
+              const capInfo = CAPABILITY_BADGES[cap] || { label: cap, color: "informative" as const };
               return (
                 <Badge
                   key={`cap-${cap}`}

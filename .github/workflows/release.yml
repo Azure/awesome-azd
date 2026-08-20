@@ -3,6 +3,11 @@ name: Release Awesome Azd
 # This pipeline is manually started only as part of releasing Awesome AZD
 on:
   workflow_dispatch:
+    inputs:
+      skip_website_testing:
+        description: Skip website testing before deployment
+        type: boolean
+        default: false
 
 permissions:
   id-token: write
@@ -30,13 +35,20 @@ jobs:
   test-website:
     name: Website Testing
     needs: guard
+    if: ${{ !inputs.skip_website_testing }}
     uses: ./.github/workflows/website-test.yml
     permissions:
       contents: read
 
   deploy:
     name: Deploy Site To GitHub Pages
-    needs: test-website
+    needs:
+      - guard
+      - test-website
+    if: >-
+      always() &&
+      needs.guard.result == 'success' &&
+      (inputs.skip_website_testing || needs.test-website.result == 'success')
     runs-on: ubuntu-latest
     environment:
       name: github-pages

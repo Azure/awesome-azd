@@ -43,47 +43,29 @@ function validateExtensions(raw: unknown): Extension[] {
       console.warn(`Extension[${i}]: missing or invalid 'description', skipping`);
       return false;
     }
-    // Validate remaining required string fields (coerce missing to defaults)
+    // Validate remaining fields consumed by extension cards and filters.
     const author = entry.author;
     const authorUrl = entry.authorUrl;
     const source = entry.source;
     const registryUrl = entry.registryUrl;
-    const latestVersion = entry.latestVersion;
-    if (author != null && typeof author !== 'string') {
-      console.warn(`Extension[${i}]: invalid 'author' type, skipping`);
+    if (typeof author !== 'string' || !author) {
+      console.warn(`Extension[${i}]: missing or invalid 'author', skipping`);
       return false;
-    }
-    if (author == null) {
-      (entry as Record<string, unknown>).author = '';
     }
     if (authorUrl != null && typeof authorUrl !== 'string') {
       console.warn(`Extension[${i}]: invalid 'authorUrl' type, skipping`);
       return false;
     }
-    if (authorUrl == null) {
-      (entry as Record<string, unknown>).authorUrl = '';
-    }
     if (typeof source !== 'string' || !source) {
       console.warn(`Extension[${i}]: missing or invalid 'source', skipping`);
       return false;
     }
-    if (registryUrl != null && typeof registryUrl !== 'string') {
-      console.warn(`Extension[${i}]: invalid 'registryUrl' type, skipping`);
+    if (typeof registryUrl !== 'string' || !registryUrl) {
+      console.warn(`Extension[${i}]: missing or invalid 'registryUrl', skipping`);
       return false;
     }
-    if (registryUrl == null) {
-      (entry as Record<string, unknown>).registryUrl = '';
-    }
-    if (latestVersion != null && typeof latestVersion !== 'string') {
-      console.warn(`Extension[${i}]: invalid 'latestVersion' type, skipping`);
-      return false;
-    }
-    if (latestVersion == null) {
-      (entry as Record<string, unknown>).latestVersion = '';
-    }
-    // Validate required array fields (coerce missing to empty arrays)
+    // Validate required array fields (coerce missing to empty arrays).
     const capabilities = entry.capabilities;
-    const platforms = entry.platforms;
     const tags = entry.tags;
     if (capabilities != null && !Array.isArray(capabilities)) {
       console.warn(`Extension[${i}]: invalid 'capabilities' type, skipping`);
@@ -91,13 +73,6 @@ function validateExtensions(raw: unknown): Extension[] {
     }
     if (capabilities == null) {
       (entry as Record<string, unknown>).capabilities = [];
-    }
-    if (platforms != null && !Array.isArray(platforms)) {
-      console.warn(`Extension[${i}]: invalid 'platforms' type, skipping`);
-      return false;
-    }
-    if (platforms == null) {
-      (entry as Record<string, unknown>).platforms = [];
     }
     if (tags != null && !Array.isArray(tags)) {
       console.warn(`Extension[${i}]: invalid 'tags' type, skipping`);

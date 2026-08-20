@@ -26,13 +26,13 @@
     "@fluentui/react": "^8.125.6",
     "@fluentui/react-components": "^9.73.8",
     "@mdx-js/react": "^3.0.0",
-    "@playwright/test": "^1.60.0",
+    "@playwright/test": "^1.62.1",
     "@types/react-dom": "^19.2.3",
     "babel-jest": "^30.4.1",
     "clsx": "^2.0.0",
     "jest": "^30.4.2",
     "jest-environment-jsdom": "^30.4.1",
-    "js-yaml": "^4.3.0",
+    "js-yaml": "^4.3.1",
     "prism-react-renderer": "^2.3.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
@@ -64,8 +64,11 @@
     "serialize-javascript": "^7.0.5",
     "@tootallnate/once": "3.0.1",
     "uuid": "^14.0.0",
-    "sharp": "^0.34.0",
+    "sharp": "^0.35.3",
     "glob": "^13.0.0",
-    "jsdom": "^29.0.0"
+    "jsdom": "^29.0.0",
+    "body-parser": "^1.20.6",
+    "brace-expansion@1": "^1.1.16",
+    "brace-expansion@5": "^5.0.8"
   }
 }

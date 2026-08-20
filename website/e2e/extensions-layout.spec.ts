@@ -1,8 +1,48 @@
 import { test, expect } from "@playwright/test";
+import extensions from "../static/extensions.json";
+import templates from "../static/templates.json";
+
+const SPARSE_TAG = "swa";
+
+// Derived from the gallery data so retiring a template doesn't break this test.
+function sparseTemplateQuery() {
+  const match = (templates as any[]).find((template) =>
+    [
+      ...(template.tags ?? []),
+      ...(template.languages ?? []),
+      ...(template.frameworks ?? []),
+      ...(template.azureServices ?? []),
+      ...(template.IaC ?? []),
+    ].includes(SPARSE_TAG),
+  );
+
+  if (!match) {
+    throw new Error(`No template in templates.json is tagged "${SPARSE_TAG}"`);
+  }
+
+  const params = new URLSearchParams({ tags: SPARSE_TAG, name: match.title });
+  return `templates?${params.toString()}`;
+}
+
+function sparseExtensionQuery() {
+  const displayNames = (extensions as any[]).map((extension) => extension.displayName);
+  const unique = displayNames.find(
+    (displayName) =>
+      displayNames.filter((other) => other.toLowerCase().includes(displayName.toLowerCase()))
+        .length === 1,
+  );
+
+  if (!unique) {
+    throw new Error("No extension in extensions.json has a uniquely matching display name");
+  }
+
+  const params = new URLSearchParams({ name: unique });
+  return `extensions?${params.toString()}`;
+}
 
 test.describe("Gallery card layout", () => {
   test("sparse gallery results stay left aligned", async ({ page }) => {
-    await page.goto("templates?tags=swa&name=Static+React+Web+App");
+    await page.goto(sparseTemplateQuery());
     await page.waitForSelector('[data-testid="showcase-list"] .fui-Card');
 
     async function expectLeftAlignedGrid() {
@@ -19,7 +59,7 @@ test.describe("Gallery card layout", () => {
 
     await expectLeftAlignedGrid();
 
-    await page.goto("extensions?name=Concurx");
+    await page.goto(sparseExtensionQuery());
     await page.waitForSelector('[data-testid="showcase-list"] .fui-Card');
     await expect(page.locator('[data-testid="showcase-list"] .fui-Card')).toHaveCount(1);
     await expectLeftAlignedGrid();

@@ -8517,5 +8517,31 @@
       "bicep"
     ],
     "id": "1d91c0bd-a0aa-436d-818e-08457f9f7323"
+  },
+  {
+    "title": "Microhack - Ask, Analyze, Act - Talk to Your Data in the Era of AI",
+    "description": "This MicroHack scenario walks through the use of modernizing SQL Server workloads and building an analytics- and AI-ready data foundation using Fabric and SQL Managed Instance. The scenario demonstrates the end-to-end journey from database mirroring and analytics enablement to Data Agent configuration and real user interaction via Copilot.",
+    "preview": "./templates/images/Microhack-Talktoyourdata.png",
+    "authorUrl": "https://github.com/henrikmotzkus",
+    "author": "Henrik Motzkus",
+    "source": "https://github.com/Azure-Samples/Microhack-Ask-Analyze-Act",
+    "tags": [
+      "ai",
+      "msft",
+      "new"
+    ],
+    "languages": [
+      "nodejs"
+    ],
+    "azureServices": [
+      "fabric",
+      "azuresql",
+      "azurestorage",
+      "appservice"
+    ],
+    "IaC": [
+      "terraform"
+    ],
+    "id": "64577715-e9a4-4a65-a514-4233763474c2"
   }
 ]

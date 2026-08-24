@@ -1161,36 +1161,6 @@
     "id": "11812855-671c-469b-8e31-bf81a9edbb75"
   },
   {
-    "title": "Java Spring Apps with Azure OpenAI",
-    "description": "AI Shopping Cart is a sample app template that supercharges your shopping experience with the power of AI. It leverages Azure OpenAI and Azure Spring Apps to build a recommendation engine that is not only scalable, resilient, and secure, but also personalized to your needs.",
-    "preview": "./templates/images/java-springapps-openai.png",
-    "authorUrl": "https://github.com/pmalarme",
-    "author": "Pierre Malarme",
-    "source": "https://github.com/Azure-Samples/app-templates-java-openai-springapps",
-    "tags": [
-      "ai",
-      "msft"
-    ],
-    "languages": [
-      "java"
-    ],
-    "frameworks": [
-      "spring",
-      "reactjs"
-    ],
-    "azureServices": [
-      "openai",
-      "aca",
-      "azurespringapps",
-      "azuredb-postgreSQL",
-      "monitor"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "f3d3346b-d621-4ced-9e2c-1b891da214ad"
-  },
-  {
     "title": "React Web App with Azure API Management exposing SAP OData APIs",
     "description": "Expose your SAP OData APIs via Azure API Management and link it with Azure Static Web App to create & integrate a serverless Web App blazing fast with GitHub Copilot or ChatGPT.",
     "preview": "./templates/images/apim-odata-reactjs.png",

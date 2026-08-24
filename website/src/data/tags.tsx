@@ -90,7 +90,6 @@ export type TagType =
   | "enterprisepatterns"
   | "jupyter"
   | "datascience"
-  | "azurespringapps"
   | "rediscache"
   | "ai"
   | "php"
@@ -697,13 +696,6 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure Managed Grafana",
     azureIcon: "./img/Azure-Managed-Grafana.svg",
     url: "https://azure.microsoft.com/products/managed-grafana",
-    type: "Service",
-  },
-  azurespringapps: {
-    label: "Azure Spring Apps",
-    description: "Template architecture uses Azure Spring Apps",
-    azureIcon: "./img/Azure-Spring-Apps.svg",
-    url: "https://azure.microsoft.com/products/spring-apps",
     type: "Service",
   },
   rediscache: {

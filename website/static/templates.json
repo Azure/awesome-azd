@@ -758,33 +758,6 @@
     "id": "fc267cdd-831c-4e2d-b86f-2b5af58f1876"
   },
   {
-    "title": "Event Driven Java Application with Azure Service Bus on Azure Spring Apps",
-    "description": "A complete event-driven application that includes everything you need to build, deploy, and monitor an Azure solution. ",
-    "preview": "./templates/images/event-driven-spring-apps.png",
-    "authorUrl": "https://github.com/Azure-Samples/",
-    "author": "Azure Content Team",
-    "source": "https://github.com/Azure-Samples/ASA-Samples-Event-Driven-Application",
-    "tags": [
-      "msft"
-    ],
-    "languages": [
-      "java"
-    ],
-    "frameworks": [
-      "spring"
-    ],
-    "azureServices": [
-      "servicebus",
-      "monitor",
-      "keyvault",
-      "azurespringapps"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "6631fe19-f77a-4f1e-8b06-759bc7648b60"
-  },
-  {
     "title": "SAP Cloud SDK on Azure App Service Quickstart (TypeScript)",
     "description": "This repos serves as quick-start project showcasing SAP Cloud SDK for JavaScript OData consumption running on Azure App Services. Its primary purpose is to set you up for success for your SAP extension project on Azure and reduce the lead time to your first successful deployment as much as possible with developer friendly commands.",
     "preview": "./templates/images/app-service-javascript-sap-cloud-sdk-quickstart.png",
@@ -1186,36 +1159,6 @@
       "bicep"
     ],
     "id": "11812855-671c-469b-8e31-bf81a9edbb75"
-  },
-  {
-    "title": "Java Spring Apps with Azure OpenAI",
-    "description": "AI Shopping Cart is a sample app template that supercharges your shopping experience with the power of AI. It leverages Azure OpenAI and Azure Spring Apps to build a recommendation engine that is not only scalable, resilient, and secure, but also personalized to your needs.",
-    "preview": "./templates/images/java-springapps-openai.png",
-    "authorUrl": "https://github.com/pmalarme",
-    "author": "Pierre Malarme",
-    "source": "https://github.com/Azure-Samples/app-templates-java-openai-springapps",
-    "tags": [
-      "ai",
-      "msft"
-    ],
-    "languages": [
-      "java"
-    ],
-    "frameworks": [
-      "spring",
-      "reactjs"
-    ],
-    "azureServices": [
-      "openai",
-      "aca",
-      "azurespringapps",
-      "azuredb-postgreSQL",
-      "monitor"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "f3d3346b-d621-4ced-9e2c-1b891da214ad"
   },
   {
     "title": "React Web App with Azure API Management exposing SAP OData APIs",

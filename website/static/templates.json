@@ -6601,6 +6601,259 @@
     ]
   },
   {
+    "title": "LangGraph Chat agent (Invocations, LangGraph Hosting, Python)",
+    "description": "A multi-turn LangGraph chat agent with local time and calculator tools, hosted on Foundry over the Invocations protocol with session state backed by a LangGraph checkpointer.",
+    "authorUrl": "https://github.com/microsoft-foundry",
+    "author": "Microsoft Foundry Team",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/langgraph/invocations/01-langgraph-chat/azure.yaml",
+    "languages": [
+      "python"
+    ],
+    "id": "16d0923e-10f9-5ff2-8d5f-d81b002c0549",
+    "templateType": "extension.ai.agent",
+    "extensionFramework": "LangGraph",
+    "extensionTags": [
+      "LangGraph",
+      "local tools",
+      "multi-turn",
+      "Invocations Protocol"
+    ]
+  },
+  {
+    "title": "Resilient Trip Planning agent (Invocations, LangGraph, Python)",
+    "description": "A crash-resilient LangGraph trip-planning agent with durable checkpoints, background invocations, multi-turn sessions, human approval, recovery, and cancellation.",
+    "authorUrl": "https://github.com/microsoft-foundry",
+    "author": "Microsoft Foundry Team",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/langgraph/invocations/02-resilient/azure.yaml",
+    "languages": [
+      "python"
+    ],
+    "id": "45b11999-e7d9-54b9-ac0d-07e3a34d0c27",
+    "templateType": "extension.ai.agent",
+    "extensionFramework": "LangGraph",
+    "extensionTags": [
+      "LangGraph",
+      "background mode",
+      "human-in-the-loop",
+      "resilient tasks",
+      "Invocations Protocol"
+    ]
+  },
+  {
+    "title": "Configuration-driven agent (Invocations, LangGraph, Python)",
+    "description": "A minimal configuration-driven LangGraph agent hosted over the Invocations protocol using the langchain_azure_ai.agents.hosting.run entrypoint and in-process session state.",
+    "authorUrl": "https://github.com/microsoft-foundry",
+    "author": "Microsoft Foundry Team",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/langgraph/invocations/03-run/azure.yaml",
+    "languages": [
+      "python"
+    ],
+    "id": "d67d7da8-a2b3-5fad-a80b-063ecc37f7a6",
+    "templateType": "extension.ai.agent",
+    "extensionFramework": "LangGraph",
+    "extensionTags": [
+      "LangGraph",
+      "configuration-driven",
+      "multi-turn",
+      "Invocations Protocol"
+    ]
+  },
+  {
+    "title": "LangGraph Chat agent (Responses, LangGraph Hosting, Python)",
+    "description": "A multi-turn LangGraph chat agent with local time and calculator tools, hosted on Foundry over the Responses protocol with server-side conversation state.",
+    "authorUrl": "https://github.com/microsoft-foundry",
+    "author": "Microsoft Foundry Team",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/langgraph/responses/01-langgraph-chat/azure.yaml",
+    "languages": [
+      "python"
+    ],
+    "id": "3a4c2dfd-9ae1-5bb2-9140-78e30a04a63e",
+    "templateType": "extension.ai.agent",
+    "extensionFramework": "LangGraph",
+    "extensionTags": [
+      "LangGraph",
+      "local tools",
+      "multi-turn",
+      "Responses Protocol"
+    ]
+  },
+  {
+    "title": "Agent with Foundry Toolbox (Responses, LangGraph, Python)",
+    "description": "A LangGraph ReAct agent using a Foundry Toolbox for managed web search and Microsoft Learn MCP tools, including OAuth consent handling and schema sanitization.",
+    "authorUrl": "https://github.com/microsoft-foundry",
+    "author": "Microsoft Foundry Team",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/langgraph/responses/02-langgraph-toolbox/azure.yaml",
+    "languages": [
+      "python"
+    ],
+    "id": "1750adf0-ef7d-5901-8c5a-54ea5731f3ea",
+    "templateType": "extension.ai.agent",
+    "extensionFramework": "LangGraph",
+    "extensionTags": [
+      "LangGraph",
+      "Foundry Toolbox",
+      "MCP",
+      "Responses Protocol"
+    ]
+  },
+  {
+    "title": "Agent with User Identity Toolbox (Responses, LangGraph, Python)",
+    "description": "A LangGraph ReAct agent with a Foundry Toolbox that provisions WorkIQ Mail, WorkIQ Calendar, and GitHub MCP integrations using user identity and managed OAuth.",
+    "authorUrl": "https://github.com/microsoft-foundry",
+    "author": "Microsoft Foundry Team",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/langgraph/responses/03-langgraph-toolbox-user-identity/azure.yaml",
+    "languages": [
+      "python"
+    ],
+    "id": "609fe4fe-b853-564f-8321-0e8dc837859e",
+    "templateType": "extension.ai.agent",
+    "extensionFramework": "LangGraph",
+    "extensionTags": [
+      "LangGraph",
+      "Foundry Toolbox",
+      "MCP",
+      "user identity",
+      "Responses Protocol"
+    ]
+  },
+  {
+    "title": "Multi-Agent Workflow (Responses, LangGraph, Python)",
+    "description": "A LangGraph StateGraph workflow that sequentially chains specialized slogan writer, legal reviewer, and formatter LLM nodes while returning only the final formatted result.",
+    "authorUrl": "https://github.com/microsoft-foundry",
+    "author": "Microsoft Foundry Team",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/langgraph/responses/05-workflows/azure.yaml",
+    "languages": [
+      "python"
+    ],
+    "id": "abe65c6d-9591-5822-b4b9-d68b7fb5f3e4",
+    "templateType": "extension.ai.agent",
+    "extensionFramework": "LangGraph",
+    "extensionTags": [
+      "LangGraph",
+      "multi-agent",
+      "workflows",
+      "Responses Protocol"
+    ]
+  },
+  {
+    "title": "File Analysis agent (Responses, LangGraph, Python)",
+    "description": "A LangGraph agent that works with uploaded and bundled files using local filesystem tools plus a Foundry Toolbox code interpreter for managed calculations and data analysis.",
+    "authorUrl": "https://github.com/microsoft-foundry",
+    "author": "Microsoft Foundry Team",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/langgraph/responses/06-files/azure.yaml",
+    "languages": [
+      "python"
+    ],
+    "id": "fed2b627-69eb-52cd-9d31-945038b5062b",
+    "templateType": "extension.ai.agent",
+    "extensionFramework": "LangGraph",
+    "extensionTags": [
+      "LangGraph",
+      "Foundry Toolbox",
+      "code interpreter",
+      "file handling",
+      "Responses Protocol"
+    ]
+  },
+  {
+    "title": "Human-in-the-Loop agent (Responses, LangGraph, Python)",
+    "description": "A LangGraph proposal workflow that pauses for human review and supports approval, revision with feedback, or rejection through Responses protocol approval and function-call channels.",
+    "authorUrl": "https://github.com/microsoft-foundry",
+    "author": "Microsoft Foundry Team",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/langgraph/responses/07-human-in-the-loop/azure.yaml",
+    "languages": [
+      "python"
+    ],
+    "id": "c8d6cc87-192c-575a-8c24-311cfa0791b1",
+    "templateType": "extension.ai.agent",
+    "extensionFramework": "LangGraph",
+    "extensionTags": [
+      "LangGraph",
+      "human-in-the-loop",
+      "approval workflow",
+      "Responses Protocol"
+    ]
+  },
+  {
+    "title": "Observable agent (Responses, LangGraph, Python)",
+    "description": "An instrumented LangGraph agent that uses automatic GenAI OpenTelemetry tracing to emit node, model, and tool spans, metrics, and logs to Application Insights.",
+    "authorUrl": "https://github.com/microsoft-foundry",
+    "author": "Microsoft Foundry Team",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/langgraph/responses/08-observability/azure.yaml",
+    "languages": [
+      "python"
+    ],
+    "id": "15a492cd-f5d1-57e7-aac1-401382163d10",
+    "templateType": "extension.ai.agent",
+    "extensionFramework": "LangGraph",
+    "extensionTags": [
+      "LangGraph",
+      "observability",
+      "OpenTelemetry",
+      "Application Insights",
+      "Responses Protocol"
+    ]
+  },
+  {
+    "title": "Resilient Trip Planning agent (Responses, LangGraph, Python)",
+    "description": "A crash-resilient LangGraph trip-planning agent with durable checkpoints, background responses, replayable streaming, human approval, steering, recovery, and cancellation.",
+    "authorUrl": "https://github.com/microsoft-foundry",
+    "author": "Microsoft Foundry Team",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/langgraph/responses/09-resilient/azure.yaml",
+    "languages": [
+      "python"
+    ],
+    "id": "6a8995c5-d8ad-593e-8a27-f187aea77d37",
+    "templateType": "extension.ai.agent",
+    "extensionFramework": "LangGraph",
+    "extensionTags": [
+      "LangGraph",
+      "background mode",
+      "human-in-the-loop",
+      "resilient tasks",
+      "steering",
+      "Responses Protocol"
+    ]
+  },
+  {
+    "title": "Configuration-driven agent (Responses, LangGraph, Python)",
+    "description": "A minimal configuration-driven LangGraph agent hosted over the Responses protocol using the langchain_azure_ai.agents.hosting.run entrypoint without requiring hosting wrapper code.",
+    "authorUrl": "https://github.com/microsoft-foundry",
+    "author": "Microsoft Foundry Team",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/langgraph/responses/10-run/azure.yaml",
+    "languages": [
+      "python"
+    ],
+    "id": "4d6d2aa1-c470-51f6-8c95-c1b9c5830b18",
+    "templateType": "extension.ai.agent",
+    "extensionFramework": "LangGraph",
+    "extensionTags": [
+      "LangGraph",
+      "configuration-driven",
+      "Responses Protocol"
+    ]
+  },
+  {
+    "title": "Deep Research agent (Responses, LangGraph, Python)",
+    "description": "A LangGraph deep research agent that plans work, delegates focused research, uses managed web search, consolidates citations, and persists durable checkpoints on Foundry.",
+    "authorUrl": "https://github.com/microsoft-foundry",
+    "author": "Microsoft Foundry Team",
+    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/langgraph/responses/11-deep-agents/azure.yaml",
+    "languages": [
+      "python"
+    ],
+    "id": "ea507f3e-fdf2-5267-a25d-b3472264b417",
+    "templateType": "extension.ai.agent",
+    "extensionFramework": "LangGraph",
+    "extensionTags": [
+      "LangGraph",
+      "deep research",
+      "Foundry Toolbox",
+      "web search",
+      "Responses Protocol"
+    ]
+  },
+  {
     "title": "Azure Static Web App with Next.js and Postgres",
     "description": "An Azure Static Web App (SWA) template configured with Next.js, Tailwind, Entra SWA Auth, Node.js Azure Functions, and Postgres. Great as a Vercel/Supabase alternative that is native to Azure.",
     "preview": "./templates/images/test.png",

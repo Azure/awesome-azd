@@ -5919,7 +5919,6 @@
     "source": "https://github.com/paulyuk/serverless-repo-digest-agent",
     "tags": [
       "community",
-      "new",
       "ai",
       "mcp"
     ],
@@ -8135,8 +8134,7 @@
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-python-azd-timer",
     "tags": [
-      "msft",
-      "new"
+      "msft"
     ],
     "languages": [
       "python"
@@ -8160,8 +8158,7 @@
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-javascript-azd-timer",
     "tags": [
-      "msft",
-      "new"
+      "msft"
     ],
     "languages": [
       "javascript"
@@ -8185,8 +8182,7 @@
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-typescript-azd-timer",
     "tags": [
-      "msft",
-      "new"
+      "msft"
     ],
     "languages": [
       "typescript"
@@ -8210,8 +8206,7 @@
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/durable-functions-quickstart-java-azd",
     "tags": [
-      "msft",
-      "new"
+      "msft"
     ],
     "languages": [
       "java"
@@ -8236,8 +8231,7 @@
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/durable-functions-quickstart-javascript-azd",
     "tags": [
-      "msft",
-      "new"
+      "msft"
     ],
     "languages": [
       "javascript",
@@ -8264,8 +8258,7 @@
     "source": "https://github.com/Azure-Samples/durable-functions-quickstart-powershell-azd",
     "tags": [
       "msft",
-      "powershell",
-      "new"
+      "powershell"
     ],
     "azureServices": [
       "functions",
@@ -8287,8 +8280,7 @@
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/durable-functions-quickstart-python-azd",
     "tags": [
-      "msft",
-      "new"
+      "msft"
     ],
     "languages": [
       "python"
@@ -8313,8 +8305,7 @@
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/durable-functions-quickstart-typescript-azd",
     "tags": [
-      "msft",
-      "new"
+      "msft"
     ],
     "languages": [
       "typescript",
@@ -8342,8 +8333,7 @@
     "tags": [
       "msft",
       "ai",
-      "mcp",
-      "new"
+      "mcp"
     ],
     "languages": [
       "javascript",
@@ -8367,8 +8357,7 @@
     "tags": [
       "msft",
       "ai",
-      "mcp",
-      "new"
+      "mcp"
     ],
     "languages": [
       "dotnetCsharp"
@@ -8391,8 +8380,7 @@
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-java-azd-timer",
     "tags": [
-      "msft",
-      "new"
+      "msft"
     ],
     "languages": [
       "java"
@@ -8417,8 +8405,7 @@
     "source": "https://github.com/Azure-Samples/functions-quickstart-powershell-azd-timer",
     "tags": [
       "msft",
-      "powershell",
-      "new"
+      "powershell"
     ],
     "azureServices": [
       "functions",
@@ -8440,8 +8427,7 @@
     "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd-tf",
     "tags": [
       "msft",
-      "terraform",
-      "new"
+      "terraform"
     ],
     "azureServices": [
       "functions",
@@ -8462,8 +8448,7 @@
     "author": "Ronald Bosma",
     "source": "https://github.com/ronaldbosma/mtls-with-apim-and-agw",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "languages": [
       "dotnetCsharp"
@@ -8489,7 +8474,6 @@
     "source": "https://github.com/Azure-Samples/simple-foundry-hosted-agent-python-aigateway",
     "tags": [
       "msft",
-      "new",
       "mcp",
       "ai"
     ],

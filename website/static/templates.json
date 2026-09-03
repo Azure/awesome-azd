@@ -6385,24 +6385,6 @@
     ]
   },
   {
-    "title": "LangGraph Chat agent (Invocations, LangGraph, Python)",
-    "description": "Multi-turn chat agent built with LangGraph and the Invocations protocol. Demonstrates a tool-calling agent graph with get_current_time and calculator tools.",
-    "authorUrl": "https://github.com/microsoft-foundry",
-    "author": "Microsoft Foundry Team",
-    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/bring-your-own/invocations/langgraph-chat/azure.yaml",
-    "languages": [
-      "python"
-    ],
-    "id": "1e80fcee-9fac-507a-a8e4-6a9d042e0762",
-    "templateType": "extension.ai.agent",
-    "extensionFramework": "LangGraph",
-    "extensionTags": [
-      "LangGraph",
-      "tool calling",
-      "Invocations Protocol"
-    ]
-  },
-  {
     "title": "Note-taking agent (Invocations, without a framework, Python)",
     "description": "Note-taking agent using the Invocations protocol. Demonstrates function calling (save_note/get_notes tools) with per-session JSONL persistence and SSE streaming.",
     "authorUrl": "https://github.com/microsoft-foundry",
@@ -6506,24 +6488,6 @@
     "extensionFramework": "Bring Your Own",
     "extensionTags": [
       "example",
-      "Responses Protocol"
-    ]
-  },
-  {
-    "title": "LangGraph Chat agent (Responses, LangGraph, Python)",
-    "description": "Multi-turn chat agent built with LangGraph using the Responses protocol. Demonstrates a tool-calling agent graph with server-side conversation state.",
-    "authorUrl": "https://github.com/microsoft-foundry",
-    "author": "Microsoft Foundry Team",
-    "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/python/hosted-agents/bring-your-own/responses/langgraph-chat/azure.yaml",
-    "languages": [
-      "python"
-    ],
-    "id": "eb51c66f-854a-54f2-b26b-0bb10e9c1548",
-    "templateType": "extension.ai.agent",
-    "extensionFramework": "LangGraph",
-    "extensionTags": [
-      "LangGraph",
-      "tool calling",
       "Responses Protocol"
     ]
   },

@@ -1983,39 +1983,6 @@
     "id": "289b66c8-939c-4a10-9a63-266f196d65fd"
   },
   {
-    "title": "API Center Reference Sample",
-    "description": "This sample provides an Azure API Center along with Azure App Service, Static Web Apps and Azure Functions that governs, analyzes and performs service discovery of API specs registered on Azure API Center.",
-    "preview": "./templates/images/apic-reference.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Justin Yoo",
-    "source": "https://github.com/Azure-Samples/APICenter-Reference",
-    "tags": [
-      "msft"
-    ],
-    "languages": [
-      "dotnetCsharp",
-      "typescript"
-    ],
-    "azureServices": [
-      "apicenter",
-      "appservice",
-      "functions",
-      "eventgrid",
-      "managedidentity",
-      "appinsights",
-      "loganalytics",
-      "diagnosticsettings",
-      "swa",
-      "serviceprincipal",
-      "logicapps",
-      "apim"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "9f4c434a-72a5-4577-ab69-04d808d389c2"
-  },
-  {
     "title": "GPT Video Analysis-In-A-Box",
     "description": "The GPT Video Analysis in-a-Box project leverages Azure OpenAI GPT-4 Turbo with Vision and Azure Data Factory to provide a low-code solution for analyzing images and videos, making AI adoption simpler and more efficient. This solution, part of the AI-in-a-Box framework by Microsoft Customer Engineers and Architects, ensures quality, efficiency, and rapid deployment of AI and ML solutions across various industries.",
     "preview": "./templates/images/gpt4-adf-architecture.jpg",

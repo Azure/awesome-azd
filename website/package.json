@@ -38,7 +38,7 @@
     "react-dom": "^19.2.6",
     "ts-jest": "^29.4.5",
     "typescript": "^6.0.3",
-    "webpack": "^5.106.2"
+    "webpack": "^5.110.1"
   },
   "browserslist": {
     "production": [

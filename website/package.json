@@ -32,13 +32,13 @@
     "clsx": "^2.0.0",
     "jest": "^30.4.2",
     "jest-environment-jsdom": "^30.4.1",
-    "js-yaml": "^4.3.1",
+    "js-yaml": "^5.4.1",
     "prism-react-renderer": "^2.3.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "ts-jest": "^29.4.5",
+    "ts-jest": "^29.4.12",
     "typescript": "^6.0.3",
-    "webpack": "^5.106.2"
+    "webpack": "^5.110.1"
   },
   "browserslist": {
     "production": [
@@ -69,6 +69,7 @@
     "jsdom": "^29.0.0",
     "body-parser": "^1.20.6",
     "brace-expansion@1": "^1.1.16",
-    "brace-expansion@5": "^5.0.8"
+    "brace-expansion@5": "^5.0.8",
+    "fast-uri": "^3.1.6"
   }
 }

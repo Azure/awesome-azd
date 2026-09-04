@@ -27,7 +27,7 @@
     "@fluentui/react-components": "^9.74.7",
     "@mdx-js/react": "^3.0.0",
     "@playwright/test": "^1.62.1",
-    "@types/react-dom": "^19.2.3",
+    "@types/react-dom": "^19.2.5",
     "babel-jest": "^30.4.1",
     "clsx": "^2.0.0",
     "jest": "^30.4.2",
@@ -35,7 +35,7 @@
     "js-yaml": "^5.4.1",
     "prism-react-renderer": "^2.3.0",
     "react": "^19.2.6",
-    "react-dom": "^19.2.6",
+    "react-dom": "^19.2.8",
     "ts-jest": "^29.4.12",
     "typescript": "^6.0.3",
     "webpack": "^5.110.1"

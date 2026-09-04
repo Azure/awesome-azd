@@ -24,7 +24,7 @@
     "@docusaurus/plugin-ideal-image": "^3.10.2",
     "@docusaurus/preset-classic": "^3.10.2",
     "@fluentui/react": "^8.125.6",
-    "@fluentui/react-components": "^9.73.8",
+    "@fluentui/react-components": "^9.74.7",
     "@mdx-js/react": "^3.0.0",
     "@playwright/test": "^1.62.1",
     "@types/react-dom": "^19.2.3",

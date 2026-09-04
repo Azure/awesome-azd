@@ -16,8 +16,10 @@
     "test:e2e": "playwright test"
   },
   "devDependencies": {
-    "@babel/core": "^7.29.6",
-    "@babel/preset-env": "^7.25.4",
+    "@babel/core": "^8.0.1",
+    "@babel/preset-env": "^8.0.2",
+    "@babel/preset-react": "^8.0.1",
+    "@babel/preset-typescript": "^8.0.1",
     "@docusaurus/core": "^3.10.2",
     "@docusaurus/module-type-aliases": "^3.10.2",
     "@docusaurus/plugin-client-redirects": "^3.10.2",
@@ -36,7 +38,6 @@
     "prism-react-renderer": "^2.3.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.8",
-    "ts-jest": "^29.4.12",
     "typescript": "^6.0.3",
     "webpack": "^5.110.1"
   },

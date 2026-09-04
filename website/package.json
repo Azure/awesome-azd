@@ -38,7 +38,7 @@
     "prism-react-renderer": "^2.3.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.8",
-    "typescript": "^6.0.3",
+    "typescript": "^7.0.2",
     "webpack": "^5.110.1"
   },
   "browserslist": {
@@ -54,7 +54,7 @@
     ]
   },
   "engines": {
-    "node": ">=24.0"
+    "node": ">=24.11.0"
   },
   "dependencies": {
     "@microsoft/clarity": "^1.0.0",

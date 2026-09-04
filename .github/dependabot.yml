@@ -9,6 +9,13 @@ updates:
   - package-ecosystem: "npm"
     directory: "/website"
     schedule:
-      interval: "daily"
+      interval: "monthly"
     cooldown:
       default-days: 7
+    groups:
+      website-minor-and-patch:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"

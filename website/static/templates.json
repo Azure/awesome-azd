@@ -316,66 +316,6 @@
     "id": "d0aa5618-2e2a-4a1c-af41-29218ab7c1db"
   },
   {
-    "title": "Containerized React Web App with Java API and MongoDB",
-    "description": "A blueprint for getting a React web app with a Java API and a MongoDB database on Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly. This architecture is for running containerized apps or microservices on a serverless platform.",
-    "preview": "./templates/images/todo-java-mongo-aca.png",
-    "authorUrl": "https://github.com/Azure/azure-dev",
-    "author": "Azure Dev",
-    "source": "https://github.com/Azure-Samples/todo-java-mongo-aca",
-    "tags": [
-      "mongodb",
-      "msft"
-    ],
-    "languages": [
-      "java",
-      "typescript"
-    ],
-    "frameworks": [
-      "reactjs"
-    ],
-    "azureServices": [
-      "aca",
-      "cosmosdb",
-      "keyvault",
-      "monitor"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "3ffcef92-73e6-49ec-9c35-22a5cfc6ee98"
-  },
-  {
-    "title": "Kubernetes React Web App with Node.js API and MongoDB",
-    "description": "A blueprint for getting a React.js web app with a Node.js API and a MongoDB database on Azure. The blueprint includes sample application code (a ToDo web app) which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get up and running quickly. This architecture is for running Kubernetes clusters without setting up the control plane.",
-    "preview": "./templates/images/todo-nodejs-mongo-aks.png",
-    "authorUrl": "https://github.com/Azure/azure-dev",
-    "author": "Azure Dev",
-    "source": "https://github.com/Azure-Samples/todo-nodejs-mongo-aks",
-    "tags": [
-      "mongodb",
-      "msft"
-    ],
-    "languages": [
-      "nodejs",
-      "typescript",
-      "javascript"
-    ],
-    "frameworks": [
-      "reactjs"
-    ],
-    "azureServices": [
-      "monitor",
-      "keyvault",
-      "appservice",
-      "cosmosdb",
-      "aks"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "f9936700-5a9a-4bf9-bfe7-e1e10477ba76"
-  },
-  {
     "title": "ChatGPT + Enterprise Data with Azure OpenAI and AI Search",
     "description": "A sample app for the Retrieval-Augmented Generation pattern running in Azure, using Azure AI Search for retrieval and Azure OpenAI large language models to power ChatGPT-style and Q&A experiences.",
     "preview": "./templates/images/chatgpt-enterprise-dotnet.png",
@@ -5686,36 +5626,6 @@
     "languages": [
       "dotnetCsharp"
     ]
-  },
-  {
-    "title": "Copilot SDK Service — Chat API with React UI on Azure Container Apps",
-    "description": "A full-stack TypeScript template using the GitHub Copilot SDK with SSE streaming chat and summarize endpoints, deployed to Azure Container Apps. Supports GitHub models and Azure Bring Your Own Model (BYOM).",
-    "preview": "./templates/images/copilot-sdk-service.png",
-    "authorUrl": "https://github.com/jongio",
-    "author": "Jon Gallant",
-    "source": "https://github.com/Azure-Samples/copilot-sdk-service",
-    "tags": [
-      "msft",
-      "ai"
-    ],
-    "languages": [
-      "typescript",
-      "javascript",
-      "nodejs"
-    ],
-    "frameworks": [
-      "reactjs"
-    ],
-    "azureServices": [
-      "aca",
-      "keyvault",
-      "monitor",
-      "openai"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "13f1caf6-0609-48ca-88ed-10f1c76d63af"
   },
   {
     "title": "Track Availability in Application Insights using Standard Test, Azure Function and Logic App Workflow",

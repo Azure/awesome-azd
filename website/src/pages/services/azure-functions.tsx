@@ -20,7 +20,7 @@ const config = {
     },
     {
       description: "Initialize from a Functions template",
-      command: "azd init --template todo-nodejs-mongo-swa-func",
+      command: "azd init --template functions-quickstart-javascript-azd",
     },
     {
       description: "Deploy to Azure",

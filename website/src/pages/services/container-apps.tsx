@@ -20,7 +20,7 @@ const config = {
     },
     {
       description: "Initialize from a Container Apps template",
-      command: "azd init --template todo-nodejs-mongo-aca",
+      command: "azd init --template azd-get-started-with-ai-agents",
     },
     {
       description: "Deploy to Azure",

@@ -20,7 +20,7 @@ const config = {
     },
     {
       description: "Initialize from a Functions template",
-      command: "azd init --template functions-quickstart-javascript-azd",
+      command: "azd init --template functions-quickstart-typescript-azd",
     },
     {
       description: "Deploy to Azure",

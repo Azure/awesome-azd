@@ -236,7 +236,7 @@ function TerminalDemo() {
         <div>
           <span className={styles.prompt}>$</span>{" "}
           <span className={styles.termCmd}>
-            azd init -t functions-quickstart-typescript-azd
+            azd init -t todo-nodejs-mongo
           </span>
         </div>
         <div className={styles.output}>Initializing an app to run on Azure...</div>
@@ -325,8 +325,8 @@ const STEPS = [
     number: "1",
     title: "Pick a template",
     description:
-      "Browse 300+ templates. This one creates a secure TypeScript HTTP API on Azure Functions.",
-    command: "azd init -t functions-quickstart-typescript-azd",
+      "Browse 300+ templates. This one creates a full-stack Node.js + Cosmos DB app.",
+    command: "azd init -t todo-nodejs-mongo",
   },
   {
     number: "2",
@@ -385,12 +385,12 @@ const TEMPLATES = [
     tags: ["Python", "Azure OpenAI", "PostgreSQL"],
   },
   {
-    title: "Azure Functions TypeScript HTTP Trigger",
+    title: "React Web App with Node.js API and MongoDB",
     description:
-      "A secure TypeScript HTTP API on Azure Functions Flex Consumption with managed identity, virtual networking, and monitoring.",
-    command: "azd init -t functions-quickstart-typescript-azd",
-    source: "https://github.com/Azure-Samples/functions-quickstart-typescript-azd",
-    tags: ["TypeScript", "Azure Functions", "Managed Identity"],
+      "A blueprint for a React web app, Node.js API, and Azure Cosmos DB for MongoDB on App Service, with Key Vault and monitoring built in.",
+    command: "azd init -t todo-nodejs-mongo",
+    source: "https://github.com/Azure-Samples/todo-nodejs-mongo",
+    tags: ["Node.js", "React", "Cosmos DB"],
   },
 ];
 

@@ -86,15 +86,16 @@ filters or validators are required because every entry with a non-empty
 
 ```jsonc
 {
-  "title": "Todo App with .NET API and Azure SQL",
-  "description": "Production-ready .NET app with Azure SQL and Container Apps.",
+  "title": "Remote MCP Functions with TypeScript",
+  "description": "Remote MCP server built with TypeScript and Azure Functions.",
   "author": "Azure Samples",
   "authorUrl": "https://github.com/Azure-Samples",
-  "source": "https://github.com/Azure-Samples/todo-csharp-sql",
-  "preview": "/static/img/todo-csharp-sql.png",
-  "tags": ["msft", "dotnetCsharp", "bicep"],
-  "languages": ["dotnetCsharp"],
-  "azureServices": ["containerapps", "azuresql"]
+  "source": "https://github.com/Azure-Samples/remote-mcp-functions-typescript",
+  "preview": "./templates/images/azure-functions-mcp-server-typescript.png",
+  "tags": ["msft", "ai", "mcp"],
+  "languages": ["typescript", "nodejs"],
+  "azureServices": ["functions"],
+  "IaC": ["bicep"]
 }
 ```
 

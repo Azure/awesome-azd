@@ -11,7 +11,7 @@ Place your template repository link here:
 - [ ] Added an entry to https://github.com/Azure/awesome-azd/blob/main/website/static/templates.json that includes:
     - [ ] **Template title** - A short title that reflects the local application stack that someone could use to get their application on Azure (e.g. "Containerized React Web App with Java API and MongoDB")
     - [ ] **Description** - 1-2 sentence description of the architecture (e.g. Azure services) or solution that is defined by the template.
-    - [ ] **Architecture Diagram or Application Screenshot** - The image should include all services and their connections ([example](https://github.com/Azure-Samples/todo-csharp-sql/blob/main/assets/resources.png)). You should add the image to the `website/static/templates/images`.
+    - [ ] **Architecture Diagram or Application Screenshot** - The image should include all services and their connections ([example](https://github.com/Azure-Samples/azure-search-openai-demo/blob/main/docs/images/appcomponents.png)). You should add the image to the `website/static/templates/images`.
     - [ ] **Link to Author's GitHub or other relevant website** - Used for attribution
     - [ ] **Author's Name** -  Name to credit on the gallery card
     - [ ] **Link to template source** - Link to the template GitHub repo 

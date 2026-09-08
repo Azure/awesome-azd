@@ -236,7 +236,7 @@ function TerminalDemo() {
         <div>
           <span className={styles.prompt}>$</span>{" "}
           <span className={styles.termCmd}>
-            azd init -t functions-quickstart-typescript-azd
+            azd init -t remote-mcp-functions-typescript
           </span>
         </div>
         <div className={styles.output}>Initializing an app to run on Azure...</div>
@@ -325,8 +325,8 @@ const STEPS = [
     number: "1",
     title: "Pick a template",
     description:
-      "Browse 300+ templates. This one creates a secure TypeScript HTTP API on Azure Functions.",
-    command: "azd init -t functions-quickstart-typescript-azd",
+      "Browse 300+ templates. This one creates a remote MCP server with TypeScript and Azure Functions.",
+    command: "azd init -t remote-mcp-functions-typescript",
   },
   {
     number: "2",
@@ -385,12 +385,12 @@ const TEMPLATES = [
     tags: ["Python", "Azure OpenAI", "PostgreSQL"],
   },
   {
-    title: "Azure Functions TypeScript HTTP Trigger",
+    title: "Remote MCP Functions with TypeScript",
     description:
-      "A secure TypeScript HTTP API on Azure Functions Flex Consumption with managed identity, virtual networking, and monitoring.",
-    command: "azd init -t functions-quickstart-typescript-azd",
-    source: "https://github.com/Azure-Samples/functions-quickstart-typescript-azd",
-    tags: ["TypeScript", "Azure Functions", "Managed Identity"],
+      "Build and deploy a custom remote Model Context Protocol server using Azure Functions and TypeScript.",
+    command: "azd init -t remote-mcp-functions-typescript",
+    source: "https://github.com/Azure-Samples/remote-mcp-functions-typescript",
+    tags: ["TypeScript", "Azure Functions", "MCP"],
   },
 ];
 

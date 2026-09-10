@@ -65,7 +65,7 @@
     "serialize-javascript": "^7.0.5",
     "@tootallnate/once": "3.0.1",
     "uuid": "^14.0.0",
-    "sharp": "^0.35.3",
+    "sharp": "0.35.4",
     "glob": "^13.0.0",
     "jsdom": "^29.0.0",
     "body-parser": "^1.20.6",

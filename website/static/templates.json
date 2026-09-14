@@ -6862,39 +6862,6 @@
     "id": "eb6c5562-f142-4b3c-9e7a-c0ee4096f3c3"
   },
   {
-    "title": "Creative Writing Assistant Aspire: Working with Agents using Semantic Kernel",
-    "description": "A creative writing assistant that shows how to orchestrate multiple models together using Semantic Kernel and Azure OpenAI. Includes the full GenAIOps: CI/CD, evaluation, tracing, monitoring, and experimentation!",
-    "preview": "./templates/images/aspire-semantic-kernel-creative-writer.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Ricardo Niepel",
-    "source": "https://github.com/Azure-Samples/aspire-semantic-kernel-creative-writer",
-    "tags": [
-      "msft",
-      "aicollection",
-      "ai",
-      "gpt",
-      "aspire"
-    ],
-    "languages": [
-      "dotnetCsharp",
-      "javascript",
-      "typescript"
-    ],
-    "frameworks": [
-      "semantickernel"
-    ],
-    "azureServices": [
-      "managedidentity",
-      "keyvault",
-      "aisearch",
-      "openai"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "b3abdd34-87fd-4b04-8e44-3cb04dff76a3"
-  },
-  {
     "title": "Semantic caching with Azure Redis and Dall-E 3",
     "description": "This template demonstrates Dall-E text to image generation with Azure Redis semantic caching, which enables the same picture to be reused for text inputs that are similar in meaning but different in syntax. Azure Redis semantic cache improves the consistency and performance of the content generation.",
     "preview": "./templates/images/azure-redis-dalle-semantic-caching-arch.png",

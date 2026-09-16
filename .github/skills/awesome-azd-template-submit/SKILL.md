@@ -1,10 +1,11 @@
 ---
 name: awesome-azd-template-submit
 description: >-
-  Submit an azd template to the awesome-azd gallery. Use when asked to submit,
-  add, or contribute a template to awesome-azd. Requires only a GitHub
-  repository URL — all metadata (title, description, languages, frameworks,
-  Azure services, IaC) is auto-detected by the submission pipeline.
+  Submit or retire an azd template in the awesome-azd gallery. Use when asked to
+  submit, add, contribute, remove, retire, or clean up a template in
+  awesome-azd. New submissions require only a GitHub repository URL — all
+  metadata (title, description, languages, frameworks, Azure services, IaC) is
+  auto-detected by the submission pipeline.
 ---
 
 # Awesome AZD Template Submission
@@ -140,6 +141,15 @@ Submit https://github.com/Azure-Samples/my-app with language python and services
 Would fill in:
 - **Languages**: `python`
 - **Azure Services**: `openai, aca`
+
+## Handling template removals
+
+When removing or retiring a template from the gallery, delete both the template
+metadata entry in `website/static/templates.json` and any related gallery assets
+that are no longer referenced, such as the template's preview image under
+`website/static/templates/images/`. Before deleting an asset, search the
+repository to confirm no remaining template or documentation still references
+it.
 
 ## Important
 

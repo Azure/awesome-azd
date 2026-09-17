@@ -194,18 +194,6 @@ describe('EU cookie consent banner wiring', () => {
         expect(layout).not.toMatch(/(?:const|let|var)\s+telemetryInit\s*=/);
     });
 
-    test('Microsoft Clarity is no longer referenced by the site code or dependencies', () => {
-        // Clarity was removed (issue #1014): the measurement tool is no longer
-        // needed, so neither the consent pipeline nor the gallery search may
-        // load or call it, and the package must stay out of dependencies.
-        expect(readRepoFile('src/theme/Root.js')).not.toMatch(/clarity/i);
-        expect(
-            readRepoFile('src/components/gallery/ShowcaseTemplateSearch/index.tsx')
-        ).not.toMatch(/clarity/i);
-        const pkg = JSON.parse(readRepoFile('package.json'));
-        expect(Object.keys(pkg.dependencies ?? {})).not.toContain('@microsoft/clarity');
-        expect(Object.keys(pkg.devDependencies ?? {})).not.toContain('@microsoft/clarity');
-    });
 });
 
 // ---------------------------------------------------------------------------

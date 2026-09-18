@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import Clarity from "@microsoft/clarity";
 import Cookies from "js-cookie";
 import { manageCookieLabel, manageCookieId } from "../../constants.js";
 
@@ -14,9 +13,6 @@ const telemetryInit = () => {
   const SET = "set";
   const RESET = "reset";
   var siteConsent = null;
-  // Guard so Clarity initializes at most once even if the consent callback
-  // fires repeatedly (e.g. via the "Manage Cookies" dialog).
-  var clarityInitialized = false;
 
   function onConsentChanged(categoryPreferences) {
     setNonEssentialCookies(categoryPreferences);
@@ -42,31 +38,8 @@ const telemetryInit = () => {
     }
   }
 
-  function setClarity(setString) {
-    if (setString === SET) {
-      if (!clarityInitialized) {
-        Clarity.init("r8ugpuymsy");
-        clarityInitialized = true;
-      }
-      Clarity.consent(true);
-    } else {
-      if (clarityInitialized) {
-        Clarity.consent(false);
-      }
-      // Clarity sets _clck/_clsk on the current host (e.g. azure.github.io), so
-      // remove without a domain as well as with .microsoft.com for safety.
-      ["_clck", "_clsk"].forEach(function (cookieName) {
-        Cookies.remove(cookieName);
-        Cookies.remove(cookieName, { domain: ".microsoft.com" });
-      });
-    }
-  }
-
   function AnalyticsCookies(setString) {
-    if (setString === SET) {
-      setClarity(SET);
-    } else {
-      setClarity(RESET);
+    if (setString !== SET) {
       // Analytics not consented: 1DS keeps running so its essential Required
       // telemetry (MicrosoftApplicationsTelemetry* device cookies) continues,
       // but best-effort remove the non-essential dual-purpose MSFPC identity

@@ -40,11 +40,6 @@ import * as path from 'path';
 // the static tests never import Root.js so they're unaffected.
 // ---------------------------------------------------------------------------
 
-jest.mock('@microsoft/clarity', () => ({
-    __esModule: true,
-    default: { init: jest.fn(), consent: jest.fn() },
-}));
-
 jest.mock('js-cookie', () => ({
     __esModule: true,
     default: { remove: jest.fn(), set: jest.fn(), get: jest.fn() },
@@ -198,6 +193,7 @@ describe('EU cookie consent banner wiring', () => {
         expect(layout).not.toMatch(/new\s+oneDS\s*\.\s*ApplicationInsights/);
         expect(layout).not.toMatch(/(?:const|let|var)\s+telemetryInit\s*=/);
     });
+
 });
 
 // ---------------------------------------------------------------------------

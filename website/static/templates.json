@@ -8215,5 +8215,25 @@
       "terraform"
     ],
     "id": "64577715-e9a4-4a65-a514-4233763474c2"
+  },
+  {
+    "title": "PkgDiet Secure Node.js Template",
+    "description": "An azd template that provisions a Node.js Azure App Service and comes pre-configured with PkgDiet, a local dependency guardrail. VS Code and GitHub Copilot are pre-configured to use the PkgDiet MCP Server so AI assistants suggest secure, modern dependencies instead of outdated or vulnerable npm packages.",
+    "preview": "./templates/images/test.png",
+    "authorUrl": "https://github.com/om-tajne",
+    "author": "om-tajne",
+    "source": "https://github.com/om-tajne/pkgdiet-azd-template",
+    "tags": [
+      "community",
+      "new"
+    ],
+    "languages": [
+      "javascript",
+      "nodejs"
+    ],
+    "azureServices": [
+      "appservice"
+    ],
+    "id": "664f5013-e5df-4909-9f87-d75d7fd44761"
   }
 ]

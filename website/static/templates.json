@@ -8099,7 +8099,6 @@
     "source": "https://github.com/Azure-Samples/expense-processor",
     "tags": [
       "msft",
-      "new",
       "ai"
     ],
     "languages": [
@@ -8127,7 +8126,6 @@
     "source": "https://github.com/Azure-Samples/m365-inbox-serverless-agent-python",
     "tags": [
       "msft",
-      "new",
       "ai"
     ],
     "languages": [
@@ -8154,7 +8152,6 @@
     "source": "https://github.com/Azure-Samples/document-reviewer",
     "tags": [
       "msft",
-      "new",
       "sharepoint",
       "ai"
     ],
@@ -8179,8 +8176,7 @@
     "author": "Durga Prasad Katrapally",
     "source": "https://github.com/durga533/azure-landingzone-setup",
     "tags": [
-      "community",
-      "new"
+      "community"
     ],
     "azureServices": [
       "vnets"
@@ -8199,8 +8195,7 @@
     "source": "https://github.com/Azure-Samples/Microhack-Ask-Analyze-Act",
     "tags": [
       "ai",
-      "msft",
-      "new"
+      "msft"
     ],
     "languages": [
       "nodejs"

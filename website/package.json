@@ -16,8 +16,8 @@
     "test:e2e": "playwright test"
   },
   "devDependencies": {
-    "@babel/core": "^8.0.1",
-    "@babel/preset-env": "^8.0.2",
+    "@babel/core": "^8.0.6",
+    "@babel/preset-env": "^8.0.6",
     "@babel/preset-react": "^8.0.1",
     "@babel/preset-typescript": "^8.0.1",
     "@docusaurus/core": "^3.10.2",
@@ -26,20 +26,20 @@
     "@docusaurus/plugin-ideal-image": "^3.10.2",
     "@docusaurus/preset-classic": "^3.10.2",
     "@fluentui/react": "^8.125.7",
-    "@fluentui/react-components": "^9.74.7",
+    "@fluentui/react-components": "^9.74.9",
     "@mdx-js/react": "^3.0.0",
-    "@playwright/test": "^1.62.1",
-    "@types/react-dom": "^19.2.5",
-    "babel-jest": "^30.5.0",
+    "@playwright/test": "^1.63.0",
+    "@types/react-dom": "^19.3.0",
+    "babel-jest": "^30.5.2",
     "clsx": "^2.0.0",
-    "jest": "^30.5.0",
-    "jest-environment-jsdom": "^30.5.0",
-    "js-yaml": "^5.4.1",
+    "jest": "^30.5.2",
+    "jest-environment-jsdom": "^30.5.2",
+    "js-yaml": "^5.4.2",
     "prism-react-renderer": "^2.3.0",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.8",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
     "typescript": "^7.0.2",
-    "webpack": "^5.110.1"
+    "webpack": "^5.111.1"
   },
   "browserslist": {
     "production": [

@@ -8210,5 +8210,35 @@
       "terraform"
     ],
     "id": "64577715-e9a4-4a65-a514-4233763474c2"
+  },
+  {
+    "title": "Text Semantic Search using embedding models in Microsoft Foundry and Azure PostgreSQL",
+    "description": "A .NET application that generates text embeddings with Microsoft Foundry, stores them in Azure Database for PostgreSQL with pgvector, and searches for semantically similar text. It provisions a Blazor Server frontend and Azure Functions API using Bicep.",
+    "preview": "./templates/images/db-semantic-search-architecture.png",
+    "authorUrl": "http://info.massimobonanni.it",
+    "author": "Massimo Bonanni",
+    "source": "https://github.com/massimobonanni/DBSemanticSearch",
+    "tags": [
+      "community",
+      "new",
+      "ai"
+    ],
+    "languages": [
+      "dotnetCsharp"
+    ],
+    "frameworks": [
+      "blazor"
+    ],
+    "azureServices": [
+      "appservice",
+      "functions",
+      "aifoundry",
+      "azuredb-postgreSQL",
+      "appinsights"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "6522cdb6-4c9d-4d77-84dd-746daf408966"
   }
 ]

@@ -49,6 +49,10 @@ Only the **Source Repository** field is required. All other fields are
 auto-detected by the pipeline. Do NOT fill in optional fields unless the user
 explicitly provides overrides.
 
+For author attribution, use the source repository owner as the default author
+and their GitHub profile as the author URL. Use a different author or URL only
+when the submitter explicitly declares that override.
+
 ```bash
 gh issue create \
   --repo Azure/awesome-azd \

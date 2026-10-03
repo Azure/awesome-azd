@@ -8233,7 +8233,7 @@
       "appservice",
       "functions",
       "aifoundry",
-      "azuredb-postgreSQL",
+      "azuredb-postgresql",
       "appinsights"
     ],
     "IaC": [

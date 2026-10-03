@@ -8215,7 +8215,7 @@
     "title": "Text Semantic Search using embedding models in Microsoft Foundry and Azure PostgreSQL",
     "description": "A .NET application that generates text embeddings with Microsoft Foundry, stores them in Azure Database for PostgreSQL with pgvector, and searches for semantically similar text. It provisions a Blazor Server frontend and Azure Functions API using Bicep.",
     "preview": "./templates/images/db-semantic-search-architecture.png",
-    "authorUrl": "https://github.com/massimobonanni/",
+    "authorUrl": "https://info.massimobonanni.it/",
     "author": "Massimo Bonanni",
     "source": "https://github.com/massimobonanni/DBSemanticSearch",
     "tags": [

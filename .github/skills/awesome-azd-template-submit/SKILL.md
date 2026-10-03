@@ -49,9 +49,9 @@ Only the **Source Repository** field is required. All other fields are
 auto-detected by the pipeline. Do NOT fill in optional fields unless the user
 explicitly provides overrides.
 
-For author attribution, use the source repository owner as the default author
-and their GitHub profile as the author URL. Use a different author or URL only
-when the submitter explicitly declares that override.
+For author attribution, use the source repository owner as the default author.
+Use their GitHub profile as the author URL unless the submitter explicitly
+declares a different author URL.
 
 ```bash
 gh issue create \
@@ -126,6 +126,15 @@ author. Trusted authors do not need manual template testing requested from
 
 Current trusted authors:
 - paulyuk
+
+Before requesting testing, check whether the template submission issue was
+created by a trusted author. Do not request manual testing or deployment proof
+for trusted authors.
+
+For community templates (those without the `msft` tag), comment on the PR and
+mention @v-xuto to request manual testing. For Microsoft templates (those with
+the `msft` tag), ask the PR author for a test pipeline link or other proof of
+successful deployment.
 
 When mentioning people in issue or PR comments, write the mention as plain text
 such as @v-xuto. Do not wrap mentions in inline code formatting, because that

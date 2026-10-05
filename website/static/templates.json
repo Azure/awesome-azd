@@ -1117,12 +1117,12 @@
     "id": "8b4c552b-5538-4929-924f-3dffbc6ce0df"
   },
   {
-    "title": "GPT-RAG: Enterprise GenAI Chat Accelerator",
-    "description": "PT-RAG offers a robust architecture tailored for enterprise-grade deployment of the GenAI Solutions. It ensures grounded responses and is built on Zero-trust security and Responsible AI, ensuring availability, scalability, and auditability. Ideal for organizations transitioning from exploration and PoC stages to full-scale production and MVPs",
+    "title": "Agent Landing Zone",
+    "description": "Secure, enterprise-ready landing zone for deploying AI agent applications on Microsoft Foundry, with Zero-Trust networking and IaC-first deployment.",
     "preview": "./templates/images/GPT-Rag-Architecture-Zero-Trust.png",
     "authorUrl": "https://github.com/Azure",
     "author": "Azure Content Team",
-    "source": "https://github.com/Azure/GPT-RAG",
+    "source": "https://github.com/Azure/agent-landing-zone",
     "tags": [
       "gpt",
       "ai",
@@ -1294,30 +1294,6 @@
       "bicep"
     ],
     "id": "4d99865e-efff-430f-837e-bc031dbac8a0"
-  },
-  {
-    "title": "Azure Open AI management and logging via Azure API Management",
-    "description": "To use Azure Open AI in production, you need to manage each application and user by issuing new keys, and monitor their usage such as number of tokens they consume and types of endpoint and mode they use. The solution uses Azure APIM and other resources to support such requirements.",
-    "preview": "./templates/images/aoai_apim.svg",
-    "authorUrl": "https://github.com/microsoft",
-    "author": "Kenichiro Nakamura",
-    "source": "https://github.com/microsoft/aoai-logging-with-apim",
-    "tags": [
-      "msft",
-      "ai"
-    ],
-    "languages": [
-      "dotnetCsharp"
-    ],
-    "azureServices": [
-      "openai",
-      "apim",
-      "keyvault"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "c75a029a-c618-430e-8922-0511bae8a38e"
   },
   {
     "title": "Remix on Container Apps",
@@ -2595,35 +2571,6 @@
     "id": "84555da7-3f3a-4451-9b10-cb083e481a41"
   },
   {
-    "title": "Advanced multi agent application based on Autogen and Azure Open AI",
-    "description": "This repository leverages Microsoft Autogen 0.4, Azure OpenAI and integrates it with Streamlit, to build an end to end multi agents application. this repo makes it easy to build test and deploy an advanced multi agent framework",
-    "preview": "./templates/images/dream_team.png",
-    "authorUrl": "https://github.com/Azure-Samples",
-    "author": "Yaniv Vaknin",
-    "source": "https://github.com/Azure-Samples/dream-team",
-    "tags": [
-      "msft"
-    ],
-    "languages": [
-      "python"
-    ],
-    "frameworks": [
-      "autogen"
-    ],
-    "azureServices": [
-      "managedidentity",
-      "openai",
-      "aca",
-      "keyvault",
-      "loganalytics",
-      "appinsights"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "1e29650e-c24c-41c0-a037-2c1352c40cc3"
-  },
-  {
     "title": "AZD Simple FastAPI app on Azure App Service",
     "description": "A tiny, no-frills, template to deploy Python's FastAPI web framework to Azure App Service in the free tier.",
     "preview": "./templates/images/simple-fastapi-azd.png",
@@ -3052,34 +2999,6 @@
       "bicep"
     ],
     "id": "c8d9a65a-282e-4d6d-a1e4-6248952a1e32"
-  },
-  {
-    "title": "Agentic Voice Assistant based on Azure Container Apps, Azure OpenAI and Azure Logic Apps",
-    "description": "This demo deploys a voice based interface to agentic system that uses Azure Logic Apps as the execution mechanism.",
-    "preview": "./templates/images/agentic-voice-assistant.png",
-    "authorUrl": "https://github.com/evmin",
-    "author": "Evgeny Minkevich",
-    "source": "https://github.com/Azure-Samples/agentic-voice-assistant",
-    "tags": [
-      "ai",
-      "community"
-    ],
-    "languages": [
-      "python"
-    ],
-    "frameworks": [
-      "chainlit"
-    ],
-    "azureServices": [
-      "cosmosdb",
-      "appinsights",
-      "azurestorage",
-      "aca"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "691b7df7-ae12-42a8-9186-d812cc93ad90"
   },
   {
     "title": "Azure OpenAI RAG with Java, LangChain4j and Quarkus",
@@ -5111,29 +5030,6 @@
     "id": "8c0f50a9-21fd-4c11-91be-bb37aca93be4"
   },
   {
-    "title": "Data and Agent Governance and Security",
-    "description": "Automates governance deployment for Microsoft Foundry, M365 Copilot and Fabric—configures Purview DSPM, sensitivity labels, DLP policies, Data Map scans, Defender for AI, and audit logging from a single spec file.",
-    "preview": "./templates/images/architectureDAGSA.png",
-    "authorUrl": "https://github.com/microsoft/Data-and-Agent-Governance-and-Security-Accelerator",
-    "author": "Mike Swantek",
-    "source": "https://github.com/microsoft/Data-and-Agent-Governance-and-Security-Accelerator",
-    "tags": [
-      "msft",
-      "powershell",
-      "aicollection"
-    ],
-    "languages": [],
-    "IaC": [
-      "bicep"
-    ],
-    "azureServices": [
-      "purview",
-      "aifoundry",
-      "loganalytics"
-    ],
-    "id": "4f2b8e6a-3d9c-4a1f-b7e5-2c8d6f4a9e1b"
-  },
-  {
     "title": "MCP Server with OAuth 2.1 and On-Behalf-Of Flow",
     "description": "An Azure Developer CLI (azd) ready template for deploying an MCP (Model Context Protocol) server with OAuth 2.1 authentication and On-Behalf-Of (OBO) flow to Azure Container Apps. Features full authentication with Azure AD (Entra ID), On-Behalf-Of flow for Microsoft Graph API, RFC 9728 compliance, secretless deployment using Federated Identity Credentials, and serverless auto-scaling deployment.",
     "preview": "./templates/images/mcp-obo-aca.png",
@@ -6955,40 +6851,6 @@
     "id": "1b9bcb52-0c7a-459f-bb90-085ec0c64558"
   },
   {
-    "title": "Deploy Your AI Application in Production",
-    "description": "A deployment of a secure, extensible and integrated environment for running AI Foundry workloads in Production. It simplifies the process of including essential Azure services necessary to run mission-critical AI applications and adhere to Microsoft Well Architected Framework recommendations.",
-    "preview": "./templates/images/Deploy-Your-AI-Application-In-Production-arch.png",
-    "authorUrl": "https://github.com/mswantek68",
-    "author": "Mike Swantek",
-    "source": "https://github.com/microsoft/Deploy-Your-AI-Application-In-Production",
-    "tags": [
-      "msft",
-      "aicollection",
-      "ai",
-      "gpt"
-    ],
-    "azureServices": [
-      "aisearch",
-      "monitor",
-      "keyvault",
-      "appinsights",
-      "loganalytics",
-      "blobstorage",
-      "vnets",
-      "openai",
-      "azureai",
-      "apim",
-      "azurestorage",
-      "aifoundry",
-      "diagnosticsettings",
-      "managedidentity"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "a183b814-51d8-402d-b3bc-991294169877"
-  },
-  {
     "title": "Azure Language OpenAI Conversational Agent Accelerator",
     "description": "A solution accelerator project harnessing the capabilities of Azure AI Language to augment an existing Azure OpenAI RAG chat app. Utilize Conversational Language Understanding (CLU) and Custom Question Answering (CQA) to dynamically improve a RAG chat experience.",
     "preview": "./templates/images/Azure-Language-OpenAI-Conversational-Agent-Accelerator-arch.png",
@@ -7056,44 +6918,6 @@
     "id": "301cc025-6d90-483f-a69a-709f0a97b7f5"
   },
   {
-    "title": "Document Generation and Summarization",
-    "description": "Generate templates and draft content from your data by identifying relevant documents and summarizing unstructured information​",
-    "preview": "./templates/images/document-generation-solution-accelerator-arch.png",
-    "authorUrl": "https://github.com/microsoft",
-    "author": "Blessing Sanusi",
-    "source": "https://github.com/microsoft/content-generation-solution-accelerator",
-    "tags": [
-      "msft",
-      "aicollection",
-      "ai",
-      "gpt"
-    ],
-    "languages": [
-      "python",
-      "typescript",
-      "javascript"
-    ],
-    "azureServices": [
-      "aisearch",
-      "appservice",
-      "keyvault",
-      "appinsights",
-      "functions",
-      "blobstorage",
-      "openai",
-      "azureai",
-      "azurestorage",
-      "azureappconfig",
-      "aifoundry",
-      "managedidentity",
-      "serviceprincipal"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "c1eb70c0-7938-479c-a775-df060465ec4e"
-  },
-  {
     "title": "Modernize your code with agents",
     "description": "Accelerate the migration of legacy code to modern languages by leveraging a team of autonomous agents",
     "preview": "./templates/images/Modernize-your-code-solution-accelerator-arch.png",
@@ -7120,40 +6944,6 @@
       "bicep"
     ],
     "id": "844b9db1-9c39-4d98-9c7a-f929d2ae9643"
-  },
-  {
-    "title": "Build Your Own Copilot Solution Accelerator",
-    "description": "This solution accelerator is a powerful tool that helps you create your own copilots. The accelerator can be used by any customer looking for reusable architecture and code snippets to build custom copilots with their own enterprise data.",
-    "preview": "./templates/images/Build-your-own-copilot-Solution-Accelerator-arch.png",
-    "authorUrl": "https://github.com/brittneek",
-    "author": "Brittneé Keller",
-    "source": "https://github.com/microsoft/Build-your-own-copilot-Solution-Accelerator",
-    "tags": [
-      "msft",
-      "aicollection",
-      "ai",
-      "gpt"
-    ],
-    "languages": [
-      "python",
-      "typescript"
-    ],
-    "azureServices": [
-      "aisearch",
-      "appservice",
-      "keyvault",
-      "loganalytics",
-      "blobstorage",
-      "azureai",
-      "azurestorage",
-      "aifoundry",
-      "managedidentity",
-      "serviceprincipal"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "54496217-f166-481e-860e-037da03b7545"
   },
   {
     "title": "Chainlit Agent",
@@ -7372,41 +7162,6 @@
       "bicep"
     ],
     "id": "c61ce07d-3a76-4181-bbe2-35a43bce0a10"
-  },
-  {
-    "title": "Container Migration Solution Accelerator",
-    "description": "This accelerator is a multi-service application that provides a multi-agent, AI-driven migration solution for users moving container service configurations from a cloud platform to Azure Kubernetes Service.",
-    "preview": "./templates/images/Container-Migration-Solution-Accelerator-arch.png",
-    "authorUrl": "https://github.com/sethsteenken",
-    "author": "Seth Steenken",
-    "source": "https://github.com/microsoft/Container-Migration-Solution-Accelerator",
-    "tags": [
-      "msft",
-      "aicollection",
-      "ai",
-      "gpt"
-    ],
-    "languages": [
-      "python",
-      "typescript"
-    ],
-    "azureServices": [
-      "appinsights",
-      "loganalytics",
-      "aca",
-      "blobstorage",
-      "openai",
-      "azureai",
-      "azureappconfig",
-      "aifoundry",
-      "diagnosticsettings",
-      "managedidentity",
-      "azurestorage"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "4648af12-015b-4c5d-94ab-893c5c5fc2bb"
   },
   {
     "title": "Release Manager Assistant",
@@ -8091,12 +7846,12 @@
     "id": "7c1b3708-a2ba-4000-ba61-df0bc8d7d5ef"
   },
   {
-    "title": "Serverless Expense Processor Agent",
-    "description": "A markdown-first Azure Functions serverless agent for queue-driven expense processing. It reads expense requests from Azure Queue Storage in any format, selects and applies the matching policy document from Blob Storage, and routes the decision to an approved, review, or flagged output queue.",
+    "title": "Azure Functions Hosted Skill: Expense Processor",
+    "description": "A markdown-first Azure Functions hosted skill for queue-driven expense processing. It reads expense requests, applies matching policy documents, and routes decisions to approved, review, or flagged queues.",
     "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Microsoft",
-    "source": "https://github.com/Azure-Samples/expense-processor",
+    "source": "https://github.com/Azure-Samples/hosted-skills-expense-processor",
     "tags": [
       "msft",
       "ai"

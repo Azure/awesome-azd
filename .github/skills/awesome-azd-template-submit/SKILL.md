@@ -49,6 +49,10 @@ Only the **Source Repository** field is required. All other fields are
 auto-detected by the pipeline. Do NOT fill in optional fields unless the user
 explicitly provides overrides.
 
+For author attribution, use the source repository owner as the default author.
+Use their GitHub profile as the author URL unless the submitter explicitly
+declares a different author URL.
+
 ```bash
 gh issue create \
   --repo Azure/awesome-azd \
@@ -118,13 +122,22 @@ After filing, report the issue URL and explain that:
 
 Use the **Trusted Author** field only when the GitHub issue creator is a trusted
 author. Trusted authors do not need manual template testing requested from
-@v-xuto or deployment proof requested from the PR author.
+@HarveyLink or deployment proof requested from the PR author.
 
 Current trusted authors:
 - paulyuk
 
+Before requesting testing, check whether the template submission issue was
+created by a trusted author. Do not request manual testing or deployment proof
+for trusted authors.
+
+For community templates (those without the `msft` tag), comment on the PR and
+mention @HarveyLink to request manual testing. For Microsoft templates (those with
+the `msft` tag), ask the PR author for a test pipeline link or other proof of
+successful deployment.
+
 When mentioning people in issue or PR comments, write the mention as plain text
-such as @v-xuto. Do not wrap mentions in inline code formatting, because that
+such as @HarveyLink. Do not wrap mentions in inline code formatting, because that
 prevents GitHub notifications.
 
 ## Handling user overrides

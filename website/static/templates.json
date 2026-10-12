@@ -2487,30 +2487,6 @@
     "id": "267dd459-3127-4ab0-a0fa-3f3b79f5e734"
   },
   {
-    "title": "Intelligent App on Azure Container Apps and GitHub Models",
-    "description": "MarketingWriter is an AI marketing content generation application sample powered by GitHub Models, Azure Container App, Streamlit and Azure Developer CLI (AZD)",
-    "preview": "./templates/images/aca-githubmodel-marketingwriter.png",
-    "authorUrl": "https://github.com/xuhaoruins",
-    "author": "Hao Xu",
-    "source": "https://github.com/haxudev/marketingwriter",
-    "tags": [
-      "community"
-    ],
-    "languages": [
-      "python"
-    ],
-    "frameworks": [
-      "streamlit"
-    ],
-    "azureServices": [
-      "aca"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "10541f55-54fd-4382-9e2e-88b70e9a7087"
-  },
-  {
     "title": "Multi-tier App with React.js Dashboard Front-End SPA and Backend Node.js API",
     "description": "A multi-tier app with a dashboard front-end (React + Bootstrap) hosted in Azure Static Web Apps and back-end API (Node.js) hosted in Azure App Service",
     "preview": "./templates/images/build5nines-azd-react-bootstrap-dashboard.png",

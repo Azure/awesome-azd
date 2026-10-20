@@ -10,7 +10,6 @@ import {
 } from "../components/gallery/ShowcaseTemplateSearch";
 import { Tags, type User, type TagType } from "../data/tags";
 import { sortedUsers, unsortedUsers } from "../data/users";
-import { type Extension } from "../data/extensionTypes";
 import { sortedExtensions, unsortedExtensions } from "../data/extensions";
 import {
   Text,
@@ -30,6 +29,17 @@ import { useHistory } from "@docusaurus/router";
 import type { Location } from "history";
 import { toggleListItem, splitAuthors } from "@site/src/utils/jsUtils";
 import { getContentType } from "@site/src/utils/contentType";
+import {
+  filterTemplates,
+  filterExtensions,
+  getTemplateTags,
+  getExtensionTags,
+} from "@site/src/utils/galleryFiltering";
+import {
+  GALLERY_SORT_OPTIONS,
+  getSortedTemplates,
+  getSortedExtensions,
+} from "@site/src/utils/gallerySorting";
 import { prepareUserState } from "./index";
 import { Dismiss20Filled } from "@fluentui/react-icons";
 
@@ -59,116 +69,10 @@ function restoreUserState(userState: UserState | null) {
   window.scrollTo({ top: scrollTopPosition });
 }
 
-const SORT_BY_OPTIONS = [
-  "New to old",
-  "Old to new",
-  "Alphabetical (A - Z)",
-  "Alphabetical (Z - A)",
-];
-
-function readSortChoice(rule: string): User[] {
-  if (rule == SORT_BY_OPTIONS[0]) {
-    const copyUnsortedUser = unsortedUsers.slice();
-    return copyUnsortedUser.reverse();
-  } else if (rule == SORT_BY_OPTIONS[1]) {
-    return unsortedUsers;
-  } else if (rule == SORT_BY_OPTIONS[2]) {
-    return sortedUsers;
-  } else if (rule == SORT_BY_OPTIONS[3]) {
-    const copySortedUser = sortedUsers.slice();
-    return copySortedUser.reverse();
-  }
-  return sortedUsers;
-}
-
 const SearchNameQueryKey = "name";
 
 function readSearchName(search: string) {
   return new URLSearchParams(search).get(SearchNameQueryKey);
-}
-
-function filterUsers(
-  users: User[],
-  selectedTags: TagType[],
-  selectedAuthors: string[],
-  searchName: string | null
-) {
-  if (searchName) {
-    // eslint-disable-next-line no-param-reassign
-    users = users.filter((user) =>
-      user.title.toLowerCase().includes(searchName.toLowerCase()) ||
-      user.author.toLowerCase().includes(searchName.toLowerCase())
-    );
-  }
-  
-  // Filter by selected authors
-  if (selectedAuthors && selectedAuthors.length > 0) {
-    // eslint-disable-next-line no-param-reassign
-    users = users.filter((user) => {
-      // Split the author field to handle multiple authors
-      const userAuthors = splitAuthors(user.author);
-      // Check if any of the selected authors match any of the user's authors
-      return selectedAuthors.some(selectedAuthor => 
-        userAuthors.includes(selectedAuthor)
-      );
-    });
-  }
-  
-  // Filter by selected tags
-  if (!selectedTags || selectedTags.length === 0) {
-    return users;
-  }
-  return users.filter((user) => {
-    const tags = [
-      ...(user.tags || []),
-      ...(user.languages || []),
-      ...(user.frameworks || []),
-      ...(user.azureServices || []),
-      ...(user.IaC || []),
-    ];
-    if (!user && !tags && tags.length === 0) {
-      return false;
-    }
-    return selectedTags.every((tag) => tags.includes(tag));
-  });
-}
-
-function filterExtensions(
-  extensions: Extension[],
-  selectedTags: TagType[],
-  selectedAuthors: string[],
-  searchName: string | null
-) {
-  if (searchName) {
-    const q = searchName.toLowerCase();
-    extensions = extensions.filter((ext) =>
-      ext.displayName.toLowerCase().includes(q) ||
-      ext.description.toLowerCase().includes(q) ||
-      ext.author.toLowerCase().includes(q) ||
-      ext.id.toLowerCase().includes(q) ||
-      (ext.website && ext.website.toLowerCase().includes(q))
-    );
-  }
-
-  if (selectedAuthors && selectedAuthors.length > 0) {
-    extensions = extensions.filter((ext) => {
-      const extAuthors = splitAuthors(ext.author);
-      return selectedAuthors.some((a) => extAuthors.includes(a));
-    });
-  }
-
-  if (!selectedTags || selectedTags.length === 0) {
-    return extensions;
-  }
-
-  return extensions.filter((ext) => {
-    const allTags = [...ext.tags];
-    // Map capabilities to tag names
-    ext.capabilities.forEach((cap) => {
-      allTags.push(("ext-" + cap) as TagType);
-    });
-    return selectedTags.every((tag) => allTags.includes(tag));
-  });
 }
 
 const ContentTypeQueryKey = "type"; // retained for backward-compat with getContentType helper
@@ -406,7 +310,7 @@ export default function ShowcaseCardPage({
   readSearchAuthors: (search: string) => string[];
   replaceSearchAuthors: (search: string, newAuthors: string[]) => string;
 }) {
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([SORT_BY_OPTIONS[2]]);
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([GALLERY_SORT_OPTIONS[2]]);
   const [loading, setLoading] = useState(true);
   const [searchName, setSearchName] = useState<string | null>(null);
   const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
@@ -437,7 +341,9 @@ export default function ShowcaseCardPage({
 
   useEffect(() => {
     setSelectedTags(readSearchTags(location.search));
-    setSelectedUsers(readSortChoice(selectedOptions[0]));
+    setSelectedUsers(
+      getSortedTemplates(unsortedUsers, sortedUsers, selectedOptions[0])
+    );
     setSearchName(readSearchName(location.search));
     restoreUserState(location.state);
     setLoading(false);
@@ -445,16 +351,14 @@ export default function ShowcaseCardPage({
 
   // Template filtering
   const cards = useMemo(
-    () => filterUsers(selectedUsers, selectedTags, selectedAuthors, searchName),
+    () => filterTemplates(selectedUsers, selectedTags, selectedAuthors, searchName),
     [selectedUsers, selectedTags, selectedAuthors, searchName]
   );
 
   // Extension filtering
   const extensionCards = useMemo(
     () => filterExtensions(
-      selectedOptions[0] === SORT_BY_OPTIONS[2] || selectedOptions[0] === SORT_BY_OPTIONS[3]
-        ? (selectedOptions[0] === SORT_BY_OPTIONS[3] ? [...sortedExtensions].reverse() : sortedExtensions)
-        : (selectedOptions[0] === SORT_BY_OPTIONS[0] ? [...unsortedExtensions].reverse() : unsortedExtensions),
+      getSortedExtensions(unsortedExtensions, sortedExtensions, selectedOptions[0]),
       selectedTags,
       selectedAuthors,
       searchName
@@ -481,27 +385,17 @@ export default function ShowcaseCardPage({
   const paginatedExtensions = extensionCards.slice(startIndex, endIndex);
 
   useEffect(() => {
+    const unionTags = new Set<TagType>();
     if (isExtensions) {
-      const unionTags = new Set<TagType>();
       extensionCards.forEach((ext) => {
-        ext.tags.forEach((tag) => unionTags.add(tag));
-        ext.capabilities.forEach((cap) => unionTags.add(("ext-" + cap) as TagType));
+        getExtensionTags(ext).forEach((tag) => unionTags.add(tag));
       });
-      setActiveTags(Array.from(unionTags));
     } else {
-      const unionTags = new Set<TagType>();
       cards.forEach((user) => {
-        const tags = [
-          ...(user.tags || []),
-          ...(user.languages || []),
-          ...(user.frameworks || []),
-          ...(user.azureServices || []),
-          ...(user.IaC || []),
-        ];
-        tags.forEach((tag) => unionTags.add(tag));
+        getTemplateTags(user).forEach((tag) => unionTags.add(tag));
       });
-      setActiveTags(Array.from(unionTags));
     }
+    setActiveTags(Array.from(unionTags));
   }, [cards, extensionCards, isExtensions]);
 
   useEffect(() => {
@@ -592,12 +486,12 @@ export default function ShowcaseCardPage({
           <Combobox
             style={{ minWidth: "unset" }}
             input={{ style: { width: "130px" } }}
-            defaultValue={SORT_BY_OPTIONS[2]}
-            defaultSelectedOptions={[SORT_BY_OPTIONS[2]]}
+            defaultValue={GALLERY_SORT_OPTIONS[2]}
+            defaultSelectedOptions={[GALLERY_SORT_OPTIONS[2]]}
             aria-label="Sort by"
             onOptionSelect={sortByOnSelect}
           >
-            {SORT_BY_OPTIONS.map((option) => (
+            {GALLERY_SORT_OPTIONS.map((option) => (
               <Option key={option}>{option}</Option>
             ))}
           </Combobox>

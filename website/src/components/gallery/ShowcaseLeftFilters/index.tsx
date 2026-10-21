@@ -21,6 +21,7 @@ import { useColorMode } from "@docusaurus/theme-common";
 import { useHistory } from "@docusaurus/router";
 import { prepareUserState } from "@site/src/pages/index";
 import { getContentType } from "@site/src/utils/contentType";
+import { getTemplateTags, getExtensionTags } from "@site/src/utils/galleryTags";
 
 function ShowcaseFilterViewAll({
   tags,
@@ -207,26 +208,16 @@ export default function ShowcaseLeftFilters({
   // Compute template counts per tag for display
   const tagCounts = React.useMemo(() => {
     const counts: Record<string, number> = {};
-    const items = isExtensions ? unsortedExtensions : unsortedUsers;
-    items.forEach((item) => {
-      let allTags: TagType[];
-      if (isExtensions) {
-        const ext = item as any;
-        allTags = [...ext.tags, ...ext.capabilities.map((c: string) => ("ext-" + c) as TagType)];
-      } else {
-        const user = item as any;
-        allTags = [
-          ...(user.tags || []),
-          ...(user.languages || []),
-          ...(user.frameworks || []),
-          ...(user.azureServices || []),
-          ...(user.IaC || []),
-        ];
-      }
-      allTags.forEach((tag) => {
+    const countTags = (tags: TagType[]) => {
+      tags.forEach((tag) => {
         counts[tag] = (counts[tag] || 0) + 1;
       });
-    });
+    };
+    if (isExtensions) {
+      unsortedExtensions.forEach((extension) => countTags(getExtensionTags(extension)));
+    } else {
+      unsortedUsers.forEach((user) => countTags(getTemplateTags(user)));
+    }
     return counts;
   }, [isExtensions]);
 

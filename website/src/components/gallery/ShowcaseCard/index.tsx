@@ -6,6 +6,7 @@
 import React from "react";
 import styleCSS from "./styles.module.css";
 import { type User } from "../../../data/tags";
+import { getTemplateTags } from "../../../utils/galleryTags";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import {
   Card,
@@ -74,13 +75,7 @@ const darkTheme: PartialTheme = {
 function ShowcaseCard({ user }: { user: User }): JSX.Element {
   const styles = useStyles();
   const title = user.title;
-  const tags = [
-    ...user.tags,
-    ...(user.languages || []),
-    ...(user.frameworks || []),
-    ...(user.azureServices || []),
-    ...(user.IaC || []),
-  ];
+  const tags = getTemplateTags(user);
   const source = user.source;
   const star = useBaseUrl("/img/Sparkle.svg");
   let azdInitCommand =

@@ -32,14 +32,13 @@ import { getContentType } from "@site/src/utils/contentType";
 import {
   filterTemplates,
   filterExtensions,
-  getTemplateTags,
-  getExtensionTags,
 } from "@site/src/utils/galleryFiltering";
 import {
   GALLERY_SORT_OPTIONS,
   getSortedTemplates,
   getSortedExtensions,
 } from "@site/src/utils/gallerySorting";
+import { getTemplateTags, getExtensionTags } from "@site/src/utils/galleryTags";
 import { prepareUserState } from "./index";
 import { Dismiss20Filled } from "@fluentui/react-icons";
 

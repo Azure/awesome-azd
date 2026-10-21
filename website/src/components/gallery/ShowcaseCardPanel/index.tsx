@@ -27,6 +27,7 @@ import ShowcaseMultipleAuthors from "../ShowcaseMultipleAuthors/index";
 import ShowcaseCardTag from "../ShowcaseTag/index";
 import { useColorMode } from "@docusaurus/theme-common";
 import { getOpenInVSCodeUrl } from "../../../utils/vscode";
+import { getTemplateTags } from "../../../utils/galleryTags";
 
 function CopyButton({ url, colorMode }: { url: string; colorMode: string }) {
   const copySVG = useBaseUrl("/img/purpleCopy.svg");
@@ -153,13 +154,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
     linkInMenu: "",
     overflowMenuButton: "",
   };
-  const tags = [
-    ...user.tags,
-    ...(user.languages || []),
-    ...(user.frameworks || []),
-    ...(user.azureServices || []),
-    ...(user.IaC || []),
-  ];
+  const tags = getTemplateTags(user);
   return (
     <div>
       <div

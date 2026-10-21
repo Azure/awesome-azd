@@ -5,26 +5,8 @@
 
 import type { Extension } from "../data/extensionTypes";
 import type { TagType, User } from "../data/tags";
+import { getTemplateTags, getExtensionTags } from "./galleryTags";
 import { splitAuthors } from "./jsUtils";
-
-export function getTemplateTags(template: User): TagType[] {
-  return [
-    ...(template.tags || []),
-    ...(template.languages || []),
-    ...(template.frameworks || []),
-    ...(template.azureServices || []),
-    ...(template.IaC || []),
-  ];
-}
-
-export function getExtensionTags(extension: Extension): TagType[] {
-  return [
-    ...extension.tags,
-    ...extension.capabilities.map(
-      (capability): TagType => `ext-${capability}`,
-    ),
-  ];
-}
 
 export function filterTemplates(
   templates: User[],

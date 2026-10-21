@@ -14,7 +14,6 @@ import {
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import {
   Card,
-  makeStyles,
   CardHeader,
   CardFooter,
   Button,
@@ -39,29 +38,6 @@ import ShowcaseCardPanel from "../ShowcaseCardPanel/index";
 import ShowcaseCardTag from "../ShowcaseTag/index";
 import { useColorMode } from "@docusaurus/theme-common";
 
-const useStyles = makeStyles({
-  cardTag: {
-    fontSize: "10px",
-    color: "#606060",
-  },
-  cardFooterQuickUse: {
-    fontSize: "10px",
-    color: "#424242",
-    fontWeight: "600",
-  },
-  cardTagContainer: {
-    paddingTop: "10px",
-    marginTop: "auto",
-    width: "100%",
-  },
-  cardTagsWrapper: {
-    display: "flex",
-    overflow: "hidden",
-    gap: "4px",
-    flexFlow: "wrap",
-  },
-});
-
 const lightTheme: PartialTheme = {
   semanticColors: {
     bodyBackground: "white",
@@ -77,7 +53,6 @@ const darkTheme: PartialTheme = {
 };
 
 function ShowcaseCard({ user }: { user: User }): JSX.Element {
-  const styles = useStyles();
   const title = user.title;
   const tags = getTemplateTags(user);
   const source = user.source;
@@ -102,20 +77,13 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
     React.useCallback(
       (props, defaultRender) => (
         <>
-          <div
-            style={{
-              display: "flex",
-              paddingLeft: "24px",
-              alignItems: "center",
-              flex: "8",
-            }}
-          >
+          <div className={styleCSS.panelHeader}>
             <img
               src={headerLogo}
               alt="Logo"
               width={16}
               height={16}
-              style={{ margin: "5px 0px", fontWeight: "550" }}
+              className={styleCSS.panelHeaderLogo}
             />
             <div className={styleCSS.headerTextCardPanel}>{headerText}</div>
             {tags.includes("new") ? (
@@ -144,14 +112,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
     <Card key={title} className={styleCSS.card}>
       <CardHeader
         header={
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              flex: "1",
-            }}
-          >
+          <div className={styleCSS.cardHeaderContent}>
             <img
               src={headerLogo}
               width={16}
@@ -179,28 +140,11 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
         }
       />
       <CardPreview className={styleCSS.cardBreakLine} />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          position: "relative",
-          maxHeight: "inherit",
-        }}
-        className={styleCSS.cardBody}
-      >
+      <div className={styleCSS.cardBody}>
         <FluentUILink className={styleCSS.cardTitle} onClick={openPanel} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPanel(); } }}>
           {title}
         </FluentUILink>
-        <div
-          style={{
-            verticalAlign: "middle",
-            display: "flex",
-            paddingTop: "2px",
-            alignItems: "center",
-            columnGap: "3px",
-            overflow: "hidden",
-          }}
-        >
+        <div className={styleCSS.cardByline}>
           <div className={styleCSS.cardTextBy}>by</div>
           <ShowcaseMultipleAuthors
             key={"author_" + title}
@@ -223,8 +167,8 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
             <ShowcaseCardPanel user={user} />
           </Panel>
         </ThemeProvider>
-        <div className={styles.cardTagContainer}>
-          <div className={`${styles.cardTag} ${styles.cardTagsWrapper}`}>
+        <div className={styleCSS.cardTagContainer}>
+          <div className={styleCSS.cardTagsWrapper}>
             <ShowcaseCardTag key={title} tags={tags} moreTag={true} />
           </div>
         </div>
@@ -256,7 +200,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
             </Button>
           </PopoverTrigger>
 
-          <PopoverSurface style={{ padding: "5px", fontSize: "12px" }}>
+          <PopoverSurface className={styleCSS.copyFeedback}>
             <div>Copied!</div>
           </PopoverSurface>
         </Popover>

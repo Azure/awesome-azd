@@ -37,6 +37,29 @@
 .cardBody {
   flex: 1 0 auto;
   padding: 16px 20px 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  max-height: inherit;
+}
+
+.cardHeaderContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.panelHeader {
+  display: flex;
+  padding-left: 24px;
+  align-items: center;
+  flex: 8;
+}
+
+.panelHeaderLogo {
+  margin: 5px 0;
+  font-weight: 550;
 }
 
 .headerText {
@@ -72,6 +95,30 @@
   color: var(--site-color-text-muted);
 }
 
+.cardByline {
+  vertical-align: middle;
+  display: flex;
+  padding-top: 2px;
+  align-items: center;
+  column-gap: 3px;
+  overflow: hidden;
+}
+
+.cardTagContainer {
+  padding-top: 10px;
+  margin-top: auto;
+  width: 100%;
+}
+
+.cardTagsWrapper {
+  font-size: 10px;
+  color: #606060;
+  display: flex;
+  overflow: hidden;
+  gap: 4px;
+  flex-flow: wrap;
+}
+
 .input {
   flex: 1;
   border: 1px solid var(--site-color-border) !important;
@@ -93,6 +140,12 @@
 
 .copyIconButton:hover {
   background-color: var(--ifm-color-primary-dark) !important;
+}
+
+/* Outrank Fluent UI defaults without depending on portal ancestors. */
+.copyFeedback.copyFeedback {
+  padding: 5px;
+  font-size: 12px;
 }
 
 .cardTitle {

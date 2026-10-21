@@ -56,14 +56,7 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
     <Card key={extension.id} className={styleCSS.card}>
       <CardHeader
         header={
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              flex: "1",
-            }}
-          >
+          <div className={styleCSS.cardHeaderContent}>
             <img
               src={headerLogo}
               width={16}
@@ -85,24 +78,14 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
         >
           {extension.displayName}
         </FluentUILink>
-        <div
-          style={{
-            verticalAlign: "middle",
-            display: "flex",
-            paddingTop: "2px",
-            alignItems: "center",
-            columnGap: "3px",
-            overflow: "hidden",
-          }}
-        >
+        <div className={styleCSS.cardByline}>
           <div className={styleCSS.cardTextBy}>by</div>
           {extension.authorUrl ? (
             <FluentUILink
-              className={styleCSS.authorLink}
+              className={`${styleCSS.authorLink} ${styleCSS.linkedAuthor}`}
               href={extension.authorUrl}
               target="_blank"
               rel="noopener noreferrer"
-              style={{ fontSize: "12px", flexShrink: 0 }}
             >
               {extension.author}
             </FluentUILink>
@@ -116,9 +99,8 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
               rel="noopener noreferrer"
               className={styleCSS.cardMetaLink}
               title="Documentation website"
-              style={{ fontSize: "12px", flexShrink: 0, marginLeft: "auto" }}
             >
-              <Globe16Regular style={{ verticalAlign: "middle", marginRight: "2px" }} />
+              <Globe16Regular className={styleCSS.websiteIcon} />
               <span>Website</span>
             </FluentUILink>
           )}
@@ -134,11 +116,7 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
                   appearance="outline"
                   size="medium"
                   color={capInfo.color}
-                  style={{
-                    alignContent: "center",
-                    fontSize: "10px",
-                    width: "auto",
-                  }}
+                  className={styleCSS.cardBadge}
                 >
                   {capInfo.label}
                 </Badge>
@@ -163,11 +141,7 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
                     size="medium"
                     color="informative"
                     title={tagInfo.description}
-                    style={{
-                      alignContent: "center",
-                      fontSize: "10px",
-                      width: "auto",
-                    }}
+                    className={styleCSS.cardBadge}
                   >
                     {tagInfo.label}
                   </Badge>
@@ -200,7 +174,7 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
               <img src={copyIcon} width={20} height={20} alt="Copy" />
             </Button>
           </PopoverTrigger>
-          <PopoverSurface style={{ padding: "5px", fontSize: "12px" }}>
+          <PopoverSurface className={styleCSS.copyFeedback}>
             <div role="status" aria-live="polite">Copied!</div>
           </PopoverSurface>
         </Popover>

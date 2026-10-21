@@ -4,10 +4,7 @@
  */
 
 import React, { useState, useMemo, useEffect } from "react";
-import {
-  UserState,
-  InputValue,
-} from "../components/gallery/ShowcaseTemplateSearch";
+import type { UserState } from "../components/gallery/ShowcaseTemplateSearch";
 import { Tags, type User, type TagType } from "../data/tags";
 import { sortedUsers, unsortedUsers } from "../data/users";
 import { sortedExtensions, unsortedExtensions } from "../data/extensions";
@@ -465,11 +462,11 @@ export default function ShowcaseCardPage({
               <Text size={400}>{itemLabelPlural}</Text>
             </>
           )}
-          {InputValue != null ? (
+          {searchName != null ? (
             <>
               <Text size={400}>for</Text>
               <Text size={400} weight="bold">
-                '{InputValue}'
+                '{searchName}'
               </Text>
             </>
           ) : null}
@@ -511,9 +508,15 @@ export default function ShowcaseCardPage({
       ) : (
         <>
           {isExtensions ? (
-            <ShowcaseExtensionCards filteredExtensions={paginatedExtensions} />
+            <ShowcaseExtensionCards
+              filteredExtensions={paginatedExtensions}
+              searchName={searchName}
+            />
           ) : (
-            <ShowcaseCards filteredUsers={paginatedTemplates} />
+            <ShowcaseCards
+              filteredUsers={paginatedTemplates}
+              searchName={searchName}
+            />
           )}
           {totalPages > 1 && (
             <PaginationControls

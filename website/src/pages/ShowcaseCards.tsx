@@ -12,12 +12,19 @@ import ShowcaseSurveyCard from "../components/gallery/ShowcaseSurveyCard";
 
 export default function ShowcaseCards({
   filteredUsers,
+  searchName = null,
 }: {
   filteredUsers: User[];
+  searchName?: string | null;
 }) {
   const len = filteredUsers ? filteredUsers.length : 0;
   if (len === 0) {
-    return <ShowcaseEmptyResult id="showcase.usersList.noResult" />;
+    return (
+      <ShowcaseEmptyResult
+        id="showcase.usersList.noResult"
+        searchName={searchName}
+      />
+    );
   }
 
   return (

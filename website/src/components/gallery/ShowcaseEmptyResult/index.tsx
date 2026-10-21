@@ -4,13 +4,18 @@
  */
 
 import React from "react";
-import { InputValue } from "../ShowcaseTemplateSearch";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { Text, Link as FluentUILink } from "@fluentui/react-components";
 import styles from "./styles.module.css";
 import { Card } from "@fluentui/react-components";
 
-export default function ShowcaseEmptyResult({ id }: { id: string }) {
+export default function ShowcaseEmptyResult({
+  id,
+  searchName,
+}: {
+  id: string;
+  searchName: string | null;
+}) {
   return (
     <div
       id={id}
@@ -30,10 +35,10 @@ export default function ShowcaseEmptyResult({ id }: { id: string }) {
           gap: "10px",
         }}
       >
-        {InputValue != null ? (
+        {searchName != null ? (
           <>
             <Text size={500} weight="bold" align="center">
-              No templates found for '{InputValue}'
+              No templates found for '{searchName}'
             </Text>
             <Text size={400} align="center">
               Try a different search term or browse all templates.

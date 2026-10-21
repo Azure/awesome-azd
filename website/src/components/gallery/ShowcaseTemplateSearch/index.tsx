@@ -28,7 +28,6 @@ const PLACEHOLDERS: Record<string, string> = {
   extensions: "Search for an azd extension, capability, or author...",
 };
 const ADD_URL = "https://aka.ms/azd";
-export var InputValue: string | null = null;
 
 export type UserState = {
   scrollTopPosition: number;
@@ -59,10 +58,6 @@ function FilterBar(): React.JSX.Element {
   useEffect(() => {
     setValue(readSearchName(location.search));
   }, [location]);
-  // InputValue reflects the committed (URL-based) search, not the in-progress
-  // typed text. Consumers use it to display "No results for 'X'" which should
-  // match the active filter applied to the gallery.
-  InputValue = readSearchName(location.search);
   const contentType = getContentType(location);
   const placeholder = PLACEHOLDERS[contentType] || PLACEHOLDERS.templates;
 

@@ -250,11 +250,11 @@ If the PR makes changes to `website/static/templates.json`, perform the followin
    **Trusted Authors:**
    - paulyuk
 
-   When mentioning people in PR comments, write mentions as plain text (for example, @v-xuto). Do not wrap mentions in inline code formatting, because that prevents GitHub notifications.
+   When mentioning people in PR comments, write mentions as plain text (for example, @HarveyLink). Do not wrap mentions in inline code formatting, because that prevents GitHub notifications.
 
    **For Community Templates (tags do NOT contain "msft"):**
-   - @ mention the manual test team member @v-xuto in a PR comment to request testing of the template
-   - Example comment: "@v-xuto Please test this community template to ensure it works as expected."
+   - @ mention the manual test team member @HarveyLink in a PR comment to request testing of the template
+   - Example comment: "@HarveyLink Please test this community template to ensure it works as expected."
    - Do not suppress this request. Write the mention as plain text, without inline code or quotation marks, so it sends a valid notification.
    
    **For Microsoft Templates (tags contain "msft"):**

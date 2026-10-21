@@ -28,6 +28,10 @@ import ShowcaseCardTag from "../ShowcaseTag/index";
 import { useColorMode } from "@docusaurus/theme-common";
 import { getOpenInVSCodeUrl } from "../../../utils/vscode";
 import { getTemplateTags } from "../../../utils/galleryTags";
+import {
+  getTemplateIdentifier,
+  formatAzdInitCommand,
+} from "../../../utils/templateCommands";
 
 function CopyButton({ url, colorMode }: { url: string; colorMode: string }) {
   const copySVG = useBaseUrl("/img/purpleCopy.svg");
@@ -100,13 +104,8 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
     { toggle: toggleIsPopupVisibleAzureCalculator },
   ] = useBoolean(true);
 
-  let templateURL = user.source
-    .replace("https://github.com/", "")
-    .toLowerCase();
-  if (templateURL.includes("azure-samples/")) {
-    templateURL = templateURL.replace("azure-samples/", "");
-  }
-  const azdInitCommand = "azd init -t " + templateURL;
+  const templateIdentifier = getTemplateIdentifier(user.source);
+  const azdInitCommand = formatAzdInitCommand(templateIdentifier);
   const openInVSCodeUrl = getOpenInVSCodeUrl(user.source);
   const vsCodeIcon = useBaseUrl("/img/vscode-white.svg");
   let chevronSVG = useBaseUrl("/img/leftChevron.svg");
@@ -403,7 +402,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                     >
                       Template Identifier
                     </div>
-                    <CopyButton colorMode={colorMode} url={templateURL} />
+                    <CopyButton colorMode={colorMode} url={templateIdentifier} />
                   </div>
                   <div
                     className={styles.terminalSquareBottomColor}
@@ -423,7 +422,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                         fontWeight: "400",
                       }}
                     >
-                      {templateURL}
+                      {templateIdentifier}
                     </div>
                   </div>
                 </Popup>

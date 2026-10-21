@@ -7,6 +7,10 @@ import React from "react";
 import styleCSS from "./styles.module.css";
 import { type User } from "../../../data/tags";
 import { getTemplateTags } from "../../../utils/galleryTags";
+import {
+  getTemplateIdentifier,
+  formatAzdInitCommand,
+} from "../../../utils/templateCommands";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import {
   Card,
@@ -78,11 +82,8 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
   const tags = getTemplateTags(user);
   const source = user.source;
   const star = useBaseUrl("/img/Sparkle.svg");
-  let azdInitCommand =
-    "azd init -t " + source.replace("https://github.com/", "").toLowerCase();
-  if (azdInitCommand.includes("azure-samples/")) {
-    azdInitCommand = azdInitCommand.replace("azure-samples/", "");
-  }
+  const templateIdentifier = getTemplateIdentifier(source);
+  const azdInitCommand = formatAzdInitCommand(templateIdentifier);
   let headerLogo = useBaseUrl("/img/Community.svg");
   let headerText = "Community Authored";
 

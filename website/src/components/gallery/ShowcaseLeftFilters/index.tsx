@@ -19,7 +19,7 @@ import { unsortedExtensions } from "../../../data/extensions";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
 import { useHistory } from "@docusaurus/router";
-import { prepareUserState } from "@site/src/pages/index";
+import { prepareUserState } from "@site/src/utils/galleryNavigation";
 import { getContentType } from "@site/src/utils/contentType";
 import { getTemplateTags, getExtensionTags } from "@site/src/utils/galleryTags";
 

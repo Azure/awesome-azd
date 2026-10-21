@@ -5,15 +5,16 @@
 
 import React, { useState, useEffect } from "react";
 import { SearchBox } from "@fluentui/react/lib/SearchBox";
-import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { Text, Link as FluentUILink } from "@fluentui/react-components";
 import { galleryTemplates as allTemplates } from "@site/src/data/users";
 import { getContentType } from "@site/src/utils/contentType";
+import { prepareUserState } from "@site/src/utils/galleryNavigation";
 import styles from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useColorMode } from "@docusaurus/theme-common";
 
+export type { UserState } from "@site/src/utils/galleryNavigation";
 
 const TITLES: Record<string, string> = {
   templates: "From code to cloud in minutes",
@@ -28,22 +29,6 @@ const PLACEHOLDERS: Record<string, string> = {
   extensions: "Search for an azd extension, capability, or author...",
 };
 const ADD_URL = "https://aka.ms/azd";
-
-export type UserState = {
-  scrollTopPosition: number;
-  focusedElementId: string | undefined;
-};
-
-function prepareUserState(): UserState | undefined {
-  if (ExecutionEnvironment.canUseDOM) {
-    return {
-      scrollTopPosition: window.scrollY,
-      focusedElementId: document.activeElement?.id,
-    };
-  }
-
-  return undefined;
-}
 
 const SearchNameQueryKey = "name";
 

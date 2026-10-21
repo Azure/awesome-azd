@@ -6,16 +6,14 @@
 import React, { useState, useEffect } from "react";
 import Layout from "@theme/Layout";
 import ShowcaseLeftFilters from "../../components/gallery/ShowcaseLeftFilters";
-import ShowcaseTemplateSearch, {
-  UserState,
-} from "../../components/gallery/ShowcaseTemplateSearch";
+import ShowcaseTemplateSearch from "../../components/gallery/ShowcaseTemplateSearch";
 import {
   webLightTheme,
   webDarkTheme,
   FluentProvider,
 } from "@fluentui/react-components";
 import { initializeIcons } from "@fluentui/react/lib/Icons";
-import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
+import type { UserState } from "@site/src/utils/galleryNavigation";
 import { type TagType } from "@site/src/data/tags";
 import { TagList } from "@site/src/data/users";
 import styles from "../styles.module.css";
@@ -25,16 +23,7 @@ import { useLocation } from "@docusaurus/router";
 
 initializeIcons();
 
-export function prepareUserState(): UserState | undefined {
-  if (ExecutionEnvironment.canUseDOM) {
-    return {
-      scrollTopPosition: window.scrollY,
-      focusedElementId: document.activeElement?.id,
-    };
-  }
-
-  return undefined;
-}
+export { prepareUserState } from "@site/src/utils/galleryNavigation";
 
 const BackToTopButton = () => {
   const scrollToTop = () => {

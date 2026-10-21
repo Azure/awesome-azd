@@ -4,7 +4,6 @@
  */
 
 import React, { useState, useMemo, useEffect } from "react";
-import type { UserState } from "../components/gallery/ShowcaseTemplateSearch";
 import { Tags, type User, type TagType } from "../data/tags";
 import { sortedUsers, unsortedUsers } from "../data/users";
 import { sortedExtensions, unsortedExtensions } from "../data/extensions";
@@ -36,7 +35,11 @@ import {
   getSortedExtensions,
 } from "@site/src/utils/gallerySorting";
 import { getTemplateTags, getExtensionTags } from "@site/src/utils/galleryTags";
-import { prepareUserState } from "./index";
+import {
+  prepareUserState,
+  restoreUserState,
+  type UserState,
+} from "@site/src/utils/galleryNavigation";
 import { Dismiss20Filled } from "@fluentui/react-icons";
 
 const TagQueryStringKey2 = "tags";
@@ -53,16 +56,6 @@ function replaceSearchTags(search: string, newTags: TagType[]) {
   searchParams.delete(TagQueryStringKey2);
   newTags.forEach((tag) => searchParams.append(TagQueryStringKey2, tag));
   return searchParams.toString();
-}
-
-function restoreUserState(userState: UserState | null) {
-  const { scrollTopPosition, focusedElementId } = userState ?? {
-    scrollTopPosition: 0,
-    focusedElementId: undefined,
-  };
-  // @ts-expect-error: if focusedElementId is undefined it returns null
-  document.getElementById(focusedElementId)?.focus();
-  window.scrollTo({ top: scrollTopPosition });
 }
 
 const SearchNameQueryKey = "name";

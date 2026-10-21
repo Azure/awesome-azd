@@ -7971,5 +7971,49 @@
       "bicep"
     ],
     "id": "6522cdb6-4c9d-4d77-84dd-746daf408966"
+  },
+    {
+    "title": "LangChain AG-UI Chat with Angular, Hono, and LangGraph on Azure Container Apps",
+    "description": "A streaming AI chat application with generative UI tool components, connecting an Angular (@copilotkit/angular) frontend to a LangGraph Server via the AG-UI protocol and @ag-ui/langgraph on a Hono API. Demonstrates a fully self-hosted deployment on Azure Container Apps using official AG-UI and CopilotKit packages.",
+    "preview": "./templates/images/langchain-ag-ui-angular.png",
+    "authorUrl": "https://github.com/JayChase",
+    "author": "Jay Chase",
+    "source": "https://github.com/JayChase/langchain-ag-ui-angular",
+    "tags": [
+      "community",
+      "new",
+      "ai",
+	  "ag-ui"
+      "gpt",
+      "msal",
+      "enterprisepatterns"
+    ],
+    "languages": [
+      "typescript",
+      "nodejs"
+    ],
+    "frameworks": [
+      "angular",
+      "langchain"
+    ],
+    "azureServices": [
+      "aca",
+      "aifoundry",
+      "openai",
+      "agw",
+      "azuredb-postgreSQL",
+      "rediscache",
+      "keyvault",
+      "vnets",
+      "privateEndpoints",
+      "managedidentity",
+      "appinsights",
+      "loganalytics",
+      "monitor"
+    ],
+    "IaC": [
+      "bicep"
+    ],
+    "id": "8f3c6a92-4e1b-4d7c-9a52-6b8e3d1f0c4a"
   }
 ]

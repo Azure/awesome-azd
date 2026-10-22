@@ -4,9 +4,10 @@
  */
 
 import React, { useState, useMemo, useEffect } from "react";
-import { Tags, type TagType } from "../data/tags";
+import { Tags, type User, type TagType } from "../data/tags";
 import { sortedUsers, unsortedUsers } from "../data/users";
 import { sortedExtensions, unsortedExtensions } from "../data/extensions";
+import type { Extension } from "../data/extensionTypes";
 import {
   Text,
   Combobox,
@@ -42,6 +43,10 @@ import {
 } from "@site/src/utils/galleryNavigation";
 import { readSearchName, clearSearchFilters } from "@site/src/utils/galleryQuery";
 import { Dismiss20Filled } from "@fluentui/react-icons";
+
+type GalleryItems =
+  | { type: "templates"; items: User[] }
+  | { type: "extensions"; items: Extension[] };
 
 function FilterAppliedBar({
   clearAll,
@@ -265,10 +270,6 @@ export default function ShowcaseCardPage({
   const [selectedOptions, setSelectedOptions] = useState<string[]>([GALLERY_SORT_OPTIONS[2]]);
   const [loading, setLoading] = useState(true);
   const searchName = readSearchName(location.search);
-  const selectedUsers = useMemo(
-    () => getSortedTemplates(unsortedUsers, sortedUsers, selectedOptions[0]),
-    [selectedOptions]
-  );
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 20;
   const history = useHistory();
@@ -292,25 +293,39 @@ export default function ShowcaseCardPage({
     setLoading(false);
   }, [location, selectedOptions]);
 
-  // Template filtering
-  const cards = useMemo(
-    () => filterTemplates(selectedUsers, selectedTags, selectedAuthors, searchName),
-    [selectedUsers, selectedTags, selectedAuthors, searchName]
+  const { type: sortedType, items: sortedItems } = useMemo<GalleryItems>(
+    () => {
+      if (contentType === "extensions") {
+        return {
+          type: contentType,
+          items: getSortedExtensions(unsortedExtensions, sortedExtensions, selectedOptions[0]),
+        };
+      }
+      return {
+        type: contentType,
+        items: getSortedTemplates(unsortedUsers, sortedUsers, selectedOptions[0]),
+      };
+    },
+    [contentType, selectedOptions]
   );
 
-  // Extension filtering
-  const extensionCards = useMemo(
-    () => filterExtensions(
-      getSortedExtensions(unsortedExtensions, sortedExtensions, selectedOptions[0]),
-      selectedTags,
-      selectedAuthors,
-      searchName
-    ),
-    [selectedTags, selectedAuthors, searchName, selectedOptions]
+  const { type: activeType, items: activeItems } = useMemo<GalleryItems>(
+    () => {
+      if (sortedType === "extensions") {
+        return {
+          type: sortedType,
+          items: filterExtensions(sortedItems, selectedTags, selectedAuthors, searchName),
+        };
+      }
+      return {
+        type: sortedType,
+        items: filterTemplates(sortedItems, selectedTags, selectedAuthors, searchName),
+      };
+    },
+    [sortedType, sortedItems, selectedTags, selectedAuthors, searchName]
   );
 
-  const isExtensions = contentType === "extensions";
-  const activeItems = isExtensions ? extensionCards : cards;
+  const isExtensions = activeType === "extensions";
   const totalItems = activeItems ? activeItems.length : 0;
 
   // Reset on navigation and sort selection, even when their values are unchanged.
@@ -323,23 +338,19 @@ export default function ShowcaseCardPage({
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
-  // Paginated items
-  const paginatedTemplates = cards.slice(startIndex, endIndex);
-  const paginatedExtensions = extensionCards.slice(startIndex, endIndex);
-
   useEffect(() => {
     const unionTags = new Set<TagType>();
-    if (isExtensions) {
-      extensionCards.forEach((ext) => {
+    if (activeType === "extensions") {
+      activeItems.forEach((ext) => {
         getExtensionTags(ext).forEach((tag) => unionTags.add(tag));
       });
     } else {
-      cards.forEach((user) => {
+      activeItems.forEach((user) => {
         getTemplateTags(user).forEach((tag) => unionTags.add(tag));
       });
     }
     setActiveTags(Array.from(unionTags));
-  }, [cards, extensionCards, isExtensions]);
+  }, [activeItems, activeType]);
 
   const sortByOnSelect = (event, data) => {
     setLoading(true);
@@ -423,14 +434,14 @@ export default function ShowcaseCardPage({
         <Spinner labelPosition="below" label="Loading..." />
       ) : (
         <>
-          {isExtensions ? (
+          {activeType === "extensions" ? (
             <ShowcaseExtensionCards
-              filteredExtensions={paginatedExtensions}
+              filteredExtensions={activeItems.slice(startIndex, endIndex)}
               searchName={searchName}
             />
           ) : (
             <ShowcaseCards
-              filteredUsers={paginatedTemplates}
+              filteredUsers={activeItems.slice(startIndex, endIndex)}
               searchName={searchName}
             />
           )}

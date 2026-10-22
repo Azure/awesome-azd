@@ -26,6 +26,32 @@
   max-height: 100%;
 }
 
+.featureTitle {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase500);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightBase500);
+}
+
+.featureDescription {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--lineHeightBase300);
+}
+
+.card .featureLink.featureLink {
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase400);
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--lineHeightBase400);
+  color: #0369A1;
+}
+
+[data-theme="dark"] .card .featureLink.featureLink {
+  color: #38BDF8;
+}
+
 [data-theme="dark"] .card {
   background-color: #1A1A1A;
   color: #E7E5E4;

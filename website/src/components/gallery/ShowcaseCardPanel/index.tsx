@@ -22,6 +22,7 @@ import {
   Callout,
   Text,
   DirectionalHint,
+  type ICalloutContentStyles,
 } from "@fluentui/react";
 import ShowcaseMultipleAuthors from "../ShowcaseMultipleAuthors/index";
 import ShowcaseCardTag from "../ShowcaseTag/index";
@@ -32,6 +33,21 @@ import {
   getTemplateIdentifier,
   formatAzdInitCommand,
 } from "../../../utils/templateCommands";
+
+const lightCalloutStyles: Partial<ICalloutContentStyles> = {
+  calloutMain: {
+    padding: "3px 10px",
+  },
+};
+
+const darkCalloutStyles: Partial<ICalloutContentStyles> = {
+  beak: { background: "#292929" },
+  beakCurtain: { background: "#292929" },
+  calloutMain: {
+    background: "transparent",
+    padding: "3px 10px",
+  },
+};
 
 function CopyButton({ url, colorMode }: { url: string; colorMode: string }) {
   const copySVG = useBaseUrl("/img/purpleCopy.svg");
@@ -45,19 +61,13 @@ function CopyButton({ url, colorMode }: { url: string; colorMode: string }) {
       <DefaultButton
         id={buttonId}
         className={styles.purple}
-        style={{
-          padding: "0px",
-          minHeight: "20px",
-          borderColor: "transparent",
-          backgroundColor: "transparent",
-        }}
         onClick={() => {
           toggleIsCalloutVisible();
           navigator.clipboard.writeText(url);
         }}
       >
         <img src={copySVG} height={20} alt="Copy" />
-        <div style={{ fontSize: "12px" }}>Copy</div>
+        <div className={styles.copyLabel}>Copy</div>
       </DefaultButton>
       {isCalloutVisible && (
         <Callout
@@ -69,22 +79,7 @@ function CopyButton({ url, colorMode }: { url: string; colorMode: string }) {
           onDismiss={toggleIsCalloutVisible}
           setInitialFocus
           directionalHint={DirectionalHint.topCenter}
-          styles={
-            colorMode != "dark"
-              ? {
-                  calloutMain: {
-                    padding: "3px 10px",
-                  },
-                }
-              : {
-                  beak: { background: "#292929" },
-                  beakCurtain: { background: "#292929" },
-                  calloutMain: {
-                    background: "transparent",
-                    padding: "3px 10px",
-                  },
-                }
-          }
+          styles={colorMode != "dark" ? lightCalloutStyles : darkCalloutStyles}
         >
           <Text variant="small">Copied</Text>
         </Callout>
@@ -155,16 +150,8 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
   };
   const tags = getTemplateTags(user);
   return (
-    <div>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          columnGap: "5px",
-          padding: "10px 0",
-          flexWrap: "wrap",
-        }}
-      >
+    <div className={styles.panelContent}>
+      <div className={styles.authorRow}>
         <div className={styles.cardDescription}>by</div>
         <ShowcaseMultipleAuthors
           key={"author_" + user.title}
@@ -178,26 +165,12 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
           href={user.source}
           target="_blank"
           rel="noopener noreferrer"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            columnGap: "5px",
-          }}
-          className={styles.color}
+          className={`${styles.color} ${styles.sourceLink}`}
         >
           View in GitHub
         </FluentUILink>
       </div>
-      <div
-        className={styles.cardTag}
-        style={{
-          display: "flex",
-          overflow: "hidden",
-          columnGap: "5px",
-          flexFlow: "wrap",
-          padding: "5px 0",
-        }}
-      >
+      <div className={styles.cardTag}>
         <ShowcaseCardTag
           key={"tag_" + user.title}
           tags={tags}
@@ -207,49 +180,22 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
       <Pivot
         aria-label="Template Details and Legal"
         styles={pivotStyles}
-        style={{ paddingTop: "20px" }}
+        className={styles.detailsTabs}
       >
-        <PivotItem
-          style={{
-            fontSize: "14px",
-          }}
-          headerText="Template Details"
-        >
+        <PivotItem className={styles.detailsTab} headerText="Template Details">
           <Label>
-            <div
-              className={styles.textColor}
-              style={{
-                fontSize: "14px",
-                fontWeight: "400",
-              }}
-            >
+            <div className={`${styles.textColor} ${styles.bodyText}`}>
               {user.description}
             </div>
             <div>
-              <div
-                className={styles.borderBottomColor}
-                style={{
-                  display: "flex",
-                  paddingTop: "30px",
-                }}
-              >
+              <div className={styles.borderBottomColor}>
                 <div
-                  className={styles.textColor}
-                  style={{
-                    fontSize: "14px",
-                    flex: "1",
-                  }}
+                  className={`${styles.textColor} ${styles.sectionTitle}`}
                 >
                   Quick Use
                 </div>
                 <DefaultButton
-                  style={{
-                    backgroundColor: "transparent",
-                    borderColor: "transparent",
-                    minWidth: "0px",
-                    padding: "0px",
-                    height: "20px",
-                  }}
+                  className={styles.sectionToggle}
                   onClick={toggleIsPopupVisibleTemplateDetails}
                   aria-label="Toggle template details"
                 >
@@ -264,76 +210,33 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
               {isPopupVisibleTemplateDetails && (
                 <Popup>
                   <div
-                    className={styles.textColor}
-                    style={{
-                      fontSize: "14px",
-                      fontWeight: "400",
-                      padding: "10px 0",
-                    }}
+                    className={`${styles.textColor} ${styles.helpText}`}
                   >
                     If you already have the Azure Developer CLI installed on
                     your machine, using this template is as simple as running
                     this command in a new directory.
                   </div>
-                  <div
-                    className={styles.terminalSquareTopColor}
-                    style={{
-                      display: "flex",
-                      height: "32px",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
+                  <div className={styles.terminalSquareTopColor}>
                     <div
-                      className={styles.textColor}
-                      style={{
-                        flex: "1",
-                        fontSize: "12px",
-                        paddingLeft: "11px",
-                      }}
+                      className={`${styles.textColor} ${styles.commandTitle}`}
                     >
                       Terminal Command
                     </div>
                     <CopyButton colorMode={colorMode} url={azdInitCommand} />
                   </div>
-                  <div
-                    className={styles.terminalSquareBottomColor}
-                    style={{
-                      height: "46px",
-                      padding: "11px",
-                    }}
-                  >
-                    <div
-                      className={styles.commandColor}
-                      style={{
-                        margin: "auto",
-                        whiteSpace: "nowrap",
-                        overflow: "hidden",
-                        fontFamily: "Consolas, Courier New, Courier, monospace",
-                        fontSize: "14px",
-                        fontWeight: "400",
-                      }}
-                    >
+                  <div className={styles.terminalSquareBottomColor}>
+                    <div className={styles.commandColor}>
                       {azdInitCommand}
                     </div>
                   </div>
-                  <div
-                    style={{
-                      paddingTop: "10px",
-                    }}
-                  >
+                  <div className={styles.alternativeSeparator}>
                     <Separator alignContent="start">
                       Or using VS Code for the Web
                     </Separator>
                   </div>
 
                   <div
-                    className={styles.textColor}
-                    style={{
-                      fontSize: "14px",
-                      fontWeight: "400",
-                      padding: "10px 0",
-                    }}
+                    className={`${styles.textColor} ${styles.helpText}`}
                   >
                     Open this template in VS Code for the Web with azd and other
                     Azure development tools ready to use.
@@ -356,18 +259,13 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                     />
                     <span>Open in VS Code</span>
                   </a>
-                  <div className={styles.extensionSeparator}>
+                  <div className={styles.alternativeSeparator}>
                     <Separator alignContent="start">
                       Or using the azd extension
                     </Separator>
                   </div>
                   <div
-                    className={styles.textColor}
-                    style={{
-                      fontSize: "14px",
-                      fontWeight: "400",
-                      padding: "10px 0",
-                    }}
+                    className={`${styles.textColor} ${styles.helpText}`}
                   >
                     In the template picker, paste this template identifier.{" "}
                     <a
@@ -383,45 +281,16 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                     .
                   </div>
 
-                  <div
-                    className={styles.terminalSquareTopColor}
-                    style={{
-                      display: "flex",
-                      height: "32px",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
+                  <div className={styles.terminalSquareTopColor}>
                     <div
-                      className={styles.textColor}
-                      style={{
-                        flex: "1",
-                        paddingLeft: "11px",
-                        fontSize: "12px",
-                      }}
+                      className={`${styles.textColor} ${styles.commandTitle}`}
                     >
                       Template Identifier
                     </div>
                     <CopyButton colorMode={colorMode} url={templateIdentifier} />
                   </div>
-                  <div
-                    className={styles.terminalSquareBottomColor}
-                    style={{
-                      height: "46px",
-                      padding: "11px",
-                    }}
-                  >
-                    <div
-                      className={styles.commandColor}
-                      style={{
-                        margin: "auto",
-                        whiteSpace: "nowrap",
-                        overflow: "hidden",
-                        fontFamily: "Consolas, Courier New, Courier, monospace",
-                        fontSize: "14px",
-                        fontWeight: "400",
-                      }}
-                    >
+                  <div className={styles.terminalSquareBottomColor}>
+                    <div className={styles.commandColor}>
                       {templateIdentifier}
                     </div>
                   </div>
@@ -429,30 +298,14 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
               )}
             </div>
             <div>
-              <div
-                className={styles.borderBottomColor}
-                style={{
-                  display: "flex",
-                  paddingTop: "30px",
-                }}
-              >
+              <div className={styles.borderBottomColor}>
                 <div
-                  className={styles.textColor}
-                  style={{
-                    fontSize: "14px",
-                    flex: "1",
-                  }}
+                  className={`${styles.textColor} ${styles.sectionTitle}`}
                 >
                   Included in this template
                 </div>
                 <DefaultButton
-                  style={{
-                    backgroundColor: "transparent",
-                    borderColor: "transparent",
-                    minWidth: "0px",
-                    padding: "0px",
-                    height: "20px",
-                  }}
+                  className={styles.sectionToggle}
                   onClick={toggleIsPopupVisibleAzureCalculator}
                   aria-label="Toggle included services"
                 >
@@ -467,12 +320,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
               {IsPopupVisibleAzureCalculator && (
                 <Popup>
                   <div
-                    className={styles.textColor}
-                    style={{
-                      fontSize: "14px",
-                      fontWeight: "400",
-                      padding: "10px 0",
-                    }}
+                    className={`${styles.textColor} ${styles.helpText}`}
                   >
                     The services used in this template are subject to their
                     normal usage fees and charges. Learn more about the cost of
@@ -497,55 +345,26 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
             </div>
           </Label>
         </PivotItem>
-        <PivotItem
-          style={{
-            color: "#424242",
-            fontSize: "14px",
-            fontWeight: "400",
-          }}
-          headerText="Legal"
-        >
+        <PivotItem className={styles.legalTab} headerText="Legal">
           <Label>
-            <div
-              className={styles.textColor}
-              style={{
-                fontSize: "14px",
-                fontWeight: "400",
-              }}
-            >
-              <div
-                style={{
-                  padding: "10px 0",
-                }}
-              >
+            <div className={`${styles.textColor} ${styles.bodyText}`}>
+              <div className={styles.legalParagraph}>
                 Awesome AZD Templates is a place for Azure Developer CLI users
                 to discover open-source Azure Developer CLI templates.
               </div>
-              <div
-                style={{
-                  padding: "10px 0",
-                }}
-              >
+              <div className={styles.legalParagraph}>
                 Please note that each template is licensed by its respective
                 owner (which may or may not be Microsoft) under the agreement
                 which accompanies the template. It is your responsibility to
                 determine what license applies to any template you choose to
                 use.
               </div>
-              <div
-                style={{
-                  padding: "10px 0",
-                }}
-              >
+              <div className={styles.legalParagraph}>
                 Microsoft is not responsible for any non-Microsoft code and does
                 not screen templates included in the Awesome AZD Templates for
                 security, privacy, compatibility, or performance issues.
               </div>
-              <div
-                style={{
-                  padding: "10px 0",
-                }}
-              >
+              <div className={styles.legalParagraph}>
                 The templates included in Awesome AZD Templates are not
                 supported by any Microsoft support program or service. Awesome
                 AZD Templates and any Microsoft-provided templates are provided
@@ -579,21 +398,10 @@ function ShowcaseCardAzureTag({
     return azureService ? (
       <div
         key={index}
-        style={{
-          display: "flex",
-          padding: "5px 0",
-        }}
+        className={styles.serviceRow}
       >
         <div
           className={styles.squareColor}
-          style={{
-            height: "40px",
-            width: "40px",
-            float: "left",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
         >
           <img
             src={
@@ -606,21 +414,13 @@ function ShowcaseCardAzureTag({
             height={20}
           />
         </div>
-        <div style={{ float: "right", height: "40px", paddingLeft: "20px" }}>
+        <div className={styles.serviceContent}>
           <div
-            className={styles.textColor}
-            style={{
-              fontSize: "14px",
-            }}
+            className={`${styles.textColor} ${styles.serviceTitle}`}
           >
             {tagObject.label}
           </div>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
+          <div className={styles.serviceMetadata}>
             <div
               className={styles.serviceMetaLabel}
             >
@@ -635,11 +435,7 @@ function ShowcaseCardAzureTag({
               href={tagObject.url}
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                fontSize: "12px",
-                fontWeight: "400",
-              }}
-              className={styles.color}
+              className={`${styles.color} ${styles.serviceLink}`}
             >
               Learn More
             </a>

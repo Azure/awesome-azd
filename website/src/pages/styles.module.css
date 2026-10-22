@@ -107,6 +107,47 @@
   gap: var(--space-md);
 }
 
+.viewingSortRow {
+  display: flex;
+  align-items: center;
+}
+
+.viewingStatus {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+}
+
+.sortControls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.sortControls .sortCombobox {
+  min-width: unset;
+}
+
+.sortControls .sortInput {
+  width: 130px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 24px 0;
+}
+
+.pagination .paginationEllipsis {
+  padding: 8px;
+}
+
+.pagination .pageButton {
+  min-width: 40px;
+}
+
 .clearAll {
   color: var(--ifm-color-primary);
   cursor: pointer;

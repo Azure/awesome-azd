@@ -24,6 +24,39 @@
   margin-right: 0;
 }
 
+.lastCheckbox {
+  margin-bottom: 7px;
+}
+
+.curatedCheckbox {
+  padding-left: 12px;
+}
+
+.chevronUp {
+  transform: rotate(180deg);
+}
+
+.viewAllItem.viewAllItem {
+  padding: 0;
+}
+
+.viewAllPanel.viewAllPanel {
+  margin: 0;
+}
+
+.viewAllLabel {
+  font-size: 12px;
+}
+
+.filterCollections {
+  padding-bottom: 7px;
+}
+
+.categoryTitle {
+  font-size: 16px;
+  font-weight: 500;
+}
+
 .color {
   color: var(--ifm-color-primary);
 }

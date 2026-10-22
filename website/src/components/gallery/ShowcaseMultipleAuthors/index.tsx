@@ -24,14 +24,6 @@ function ShowcaseMultipleWebsites(
         className={styles.cardAuthorPanel}
         target="_blank"
         rel="noopener noreferrer"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          columnGap: "5px",
-          fontSize: "14px",
-          fontWeight: "400",
-          flexShrink: 0,
-        }}
       >
         {authorName},
       </FluentUILink>
@@ -42,7 +34,6 @@ function ShowcaseMultipleWebsites(
         href={websiteLink}
         target="_blank"
         rel="noopener noreferrer"
-        style={{ flexShrink: 0, fontSize: "12px" }}
       >
         {authorName},
       </FluentUILink>
@@ -55,14 +46,6 @@ function ShowcaseMultipleWebsites(
         href={websiteLink}
         target="_blank"
         rel="noopener noreferrer"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          columnGap: "5px",
-          fontSize: "14px",
-          fontWeight: "400",
-          flexShrink: 0,
-        }}
       >
         {authorName}
       </FluentUILink>
@@ -73,7 +56,6 @@ function ShowcaseMultipleWebsites(
         href={websiteLink}
         target="_blank"
         rel="noopener noreferrer"
-        style={{ flexShrink: 0, fontSize: "12px" }}
       >
         {authorName}
       </FluentUILink>
@@ -119,14 +101,6 @@ export default function ShowcaseMultipleAuthors({
       href={websites}
       target="_blank"
       rel="noopener noreferrer"
-      style={{
-        display: "flex",
-        alignItems: "center",
-        columnGap: "5px",
-        fontSize: "14px",
-        fontWeight: "400",
-        flexShrink: 0,
-      }}
     >
       {authors}
     </FluentUILink>
@@ -136,7 +110,6 @@ export default function ShowcaseMultipleAuthors({
       href={websites}
       target="_blank"
       rel="noopener noreferrer"
-      style={{ fontSize: "12px", flexShrink: 0 }}
     >
       {authors}
     </FluentUILink>

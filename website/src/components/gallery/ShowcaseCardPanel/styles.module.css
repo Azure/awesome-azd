@@ -12,6 +12,11 @@
 .cardTag {
   font-size: 10px;
   color: #606060;
+  display: flex;
+  overflow: hidden;
+  column-gap: 5px;
+  flex-flow: wrap;
+  padding: 5px 0;
 }
 
 .serviceMetaLabel {
@@ -33,24 +38,44 @@
 
 .squareColor {
   background-color: #f5f5f5;
+  height: 40px;
+  width: 40px;
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .terminalSquareTopColor {
   background-color: #f5f5f5;
   border: 1px solid #e0e0e0;
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
 }
 
 .terminalSquareBottomColor {
   color: #ffffff;
   border: 1px solid #e0e0e0;
+  height: 46px;
+  padding: 11px;
 }
 
 .borderBottomColor {
   border-bottom: 1px solid #d1d1d1;
+  display: flex;
+  padding-top: 30px;
 }
 
 .commandColor {
   color: #616161;
+  margin: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: Consolas, "Courier New", Courier, monospace;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .color {
@@ -76,8 +101,104 @@
   object-fit: contain;
 }
 
-.extensionSeparator {
+.alternativeSeparator {
   padding-top: 10px;
+}
+
+.authorRow {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  padding: 10px 0;
+  flex-wrap: wrap;
+}
+
+.panelContent .sourceLink {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+
+.detailsTabs.detailsTabs {
+  padding-top: 20px;
+}
+
+.detailsTab,
+.legalTab {
+  font-size: 14px;
+}
+
+.legalTab {
+  color: #424242;
+  font-weight: 400;
+}
+
+.bodyText,
+.helpText {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.helpText,
+.legalParagraph {
+  padding: 10px 0;
+}
+
+.sectionTitle {
+  font-size: 14px;
+  flex: 1;
+}
+
+/* Preserve the former inline overrides in Fluent UI button states. */
+.panelContent .purple.purple,
+.panelContent .sectionToggle.sectionToggle {
+  background-color: transparent;
+  border-color: transparent;
+  padding: 0;
+}
+
+.panelContent .purple {
+  min-height: 20px;
+}
+
+.panelContent .sectionToggle {
+  min-width: 0;
+  height: 20px;
+}
+
+.copyLabel {
+  font-size: 12px;
+}
+
+.commandTitle {
+  flex: 1;
+  font-size: 12px;
+  padding-left: 11px;
+}
+
+.serviceRow {
+  display: flex;
+  padding: 5px 0;
+}
+
+.serviceContent {
+  float: right;
+  height: 40px;
+  padding-left: 20px;
+}
+
+.serviceTitle {
+  font-size: 14px;
+}
+
+.serviceMetadata {
+  display: flex;
+  align-items: center;
+}
+
+.serviceLink {
+  font-size: 12px;
+  font-weight: 400;
 }
 
 .purple {

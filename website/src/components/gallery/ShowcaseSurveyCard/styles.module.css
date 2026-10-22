@@ -16,6 +16,10 @@
   align-items: center;
 }
 
+.card.dismissed {
+  display: none;
+}
+
 .text {
   display: flex;
   flex-direction: column;

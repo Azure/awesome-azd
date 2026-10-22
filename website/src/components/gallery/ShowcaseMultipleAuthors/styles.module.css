@@ -5,6 +5,20 @@
 
 /* Keep for future change on light vs dark theme */
 
+.cardAuthor.cardAuthor {
+  flex-shrink: 0;
+  font-size: 12px;
+}
+
+.cardAuthorPanel.cardAuthorPanel {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  font-size: 14px;
+  font-weight: 400;
+  flex-shrink: 0;
+}
+
 .cardAuthor {
   color: #616161 !important;
   text-decoration: underline !important;

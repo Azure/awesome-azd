@@ -3,51 +3,21 @@
  * Licensed under the MIT License.
  */
 
-/* Keep for future change on light vs dark theme */
 .cardBreakLine {
-  border-top: 1px solid var(--site-color-border);
+  composes: cardBreakLine from "../gallery-card.module.css";
 }
 
 .card {
-  background: var(--site-color-surface);
-  border-radius: var(--site-card-radius, 12px);
-  padding: 0;
-  width: 350px;
+  composes: card from "../gallery-card.module.css";
   height: 368px;
-  max-width: 100%;
-  max-height: 100%;
-  min-width: 300px;
-  transition: border-color var(--transition-base), box-shadow var(--transition-base);
-  box-shadow: none;
-  border: 1px solid var(--site-color-border);
-  overflow: hidden;
-}
-
-.card:hover,
-.card:focus-visible {
-  border-color: var(--ifm-color-primary);
-  box-shadow: var(--site-card-shadow-hover);
-}
-
-.card:focus-visible {
-  outline: 2px solid var(--ifm-color-primary);
-  outline-offset: 2px;
 }
 
 .cardBody {
-  flex: 1 0 auto;
-  padding: 16px 20px 0;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  max-height: inherit;
+  composes: cardBody from "../gallery-card.module.css";
 }
 
 .cardHeaderContent {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
+  composes: cardHeaderContent from "../gallery-card.module.css";
 }
 
 .panelHeader {
@@ -63,14 +33,7 @@
 }
 
 .headerText {
-  font-weight: 500;
-  flex: 1;
-  padding-left: 3px;
-  color: var(--site-color-text-muted);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-family: var(--ifm-font-family-base);
+  composes: headerText from "../gallery-card.module.css";
 }
 
 .headerTextCardPanel {
@@ -80,43 +43,26 @@
 }
 
 .cardDescription {
-  font-size: 14px;
-  color: var(--site-color-text);
-  padding-top: 10px;
-  overflow: hidden;
-  display: -webkit-box;
+  composes: cardDescription from "../gallery-card.module.css";
   -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  line-height: 1.5;
 }
 
 .cardTextBy {
-  font-size: 12px;
-  color: var(--site-color-text-muted);
+  composes: cardTextBy from "../gallery-card.module.css";
 }
 
 .cardByline {
-  vertical-align: middle;
-  display: flex;
-  padding-top: 2px;
-  align-items: center;
-  column-gap: 3px;
-  overflow: hidden;
+  composes: cardByline from "../gallery-card.module.css";
 }
 
 .cardTagContainer {
-  padding-top: 10px;
-  margin-top: auto;
-  width: 100%;
+  composes: cardTagContainer from "../gallery-card.module.css";
 }
 
 .cardTagsWrapper {
+  composes: cardTagsWrapper from "../gallery-card.module.css";
   font-size: 10px;
   color: #606060;
-  display: flex;
-  overflow: hidden;
-  gap: 4px;
-  flex-flow: wrap;
 }
 
 .input {
@@ -130,50 +76,20 @@
 }
 
 .copyIconButton {
-  padding: 0px !important;
+  composes: copyIconButton from "../gallery-card.module.css";
   min-height: 20px !important;
   min-width: 23px !important;
-  background-color: var(--ifm-color-primary) !important;
-  border-color: var(--ifm-color-primary) !important;
-  border-radius: 6px !important;
 }
 
-.copyIconButton:hover {
-  background-color: var(--ifm-color-primary-dark) !important;
-}
-
-/* Outrank Fluent UI defaults without depending on portal ancestors. */
-.copyFeedback.copyFeedback {
-  padding: 5px;
-  font-size: 12px;
+.copyFeedback {
+  composes: copyFeedback from "../gallery-card.module.css";
 }
 
 .cardTitle {
-  vertical-align: middle !important;
-  font-size: 15px !important;
-  color: var(--site-color-text) !important;
-  font-weight: 700 !important;
-  line-height: 1.3 !important;
-  font-family: var(--ifm-heading-font-family) !important;
-  overflow: hidden !important;
-  display: -webkit-box !important;
+  composes: cardTitle from "../gallery-card.module.css";
   -webkit-line-clamp: 3 !important;
-  -webkit-box-orient: vertical !important;
   line-clamp: 3 !important;
   max-height: calc(1.3em * 3) !important;
-}
-
-[data-theme="dark"] .cardTitle {
-  color: #E7E5E4 !important;
-}
-
-[data-theme="dark"] .copyIconButton {
-  background-color: #0076B3 !important;
-  border-color: #0076B3 !important;
-}
-
-[data-theme="dark"] .copyIconButton:hover {
-  background-color: #0369A1 !important;
 }
 
 [data-theme="dark"] .input {
@@ -182,34 +98,7 @@
   background-color: #1A1A1A;
 }
 
-[data-theme="dark"] .cardTextBy {
-  color: #A8A29E;
-}
-
-[data-theme="dark"] .cardDescription {
-  color: #D6D3D1;
-}
-
-[data-theme="dark"] .cardBreakLine {
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-[data-theme="dark"] .card {
-  background: var(--site-color-surface);
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-[data-theme="dark"] .card:hover,
-[data-theme="dark"] .card:focus-visible {
-  border-color: var(--ifm-color-primary);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-}
-
 [data-theme="dark"] .headerTextCardPanel {
-  color: #A8A29E;
-}
-
-[data-theme="dark"] .headerText {
   color: #A8A29E;
 }
 

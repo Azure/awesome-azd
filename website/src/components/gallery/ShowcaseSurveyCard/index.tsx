@@ -21,10 +21,10 @@ const surveyCardLocalStorageID = "surveyCardDisplay";
 
 function closeCard(parentDiv) {
   let parent = document.getElementById(parentDiv);
-  parent.style.display = "none";
+  parent.classList.add(styles.dismissed);
   // access localStorage until window is defined
   if (typeof window !== "undefined") {
-    localStorage.setItem(surveyCardLocalStorageID, parent.style.display);
+    localStorage.setItem(surveyCardLocalStorageID, "none");
   }
 }
 

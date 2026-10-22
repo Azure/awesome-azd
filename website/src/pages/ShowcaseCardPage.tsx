@@ -221,15 +221,7 @@ function PaginationControls({
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: "8px",
-        margin: "24px 0",
-      }}
-    >
+    <div className={styles.pagination}>
       <Button
         appearance="outline"
         disabled={currentPage === 1}
@@ -241,7 +233,11 @@ function PaginationControls({
       {getVisiblePages().map((page, index) => {
         if (page === "...") {
           return (
-            <Text key={`ellipsis-${index}`} size={400} style={{ padding: "8px" }}>
+            <Text
+              key={`ellipsis-${index}`}
+              size={400}
+              className={styles.paginationEllipsis}
+            >
               …
             </Text>
           );
@@ -252,7 +248,7 @@ function PaginationControls({
             key={page}
             appearance={currentPage === page ? "primary" : "outline"}
             onClick={() => onPageChange(Number(page))}
-            style={{ minWidth: "40px" }}
+            className={styles.pageButton}
           >
             {page}
           </Button>
@@ -415,19 +411,9 @@ export default function ShowcaseCardPage({
 
   return (
     <>
-      <div
-        className={styles.viewingSortRow}
-        style={{
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
+      <div className={styles.viewingSortRow}>
         <div
-          style={{
-            display: "flex",
-            gap: "4px",
-            flex: 1,
-          }}
+          className={styles.viewingStatus}
           role="status"
           aria-live="polite"
           aria-atomic="true"
@@ -464,17 +450,11 @@ export default function ShowcaseCardPage({
             </>
           ) : null}
         </div>
-        <div
-          style={{
-            display: "flex",
-            gap: "8px",
-            alignItems: "center",
-          }}
-        >
+        <div className={styles.sortControls}>
           <Text size={400}>Sort by: </Text>
           <Combobox
-            style={{ minWidth: "unset" }}
-            input={{ style: { width: "130px" } }}
+            className={styles.sortCombobox}
+            input={{ className: styles.sortInput }}
             defaultValue={GALLERY_SORT_OPTIONS[2]}
             defaultSelectedOptions={[GALLERY_SORT_OPTIONS[2]]}
             aria-label="Sort by"

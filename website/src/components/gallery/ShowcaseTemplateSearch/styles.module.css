@@ -94,6 +94,10 @@
   padding-top: 0;
 }
 
+.searchContainer .extensionDocsLink {
+  padding-left: 3px;
+}
+
 [data-theme="dark"] .heroSubtext {
   color: var(--site-color-text-muted);
 }

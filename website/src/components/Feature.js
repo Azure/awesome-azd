@@ -5,29 +5,13 @@
 
 import React from "react";
 import styles from "./styles.module.css";
-import {
-  Card,
-  makeStyles,
-  Link,
-  CardFooter,
-  CardHeader,
-  typographyStyles,
-} from "@fluentui/react-components";
-import { useColorMode } from "@docusaurus/theme-common";
+import { Card, Link, CardFooter, CardHeader } from "@fluentui/react-components";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-
-const useStyles = makeStyles({
-  subtitle1: typographyStyles.subtitle1,
-  body1: typographyStyles.body1,
-  body2: typographyStyles.body2,
-});
 
 /**
  * Component to render each Feature in HomepageFeatures list
  */
 export default function Feature({ Svg, title, description, link, content }) {
-  const style = useStyles();
-  const { colorMode } = useColorMode();
   return (
     <Card className={styles.card}>
       <CardHeader
@@ -36,17 +20,11 @@ export default function Feature({ Svg, title, description, link, content }) {
         }
       />
       <div className={styles.cardContent}>
-        <div className={style.subtitle1}>{title}</div>
-        <div className={style.body1}>{description}</div>
+        <div className={styles.featureTitle}>{title}</div>
+        <div className={styles.featureDescription}>{description}</div>
       </div>
       <CardFooter>
-        <Link
-          className={style.body2}
-          style={
-            colorMode != "dark" ? { color: "#0369A1" } : { color: "#38BDF8" }
-          }
-          href={link}
-        >
+        <Link className={styles.featureLink} href={link}>
           {content} ➔
         </Link>
       </CardFooter>

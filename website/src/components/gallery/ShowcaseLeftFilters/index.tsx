@@ -58,13 +58,13 @@ function ShowcaseFilterViewAll({
   const chevronUpSmall =
     colorMode != "dark" ? (
       <img
-        style={{ transform: "rotate(180deg)" }}
+        className={styles.chevronUp}
         src={useBaseUrl("/img/smallChevron.svg")}
         width={16} height={16} alt=""
       />
     ) : (
       <img
-        style={{ transform: "rotate(180deg)" }}
+        className={styles.chevronUp}
         src={useBaseUrl("/img/smallChevronDark.svg")}
         width={16} height={16} alt=""
       />
@@ -80,8 +80,7 @@ function ShowcaseFilterViewAll({
         return index == tags.length - 1 ? (
           <div
             key={key}
-            className={styles.checkboxListItem}
-            style={{ marginBottom: "7px" }}
+            className={`${styles.checkboxListItem} ${styles.lastCheckbox}`}
           >
             <ShowcaseTagSelect
               id={id}
@@ -120,8 +119,8 @@ function ShowcaseFilterViewAll({
           multiple
           collapsible
         >
-          <AccordionItem value={value} style={{ padding: "0px" }}>
-            <AccordionPanel style={{ margin: "0px" }}>
+          <AccordionItem value={value} className={styles.viewAllItem}>
+            <AccordionPanel className={styles.viewAllPanel}>
               {tags.slice(6, tags.length).map((tag) => {
                 const tagObject = Tags[tag];
                 const key = `showcase_checkbox_key_${tag}`;
@@ -152,12 +151,7 @@ function ShowcaseFilterViewAll({
                 openItems.includes(value) ? chevronUpSmall : chevronDownSmall
               }
             >
-              <div
-                style={{
-                  fontSize: "12px",
-                }}
-                className={styles.color}
-              >
+              <div className={`${styles.color} ${styles.viewAllLabel}`}>
                 View All
               </div>
             </AccordionHeader>
@@ -321,7 +315,7 @@ export default function ShowcaseLeftFilters({
       multiple
       collapsible
     >
-      <div style={{ paddingBottom: "7px" }}>
+      <div className={styles.filterCollections}>
         <div className={styles.filterTop}>
           <div className={styles.filterBy}>Filter by</div>
           {selectedTags.length > 0 || selectedAuthors.length > 0 ? (
@@ -338,8 +332,7 @@ export default function ShowcaseLeftFilters({
           return (
             <div
               key={key}
-              className={styles.checkboxListItem}
-              style={{ paddingLeft: "12px" }}
+              className={`${styles.checkboxListItem} ${styles.curatedCheckbox}`}
             >
               <ShowcaseTagSelect
                 id={id}
@@ -365,7 +358,7 @@ export default function ShowcaseLeftFilters({
                 className={styles.categoryHeader}
                 expandIconPosition="end"
               >
-                <div style={{ fontSize: "16px", fontWeight: "500" }}>
+                <div className={styles.categoryTitle}>
                   Language
                   <span className={styles.filterCount}>{languageTag.length}</span>
                 </div>
@@ -392,7 +385,7 @@ export default function ShowcaseLeftFilters({
                 className={styles.categoryHeader}
                 expandIconPosition="end"
               >
-                <div style={{ fontSize: "16px", fontWeight: "500" }}>
+                <div className={styles.categoryTitle}>
                   Framework
                   <span className={styles.filterCount}>{frameworkTag.length}</span>
                 </div>
@@ -419,7 +412,7 @@ export default function ShowcaseLeftFilters({
                 className={styles.categoryHeader}
                 expandIconPosition="end"
               >
-                <div style={{ fontSize: "16px", fontWeight: "500" }}>
+                <div className={styles.categoryTitle}>
                   Services
                   <span className={styles.filterCount}>{servicesTag.length}</span>
                 </div>
@@ -446,7 +439,7 @@ export default function ShowcaseLeftFilters({
                 className={styles.categoryHeader}
                 expandIconPosition="end"
               >
-                <div style={{ fontSize: "16px", fontWeight: "500" }}>
+                <div className={styles.categoryTitle}>
                   Database
                   <span className={styles.filterCount}>{databaseTag.length}</span>
                 </div>
@@ -473,7 +466,7 @@ export default function ShowcaseLeftFilters({
                 className={styles.categoryHeader}
                 expandIconPosition="end"
               >
-                <div style={{ fontSize: "16px", fontWeight: "500" }}>
+                <div className={styles.categoryTitle}>
                   Tools
                   <span className={styles.filterCount}>{otherTag.length}</span>
                 </div>
@@ -500,7 +493,7 @@ export default function ShowcaseLeftFilters({
                 className={styles.categoryHeader}
                 expandIconPosition="end"
               >
-                <div style={{ fontSize: "16px", fontWeight: "500" }}>
+                <div className={styles.categoryTitle}>
                   Infrastructure as Code
                   <span className={styles.filterCount}>{infrastructureAsCodeTag.length}</span>
                 </div>
@@ -527,7 +520,7 @@ export default function ShowcaseLeftFilters({
                 className={styles.categoryHeader}
                 expandIconPosition="end"
               >
-                <div style={{ fontSize: "16px", fontWeight: "500" }}>
+                <div className={styles.categoryTitle}>
                   Topic
                   <span className={styles.filterCount}>{topicTag.length}</span>
                 </div>
@@ -557,7 +550,7 @@ export default function ShowcaseLeftFilters({
             className={styles.categoryHeader}
             expandIconPosition="end"
           >
-            <div style={{ fontSize: "16px", fontWeight: "500" }}>
+            <div className={styles.categoryTitle}>
               Extension Capabilities
               <span className={styles.filterCount}>{extensionCapabilityTag.length}</span>
             </div>

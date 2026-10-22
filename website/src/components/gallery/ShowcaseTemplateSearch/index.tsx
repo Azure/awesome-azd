@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect } from "react";
-import { SearchBox } from "@fluentui/react/lib/SearchBox";
+import { SearchBox, type ISearchBoxStyles } from "@fluentui/react/lib/SearchBox";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { Text, Link as FluentUILink } from "@fluentui/react-components";
 import { galleryTemplates as allTemplates } from "@site/src/data/users";
@@ -30,6 +30,32 @@ const PLACEHOLDERS: Record<string, string> = {
 };
 const ADD_URL = "https://aka.ms/azd";
 
+const searchBoxStyles: Partial<ISearchBoxStyles> = {
+  root: {
+    border: "1px solid var(--site-color-border)",
+    height: "52px",
+    maxWidth: "100%",
+    width: "100%",
+    borderRadius: "8px",
+    background: "var(--site-color-surface)",
+  },
+  icon: {
+    fontSize: "24px",
+    paddingLeft: "10px",
+  },
+  field: {
+    paddingLeft: "20px",
+    fontSize: "18px",
+    color: "var(--site-color-text)",
+    backgroundColor: "transparent",
+    selectors: {
+      "::placeholder": {
+        color: "var(--site-color-text-muted)",
+      },
+    },
+  },
+};
+
 const SearchNameQueryKey = "name";
 
 function readSearchName(search: string) {
@@ -49,31 +75,7 @@ function FilterBar(): React.JSX.Element {
   return (
     <>
       <SearchBox
-        styles={{
-          root: {
-            border: "1px solid var(--site-color-border)",
-            height: "52px",
-            maxWidth: "100%",
-            width: "100%",
-            borderRadius: "8px",
-            background: "var(--site-color-surface)",
-          },
-          icon: {
-            fontSize: "24px",
-            paddingLeft: "10px",
-          },
-          field: {
-            paddingLeft: "20px",
-            fontSize: "18px",
-            color: "var(--site-color-text)",
-            backgroundColor: "transparent",
-            selectors: {
-              "::placeholder": {
-                color: "var(--site-color-text-muted)",
-              },
-            },
-          },
-        }}
+        styles={searchBoxStyles}
         id="filterBar"
         value={value ?? ""}
         placeholder={placeholder}
@@ -172,26 +174,11 @@ export default function ShowcaseTemplateSearch() {
                       href="https://learn.microsoft.com/azure/developer/azure-developer-cli/extensions/overview"
                       target="_blank"
                       rel="noopener noreferrer"
-                      style={{ paddingLeft: "3px" }}
+                      className={styles.extensionDocsLink}
                     >
                       Learn more in our docs.
                     </FluentUILink>
                   </Text>
-                  {/* <Text
-                    size={300}
-                    className={styles.heroSubtext}
-                    block
-                    style={{ paddingTop: 0 }}
-                  >
-                    Built an extension?{" "}
-                    <FluentUILink
-                      href="https://github.com/Azure/awesome-azd/issues/new?template=extension-submission.yml"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Submit it here
-                    </FluentUILink>
-                  </Text> */}
                 </>
               : <a
                     href={gettingStartedUrl}

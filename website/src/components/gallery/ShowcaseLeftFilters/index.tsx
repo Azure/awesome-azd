@@ -48,26 +48,19 @@ function ShowcaseFilterViewAll({
     setOpenItems(data.openItems);
   };
   const { colorMode } = useColorMode();
-  const chevronDownSmall =
-    colorMode != "dark" ? (
-      <img src={useBaseUrl("/img/smallChevron.svg")} width={16} height={16} alt="" />
-    ) : (
-      <img src={useBaseUrl("/img/smallChevronDark.svg")} width={16} height={16} alt="" />
-    );
-  const chevronUpSmall =
-    colorMode != "dark" ? (
-      <img
-        className={styles.chevronUp}
-        src={useBaseUrl("/img/smallChevron.svg")}
-        width={16} height={16} alt=""
-      />
-    ) : (
-      <img
-        className={styles.chevronUp}
-        src={useBaseUrl("/img/smallChevronDark.svg")}
-        width={16} height={16} alt=""
-      />
-    );
+  const chevronIcon = useBaseUrl(
+    colorMode != "dark" ? "/img/smallChevron.svg" : "/img/smallChevronDark.svg"
+  );
+  const chevronDownSmall = (
+    <img src={chevronIcon} width={16} height={16} alt="" />
+  );
+  const chevronUpSmall = (
+    <img
+      className={styles.chevronUp}
+      src={chevronIcon}
+      width={16} height={16} alt=""
+    />
+  );
   let value = number + "2";
   return (
     <>

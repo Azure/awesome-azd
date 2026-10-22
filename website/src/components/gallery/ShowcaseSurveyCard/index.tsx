@@ -30,6 +30,11 @@ function closeCard(parentDiv) {
 
 export default function ShowcaseSurveyCard(): React.ReactElement {
   const { colorMode } = useColorMode();
+  const closeIcon = useBaseUrl("/img/close.svg");
+  const surveyIcon = useBaseUrl(
+    colorMode != "dark" ? "/img/chatPencil.svg" : "/img/chatPencilDark.svg"
+  );
+  const openLinkIcon = useBaseUrl("/img/openLink.svg");
   // access localStorage until window is defined
   if (
     typeof window !== "undefined" &&
@@ -46,7 +51,7 @@ export default function ShowcaseSurveyCard(): React.ReactElement {
         appearance="transparent"
         icon={
           <Image
-            src={useBaseUrl("/img/close.svg")}
+            src={closeIcon}
             height={16}
             width={16}
             alt="Close"
@@ -55,11 +60,7 @@ export default function ShowcaseSurveyCard(): React.ReactElement {
         className={styles.closeButton}
       />
       <Image
-        src={
-          colorMode != "dark"
-            ? useBaseUrl("/img/chatPencil.svg")
-            : useBaseUrl("/img/chatPencilDark.svg")
-        }
+        src={surveyIcon}
         alt="surveyCard"
         height={128}
         width={128}
@@ -81,7 +82,7 @@ export default function ShowcaseSurveyCard(): React.ReactElement {
           }}
           icon={
             <Image
-              src={useBaseUrl("/img/openLink.svg")}
+              src={openLinkIcon}
               alt="surveyCard"
               height={20}
               width={20}

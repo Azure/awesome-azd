@@ -103,13 +103,14 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
   const azdInitCommand = formatAzdInitCommand(templateIdentifier);
   const openInVSCodeUrl = getOpenInVSCodeUrl(user.source);
   const vsCodeIcon = useBaseUrl("/img/vscode-white.svg");
-  let chevronSVG = useBaseUrl("/img/leftChevron.svg");
 
   let pivotTextColor = "black";
   const { colorMode } = useColorMode();
+  const chevronSVG = useBaseUrl(
+    colorMode == "dark" ? "/img/leftChevronDark.svg" : "/img/leftChevron.svg"
+  );
   if (colorMode == "dark") {
     pivotTextColor = "white";
-    chevronSVG = useBaseUrl("/img/leftChevronDark.svg");
   }
   const pivotStyles: IPivotStyles = {
     linkIsSelected: [
@@ -378,6 +379,18 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
   );
 }
 
+function ShowcaseCardAzureIcon({ iconPath }: { iconPath: string | undefined }) {
+  const icon = useBaseUrl(iconPath);
+  return (
+    <img
+      src={icon}
+      alt="Azure Service Icon"
+      width={20}
+      height={20}
+    />
+  );
+}
+
 function ShowcaseCardAzureTag({
   tags,
   colorMode,
@@ -403,15 +416,12 @@ function ShowcaseCardAzureTag({
         <div
           className={styles.squareColor}
         >
-          <img
-            src={
+          <ShowcaseCardAzureIcon
+            iconPath={
               colorMode != "dark" || tagObject.darkModeAzureIcon == null
-                ? useBaseUrl(tagObject.azureIcon)
-                : useBaseUrl(tagObject.darkModeAzureIcon)
+                ? tagObject.azureIcon
+                : tagObject.darkModeAzureIcon
             }
-            alt="Azure Service Icon"
-            width={20}
-            height={20}
           />
         </div>
         <div className={styles.serviceContent}>

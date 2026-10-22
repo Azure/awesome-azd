@@ -3,7 +3,7 @@
  * Licensed under the MIT License.
  */
 
-import React, { useCallback, useEffect } from "react";
+import React from "react";
 import { useHistory } from "@docusaurus/router";
 import { toggleListItem } from "@site/src/utils/jsUtils";
 import { prepareUserState } from "@site/src/utils/galleryNavigation";
@@ -15,8 +15,7 @@ export default function ShowcaseTagSelect({
   tag,
   id,
   activeTags,
-  selectedCheckbox,
-  setSelectedCheckbox,
+  selectedTags,
   location,
   readSearchTags,
   replaceSearchTags,
@@ -26,8 +25,7 @@ export default function ShowcaseTagSelect({
   tag: TagType;
   id: string;
   activeTags: TagType[];
-  selectedCheckbox: TagType[];
-  setSelectedCheckbox: React.Dispatch<React.SetStateAction<TagType[]>>;
+  selectedTags: TagType[];
   location;
   readSearchTags: (search: string) => TagType[];
   replaceSearchTags: (search: string, newTags: TagType[]) => string;
@@ -49,14 +47,6 @@ export default function ShowcaseTagSelect({
   const template = id.replace("showcase_checkbox_id_", "");
   const contentForAdobeAnalytics = `{\"id\":\"${template}\",\"cN\":\"Tags\"}`;
 
-  const toggleCheck = (tag: TagType) => {
-    if (selectedCheckbox.includes(tag)) {
-      setSelectedCheckbox(selectedCheckbox.filter((item) => item !== tag));
-    } else {
-      setSelectedCheckbox([...selectedCheckbox, tag]);
-    }
-  };
-
   return (
     <>
       <Checkbox
@@ -65,14 +55,12 @@ export default function ShowcaseTagSelect({
         onKeyDown={(e) => {
           if (e.key === "Enter") {
             toggleTag();
-            toggleCheck(tag);
           }
         }}
         onChange={() => {
           toggleTag();
-          toggleCheck(tag);
         }}
-        checked={selectedCheckbox.includes(tag)}
+        checked={selectedTags.includes(tag)}
         label={count !== undefined ? `${label} (${count})` : label}
         disabled={!activeTags?.includes(tag)}
       />

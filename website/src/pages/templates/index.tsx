@@ -3,7 +3,7 @@
  * Licensed under the MIT License.
  */
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Layout from "@theme/Layout";
 import ShowcaseLeftFilters from "../../components/gallery/ShowcaseLeftFilters";
 import ShowcaseTemplateSearch from "../../components/gallery/ShowcaseTemplateSearch";
@@ -52,22 +52,17 @@ const App = () => {
   const { colorMode } = useColorMode();
   const [loading, setLoading] = useState(true);
   const [activeTags, setActiveTags] = useState<TagType[]>(TagList);
-  const [selectedCheckbox, setSelectedCheckbox] = useState<TagType[]>([]);
   const location = useLocation<UserState>();
-  const [selectedTags, setSelectedTags] = useState<TagType[]>([]);
-
-  // Author filter states
-  const [activeAuthors, setActiveAuthors] = useState<string[]>([]);
-  const [selectedAuthors, setSelectedAuthors] = useState<string[]>([]);
-  const [selectedAuthorCheckbox, setSelectedAuthorCheckbox] = useState<
-    string[]
-  >([]);
+  const selectedTags = useMemo(
+    () => readSearchTags(location.search),
+    [location.search],
+  );
+  const selectedAuthors = useMemo(
+    () => readSearchAuthors(location.search),
+    [location.search],
+  );
 
   useEffect(() => {
-    setSelectedTags(readSearchTags(location.search));
-    setSelectedCheckbox(readSearchTags(location.search));
-    setSelectedAuthors(readSearchAuthors(location.search));
-    setSelectedAuthorCheckbox(readSearchAuthors(location.search));
     setTimeout(() => {
       setLoading(false);
     }, 500);
@@ -83,18 +78,11 @@ const App = () => {
           <div className={styles.filter}>
             <ShowcaseLeftFilters
               activeTags={activeTags}
-              selectedCheckbox={selectedCheckbox}
-              setSelectedCheckbox={setSelectedCheckbox}
               location={location}
-              setSelectedTags={setSelectedTags}
               selectedTags={selectedTags}
               readSearchTags={readSearchTags}
               replaceSearchTags={replaceSearchTags}
-              activeAuthors={activeAuthors}
               selectedAuthors={selectedAuthors}
-              selectedAuthorCheckbox={selectedAuthorCheckbox}
-              setSelectedAuthorCheckbox={setSelectedAuthorCheckbox}
-              setSelectedAuthors={setSelectedAuthors}
               readSearchAuthors={readSearchAuthors}
               replaceSearchAuthors={replaceSearchAuthors}
             />
@@ -103,15 +91,10 @@ const App = () => {
             <ShowcaseCardPage
               setActiveTags={setActiveTags}
               selectedTags={selectedTags}
-              setSelectedCheckbox={setSelectedCheckbox}
               location={location}
-              setSelectedTags={setSelectedTags}
               readSearchTags={readSearchTags}
               replaceSearchTags={replaceSearchTags}
-              setActiveAuthors={setActiveAuthors}
               selectedAuthors={selectedAuthors}
-              setSelectedAuthorCheckbox={setSelectedAuthorCheckbox}
-              setSelectedAuthors={setSelectedAuthors}
               readSearchAuthors={readSearchAuthors}
               replaceSearchAuthors={replaceSearchAuthors}
             />

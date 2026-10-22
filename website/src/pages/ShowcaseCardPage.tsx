@@ -23,7 +23,7 @@ import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
 import { useHistory } from "@docusaurus/router";
 import type { Location } from "history";
-import { toggleListItem, splitAuthors } from "@site/src/utils/jsUtils";
+import { toggleListItem } from "@site/src/utils/jsUtils";
 import { getContentType } from "@site/src/utils/contentType";
 import {
   filterTemplates,
@@ -247,28 +247,18 @@ export default function ShowcaseCardPage({
   setActiveTags,
   selectedTags,
   location,
-  setSelectedTags,
   readSearchTags,
   replaceSearchTags,
-  setSelectedCheckbox,
-  setActiveAuthors,
   selectedAuthors,
-  setSelectedAuthorCheckbox,
-  setSelectedAuthors,
   readSearchAuthors,
   replaceSearchAuthors,
 }: {
   setActiveTags: React.Dispatch<React.SetStateAction<TagType[]>>;
   selectedTags: TagType[];
   location: Location & { state?: UserState | null; search: string };
-  setSelectedTags: React.Dispatch<React.SetStateAction<TagType[]>>;
   readSearchTags: (search: string) => TagType[];
   replaceSearchTags: (search: string, newTags: TagType[]) => string;
-  setSelectedCheckbox: React.Dispatch<React.SetStateAction<TagType[]>>;
-  setActiveAuthors: React.Dispatch<React.SetStateAction<string[]>>;
   selectedAuthors: string[];
-  setSelectedAuthorCheckbox: React.Dispatch<React.SetStateAction<string[]>>;
-  setSelectedAuthors: React.Dispatch<React.SetStateAction<string[]>>;
   readSearchAuthors: (search: string) => string[];
   replaceSearchAuthors: (search: string, newAuthors: string[]) => string;
 }) {
@@ -287,10 +277,6 @@ export default function ShowcaseCardPage({
   const contentType = getContentType(location);
 
   const clearAll = () => {
-    setSelectedTags([]);
-    setSelectedCheckbox([]);
-    setSelectedAuthors([]);
-    setSelectedAuthorCheckbox([]);
     history.push({
       ...location,
       search: clearSearchFilters(location.search),
@@ -299,7 +285,6 @@ export default function ShowcaseCardPage({
   };
 
   useEffect(() => {
-    setSelectedTags(readSearchTags(location.search));
     setSelectedUsers(
       getSortedTemplates(unsortedUsers, sortedUsers, selectedOptions[0])
     );
@@ -329,10 +314,10 @@ export default function ShowcaseCardPage({
   const activeItems = isExtensions ? extensionCards : cards;
   const totalItems = activeItems ? activeItems.length : 0;
 
-  // Reset to first page when filters change
+  // Reset on navigation and sort selection, even when their values are unchanged.
   useEffect(() => {
     setCurrentPage(1);
-  }, [selectedTags, searchName, selectedUsers, contentType]);
+  }, [location, selectedOptions]);
 
   // Calculate pagination
   const totalPages = Math.ceil(totalItems / itemsPerPage);
@@ -355,21 +340,6 @@ export default function ShowcaseCardPage({
       });
     }
     setActiveTags(Array.from(unionTags));
-  }, [cards, extensionCards, isExtensions]);
-
-  useEffect(() => {
-    if (isExtensions) {
-      const unionAuthors = new Set<string>();
-      extensionCards.forEach((ext) => unionAuthors.add(ext.author));
-      setActiveAuthors(Array.from(unionAuthors));
-    } else {
-      const unionAuthors = new Set<string>();
-      cards.forEach((user) => {
-        const authors = splitAuthors(user.author);
-        authors.forEach(author => unionAuthors.add(author));
-      });
-      setActiveAuthors(Array.from(unionAuthors));
-    }
   }, [cards, extensionCards, isExtensions]);
 
   const sortByOnSelect = (event, data) => {

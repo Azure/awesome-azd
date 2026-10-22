@@ -59,8 +59,12 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
   const star = useBaseUrl("/img/Sparkle.svg");
   const templateIdentifier = getTemplateIdentifier(source);
   const azdInitCommand = formatAzdInitCommand(templateIdentifier);
-  let headerLogo = useBaseUrl("/img/Community.svg");
-  let headerText = "Community Authored";
+  const communityLogo = useBaseUrl("/img/Community.svg");
+  const msftLogo = useBaseUrl("/img/Microsoft.svg");
+  const isMicrosoft = tags.includes("msft");
+  const isNew = tags.includes("new");
+  const headerLogo = isMicrosoft ? msftLogo : communityLogo;
+  const headerText = isMicrosoft ? "Microsoft Authored" : "Community Authored";
 
   // Adobe Analytics Content
   const contentForAdobeAnalytics = `{\"id\":\"${title}\",\"cN\":\"Copy Button (azd init)\"}`;
@@ -69,10 +73,6 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
   const { colorMode } = useColorMode();
   const [isOpen, { setTrue: openPanel, setFalse: dismissPanel }] =
     useBoolean(false);
-  if (tags.includes("msft")) {
-    headerLogo = useBaseUrl("/img/Microsoft.svg");
-    headerText = "Microsoft Authored";
-  }
   const onRenderNavigationContent: IRenderFunction<IPanelProps> =
     React.useCallback(
       (props, defaultRender) => (
@@ -86,7 +86,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
               className={styleCSS.panelHeaderLogo}
             />
             <div className={styleCSS.headerTextCardPanel}>{headerText}</div>
-            {tags.includes("new") ? (
+            {isNew ? (
               <>
                 <img
                   src={star}
@@ -105,7 +105,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
           }
         </>
       ),
-      []
+      [headerLogo, headerText, isNew, star]
     );
 
   return (
@@ -121,7 +121,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
               className={styleCSS.headerLogo}
             />
             <div className={styleCSS.headerText}>{headerText}</div>
-            {tags.includes("new") ? (
+            {isNew ? (
               <>
                 <img
                   src={star}

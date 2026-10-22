@@ -14,6 +14,12 @@ import {
 } from "@fluentui/react-components";
 import { initializeIcons } from "@fluentui/react/lib/Icons";
 import type { UserState } from "@site/src/utils/galleryNavigation";
+import {
+  readSearchTags,
+  readSearchAuthors,
+  replaceSearchTags,
+  replaceSearchAuthors,
+} from "@site/src/utils/galleryQuery";
 import { type TagType } from "@site/src/data/tags";
 import { TagList } from "@site/src/data/users";
 import styles from "../styles.module.css";
@@ -40,33 +46,6 @@ const BackToTopButton = () => {
       ↑
     </button>
   );
-};
-
-const TagQueryStringKey = "tags";
-const AuthorQueryStringKey = "authors";
-
-const readSearchTags = (search: string): TagType[] => {
-  return new URLSearchParams(search).getAll(TagQueryStringKey) as TagType[];
-};
-
-const readSearchAuthors = (search: string): string[] => {
-  return new URLSearchParams(search).getAll(AuthorQueryStringKey);
-};
-
-const replaceSearchTags = (search: string, newTags: TagType[]) => {
-  const searchParams = new URLSearchParams(search);
-  searchParams.delete(TagQueryStringKey);
-  newTags.forEach((tag) => searchParams.append(TagQueryStringKey, tag));
-  return searchParams.toString();
-};
-
-const replaceSearchAuthors = (search: string, newAuthors: string[]) => {
-  const searchParams = new URLSearchParams(search);
-  searchParams.delete(AuthorQueryStringKey);
-  newAuthors.forEach((author) =>
-    searchParams.append(AuthorQueryStringKey, author)
-  );
-  return searchParams.toString();
 };
 
 const App = () => {

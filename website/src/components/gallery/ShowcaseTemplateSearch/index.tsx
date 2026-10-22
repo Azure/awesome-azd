@@ -10,6 +10,7 @@ import { Text, Link as FluentUILink } from "@fluentui/react-components";
 import { galleryTemplates as allTemplates } from "@site/src/data/users";
 import { getContentType } from "@site/src/utils/contentType";
 import { prepareUserState } from "@site/src/utils/galleryNavigation";
+import { readSearchName, replaceSearchName } from "@site/src/utils/galleryQuery";
 import styles from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useColorMode } from "@docusaurus/theme-common";
@@ -56,12 +57,6 @@ const searchBoxStyles: Partial<ISearchBoxStyles> = {
   },
 };
 
-const SearchNameQueryKey = "name";
-
-function readSearchName(search: string) {
-  return new URLSearchParams(search).get(SearchNameQueryKey);
-}
-
 function FilterBar(): React.JSX.Element {
   const history = useHistory();
   const location = useLocation();
@@ -83,26 +78,18 @@ function FilterBar(): React.JSX.Element {
         ariaLabel="Search templates and extensions"
         onClear={(e) => {
           setValue(null);
-          const newSearch = new URLSearchParams(location.search);
-          newSearch.delete(SearchNameQueryKey);
-
           history.push({
             ...location,
-            search: newSearch.toString(),
+            search: replaceSearchName(location.search, null),
             state: prepareUserState(),
           });
         }}
         onSearch={(newValue) => {
           const submitted = typeof newValue === "string" ? newValue : (value ?? "");
           setValue(submitted);
-          const newSearch = new URLSearchParams(location.search);
-          newSearch.delete(SearchNameQueryKey);
-          if (submitted) {
-            newSearch.set(SearchNameQueryKey, submitted);
-          }
           history.push({
             ...location,
-            search: newSearch.toString(),
+            search: replaceSearchName(location.search, submitted),
             state: prepareUserState(),
           });
         }}

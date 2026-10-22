@@ -22,6 +22,7 @@ import { useHistory } from "@docusaurus/router";
 import { prepareUserState } from "@site/src/utils/galleryNavigation";
 import { getContentType } from "@site/src/utils/contentType";
 import { getTemplateTags, getExtensionTags } from "@site/src/utils/galleryTags";
+import { clearSearchFilters } from "@site/src/utils/galleryQuery";
 
 function ShowcaseFilterViewAll({
   tags,
@@ -196,7 +197,6 @@ export default function ShowcaseLeftFilters({
   replaceSearchAuthors: (search: string, newAuthors: string[]) => string;
 }) {
   const sortTagList = TagList.sort();
-  const searchParams = new URLSearchParams(location.search);
   const isExtensions = getContentType(location) === "extensions";
   
   // Compute template counts per tag for display
@@ -300,11 +300,9 @@ export default function ShowcaseLeftFilters({
     setSelectedTags([]);
     setSelectedAuthorCheckbox([]);
     setSelectedAuthors([]);
-    searchParams.delete("tags");
-    searchParams.delete("authors");
     history.push({
       ...location,
-      search: searchParams.toString(),
+      search: clearSearchFilters(location.search),
       state: prepareUserState(),
     });
   };

@@ -40,31 +40,8 @@ import {
   restoreUserState,
   type UserState,
 } from "@site/src/utils/galleryNavigation";
+import { readSearchName, clearSearchFilters } from "@site/src/utils/galleryQuery";
 import { Dismiss20Filled } from "@fluentui/react-icons";
-
-const TagQueryStringKey2 = "tags";
-
-const readSearchTags2 = (search: string): TagType[] => {
-  // SECURITY: Filter out query param tag values that don't exist in the Tags
-  // object to prevent prototype pollution or undefined property access.
-  const rawTags = new URLSearchParams(search).getAll(TagQueryStringKey2);
-  return rawTags.filter((tag): tag is TagType => Object.hasOwn(Tags, tag));
-}
-
-function replaceSearchTags(search: string, newTags: TagType[]) {
-  const searchParams = new URLSearchParams(search);
-  searchParams.delete(TagQueryStringKey2);
-  newTags.forEach((tag) => searchParams.append(TagQueryStringKey2, tag));
-  return searchParams.toString();
-}
-
-const SearchNameQueryKey = "name";
-
-function readSearchName(search: string) {
-  return new URLSearchParams(search).get(SearchNameQueryKey);
-}
-
-const ContentTypeQueryKey = "type"; // retained for backward-compat with getContentType helper
 
 function FilterAppliedBar({
   clearAll,
@@ -302,7 +279,6 @@ export default function ShowcaseCardPage({
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 20;
   const history = useHistory();
-  const searchParams = new URLSearchParams(location.search);
 
   // Content type is now derived from the URL pathname (`/extensions`) so the
   // two galleries live at distinct routes accessible via the navbar. The
@@ -315,11 +291,9 @@ export default function ShowcaseCardPage({
     setSelectedCheckbox([]);
     setSelectedAuthors([]);
     setSelectedAuthorCheckbox([]);
-    searchParams.delete("tags");
-    searchParams.delete("authors");
     history.push({
       ...location,
-      search: searchParams.toString(),
+      search: clearSearchFilters(location.search),
       state: prepareUserState(),
     });
   };

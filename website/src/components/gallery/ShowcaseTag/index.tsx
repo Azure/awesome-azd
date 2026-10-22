@@ -6,7 +6,7 @@
 import React from "react";
 import styles from "./styles.module.css";
 import { Tag, Tags, type User, type TagType } from "../../../data/tags";
-import { TagList } from "../../../data/users";
+import { sortedTagList } from "../../../data/users";
 import { sortBy } from "@site/src/utils/jsUtils";
 import { Badge, Tooltip } from "@fluentui/react-components";
 
@@ -43,7 +43,7 @@ export default function ShowcaseCardTag({
 
   // Keep same order for all tags
   const tagObjectsSorted = sortBy(tagObjects, (tagObject) =>
-    TagList.indexOf(tagObject.tag)
+    sortedTagList.indexOf(tagObject.tag)
   );
   const checkAzureTag = tagObjectsSorted.filter((tag) =>
     tag.label.includes("Azure")

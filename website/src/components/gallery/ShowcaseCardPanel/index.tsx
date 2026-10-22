@@ -6,7 +6,7 @@
 import React from "react";
 import styles from "./styles.module.css";
 import { Tags, type User, type TagType } from "../../../data/tags";
-import { TagList } from "../../../data/users";
+import { sortedTagList } from "../../../data/users";
 import { sortBy } from "@site/src/utils/jsUtils";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { Link as FluentUILink } from "@fluentui/react-components";
@@ -402,7 +402,7 @@ function ShowcaseCardAzureTag({
 
   // Keep same order for all tags
   const tagObjectsSorted = sortBy(tagObjects, (tagObject) =>
-    TagList.indexOf(tagObject.tag)
+    sortedTagList.indexOf(tagObject.tag)
   );
 
   return tagObjectsSorted.map((tagObject, index) => {

@@ -110,6 +110,7 @@ export const galleryTemplates: ReadonlyArray<Record<string, unknown>> =
 export const unsortedUsers: User[] = validateTemplates(rawGalleryTemplates);
 
 export const TagList = Object.keys(Tags) as TagType[];
+export const sortedTagList: ReadonlyArray<TagType> = sortBy(TagList, (tag) => tag);
 function sortUsers() {
   let result = unsortedUsers;
   // Sort by site name

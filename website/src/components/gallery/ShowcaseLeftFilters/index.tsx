@@ -14,7 +14,7 @@ import {
   AccordionToggleEventHandler,
 } from "@fluentui/react-components";
 import { Tags, type TagType } from "../../../data/tags";
-import { TagList, unsortedUsers } from "../../../data/users";
+import { sortedTagList, unsortedUsers } from "../../../data/users";
 import { unsortedExtensions } from "../../../data/extensions";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
@@ -170,7 +170,6 @@ export default function ShowcaseLeftFilters({
   readSearchAuthors: (search: string) => string[];
   replaceSearchAuthors: (search: string, newAuthors: string[]) => string;
 }) {
-  const sortTagList = TagList.sort();
   const isExtensions = getContentType(location) === "extensions";
   
   // Compute template counts per tag for display
@@ -221,7 +220,7 @@ export default function ShowcaseLeftFilters({
     popular: 3,
     aicollection: 4,
   };
-  const uncategoryTag = TagList.filter((tag) => {
+  const uncategoryTag = sortedTagList.filter((tag) => {
     const tagObject = Tags[tag];
     if (tagObject.type !== undefined) return false;
     if (isExtensions && EXTENSION_HIDDEN_UNCATEGORY_TAGS.has(tag)) return false;
@@ -232,27 +231,27 @@ export default function ShowcaseLeftFilters({
       (UNCATEGORY_TAG_ORDER[b] ?? Number.MAX_SAFE_INTEGER),
   );
   const languageTag = applyMinCountThreshold(
-    sortTagList.filter((tag) => Tags[tag].type === "Language"),
+    sortedTagList.filter((tag) => Tags[tag].type === "Language"),
   );
   const frameworkTag = applyMinCountThreshold(
-    sortTagList.filter((tag) => Tags[tag].type === "Framework"),
+    sortedTagList.filter((tag) => Tags[tag].type === "Framework"),
   );
   const servicesTag = applyMinCountThreshold(
-    sortTagList.filter((tag) => Tags[tag].type === "Service"),
+    sortedTagList.filter((tag) => Tags[tag].type === "Service"),
   );
   const databaseTag = applyMinCountThreshold(
-    sortTagList.filter((tag) => Tags[tag].type === "Database"),
+    sortedTagList.filter((tag) => Tags[tag].type === "Database"),
   );
   const infrastructureAsCodeTag = applyMinCountThreshold(
-    sortTagList.filter((tag) => Tags[tag].type === "Infrastructure as Code"),
+    sortedTagList.filter((tag) => Tags[tag].type === "Infrastructure as Code"),
   );
   const otherTag = applyMinCountThreshold(
-    sortTagList.filter((tag) => Tags[tag].type === "Tools"),
+    sortedTagList.filter((tag) => Tags[tag].type === "Tools"),
   );
   const topicTag = applyMinCountThreshold(
-    sortTagList.filter((tag) => Tags[tag].type === "Topic"),
+    sortedTagList.filter((tag) => Tags[tag].type === "Topic"),
   );
-  const extensionCapabilityTag = sortTagList.filter(
+  const extensionCapabilityTag = sortedTagList.filter(
     (tag) => Tags[tag].type === "Extension Capability",
   );
   const [openItems, setOpenItems] = React.useState<string[]>(

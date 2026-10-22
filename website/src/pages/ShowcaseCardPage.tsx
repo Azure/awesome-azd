@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useMemo, useEffect } from "react";
-import { Tags, type User, type TagType } from "../data/tags";
+import { Tags, type TagType } from "../data/tags";
 import { sortedUsers, unsortedUsers } from "../data/users";
 import { sortedExtensions, unsortedExtensions } from "../data/extensions";
 import {
@@ -264,8 +264,11 @@ export default function ShowcaseCardPage({
 }) {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([GALLERY_SORT_OPTIONS[2]]);
   const [loading, setLoading] = useState(true);
-  const [searchName, setSearchName] = useState<string | null>(null);
-  const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
+  const searchName = readSearchName(location.search);
+  const selectedUsers = useMemo(
+    () => getSortedTemplates(unsortedUsers, sortedUsers, selectedOptions[0]),
+    [selectedOptions]
+  );
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 20;
   const history = useHistory();
@@ -285,10 +288,6 @@ export default function ShowcaseCardPage({
   };
 
   useEffect(() => {
-    setSelectedUsers(
-      getSortedTemplates(unsortedUsers, sortedUsers, selectedOptions[0])
-    );
-    setSearchName(readSearchName(location.search));
     restoreUserState(location.state);
     setLoading(false);
   }, [location, selectedOptions]);

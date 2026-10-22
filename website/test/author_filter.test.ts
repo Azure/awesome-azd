@@ -53,6 +53,7 @@ function filterUsersByAuthor(
 describe('Author filtering tests', () => {
     const mockUsers: User[] = [
         {
+            id: "00000000-0000-4000-8000-000000000001",
             title: "React Web App",
             description: "A React web application",
             preview: "./images/test.png",
@@ -62,6 +63,7 @@ describe('Author filtering tests', () => {
             tags: ["reactjs", "community"]
         },
         {
+            id: "00000000-0000-4000-8000-000000000002",
             title: "Azure Functions App",
             description: "A serverless functions app",
             preview: "./images/test.png",
@@ -71,6 +73,7 @@ describe('Author filtering tests', () => {
             tags: ["functions", "msft"]
         },
         {
+            id: "00000000-0000-4000-8000-000000000003",
             title: "Django Blog",
             description: "A Django blog application",
             preview: "./images/test.png",
@@ -149,6 +152,7 @@ describe('Author splitting and filtering tests', () => {
     test('Filter by individual author when template has multiple authors', () => {
         const multiAuthorUsers: User[] = [
             {
+                id: "00000000-0000-4000-8000-000000000004",
                 title: "Multi-author Template",
                 description: "Template with multiple authors",
                 preview: "./images/test.png",
@@ -158,6 +162,7 @@ describe('Author splitting and filtering tests', () => {
                 tags: ["msft"]
             },
             {
+                id: "00000000-0000-4000-8000-000000000005",
                 title: "Single Author Template",
                 description: "Template with single author",
                 preview: "./images/test.png",
@@ -183,6 +188,7 @@ describe('Author splitting and filtering tests', () => {
     test('Extract individual authors from templates with multiple authors', () => {
         const users: User[] = [
             {
+                id: "00000000-0000-4000-8000-000000000006",
                 title: "Template 1",
                 description: "desc",
                 preview: "./images/test.png",
@@ -192,6 +198,7 @@ describe('Author splitting and filtering tests', () => {
                 tags: ["msft"]
             },
             {
+                id: "00000000-0000-4000-8000-000000000007",
                 title: "Template 2",
                 description: "desc",
                 preview: "./images/test.png",

@@ -32,21 +32,11 @@ export default function ShowcaseCards({
       <div className={styles.showcaseFavorite}>
         <div className={styles.showcaseList} data-testid="showcase-list">
           {filteredUsers.map((user, index) => (
-            <React.Fragment key={index}>
+            <React.Fragment key={user.id}>
+              <ShowcaseCard user={user} />
               {(len < 6 && index === len - 1) || index === 4 ? (
-                <React.Fragment key="cardWithSurveyCard">
-                  <React.Fragment key={user.title}>
-                    <ShowcaseCard user={user} />
-                  </React.Fragment>
-                  <React.Fragment key="fragment_surveyCard">
-                    <ShowcaseSurveyCard />
-                  </React.Fragment>
-                </React.Fragment>
-              ) : (
-                <React.Fragment key={user.title}>
-                  <ShowcaseCard user={user} />
-                </React.Fragment>
-              )}
+                <ShowcaseSurveyCard />
+              ) : null}
             </React.Fragment>
           ))}
         </div>

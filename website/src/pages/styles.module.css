@@ -79,34 +79,6 @@
   margin: 0px 0px 0 20px;
 }
 
-.clearAll {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  text-decoration-line: underline;
-  cursor: pointer;
-  color: var(--ifm-color-primary);
-  background: none;
-  border: none;
-  padding: 0;
-}
-
-.filterBadge {
-  color: var(--ifm-color-primary) !important;
-  cursor: pointer;
-  border-color: #BAE6FD !important;
-  background: #F0F9FF !important;
-  border-radius: 20px !important;
-  font-weight: 500;
-}
-
-.filterAppliedBar {
-  padding-top: var(--space-lg);
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-}
-
 .viewingSortRow {
   display: flex;
   align-items: center;
@@ -130,21 +102,6 @@
 
 .sortControls .sortInput {
   width: 130px;
-}
-
-.clearAll {
-  color: var(--ifm-color-primary);
-  cursor: pointer;
-}
-
-[data-theme="dark"] .clearAll {
-  color: var(--ifm-color-primary);
-  cursor: pointer;
-}
-
-[data-theme="dark"] .filterBadge {
-  border-color: #164E63 !important;
-  background: #083344 !important;
 }
 
 /* Desktop-only sticky positioning for filter */

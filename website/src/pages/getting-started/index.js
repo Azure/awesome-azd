@@ -3,7 +3,7 @@
  * Licensed under the MIT License.
  */
 
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import Layout from "@theme/Layout";
@@ -46,6 +46,17 @@ const CheckIcon = () => (
 /* ─────────── Copy button ─────────── */
 function CopyButton({ text, className, ariaLabel }) {
   const [copied, setCopied] = useState(false);
+  // Preserve each click's reset deadline until the button unmounts.
+  const resetTimeouts = useRef(new Set());
+  useEffect(() => {
+    const timeouts = resetTimeouts.current;
+    return () => {
+      for (const timeout of timeouts) {
+        clearTimeout(timeout);
+      }
+      timeouts.clear();
+    };
+  }, []);
   const onClick = useCallback(
     (e) => {
       e.preventDefault();
@@ -58,7 +69,11 @@ function CopyButton({ text, className, ariaLabel }) {
         navigator.clipboard.writeText(text);
       }
       setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      const timeout = setTimeout(() => {
+        resetTimeouts.current.delete(timeout);
+        setCopied(false);
+      }, 2000);
+      resetTimeouts.current.add(timeout);
     },
     [text]
   );

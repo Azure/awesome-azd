@@ -4,6 +4,7 @@
  */
 
 import React from "react";
+import type { Location } from "history";
 import ShowcaseTagSelect from "../ShowcaseTagSelect";
 import ShowcaseFilterSection from "./ShowcaseFilterSection";
 import { Accordion, type AccordionToggleEventHandler } from "@fluentui/react-components";
@@ -28,7 +29,7 @@ export default function ShowcaseLeftFilters({
   replaceSearchAuthors,
 }: {
   activeTags: TagType[];
-  location;
+  location: Location;
   selectedTags: TagType[];
   readSearchTags: (search: string) => TagType[];
   replaceSearchTags: (search: string, newTags: TagType[]) => string;

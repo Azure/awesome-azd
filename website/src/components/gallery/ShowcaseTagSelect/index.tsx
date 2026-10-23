@@ -4,6 +4,7 @@
  */
 
 import React from "react";
+import type { Location } from "history";
 import { useHistory } from "@docusaurus/router";
 import { toggleListItem } from "@site/src/utils/jsUtils";
 import { prepareUserState } from "@site/src/utils/galleryNavigation";
@@ -26,11 +27,11 @@ export default function ShowcaseTagSelect({
   id: string;
   activeTags: TagType[];
   selectedTags: TagType[];
-  location;
+  location: Location;
   readSearchTags: (search: string) => TagType[];
   replaceSearchTags: (search: string, newTags: TagType[]) => string;
   count?: number;
-}): JSX.Element {
+}): React.JSX.Element {
   const history = useHistory();
   // updates only the url query
   const toggleTag = () => {

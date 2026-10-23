@@ -24,7 +24,7 @@ import {
 } from "@fluentui/react-components";
 import { Globe16Regular } from "@fluentui/react-icons";
 
-function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Element {
+function ShowcaseExtensionCard({ extension }: { extension: Extension }): React.JSX.Element {
   const communityLogo = useBaseUrl("/img/Community.svg");
   const msftLogo = useBaseUrl("/img/Microsoft.svg");
   const copyIcon = useBaseUrl("/img/Copy.svg");

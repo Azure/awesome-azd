@@ -106,7 +106,7 @@ const App = () => {
   ) : null;
 };
 
-export default function Templates(): JSX.Element {
+export default function Templates(): React.JSX.Element {
   return (
     <Layout>
       <App />

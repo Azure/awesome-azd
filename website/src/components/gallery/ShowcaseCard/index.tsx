@@ -52,7 +52,7 @@ const darkTheme: PartialTheme = {
   },
 };
 
-function ShowcaseCard({ user }: { user: User }): JSX.Element {
+function ShowcaseCard({ user }: { user: User }): React.JSX.Element {
   const title = user.title;
   const tags = getTemplateTags(user);
   const source = user.source;

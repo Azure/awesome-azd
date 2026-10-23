@@ -4,16 +4,16 @@
  */
 
 import React, { useState, useMemo, useEffect } from "react";
-import type { User, TagType } from "../data/tags";
-import { sortedUsers, unsortedUsers } from "../data/users";
-import { sortedExtensions, unsortedExtensions } from "../data/extensions";
-import type { Extension } from "../data/extensionTypes";
+import type { User, TagType } from "../../../data/tags";
+import { sortedUsers, unsortedUsers } from "../../../data/users";
+import { sortedExtensions, unsortedExtensions } from "../../../data/extensions";
+import type { Extension } from "../../../data/extensionTypes";
 import { Spinner } from "@fluentui/react-components";
 import ShowcaseCards from "./ShowcaseCards";
 import ShowcaseExtensionCards from "./ShowcaseExtensionCards";
-import ShowcaseResultsToolbar from "../components/gallery/ShowcaseResultsToolbar";
-import ShowcaseAppliedFilters from "../components/gallery/ShowcaseAppliedFilters";
-import ShowcasePagination from "../components/gallery/ShowcasePagination";
+import ShowcaseResultsToolbar from "../ShowcaseResultsToolbar";
+import ShowcaseAppliedFilters from "../ShowcaseAppliedFilters";
+import ShowcasePagination from "../ShowcasePagination";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useColorMode } from "@docusaurus/theme-common";
 import { useHistory } from "@docusaurus/router";

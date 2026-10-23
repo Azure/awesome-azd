@@ -24,7 +24,7 @@ import { type TagType } from "@site/src/data/tags";
 import { TagList } from "@site/src/data/users";
 import styles from "../styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
-import ShowcaseCardPage from "../ShowcaseCardPage";
+import ShowcaseCardPage from "../../components/gallery/ShowcaseResults";
 import { useLocation } from "@docusaurus/router";
 
 initializeIcons();

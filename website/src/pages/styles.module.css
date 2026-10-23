@@ -34,19 +34,6 @@
   max-width: 720px;
 }
 
-.showcaseList {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(285px, 100%), 350px));
-  justify-content: start;
-  gap: var(--space-lg);
-}
-
-.showcaseFavorite {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  background-color: var(--site-color-favorite-background);
-}
-
 .filterAndCard {
   display: flex;
   padding: var(--space-xl) 40px;

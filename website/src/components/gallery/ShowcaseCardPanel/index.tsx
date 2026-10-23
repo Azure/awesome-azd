@@ -5,88 +5,22 @@
 
 import React from "react";
 import styles from "./styles.module.css";
-import { Tags, type User, type TagType } from "../../../data/tags";
-import { sortedTagList } from "../../../data/users";
-import { sortBy } from "@site/src/utils/jsUtils";
+import { type User } from "../../../data/tags";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { Link as FluentUILink } from "@fluentui/react-components";
-import { useBoolean, useId } from "@fluentui/react-hooks";
+import { useBoolean } from "@fluentui/react-hooks";
 import {
   Label,
   Pivot,
   PivotItem,
-  DefaultButton,
-  Separator,
   IPivotStyles,
-  Popup,
-  Callout,
-  Text,
-  DirectionalHint,
-  type ICalloutContentStyles,
 } from "@fluentui/react";
 import ShowcaseMultipleAuthors from "../ShowcaseMultipleAuthors/index";
 import ShowcaseCardTag from "../ShowcaseTag/index";
 import { useColorMode } from "@docusaurus/theme-common";
-import { getOpenInVSCodeUrl } from "../../../utils/vscode";
 import { getTemplateTags } from "../../../utils/galleryTags";
-import {
-  getTemplateIdentifier,
-  formatAzdInitCommand,
-} from "../../../utils/templateCommands";
-
-const lightCalloutStyles: Partial<ICalloutContentStyles> = {
-  calloutMain: {
-    padding: "3px 10px",
-  },
-};
-
-const darkCalloutStyles: Partial<ICalloutContentStyles> = {
-  beak: { background: "#292929" },
-  beakCurtain: { background: "#292929" },
-  calloutMain: {
-    background: "transparent",
-    padding: "3px 10px",
-  },
-};
-
-function CopyButton({ url, colorMode }: { url: string; colorMode: string }) {
-  const copySVG = useBaseUrl("/img/purpleCopy.svg");
-  const buttonId = useId("copyButton");
-  const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] =
-    useBoolean(false);
-  const labelId = useId("callout-label");
-  const descriptionId = useId("callout-description");
-  return (
-    <div>
-      <DefaultButton
-        id={buttonId}
-        className={styles.purple}
-        onClick={() => {
-          toggleIsCalloutVisible();
-          navigator.clipboard.writeText(url);
-        }}
-      >
-        <img src={copySVG} height={20} alt="Copy" />
-        <div className={styles.copyLabel}>Copy</div>
-      </DefaultButton>
-      {isCalloutVisible && (
-        <Callout
-          ariaLabelledBy={labelId}
-          ariaDescribedBy={descriptionId}
-          role="dialog"
-          gapSpace={0}
-          target={`#${buttonId}`}
-          onDismiss={toggleIsCalloutVisible}
-          setInitialFocus
-          directionalHint={DirectionalHint.topCenter}
-          styles={colorMode != "dark" ? lightCalloutStyles : darkCalloutStyles}
-        >
-          <Text variant="small">Copied</Text>
-        </Callout>
-      )}
-    </div>
-  );
-}
+import TemplateQuickUse from "./TemplateQuickUse";
+import TemplateIncludedServices from "./TemplateIncludedServices";
 
 export default function ShowcaseCardPanel({ user }: { user: User }) {
   const [
@@ -98,11 +32,6 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
     IsPopupVisibleAzureCalculator,
     { toggle: toggleIsPopupVisibleAzureCalculator },
   ] = useBoolean(true);
-
-  const templateIdentifier = getTemplateIdentifier(user.source);
-  const azdInitCommand = formatAzdInitCommand(templateIdentifier);
-  const openInVSCodeUrl = getOpenInVSCodeUrl(user.source);
-  const vsCodeIcon = useBaseUrl("/img/vscode-white.svg");
 
   let pivotTextColor = "black";
   const { colorMode } = useColorMode();
@@ -188,162 +117,21 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
             <div className={`${styles.textColor} ${styles.bodyText}`}>
               {user.description}
             </div>
-            <div>
-              <div className={styles.borderBottomColor}>
-                <div
-                  className={`${styles.textColor} ${styles.sectionTitle}`}
-                >
-                  Quick Use
-                </div>
-                <DefaultButton
-                  className={styles.sectionToggle}
-                  onClick={toggleIsPopupVisibleTemplateDetails}
-                  aria-label="Toggle template details"
-                >
-                  <img
-                    src={chevronSVG}
-                    width={20}
-                    height={20}
-                    alt=""
-                  />
-                </DefaultButton>
-              </div>
-              {isPopupVisibleTemplateDetails && (
-                <Popup>
-                  <div
-                    className={`${styles.textColor} ${styles.helpText}`}
-                  >
-                    If you already have the Azure Developer CLI installed on
-                    your machine, using this template is as simple as running
-                    this command in a new directory.
-                  </div>
-                  <div className={styles.terminalSquareTopColor}>
-                    <div
-                      className={`${styles.textColor} ${styles.commandTitle}`}
-                    >
-                      Terminal Command
-                    </div>
-                    <CopyButton colorMode={colorMode} url={azdInitCommand} />
-                  </div>
-                  <div className={styles.terminalSquareBottomColor}>
-                    <div className={styles.commandColor}>
-                      {azdInitCommand}
-                    </div>
-                  </div>
-                  <div className={styles.alternativeSeparator}>
-                    <Separator alignContent="start">
-                      Or using VS Code for the Web
-                    </Separator>
-                  </div>
-
-                  <div
-                    className={`${styles.textColor} ${styles.helpText}`}
-                  >
-                    Open this template in VS Code for the Web with azd and other
-                    Azure development tools ready to use.
-                  </div>
-                  <a
-                    className={styles.openInVSCodeButton}
-                    href={openInVSCodeUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-m={JSON.stringify({
-                      id: user.title,
-                      cN: "Open in VS Code",
-                    })}
-                  >
-                    <img
-                      className={styles.vsCodeIcon}
-                      src={vsCodeIcon}
-                      alt=""
-                      aria-hidden="true"
-                    />
-                    <span>Open in VS Code</span>
-                  </a>
-                  <div className={styles.alternativeSeparator}>
-                    <Separator alignContent="start">
-                      Or using the azd extension
-                    </Separator>
-                  </div>
-                  <div
-                    className={`${styles.textColor} ${styles.helpText}`}
-                  >
-                    In the template picker, paste this template identifier.{" "}
-                    <a
-                      href={
-                        "https://marketplace.visualstudio.com/items?itemName=ms-azuretools.azure-dev"
-                      }
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.color}
-                    >
-                      Learn more about the azd VS Code extension
-                    </a>
-                    .
-                  </div>
-
-                  <div className={styles.terminalSquareTopColor}>
-                    <div
-                      className={`${styles.textColor} ${styles.commandTitle}`}
-                    >
-                      Template Identifier
-                    </div>
-                    <CopyButton colorMode={colorMode} url={templateIdentifier} />
-                  </div>
-                  <div className={styles.terminalSquareBottomColor}>
-                    <div className={styles.commandColor}>
-                      {templateIdentifier}
-                    </div>
-                  </div>
-                </Popup>
-              )}
-            </div>
-            <div>
-              <div className={styles.borderBottomColor}>
-                <div
-                  className={`${styles.textColor} ${styles.sectionTitle}`}
-                >
-                  Included in this template
-                </div>
-                <DefaultButton
-                  className={styles.sectionToggle}
-                  onClick={toggleIsPopupVisibleAzureCalculator}
-                  aria-label="Toggle included services"
-                >
-                  <img
-                    src={chevronSVG}
-                    width={20}
-                    height={20}
-                    alt=""
-                  />
-                </DefaultButton>
-              </div>
-              {IsPopupVisibleAzureCalculator && (
-                <Popup>
-                  <div
-                    className={`${styles.textColor} ${styles.helpText}`}
-                  >
-                    The services used in this template are subject to their
-                    normal usage fees and charges. Learn more about the cost of
-                    individual services by visiting the{" "}
-                    <a
-                      href="https://azure.microsoft.com/en-us/pricing/calculator/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.color}
-                    >
-                      Azure Pricing Calculator
-                    </a>
-                    .
-                  </div>
-                  <ShowcaseCardAzureTag
-                    key={"azure_tag_" + user.title}
-                    tags={tags}
-                    colorMode={colorMode}
-                  />
-                </Popup>
-              )}
-            </div>
+            <TemplateQuickUse
+              template={user}
+              colorMode={colorMode}
+              expanded={isPopupVisibleTemplateDetails}
+              onToggle={toggleIsPopupVisibleTemplateDetails}
+              chevronIcon={chevronSVG}
+            />
+            <TemplateIncludedServices
+              tags={tags}
+              templateTitle={user.title}
+              colorMode={colorMode}
+              expanded={IsPopupVisibleAzureCalculator}
+              onToggle={toggleIsPopupVisibleAzureCalculator}
+              chevronIcon={chevronSVG}
+            />
           </Label>
         </PivotItem>
         <PivotItem className={styles.legalTab} headerText="Legal">
@@ -377,81 +165,4 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
       </Pivot>
     </div>
   );
-}
-
-function ShowcaseCardAzureIcon({ iconPath }: { iconPath: string | undefined }) {
-  const icon = useBaseUrl(iconPath);
-  return (
-    <img
-      src={icon}
-      alt="Azure Service Icon"
-      width={20}
-      height={20}
-    />
-  );
-}
-
-function ShowcaseCardAzureTag({
-  tags,
-  colorMode,
-}: {
-  tags: TagType[];
-  colorMode: string;
-}) {
-  const tagObjects = tags.map((tag) => ({ tag, ...Tags[tag] }));
-
-  // Keep same order for all tags
-  const tagObjectsSorted = sortBy(tagObjects, (tagObject) =>
-    sortedTagList.indexOf(tagObject.tag)
-  );
-
-  return tagObjectsSorted.map((tagObject, index) => {
-    const azureService = tagObject.label.includes("Azure");
-
-    return azureService ? (
-      <div
-        key={index}
-        className={styles.serviceRow}
-      >
-        <div
-          className={styles.squareColor}
-        >
-          <ShowcaseCardAzureIcon
-            iconPath={
-              colorMode != "dark" || tagObject.darkModeAzureIcon == null
-                ? tagObject.azureIcon
-                : tagObject.darkModeAzureIcon
-            }
-          />
-        </div>
-        <div className={styles.serviceContent}>
-          <div
-            className={`${styles.textColor} ${styles.serviceTitle}`}
-          >
-            {tagObject.label}
-          </div>
-          <div className={styles.serviceMetadata}>
-            <div
-              className={styles.serviceMetaLabel}
-            >
-              Azure Service
-            </div>
-            <div
-              className={styles.serviceMetaSeparator}
-            >
-              •
-            </div>
-            <a
-              href={tagObject.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${styles.color} ${styles.serviceLink}`}
-            >
-              Learn More
-            </a>
-          </div>
-        </div>
-      </div>
-    ) : null;
-  });
 }

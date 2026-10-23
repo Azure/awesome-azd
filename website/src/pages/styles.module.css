@@ -79,31 +79,6 @@
   margin: 0px 0px 0 20px;
 }
 
-.viewingSortRow {
-  display: flex;
-  align-items: center;
-}
-
-.viewingStatus {
-  display: flex;
-  gap: 4px;
-  flex: 1;
-}
-
-.sortControls {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.sortControls .sortCombobox {
-  min-width: unset;
-}
-
-.sortControls .sortInput {
-  width: 130px;
-}
-
 /* Desktop-only sticky positioning for filter */
 @media screen and (min-width: 997px) {
   .filter {
@@ -177,12 +152,5 @@
   .heroBar {
     width: 100%;
     padding: 0 16px;
-  }
-}
-
-@media screen and (max-width: 547px) {
-  .viewingSortRow {
-    flex-wrap: wrap;
-    row-gap: 8px;
   }
 }

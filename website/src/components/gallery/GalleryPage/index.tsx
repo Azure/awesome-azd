@@ -23,7 +23,7 @@ import { type TagType } from "@site/src/data/tags";
 import { TagList } from "@site/src/data/users";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
-import ShowcaseCardPage from "../ShowcaseResults";
+import ShowcaseResults from "../ShowcaseResults";
 import { useLocation } from "@docusaurus/router";
 
 initializeIcons();
@@ -85,7 +85,7 @@ export default function GalleryPage(): React.JSX.Element | null {
             />
           </div>
           <div className={styles.card}>
-            <ShowcaseCardPage
+            <ShowcaseResults
               setActiveTags={setActiveTags}
               selectedTags={selectedTags}
               location={location}

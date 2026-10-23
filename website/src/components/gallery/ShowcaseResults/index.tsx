@@ -40,7 +40,7 @@ type GalleryItems =
   | { type: "templates"; items: User[] }
   | { type: "extensions"; items: Extension[] };
 
-export default function ShowcaseCardPage({
+export default function ShowcaseResults({
   setActiveTags,
   selectedTags,
   location,

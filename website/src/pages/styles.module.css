@@ -132,22 +132,6 @@
   width: 130px;
 }
 
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  margin: 24px 0;
-}
-
-.pagination .paginationEllipsis {
-  padding: 8px;
-}
-
-.pagination .pageButton {
-  min-width: 40px;
-}
-
 .clearAll {
   color: var(--ifm-color-primary);
   cursor: pointer;

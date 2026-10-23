@@ -24,13 +24,13 @@ import TemplateIncludedServices from "./TemplateIncludedServices";
 
 export default function ShowcaseCardPanel({ user }: { user: User }) {
   const [
-    isPopupVisibleTemplateDetails,
-    { toggle: toggleIsPopupVisibleTemplateDetails },
+    isQuickUseExpanded,
+    { toggle: toggleQuickUseExpanded },
   ] = useBoolean(true);
 
   const [
-    IsPopupVisibleAzureCalculator,
-    { toggle: toggleIsPopupVisibleAzureCalculator },
+    isIncludedServicesExpanded,
+    { toggle: toggleIncludedServicesExpanded },
   ] = useBoolean(true);
 
   let pivotTextColor = "black";
@@ -120,16 +120,16 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
             <TemplateQuickUse
               template={user}
               colorMode={colorMode}
-              expanded={isPopupVisibleTemplateDetails}
-              onToggle={toggleIsPopupVisibleTemplateDetails}
+              expanded={isQuickUseExpanded}
+              onToggle={toggleQuickUseExpanded}
               chevronIcon={chevronSVG}
             />
             <TemplateIncludedServices
               tags={tags}
               templateTitle={user.title}
               colorMode={colorMode}
-              expanded={IsPopupVisibleAzureCalculator}
-              onToggle={toggleIsPopupVisibleAzureCalculator}
+              expanded={isIncludedServicesExpanded}
+              onToggle={toggleIncludedServicesExpanded}
               chevronIcon={chevronSVG}
             />
           </Label>

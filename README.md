@@ -40,6 +40,7 @@ New to `azd`? Check out the `azd` videos in the Open at Microsoft series:
 * [Generate Local .NET Secrets from Azure Deployments](https://www.youtube.com/watch?v=NpE7edalTlQ) - March 2024
 * [Azure Developer CLI - #QuickGlance Playlist](https://www.youtube.com/watch?v=eLiD3E7tPYo&list=PLmZLSvJAm8FbFq2XhqaPZgIzl6kewz1HD) - August 2022
 * [Azure Developer CLI - on Azure Cosmos DB TV](https://www.youtube.com/watch?v=LjI-WZtunqA) - August 2022
+* [Mode VC Radar MCP](https://modevc.com/api/mcp) - Read-only venture capital & AI market research MCP server (39 empirical AI charts, 3,650 VC firms, SEC Form D filings, and 18 founder financial calculators; free Streamable HTTP at https://modevc.com/api/mcp).
 
 ## 3. Contribute to Gallery
 

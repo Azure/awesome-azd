@@ -27,6 +27,7 @@ import { Globe16Regular } from "@fluentui/react-icons";
 
 function ShowcaseExtensionCard({ extension }: { extension: Extension }): React.JSX.Element {
   const { status: copyStatus, copy } = useClipboard();
+  const [isCopyFeedbackOpen, setCopyFeedbackOpen] = React.useState(false);
   const communityLogo = useBaseUrl("/img/Community.svg");
   const msftLogo = useBaseUrl("/img/Microsoft.svg");
   const copyIcon = useBaseUrl("/img/Copy.svg");
@@ -158,7 +159,13 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): React.J
         >
           {installCommand}
         </code>
-        <Popover trapFocus withArrow size="small">
+        <Popover
+          trapFocus
+          withArrow
+          size="small"
+          open={isCopyFeedbackOpen && copyStatus !== "failed"}
+          onOpenChange={(_event, data) => setCopyFeedbackOpen(data.open)}
+        >
           <PopoverTrigger disableButtonEnhancement>
             <Button
               size="small"
@@ -173,7 +180,7 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): React.J
             </Button>
           </PopoverTrigger>
           <PopoverSurface className={styleCSS.copyFeedback}>
-            <div role="status" aria-live="polite">{copyStatus === "copied" ? "Copied!" : copyStatus === "failed" ? "Copy failed. Please try again." : "Copying..."}</div>
+            <div role="status" aria-live="polite">{copyStatus === "copied" ? "Copied!" : "Copying..."}</div>
           </PopoverSurface>
         </Popover>
       </CardFooter>

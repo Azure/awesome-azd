@@ -55,6 +55,7 @@ const darkTheme: PartialTheme = {
 
 function ShowcaseCard({ template }: { template: Template }): React.JSX.Element {
   const { status: copyStatus, copy } = useClipboard();
+  const [isCopyFeedbackOpen, setCopyFeedbackOpen] = React.useState(false);
   const title = template.title;
   const tags = getTemplateTags(template);
   const source = template.source;
@@ -187,7 +188,13 @@ function ShowcaseCard({ template }: { template: Template }): React.JSX.Element {
           placeholder={azdInitCommand}
           aria-label={`azd init command for ${title}`}
         />
-        <Popover trapFocus withArrow size="small">
+        <Popover
+          trapFocus
+          withArrow
+          size="small"
+          open={isCopyFeedbackOpen && copyStatus !== "failed"}
+          onOpenChange={(_event, data) => setCopyFeedbackOpen(data.open)}
+        >
           <PopoverTrigger disableButtonEnhancement>
             <Button
               size="small"
@@ -203,7 +210,7 @@ function ShowcaseCard({ template }: { template: Template }): React.JSX.Element {
           </PopoverTrigger>
 
           <PopoverSurface className={styleCSS.copyFeedback}>
-            <div>{copyStatus === "copied" ? "Copied!" : copyStatus === "failed" ? "Copy failed. Please try again." : "Copying..."}</div>
+            <div>{copyStatus === "copied" ? "Copied!" : "Copying..."}</div>
           </PopoverSurface>
         </Popover>
       </CardFooter>

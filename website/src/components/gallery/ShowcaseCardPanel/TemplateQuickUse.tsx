@@ -43,36 +43,39 @@ function CopyButton({ url, colorMode }: { url: string; colorMode: string }) {
   const { status: copyStatus, copy } = useClipboard();
   const copySVG = useBaseUrl("/img/purpleCopy.svg");
   const buttonId = useId("copyButton");
-  const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] =
+  const [isCalloutVisible, { setTrue: showCallout, setFalse: hideCallout }] =
     useBoolean(false);
+  const isCopyFeedbackVisible = isCalloutVisible && copyStatus !== "failed";
   const labelId = useId("callout-label");
-  const descriptionId = useId("callout-description");
   return (
     <div>
       <DefaultButton
         id={buttonId}
         className={styles.purple}
         onClick={() => {
-          toggleIsCalloutVisible();
+          if (isCopyFeedbackVisible) {
+            hideCallout();
+          } else {
+            showCallout();
+          }
           void copy(url);
         }}
       >
         <img src={copySVG} height={20} alt="Copy" />
         <div className={styles.copyLabel}>Copy</div>
       </DefaultButton>
-      {isCalloutVisible && (
+      {isCopyFeedbackVisible && (
         <Callout
           ariaLabelledBy={labelId}
-          ariaDescribedBy={descriptionId}
           role="dialog"
           gapSpace={0}
           target={`#${buttonId}`}
-          onDismiss={toggleIsCalloutVisible}
+          onDismiss={hideCallout}
           setInitialFocus
           directionalHint={DirectionalHint.topCenter}
           styles={colorMode != "dark" ? lightCalloutStyles : darkCalloutStyles}
         >
-          <Text variant="small">{copyStatus === "copied" ? "Copied" : copyStatus === "failed" ? "Copy failed. Please try again." : "Copying..."}</Text>
+          <Text id={labelId} variant="small">{copyStatus === "copied" ? "Copied" : "Copying..."}</Text>
         </Callout>
       )}
     </div>

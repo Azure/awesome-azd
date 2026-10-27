@@ -81,10 +81,9 @@ function CopyButton({ text, className, ariaLabel }) {
       className={`${className || ""} ${copied ? styles.copied : ""}`}
       onClick={onClick}
       aria-label={ariaLabel || `Copy ${text} to clipboard`}
-      title={copyStatus === "failed" ? "Copy failed. Please try again." : "Copy to clipboard"}
+      title="Copy to clipboard"
     >
       {copied ? <CheckIcon /> : <CopyIcon />}
-      {copyStatus === "failed" && <span className={styles.copyError} role="status">Copy failed. Please try again.</span>}
     </button>
   );
 }

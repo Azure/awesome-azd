@@ -209,8 +209,8 @@ function ShowcaseCard({ template }: { template: Template }): React.JSX.Element {
             </Button>
           </PopoverTrigger>
 
-          <PopoverSurface className={styleCSS.copyFeedback}>
-            <div>{copyStatus === "copied" ? "Copied!" : "Copying..."}</div>
+          <PopoverSurface tabIndex={-1} className={styleCSS.copyFeedback}>
+            <div role="status" aria-live="polite">{copyStatus === "copied" ? "Copied!" : "Copying..."}</div>
           </PopoverSurface>
         </Popover>
       </CardFooter>

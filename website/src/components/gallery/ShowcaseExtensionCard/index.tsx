@@ -179,7 +179,7 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): React.J
               <img src={copyIcon} width={20} height={20} alt="Copy" />
             </Button>
           </PopoverTrigger>
-          <PopoverSurface className={styleCSS.copyFeedback}>
+          <PopoverSurface tabIndex={-1} className={styleCSS.copyFeedback}>
             <div role="status" aria-live="polite">{copyStatus === "copied" ? "Copied!" : "Copying..."}</div>
           </PopoverSurface>
         </Popover>

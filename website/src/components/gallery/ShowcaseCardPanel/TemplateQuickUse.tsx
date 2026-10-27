@@ -75,7 +75,7 @@ function CopyButton({ url, colorMode }: { url: string; colorMode: string }) {
           directionalHint={DirectionalHint.topCenter}
           styles={colorMode != "dark" ? lightCalloutStyles : darkCalloutStyles}
         >
-          <Text id={labelId} variant="small">{copyStatus === "copied" ? "Copied" : "Copying..."}</Text>
+          <Text id={labelId} variant="small" role="status" aria-live="polite">{copyStatus === "copied" ? "Copied" : "Copying..."}</Text>
         </Callout>
       )}
     </div>

@@ -5,7 +5,7 @@
 
 import React from "react";
 import ShowcaseEmptyResult from "../ShowcaseEmptyResult";
-import { type Template, type TagType } from "../../../data/tags";
+import { type Template } from "../../../data/tags";
 import styles from "./styles.module.css";
 import ShowcaseCard from "../ShowcaseCard";
 import ShowcaseSurveyCard from "../ShowcaseSurveyCard";

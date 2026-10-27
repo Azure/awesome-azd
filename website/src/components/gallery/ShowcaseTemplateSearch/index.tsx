@@ -15,8 +15,6 @@ import styles from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useColorMode } from "@docusaurus/theme-common";
 
-export type { GalleryNavigationState } from "@site/src/utils/galleryNavigation";
-
 const TITLES: Record<string, string> = {
   templates: "From code to cloud in minutes",
   extensions: "Extension Gallery",
@@ -29,8 +27,6 @@ const PLACEHOLDERS: Record<string, string> = {
   templates: "Search for an azd template or author...",
   extensions: "Search for an azd extension, capability, or author...",
 };
-const ADD_URL = "https://aka.ms/azd";
-
 const searchBoxStyles: Partial<ISearchBoxStyles> = {
   root: {
     border: "1px solid var(--site-color-border)",

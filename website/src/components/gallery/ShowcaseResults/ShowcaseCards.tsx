@@ -5,19 +5,19 @@
 
 import React from "react";
 import ShowcaseEmptyResult from "../ShowcaseEmptyResult";
-import { type User, type TagType } from "../../../data/tags";
+import { type Template, type TagType } from "../../../data/tags";
 import styles from "./styles.module.css";
 import ShowcaseCard from "../ShowcaseCard";
 import ShowcaseSurveyCard from "../ShowcaseSurveyCard";
 
 export default function ShowcaseCards({
-  filteredUsers,
+  filteredTemplates,
   searchName = null,
 }: {
-  filteredUsers: User[];
+  filteredTemplates: Template[];
   searchName?: string | null;
 }) {
-  const len = filteredUsers ? filteredUsers.length : 0;
+  const len = filteredTemplates ? filteredTemplates.length : 0;
   if (len === 0) {
     return (
       <ShowcaseEmptyResult
@@ -31,9 +31,9 @@ export default function ShowcaseCards({
     <section>
       <div className={styles.showcaseFavorite}>
         <div className={styles.showcaseList} data-testid="showcase-list">
-          {filteredUsers.map((user, index) => (
-            <React.Fragment key={user.id}>
-              <ShowcaseCard user={user} />
+          {filteredTemplates.map((template, index) => (
+            <React.Fragment key={template.id}>
+              <ShowcaseCard template={template} />
               {(len < 6 && index === len - 1) || index === 4 ? (
                 <ShowcaseSurveyCard />
               ) : null}

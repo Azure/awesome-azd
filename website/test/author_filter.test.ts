@@ -1,10 +1,10 @@
 import { describe, expect, test } from '@jest/globals';
-import { User, TagType } from '../src/data/tags';
+import { Template, TagType } from '../src/data/tags';
 import { splitAuthors } from '../src/utils/jsUtils';
 
 // Mock implementation of the filterUsers function to test author filtering
 function filterUsers(
-  users: User[],
+  users: Template[],
   selectedTags: TagType[],
   searchName: string | null
 ) {
@@ -35,7 +35,7 @@ function filterUsers(
 
 // Filter function with author selection support
 function filterUsersByAuthor(
-  users: User[],
+  users: Template[],
   selectedAuthors: string[]
 ) {
   if (!selectedAuthors || selectedAuthors.length === 0) {
@@ -51,7 +51,7 @@ function filterUsersByAuthor(
 }
 
 describe('Author filtering tests', () => {
-    const mockUsers: User[] = [
+    const mockUsers: Template[] = [
         {
             id: "00000000-0000-4000-8000-000000000001",
             title: "React Web App",
@@ -150,7 +150,7 @@ describe('Author splitting and filtering tests', () => {
     });
 
     test('Filter by individual author when template has multiple authors', () => {
-        const multiAuthorUsers: User[] = [
+        const multiAuthorUsers: Template[] = [
             {
                 id: "00000000-0000-4000-8000-000000000004",
                 title: "Multi-author Template",
@@ -186,7 +186,7 @@ describe('Author splitting and filtering tests', () => {
     });
 
     test('Extract individual authors from templates with multiple authors', () => {
-        const users: User[] = [
+        const users: Template[] = [
             {
                 id: "00000000-0000-4000-8000-000000000006",
                 title: "Template 1",

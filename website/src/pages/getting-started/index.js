@@ -8,6 +8,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import Layout from "@theme/Layout";
 import styles from "./styles.module.css";
+import { useClipboard } from "@site/src/utils/useClipboard";
 
 /* ─────────── Shared icons ─────────── */
 const CopyIcon = () => (
@@ -45,12 +46,16 @@ const CheckIcon = () => (
 
 /* ─────────── Copy button ─────────── */
 function CopyButton({ text, className, ariaLabel }) {
-  const [copied, setCopied] = useState(false);
+  const { status: copyStatus, copy, reset } = useClipboard();
+  const copied = copyStatus === "copied";
   // Preserve each click's reset deadline until the button unmounts.
   const resetTimeouts = useRef(new Set());
+  const mounted = useRef(true);
   useEffect(() => {
+    mounted.current = true;
     const timeouts = resetTimeouts.current;
     return () => {
+      mounted.current = false;
       for (const timeout of timeouts) {
         clearTimeout(timeout);
       }
@@ -58,24 +63,17 @@ function CopyButton({ text, className, ariaLabel }) {
     };
   }, []);
   const onClick = useCallback(
-    (e) => {
+    async (e) => {
       e.preventDefault();
       e.stopPropagation();
-      if (
-        typeof navigator !== "undefined" &&
-        navigator.clipboard &&
-        navigator.clipboard.writeText
-      ) {
-        navigator.clipboard.writeText(text);
-      }
-      setCopied(true);
+      if (await copy(text) !== "copied" || !mounted.current) return;
       const timeout = setTimeout(() => {
         resetTimeouts.current.delete(timeout);
-        setCopied(false);
+        reset();
       }, 2000);
       resetTimeouts.current.add(timeout);
     },
-    [text]
+    [text, copy, reset]
   );
   return (
     <button
@@ -83,9 +81,10 @@ function CopyButton({ text, className, ariaLabel }) {
       className={`${className || ""} ${copied ? styles.copied : ""}`}
       onClick={onClick}
       aria-label={ariaLabel || `Copy ${text} to clipboard`}
-      title="Copy to clipboard"
+      title={copyStatus === "failed" ? "Copy failed. Please try again." : "Copy to clipboard"}
     >
       {copied ? <CheckIcon /> : <CopyIcon />}
+      {copyStatus === "failed" && <span className={styles.copyError} role="status">Copy failed. Please try again.</span>}
     </button>
   );
 }

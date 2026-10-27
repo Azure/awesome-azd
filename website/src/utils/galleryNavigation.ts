@@ -5,12 +5,12 @@
 
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 
-export type UserState = {
+export type GalleryNavigationState = {
   scrollTopPosition: number;
   focusedElementId: string | undefined;
 };
 
-export function prepareUserState(): UserState | undefined {
+export function captureGalleryNavigationState(): GalleryNavigationState | undefined {
   if (ExecutionEnvironment.canUseDOM) {
     return {
       scrollTopPosition: window.scrollY,
@@ -21,10 +21,10 @@ export function prepareUserState(): UserState | undefined {
   return undefined;
 }
 
-export function restoreUserState(
-  userState: UserState | null | undefined,
+export function restoreGalleryNavigationState(
+  navigationState: GalleryNavigationState | null | undefined,
 ): void {
-  const { scrollTopPosition, focusedElementId } = userState ?? {
+  const { scrollTopPosition, focusedElementId } = navigationState ?? {
     scrollTopPosition: 0,
     focusedElementId: undefined,
   };

@@ -3,37 +3,6 @@
  * Licensed under the MIT License.
  */
 
-.checkboxListItem {
-  user-select: none;
-  white-space: nowrap;
-}
-
-.checkboxListItem:last-child {
-  margin-right: 0;
-}
-
-.searchContainer {
-  display: inline-block;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  background: var(--site-hero-bg);
-}
-
-.searchArea {
-  position: relative;
-  width: 100%;
-  min-height: 340px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-3xl) var(--space-lg) var(--space-2xl);
-}
-
-.heroBar {
-  max-width: 720px;
-}
-
 .filterAndCard {
   display: flex;
   padding: var(--space-xl) 40px;
@@ -136,8 +105,4 @@
     margin: 0;
   }
 
-  .heroBar {
-    width: 100%;
-    padding: 0 16px;
-  }
 }

@@ -7,7 +7,8 @@ import React from "react";
 import type { Location } from "history";
 import { useHistory } from "@docusaurus/router";
 import { toggleListItem } from "@site/src/utils/jsUtils";
-import { prepareUserState } from "@site/src/utils/galleryNavigation";
+import { captureGalleryNavigationState } from "@site/src/utils/galleryNavigation";
+import { readSearchTags, replaceSearchTags } from "@site/src/utils/galleryQuery";
 import { type TagType } from "@site/src/data/tags";
 import { Checkbox } from "@fluentui/react-components";
 
@@ -18,8 +19,6 @@ export default function ShowcaseTagSelect({
   activeTags,
   selectedTags,
   location,
-  readSearchTags,
-  replaceSearchTags,
   count,
 }: {
   label: string;
@@ -28,8 +27,6 @@ export default function ShowcaseTagSelect({
   activeTags: TagType[];
   selectedTags: TagType[];
   location: Location;
-  readSearchTags: (search: string) => TagType[];
-  replaceSearchTags: (search: string, newTags: TagType[]) => string;
   count?: number;
 }): React.JSX.Element {
   const history = useHistory();
@@ -41,12 +38,12 @@ export default function ShowcaseTagSelect({
     history.push({
       ...location,
       search: newSearch,
-      state: prepareUserState(),
+      state: captureGalleryNavigationState(),
     });
   };
 
-  const template = id.replace("showcase_checkbox_id_", "");
-  const contentForAdobeAnalytics = `{\"id\":\"${template}\",\"cN\":\"Tags\"}`;
+  const tagId = id.replace("showcase_checkbox_id_", "");
+  const contentForAdobeAnalytics = `{\"id\":\"${tagId}\",\"cN\":\"Tags\"}`;
 
   return (
     <>

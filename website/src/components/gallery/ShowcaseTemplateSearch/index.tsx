@@ -7,15 +7,15 @@ import React, { useState, useEffect } from "react";
 import { SearchBox, type ISearchBoxStyles } from "@fluentui/react/lib/SearchBox";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { Text, Link as FluentUILink } from "@fluentui/react-components";
-import { galleryTemplates as allTemplates } from "@site/src/data/users";
+import { galleryTemplates as allTemplates } from "@site/src/data/templates";
 import { getContentType } from "@site/src/utils/contentType";
-import { prepareUserState } from "@site/src/utils/galleryNavigation";
+import { captureGalleryNavigationState } from "@site/src/utils/galleryNavigation";
 import { readSearchName, replaceSearchName } from "@site/src/utils/galleryQuery";
 import styles from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useColorMode } from "@docusaurus/theme-common";
 
-export type { UserState } from "@site/src/utils/galleryNavigation";
+export type { GalleryNavigationState } from "@site/src/utils/galleryNavigation";
 
 const TITLES: Record<string, string> = {
   templates: "From code to cloud in minutes",
@@ -81,7 +81,7 @@ function FilterBar(): React.JSX.Element {
           history.push({
             ...location,
             search: replaceSearchName(location.search, null),
-            state: prepareUserState(),
+            state: captureGalleryNavigationState(),
           });
         }}
         onSearch={(newValue) => {
@@ -90,7 +90,7 @@ function FilterBar(): React.JSX.Element {
           history.push({
             ...location,
             search: replaceSearchName(location.search, submitted),
-            state: prepareUserState(),
+            state: captureGalleryNavigationState(),
           });
         }}
         onChange={(e) => {

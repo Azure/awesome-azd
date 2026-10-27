@@ -13,7 +13,7 @@ import {
   webLightTheme,
   webDarkTheme,
 } from "@fluentui/react-components";
-import { galleryTemplates as allTemplates } from "@site/src/data/users";
+import { galleryTemplates as allTemplates } from "@site/src/data/templates";
 import styles from "./styles.module.css";
 
 

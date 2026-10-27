@@ -5,12 +5,12 @@
 
 import React from "react";
 import styles from "./styles.module.css";
-import { Tag, Tags, type User, type TagType } from "../../../data/tags";
-import { sortedTagList } from "../../../data/users";
+import { Tag, Tags, type TagType } from "../../../data/tags";
+import { sortedTagList } from "../../../data/templates";
 import { sortBy } from "@site/src/utils/jsUtils";
 import { Badge, Tooltip } from "@fluentui/react-components";
 
-const TagComp = React.forwardRef<HTMLDivElement, Tag>(
+const TagComp = React.forwardRef<HTMLDivElement, Pick<Tag, "label" | "description">>(
   ({ label, description }, ref) => (
     <Badge
       appearance="outline"
@@ -66,8 +66,7 @@ export default function ShowcaseCardTag({
       return (
         <>
           {tagObjectsSorted.slice(0, number).map((tagObject, index) => {
-            const id = `showcase_card_tag_${tagObject.tag}`;
-            return <TagComp key={index} id={id} {...tagObject} />;
+            return <TagComp key={index} {...tagObject} />;
           })}
           <Tooltip
             withArrow
@@ -96,7 +95,7 @@ export default function ShowcaseCardTag({
           {tagObjectsSorted.map((tagObject, index) => {
             const id = `showcase_card_tag_${tagObject.tag}`;
             return (
-                <TagComp key={id} id={id} {...tagObject} />
+                <TagComp key={id} {...tagObject} />
             );
           })}
         </>

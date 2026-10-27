@@ -151,27 +151,20 @@ describe('EU cookie consent banner wiring', () => {
         // if Root unmounts before WcpConsent loads.
         const root = readRepoFile('src/theme/Root.js');
         expect(root).toMatch(/return\s+stopWaitingForWcp\s*;/);
-        expect(root).toMatch(/useEffect\s*\(\s*\(\s*\)\s*=>\s*\{\s*return\s+telemetryInit\s*\(\s*\)\s*;/);
+        expect(root).toMatch(/useEffect\s*\(\s*\(\s*\)\s*=>\s*\{\s*return\s+telemetryInit\s*\(\s*setSiteConsent\s*\)\s*;/);
     });
 
-    test('Root only removes the Manage Cookies link inside the !isConsentRequired branch', () => {
+    test('Root publishes consent and React owns footer visibility and its action', () => {
         const root = readRepoFile('src/theme/Root.js');
-        const initBlock = root.match(
-            /WcpConsent\.init\s*\([\s\S]*?onConsentChanged\s*\)\s*;/
-        );
-        expect(initBlock).not.toBeNull();
-        const initBody = initBlock![0];
-        const elseBranch = initBody.match(
-            /if\s*\(\s*siteConsent\.isConsentRequired\s*\)\s*\{[\s\S]*?\}\s*else\s*\{([\s\S]*?)\}/
-        );
-        expect(elseBranch).not.toBeNull();
-        const elseBody = elseBranch![1];
-        expect(elseBody).toMatch(/removeItem\s*\(\s*["']footer__links_/);
-        expect(elseBody).toMatch(/removeItem\s*\(\s*manageCookieId\s*\)/);
-        const removeCallSites = (
-            root.match(/removeItem\s*\(/g) || []
-        ).length - (root.match(/function\s+removeItem\s*\(/g) || []).length;
-        expect(removeCallSites).toBe(2);
+        const link = readRepoFile('src/theme/Footer/LinkItem/index.js');
+        const links = readRepoFile('src/theme/Footer/Links/Simple/index.js');
+        expect(root).toMatch(/onConsentReady\(siteConsent\)/);
+        expect(root).toMatch(/CookieConsentContext\.Provider/);
+        expect(root).not.toMatch(/removeItem\s*\(|addEventListener\s*\(\s*["']click["']/);
+        expect(link).toMatch(/<button[\s\S]*?onClick=/);
+        expect(link).toMatch(/siteConsent\.manageConsent\(\)/);
+        expect(links).toMatch(/visibleLinks/);
+        expect(links).toMatch(/isConsentRequired\s*!==\s*false/);
     });
 
     test('Root reads siteConsent only from the init callback, never from the global', () => {
@@ -276,7 +269,7 @@ describe('telemetryInit behavior (jsdom)', () => {
         expect(jest.getTimerCount()).toBe(0);
     });
 
-    test('when WcpConsent arrives after load (polling path), the banner still initializes and the footer link is wired', () => {
+    test('when WcpConsent arrives after load (polling path), the banner initializes and consent is delivered to React', () => {
         const siteConsent: FakeSiteConsent = {
             isConsentRequired: true,
             getConsent: () => ({ Analytics: false }),
@@ -284,7 +277,8 @@ describe('telemetryInit behavior (jsdom)', () => {
         };
         const wcp = makeWcp(siteConsent);
 
-        cleanup = telemetryInit();
+        const onConsentReady = jest.fn();
+        cleanup = telemetryInit(onConsentReady);
 
         // WcpConsent not yet available; polling + load listener armed.
         expect(wcp.init).not.toHaveBeenCalled();
@@ -296,14 +290,11 @@ describe('telemetryInit behavior (jsdom)', () => {
 
         expect(wcp.init).toHaveBeenCalledTimes(1);
 
-        // Footer link click now invokes manageConsent.
-        const link = document.getElementById('manage_cookie') as HTMLElement;
-        expect(link).not.toBeNull();
-        link.click();
-        expect(siteConsent.manageConsent).toHaveBeenCalledTimes(1);
+        expect(onConsentReady).toHaveBeenCalledTimes(1);
+        expect(onConsentReady).toHaveBeenCalledWith(siteConsent);
     });
 
-    test('when isConsentRequired=false, the Manage Cookies footer link and separator are removed', () => {
+    test('when isConsentRequired=false, React receives the state without imperative footer removal', () => {
         const siteConsent: FakeSiteConsent = {
             isConsentRequired: false,
             getConsent: () => ({ Analytics: false }),
@@ -311,10 +302,12 @@ describe('telemetryInit behavior (jsdom)', () => {
         };
         (window as unknown as { WcpConsent: unknown }).WcpConsent = makeWcp(siteConsent);
 
-        cleanup = telemetryInit();
+        const onConsentReady = jest.fn();
+        cleanup = telemetryInit(onConsentReady);
 
-        expect(document.getElementById('manage_cookie')).toBeNull();
-        expect(document.getElementById('footer__links_Manage Cookies')).toBeNull();
+        expect(onConsentReady).toHaveBeenCalledWith(siteConsent);
+        expect(document.getElementById('manage_cookie')).not.toBeNull();
+        expect(document.getElementById('footer__links_Manage Cookies')).not.toBeNull();
     });
 
     test('when wcp-consent.js never resolves, the footer link is NOT silently removed (regression: unguarded else bug)', () => {

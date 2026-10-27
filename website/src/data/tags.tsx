@@ -12,7 +12,7 @@ export type Tag = {
   type?: string;
 };
 
-export type User = {
+export type Template = {
   id: string;
   title: string;
   description: string;

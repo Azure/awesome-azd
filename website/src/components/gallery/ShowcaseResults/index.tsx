@@ -4,18 +4,16 @@
  */
 
 import React, { useState, useMemo, useEffect } from "react";
-import type { User, TagType } from "../../../data/tags";
-import { sortedUsers, unsortedUsers } from "../../../data/users";
+import type { Template, TagType } from "../../../data/tags";
+import { sortedTemplates, unsortedTemplates } from "../../../data/templates";
 import { sortedExtensions, unsortedExtensions } from "../../../data/extensions";
 import type { Extension } from "../../../data/extensionTypes";
-import { Spinner } from "@fluentui/react-components";
+import { Spinner, type ComboboxProps } from "@fluentui/react-components";
 import ShowcaseCards from "./ShowcaseCards";
 import ShowcaseExtensionCards from "./ShowcaseExtensionCards";
 import ShowcaseResultsToolbar from "../ShowcaseResultsToolbar";
 import ShowcaseAppliedFilters from "../ShowcaseAppliedFilters";
 import ShowcasePagination from "../ShowcasePagination";
-import useBaseUrl from "@docusaurus/useBaseUrl";
-import { useColorMode } from "@docusaurus/theme-common";
 import { useHistory } from "@docusaurus/router";
 import type { Location } from "history";
 import { getContentType } from "@site/src/utils/contentType";
@@ -30,34 +28,26 @@ import {
 } from "@site/src/utils/gallerySorting";
 import { getTemplateTags, getExtensionTags } from "@site/src/utils/galleryTags";
 import {
-  prepareUserState,
-  restoreUserState,
-  type UserState,
+  captureGalleryNavigationState,
+  restoreGalleryNavigationState,
+  type GalleryNavigationState,
 } from "@site/src/utils/galleryNavigation";
 import { readSearchName, clearSearchFilters } from "@site/src/utils/galleryQuery";
 
 type GalleryItems =
-  | { type: "templates"; items: User[] }
+  | { type: "templates"; items: Template[] }
   | { type: "extensions"; items: Extension[] };
 
 export default function ShowcaseResults({
   setActiveTags,
   selectedTags,
   location,
-  readSearchTags,
-  replaceSearchTags,
   selectedAuthors,
-  readSearchAuthors,
-  replaceSearchAuthors,
 }: {
   setActiveTags: React.Dispatch<React.SetStateAction<TagType[]>>;
   selectedTags: TagType[];
-  location: Location & { state?: UserState | null; search: string };
-  readSearchTags: (search: string) => TagType[];
-  replaceSearchTags: (search: string, newTags: TagType[]) => string;
+  location: Location & { state?: GalleryNavigationState | null; search: string };
   selectedAuthors: string[];
-  readSearchAuthors: (search: string) => string[];
-  replaceSearchAuthors: (search: string, newAuthors: string[]) => string;
 }) {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([GALLERY_SORT_OPTIONS[2]]);
   const [loading, setLoading] = useState(true);
@@ -76,12 +66,12 @@ export default function ShowcaseResults({
     history.push({
       ...location,
       search: clearSearchFilters(location.search),
-      state: prepareUserState(),
+      state: captureGalleryNavigationState(),
     });
   };
 
   useEffect(() => {
-    restoreUserState(location.state);
+    restoreGalleryNavigationState(location.state);
     setLoading(false);
   }, [location, selectedOptions]);
 
@@ -95,7 +85,7 @@ export default function ShowcaseResults({
       }
       return {
         type: contentType,
-        items: getSortedTemplates(unsortedUsers, sortedUsers, selectedOptions[0]),
+        items: getSortedTemplates(unsortedTemplates, sortedTemplates, selectedOptions[0]),
       };
     },
     [contentType, selectedOptions]
@@ -137,14 +127,14 @@ export default function ShowcaseResults({
         getExtensionTags(ext).forEach((tag) => unionTags.add(tag));
       });
     } else {
-      activeItems.forEach((user) => {
-        getTemplateTags(user).forEach((tag) => unionTags.add(tag));
+      activeItems.forEach((template) => {
+        getTemplateTags(template).forEach((tag) => unionTags.add(tag));
       });
     }
     setActiveTags(Array.from(unionTags));
-  }, [activeItems, activeType]);
+  }, [activeItems, activeType, setActiveTags]);
 
-  const sortByOnSelect = (event, data) => {
+  const sortByOnSelect: NonNullable<ComboboxProps["onOptionSelect"]> = (_event, data) => {
     setLoading(true);
     setSelectedOptions(data.selectedOptions);
   };
@@ -163,10 +153,6 @@ export default function ShowcaseResults({
         clearAll={clearAll}
         selectedTags={selectedTags}
         selectedAuthors={selectedAuthors}
-        readSearchTags={readSearchTags}
-        replaceSearchTags={replaceSearchTags}
-        readSearchAuthors={readSearchAuthors}
-        replaceSearchAuthors={replaceSearchAuthors}
         location={location}
       />
       {loading ? (
@@ -180,7 +166,7 @@ export default function ShowcaseResults({
             />
           ) : (
             <ShowcaseCards
-              filteredUsers={activeItems.slice(startIndex, endIndex)}
+              filteredTemplates={activeItems.slice(startIndex, endIndex)}
               searchName={searchName}
             />
           )}

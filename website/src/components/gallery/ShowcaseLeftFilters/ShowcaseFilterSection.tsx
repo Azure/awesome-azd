@@ -23,23 +23,19 @@ type FilterTagOptionsProps = {
   activeTags: TagType[];
   selectedTags: TagType[];
   location: Location;
-  readSearchTags: (search: string) => TagType[];
-  replaceSearchTags: (search: string, newTags: TagType[]) => string;
   tagCounts?: Record<string, number>;
 };
 
 function ShowcaseFilterViewAll({
   tags,
-  number,
+  sectionValue,
   activeTags,
   selectedTags,
   location,
-  readSearchTags,
-  replaceSearchTags,
   tagCounts,
-}: FilterTagOptionsProps & { number: string }) {
+}: FilterTagOptionsProps & { sectionValue: string }) {
   const [openItems, setOpenItems] = React.useState(["0"]);
-  const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
+  const handleToggle: AccordionToggleEventHandler<string> = (_event, data) => {
     setOpenItems(data.openItems);
   };
   const { colorMode } = useColorMode();
@@ -56,7 +52,7 @@ function ShowcaseFilterViewAll({
       width={16} height={16} alt=""
     />
   );
-  let value = number + "2";
+  const viewAllValue = sectionValue + "2";
   return (
     <>
       {tags.slice(0, 6).map((tag, index) => {
@@ -76,8 +72,6 @@ function ShowcaseFilterViewAll({
               activeTags={activeTags}
               selectedTags={selectedTags}
               location={location}
-              readSearchTags={readSearchTags}
-              replaceSearchTags={replaceSearchTags}
               count={tagCounts?.[tag]}
             />
           </div>
@@ -90,8 +84,6 @@ function ShowcaseFilterViewAll({
               activeTags={activeTags}
               selectedTags={selectedTags}
               location={location}
-              readSearchTags={readSearchTags}
-              replaceSearchTags={replaceSearchTags}
               count={tagCounts?.[tag]}
             />
           </div>
@@ -104,7 +96,7 @@ function ShowcaseFilterViewAll({
           multiple
           collapsible
         >
-          <AccordionItem value={value} className={styles.viewAllItem}>
+          <AccordionItem value={viewAllValue} className={styles.viewAllItem}>
             <AccordionPanel className={styles.viewAllPanel}>
               {tags.slice(6, tags.length).map((tag) => {
                 const tagObject = Tags[tag];
@@ -120,8 +112,6 @@ function ShowcaseFilterViewAll({
                       activeTags={activeTags}
                       selectedTags={selectedTags}
                       location={location}
-                      readSearchTags={readSearchTags}
-                      replaceSearchTags={replaceSearchTags}
                       count={tagCounts?.[tag]}
                     />
                   </div>
@@ -132,7 +122,7 @@ function ShowcaseFilterViewAll({
               inline={true}
               expandIconPosition="end"
               expandIcon={
-                openItems.includes(value) ? chevronUpSmall : chevronDownSmall
+                openItems.includes(viewAllValue) ? chevronUpSmall : chevronDownSmall
               }
             >
               <div className={`${styles.color} ${styles.viewAllLabel}`}>
@@ -164,7 +154,7 @@ export default function ShowcaseFilterSection({
         </div>
       </AccordionHeader>
       <AccordionPanel>
-        <ShowcaseFilterViewAll tags={tags} number={value} {...filterProps} />
+        <ShowcaseFilterViewAll tags={tags} sectionValue={value} {...filterProps} />
       </AccordionPanel>
     </AccordionItem>
   );

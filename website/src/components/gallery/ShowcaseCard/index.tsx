@@ -5,8 +5,9 @@
 
 import React from "react";
 import styleCSS from "./styles.module.css";
-import { type User } from "../../../data/tags";
+import { type Template } from "../../../data/tags";
 import { getTemplateTags } from "../../../utils/galleryTags";
+import { useClipboard } from "../../../utils/useClipboard";
 import {
   getTemplateIdentifier,
   formatAzdInitCommand,
@@ -52,10 +53,11 @@ const darkTheme: PartialTheme = {
   },
 };
 
-function ShowcaseCard({ user }: { user: User }): React.JSX.Element {
-  const title = user.title;
-  const tags = getTemplateTags(user);
-  const source = user.source;
+function ShowcaseCard({ template }: { template: Template }): React.JSX.Element {
+  const { status: copyStatus, copy } = useClipboard();
+  const title = template.title;
+  const tags = getTemplateTags(template);
+  const source = template.source;
   const star = useBaseUrl("/img/Sparkle.svg");
   const templateIdentifier = getTemplateIdentifier(source);
   const azdInitCommand = formatAzdInitCommand(templateIdentifier);
@@ -148,11 +150,11 @@ function ShowcaseCard({ user }: { user: User }): React.JSX.Element {
           <div className={styleCSS.cardTextBy}>by</div>
           <ShowcaseMultipleAuthors
             key={"author_" + title}
-            user={user}
+            template={template}
             cardPanel={false}
           />
         </div>
-        <div className={styleCSS.cardDescription}>{user.description}</div>
+        <div className={styleCSS.cardDescription}>{template.description}</div>
         {/* Panel is Fluent UI 8. Must use ThemeProvider */}
         <ThemeProvider theme={colorMode != "dark" ? lightTheme : darkTheme}>
           <Panel
@@ -164,7 +166,7 @@ function ShowcaseCard({ user }: { user: User }): React.JSX.Element {
             type={PanelType.medium}
             onRenderNavigationContent={onRenderNavigationContent}
           >
-            <ShowcaseCardPanel user={user} />
+            <ShowcaseCardPanel template={template} />
           </Panel>
         </ThemeProvider>
         <div className={styleCSS.cardTagContainer}>
@@ -192,7 +194,7 @@ function ShowcaseCard({ user }: { user: User }): React.JSX.Element {
               className={styleCSS.copyIconButton}
               aria-label={`Copy azd init command for ${title}`}
               onClick={() => {
-                navigator.clipboard.writeText(azdInitCommand);
+                void copy(azdInitCommand);
               }}
               data-m={contentForAdobeAnalytics}
             >
@@ -201,31 +203,12 @@ function ShowcaseCard({ user }: { user: User }): React.JSX.Element {
           </PopoverTrigger>
 
           <PopoverSurface className={styleCSS.copyFeedback}>
-            <div>Copied!</div>
+            <div>{copyStatus === "copied" ? "Copied!" : copyStatus === "failed" ? "Copy failed. Please try again." : "Copying..."}</div>
           </PopoverSurface>
         </Popover>
       </CardFooter>
     </Card>
   );
 }
-
-// function getLastUpdateDate(source) {
-//   const repoPath = source.replace("https://github.com/", "");
-//   const lastCommit = child.exec(
-//     "gh api repos/" +
-//     { repoPath } +
-//     "/commits/HEAD/branches-where-head --jq .[0].commit.url"
-//   );
-//   const repoAndLastCommit = lastCommit.stdout
-//     .toString()
-//     .replace("https://api.github.com/", "");
-//   const lastCommitDate = child.exec(
-//     "gh api " +
-//       { repoAndLastCommit } +
-//       "/commits/ccb174356ca35ace51dbaa2c34592b371b671436 --jq .commit.committer.date"
-//   );
-//   const lastUpdateDate = lastCommitDate.stdout.toString();
-//   return lastUpdateDate;
-// }
 
 export default React.memo(ShowcaseCard);

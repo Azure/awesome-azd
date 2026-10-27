@@ -5,18 +5,18 @@
 
 import React from "react";
 import styles from "./styles.module.css";
-import { type User } from "../../../data/tags";
+import { type Template } from "../../../data/tags";
 import { Link as FluentUILink } from "@fluentui/react-components";
 
 export default function ShowcaseMultipleAuthors({
-  user,
+  template,
   cardPanel,
 }: {
-  user: User;
+  template: Template;
   cardPanel: boolean;
 }) {
-  const authors = user.author;
-  const websites = user.authorUrl;
+  const authors = template.author;
+  const websites = template.authorUrl;
   const authorClassName = cardPanel
     ? styles.cardAuthorPanel
     : styles.cardAuthor;

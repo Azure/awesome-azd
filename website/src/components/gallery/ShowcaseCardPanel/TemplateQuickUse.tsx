@@ -5,7 +5,7 @@
 
 import React from "react";
 import styles from "./styles.module.css";
-import { type User } from "../../../data/tags";
+import { type Template } from "../../../data/tags";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useBoolean, useId } from "@fluentui/react-hooks";
 import {
@@ -18,6 +18,7 @@ import {
   type ICalloutContentStyles,
 } from "@fluentui/react";
 import { getOpenInVSCodeUrl } from "../../../utils/vscode";
+import { useClipboard } from "../../../utils/useClipboard";
 import {
   getTemplateIdentifier,
   formatAzdInitCommand,
@@ -39,6 +40,7 @@ const darkCalloutStyles: Partial<ICalloutContentStyles> = {
 };
 
 function CopyButton({ url, colorMode }: { url: string; colorMode: string }) {
+  const { status: copyStatus, copy } = useClipboard();
   const copySVG = useBaseUrl("/img/purpleCopy.svg");
   const buttonId = useId("copyButton");
   const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] =
@@ -52,7 +54,7 @@ function CopyButton({ url, colorMode }: { url: string; colorMode: string }) {
         className={styles.purple}
         onClick={() => {
           toggleIsCalloutVisible();
-          navigator.clipboard.writeText(url);
+          void copy(url);
         }}
       >
         <img src={copySVG} height={20} alt="Copy" />
@@ -70,7 +72,7 @@ function CopyButton({ url, colorMode }: { url: string; colorMode: string }) {
           directionalHint={DirectionalHint.topCenter}
           styles={colorMode != "dark" ? lightCalloutStyles : darkCalloutStyles}
         >
-          <Text variant="small">Copied</Text>
+          <Text variant="small">{copyStatus === "copied" ? "Copied" : copyStatus === "failed" ? "Copy failed. Please try again." : "Copying..."}</Text>
         </Callout>
       )}
     </div>
@@ -84,7 +86,7 @@ export default function TemplateQuickUse({
   onToggle,
   chevronIcon,
 }: {
-  template: Pick<User, "source" | "title">;
+  template: Pick<Template, "source" | "title">;
   colorMode: string;
   expanded: boolean;
   onToggle: () => void;

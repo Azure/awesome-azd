@@ -1,5 +1,7 @@
 import React from 'react';
 import LinkItem from '@theme/Footer/LinkItem';
+import { CookieConsentContext } from '../../../../components/CookieConsentContext';
+import { manageCookieLabel } from '../../../../../constants.js';
 function Separator({id}) {
   return <span className="footer__link-separator" id={id}>·</span>;
 }
@@ -19,13 +21,17 @@ function SimpleLinkItem({item}) {
   );
 }
 export default function FooterLinksSimple({links}) {
+  const siteConsent = React.useContext(CookieConsentContext);
+  const visibleLinks = links.filter(
+    (item) => item.label !== manageCookieLabel || siteConsent?.isConsentRequired !== false
+  );
   return (
     <div className="footer__links text--center">
       <div className="footer__links">
-        {links.map((item, i) => (
+        {visibleLinks.map((item, i) => (
           <React.Fragment key={i}>
             <SimpleLinkItem item={item} />
-            {links.length !== i + 1 && <Separator id={"footer__links_"+item.label} />}
+            {visibleLinks.length !== i + 1 && <Separator id={"footer__links_"+item.label} />}
           </React.Fragment>
         ))}
       </div>

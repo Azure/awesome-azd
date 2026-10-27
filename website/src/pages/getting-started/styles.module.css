@@ -343,6 +343,14 @@
   color: var(--gs-terminal-success);
 }
 
+.copyError {
+  max-width: 12rem;
+  margin-left: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  white-space: normal;
+}
+
 .heroActions {
   display: flex;
   gap: 0.75rem;

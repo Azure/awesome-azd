@@ -5,7 +5,7 @@
 
 import React from "react";
 import styles from "./styles.module.css";
-import { type User } from "../../../data/tags";
+import { type Template } from "../../../data/tags";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { Link as FluentUILink } from "@fluentui/react-components";
 import { useBoolean } from "@fluentui/react-hooks";
@@ -22,7 +22,7 @@ import { getTemplateTags } from "../../../utils/galleryTags";
 import TemplateQuickUse from "./TemplateQuickUse";
 import TemplateIncludedServices from "./TemplateIncludedServices";
 
-export default function ShowcaseCardPanel({ user }: { user: User }) {
+export default function ShowcaseCardPanel({ template }: { template: Template }) {
   const [
     isQuickUseExpanded,
     { toggle: toggleQuickUseExpanded },
@@ -78,21 +78,19 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
     linkInMenu: "",
     overflowMenuButton: "",
   };
-  const tags = getTemplateTags(user);
+  const tags = getTemplateTags(template);
   return (
     <div className={styles.panelContent}>
       <div className={styles.authorRow}>
         <div className={styles.cardDescription}>by</div>
         <ShowcaseMultipleAuthors
-          key={"author_" + user.title}
-          user={user}
+          key={"author_" + template.title}
+          template={template}
           cardPanel={true}
         />
         <div className={styles.textColor}>•</div>
-        {/* <div>Last Update: </div>
-        <div>•</div> */}
         <FluentUILink
-          href={user.source}
+          href={template.source}
           target="_blank"
           rel="noopener noreferrer"
           className={`${styles.color} ${styles.sourceLink}`}
@@ -102,7 +100,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
       </div>
       <div className={styles.cardTag}>
         <ShowcaseCardTag
-          key={"tag_" + user.title}
+          key={"tag_" + template.title}
           tags={tags}
           moreTag={false}
         />
@@ -115,10 +113,10 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
         <PivotItem className={styles.detailsTab} headerText="Template Details">
           <Label>
             <div className={`${styles.textColor} ${styles.bodyText}`}>
-              {user.description}
+              {template.description}
             </div>
             <TemplateQuickUse
-              template={user}
+              template={template}
               colorMode={colorMode}
               expanded={isQuickUseExpanded}
               onToggle={toggleQuickUseExpanded}
@@ -126,7 +124,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
             />
             <TemplateIncludedServices
               tags={tags}
-              templateTitle={user.title}
+              templateTitle={template.title}
               colorMode={colorMode}
               expanded={isIncludedServicesExpanded}
               onToggle={toggleIncludedServicesExpanded}

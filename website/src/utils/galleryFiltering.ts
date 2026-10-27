@@ -4,16 +4,16 @@
  */
 
 import type { Extension } from "../data/extensionTypes";
-import type { TagType, User } from "../data/tags";
+import type { TagType, Template } from "../data/tags";
 import { getTemplateTags, getExtensionTags } from "./galleryTags";
 import { splitAuthors } from "./jsUtils";
 
 export function filterTemplates(
-  templates: User[],
+  templates: Template[],
   selectedTags: TagType[],
   selectedAuthors: string[],
   searchName: string | null,
-): User[] {
+): Template[] {
   if (searchName) {
     const query = searchName.toLowerCase();
     templates = templates.filter(

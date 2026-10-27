@@ -3,7 +3,8 @@
  * Licensed under the MIT License.
  */
 
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
+import useIsBrowser from "@docusaurus/useIsBrowser";
 import ShowcaseLeftFilters from "../ShowcaseLeftFilters";
 import ShowcaseTemplateSearch from "../ShowcaseTemplateSearch";
 import {
@@ -12,15 +13,14 @@ import {
   FluentProvider,
 } from "@fluentui/react-components";
 import { initializeIcons } from "@fluentui/react/lib/Icons";
-import type { UserState } from "@site/src/utils/galleryNavigation";
+import type { GalleryNavigationState } from "@site/src/utils/galleryNavigation";
 import {
   readSearchTags,
+  readUnknownSearchTags,
   readSearchAuthors,
-  replaceSearchTags,
-  replaceSearchAuthors,
 } from "@site/src/utils/galleryQuery";
 import { type TagType } from "@site/src/data/tags";
-import { TagList } from "@site/src/data/users";
+import { TagList } from "@site/src/data/templates";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
 import ShowcaseResults from "../ShowcaseResults";
@@ -47,9 +47,9 @@ const BackToTopButton = () => {
 
 export default function GalleryPage(): React.JSX.Element | null {
   const { colorMode } = useColorMode();
-  const [loading, setLoading] = useState(true);
+  const isBrowser = useIsBrowser();
   const [activeTags, setActiveTags] = useState<TagType[]>(TagList);
-  const location = useLocation<UserState>();
+  const location = useLocation<GalleryNavigationState>();
   const selectedTags = useMemo(
     () => readSearchTags(location.search),
     [location.search],
@@ -58,14 +58,13 @@ export default function GalleryPage(): React.JSX.Element | null {
     () => readSearchAuthors(location.search),
     [location.search],
   );
-
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 500);
-  }, [location]);
+    if (readUnknownSearchTags(location.search).length > 0) {
+      console.warn("Unsupported gallery URL tags were ignored.");
+    }
+  }, [location.search]);
 
-  return !loading ? (
+  return isBrowser ? (
     <FluentProvider
       theme={colorMode == "dark" ? webDarkTheme : webLightTheme}
     >
@@ -77,11 +76,7 @@ export default function GalleryPage(): React.JSX.Element | null {
               activeTags={activeTags}
               location={location}
               selectedTags={selectedTags}
-              readSearchTags={readSearchTags}
-              replaceSearchTags={replaceSearchTags}
               selectedAuthors={selectedAuthors}
-              readSearchAuthors={readSearchAuthors}
-              replaceSearchAuthors={replaceSearchAuthors}
             />
           </div>
           <div className={styles.card}>
@@ -89,11 +84,7 @@ export default function GalleryPage(): React.JSX.Element | null {
               setActiveTags={setActiveTags}
               selectedTags={selectedTags}
               location={location}
-              readSearchTags={readSearchTags}
-              replaceSearchTags={replaceSearchTags}
               selectedAuthors={selectedAuthors}
-              readSearchAuthors={readSearchAuthors}
-              replaceSearchAuthors={replaceSearchAuthors}
             />
           </div>
         </div>

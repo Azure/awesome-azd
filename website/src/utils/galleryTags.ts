@@ -4,9 +4,9 @@
  */
 
 import type { Extension } from "../data/extensionTypes";
-import type { TagType, User } from "../data/tags";
+import type { TagType, Template } from "../data/tags";
 
-export function getTemplateTags(template: User): TagType[] {
+export function getTemplateTags(template: Template): TagType[] {
   return [
     ...(template.tags || []),
     ...(template.languages || []),

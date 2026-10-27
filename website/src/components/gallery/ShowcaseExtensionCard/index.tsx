@@ -9,6 +9,7 @@ import { type Extension } from "../../../data/extensionTypes";
 import { CAPABILITY_BADGES } from "../../../data/extensionCapabilities";
 import extensionRegistries from "../../../data/extensionRegistries.json";
 import { Tags } from "../../../data/tags";
+import { useClipboard } from "../../../utils/useClipboard";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import {
   Card,
@@ -25,6 +26,7 @@ import {
 import { Globe16Regular } from "@fluentui/react-icons";
 
 function ShowcaseExtensionCard({ extension }: { extension: Extension }): React.JSX.Element {
+  const { status: copyStatus, copy } = useClipboard();
   const communityLogo = useBaseUrl("/img/Community.svg");
   const msftLogo = useBaseUrl("/img/Microsoft.svg");
   const copyIcon = useBaseUrl("/img/Copy.svg");
@@ -125,11 +127,7 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): React.J
             {extension.tags
               .filter(
                 (tag) =>
-                  tag !== "msft" &&
-                  tag !== "community" &&
-                  tag !== "new" &&
-                  tag !== "popular" &&
-                  tag !== "aicollection" &&
+                  !["msft", "community", "new", "popular", "aicollection"].includes(tag) &&
                   Tags[tag] !== undefined,
               )
               .map((tag) => {
@@ -167,7 +165,7 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): React.J
               className={styleCSS.copyIconButton}
               aria-label={`Copy install command for ${extension.displayName}`}
               onClick={() => {
-                navigator.clipboard.writeText(clipboardCommand);
+                void copy(clipboardCommand);
               }}
               data-m={contentForAdobeAnalytics}
             >
@@ -175,7 +173,7 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): React.J
             </Button>
           </PopoverTrigger>
           <PopoverSurface className={styleCSS.copyFeedback}>
-            <div role="status" aria-live="polite">Copied!</div>
+            <div role="status" aria-live="polite">{copyStatus === "copied" ? "Copied!" : copyStatus === "failed" ? "Copy failed. Please try again." : "Copying..."}</div>
           </PopoverSurface>
         </Popover>
       </CardFooter>

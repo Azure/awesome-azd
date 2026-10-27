@@ -4,7 +4,7 @@
  */
 
 import type { Extension } from "../data/extensionTypes";
-import type { User } from "../data/tags";
+import type { Template } from "../data/tags";
 
 export const GALLERY_SORT_OPTIONS = [
   "New to old",
@@ -14,10 +14,10 @@ export const GALLERY_SORT_OPTIONS = [
 ] as const;
 
 export function getSortedTemplates(
-  templates: User[],
-  alphabeticalTemplates: User[],
+  templates: Template[],
+  alphabeticalTemplates: Template[],
   sortChoice: string | undefined,
-): User[] {
+): Template[] {
   if (sortChoice === GALLERY_SORT_OPTIONS[0]) {
     return templates.slice().reverse();
   }

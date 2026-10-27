@@ -3,7 +3,7 @@
  * Licensed under the MIT License.
  */
 
-import type { TagType } from "../data/tags";
+import { Tags, type TagType } from "../data/tags";
 
 const SearchNameQueryKey = "name";
 const TagQueryStringKey = "tags";
@@ -14,7 +14,15 @@ export function readSearchName(search: string): string | null {
 }
 
 export function readSearchTags(search: string): TagType[] {
-  return new URLSearchParams(search).getAll(TagQueryStringKey) as TagType[];
+  return new URLSearchParams(search).getAll(TagQueryStringKey).filter(isKnownTag);
+}
+
+function isKnownTag(tag: string): tag is TagType {
+  return Object.hasOwn(Tags, tag);
+}
+
+export function readUnknownSearchTags(search: string): string[] {
+  return new URLSearchParams(search).getAll(TagQueryStringKey).filter((tag) => !isKnownTag(tag));
 }
 
 export function readSearchAuthors(search: string): string[] {

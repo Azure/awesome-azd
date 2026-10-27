@@ -10,26 +10,24 @@ import { useHistory } from "@docusaurus/router";
 import type { Location } from "history";
 import { Tags, type TagType } from "../../../data/tags";
 import { toggleListItem } from "@site/src/utils/jsUtils";
-import { prepareUserState } from "@site/src/utils/galleryNavigation";
+import { captureGalleryNavigationState } from "@site/src/utils/galleryNavigation";
+import {
+  readSearchTags,
+  replaceSearchTags,
+  readSearchAuthors,
+  replaceSearchAuthors,
+} from "@site/src/utils/galleryQuery";
 import styles from "./styles.module.css";
 
 export default function ShowcaseAppliedFilters({
   clearAll,
   selectedTags,
   selectedAuthors,
-  readSearchTags,
-  replaceSearchTags,
-  readSearchAuthors,
-  replaceSearchAuthors,
   location,
 }: {
   clearAll: () => void;
   selectedTags: TagType[];
   selectedAuthors: string[];
-  readSearchTags: (search: string) => TagType[];
-  replaceSearchTags: (search: string, newTags: TagType[]) => string;
-  readSearchAuthors: (search: string) => string[];
-  replaceSearchAuthors: (search: string, newAuthors: string[]) => string;
   location: Location;
 }) {
   const history = useHistory();
@@ -40,7 +38,7 @@ export default function ShowcaseAppliedFilters({
     history.push({
       ...location,
       search: newSearch,
-      state: prepareUserState(),
+      state: captureGalleryNavigationState(),
     });
   }
 
@@ -51,7 +49,7 @@ export default function ShowcaseAppliedFilters({
     history.push({
       ...location,
       search: newSearch,
-      state: prepareUserState(),
+      state: captureGalleryNavigationState(),
     });
   }
 
@@ -60,10 +58,9 @@ export default function ShowcaseAppliedFilters({
       <Body1>
         Filters applied:
       </Body1>
-      {selectedTags.map((tag, index) => {
+      {selectedTags.map((tag) => {
         const tagObject = Tags[tag];
         const key = `showcase_checkbox_key_${tag}`;
-        const id = `showcase_checkbox_id_${tag}`;
 
         return (
           <Badge
@@ -92,7 +89,7 @@ export default function ShowcaseAppliedFilters({
           </Badge>
         );
       })}
-      {selectedAuthors.map((author, index) => {
+      {selectedAuthors.map((author) => {
         const key = `showcase_checkbox_author_key_${author}`;
 
         return (

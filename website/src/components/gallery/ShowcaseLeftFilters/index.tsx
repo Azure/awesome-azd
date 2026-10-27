@@ -9,11 +9,11 @@ import ShowcaseTagSelect from "../ShowcaseTagSelect";
 import ShowcaseFilterSection from "./ShowcaseFilterSection";
 import { Accordion, type AccordionToggleEventHandler } from "@fluentui/react-components";
 import { Tags, type TagType } from "../../../data/tags";
-import { sortedTagList, unsortedUsers } from "../../../data/users";
+import { sortedTagList, unsortedTemplates } from "../../../data/templates";
 import { unsortedExtensions } from "../../../data/extensions";
 import styles from "./styles.module.css";
 import { useHistory } from "@docusaurus/router";
-import { prepareUserState } from "@site/src/utils/galleryNavigation";
+import { captureGalleryNavigationState } from "@site/src/utils/galleryNavigation";
 import { getContentType } from "@site/src/utils/contentType";
 import { getTemplateTags, getExtensionTags } from "@site/src/utils/galleryTags";
 import { clearSearchFilters } from "@site/src/utils/galleryQuery";
@@ -22,23 +22,15 @@ export default function ShowcaseLeftFilters({
   activeTags,
   location,
   selectedTags,
-  readSearchTags,
-  replaceSearchTags,
   selectedAuthors,
-  readSearchAuthors,
-  replaceSearchAuthors,
 }: {
   activeTags: TagType[];
   location: Location;
   selectedTags: TagType[];
-  readSearchTags: (search: string) => TagType[];
-  replaceSearchTags: (search: string, newTags: TagType[]) => string;
   selectedAuthors: string[];
-  readSearchAuthors: (search: string) => string[];
-  replaceSearchAuthors: (search: string, newAuthors: string[]) => string;
 }) {
   const isExtensions = getContentType(location) === "extensions";
-  
+
   // Compute template counts per tag for display
   const tagCounts = React.useMemo(() => {
     const counts: Record<string, number> = {};
@@ -50,12 +42,11 @@ export default function ShowcaseLeftFilters({
     if (isExtensions) {
       unsortedExtensions.forEach((extension) => countTags(getExtensionTags(extension)));
     } else {
-      unsortedUsers.forEach((user) => countTags(getTemplateTags(user)));
+      unsortedTemplates.forEach((template) => countTags(getTemplateTags(template)));
     }
     return counts;
   }, [isExtensions]);
 
-  // Extract unique authors based on content type
   const MIN_TEMPLATE_COUNT = 3;
   const applyMinCountThreshold = React.useCallback(
     (tags: TagType[]): TagType[] =>
@@ -73,52 +64,52 @@ export default function ShowcaseLeftFilters({
   // For the extensions view, hide `new`, `popular`, and `aicollection`:
   // those collections only apply to templates. Keep `msft` / `community`
   // so users can still filter by author type.
-  const EXTENSION_HIDDEN_UNCATEGORY_TAGS = new Set<string>([
+  const EXTENSION_HIDDEN_UNCATEGORIZED_TAGS = new Set<string>([
     "new",
     "popular",
     "aicollection",
   ]);
   // Explicit display order: surface Microsoft-authored entries before
   // community-authored so the primary/official source is the first option.
-  const UNCATEGORY_TAG_ORDER: Record<string, number> = {
+  const UNCATEGORIZED_TAG_ORDER: Record<string, number> = {
     msft: 0,
     community: 1,
     new: 2,
     popular: 3,
     aicollection: 4,
   };
-  const uncategoryTag = sortedTagList.filter((tag) => {
+  const uncategorizedTags = sortedTagList.filter((tag) => {
     const tagObject = Tags[tag];
     if (tagObject.type !== undefined) return false;
-    if (isExtensions && EXTENSION_HIDDEN_UNCATEGORY_TAGS.has(tag)) return false;
+    if (isExtensions && EXTENSION_HIDDEN_UNCATEGORIZED_TAGS.has(tag)) return false;
     return true;
   }).sort(
     (a, b) =>
-      (UNCATEGORY_TAG_ORDER[a] ?? Number.MAX_SAFE_INTEGER) -
-      (UNCATEGORY_TAG_ORDER[b] ?? Number.MAX_SAFE_INTEGER),
+      (UNCATEGORIZED_TAG_ORDER[a] ?? Number.MAX_SAFE_INTEGER) -
+      (UNCATEGORIZED_TAG_ORDER[b] ?? Number.MAX_SAFE_INTEGER),
   );
-  const languageTag = applyMinCountThreshold(
+  const languageTags = applyMinCountThreshold(
     sortedTagList.filter((tag) => Tags[tag].type === "Language"),
   );
-  const frameworkTag = applyMinCountThreshold(
+  const frameworkTags = applyMinCountThreshold(
     sortedTagList.filter((tag) => Tags[tag].type === "Framework"),
   );
-  const servicesTag = applyMinCountThreshold(
+  const serviceTags = applyMinCountThreshold(
     sortedTagList.filter((tag) => Tags[tag].type === "Service"),
   );
-  const databaseTag = applyMinCountThreshold(
+  const databaseTags = applyMinCountThreshold(
     sortedTagList.filter((tag) => Tags[tag].type === "Database"),
   );
-  const infrastructureAsCodeTag = applyMinCountThreshold(
+  const infrastructureAsCodeTags = applyMinCountThreshold(
     sortedTagList.filter((tag) => Tags[tag].type === "Infrastructure as Code"),
   );
-  const otherTag = applyMinCountThreshold(
+  const toolTags = applyMinCountThreshold(
     sortedTagList.filter((tag) => Tags[tag].type === "Tools"),
   );
-  const topicTag = applyMinCountThreshold(
+  const topicTags = applyMinCountThreshold(
     sortedTagList.filter((tag) => Tags[tag].type === "Topic"),
   );
-  const extensionCapabilityTag = sortedTagList.filter(
+  const extensionCapabilityTags = sortedTagList.filter(
     (tag) => Tags[tag].type === "Extension Capability",
   );
   const [openItems, setOpenItems] = React.useState<string[]>(
@@ -131,7 +122,7 @@ export default function ShowcaseLeftFilters({
   React.useEffect(() => {
     setOpenItems(isExtensions ? ["9"] : []);
   }, [isExtensions]);
-  const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
+  const handleToggle: AccordionToggleEventHandler<string> = (_event, data) => {
     setOpenItems(data.openItems);
   };
   const history = useHistory();
@@ -139,7 +130,7 @@ export default function ShowcaseLeftFilters({
     history.push({
       ...location,
       search: clearSearchFilters(location.search),
-      state: prepareUserState(),
+      state: captureGalleryNavigationState(),
     });
   };
   return (
@@ -158,7 +149,7 @@ export default function ShowcaseLeftFilters({
             </div>
           ) : null}
         </div>
-        {uncategoryTag.map((tag) => {
+        {uncategorizedTags.map((tag) => {
           const tagObject = Tags[tag];
           const key = `showcase_checkbox_key_${tag}`;
           const id = `showcase_checkbox_id_${tag}`;
@@ -175,8 +166,6 @@ export default function ShowcaseLeftFilters({
                 activeTags={activeTags}
                 selectedTags={selectedTags}
                 location={location}
-                readSearchTags={readSearchTags}
-                replaceSearchTags={replaceSearchTags}
                 count={tagCounts?.[tag]}
               />
             </div>
@@ -186,13 +175,13 @@ export default function ShowcaseLeftFilters({
       {!isExtensions && (
         <>
           {[
-            { title: "Language", value: "1", tags: languageTag },
-            { title: "Framework", value: "2", tags: frameworkTag },
-            { title: "Services", value: "3", tags: servicesTag },
-            { title: "Database", value: "4", tags: databaseTag },
-            { title: "Tools", value: "5", tags: otherTag },
-            { title: "Infrastructure as Code", value: "6", tags: infrastructureAsCodeTag },
-            { title: "Topic", value: "7", tags: topicTag },
+            { title: "Language", value: "1", tags: languageTags },
+            { title: "Framework", value: "2", tags: frameworkTags },
+            { title: "Services", value: "3", tags: serviceTags },
+            { title: "Database", value: "4", tags: databaseTags },
+            { title: "Tools", value: "5", tags: toolTags },
+            { title: "Infrastructure as Code", value: "6", tags: infrastructureAsCodeTags },
+            { title: "Topic", value: "7", tags: topicTags },
           ].map(({ title, value, tags }) =>
             tags.length > 0 ? (
               <ShowcaseFilterSection
@@ -203,8 +192,6 @@ export default function ShowcaseLeftFilters({
                 activeTags={activeTags}
                 selectedTags={selectedTags}
                 location={location}
-                readSearchTags={readSearchTags}
-                replaceSearchTags={replaceSearchTags}
                 tagCounts={tagCounts}
               />
             ) : null
@@ -213,16 +200,14 @@ export default function ShowcaseLeftFilters({
       )}
 
       {/* Extension Capabilities filter (extensions view only) */}
-      {isExtensions && extensionCapabilityTag.length > 0 && (
+      {isExtensions && extensionCapabilityTags.length > 0 && (
         <ShowcaseFilterSection
           title="Extension Capabilities"
           value="9"
-          tags={extensionCapabilityTag}
+          tags={extensionCapabilityTags}
           activeTags={activeTags}
           selectedTags={selectedTags}
           location={location}
-          readSearchTags={readSearchTags}
-          replaceSearchTags={replaceSearchTags}
           tagCounts={tagCounts}
         />
       )}

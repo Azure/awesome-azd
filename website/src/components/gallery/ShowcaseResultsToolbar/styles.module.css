@@ -1,0 +1,36 @@
+/**
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
+ */
+
+.viewingSortRow {
+  display: flex;
+  align-items: center;
+}
+
+.viewingStatus {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+}
+
+.sortControls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.sortControls .sortCombobox {
+  min-width: unset;
+}
+
+.sortControls .sortInput {
+  width: 130px;
+}
+
+@media screen and (max-width: 547px) {
+  .viewingSortRow {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+}

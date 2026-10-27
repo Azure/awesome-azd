@@ -1,0 +1,17 @@
+/**
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
+ */
+
+.showcaseList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(285px, 100%), 350px));
+  justify-content: start;
+  gap: var(--space-lg);
+}
+
+.showcaseFavorite {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background-color: var(--site-color-favorite-background);
+}

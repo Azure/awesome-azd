@@ -4,19 +4,26 @@
  */
 
 import React from "react";
-import ShowcaseEmptyResult from "../components/gallery/ShowcaseEmptyResult";
-import { type Extension } from "../data/extensionTypes";
+import ShowcaseEmptyResult from "../ShowcaseEmptyResult";
+import { type Extension } from "../../../data/extensionTypes";
 import styles from "./styles.module.css";
-import ShowcaseExtensionCard from "../components/gallery/ShowcaseExtensionCard";
+import ShowcaseExtensionCard from "../ShowcaseExtensionCard";
 
 export default function ShowcaseExtensionCards({
   filteredExtensions,
+  searchName = null,
 }: {
   filteredExtensions: Extension[];
+  searchName?: string | null;
 }) {
   const len = filteredExtensions ? filteredExtensions.length : 0;
   if (len === 0) {
-    return <ShowcaseEmptyResult id="showcase.extensionsList.noResult" />;
+    return (
+      <ShowcaseEmptyResult
+        id="showcase.extensionsList.noResult"
+        searchName={searchName}
+      />
+    );
   }
 
   return (

@@ -4,16 +4,16 @@
  */
 
 import React, { useState, useEffect } from "react";
-import { SearchBox } from "@fluentui/react/lib/SearchBox";
-import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
+import { SearchBox, type ISearchBoxStyles } from "@fluentui/react/lib/SearchBox";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { Text, Link as FluentUILink } from "@fluentui/react-components";
-import { galleryTemplates as allTemplates } from "@site/src/data/users";
+import { galleryTemplates as allTemplates } from "@site/src/data/templates";
 import { getContentType } from "@site/src/utils/contentType";
+import { captureGalleryNavigationState } from "@site/src/utils/galleryNavigation";
+import { readSearchName, replaceSearchName } from "@site/src/utils/galleryQuery";
 import styles from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useColorMode } from "@docusaurus/theme-common";
-
 
 const TITLES: Record<string, string> = {
   templates: "From code to cloud in minutes",
@@ -27,30 +27,31 @@ const PLACEHOLDERS: Record<string, string> = {
   templates: "Search for an azd template or author...",
   extensions: "Search for an azd extension, capability, or author...",
 };
-const ADD_URL = "https://aka.ms/azd";
-export var InputValue: string | null = null;
-
-export type UserState = {
-  scrollTopPosition: number;
-  focusedElementId: string | undefined;
+const searchBoxStyles: Partial<ISearchBoxStyles> = {
+  root: {
+    border: "1px solid var(--site-color-border)",
+    height: "52px",
+    maxWidth: "100%",
+    width: "100%",
+    borderRadius: "8px",
+    background: "var(--site-color-surface)",
+  },
+  icon: {
+    fontSize: "24px",
+    paddingLeft: "10px",
+  },
+  field: {
+    paddingLeft: "20px",
+    fontSize: "18px",
+    color: "var(--site-color-text)",
+    backgroundColor: "transparent",
+    selectors: {
+      "::placeholder": {
+        color: "var(--site-color-text-muted)",
+      },
+    },
+  },
 };
-
-function prepareUserState(): UserState | undefined {
-  if (ExecutionEnvironment.canUseDOM) {
-    return {
-      scrollTopPosition: window.scrollY,
-      focusedElementId: document.activeElement?.id,
-    };
-  }
-
-  return undefined;
-}
-
-const SearchNameQueryKey = "name";
-
-function readSearchName(search: string) {
-  return new URLSearchParams(search).get(SearchNameQueryKey);
-}
 
 function FilterBar(): React.JSX.Element {
   const history = useHistory();
@@ -59,41 +60,13 @@ function FilterBar(): React.JSX.Element {
   useEffect(() => {
     setValue(readSearchName(location.search));
   }, [location]);
-  // InputValue reflects the committed (URL-based) search, not the in-progress
-  // typed text. Consumers use it to display "No results for 'X'" which should
-  // match the active filter applied to the gallery.
-  InputValue = readSearchName(location.search);
   const contentType = getContentType(location);
   const placeholder = PLACEHOLDERS[contentType] || PLACEHOLDERS.templates;
 
   return (
     <>
       <SearchBox
-        styles={{
-          root: {
-            border: "1px solid var(--site-color-border)",
-            height: "52px",
-            maxWidth: "100%",
-            width: "100%",
-            borderRadius: "8px",
-            background: "var(--site-color-surface)",
-          },
-          icon: {
-            fontSize: "24px",
-            paddingLeft: "10px",
-          },
-          field: {
-            paddingLeft: "20px",
-            fontSize: "18px",
-            color: "var(--site-color-text)",
-            backgroundColor: "transparent",
-            selectors: {
-              "::placeholder": {
-                color: "var(--site-color-text-muted)",
-              },
-            },
-          },
-        }}
+        styles={searchBoxStyles}
         id="filterBar"
         value={value ?? ""}
         placeholder={placeholder}
@@ -101,27 +74,19 @@ function FilterBar(): React.JSX.Element {
         ariaLabel="Search templates and extensions"
         onClear={(e) => {
           setValue(null);
-          const newSearch = new URLSearchParams(location.search);
-          newSearch.delete(SearchNameQueryKey);
-
           history.push({
             ...location,
-            search: newSearch.toString(),
-            state: prepareUserState(),
+            search: replaceSearchName(location.search, null),
+            state: captureGalleryNavigationState(),
           });
         }}
         onSearch={(newValue) => {
           const submitted = typeof newValue === "string" ? newValue : (value ?? "");
           setValue(submitted);
-          const newSearch = new URLSearchParams(location.search);
-          newSearch.delete(SearchNameQueryKey);
-          if (submitted) {
-            newSearch.set(SearchNameQueryKey, submitted);
-          }
           history.push({
             ...location,
-            search: newSearch.toString(),
-            state: prepareUserState(),
+            search: replaceSearchName(location.search, submitted),
+            state: captureGalleryNavigationState(),
           });
         }}
         onChange={(e) => {
@@ -192,26 +157,11 @@ export default function ShowcaseTemplateSearch() {
                       href="https://learn.microsoft.com/azure/developer/azure-developer-cli/extensions/overview"
                       target="_blank"
                       rel="noopener noreferrer"
-                      style={{ paddingLeft: "3px" }}
+                      className={styles.extensionDocsLink}
                     >
                       Learn more in our docs.
                     </FluentUILink>
                   </Text>
-                  {/* <Text
-                    size={300}
-                    className={styles.heroSubtext}
-                    block
-                    style={{ paddingTop: 0 }}
-                  >
-                    Built an extension?{" "}
-                    <FluentUILink
-                      href="https://github.com/Azure/awesome-azd/issues/new?template=extension-submission.yml"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Submit it here
-                    </FluentUILink>
-                  </Text> */}
                 </>
               : <a
                     href={gettingStartedUrl}

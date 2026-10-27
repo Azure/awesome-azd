@@ -9,6 +9,7 @@ import { type Extension } from "../../../data/extensionTypes";
 import { CAPABILITY_BADGES } from "../../../data/extensionCapabilities";
 import extensionRegistries from "../../../data/extensionRegistries.json";
 import { Tags } from "../../../data/tags";
+import { useClipboard } from "../../../utils/useClipboard";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import {
   Card,
@@ -24,7 +25,9 @@ import {
 } from "@fluentui/react-components";
 import { Globe16Regular } from "@fluentui/react-icons";
 
-function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Element {
+function ShowcaseExtensionCard({ extension }: { extension: Extension }): React.JSX.Element {
+  const { status: copyStatus, copy } = useClipboard();
+  const [isCopyFeedbackOpen, setCopyFeedbackOpen] = React.useState(false);
   const communityLogo = useBaseUrl("/img/Community.svg");
   const msftLogo = useBaseUrl("/img/Microsoft.svg");
   const copyIcon = useBaseUrl("/img/Copy.svg");
@@ -56,14 +59,7 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
     <Card key={extension.id} className={styleCSS.card}>
       <CardHeader
         header={
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              flex: "1",
-            }}
-          >
+          <div className={styleCSS.cardHeaderContent}>
             <img
               src={headerLogo}
               width={16}
@@ -85,24 +81,14 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
         >
           {extension.displayName}
         </FluentUILink>
-        <div
-          style={{
-            verticalAlign: "middle",
-            display: "flex",
-            paddingTop: "2px",
-            alignItems: "center",
-            columnGap: "3px",
-            overflow: "hidden",
-          }}
-        >
+        <div className={styleCSS.cardByline}>
           <div className={styleCSS.cardTextBy}>by</div>
           {extension.authorUrl ? (
             <FluentUILink
-              className={styleCSS.authorLink}
+              className={`${styleCSS.authorLink} ${styleCSS.linkedAuthor}`}
               href={extension.authorUrl}
               target="_blank"
               rel="noopener noreferrer"
-              style={{ fontSize: "12px", flexShrink: 0 }}
             >
               {extension.author}
             </FluentUILink>
@@ -116,9 +102,8 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
               rel="noopener noreferrer"
               className={styleCSS.cardMetaLink}
               title="Documentation website"
-              style={{ fontSize: "12px", flexShrink: 0, marginLeft: "auto" }}
             >
-              <Globe16Regular style={{ verticalAlign: "middle", marginRight: "2px" }} />
+              <Globe16Regular className={styleCSS.websiteIcon} />
               <span>Website</span>
             </FluentUILink>
           )}
@@ -134,11 +119,7 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
                   appearance="outline"
                   size="medium"
                   color={capInfo.color}
-                  style={{
-                    alignContent: "center",
-                    fontSize: "10px",
-                    width: "auto",
-                  }}
+                  className={styleCSS.cardBadge}
                 >
                   {capInfo.label}
                 </Badge>
@@ -147,11 +128,7 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
             {extension.tags
               .filter(
                 (tag) =>
-                  tag !== "msft" &&
-                  tag !== "community" &&
-                  tag !== "new" &&
-                  tag !== "popular" &&
-                  tag !== "aicollection" &&
+                  !["msft", "community", "new", "popular", "aicollection"].includes(tag) &&
                   Tags[tag] !== undefined,
               )
               .map((tag) => {
@@ -163,11 +140,7 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
                     size="medium"
                     color="informative"
                     title={tagInfo.description}
-                    style={{
-                      alignContent: "center",
-                      fontSize: "10px",
-                      width: "auto",
-                    }}
+                    className={styleCSS.cardBadge}
                   >
                     {tagInfo.label}
                   </Badge>
@@ -186,22 +159,28 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): JSX.Ele
         >
           {installCommand}
         </code>
-        <Popover trapFocus withArrow size="small">
+        <Popover
+          trapFocus
+          withArrow
+          size="small"
+          open={isCopyFeedbackOpen && copyStatus !== "failed"}
+          onOpenChange={(_event, data) => setCopyFeedbackOpen(data.open)}
+        >
           <PopoverTrigger disableButtonEnhancement>
             <Button
               size="small"
               className={styleCSS.copyIconButton}
               aria-label={`Copy install command for ${extension.displayName}`}
               onClick={() => {
-                navigator.clipboard.writeText(clipboardCommand);
+                void copy(clipboardCommand);
               }}
               data-m={contentForAdobeAnalytics}
             >
               <img src={copyIcon} width={20} height={20} alt="Copy" />
             </Button>
           </PopoverTrigger>
-          <PopoverSurface style={{ padding: "5px", fontSize: "12px" }}>
-            <div role="status" aria-live="polite">Copied!</div>
+          <PopoverSurface tabIndex={-1} className={styleCSS.copyFeedback}>
+            <div role="status" aria-live="polite">{copyStatus === "copied" ? "Copied!" : "Copying..."}</div>
           </PopoverSurface>
         </Popover>
       </CardFooter>

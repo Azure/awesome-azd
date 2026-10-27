@@ -8,9 +8,10 @@ Always reference these instructions first and fallback to search or bash command
 
 Bootstrap, build, and test the repository:
 
-- Ensure Node.js 18+ is available: `node --version` (should show v20.19.5 or later)
+- Ensure Node.js 24.11+ is available: `node --version` must satisfy `website/package.json`'s `engines.node` range
 - Navigate to website directory: `cd website`
 - Install dependencies: `npm ci` -- takes ~15-60 seconds with warnings about deprecated packages (this is normal)
+- Check application types: `npm run typecheck`
 - Run tests: `npm test` -- takes ~1 second. NEVER CANCEL. Set timeout to 30+ seconds.
 - Build the website: `npm run build` -- takes ~75 seconds. NEVER CANCEL. Set timeout to 120+ seconds.
 - Start development server: `npm run start` -- takes ~30 seconds to compile. NEVER CANCEL. Set timeout to 60+ seconds.
@@ -55,6 +56,7 @@ All commands must be run from the `website/` directory:
 
 - `npm ci` - Install dependencies (required first step)
 - `npm test` - Run Jest tests (validates templates.json against tags)
+- `npm run typecheck` - Check application types using the project TypeScript configuration
 - `npm run build` - Build production website to `build/` directory
 - `npm run start` - Start development server at http://localhost:3000/awesome-azd/
 - `npm run serve` - Serve production build locally
@@ -62,12 +64,12 @@ All commands must be run from the `website/` directory:
 
 ## Key Technologies
 
-- **Docusaurus 3.7.0** - Static site generator
-- **React 18** - UI framework
+- **Docusaurus 3.10** - Static site generator
+- **React 19** - UI framework
 - **TypeScript** - Type checking
 - **Jest** - Testing framework
 - **Fluent UI** - Microsoft design system components
-- **Node.js 20+** - Runtime requirement
+- **Node.js 24.11+** - Runtime requirement
 
 ## Template Gallery System
 

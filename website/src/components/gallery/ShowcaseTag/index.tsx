@@ -5,12 +5,12 @@
 
 import React from "react";
 import styles from "./styles.module.css";
-import { Tag, Tags, type User, type TagType } from "../../../data/tags";
-import { TagList } from "../../../data/users";
+import { Tag, Tags, type TagType } from "../../../data/tags";
+import { sortedTagList } from "../../../data/templates";
 import { sortBy } from "@site/src/utils/jsUtils";
-import { Badge, Tooltip, makeStyles } from "@fluentui/react-components";
+import { Badge, Tooltip } from "@fluentui/react-components";
 
-const TagComp = React.forwardRef<HTMLDivElement, Tag>(
+const TagComp = React.forwardRef<HTMLDivElement, Pick<Tag, "label" | "description">>(
   ({ label, description }, ref) => (
     <Badge
       appearance="outline"
@@ -18,22 +18,12 @@ const TagComp = React.forwardRef<HTMLDivElement, Tag>(
       ref={ref}
       title={description}
       color="informative"
-      style={{
-        alignContent: "center",
-        fontSize: "10px",
-        width:"auto",
-      }}
+      className={styles.cardBadge}
     >
       {label}
     </Badge>
   )
 );
-
-const useStyles = makeStyles({
-  tooltip: {
-    textAlign: "center",
-  },
-});
 
 export default function ShowcaseCardTag({
   tags,
@@ -53,7 +43,7 @@ export default function ShowcaseCardTag({
 
   // Keep same order for all tags
   const tagObjectsSorted = sortBy(tagObjects, (tagObject) =>
-    TagList.indexOf(tagObject.tag)
+    sortedTagList.indexOf(tagObject.tag)
   );
   const checkAzureTag = tagObjectsSorted.filter((tag) =>
     tag.label.includes("Azure")
@@ -71,25 +61,20 @@ export default function ShowcaseCardTag({
     .map((tagObject) => tagObject.label)
     .join("\n");
 
-  const style = useStyles();
-
   if (moreTag) {
     if (length > number) {
       return (
         <>
           {tagObjectsSorted.slice(0, number).map((tagObject, index) => {
-            const id = `showcase_card_tag_${tagObject.tag}`;
-            return <TagComp key={index} id={id} {...tagObject} />;
+            return <TagComp key={index} {...tagObject} />;
           })}
           <Tooltip
             withArrow
             content={{
               children: (
-                <span style={{ whiteSpace: "pre-line" }}>
-                  {moreTagDetailList}
-                </span>
+                <span className={styles.moreTags}>{moreTagDetailList}</span>
               ),
-              className: style.tooltip,
+              className: styles.tagTooltip,
             }}
             relationship="label"
           >
@@ -97,11 +82,7 @@ export default function ShowcaseCardTag({
               appearance="outline"
               size="medium"
               color="informative"
-              style={{
-                alignContent: "center",
-                fontSize: "10px",
-                width: "auto",
-              }}
+              className={styles.cardBadge}
             >
               + {rest} more
             </Badge>
@@ -114,7 +95,7 @@ export default function ShowcaseCardTag({
           {tagObjectsSorted.map((tagObject, index) => {
             const id = `showcase_card_tag_${tagObject.tag}`;
             return (
-                <TagComp key={id} id={id} {...tagObject} />
+                <TagComp key={id} {...tagObject} />
             );
           })}
         </>

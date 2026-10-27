@@ -32,10 +32,10 @@ const AZURE_SERVICE_MAP = {
   "azure-app-service": "appservice",
   "azure-cosmos-db": "cosmosdb",
   "azure-sql": "azuresql",
-  "azure-storage": "storage",
+  "azure-storage": "azurestorage",
   "azure-key-vault": "keyvault",
   "azure-monitor": "monitor",
-  "azure-cognitive-services": "cognitiveservices",
+  "azure-cognitive-services": "azureai",
   "azure-search": "aisearch",
   "azure-ai-search": "aisearch",
 };

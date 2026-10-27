@@ -6,7 +6,7 @@
 /* eslint-disable global-require */
 
 import { sortBy } from '../utils/jsUtils';
-import { TagType, User, Tags } from './tags';
+import { TagType, Template, Tags } from './tags';
 import templates from '../../static/templates.json'
 
 // *** ADDING DATA TO AZD GALLERY ****/
@@ -19,7 +19,7 @@ import templates from '../../static/templates.json'
 
 // SECURITY: Runtime validation of JSON template data to catch malformed or
 // tampered entries before they reach the UI.
-function validateTemplates(raw: unknown): User[] {
+function validateTemplates(raw: unknown): Template[] {
   if (!Array.isArray(raw)) {
     console.warn('Templates data is not an array, returning empty list');
     return [];
@@ -67,7 +67,7 @@ function validateTemplates(raw: unknown): User[] {
       return false;
     }
     return true;
-  }) as User[];
+  }) as Template[];
 }
 
 // Extension templates (e.g. `azd ai agent init` agents with
@@ -79,15 +79,15 @@ function validateTemplates(raw: unknown): User[] {
 // (extension / specialized) entry. This means new extension categories are
 // hidden automatically without having to update the filter.
 //
-// Param is `Pick<User, 'templateType'>` so this helper works against either
-// validated `User` objects or raw JSON entries from `templates.json` (which
+// Param is `Pick<Template, 'templateType'>` so this helper works against either
+// validated `Template` objects or raw JSON entries from `templates.json` (which
 // structurally satisfy `Pick` thanks to TS's structural typing), without
 // casting at the call site.
-export function isGalleryTemplate(entry: Pick<User, 'templateType'>): boolean {
+export function isGalleryTemplate(entry: Pick<Template, 'templateType'>): boolean {
   return entry.templateType == null || entry.templateType === '';
 }
 
-export function filterGalleryTemplates<T extends Pick<User, 'templateType'>>(entries: T[]): T[] {
+export function filterGalleryTemplates<T extends Pick<Template, 'templateType'>>(entries: T[]): T[] {
   return entries.filter(isGalleryTemplate);
 }
 
@@ -102,19 +102,20 @@ const rawGalleryTemplates = filterGalleryTemplates(
 
 // Pre-filtered raw template entries for UI consumers (gallery counts,
 // language/service tallies, service landing pages). Using a single shared
-// constant guarantees `users.tsx` is the only place that decides what counts
+// constant guarantees `templates.ts` is the only place that decides what counts
 // as a gallery template — components never re-implement the filter.
 export const galleryTemplates: ReadonlyArray<Record<string, unknown>> =
   rawGalleryTemplates;
 
-export const unsortedUsers: User[] = validateTemplates(rawGalleryTemplates);
+export const unsortedTemplates: Template[] = validateTemplates(rawGalleryTemplates);
 
 export const TagList = Object.keys(Tags) as TagType[];
-function sortUsers() {
-  let result = unsortedUsers;
-  // Sort by site name
-  result = sortBy(result, (user) => user.title.toLowerCase());
+export const sortedTagList: ReadonlyArray<TagType> = sortBy(TagList, (tag) => tag);
+function sortTemplates() {
+  let result = unsortedTemplates;
+  // Sort by template name
+  result = sortBy(result, (template) => template.title.toLowerCase());
   return result;
 }
 
-export const sortedUsers = sortUsers();
+export const sortedTemplates = sortTemplates();

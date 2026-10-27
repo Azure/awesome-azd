@@ -3,50 +3,6 @@
  * Licensed under the MIT License.
  */
 
-.checkboxListItem {
-  user-select: none;
-  white-space: nowrap;
-}
-
-.checkboxListItem:last-child {
-  margin-right: 0;
-}
-
-.searchContainer {
-  display: inline-block;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  background: var(--site-hero-bg);
-}
-
-.searchArea {
-  position: relative;
-  width: 100%;
-  min-height: 340px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-3xl) var(--space-lg) var(--space-2xl);
-}
-
-.heroBar {
-  max-width: 720px;
-}
-
-.showcaseList {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(285px, 100%), 350px));
-  justify-content: start;
-  gap: var(--space-lg);
-}
-
-.showcaseFavorite {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  background-color: var(--site-color-favorite-background);
-}
-
 .filterAndCard {
   display: flex;
   padding: var(--space-xl) 40px;
@@ -77,49 +33,6 @@
   flex: 8;
   min-width: 15rem;
   margin: 0px 0px 0 20px;
-}
-
-.clearAll {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  text-decoration-line: underline;
-  cursor: pointer;
-  color: var(--ifm-color-primary);
-  background: none;
-  border: none;
-  padding: 0;
-}
-
-.filterBadge {
-  color: var(--ifm-color-primary) !important;
-  cursor: pointer;
-  border-color: #BAE6FD !important;
-  background: #F0F9FF !important;
-  border-radius: 20px !important;
-  font-weight: 500;
-}
-
-.filterAppliedBar {
-  padding-top: var(--space-lg);
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-}
-
-.clearAll {
-  color: var(--ifm-color-primary);
-  cursor: pointer;
-}
-
-[data-theme="dark"] .clearAll {
-  color: var(--ifm-color-primary);
-  cursor: pointer;
-}
-
-[data-theme="dark"] .filterBadge {
-  border-color: #164E63 !important;
-  background: #083344 !important;
 }
 
 /* Desktop-only sticky positioning for filter */
@@ -192,15 +105,4 @@
     margin: 0;
   }
 
-  .heroBar {
-    width: 100%;
-    padding: 0 16px;
-  }
-}
-
-@media screen and (max-width: 547px) {
-  .viewingSortRow {
-    flex-wrap: wrap;
-    row-gap: 8px;
-  }
 }

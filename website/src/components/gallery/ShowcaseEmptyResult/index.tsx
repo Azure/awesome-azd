@@ -4,36 +4,25 @@
  */
 
 import React from "react";
-import { InputValue } from "../ShowcaseTemplateSearch";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { Text, Link as FluentUILink } from "@fluentui/react-components";
 import styles from "./styles.module.css";
 import { Card } from "@fluentui/react-components";
 
-export default function ShowcaseEmptyResult({ id }: { id: string }) {
+export default function ShowcaseEmptyResult({
+  id,
+  searchName,
+}: {
+  id: string;
+  searchName: string | null;
+}) {
   return (
-    <div
-      id={id}
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
-        gap: "40px",
-      }}
-    >
-      <div
-        style={{
-          paddingTop: "100px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "10px",
-        }}
-      >
-        {InputValue != null ? (
+    <div id={id} className={styles.emptyResult}>
+      <div className={styles.message}>
+        {searchName != null ? (
           <>
             <Text size={500} weight="bold" align="center">
-              No templates found for '{InputValue}'
+              No templates found for '{searchName}'
             </Text>
             <Text size={400} align="center">
               Try a different search term or browse all templates.
@@ -50,28 +39,16 @@ export default function ShowcaseEmptyResult({ id }: { id: string }) {
           </>
         )}
       </div>
-      <Card style={{ borderRadius: "8px", padding: "24px" }}>
-        <div
-          style={{
-            display: "flex",
-            columnGap: "30px",
-          }}
-        >
+      <Card className={styles.contributionCard}>
+        <div className={styles.contributionRow}>
           <img
             height={50}
             width={50}
             src={useBaseUrl("/img/smile.svg")}
             alt="smile"
-            style={{ flex: 1 }}
+            className={styles.illustration}
           />
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              rowGap: "5px",
-              paddingRight: "50px",
-            }}
-          >
+          <div className={styles.contributionText}>
             <Text size={400} weight="bold">
               Want to be the change you wish to see in the world?
             </Text>

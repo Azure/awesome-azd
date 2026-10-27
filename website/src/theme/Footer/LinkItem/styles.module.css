@@ -3,6 +3,19 @@
  * Licensed under the MIT License.
  */
 
+.manageCookies {
+    padding: 0;
+    border: 0;
+    background: none;
+    /* A font shorthand would override the shared footer link line-height. */
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+    color: var(--ifm-footer-link-color);
+    cursor: pointer;
+}
+
 .manageCookies:hover {
     text-decoration: underline;
     cursor: pointer;

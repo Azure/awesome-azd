@@ -3,6 +3,43 @@
 * Licensed under the MIT License.
  */
 
+.emptyResult {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.message {
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Outrank Fluent UI's default card rules with component scope. */
+.emptyResult .contributionCard {
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.contributionRow {
+  display: flex;
+  column-gap: 30px;
+}
+
+.illustration {
+  flex: 1;
+}
+
+.contributionText {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  padding-right: 50px;
+}
+
 /* Keep for future change on light vs dark theme */
 .colorLink {
   padding-left: 10px !important;

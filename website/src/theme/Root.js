@@ -1,20 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
-import { manageCookieLabel, manageCookieId } from "../../constants.js";
+import { CookieConsentContext } from "../components/CookieConsentContext";
 
-function removeItem(id) {
-  var el = document.getElementById(id);
-  if (el) {
-    el.remove();
-  }
-}
-
-const telemetryInit = () => {
+const telemetryInit = (onConsentReady = () => {}) => {
   const SET = "set";
   const RESET = "reset";
   var siteConsent = null;
+  var disposed = false;
 
   function onConsentChanged(categoryPreferences) {
+    if (disposed) return;
     setNonEssentialCookies(categoryPreferences);
   }
 
@@ -60,7 +55,7 @@ const telemetryInit = () => {
   }
 
   // Initialize WCP once the external script has loaded. Runs the full consent
-  // pipeline: WcpConsent.init -> manage-cookie footer wiring -> apply current
+  // pipeline: WcpConsent.init -> React-owned footer state -> apply current
   // consent to non-essential cookies.
   function initWcpConsent() {
     var WcpConsent = window.WcpConsent;
@@ -70,27 +65,13 @@ const telemetryInit = () => {
       "en-US",
       "cookie-banner",
       function (err, _siteConsent) {
+        if (disposed) return;
         if (err) {
           console.warn("Error initializing WcpConsent: " + err);
           return;
         }
         siteConsent = _siteConsent;
-
-        if (siteConsent.isConsentRequired) {
-          var manageCookies = document.getElementById("manage_cookie");
-          if (manageCookies) {
-            manageCookies.addEventListener("click", function (e) {
-              e.preventDefault();
-              siteConsent.manageConsent();
-            });
-          }
-        } else {
-          // Consent confirmed NOT required (non-EU / non-regulated market).
-          // Remove the Manage Cookies link + separator from the footer.
-          removeItem("footer__links_" + manageCookieLabel);
-          removeItem(manageCookieId);
-        }
-
+        onConsentReady(siteConsent);
         setNonEssentialCookies(siteConsent.getConsent());
       },
       onConsentChanged
@@ -121,6 +102,7 @@ const telemetryInit = () => {
   }
 
   function stopWaitingForWcp() {
+    disposed = true;
     if (wcpTimer) {
       clearInterval(wcpTimer);
       wcpTimer = null;
@@ -209,14 +191,15 @@ const telemetryInit = () => {
 export { telemetryInit };
 
 export default function Root({ children }) {
+  const [siteConsent, setSiteConsent] = useState(null);
   useEffect(() => {
-    return telemetryInit();
+    return telemetryInit(setSiteConsent);
   }, []);
 
   return (
-    <>
+    <CookieConsentContext.Provider value={siteConsent}>
       <div id="cookie-banner"></div>
       {children}
-    </>
+    </CookieConsentContext.Provider>
   );
 }

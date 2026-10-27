@@ -3,11 +3,12 @@
  * Licensed under the MIT License.
  */
 
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import Layout from "@theme/Layout";
 import styles from "./styles.module.css";
+import { useClipboard } from "@site/src/utils/useClipboard";
 
 /* ─────────── Shared icons ─────────── */
 const CopyIcon = () => (
@@ -45,22 +46,34 @@ const CheckIcon = () => (
 
 /* ─────────── Copy button ─────────── */
 function CopyButton({ text, className, ariaLabel }) {
-  const [copied, setCopied] = useState(false);
+  const { status: copyStatus, copy, reset } = useClipboard();
+  const copied = copyStatus === "copied";
+  // Preserve each click's reset deadline until the button unmounts.
+  const resetTimeouts = useRef(new Set());
+  const mounted = useRef(true);
+  useEffect(() => {
+    mounted.current = true;
+    const timeouts = resetTimeouts.current;
+    return () => {
+      mounted.current = false;
+      for (const timeout of timeouts) {
+        clearTimeout(timeout);
+      }
+      timeouts.clear();
+    };
+  }, []);
   const onClick = useCallback(
-    (e) => {
+    async (e) => {
       e.preventDefault();
       e.stopPropagation();
-      if (
-        typeof navigator !== "undefined" &&
-        navigator.clipboard &&
-        navigator.clipboard.writeText
-      ) {
-        navigator.clipboard.writeText(text);
-      }
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      if (await copy(text) !== "copied" || !mounted.current) return;
+      const timeout = setTimeout(() => {
+        resetTimeouts.current.delete(timeout);
+        reset();
+      }, 2000);
+      resetTimeouts.current.add(timeout);
     },
-    [text]
+    [text, copy, reset]
   );
   return (
     <button

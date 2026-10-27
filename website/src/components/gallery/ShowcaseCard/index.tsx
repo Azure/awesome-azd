@@ -5,11 +5,16 @@
 
 import React from "react";
 import styleCSS from "./styles.module.css";
-import { type User } from "../../../data/tags";
+import { type Template } from "../../../data/tags";
+import { getTemplateTags } from "../../../utils/galleryTags";
+import { useClipboard } from "../../../utils/useClipboard";
+import {
+  getTemplateIdentifier,
+  formatAzdInitCommand,
+} from "../../../utils/templateCommands";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import {
   Card,
-  makeStyles,
   CardHeader,
   CardFooter,
   Button,
@@ -34,29 +39,6 @@ import ShowcaseCardPanel from "../ShowcaseCardPanel/index";
 import ShowcaseCardTag from "../ShowcaseTag/index";
 import { useColorMode } from "@docusaurus/theme-common";
 
-const useStyles = makeStyles({
-  cardTag: {
-    fontSize: "10px",
-    color: "#606060",
-  },
-  cardFooterQuickUse: {
-    fontSize: "10px",
-    color: "#424242",
-    fontWeight: "600",
-  },
-  cardTagContainer: {
-    paddingTop: "10px",
-    marginTop: "auto",
-    width: "100%",
-  },
-  cardTagsWrapper: {
-    display: "flex",
-    overflow: "hidden",
-    gap: "4px",
-    flexFlow: "wrap",
-  },
-});
-
 const lightTheme: PartialTheme = {
   semanticColors: {
     bodyBackground: "white",
@@ -71,25 +53,21 @@ const darkTheme: PartialTheme = {
   },
 };
 
-function ShowcaseCard({ user }: { user: User }): JSX.Element {
-  const styles = useStyles();
-  const title = user.title;
-  const tags = [
-    ...user.tags,
-    ...(user.languages || []),
-    ...(user.frameworks || []),
-    ...(user.azureServices || []),
-    ...(user.IaC || []),
-  ];
-  const source = user.source;
+function ShowcaseCard({ template }: { template: Template }): React.JSX.Element {
+  const { status: copyStatus, copy } = useClipboard();
+  const [isCopyFeedbackOpen, setCopyFeedbackOpen] = React.useState(false);
+  const title = template.title;
+  const tags = getTemplateTags(template);
+  const source = template.source;
   const star = useBaseUrl("/img/Sparkle.svg");
-  let azdInitCommand =
-    "azd init -t " + source.replace("https://github.com/", "").toLowerCase();
-  if (azdInitCommand.includes("azure-samples/")) {
-    azdInitCommand = azdInitCommand.replace("azure-samples/", "");
-  }
-  let headerLogo = useBaseUrl("/img/Community.svg");
-  let headerText = "Community Authored";
+  const templateIdentifier = getTemplateIdentifier(source);
+  const azdInitCommand = formatAzdInitCommand(templateIdentifier);
+  const communityLogo = useBaseUrl("/img/Community.svg");
+  const msftLogo = useBaseUrl("/img/Microsoft.svg");
+  const isMicrosoft = tags.includes("msft");
+  const isNew = tags.includes("new");
+  const headerLogo = isMicrosoft ? msftLogo : communityLogo;
+  const headerText = isMicrosoft ? "Microsoft Authored" : "Community Authored";
 
   // Adobe Analytics Content
   const contentForAdobeAnalytics = `{\"id\":\"${title}\",\"cN\":\"Copy Button (azd init)\"}`;
@@ -98,31 +76,20 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
   const { colorMode } = useColorMode();
   const [isOpen, { setTrue: openPanel, setFalse: dismissPanel }] =
     useBoolean(false);
-  if (tags.includes("msft")) {
-    headerLogo = useBaseUrl("/img/Microsoft.svg");
-    headerText = "Microsoft Authored";
-  }
   const onRenderNavigationContent: IRenderFunction<IPanelProps> =
     React.useCallback(
       (props, defaultRender) => (
         <>
-          <div
-            style={{
-              display: "flex",
-              paddingLeft: "24px",
-              alignItems: "center",
-              flex: "8",
-            }}
-          >
+          <div className={styleCSS.panelHeader}>
             <img
               src={headerLogo}
               alt="Logo"
               width={16}
               height={16}
-              style={{ margin: "5px 0px", fontWeight: "550" }}
+              className={styleCSS.panelHeaderLogo}
             />
             <div className={styleCSS.headerTextCardPanel}>{headerText}</div>
-            {tags.includes("new") ? (
+            {isNew ? (
               <>
                 <img
                   src={star}
@@ -141,21 +108,14 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
           }
         </>
       ),
-      []
+      [headerLogo, headerText, isNew, star]
     );
 
   return (
     <Card key={title} className={styleCSS.card}>
       <CardHeader
         header={
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              flex: "1",
-            }}
-          >
+          <div className={styleCSS.cardHeaderContent}>
             <img
               src={headerLogo}
               width={16}
@@ -164,7 +124,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
               className={styleCSS.headerLogo}
             />
             <div className={styleCSS.headerText}>{headerText}</div>
-            {tags.includes("new") ? (
+            {isNew ? (
               <>
                 <img
                   src={star}
@@ -183,36 +143,19 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
         }
       />
       <CardPreview className={styleCSS.cardBreakLine} />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          position: "relative",
-          maxHeight: "inherit",
-        }}
-        className={styleCSS.cardBody}
-      >
+      <div className={styleCSS.cardBody}>
         <FluentUILink className={styleCSS.cardTitle} onClick={openPanel} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPanel(); } }}>
           {title}
         </FluentUILink>
-        <div
-          style={{
-            verticalAlign: "middle",
-            display: "flex",
-            paddingTop: "2px",
-            alignItems: "center",
-            columnGap: "3px",
-            overflow: "hidden",
-          }}
-        >
+        <div className={styleCSS.cardByline}>
           <div className={styleCSS.cardTextBy}>by</div>
           <ShowcaseMultipleAuthors
             key={"author_" + title}
-            user={user}
+            template={template}
             cardPanel={false}
           />
         </div>
-        <div className={styleCSS.cardDescription}>{user.description}</div>
+        <div className={styleCSS.cardDescription}>{template.description}</div>
         {/* Panel is Fluent UI 8. Must use ThemeProvider */}
         <ThemeProvider theme={colorMode != "dark" ? lightTheme : darkTheme}>
           <Panel
@@ -224,11 +167,11 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
             type={PanelType.medium}
             onRenderNavigationContent={onRenderNavigationContent}
           >
-            <ShowcaseCardPanel user={user} />
+            <ShowcaseCardPanel template={template} />
           </Panel>
         </ThemeProvider>
-        <div className={styles.cardTagContainer}>
-          <div className={`${styles.cardTag} ${styles.cardTagsWrapper}`}>
+        <div className={styleCSS.cardTagContainer}>
+          <div className={styleCSS.cardTagsWrapper}>
             <ShowcaseCardTag key={title} tags={tags} moreTag={true} />
           </div>
         </div>
@@ -245,14 +188,20 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
           placeholder={azdInitCommand}
           aria-label={`azd init command for ${title}`}
         />
-        <Popover trapFocus withArrow size="small">
+        <Popover
+          trapFocus
+          withArrow
+          size="small"
+          open={isCopyFeedbackOpen && copyStatus !== "failed"}
+          onOpenChange={(_event, data) => setCopyFeedbackOpen(data.open)}
+        >
           <PopoverTrigger disableButtonEnhancement>
             <Button
               size="small"
               className={styleCSS.copyIconButton}
               aria-label={`Copy azd init command for ${title}`}
               onClick={() => {
-                navigator.clipboard.writeText(azdInitCommand);
+                void copy(azdInitCommand);
               }}
               data-m={contentForAdobeAnalytics}
             >
@@ -260,32 +209,13 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
             </Button>
           </PopoverTrigger>
 
-          <PopoverSurface style={{ padding: "5px", fontSize: "12px" }}>
-            <div>Copied!</div>
+          <PopoverSurface tabIndex={-1} className={styleCSS.copyFeedback}>
+            <div role="status" aria-live="polite">{copyStatus === "copied" ? "Copied!" : "Copying..."}</div>
           </PopoverSurface>
         </Popover>
       </CardFooter>
     </Card>
   );
 }
-
-// function getLastUpdateDate(source) {
-//   const repoPath = source.replace("https://github.com/", "");
-//   const lastCommit = child.exec(
-//     "gh api repos/" +
-//     { repoPath } +
-//     "/commits/HEAD/branches-where-head --jq .[0].commit.url"
-//   );
-//   const repoAndLastCommit = lastCommit.stdout
-//     .toString()
-//     .replace("https://api.github.com/", "");
-//   const lastCommitDate = child.exec(
-//     "gh api " +
-//       { repoAndLastCommit } +
-//       "/commits/ccb174356ca35ace51dbaa2c34592b371b671436 --jq .commit.committer.date"
-//   );
-//   const lastUpdateDate = lastCommitDate.stdout.toString();
-//   return lastUpdateDate;
-// }
 
 export default React.memo(ShowcaseCard);

@@ -3,7 +3,8 @@
  * Licensed under the MIT License.
  */
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import clsx from "clsx";
 import styles from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import {
@@ -19,34 +20,53 @@ import { useColorMode } from "@docusaurus/theme-common";
 
 const surveyCardLocalStorageID = "surveyCardDisplay";
 
-function closeCard(parentDiv) {
-  let parent = document.getElementById(parentDiv);
-  parent.style.display = "none";
-  // access localStorage until window is defined
-  if (typeof window !== "undefined") {
-    localStorage.setItem(surveyCardLocalStorageID, parent.style.display);
-  }
-}
-
-export default function ShowcaseSurveyCard(): React.ReactElement {
+export default function ShowcaseSurveyCard(): React.JSX.Element | null {
+  const [storedDismissed, setStoredDismissed] = useState<boolean | null>(null);
+  const [dismissed, setDismissed] = useState(false);
+  const skipNextPreferenceRead = useRef(false);
+  useEffect(() => {
+    // Keep the first dismissal CSS-only; later renders resync stored preferences.
+    if (skipNextPreferenceRead.current) {
+      if (dismissed) skipNextPreferenceRead.current = false;
+      return;
+    }
+    let preference = false;
+    try {
+      preference = Boolean(window.localStorage.getItem(surveyCardLocalStorageID));
+    } catch (error) {
+      console.warn("Unable to read survey dismissal preference.", error);
+    }
+    if (storedDismissed === true && !preference) setDismissed(false);
+    setStoredDismissed(preference);
+  });
+  const dismissSurvey = () => {
+    skipNextPreferenceRead.current = true;
+    setDismissed(true);
+    try {
+      window.localStorage.setItem(surveyCardLocalStorageID, "none");
+    } catch (error) {
+      console.warn("Unable to save survey dismissal preference.", error);
+    }
+  };
   const { colorMode } = useColorMode();
-  // access localStorage until window is defined
-  if (
-    typeof window !== "undefined" &&
-    localStorage.getItem(surveyCardLocalStorageID)
-  ) {
+  const closeIcon = useBaseUrl("/img/close.svg");
+  const surveyIcon = useBaseUrl(
+    colorMode != "dark" ? "/img/chatPencil.svg" : "/img/chatPencilDark.svg"
+  );
+  const openLinkIcon = useBaseUrl("/img/openLink.svg");
+  if (storedDismissed !== false) {
     return null;
   }
 
   return (
-    <Card className={styles.card} appearance="filled" id="surveyCard">
+    <Card className={clsx(styles.card, dismissed && styles.dismissed)} appearance="filled" id="surveyCard">
       <ToggleButton
-        onClick={() => closeCard("surveyCard")}
+        onClick={dismissSurvey}
         size="small"
         appearance="transparent"
         icon={
           <Image
-            src={useBaseUrl("/img/close.svg")}
+            src={closeIcon}
             height={16}
             width={16}
             alt="Close"
@@ -55,11 +75,7 @@ export default function ShowcaseSurveyCard(): React.ReactElement {
         className={styles.closeButton}
       />
       <Image
-        src={
-          colorMode != "dark"
-            ? useBaseUrl("/img/chatPencil.svg")
-            : useBaseUrl("/img/chatPencilDark.svg")
-        }
+        src={surveyIcon}
         alt="surveyCard"
         height={128}
         width={128}
@@ -81,7 +97,7 @@ export default function ShowcaseSurveyCard(): React.ReactElement {
           }}
           icon={
             <Image
-              src={useBaseUrl("/img/openLink.svg")}
+              src={openLinkIcon}
               alt="surveyCard"
               height={20}
               width={20}

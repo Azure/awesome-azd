@@ -23,7 +23,7 @@ const VALID_TAGS = {
     "appinsights", "loganalytics", "appservice", "monitor", "keyvault",
     "aca", "functions", "blobstorage", "swa", "servicebus", "vnets",
     "aisearch", "openai", "azureai", "speechservice", "apim", "aks",
-    "azurecdn", "frontdoor", "grafana", "azurespringapps", "rediscache",
+    "azurecdn", "frontdoor", "grafana", "rediscache",
     "agw", "azurebot", "ade", "eventhub", "azurestorage", "azureappconfig",
     "aifoundry", "apicenter", "eventgrid", "diagnosticsettings", "logicapps",
     "managedidentity", "serviceprincipal", "azuredatafactory", "virtualmachine",

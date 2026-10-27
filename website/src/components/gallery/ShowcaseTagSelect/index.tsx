@@ -3,10 +3,12 @@
  * Licensed under the MIT License.
  */
 
-import React, { useCallback, useEffect } from "react";
+import React from "react";
+import type { Location } from "history";
 import { useHistory } from "@docusaurus/router";
 import { toggleListItem } from "@site/src/utils/jsUtils";
-import { prepareUserState } from "@site/src/pages/index";
+import { captureGalleryNavigationState } from "@site/src/utils/galleryNavigation";
+import { readSearchTags, replaceSearchTags } from "@site/src/utils/galleryQuery";
 import { type TagType } from "@site/src/data/tags";
 import { Checkbox } from "@fluentui/react-components";
 
@@ -15,24 +17,18 @@ export default function ShowcaseTagSelect({
   tag,
   id,
   activeTags,
-  selectedCheckbox,
-  setSelectedCheckbox,
+  selectedTags,
   location,
-  readSearchTags,
-  replaceSearchTags,
   count,
 }: {
   label: string;
   tag: TagType;
   id: string;
   activeTags: TagType[];
-  selectedCheckbox: TagType[];
-  setSelectedCheckbox: React.Dispatch<React.SetStateAction<TagType[]>>;
-  location;
-  readSearchTags: (search: string) => TagType[];
-  replaceSearchTags: (search: string, newTags: TagType[]) => string;
+  selectedTags: TagType[];
+  location: Location;
   count?: number;
-}): JSX.Element {
+}): React.JSX.Element {
   const history = useHistory();
   // updates only the url query
   const toggleTag = () => {
@@ -42,20 +38,12 @@ export default function ShowcaseTagSelect({
     history.push({
       ...location,
       search: newSearch,
-      state: prepareUserState(),
+      state: captureGalleryNavigationState(),
     });
   };
 
-  const template = id.replace("showcase_checkbox_id_", "");
-  const contentForAdobeAnalytics = `{\"id\":\"${template}\",\"cN\":\"Tags\"}`;
-
-  const toggleCheck = (tag: TagType) => {
-    if (selectedCheckbox.includes(tag)) {
-      setSelectedCheckbox(selectedCheckbox.filter((item) => item !== tag));
-    } else {
-      setSelectedCheckbox([...selectedCheckbox, tag]);
-    }
-  };
+  const tagId = id.replace("showcase_checkbox_id_", "");
+  const contentForAdobeAnalytics = `{\"id\":\"${tagId}\",\"cN\":\"Tags\"}`;
 
   return (
     <>
@@ -65,14 +53,12 @@ export default function ShowcaseTagSelect({
         onKeyDown={(e) => {
           if (e.key === "Enter") {
             toggleTag();
-            toggleCheck(tag);
           }
         }}
         onChange={() => {
           toggleTag();
-          toggleCheck(tag);
         }}
-        checked={selectedCheckbox.includes(tag)}
+        checked={selectedTags.includes(tag)}
         label={count !== undefined ? `${label} (${count})` : label}
         disabled={!activeTags?.includes(tag)}
       />

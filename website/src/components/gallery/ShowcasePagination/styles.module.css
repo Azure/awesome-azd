@@ -1,0 +1,20 @@
+/**
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
+ */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 24px 0;
+}
+
+.pagination .paginationEllipsis {
+  padding: 8px;
+}
+
+.pagination .pageButton {
+  min-width: 40px;
+}

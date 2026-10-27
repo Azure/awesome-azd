@@ -6,19 +6,33 @@ import IconExternalLink from "@theme/Icon/ExternalLink";
 import { manageCookieLabel, manageCookieId } from "../../../../constants.js";
 import styles from "./styles.module.css";
 import clsx from "clsx";
+import { CookieConsentContext } from "../../../components/CookieConsentContext";
 
 export default function FooterLinkItem({ item }) {
+  const siteConsent = React.useContext(CookieConsentContext);
   const { to, href, label, id, prependBaseUrlToHref, ...props } = item;
   const toUrl = useBaseUrl(to);
   const normalizedHref = useBaseUrl(href, { forcePrependBaseUrl: true });
-  return label === manageCookieLabel ? (
-    <a
-      className={clsx(styles.manageCookies, "footer__link-item")}
-      id={manageCookieId}
-    >
-      {manageCookieLabel}
-    </a>
-  ) : (
+  if (label === manageCookieLabel) {
+    if (siteConsent?.isConsentRequired === false) return null;
+    return (
+      <button
+        type="button"
+        className={clsx(styles.manageCookies, "footer__link-item")}
+        id={manageCookieId}
+        onClick={() => {
+          if (siteConsent) {
+            siteConsent.manageConsent();
+          } else {
+            console.warn("Cookie consent is not available yet.");
+          }
+        }}
+      >
+        {manageCookieLabel}
+      </button>
+    );
+  }
+  return (
     <Link
       className="footer__link-item"
       {...(href

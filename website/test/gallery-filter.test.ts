@@ -2,10 +2,10 @@ import { describe, expect, test } from '@jest/globals';
 import {
   isGalleryTemplate,
   filterGalleryTemplates,
-  unsortedUsers,
-  sortedUsers,
-} from '../src/data/users';
-import { User } from '../src/data/tags';
+  unsortedTemplates,
+  sortedTemplates,
+} from '../src/data/templates';
+import { Template } from '../src/data/tags';
 
 // Contract: extension templates (anything with `templateType` set, e.g.
 // `extension.ai.agent`) live in templates.json so `azd` can consume a single
@@ -14,19 +14,19 @@ import { User } from '../src/data/tags';
 // extension templates in the UI.
 describe('Gallery filter: exclude entries with templateType set', () => {
   test('isGalleryTemplate returns false for any non-empty templateType', () => {
-    const extension = { templateType: 'extension.ai.agent' } as User;
-    const future = { templateType: 'extension.mcp.server' } as User;
-    const other = { templateType: 'something-else' } as User;
+    const extension = { templateType: 'extension.ai.agent' } as Template;
+    const future = { templateType: 'extension.mcp.server' } as Template;
+    const other = { templateType: 'something-else' } as Template;
     expect(isGalleryTemplate(extension)).toBe(false);
     expect(isGalleryTemplate(future)).toBe(false);
     expect(isGalleryTemplate(other)).toBe(false);
   });
 
   test('isGalleryTemplate returns true for standard templates (no templateType)', () => {
-    const standard = { templateType: undefined } as unknown as User;
-    const nullish = { templateType: null } as unknown as User;
-    const missing = {} as User;
-    const empty = { templateType: '' } as User;
+    const standard = { templateType: undefined } as unknown as Template;
+    const nullish = { templateType: null } as unknown as Template;
+    const missing = {} as Template;
+    const empty = { templateType: '' } as Template;
     expect(isGalleryTemplate(standard)).toBe(true);
     expect(isGalleryTemplate(nullish)).toBe(true);
     expect(isGalleryTemplate(missing)).toBe(true);
@@ -40,20 +40,20 @@ describe('Gallery filter: exclude entries with templateType set', () => {
       { title: 'c', templateType: 'extension.mcp.server' },
       { title: 'd', templateType: null },
       { title: 'e', templateType: 'something-else' },
-    ] as unknown as User[];
+    ] as unknown as Template[];
     const result = filterGalleryTemplates(input);
     expect(result.map((u) => u.title)).toEqual(['b', 'd']);
   });
 
   test('unsortedUsers contains no entries with templateType set', () => {
-    const leaked = unsortedUsers.filter(
+    const leaked = unsortedTemplates.filter(
       (u) => typeof u.templateType === 'string' && u.templateType !== ''
     );
     expect(leaked).toEqual([]);
   });
 
   test('sortedUsers contains no entries with templateType set', () => {
-    const leaked = sortedUsers.filter(
+    const leaked = sortedTemplates.filter(
       (u) => typeof u.templateType === 'string' && u.templateType !== ''
     );
     expect(leaked).toEqual([]);

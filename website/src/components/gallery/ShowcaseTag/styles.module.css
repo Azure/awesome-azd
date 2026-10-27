@@ -3,6 +3,20 @@
 * Licensed under the MIT License.
  */
 
+.cardBadge.cardBadge {
+  align-content: center;
+  font-size: 10px;
+  width: auto;
+}
+
+.tagTooltip.tagTooltip {
+  text-align: center;
+}
+
+.moreTags {
+  white-space: pre-line;
+}
+
 .cardPanelTag {
   height: 20px;
   align-content: center;

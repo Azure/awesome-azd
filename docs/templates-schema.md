@@ -16,31 +16,34 @@ discriminator:
 | Extension entry  | `extension.<category>.<type>` (e.g. `extension.ai.agent`) | ❌ no | `azd` extension flows (e.g. `azd ai agent init`) |
 
 The gallery dataset is produced by filtering out every entry with a
-`templateType` set (see [`filterGalleryTemplates`](../website/src/data/users.tsx)).
+`templateType` set (see [`filterGalleryTemplates`](../website/src/data/templates.ts)).
 This filter runs **before** `validateTemplates`, so extension entries are
 never required to satisfy gallery-only validation rules.
 
 ## 2. Common fields (all entries)
 
-These fields are validated for every entry, gallery or extension:
+These fields are shared by the records. The gallery runtime loader checks
+them only after filtering out specialized extension entries. Those entries
+follow their consumer's catalog checks instead.
 
 | Field        | Type     | Required | Notes                                                              |
 | ------------ | -------- | -------- | ------------------------------------------------------------------ |
 | `title`      | string   | ✅       | Non-empty.                                                         |
 | `description`| string   | ✅       | Non-empty.                                                         |
 | `author`     | string   | ✅       | Non-empty.                                                         |
-| `authorUrl`  | string   | ⚠️       | Optional in JSON; coerced to `""` if missing. Must be a string when present. |
-| `source`     | string   | ✅       | **Must start with `https://github.com/`** — applies to extension entries too. |
+| `authorUrl`  | string   | ⚠️       | Optional in JSON; the gallery loader coerces it to `""` if missing. Must be a string when present. |
+| `source`     | string   | ✅       | The gallery loader requires a `https://github.com/` prefix.           |
 
-> ⚠️ **Gotcha — GitHub source URL:** `source` is validated for **both** gallery
-> and extension entries. If you need to point at a non-GitHub URL (e.g. a raw
-> manifest from another host), open an issue first; the validator will silently
-> drop the entry today.
+> ⚠️ **Gotcha — GitHub source URL:** The gallery loader drops gallery records
+> with an incompatible `source` URL and logs a warning. Specialized entries
+> are excluded before that loader runs; this runtime check does not establish
+> their consumer's URL requirements.
 
 ## 3. Gallery-only fields
 
 | Field           | Type        | Required for gallery | Notes                                                                                |
 | --------------- | ----------- | -------------------- | ------------------------------------------------------------------------------------ |
+| `id`            | string      | ✅                   | Stable, unique UUID used as the card key. Required by the gallery model and contributor guide, but not checked by the runtime loader. |
 | `tags`          | `TagType[]` | ✅                   | Non-empty array. Values must come from the [`TagType` union](../website/src/data/tags.tsx). |
 | `preview`       | string      | optional             | Path/URL to preview image.                                                           |
 | `languages`     | `TagType[]` | optional             | Same `TagType` union as `tags`.                                                      |
@@ -50,8 +53,10 @@ These fields are validated for every entry, gallery or extension:
 
 > ⚠️ **Gotcha — tag taxonomy coupling:** Adding a brand-new value to `tags`,
 > `languages`, etc. requires updating the `TagType` union in
-> [`website/src/data/tags.tsx`](../website/src/data/tags.tsx). Unknown tags are
-> stripped at parse time with a console warning.
+> [`website/src/data/tags.tsx`](../website/src/data/tags.tsx). The gallery loader
+> does not strip unknown catalog tags. Submission automation restores canonical
+> spelling for case-insensitive matches and warns on unknown values; catalog
+> taxonomy checks remain separate from runtime loading.
 
 ## 4. Extension-only fields
 
@@ -86,6 +91,7 @@ filters or validators are required because every entry with a non-empty
 
 ```jsonc
 {
+  "id": "00000000-0000-4000-8000-000000000001",
   "title": "Remote MCP Functions with TypeScript",
   "description": "Remote MCP server built with TypeScript and Azure Functions.",
   "author": "Azure Samples",
@@ -118,15 +124,19 @@ filters or validators are required because every entry with a non-empty
 
 ## 7. Validation pipeline
 
-The data layer ([`website/src/data/users.tsx`](../website/src/data/users.tsx))
+The data layer ([`website/src/data/templates.ts`](../website/src/data/templates.ts))
 applies these steps in order:
 
 1. **`filterGalleryTemplates`** — drop every entry with a non-empty
    `templateType`. Result is the **raw gallery dataset** (also exported as
    `galleryTemplates` for direct UI consumers).
-2. **`validateTemplates`** — runtime-validate the remaining entries against
-   the rules in §2 and §3. Invalid entries are dropped with a `console.warn`.
-3. The validated `User[]` is exported as `unsortedUsers` / `sortedUsers`.
+2. **`validateTemplates`** — check required text fields, the GitHub source URL,
+   `authorUrl` type/default, and a non-empty gallery `tags` array. Invalid
+   entries are dropped with a `console.warn`. This is not a full schema
+   decoder: identity, taxonomy membership, and optional array contents are
+   not checked here.
+3. The runtime-screened records are exported as `unsortedTemplates` /
+   `sortedTemplates` with the `Template[]` type.
 
 `validateTemplates` also relaxes the `tags` requirement for any entry where
 `templateType` is set, as defense-in-depth in case the pipeline ordering is
@@ -147,7 +157,7 @@ ever changed.
 ## 9. Related files
 
 - [`website/static/templates.json`](../website/static/templates.json) — the data
-- [`website/src/data/tags.tsx`](../website/src/data/tags.tsx) — `User` / `TagType` definitions
-- [`website/src/data/users.tsx`](../website/src/data/users.tsx) — filter + validation logic
+- [`website/src/data/tags.tsx`](../website/src/data/tags.tsx) — `Template` / `TagType` definitions
+- [`website/src/data/templates.ts`](../website/src/data/templates.ts) — filter + validation logic
 - [`website/test/gallery-filter.test.ts`](../website/test/gallery-filter.test.ts) — gallery/extension filtering contract
 - [`website/test/agent-templates.test.ts`](../website/test/agent-templates.test.ts) — `extension.ai.agent` shape & uniqueness

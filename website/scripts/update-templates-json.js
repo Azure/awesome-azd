@@ -20,19 +20,21 @@ const {
 const { writeOutputs } = require("./github-output");
 
 /**
- * Load the set of known tag keys from tags.tsx TagType union.
- * Returns a Set of lowercase tag strings, or null if the file cannot be read.
+ * Load case-insensitive keys and canonical spelling from the TagType union.
  */
 function loadKnownTags() {
-  try {
-    const tagsPath = path.resolve(__dirname, "../src/data/tags.tsx");
-    const content = fs.readFileSync(tagsPath, "utf8");
-    const matches = content.match(/\|\s*"([^"]+)"/g);
-    if (!matches) return null;
-    return new Set(matches.map((m) => m.replace(/\|\s*"/, "").replace(/"$/, "")));
-  } catch {
-    return null;
+  const tagsPath = path.resolve(__dirname, "../src/data/tags.tsx");
+  const content = fs.readFileSync(tagsPath, "utf8");
+  const declaration = content.match(/export\s+type\s+TagType\s*=\s*([\s\S]*?);/);
+  if (!declaration) {
+    throw new Error("The TagType union is missing from tags.tsx");
   }
+  const union = declaration[1].replace(/\/\*[\s\S]*?\*\/|\/\/[^\r\n]*/g, "");
+  const tags = [...union.matchAll(/"([^"]+)"/g)].map((match) => match[1]);
+  if (tags.length === 0) {
+    throw new Error("The TagType union in tags.tsx contains no tags");
+  }
+  return new Map(tags.map((tag) => [tag.toLowerCase(), tag]));
 }
 
 /**
@@ -78,11 +80,11 @@ function parseTags(csv) {
         .slice(0, 50)
     )
     .filter((t) => t.length > 0)
-    .filter((t) => {
-      if (knownTags && !knownTags.has(t)) {
-        console.warn(`Warning: unknown tag "${t}" is not defined in tags.tsx`);
-      }
-      return true;
+    .map((tag) => {
+      const canonicalTag = knownTags.get(tag);
+      if (canonicalTag) return canonicalTag;
+      console.warn(`Warning: unknown tag "${tag}" is not defined in tags.tsx`);
+      return tag;
     })
     .slice(0, 20);
 }

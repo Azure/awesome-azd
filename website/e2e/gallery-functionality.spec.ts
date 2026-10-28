@@ -7,8 +7,9 @@ import { test, expect } from "@playwright/test";
 test.describe("Gallery functionality (deploy gate)", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("templates");
-    await page.waitForLoadState("networkidle");
-    await page.waitForSelector(".fui-Card", { timeout: 15_000 });
+    await expect(
+      page.locator('[role="status"]').filter({ hasText: /Viewing/ }).first(),
+    ).toBeVisible({ timeout: 15_000 });
   });
 
   // Reads the total from the "Viewing N templates" live region. The page
@@ -48,7 +49,8 @@ test.describe("Gallery functionality (deploy gate)", () => {
   });
 
   test("page renders at least one template card", async ({ page }) => {
-    const cards = page.locator(".fui-Card");
+    const cards = page.locator('[data-testid="showcase-list"] > .fui-Card');
+    await expect(cards.first()).toBeVisible({ timeout: 15_000 });
     const rendered = await cards.count();
     expect(rendered).toBeGreaterThan(0);
   });
@@ -56,7 +58,8 @@ test.describe("Gallery functionality (deploy gate)", () => {
   test("template details opens the template in the VS Code azd experience", async ({
     page,
   }) => {
-    const firstCard = page.locator(".fui-Card").first();
+    const firstCard = page.locator('[data-testid="showcase-list"] > .fui-Card').first();
+    await expect(firstCard).toBeVisible({ timeout: 15_000 });
     await firstCard.getByRole("button").first().click();
 
     const openInVSCode = page.getByRole("link", { name: "Open in VS Code" });
@@ -126,20 +129,19 @@ test.describe("Gallery functionality (deploy gate)", () => {
     // hides tags after the first 6. Python is in the Language section, so
     // expand that section first, then expand "View All" if needed.
     const pythonCheckbox = page.locator("#showcase_checkbox_id_python");
-    if (!(await pythonCheckbox.isVisible().catch(() => false))) {
+    if (!(await pythonCheckbox.isVisible())) {
       await page.getByRole("button", { name: /^Language/ }).first().click();
     }
-    if (!(await pythonCheckbox.isVisible().catch(() => false))) {
-      const viewAllButtons = page.getByRole("button", { name: /view all/i });
-      const count = await viewAllButtons.count();
-      for (let i = 0; i < count; i++) {
-        await viewAllButtons.nth(i).click();
-      }
+    if (!(await pythonCheckbox.isVisible())) {
+      const viewAllButton = page.getByRole("button", { name: /view all/i }).first();
+      await expect(viewAllButton).toBeVisible();
+      await viewAllButton.click();
     }
     await expect(pythonCheckbox).toBeVisible({ timeout: 10_000 });
     await pythonCheckbox.click();
 
-    await expect(page).toHaveURL(/tags=/);
+    await expect(pythonCheckbox).toBeChecked();
+    await expect(page).toHaveURL(/[?&]tags=python(?:&|$)/);
     await expect
       .poll(async () => viewingCount(page), { timeout: 10_000 })
       .not.toBe(initial);

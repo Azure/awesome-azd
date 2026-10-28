@@ -43,7 +43,9 @@ function sparseExtensionQuery() {
 test.describe("Gallery card layout", () => {
   test("sparse gallery results stay left aligned", async ({ page }) => {
     await page.goto(sparseTemplateQuery());
-    await page.waitForSelector('[data-testid="showcase-list"] .fui-Card');
+    await expect(
+      page.locator('[data-testid="showcase-list"] .fui-Card').first(),
+    ).toBeVisible();
 
     async function expectLeftAlignedGrid() {
       const grid = page.getByTestId("showcase-list");
@@ -60,14 +62,14 @@ test.describe("Gallery card layout", () => {
     await expectLeftAlignedGrid();
 
     await page.goto(sparseExtensionQuery());
-    await page.waitForSelector('[data-testid="showcase-list"] .fui-Card');
-    await expect(page.locator('[data-testid="showcase-list"] .fui-Card')).toHaveCount(1);
+    const extensionCards = page.locator('[data-testid="showcase-list"] .fui-Card');
+    await expect(extensionCards.first()).toBeVisible();
+    await expect(extensionCards).toHaveCount(1);
     await expectLeftAlignedGrid();
   });
 
   test("extension commands wrap without clipping", async ({ page }) => {
     await page.goto("extensions");
-    await page.waitForSelector('[data-testid="extension-command"]');
 
     const commands = page.getByTestId("extension-command");
     await expect(commands.first()).toBeVisible();

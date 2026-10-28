@@ -47,14 +47,13 @@ test.describe("Accessibility", () => {
     await expect(searchInput).toBeVisible();
   });
 
-  test("images have alt text", async ({ page }) => {
+  test("homepage images define alt text", async ({ page }) => {
     await page.goto("./");
-    await page.waitForLoadState("networkidle");
-    // Read all alts in a single page.evaluate to avoid auto-wait flakes
-    // when parallel workers stress the test server.
+    await expect(page.locator("h1")).toBeVisible();
     const alts = await page.locator("img").evaluateAll((imgs) =>
-      imgs.slice(0, 10).map((img) => img.getAttribute("alt"))
+      imgs.map((img) => img.getAttribute("alt"))
     );
+    expect(alts.length).toBeGreaterThan(0);
     for (const alt of alts) {
       expect(alt).not.toBeNull();
     }

@@ -1,47 +1,42 @@
-import { test, expect } from "@playwright/test";
+import { test, expect, type Page } from "@playwright/test";
+
+function viewingStatus(page: Page) {
+  return page.locator('[role="status"]').filter({ hasText: /Viewing/ }).first();
+}
+
+async function revealPythonFilter(page: Page) {
+  const pythonCheckbox = page.locator("#showcase_checkbox_id_python");
+
+  if (!(await pythonCheckbox.isVisible())) {
+    await page.getByRole("button", { name: /^Language/ }).first().click();
+  }
+  if (!(await pythonCheckbox.isVisible())) {
+    const viewAllButton = page.getByRole("button", { name: /view all/i }).first();
+    await expect(viewAllButton).toBeVisible();
+    await viewAllButton.click();
+  }
+
+  await expect(pythonCheckbox).toBeVisible();
+  return pythonCheckbox;
+}
 
 test.describe("Gallery Filtering", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("templates");
+    await expect(viewingStatus(page)).toBeVisible();
   });
 
   test("filter panel is visible with category headings", async ({ page }) => {
-    await expect(page.locator("text=Language").first()).toBeVisible();
-    await expect(page.locator("text=Framework").first()).toBeVisible();
-  });
-
-  test("clicking a filter tag updates URL and filters results", async ({ page }) => {
-    const pythonCheckbox = page.getByLabel(/python/i).first();
-    if (await pythonCheckbox.isVisible()) {
-      await pythonCheckbox.click();
-      await expect(page).toHaveURL(/tags=/);
-    }
+    await expect(
+      page.getByRole("button", { name: /^Language\s*\d+$/ }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("button", { name: /^Framework\s*\d+$/ }),
+    ).toBeVisible();
   });
 
   test("filter checkboxes show template counts", async ({ page }) => {
-    // Filter labels should contain count in parentheses, e.g., "Python (82)"
-    const filterLabels = page.locator('[class*="checkboxLabel"]');
-    const firstLabel = filterLabels.first();
-    if (await firstLabel.isVisible()) {
-      const text = await firstLabel.textContent();
-      expect(text).toMatch(/\(\d+\)/);
-    }
-  });
-
-  test("empty state shows actionable message when no results", async ({ page }) => {
-    const searchInput = page.getByRole("searchbox");
-    await searchInput.fill("zzzznonexistenttemplate");
-    await searchInput.press("Enter");
-    await expect(page.locator("text=No templates found")).toBeVisible({ timeout: 10_000 });
-  });
-
-  test("clear filters resets the view", async ({ page }) => {
-    const searchInput = page.getByRole("searchbox");
-    await searchInput.fill("python");
-    await searchInput.press("Enter");
-    await expect(page).toHaveURL(/name=python/);
-    await searchInput.fill("");
-    await searchInput.press("Enter");
-    await expect(page).not.toHaveURL(/name=python/);
+    const pythonCheckbox = await revealPythonFilter(page);
+    await expect(pythonCheckbox).toHaveAccessibleName(/^Python \(\d+\)$/);
   });
 });

@@ -3,14 +3,12 @@ import { test, expect } from "@playwright/test";
 test.describe("Getting Started Page", () => {
   test("renders hero section", async ({ page }) => {
     await page.goto("getting-started");
-    await page.waitForLoadState("networkidle");
     await expect(page.locator("h1")).toContainText("From code to cloud", { timeout: 15_000 });
     await expect(page.locator("h1")).toContainText("in minutes");
   });
 
   test("displays two onboarding steps", async ({ page }) => {
     await page.goto("getting-started");
-    await page.waitForLoadState("networkidle");
     await expect(page.getByRole("heading", { name: "Pick a template", exact: true })).toBeVisible({ timeout: 15_000 });
     await expect(page.getByRole("heading", { name: "Deploy to Azure", exact: true })).toBeVisible();
   });

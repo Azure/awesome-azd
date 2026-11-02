@@ -49,7 +49,17 @@ function stripHtmlTags(value) {
   let tagDepth = 0;
   let quote = null;
 
-  for (const character of value) {
+  for (let index = 0; index < value.length; index += 1) {
+    if (tagDepth === 0 && value.startsWith("<!--", index)) {
+      const commentEnd = value.indexOf("-->", index + 4);
+      if (commentEnd === -1) {
+        break;
+      }
+      index = commentEnd + 2;
+      continue;
+    }
+
+    const character = value[index];
     if (tagDepth === 0) {
       if (character === "<") {
         tagDepth = 1;

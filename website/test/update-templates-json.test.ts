@@ -57,6 +57,13 @@ describe("sanitize", () => {
     expect(sanitize(input, 200)).toBe("Demo description");
   });
 
+  test.each([
+    ["<!-- Don't show this -->Demo description"],
+    ["<!-- Ignore a < b -->Demo description"],
+  ])("ignores tag syntax inside HTML comments", (input) => {
+    expect(sanitize(input, 200)).toBe("Demo description");
+  });
+
   test("strips self-closing tags", () => {
     expect(sanitize("before<br/>after", 200)).toBe("beforeafter");
   });

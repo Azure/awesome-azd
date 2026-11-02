@@ -44,12 +44,29 @@ function loadKnownTags() {
  * @param {number} maxLength
  * @returns {string}
  */
+function stripHtmlTags(value) {
+  let result = "";
+  let tagDepth = 0;
+
+  for (const character of value) {
+    if (character === "<") {
+      tagDepth += 1;
+    } else if (character === ">") {
+      tagDepth = Math.max(0, tagDepth - 1);
+    } else if (tagDepth === 0) {
+      result += character;
+    }
+  }
+
+  return result;
+}
+
 function sanitize(value, maxLength) {
-  return value
-    .replace(/\x00/g, "")
-    .replace(/[\u00AD\u034F\u061C\u180E\u200B-\u200F\u202A-\u202E\u2060-\u2069\uFEFF]/g, "")
-    .replace(/<[^>]*>?/g, "")
-    .replace(/[<>]/g, "")
+  return stripHtmlTags(
+    value
+      .replace(/\x00/g, "")
+      .replace(/[\u00AD\u034F\u061C\u180E\u200B-\u200F\u202A-\u202E\u2060-\u2069\uFEFF]/g, "")
+  )
     .trim()
     .slice(0, maxLength);
 }

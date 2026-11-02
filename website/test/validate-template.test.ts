@@ -542,7 +542,9 @@ describe('validateTemplate - non-github.com hostname', () => {
     test('rejects non-github.com URL', async () => {
         const result = await validateTemplate('https://gitlab.com/org/repo');
         expect(result.valid).toBe(false);
-        expect(result.errors.some((e: string) => e.includes('github.com'))).toBe(true);
+        expect(result.errors).toContain(
+            'Repository URL must be a GitHub repository (github.com)'
+        );
     });
 
     test('rejects URL with non-standard port', async () => {

@@ -50,6 +50,13 @@ describe("sanitize", () => {
     ).toBe("alert(1)");
   });
 
+  test.each([
+    ['<span title="a < b">Demo</span> description'],
+    ["<span title='a > b'>Demo</span> description"],
+  ])("ignores angle brackets inside quoted attributes", (input) => {
+    expect(sanitize(input, 200)).toBe("Demo description");
+  });
+
   test("strips self-closing tags", () => {
     expect(sanitize("before<br/>after", 200)).toBe("beforeafter");
   });

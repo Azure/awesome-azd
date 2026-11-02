@@ -47,14 +47,25 @@ function loadKnownTags() {
 function stripHtmlTags(value) {
   let result = "";
   let tagDepth = 0;
+  let quote = null;
 
   for (const character of value) {
-    if (character === "<") {
+    if (tagDepth === 0) {
+      if (character === "<") {
+        tagDepth = 1;
+      } else if (character !== ">") {
+        result += character;
+      }
+    } else if (quote) {
+      if (character === quote) {
+        quote = null;
+      }
+    } else if (character === '"' || character === "'") {
+      quote = character;
+    } else if (character === "<") {
       tagDepth += 1;
     } else if (character === ">") {
-      tagDepth = Math.max(0, tagDepth - 1);
-    } else if (tagDepth === 0) {
-      result += character;
+      tagDepth -= 1;
     }
   }
 

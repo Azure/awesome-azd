@@ -1931,7 +1931,7 @@
     "preview": "./templates/images/kernel-memory.png",
     "authorUrl": "https://microsoft.github.io/kernel-memory/",
     "author": "Kernel Memory Team",
-    "source": "https://github.com/microsoft/kernel-memory",
+    "source": "https://github.com/dluc/kernel-memory",
     "tags": [
       "msft",
       "ai",

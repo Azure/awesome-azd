@@ -1247,20 +1247,21 @@ describe("YAML safety", () => {
     });
 
     https.request.mockImplementation((opts: any, callback: Function) => {
-      const key = `${opts.hostname}${opts.path}`;
+      const hostname = String(opts.hostname ?? "");
+      const requestPath = String(opts.path ?? "");
       let status = 404;
       let body = "";
 
-      if (key.includes("api.github.com") && !key.includes("/languages")) {
+      if (hostname === "api.github.com" && !requestPath.includes("/languages")) {
         status = 200;
         body = repoApi;
-      } else if (key.includes("/languages")) {
+      } else if (hostname === "api.github.com" && requestPath.includes("/languages")) {
         status = 200;
         body = "{}";
-      } else if (key.includes("azure.yaml")) {
+      } else if (requestPath.includes("azure.yaml")) {
         status = 200;
         body = badYaml;
-      } else if (key.includes("README.md")) {
+      } else if (requestPath.includes("README.md")) {
         status = 200;
         body = "# Title\n";
       }

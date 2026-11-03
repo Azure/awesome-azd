@@ -44,6 +44,26 @@ describe("sanitize", () => {
     expect(sanitize("<div><p>text</p></div>", 200)).toBe("text");
   });
 
+  test("does not expose malformed nested tag fragments", () => {
+    expect(
+      sanitize("<scr<script>ipt>alert(1)</scr</script>ipt>", 200)
+    ).toBe("alert(1)");
+  });
+
+  test.each([
+    ['<span title="a < b">Demo</span> description'],
+    ["<span title='a > b'>Demo</span> description"],
+  ])("ignores angle brackets inside quoted attributes", (input) => {
+    expect(sanitize(input, 200)).toBe("Demo description");
+  });
+
+  test.each([
+    ["<!-- Don't show this -->Demo description"],
+    ["<!-- Ignore a < b -->Demo description"],
+  ])("ignores tag syntax inside HTML comments", (input) => {
+    expect(sanitize(input, 200)).toBe("Demo description");
+  });
+
   test("strips self-closing tags", () => {
     expect(sanitize("before<br/>after", 200)).toBe("beforeafter");
   });

@@ -44,12 +44,50 @@ function loadKnownTags() {
  * @param {number} maxLength
  * @returns {string}
  */
+function stripHtmlTags(value) {
+  let result = "";
+  let tagDepth = 0;
+  let quote = null;
+
+  for (let index = 0; index < value.length; index += 1) {
+    if (tagDepth === 0 && value.startsWith("<!--", index)) {
+      const commentEnd = value.indexOf("-->", index + 4);
+      if (commentEnd === -1) {
+        break;
+      }
+      index = commentEnd + 2;
+      continue;
+    }
+
+    const character = value[index];
+    if (tagDepth === 0) {
+      if (character === "<") {
+        tagDepth = 1;
+      } else if (character !== ">") {
+        result += character;
+      }
+    } else if (quote) {
+      if (character === quote) {
+        quote = null;
+      }
+    } else if (character === '"' || character === "'") {
+      quote = character;
+    } else if (character === "<") {
+      tagDepth += 1;
+    } else if (character === ">") {
+      tagDepth -= 1;
+    }
+  }
+
+  return result;
+}
+
 function sanitize(value, maxLength) {
-  return value
-    .replace(/\x00/g, "")
-    .replace(/[\u00AD\u034F\u061C\u180E\u200B-\u200F\u202A-\u202E\u2060-\u2069\uFEFF]/g, "")
-    .replace(/<[^>]*>?/g, "")
-    .replace(/[<>]/g, "")
+  return stripHtmlTags(
+    value
+      .replace(/\x00/g, "")
+      .replace(/[\u00AD\u034F\u061C\u180E\u200B-\u200F\u202A-\u202E\u2060-\u2069\uFEFF]/g, "")
+  )
     .trim()
     .slice(0, maxLength);
 }

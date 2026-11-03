@@ -3,6 +3,7 @@ import { describe, expect, test } from '@jest/globals';
 const {
     auditTemplates,
     buildIssueBody,
+    escapeMarkdown,
     parseGitHubSource,
     selectManagedIssue,
 } = require('../../.github/scripts/audit-template-repositories.js');
@@ -117,6 +118,10 @@ describe('template repository health audit', () => {
         expect(body).toContain('<!-- template-repository-health -->');
         expect(body).toContain('Template \\| @\u200bteam');
         expect(body).toContain('| Archived | 1 |');
+    });
+
+    test('escapes existing backslashes before table delimiters', () => {
+        expect(escapeMarkdown('\\|')).toBe('\\'.repeat(3) + '|');
     });
 
     test('only selects issues carrying the generated marker', () => {

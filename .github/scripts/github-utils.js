@@ -152,6 +152,7 @@ function escapeMarkdown(text) {
     .replace(/[\r\n]+/g, " ")
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
+    .replace(/\\/g, "\\\\")
     .replace(/\|/g, "\\|")
     .replace(/\[/g, "\\[")
     .replace(/\]/g, "\\]")

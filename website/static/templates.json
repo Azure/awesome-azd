@@ -1926,44 +1926,6 @@
     "id": "c6766aec-94cf-471b-b880-ace4bbb7aced"
   },
   {
-    "title": "RAG using Kernel Memory on Azure",
-    "description": "Kernel Memory (KM) is a multi-modal AI Service specialized in the efficient indexing of datasets through custom continuous data hybrid pipelines, with support for Retrieval Augmented Generation (RAG), synthetic memory, prompt engineering, and custom semantic memory processing.",
-    "preview": "./templates/images/kernel-memory.png",
-    "authorUrl": "https://microsoft.github.io/kernel-memory/",
-    "author": "Kernel Memory Team",
-    "source": "https://github.com/microsoft/kernel-memory",
-    "tags": [
-      "msft",
-      "ai",
-      "gpt",
-      "promptengineering"
-    ],
-    "languages": [
-      "dotnetCsharp"
-    ],
-    "frameworks": [
-      "semantickernel",
-      "kernelmemory",
-      "rag"
-    ],
-    "azureServices": [
-      "openai",
-      "aca",
-      "aisearch",
-      "azureai",
-      "managedidentity",
-      "blobstorage",
-      "agw",
-      "azurestorage",
-      "appinsights",
-      "vnets"
-    ],
-    "IaC": [
-      "bicep"
-    ],
-    "id": "6d9166fa-5793-485d-a918-19b461ca0260"
-  },
-  {
     "title": "Azure OpenAI Chat Frontend",
     "description": "Features a Chat-GPT-like user interface, including additional capabilities to debug responses, restyle, revisit history and reset the chat.",
     "preview": "./templates/images/azure-openai-chat-frontend-architecture.png",

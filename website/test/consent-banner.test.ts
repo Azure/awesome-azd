@@ -45,6 +45,11 @@ jest.mock('js-cookie', () => ({
     default: { remove: jest.fn(), set: jest.fn(), get: jest.fn() },
 }));
 
+jest.mock('../src/ai/FluentSsrProvider', () => ({
+    __esModule: true,
+    default: ({ children }: { children: unknown }) => children,
+}));
+
 // ---------------------------------------------------------------------------
 // Static / grep-level regression tests
 // ---------------------------------------------------------------------------

@@ -1,0 +1,22 @@
+/**
+* Copyright (c) Microsoft Corporation. All rights reserved.
+* Licensed under the MIT License.
+ */
+
+.cardTag {
+  color: #115ea3 !important;
+  border-color: #b4d6fa !important;
+  background: #ebf3fc !important;
+}
+
+[data-theme="dark"] .cardTag {
+  color: #62abf5 !important;
+  border-color: #0e4775 !important;
+  background: #082338 !important;
+}
+
+[data-theme="dark"] .cardPanelTag {
+  color: #62abf5 !important;
+  border: 1px solid #0e4775 !important;
+  background: #082338 !important;
+}

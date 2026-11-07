@@ -43,9 +43,20 @@ function sparseExtensionQuery() {
 test.describe("Gallery card layout", () => {
   test("sparse gallery results stay left aligned", async ({ page }) => {
     await page.goto(sparseTemplateQuery());
-    await expect(
-      page.locator('[data-testid="showcase-list"] .fui-Card').first(),
-    ).toBeVisible();
+    const templateGrid = page.getByTestId("template-results");
+    const templateCard = templateGrid.locator("[data-template-card]").first();
+    await expect(templateCard).toBeVisible();
+
+    const templateLeftOffset = await templateCard.evaluate((card) => {
+      const grid = card.parentElement;
+      if (!grid) {
+        throw new Error("Template card is missing its grid container");
+      }
+      return Math.abs(
+        grid.getBoundingClientRect().x - card.getBoundingClientRect().x,
+      );
+    });
+    expect(templateLeftOffset).toBeLessThan(1);
 
     async function expectLeftAlignedGrid() {
       const grid = page.getByTestId("showcase-list");
@@ -58,8 +69,6 @@ test.describe("Gallery card layout", () => {
         expect(Number.parseFloat(width)).toBeLessThanOrEqual(350);
       }
     }
-
-    await expectLeftAlignedGrid();
 
     await page.goto(sparseExtensionQuery());
     const extensionCards = page.locator('[data-testid="showcase-list"] .fui-Card');

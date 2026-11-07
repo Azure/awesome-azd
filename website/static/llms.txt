@@ -1,0 +1,32 @@
+# Awesome azd template catalog
+
+> Public Azure Developer CLI template discovery data. Catalog metadata is a starting point, not deployment approval.
+
+Read the catalog JSON, shortlist declared matches, then read the linked repository setup instructions. Missing or unlisted metadata means unknown, not supported. Service tags do not establish default hosting. Do not infer costs, model availability, security, compliance, quota, region support, or production readiness.
+
+Share this index explicitly. Automatic discovery is not guaranteed.
+
+## Catalog retrieval
+
+- Catalog UI: https://azure.github.io/awesome-azd/templates
+- Catalog JSON: https://azure.github.io/awesome-azd/templates.json
+- Catalog schema: https://github.com/Azure/awesome-azd/blob/main/docs/templates-schema.md
+- Contribution guide: https://azure.github.io/awesome-azd/docs/contribute
+
+The JSON is a flat array. The unified gallery includes records whose templateType is absent, null, or empty and records whose templateType is ai-app-templates. Other specialized templateType values are not part of the public template gallery.
+
+Each included record links to a public source repository. Use that repository's README and deployment files for complete requirements. The catalog does not execute azd commands or deploy cloud resources.
+
+## Search and privacy
+
+Local keyword search covers the full catalog. AI search matches are accepted only when their source repository belongs to the public AI template allowlist. Author email and private backend fields are not part of the public catalog contract.
+
+## Safety
+
+Before running a template:
+
+1. Review setup scripts, hooks, permissions, and infrastructure.
+2. Confirm subscription, region, quota, security, compliance, and expected charges.
+3. Use a new directory for azd init.
+4. Approve deployment and cleanup actions explicitly.
+

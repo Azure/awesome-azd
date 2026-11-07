@@ -1,0 +1,51 @@
+/**
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
+ */
+
+.footer {
+  width: min(1280px, calc(100% - 128px));
+  margin: 0 auto;
+  padding: 24px 0;
+  border-top: 1px solid var(--catalog-line, var(--site-color-border));
+  color: var(--catalog-muted, var(--site-color-text-muted));
+  font-size: 0.7rem;
+}
+
+.footer a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.footer :global(.footer__links) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.footer :global(.footer__link-separator) {
+  color: var(--catalog-muted, var(--site-color-text-muted));
+}
+
+.footer button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 900px) {
+  .footer {
+    width: calc(100% - 48px);
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .footer {
+    width: calc(100% - 40px);
+  }
+}
+

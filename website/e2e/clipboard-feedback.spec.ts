@@ -12,93 +12,154 @@ declare global {
 }
 
 test.beforeEach(async ({ page }) => {
-  await page.route(/https:\/\/(?:js\.monitor\.azure\.com|wcpstatic\.microsoft\.com)\//, (route) =>
-    route.fulfill({ contentType: "application/javascript", body: "" }),
+  await page.route(
+    /https:\/\/(?:js\.monitor\.azure\.com|wcpstatic\.microsoft\.com)\//,
+    (route) =>
+      route.fulfill({ contentType: "application/javascript", body: "" }),
+  );
+  await page.route(
+    "https://cachelp6qsotirqelc.z20.web.core.windows.net/**",
+    (route) =>
+      route.fulfill({
+        json: {
+          forks: 1,
+          stars: 1,
+          updatedOn: "2025-01-01T00:00:00.000Z",
+          score: 1,
+        },
+      }),
+  );
+  await page.route("**/ai-apps-search*", (route) =>
+    route.fulfill({ json: [] }),
   );
   await page.addInitScript(() => {
     Object.defineProperty(navigator, "clipboard", {
       configurable: true,
       value: {
-        writeText: () => new Promise<void>((resolve, reject) => {
-          window.__clipboardWrite = {
-            resolve,
-            reject: () => reject(new DOMException("Clipboard access denied", "NotAllowedError")),
-          };
-        }),
+        writeText: () =>
+          new Promise<void>((resolve, reject) => {
+            window.__clipboardWrite = {
+              resolve,
+              reject: () =>
+                reject(
+                  new DOMException(
+                    "Clipboard access denied",
+                    "NotAllowedError",
+                  ),
+                ),
+            };
+          }),
       },
     });
   });
 });
 
 async function finishCopy(page: Page, success: boolean) {
-  await page.evaluate((success) => {
+  await page.evaluate((copySucceeded) => {
     const write = window.__clipboardWrite;
     if (!write) throw new Error("No clipboard write is pending");
     window.__clipboardWrite = undefined;
-    if (success) write.resolve();
+    if (copySucceeded) write.resolve();
     else write.reject();
   }, success);
 }
 
-for (const route of ["templates", "extensions"]) {
-  test(`${route} copy feedback politely announces only successful writes`, async ({ page }) => {
-    await page.goto(route);
-    const button = page.getByRole("button", {
-      name: route === "templates" ? /^Copy azd init command for / : /^Copy install command for /,
-    }).first();
-    await button.click();
-    const feedback = page.getByRole("status").filter({ hasText: /^(Copying\.\.\.|Copied!)$/ });
-    await expect(feedback).toHaveAttribute("aria-live", "polite");
-    await expect(feedback).toHaveText("Copying...");
-    await expect(page.getByRole("dialog").filter({ has: feedback })).toBeFocused();
-    await expect(page.getByText("Copied!", { exact: true })).toBeHidden();
+test("catalog cards announce successful and failed command copies", async ({
+  page,
+}) => {
+  await page.goto("templates");
+  const button = page
+    .getByRole("button", { name: /^Copy init command for / })
+    .first();
 
-    await finishCopy(page, false);
-    await expect(feedback).toBeHidden();
-    await expect(button).toHaveAttribute("aria-expanded", "false");
-    await expect(page.getByText("Copied!", { exact: true })).toBeHidden();
-    await expect(page.getByText("Copy failed. Please try again.", { exact: true })).toBeHidden();
+  await button.click();
+  await finishCopy(page, false);
+  await expect(
+    page.getByRole("status").filter({ hasText: "Copy unavailable" }),
+  ).toBeAttached();
 
-    await button.click();
-    await expect(feedback).toHaveText("Copying...");
-    await expect(page.getByRole("dialog").filter({ has: feedback })).toBeFocused();
-    await finishCopy(page, true);
-    await expect(feedback).toHaveText("Copied!");
+  await button.click();
+  await finishCopy(page, true);
+  await expect(
+    page
+      .getByRole("status")
+      .filter({ hasText: /^Copied init command for / }),
+  ).toBeAttached();
+});
+
+test("detail actions copy the init command and stable link", async ({
+  page,
+}) => {
+  await page.goto("templates/azure-samples/azd-starter-bicep");
+  const startPanel = page.locator("aside");
+  const copyButtons = startPanel.locator("button");
+  const statuses = startPanel.locator('span[role="status"]');
+
+  const commandButton = copyButtons.nth(0);
+  await expect(commandButton).toHaveText("Copy init command");
+  await commandButton.click();
+  await finishCopy(page, true);
+  await expect(commandButton).toHaveText("Init command copied");
+  await expect(statuses.nth(0)).toHaveText("Init command copied");
+  await expect(statuses.nth(0)).toHaveCSS("opacity", "0");
+
+  const linkButton = copyButtons.nth(1);
+  await expect(linkButton).toHaveText("Copy stable template link");
+  await linkButton.click();
+  await finishCopy(page, true);
+  await expect(linkButton).toHaveText("Stable template link copied");
+  await expect(statuses.nth(1)).toHaveText(
+    "Stable template link copied",
+  );
+  await expect(statuses.nth(1)).toHaveCSS("opacity", "0");
+
+  await startPanel.locator("summary").click();
+  const markdownButton = copyButtons.nth(2);
+  await expect(markdownButton).toHaveText("Copy Markdown link");
+  await markdownButton.click();
+  await finishCopy(page, true);
+  await expect(markdownButton).toHaveText("Markdown link copied");
+  await expect(statuses.nth(2)).toHaveText("Markdown link copied");
+  await expect(statuses.nth(2)).toHaveCSS("opacity", "0");
+});
+
+test("catalog agent link feedback stays in place", async ({ page }) => {
+  await page.goto("templates");
+  const agentSection = page.locator("section").filter({
+    has: page.getByRole("heading", {
+      name: "Use with your coding agent",
+    }),
   });
-}
+  const button = agentSection.locator("button");
+  const before = await button.boundingBox();
 
-for (const { name, index } of [
-  { name: "command", index: 0 },
-  { name: "identifier", index: 1 },
-]) {
-  test(`Quick Use ${name} copy feedback politely announces only successful writes`, async ({ page }) => {
-    await page.goto("templates");
-    const firstCard = page.locator('[data-testid="showcase-list"] > .fui-Card').first();
-    await firstCard.getByRole("button").first().click();
-    const panel = page.locator(".ms-Panel-main");
-    await expect(panel).toBeVisible();
-    const button = panel.locator('button[id^="copyButton"]').nth(index);
-    await button.click();
-    const status = page.getByRole("status").filter({ hasText: /^(Copying\.\.\.|Copied)$/ });
-    await expect(status).toHaveAttribute("aria-live", "polite");
-    await expect(status).toHaveText("Copying...");
-    await expect(page.getByRole("dialog", { name: "Copied", exact: true })).toBeHidden();
+  await expect(button).toHaveText("Copy agent link");
+  await button.click();
+  await finishCopy(page, true);
 
-    await finishCopy(page, false);
-    await expect(status).toBeHidden();
-    await expect(page.getByRole("dialog", { name: "Copied", exact: true })).toBeHidden();
-    await expect(page.getByText("Copy failed. Please try again.", { exact: true })).toBeHidden();
+  await expect(button).toHaveText("Agent link copied");
+  const status = agentSection.locator('span[role="status"]');
+  await expect(status).toHaveCSS("position", "absolute");
+  await expect(status).toHaveCSS("opacity", "0");
+  await expect(
+    agentSection.getByRole("link", { name: "Research & rationale" }),
+  ).toHaveCount(0);
+  const after = await button.boundingBox();
+  expect(after?.x).toBeCloseTo(before?.x ?? 0, 1);
+  expect(after?.width).toBeCloseTo(before?.width ?? 0, 1);
+});
 
-    await button.click();
-    await expect(status).toHaveText("Copying...");
-    await finishCopy(page, true);
-    await expect(status).toHaveText("Copied");
+test("extension copy feedback remains unchanged", async ({ page }) => {
+  await page.goto("extensions");
+  const button = page
+    .getByRole("button", { name: /^Copy install command for / })
+    .first();
+  await button.click();
 
-    const feedback = page.getByRole("dialog", { name: "Copied", exact: true });
-    await expect(feedback).toBeVisible();
-    const labelId = await feedback.getAttribute("aria-labelledby");
-    expect(labelId).not.toBeNull();
-    await expect(page.locator(`[id="${labelId}"]`)).toHaveText("Copied");
-    await expect(feedback).not.toHaveAttribute("aria-describedby");
-  });
-}
+  const feedback = page
+    .getByRole("status")
+    .filter({ hasText: /^(Copying\.\.\.|Copied!)$/ });
+  await expect(feedback).toHaveText("Copying...");
+  await finishCopy(page, true);
+  await expect(feedback).toHaveText("Copied!");
+});

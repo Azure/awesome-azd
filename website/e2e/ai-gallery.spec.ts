@@ -35,67 +35,56 @@ function resultLinks(page: Page) {
 }
 
 async function openAiGallery(page: Page) {
-  const response = await page.goto("templates/ai", {
+  const response = await page.goto("templates?type=ai", {
     waitUntil: "domcontentloaded",
   });
   expect(response?.ok()).toBeTruthy();
   await expect(
-    page.getByRole("heading", { level: 1, name: "Build with AI" }),
+    page.getByRole("heading", {
+      level: 1,
+      name: "Your next app. Ready to build.",
+    }),
   ).toBeVisible();
   await expect(
-    page.locator('#ai-gallery-root[data-hydrated="true"]'),
-  ).toBeVisible({ timeout: 15_000 });
-  await expect.poll(() => resultLinks(page).count()).toBe(56);
+    page.getByRole("checkbox", { name: /AI application/ }),
+  ).toBeChecked();
+  await expect(page.getByTestId("template-results-count")).toContainText(
+    "56 templates",
+  );
 }
 
-test.describe("Unified AI app templates gallery", () => {
+test.describe("Unified AI app templates catalog", () => {
   test.beforeEach(async ({ context }) => {
     await stubExternalServices(context);
   });
 
-  test("switches between the existing and AI template collections", async ({
+  test("redirects the legacy AI collection URL to the AI facet", async ({
     page,
   }) => {
-    await page.goto("templates");
-    const allTab = page.getByRole("tab", { name: "All templates" });
-    const aiTab = page.getByRole("tab", { name: "AI app templates" });
+    await page.goto("templates/ai");
 
-    await expect(allTab).toHaveAttribute("aria-selected", "true");
-    await expect(aiTab).toHaveAttribute("aria-selected", "false");
-    await aiTab.click();
-
-    await expect(page).toHaveURL(/\/templates\/ai\/?$/);
+    await expect(page).toHaveURL(/\/templates\?type=ai$/);
     await expect(
-      page.getByRole("tab", { name: "AI app templates" }),
-    ).toHaveAttribute("aria-selected", "true");
-    await expect(
-      page.getByRole("heading", { level: 1, name: "Build with AI" }),
-    ).toBeVisible();
+      page.getByRole("checkbox", { name: /AI application/ }),
+    ).toBeChecked();
   });
 
-  test("loads all 56 active AI templates and the original filters", async ({
+  test("loads all 56 AI templates in the unified catalog", async ({
     page,
   }) => {
     await openAiGallery(page);
 
     await expect(page.getByTestId("template-results-count")).toContainText(
-      /Showing\s*56\s*templates/,
+      "56 templates",
     );
+    expect(await resultLinks(page).count()).toBe(20);
+    await page.locator("summary", { hasText: "Language" }).click();
     await expect(
-      page.getByRole("checkbox", { name: "Python", exact: true }),
-    ).toBeVisible();
-    await expect(
-      page.getByRole("button", { name: "Collection", exact: true }),
-    ).toBeVisible();
-    await expect(
-      page.getByRole("button", { name: "Model", exact: true }),
-    ).toBeVisible();
-    await expect(
-      page.getByRole("button", { name: "Database", exact: true }),
+      page.getByRole("checkbox", { name: /Python/ }),
     ).toBeVisible();
   });
 
-  test("server-renders AI gallery content and Fluent styles", async ({
+  test("server-renders catalog content with Fluent UI components", async ({
     browser,
   }) => {
     const context = await browser.newContext({
@@ -104,43 +93,38 @@ test.describe("Unified AI app templates gallery", () => {
     });
     const page = await context.newPage();
 
-    const response = await page.goto("templates/ai", {
+    const response = await page.goto("templates?type=ai", {
       waitUntil: "domcontentloaded",
     });
 
     expect(response?.ok()).toBeTruthy();
-    if (!response) {
-      throw new Error("AI gallery response was not available");
-    }
-    expect(await response.text()).toContain('data-precedence="griffel-0"');
     await expect(
-      page.getByRole("heading", { level: 1, name: "Build with AI" }),
+      page.getByRole("heading", {
+        level: 1,
+        name: "Your next app. Ready to build.",
+      }),
     ).toBeVisible();
-    await expect(
-      page.getByRole("combobox", { name: "Sort Options" }),
-    ).toHaveCSS("display", "grid");
-    await expect(
-      page.getByRole("checkbox", { name: "Python", exact: true }),
-    ).toHaveCSS("opacity", "0");
+    await expect(page.locator("[data-template-card]")).toHaveCount(20);
+    await expect(page.locator(".fui-Card")).toHaveCount(20);
+    await expect(page.locator(".fui-SearchBox")).toHaveCount(1);
+    await expect(page.locator(".fui-Dropdown")).toHaveCount(1);
+    await expect(page.locator(".fui-Checkbox").first()).toBeVisible();
 
     await context.close();
   });
 
-  test("filters the AI collection and synchronizes the URL", async ({
-    page,
-  }) => {
+  test("filters AI templates and synchronizes the URL", async ({ page }) => {
     await openAiGallery(page);
-    const pythonFilter = page.getByRole("checkbox", {
-      name: "Python",
-      exact: true,
-    });
+    const pythonFilter = page.locator("#catalog-languages-python");
 
+    await page.locator("summary", { hasText: "Language" }).click();
     await pythonFilter.check();
 
     await expect(pythonFilter).toBeChecked();
-    await expect(page).toHaveURL(/(?:\?|&)tags=python(?:&|$)/);
-    await expect.poll(() => resultLinks(page).count()).toBeLessThan(56);
-    expect(await resultLinks(page).count()).toBeGreaterThan(0);
+    await expect(page).toHaveURL(/(?:\?|&)language=Python(?:&|$)/);
+    await expect(page.getByTestId("template-results-count")).not.toContainText(
+      "56 templates",
+    );
   });
 
   test("matches backend search results by allowlisted source, not title", async ({
@@ -172,7 +156,9 @@ test.describe("Unified AI app templates gallery", () => {
     });
     await openAiGallery(page);
 
-    const searchBox = page.getByPlaceholder("Search templates");
+    const searchBox = page.getByPlaceholder(
+      "Describe the app you want to build or search with keywords",
+    );
     await searchBox.fill("source-ranked");
     await searchBox.press("Enter");
 
@@ -187,19 +173,18 @@ test.describe("Unified AI app templates gallery", () => {
     page,
   }) => {
     await openAiGallery(page);
-    const searchBox = page.getByPlaceholder("Search templates");
+    const searchBox = page.getByPlaceholder(
+      "Describe the app you want to build or search with keywords",
+    );
 
     await searchBox.fill("azure");
     await searchBox.press("Enter");
 
-    await expect(page).toHaveURL(/(?:\?|&)name=azure(?:&|$)/);
+    await expect(page).toHaveURL(/(?:\?|&)q=azure(?:&|$)/);
     await expect.poll(() => resultLinks(page).count()).toBeGreaterThan(0);
-    expect(await resultLinks(page).count()).toBeLessThan(56);
   });
 
-  test("opens the nested AI detail route and returns to the AI tab", async ({
-    page,
-  }) => {
+  test("opens canonical and legacy AI detail routes", async ({ page }) => {
     await openAiGallery(page);
     const templateLink = resultLinks(page).filter({
       hasText: featuredTemplateTitle,
@@ -207,45 +192,38 @@ test.describe("Unified AI app templates gallery", () => {
 
     await expect(templateLink).toHaveAttribute(
       "href",
-      "/awesome-azd/templates/ai/repo/azure-samples/azure-search-openai-demo",
+      /\/awesome-azd\/templates\/azure-samples\/azure-search-openai-demo\?/,
     );
-    await page.goto("templates/ai/repo/azure-samples/azure-search-openai-demo");
-
-    await expect(
-      page.getByText(featuredTemplateTitle, { exact: true }),
-    ).toBeVisible();
-    await expect(page.getByText("Resources included")).toBeVisible();
-    await page.getByRole("button", { name: "Back to templates" }).click();
-    await expect(page).toHaveURL(/\/templates\/ai\/?$/);
-  });
-
-  test("server-renders Fluent styles on AI detail actions", async ({
-    browser,
-  }) => {
-    const context = await browser.newContext({
-      baseURL: "http://localhost:3000/awesome-azd/",
-      javaScriptEnabled: false,
-    });
-    const page = await context.newPage();
-
-    const response = await page.goto(
-      "templates/ai/repo/azure-samples/azure-search-openai-demo",
-      { waitUntil: "domcontentloaded" },
+    await page.goto(
+      "templates/azure-samples/azure-search-openai-demo?type=ai",
     );
 
-    expect(response?.ok()).toBeTruthy();
-    if (!response) {
-      throw new Error("AI template detail response was not available");
-    }
-    const html = await response.text();
-    expect(html).toContain('data-precedence="griffel-0"');
     await expect(
-      page.getByRole("button", {
-        name: "Open in VS Code for the Web",
+      page.getByRole("heading", {
+        level: 1,
+        name: featuredTemplateTitle,
       }),
-    ).toHaveCSS("background-color", "rgb(15, 108, 189)");
+    ).toBeVisible();
+    await expect(
+      page.getByRole("link", {
+        name: "Azure Content Team",
+        exact: true,
+      }),
+    ).toHaveAttribute("href", "https://github.com/Azure-Samples");
+    await expect(page.getByText("Services and integrations.")).toBeVisible();
+    await page.getByRole("link", { name: "Back to templates" }).click();
+    await expect(page).toHaveURL(/\/templates\?type=ai$/);
 
-    await context.close();
+    const legacyResponse = await page.goto(
+      "templates/ai/repo/azure-samples/azure-search-openai-demo",
+    );
+    expect(legacyResponse?.ok()).toBeTruthy();
+    await expect(
+      page.getByRole("heading", {
+        level: 1,
+        name: featuredTemplateTitle,
+      }),
+    ).toBeVisible();
   });
 
   test("keeps the public search payload source-only in the UI", async ({
@@ -264,12 +242,15 @@ test.describe("Unified AI app templates gallery", () => {
       }),
     );
     await openAiGallery(page);
-    const searchBox = page.getByPlaceholder("Search templates");
+    const searchBox = page.getByPlaceholder(
+      "Describe the app you want to build or search with keywords",
+    );
     await searchBox.fill("privacy-check");
     await searchBox.press("Enter");
 
     await expect.poll(() => resultLinks(page).count()).toBe(1);
-    const privateAddress = `private${"@"}example.com`;
-    await expect(page.getByText(privateAddress)).toHaveCount(0);
+    await expect(
+      page.getByText(`private${"@"}example.com`),
+    ).toHaveCount(0);
   });
 });

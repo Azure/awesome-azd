@@ -25,36 +25,65 @@ function getRepositorySlug(source: string): string {
     .toLowerCase()}`;
 }
 
+function isCatalogTemplate(template: TemplateRecord): boolean {
+  return (
+    template.templateType === undefined ||
+    template.templateType === "" ||
+    template.templateType === "ai-app-templates"
+  );
+}
+
 export default function aiRouteGenerator(context: LoadContext): Plugin<void> {
   return {
-    name: "ai-route-generator-plugin",
+    name: "catalog-route-generator-plugin",
     contentLoaded: async ({ actions }) => {
       const templates = require(
         path.resolve(__dirname, "../static/templates.json"),
       ) as TemplateRecord[];
-      const routes = new Set<string>();
+      const routes = new Map<string, string>();
 
-      for (const template of templates) {
-        if (template.templateType !== "ai-app-templates") {
-          continue;
+      const addRoute = (
+        route: string,
+        source: string,
+        component: string,
+      ) => {
+        const existingSource = routes.get(route);
+        if (existingSource && existingSource !== source) {
+          throw new Error(
+            `Duplicate catalog route '${route}' for ${existingSource} and ${source}`,
+          );
+        }
+        if (existingSource) {
+          return;
         }
 
+        routes.set(route, source);
+        actions.addRoute({
+          path: route,
+          component,
+          exact: true,
+        });
+      };
+
+      for (const template of templates.filter(isCatalogTemplate)) {
         for (const source of [
           template.source,
           ...(template.legacySources ?? []),
         ]) {
-          const route = `${context.siteConfig.baseUrl}templates/ai/repo/${getRepositorySlug(
-            source,
-          )}`;
-          if (routes.has(route)) {
-            throw new Error(`Duplicate AI template route: ${route}`);
+          const slug = getRepositorySlug(source);
+          addRoute(
+            `${context.siteConfig.baseUrl}templates/${slug}`,
+            template.source,
+            "@site/src/components/catalog/TemplateDetailPage",
+          );
+
+          if (template.templateType === "ai-app-templates") {
+            addRoute(
+              `${context.siteConfig.baseUrl}templates/ai/repo/${slug}`,
+              template.source,
+              "@site/src/components/catalog/TemplateDetailPage",
+            );
           }
-          routes.add(route);
-          actions.addRoute({
-            path: route,
-            component: "@site/src/ai/components/TemplateDetailPage",
-            exact: true,
-          });
         }
       }
     },

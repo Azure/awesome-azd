@@ -30,7 +30,15 @@ async function navigateToGallery(page: Page, name: string) {
     link = page.locator(".navbar-sidebar").getByRole("link", { name, exact: true });
   }
   await link.click();
-  await expect(page.getByRole("status").filter({ hasText: /^Viewing/ })).toContainText(name.toLowerCase());
+  if (name === "Templates") {
+    await expect(page.getByTestId("template-results-count")).toContainText(
+      "templates",
+    );
+  } else {
+    await expect(
+      page.getByRole("status").filter({ hasText: /^Viewing/ }),
+    ).toContainText(name.toLowerCase());
+  }
 }
 
 for (const required of [true, false]) {
@@ -77,6 +85,7 @@ for (const required of [true, false]) {
             actions += 2;
           }
         }
+
         await expect(footer.locator(".footer__link-separator")).toHaveCount(
           await footer.locator(".footer__link-item").count() - 1,
         );
@@ -88,3 +97,41 @@ for (const required of [true, false]) {
     });
   }
 }
+
+test("start-with-code uses the standard Microsoft legal footer", async ({
+  page,
+}) => {
+  await page.route("https://js.monitor.azure.com/**", (route) =>
+    route.fulfill({ contentType: "application/javascript", body: "" }),
+  );
+  await page.route("https://wcpstatic.microsoft.com/**", (route) =>
+    route.fulfill({
+      contentType: "application/javascript",
+      body: consentScript(true),
+    }),
+  );
+
+  await page.goto("templates/start-with-code");
+
+  const footer = page.locator("footer");
+  await expect(
+    page.getByRole("heading", {
+      level: 1,
+      name: "Start with your own code",
+    }),
+  ).toBeVisible();
+  await expect(
+    footer.getByRole("link", { name: "Privacy Statement" }),
+  ).toBeVisible();
+  await expect(
+    footer.getByRole("link", {
+      name: /Copyright © \d{4} Microsoft/,
+    }),
+  ).toBeVisible();
+  await expect(
+    footer.getByRole("link", { name: "Built With Docusaurus" }),
+  ).toBeVisible();
+  await expect(
+    footer.getByRole("button", { name: "Manage Cookies" }),
+  ).toBeVisible();
+});

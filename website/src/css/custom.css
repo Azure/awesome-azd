@@ -18,6 +18,11 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --ifm-navbar-link-color: #1C1917;
   --ifm-color-accent: #0369A1;
+  --ifm-color-text-ai-site: #242424;
+  --ifm-color-text-template-blue-ai-site: #0F6CBD;
+  --ifm-color-text-template-green-ai-site: #0E700E;
+  --ifm-color-text-template-grey-ai-site: #707070;
+  --ifm-color-blue-text-ai-site: #115ea3;
 
   /* Typography */
   --ifm-font-family-base: 'DM Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
@@ -108,6 +113,11 @@ h1, h2, h3, h4, h5, h6 {
   --site-card-shadow: none;
   --site-card-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.3);
   --site-section-bg: #161616;
+  --ifm-color-text-ai-site: #FFFFFF;
+  --ifm-color-text-template-blue-ai-site: #479EF5;
+  --ifm-color-text-template-green-ai-site: #54B054;
+  --ifm-color-text-template-grey-ai-site: #999999;
+  --ifm-color-blue-text-ai-site: #479EF5;
 }
 
 .header-github-link:hover {

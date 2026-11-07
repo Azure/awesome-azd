@@ -12,7 +12,6 @@ import {
   webDarkTheme,
   FluentProvider,
 } from "@fluentui/react-components";
-import { initializeIcons } from "@fluentui/react/lib/Icons";
 import type { GalleryNavigationState } from "@site/src/utils/galleryNavigation";
 import {
   readSearchTags,
@@ -25,8 +24,11 @@ import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
 import ShowcaseResults from "../ShowcaseResults";
 import { useLocation } from "@docusaurus/router";
+import CollectionTabs from "../CollectionTabs";
+import { getContentType } from "@site/src/utils/contentType";
+import { initializeFluentIcons } from "@site/src/utils/fluentIcons";
 
-initializeIcons();
+initializeFluentIcons();
 
 const BackToTopButton = () => {
   const scrollToTop = () => {
@@ -50,6 +52,7 @@ export default function GalleryPage(): React.JSX.Element | null {
   const isBrowser = useIsBrowser();
   const [activeTags, setActiveTags] = useState<TagType[]>(TagList);
   const location = useLocation<GalleryNavigationState>();
+  const contentType = getContentType(location);
   const selectedTags = useMemo(
     () => readSearchTags(location.search),
     [location.search],
@@ -70,6 +73,9 @@ export default function GalleryPage(): React.JSX.Element | null {
     >
       <main>
         <ShowcaseTemplateSearch />
+        {contentType === "templates" ? (
+          <CollectionTabs activeCollection="all" />
+        ) : null}
         <div className={styles.filterAndCard}>
           <div className={styles.filter}>
             <ShowcaseLeftFilters

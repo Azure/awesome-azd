@@ -1,19 +1,14 @@
 import { test, expect, type Page } from "@playwright/test";
 
-function viewingStatus(page: Page) {
-  return page.locator('[role="status"]').filter({ hasText: /Viewing/ }).first();
+function resultsStatus(page: Page) {
+  return page.getByTestId("template-results-count");
 }
 
 async function revealPythonFilter(page: Page) {
-  const pythonCheckbox = page.locator("#showcase_checkbox_id_python");
+  const pythonCheckbox = page.locator("#catalog-languages-python");
 
   if (!(await pythonCheckbox.isVisible())) {
-    await page.getByRole("button", { name: /^Language/ }).first().click();
-  }
-  if (!(await pythonCheckbox.isVisible())) {
-    const viewAllButton = page.getByRole("button", { name: /view all/i }).first();
-    await expect(viewAllButton).toBeVisible();
-    await viewAllButton.click();
+    await page.locator("summary", { hasText: "Language" }).click();
   }
 
   await expect(pythonCheckbox).toBeVisible();
@@ -23,20 +18,16 @@ async function revealPythonFilter(page: Page) {
 test.describe("Gallery Filtering", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("templates");
-    await expect(viewingStatus(page)).toBeVisible();
+    await expect(resultsStatus(page)).toContainText("templates");
   });
 
   test("filter panel is visible with category headings", async ({ page }) => {
-    await expect(
-      page.getByRole("button", { name: /^Language\s*\d+$/ }),
-    ).toBeVisible();
-    await expect(
-      page.getByRole("button", { name: /^Framework\s*\d+$/ }),
-    ).toBeVisible();
+    await expect(page.locator("summary", { hasText: "Language" })).toBeVisible();
+    await expect(page.locator("summary", { hasText: "Framework" })).toBeVisible();
   });
 
   test("filter checkboxes show template counts", async ({ page }) => {
     const pythonCheckbox = await revealPythonFilter(page);
-    await expect(pythonCheckbox).toHaveAccessibleName(/^Python \(\d+\)$/);
+    await expect(pythonCheckbox.locator("xpath=..")).toContainText(/\d+/);
   });
 });

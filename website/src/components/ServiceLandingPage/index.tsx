@@ -110,7 +110,7 @@ function ServicePageContent({ config }: { config: ServicePageConfig }) {
           {hasMore && (
             <div className={styles.viewAll}>
               <a
-                href={`${baseUrl}?tags=${config.serviceTag}`}
+                href={`${baseUrl}?service=${config.serviceTag}`}
                 className={styles.viewAllLink}
               >
                 View all {filteredTemplates.length} templates →

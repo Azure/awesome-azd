@@ -1,0 +1,74 @@
+/**
+* Copyright (c) Microsoft Corporation. All rights reserved.
+* Licensed under the MIT License.
+ */
+
+.cover {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  /* Ensures the ibackground image not stretching */
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.coverPageContainer {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.coverPageAreaContainer {
+  max-width: 1736px;
+  margin: 0 auto;
+}
+
+.coverPageArea {
+  position: relative;
+  width: 100%;
+  padding: 72px 72px 96px 72px;
+}
+
+.titleSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 41%;
+}
+
+.subtitleSection {
+  padding-top: 76px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.learnAzureSection {
+  display: flex;
+  padding-top: 20px;
+  gap: 4px;
+}
+
+.tryForFreeSection {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1264px) {
+  .coverPageArea {
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .coverPageArea {
+    padding: 72px 10px 96px 10px;
+  }
+}

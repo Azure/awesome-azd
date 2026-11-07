@@ -1,0 +1,62 @@
+/**
+* Copyright (c) Microsoft Corporation. All rights reserved.
+* Licensed under the MIT License.
+ */
+
+.checkboxListItem {
+  user-select: none;
+  white-space: nowrap;
+}
+
+.checkboxListItem:last-child {
+  margin-right: 0;
+}
+
+.filterBy {
+  padding: 0 0 24px 12px;
+}
+
+.heading {
+  margin: 0px;
+}
+
+.tagCatalog {
+  font-size: 16px;
+  font-weight: 600;
+  color: #242424;
+  line-height: 22px;
+}
+
+[data-theme="dark"] .tagCatalog {
+  color: #ffffff;
+}
+
+.tagCatalogBackground {
+  background: linear-gradient(#d1d1d1 0 0) top / 89.8% 0.6px no-repeat;
+}
+
+.tagSubCatalog {
+  padding: 0 0 7px 0px;
+}
+
+.accordionItem {
+  padding: 0px;
+}
+
+.accordionPanel {
+  margin: 0px !important;
+}
+
+.viewAll {
+  font-size: 12px;
+}
+
+.accordionHeader {
+  padding: 0px !important;
+}
+
+@media screen and (max-width: 996px) {
+  .tagCatalogBackground {
+    background: linear-gradient(#d1d1d1 0 0) top / 97% 0.6px no-repeat;
+  }
+}

@@ -216,6 +216,7 @@ const config = {
   // CONFIG: plugins
   //    See
   plugins: [
+    require.resolve("./route_generator_plugin/aiRouteGenerator"),
     [
       "@docusaurus/plugin-client-redirects",
       {

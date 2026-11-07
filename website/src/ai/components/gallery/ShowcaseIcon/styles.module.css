@@ -1,0 +1,40 @@
+/**
+* Copyright (c) Microsoft Corporation. All rights reserved.
+* Licensed under the MIT License.
+ */
+
+.icon {
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #d1d1d1;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #242424;
+  display: flex;
+  flex-shrink: 0;
+  font: 600 14px/20px "Segoe UI", "Segoe UI Web (West European)",
+    -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  height: 32px;
+  justify-content: center;
+  min-width: 32px;
+  padding: 5px;
+  width: 32px;
+}
+
+.toolTip {
+  padding: 0px !important;
+  color: #424242 !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  line-height: 16px !important;
+}
+
+[data-theme="dark"] .icon {
+  background-color: #292929;
+  border-color: #666666;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .toolTip {
+  color: #d6d6d6 !important;
+}

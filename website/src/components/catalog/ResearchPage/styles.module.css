@@ -1,0 +1,90 @@
+/**
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
+ */
+
+.page {
+  --catalog-paper: #fafafa;
+  --catalog-surface: #fff;
+  --catalog-ink: #1c1917;
+  --catalog-muted: #6b6560;
+  --catalog-line: #e7e5e4;
+  --catalog-blue: #0369a1;
+  min-height: 100vh;
+  background: var(--catalog-paper);
+  color: var(--catalog-ink);
+}
+
+:global([data-theme="dark"]) .page {
+  --catalog-paper: #111;
+  --catalog-surface: #1a1a1a;
+  --catalog-ink: #e7e5e4;
+  --catalog-muted: #a8a29e;
+  --catalog-line: #ffffff14;
+  --catalog-blue: #38bdf8;
+}
+
+.main {
+  width: min(880px, calc(100% - 128px));
+  margin: 0 auto;
+  padding: 40px 0 64px;
+}
+
+.breadcrumb {
+  margin-bottom: 24px;
+  font-size: 0.78rem;
+}
+
+.breadcrumb a,
+.issueLink a {
+  color: var(--catalog-blue);
+}
+
+.main h1 {
+  margin: 0;
+  font-size: clamp(1.7rem, 3vw, 2rem);
+}
+
+.lead {
+  margin: 12px 0 48px;
+  color: var(--catalog-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.main section {
+  padding: 24px 0;
+  border-top: 1px solid var(--catalog-line);
+}
+
+.main section h2 {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+}
+
+.main section p {
+  margin: 0;
+  color: var(--catalog-muted);
+  line-height: 1.75;
+}
+
+.main code {
+  color: var(--catalog-ink);
+}
+
+.issueLink {
+  margin-top: 32px;
+}
+
+@media screen and (max-width: 900px) {
+  .main {
+    width: calc(100% - 48px);
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .main {
+    width: calc(100% - 40px);
+  }
+}
+

@@ -66,6 +66,7 @@ export type CatalogTemplate = {
   frameworks: string[];
   databases: string[];
   iac: string[];
+  serviceIds: string[];
   services: string[];
   tools: string[];
   topics: string[];
@@ -79,7 +80,6 @@ export type CatalogTemplate = {
   sampleType?: string;
   initCommand: string;
   readmeUrl: string;
-  markdownUrl: string;
   searchText: string;
 };
 
@@ -116,6 +116,9 @@ type TagMetadata = Pick<
 
 const standardTagMap = standardTags as Record<string, StandardTag>;
 const aiTagMap = aiTags as Record<string, AiTag>;
+const canonicalTagLabels = new Map([
+  ["azuredb-postgresql", "Azure Database for PostgreSQL"],
+]);
 const microsoftOwners = new Set([
   "azure",
   "azure-samples",
@@ -239,7 +242,11 @@ function getTagMetadata(id: string, isAi: boolean): TagMetadata | undefined {
 }
 
 function getTagLabel(id: string, isAi: boolean): string {
-  return getTagMetadata(id, isAi)?.label ?? id;
+  return (
+    canonicalTagLabels.get(id.toLowerCase()) ??
+    getTagMetadata(id, isAi)?.label ??
+    id
+  );
 }
 
 function getLabels(ids: readonly string[], isAi: boolean): string[] {
@@ -334,20 +341,19 @@ function inferTask({
     return "Build an AI agent";
   }
   if (
+    databases.length > 0 &&
+    /\b(?:nlp|natural language|queries?|sql|rows?|tables?)\b/.test(text)
+  ) {
+    return "Query a database";
+  }
+  if (
     (isAi || ids.has("ai") || ids.has("azureopenai")) &&
-    (databases.length > 0 ||
-      ids.has("rag") ||
+    (ids.has("rag") ||
       ids.has("search") ||
       ids.has("chat") ||
       /\b(?:documents?|knowledge|citations?|retrieval|rag)\b/.test(text))
   ) {
     return "Chat with documents";
-  }
-  if (
-    databases.length > 0 &&
-    /\b(?:database|postgres|postgresql|sql|rows?|tables?|query)\b/.test(text)
-  ) {
-    return "Query a database";
   }
   if (
     ids.has("logicapps") ||
@@ -484,7 +490,6 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
   });
   const initCommand = formatAzdInitCommand(getTemplateIdentifier(source));
   const readmeUrl = `${source}#readme`;
-  const markdownUrl = `https://raw.githubusercontent.com/${coordinates.owner}/${coordinates.repo}/HEAD/README.md`;
   const architectureDiagram = readOptionalString(record.architectureDiagram);
   const screenshot = readOptionalString(record.screenshot);
   const video = readOptionalString(record.video);
@@ -532,6 +537,7 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     frameworks,
     databases,
     iac,
+    serviceIds,
     services,
     tools,
     topics,
@@ -545,7 +551,6 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     sampleType,
     initCommand,
     readmeUrl,
-    markdownUrl,
     searchText,
   };
 }

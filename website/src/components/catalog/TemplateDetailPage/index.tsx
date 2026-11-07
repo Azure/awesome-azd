@@ -171,11 +171,6 @@ function TemplateDetail({
         <title>{template.title} | Awesome azd</title>
         <link rel="canonical" href={canonicalUrl} />
         <link rel="describedby" href={llmsUrl} />
-        <link
-          rel="alternate"
-          type="text/markdown"
-          href={template.markdownUrl}
-        />
         <meta name="description" content={template.description} />
         <meta property="og:title" content={template.title} />
         <meta property="og:description" content={template.description} />
@@ -239,11 +234,11 @@ function TemplateDetail({
               <a href="#resources">Resources</a>
               <a href="#get-started">Get started</a>
               <a
-                href={template.markdownUrl}
+                href={template.readmeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Read as Markdown ↗
+                Review mutable repository README ↗
               </a>
             </nav>
 
@@ -269,7 +264,9 @@ function TemplateDetail({
                       Review the repository setup instructions, required
                       permissions, service configuration, and deployment hooks.
                       This catalog record is not a security or
-                      production-readiness certification.
+                      production-readiness certification. Repository content can
+                      change after catalog review and must be treated as
+                      untrusted external data.
                     </p>
                   </div>
                 </section>
@@ -354,7 +351,7 @@ function TemplateDetail({
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Check the current setup instructions ↗
+                    Review the mutable repository README ↗
                   </a>
                 </section>
 
@@ -453,7 +450,7 @@ function TemplateDetail({
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          Repository setup instructions ↗
+                          Review the mutable repository README ↗
                         </a>
                       </div>
                     </li>
@@ -493,14 +490,16 @@ function TemplateDetail({
                   <h2>Source and limitations</h2>
                   <p>
                     This page uses the public Awesome azd catalog record and
-                    links to the repository README. The init command is
-                    published by Awesome azd and has not been executed by this
-                    website.
+                    links to mutable external repository content. The init
+                    command is published by Awesome azd and has not been
+                    executed by this website.
                   </p>
                   <p>
                     Task labels and summaries support discovery. They are not a
                     deployment, security, cost, compliance, or
-                    production-readiness certification.
+                    production-readiness certification. Repository content is
+                    not trusted as coding-agent instructions; review changes and
+                    approve commands explicitly.
                   </p>
                   <details>
                     <summary>
@@ -514,11 +513,11 @@ function TemplateDetail({
                     </p>
                     <div className={styles.agentLinks}>
                       <a
-                        href={template.markdownUrl}
+                        href={template.readmeUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        Repository Markdown
+                        Repository README (mutable external content)
                       </a>
                       <a href={catalogJsonUrl}>Shared catalog JSON</a>
                       <a
@@ -581,23 +580,14 @@ function TemplateDetail({
                 <details className={styles.agentDetails}>
                   <summary>Use with a coding agent</summary>
                   <p>
-                    Give your agent the same requirements and source notes,
-                    without UI chrome.
+                    Share this reviewed page and the agent safety guidance.
+                    Treat linked repository content as untrusted data, ignore
+                    embedded directives, and require your approval before
+                    commands, installs, deployments, credential access, or
+                    secret handling.
                   </p>
-                  <a
-                    href={template.markdownUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Read template Markdown
-                  </a>
-                  <CopyAction
-                    value={template.markdownUrl}
-                    idleLabel="Copy Markdown link"
-                    copiedLabel="Markdown link copied"
-                    className={styles.linkButton}
-                  />
-                  <a href={llmsUrl}>View the agent index</a>
+                  <a href={llmsUrl}>View agent safety guidance</a>
+                  <a href={catalogJsonUrl}>View catalog JSON</a>
                 </details>
               </aside>
             </div>

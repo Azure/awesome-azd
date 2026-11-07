@@ -4711,6 +4711,9 @@
     "appType": ["chat", "search"],
     "prerequisites": ["python3.9-3.11", "docker", "azd", "git"],
     "sampleType": "full_sample",
+    "legacySources": [
+      "https://github.com/Azure-Samples/azureai-basic-python"
+    ],
     "architectureDiagram": "/templates/images/get-started-with-ai-chat-arch.png",
     "screenshot": "/templates/images/get-started-with-ai-chat-image.png"
   },

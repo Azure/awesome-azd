@@ -15,6 +15,7 @@ export type CatalogFacetKey =
   | "languages"
   | "frameworks"
   | "databases"
+  | "services"
   | "iac"
   | "authorship";
 
@@ -28,11 +29,13 @@ export type CatalogSort =
 export type CatalogState = {
   q: string;
   sort: CatalogSort;
+  page: number;
   types: string[];
   tasks: string[];
   languages: string[];
   frameworks: string[];
   databases: string[];
+  services: string[];
   iac: string[];
   authorship: string[];
   unavailable: string[];
@@ -44,6 +47,8 @@ export type CatalogFacet = {
   label: string;
   values?: readonly string[];
   labels?: Record<string, string>;
+  legacyParams?: readonly string[];
+  hidden?: boolean;
   open?: boolean;
 };
 
@@ -80,6 +85,18 @@ export const catalogFacets: readonly CatalogFacet[] = [
     param: "database",
     label: "Database / retrieval",
   },
+  {
+    key: "services",
+    param: "service",
+    legacyParams: ["tags"],
+    label: "Azure service",
+    labels: {
+      aca: "Azure Container Apps",
+      functions: "Azure Functions",
+      swa: "Azure Static Web Apps",
+    },
+    hidden: true,
+  },
   { key: "iac", param: "iac", label: "Infrastructure as code" },
   { key: "authorship", param: "authorship", label: "Authored by" },
 ] as const;
@@ -99,6 +116,8 @@ function getValues(
       return template.frameworks;
     case "databases":
       return template.databases;
+    case "services":
+      return template.serviceIds;
     case "iac":
       return template.iac;
     case "authorship":
@@ -129,6 +148,7 @@ export function parseCatalogState(
 ): CatalogState {
   const query = new URLSearchParams(search);
   const requestedSort = query.get("sort");
+  const requestedPage = query.get("page");
   const sort =
     requestedSort === "newest" ||
     requestedSort === "oldest" ||
@@ -136,14 +156,20 @@ export function parseCatalogState(
     requestedSort === "za"
       ? requestedSort
       : "popular";
+  const page =
+    requestedPage !== null && /^[1-9]\d*$/.test(requestedPage)
+      ? Number.parseInt(requestedPage, 10)
+      : 1;
   const state: CatalogState = {
     q: query.get("q") ?? query.get("name") ?? "",
     sort,
+    page,
     types: [],
     tasks: [],
     languages: [],
     frameworks: [],
     databases: [],
+    services: [],
     iac: [],
     authorship: [],
     unavailable: [],
@@ -151,8 +177,8 @@ export function parseCatalogState(
 
   for (const facet of catalogFacets) {
     const allowed = getFacetOptions(records, facet);
-    const requested = query
-      .getAll(facet.param)
+    const requested = [facet.param, ...(facet.legacyParams ?? [])]
+      .flatMap((param) => query.getAll(param))
       .flatMap((value) => value.split(","))
       .filter(Boolean);
     state[facet.key] = [
@@ -181,6 +207,9 @@ export function serializeCatalogState(state: CatalogState): string {
   if (state.sort !== "popular") {
     query.set("sort", state.sort);
   }
+  if (state.page > 1) {
+    query.set("page", String(state.page));
+  }
   return query.toString();
 }
 
@@ -188,11 +217,13 @@ export function clearCatalogState(): CatalogState {
   return {
     q: "",
     sort: "popular",
+    page: 1,
     types: [],
     tasks: [],
     languages: [],
     frameworks: [],
     databases: [],
+    services: [],
     iac: [],
     authorship: [],
     unavailable: [],
@@ -263,29 +294,34 @@ export function sortCatalogTemplates(
     );
   }
 
-  return result.sort((left, right) => {
-    const leftMetrics = metrics.get(left.normalizedSource);
-    const rightMetrics = metrics.get(right.normalizedSource);
-    const leftPopularity = leftMetrics?.score ?? leftMetrics?.stars;
-    const rightPopularity = rightMetrics?.score ?? rightMetrics?.stars;
-    if (
-      leftPopularity !== undefined &&
-      rightPopularity !== undefined &&
-      leftPopularity !== rightPopularity
-    ) {
-      return rightPopularity - leftPopularity;
-    }
-    if (leftPopularity !== undefined && rightPopularity === undefined) {
-      return -1;
-    }
-    if (leftPopularity === undefined && rightPopularity !== undefined) {
-      return 1;
-    }
-    return (
+  const bySourceOrder = result.sort(
+    (left, right) =>
       (sourceOrder.get(left.normalizedSource) ?? Number.MAX_SAFE_INTEGER) -
-      (sourceOrder.get(right.normalizedSource) ?? Number.MAX_SAFE_INTEGER)
-    );
-  });
+      (sourceOrder.get(right.normalizedSource) ?? Number.MAX_SAFE_INTEGER),
+  );
+  const rankedTemplates = bySourceOrder
+    .filter((template) => metrics.has(template.normalizedSource))
+    .sort((left, right) => {
+      const leftMetrics = metrics.get(left.normalizedSource);
+      const rightMetrics = metrics.get(right.normalizedSource);
+      const leftPopularity = leftMetrics?.score ?? leftMetrics?.stars ?? 0;
+      const rightPopularity =
+        rightMetrics?.score ?? rightMetrics?.stars ?? 0;
+      return (
+        rightPopularity - leftPopularity ||
+        (sourceOrder.get(left.normalizedSource) ??
+          Number.MAX_SAFE_INTEGER) -
+          (sourceOrder.get(right.normalizedSource) ??
+            Number.MAX_SAFE_INTEGER)
+      );
+    });
+  let rankedIndex = 0;
+
+  return bySourceOrder.map((template) =>
+    metrics.has(template.normalizedSource)
+      ? rankedTemplates[rankedIndex++]
+      : template,
+  );
 }
 
 export function getFacetValueCount(

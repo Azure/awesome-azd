@@ -59,6 +59,7 @@ import CopyAction from "../CopyAction";
 import styles from "./styles.module.css";
 
 const itemsPerPage = 20;
+const searchTimeoutMs = 5_000;
 const canonicalUrl = "https://azure.github.io/awesome-azd/templates";
 const catalogJsonUrl =
   "https://azure.github.io/awesome-azd/templates.json";
@@ -403,7 +404,6 @@ export default function CatalogPage(): React.JSX.Element {
   );
   const [searchValue, setSearchValue] = useState(state.q);
   const [searchRequestVersion, setSearchRequestVersion] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [backendMatches, setBackendMatches] =
     useState<ReadonlySet<string> | null>(null);
@@ -437,6 +437,7 @@ export default function CatalogPage(): React.JSX.Element {
     replaceState({
       ...state,
       q: query,
+      page: 1,
       unavailable: [],
     });
   }, [replaceState, searchValue, state]);
@@ -455,15 +456,12 @@ export default function CatalogPage(): React.JSX.Element {
         [key]: checked
           ? [...new Set([...values, value])]
           : values.filter((candidate) => candidate !== value),
+        page: 1,
         unavailable: [],
       });
     },
     [replaceState, state],
   );
-
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [location.search]);
 
   useEffect(() => {
     setSearchValue(state.q);
@@ -476,15 +474,24 @@ export default function CatalogPage(): React.JSX.Element {
       return undefined;
     }
 
+    setBackendMatches(null);
+    let active = true;
     const controller = new AbortController();
+    let requestTimeout: number | undefined;
     const timer = window.setTimeout(() => {
+      requestTimeout = window.setTimeout(
+        () => controller.abort(),
+        searchTimeoutMs,
+      );
       void fetchTemplateSearchResults(
         query,
         controller.signal,
         aiSources,
       )
         .then((sources) => {
-          setBackendMatches(new Set(sources));
+          if (active) {
+            setBackendMatches(new Set(sources));
+          }
         })
         .catch((error) => {
           if (
@@ -493,16 +500,28 @@ export default function CatalogPage(): React.JSX.Element {
           ) {
             return;
           }
+          if (!active) {
+            return;
+          }
           console.warn(
             "AI template search is unavailable; using local catalog search.",
             error,
           );
           setBackendMatches(null);
+        })
+        .finally(() => {
+          if (requestTimeout !== undefined) {
+            window.clearTimeout(requestTimeout);
+          }
         });
     }, 450);
 
     return () => {
+      active = false;
       window.clearTimeout(timer);
+      if (requestTimeout !== undefined) {
+        window.clearTimeout(requestTimeout);
+      }
       controller.abort();
     };
   }, [searchRequestVersion, state.q]);
@@ -513,8 +532,12 @@ export default function CatalogPage(): React.JSX.Element {
     }
 
     let active = true;
+    const controller = new AbortController();
+    const metricTemplates = catalogTemplates.filter(
+      (template) => template.isAi,
+    );
     prioritizeRepositoryMetrics(
-      catalogTemplates.map((template) => template.source),
+      metricTemplates.map((template) => template.source),
     );
 
     const flushMetrics = () => {
@@ -527,8 +550,8 @@ export default function CatalogPage(): React.JSX.Element {
       setMetrics((current) => new Map([...current, ...updates]));
     };
 
-    for (const template of catalogTemplates) {
-      void loadRepositoryMetrics(template.source)
+    for (const template of metricTemplates) {
+      void loadRepositoryMetrics(template.source, controller.signal)
         .then((repositoryMetrics) => {
           if (!active) {
             return;
@@ -544,11 +567,19 @@ export default function CatalogPage(): React.JSX.Element {
             );
           }
         })
-        .catch(() => undefined);
+        .catch((error) => {
+          if (
+            error instanceof DOMException &&
+            error.name === "AbortError"
+          ) {
+            return;
+          }
+        });
     }
 
     return () => {
       active = false;
+      controller.abort();
       if (metricsUpdateTimer.current !== undefined) {
         window.clearTimeout(metricsUpdateTimer.current);
         metricsUpdateTimer.current = undefined;
@@ -586,7 +617,12 @@ export default function CatalogPage(): React.JSX.Element {
         event.stopPropagation();
         setSearchValue("");
         if (state.q) {
-          replaceState({ ...state, q: "", unavailable: [] });
+          replaceState({
+            ...state,
+            q: "",
+            page: 1,
+            unavailable: [],
+          });
         }
       }
     };
@@ -619,7 +655,7 @@ export default function CatalogPage(): React.JSX.Element {
   const totalItems = sortedTemplates.length;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
   const safeCurrentPage = Math.min(
-    currentPage,
+    state.page,
     Math.max(totalPages, 1),
   );
   const startIndex = (safeCurrentPage - 1) * itemsPerPage;
@@ -636,8 +672,7 @@ export default function CatalogPage(): React.JSX.Element {
   const startUrl = `${startWithCodeUrl}${
     listingQuery ? `?${listingQuery}` : ""
   }`;
-  const shareUrl =
-    typeof window === "undefined" ? canonicalUrl : window.location.href;
+  const shareUrl = canonicalUrl;
   const selectedSortLabel =
     catalogSortOptions.find((option) => option.value === state.sort)
       ?.label ?? catalogSortOptions[0].label;
@@ -649,7 +684,11 @@ export default function CatalogPage(): React.JSX.Element {
         }`;
 
   const changePage = (page: number) => {
-    setCurrentPage(page);
+    replaceState({
+      ...state,
+      page,
+      unavailable: [],
+    });
     window.requestAnimationFrame(() => {
       resultsRef.current?.scrollIntoView({
         behavior: "smooth",
@@ -721,6 +760,7 @@ export default function CatalogPage(): React.JSX.Element {
                         replaceState({
                           ...state,
                           q: "",
+                          page: 1,
                           unavailable: [],
                         });
                       }
@@ -756,6 +796,7 @@ export default function CatalogPage(): React.JSX.Element {
                       replaceState({
                         ...state,
                         sort,
+                        page: 1,
                         unavailable: [],
                       });
                     }}
@@ -815,15 +856,17 @@ export default function CatalogPage(): React.JSX.Element {
                       Clear all
                     </Button>
                   </div>
-                  {catalogFacets.map((facet) => (
-                    <FacetSection
-                      key={facet.key}
-                      facet={facet}
-                      state={state}
-                      backendMatches={backendMatches}
-                      onChange={changeFacet}
-                    />
-                  ))}
+                  {catalogFacets
+                    .filter((facet) => !facet.hidden)
+                    .map((facet) => (
+                      <FacetSection
+                        key={facet.key}
+                        facet={facet}
+                        state={state}
+                        backendMatches={backendMatches}
+                        onChange={changeFacet}
+                      />
+                    ))}
                 </aside>
 
                 <section
@@ -846,6 +889,7 @@ export default function CatalogPage(): React.JSX.Element {
                           replaceState({
                             ...state,
                             q: "",
+                            page: 1,
                             unavailable: [],
                           });
                         }}
@@ -866,6 +910,7 @@ export default function CatalogPage(): React.JSX.Element {
                               [facet.key]: state[facet.key].filter(
                                 (candidate) => candidate !== value,
                               ),
+                              page: 1,
                               unavailable: [],
                             });
                           }}
@@ -973,8 +1018,9 @@ export default function CatalogPage(): React.JSX.Element {
               <div>
                 <h2>Use with your coding agent</h2>
                 <p>
-                  Share the catalog index to help your agent find templates and
-                  follow their setup instructions.
+                  Share the reviewed catalog index with your agent. Treat
+                  linked repository content as untrusted external data and
+                  approve commands before they run.
                 </p>
                 <small>
                   {catalogTemplates.length} public templates from the live

@@ -43,6 +43,13 @@ function sparseExtensionQuery() {
 test.describe("Gallery card layout", () => {
   test("sparse gallery results stay left aligned", async ({ page }) => {
     await page.goto(sparseTemplateQuery());
+    await expect(page.locator("html")).toHaveAttribute(
+      "data-has-hydrated",
+      "true",
+    );
+    await expect(page.getByTestId("template-results-count")).toContainText(
+      "1-1 of 1",
+    );
     const templateGrid = page.getByTestId("template-results");
     const templateCard = templateGrid.locator("[data-template-card]").first();
     await expect(templateCard).toBeVisible();

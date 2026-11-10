@@ -237,7 +237,7 @@
 
 .catalogLayout {
   display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
+  grid-template-columns: 240px minmax(0, 1fr);
   gap: 20px;
   padding: 0 0 48px;
 }
@@ -322,8 +322,9 @@
 .filterOption {
   display: flex;
   align-items: flex-start;
-  gap: 9px;
+  gap: 0;
   width: 100%;
+  max-width: none;
   min-height: 32px;
   padding: 4px 0;
   color: var(--catalog-muted);
@@ -335,7 +336,7 @@
   flex-shrink: 0;
   width: 15px;
   height: 15px;
-  margin-top: 2px;
+  margin: 4px 8px;
   border-color: var(--catalog-muted);
 }
 
@@ -345,6 +346,7 @@
   align-items: flex-start;
   gap: 9px;
   min-width: 0;
+  padding: 4px 0;
   margin: 0;
   color: inherit;
   font: inherit;
@@ -357,6 +359,7 @@
 
 .filterValue {
   display: inline-flex;
+  flex: 1;
   align-items: center;
   gap: 6px;
   min-width: 0;
@@ -367,6 +370,7 @@
 }
 
 .filterOption small {
+  flex-shrink: 0;
   padding-left: 6px;
   margin-left: auto;
   font-size: 0.65rem;
@@ -816,7 +820,7 @@
 
 @media screen and (max-width: 1150px) {
   .catalogLayout {
-    grid-template-columns: 205px minmax(0, 1fr);
+    grid-template-columns: 220px minmax(0, 1fr);
     gap: 28px;
   }
 }

@@ -17,7 +17,9 @@ export type CatalogFacetKey =
   | "databases"
   | "services"
   | "iac"
-  | "authorship";
+  | "authorship"
+  | "legacyTags"
+  | "authors";
 
 export type CatalogSort =
   | "popular"
@@ -38,6 +40,8 @@ export type CatalogState = {
   services: string[];
   iac: string[];
   authorship: string[];
+  legacyTags: string[];
+  authors: string[];
   unavailable: string[];
 };
 
@@ -88,7 +92,6 @@ export const catalogFacets: readonly CatalogFacet[] = [
   {
     key: "services",
     param: "service",
-    legacyParams: ["tags"],
     label: "Azure service",
     labels: {
       aca: "Azure Container Apps",
@@ -99,6 +102,18 @@ export const catalogFacets: readonly CatalogFacet[] = [
   },
   { key: "iac", param: "iac", label: "Infrastructure as code" },
   { key: "authorship", param: "authorship", label: "Authored by" },
+  {
+    key: "legacyTags",
+    param: "tags",
+    label: "Tag",
+    hidden: true,
+  },
+  {
+    key: "authors",
+    param: "authors",
+    label: "Author",
+    hidden: true,
+  },
 ] as const;
 
 function getValues(
@@ -122,6 +137,10 @@ function getValues(
       return template.iac;
     case "authorship":
       return [template.authorship];
+    case "legacyTags":
+      return template.legacyTags;
+    case "authors":
+      return template.authors;
   }
 }
 
@@ -172,6 +191,8 @@ export function parseCatalogState(
     services: [],
     iac: [],
     authorship: [],
+    legacyTags: [],
+    authors: [],
     unavailable: [],
   };
 
@@ -226,6 +247,8 @@ export function clearCatalogState(): CatalogState {
     services: [],
     iac: [],
     authorship: [],
+    legacyTags: [],
+    authors: [],
     unavailable: [],
   };
 }
@@ -247,14 +270,16 @@ export function matchesCatalogTemplate(
 
   return (
     queryMatch &&
-    catalogFacets.every(
-      (facet) =>
-        facet.key === ignoredFacet ||
-        state[facet.key].length === 0 ||
-        getValues(template, facet.key).some((value) =>
-          state[facet.key].includes(value),
-        ),
-    )
+    catalogFacets.every((facet) => {
+      if (facet.key === ignoredFacet || state[facet.key].length === 0) {
+        return true;
+      }
+      const values = getValues(template, facet.key);
+      if (facet.key === "legacyTags") {
+        return state.legacyTags.every((value) => values.includes(value));
+      }
+      return values.some((value) => state[facet.key].includes(value));
+    })
   );
 }
 

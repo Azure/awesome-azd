@@ -62,6 +62,7 @@ export type CatalogTemplate = {
   featured: boolean;
   task: CatalogTask;
   collections: string[];
+  legacyTags: string[];
   languages: string[];
   frameworks: string[];
   databases: string[];
@@ -424,8 +425,9 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
   const { authors, authorUrls } = getAuthors(record);
   const tags = readStringArray(record.tags);
   const languageIds = readStringArray(record.languages);
+  const legacyFrameworkIds = readStringArray(record.frameworks);
   const frameworkIds = unique([
-    ...readStringArray(record.frameworks),
+    ...legacyFrameworkIds,
     ...tags.filter((tag) => {
       const metadata = getTagMetadata(tag, isAi);
       return metadata?.type === "Framework" || frameworkLikeTags.has(tag);
@@ -439,6 +441,13 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     }),
   );
   const iacIds = readStringArray(record.IaC);
+  const legacyTags = unique([
+    ...tags,
+    ...languageIds,
+    ...legacyFrameworkIds,
+    ...serviceIds,
+    ...iacIds,
+  ]);
   const appTypes = readStringArray(record.appType);
   const modelIds = readStringArray(record.models);
   const toolIds = tags.filter(
@@ -533,6 +542,7 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     featured: tags.includes("featured"),
     task,
     collections: isAi ? ["ai"] : [],
+    legacyTags,
     languages,
     frameworks,
     databases,

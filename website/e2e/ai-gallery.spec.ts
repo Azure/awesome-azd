@@ -34,6 +34,14 @@ function resultLinks(page: Page) {
   return page.getByTestId("template-results").locator("a[data-template-title]");
 }
 
+async function resultCount(page: Page): Promise<number> {
+  const text =
+    (await page.getByTestId("template-results-count").textContent()) ?? "";
+  const numbers = text.match(/\d+/g);
+  expect(numbers, `expected numbers in status: "${text}"`).not.toBeNull();
+  return Number(numbers![numbers!.length - 1]);
+}
+
 async function openAiGallery(page: Page) {
   const response = await page.goto("templates?type=ai", {
     waitUntil: "domcontentloaded",
@@ -67,6 +75,19 @@ test.describe("Unified AI app templates catalog", () => {
     await expect(
       page.getByRole("checkbox", { name: /AI application/ }),
     ).toBeChecked();
+  });
+
+  test("preserves legacy tag filters when redirecting the AI collection", async ({
+    page,
+  }) => {
+    await page.goto("templates/ai?tags=python");
+
+    await expect(page).toHaveURL(/\/templates\?(?=.*tags=python)(?=.*type=ai)/);
+    await expect(
+      page.getByRole("checkbox", { name: /AI application/ }),
+    ).toBeChecked();
+    await expect.poll(() => resultCount(page)).toBeLessThan(56);
+    expect(await resultCount(page)).toBeGreaterThan(0);
   });
 
   test("loads all 56 AI templates in the unified catalog", async ({

@@ -7,19 +7,23 @@ import React, { useEffect } from "react";
 import Link from "@docusaurus/Link";
 import { useHistory, useLocation } from "@docusaurus/router";
 import useBaseUrl from "@docusaurus/useBaseUrl";
+import useIsBrowser from "@docusaurus/useIsBrowser";
 import Layout from "@theme/Layout";
 
 export default function AiTemplates(): React.JSX.Element {
   const history = useHistory();
   const location = useLocation();
+  const isBrowser = useIsBrowser();
   const templatesUrl = useBaseUrl("/templates");
-  const search = new URLSearchParams(location.search);
+  const search = new URLSearchParams(isBrowser ? location.search : "");
   search.set("type", "ai");
   const destination = `${templatesUrl}?${search.toString()}`;
 
   useEffect(() => {
-    history.replace(destination);
-  }, [destination, history]);
+    if (isBrowser) {
+      history.replace(destination);
+    }
+  }, [destination, history, isBrowser]);
 
   return (
     <Layout>

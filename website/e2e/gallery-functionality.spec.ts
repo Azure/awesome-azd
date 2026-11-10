@@ -42,6 +42,102 @@ test.describe("Gallery functionality (deploy gate)", () => {
     expect(await resultCount(page)).toBeGreaterThanOrEqual(250);
   });
 
+  test("query URLs hydrate without React mismatch errors", async ({
+    page,
+  }) => {
+    const hydrationErrors: string[] = [];
+    page.on("console", (message) => {
+      const text = message.text();
+      if (
+        message.type() === "error" &&
+        /(Hydration failed|hydration mismatch|Minified React error #418)/i.test(
+          text,
+        )
+      ) {
+        hydrationErrors.push(text);
+      }
+    });
+
+    await page.goto("templates?type=ai");
+    await expect(
+      page.getByRole("checkbox", { name: /AI application/ }),
+    ).toBeChecked();
+
+    await page.goto("templates?q=python");
+    await expect(page.locator("#catalog-search")).toHaveValue("python");
+
+    await page.goto("templates?page=2");
+    await expect(resultsStatus(page)).toContainText("21-40 of");
+
+    await page.goto(
+      "templates/azure-samples/azure-search-openai-demo?type=ai&page=2",
+    );
+    await expect(
+      page.getByRole("heading", {
+        level: 1,
+        name: "RAG chat with Azure AI Search + Python",
+      }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("link", { name: "Back to templates" }),
+    ).toHaveAttribute("href", /\/templates\?type=ai&page=2$/);
+
+    expect(hydrationErrors).toEqual([]);
+  });
+
+  test("legacy tags and authors still narrow the unified catalog", async ({
+    page,
+  }) => {
+    const initial = await resultCount(page);
+
+    await page.goto("templates?tags=python");
+    await expect.poll(() => resultCount(page)).toBeLessThan(initial);
+    expect(await resultCount(page)).toBeGreaterThan(0);
+
+    await page.goto("templates?authors=Microsoft");
+    await expect.poll(() => resultCount(page)).toBeLessThan(initial);
+    expect(await resultCount(page)).toBeGreaterThan(0);
+  });
+
+  test("legacy extension URLs redirect to the extension gallery", async ({
+    page,
+  }) => {
+    await page.goto("templates?type=extensions&name=azure");
+
+    await expect(page).toHaveURL(/\/extensions\?name=azure$/);
+    await expect(
+      page.getByRole("heading", { level: 1, name: "Extension Gallery" }),
+    ).toBeVisible();
+    await expect(
+      page.getByPlaceholder(
+        "Search for an azd extension, capability, or author...",
+      ),
+    ).toHaveValue("azure");
+  });
+
+  for (const [route, service] of [
+    ["services/container-apps", "aca"],
+    ["services/azure-functions", "functions"],
+  ] as const) {
+    test(`${route} uses the same inventory as its catalog destination`, async ({
+      page,
+    }) => {
+      await page.goto(route);
+      const viewAll = page.getByRole("link", {
+        name: /View all \d+ templates/,
+      });
+      const label = (await viewAll.textContent()) ?? "";
+      const serviceCount = Number(label.match(/\d+/)?.[0]);
+
+      expect(serviceCount).toBeGreaterThan(0);
+      await viewAll.click();
+      await expect(page).toHaveURL(
+        new RegExp(`/templates\\?service=${service}$`),
+      );
+      await expect.poll(() => resultCount(page)).toBe(serviceCount);
+    });
+  }
+
   test("page renders the first 20 template cards", async ({ page }) => {
     const cards = page.locator("[data-template-card]");
     await expect(cards.first()).toBeVisible({ timeout: 15_000 });

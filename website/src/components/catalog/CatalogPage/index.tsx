@@ -15,6 +15,7 @@ import Link from "@docusaurus/Link";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { useColorMode } from "@docusaurus/theme-common";
 import useBaseUrl from "@docusaurus/useBaseUrl";
+import useIsBrowser from "@docusaurus/useIsBrowser";
 import Layout from "@theme/Layout";
 import {
   Button,
@@ -394,13 +395,15 @@ function CatalogFluentProvider({
 export default function CatalogPage(): React.JSX.Element {
   const history = useHistory();
   const location = useLocation();
+  const isBrowser = useIsBrowser();
   const searchInputRef = useRef<HTMLInputElement>(null);
   const resultsRef = useRef<HTMLElement>(null);
   const metricsUpdateTimer = useRef<number | undefined>(undefined);
   const pendingMetrics = useRef(new Map<string, RepositoryMetrics>());
+  const hydrationSafeSearch = isBrowser ? location.search : "";
   const state = useMemo(
-    () => parseCatalogState(location.search, catalogTemplates),
-    [location.search],
+    () => parseCatalogState(hydrationSafeSearch, catalogTemplates),
+    [hydrationSafeSearch],
   );
   const [searchValue, setSearchValue] = useState(state.q);
   const [searchRequestVersion, setSearchRequestVersion] = useState(0);

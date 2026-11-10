@@ -13,7 +13,10 @@ import {
   webLightTheme,
   webDarkTheme,
 } from "@fluentui/react-components";
-import { galleryTemplates as allTemplates } from "@site/src/data/templates";
+import {
+  catalogTemplates,
+  type CatalogTemplate,
+} from "@site/src/catalog/catalogData";
 import styles from "./styles.module.css";
 
 
@@ -27,8 +30,12 @@ export interface ServicePageConfig {
   resources: { title: string; url: string; description: string }[];
 }
 
-function TemplateCard({ template }: { template: any }) {
-  const preview = useBaseUrl(template.preview || "/img/default.png");
+function TemplateCard({ template }: { template: CatalogTemplate }) {
+  const preview = useBaseUrl(
+    template.screenshot ||
+      template.architectureDiagram ||
+      "/img/default.png",
+  );
   return (
     <a href={template.source} target="_blank" rel="noopener noreferrer" className={styles.templateCard}>
       <img src={preview} alt={template.title} className={styles.templateImage} />
@@ -36,7 +43,11 @@ function TemplateCard({ template }: { template: any }) {
         <h3 className={styles.templateTitle}>{template.title}</h3>
         <p className={styles.templateDescription}>{template.description}</p>
         <div className={styles.templateMeta}>
-          {template.author && <span className={styles.author}>by {template.author}</span>}
+          {template.authors.length > 0 && (
+            <span className={styles.author}>
+              by {template.authors.join(", ")}
+            </span>
+          )}
         </div>
       </div>
     </a>
@@ -58,10 +69,8 @@ function ServicePageContent({ config }: { config: ServicePageConfig }) {
   const baseUrl = useBaseUrl("/templates");
 
   const filteredTemplates = useMemo(() => {
-    return allTemplates.filter(
-      (t: any) =>
-        t.tags?.includes(config.serviceTag) ||
-        t.azureServices?.includes(config.serviceTag)
+    return catalogTemplates.filter((template) =>
+      template.serviceIds.includes(config.serviceTag),
     );
   }, [config.serviceTag]);
 
@@ -103,7 +112,7 @@ function ServicePageContent({ config }: { config: ServicePageConfig }) {
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>Featured templates</h2>
           <div className={styles.templateGrid}>
-            {featured.map((t: any) => (
+            {featured.map((t) => (
               <TemplateCard key={t.source || t.title} template={t} />
             ))}
           </div>

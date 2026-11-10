@@ -8,6 +8,7 @@ import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 import { useLocation } from "@docusaurus/router";
 import useBaseUrl from "@docusaurus/useBaseUrl";
+import useIsBrowser from "@docusaurus/useIsBrowser";
 import Layout from "@theme/Layout";
 import {
   findCatalogTemplate,
@@ -144,13 +145,16 @@ function TemplateDetail({
   template: CatalogTemplate;
 }): React.JSX.Element {
   const location = useLocation();
+  const isBrowser = useIsBrowser();
   const templatesUrl = useBaseUrl("/templates");
   const llmsUrl = useBaseUrl("/llms.txt");
   const architectureUrl = template.readmeUrl;
   const architectureImageUrl = useBaseUrl(
     template.architectureDiagram ?? "/img/logo.png",
   );
-  const currentQuery = new URLSearchParams(location.search);
+  const currentQuery = new URLSearchParams(
+    isBrowser ? location.search : "",
+  );
   currentQuery.delete("from");
   if (
     location.pathname.includes("/templates/ai/repo/") &&

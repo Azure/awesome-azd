@@ -176,15 +176,57 @@ describe("unified catalog query", () => {
     const legacyState = parseCatalogState("?tags=swa", catalogTemplates);
 
     expect(currentState.services).toEqual(["aca"]);
-    expect(legacyState.services).toEqual(["swa"]);
+    expect(legacyState.legacyTags).toEqual(["swa"]);
     expect(
       getMatchingCatalogTemplates(
         catalogTemplates,
         legacyState,
         null,
-      ).every((template) => template.serviceIds.includes("swa")),
+      ).every((template) => template.legacyTags.includes("swa")),
     ).toBe(true);
-    expect(serializeCatalogState(legacyState)).toBe("service=swa");
+    expect(serializeCatalogState(legacyState)).toBe("tags=swa");
+  });
+
+  test("preserves AND semantics for repeated legacy tags", () => {
+    const state = parseCatalogState(
+      "?tags=python&tags=aca",
+      catalogTemplates,
+    );
+    const matches = getMatchingCatalogTemplates(
+      catalogTemplates,
+      state,
+      null,
+    );
+
+    expect(state.legacyTags).toEqual(["python", "aca"]);
+    expect(matches.length).toBeGreaterThan(0);
+    expect(
+      matches.every(
+        (template) =>
+          template.legacyTags.includes("python") &&
+          template.legacyTags.includes("aca"),
+      ),
+    ).toBe(true);
+    expect(serializeCatalogState(state)).toBe("tags=python%2Caca");
+  });
+
+  test("preserves exact legacy author filters", () => {
+    const state = parseCatalogState(
+      "?authors=Microsoft",
+      catalogTemplates,
+    );
+    const matches = getMatchingCatalogTemplates(
+      catalogTemplates,
+      state,
+      null,
+    );
+
+    expect(state.authors).toEqual(["Microsoft"]);
+    expect(matches.length).toBeGreaterThan(0);
+    expect(
+      matches.every((template) => template.authors.includes("Microsoft")),
+    ).toBe(true);
+    expect(serializeCatalogState(state)).toBe("authors=Microsoft");
   });
 
   test("round-trips pagination with the catalog state", () => {

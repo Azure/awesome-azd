@@ -38,26 +38,45 @@ test.describe("Gallery Filtering", () => {
     const option = page
       .locator("#catalog-tasks-build-a-web-app")
       .locator("xpath=..");
+    const nextOption = page
+      .locator("#catalog-tasks-build-an-api")
+      .locator("xpath=..");
     const indicator = option.locator(".fui-Checkbox__indicator");
+    const optionLabel = option.locator(".fui-Checkbox__label");
     const label = option.getByText("Web apps", { exact: true });
-    const [panelBox, indicatorBox, labelBox] = await Promise.all([
-      panel.boundingBox(),
-      indicator.boundingBox(),
-      label.boundingBox(),
-    ]);
+    const [panelBox, optionBox, nextOptionBox, indicatorBox, labelBox] =
+      await Promise.all([
+        panel.boundingBox(),
+        option.boundingBox(),
+        nextOption.boundingBox(),
+        indicator.boundingBox(),
+        label.boundingBox(),
+      ]);
 
     expect(panelBox).not.toBeNull();
+    expect(optionBox).not.toBeNull();
+    expect(nextOptionBox).not.toBeNull();
     expect(indicatorBox).not.toBeNull();
     expect(labelBox).not.toBeNull();
     expect(panelBox!.width).toBeGreaterThanOrEqual(238);
+    await expect(option).toHaveCSS("align-items", "center");
+    await expect(indicator).toHaveCSS("align-self", "center");
+    await expect(optionLabel).toHaveCSS("align-items", "center");
+    expect(nextOptionBox!.y).toBeGreaterThanOrEqual(
+      optionBox!.y + optionBox!.height - 1,
+    );
     expect(
       Math.abs(
         indicatorBox!.y +
           indicatorBox!.height / 2 -
           (labelBox!.y + labelBox!.height / 2),
       ),
-    ).toBeLessThanOrEqual(3);
-    expect(labelBox!.x - (indicatorBox!.x + indicatorBox!.width)).toBeGreaterThanOrEqual(6);
-    expect(labelBox!.x - (indicatorBox!.x + indicatorBox!.width)).toBeLessThanOrEqual(10);
+    ).toBeLessThanOrEqual(0.5);
+    expect(
+      labelBox!.x - (indicatorBox!.x + indicatorBox!.width),
+    ).toBeGreaterThanOrEqual(6);
+    expect(
+      labelBox!.x - (indicatorBox!.x + indicatorBox!.width),
+    ).toBeLessThanOrEqual(10);
   });
 });

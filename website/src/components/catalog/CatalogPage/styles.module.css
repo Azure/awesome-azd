@@ -314,6 +314,8 @@
 }
 
 .facet fieldset {
+  display: flex;
+  flex-direction: column;
   padding: 0 0 14px;
   margin: 0;
   border: 0;
@@ -321,7 +323,7 @@
 
 .filterOption {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 0;
   width: 100%;
   max-width: none;
@@ -332,7 +334,15 @@
   font-size: 0.74rem;
 }
 
+.facet fieldset > .filterOption {
+  display: flex;
+  align-self: stretch;
+  width: 100%;
+  max-width: none;
+}
+
 .filterOption :global(.fui-Checkbox__indicator) {
+  align-self: center;
   flex-shrink: 0;
   width: 15px;
   height: 15px;
@@ -343,7 +353,7 @@
 .filterOption :global(.fui-Checkbox__label) {
   display: flex;
   flex: 1;
-  align-items: flex-start;
+  align-items: center;
   gap: 9px;
   min-width: 0;
   padding: 4px 0;

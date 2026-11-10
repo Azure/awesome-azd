@@ -134,6 +134,77 @@ test.describe("Unified AI app templates catalog", () => {
     await context.close();
   });
 
+  test("rehydrates Fluent styles across direct loads and client navigation", async ({
+    page,
+  }) => {
+    const styleErrors: string[] = [];
+    page.on("console", (message) => {
+      if (
+        message.type() === "error" &&
+        /(griffel|hydration|style.*rehydrat)/i.test(message.text())
+      ) {
+        styleErrors.push(message.text());
+      }
+    });
+
+    await page.goto("templates");
+    await expect(page.locator("html")).toHaveAttribute(
+      "data-has-hydrated",
+      "true",
+    );
+    const serverStyles = page.locator('style[data-href^="griffel:"]');
+    const serverStyleCount = await serverStyles.count();
+    expect(serverStyleCount).toBeGreaterThan(0);
+    expect(
+      await serverStyles.evaluateAll(
+        (styles) =>
+          styles.filter(
+            (style) =>
+              !style.hasAttribute("data-make-styles-bucket") ||
+              !style.hasAttribute("data-priority") ||
+              style.getAttribute("data-make-styles-rehydration") !== "true" ||
+              !style.textContent,
+          ).length,
+      ),
+    ).toBe(0);
+
+    await page
+      .getByRole("navigation")
+      .getByRole("link", { name: /Azure Developer CLI/ })
+      .first()
+      .click();
+    await expect(page).toHaveURL(/\/awesome-azd\/$/);
+    await expect(serverStyles).toHaveCount(serverStyleCount);
+
+    await page
+      .getByRole("navigation")
+      .getByRole("link", { name: /^Templates$/ })
+      .first()
+      .click();
+    await expect(page.locator(".fui-Card").first()).toBeVisible();
+    await expect(serverStyles).toHaveCount(serverStyleCount);
+
+    await page.goto("./");
+    await expect(page.locator("html")).toHaveAttribute(
+      "data-has-hydrated",
+      "true",
+    );
+    await expect(serverStyles).toHaveCount(0);
+    await expect(page.locator("style[data-make-styles-bucket]")).toHaveCount(0);
+
+    await page
+      .getByRole("navigation")
+      .getByRole("link", { name: /^Templates$/ })
+      .first()
+      .click();
+    await expect(page.locator(".fui-Card").first()).toBeVisible();
+    await expect
+      .poll(() => page.locator("style[data-make-styles-bucket]").count())
+      .toBeGreaterThan(0);
+    await expect(serverStyles).toHaveCount(0);
+    expect(styleErrors).toEqual([]);
+  });
+
   test("filters AI templates and synchronizes the URL", async ({ page }) => {
     await openAiGallery(page);
     const pythonFilter = page.locator("#catalog-languages-python");

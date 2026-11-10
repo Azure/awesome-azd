@@ -138,6 +138,19 @@ test.describe("Gallery functionality (deploy gate)", () => {
     });
   }
 
+  test("service cards preserve legacy preview images", async ({ page }) => {
+    await page.goto("services/container-apps");
+
+    await expect(
+      page.getByRole("img", {
+        name: "WordPress with Azure Container Apps",
+      }),
+    ).toHaveAttribute(
+      "src",
+      /\/templates\/images\/apptemplate-wordpress-on-ACA\.png$/,
+    );
+  });
+
   test("page renders the first 20 template cards", async ({ page }) => {
     const cards = page.locator("[data-template-card]");
     await expect(cards.first()).toBeVisible({ timeout: 15_000 });

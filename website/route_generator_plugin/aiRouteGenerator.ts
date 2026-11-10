@@ -3,7 +3,7 @@ import path from "path";
 
 type TemplateRecord = {
   source: string;
-  templateType?: string;
+  templateType?: string | null;
   legacySources?: string[];
 };
 
@@ -25,9 +25,9 @@ function getRepositorySlug(source: string): string {
     .toLowerCase()}`;
 }
 
-function isCatalogTemplate(template: TemplateRecord): boolean {
+export function isCatalogTemplate(template: TemplateRecord): boolean {
   return (
-    template.templateType === undefined ||
+    template.templateType == null ||
     template.templateType === "" ||
     template.templateType === "ai-app-templates"
   );

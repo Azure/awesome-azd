@@ -32,9 +32,10 @@ export interface ServicePageConfig {
 
 function TemplateCard({ template }: { template: CatalogTemplate }) {
   const preview = useBaseUrl(
-    template.screenshot ||
+    template.preview ||
+      template.screenshot ||
       template.architectureDiagram ||
-      "/img/default.png",
+      "/img/logo.png",
   );
   return (
     <a href={template.source} target="_blank" rel="noopener noreferrer" className={styles.templateCard}>

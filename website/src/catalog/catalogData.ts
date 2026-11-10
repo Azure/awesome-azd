@@ -75,6 +75,7 @@ export type CatalogTemplate = {
   host?: string;
   prerequisites: CatalogPrerequisite[];
   resources: CatalogResource[];
+  preview?: string;
   architectureDiagram?: string;
   screenshot?: string;
   video?: string;
@@ -102,6 +103,7 @@ type RawTemplate = {
   models?: unknown;
   prerequisites?: unknown;
   legacySources?: unknown;
+  preview?: unknown;
   architectureDiagram?: unknown;
   screenshot?: unknown;
   video?: unknown;
@@ -499,6 +501,7 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
   });
   const initCommand = formatAzdInitCommand(getTemplateIdentifier(source));
   const readmeUrl = `${source}#readme`;
+  const preview = readOptionalString(record.preview);
   const architectureDiagram = readOptionalString(record.architectureDiagram);
   const screenshot = readOptionalString(record.screenshot);
   const video = readOptionalString(record.video);
@@ -555,6 +558,7 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     host,
     prerequisites,
     resources,
+    preview,
     architectureDiagram,
     screenshot,
     video,

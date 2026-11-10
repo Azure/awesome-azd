@@ -10,6 +10,7 @@ import {
   findCatalogTemplate,
   getCatalogTemplatePath,
 } from "../src/catalog/catalogData";
+import { isCatalogTemplate } from "../route_generator_plugin/aiRouteGenerator";
 import {
   clearCatalogState,
   getMatchingCatalogTemplates,
@@ -74,6 +75,22 @@ describe("unified catalog data", () => {
     ).toBe(false);
   });
 
+  test("preserves legacy preview images in the unified view model", () => {
+    const rawTemplate = templates.find(
+      (template) =>
+        typeof template.preview === "string" && template.preview.length > 0,
+    );
+    if (!rawTemplate) {
+      throw new Error("Expected a template with a legacy preview image.");
+    }
+
+    expect(
+      catalogTemplates.find(
+        (template) => template.source === rawTemplate.source,
+      )?.preview,
+    ).toBe(rawTemplate.preview);
+  });
+
   test("derives featured status only from the existing featured tag", () => {
     const rawTemplates = templates as Array<{
       source?: string;
@@ -122,6 +139,29 @@ describe("unified catalog data", () => {
 
     expect(sqlTemplate?.task).toBe("Query a database");
     expect(cargoTemplate?.task).toBe("Build a web app");
+  });
+});
+
+describe("catalog route generation", () => {
+  test.each([undefined, null, "", "ai-app-templates"])(
+    "generates detail routes for templateType %p",
+    (templateType) => {
+      expect(
+        isCatalogTemplate({
+          source: "https://github.com/example/template",
+          templateType,
+        }),
+      ).toBe(true);
+    },
+  );
+
+  test("does not generate detail routes for other specialized templates", () => {
+    expect(
+      isCatalogTemplate({
+        source: "https://github.com/example/extension",
+        templateType: "extension.ai.agent",
+      }),
+    ).toBe(false);
   });
 });
 

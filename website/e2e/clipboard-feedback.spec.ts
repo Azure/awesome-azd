@@ -79,14 +79,49 @@ test("catalog cards announce successful and failed command copies", async ({
   await expect(
     page.getByRole("status").filter({ hasText: "Copy unavailable" }),
   ).toBeAttached();
+  const failedButton = page
+    .getByRole("button", { name: "Copy unavailable" })
+    .first();
+  await expect(
+    failedButton.locator('[data-copy-feedback="failed"]'),
+  ).toBeVisible();
 
-  await button.click();
+  await failedButton.click();
   await finishCopy(page, true);
   await expect(
     page
       .getByRole("status")
       .filter({ hasText: /^Copied init command for / }),
   ).toBeAttached();
+  const copiedButton = page
+    .getByRole("button", { name: /^Copied init command for / })
+    .first();
+  await expect(
+    copiedButton.locator('[data-copy-feedback="copied"]'),
+  ).toBeVisible();
+});
+
+test("start-with-code icon buttons show visible copy feedback", async ({
+  page,
+}) => {
+  await page.goto("templates/start-with-code");
+  const button = page.getByRole("button", {
+    name: "Copy azd init command",
+  });
+
+  await button.click();
+  await finishCopy(page, true);
+
+  const copiedButton = page.getByRole("button", {
+    name: "azd init copied",
+  });
+  await expect(copiedButton).toHaveAttribute(
+    "aria-label",
+    "azd init copied",
+  );
+  await expect(
+    copiedButton.locator('[data-copy-feedback="copied"]'),
+  ).toBeVisible();
 });
 
 test("detail actions copy the init command and stable link", async ({

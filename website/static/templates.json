@@ -70,7 +70,7 @@
     "source": "https://github.com/Azure-Samples/azure-search-openai-demo-csharp",
     "tags": ["azureopenai"],
     "languages": ["dotnetCsharp"],
-    "azureServices": ["aisearch", "openai", "aca", "monitor", "blobstorage"],
+    "azureServices": ["aisearch", "openai", "aca", "monitor", "blobstorage", "aks", "rediscache"],
     "IaC": ["bicep"],
     "id": "75989eb4-f7e0-4dab-be54-262775942d4e",
     "templateType": "ai-app-templates",
@@ -228,14 +228,15 @@
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/azure-search-openai-demo",
     "tags": ["featured", "azureopenai"],
-    "languages": ["python", "typescript"],
+    "languages": ["python", "typescript", "nodejs"],
     "azureServices": [
       "appservice",
       "openai",
       "aisearch",
       "blobstorage",
       "monitor",
-      "aca"
+      "aca",
+      "speechservice"
     ],
     "IaC": ["bicep"],
     "id": "5f6de8e1-9742-4888-ae09-30347b4f4445",
@@ -287,7 +288,8 @@
       "openai",
       "serviceprincipal",
       "aifoundry",
-      "blobstorage"
+      "blobstorage",
+      "aca"
     ],
     "IaC": ["bicep"],
     "id": "35fede2d-4da6-43e2-b679-c593c6fd40da",
@@ -908,7 +910,7 @@
     "author": "Glaucia Lemos, Yohan Lasorsa",
     "source": "https://github.com/Azure-Samples/serverless-chat-langchainjs",
     "tags": ["mistralai", "azureopenai"],
-    "languages": ["javascript", "typescript"],
+    "languages": ["javascript", "typescript", "nodejs"],
     "frameworks": ["langchain", "rag"],
     "azureServices": [
       "openai",
@@ -916,7 +918,9 @@
       "blobstorage",
       "swa",
       "functions",
-      "azurecosmosdb"
+      "azurecosmosdb",
+      "cosmosdb",
+      "azureai"
     ],
     "IaC": ["bicep"],
     "id": "10db7027-bc05-450f-8664-a3a9d783cc08",
@@ -1110,7 +1114,8 @@
       "managedidentity",
       "openai",
       "appservice",
-      "azurecosmosdb"
+      "azurecosmosdb",
+      "cosmosdb"
     ],
     "IaC": ["bicep"],
     "id": "361872a4-3321-4d89-8d6e-cd157ce6500d",
@@ -1178,7 +1183,7 @@
     "author": "Wassim Chegham",
     "source": "https://github.com/Azure-Samples/llama-index-javascript",
     "tags": ["meta", "azureopenai"],
-    "languages": ["typescript"],
+    "languages": ["typescript", "javascript", "nodejs"],
     "frameworks": ["rag"],
     "azureServices": ["managedidentity", "aca", "openai"],
     "IaC": ["bicep"],
@@ -1250,7 +1255,7 @@
     "source": "https://github.com/Azure-Samples/azure-openai-chat-frontend",
     "tags": ["azureopenai"],
     "languages": ["javascript", "typescript"],
-    "azureServices": ["swa", "aisearch"],
+    "azureServices": ["swa", "aisearch", "openai", "blobstorage"],
     "id": "2e20a073-7ed2-44a9-839c-9ca51dddd8e8",
     "templateType": "ai-app-templates",
     "authors": ["Azure Content Team"],
@@ -1292,7 +1297,7 @@
     "source": "https://github.com/Azure-Samples/openai-chat-vision-quickstart",
     "tags": ["azureopenai"],
     "languages": ["python"],
-    "azureServices": ["managedidentity", "aca", "azureaiservice", "openai"],
+    "azureServices": ["managedidentity", "aca", "azureaiservice", "openai", "azureai"],
     "id": "42b6c92c-f4d1-4002-923e-ce1d265ef590",
     "templateType": "ai-app-templates",
     "authors": ["Azure Content Team"],
@@ -1339,8 +1344,8 @@
     "author": "Yohan Lasorsa",
     "source": "https://github.com/Azure-Samples/openai-secure-ui-js",
     "tags": ["azureopenai"],
-    "languages": ["typescript", "javascript"],
-    "azureServices": ["swa", "functions", "managedidentity", "openai"],
+    "languages": ["typescript", "javascript", "nodejs"],
+    "azureServices": ["swa", "functions", "managedidentity", "openai", "azureai"],
     "IaC": ["bicep"],
     "id": "bfc3528d-453f-48dd-b450-13e0cc84b49e",
     "templateType": "ai-app-templates",
@@ -1471,8 +1476,8 @@
     "author": "Yohan Lasorsa",
     "source": "https://github.com/Azure-Samples/azure-openai-keyless-js",
     "tags": ["azureopenai"],
-    "languages": ["typescript", "javascript"],
-    "azureServices": ["managedidentity", "openai"],
+    "languages": ["typescript", "javascript", "nodejs"],
+    "azureServices": ["managedidentity", "openai", "azureai"],
     "IaC": ["bicep"],
     "id": "3f3f82ee-8982-4343-a231-069591a8d531",
     "templateType": "ai-app-templates",
@@ -1582,7 +1587,10 @@
       "monitor",
       "aca",
       "azuredb-mysql",
-      "openai"
+      "openai",
+      "azuredb-mySQL",
+      "keyvault",
+      "appinsights"
     ],
     "IaC": ["bicep"],
     "id": "267dd459-3127-4ab0-a0fa-3f3b79f5e734",
@@ -1634,7 +1642,8 @@
       "keyvault",
       "monitor",
       "azuredb-postgreSQL",
-      "openai"
+      "openai",
+      "aks"
     ],
     "IaC": ["bicep"],
     "id": "84555da7-3f3a-4451-9b10-cb083e481a41",
@@ -2209,7 +2218,7 @@
     "author": "Bobur Umurzokov",
     "source": "https://github.com/neondatabase/rag-neon-postgres-openai-azure-python",
     "tags": ["azureopenai"],
-    "languages": ["python", "typescript"],
+    "languages": ["python", "typescript", "javascript"],
     "frameworks": ["rag"],
     "azureServices": ["aisearch", "aca", "openai"],
     "IaC": ["bicep"],
@@ -2654,7 +2663,10 @@
       "managedidentity",
       "serviceprincipal",
       "azurecosmosdb",
-      "purview"
+      "purview",
+      "vnets",
+      "appinsights",
+      "cosmosdb"
     ],
     "IaC": ["bicep"],
     "id": "348AFC2B-8A26-4C0C-91C8-4F04F4D937FD",
@@ -2688,7 +2700,11 @@
       "appinsights",
       "blobstorage",
       "openai",
-      "azureaiservice"
+      "azureaiservice",
+      "managedidentity",
+      "vnets",
+      "eventgrid",
+      "purview"
     ],
     "IaC": ["bicep"],
     "id": "F5B15030-D351-462E-8F5F-A054EEBEFCA3",
@@ -3512,10 +3528,12 @@
       "openai",
       "managedidentity",
       "azurestorage",
-      "functions"
+      "functions",
+      "azureai",
+      "privateEndpoints"
     ],
     "id": "b6399e1c-612b-4d43-8eda-ccf226213fe6",
-    "languages": ["python", "dotnetCsharp"],
+    "languages": ["python", "dotnetCsharp", "powershell"],
     "IaC": ["terraform"],
     "templateType": "ai-app-templates",
     "authors": [
@@ -4502,7 +4520,7 @@
     "source": "https://github.com/Azure-Samples/ai-chat-aspire-meai-csharp",
     "tags": ["azureopenai"],
     "languages": ["dotnetCsharp"],
-    "azureServices": ["managedidentity", "azureaiservice", "aca", "openai"],
+    "azureServices": ["managedidentity", "azureaiservice", "aca", "openai", "azureai"],
     "IaC": ["bicep"],
     "id": "5e98ec21-396b-482a-b93e-820e4163ca09",
     "templateType": "ai-app-templates",
@@ -4549,7 +4567,7 @@
     "author": "Richard Park",
     "source": "https://github.com/Azure-Samples/azure-openai-keyless-go",
     "tags": ["azureopenai"],
-    "languages": ["golang"],
+    "languages": ["golang", "go"],
     "azureServices": ["managedidentity", "openai"],
     "IaC": ["bicep"],
     "id": "7495894d-fc02-4639-83d0-f1c58091e19d",
@@ -4669,7 +4687,8 @@
       "azurecdn",
       "azurestorage",
       "azureappconfig",
-      "aifoundry"
+      "aifoundry",
+      "azureai"
     ],
     "IaC": ["bicep"],
     "id": "96005af9-c851-47c0-8cef-d7e9b067647d",
@@ -4735,7 +4754,8 @@
       "azurestorage",
       "managedidentity",
       "azureaiservice",
-      "aifoundry"
+      "aifoundry",
+      "azureai"
     ],
     "IaC": ["bicep"],
     "id": "38638d5c-e5af-4733-878a-6c50df50fc3b",
@@ -4774,7 +4794,8 @@
       "azurestorage",
       "aifoundry",
       "azureappconfig",
-      "serviceprincipal"
+      "serviceprincipal",
+      "azureai"
     ],
     "IaC": ["bicep"],
     "id": "301cc025-6d90-483f-a69a-709f0a97b7f5",
@@ -4860,7 +4881,8 @@
       "azurestorage",
       "aifoundry",
       "managedidentity",
-      "serviceprincipal"
+      "serviceprincipal",
+      "azureai"
     ],
     "IaC": ["bicep"],
     "id": "7172a823-3b01-4fd3-ab57-a94b7813c77c",
@@ -4888,7 +4910,8 @@
       "blobstorage",
       "azureaiservice",
       "managedidentity",
-      "serviceprincipal"
+      "serviceprincipal",
+      "azureai"
     ],
     "IaC": ["bicep"],
     "id": "99452db8-12d6-4b0f-8240-98323826cd65",
@@ -4918,7 +4941,8 @@
       "azureaiservice",
       "aifoundry",
       "serviceprincipal",
-      "appinsights"
+      "appinsights",
+      "azureai"
     ],
     "IaC": ["bicep"],
     "id": "8620033b-474a-471c-9601-48c84a632576",
@@ -4987,7 +5011,8 @@
       "azureaiservice",
       "azurebot",
       "azurestorage",
-      "managedidentity"
+      "managedidentity",
+      "azureai"
     ],
     "IaC": ["bicep"],
     "id": "0b0d1958-9798-4695-abdb-b197391b04ff",
@@ -5084,7 +5109,8 @@
       "rediscache",
       "azurestorage",
       "aifoundry",
-      "managedidentity"
+      "managedidentity",
+      "azureai"
     ],
     "IaC": ["bicep"],
     "id": "b3ba80ee-65e8-463e-a3ce-ff1172b043e1",
@@ -5123,7 +5149,8 @@
       "eventgrid",
       "logicapps",
       "aifoundry",
-      "openai"
+      "openai",
+      "azureai"
     ],
     "IaC": ["bicep"],
     "id": "52a503ba-66bf-449e-9c74-bc6bf54302b4",
@@ -5330,7 +5357,9 @@
       "aks",
       "managedidentity",
       "azurestorage",
-      "azureaiservice"
+      "azureaiservice",
+      "azureai",
+      "openai"
     ],
     "IaC": ["bicep"],
     "id": "88c10b7d-ae42-4b31-8666-ff3971ec4d1a",

@@ -6,7 +6,7 @@
 import React from "react";
 import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
-import { useLocation } from "@docusaurus/router";
+import { useHistory, useLocation } from "@docusaurus/router";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import useIsBrowser from "@docusaurus/useIsBrowser";
 import Layout from "@theme/Layout";
@@ -144,6 +144,7 @@ function TemplateDetail({
 }: {
   template: CatalogTemplate;
 }): React.JSX.Element {
+  const history = useHistory();
   const location = useLocation();
   const isBrowser = useIsBrowser();
   const templatesUrl = useBaseUrl("/templates");
@@ -155,6 +156,10 @@ function TemplateDetail({
   const currentQuery = new URLSearchParams(
     isBrowser ? location.search : "",
   );
+  const openedFromCatalog =
+    currentQuery.get("from") === "catalog" &&
+    (location.state as { fromCatalog?: boolean } | null)?.fromCatalog ===
+      true;
   currentQuery.delete("from");
   if (
     location.pathname.includes("/templates/ai/repo/") &&
@@ -185,7 +190,24 @@ function TemplateDetail({
         <div className={styles.page}>
           <main className={styles.wrap}>
             <div className={styles.breadcrumb}>
-              <Link to={backUrl}>← Back to templates</Link>
+              <Link
+                to={backUrl}
+                onClick={(event) => {
+                  if (
+                    openedFromCatalog &&
+                    event.button === 0 &&
+                    !event.ctrlKey &&
+                    !event.metaKey &&
+                    !event.shiftKey &&
+                    !event.altKey
+                  ) {
+                    event.preventDefault();
+                    history.goBack();
+                  }
+                }}
+              >
+                ← Back to templates
+              </Link>
               <span> / {template.task}</span>
             </div>
 

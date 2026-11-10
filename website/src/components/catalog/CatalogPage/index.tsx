@@ -49,12 +49,12 @@ import {
   type CatalogSort,
   type CatalogState,
 } from "../../../catalog/catalogQuery";
-import {
-  loadRepositoryMetrics,
-  prioritizeRepositoryMetrics,
-  type RepositoryMetrics,
-} from "../../../ai/utils/repositoryMetadata";
 import { fetchTemplateSearchResults } from "../../../ai/utils/templateSearch";
+import {
+  captureGalleryNavigationState,
+  restoreGalleryNavigationState,
+  type GalleryNavigationState,
+} from "../../../utils/galleryNavigation";
 import CatalogFooter from "../CatalogFooter";
 import CopyAction from "../CopyAction";
 import styles from "./styles.module.css";
@@ -64,10 +64,6 @@ const searchTimeoutMs = 5_000;
 const canonicalUrl = "https://azure.github.io/awesome-azd/templates";
 const catalogJsonUrl =
   "https://azure.github.io/awesome-azd/templates.json";
-const compactNumber = new Intl.NumberFormat("en-US", {
-  notation: "compact",
-  maximumFractionDigits: 1,
-});
 const sourceOrder = new Map(
   catalogTemplates.map((template, index) => [
     template.normalizedSource,
@@ -81,7 +77,7 @@ const catalogSortOptions: ReadonlyArray<{
   value: CatalogSort;
   label: string;
 }> = [
-  { value: "popular", label: "Most Popular" },
+  { value: "recommended", label: "Recommended" },
   { value: "newest", label: "New to Old" },
   { value: "oldest", label: "Old to New" },
   { value: "az", label: "Alphabetical (A - Z)" },
@@ -225,13 +221,13 @@ function FacetSection({
 
 function TemplateCard({
   template,
-  metric,
   state,
 }: {
   template: CatalogTemplate;
-  metric?: RepositoryMetrics;
   state: CatalogState;
 }): React.JSX.Element {
+  const history = useHistory();
+  const location = useLocation();
   const detailPath = useBaseUrl(getCatalogTemplatePath(template));
   const microsoftIcon = useBaseUrl("/img/Microsoft.svg");
   const communityIcon = useBaseUrl("/img/Community.svg");
@@ -248,6 +244,24 @@ function TemplateCard({
     ...(service ? [service] : []),
   ];
   const headingId = `template-${template.slug.replace(/[^a-z0-9]/g, "-")}`;
+  const openDetail = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (
+      event.button !== 0 ||
+      event.ctrlKey ||
+      event.metaKey ||
+      event.shiftKey ||
+      event.altKey
+    ) {
+      return;
+    }
+
+    event.preventDefault();
+    history.replace({
+      ...location,
+      state: captureGalleryNavigationState(),
+    });
+    history.push(detailUrl, { fromCatalog: true });
+  };
 
   return (
     <Card
@@ -260,10 +274,12 @@ function TemplateCard({
       data-template-card
     >
       <Link
+        id={`${headingId}-link`}
         className={styles.cardLink}
         to={detailUrl}
         aria-labelledby={headingId}
         data-template-title={template.title}
+        onClick={openDetail}
       >
         <div className={styles.cardTop}>
           <span className={styles.cardAuthor}>
@@ -310,22 +326,6 @@ function TemplateCard({
               </span>
             ))}
           </div>
-          {metric ? (
-            <div className={styles.repoStats}>
-              <span
-                className={styles.repoStat}
-                title={`${metric.stars.toLocaleString("en-US")} stars`}
-              >
-                <StarIcon />
-                <span aria-hidden="true">
-                  {compactNumber.format(metric.stars).toLowerCase()}
-                </span>
-                <span className={styles.visuallyHidden}>
-                  {metric.stars.toLocaleString("en-US")} stars
-                </span>
-              </span>
-            </div>
-          ) : null}
         </div>
       </Link>
       <div className={styles.cardCommand}>
@@ -398,8 +398,6 @@ export default function CatalogPage(): React.JSX.Element {
   const isBrowser = useIsBrowser();
   const searchInputRef = useRef<HTMLInputElement>(null);
   const resultsRef = useRef<HTMLElement>(null);
-  const metricsUpdateTimer = useRef<number | undefined>(undefined);
-  const pendingMetrics = useRef(new Map<string, RepositoryMetrics>());
   const hydrationSafeSearch = isBrowser ? location.search : "";
   const state = useMemo(
     () => parseCatalogState(hydrationSafeSearch, catalogTemplates),
@@ -410,20 +408,25 @@ export default function CatalogPage(): React.JSX.Element {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [backendMatches, setBackendMatches] =
     useState<ReadonlySet<string> | null>(null);
-  const [metrics, setMetrics] = useState<
-    ReadonlyMap<string, RepositoryMetrics>
-  >(new Map());
   const startWithCodeUrl = useBaseUrl("/templates/start-with-code");
   const llmsUrl = useBaseUrl("/llms.txt");
 
-  const replaceState = useCallback(
+  const pushState = useCallback(
     (nextState: CatalogState) => {
       const query = serializeCatalogState(nextState);
-      history.replace(
-        `${location.pathname}${query ? `?${query}` : ""}${location.hash}`,
-      );
+      const navigationState = captureGalleryNavigationState();
+      history.replace({
+        ...location,
+        state: navigationState,
+      });
+      history.push({
+        pathname: location.pathname,
+        search: query ? `?${query}` : "",
+        hash: location.hash,
+        state: navigationState,
+      });
     },
-    [history, location.hash, location.pathname],
+    [history, location],
   );
 
   const submitSearch = useCallback(() => {
@@ -437,24 +440,24 @@ export default function CatalogPage(): React.JSX.Element {
       }
       return;
     }
-    replaceState({
+    pushState({
       ...state,
       q: query,
       page: 1,
       unavailable: [],
     });
-  }, [replaceState, searchValue, state]);
+  }, [pushState, searchValue, state]);
 
   const clearAll = useCallback(() => {
     setSearchValue("");
-    replaceState(clearCatalogState());
+    pushState(clearCatalogState());
     window.setTimeout(() => searchInputRef.current?.focus(), 0);
-  }, [replaceState]);
+  }, [pushState]);
 
   const changeFacet = useCallback(
     (key: CatalogFacetKey, value: string, checked: boolean) => {
       const values = state[key];
-      replaceState({
+      pushState({
         ...state,
         [key]: checked
           ? [...new Set([...values, value])]
@@ -463,12 +466,24 @@ export default function CatalogPage(): React.JSX.Element {
         unavailable: [],
       });
     },
-    [replaceState, state],
+    [pushState, state],
   );
 
   useEffect(() => {
     setSearchValue(state.q);
   }, [state.q]);
+
+  useEffect(() => {
+    if (!isBrowser) {
+      return undefined;
+    }
+    const frame = window.requestAnimationFrame(() => {
+      restoreGalleryNavigationState(
+        location.state as GalleryNavigationState | null | undefined,
+      );
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [isBrowser, location.key]);
 
   useEffect(() => {
     const query = state.q.trim();
@@ -530,68 +545,6 @@ export default function CatalogPage(): React.JSX.Element {
   }, [searchRequestVersion, state.q]);
 
   useEffect(() => {
-    if (state.sort !== "popular") {
-      return undefined;
-    }
-
-    let active = true;
-    const controller = new AbortController();
-    const metricTemplates = catalogTemplates.filter(
-      (template) => template.isAi,
-    );
-    prioritizeRepositoryMetrics(
-      metricTemplates.map((template) => template.source),
-    );
-
-    const flushMetrics = () => {
-      metricsUpdateTimer.current = undefined;
-      if (!active || pendingMetrics.current.size === 0) {
-        return;
-      }
-      const updates = new Map(pendingMetrics.current);
-      pendingMetrics.current.clear();
-      setMetrics((current) => new Map([...current, ...updates]));
-    };
-
-    for (const template of metricTemplates) {
-      void loadRepositoryMetrics(template.source, controller.signal)
-        .then((repositoryMetrics) => {
-          if (!active) {
-            return;
-          }
-          pendingMetrics.current.set(
-            template.normalizedSource,
-            repositoryMetrics,
-          );
-          if (metricsUpdateTimer.current === undefined) {
-            metricsUpdateTimer.current = window.setTimeout(
-              flushMetrics,
-              75,
-            );
-          }
-        })
-        .catch((error) => {
-          if (
-            error instanceof DOMException &&
-            error.name === "AbortError"
-          ) {
-            return;
-          }
-        });
-    }
-
-    return () => {
-      active = false;
-      controller.abort();
-      if (metricsUpdateTimer.current !== undefined) {
-        window.clearTimeout(metricsUpdateTimer.current);
-        metricsUpdateTimer.current = undefined;
-      }
-      pendingMetrics.current.clear();
-    };
-  }, [state.sort]);
-
-  useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       const activeElement = document.activeElement;
       const isEditable =
@@ -620,7 +573,7 @@ export default function CatalogPage(): React.JSX.Element {
         event.stopPropagation();
         setSearchValue("");
         if (state.q) {
-          replaceState({
+          pushState({
             ...state,
             q: "",
             page: 1,
@@ -634,7 +587,7 @@ export default function CatalogPage(): React.JSX.Element {
     return () => {
       window.removeEventListener("keydown", handleKeyDown, true);
     };
-  }, [replaceState, searchValue, state]);
+  }, [pushState, searchValue, state]);
 
   const matchingTemplates = useMemo(
     () =>
@@ -650,10 +603,9 @@ export default function CatalogPage(): React.JSX.Element {
       sortCatalogTemplates(
         matchingTemplates,
         state,
-        metrics,
         sourceOrder,
       ),
-    [matchingTemplates, metrics, state],
+    [matchingTemplates, state],
   );
   const totalItems = sortedTemplates.length;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
@@ -687,7 +639,7 @@ export default function CatalogPage(): React.JSX.Element {
         }`;
 
   const changePage = (page: number) => {
-    replaceState({
+    pushState({
       ...state,
       page,
       unavailable: [],
@@ -760,7 +712,7 @@ export default function CatalogPage(): React.JSX.Element {
                     onChange={(_event, data) => {
                       setSearchValue(data.value);
                       if (!data.value && state.q) {
-                        replaceState({
+                        pushState({
                           ...state,
                           q: "",
                           page: 1,
@@ -789,14 +741,14 @@ export default function CatalogPage(): React.JSX.Element {
                     aria-label="Sort by"
                     value={selectedSortLabel}
                     selectedOptions={[state.sort]}
-                    title="Popularity uses GitHub repository metadata. Date sorting follows the catalog's established order."
+                    title="Recommended order follows the curated catalog. Date sorting follows the catalog's established order."
                     onOptionSelect={(_event, data) => {
                       const sort =
                         catalogSortOptions.find(
                           (option) =>
                             option.value === data.optionValue,
-                        )?.value ?? "popular";
-                      replaceState({
+                        )?.value ?? "recommended";
+                      pushState({
                         ...state,
                         sort,
                         page: 1,
@@ -889,7 +841,7 @@ export default function CatalogPage(): React.JSX.Element {
                         shape="circular"
                         onClick={() => {
                           setSearchValue("");
-                          replaceState({
+                          pushState({
                             ...state,
                             q: "",
                             page: 1,
@@ -908,7 +860,7 @@ export default function CatalogPage(): React.JSX.Element {
                           size="small"
                           shape="circular"
                           onClick={() => {
-                            replaceState({
+                            pushState({
                               ...state,
                               [facet.key]: state[facet.key].filter(
                                 (candidate) => candidate !== value,
@@ -934,7 +886,6 @@ export default function CatalogPage(): React.JSX.Element {
                         <TemplateCard
                           key={template.id}
                           template={template}
-                          metric={metrics.get(template.normalizedSource)}
                           state={state}
                         />
                       ))}

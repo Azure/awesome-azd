@@ -7,7 +7,6 @@ import {
   catalogTasks,
   type CatalogTemplate,
 } from "./catalogData";
-import type { RepositoryMetrics } from "../ai/utils/repositoryMetadata";
 
 export type CatalogFacetKey =
   | "types"
@@ -22,7 +21,7 @@ export type CatalogFacetKey =
   | "authors";
 
 export type CatalogSort =
-  | "popular"
+  | "recommended"
   | "newest"
   | "oldest"
   | "az"
@@ -140,7 +139,7 @@ function getValues(
     case "legacyTags":
       return template.legacyTags;
     case "authors":
-      return template.authors;
+      return [...template.authors, ...template.legacyAuthors];
   }
 }
 
@@ -169,12 +168,13 @@ export function parseCatalogState(
   const requestedSort = query.get("sort");
   const requestedPage = query.get("page");
   const sort =
+    requestedSort === "recommended" ||
     requestedSort === "newest" ||
     requestedSort === "oldest" ||
     requestedSort === "az" ||
     requestedSort === "za"
       ? requestedSort
-      : "popular";
+      : "recommended";
   const page =
     requestedPage !== null && /^[1-9]\d*$/.test(requestedPage)
       ? Number.parseInt(requestedPage, 10)
@@ -225,7 +225,7 @@ export function serializeCatalogState(state: CatalogState): string {
       query.set(facet.param, state[facet.key].join(","));
     }
   }
-  if (state.sort !== "popular") {
+  if (state.sort !== "recommended") {
     query.set("sort", state.sort);
   }
   if (state.page > 1) {
@@ -237,7 +237,7 @@ export function serializeCatalogState(state: CatalogState): string {
 export function clearCatalogState(): CatalogState {
   return {
     q: "",
-    sort: "popular",
+    sort: "recommended",
     page: 1,
     types: [],
     tasks: [],
@@ -296,7 +296,6 @@ export function getMatchingCatalogTemplates(
 export function sortCatalogTemplates(
   records: readonly CatalogTemplate[],
   state: CatalogState,
-  metrics: ReadonlyMap<string, RepositoryMetrics>,
   sourceOrder: ReadonlyMap<string, number>,
 ): CatalogTemplate[] {
   const result = [...records];
@@ -319,33 +318,10 @@ export function sortCatalogTemplates(
     );
   }
 
-  const bySourceOrder = result.sort(
+  return result.sort(
     (left, right) =>
       (sourceOrder.get(left.normalizedSource) ?? Number.MAX_SAFE_INTEGER) -
       (sourceOrder.get(right.normalizedSource) ?? Number.MAX_SAFE_INTEGER),
-  );
-  const rankedTemplates = bySourceOrder
-    .filter((template) => metrics.has(template.normalizedSource))
-    .sort((left, right) => {
-      const leftMetrics = metrics.get(left.normalizedSource);
-      const rightMetrics = metrics.get(right.normalizedSource);
-      const leftPopularity = leftMetrics?.score ?? leftMetrics?.stars ?? 0;
-      const rightPopularity =
-        rightMetrics?.score ?? rightMetrics?.stars ?? 0;
-      return (
-        rightPopularity - leftPopularity ||
-        (sourceOrder.get(left.normalizedSource) ??
-          Number.MAX_SAFE_INTEGER) -
-          (sourceOrder.get(right.normalizedSource) ??
-            Number.MAX_SAFE_INTEGER)
-      );
-    });
-  let rankedIndex = 0;
-
-  return bySourceOrder.map((template) =>
-    metrics.has(template.normalizedSource)
-      ? rankedTemplates[rankedIndex++]
-      : template,
   );
 }
 

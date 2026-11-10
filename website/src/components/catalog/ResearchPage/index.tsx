@@ -60,7 +60,7 @@ export default function ResearchPage(): React.JSX.Element {
                 Local keyword matching covers the complete catalog. The
                 existing AI search service can add AI matches, but responses
                 are accepted only when their repository source is in the
-                public 56-record AI allowlist. No author email or private
+                reviewed public AI source allowlist. No author email or private
                 backend field is rendered.
               </p>
             </section>

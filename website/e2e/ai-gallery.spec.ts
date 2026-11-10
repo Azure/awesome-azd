@@ -1,4 +1,5 @@
 import { expect, test, type BrowserContext, type Page } from "@playwright/test";
+import templates from "../static/templates.json";
 
 const featuredTemplateTitle = "RAG chat with Azure AI Search + Python";
 const featuredTemplateSource =
@@ -6,20 +7,11 @@ const featuredTemplateSource =
 const renamedAiTemplateTitle = "VoiceRAG with Realtime API";
 const renamedAiTemplateSource =
   "https://github.com/Azure-Samples/aisearch-openai-rag-audio";
+const aiTemplateCount = templates.filter(
+  (template) => template.templateType === "ai-app-templates",
+).length;
 
 async function stubExternalServices(context: BrowserContext) {
-  await context.route(
-    "https://cachelp6qsotirqelc.z20.web.core.windows.net/**",
-    (route) =>
-      route.fulfill({
-        json: {
-          forks: 12,
-          stars: 345,
-          updatedOn: "2025-01-15T00:00:00.000Z",
-          score: 1,
-        },
-      }),
-  );
   await context.route("**/ai-apps-search*", (route) => {
     const searchTerm = new URL(route.request().url()).searchParams.get(
       "search",
@@ -57,7 +49,7 @@ async function openAiGallery(page: Page) {
     page.getByRole("checkbox", { name: /AI application/ }),
   ).toBeChecked();
   await expect(page.getByTestId("template-results-count")).toContainText(
-    "56 templates",
+    `${aiTemplateCount} templates`,
   );
 }
 
@@ -86,17 +78,17 @@ test.describe("Unified AI app templates catalog", () => {
     await expect(
       page.getByRole("checkbox", { name: /AI application/ }),
     ).toBeChecked();
-    await expect.poll(() => resultCount(page)).toBeLessThan(56);
+    await expect.poll(() => resultCount(page)).toBeLessThan(aiTemplateCount);
     expect(await resultCount(page)).toBeGreaterThan(0);
   });
 
-  test("loads all 56 AI templates in the unified catalog", async ({
+  test("loads every migrated AI template in the unified catalog", async ({
     page,
   }) => {
     await openAiGallery(page);
 
     await expect(page.getByTestId("template-results-count")).toContainText(
-      "56 templates",
+      `${aiTemplateCount} templates`,
     );
     expect(await resultLinks(page).count()).toBe(20);
     await page.locator("summary", { hasText: "Language" }).click();
@@ -215,7 +207,7 @@ test.describe("Unified AI app templates catalog", () => {
     await expect(pythonFilter).toBeChecked();
     await expect(page).toHaveURL(/(?:\?|&)language=Python(?:&|$)/);
     await expect(page.getByTestId("template-results-count")).not.toContainText(
-      "56 templates",
+      `${aiTemplateCount} templates`,
     );
   });
 

@@ -69,9 +69,11 @@ export const deepseek: SubType = {
 export type TagType =
   | "featured"
   | "javascript"
+  | "go"
   | "golang"
   | "dotnetCsharp"
   | "java"
+  | "powershell"
   | "python"
   | "typescript"
   | "gpt35turbo"
@@ -88,9 +90,11 @@ export type TagType =
   | "llmops"
   | "completions"
   | "azuredb-postgreSQL"
+  | "azuredb-mySQL"
   | "azuredb-mysql"
   | "pinecone"
   | "azurecosmosdb"
+  | "cosmosdb"
   | "mistral7b"
   | "bicep"
   | "terraform"
@@ -107,7 +111,9 @@ export type TagType =
   | "vnets"
   | "aisearch"
   | "openai"
+  | "azureai"
   | "azureaiservice"
+  | "speechservice"
   | "apim"
   | "aks"
   | "azurecdn"
@@ -127,6 +133,7 @@ export type TagType =
   | "diagnosticsettings"
   | "logicapps"
   | "managedidentity"
+  | "privateEndpoints"
   | "serviceprincipal"
   | "azuredatafactory"
   | "azureopenai"
@@ -193,6 +200,11 @@ export const Tags: { [type in TagType]: Tag } = {
   featured: {
     label: "Featured Template",
     description: "This tag is used for featured templates.",
+  },
+  powershell: {
+    label: "PowerShell",
+    description: "Template contains PowerShell code",
+    type: "Language",
   },
 
   // Pre-requisite Tags
@@ -337,6 +349,12 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template contains JavaScript app code",
     type: "Language",
     icon: "/img/ai/js.svg",
+  },
+  go: {
+    label: "Go",
+    description: "Template contains Go app code",
+    type: "Language",
+    icon: "/img/ai/go.svg",
   },
   dotnetCsharp: {
     label: ".NET/C#",
@@ -528,9 +546,25 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Database",
     category: "Databases"
   },
+  "azuredb-mySQL": {
+    label: "Azure Database for MySQL",
+    description: "Template architecture uses Azure Database for MySQL",
+    icon: "/img/ai/Azure-MySQL.svg",
+    url: "https://learn.microsoft.com/azure/mysql/flexible-server/overview",
+    type: "Database",
+    productDescription: "Flexible Server is a fully managed, production-ready relational database service.",
+    category: "Databases",
+  },
   pinecone: {
     label: "Pinecone",
     description: "Template architecture uses Pinecone Database",
+    type: "Database",
+  },
+  cosmosdb: {
+    label: "Azure Cosmos DB",
+    description: "Template architecture uses Azure Cosmos DB",
+    icon: "/img/ai/Azure-Cosmos-DB.svg",
+    url: "https://azure.microsoft.com/products/cosmos-db/",
     type: "Database",
   },
   azurecosmosdb: {
@@ -658,6 +692,12 @@ export const Tags: { [type in TagType]: Tag } = {
     productDescription: "Create your own private network infrastructure in the cloud.",
     category: "Networking"
   },
+  privateEndpoints: {
+    label: "Azure Private Endpoints",
+    description: "Template architecture uses Azure Private Endpoints",
+    url: "https://learn.microsoft.com/azure/private-link/private-endpoint-overview",
+    type: "Service",
+  },
   openai: {
     label: "Azure OpenAI Service",
     description: "Template architecture uses Azure OpenAI Service",
@@ -667,6 +707,13 @@ export const Tags: { [type in TagType]: Tag } = {
     productDescription: "Apply advanced coding and language models to a variety of use cases.",
     category: "AI + Machine Learning"
   },
+  azureai: {
+    label: "Azure AI Service",
+    description: "Template architecture uses Azure AI Service",
+    icon: "/img/ai/Azure-AI-Studio.svg",
+    url: "https://azure.microsoft.com/solutions/ai",
+    type: "Service",
+  },
   azureaiservice: {
     label: "Azure AI Services",
     description: "Template architecture uses Azure AI Services",
@@ -675,6 +722,12 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Service",
     productDescription: "Add cognitive capabilities to apps with APIs and AI services.",
     category: "Mobile"
+  },
+  speechservice: {
+    label: "Azure Speech Services",
+    description: "Template architecture uses Azure AI Speech Services",
+    url: "https://azure.microsoft.com/products/ai-services/ai-speech",
+    type: "Service",
   },
   apim: {
     label: "Azure API Management",

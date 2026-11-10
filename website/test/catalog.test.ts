@@ -30,7 +30,9 @@ describe("unified catalog data", () => {
 
     expect(catalogTemplates).toHaveLength(expectedCount);
     expect(catalogTemplates.filter((template) => template.isAi)).toHaveLength(
-      56,
+      templates.filter(
+        (template) => template.templateType === "ai-app-templates",
+      ).length,
     );
     expect(
       new Set(
@@ -129,6 +131,14 @@ describe("unified catalog data", () => {
     expect(labels).toEqual(["Azure Database for PostgreSQL"]);
   });
 
+  test("does not duplicate resources when legacy service aliases are preserved", () => {
+    for (const template of catalogTemplates) {
+      expect(
+        new Set(template.resources.map((resource) => resource.label)).size,
+      ).toBe(template.resources.length);
+    }
+  });
+
   test("distinguishes database queries from document chat", () => {
     const sqlTemplate = catalogTemplates.find(
       (template) => template.title === "NLP to SQL In-A-Box",
@@ -139,6 +149,22 @@ describe("unified catalog data", () => {
 
     expect(sqlTemplate?.task).toBe("Query a database");
     expect(cargoTemplate?.task).toBe("Build a web app");
+  });
+
+  test("uses positive task signals when language metadata is missing", () => {
+    const apiTemplate = catalogTemplates.find(
+      (template) =>
+        template.title ===
+        "Minimal .NET API with ConferenceAPI sample",
+    );
+    const webTemplate = catalogTemplates.find(
+      (template) =>
+        template.title ===
+        "Blazor BadgeMaker with Azure AI Services",
+    );
+
+    expect(apiTemplate?.task).toBe("Build an API");
+    expect(webTemplate?.task).toBe("Build a web app");
   });
 });
 
@@ -173,8 +199,11 @@ describe("unified catalog query", () => {
       state,
       null,
     );
+    const expectedAiCount = catalogTemplates.filter(
+      (template) => template.isAi,
+    ).length;
 
-    expect(matches).toHaveLength(56);
+    expect(matches).toHaveLength(expectedAiCount);
     expect(matches.every((template) => template.isAi)).toBe(true);
     expect(serializeCatalogState(state)).toBe("type=ai");
   });
@@ -250,6 +279,34 @@ describe("unified catalog query", () => {
     expect(serializeCatalogState(state)).toBe("tags=python%2Caca");
   });
 
+  test("preserves curated migration services and languages", () => {
+    const cargoState = parseCatalogState(
+      "?tags=aks&q=cargo%20tracker",
+      catalogTemplates,
+    );
+    const cargoMatches = getMatchingCatalogTemplates(
+      catalogTemplates,
+      cargoState,
+      null,
+    );
+    const purviewTemplate = catalogTemplates.find(
+      (template) =>
+        template.source ===
+        "https://github.com/Azure-Samples/azure-search-openai-demo-purviewdatasecurity",
+    );
+    const ragTemplate = catalogTemplates.find(
+      (template) =>
+        template.source ===
+        "https://github.com/Azure-Samples/azure-search-openai-demo",
+    );
+
+    expect(cargoMatches.map((template) => template.source)).toContain(
+      "https://github.com/Azure-Samples/cargotracker-liberty-aks-azd",
+    );
+    expect(purviewTemplate?.serviceIds).toContain("purview");
+    expect(ragTemplate?.legacyTags).toContain("nodejs");
+  });
+
   test("preserves exact legacy author filters", () => {
     const state = parseCatalogState(
       "?authors=Microsoft",
@@ -267,6 +324,28 @@ describe("unified catalog query", () => {
       matches.every((template) => template.authors.includes("Microsoft")),
     ).toBe(true);
     expect(serializeCatalogState(state)).toBe("authors=Microsoft");
+  });
+
+  test("preserves superseded author names as filter aliases", () => {
+    const state = parseCatalogState(
+      "?authors=ISE%20Scale",
+      catalogTemplates,
+    );
+    const matches = getMatchingCatalogTemplates(
+      catalogTemplates,
+      state,
+      null,
+    );
+
+    expect(state.authors).toEqual(["ISE Scale"]);
+    expect(matches.map((template) => template.source)).toContain(
+      "https://github.com/Azure-Samples/Copilot-Studio-with-Azure-AI-Search",
+    );
+    expect(
+      matches.every((template) =>
+        template.legacyAuthors.includes("ISE Scale"),
+      ),
+    ).toBe(true);
   });
 
   test("round-trips pagination with the catalog state", () => {
@@ -289,6 +368,16 @@ describe("unified catalog query", () => {
     },
   );
 
+  test("normalizes the legacy popularity sort to recommended order", () => {
+    const state = parseCatalogState(
+      "?sort=popular",
+      catalogTemplates,
+    );
+
+    expect(state.sort).toBe("recommended");
+    expect(serializeCatalogState(state)).toBe("");
+  });
+
   test("restores the previous chronology and alphabetical orders", () => {
     const sourceOrder = new Map(
       catalogTemplates.map((template, index) => [
@@ -301,13 +390,11 @@ describe("unified catalog query", () => {
     );
     const titles = catalogTemplates.map((template) => template.title);
     const state = clearCatalogState();
-    const metrics = new Map();
 
     expect(
       sortCatalogTemplates(
         catalogTemplates,
         { ...state, sort: "oldest" },
-        metrics,
         sourceOrder,
       ).map((template) => template.normalizedSource),
     ).toEqual(sources);
@@ -315,7 +402,6 @@ describe("unified catalog query", () => {
       sortCatalogTemplates(
         catalogTemplates,
         { ...state, sort: "newest" },
-        metrics,
         sourceOrder,
       ).map((template) => template.normalizedSource),
     ).toEqual([...sources].reverse());
@@ -323,7 +409,6 @@ describe("unified catalog query", () => {
       sortCatalogTemplates(
         catalogTemplates,
         { ...state, sort: "az" },
-        metrics,
         sourceOrder,
       ).map((template) => template.title),
     ).toEqual([...titles].sort((left, right) => left.localeCompare(right)));
@@ -331,7 +416,6 @@ describe("unified catalog query", () => {
       sortCatalogTemplates(
         catalogTemplates,
         { ...state, sort: "za" },
-        metrics,
         sourceOrder,
       ).map((template) => template.title),
     ).toEqual(
@@ -339,67 +423,24 @@ describe("unified catalog query", () => {
     );
   });
 
-  test("keeps popularity independent from the featured presentation tag", () => {
-    const featured = catalogTemplates.find((template) => template.featured);
-    const regular = catalogTemplates.find((template) => !template.featured);
-    if (!featured || !regular) {
-      throw new Error("Expected featured and regular catalog templates.");
-    }
-
+  test("uses curated source order for the recommended sort", () => {
+    const [first, second, third] = catalogTemplates;
     const sourceOrder = new Map([
-      [featured.normalizedSource, 0],
-      [regular.normalizedSource, 1],
-    ]);
-    const metrics = new Map([
-      [
-        featured.normalizedSource,
-        { forks: 0, stars: 1, updatedOn: "2025-01-01", score: 1 },
-      ],
-      [
-        regular.normalizedSource,
-        { forks: 0, stars: 10, updatedOn: "2025-01-02", score: 10 },
-      ],
+      [first.normalizedSource, 0],
+      [second.normalizedSource, 1],
+      [third.normalizedSource, 2],
     ]);
 
     expect(
       sortCatalogTemplates(
-        [featured, regular],
+        [third, first, second],
         clearCatalogState(),
-        metrics,
-        sourceOrder,
-      ).map((template) => template.normalizedSource),
-    ).toEqual([regular.normalizedSource, featured.normalizedSource]);
-  });
-
-  test("reorders measured templates without demoting unmeasured templates", () => {
-    const [unmeasured, lessPopular, morePopular] = catalogTemplates;
-    const sourceOrder = new Map([
-      [unmeasured.normalizedSource, 0],
-      [lessPopular.normalizedSource, 1],
-      [morePopular.normalizedSource, 2],
-    ]);
-    const metrics = new Map([
-      [
-        lessPopular.normalizedSource,
-        { forks: 0, stars: 1, updatedOn: "2025-01-01", score: 1 },
-      ],
-      [
-        morePopular.normalizedSource,
-        { forks: 0, stars: 10, updatedOn: "2025-01-02", score: 10 },
-      ],
-    ]);
-
-    expect(
-      sortCatalogTemplates(
-        [unmeasured, lessPopular, morePopular],
-        clearCatalogState(),
-        metrics,
         sourceOrder,
       ).map((template) => template.normalizedSource),
     ).toEqual([
-      unmeasured.normalizedSource,
-      morePopular.normalizedSource,
-      lessPopular.normalizedSource,
+      first.normalizedSource,
+      second.normalizedSource,
+      third.normalizedSource,
     ]);
   });
 });

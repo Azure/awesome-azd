@@ -4,6 +4,7 @@
  */
 
 import { describe, expect, test } from "@jest/globals";
+import templates from "../static/templates.json";
 import {
   availableTemplates,
   allTemplates,
@@ -17,8 +18,12 @@ import { extractTemplateSearchSources } from "../src/ai/utils/templateSearch";
 import { normalizeTemplateSource } from "../src/ai/utils/templateSources";
 
 describe("AI gallery data adapter", () => {
-  test("exposes the 56 active AI records without duplicate sources", () => {
-    expect(allTemplates).toHaveLength(56);
+  test("exposes every active AI record without duplicate sources", () => {
+    const expectedCount = templates.filter(
+      (template) => template.templateType === "ai-app-templates",
+    ).length;
+
+    expect(allTemplates).toHaveLength(expectedCount);
     expect(availableTemplates).toBe(allTemplates);
     expect(
       new Set(
@@ -26,7 +31,7 @@ describe("AI gallery data adapter", () => {
           normalizeTemplateSource(template.source),
         ),
       ).size,
-    ).toBe(56);
+    ).toBe(expectedCount);
   });
 
   test("uses the preserved AI title and description metadata", () => {

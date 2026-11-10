@@ -6,19 +6,22 @@
 
 ## 1. Overview
 
-`templates.json` is a flat array of template entries. Two kinds of entries
+`templates.json` is a flat array of template entries. Three kinds of entries
 co-exist in the same file, distinguished by an optional `templateType`
 discriminator:
 
-| Kind             | `templateType`                        | Surfaces in gallery? | Consumed by                        |
-| ---------------- | ------------------------------------- | -------------------- | ---------------------------------- |
-| Gallery template | absent / `null` / `""`                | ✅ yes               | awesome-azd website                |
+| Kind             | `templateType`                        | Surfaces in unified catalog? | Consumed by                        |
+| ---------------- | ------------------------------------- | ---------------------------- | ---------------------------------- |
+| Gallery template | absent / `null` / `""`                | ✅ yes                       | awesome-azd website                |
+| AI app template  | `ai-app-templates`                    | ✅ yes                       | awesome-azd website                |
 | Extension entry  | `extension.<category>.<type>` (e.g. `extension.ai.agent`) | ❌ no | `azd` extension flows (e.g. `azd ai agent init`) |
 
-The gallery dataset is produced by filtering out every entry with a
-`templateType` set (see [`filterGalleryTemplates`](../website/src/data/templates.ts)).
-This filter runs **before** `validateTemplates`, so extension entries are
-never required to satisfy gallery-only validation rules.
+The unified catalog adapter explicitly accepts standard gallery records and
+`ai-app-templates` records (see
+[`catalogData.ts`](../website/src/catalog/catalogData.ts)). The legacy gallery
+adapter still filters out every entry with a `templateType` set (see
+[`filterGalleryTemplates`](../website/src/data/templates.ts)), so specialized
+records never enter that older component path.
 
 ## 2. Common fields (all entries)
 
@@ -51,6 +54,25 @@ follow their consumer's catalog checks instead.
 | `azureServices` | `TagType[]` | optional             | Same.                                                                                |
 | `IaC`           | `TagType[]` | optional             | Same.                                                                                |
 
+AI app templates may also use these reviewed public enrichment fields:
+
+| Field                 | Type       | Notes |
+| --------------------- | ---------- | ----- |
+| `authors`             | `string[]` | Display author names. Must align by index with `authorUrls`. |
+| `authorUrls`          | `string[]` | Public HTTPS author profile URLs. |
+| `models`              | `string[]` | Declared model identifiers. |
+| `appType`             | `string[]` | Declared application-type identifiers. |
+| `prerequisites`       | `string[]` | Declared prerequisite identifiers. |
+| `sampleType`          | string     | Optional sample classification. |
+| `architectureDiagram` | string     | Local reviewed architecture image path. |
+| `screenshot`          | string     | Local reviewed screenshot path. |
+| `video`               | string     | Optional public video URL. |
+| `legacySources`       | `string[]` | Previous public repository sources that should resolve to the canonical record. |
+
+Operational fields from the retired AI service, including email addresses,
+validation state, deletion state, and environment configuration, are not part
+of the public catalog contract.
+
 > ⚠️ **Gotcha — tag taxonomy coupling:** Adding a brand-new value to `tags`,
 > `languages`, etc. requires updating the `TagType` union in
 > [`website/src/data/tags.tsx`](../website/src/data/tags.tsx). The gallery loader
@@ -62,7 +84,7 @@ follow their consumer's catalog checks instead.
 
 | Field               | Type     | Required for extension | Notes                                                                 |
 | ------------------- | -------- | ---------------------- | --------------------------------------------------------------------- |
-| `templateType`      | string   | ✅                     | Discriminator. Use the namespace `extension.<category>.<type>`.       |
+| `templateType`      | string   | ✅                     | Discriminator. Extension entries use the namespace `extension.<category>.<type>`. |
 | `extensionFramework`| string   | optional               | Free-form label (e.g. `"Agent Framework"`).                           |
 | `extensionTags`     | string[] | optional               | Free-form tags scoped to the extension consumer; **not** validated against `TagType`. |
 | `id`                | string   | optional               | Stable identifier (UUID v5 derived from `source` for agent templates). |
@@ -77,13 +99,14 @@ Use a three-part dotted namespace: `extension.<category>.<type>`.
 
 | `templateType`            | Consumer                                          | Status     |
 | ------------------------- | ------------------------------------------------- | ---------- |
+| `ai-app-templates`        | Unified Awesome azd catalog                       | In use     |
 | `extension.ai.agent`      | `azd ai agent init` — agent templates             | In use     |
 | `extension.mcp.server`    | (reserved — MCP server templates)                 | Reserved   |
 
-Adding a new category is a **data-only change**: pick a new
-`extension.<category>.<type>` value and append entries. No code changes to
-filters or validators are required because every entry with a non-empty
-`templateType` is filtered out of the gallery by convention.
+Adding a new extension category is a **data-only change**: pick a new
+`extension.<category>.<type>` value and append entries. The
+`ai-app-templates` discriminator is the only non-empty value currently
+included by the unified catalog adapter.
 
 ## 6. Example entries
 
@@ -127,16 +150,18 @@ filters or validators are required because every entry with a non-empty
 The data layer ([`website/src/data/templates.ts`](../website/src/data/templates.ts))
 applies these steps in order:
 
-1. **`filterGalleryTemplates`** — drop every entry with a non-empty
-   `templateType`. Result is the **raw gallery dataset** (also exported as
-   `galleryTemplates` for direct UI consumers).
+1. **Legacy gallery adapter** — `filterGalleryTemplates` drops every entry
+   with a non-empty `templateType`. Result is the standard legacy gallery
+   dataset.
 2. **`validateTemplates`** — check required text fields, the GitHub source URL,
    `authorUrl` type/default, and a non-empty gallery `tags` array. Invalid
    entries are dropped with a `console.warn`. This is not a full schema
    decoder: identity, taxonomy membership, and optional array contents are
    not checked here.
-3. The runtime-screened records are exported as `unsortedTemplates` /
-   `sortedTemplates` with the `Template[]` type.
+3. **Unified catalog adapter** — `catalogData.ts` independently accepts
+   absent / null / empty `templateType` values plus `ai-app-templates`, then
+   normalizes both into the shared catalog model used by `/templates` and
+   canonical detail pages.
 
 `validateTemplates` also relaxes the `tags` requirement for any entry where
 `templateType` is set, as defense-in-depth in case the pipeline ordering is

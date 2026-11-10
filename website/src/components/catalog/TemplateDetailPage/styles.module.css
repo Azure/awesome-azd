@@ -11,6 +11,7 @@
   --catalog-muted: #6b6560;
   --catalog-line: #e7e5e4;
   --catalog-blue: #0369a1;
+  --catalog-on-blue: #fff;
   --catalog-blue-tint: #f0f9ff;
   min-height: 100vh;
   background: var(--catalog-paper);
@@ -25,6 +26,7 @@
   --catalog-muted: #a8a29e;
   --catalog-line: #ffffff14;
   --catalog-blue: #38bdf8;
+  --catalog-on-blue: #082f49;
   --catalog-blue-tint: #082f49;
 }
 
@@ -521,12 +523,12 @@
 .blueButton {
   border-color: var(--catalog-blue);
   background: var(--catalog-blue);
-  color: #fff;
+  color: var(--catalog-on-blue);
 }
 
 .blueButton:hover {
   background: color-mix(in srgb, var(--catalog-blue) 88%, #000);
-  color: #fff;
+  color: var(--catalog-on-blue);
 }
 
 .actionNote {

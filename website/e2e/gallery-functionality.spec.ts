@@ -13,18 +13,6 @@ async function resultCount(page: Page): Promise<number> {
 
 test.describe("Gallery functionality (deploy gate)", () => {
   test.beforeEach(async ({ page }) => {
-    await page.route(
-      "https://cachelp6qsotirqelc.z20.web.core.windows.net/**",
-      (route) =>
-        route.fulfill({
-          json: {
-            forks: 12,
-            stars: 345,
-            updatedOn: "2025-01-15T00:00:00.000Z",
-            score: 1,
-          },
-        }),
-    );
     await page.route("**/ai-apps-search*", (route) =>
       route.fulfill({ json: [] }),
     );
@@ -97,6 +85,14 @@ test.describe("Gallery functionality (deploy gate)", () => {
     await page.goto("templates?authors=Microsoft");
     await expect.poll(() => resultCount(page)).toBeLessThan(initial);
     expect(await resultCount(page)).toBeGreaterThan(0);
+
+    await page.goto("templates?authors=ISE%20Scale");
+    await expect(resultsStatus(page)).toContainText("1 of 1 templates");
+    await expect(
+      page.getByRole("link", {
+        name: /Copilot-Studio-with-Azure-AI-Search/,
+      }),
+    ).toBeVisible();
   });
 
   test("legacy extension URLs redirect to the extension gallery", async ({
@@ -211,19 +207,43 @@ test.describe("Gallery functionality (deploy gate)", () => {
     ).toHaveCount(0);
   });
 
-  test("returning from template details preserves pagination", async ({
+  test("returning from template details preserves pagination and position", async ({
     page,
   }) => {
     await page.getByRole("button", { name: "Next page" }).click();
     await expect(page).toHaveURL(/[?&]page=2(?:&|$)/);
     await expect(resultsStatus(page)).toContainText("21-40 of");
 
-    await page.locator("a[data-template-title]").first().click();
+    const target = page.locator("a[data-template-title]").nth(15);
+    await target.scrollIntoViewIfNeeded();
+    await target.focus();
+    const targetId = await target.getAttribute("id");
+    const previousScroll = await page.evaluate(() => window.scrollY);
+    expect(previousScroll).toBeGreaterThan(0);
+    expect(targetId).toBeTruthy();
+
+    await target.click();
     await expect(page).toHaveURL(/[?&]page=2(?:&|$)/);
     await page.getByRole("link", { name: "Back to templates" }).click();
 
     await expect(page).toHaveURL(/\/templates\?page=2$/);
     await expect(resultsStatus(page)).toContainText("21-40 of");
+    await expect
+      .poll(() => page.evaluate(() => window.scrollY))
+      .toBeGreaterThan(previousScroll - 100);
+    await expect(page.locator(`#${targetId}`)).toBeFocused();
+  });
+
+  test("browser Back restores the previous filter state", async ({ page }) => {
+    const pythonCheckbox = page.locator("#catalog-languages-python");
+    await page.locator("summary", { hasText: "Language" }).click();
+    await pythonCheckbox.check();
+    await expect(page).toHaveURL(/[?&]language=Python(?:&|$)/);
+
+    await page.goBack();
+
+    await expect(page).toHaveURL(/\/templates$/);
+    await expect(pythonCheckbox).not.toBeChecked();
   });
 
   test("legacy AI repository routes resolve to the renamed template", async ({
@@ -321,58 +341,30 @@ test.describe("Gallery functionality (deploy gate)", () => {
     });
   });
 
-  test("popularity metadata is limited to AI templates and cancelled on navigation", async ({
+  test("does not request the retired repository metrics cache", async ({
     page,
   }) => {
-    let metadataRequests = 0;
-    let releaseMetadataRequests: () => void = () => undefined;
-    const metadataGate = new Promise<void>((resolve) => {
-      releaseMetadataRequests = resolve;
+    const metadataRequests: string[] = [];
+    page.on("request", (request) => {
+      if (
+        request
+          .url()
+          .startsWith(
+            "https://cachelp6qsotirqelc.z20.web.core.windows.net/",
+          )
+      ) {
+        metadataRequests.push(request.url());
+      }
     });
-    await page.route(
-      "https://cachelp6qsotirqelc.z20.web.core.windows.net/**",
-      async (route) => {
-        metadataRequests += 1;
-        await metadataGate;
-        await route
-          .fulfill({
-            json: {
-              forks: 12,
-              stars: 345,
-              updatedOn: "2025-01-15T00:00:00.000Z",
-              score: 1,
-            },
-          })
-          .catch(() => undefined);
-      },
-    );
-    await page.route("**/ai-apps-search*", (route) =>
-      route.fulfill({ json: [] }),
-    );
 
-    await page.goto("templates");
+    await page.reload();
     await expect(page.locator("html")).toHaveAttribute(
       "data-has-hydrated",
       "true",
     );
-    await expect
-      .poll(async () => {
-        const currentCount = metadataRequests;
-        await page.waitForTimeout(250);
-        return metadataRequests === currentCount ? currentCount : 0;
-      })
-      .toBeGreaterThanOrEqual(4);
-    const requestsBeforeNavigation = metadataRequests;
-    expect(requestsBeforeNavigation).toBeLessThanOrEqual(8);
-    await page.evaluate(() => {
-      window.location.href =
-        "/awesome-azd/templates/start-with-code";
-    });
-    await expect(page).toHaveURL(/\/templates\/start-with-code$/);
-    releaseMetadataRequests();
-    await page.waitForTimeout(200);
+    await page.waitForTimeout(250);
 
-    expect(metadataRequests).toBe(requestsBeforeNavigation);
+    expect(metadataRequests).toEqual([]);
   });
 
   test("language filtering narrows the gallery", async ({ page }) => {
@@ -412,9 +404,53 @@ test.describe("Gallery functionality (deploy gate)", () => {
     }
 
     await sortDropdown.click();
-    await page.getByRole("option", { name: "Most Popular" }).click();
+    await page.getByRole("option", { name: "Recommended" }).click();
     await expect(page).not.toHaveURL(/[?&]sort=/);
-    await expect(sortDropdown).toHaveText("Most Popular");
+    await expect(sortDropdown).toHaveText("Recommended");
+  });
+
+  test("dark-mode copy action hover meets text contrast", async ({ page }) => {
+    await page.evaluate(() => localStorage.setItem("theme", "dark"));
+    await page.reload();
+    await expect(page.locator("html")).toHaveAttribute(
+      "data-theme",
+      "dark",
+    );
+    await page.locator("a[data-template-title]").first().click();
+    await expect(page).toHaveURL(/\/templates\/[^/]+\/[^/?]+/);
+    const copyButton = page.getByRole("button", {
+      name: "Copy init command",
+      exact: true,
+    });
+    await copyButton.hover();
+
+    const contrast = await copyButton.evaluate((element) => {
+      const parseColor = (value: string) =>
+        (value.match(/[\d.]+/g) ?? [])
+          .slice(0, 3)
+          .map(Number)
+          .map((channel) =>
+            value.startsWith("color(srgb") ? channel * 255 : channel,
+          );
+      const luminance = (channels: number[]) => {
+        const [red, green, blue] = channels.map((channel) => {
+          const value = channel / 255;
+          return value <= 0.03928
+            ? value / 12.92
+            : ((value + 0.055) / 1.055) ** 2.4;
+        });
+        return 0.2126 * red + 0.7152 * green + 0.0722 * blue;
+      };
+      const style = window.getComputedStyle(element);
+      const foreground = luminance(parseColor(style.color));
+      const background = luminance(parseColor(style.backgroundColor));
+      return (
+        (Math.max(foreground, background) + 0.05) /
+        (Math.min(foreground, background) + 0.05)
+      );
+    });
+
+    expect(contrast).toBeGreaterThanOrEqual(4.5);
   });
 
   test("clearing search restores the full gallery", async ({ page }) => {

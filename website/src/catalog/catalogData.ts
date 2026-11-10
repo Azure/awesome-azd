@@ -56,6 +56,7 @@ export type CatalogTemplate = {
   slug: string;
   legacySlugs: string[];
   authors: string[];
+  legacyAuthors: string[];
   authorUrls: string[];
   authorship: CatalogAuthorship;
   isAi: boolean;
@@ -286,6 +287,20 @@ function getAuthors(record: RawTemplate): {
   };
 }
 
+function getLegacyAuthors(
+  record: RawTemplate,
+  authors: readonly string[],
+): string[] {
+  const legacyAuthor = readOptionalString(record.author);
+  return legacyAuthor === undefined
+    ? []
+    : unique(
+        legacyAuthor
+          .split(", ")
+          .filter((author) => author && !authors.includes(author)),
+      );
+}
+
 function getAuthorship(
   owner: string,
   authors: readonly string[],
@@ -315,7 +330,6 @@ function inferTask({
   frameworks,
   services,
   databases,
-  languages,
 }: {
   isAi: boolean;
   title: string;
@@ -325,7 +339,6 @@ function inferTask({
   frameworks: readonly string[];
   services: readonly string[];
   databases: readonly string[];
-  languages: readonly string[];
 }): CatalogTask {
   const ids = new Set(
     [...tags, ...appTypes, ...frameworks, ...services].map((value) =>
@@ -365,20 +378,19 @@ function inferTask({
     return "Automate a workflow";
   }
   if (
-    languages.length === 0 ||
-    /\b(?:starter|infrastructure|landing zone|deployment environment)\b/.test(
-      text,
-    )
-  ) {
-    return "Start with infrastructure";
-  }
-  if (
     ids.has("serverlessapi") ||
     ids.has("apim") ||
     ids.has("fastapi") ||
     /\bapi\b/.test(text)
   ) {
     return "Build an API";
+  }
+  if (
+    /\b(?:starter|infrastructure|landing zone|deployment environment)\b/.test(
+      text,
+    )
+  ) {
+    return "Start with infrastructure";
   }
   return "Build a web app";
 }
@@ -425,6 +437,7 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
   const source = readString(record.source, "source");
   const coordinates = getCoordinates(source);
   const { authors, authorUrls } = getAuthors(record);
+  const legacyAuthors = getLegacyAuthors(record, authors);
   const tags = readStringArray(record.tags);
   const languageIds = readStringArray(record.languages);
   const legacyFrameworkIds = readStringArray(record.frameworks);
@@ -475,15 +488,19 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
       url: metadata?.url,
     };
   });
-  const resources = serviceIds.map((tag) => {
+  const resources = serviceIds.reduce<CatalogResource[]>((result, tag) => {
     const metadata = getTagMetadata(tag, isAi);
-    return {
+    const resource = {
       id: tag,
       label: metadata?.label ?? tag,
       role: getResourceRole(tag),
       url: metadata?.url,
     };
-  });
+    if (!result.some((candidate) => candidate.label === resource.label)) {
+      result.push(resource);
+    }
+    return result;
+  }, []);
   const legacySlugs = readStringArray(record.legacySources).map(
     (legacySource) => getCoordinates(legacySource).slug,
   );
@@ -497,7 +514,6 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     frameworks: frameworkIds,
     services: serviceIds,
     databases,
-    languages,
   });
   const initCommand = formatAzdInitCommand(getTemplateIdentifier(source));
   const readmeUrl = `${source}#readme`;
@@ -512,6 +528,7 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     coordinates.owner,
     coordinates.repo,
     ...authors,
+    ...legacyAuthors,
     ...tags,
     ...appTypes,
     ...languages,
@@ -539,6 +556,7 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     slug: coordinates.slug,
     legacySlugs,
     authors,
+    legacyAuthors,
     authorUrls,
     authorship,
     isAi,

@@ -8,6 +8,7 @@ import * as fs from "fs";
 import * as path from "path";
 import templates from "../static/templates.json";
 import { Tags } from "../src/ai/data/tags";
+import aiAppTemplateOverlap from "./fixtures/ai-app-template-overlap.json";
 
 const websiteRoot = path.resolve(__dirname, "..");
 const emailPattern = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
@@ -182,8 +183,16 @@ describe("privacy-safe AI catalog metadata", () => {
     (record) => record.templateType === "ai-app-templates",
   );
 
-  test("marks exactly 56 flat records as AI app templates", () => {
-    expect(aiRecords).toHaveLength(56);
+  test("preserves every reviewed AI migration overlap", () => {
+    const aiSources = new Set(
+      aiRecords.map((record) => normalizeSource(String(record.source))),
+    );
+    const overlapSources = aiAppTemplateOverlap.map(normalizeSource);
+
+    expect(new Set(overlapSources).size).toBe(overlapSources.length);
+    expect(
+      overlapSources.filter((source) => !aiSources.has(source)),
+    ).toEqual([]);
     expect(
       records.filter((record) => record.aiMetadata !== undefined),
     ).toHaveLength(0);

@@ -5,10 +5,11 @@
 
 import React from "react";
 import {
-  Combobox,
+  Dropdown,
+  Label,
   Option,
   Text,
-  type ComboboxProps,
+  type DropdownProps,
 } from "@fluentui/react-components";
 import { GALLERY_SORT_OPTIONS } from "@site/src/utils/gallerySorting";
 import { GallerySearchBox } from "../ShowcaseTemplateSearch";
@@ -58,7 +59,7 @@ export default function ShowcaseResultsToolbar({
   onSortSelect,
 }: {
   selectedOptions: string[];
-  onSortSelect: NonNullable<ComboboxProps["onOptionSelect"]>;
+  onSortSelect: NonNullable<DropdownProps["onOptionSelect"]>;
 }): React.JSX.Element {
   const selectedSort = selectedOptions[0] ?? GALLERY_SORT_OPTIONS[2];
 
@@ -68,17 +69,19 @@ export default function ShowcaseResultsToolbar({
         <GallerySearchBox />
       </div>
       <div className={styles.sortControls}>
-        <Text
+        <Label
+          htmlFor="extension-sort"
           id="extension-sort-label"
-          size={300}
+          size="small"
           weight="semibold"
           className={styles.sortLabel}
         >
           Sort by
-        </Text>
-        <Combobox
-          className={styles.sortCombobox}
-          input={{ className: styles.sortInput }}
+        </Label>
+        <Dropdown
+          id="extension-sort"
+          className={styles.sortControl}
+          appearance="outline"
           selectedOptions={[selectedSort]}
           value={selectedSort}
           aria-labelledby="extension-sort-label"
@@ -87,7 +90,7 @@ export default function ShowcaseResultsToolbar({
           {GALLERY_SORT_OPTIONS.map((option) => (
             <Option key={option}>{option}</Option>
           ))}
-        </Combobox>
+        </Dropdown>
       </div>
     </div>
   );

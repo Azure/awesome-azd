@@ -3,10 +3,11 @@
  * Licensed under the MIT License.
  */
 
-import React, { useEffect, useState } from "react";
-import { SearchBox, type ISearchBoxStyles } from "@fluentui/react/lib/SearchBox";
+import React, { useCallback, useEffect, useState } from "react";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { Link as FluentUILink } from "@fluentui/react-components";
+import { Open16Regular } from "@fluentui/react-icons";
+import { SearchBox } from "@fluentui/react-search";
 import { getContentType } from "@site/src/utils/contentType";
 import { captureGalleryNavigationState } from "@site/src/utils/galleryNavigation";
 import { readSearchName, replaceSearchName } from "@site/src/utils/galleryQuery";
@@ -15,31 +16,6 @@ import styles from "./styles.module.css";
 const PLACEHOLDERS: Record<string, string> = {
   templates: "Search for an azd template or author...",
   extensions: "Search for an azd extension, capability, or author...",
-};
-const searchBoxStyles: Partial<ISearchBoxStyles> = {
-  root: {
-    border: "1px solid var(--site-color-border)",
-    height: "40px",
-    maxWidth: "100%",
-    width: "100%",
-    borderRadius: "8px",
-    background: "var(--site-color-surface)",
-  },
-  icon: {
-    fontSize: "18px",
-    paddingLeft: "8px",
-  },
-  field: {
-    paddingLeft: "10px",
-    fontSize: "14px",
-    color: "var(--site-color-text)",
-    backgroundColor: "transparent",
-    selectors: {
-      "::placeholder": {
-        color: "var(--site-color-text-muted)",
-      },
-    },
-  },
 };
 
 export function GallerySearchBox(): React.JSX.Element {
@@ -53,39 +29,44 @@ export function GallerySearchBox(): React.JSX.Element {
 
   const contentType = getContentType(location);
   const placeholder = PLACEHOLDERS[contentType] || PLACEHOLDERS.templates;
+  const submitSearch = useCallback(
+    (searchValue: string) => {
+      history.push({
+        ...location,
+        search: replaceSearchName(location.search, searchValue),
+        state: captureGalleryNavigationState(),
+      });
+    },
+    [history, location],
+  );
 
   return (
-    <SearchBox
-      styles={searchBoxStyles}
-      id="filterBar"
-      value={value ?? ""}
-      placeholder={placeholder}
+    <form
+      className={styles.searchForm}
       role="search"
-      ariaLabel="Search extensions"
-      onClear={() => {
-        setValue(null);
-        history.push({
-          ...location,
-          search: replaceSearchName(location.search, null),
-          state: captureGalleryNavigationState(),
-        });
+      onSubmit={(event) => {
+        event.preventDefault();
+        submitSearch(value ?? "");
       }}
-      onSearch={(newValue) => {
-        const submitted =
-          typeof newValue === "string" ? newValue : (value ?? "");
-        setValue(submitted);
-        history.push({
-          ...location,
-          search: replaceSearchName(location.search, submitted),
-          state: captureGalleryNavigationState(),
-        });
-      }}
-      onChange={(event) => {
-        if (event) {
-          setValue(event.currentTarget.value);
-        }
-      }}
-    />
+    >
+      <SearchBox
+        id="filterBar"
+        className={styles.searchBox}
+        appearance="outline"
+        size="medium"
+        value={value ?? ""}
+        placeholder={placeholder}
+        aria-label="Search extensions"
+        autoComplete="off"
+        dismiss={value ? { "aria-label": "Clear search" } : null}
+        onChange={(_event, data) => {
+          setValue(data.value);
+          if (!data.value && readSearchName(location.search)) {
+            submitSearch("");
+          }
+        }}
+      />
+    </form>
   );
 }
 
@@ -94,9 +75,7 @@ export default function ShowcaseTemplateSearch(): React.JSX.Element {
     <section className={styles.searchContainer}>
       <div className={styles.searchArea}>
         <div className={styles.heroIntro}>
-          <h1 className={styles.heroBar}>
-            Extension <span>Gallery</span>
-          </h1>
+          <h1 className={styles.heroBar}>Extension Gallery</h1>
           <p className={styles.heroDescription}>
             Discover azd extensions that add new capabilities to your workflow.
           </p>
@@ -110,9 +89,10 @@ export default function ShowcaseTemplateSearch(): React.JSX.Element {
             href="https://learn.microsoft.com/azure/developer/azure-developer-cli/extensions/overview"
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.outlineButton}
+            className={styles.docsLink}
           >
             Explore extension docs
+            <Open16Regular aria-hidden="true" />
           </FluentUILink>
         </div>
       </div>

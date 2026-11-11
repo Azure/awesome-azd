@@ -5,9 +5,13 @@
 
 .showcaseList {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(285px, 100%), 1fr)
+  );
+  width: 100%;
   justify-content: start;
-  gap: 18px;
+  gap: 24px 18px;
 }
 
 .showcaseFavorite {
@@ -22,13 +26,4 @@
   margin-top: 20px;
   padding-top: 18px;
   border-top: 1px solid var(--catalog-border);
-}
-
-@media (max-width: 1320px) {
-  .showcaseList {
-    grid-template-columns: repeat(
-      auto-fill,
-      minmax(min(285px, 100%), 350px)
-    );
-  }
 }

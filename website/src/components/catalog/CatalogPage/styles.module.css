@@ -4,16 +4,16 @@
  */
 
 .page {
-  --catalog-paper: #fafafa;
-  --catalog-surface: #fff;
-  --catalog-subtle: #f5f5f5;
-  --catalog-ink: #1c1917;
-  --catalog-muted: #6b6560;
-  --catalog-line: #e7e5e4;
-  --catalog-blue: #0369a1;
-  --catalog-blue-tint: #f0f9ff;
-  --catalog-accent: #0369a1;
-  --catalog-accent-ink: #fff;
+  --catalog-paper: var(--colorNeutralBackground2, #f5f5f5);
+  --catalog-surface: var(--colorNeutralBackground1, #fff);
+  --catalog-subtle: var(--colorNeutralBackground3, #f0f0f0);
+  --catalog-ink: var(--colorNeutralForeground1, #242424);
+  --catalog-muted: var(--colorNeutralForeground2, #424242);
+  --catalog-line: var(--colorNeutralStroke2, #e0e0e0);
+  --catalog-blue: var(--colorBrandForeground1, #0f6cbd);
+  --catalog-blue-tint: var(--colorBrandBackground2, #ebf3fc);
+  --catalog-accent: var(--colorBrandBackground, #0f6cbd);
+  --catalog-accent-ink: var(--colorNeutralForegroundOnBrand, #fff);
   min-height: 100vh;
   background: var(--catalog-paper);
   color: var(--catalog-ink);
@@ -23,19 +23,6 @@
 .fluentProvider.fluentProvider {
   background: transparent;
   color: inherit;
-}
-
-:global([data-theme="dark"]) .page {
-  --catalog-paper: #111;
-  --catalog-surface: #1a1a1a;
-  --catalog-subtle: #161616;
-  --catalog-ink: #e7e5e4;
-  --catalog-muted: #a8a29e;
-  --catalog-line: #ffffff14;
-  --catalog-blue: #38bdf8;
-  --catalog-blue-tint: #082f49;
-  --catalog-accent: #38bdf8;
-  --catalog-accent-ink: #082f49;
 }
 
 .wrap,

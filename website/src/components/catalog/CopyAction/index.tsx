@@ -44,6 +44,7 @@ export default function CopyAction({
   copiedLabel = "Copied",
   failedLabel = "Copy unavailable",
   className,
+  analyticsData,
   children,
 }: {
   value: string;
@@ -51,6 +52,7 @@ export default function CopyAction({
   copiedLabel?: string;
   failedLabel?: string;
   className?: string;
+  analyticsData?: string;
   children?: React.ReactNode;
 }): React.JSX.Element {
   const { status, copy } = useClipboard();
@@ -68,6 +70,7 @@ export default function CopyAction({
         className={className}
         aria-label={label}
         title={label}
+        data-m={analyticsData}
         onClick={() => {
           void copy(value);
         }}

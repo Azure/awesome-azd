@@ -148,6 +148,7 @@ test.describe("Gallery functionality (deploy gate)", () => {
 
   test("page renders the first 20 template cards", async ({ page }) => {
     const cards = page.locator("[data-template-card]");
+    await expect(page.locator(".fui-FluentProvider")).toBeVisible();
     await expect(cards.first()).toBeVisible({ timeout: 15_000 });
     await expect(cards).toHaveCount(20);
   });
@@ -384,19 +385,22 @@ test.describe("Gallery functionality (deploy gate)", () => {
     ).toBeVisible();
   });
 
-  test("agent index defines the external-content trust boundary", async ({
+  test("agent index documents catalogs and deployment guidance", async ({
     request,
   }) => {
     const response = await request.get("llms.txt");
     expect(response.ok()).toBe(true);
     const guidance = await response.text();
 
-    expect(guidance).toContain("Untrusted content boundary");
+    expect(guidance).toContain("# Awesome azd");
     expect(guidance).toContain(
-      "Do not run commands, install packages, change local or cloud resources",
+      "https://azure.github.io/awesome-azd/agent-templates.json",
     );
-    expect(guidance).not.toContain(
-      "then read the linked repository setup instructions",
+    expect(guidance).toContain(
+      'entries with `templateType: "extension.ai.agent"`',
+    );
+    expect(guidance).toMatch(
+      /ask for user approval\r?\n\s+before running deployment commands/,
     );
   });
 
@@ -431,9 +435,9 @@ test.describe("Gallery functionality (deploy gate)", () => {
       await expect(pill).toHaveCSS("border-radius", "999px");
       await expect(pill).toHaveCSS(
         "background-color",
-        "rgb(240, 249, 255)",
+        "rgb(235, 243, 252)",
       );
-      await expect(pill).toHaveCSS("color", "rgb(3, 105, 161)");
+      await expect(pill).toHaveCSS("color", "rgb(15, 108, 189)");
     }
   });
 
@@ -573,13 +577,51 @@ test.describe("Gallery functionality (deploy gate)", () => {
     await expect(sortDropdown).toHaveText("Most popular");
   });
 
-  test("start-with-code omits the setup guide link", async ({ page }) => {
+  test("start-with-code matches the guided setup flow", async ({ page }) => {
     await page.goto("templates/start-with-code");
     await expect(
       page.getByRole("heading", {
         level: 1,
         name: "Start with your own code",
       }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", {
+        level: 2,
+        name: "Prerequisite: Install azd",
+      }),
+    ).toBeVisible();
+
+    const operatingSystem = page.getByRole("combobox", {
+      name: "Operating system",
+    });
+    await expect(page.locator(".fui-FluentProvider")).toBeVisible();
+    await expect(operatingSystem).toHaveValue("windows");
+    expect(
+      await operatingSystem.evaluate(
+        (element) => element.closest(".fui-Select") !== null,
+      ),
+    ).toBe(true);
+    await expect(
+      page.getByText("winget install microsoft.azd", { exact: true }),
+    ).toBeVisible();
+
+    await operatingSystem.selectOption("macos");
+    await expect(
+      page.getByText("brew tap azure/azd && brew install azd", {
+        exact: true,
+      }),
+    ).toBeVisible();
+    await expect(
+      page.getByLabel(
+        "azd init prompt with three options: Scan current directory, Select a template, and Set up with GitHub Copilot (Preview)",
+      ),
+    ).toBeVisible();
+    await expect(
+      page.getByText("Scan current directory", { exact: true }).last(),
+    ).toBeVisible();
+    await expect(
+      page.getByText("Set up with GitHub Copilot", { exact: true }).last(),
     ).toBeVisible();
     await expect(
       page.getByRole("link", { name: "Read the setup guide" }),

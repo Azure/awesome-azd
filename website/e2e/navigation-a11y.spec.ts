@@ -30,6 +30,34 @@ test.describe("Navigation", () => {
       .click();
     await expect(page).toHaveURL(/templates/);
   });
+
+  test("external navbar links show the Fluent external-link icon", async ({
+    page,
+  }) => {
+    await page.goto("./");
+
+    for (const name of ["Docs", "Resources"]) {
+      const link = page
+        .getByRole("navigation")
+        .getByRole("link", { name, exact: true });
+      await expect(link).toHaveClass(/navbar-external-link/);
+
+      const icon = await link.evaluate((element) => {
+        const style = window.getComputedStyle(element, "::after");
+        return {
+          content: style.content,
+          width: style.width,
+          maskImage:
+            style.getPropertyValue("mask-image") ||
+            style.getPropertyValue("-webkit-mask-image"),
+        };
+      });
+
+      expect(icon.content).toBe('""');
+      expect(icon.width).toBe("14px");
+      expect(icon.maskImage).toContain("data:image/svg+xml");
+    }
+  });
 });
 
 test.describe("Accessibility", () => {

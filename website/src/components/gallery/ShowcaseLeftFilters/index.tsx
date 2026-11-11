@@ -7,7 +7,11 @@ import React from "react";
 import type { Location } from "history";
 import ShowcaseTagSelect from "../ShowcaseTagSelect";
 import ShowcaseFilterSection from "./ShowcaseFilterSection";
-import { Accordion, type AccordionToggleEventHandler } from "@fluentui/react-components";
+import {
+  Accordion,
+  Button,
+  type AccordionToggleEventHandler,
+} from "@fluentui/react-components";
 import { Tags, type TagType } from "../../../data/tags";
 import { sortedTagList, unsortedTemplates } from "../../../data/templates";
 import { unsortedExtensions } from "../../../data/extensions";
@@ -133,6 +137,7 @@ export default function ShowcaseLeftFilters({
   };
   return (
     <Accordion
+      className={styles.filterAccordion}
       openItems={openItems}
       onToggle={handleToggle}
       multiple
@@ -140,13 +145,18 @@ export default function ShowcaseLeftFilters({
     >
       <div className={styles.filterCollections}>
         <div className={styles.filterTop}>
-          <div className={styles.filterBy}>
+          <h2 className={styles.filterBy}>
             {isExtensions ? "Filter extensions" : "Filter by"}
-          </div>
+          </h2>
           {selectedTags.length > 0 || selectedAuthors.length > 0 ? (
-            <div className={styles.clearAll} onClick={clearAll} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); clearAll(); } }}>
+            <Button
+              appearance="transparent"
+              size="small"
+              className={styles.clearAll}
+              onClick={clearAll}
+            >
               Clear all
-            </div>
+            </Button>
           ) : null}
         </div>
         {uncategorizedTags.map((tag) => {

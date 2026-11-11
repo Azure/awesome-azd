@@ -4,12 +4,12 @@
  */
 
 .page {
-  --catalog-bg: #ffffff;
-  --catalog-surface: #ffffff;
-  --catalog-text: #111827;
-  --catalog-muted: #566276;
-  --catalog-border: #d7dce4;
-  --catalog-blue: #0f6cbd;
+  --catalog-bg: var(--colorNeutralBackground2, #f5f5f5);
+  --catalog-surface: var(--colorNeutralBackground1, #fff);
+  --catalog-text: var(--colorNeutralForeground1, #242424);
+  --catalog-muted: var(--colorNeutralForeground2, #424242);
+  --catalog-border: var(--colorNeutralStroke2, #e0e0e0);
+  --catalog-blue: var(--colorBrandForeground1, #0f6cbd);
   min-height: 100vh;
   background:
     radial-gradient(
@@ -26,20 +26,11 @@
   background: transparent;
 }
 
-:global([data-theme="dark"]) .page {
-  --catalog-bg: #111317;
-  --catalog-surface: #191c22;
-  --catalog-text: #f3f5f8;
-  --catalog-muted: #a7b0bf;
-  --catalog-border: #30343c;
-  --catalog-blue: #5aa7ea;
-}
-
 .filterAndCard {
   display: grid;
   grid-template-columns: 240px minmax(0, 1fr);
   gap: 20px;
-  width: min(1280px, calc(100% - 128px));
+  width: min(1920px, calc(100% - 128px));
   margin: 0 auto;
   padding: 0 0 48px;
 }
@@ -54,6 +45,8 @@
 
 .card {
   min-width: 0;
+  container-name: extension-results;
+  container-type: inline-size;
 }
 
 .backToTopButton {

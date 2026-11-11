@@ -165,17 +165,21 @@ test("catalog agent utility omits the copy link action", async ({ page }) => {
   ).toHaveAttribute("href", "https://aka.ms/awesome-azd/templates.json");
 });
 
-test("extension copy feedback remains unchanged", async ({ page }) => {
+test("extension copy feedback matches template cards", async ({ page }) => {
   await page.goto("extensions");
   const button = page
-    .getByRole("button", { name: /^Copy install command for / })
-    .first();
+    .getByTestId("extension-command")
+    .first()
+    .locator("xpath=following-sibling::button[1]");
+  const status = button.locator(
+    "xpath=following-sibling::span[@role='status'][1]",
+  );
   await button.click();
 
-  const feedback = page
-    .getByRole("status")
-    .filter({ hasText: /^(Copying\.\.\.|Copied!)$/ });
-  await expect(feedback).toHaveText("Copying...");
   await finishCopy(page, true);
-  await expect(feedback).toHaveText("Copied!");
+  await expect(button).toHaveAccessibleName(
+    /^Copied install command for /,
+  );
+  await expect(status).toContainText("Copied install command for");
+  await expect(status).toHaveCSS("opacity", "0");
 });

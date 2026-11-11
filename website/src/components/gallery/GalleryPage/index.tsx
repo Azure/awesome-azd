@@ -8,11 +8,9 @@ import useIsBrowser from "@docusaurus/useIsBrowser";
 import ShowcaseLeftFilters from "../ShowcaseLeftFilters";
 import ShowcaseTemplateSearch from "../ShowcaseTemplateSearch";
 import {
-  webLightTheme,
-  webDarkTheme,
-  FluentProvider,
-  type ComboboxProps,
+  type DropdownProps,
 } from "@fluentui/react-components";
+import SiteFluentProvider from "../../SiteFluentProvider";
 import type { GalleryNavigationState } from "@site/src/utils/galleryNavigation";
 import {
   readSearchTags,
@@ -22,7 +20,6 @@ import {
 import { type TagType } from "@site/src/data/tags";
 import { TagList } from "@site/src/data/templates";
 import styles from "./styles.module.css";
-import { useColorMode } from "@docusaurus/theme-common";
 import ShowcaseResults from "../ShowcaseResults";
 import ShowcaseResultsToolbar from "../ShowcaseResultsToolbar";
 import { useLocation } from "@docusaurus/router";
@@ -49,7 +46,6 @@ const BackToTopButton = () => {
 };
 
 export default function GalleryPage(): React.JSX.Element | null {
-  const { colorMode } = useColorMode();
   const isBrowser = useIsBrowser();
   const [activeTags, setActiveTags] = useState<TagType[]>(TagList);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([
@@ -69,7 +65,7 @@ export default function GalleryPage(): React.JSX.Element | null {
       console.warn("Unsupported gallery URL tags were ignored.");
     }
   }, [location.search]);
-  const sortByOnSelect: NonNullable<ComboboxProps["onOptionSelect"]> = (
+  const sortByOnSelect: NonNullable<DropdownProps["onOptionSelect"]> = (
     _event,
     data,
   ) => {
@@ -81,10 +77,7 @@ export default function GalleryPage(): React.JSX.Element | null {
   };
 
   return isBrowser ? (
-    <FluentProvider
-      theme={colorMode == "dark" ? webDarkTheme : webLightTheme}
-      className={styles.fluentProvider}
-    >
+    <SiteFluentProvider className={styles.fluentProvider}>
       <main className={styles.page}>
         <ShowcaseTemplateSearch />
         <ShowcaseResultsToolbar
@@ -92,7 +85,10 @@ export default function GalleryPage(): React.JSX.Element | null {
           onSortSelect={sortByOnSelect}
         />
         <div className={styles.filterAndCard}>
-          <div className={styles.filter}>
+          <div
+            className={styles.filter}
+            data-testid="extension-filter-panel"
+          >
             <ShowcaseLeftFilters
               activeTags={activeTags}
               location={location}
@@ -112,6 +108,6 @@ export default function GalleryPage(): React.JSX.Element | null {
         </div>
         <BackToTopButton />
       </main>
-    </FluentProvider>
+    </SiteFluentProvider>
   ) : null;
 }

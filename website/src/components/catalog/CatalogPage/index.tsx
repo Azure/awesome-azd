@@ -13,7 +13,6 @@ import React, {
 import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 import { useHistory, useLocation } from "@docusaurus/router";
-import { useColorMode } from "@docusaurus/theme-common";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import useIsBrowser from "@docusaurus/useIsBrowser";
 import Layout from "@theme/Layout";
@@ -22,12 +21,14 @@ import {
   Card,
   Checkbox,
   Dropdown,
-  FluentProvider,
   Label,
   Option,
-  webDarkTheme,
-  webLightTheme,
 } from "@fluentui/react-components";
+import {
+  Copy16Regular,
+  Sparkle16Regular,
+  Star16Regular,
+} from "@fluentui/react-icons";
 import { SearchBox } from "@fluentui/react-search";
 import {
   catalogTemplates,
@@ -54,6 +55,7 @@ import {
   restoreGalleryNavigationState,
   type GalleryNavigationState,
 } from "../../../utils/galleryNavigation";
+import SiteFluentProvider from "../../SiteFluentProvider";
 import CopyAction from "../CopyAction";
 import styles from "./styles.module.css";
 
@@ -82,51 +84,15 @@ const catalogSortLabels: Record<CatalogSort, string> = {
 };
 
 function AiIcon(): React.JSX.Element {
-  return (
-    <svg
-      className={styles.aiIcon}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      aria-hidden="true"
-    >
-      <path d="M12 3 14.5 9.5 21 12 14.5 14.5 12 21 9.5 14.5 3 12 9.5 9.5Z" />
-    </svg>
-  );
+  return <Sparkle16Regular className={styles.aiIcon} aria-hidden="true" />;
 }
 
 function StarIcon(): React.JSX.Element {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M12 3 14.8 8.7 21.1 9.6 16.6 14 17.7 20.3 12 17.3 6.3 20.3 7.4 14 2.9 9.6 9.2 8.7Z" />
-    </svg>
-  );
+  return <Star16Regular aria-hidden="true" />;
 }
 
 function CopyIcon(): React.JSX.Element {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      width="16"
-      height="16"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      aria-hidden="true"
-    >
-      <rect x="8" y="8" width="11" height="13" rx="2" />
-      <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h3" />
-    </svg>
-  );
+  return <Copy16Regular aria-hidden="true" />;
 }
 
 function FacetSection({
@@ -386,23 +352,6 @@ function getPaginationItems(
   ];
 }
 
-function CatalogFluentProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}): React.JSX.Element {
-  const { colorMode } = useColorMode();
-
-  return (
-    <FluentProvider
-      className={styles.fluentProvider}
-      theme={colorMode === "dark" ? webDarkTheme : webLightTheme}
-    >
-      {children}
-    </FluentProvider>
-  );
-}
-
 export default function CatalogPage(): React.JSX.Element {
   const history = useHistory();
   const location = useLocation();
@@ -602,7 +551,7 @@ export default function CatalogPage(): React.JSX.Element {
         />
       </Head>
       <Layout>
-        <CatalogFluentProvider>
+        <SiteFluentProvider className={styles.fluentProvider}>
           <main className={styles.page}>
             <div className={styles.wrap}>
               <section className={styles.hero}>
@@ -924,7 +873,7 @@ export default function CatalogPage(): React.JSX.Element {
               </div>
             </section>
           </main>
-        </CatalogFluentProvider>
+        </SiteFluentProvider>
       </Layout>
     </>
   );

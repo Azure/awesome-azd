@@ -30,7 +30,11 @@ import {
   restoreGalleryNavigationState,
   type GalleryNavigationState,
 } from "@site/src/utils/galleryNavigation";
-import { readSearchName, clearSearchFilters } from "@site/src/utils/galleryQuery";
+import {
+  readSearchName,
+  clearSearchFilters,
+  replaceSearchName,
+} from "@site/src/utils/galleryQuery";
 import styles from "./styles.module.css";
 
 type GalleryItems =
@@ -65,6 +69,16 @@ export default function ShowcaseResults({
     history.push({
       ...location,
       search: clearSearchFilters(location.search),
+      state: captureGalleryNavigationState(),
+    });
+  };
+  const clearSearchAndFilters = () => {
+    history.push({
+      ...location,
+      search: replaceSearchName(
+        clearSearchFilters(location.search),
+        null,
+      ),
       state: captureGalleryNavigationState(),
     });
   };
@@ -143,12 +157,12 @@ export default function ShowcaseResults({
       {activeType === "extensions" ? (
         <ShowcaseExtensionCards
           filteredExtensions={activeItems.slice(startIndex, endIndex)}
-          searchName={searchName}
+          onClear={clearSearchAndFilters}
         />
       ) : (
         <ShowcaseCards
           filteredTemplates={activeItems.slice(startIndex, endIndex)}
-          searchName={searchName}
+          onClear={clearSearchAndFilters}
         />
       )}
       {totalPages > 1 && (
@@ -158,15 +172,17 @@ export default function ShowcaseResults({
           onPageChange={setCurrentPage}
         />
       )}
-      <div className={styles.resultsFooter}>
-        <ShowcaseResultsStatus
-          totalItems={totalItems}
-          startIndex={startIndex}
-          endIndex={endIndex}
-          isExtensions={isExtensions}
-          searchName={searchName}
-        />
-      </div>
+      {totalItems > 0 ? (
+        <div className={styles.resultsFooter}>
+          <ShowcaseResultsStatus
+            totalItems={totalItems}
+            startIndex={startIndex}
+            endIndex={endIndex}
+            isExtensions={isExtensions}
+            searchName={searchName}
+          />
+        </div>
+      ) : null}
     </>
   );
 }

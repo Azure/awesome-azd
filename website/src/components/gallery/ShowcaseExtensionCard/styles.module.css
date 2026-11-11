@@ -10,6 +10,7 @@
 .card {
   composes: card from "../gallery-card.module.css";
   width: 100%;
+  max-width: 350px;
   height: 388px;
   min-width: 0;
 }
@@ -69,43 +70,59 @@
   color: var(--ifm-color-primary) !important;
 }
 
-.command {
+.commandBar {
   display: flex;
   align-items: center;
-  flex: 1;
-  min-width: 0;
-  min-height: 36px;
-  padding: 4px 8px;
-  border: 1px solid var(--site-color-border);
-  font-size: 11px;
-  font-family: var(--ifm-font-family-monospace, 'JetBrains Mono', Consolas, monospace);
-  line-height: 1.35;
-  color: #57534E;
+  gap: 8px;
+  padding: 8px 10px;
+  margin: 0 12px 12px;
+  border: 1px solid var(--catalog-border);
   border-radius: 6px;
-  background: var(--site-hero-bg);
+  background: var(--colorNeutralBackground3, #f0f0f0);
+}
+
+.command {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--catalog-text);
+  font-family: var(
+    --ifm-font-family-monospace,
+    "JetBrains Mono",
+    Consolas,
+    monospace
+  );
+  font-size: 0.68rem;
+  line-height: 1.35;
   overflow-wrap: anywhere;
   white-space: normal;
   user-select: text;
 }
 
-.copyIconButton {
-  composes: copyIconButton from "../gallery-card.module.css";
-  align-self: center;
-  flex: 0 0 24px;
-  width: 24px !important;
-  height: 24px !important;
-  min-height: 24px !important;
-  min-width: 24px !important;
-  max-height: 24px !important;
-  max-width: 24px !important;
+.copyCommand {
+  display: grid;
+  flex: 0 0 32px;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--catalog-border);
+  border-radius: 5px;
+  background: var(--catalog-surface);
+  color: var(--catalog-blue);
 }
 
-.copyFeedback {
-  composes: copyFeedback from "../gallery-card.module.css";
+.copyCommand:hover {
+  border-color: var(--catalog-blue);
+  background: var(--colorBrandBackground2, #ebf3fc);
 }
 
-.copyIconButton:focus-visible {
-  outline: 2px solid var(--ifm-color-primary) !important;
+.copyCommand:focus-visible {
+  outline: 2px solid var(--catalog-blue);
   outline-offset: 2px;
 }
 
@@ -118,12 +135,6 @@
 
 .cardTitle:hover {
   text-decoration: none !important;
-}
-
-[data-theme="dark"] .command {
-  color: #A8A29E;
-  border-color: rgba(255, 255, 255, 0.08);
-  background-color: #1A1A1A;
 }
 
 .cardMetaLink {

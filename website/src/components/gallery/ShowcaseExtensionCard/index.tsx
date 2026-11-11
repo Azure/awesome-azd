@@ -9,28 +9,20 @@ import { type Extension } from "../../../data/extensionTypes";
 import { CAPABILITY_BADGES } from "../../../data/extensionCapabilities";
 import extensionRegistries from "../../../data/extensionRegistries.json";
 import { Tags } from "../../../data/tags";
-import { useClipboard } from "../../../utils/useClipboard";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import {
   Card,
   CardHeader,
-  CardFooter,
-  Button,
   CardPreview,
-  Popover,
-  PopoverTrigger,
-  PopoverSurface,
   Badge,
   Link as FluentUILink,
 } from "@fluentui/react-components";
-import { Globe16Regular } from "@fluentui/react-icons";
+import { Copy16Regular, Globe16Regular } from "@fluentui/react-icons";
+import CopyAction from "../../catalog/CopyAction";
 
 function ShowcaseExtensionCard({ extension }: { extension: Extension }): React.JSX.Element {
-  const { status: copyStatus, copy } = useClipboard();
-  const [isCopyFeedbackOpen, setCopyFeedbackOpen] = React.useState(false);
   const communityLogo = useBaseUrl("/img/Community.svg");
   const msftLogo = useBaseUrl("/img/Microsoft.svg");
-  const copyIcon = useBaseUrl("/img/Copy.svg");
 
   const isBuiltIn = extension.registryUrl === extensionRegistries.builtIn;
   const isMicrosoftAuthored = extension.tags.includes("msft");
@@ -49,7 +41,6 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): React.J
     !isBuiltIn
       ? `azd ext source add -t url -n ${sourceName} -l ${extension.registryUrl}\n${installCommand}`
       : installCommand;
-
   const contentForAdobeAnalytics = JSON.stringify({
     id: extension.displayName,
     cN: "Copy Button (azd ext install)",
@@ -149,41 +140,26 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): React.J
           </div>
         </div>
       </div>
-      <CardPreview className={styleCSS.cardBreakLine} />
-      <CardFooter>
+      <div className={styleCSS.commandBar}>
         <code
           id={"command_" + extension.id}
           className={styleCSS.command}
+          title={installCommand}
           aria-label={`Install command for ${extension.displayName}`}
           data-testid="extension-command"
         >
           {installCommand}
         </code>
-        <Popover
-          trapFocus
-          withArrow
-          size="small"
-          open={isCopyFeedbackOpen && copyStatus !== "failed"}
-          onOpenChange={(_event, data) => setCopyFeedbackOpen(data.open)}
+        <CopyAction
+          value={clipboardCommand}
+          idleLabel={`Copy install command for ${extension.displayName}`}
+          copiedLabel={`Copied install command for ${extension.displayName}`}
+          className={styleCSS.copyCommand}
+          analyticsData={contentForAdobeAnalytics}
         >
-          <PopoverTrigger disableButtonEnhancement>
-            <Button
-              size="small"
-              className={styleCSS.copyIconButton}
-              aria-label={`Copy install command for ${extension.displayName}`}
-              onClick={() => {
-                void copy(clipboardCommand);
-              }}
-              data-m={contentForAdobeAnalytics}
-            >
-              <img src={copyIcon} width={20} height={20} alt="Copy" />
-            </Button>
-          </PopoverTrigger>
-          <PopoverSurface tabIndex={-1} className={styleCSS.copyFeedback}>
-            <div role="status" aria-live="polite">{copyStatus === "copied" ? "Copied!" : "Copying..."}</div>
-          </PopoverSurface>
-        </Popover>
-      </CardFooter>
+          <Copy16Regular aria-hidden="true" />
+        </CopyAction>
+      </div>
     </Card>
   );
 }

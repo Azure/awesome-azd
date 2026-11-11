@@ -142,11 +142,13 @@ const config = {
             to: "https://aka.ms/azd",
             label: "Docs",
             position: "left",
+            className: "navbar-external-link",
           },
           {
             to: "https://learn.microsoft.com/azure/architecture/browse/",
             label: "Resources",
             position: "left",
+            className: "navbar-external-link",
           },
 
           // right

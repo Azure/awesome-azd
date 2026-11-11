@@ -32,7 +32,7 @@ export default function ResearchPage(): React.JSX.Element {
             <p className={styles.lead}>
               The unified catalog keeps the existing Awesome azd inventory as
               the source of truth while making AI app templates discoverable
-              through the same search, filters, cards, and detail flow.
+              through the same search, filters, cards, and source links.
             </p>
 
             <section>
@@ -47,10 +47,9 @@ export default function ResearchPage(): React.JSX.Element {
             <section>
               <h2>Source-linked claims</h2>
               <p>
-                Detail pages render only public catalog metadata. Missing
-                prerequisites, architecture, hosting, cost, security, region,
-                and quota information is shown as unknown and linked back to
-                the repository for verification.
+                Gallery cards render only public catalog metadata and link
+                directly to the repository, where requirements and deployment
+                guidance can be verified.
               </p>
             </section>
             <section>

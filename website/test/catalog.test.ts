@@ -6,12 +6,7 @@
 import { describe, expect, test } from "@jest/globals";
 import templates from "../static/templates.json";
 import reviewedTemplateUseCases from "../src/catalog/template-use-cases.json";
-import {
-  catalogTemplates,
-  findCatalogTemplate,
-  getCatalogTemplatePath,
-} from "../src/catalog/catalogData";
-import { isCatalogTemplate } from "../route_generator_plugin/catalogRouteGenerator";
+import { catalogTemplates } from "../src/catalog/catalogData";
 import {
   catalogFacets,
   clearCatalogState,
@@ -45,26 +40,11 @@ describe("unified catalog data", () => {
     ).toBe(catalogTemplates.length);
   });
 
-  test("creates stable detail paths for current and legacy repositories", () => {
-    const template =
-      catalogTemplates.find((candidate) => candidate.legacySlugs.length > 0) ??
-      catalogTemplates[0];
-    expect(getCatalogTemplatePath(template)).toBe(
-      `/templates/${template.slug}`,
-    );
-    expect(
-      findCatalogTemplate(template.owner, template.repo)?.id,
-    ).toBe(template.id);
-    for (const legacySlug of template.legacySlugs) {
-      const [owner, repo] = legacySlug.split("/");
-      expect(findCatalogTemplate(owner, repo)?.id).toBe(template.id);
-    }
-  });
-
-  test("keeps the renamed AI chat repository route working", () => {
-    const template = findCatalogTemplate(
-      "azure-samples",
-      "azureai-basic-python",
+  test("keeps the renamed AI chat template in the catalog", () => {
+    const template = catalogTemplates.find(
+      (candidate) =>
+        candidate.source ===
+        "https://github.com/Azure-Samples/get-started-with-ai-chat",
     );
 
     expect(template?.source).toBe(
@@ -231,29 +211,6 @@ describe("unified catalog data", () => {
 
     expect(apiTemplate?.tasks).toContain("Build an API");
     expect(webTemplate?.tasks).toContain("Build a web app");
-  });
-});
-
-describe("catalog route generation", () => {
-  test.each([undefined, null, "", "ai-app-templates"])(
-    "generates detail routes for templateType %p",
-    (templateType) => {
-      expect(
-        isCatalogTemplate({
-          source: "https://github.com/example/template",
-          templateType,
-        }),
-      ).toBe(true);
-    },
-  );
-
-  test("does not generate detail routes for other specialized templates", () => {
-    expect(
-      isCatalogTemplate({
-        source: "https://github.com/example/extension",
-        templateType: "extension.ai.agent",
-      }),
-    ).toBe(false);
   });
 });
 

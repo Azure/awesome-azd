@@ -101,10 +101,6 @@ for (const required of [true, false]) {
 for (const [route, heading] of [
   ["templates", "Your next app. Ready to build."],
   ["templates/start-with-code", "Start with your own code"],
-  [
-    "templates/azure-samples/azure-search-openai-demo",
-    "RAG chat with Azure AI Search + Python",
-  ],
   ["templates/research", "Catalog research & rationale"],
 ] as const) {
   test(`${route} uses the standard Microsoft legal footer`, async ({

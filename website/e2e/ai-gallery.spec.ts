@@ -227,7 +227,9 @@ test.describe("Unified AI app templates catalog", () => {
     expect(remoteSearchRequests).toEqual([]);
   });
 
-  test("opens canonical and legacy AI detail routes", async ({ page }) => {
+  test("links AI templates directly to their repositories", async ({
+    page,
+  }) => {
     await openAiGallery(page);
     const templateLink = resultLinks(page).filter({
       hasText: featuredTemplateTitle,
@@ -235,42 +237,12 @@ test.describe("Unified AI app templates catalog", () => {
 
     await expect(templateLink).toHaveAttribute(
       "href",
-      /\/awesome-azd\/templates\/azure-samples\/azure-search-openai-demo\?/,
+      "https://github.com/Azure-Samples/azure-search-openai-demo",
     );
-    await page.goto(
-      "templates/azure-samples/azure-search-openai-demo?type=ai",
+    await expect(templateLink).toHaveAttribute("target", "_blank");
+    await expect(templateLink).toHaveAttribute(
+      "rel",
+      "noopener noreferrer",
     );
-
-    await expect(
-      page.getByRole("heading", {
-        level: 1,
-        name: featuredTemplateTitle,
-      }),
-    ).toBeVisible();
-    await expect(
-      page.getByRole("link", {
-        name: "Azure Content Team",
-        exact: true,
-      }),
-    ).toHaveAttribute("href", "https://github.com/Azure-Samples");
-    await expect(
-      page.locator(
-        'a[href="https://aka.ms/awesome-azd/templates.json"]',
-      ),
-    ).toHaveCount(2);
-    await expect(page.getByText("Services and integrations.")).toBeVisible();
-    await page.getByRole("link", { name: "Back to templates" }).click();
-    await expect(page).toHaveURL(/\/templates\?type=ai$/);
-
-    const legacyResponse = await page.goto(
-      "templates/ai/repo/azure-samples/azure-search-openai-demo",
-    );
-    expect(legacyResponse?.ok()).toBeTruthy();
-    await expect(
-      page.getByRole("heading", {
-        level: 1,
-        name: featuredTemplateTitle,
-      }),
-    ).toBeVisible();
   });
 });

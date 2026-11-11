@@ -52,10 +52,6 @@ export type CatalogTemplate = {
   description: string;
   source: string;
   normalizedSource: string;
-  owner: string;
-  repo: string;
-  slug: string;
-  legacySlugs: string[];
   authors: string[];
   legacyAuthors: string[];
   authorUrls: string[];
@@ -224,7 +220,6 @@ function getCoordinates(source: string): {
   normalizedSource: string;
   owner: string;
   repo: string;
-  slug: string;
 } {
   const normalizedSource = normalizeTemplateSource(source);
   if (normalizedSource === null) {
@@ -238,7 +233,6 @@ function getCoordinates(source: string): {
     normalizedSource,
     owner,
     repo,
-    slug: `${owner.toLowerCase()}/${repo.toLowerCase()}`,
   };
 }
 
@@ -456,9 +450,6 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     }
     return result;
   }, []);
-  const legacySlugs = readStringArray(record.legacySources).map(
-    (legacySource) => getCoordinates(legacySource).slug,
-  );
   const authorship = getAuthorship(coordinates.owner, authors, tags);
   const tasks = getReviewedUseCases(coordinates.normalizedSource);
   const initCommand = formatAzdInitCommand(getTemplateIdentifier(source));
@@ -497,10 +488,6 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     description,
     source,
     normalizedSource: coordinates.normalizedSource,
-    owner: coordinates.owner,
-    repo: coordinates.repo,
-    slug: coordinates.slug,
-    legacySlugs,
     authors,
     legacyAuthors,
     authorUrls,
@@ -536,26 +523,4 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
 export const catalogTemplates = (templates as RawTemplate[])
   .map(toCatalogTemplate)
   .filter((template): template is CatalogTemplate => template !== null);
-
-const templatesBySlug = new Map<string, CatalogTemplate>();
-for (const template of catalogTemplates) {
-  for (const slug of [template.slug, ...template.legacySlugs]) {
-    const existing = templatesBySlug.get(slug);
-    if (existing && existing.id !== template.id) {
-      throw new Error(`Duplicate catalog template route: ${slug}`);
-    }
-    templatesBySlug.set(slug, template);
-  }
-}
-
-export function findCatalogTemplate(
-  owner: string,
-  repo: string,
-): CatalogTemplate | undefined {
-  return templatesBySlug.get(`${owner}/${repo}`.toLowerCase());
-}
-
-export function getCatalogTemplatePath(template: CatalogTemplate): string {
-  return `/templates/${template.slug}`;
-}
 

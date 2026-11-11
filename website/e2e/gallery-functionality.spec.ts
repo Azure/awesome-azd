@@ -54,19 +54,6 @@ test.describe("Gallery functionality (deploy gate)", () => {
     await page.goto("templates?page=2");
     await expect(resultsStatus(page)).toContainText("21-40 of");
 
-    await page.goto(
-      "templates/azure-samples/azure-search-openai-demo?type=ai&page=2",
-    );
-    await expect(
-      page.getByRole("heading", {
-        level: 1,
-        name: "RAG chat with Azure AI Search + Python",
-      }),
-    ).toBeVisible();
-    await expect(
-      page.getByRole("link", { name: "Back to templates" }),
-    ).toHaveAttribute("href", /\/templates\?type=ai&page=2$/);
-
     expect(hydrationErrors).toEqual([]);
   });
 
@@ -291,71 +278,19 @@ test.describe("Gallery functionality (deploy gate)", () => {
     expect(gap).toBeLessThan(90);
   });
 
-  test("template cards open dedicated detail pages", async ({ page }) => {
-    const firstLink = page.locator("a[data-template-title]").first();
-    const title = await firstLink.getAttribute("data-template-title");
-    await firstLink.click();
-
-    await expect(page).toHaveURL(/\/templates\/[^/]+\/[^/?]+/);
-    await expect(
-      page.getByRole("heading", { level: 1, name: title ?? "" }),
-    ).toBeVisible();
-    const repositoryLink = page.getByRole("link", {
-      name: "View repository",
-    });
-    await expect(repositoryLink).toHaveAttribute("target", "_blank");
-    const repositoryUrl = new URL(
-      (await repositoryLink.getAttribute("href")) ?? "",
-    );
-    await expect(
-      page.getByRole("link", { name: "Open GitHub Codespaces" }),
-    ).toHaveAttribute(
-      "href",
-      `https://github.com/codespaces/new${repositoryUrl.pathname}`,
-    );
-    await expect(page.locator("aside code").locator("..")).toHaveCSS(
-      "border-top-width",
-      "0px",
-    );
-    await expect(page.locator("#get-started pre")).toHaveCSS(
-      "border-top-width",
-      "0px",
-    );
-    await expect(
-      page.locator('link[rel="alternate"][type="text/markdown"]'),
-    ).toHaveCount(0);
-    const agentDetails = page.locator("aside details");
-    await expect(agentDetails).toContainText("untrusted data");
-    await expect(
-      agentDetails.getByRole("button", { name: "Copy Markdown link" }),
-    ).toHaveCount(0);
-  });
-
-  test("returning from template details preserves pagination and position", async ({
+  test("template cards link directly to source repositories", async ({
     page,
   }) => {
-    await page.getByRole("button", { name: "Next page" }).click();
-    await expect(page).toHaveURL(/[?&]page=2(?:&|$)/);
-    await expect(resultsStatus(page)).toContainText("21-40 of");
-
-    const target = page.locator("a[data-template-title]").nth(15);
-    await target.scrollIntoViewIfNeeded();
-    await target.focus();
-    const targetId = await target.getAttribute("id");
-    const previousScroll = await page.evaluate(() => window.scrollY);
-    expect(previousScroll).toBeGreaterThan(0);
-    expect(targetId).toBeTruthy();
-
-    await target.click();
-    await expect(page).toHaveURL(/[?&]page=2(?:&|$)/);
-    await page.getByRole("link", { name: "Back to templates" }).click();
-
-    await expect(page).toHaveURL(/\/templates\?page=2$/);
-    await expect(resultsStatus(page)).toContainText("21-40 of");
-    await expect
-      .poll(() => page.evaluate(() => window.scrollY))
-      .toBeGreaterThan(previousScroll - 100);
-    await expect(page.locator(`#${targetId}`)).toBeFocused();
+    const firstLink = page.locator("a[data-template-title]").first();
+    const source = new URL(
+      (await firstLink.getAttribute("href")) ?? "",
+    );
+    expect(source.hostname).toBe("github.com");
+    await expect(firstLink).toHaveAttribute("target", "_blank");
+    await expect(firstLink).toHaveAttribute(
+      "rel",
+      "noopener noreferrer",
+    );
   });
 
   test("browser Back restores the previous filter state", async ({ page }) => {
@@ -368,21 +303,6 @@ test.describe("Gallery functionality (deploy gate)", () => {
 
     await expect(page).toHaveURL(/\/templates$/);
     await expect(pythonCheckbox).not.toBeChecked();
-  });
-
-  test("legacy AI repository routes resolve to the renamed template", async ({
-    page,
-  }) => {
-    await page.goto(
-      "templates/ai/repo/azure-samples/azureai-basic-python",
-    );
-
-    await expect(
-      page.getByRole("heading", {
-        level: 1,
-        name: "Get Started with Chat",
-      }),
-    ).toBeVisible();
   });
 
   test("agent index documents catalogs and deployment guidance", async ({
@@ -636,12 +556,9 @@ test.describe("Gallery functionality (deploy gate)", () => {
       "data-theme",
       "dark",
     );
-    await page.locator("a[data-template-title]").first().click();
-    await expect(page).toHaveURL(/\/templates\/[^/]+\/[^/?]+/);
     const copyButton = page.getByRole("button", {
-      name: "Copy init command",
-      exact: true,
-    });
+      name: /Copy init command for/,
+    }).first();
     await copyButton.hover();
 
     const contrast = await copyButton.evaluate((element) => {

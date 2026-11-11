@@ -32,7 +32,6 @@ import {
 } from "@fluentui/react-icons";
 import {
   catalogTemplates,
-  getCatalogTemplatePath,
   type CatalogTemplate,
 } from "../../../catalog/catalogData";
 import {
@@ -200,19 +199,11 @@ function FacetSection({
 
 function TemplateCard({
   template,
-  listingQuery,
 }: {
   template: CatalogTemplate;
-  listingQuery: string;
 }): React.JSX.Element {
-  const history = useHistory();
-  const location = useLocation();
-  const detailPath = useBaseUrl(getCatalogTemplatePath(template));
   const microsoftIcon = useBaseUrl("/img/Microsoft.svg");
   const communityIcon = useBaseUrl("/img/Community.svg");
-  const detailUrl = `${detailPath}?from=catalog${
-    listingQuery ? `&${listingQuery}` : ""
-  }`;
   const service =
     template.resources.find(
       (resource) => resource.role === "Application hosting",
@@ -226,25 +217,7 @@ function TemplateCard({
     ...template.iac.slice(0, 1),
     ...(service ? [service] : []),
   ];
-  const headingId = `template-${template.slug.replace(/[^a-z0-9]/g, "-")}`;
-  const openDetail = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    if (
-      event.button !== 0 ||
-      event.ctrlKey ||
-      event.metaKey ||
-      event.shiftKey ||
-      event.altKey
-    ) {
-      return;
-    }
-
-    event.preventDefault();
-    history.replace({
-      ...location,
-      state: captureGalleryNavigationState(),
-    });
-    history.push(detailUrl, { fromCatalog: true });
-  };
+  const headingId = `template-${template.id}`;
 
   return (
     <Card
@@ -256,13 +229,14 @@ function TemplateCard({
       }`}
       data-template-card
     >
-      <Link
+      <a
         id={`${headingId}-link`}
         className={styles.cardLink}
-        to={detailUrl}
+        href={template.source}
+        target="_blank"
+        rel="noopener noreferrer"
         aria-labelledby={headingId}
         data-template-title={template.title}
-        onClick={openDetail}
       >
         <div className={styles.cardTop}>
           <span className={styles.cardAuthor}>
@@ -310,7 +284,7 @@ function TemplateCard({
             ))}
           </div>
         </div>
-      </Link>
+      </a>
       <div className={styles.cardCommand}>
         <code title={template.initCommand}>{template.initCommand}</code>
         <CopyAction
@@ -778,7 +752,6 @@ export default function CatalogPage(): React.JSX.Element {
                         <TemplateCard
                           key={template.id}
                           template={template}
-                          listingQuery={listingQuery}
                         />
                       ))}
                     </div>

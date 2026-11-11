@@ -5,20 +5,6 @@ import {
 } from "../src/catalog/catalogData";
 import { servicePages } from "../src/catalog/servicePages";
 
-type TemplateRecord = {
-  source: string;
-  templateType?: string | null;
-  legacySources?: string[];
-};
-
-export function isCatalogTemplate(template: TemplateRecord): boolean {
-  return (
-    template.templateType == null ||
-    template.templateType === "" ||
-    template.templateType === "ai-app-templates"
-  );
-}
-
 function dataFileName(prefix: string, value: string): string {
   return `${prefix}-${value.replace(/[^a-z0-9._-]/gi, "-")}.json`;
 }
@@ -67,32 +53,6 @@ export default function catalogRouteGenerator(
           modules,
         });
       };
-
-      for (const template of catalogTemplates) {
-        const templateDataPath = await actions.createData(
-          dataFileName("template", template.id),
-          template,
-        );
-        const modules = { template: templateDataPath };
-
-        for (const slug of [template.slug, ...template.legacySlugs]) {
-          addRoute(
-            `${context.siteConfig.baseUrl}templates/${slug}`,
-            template.source,
-            "@site/src/components/catalog/TemplateDetailPage",
-            modules,
-          );
-
-          if (template.isAi) {
-            addRoute(
-              `${context.siteConfig.baseUrl}templates/ai/repo/${slug}`,
-              template.source,
-              "@site/src/components/catalog/TemplateDetailPage",
-              modules,
-            );
-          }
-        }
-      }
 
       for (const servicePage of servicePages) {
         const matchingTemplates = catalogTemplates.filter((template) =>

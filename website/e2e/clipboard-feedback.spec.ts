@@ -121,33 +121,6 @@ test("start-with-code icon buttons show visible copy feedback", async ({
   ).toBeVisible();
 });
 
-test("detail actions copy the init command and stable link", async ({
-  page,
-}) => {
-  await page.goto("templates/azure-samples/azd-starter-bicep");
-  const startPanel = page.locator("aside");
-  const copyButtons = startPanel.locator("button");
-  const statuses = startPanel.locator('span[role="status"]');
-
-  const commandButton = copyButtons.nth(0);
-  await expect(commandButton).toHaveText("Copy init command");
-  await commandButton.click();
-  await finishCopy(page, true);
-  await expect(commandButton).toHaveText("Init command copied");
-  await expect(statuses.nth(0)).toHaveText("Init command copied");
-  await expect(statuses.nth(0)).toHaveCSS("opacity", "0");
-
-  const linkButton = copyButtons.nth(1);
-  await expect(linkButton).toHaveText("Copy stable template link");
-  await linkButton.click();
-  await finishCopy(page, true);
-  await expect(linkButton).toHaveText("Stable template link copied");
-  await expect(statuses.nth(1)).toHaveText(
-    "Stable template link copied",
-  );
-  await expect(statuses.nth(1)).toHaveCSS("opacity", "0");
-});
-
 test("catalog agent utility omits the copy link action", async ({ page }) => {
   await page.goto("templates");
   const agentSection = page.locator("section").filter({

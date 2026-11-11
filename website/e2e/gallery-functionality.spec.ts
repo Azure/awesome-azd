@@ -394,8 +394,9 @@ test.describe("Gallery functionality (deploy gate)", () => {
 
     expect(guidance).toContain("# Awesome azd");
     expect(guidance).toContain(
-      "https://azure.github.io/awesome-azd/agent-templates.json",
+      "- [Agent templates](https://azure.github.io/awesome-azd/templates.json):",
     );
+    expect(guidance).not.toContain("agent-templates.json");
     expect(guidance).toContain(
       'entries with `templateType: "extension.ai.agent"`',
     );

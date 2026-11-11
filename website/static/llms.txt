@@ -8,8 +8,9 @@
 - [Templates](https://azure.github.io/awesome-azd/templates.json):
   Gallery entries with descriptions, source URLs, and optional language,
   framework, Azure service, and infrastructure-as-code tags.
-- [Agent templates](https://azure.github.io/awesome-azd/agent-templates.json):
-  Foundry agent examples with manifest URLs.
+- [Agent templates](https://azure.github.io/awesome-azd/templates.json):
+  Foundry agent examples in the shared catalog, identified by
+  `templateType: "extension.ai.agent"`, with manifest URLs.
 - [Extensions](https://azure.github.io/awesome-azd/extensions.json):
   azd extension metadata, capabilities, and supported platforms.
 

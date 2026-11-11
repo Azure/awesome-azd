@@ -73,14 +73,6 @@ Operational fields from the retired AI service, including email addresses,
 validation state, deletion state, and environment configuration, are not part
 of the public catalog contract.
 
-### Popularity metadata
-
-GitHub star counts are volatile and are therefore kept outside
-`templates.json` in `website/static/template-stars.json`. The generated file
-contains only normalized public repository sources and star counts. Refresh it
-with `npm run update-template-stars` from `website/` while authenticated with a
-`GITHUB_TOKEN`.
-
 ### Reviewed use-case metadata
 
 The Templates experience supports one or more reviewed use cases per public
@@ -204,7 +196,6 @@ ever changed.
 ## 9. Related files
 
 - [`website/static/templates.json`](../website/static/templates.json) — the data
-- [`website/static/template-stars.json`](../website/static/template-stars.json) — generated public popularity metadata
 - [`website/src/catalog/template-use-cases.json`](../website/src/catalog/template-use-cases.json) — reviewed catalog use cases
 - [`website/src/data/tags.tsx`](../website/src/data/tags.tsx) — `Template` / `TagType` definitions
 - [`website/src/data/templates.ts`](../website/src/data/templates.ts) — filter + validation logic

@@ -322,9 +322,6 @@ export function sortCatalogTemplates(
       if (left.featured !== right.featured) {
         return left.featured ? -1 : 1;
       }
-      if (left.stars !== right.stars) {
-        return right.stars - left.stars;
-      }
       return (
         (sourceOrder.get(left.normalizedSource) ??
           Number.MAX_SAFE_INTEGER) -

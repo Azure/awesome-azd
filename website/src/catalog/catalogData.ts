@@ -4,7 +4,6 @@
  */
 
 import templates from "../../static/templates.json";
-import templateStars from "../../static/template-stars.json";
 import reviewedTemplateUseCases from "./template-use-cases.json";
 import {
   Tags as standardTags,
@@ -63,7 +62,6 @@ export type CatalogTemplate = {
   authorship: CatalogAuthorship;
   isAi: boolean;
   featured: boolean;
-  stars: number;
   tasks: CatalogTask[];
   collections: string[];
   legacyTags: string[];
@@ -193,7 +191,6 @@ const aiServiceIds = new Set([
   "azurebot",
   "openai",
 ]);
-const repositoryStars = templateStars.repositories as Record<string, number>;
 const reviewedUseCases = reviewedTemplateUseCases as Record<string, unknown>;
 const catalogTaskSet = new Set<string>(catalogTasks);
 
@@ -510,7 +507,6 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     authorship,
     isAi,
     featured: tags.includes("featured"),
-    stars: repositoryStars[coordinates.normalizedSource] ?? 0,
     tasks,
     collections: isAi ? ["ai"] : [],
     legacyTags,

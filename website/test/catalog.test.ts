@@ -5,7 +5,6 @@
 
 import { describe, expect, test } from "@jest/globals";
 import templates from "../static/templates.json";
-import templateStars from "../static/template-stars.json";
 import reviewedTemplateUseCases from "../src/catalog/template-use-cases.json";
 import {
   catalogTemplates,
@@ -80,23 +79,6 @@ describe("unified catalog data", () => {
     expect(
       catalogTemplates.some((template) => "markdownUrl" in template),
     ).toBe(false);
-  });
-
-  test("has a static GitHub star count for every catalog template", () => {
-    expect(Object.keys(templateStars.repositories).sort()).toEqual(
-      catalogTemplates
-        .map((template) => template.normalizedSource)
-        .sort(),
-    );
-    expect(
-      catalogTemplates.every(
-        (template) =>
-          Number.isInteger(template.stars) && template.stars >= 0,
-      ),
-    ).toBe(true);
-    expect(catalogTemplates.some((template) => template.stars > 0)).toBe(
-      true,
-    );
   });
 
   test("has reviewed use cases for every catalog template", () => {
@@ -586,7 +568,7 @@ describe("unified catalog query", () => {
     );
   });
 
-  test("sorts featured templates first, then by stars descending", () => {
+  test("sorts featured templates first, then by catalog order", () => {
     const sourceOrder = new Map(
       catalogTemplates.map((template, index) => [
         template.normalizedSource,
@@ -609,13 +591,20 @@ describe("unified catalog query", () => {
     expect(
       sorted.slice(featuredCount).every((template) => !template.featured),
     ).toBe(true);
-    for (let index = 1; index < sorted.length; index += 1) {
-      if (sorted[index - 1].featured === sorted[index].featured) {
-        expect(sorted[index - 1].stars).toBeGreaterThanOrEqual(
-          sorted[index].stars,
-        );
-      }
-    }
+    expect(
+      sorted.slice(0, featuredCount).map((template) => template.id),
+    ).toEqual(
+      catalogTemplates
+        .filter((template) => template.featured)
+        .map((template) => template.id),
+    );
+    expect(
+      sorted.slice(featuredCount).map((template) => template.id),
+    ).toEqual(
+      catalogTemplates
+        .filter((template) => !template.featured)
+        .map((template) => template.id),
+    );
   });
 });
 

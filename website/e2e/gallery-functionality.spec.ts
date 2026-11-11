@@ -507,7 +507,7 @@ test.describe("Gallery functionality (deploy gate)", () => {
     });
   });
 
-  test("does not request the retired repository metrics cache", async ({
+  test("does not request repository metrics", async ({
     page,
   }) => {
     const metadataRequests: string[] = [];

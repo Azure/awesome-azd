@@ -634,7 +634,7 @@ export default function CatalogPage(): React.JSX.Element {
                     aria-label="Sort by"
                     value={selectedSortLabel}
                     selectedOptions={[state.sort]}
-                    title="Most popular shows featured templates first, then orders the rest by GitHub stars. Latest follows the catalog's newest-first order."
+                    title="Most popular shows featured templates first, followed by catalog order. Latest follows the catalog's newest-first order."
                     onOptionSelect={(_event, data) => {
                       const sort =
                         catalogSortOptions.find(

@@ -31,7 +31,7 @@ export default function ShowcaseLeftFilters({
 }) {
   const isExtensions = getContentType(location) === "extensions";
 
-  // Compute template counts per tag for display
+  // Compute item counts per tag for display.
   const tagCounts = React.useMemo(() => {
     const counts: Record<string, number> = {};
     const countTags = (tags: TagType[]) => {
@@ -61,13 +61,13 @@ export default function ShowcaseLeftFilters({
   // applyMinCountThreshold — they should always remain discoverable
   // regardless of how many templates currently carry them.
   //
-  // For the extensions view, hide `new`, `popular`, and `aicollection`:
-  // those collections only apply to templates. Keep `msft` / `community`
-  // so users can still filter by author type.
+  // Hide template-only collections and the redundant Microsoft authorship
+  // filter. Community will appear automatically once it has matching results.
   const EXTENSION_HIDDEN_UNCATEGORIZED_TAGS = new Set<string>([
     "new",
     "popular",
     "aicollection",
+    "msft",
   ]);
   // Explicit display order: surface Microsoft-authored entries before
   // community-authored so the primary/official source is the first option.
@@ -82,6 +82,7 @@ export default function ShowcaseLeftFilters({
     const tagObject = Tags[tag];
     if (tagObject.type !== undefined) return false;
     if (isExtensions && EXTENSION_HIDDEN_UNCATEGORIZED_TAGS.has(tag)) return false;
+    if (isExtensions && (tagCounts[tag] ?? 0) === 0) return false;
     return true;
   }).sort(
     (a, b) =>
@@ -115,10 +116,7 @@ export default function ShowcaseLeftFilters({
   const [openItems, setOpenItems] = React.useState<string[]>(
     isExtensions ? ["9"] : [],
   );
-  // Sync the Extension Capabilities accordion's open state with `isExtensions`
-  // because ShowcaseLeftFilters is not remounted when the user toggles between
-  // Templates and Extensions — without this effect the panel would only honor
-  // the default on first mount.
+  // Keep the Capabilities section expanded in the extension gallery.
   React.useEffect(() => {
     setOpenItems(isExtensions ? ["9"] : []);
   }, [isExtensions]);
@@ -142,7 +140,9 @@ export default function ShowcaseLeftFilters({
     >
       <div className={styles.filterCollections}>
         <div className={styles.filterTop}>
-          <div className={styles.filterBy}>Filter by</div>
+          <div className={styles.filterBy}>
+            {isExtensions ? "Filter extensions" : "Filter by"}
+          </div>
           {selectedTags.length > 0 || selectedAuthors.length > 0 ? (
             <div className={styles.clearAll} onClick={clearAll} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); clearAll(); } }}>
               Clear all
@@ -199,10 +199,10 @@ export default function ShowcaseLeftFilters({
         </>
       )}
 
-      {/* Extension Capabilities filter (extensions view only) */}
+      {/* Capabilities filter (extensions view only) */}
       {isExtensions && extensionCapabilityTags.length > 0 && (
         <ShowcaseFilterSection
-          title="Extension Capabilities"
+          title="Capabilities"
           value="9"
           tags={extensionCapabilityTags}
           activeTags={activeTags}

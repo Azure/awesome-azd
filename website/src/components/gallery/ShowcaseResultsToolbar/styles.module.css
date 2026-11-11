@@ -3,34 +3,75 @@
  * Licensed under the MIT License.
  */
 
-.viewingSortRow {
+.discoveryBar {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: min(1280px, calc(100% - 128px));
+  margin: 12px auto 16px;
 }
 
-.viewingStatus {
-  display: flex;
-  gap: 4px;
+.searchGroup {
   flex: 1;
+  min-width: 0;
 }
 
 .sortControls {
   display: flex;
-  gap: 8px;
+  flex: 0 0 310px;
   align-items: center;
+  gap: 8px;
 }
 
-.sortControls .sortCombobox {
-  min-width: unset;
+.sortLabel {
+  flex: 0 0 auto;
+  color: var(--catalog-text);
+  white-space: nowrap;
 }
 
-.sortControls .sortInput {
-  width: 130px;
+.sortCombobox {
+  flex: 1;
+  min-width: 0;
+  min-height: 40px;
 }
 
-@media screen and (max-width: 547px) {
-  .viewingSortRow {
-    flex-wrap: wrap;
-    row-gap: 8px;
+.sortInput {
+  min-width: 0;
+}
+
+.viewingStatus {
+  display: block;
+  color: var(--catalog-muted);
+  font-size: 0.74rem;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 996px) {
+  .discoveryBar {
+    width: calc(100% - 40px);
+  }
+}
+
+@media (max-width: 720px) {
+  .discoveryBar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .sortControls {
+    flex-basis: auto;
+  }
+
+  .sortCombobox {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .discoveryBar {
+    width: calc(100% - 28px);
   }
 }

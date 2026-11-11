@@ -8,10 +8,9 @@ import type { Template, TagType } from "../../../data/tags";
 import { sortedTemplates, unsortedTemplates } from "../../../data/templates";
 import { sortedExtensions, unsortedExtensions } from "../../../data/extensions";
 import type { Extension } from "../../../data/extensionTypes";
-import { Spinner, type ComboboxProps } from "@fluentui/react-components";
 import ShowcaseCards from "./ShowcaseCards";
 import ShowcaseExtensionCards from "./ShowcaseExtensionCards";
-import ShowcaseResultsToolbar from "../ShowcaseResultsToolbar";
+import { ShowcaseResultsStatus } from "../ShowcaseResultsToolbar";
 import ShowcaseAppliedFilters from "../ShowcaseAppliedFilters";
 import ShowcasePagination from "../ShowcasePagination";
 import { useHistory } from "@docusaurus/router";
@@ -22,7 +21,6 @@ import {
   filterExtensions,
 } from "@site/src/utils/galleryFiltering";
 import {
-  GALLERY_SORT_OPTIONS,
   getSortedTemplates,
   getSortedExtensions,
 } from "@site/src/utils/gallerySorting";
@@ -33,6 +31,7 @@ import {
   type GalleryNavigationState,
 } from "@site/src/utils/galleryNavigation";
 import { readSearchName, clearSearchFilters } from "@site/src/utils/galleryQuery";
+import styles from "./styles.module.css";
 
 type GalleryItems =
   | { type: "templates"; items: Template[] }
@@ -43,14 +42,14 @@ export default function ShowcaseResults({
   selectedTags,
   location,
   selectedAuthors,
+  selectedOptions,
 }: {
   setActiveTags: React.Dispatch<React.SetStateAction<TagType[]>>;
   selectedTags: TagType[];
   location: Location & { state?: GalleryNavigationState | null; search: string };
   selectedAuthors: string[];
+  selectedOptions: string[];
 }) {
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([GALLERY_SORT_OPTIONS[2]]);
-  const [loading, setLoading] = useState(true);
   const searchName = readSearchName(location.search);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 20;
@@ -72,7 +71,6 @@ export default function ShowcaseResults({
 
   useEffect(() => {
     restoreGalleryNavigationState(location.state);
-    setLoading(false);
   }, [location, selectedOptions]);
 
   const { type: sortedType, items: sortedItems } = useMemo<GalleryItems>(
@@ -134,51 +132,41 @@ export default function ShowcaseResults({
     setActiveTags(Array.from(unionTags));
   }, [activeItems, activeType, setActiveTags]);
 
-  const sortByOnSelect: NonNullable<ComboboxProps["onOptionSelect"]> = (_event, data) => {
-    setLoading(true);
-    setSelectedOptions(data.selectedOptions);
-  };
-
   return (
     <>
-      <ShowcaseResultsToolbar
-        totalItems={totalItems}
-        startIndex={startIndex}
-        endIndex={endIndex}
-        isExtensions={isExtensions}
-        searchName={searchName}
-        onSortSelect={sortByOnSelect}
-      />
       <ShowcaseAppliedFilters
         clearAll={clearAll}
         selectedTags={selectedTags}
         selectedAuthors={selectedAuthors}
         location={location}
       />
-      {loading ? (
-        <Spinner labelPosition="below" label="Loading..." />
+      {activeType === "extensions" ? (
+        <ShowcaseExtensionCards
+          filteredExtensions={activeItems.slice(startIndex, endIndex)}
+          searchName={searchName}
+        />
       ) : (
-        <>
-          {activeType === "extensions" ? (
-            <ShowcaseExtensionCards
-              filteredExtensions={activeItems.slice(startIndex, endIndex)}
-              searchName={searchName}
-            />
-          ) : (
-            <ShowcaseCards
-              filteredTemplates={activeItems.slice(startIndex, endIndex)}
-              searchName={searchName}
-            />
-          )}
-          {totalPages > 1 && (
-            <ShowcasePagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={setCurrentPage}
-            />
-          )}
-        </>
+        <ShowcaseCards
+          filteredTemplates={activeItems.slice(startIndex, endIndex)}
+          searchName={searchName}
+        />
       )}
+      {totalPages > 1 && (
+        <ShowcasePagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
+      )}
+      <div className={styles.resultsFooter}>
+        <ShowcaseResultsStatus
+          totalItems={totalItems}
+          startIndex={startIndex}
+          endIndex={endIndex}
+          isExtensions={isExtensions}
+          searchName={searchName}
+        />
+      </div>
     </>
   );
 }

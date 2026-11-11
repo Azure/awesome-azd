@@ -3,26 +3,15 @@
  * Licensed under the MIT License.
  */
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { SearchBox, type ISearchBoxStyles } from "@fluentui/react/lib/SearchBox";
 import { useHistory, useLocation } from "@docusaurus/router";
-import { Text, Link as FluentUILink } from "@fluentui/react-components";
-import { galleryTemplates as allTemplates } from "@site/src/data/templates";
+import { Link as FluentUILink } from "@fluentui/react-components";
 import { getContentType } from "@site/src/utils/contentType";
 import { captureGalleryNavigationState } from "@site/src/utils/galleryNavigation";
 import { readSearchName, replaceSearchName } from "@site/src/utils/galleryQuery";
 import styles from "./styles.module.css";
-import useBaseUrl from "@docusaurus/useBaseUrl";
-import { useColorMode } from "@docusaurus/theme-common";
 
-const TITLES: Record<string, string> = {
-  templates: "From code to cloud in minutes",
-  extensions: "Extension Gallery",
-};
-const DESCRIPTIONS: Record<string, string> = {
-  templates: "Production-ready templates with infrastructure, CI/CD, and monitoring — all deployable with a single command.",
-  extensions: "Discover azd extensions that add new capabilities to your workflow.",
-};
 const PLACEHOLDERS: Record<string, string> = {
   templates: "Search for an azd template or author...",
   extensions: "Search for an azd extension, capability, or author...",
@@ -30,19 +19,19 @@ const PLACEHOLDERS: Record<string, string> = {
 const searchBoxStyles: Partial<ISearchBoxStyles> = {
   root: {
     border: "1px solid var(--site-color-border)",
-    height: "52px",
+    height: "40px",
     maxWidth: "100%",
     width: "100%",
     borderRadius: "8px",
     background: "var(--site-color-surface)",
   },
   icon: {
-    fontSize: "24px",
-    paddingLeft: "10px",
+    fontSize: "18px",
+    paddingLeft: "8px",
   },
   field: {
-    paddingLeft: "20px",
-    fontSize: "18px",
+    paddingLeft: "10px",
+    fontSize: "14px",
     color: "var(--site-color-text)",
     backgroundColor: "transparent",
     selectors: {
@@ -53,126 +42,80 @@ const searchBoxStyles: Partial<ISearchBoxStyles> = {
   },
 };
 
-function FilterBar(): React.JSX.Element {
+export function GallerySearchBox(): React.JSX.Element {
   const history = useHistory();
   const location = useLocation();
   const [value, setValue] = useState<string | null>(null);
+
   useEffect(() => {
     setValue(readSearchName(location.search));
-  }, [location]);
+  }, [location.search]);
+
   const contentType = getContentType(location);
   const placeholder = PLACEHOLDERS[contentType] || PLACEHOLDERS.templates;
 
   return (
-    <>
-      <SearchBox
-        styles={searchBoxStyles}
-        id="filterBar"
-        value={value ?? ""}
-        placeholder={placeholder}
-        role="search"
-        ariaLabel="Search templates and extensions"
-        onClear={(e) => {
-          setValue(null);
-          history.push({
-            ...location,
-            search: replaceSearchName(location.search, null),
-            state: captureGalleryNavigationState(),
-          });
-        }}
-        onSearch={(newValue) => {
-          const submitted = typeof newValue === "string" ? newValue : (value ?? "");
-          setValue(submitted);
-          history.push({
-            ...location,
-            search: replaceSearchName(location.search, submitted),
-            state: captureGalleryNavigationState(),
-          });
-        }}
-        onChange={(e) => {
-          if (!e) {
-            return;
-          }
-          setValue(e.currentTarget.value);
-        }}
-      />
-    </>
+    <SearchBox
+      styles={searchBoxStyles}
+      id="filterBar"
+      value={value ?? ""}
+      placeholder={placeholder}
+      role="search"
+      ariaLabel="Search extensions"
+      onClear={() => {
+        setValue(null);
+        history.push({
+          ...location,
+          search: replaceSearchName(location.search, null),
+          state: captureGalleryNavigationState(),
+        });
+      }}
+      onSearch={(newValue) => {
+        const submitted =
+          typeof newValue === "string" ? newValue : (value ?? "");
+        setValue(submitted);
+        history.push({
+          ...location,
+          search: replaceSearchName(location.search, submitted),
+          state: captureGalleryNavigationState(),
+        });
+      }}
+      onChange={(event) => {
+        if (event) {
+          setValue(event.currentTarget.value);
+        }
+      }}
+    />
   );
 }
 
-// Compute stats dynamically from template data
-const templateCount = allTemplates.length;
-const uniqueAzureServices = new Set(allTemplates.flatMap((t: any) => t.azureServices || []));
-const uniqueLanguages = new Set(allTemplates.flatMap((t: any) => t.languages || []));
-
-export default function ShowcaseTemplateSearch() {
-  const { colorMode } = useColorMode();
-  const location = useLocation();
-  const gettingStartedUrl = useBaseUrl("/getting-started");
-  const contentType = getContentType(location);
-  const title = TITLES[contentType] || TITLES.templates;
-  const description = DESCRIPTIONS[contentType] || DESCRIPTIONS.templates;
+export default function ShowcaseTemplateSearch(): React.JSX.Element {
   return (
-    <div className={styles.searchContainer}>
+    <section className={styles.searchContainer}>
       <div className={styles.searchArea}>
-        <div className={styles.heroContent}>
+        <div className={styles.heroIntro}>
           <h1 className={styles.heroBar}>
-            {contentType === "templates" ? (
-              <>
-                From code to cloud<br />
-                <span className={styles.heroAccent}>in minutes.</span>
-              </>
-            ) : (
-              <>{title}</>
-            )}
+            Extension <span>Gallery</span>
           </h1>
           <p className={styles.heroDescription}>
-            {description}
+            Discover azd extensions that add new capabilities to your workflow.
           </p>
-          <FilterBar />
-          {contentType === "templates" && (
-            <div className={styles.statsBar}>
-              <div className={styles.statItem}>
-                <Text weight="bold" size={500} className={styles.statNumber}>{templateCount}+</Text>
-                <Text size={200} className={styles.statLabel}>Templates</Text>
-              </div>
-              <div className={styles.statDivider} />
-              <div className={styles.statItem}>
-                <Text weight="bold" size={500} className={styles.statNumber}>{uniqueAzureServices.size}+</Text>
-                <Text size={200} className={styles.statLabel}>Azure Services</Text>
-              </div>
-              <div className={styles.statDivider} />
-              <div className={styles.statItem}>
-                <Text weight="bold" size={500} className={styles.statNumber}>{uniqueLanguages.size}</Text>
-                <Text size={200} className={styles.statLabel}>Languages</Text>
-              </div>
-            </div>
-          )}
-          <div className={styles.heroActions}>
-            {contentType === "extensions"
-              ? <>
-                  <Text size={300} className={styles.heroSubtext} block>
-                    Extensions add new commands, lifecycle hooks, and capabilities to azd.{" "}
-                    <FluentUILink
-                      href="https://learn.microsoft.com/azure/developer/azure-developer-cli/extensions/overview"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.extensionDocsLink}
-                    >
-                      Learn more in our docs.
-                    </FluentUILink>
-                  </Text>
-                </>
-              : <a
-                    href={gettingStartedUrl}
-                    className={styles.heroPrimaryButton}
-                  >
-                    Get Started in Minutes →
-                  </a>
-            }
-          </div>
+        </div>
+        <div className={styles.heroActions}>
+          <p className={styles.heroSubtext}>
+            Extensions add new commands, lifecycle hooks, and capabilities to
+            azd.
+          </p>
+          <FluentUILink
+            href="https://learn.microsoft.com/azure/developer/azure-developer-cli/extensions/overview"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.outlineButton}
+          >
+            Explore extension docs
+          </FluentUILink>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

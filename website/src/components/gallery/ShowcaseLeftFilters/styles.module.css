@@ -4,18 +4,27 @@
  */
 
 .checkboxListItem {
+  display: flex;
+  min-height: 32px;
+  align-items: center;
+  padding: 3px 0;
+  color: var(--catalog-muted);
+  font-size: 0.74rem;
   user-select: none;
   white-space: normal;
   overflow-wrap: anywhere;
 }
 
-/*
- * Allow long checkbox labels (e.g., long template/tag names) to wrap.
- * NOTE: `.fui-Checkbox__label` targets a Fluent UI internal class name; if
- * Fluent UI renames or restructures it in a future release, this wrapping
- * fix will silently stop working. Re-verify after Fluent UI upgrades.
- */
+.checkboxListItem :global(.fui-Checkbox) {
+  width: 100%;
+  align-items: center;
+}
+
 .checkboxListItem :global(.fui-Checkbox__label) {
+  align-items: center;
+  color: var(--catalog-muted);
+  font-size: 0.74rem;
+  line-height: 1.35;
   white-space: normal;
   overflow-wrap: anywhere;
 }
@@ -25,11 +34,11 @@
 }
 
 .lastCheckbox {
-  margin-bottom: 7px;
+  margin-bottom: 4px;
 }
 
 .curatedCheckbox {
-  padding-left: 12px;
+  padding-left: 0;
 }
 
 .chevronUp {
@@ -45,16 +54,18 @@
 }
 
 .viewAllLabel {
-  font-size: 12px;
+  font-size: 0.72rem;
 }
 
 .filterCollections {
-  padding-bottom: 7px;
+  padding-bottom: 6px;
 }
 
 .categoryTitle {
-  font-size: 16px;
-  font-weight: 500;
+  color: var(--catalog-text);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 .color {
@@ -64,47 +75,43 @@
 .filterTop {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 0 0 15px 12px;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0 0 12px;
 }
 
 .clearAll {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  text-decoration-line: underline;
+  color: var(--catalog-blue);
   cursor: pointer;
-  color: var(--ifm-color-primary);
+  font-size: 0.72rem;
+  font-weight: 650;
+  line-height: 1.3;
 }
 
 .filterBy {
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 28px;
+  color: var(--catalog-text);
+  font-size: 0.9rem;
+  font-weight: 750;
+  line-height: 1.35;
 }
 
 .filterCount {
-  font-size: 12px;
-  font-weight: 400;
-  color: #8a8a8a;
+  color: var(--catalog-muted);
+  font-size: 0.68rem;
+  font-weight: 500;
   margin-left: 6px;
 }
 
 [data-theme="dark"] .filterCount {
-  color: #8a8a8a;
+  color: var(--catalog-muted);
 }
 
-/*
- * Top divider line for each top-level category accordion header.
- * Defined as a CSS class (rather than an inline `style`) so the mobile
- * media query below can override it without needing `!important`.
- */
 .categoryHeader {
-  background: linear-gradient(#D1D1D1 0 0) top / 89.8% 0.6px no-repeat;
+  border-top: 1px solid var(--catalog-border);
 }
 
 @media screen and (max-width: 996px) {
   .categoryHeader {
-    background: linear-gradient(#D1D1D1 0 0) top / 100% 1px no-repeat;
+    border-top-color: var(--catalog-border);
   }
 }

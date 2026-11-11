@@ -41,6 +41,70 @@ function sparseExtensionQuery() {
 }
 
 test.describe("Gallery card layout", () => {
+  test("extension discovery layout matches the templates catalog", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    await page.goto("extensions");
+
+    await expect(
+      page.getByRole("heading", { level: 1, name: "Extension Gallery" }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("link", { name: "Explore extension docs" }),
+    ).toBeVisible();
+
+    const search = page.getByPlaceholder(
+      "Search for an azd extension, capability, or author...",
+    );
+    const sort = page.getByRole("combobox", { name: "Sort by" });
+    await expect(search).toBeVisible();
+    await expect(sort).toBeVisible();
+
+    const [searchBox, sortBox] = await Promise.all([
+      search.boundingBox(),
+      sort.boundingBox(),
+    ]);
+    expect(searchBox).not.toBeNull();
+    expect(sortBox).not.toBeNull();
+    expect(
+      Math.abs(
+        searchBox!.y +
+          searchBox!.height / 2 -
+          (sortBox!.y + sortBox!.height / 2),
+      ),
+    ).toBeLessThan(2);
+    expect(searchBox!.x).toBeLessThan(sortBox!.x);
+
+    await expect(
+      page.getByText("Filter extensions", { exact: true }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("button", { name: /^Capabilities\s*\d+$/ }),
+    ).toBeVisible();
+    await expect(
+      page.getByText("Extension Capabilities", { exact: true }),
+    ).toHaveCount(0);
+    await expect(
+      page.getByRole("checkbox", { name: /Microsoft Authored/ }),
+    ).toHaveCount(0);
+
+    const grid = page.getByTestId("showcase-list");
+    const status = page.getByRole("status");
+    await expect(grid).toBeVisible();
+    const visibleExtensions = Math.min(20, extensions.length);
+    await expect(status).toContainText(
+      `Viewing 1-${visibleExtensions} of ${extensions.length} extensions`,
+    );
+    const [gridBox, statusBox] = await Promise.all([
+      grid.boundingBox(),
+      status.boundingBox(),
+    ]);
+    expect(gridBox).not.toBeNull();
+    expect(statusBox).not.toBeNull();
+    expect(statusBox!.y).toBeGreaterThan(gridBox!.y + gridBox!.height);
+  });
+
   test("sparse gallery results stay left aligned", async ({ page }) => {
     await page.goto(sparseTemplateQuery());
     await expect(page.locator("html")).toHaveAttribute(

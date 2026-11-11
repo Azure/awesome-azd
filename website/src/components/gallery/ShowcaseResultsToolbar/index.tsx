@@ -4,79 +4,84 @@
  */
 
 import React from "react";
-import { Combobox, Option, Text, type ComboboxProps } from "@fluentui/react-components";
+import {
+  Combobox,
+  Option,
+  Text,
+  type ComboboxProps,
+} from "@fluentui/react-components";
 import { GALLERY_SORT_OPTIONS } from "@site/src/utils/gallerySorting";
+import { GallerySearchBox } from "../ShowcaseTemplateSearch";
 import styles from "./styles.module.css";
 
-export default function ShowcaseResultsToolbar({
+export function ShowcaseResultsStatus({
   totalItems,
   startIndex,
   endIndex,
   isExtensions,
   searchName,
-  onSortSelect,
 }: {
   totalItems: number;
   startIndex: number;
   endIndex: number;
   isExtensions: boolean;
   searchName: string | null;
-  onSortSelect: NonNullable<ComboboxProps["onOptionSelect"]>;
-}) {
-  // Count display logic
+}): React.JSX.Element {
   const currentStart = totalItems > 0 ? startIndex + 1 : 0;
   const currentEnd = Math.min(endIndex, totalItems);
   const itemLabel = isExtensions ? "extension" : "template";
   const itemLabelPlural = isExtensions ? "extensions" : "templates";
+  const countLabel =
+    totalItems === 0
+      ? `0 ${itemLabelPlural}`
+      : totalItems === 1
+        ? `1 ${itemLabel}`
+        : `${currentStart}-${currentEnd} of ${totalItems} ${itemLabelPlural}`;
+  const searchLabel = searchName != null ? ` for '${searchName}'` : "";
 
   return (
-    <div className={styles.viewingSortRow}>
-      <div
-        className={styles.viewingStatus}
-        role="status"
-        aria-live="polite"
-        aria-atomic="true"
-      >
-        <Text size={400}>Viewing</Text>
-        {totalItems === 0 ? (
-          <>
-            <Text size={400} weight="bold">0</Text>
-            <Text size={400}>{itemLabelPlural}</Text>
-          </>
-        ) : totalItems === 1 ? (
-          <>
-            <Text size={400} weight="bold">1</Text>
-            <Text size={400}>{itemLabel}</Text>
-          </>
-        ) : (
-          <>
-            <Text size={400} weight="bold">
-              {`${currentStart}-${currentEnd}`}
-            </Text>
-            <Text size={400}>of</Text>
-            <Text size={400} weight="bold">
-              {totalItems}
-            </Text>
-            <Text size={400}>{itemLabelPlural}</Text>
-          </>
-        )}
-        {searchName != null ? (
-          <>
-            <Text size={400}>for</Text>
-            <Text size={400} weight="bold">
-              '{searchName}'
-            </Text>
-          </>
-        ) : null}
+    <Text
+      className={styles.viewingStatus}
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+      size={300}
+    >
+      Viewing {countLabel}
+      {searchLabel}
+    </Text>
+  );
+}
+
+export default function ShowcaseResultsToolbar({
+  selectedOptions,
+  onSortSelect,
+}: {
+  selectedOptions: string[];
+  onSortSelect: NonNullable<ComboboxProps["onOptionSelect"]>;
+}): React.JSX.Element {
+  const selectedSort = selectedOptions[0] ?? GALLERY_SORT_OPTIONS[2];
+
+  return (
+    <div className={styles.discoveryBar}>
+      <div className={styles.searchGroup}>
+        <GallerySearchBox />
       </div>
       <div className={styles.sortControls}>
-        <Text size={400}>Sort by: </Text>
+        <Text
+          id="extension-sort-label"
+          size={300}
+          weight="semibold"
+          className={styles.sortLabel}
+        >
+          Sort by
+        </Text>
         <Combobox
           className={styles.sortCombobox}
           input={{ className: styles.sortInput }}
-          defaultValue={GALLERY_SORT_OPTIONS[2]}
-          defaultSelectedOptions={[GALLERY_SORT_OPTIONS[2]]}
-          aria-label="Sort by"
+          selectedOptions={[selectedSort]}
+          value={selectedSort}
+          aria-labelledby="extension-sort-label"
           onOptionSelect={onSortSelect}
         >
           {GALLERY_SORT_OPTIONS.map((option) => (

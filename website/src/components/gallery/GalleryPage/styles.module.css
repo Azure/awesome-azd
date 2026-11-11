@@ -3,106 +3,107 @@
  * Licensed under the MIT License.
  */
 
-.filterAndCard {
-  display: flex;
-  padding: var(--space-xl) 40px;
-  background: var(--site-color-bg);
+.page {
+  --catalog-bg: #ffffff;
+  --catalog-surface: #ffffff;
+  --catalog-text: #111827;
+  --catalog-muted: #566276;
+  --catalog-border: #d7dce4;
+  --catalog-blue: #0f6cbd;
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at 84% 8%,
+      color-mix(in srgb, var(--catalog-blue) 5%, transparent),
+      transparent 28%
+    ),
+    var(--catalog-bg);
+  color: var(--catalog-text);
+  font-size: 0.88rem;
 }
 
-[data-theme="dark"] .filterAndCard {
-  background-color: var(--site-color-bg);
+.fluentProvider {
+  background: transparent;
+}
+
+:global([data-theme="dark"]) .page {
+  --catalog-bg: #111317;
+  --catalog-surface: #191c22;
+  --catalog-text: #f3f5f8;
+  --catalog-muted: #a7b0bf;
+  --catalog-border: #30343c;
+  --catalog-blue: #5aa7ea;
+}
+
+.filterAndCard {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 20px;
+  width: min(1280px, calc(100% - 128px));
+  margin: 0 auto;
+  padding: 0 0 48px;
 }
 
 .filter {
-  flex: 2;
-  margin: 0px 20px 0 0;
-  max-width: 270px;
-  background: var(--site-color-surface);
-  border-radius: var(--site-card-radius, 12px);
-  padding: 20px;
-  border: 1px solid var(--site-color-border);
-  align-self: flex-start;
-}
-
-[data-theme="dark"] .filter {
-  background: var(--site-color-surface);
-  border-color: rgba(255, 255, 255, 0.08);
+  align-self: start;
+  padding: 16px;
+  border: 1px solid var(--catalog-border);
+  border-radius: 8px;
+  background: var(--catalog-surface);
 }
 
 .card {
-  flex: 8;
-  min-width: 15rem;
-  margin: 0px 0px 0 20px;
+  min-width: 0;
 }
 
-/* Desktop-only sticky positioning for filter */
-@media screen and (min-width: 997px) {
-  .filter {
-    position: sticky;
-    top: 5rem;
-  }
-}
-
-/* Back to top button for mobile */
 .backToTopButton {
   position: fixed;
-  bottom: 20px;
+  z-index: 1000;
   right: 20px;
-  background-color: var(--ifm-color-primary);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  bottom: 20px;
   display: none;
+  width: 46px;
+  height: 46px;
   align-items: center;
   justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--catalog-blue);
+  box-shadow: 0 4px 8px rgb(0 0 0 / 15%);
+  color: #ffffff;
   cursor: pointer;
-  z-index: 1000;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  transition: background-color var(--transition-base);
+  font-size: 1.1rem;
+  transition: filter 120ms ease;
 }
 
 .backToTopButton:hover,
 .backToTopButton:focus-visible {
-  background-color: var(--ifm-color-primary-dark);
+  filter: brightness(0.9);
 }
 
 .backToTopButton:focus-visible {
-  outline: 2px solid white;
+  outline: 2px solid #ffffff;
   outline-offset: 2px;
 }
 
-[data-theme="dark"] .backToTopButton {
-  background-color: #0076B3;
-}
+@media (max-width: 996px) {
+  .filterAndCard {
+    grid-template-columns: 1fr;
+    width: calc(100% - 40px);
+  }
 
-[data-theme="dark"] .backToTopButton:hover {
-  background-color: #0369A1;
-}
+  .filter {
+    width: 100%;
+  }
 
-@media screen and (max-width: 996px) {
   .backToTopButton {
     display: flex;
   }
 }
 
-@media screen and (max-width: 996px) {
+@media (max-width: 640px) {
   .filterAndCard {
-    flex-direction: column;
-    gap: var(--space-xl);
+    width: calc(100% - 28px);
+    padding-bottom: 36px;
   }
-
-  .filter {
-    max-width: 100%;
-    width: 100%;
-    align-self: stretch;
-    margin: 0;
-    position: static;
-  }
-
-  .card {
-    margin: 0;
-  }
-
 }

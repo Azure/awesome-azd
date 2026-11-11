@@ -5,13 +5,30 @@
 
 .showcaseList {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(285px, 100%), 350px));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   justify-content: start;
-  gap: var(--space-lg);
+  gap: 18px;
 }
 
 .showcaseFavorite {
   padding-top: 2rem;
   padding-bottom: 2rem;
   background-color: var(--site-color-favorite-background);
+}
+
+.resultsFooter {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--catalog-border);
+}
+
+@media (max-width: 1320px) {
+  .showcaseList {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(min(285px, 100%), 350px)
+    );
+  }
 }

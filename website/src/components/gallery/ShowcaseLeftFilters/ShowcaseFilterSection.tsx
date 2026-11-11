@@ -149,7 +149,7 @@ export default function ShowcaseFilterSection({
         expandIconPosition="end"
       >
         <div className={styles.categoryTitle}>
-          {title}
+          {title}{" "}
           <span className={styles.filterCount}>{tags.length}</span>
         </div>
       </AccordionHeader>

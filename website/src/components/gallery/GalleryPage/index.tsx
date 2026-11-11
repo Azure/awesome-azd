@@ -11,6 +11,7 @@ import {
   webLightTheme,
   webDarkTheme,
   FluentProvider,
+  type ComboboxProps,
 } from "@fluentui/react-components";
 import type { GalleryNavigationState } from "@site/src/utils/galleryNavigation";
 import {
@@ -23,10 +24,10 @@ import { TagList } from "@site/src/data/templates";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
 import ShowcaseResults from "../ShowcaseResults";
+import ShowcaseResultsToolbar from "../ShowcaseResultsToolbar";
 import { useLocation } from "@docusaurus/router";
-import CollectionTabs from "../CollectionTabs";
-import { getContentType } from "@site/src/utils/contentType";
 import { initializeFluentIcons } from "@site/src/utils/fluentIcons";
+import { GALLERY_SORT_OPTIONS } from "@site/src/utils/gallerySorting";
 
 initializeFluentIcons();
 
@@ -51,8 +52,10 @@ export default function GalleryPage(): React.JSX.Element | null {
   const { colorMode } = useColorMode();
   const isBrowser = useIsBrowser();
   const [activeTags, setActiveTags] = useState<TagType[]>(TagList);
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([
+    GALLERY_SORT_OPTIONS[2],
+  ]);
   const location = useLocation<GalleryNavigationState>();
-  const contentType = getContentType(location);
   const selectedTags = useMemo(
     () => readSearchTags(location.search),
     [location.search],
@@ -66,16 +69,28 @@ export default function GalleryPage(): React.JSX.Element | null {
       console.warn("Unsupported gallery URL tags were ignored.");
     }
   }, [location.search]);
+  const sortByOnSelect: NonNullable<ComboboxProps["onOptionSelect"]> = (
+    _event,
+    data,
+  ) => {
+    setSelectedOptions(
+      data.selectedOptions.length > 0
+        ? data.selectedOptions
+        : [GALLERY_SORT_OPTIONS[2]],
+    );
+  };
 
   return isBrowser ? (
     <FluentProvider
       theme={colorMode == "dark" ? webDarkTheme : webLightTheme}
+      className={styles.fluentProvider}
     >
-      <main>
+      <main className={styles.page}>
         <ShowcaseTemplateSearch />
-        {contentType === "templates" ? (
-          <CollectionTabs activeCollection="all" />
-        ) : null}
+        <ShowcaseResultsToolbar
+          selectedOptions={selectedOptions}
+          onSortSelect={sortByOnSelect}
+        />
         <div className={styles.filterAndCard}>
           <div className={styles.filter}>
             <ShowcaseLeftFilters
@@ -91,6 +106,7 @@ export default function GalleryPage(): React.JSX.Element | null {
               selectedTags={selectedTags}
               location={location}
               selectedAuthors={selectedAuthors}
+              selectedOptions={selectedOptions}
             />
           </div>
         </div>

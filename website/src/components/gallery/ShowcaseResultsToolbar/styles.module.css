@@ -55,7 +55,6 @@
   color: var(--catalog-muted);
   font-size: 0.74rem;
   letter-spacing: 0.035em;
-  text-transform: uppercase;
 }
 
 @media (max-width: 996px) {

@@ -20,13 +20,11 @@ export function ShowcaseResultsStatus({
   startIndex,
   endIndex,
   isExtensions,
-  searchName,
 }: {
   totalItems: number;
   startIndex: number;
   endIndex: number;
   isExtensions: boolean;
-  searchName: string | null;
 }): React.JSX.Element {
   const currentStart = totalItems > 0 ? startIndex + 1 : 0;
   const currentEnd = Math.min(endIndex, totalItems);
@@ -37,8 +35,7 @@ export function ShowcaseResultsStatus({
       ? `0 ${itemLabelPlural}`
       : totalItems === 1
         ? `1 ${itemLabel}`
-        : `${currentStart}-${currentEnd} of ${totalItems} ${itemLabelPlural}`;
-  const searchLabel = searchName != null ? ` for '${searchName}'` : "";
+        : `${currentStart}–${currentEnd} of ${totalItems} ${itemLabelPlural}`;
 
   return (
     <Text
@@ -48,8 +45,7 @@ export function ShowcaseResultsStatus({
       aria-atomic="true"
       size={300}
     >
-      Viewing {countLabel}
-      {searchLabel}
+      {countLabel}
     </Text>
   );
 }

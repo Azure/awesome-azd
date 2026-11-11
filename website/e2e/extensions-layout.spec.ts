@@ -129,13 +129,14 @@ test.describe("Gallery card layout", () => {
 
     const grid = page.getByTestId("showcase-list");
     const status = page.getByRole("status").filter({
-      hasText: /^Viewing /,
+      hasText: / extensions$/,
     });
     await expect(grid).toBeVisible();
     const visibleExtensions = Math.min(20, extensions.length);
-    await expect(status).toContainText(
-      `Viewing 1-${visibleExtensions} of ${extensions.length} extensions`,
+    await expect(status).toHaveText(
+      `1–${visibleExtensions} of ${extensions.length} extensions`,
     );
+    await expect(status).toHaveCSS("text-transform", "none");
     const [gridBox, statusBox] = await Promise.all([
       grid.boundingBox(),
       status.boundingBox(),

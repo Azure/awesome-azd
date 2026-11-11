@@ -179,7 +179,6 @@ export default function ShowcaseResults({
             startIndex={startIndex}
             endIndex={endIndex}
             isExtensions={isExtensions}
-            searchName={searchName}
           />
         </div>
       ) : null}

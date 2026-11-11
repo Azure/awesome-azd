@@ -16,16 +16,16 @@
 .searchArea::before {
   position: absolute;
   z-index: -1;
-  top: -20px;
-  right: -40px;
-  width: min(520px, 48vw);
-  height: 260px;
-  background:
-    radial-gradient(
-      circle at 68% 42%,
-      color-mix(in srgb, var(--catalog-blue) 10%, transparent),
-      transparent 58%
-    );
+  top: -16px;
+  right: 50%;
+  bottom: -16px;
+  width: min(960px, 100%);
+  transform: translateX(50%);
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in srgb, var(--catalog-blue) 10%, transparent) 0%,
+    transparent 70%
+  );
   content: "";
   pointer-events: none;
 }

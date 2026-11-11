@@ -33,23 +33,6 @@ const extensionTags = [
   ...new Set(unsortedExtensions.flatMap(getExtensionTags)),
 ];
 
-const BackToTopButton = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  return (
-    <button
-      className={styles.backToTopButton}
-      onClick={scrollToTop}
-      aria-label="Back to top"
-      title="Back to top"
-    >
-      ↑
-    </button>
-  );
-};
-
 export default function GalleryPage(): React.JSX.Element | null {
   const isBrowser = useIsBrowser();
   const [activeTags, setActiveTags] =
@@ -120,7 +103,6 @@ export default function GalleryPage(): React.JSX.Element | null {
             />
           </div>
         </div>
-        <BackToTopButton />
       </main>
     </SiteFluentProvider>
   );

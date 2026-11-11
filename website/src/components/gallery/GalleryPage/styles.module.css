@@ -11,13 +11,7 @@
   --catalog-border: var(--colorNeutralStroke2, #e0e0e0);
   --catalog-blue: var(--colorBrandForeground1, #0f6cbd);
   min-height: 100vh;
-  background:
-    radial-gradient(
-      circle at 84% 8%,
-      color-mix(in srgb, var(--catalog-blue) 5%, transparent),
-      transparent 28%
-    ),
-    var(--catalog-bg);
+  background: var(--catalog-bg);
   color: var(--catalog-text);
   font-size: 0.88rem;
 }
@@ -49,34 +43,11 @@
   container-type: inline-size;
 }
 
-.backToTopButton {
-  position: fixed;
-  z-index: 1000;
-  right: 20px;
-  bottom: 20px;
-  display: none;
-  width: 46px;
-  height: 46px;
-  align-items: center;
-  justify-content: center;
-  border: 0;
-  border-radius: 50%;
-  background: var(--catalog-blue);
-  box-shadow: 0 4px 8px rgb(0 0 0 / 15%);
-  color: #ffffff;
-  cursor: pointer;
-  font-size: 1.1rem;
-  transition: filter 120ms ease;
-}
-
-.backToTopButton:hover,
-.backToTopButton:focus-visible {
-  filter: brightness(0.9);
-}
-
-.backToTopButton:focus-visible {
-  outline: 2px solid #ffffff;
-  outline-offset: 2px;
+@media screen and (min-width: 641px) {
+  .filter {
+    position: sticky;
+    top: 76px;
+  }
 }
 
 @media (max-width: 996px) {
@@ -89,9 +60,6 @@
     width: 100%;
   }
 
-  .backToTopButton {
-    display: flex;
-  }
 }
 
 @media (max-width: 640px) {

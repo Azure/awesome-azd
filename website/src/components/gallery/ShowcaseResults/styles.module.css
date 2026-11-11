@@ -11,13 +11,13 @@
   );
   width: 100%;
   justify-content: start;
+  align-items: stretch;
   gap: 24px 18px;
 }
 
 .showcaseFavorite {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  background-color: var(--site-color-favorite-background);
+  padding: 0;
+  background: transparent;
 }
 
 .resultsFooter {

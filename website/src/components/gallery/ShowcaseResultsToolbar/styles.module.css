@@ -54,7 +54,6 @@
   display: block;
   color: var(--catalog-muted);
   font-size: 0.74rem;
-  letter-spacing: 0.035em;
 }
 
 @media (max-width: 996px) {

@@ -156,6 +156,16 @@ test.describe("Gallery card layout", () => {
     expect(statusBox).not.toBeNull();
     expect(statusBox!.y).toBeGreaterThan(gridBox!.y + gridBox!.height);
 
+    const filterPanel = page.getByTestId("extension-filter-panel");
+    const firstCard = grid.locator("[data-extension-card]").first();
+    const [filterBox, firstCardBox] = await Promise.all([
+      filterPanel.boundingBox(),
+      firstCard.boundingBox(),
+    ]);
+    expect(filterBox).not.toBeNull();
+    expect(firstCardBox).not.toBeNull();
+    expect(Math.abs(filterBox!.y - firstCardBox!.y)).toBeLessThan(2);
+
     const columnCount = () =>
       grid.evaluate((element) =>
         getComputedStyle(element).gridTemplateColumns
@@ -172,6 +182,59 @@ test.describe("Gallery card layout", () => {
 
     await page.setViewportSize({ width: 560, height: 1000 });
     await expect.poll(columnCount).toBe(1);
+  });
+
+  test("extension cards use the templates card treatment", async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    await page.goto("extensions");
+
+    const extensionCard = page.locator("[data-extension-card]").first();
+    const extensionTag = extensionCard.locator('[class*="cardBadge"]').first();
+    const extensionStyles = await extensionCard.evaluate((element) => {
+      const style = getComputedStyle(element);
+      return {
+        backgroundColor: style.backgroundColor,
+        borderRadius: style.borderRadius,
+        borderTopWidth: style.borderTopWidth,
+        boxShadow: style.boxShadow,
+        padding: style.padding,
+      };
+    });
+    const extensionTagStyles = await extensionTag.evaluate((element) => {
+      const style = getComputedStyle(element);
+      return {
+        backgroundColor: style.backgroundColor,
+        borderRadius: style.borderRadius,
+        fontSize: style.fontSize,
+      };
+    });
+
+    await page.goto("templates");
+    const templateCard = page
+      .locator('[data-template-card]:not([class*="promotedCard"])')
+      .first();
+    const templateTag = templateCard.locator('[class*="tag"]').first();
+    const templateStyles = await templateCard.evaluate((element) => {
+      const style = getComputedStyle(element);
+      return {
+        backgroundColor: style.backgroundColor,
+        borderRadius: style.borderRadius,
+        borderTopWidth: style.borderTopWidth,
+        boxShadow: style.boxShadow,
+        padding: style.padding,
+      };
+    });
+    const templateTagStyles = await templateTag.evaluate((element) => {
+      const style = getComputedStyle(element);
+      return {
+        backgroundColor: style.backgroundColor,
+        borderRadius: style.borderRadius,
+        fontSize: style.fontSize,
+      };
+    });
+
+    expect(extensionStyles).toEqual(templateStyles);
+    expect(extensionTagStyles).toEqual(templateTagStyles);
   });
 
   test("extension hero typography matches the templates hero", async ({

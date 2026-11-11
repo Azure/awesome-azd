@@ -4,6 +4,8 @@
  */
 
 import templates from "../../static/templates.json";
+import templateStars from "../../static/template-stars.json";
+import reviewedTemplateUseCases from "./template-use-cases.json";
 import {
   Tags as standardTags,
   type Tag as StandardTag,
@@ -61,7 +63,8 @@ export type CatalogTemplate = {
   authorship: CatalogAuthorship;
   isAi: boolean;
   featured: boolean;
-  task: CatalogTask;
+  stars: number;
+  tasks: CatalogTask[];
   collections: string[];
   legacyTags: string[];
   languages: string[];
@@ -190,6 +193,9 @@ const aiServiceIds = new Set([
   "azurebot",
   "openai",
 ]);
+const repositoryStars = templateStars.repositories as Record<string, number>;
+const reviewedUseCases = reviewedTemplateUseCases as Record<string, unknown>;
+const catalogTaskSet = new Set<string>(catalogTasks);
 
 function readString(value: unknown, field: string): string {
   if (typeof value !== "string" || value.trim().length === 0) {
@@ -321,78 +327,27 @@ function getAuthorship(
   return "Community";
 }
 
-function inferTask({
-  isAi,
-  title,
-  description,
-  tags,
-  appTypes,
-  frameworks,
-  services,
-  databases,
-}: {
-  isAi: boolean;
-  title: string;
-  description: string;
-  tags: readonly string[];
-  appTypes: readonly string[];
-  frameworks: readonly string[];
-  services: readonly string[];
-  databases: readonly string[];
-}): CatalogTask {
-  const ids = new Set(
-    [...tags, ...appTypes, ...frameworks, ...services].map((value) =>
-      value.toLowerCase(),
-    ),
-  );
-  const text = `${title} ${description}`.toLowerCase();
-
-  if (ids.has("mcp") || ids.has("mcp-server") || /\bmcp\b/.test(text)) {
-    return "Build an MCP server";
-  }
+function getReviewedUseCases(normalizedSource: string): CatalogTask[] {
+  const value = reviewedUseCases[normalizedSource];
   if (
-    appTypes.includes("agent") ||
-    /\b(?:ai |autonomous |foundry )?agents?\b/.test(text)
-  ) {
-    return "Build an AI agent";
-  }
-  if (
-    databases.length > 0 &&
-    /\b(?:nlp|natural language|queries?|sql|rows?|tables?)\b/.test(text)
-  ) {
-    return "Query a database";
-  }
-  if (
-    (isAi || ids.has("ai") || ids.has("azureopenai")) &&
-    (ids.has("rag") ||
-      ids.has("search") ||
-      ids.has("chat") ||
-      /\b(?:documents?|knowledge|citations?|retrieval|rag)\b/.test(text))
-  ) {
-    return "Chat with documents";
-  }
-  if (
-    ids.has("logicapps") ||
-    /\b(?:workflow|automation|event-driven|orchestrat)\w*\b/.test(text)
-  ) {
-    return "Automate a workflow";
-  }
-  if (
-    ids.has("serverlessapi") ||
-    ids.has("apim") ||
-    ids.has("fastapi") ||
-    /\bapi\b/.test(text)
-  ) {
-    return "Build an API";
-  }
-  if (
-    /\b(?:starter|infrastructure|landing zone|deployment environment)\b/.test(
-      text,
+    !Array.isArray(value) ||
+    value.length === 0 ||
+    value.some(
+      (task) => typeof task !== "string" || !catalogTaskSet.has(task),
     )
   ) {
-    return "Start with infrastructure";
+    throw new Error(
+      `Catalog template is missing reviewed use cases: ${normalizedSource}`,
+    );
   }
-  return "Build a web app";
+
+  const tasks = value as CatalogTask[];
+  if (new Set(tasks).size !== tasks.length) {
+    throw new Error(
+      `Catalog template has duplicate reviewed use cases: ${normalizedSource}`,
+    );
+  }
+  return tasks;
 }
 
 function getResourceRole(id: string): string {
@@ -452,7 +407,10 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
   const databaseIds = unique(
     [...tags, ...serviceIds].filter((tag) => {
       const metadata = getTagMetadata(tag, isAi);
-      return metadata?.type === "Database" || databaseLikeTags.has(tag.toLowerCase());
+      return (
+        metadata?.type === "Database" ||
+        databaseLikeTags.has(tag.toLowerCase())
+      );
     }),
   );
   const iacIds = readStringArray(record.IaC);
@@ -505,16 +463,7 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     (legacySource) => getCoordinates(legacySource).slug,
   );
   const authorship = getAuthorship(coordinates.owner, authors, tags);
-  const task = inferTask({
-    isAi,
-    title,
-    description,
-    tags,
-    appTypes,
-    frameworks: frameworkIds,
-    services: serviceIds,
-    databases,
-  });
+  const tasks = getReviewedUseCases(coordinates.normalizedSource);
   const initCommand = formatAzdInitCommand(getTemplateIdentifier(source));
   const readmeUrl = `${source}#readme`;
   const preview = readOptionalString(record.preview);
@@ -539,7 +488,7 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     ...tools,
     ...topics,
     ...models,
-    task,
+    ...tasks,
     authorship,
   ]
     .join(" ")
@@ -561,7 +510,8 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     authorship,
     isAi,
     featured: tags.includes("featured"),
-    task,
+    stars: repositoryStars[coordinates.normalizedSource] ?? 0,
+    tasks,
     collections: isAi ? ["ai"] : [],
     legacyTags,
     languages,

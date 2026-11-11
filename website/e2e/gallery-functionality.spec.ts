@@ -13,9 +13,6 @@ async function resultCount(page: Page): Promise<number> {
 
 test.describe("Gallery functionality (deploy gate)", () => {
   test.beforeEach(async ({ page }) => {
-    await page.route("**/ai-apps-search*", (route) =>
-      route.fulfill({ json: [] }),
-    );
     await page.goto("templates");
     await expect(resultsStatus(page)).toContainText("templates", {
       timeout: 15_000,
@@ -86,11 +83,13 @@ test.describe("Gallery functionality (deploy gate)", () => {
     await expect.poll(() => resultCount(page)).toBeLessThan(initial);
     expect(await resultCount(page)).toBeGreaterThan(0);
 
-    await page.goto("templates?authors=ISE%20Scale");
+    await page.goto(
+      "templates?authors=Azure%20Cosmos%20DB%20Content%20Team",
+    );
     await expect(resultsStatus(page)).toContainText("1 of 1 templates");
     await expect(
       page.getByRole("link", {
-        name: /Copilot-Studio-with-Azure-AI-Search/,
+        name: /Copilot sample app with Azure CosmosDB for NoSQL/,
       }),
     ).toBeVisible();
   });
@@ -151,6 +150,130 @@ test.describe("Gallery functionality (deploy gate)", () => {
     const cards = page.locator("[data-template-card]");
     await expect(cards.first()).toBeVisible({ timeout: 15_000 });
     await expect(cards).toHaveCount(20);
+  });
+
+  test("featured and standard cards match the desktop card design", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1600, height: 1200 });
+
+    for (const [title, featured, language] of [
+      ["Get started with AI agents", true, "Python"],
+      ["RAG chat with Azure AI Search + C#", false, ".NET/C#"],
+    ] as const) {
+      await page.goto(
+        `templates?type=ai&q=${encodeURIComponent(title)}`,
+      );
+      const card = page.locator("[data-template-card]").first();
+      await expect(card).toBeVisible();
+      await expect(card).toHaveCSS("border-radius", "9px");
+      await expect(card).toHaveCSS("padding", "21px");
+      await expect(card).toHaveCSS(
+        "border-top-width",
+        featured ? "3px" : "1px",
+      );
+      await expect(card.locator("h2")).toHaveCSS("font-size", "16.8px");
+      await expect(
+        card.locator('[class*="cardSummary"]'),
+      ).toHaveCSS("font-size", "13.12px");
+      await expect(
+        card.locator('[class*="cardAuthor"]'),
+      ).toHaveCSS("font-size", "10px");
+      await expect(
+        card.getByText(language, { exact: true }).first(),
+      ).toHaveCSS("font-size", "10.4px");
+      await expect(card.locator("code")).toHaveCSS("font-size", "10.88px");
+      await expect(card.locator("code")).toHaveCSS(
+        "border-top-width",
+        "0px",
+      );
+      await expect(card.locator("code")).toHaveCSS(
+        "background-color",
+        "rgba(0, 0, 0, 0)",
+      );
+      await expect(
+        card.getByRole("button", { name: /Copy init command/ }),
+      ).toHaveCSS("width", "32px");
+      await expect(
+        card.getByRole("button", { name: /Copy init command/ }),
+      ).toHaveCSS("height", "32px");
+      await expect(
+        card.getByText("Azure Container Apps", { exact: true }),
+      ).toBeVisible();
+    }
+  });
+
+  test("template columns adapt to the available viewport width", async ({
+    page,
+  }) => {
+    const grid = page.getByTestId("template-results");
+
+    for (const [width, expectedColumns] of [
+      [1600, 3],
+      [1200, 2],
+      [600, 1],
+    ] as const) {
+      await page.setViewportSize({ width, height: 1200 });
+      await expect
+        .poll(() =>
+          grid.evaluate((element) => {
+            const cards = Array.from(
+              element.querySelectorAll<HTMLElement>(
+                "[data-template-card]",
+              ),
+            );
+            const firstTop = cards[0]?.getBoundingClientRect().top;
+            return firstTop === undefined
+              ? 0
+              : cards.filter(
+                  (card) =>
+                    Math.abs(card.getBoundingClientRect().top - firstTop) <
+                    1,
+                ).length;
+          }),
+        )
+        .toBe(expectedColumns);
+      const cardWidth = await grid
+        .locator("[data-template-card]")
+        .first()
+        .evaluate((element) => element.getBoundingClientRect().width);
+      expect(cardWidth).toBeGreaterThanOrEqual(285);
+      expect(cardWidth).toBeLessThanOrEqual(350);
+    }
+  });
+
+  test("incomplete final rows preserve the preceding column alignment", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1600, height: 1200 });
+    const cards = page.getByTestId("template-results").locator(
+      "[data-template-card]",
+    );
+    const layout = await cards.evaluateAll((elements) =>
+      elements.map((element) => {
+        const bounds = element.getBoundingClientRect();
+        return {
+          x: bounds.x,
+          top: bounds.top,
+          width: bounds.width,
+        };
+      }),
+    );
+    const firstTop = layout[0]?.top ?? 0;
+    const lastTop = Math.max(...layout.map((card) => card.top));
+    const firstRow = layout.filter(
+      (card) => Math.abs(card.top - firstTop) < 1,
+    );
+    const lastRow = layout.filter(
+      (card) => Math.abs(card.top - lastTop) < 1,
+    );
+
+    expect(firstRow).toHaveLength(3);
+    expect(lastRow).toHaveLength(2);
+    for (const [index, card] of lastRow.entries()) {
+      expect(card.x).toBeCloseTo(firstRow[index].x, 1);
+      expect(card.width).toBeCloseTo(firstRow[index].width, 1);
+    }
   });
 
   test("search fills the row up to the sort control", async ({ page }) => {
@@ -277,58 +400,96 @@ test.describe("Gallery functionality (deploy gate)", () => {
     );
   });
 
-  test('search "azure" narrows results but keeps some', async ({ page }) => {
+  test('search "postgresql" narrows results but keeps some', async ({
+    page,
+  }) => {
     const initial = await resultCount(page);
     const searchInput = page.locator("#catalog-search");
 
-    await searchInput.fill("azure");
-    await expect(page).not.toHaveURL(/q=azure/);
+    await searchInput.fill("postgresql");
+    await expect(page).not.toHaveURL(/q=postgresql/);
     expect(await resultCount(page)).toBe(initial);
     await searchInput.press("Enter");
 
-    await expect(page).toHaveURL(/q=azure/);
+    await expect(page).toHaveURL(/q=postgresql/);
     await expect.poll(() => resultCount(page)).not.toBe(initial);
     const filtered = await resultCount(page);
     expect(filtered).toBeGreaterThan(0);
     expect(filtered).toBeLessThan(initial);
   });
 
-  test("a pending remote search does not retain previous matches", async ({
+  test("applied search and filter values use pill styling", async ({
     page,
   }) => {
-    await page.route("**/ai-apps-search*", async (route) => {
-      const search = new URL(route.request().url()).searchParams.get(
-        "search",
+    await page.goto("templates?type=ai&q=tag");
+    const pills = page.getByRole("group", {
+      name: "Applied filters",
+    }).getByRole("button");
+
+    await expect(pills).toHaveCount(2);
+    for (const pill of await pills.all()) {
+      await expect(pill).toHaveCSS("border-radius", "999px");
+      await expect(pill).toHaveCSS(
+        "background-color",
+        "rgb(240, 249, 255)",
       );
-      if (search === "remote-only") {
-        await route.fulfill({
-          json: [
-            {
-              document: {
-                source:
-                  "https://github.com/Azure-Samples/get-started-with-ai-chat",
-              },
-            },
-          ],
-        });
-        return;
-      }
-      if (search === "pending-query") {
-        await new Promise((resolve) => setTimeout(resolve, 2_000));
-      }
-      await route.fulfill({ json: [] });
-    });
+      await expect(pill).toHaveCSS("color", "rgb(3, 105, 161)");
+    }
+  });
 
+  test("filter groups hide values with zero matching templates", async ({
+    page,
+  }) => {
+    await page.goto(
+      `templates?type=ai&q=${encodeURIComponent(
+        "RAG chat with Azure AI Search + C#",
+      )}`,
+    );
+
+    await expect(
+      page.getByRole("checkbox", { name: /Document Q&A 1/ }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("checkbox", { name: /Web apps 1/ }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("checkbox", { name: /APIs 1/ }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("checkbox", { name: /AI agents 0/ }),
+    ).toHaveCount(0);
+  });
+
+  test("use cases work in search and filters without appearing as card tags", async ({
+    page,
+  }) => {
     const searchInput = page.locator("#catalog-search");
-    await searchInput.fill("remote-only");
+    await searchInput.fill("Build an AI agent");
     await searchInput.press("Enter");
-    await expect.poll(() => resultCount(page)).toBe(1);
+    await expect.poll(() => resultCount(page)).toBeGreaterThan(0);
+    expect(
+      (await page.locator("[data-template-tags]").allTextContents()).some(
+        (text) => /Build an AI agent|AI agents/.test(text),
+      ),
+    ).toBe(false);
 
-    await searchInput.fill("pending-query");
-    await searchInput.press("Enter");
-    await expect(page.getByText("No matching templates")).toBeVisible({
-      timeout: 1_500,
-    });
+    await page.goto("templates");
+    await expect(resultsStatus(page)).toContainText("templates");
+    const aiAgentFilter = page.locator(
+      "#catalog-tasks-build-an-ai-agent",
+    );
+    await aiAgentFilter.check();
+
+    await expect(aiAgentFilter).toBeChecked();
+    expect(new URL(page.url()).searchParams.get("task")).toBe(
+      "Build an AI agent",
+    );
+    await expect.poll(() => resultCount(page)).toBeGreaterThan(0);
+    expect(
+      (await page.locator("[data-template-tags]").allTextContents()).some(
+        (text) => /Build an AI agent|AI agents/.test(text),
+      ),
+    ).toBe(false);
   });
 
   test("nonsense search shows the empty-state message", async ({ page }) => {
@@ -379,34 +540,50 @@ test.describe("Gallery functionality (deploy gate)", () => {
     expect(await resultCount(page)).toBeLessThan(initial);
   });
 
-  test("Fluent sort dropdown restores every previous sort order", async ({
+  test("sort dropdown exposes only Most popular and Latest", async ({
     page,
   }) => {
     const sortDropdown = page.getByRole("combobox", {
       name: "Sort by",
     });
-    const sortOptions = [
-      { label: "New to Old", value: "newest" },
-      { label: "Old to New", value: "oldest" },
-      { label: "Alphabetical (A - Z)", value: "az" },
-      { label: "Alphabetical (Z - A)", value: "za" },
-    ];
+    await sortDropdown.click();
+    await expect(
+      page.getByRole("option", { name: "Most popular" }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("option", { name: "Latest" }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("option", { name: "Old to New" }),
+    ).toHaveCount(0);
+    await expect(
+      page.getByRole("option", { name: "Alphabetical (A - Z)" }),
+    ).toHaveCount(0);
+    await expect(
+      page.getByRole("option", { name: "Alphabetical (Z - A)" }),
+    ).toHaveCount(0);
 
-    for (const option of sortOptions) {
-      await sortDropdown.click();
-      const menuOption = page.getByRole("option", { name: option.label });
-      await expect(menuOption).toBeEnabled();
-      await menuOption.click();
-      await expect(page).toHaveURL(
-        new RegExp(`[?&]sort=${option.value}(?:&|$)`),
-      );
-      await expect(sortDropdown).toHaveText(option.label);
-    }
+    await page.getByRole("option", { name: "Latest" }).click();
+    await expect(page).toHaveURL(/[?&]sort=newest(?:&|$)/);
+    await expect(sortDropdown).toHaveText("Latest");
 
     await sortDropdown.click();
-    await page.getByRole("option", { name: "Recommended" }).click();
+    await page.getByRole("option", { name: "Most popular" }).click();
     await expect(page).not.toHaveURL(/[?&]sort=/);
-    await expect(sortDropdown).toHaveText("Recommended");
+    await expect(sortDropdown).toHaveText("Most popular");
+  });
+
+  test("start-with-code omits the setup guide link", async ({ page }) => {
+    await page.goto("templates/start-with-code");
+    await expect(
+      page.getByRole("heading", {
+        level: 1,
+        name: "Start with your own code",
+      }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("link", { name: "Read the setup guide" }),
+    ).toHaveCount(0);
   });
 
   test("dark-mode copy action hover meets text contrast", async ({ page }) => {

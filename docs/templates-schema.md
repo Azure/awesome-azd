@@ -73,12 +73,33 @@ Operational fields from the retired AI service, including email addresses,
 validation state, deletion state, and environment configuration, are not part
 of the public catalog contract.
 
+### Popularity metadata
+
+GitHub star counts are volatile and are therefore kept outside
+`templates.json` in `website/static/template-stars.json`. The generated file
+contains only normalized public repository sources and star counts. Refresh it
+with `npm run update-template-stars` from `website/` while authenticated with a
+`GITHUB_TOKEN`.
+
+### Reviewed use-case metadata
+
+The Templates experience supports one or more reviewed use cases per public
+template. These classifications are stored separately in
+`website/src/catalog/template-use-cases.json`, keyed by normalized public
+repository source. The unified catalog requires exact coverage, rejects
+unknown or duplicate use cases, includes every use case in local search, and
+matches a template when any selected use case applies.
+
 > ⚠️ **Gotcha — tag taxonomy coupling:** Adding a brand-new value to `tags`,
 > `languages`, etc. requires updating the `TagType` union in
 > [`website/src/data/tags.tsx`](../website/src/data/tags.tsx). The gallery loader
 > does not strip unknown catalog tags. Submission automation restores canonical
 > spelling for case-insensitive matches and warns on unknown values; catalog
 > taxonomy checks remain separate from runtime loading.
+
+The administrative `new` tag is reserved for templates added to the catalog
+within the past month. Its expiry is currently reviewed manually; automated
+expiry validation is tracked as follow-up work.
 
 ## 4. Extension-only fields
 
@@ -161,7 +182,8 @@ applies these steps in order:
 3. **Unified catalog adapter** — `catalogData.ts` independently accepts
    absent / null / empty `templateType` values plus `ai-app-templates`, then
    normalizes both into the shared catalog model used by `/templates` and
-   canonical detail pages.
+   canonical detail pages. Every accepted source must also have one or more
+   reviewed entries in `template-use-cases.json`.
 
 `validateTemplates` also relaxes the `tags` requirement for any entry where
 `templateType` is set, as defense-in-depth in case the pipeline ordering is
@@ -182,6 +204,8 @@ ever changed.
 ## 9. Related files
 
 - [`website/static/templates.json`](../website/static/templates.json) — the data
+- [`website/static/template-stars.json`](../website/static/template-stars.json) — generated public popularity metadata
+- [`website/src/catalog/template-use-cases.json`](../website/src/catalog/template-use-cases.json) — reviewed catalog use cases
 - [`website/src/data/tags.tsx`](../website/src/data/tags.tsx) — `Template` / `TagType` definitions
 - [`website/src/data/templates.ts`](../website/src/data/templates.ts) — filter + validation logic
 - [`website/test/gallery-filter.test.ts`](../website/test/gallery-filter.test.ts) — gallery/extension filtering contract

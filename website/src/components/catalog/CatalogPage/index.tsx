@@ -49,40 +49,37 @@ import {
   type CatalogSort,
   type CatalogState,
 } from "../../../catalog/catalogQuery";
-import { fetchTemplateSearchResults } from "../../../ai/utils/templateSearch";
 import {
   captureGalleryNavigationState,
   restoreGalleryNavigationState,
   type GalleryNavigationState,
 } from "../../../utils/galleryNavigation";
-import CatalogFooter from "../CatalogFooter";
 import CopyAction from "../CopyAction";
 import styles from "./styles.module.css";
 
 const itemsPerPage = 20;
-const searchTimeoutMs = 5_000;
 const canonicalUrl = "https://azure.github.io/awesome-azd/templates";
-const catalogJsonUrl =
-  "https://azure.github.io/awesome-azd/templates.json";
+const catalogJsonUrl = "https://aka.ms/awesome-azd/templates.json";
 const sourceOrder = new Map(
   catalogTemplates.map((template, index) => [
     template.normalizedSource,
     index,
   ]),
 );
-const aiSources = catalogTemplates
-  .filter((template) => template.isAi)
-  .map((template) => template.source);
 const catalogSortOptions: ReadonlyArray<{
   value: CatalogSort;
   label: string;
 }> = [
-  { value: "recommended", label: "Recommended" },
-  { value: "newest", label: "New to Old" },
-  { value: "oldest", label: "Old to New" },
-  { value: "az", label: "Alphabetical (A - Z)" },
-  { value: "za", label: "Alphabetical (Z - A)" },
+  { value: "recommended", label: "Most popular" },
+  { value: "newest", label: "Latest" },
 ];
+const catalogSortLabels: Record<CatalogSort, string> = {
+  recommended: "Most popular",
+  newest: "Latest",
+  oldest: "Old to New",
+  az: "Alphabetical (A - Z)",
+  za: "Alphabetical (Z - A)",
+};
 
 function AiIcon(): React.JSX.Element {
   return (
@@ -135,18 +132,16 @@ function CopyIcon(): React.JSX.Element {
 function FacetSection({
   facet,
   state,
-  backendMatches,
   onChange,
 }: {
   facet: CatalogFacet;
   state: CatalogState;
-  backendMatches: ReadonlySet<string> | null;
   onChange: (
     key: CatalogFacetKey,
     value: string,
     checked: boolean,
   ) => void;
-}): React.JSX.Element {
+}): React.JSX.Element | null {
   const selected = state[facet.key];
   const [open, setOpen] = useState(
     facet.open === true || selected.length > 0,
@@ -159,6 +154,24 @@ function FacetSection({
     }
   }, [selected.length]);
 
+  const optionsWithCounts = options
+    .map((value) => ({
+      value,
+      count: getFacetValueCount(
+        catalogTemplates,
+        state,
+        facet,
+        value,
+      ),
+    }))
+    .filter(
+      ({ value, count }) => count > 0 || selected.includes(value),
+    );
+
+  if (optionsWithCounts.length === 0) {
+    return null;
+  }
+
   return (
     <details
       className={styles.facet}
@@ -169,19 +182,12 @@ function FacetSection({
     >
       <summary>
         {facet.label}
-        <span title="Filter items">{options.length}</span>
+        <span title="Filter items">{optionsWithCounts.length}</span>
       </summary>
       <fieldset>
         <legend className={styles.visuallyHidden}>{facet.label}</legend>
-        {options.map((value) => {
+        {optionsWithCounts.map(({ value, count }) => {
           const label = getFacetLabel(facet, value);
-          const count = getFacetValueCount(
-            catalogTemplates,
-            state,
-            backendMatches,
-            facet,
-            value,
-          );
           const id = `catalog-${facet.key}-${value
             .toLowerCase()
             .replace(/[^a-z0-9]+/g, "-")}`;
@@ -235,7 +241,12 @@ function TemplateCard({
   const detailUrl = `${detailPath}?from=catalog${
     listingQuery ? `&${listingQuery}` : ""
   }`;
-  const service = template.host ?? template.services[0];
+  const service =
+    template.resources.find(
+      (resource) => resource.role === "Application hosting",
+    )?.label ??
+    template.host ??
+    template.services[0];
   const cardTags = [
     ...(template.languages.length > 0
       ? template.languages
@@ -319,7 +330,7 @@ function TemplateCard({
         </h2>
         <p className={styles.cardSummary}>{template.description}</p>
         <div className={styles.cardMeta}>
-          <div className={styles.cardTags}>
+          <div className={styles.cardTags} data-template-tags>
             {cardTags.map((tag) => (
               <span key={tag} className={styles.tag}>
                 {tag}
@@ -404,10 +415,7 @@ export default function CatalogPage(): React.JSX.Element {
     [hydrationSafeSearch],
   );
   const [searchValue, setSearchValue] = useState(state.q);
-  const [searchRequestVersion, setSearchRequestVersion] = useState(0);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
-  const [backendMatches, setBackendMatches] =
-    useState<ReadonlySet<string> | null>(null);
   const startWithCodeUrl = useBaseUrl("/templates/start-with-code");
   const llmsUrl = useBaseUrl("/llms.txt");
 
@@ -435,9 +443,6 @@ export default function CatalogPage(): React.JSX.Element {
     ).trim();
     setSearchValue(query);
     if (query === state.q) {
-      if (query.length >= 2) {
-        setSearchRequestVersion((version) => version + 1);
-      }
       return;
     }
     pushState({
@@ -486,65 +491,6 @@ export default function CatalogPage(): React.JSX.Element {
   }, [isBrowser, location.key]);
 
   useEffect(() => {
-    const query = state.q.trim();
-    if (query.length < 2) {
-      setBackendMatches(null);
-      return undefined;
-    }
-
-    setBackendMatches(null);
-    let active = true;
-    const controller = new AbortController();
-    let requestTimeout: number | undefined;
-    const timer = window.setTimeout(() => {
-      requestTimeout = window.setTimeout(
-        () => controller.abort(),
-        searchTimeoutMs,
-      );
-      void fetchTemplateSearchResults(
-        query,
-        controller.signal,
-        aiSources,
-      )
-        .then((sources) => {
-          if (active) {
-            setBackendMatches(new Set(sources));
-          }
-        })
-        .catch((error) => {
-          if (
-            error instanceof DOMException &&
-            error.name === "AbortError"
-          ) {
-            return;
-          }
-          if (!active) {
-            return;
-          }
-          console.warn(
-            "AI template search is unavailable; using local catalog search.",
-            error,
-          );
-          setBackendMatches(null);
-        })
-        .finally(() => {
-          if (requestTimeout !== undefined) {
-            window.clearTimeout(requestTimeout);
-          }
-        });
-    }, 450);
-
-    return () => {
-      active = false;
-      window.clearTimeout(timer);
-      if (requestTimeout !== undefined) {
-        window.clearTimeout(requestTimeout);
-      }
-      controller.abort();
-    };
-  }, [searchRequestVersion, state.q]);
-
-  useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       const activeElement = document.activeElement;
       const isEditable =
@@ -590,13 +536,8 @@ export default function CatalogPage(): React.JSX.Element {
   }, [pushState, searchValue, state]);
 
   const matchingTemplates = useMemo(
-    () =>
-      getMatchingCatalogTemplates(
-        catalogTemplates,
-        state,
-        backendMatches,
-      ),
-    [backendMatches, state],
+    () => getMatchingCatalogTemplates(catalogTemplates, state),
+    [state],
   );
   const sortedTemplates = useMemo(
     () =>
@@ -627,10 +568,7 @@ export default function CatalogPage(): React.JSX.Element {
   const startUrl = `${startWithCodeUrl}${
     listingQuery ? `?${listingQuery}` : ""
   }`;
-  const shareUrl = canonicalUrl;
-  const selectedSortLabel =
-    catalogSortOptions.find((option) => option.value === state.sort)
-      ?.label ?? catalogSortOptions[0].label;
+  const selectedSortLabel = catalogSortLabels[state.sort];
   const liveStatus =
     totalItems === 0
       ? "0 templates"
@@ -663,7 +601,7 @@ export default function CatalogPage(): React.JSX.Element {
           content="Discover, understand, and start with an Azure Developer CLI template."
         />
       </Head>
-      <Layout noFooter>
+      <Layout>
         <CatalogFluentProvider>
           <main className={styles.page}>
             <div className={styles.wrap}>
@@ -741,7 +679,7 @@ export default function CatalogPage(): React.JSX.Element {
                     aria-label="Sort by"
                     value={selectedSortLabel}
                     selectedOptions={[state.sort]}
-                    title="Recommended order follows the curated catalog. Date sorting follows the catalog's established order."
+                    title="Most popular shows featured templates first, then orders the rest by GitHub stars. Latest follows the catalog's newest-first order."
                     onOptionSelect={(_event, data) => {
                       const sort =
                         catalogSortOptions.find(
@@ -818,7 +756,6 @@ export default function CatalogPage(): React.JSX.Element {
                         key={facet.key}
                         facet={facet}
                         state={state}
-                        backendMatches={backendMatches}
                         onChange={changeFacet}
                       />
                     ))}
@@ -982,17 +919,10 @@ export default function CatalogPage(): React.JSX.Element {
                 </small>
               </div>
               <div className={styles.agentActions}>
-                <CopyAction
-                  value={shareUrl}
-                  idleLabel="Copy agent link"
-                  copiedLabel="Agent link copied"
-                  className={styles.agentButton}
-                />
                 <a href={llmsUrl}>View llms.txt</a>
                 <a href={catalogJsonUrl}>Catalog JSON</a>
               </div>
             </section>
-            <CatalogFooter />
           </main>
         </CatalogFluentProvider>
       </Layout>

@@ -283,7 +283,7 @@ describe("privacy-safe AI catalog metadata", () => {
       }
     }
 
-    expect(assetPaths.size).toBe(79);
+    expect(assetPaths.size).toBe(77);
     for (const asset of assetPaths) {
       const filePath = path.join(websiteRoot, "static", asset.slice(1));
       if (!fs.existsSync(filePath)) {

@@ -100,7 +100,12 @@ export const catalogFacets: readonly CatalogFacet[] = [
     hidden: true,
   },
   { key: "iac", param: "iac", label: "Infrastructure as code" },
-  { key: "authorship", param: "authorship", label: "Authored by" },
+  {
+    key: "authorship",
+    param: "authorship",
+    label: "Authored by",
+    values: ["Microsoft", "Community"],
+  },
   {
     key: "legacyTags",
     param: "tags",
@@ -123,7 +128,7 @@ function getValues(
     case "types":
       return template.collections;
     case "tasks":
-      return [template.task];
+      return template.tasks;
     case "languages":
       return template.languages;
     case "frameworks":
@@ -256,17 +261,12 @@ export function clearCatalogState(): CatalogState {
 export function matchesCatalogTemplate(
   template: CatalogTemplate,
   state: CatalogState,
-  backendMatches: ReadonlySet<string> | null,
   ignoredFacet?: CatalogFacetKey,
 ): boolean {
   const tokens = state.q.trim().toLowerCase().split(/\s+/).filter(Boolean);
-  const localMatch = tokens.every((token) =>
-    template.searchText.includes(token),
-  );
   const queryMatch =
     tokens.length === 0 ||
-    localMatch ||
-    backendMatches?.has(template.normalizedSource) === true;
+    tokens.every((token) => template.searchText.includes(token));
 
   return (
     queryMatch &&
@@ -286,10 +286,9 @@ export function matchesCatalogTemplate(
 export function getMatchingCatalogTemplates(
   records: readonly CatalogTemplate[],
   state: CatalogState,
-  backendMatches: ReadonlySet<string> | null,
 ): CatalogTemplate[] {
   return records.filter((template) =>
-    matchesCatalogTemplate(template, state, backendMatches),
+    matchesCatalogTemplate(template, state),
   );
 }
 
@@ -319,16 +318,26 @@ export function sortCatalogTemplates(
   }
 
   return result.sort(
-    (left, right) =>
-      (sourceOrder.get(left.normalizedSource) ?? Number.MAX_SAFE_INTEGER) -
-      (sourceOrder.get(right.normalizedSource) ?? Number.MAX_SAFE_INTEGER),
+    (left, right) => {
+      if (left.featured !== right.featured) {
+        return left.featured ? -1 : 1;
+      }
+      if (left.stars !== right.stars) {
+        return right.stars - left.stars;
+      }
+      return (
+        (sourceOrder.get(left.normalizedSource) ??
+          Number.MAX_SAFE_INTEGER) -
+        (sourceOrder.get(right.normalizedSource) ??
+          Number.MAX_SAFE_INTEGER)
+      );
+    },
   );
 }
 
 export function getFacetValueCount(
   records: readonly CatalogTemplate[],
   state: CatalogState,
-  backendMatches: ReadonlySet<string> | null,
   facet: CatalogFacet,
   value: string,
 ): number {
@@ -337,7 +346,6 @@ export function getFacetValueCount(
       matchesCatalogTemplate(
         template,
         state,
-        backendMatches,
         facet.key,
       ) && getValues(template, facet.key).includes(value),
   ).length;

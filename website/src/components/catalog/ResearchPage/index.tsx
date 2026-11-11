@@ -8,7 +8,6 @@ import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import Layout from "@theme/Layout";
-import CatalogFooter from "../CatalogFooter";
 import styles from "./styles.module.css";
 
 export default function ResearchPage(): React.JSX.Element {
@@ -23,7 +22,7 @@ export default function ResearchPage(): React.JSX.Element {
           content="Design and safety rationale for the unified Awesome azd template catalog."
         />
       </Head>
-      <Layout noFooter>
+      <Layout>
         <div className={styles.page}>
           <main className={styles.main}>
             <div className={styles.breadcrumb}>
@@ -57,11 +56,10 @@ export default function ResearchPage(): React.JSX.Element {
             <section>
               <h2>Search and privacy</h2>
               <p>
-                Local keyword matching covers the complete catalog. The
-                existing AI search service can add AI matches, but responses
-                are accepted only when their repository source is in the
-                reviewed public AI source allowlist. No author email or private
-                backend field is rendered.
+                Local keyword matching covers template titles, descriptions,
+                tags, authors, and use cases across the complete catalog. The
+                Templates page does not send search terms to the AI search
+                service. No author email or private backend field is rendered.
               </p>
             </section>
             <section>
@@ -82,7 +80,6 @@ export default function ResearchPage(): React.JSX.Element {
               </a>
             </p>
           </main>
-          <CatalogFooter />
         </div>
       </Layout>
     </>

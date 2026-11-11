@@ -37,8 +37,7 @@
   font-size: 0.78rem;
 }
 
-.breadcrumb a,
-.guide {
+.breadcrumb a {
   color: var(--catalog-blue);
 }
 
@@ -127,18 +126,6 @@
 .copyCommand:hover {
   border-color: var(--catalog-line);
   color: var(--catalog-blue);
-}
-
-.guide {
-  display: inline-flex;
-  margin-top: 48px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.guide:hover {
-  text-decoration: underline;
 }
 
 @media screen and (max-width: 900px) {

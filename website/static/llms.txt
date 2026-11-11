@@ -9,7 +9,7 @@ Share this index explicitly. Automatic discovery is not guaranteed.
 ## Catalog retrieval
 
 - Catalog UI: https://azure.github.io/awesome-azd/templates
-- Catalog JSON: https://azure.github.io/awesome-azd/templates.json
+- Catalog JSON: https://aka.ms/awesome-azd/templates.json
 - Catalog schema: https://github.com/Azure/awesome-azd/blob/main/docs/templates-schema.md
 - Contribution guide: https://azure.github.io/awesome-azd/docs/contribute
 

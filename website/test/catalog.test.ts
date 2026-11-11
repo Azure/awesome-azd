@@ -5,6 +5,8 @@
 
 import { describe, expect, test } from "@jest/globals";
 import templates from "../static/templates.json";
+import templateStars from "../static/template-stars.json";
+import reviewedTemplateUseCases from "../src/catalog/template-use-cases.json";
 import {
   catalogTemplates,
   findCatalogTemplate,
@@ -12,7 +14,9 @@ import {
 } from "../src/catalog/catalogData";
 import { isCatalogTemplate } from "../route_generator_plugin/aiRouteGenerator";
 import {
+  catalogFacets,
   clearCatalogState,
+  getFacetOptions,
   getMatchingCatalogTemplates,
   parseCatalogState,
   serializeCatalogState,
@@ -75,6 +79,85 @@ describe("unified catalog data", () => {
     expect(
       catalogTemplates.some((template) => "markdownUrl" in template),
     ).toBe(false);
+  });
+
+  test("has a static GitHub star count for every catalog template", () => {
+    expect(Object.keys(templateStars.repositories).sort()).toEqual(
+      catalogTemplates
+        .map((template) => template.normalizedSource)
+        .sort(),
+    );
+    expect(
+      catalogTemplates.every(
+        (template) =>
+          Number.isInteger(template.stars) && template.stars >= 0,
+      ),
+    ).toBe(true);
+    expect(catalogTemplates.some((template) => template.stars > 0)).toBe(
+      true,
+    );
+  });
+
+  test("has reviewed use cases for every catalog template", () => {
+    expect(Object.keys(reviewedTemplateUseCases).sort()).toEqual(
+      catalogTemplates
+        .map((template) => template.normalizedSource)
+        .sort(),
+    );
+    expect(
+      catalogTemplates.every((template) => template.tasks.length > 0),
+    ).toBe(true);
+    expect(
+      catalogTemplates.some((template) => template.tasks.length > 1),
+    ).toBe(true);
+  });
+
+  test("preserves the reviewed decisions for ambiguous templates", () => {
+    expect(
+      catalogTemplates.find(
+        (template) =>
+          template.source ===
+          "https://github.com/Arize-ai/phoenix-on-azure",
+      )?.tasks,
+    ).toEqual(["Start with infrastructure"]);
+    expect(
+      catalogTemplates.find(
+        (template) =>
+          template.source ===
+          "https://github.com/petender/azd-vision-face",
+      )?.tasks,
+    ).toEqual(["Build a web app", "Start with infrastructure"]);
+  });
+
+  test("preserves reviewed catalog-retention and authorship decisions", () => {
+    const sources = catalogTemplates.map((template) => template.source);
+    expect(sources).not.toContain(
+      "https://github.com/Azure-Samples/Azure-Language-OpenAI-Conversational-Agent-Accelerator",
+    );
+    expect(sources).not.toContain(
+      "https://github.com/Azure-Samples/Copilot-Studio-with-Azure-AI-Search",
+    );
+    expect(
+      catalogTemplates.find(
+        (template) =>
+          template.source ===
+          "https://github.com/seligj95/app-service-foundry-chat",
+      )?.authorship,
+    ).toBe("Community");
+  });
+
+  test("keeps new tags only on the two templates added within the past month", () => {
+    expect(
+      catalogTemplates
+        .filter((template) => template.legacyTags.includes("new"))
+        .map((template) => template.source)
+        .sort(),
+    ).toEqual(
+      [
+        "https://github.com/JayChase/langchain-ag-ui-angular",
+        "https://github.com/massimobonanni/DBSemanticSearch",
+      ].sort(),
+    );
   });
 
   test("preserves legacy preview images in the unified view model", () => {
@@ -147,11 +230,11 @@ describe("unified catalog data", () => {
       template.title.startsWith("Jakarta Java EE Cargo Tracker"),
     );
 
-    expect(sqlTemplate?.task).toBe("Query a database");
-    expect(cargoTemplate?.task).toBe("Build a web app");
+    expect(sqlTemplate?.tasks).toContain("Query a database");
+    expect(cargoTemplate?.tasks).toEqual(["Build a web app"]);
   });
 
-  test("uses positive task signals when language metadata is missing", () => {
+  test("uses reviewed use cases when language metadata is missing", () => {
     const apiTemplate = catalogTemplates.find(
       (template) =>
         template.title ===
@@ -163,8 +246,8 @@ describe("unified catalog data", () => {
         "Blazor BadgeMaker with Azure AI Services",
     );
 
-    expect(apiTemplate?.task).toBe("Build an API");
-    expect(webTemplate?.task).toBe("Build a web app");
+    expect(apiTemplate?.tasks).toContain("Build an API");
+    expect(webTemplate?.tasks).toContain("Build a web app");
   });
 });
 
@@ -197,7 +280,6 @@ describe("unified catalog query", () => {
     const matches = getMatchingCatalogTemplates(
       catalogTemplates,
       state,
-      null,
     );
     const expectedAiCount = catalogTemplates.filter(
       (template) => template.isAi,
@@ -208,22 +290,81 @@ describe("unified catalog query", () => {
     expect(serializeCatalogState(state)).toBe("type=ai");
   });
 
-  test("combines local search with allowlisted backend source matches", () => {
-    const target = catalogTemplates.find((template) => template.isAi);
-    if (!target) {
-      throw new Error("Expected an AI catalog template.");
+  test("lists Microsoft before Community in the authorship filter", () => {
+    const authorshipFacet = catalogFacets.find(
+      (facet) => facet.key === "authorship",
+    );
+    if (!authorshipFacet) {
+      throw new Error("Expected the authorship facet.");
     }
-    const state = parseCatalogState(
-      "?q=zzzz-no-local-match",
-      catalogTemplates,
-    );
-    const matches = getMatchingCatalogTemplates(
-      catalogTemplates,
-      state,
-      new Set([target.normalizedSource]),
-    );
 
-    expect(matches).toEqual([target]);
+    expect(getFacetOptions(catalogTemplates, authorshipFacet)).toEqual([
+      "Microsoft",
+      "Community",
+    ]);
+  });
+
+  test("searches title, description, tags, authors, and use case locally", () => {
+    const target = catalogTemplates.find(
+      (template) =>
+        template.source ===
+        "https://github.com/Azure-Samples/get-started-with-ai-chat",
+    );
+    if (!target) {
+      throw new Error("Expected the Get Started with Chat template.");
+    }
+
+    const queries = [
+      target.title,
+      target.description,
+      target.legacyTags[0],
+      target.authors[0],
+      ...target.tasks,
+    ];
+
+    for (const query of queries) {
+      const state = parseCatalogState(
+        `?${new URLSearchParams({ q: query })}`,
+        catalogTemplates,
+      );
+      const matches = getMatchingCatalogTemplates(
+        catalogTemplates,
+        state,
+      );
+
+      expect(
+        matches.map((template) => template.normalizedSource),
+      ).toContain(target.normalizedSource);
+      expect(query).toBeTruthy();
+    }
+  });
+
+  test("filters templates by every reviewed use case", () => {
+    const target = catalogTemplates.find(
+      (template) =>
+        template.source ===
+        "https://github.com/Azure-Samples/azure-search-openai-demo-csharp",
+    );
+    if (!target) {
+      throw new Error("Expected the C# RAG chat template.");
+    }
+
+    expect(target.tasks).toEqual([
+      "Build a web app",
+      "Build an API",
+      "Chat with documents",
+    ]);
+    for (const task of target.tasks) {
+      const state = parseCatalogState(
+        `?${new URLSearchParams({ task })}`,
+        catalogTemplates,
+      );
+      expect(
+        getMatchingCatalogTemplates(catalogTemplates, state).map(
+          (template) => template.normalizedSource,
+        ),
+      ).toContain(target.normalizedSource);
+    }
   });
 
   test("ignores unavailable saved filters without losing valid criteria", () => {
@@ -250,7 +391,6 @@ describe("unified catalog query", () => {
       getMatchingCatalogTemplates(
         catalogTemplates,
         legacyState,
-        null,
       ).every((template) => template.legacyTags.includes("swa")),
     ).toBe(true);
     expect(serializeCatalogState(legacyState)).toBe("tags=swa");
@@ -264,7 +404,6 @@ describe("unified catalog query", () => {
     const matches = getMatchingCatalogTemplates(
       catalogTemplates,
       state,
-      null,
     );
 
     expect(state.legacyTags).toEqual(["python", "aca"]);
@@ -279,7 +418,7 @@ describe("unified catalog query", () => {
     expect(serializeCatalogState(state)).toBe("tags=python%2Caca");
   });
 
-  test("preserves curated migration services and languages", () => {
+  test("uses reviewed migration services and languages", () => {
     const cargoState = parseCatalogState(
       "?tags=aks&q=cargo%20tracker",
       catalogTemplates,
@@ -287,7 +426,6 @@ describe("unified catalog query", () => {
     const cargoMatches = getMatchingCatalogTemplates(
       catalogTemplates,
       cargoState,
-      null,
     );
     const purviewTemplate = catalogTemplates.find(
       (template) =>
@@ -304,7 +442,8 @@ describe("unified catalog query", () => {
       "https://github.com/Azure-Samples/cargotracker-liberty-aks-azd",
     );
     expect(purviewTemplate?.serviceIds).toContain("purview");
-    expect(ragTemplate?.legacyTags).toContain("nodejs");
+    expect(ragTemplate?.languages).toContain("TypeScript");
+    expect(ragTemplate?.legacyTags).not.toContain("nodejs");
   });
 
   test("preserves exact legacy author filters", () => {
@@ -315,7 +454,6 @@ describe("unified catalog query", () => {
     const matches = getMatchingCatalogTemplates(
       catalogTemplates,
       state,
-      null,
     );
 
     expect(state.authors).toEqual(["Microsoft"]);
@@ -328,22 +466,21 @@ describe("unified catalog query", () => {
 
   test("preserves superseded author names as filter aliases", () => {
     const state = parseCatalogState(
-      "?authors=ISE%20Scale",
+      "?authors=Azure%20Cosmos%20DB%20Content%20Team",
       catalogTemplates,
     );
     const matches = getMatchingCatalogTemplates(
       catalogTemplates,
       state,
-      null,
     );
 
-    expect(state.authors).toEqual(["ISE Scale"]);
+    expect(state.authors).toEqual(["Azure Cosmos DB Content Team"]);
     expect(matches.map((template) => template.source)).toContain(
-      "https://github.com/Azure-Samples/Copilot-Studio-with-Azure-AI-Search",
+      "https://github.com/AzureCosmosDB/cosmosdb-nosql-copilot",
     );
     expect(
       matches.every((template) =>
-        template.legacyAuthors.includes("ISE Scale"),
+        template.legacyAuthors.includes("Azure Cosmos DB Content Team"),
       ),
     ).toBe(true);
   });
@@ -423,25 +560,36 @@ describe("unified catalog query", () => {
     );
   });
 
-  test("uses curated source order for the recommended sort", () => {
-    const [first, second, third] = catalogTemplates;
-    const sourceOrder = new Map([
-      [first.normalizedSource, 0],
-      [second.normalizedSource, 1],
-      [third.normalizedSource, 2],
-    ]);
+  test("sorts featured templates first, then by stars descending", () => {
+    const sourceOrder = new Map(
+      catalogTemplates.map((template, index) => [
+        template.normalizedSource,
+        index,
+      ]),
+    );
+    const sorted = sortCatalogTemplates(
+      catalogTemplates,
+      clearCatalogState(),
+      sourceOrder,
+    );
+    const featuredCount = catalogTemplates.filter(
+      (template) => template.featured,
+    ).length;
 
+    expect(featuredCount).toBeGreaterThan(0);
     expect(
-      sortCatalogTemplates(
-        [third, first, second],
-        clearCatalogState(),
-        sourceOrder,
-      ).map((template) => template.normalizedSource),
-    ).toEqual([
-      first.normalizedSource,
-      second.normalizedSource,
-      third.normalizedSource,
-    ]);
+      sorted.slice(0, featuredCount).every((template) => template.featured),
+    ).toBe(true);
+    expect(
+      sorted.slice(featuredCount).every((template) => !template.featured),
+    ).toBe(true);
+    for (let index = 1; index < sorted.length; index += 1) {
+      if (sorted[index - 1].featured === sorted[index].featured) {
+        expect(sorted[index - 1].stars).toBeGreaterThanOrEqual(
+          sorted[index].stars,
+        );
+      }
+    }
   });
 });
 

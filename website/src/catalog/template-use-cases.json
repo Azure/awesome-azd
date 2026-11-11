@@ -1,0 +1,1013 @@
+{
+  "https://github.com/azure-samples/azd-starter-bicep": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/azure-samples/azd-starter-terraform": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/azure-samples/apptemplate-wordpress-on-aca": [
+    "Build a web app"
+  ],
+  "https://github.com/bradygaster/rockpaperorleans": [
+    "Build a web app"
+  ],
+  "https://github.com/tonybaloney/django-on-azure": [
+    "Build a web app"
+  ],
+  "https://github.com/azure-samples/azure-search-openai-demo-csharp": [
+    "Build a web app",
+    "Build an API",
+    "Chat with documents"
+  ],
+  "https://github.com/azure-samples/msdocs-django-postgresql-sample-app": [
+    "Build a web app"
+  ],
+  "https://github.com/azure-samples/msdocs-flask-postgresql-sample-app": [
+    "Build a web app"
+  ],
+  "https://github.com/azure-samples/pubsub-dapr-csharp-servicebus": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/pubsub-dapr-python-servicebus": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/pubsub-dapr-nodejs-servicebus": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/bindings-dapr-csharp-cron-postgres": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/bindings-dapr-python-cron-postgres": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/bindings-dapr-nodejs-cron-postgres": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/svc-invoke-dapr-nodejs": [
+    "Build an API"
+  ],
+  "https://github.com/azure-samples/svc-invoke-dapr-python": [
+    "Build an API"
+  ],
+  "https://github.com/azure-samples/svc-invoke-dapr-csharp": [
+    "Build an API"
+  ],
+  "https://github.com/azure-samples/azure-search-openai-demo": [
+    "Build a web app",
+    "Build an API",
+    "Chat with documents"
+  ],
+  "https://github.com/azure-samples/aisearch-openai-rag-audio": [
+    "Build a web app",
+    "Chat with documents"
+  ],
+  "https://github.com/azure-samples/get-started-with-ai-agents": [
+    "Build a web app",
+    "Build an AI agent",
+    "Chat with documents"
+  ],
+  "https://github.com/azure-samples/spring-petclinic-java-mysql": [
+    "Build a web app"
+  ],
+  "https://github.com/azure-samples/app-service-javascript-sap-cloud-sdk-quickstart": [
+    "Build a web app",
+    "Build an API"
+  ],
+  "https://github.com/azure-samples/azd-simple-flask-appservice": [
+    "Build a web app"
+  ],
+  "https://github.com/pamelafox/flask-gallery-container-app": [
+    "Build a web app"
+  ],
+  "https://github.com/pamelafox/flask-surveys-container-app": [
+    "Build a web app"
+  ],
+  "https://github.com/pamelafox/simple-flask-api-container": [
+    "Build an API"
+  ],
+  "https://github.com/pamelafox/fastapi-azure-function-apim": [
+    "Build an API"
+  ],
+  "https://github.com/pamelafox/flask-charts-api-container-app": [
+    "Build an API"
+  ],
+  "https://github.com/pamelafox/staticmaps-function": [
+    "Build an API"
+  ],
+  "https://github.com/savannahostrowski/jupyter-mercury-aca": [
+    "Build a web app"
+  ],
+  "https://github.com/pamelafox/django-quiz-app": [
+    "Build a web app"
+  ],
+  "https://github.com/pamelafox/simple-fastapi-container": [
+    "Build an API"
+  ],
+  "https://github.com/sabbour/aks-app-template": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/pamelafox/flask-db-quiz-example": [
+    "Build a web app"
+  ],
+  "https://github.com/gordonby/servicebus-dotnet-functionapp": [
+    "Automate a workflow"
+  ],
+  "https://github.com/tataraba/musicbinder-azd": [
+    "Build a web app"
+  ],
+  "https://github.com/miguelelgallo/simple-streamlit-azd": [
+    "Build a web app"
+  ],
+  "https://github.com/jsburckhardt/docusaurus-aca": [
+    "Build a web app"
+  ],
+  "https://github.com/pascalvanderheiden/ais-apim-odata-reactjs": [
+    "Build a web app",
+    "Build an API"
+  ],
+  "https://github.com/graemefoster/lockeddownchatbot": [
+    "Build an AI agent"
+  ],
+  "https://github.com/lopezleandro03/azd-devcenter": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/azure-samples/azure-search-openai-demo-java": [
+    "Build a web app",
+    "Build an API",
+    "Chat with documents"
+  ],
+  "https://github.com/cmeeg/nextjs-aca": [
+    "Build a web app"
+  ],
+  "https://github.com/azure-samples/azd-deployment-environments": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/cawams/eshop": [
+    "Build a web app"
+  ],
+  "https://github.com/cawams/gameleaderboard": [
+    "Build a web app"
+  ],
+  "https://github.com/cawams/outputcacheopenai": [
+    "Build a web app"
+  ],
+  "https://github.com/azure-samples/pubsub-dapr-aks-java": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure/agent-landing-zone": [
+    "Build an AI agent",
+    "Start with infrastructure"
+  ],
+  "https://github.com/jasontaylordev/azd-blazor": [
+    "Build a web app"
+  ],
+  "https://github.com/miguelelgallo/simple-fastapi-snow-azd": [
+    "Build an API",
+    "Query a database"
+  ],
+  "https://github.com/john0isaac/flask-webapp-mysql-db": [
+    "Build a web app"
+  ],
+  "https://github.com/azure-samples/aks-store-demo": [
+    "Build a web app",
+    "Build an API",
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/app-service-javascript-sap-cap-quickstart": [
+    "Build a web app",
+    "Build an API"
+  ],
+  "https://github.com/azure-samples/azure-postgres-pgvector-python": [
+    "Query a database",
+    "Start with infrastructure"
+  ],
+  "https://github.com/cmeeg/remix-aca": [
+    "Build a web app"
+  ],
+  "https://github.com/azure-samples/azure-sql-db-session-recommender-v2": [
+    "Build a web app",
+    "Build an API",
+    "Query a database"
+  ],
+  "https://github.com/john0isaac/simple-flask-app-terraform": [
+    "Build a web app"
+  ],
+  "https://github.com/azure-samples/azure-appconfig-aks": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/azure-samples/chat-with-your-data-solution-accelerator": [
+    "Build a web app",
+    "Chat with documents"
+  ],
+  "https://github.com/dbroeglin/azure-rails-starter": [
+    "Build a web app"
+  ],
+  "https://github.com/john0isaac/rag-semantic-kernel-mongodb-vcore": [
+    "Chat with documents"
+  ],
+  "https://github.com/azure-samples/serverless-chat-langchainjs": [
+    "Build a web app",
+    "Chat with documents"
+  ],
+  "https://github.com/fboucher/zipdeploy-azfunc": [
+    "Build an API"
+  ],
+  "https://github.com/azure-samples/azd-ai-starter": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/azure-samples/azd-aistudio-starter": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/azure-samples/openai-chat-app-quickstart": [
+    "Build a web app"
+  ],
+  "https://github.com/azure-samples/rag-postgres-openai-python": [
+    "Build a web app",
+    "Build an API",
+    "Query a database"
+  ],
+  "https://github.com/azure/apicenter-analyzer": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure/apicenter-portal-starter": [
+    "Build a web app"
+  ],
+  "https://github.com/azure-samples/gpt-video-analysis-in-a-box": [
+    "Automate a workflow"
+  ],
+  "https://github.com/arize-ai/phoenix-on-azure": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/azurecosmosdb/cosmosdb-nosql-copilot": [
+    "Build a web app",
+    "Query a database"
+  ],
+  "https://github.com/azure-samples/llama-index-python": [
+    "Build a web app",
+    "Chat with documents"
+  ],
+  "https://github.com/ryanninodizon/azureserverlessapp-with-auth-for-dotnet-angular": [
+    "Build a web app",
+    "Build an API"
+  ],
+  "https://github.com/azure-samples/llama-index-javascript": [
+    "Build a web app",
+    "Chat with documents"
+  ],
+  "https://github.com/charliewei0716/on-your-data-with-streamlit": [
+    "Build a web app",
+    "Chat with documents"
+  ],
+  "https://github.com/azure-samples/nlp-sql-in-a-box": [
+    "Query a database"
+  ],
+  "https://github.com/charliewei0716/blob-data-sharing": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/azure-openai-chat-frontend": [
+    "Build a web app"
+  ],
+  "https://github.com/azure-samples/azure-openai-assistant-javascript": [
+    "Build a web app",
+    "Build an AI agent"
+  ],
+  "https://github.com/azure-samples/openai-chat-vision-quickstart": [
+    "Build a web app"
+  ],
+  "https://github.com/azure-samples/quote-of-the-day-dotnet": [
+    "Build a web app"
+  ],
+  "https://github.com/azure-samples/hello-azd": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/azure-samples/openai-secure-ui-js": [
+    "Build a web app"
+  ],
+  "https://github.com/azure-samples/cosmic-food-rag-app": [
+    "Chat with documents"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-dotnet-azd": [
+    "Build an API"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-python-http-azd": [
+    "Build an API"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-javascript-azd": [
+    "Build an API"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-typescript-azd": [
+    "Build an API"
+  ],
+  "https://github.com/azure-samples/azure-functions-java-flex-consumption-azd": [
+    "Build an API"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-powershell-azd": [
+    "Build an API"
+  ],
+  "https://github.com/azure-samples/doc-intelligence-in-a-box": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/azure-openai-keyless-js": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/azure-samples/durable-functions-order-processing": [
+    "Automate a workflow"
+  ],
+  "https://github.com/marnixcox/integration-hub": [
+    "Automate a workflow"
+  ],
+  "https://github.com/marnixcox/logicapp-standard-func": [
+    "Automate a workflow"
+  ],
+  "https://github.com/marnixcox/logicapp-consumption": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/java-on-aca-quarkus": [
+    "Build a web app",
+    "Build an API"
+  ],
+  "https://github.com/azure-samples/java-on-aca": [
+    "Build a web app"
+  ],
+  "https://github.com/build5nines/azd-react-bootstrap-dashboard": [
+    "Build a web app",
+    "Build an API"
+  ],
+  "https://github.com/azure-samples/cargotracker-liberty-aks-azd": [
+    "Build a web app"
+  ],
+  "https://github.com/azure-samples/azd-simple-fastapi-appservice": [
+    "Build an API"
+  ],
+  "https://github.com/azure-samples/llama-index-vector-search-javascript": [
+    "Build a web app",
+    "Build an AI agent",
+    "Chat with documents"
+  ],
+  "https://github.com/azure-samples/durable-functions-order-processing-python": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/azd-functions-sharepoint-webhooks": [
+    "Build an API",
+    "Automate a workflow"
+  ],
+  "https://github.com/petender/conferenceapi": [
+    "Build an API"
+  ],
+  "https://github.com/petender/azd-apimwithconfapi": [
+    "Build an API"
+  ],
+  "https://github.com/petender/openaimultimodel": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/rob-foulkrod/tollbooth": [
+    "Automate a workflow"
+  ],
+  "https://github.com/rob-foulkrod/badgemaker": [
+    "Build a web app"
+  ],
+  "https://github.com/rob-foulkrod/machinelearningazd": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/rob-foulkrod/iaas2019": [
+    "Build a web app",
+    "Start with infrastructure"
+  ],
+  "https://github.com/maartenvandiemen/azd-aci-demo": [
+    "Build a web app",
+    "Start with infrastructure"
+  ],
+  "https://github.com/maartenvandiemen/azd-aca-demo": [
+    "Build a web app",
+    "Start with infrastructure"
+  ],
+  "https://github.com/maartenvandiemen/azd-aks-demo": [
+    "Build a web app",
+    "Start with infrastructure"
+  ],
+  "https://github.com/petender/azd-fdcdn": [
+    "Build a web app",
+    "Start with infrastructure"
+  ],
+  "https://github.com/maartenvandiemen/azd-paas-demo": [
+    "Build a web app"
+  ],
+  "https://github.com/true-while/event-hub-azd": [
+    "Automate a workflow"
+  ],
+  "https://github.com/petender/azd-hubspoke": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/petender/azd-site2sitevpn": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/maartenvandiemen/azd-watermarkfunction": [
+    "Automate a workflow"
+  ],
+  "https://github.com/petender/azd-sentinel": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/petender/azd-trafficmgr": [
+    "Build a web app",
+    "Start with infrastructure"
+  ],
+  "https://github.com/azure-samples/springboot-petclinic-ai-chat-on-app-service": [
+    "Build a web app"
+  ],
+  "https://github.com/azure-samples/azure-openai-rag-workshop-java": [
+    "Build a web app",
+    "Build an API",
+    "Chat with documents"
+  ],
+  "https://github.com/ronaldbosma/azure-integration-services-quickstart": [
+    "Build an API",
+    "Automate a workflow",
+    "Start with infrastructure"
+  ],
+  "https://github.com/fboucher/aspireazstorage": [
+    "Build an API"
+  ],
+  "https://github.com/azure-samples/indexadillo": [
+    "Automate a workflow"
+  ],
+  "https://github.com/rob-foulkrod/purviewenvironment-azd": [
+    "Automate a workflow",
+    "Start with infrastructure"
+  ],
+  "https://github.com/sarahallali/azd-privatelink-pendpoint": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/koenraadhaedens/azd-nestedhv-dc-rtr": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/koenraadhaedens/azd-win11-dev-pc-docker": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/koenraadhaedens/azd-infra-dev-containers": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs": [
+    "Build an API",
+    "Automate a workflow"
+  ],
+  "https://github.com/true-while/owasp-azd": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/madebygps/azd-simple-fastapi-container-appservice": [
+    "Build an API"
+  ],
+  "https://github.com/build5nines/azd-litellm": [
+    "Build an API"
+  ],
+  "https://github.com/powergentic/azd-mcp-ts": [
+    "Build an MCP server"
+  ],
+  "https://github.com/maartenvandiemen/azd-loadtest": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/true-while/secure-data-solutions": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/azure-samples/remote-mcp-functions-typescript": [
+    "Build an MCP server"
+  ],
+  "https://github.com/azure-samples/remote-mcp-functions-dotnet": [
+    "Build an MCP server"
+  ],
+  "https://github.com/azure-samples/remote-mcp-functions-python": [
+    "Build an MCP server"
+  ],
+  "https://github.com/neondatabase/rag-neon-postgres-openai-azure-python": [
+    "Build a web app",
+    "Build an API",
+    "Query a database"
+  ],
+  "https://github.com/neondatabase/azure-tenant-ai-chat": [
+    "Build a web app",
+    "Query a database"
+  ],
+  "https://github.com/azure-samples/remote-mcp-apim-functions-python": [
+    "Build an MCP server"
+  ],
+  "https://github.com/powergentic/azd-mcp-csharp": [
+    "Build an MCP server"
+  ],
+  "https://github.com/erudinsky/azd-static-web-vuejs": [
+    "Build a web app"
+  ],
+  "https://github.com/daverendon/azd-deepseek-r1-on-azure-container-apps": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/petender/azd-youtubesummarizer-openai": [
+    "Build a web app"
+  ],
+  "https://github.com/azure-samples/vite-chat-interface": [
+    "Build a web app"
+  ],
+  "https://github.com/petender/issdata": [
+    "Automate a workflow"
+  ],
+  "https://github.com/daverendon/azd-baseline-webapp": [
+    "Build a web app",
+    "Start with infrastructure"
+  ],
+  "https://github.com/petender/azd-vision-face": [
+    "Build a web app",
+    "Start with infrastructure"
+  ],
+  "https://github.com/azure-samples/blazor-azure-sql-vector-search": [
+    "Build a web app",
+    "Query a database"
+  ],
+  "https://github.com/build5nines/azd-csharp-api-swagger": [
+    "Build an API"
+  ],
+  "https://github.com/azure-samples/snippy": [
+    "Build an API",
+    "Build an AI agent",
+    "Build an MCP server",
+    "Automate a workflow"
+  ],
+  "https://github.com/petender/azd-addsvm": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/petender/azd-sqlao": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/fabio-marini/azd-aspire-basic": [
+    "Build a web app",
+    "Automate a workflow"
+  ],
+  "https://github.com/daverendon/azd-service-endpoints-and-securing-storage": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/michelmsft/goodfood": [
+    "Build an AI agent",
+    "Automate a workflow"
+  ],
+  "https://github.com/maartenvandiemen/azd-appconfiguration": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/daverendon/azd-private-link": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/koenraadhaedens/azd-sqlworloadsim": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-dotnet-azd-eventgrid-blob": [
+    "Automate a workflow"
+  ],
+  "https://github.com/sqltattoo/azd-az104-all-in-one": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/petender/azd-ai-agent-service": [
+    "Build an AI agent",
+    "Start with infrastructure"
+  ],
+  "https://github.com/petender/azd-foundrysora": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-python-azd-sql": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-typescript-azd-cosmosdb": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-python-azd-cosmosdb": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-dotnet-azd-sql": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-typescript-azd-sql": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-dotnet-azd-cosmosdb": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/serverless-chat-langchainjs-purview": [
+    "Build a web app",
+    "Chat with documents"
+  ],
+  "https://github.com/azure-samples/azure-search-openai-demo-purviewdatasecurity": [
+    "Build a web app",
+    "Chat with documents"
+  ],
+  "https://github.com/rob-foulkrod/azd-apimwithconfapi-oauth": [
+    "Build an API"
+  ],
+  "https://github.com/daverendon/azd-microsoft-sentinel": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/true-while/pg-ai-azd": [
+    "Query a database",
+    "Start with infrastructure"
+  ],
+  "https://github.com/passadis/azure-a2a-translation": [
+    "Build a web app",
+    "Build an API",
+    "Build an AI agent",
+    "Automate a workflow"
+  ],
+  "https://github.com/miguelelgallo/myfirstmcp-openai": [
+    "Build an MCP server"
+  ],
+  "https://github.com/passadis/ai-architect-webapp": [
+    "Build a web app",
+    "Build an API",
+    "Build an AI agent",
+    "Build an MCP server"
+  ],
+  "https://github.com/azure-samples/durable-functions-quickstart-dotnet-azd": [
+    "Automate a workflow"
+  ],
+  "https://github.com/daverendon/azd-hardened-webapp": [
+    "Build a web app",
+    "Start with infrastructure"
+  ],
+  "https://github.com/petender/azd-researcher": [
+    "Build a web app",
+    "Build an AI agent"
+  ],
+  "https://github.com/jaychase/semantic-kernel-function-app": [
+    "Build a web app",
+    "Build an API"
+  ],
+  "https://github.com/marnixcox/logicapp-ai-agent": [
+    "Build an AI agent",
+    "Automate a workflow"
+  ],
+  "https://github.com/bderusha/azd-label-studio": [
+    "Build a web app"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-typescript-azd-eventgrid-blob": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-python-azd-eventgrid-blob": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-javascript-azd-eventgrid-blob": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-powershell-azd-eventgrid-blob": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-java-azd-eventgrid-blob": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/aca-python-code-interpreter-session": [
+    "Build a web app",
+    "Build an API"
+  ],
+  "https://github.com/azure-samples/azmcp-copilot-studio-aca-mi": [
+    "Build an MCP server"
+  ],
+  "https://github.com/azure-samples/azure-ai-travel-agents": [
+    "Build a web app",
+    "Build an AI agent",
+    "Build an MCP server"
+  ],
+  "https://github.com/azure-samples/azmcp-foundry-aca-mi": [
+    "Build an MCP server"
+  ],
+  "https://github.com/ronaldbosma/protect-apim-with-oauth": [
+    "Build an API"
+  ],
+  "https://github.com/azure-samples/image-search-aisearch": [
+    "Build a web app",
+    "Build an API"
+  ],
+  "https://github.com/ronaldbosma/call-apim-backend-with-oauth": [
+    "Build an API"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-dotnet-azd-timer": [
+    "Automate a workflow"
+  ],
+  "https://github.com/estopacema/fastapi-postgres-aca": [
+    "Build an API"
+  ],
+  "https://github.com/azure-samples/remote-mcp-functions-java": [
+    "Build an MCP server"
+  ],
+  "https://github.com/petender/azd-storaccnt": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/kareldewinter/tdd-azd-monitor": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/ronaldbosma/call-apim-with-managed-identity": [
+    "Build an API",
+    "Automate a workflow"
+  ],
+  "https://github.com/daverendon/azd-multiagent": [
+    "Build an AI agent",
+    "Automate a workflow"
+  ],
+  "https://github.com/koenraadhaedens/azd-firewall-send-syslog-messages": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/petender/demo-mcp-productcatalog": [
+    "Build an MCP server"
+  ],
+  "https://github.com/petender/azd-betternotes-ai": [
+    "Build a web app",
+    "Automate a workflow"
+  ],
+  "https://github.com/petender/azd-vmbackup": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/petender/azd-asrdemo": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/jmenne/azd-routingdemo": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/azure-samples/dynamic-sessions-custom-container": [
+    "Build an AI agent"
+  ],
+  "https://github.com/estopacema/quarkus-postgres-aca": [
+    "Build an API"
+  ],
+  "https://github.com/jsburckhardt/mcp-obo-aca": [
+    "Build an MCP server"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-typescript-azd-eventhub": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-python-azd-eventhub": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-dotnet-azd-eventhub": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-java-azd-eventhub": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-javascript-azd-eventhub": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-powershell-azd-eventhub": [
+    "Automate a workflow"
+  ],
+  "https://github.com/seligj95/app-service-foundry-chat": [
+    "Build a web app"
+  ],
+  "https://github.com/azure-samples/apim-unified-ai-gateway-sample": [
+    "Build an API"
+  ],
+  "https://github.com/degero-examples/azure-akskedaprometheus-demo": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/azurecosmosdb/mcptoolkit": [
+    "Build an MCP server"
+  ],
+  "https://github.com/ronaldbosma/track-availability-in-app-insights": [
+    "Automate a workflow",
+    "Start with infrastructure"
+  ],
+  "https://github.com/curityio/azd-ai-autonomous-agent": [
+    "Build an API",
+    "Build an AI agent",
+    "Build an MCP server"
+  ],
+  "https://github.com/massimobonanni/azd-todolist": [
+    "Build a web app",
+    "Build an API"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-python-azd-service-bus": [
+    "Automate a workflow"
+  ],
+  "https://github.com/zubeyralmaho/rust-mcp-azure": [
+    "Build an MCP server"
+  ],
+  "https://github.com/paulyuk/serverless-repo-digest-agent": [
+    "Build an AI agent",
+    "Automate a workflow"
+  ],
+  "https://github.com/benleane83/azure-swa-nextjs-postgres": [
+    "Build a web app",
+    "Build an API"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-javascript-azd-cosmosdb": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-powershell-azd-cosmosdb": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-java-azd-cosmosdb": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/azure-functions-flex-consumption-with-azure-files-os-mount-samples": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/agent-openai-java-banking-assistant": [
+    "Build a web app",
+    "Build an AI agent"
+  ],
+  "https://github.com/azure-samples/ai-chat-quickstart-csharp": [
+    "Build a web app"
+  ],
+  "https://github.com/azure-samples/azure-openai-keyless-python": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/azure-samples/signalr-ai-streaming": [
+    "Build a web app"
+  ],
+  "https://github.com/azure-samples/ai-chat-aspire-meai-csharp": [
+    "Build a web app"
+  ],
+  "https://github.com/azure-samples/azure-openai-entity-extraction": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/azure-openai-keyless-go": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/azure-samples/semantic-kernel-customer-assistant-demo-java": [
+    "Build a web app",
+    "Build an AI agent"
+  ],
+  "https://github.com/azure-samples/contoso-creative-writer": [
+    "Build a web app",
+    "Build an AI agent",
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/azure-redis-dalle-semantic-caching": [
+    "Build a web app"
+  ],
+  "https://github.com/microsoft/conversation-knowledge-mining-solution-accelerator": [
+    "Build a web app",
+    "Build an AI agent",
+    "Chat with documents"
+  ],
+  "https://github.com/azure-samples/get-started-with-ai-chat": [
+    "Build a web app",
+    "Chat with documents"
+  ],
+  "https://github.com/microsoft/content-processing-solution-accelerator": [
+    "Build a web app",
+    "Build an API",
+    "Automate a workflow"
+  ],
+  "https://github.com/microsoft/modernize-your-code-solution-accelerator": [
+    "Build an AI agent",
+    "Automate a workflow"
+  ],
+  "https://github.com/zhenbzha/chainlit-agent": [
+    "Build a web app",
+    "Build an API",
+    "Build an AI agent",
+    "Chat with documents"
+  ],
+  "https://github.com/dminkovski/agent-openai-banking-assistant-csharp": [
+    "Build a web app",
+    "Build an AI agent"
+  ],
+  "https://github.com/microsoft/multi-agent-custom-automation-engine-solution-accelerator": [
+    "Build an AI agent",
+    "Automate a workflow"
+  ],
+  "https://github.com/robertopc1/redis_llmmemory": [
+    "Build a web app"
+  ],
+  "https://github.com/azure-samples/healthcare-agent-orchestrator": [
+    "Build an AI agent",
+    "Automate a workflow"
+  ],
+  "https://github.com/microsoft/agentic-applications-for-unified-data-foundation-solution-accelerator": [
+    "Build an AI agent",
+    "Query a database",
+    "Automate a workflow"
+  ],
+  "https://github.com/microsoft/unified-data-foundation-with-fabric-solution-accelerator": [
+    "Query a database",
+    "Automate a workflow",
+    "Start with infrastructure"
+  ],
+  "https://github.com/microsoft/release-manager-assistant": [
+    "Build an AI agent",
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/call-center-voice-agent-accelerator": [
+    "Build an AI agent",
+    "Automate a workflow"
+  ],
+  "https://github.com/microsoft/app-with-sharepoint-knowledge": [
+    "Build a web app",
+    "Build an AI agent",
+    "Chat with documents",
+    "Automate a workflow"
+  ],
+  "https://github.com/hengyl/nlweb-agent-demo": [
+    "Build a web app",
+    "Build an AI agent"
+  ],
+  "https://github.com/microsoft/customer-chatbot-solution-accelerator": [
+    "Build a web app",
+    "Build an AI agent",
+    "Chat with documents",
+    "Automate a workflow"
+  ],
+  "https://github.com/microsoft/real-time-intelligence-operations-solution-accelerator": [
+    "Build an AI agent",
+    "Query a database",
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/agent-openai-python-banking-assistant": [
+    "Build a web app",
+    "Build an AI agent"
+  ],
+  "https://github.com/microsoft/prior-authorization-multi-agent-solution-accelerator": [
+    "Build an AI agent",
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/sovereign-chat-experience-starter": [
+    "Build a web app"
+  ],
+  "https://github.com/azure-samples/video-agents-foundry-solution": [
+    "Build an AI agent",
+    "Automate a workflow"
+  ],
+  "https://github.com/microsoft/microsoft-iq-solution-accelerator": [
+    "Build an AI agent",
+    "Chat with documents",
+    "Query a database",
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-python-azd-timer": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-javascript-azd-timer": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-typescript-azd-timer": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/durable-functions-quickstart-java-azd": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/durable-functions-quickstart-javascript-azd": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/durable-functions-quickstart-powershell-azd": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/durable-functions-quickstart-python-azd": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/durable-functions-quickstart-typescript-azd": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/remote-mcp-functions-javascript": [
+    "Build an MCP server"
+  ],
+  "https://github.com/azure-samples/mcp-functions-long-running-tools": [
+    "Build an MCP server",
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-java-azd-timer": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-powershell-azd-timer": [
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/functions-quickstart-dotnet-azd-tf": [
+    "Build an API"
+  ],
+  "https://github.com/ronaldbosma/mtls-with-apim-and-agw": [
+    "Build an API"
+  ],
+  "https://github.com/azure-samples/simple-foundry-hosted-agent-python-aigateway": [
+    "Build an AI agent",
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/hosted-skills-expense-processor": [
+    "Build an AI agent",
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/m365-inbox-serverless-agent-python": [
+    "Build an AI agent",
+    "Automate a workflow"
+  ],
+  "https://github.com/azure-samples/document-reviewer": [
+    "Build an AI agent",
+    "Automate a workflow"
+  ],
+  "https://github.com/durga533/azure-landingzone-setup": [
+    "Start with infrastructure"
+  ],
+  "https://github.com/azure-samples/microhack-ask-analyze-act": [
+    "Build an AI agent",
+    "Query a database",
+    "Start with infrastructure"
+  ],
+  "https://github.com/massimobonanni/dbsemanticsearch": [
+    "Build a web app",
+    "Build an API",
+    "Query a database"
+  ],
+  "https://github.com/jaychase/langchain-ag-ui-angular": [
+    "Build a web app",
+    "Build an API",
+    "Build an AI agent"
+  ]
+}

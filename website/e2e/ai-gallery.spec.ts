@@ -1,26 +1,11 @@
-import { expect, test, type BrowserContext, type Page } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 import templates from "../static/templates.json";
 
 const featuredTemplateTitle = "RAG chat with Azure AI Search + Python";
-const featuredTemplateSource =
-  "https://github.com/Azure-Samples/azure-search-openai-demo";
 const renamedAiTemplateTitle = "VoiceRAG with Realtime API";
-const renamedAiTemplateSource =
-  "https://github.com/Azure-Samples/aisearch-openai-rag-audio";
 const aiTemplateCount = templates.filter(
   (template) => template.templateType === "ai-app-templates",
 ).length;
-
-async function stubExternalServices(context: BrowserContext) {
-  await context.route("**/ai-apps-search*", (route) => {
-    const searchTerm = new URL(route.request().url()).searchParams.get(
-      "search",
-    );
-    return searchTerm === "initialRequest"
-      ? route.fulfill({ json: [] })
-      : route.abort();
-  });
-}
 
 function resultLinks(page: Page) {
   return page.getByTestId("template-results").locator("a[data-template-title]");
@@ -54,10 +39,6 @@ async function openAiGallery(page: Page) {
 }
 
 test.describe("Unified AI app templates catalog", () => {
-  test.beforeEach(async ({ context }) => {
-    await stubExternalServices(context);
-  });
-
   test("redirects the legacy AI collection URL to the AI facet", async ({
     page,
   }) => {
@@ -211,61 +192,39 @@ test.describe("Unified AI app templates catalog", () => {
     );
   });
 
-  test("matches backend search results by allowlisted source, not title", async ({
+  test("searches local catalog fields without calling the AI search service", async ({
     page,
   }) => {
-    await page.route("**/ai-apps-search*", (route) => {
-      const searchTerm = new URL(route.request().url()).searchParams.get(
-        "search",
-      );
-      if (searchTerm === "source-ranked") {
-        return route.fulfill({
-          json: [
-            {
-              document: {
-                source: renamedAiTemplateSource,
-                email: [`private${"@"}example.com`],
-              },
-            },
-            { document: { source: renamedAiTemplateSource } },
-            {
-              document: {
-                source: "https://github.com/example/stale-template",
-              },
-            },
-          ],
-        });
+    const remoteSearchRequests: string[] = [];
+    page.on("request", (request) => {
+      if (request.url().includes("/api/ai-apps-search")) {
+        remoteSearchRequests.push(request.url());
       }
-      return route.fulfill({ json: [] });
     });
     await openAiGallery(page);
 
     const searchBox = page.getByPlaceholder(
       "Describe the app you want to build or search with keywords",
     );
-    await searchBox.fill("source-ranked");
-    await searchBox.press("Enter");
+    for (const query of [
+      "VoiceRAG",
+      "real-time voice interface",
+      "azureopenai",
+      "Howie Leung",
+      "Build an AI agent",
+    ]) {
+      await searchBox.fill(query);
+      await searchBox.press("Enter");
+      await expect.poll(() => resultLinks(page).count()).toBeGreaterThan(0);
+    }
 
-    await expect.poll(() => resultLinks(page).count()).toBe(1);
+    await searchBox.fill("VoiceRAG");
+    await searchBox.press("Enter");
     await expect(resultLinks(page)).toHaveAttribute(
       "data-template-title",
       renamedAiTemplateTitle,
     );
-  });
-
-  test("falls back to local search when the backend is unavailable", async ({
-    page,
-  }) => {
-    await openAiGallery(page);
-    const searchBox = page.getByPlaceholder(
-      "Describe the app you want to build or search with keywords",
-    );
-
-    await searchBox.fill("azure");
-    await searchBox.press("Enter");
-
-    await expect(page).toHaveURL(/(?:\?|&)q=azure(?:&|$)/);
-    await expect.poll(() => resultLinks(page).count()).toBeGreaterThan(0);
+    expect(remoteSearchRequests).toEqual([]);
   });
 
   test("opens canonical and legacy AI detail routes", async ({ page }) => {
@@ -294,6 +253,11 @@ test.describe("Unified AI app templates catalog", () => {
         exact: true,
       }),
     ).toHaveAttribute("href", "https://github.com/Azure-Samples");
+    await expect(
+      page.locator(
+        'a[href="https://aka.ms/awesome-azd/templates.json"]',
+      ),
+    ).toHaveCount(2);
     await expect(page.getByText("Services and integrations.")).toBeVisible();
     await page.getByRole("link", { name: "Back to templates" }).click();
     await expect(page).toHaveURL(/\/templates\?type=ai$/);
@@ -308,33 +272,5 @@ test.describe("Unified AI app templates catalog", () => {
         name: featuredTemplateTitle,
       }),
     ).toBeVisible();
-  });
-
-  test("keeps the public search payload source-only in the UI", async ({
-    page,
-  }) => {
-    await page.route("**/ai-apps-search*", (route) =>
-      route.fulfill({
-        json: [
-          {
-            document: {
-              source: featuredTemplateSource,
-              email: [`private${"@"}example.com`],
-            },
-          },
-        ],
-      }),
-    );
-    await openAiGallery(page);
-    const searchBox = page.getByPlaceholder(
-      "Describe the app you want to build or search with keywords",
-    );
-    await searchBox.fill("privacy-check");
-    await searchBox.press("Enter");
-
-    await expect.poll(() => resultLinks(page).count()).toBe(1);
-    await expect(
-      page.getByText(`private${"@"}example.com`),
-    ).toHaveCount(0);
   });
 });

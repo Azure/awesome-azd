@@ -98,40 +98,50 @@ for (const required of [true, false]) {
   }
 }
 
-test("start-with-code uses the standard Microsoft legal footer", async ({
-  page,
-}) => {
-  await page.route("https://js.monitor.azure.com/**", (route) =>
-    route.fulfill({ contentType: "application/javascript", body: "" }),
-  );
-  await page.route("https://wcpstatic.microsoft.com/**", (route) =>
-    route.fulfill({
-      contentType: "application/javascript",
-      body: consentScript(true),
-    }),
-  );
+for (const [route, heading] of [
+  ["templates", "Your next app. Ready to build."],
+  ["templates/start-with-code", "Start with your own code"],
+  [
+    "templates/azure-samples/azure-search-openai-demo",
+    "RAG chat with Azure AI Search + Python",
+  ],
+  ["templates/research", "Catalog research & rationale"],
+] as const) {
+  test(`${route} uses the standard Microsoft legal footer`, async ({
+    page,
+  }) => {
+    await page.route("https://js.monitor.azure.com/**", (route) =>
+      route.fulfill({ contentType: "application/javascript", body: "" }),
+    );
+    await page.route("https://wcpstatic.microsoft.com/**", (route) =>
+      route.fulfill({
+        contentType: "application/javascript",
+        body: consentScript(true),
+      }),
+    );
 
-  await page.goto("templates/start-with-code");
+    await page.goto(route);
 
-  const footer = page.locator("footer");
-  await expect(
-    page.getByRole("heading", {
-      level: 1,
-      name: "Start with your own code",
-    }),
-  ).toBeVisible();
-  await expect(
-    footer.getByRole("link", { name: "Privacy Statement" }),
-  ).toBeVisible();
-  await expect(
-    footer.getByRole("link", {
-      name: /Copyright © \d{4} Microsoft/,
-    }),
-  ).toBeVisible();
-  await expect(
-    footer.getByRole("link", { name: "Built With Docusaurus" }),
-  ).toBeVisible();
-  await expect(
-    footer.getByRole("button", { name: "Manage Cookies" }),
-  ).toBeVisible();
-});
+    const footer = page.locator("footer");
+    await expect(
+      page.getByRole("heading", {
+        level: 1,
+        name: heading,
+      }),
+    ).toBeVisible();
+    await expect(
+      footer.getByRole("link", { name: "Privacy Statement" }),
+    ).toBeVisible();
+    await expect(
+      footer.getByRole("link", {
+        name: /Copyright © \d{4} Microsoft/,
+      }),
+    ).toBeVisible();
+    await expect(
+      footer.getByRole("link", { name: "Built With Docusaurus" }),
+    ).toBeVisible();
+    await expect(
+      footer.getByRole("button", { name: "Manage Cookies" }),
+    ).toBeVisible();
+  });
+}

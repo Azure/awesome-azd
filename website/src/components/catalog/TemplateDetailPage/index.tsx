@@ -16,12 +16,10 @@ import {
   type CatalogTask,
   type CatalogTemplate,
 } from "../../../catalog/catalogData";
-import CatalogFooter from "../CatalogFooter";
 import CopyAction from "../CopyAction";
 import styles from "./styles.module.css";
 
-const catalogJsonUrl =
-  "https://azure.github.io/awesome-azd/templates.json";
+const catalogJsonUrl = "https://aka.ms/awesome-azd/templates.json";
 const upstreamCatalogUrl =
   "https://github.com/Azure/awesome-azd/blob/main/website/static/templates.json";
 const pricingCalculatorUrl =
@@ -153,6 +151,7 @@ function TemplateDetail({
   const architectureImageUrl = useBaseUrl(
     template.architectureDiagram ?? "/img/logo.png",
   );
+  const primaryTask = template.tasks[0];
   const currentQuery = new URLSearchParams(
     isBrowser ? location.search : "",
   );
@@ -186,7 +185,7 @@ function TemplateDetail({
         <meta property="og:type" content="website" />
         <meta property="og:url" content={canonicalUrl} />
       </Head>
-      <Layout noFooter>
+      <Layout>
         <div className={styles.page}>
           <main className={styles.wrap}>
             <div className={styles.breadcrumb}>
@@ -208,13 +207,13 @@ function TemplateDetail({
               >
                 ← Back to templates
               </Link>
-              <span> / {template.task}</span>
+              <span> / {template.tasks.join(" / ")}</span>
             </div>
 
             <section className={styles.hero}>
-              <TaskIcon task={template.task} />
+              <TaskIcon task={primaryTask} />
               <p className={styles.eyebrow}>
-                {template.task.toUpperCase()}
+                {template.tasks.map((task) => task.toUpperCase()).join(" / ")}
                 {template.isAi ? " / AI COLLECTION" : ""}
               </p>
               <h1>{template.title}</h1>
@@ -618,7 +617,6 @@ function TemplateDetail({
               </aside>
             </div>
           </main>
-          <CatalogFooter />
         </div>
       </Layout>
     </>
@@ -628,7 +626,7 @@ function TemplateDetail({
 function NotFound(): React.JSX.Element {
   const templatesUrl = useBaseUrl("/templates");
   return (
-    <Layout noFooter>
+    <Layout>
       <div className={styles.page}>
         <main className={`${styles.wrap} ${styles.notFound}`}>
           <h1>Template not found</h1>
@@ -638,7 +636,6 @@ function NotFound(): React.JSX.Element {
           </p>
           <Link to={templatesUrl}>Back to templates</Link>
         </main>
-        <CatalogFooter />
       </div>
     </Layout>
   );

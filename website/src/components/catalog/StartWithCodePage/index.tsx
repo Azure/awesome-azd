@@ -51,7 +51,6 @@ function Command({ command }: { command: string }): React.JSX.Element {
 export default function StartWithCodePage(): React.JSX.Element {
   const location = useLocation();
   const templatesUrl = useBaseUrl("/templates");
-  const gettingStartedUrl = useBaseUrl("/getting-started");
   const llmsUrl = useBaseUrl("/llms.txt");
   const backUrl = `${templatesUrl}${location.search}`;
 
@@ -107,9 +106,6 @@ export default function StartWithCodePage(): React.JSX.Element {
                 <Command command="azd up" />
               </section>
 
-              <Link className={styles.guide} to={gettingStartedUrl}>
-                Read the setup guide ↗
-              </Link>
             </div>
           </main>
         </div>

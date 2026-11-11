@@ -192,7 +192,8 @@ export const Tags: { [type in TagType]: Tag } = {
   },
   new: {
     label: "New",
-    description: "This tag is used for new templates.",
+    description:
+      "This tag is used for templates added to the catalog within the past month.",
   },
   aicollection: {
     label: "AI Collection",

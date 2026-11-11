@@ -18,7 +18,8 @@ import {
   readSearchAuthors,
 } from "@site/src/utils/galleryQuery";
 import { type TagType } from "@site/src/data/tags";
-import { TagList } from "@site/src/data/templates";
+import { unsortedExtensions } from "@site/src/data/extensions";
+import { getExtensionTags } from "@site/src/utils/galleryTags";
 import styles from "./styles.module.css";
 import ShowcaseResults from "../ShowcaseResults";
 import ShowcaseResultsToolbar from "../ShowcaseResultsToolbar";
@@ -27,6 +28,10 @@ import { initializeFluentIcons } from "@site/src/utils/fluentIcons";
 import { GALLERY_SORT_OPTIONS } from "@site/src/utils/gallerySorting";
 
 initializeFluentIcons();
+
+const extensionTags = [
+  ...new Set(unsortedExtensions.flatMap(getExtensionTags)),
+];
 
 const BackToTopButton = () => {
   const scrollToTop = () => {
@@ -47,24 +52,33 @@ const BackToTopButton = () => {
 
 export default function GalleryPage(): React.JSX.Element | null {
   const isBrowser = useIsBrowser();
-  const [activeTags, setActiveTags] = useState<TagType[]>(TagList);
+  const [activeTags, setActiveTags] =
+    useState<TagType[]>(extensionTags);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([
     GALLERY_SORT_OPTIONS[2],
   ]);
   const location = useLocation<GalleryNavigationState>();
+  const hydrationSafeSearch = isBrowser ? location.search : "";
+  const galleryLocation = useMemo(
+    () => ({ ...location, search: hydrationSafeSearch }),
+    [hydrationSafeSearch, location],
+  );
   const selectedTags = useMemo(
-    () => readSearchTags(location.search),
-    [location.search],
+    () => readSearchTags(hydrationSafeSearch),
+    [hydrationSafeSearch],
   );
   const selectedAuthors = useMemo(
-    () => readSearchAuthors(location.search),
-    [location.search],
+    () => readSearchAuthors(hydrationSafeSearch),
+    [hydrationSafeSearch],
   );
   useEffect(() => {
-    if (readUnknownSearchTags(location.search).length > 0) {
+    if (
+      isBrowser &&
+      readUnknownSearchTags(location.search).length > 0
+    ) {
       console.warn("Unsupported gallery URL tags were ignored.");
     }
-  }, [location.search]);
+  }, [isBrowser, location.search]);
   const sortByOnSelect: NonNullable<DropdownProps["onOptionSelect"]> = (
     _event,
     data,
@@ -76,7 +90,7 @@ export default function GalleryPage(): React.JSX.Element | null {
     );
   };
 
-  return isBrowser ? (
+  return (
     <SiteFluentProvider className={styles.fluentProvider}>
       <main className={styles.page}>
         <ShowcaseTemplateSearch />
@@ -91,7 +105,7 @@ export default function GalleryPage(): React.JSX.Element | null {
           >
             <ShowcaseLeftFilters
               activeTags={activeTags}
-              location={location}
+              location={galleryLocation}
               selectedTags={selectedTags}
               selectedAuthors={selectedAuthors}
             />
@@ -100,7 +114,7 @@ export default function GalleryPage(): React.JSX.Element | null {
             <ShowcaseResults
               setActiveTags={setActiveTags}
               selectedTags={selectedTags}
-              location={location}
+              location={galleryLocation}
               selectedAuthors={selectedAuthors}
               selectedOptions={selectedOptions}
             />
@@ -109,5 +123,5 @@ export default function GalleryPage(): React.JSX.Element | null {
         <BackToTopButton />
       </main>
     </SiteFluentProvider>
-  ) : null;
+  );
 }

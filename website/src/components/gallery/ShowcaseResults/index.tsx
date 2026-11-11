@@ -4,27 +4,17 @@
  */
 
 import React, { useState, useMemo, useEffect } from "react";
-import type { Template, TagType } from "../../../data/tags";
-import { sortedTemplates, unsortedTemplates } from "../../../data/templates";
+import type { TagType } from "../../../data/tags";
 import { sortedExtensions, unsortedExtensions } from "../../../data/extensions";
-import type { Extension } from "../../../data/extensionTypes";
-import ShowcaseCards from "./ShowcaseCards";
 import ShowcaseExtensionCards from "./ShowcaseExtensionCards";
 import { ShowcaseResultsStatus } from "../ShowcaseResultsToolbar";
 import ShowcaseAppliedFilters from "../ShowcaseAppliedFilters";
 import ShowcasePagination from "../ShowcasePagination";
 import { useHistory } from "@docusaurus/router";
 import type { Location } from "history";
-import { getContentType } from "@site/src/utils/contentType";
-import {
-  filterTemplates,
-  filterExtensions,
-} from "@site/src/utils/galleryFiltering";
-import {
-  getSortedTemplates,
-  getSortedExtensions,
-} from "@site/src/utils/gallerySorting";
-import { getTemplateTags, getExtensionTags } from "@site/src/utils/galleryTags";
+import { filterExtensions } from "@site/src/utils/galleryFiltering";
+import { getSortedExtensions } from "@site/src/utils/gallerySorting";
+import { getExtensionTags } from "@site/src/utils/galleryTags";
 import {
   captureGalleryNavigationState,
   restoreGalleryNavigationState,
@@ -36,10 +26,6 @@ import {
   replaceSearchName,
 } from "@site/src/utils/galleryQuery";
 import styles from "./styles.module.css";
-
-type GalleryItems =
-  | { type: "templates"; items: Template[] }
-  | { type: "extensions"; items: Extension[] };
 
 export default function ShowcaseResults({
   setActiveTags,
@@ -58,12 +44,6 @@ export default function ShowcaseResults({
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 20;
   const history = useHistory();
-
-  // Content type is now derived from the URL pathname (`/extensions`) so the
-  // two galleries live at distinct routes accessible via the navbar. The
-  // legacy `?type=extensions` query param is still honored by getContentType
-  // for backward compatibility with old shared links.
-  const contentType = getContentType(location);
 
   const clearAll = () => {
     history.push({
@@ -87,40 +67,28 @@ export default function ShowcaseResults({
     restoreGalleryNavigationState(location.state);
   }, [location, selectedOptions]);
 
-  const { type: sortedType, items: sortedItems } = useMemo<GalleryItems>(
-    () => {
-      if (contentType === "extensions") {
-        return {
-          type: contentType,
-          items: getSortedExtensions(unsortedExtensions, sortedExtensions, selectedOptions[0]),
-        };
-      }
-      return {
-        type: contentType,
-        items: getSortedTemplates(unsortedTemplates, sortedTemplates, selectedOptions[0]),
-      };
-    },
-    [contentType, selectedOptions]
+  const sortedItems = useMemo(
+    () =>
+      getSortedExtensions(
+        unsortedExtensions,
+        sortedExtensions,
+        selectedOptions[0],
+      ),
+    [selectedOptions],
   );
 
-  const { type: activeType, items: activeItems } = useMemo<GalleryItems>(
-    () => {
-      if (sortedType === "extensions") {
-        return {
-          type: sortedType,
-          items: filterExtensions(sortedItems, selectedTags, selectedAuthors, searchName),
-        };
-      }
-      return {
-        type: sortedType,
-        items: filterTemplates(sortedItems, selectedTags, selectedAuthors, searchName),
-      };
-    },
-    [sortedType, sortedItems, selectedTags, selectedAuthors, searchName]
+  const activeItems = useMemo(
+    () =>
+      filterExtensions(
+        sortedItems,
+        selectedTags,
+        selectedAuthors,
+        searchName,
+      ),
+    [sortedItems, selectedTags, selectedAuthors, searchName],
   );
 
-  const isExtensions = activeType === "extensions";
-  const totalItems = activeItems ? activeItems.length : 0;
+  const totalItems = activeItems.length;
 
   // Reset on navigation and sort selection, even when their values are unchanged.
   useEffect(() => {
@@ -134,17 +102,11 @@ export default function ShowcaseResults({
 
   useEffect(() => {
     const unionTags = new Set<TagType>();
-    if (activeType === "extensions") {
-      activeItems.forEach((ext) => {
-        getExtensionTags(ext).forEach((tag) => unionTags.add(tag));
-      });
-    } else {
-      activeItems.forEach((template) => {
-        getTemplateTags(template).forEach((tag) => unionTags.add(tag));
-      });
-    }
+    activeItems.forEach((extension) => {
+      getExtensionTags(extension).forEach((tag) => unionTags.add(tag));
+    });
     setActiveTags(Array.from(unionTags));
-  }, [activeItems, activeType, setActiveTags]);
+  }, [activeItems, setActiveTags]);
 
   return (
     <>
@@ -154,17 +116,10 @@ export default function ShowcaseResults({
         selectedAuthors={selectedAuthors}
         location={location}
       />
-      {activeType === "extensions" ? (
-        <ShowcaseExtensionCards
-          filteredExtensions={activeItems.slice(startIndex, endIndex)}
-          onClear={clearSearchAndFilters}
-        />
-      ) : (
-        <ShowcaseCards
-          filteredTemplates={activeItems.slice(startIndex, endIndex)}
-          onClear={clearSearchAndFilters}
-        />
-      )}
+      <ShowcaseExtensionCards
+        filteredExtensions={activeItems.slice(startIndex, endIndex)}
+        onClear={clearSearchAndFilters}
+      />
       {totalPages > 1 && (
         <ShowcasePagination
           currentPage={currentPage}
@@ -178,10 +133,17 @@ export default function ShowcaseResults({
             totalItems={totalItems}
             startIndex={startIndex}
             endIndex={endIndex}
-            isExtensions={isExtensions}
           />
         </div>
-      ) : null}
+      ) : (
+        <div className={styles.visuallyHidden}>
+          <ShowcaseResultsStatus
+            totalItems={totalItems}
+            startIndex={startIndex}
+            endIndex={endIndex}
+          />
+        </div>
+      )}
     </>
   );
 }

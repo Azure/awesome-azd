@@ -93,11 +93,13 @@ export default function FluentSsrProvider({
 }): React.JSX.Element {
   const location = useLocation();
   const templatesPath = useBaseUrl("/templates").replace(/\/+$/, "");
+  const extensionsPath = useBaseUrl("/extensions").replace(/\/+$/, "");
   const currentPath = location.pathname.replace(/\/+$/, "");
   const renderer = useMemo(() => createDOMRenderer(), []);
   const serverRenderFluentStyles =
     currentPath === templatesPath ||
-    currentPath.startsWith(`${templatesPath}/`);
+    currentPath.startsWith(`${templatesPath}/`) ||
+    currentPath === extensionsPath;
 
   return (
     <RendererProvider renderer={renderer}>

@@ -5,18 +5,14 @@
 
 import React, { useCallback, useEffect, useState } from "react";
 import { useHistory, useLocation } from "@docusaurus/router";
-import { Link as FluentUILink } from "@fluentui/react-components";
+import {
+  Link as FluentUILink,
+  SearchBox,
+} from "@fluentui/react-components";
 import { Open16Regular } from "@fluentui/react-icons";
-import { SearchBox } from "@fluentui/react-search";
-import { getContentType } from "@site/src/utils/contentType";
 import { captureGalleryNavigationState } from "@site/src/utils/galleryNavigation";
 import { readSearchName, replaceSearchName } from "@site/src/utils/galleryQuery";
 import styles from "./styles.module.css";
-
-const PLACEHOLDERS: Record<string, string> = {
-  templates: "Search for an azd template or author...",
-  extensions: "Search for an azd extension, capability, or author...",
-};
 
 export function GallerySearchBox(): React.JSX.Element {
   const history = useHistory();
@@ -27,8 +23,6 @@ export function GallerySearchBox(): React.JSX.Element {
     setValue(readSearchName(location.search));
   }, [location.search]);
 
-  const contentType = getContentType(location);
-  const placeholder = PLACEHOLDERS[contentType] || PLACEHOLDERS.templates;
   const submitSearch = useCallback(
     (searchValue: string) => {
       history.push({
@@ -55,7 +49,7 @@ export function GallerySearchBox(): React.JSX.Element {
         appearance="outline"
         size="medium"
         value={value ?? ""}
-        placeholder={placeholder}
+        placeholder="Search for an azd extension, capability, or author..."
         aria-label="Search extensions"
         autoComplete="off"
         dismiss={value ? { "aria-label": "Clear search" } : null}

@@ -19,23 +19,19 @@ export function ShowcaseResultsStatus({
   totalItems,
   startIndex,
   endIndex,
-  isExtensions,
 }: {
   totalItems: number;
   startIndex: number;
   endIndex: number;
-  isExtensions: boolean;
 }): React.JSX.Element {
   const currentStart = totalItems > 0 ? startIndex + 1 : 0;
   const currentEnd = Math.min(endIndex, totalItems);
-  const itemLabel = isExtensions ? "extension" : "template";
-  const itemLabelPlural = isExtensions ? "extensions" : "templates";
   const countLabel =
     totalItems === 0
-      ? `0 ${itemLabelPlural}`
+      ? "0 extensions"
       : totalItems === 1
-        ? `1 ${itemLabel}`
-        : `${currentStart}–${currentEnd} of ${totalItems} ${itemLabelPlural}`;
+        ? "1 extension"
+        : `${currentStart}–${currentEnd} of ${totalItems} extensions`;
 
   return (
     <Text

@@ -10,11 +10,9 @@ import { useHistory, useLocation } from "@docusaurus/router";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import useIsBrowser from "@docusaurus/useIsBrowser";
 import Layout from "@theme/Layout";
-import {
-  findCatalogTemplate,
-  getCatalogTemplatePath,
-  type CatalogTask,
-  type CatalogTemplate,
+import type {
+  CatalogTask,
+  CatalogTemplate,
 } from "../../../catalog/catalogData";
 import CopyAction from "../CopyAction";
 import styles from "./styles.module.css";
@@ -60,17 +58,6 @@ function TaskIcon({ task }: { task: CatalogTask }): React.JSX.Element {
       </svg>
     </span>
   );
-}
-
-function readRouteSlug(pathname: string): [string, string] {
-  const route = pathname.split("/templates/")[1]?.split("/").filter(Boolean);
-  if (!route) {
-    return ["", ""];
-  }
-  if (route[0] === "ai" && route[1] === "repo") {
-    return [route[2] ?? "", route[3] ?? ""];
-  }
-  return [route[0] ?? "", route[1] ?? ""];
 }
 
 function AuthorByline({
@@ -168,7 +155,7 @@ function TemplateDetail({
   }
   const backQuery = currentQuery.toString();
   const backUrl = `${templatesUrl}${backQuery ? `?${backQuery}` : ""}`;
-  const canonicalPath = getCatalogTemplatePath(template);
+  const canonicalPath = `/templates/${template.slug}`;
   const canonicalUrl = `https://azure.github.io/awesome-azd${canonicalPath}`;
   const codespacesUrl = `https://github.com/codespaces/new/${template.owner}/${template.repo}`;
   const overviewItems = getOverviewItems(template);
@@ -623,28 +610,11 @@ function TemplateDetail({
   );
 }
 
-function NotFound(): React.JSX.Element {
-  const templatesUrl = useBaseUrl("/templates");
-  return (
-    <Layout>
-      <div className={styles.page}>
-        <main className={`${styles.wrap} ${styles.notFound}`}>
-          <h1>Template not found</h1>
-          <p>
-            This template is not part of the current public Awesome azd
-            catalog.
-          </p>
-          <Link to={templatesUrl}>Back to templates</Link>
-        </main>
-      </div>
-    </Layout>
-  );
-}
-
-export default function TemplateDetailPage(): React.JSX.Element {
-  const location = useLocation();
-  const [owner, repo] = readRouteSlug(location.pathname);
-  const template = findCatalogTemplate(owner, repo);
-  return template ? <TemplateDetail template={template} /> : <NotFound />;
+export default function TemplateDetailPage({
+  template,
+}: {
+  template: CatalogTemplate;
+}): React.JSX.Element {
+  return <TemplateDetail template={template} />;
 }
 

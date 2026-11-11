@@ -41,6 +41,17 @@ function sparseExtensionQuery() {
 }
 
 test.describe("Gallery card layout", () => {
+  test("extension gallery is server-rendered with Fluent styles", async ({
+    request,
+  }) => {
+    const response = await request.get("extensions");
+    expect(response.ok()).toBe(true);
+
+    const html = await response.text();
+    expect(html).toContain("Extension Gallery");
+    expect(html).toContain('data-href="griffel:');
+  });
+
   test("extension discovery layout matches the templates catalog", async ({
     page,
   }) => {
@@ -347,6 +358,9 @@ test.describe("Gallery card layout", () => {
     await expect(
       page.getByText("Try different keywords or filters."),
     ).toBeVisible();
+    await expect(
+      page.locator('[role="status"]').filter({ hasText: /^0 extensions$/ }),
+    ).toHaveText("0 extensions");
     await page
       .getByRole("button", { name: "Clear search and filters" })
       .click();

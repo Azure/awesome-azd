@@ -23,13 +23,13 @@ import {
   Dropdown,
   Label,
   Option,
+  SearchBox,
 } from "@fluentui/react-components";
 import {
   Copy16Regular,
   Sparkle16Regular,
   Star16Regular,
 } from "@fluentui/react-icons";
-import { SearchBox } from "@fluentui/react-search";
 import {
   catalogTemplates,
   getCatalogTemplatePath,
@@ -40,7 +40,7 @@ import {
   clearCatalogState,
   getFacetLabel,
   getFacetOptions,
-  getFacetValueCount,
+  getFacetValueCounts,
   getMatchingCatalogTemplates,
   parseCatalogState,
   serializeCatalogState,
@@ -112,7 +112,14 @@ function FacetSection({
   const [open, setOpen] = useState(
     facet.open === true || selected.length > 0,
   );
-  const options = getFacetOptions(catalogTemplates, facet);
+  const options = useMemo(
+    () => getFacetOptions(catalogTemplates, facet),
+    [facet],
+  );
+  const valueCounts = useMemo(
+    () => getFacetValueCounts(catalogTemplates, state, facet),
+    [facet, state],
+  );
 
   useEffect(() => {
     if (selected.length > 0) {
@@ -120,19 +127,19 @@ function FacetSection({
     }
   }, [selected.length]);
 
-  const optionsWithCounts = options
-    .map((value) => ({
-      value,
-      count: getFacetValueCount(
-        catalogTemplates,
-        state,
-        facet,
-        value,
-      ),
-    }))
-    .filter(
-      ({ value, count }) => count > 0 || selected.includes(value),
-    );
+  const optionsWithCounts = useMemo(
+    () =>
+      options
+        .map((value) => ({
+          value,
+          count: valueCounts.get(value) ?? 0,
+        }))
+        .filter(
+          ({ value, count }) =>
+            count > 0 || selected.includes(value),
+        ),
+    [options, selected, valueCounts],
+  );
 
   if (optionsWithCounts.length === 0) {
     return null;
@@ -193,17 +200,16 @@ function FacetSection({
 
 function TemplateCard({
   template,
-  state,
+  listingQuery,
 }: {
   template: CatalogTemplate;
-  state: CatalogState;
+  listingQuery: string;
 }): React.JSX.Element {
   const history = useHistory();
   const location = useLocation();
   const detailPath = useBaseUrl(getCatalogTemplatePath(template));
   const microsoftIcon = useBaseUrl("/img/Microsoft.svg");
   const communityIcon = useBaseUrl("/img/Community.svg");
-  const listingQuery = serializeCatalogState(state);
   const detailUrl = `${detailPath}?from=catalog${
     listingQuery ? `&${listingQuery}` : ""
   }`;
@@ -772,7 +778,7 @@ export default function CatalogPage(): React.JSX.Element {
                         <TemplateCard
                           key={template.id}
                           template={template}
-                          state={state}
+                          listingQuery={listingQuery}
                         />
                       ))}
                     </div>

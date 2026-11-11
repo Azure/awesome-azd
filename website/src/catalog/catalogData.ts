@@ -13,8 +13,8 @@ import {
 import {
   Tags as aiTags,
   type Tag as AiTag,
-} from "../ai/data/tags";
-import { normalizeTemplateSource } from "../ai/utils/templateSources";
+} from "./aiTags";
+import { normalizeTemplateSource } from "./templateSources";
 import {
   formatAzdInitCommand,
   getTemplateIdentifier,
@@ -118,7 +118,7 @@ type RawTemplate = {
 
 type TagMetadata = Pick<
   StandardTag & AiTag,
-  "label" | "type" | "url" | "productDescription"
+  "label" | "type" | "url"
 >;
 
 const standardTagMap = standardTags as Record<string, StandardTag>;

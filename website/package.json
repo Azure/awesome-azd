@@ -31,7 +31,6 @@
     "@fluentui/react-components": "^9.74.11",
     "@fluentui/react-hooks": "^8.10.2",
     "@fluentui/react-icons": "^2.0.344",
-    "@fluentui/react-search": "^9.4.8",
     "@mdx-js/react": "^3.0.0",
     "@playwright/test": "^1.64.1",
     "@types/history": "4.7.11",

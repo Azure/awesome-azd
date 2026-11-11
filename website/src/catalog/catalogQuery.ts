@@ -335,19 +335,23 @@ export function sortCatalogTemplates(
   );
 }
 
-export function getFacetValueCount(
+export function getFacetValueCounts(
   records: readonly CatalogTemplate[],
   state: CatalogState,
   facet: CatalogFacet,
-  value: string,
-): number {
-  return records.filter(
-    (template) =>
-      matchesCatalogTemplate(
-        template,
-        state,
-        facet.key,
-      ) && getValues(template, facet.key).includes(value),
-  ).length;
+): ReadonlyMap<string, number> {
+  const counts = new Map<string, number>();
+
+  for (const template of records) {
+    if (!matchesCatalogTemplate(template, state, facet.key)) {
+      continue;
+    }
+
+    for (const value of new Set(getValues(template, facet.key))) {
+      counts.set(value, (counts.get(value) ?? 0) + 1);
+    }
+  }
+
+  return counts;
 }
 

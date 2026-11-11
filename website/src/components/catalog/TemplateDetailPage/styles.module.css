@@ -572,19 +572,6 @@
   font-size: 0.71rem;
 }
 
-.notFound {
-  min-height: 60vh;
-  padding-top: 64px;
-}
-
-.notFound p {
-  color: var(--catalog-muted);
-}
-
-.notFound a {
-  color: var(--catalog-blue);
-}
-
 @media screen and (max-width: 1150px) {
   .detailLayout {
     grid-template-columns: minmax(0, 1fr) 300px;

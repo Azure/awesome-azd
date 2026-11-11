@@ -7,7 +7,7 @@ import { describe, expect, test } from "@jest/globals";
 import * as fs from "fs";
 import * as path from "path";
 import templates from "../static/templates.json";
-import { Tags } from "../src/ai/data/tags";
+import { Tags } from "../src/catalog/aiTags";
 import aiAppTemplateOverlap from "./fixtures/ai-app-template-overlap.json";
 
 const websiteRoot = path.resolve(__dirname, "..");
@@ -293,22 +293,4 @@ describe("privacy-safe AI catalog metadata", () => {
     }
   });
 
-  test("namespaces and sanitizes AI-specific user-interface assets", () => {
-    const assetRoot = path.join(websiteRoot, "static", "img", "ai");
-    const assetNames = fs.readdirSync(assetRoot);
-    expect(assetNames.length).toBeGreaterThanOrEqual(80);
-
-    for (const assetName of assetNames) {
-      const filePath = path.join(assetRoot, assetName);
-      const extension = path.extname(filePath).toLowerCase();
-      if (extension === ".svg") {
-        const svg = fs.readFileSync(filePath, "utf8");
-        expect(svg).not.toMatch(emailPattern);
-        expect(svg).not.toMatch(/<metadata\b|<!--|<script\b|<foreignObject\b/i);
-        expect(svg).not.toMatch(/javascript:|\son[a-z]+\s*=/i);
-      } else {
-        expectSanitizedImage(filePath);
-      }
-    }
-  });
 });

@@ -31,7 +31,7 @@ describe("Template tests", () => {
       const tagDefinition = Tags[tag];
       if (tagDefinition === undefined) {
         console.error(
-          `Error: The tag "${tag}" is not defined in ./src/data/tags.tsx.`,
+          `Error: The tag "${tag}" is not defined in ./src/data/tags.ts.`,
         );
       }
       expect(tagDefinition).toBeDefined();
@@ -53,7 +53,7 @@ describe("Extension tests", () => {
       const tagDefinition = Tags[tag];
       if (tagDefinition === undefined) {
         console.error(
-          `Error: The extension tag "${tag}" is not defined in ./src/data/tags.tsx.`,
+          `Error: The extension tag "${tag}" is not defined in ./src/data/tags.ts.`,
         );
       }
       expect(tagDefinition).toBeDefined();
@@ -94,7 +94,7 @@ describe("Extension tests", () => {
         const tagDefinition = Tags[tag];
         if (tagDefinition === undefined) {
           console.error(
-            `Error: capability "${capability}" on extension "${extension.id}" has no "${tag}" entry in ./src/data/tags.tsx.`,
+            `Error: capability "${capability}" on extension "${extension.id}" has no "${tag}" entry in ./src/data/tags.ts.`,
           );
         } else if (tagDefinition.type !== "Extension Capability") {
           console.error(

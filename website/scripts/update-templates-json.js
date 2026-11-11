@@ -23,16 +23,16 @@ const { writeOutputs } = require("./github-output");
  * Load case-insensitive keys and canonical spelling from the TagType union.
  */
 function loadKnownTags() {
-  const tagsPath = path.resolve(__dirname, "../src/data/tags.tsx");
+  const tagsPath = path.resolve(__dirname, "../src/data/tags.ts");
   const content = fs.readFileSync(tagsPath, "utf8");
   const declaration = content.match(/export\s+type\s+TagType\s*=\s*([\s\S]*?);/);
   if (!declaration) {
-    throw new Error("The TagType union is missing from tags.tsx");
+    throw new Error("The TagType union is missing from tags.ts");
   }
   const union = declaration[1].replace(/\/\*[\s\S]*?\*\/|\/\/[^\r\n]*/g, "");
   const tags = [...union.matchAll(/"([^"]+)"/g)].map((match) => match[1]);
   if (tags.length === 0) {
-    throw new Error("The TagType union in tags.tsx contains no tags");
+    throw new Error("The TagType union in tags.ts contains no tags");
   }
   return new Map(tags.map((tag) => [tag.toLowerCase(), tag]));
 }
@@ -121,7 +121,7 @@ function parseTags(csv) {
     .map((tag) => {
       const canonicalTag = knownTags.get(tag);
       if (canonicalTag) return canonicalTag;
-      console.warn(`Warning: unknown tag "${tag}" is not defined in tags.tsx`);
+      console.warn(`Warning: unknown tag "${tag}" is not defined in tags.ts`);
       return tag;
     })
     .slice(0, 20);

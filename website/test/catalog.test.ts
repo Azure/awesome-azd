@@ -12,11 +12,12 @@ import {
   findCatalogTemplate,
   getCatalogTemplatePath,
 } from "../src/catalog/catalogData";
-import { isCatalogTemplate } from "../route_generator_plugin/aiRouteGenerator";
+import { isCatalogTemplate } from "../route_generator_plugin/catalogRouteGenerator";
 import {
   catalogFacets,
   clearCatalogState,
   getFacetOptions,
+  getFacetValueCounts,
   getMatchingCatalogTemplates,
   parseCatalogState,
   serializeCatalogState,
@@ -302,6 +303,31 @@ describe("unified catalog query", () => {
       "Microsoft",
       "Community",
     ]);
+  });
+
+  test("counts facet values in one pass while ignoring that facet", () => {
+    const languageFacet = catalogFacets.find(
+      (facet) => facet.key === "languages",
+    );
+    if (!languageFacet) {
+      throw new Error("Expected the language facet.");
+    }
+
+    const state = parseCatalogState(
+      "?type=ai&language=Python",
+      catalogTemplates,
+    );
+    const counts = getFacetValueCounts(
+      catalogTemplates,
+      state,
+      languageFacet,
+    );
+    const expectedTypeScriptCount = catalogTemplates.filter(
+      (template) =>
+        template.isAi && template.languages.includes("TypeScript"),
+    ).length;
+
+    expect(counts.get("TypeScript")).toBe(expectedTypeScriptCount);
   });
 
   test("searches title, description, tags, authors, and use case locally", () => {

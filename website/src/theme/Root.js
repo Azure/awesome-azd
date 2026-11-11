@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { CookieConsentContext } from "../components/CookieConsentContext";
-import FluentSsrProvider from "../ai/FluentSsrProvider";
+import FluentSsrProvider from "../components/SiteFluentProvider/FluentSsrProvider";
 
 const telemetryInit = (onConsentReady = () => {}) => {
   const SET = "set";

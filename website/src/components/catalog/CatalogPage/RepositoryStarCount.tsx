@@ -23,13 +23,16 @@ export function RepositoryStarCount({
   }
 
   const formattedStars = starFormatter.format(stars);
+  const starLabel = `${formattedStars} GitHub ${
+    stars === 1 ? "star" : "stars"
+  }`;
   return (
     <span
       className={className}
       data-repository-stars
       role="img"
-      aria-label={`${formattedStars} GitHub stars`}
-      title={`${formattedStars} GitHub stars`}
+      aria-label={starLabel}
+      title={starLabel}
     >
       <span className={statClassName}>
         {icon}

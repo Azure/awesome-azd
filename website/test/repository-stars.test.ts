@@ -47,7 +47,9 @@ describe("repository star metadata", () => {
     expect(render()).toBe("");
     expect(render(0)).toContain('role="img"');
     expect(render(0)).toContain('aria-label="0 GitHub stars"');
+    expect(render(1)).toContain('aria-label="1 GitHub star"');
     expect(render(381)).toContain('aria-label="381 GitHub stars"');
     expect(render(381)).toContain(">381<");
+    expect(render(1234)).toContain(">1,234<");
   });
 });

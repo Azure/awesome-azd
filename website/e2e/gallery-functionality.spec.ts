@@ -327,6 +327,40 @@ test.describe("Gallery functionality (deploy gate)", () => {
     );
   });
 
+  test("repository stars render missing and zero states and drive popularity order", async ({
+    page,
+  }) => {
+    const cards = page.locator("[data-template-card]");
+    await expect(cards.nth(0).locator("a[data-template-title]")).toHaveAttribute(
+      "data-template-title",
+      "RAG chat with Azure AI Search + Python",
+    );
+    await expect(
+      cards.nth(0).getByRole("img", { name: "9,876 GitHub stars" }),
+    ).toBeVisible();
+    await expect(cards.nth(1).locator("a[data-template-title]")).toHaveAttribute(
+      "data-template-title",
+      "Get Started with Chat",
+    );
+    await expect(
+      cards.nth(1).getByRole("img", { name: "0 GitHub stars" }),
+    ).toBeVisible();
+
+    await page.goto(
+      `templates?q=${encodeURIComponent("Get started with AI agents")}`,
+    );
+    const missingStarsCard = page.locator("[data-template-card]").first();
+    await expect(
+      missingStarsCard.locator("a[data-template-title]"),
+    ).toHaveAttribute(
+      "data-template-title",
+      "Get started with AI agents",
+    );
+    await expect(
+      missingStarsCard.locator("[data-repository-stars]"),
+    ).toHaveCount(0);
+  });
+
   test("browser Back restores the previous filter state", async ({ page }) => {
     const pythonCheckbox = page.locator("#catalog-languages-python");
     await page.locator("summary", { hasText: "Language" }).click();
@@ -461,19 +495,20 @@ test.describe("Gallery functionality (deploy gate)", () => {
     });
   });
 
-  test("does not request repository metrics", async ({
+  test("populated repository metrics do not trigger metadata requests", async ({
     page,
   }) => {
     const metadataRequests: string[] = [];
     page.on("request", (request) => {
+      const url = new URL(request.url());
       if (
-        request
-          .url()
-          .startsWith(
-            "https://cachelp6qsotirqelc.z20.web.core.windows.net/",
-          )
+        url.hostname === "api.github.com" ||
+        url.pathname.endsWith("/repository-metrics.json") ||
+        url.href.startsWith(
+          "https://cachelp6qsotirqelc.z20.web.core.windows.net/",
+        )
       ) {
-        metadataRequests.push(request.url());
+        metadataRequests.push(url.href);
       }
     });
 

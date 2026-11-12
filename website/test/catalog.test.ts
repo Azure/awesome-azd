@@ -548,43 +548,35 @@ describe("unified catalog query", () => {
     );
   });
 
-  test("sorts featured templates first, then by catalog order", () => {
+  test("sorts stars descending, keeps ties stable, and puts missing values last", () => {
+    const records = catalogTemplates.slice(0, 4).map((template, index) => ({
+      ...template,
+      normalizedSource: `https://github.com/example/template-${index}`,
+      featured: index === 1,
+      stars: [25, undefined, 0, 25][index],
+    }));
     const sourceOrder = new Map(
-      catalogTemplates.map((template, index) => [
+      records.map((template, index) => [
         template.normalizedSource,
         index,
       ]),
     );
     const sorted = sortCatalogTemplates(
-      catalogTemplates,
+      records,
       clearCatalogState(),
       sourceOrder,
     );
-    const featuredCount = catalogTemplates.filter(
-      (template) => template.featured,
-    ).length;
 
-    expect(featuredCount).toBeGreaterThan(0);
-    expect(
-      sorted.slice(0, featuredCount).every((template) => template.featured),
-    ).toBe(true);
-    expect(
-      sorted.slice(featuredCount).every((template) => !template.featured),
-    ).toBe(true);
-    expect(
-      sorted.slice(0, featuredCount).map((template) => template.id),
-    ).toEqual(
-      catalogTemplates
-        .filter((template) => template.featured)
-        .map((template) => template.id),
-    );
-    expect(
-      sorted.slice(featuredCount).map((template) => template.id),
-    ).toEqual(
-      catalogTemplates
-        .filter((template) => !template.featured)
-        .map((template) => template.id),
-    );
+    expect(sorted.map((template) => template.stars)).toEqual([
+      25,
+      25,
+      0,
+      undefined,
+    ]);
+    expect(sorted.slice(0, 2).map((template) => template.id)).toEqual([
+      records[0].id,
+      records[3].id,
+    ]);
   });
 });
 

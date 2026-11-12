@@ -27,9 +27,10 @@ To submit a template:
     - **Azure Services** - [Tags for Azure services](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.ts) used in the template (e.g., aca, functions, openai, cosmosdb, azuresql).
     - **IaC** - [Infrastructure as Code tag](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.ts) (bicep or terraform).
     - **ID** - Please provide a unique uuid.
-2. If the template is Microsoft-authored, we encourage you to also [publish it to learn.microsoft.com/samples](https://review.learn.microsoft.com/en-us/help/contribute/samples/process/onboarding?branch=main). 
-3. Open a PR!
-4. If possible, add a link to the PR in your repo where you made your app `azd` compatible to the PR description. This will help us provide feedback on your template and speed up the review process. 
+2. Add the template's normalized GitHub repository URL and at least one reviewed primary use case to [website/src/catalog/template-use-cases.json](https://github.com/Azure/awesome-azd/blob/main/website/src/catalog/template-use-cases.json). This mapping is required for the template to appear in the unified catalog.
+3. If the template is Microsoft-authored, we encourage you to also [publish it to learn.microsoft.com/samples](https://review.learn.microsoft.com/en-us/help/contribute/samples/process/onboarding?branch=main).
+4. Open a PR!
+5. If possible, add a link to the PR in your repo where you made your app `azd` compatible to the PR description. This will help us provide feedback on your template and speed up the review process.
 
 If you would like to contribute a template but are not sure where to start, [making an existing project azd compatible](https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/make-azd-compatible) is a great first step. Doing so consists of three main steps:
 1.  Set up a new environment (with `azd init`)
@@ -41,7 +42,7 @@ If you would like to contribute a template but are not sure where to start, [mak
 For a faster submission experience, use the automated pipeline:
 
 1. **[Submit a template issue](https://github.com/Azure/awesome-azd/issues/new?template=template-submission.yml)** — Fill out the form with your template details
-2. **Automatic validation** — A workflow validates your repository and creates a PR automatically
+2. **Automatic validation** — A workflow validates your repository, adds the required catalog use-case mapping, and creates a PR automatically
 3. **Review & merge** — A maintainer reviews and approves the PR
 
 ### [Submit a Resource](https://github.com/Azure/awesome-azd/compare)

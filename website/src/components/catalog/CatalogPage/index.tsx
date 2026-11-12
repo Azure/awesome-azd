@@ -56,6 +56,7 @@ import {
 } from "../../../utils/galleryNavigation";
 import SiteFluentProvider from "../../SiteFluentProvider";
 import CopyAction from "../CopyAction";
+import { RepositoryStarCount } from "./RepositoryStarCount";
 import styles from "./styles.module.css";
 
 const itemsPerPage = 20;
@@ -283,6 +284,12 @@ function TemplateCard({
               </span>
             ))}
           </div>
+          <RepositoryStarCount
+            stars={template.stars}
+            icon={<StarIcon />}
+            className={styles.repoStats}
+            statClassName={styles.repoStat}
+          />
         </div>
       </a>
       <div className={styles.cardCommand}>
@@ -608,7 +615,7 @@ export default function CatalogPage(): React.JSX.Element {
                     aria-label="Sort by"
                     value={selectedSortLabel}
                     selectedOptions={[state.sort]}
-                    title="Most popular shows featured templates first, followed by catalog order. Latest follows the catalog's newest-first order."
+                    title="Most popular orders templates by GitHub stars, highest first. Templates without star data appear last. Latest follows the catalog's newest-first order."
                     onOptionSelect={(_event, data) => {
                       const sort =
                         catalogSortOptions.find(

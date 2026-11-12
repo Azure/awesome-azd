@@ -4,6 +4,7 @@
  */
 
 import templates from "../../static/templates.json";
+import repositoryMetrics from "./repository-metrics.generated.json";
 import reviewedTemplateUseCases from "./template-use-cases.json";
 import {
   Tags as standardTags,
@@ -14,6 +15,7 @@ import {
   type Tag as AiTag,
 } from "./aiTags";
 import { normalizeTemplateSource } from "./templateSources";
+import { getRepositoryStars } from "./repositoryMetrics";
 import {
   formatAzdInitCommand,
   getTemplateIdentifier,
@@ -58,6 +60,7 @@ export type CatalogTemplate = {
   authorship: CatalogAuthorship;
   isAi: boolean;
   featured: boolean;
+  stars?: number;
   tasks: CatalogTask[];
   collections: string[];
   legacyTags: string[];
@@ -494,6 +497,7 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     authorship,
     isAi,
     featured: tags.includes("featured"),
+    stars: getRepositoryStars(repositoryMetrics, source),
     tasks,
     collections: isAi ? ["ai"] : [],
     legacyTags,

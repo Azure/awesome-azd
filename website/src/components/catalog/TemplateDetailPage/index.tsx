@@ -80,25 +80,49 @@ function localAssetPath(value: string): string {
   return value.startsWith("./") ? `/${value.slice(2)}` : value;
 }
 
-function DetailImage({
+function DetailMediaSection({
   src,
   alt,
-  className,
+  imageClassName,
+  sectionClassName,
+  ariaLabel,
+  heading,
 }: {
   src: string;
   alt: string;
-  className: string;
-}): React.JSX.Element {
+  imageClassName: string;
+  sectionClassName: string;
+  ariaLabel?: string;
+  heading?: string;
+}): React.JSX.Element | null {
+  const [unavailable, setUnavailable] = React.useState(false);
   const external = /^https?:\/\//i.test(src);
   const localUrl = useBaseUrl(external ? "/" : localAssetPath(src));
 
+  if (unavailable) {
+    return null;
+  }
+
   return (
-    <img
-      className={className}
-      src={external ? src : localUrl}
-      alt={alt}
-      loading="lazy"
-    />
+    <section className={sectionClassName} aria-label={ariaLabel}>
+      {heading ? (
+        <Text
+          as="h2"
+          size={500}
+          weight="semibold"
+          className={styles.sectionHeading}
+        >
+          {heading}
+        </Text>
+      ) : null}
+      <img
+        className={imageClassName}
+        src={external ? src : localUrl}
+        alt={alt}
+        loading="lazy"
+        onError={() => setUnavailable(true)}
+      />
+    </section>
   );
 }
 
@@ -448,34 +472,25 @@ export default function TemplateDetailPage({
                   </header>
 
                   {screenshot ? (
-                    <section
-                      className={styles.previewSection}
+                    <DetailMediaSection
+                      key={screenshot}
+                      sectionClassName={styles.previewSection}
                       aria-label="Application preview"
-                    >
-                      <DetailImage
-                        className={styles.screenshot}
-                        src={screenshot}
-                        alt={`Application screenshot for ${template.title}`}
-                      />
-                    </section>
+                      imageClassName={styles.screenshot}
+                      src={screenshot}
+                      alt={`Application screenshot for ${template.title}`}
+                    />
                   ) : null}
 
                   {template.architectureDiagram ? (
-                    <section className={styles.section}>
-                      <Text
-                        as="h2"
-                        size={500}
-                        weight="semibold"
-                        className={styles.sectionHeading}
-                      >
-                        Architecture
-                      </Text>
-                      <DetailImage
-                        className={styles.architecture}
-                        src={template.architectureDiagram}
-                        alt={`Architecture diagram for ${template.title}`}
-                      />
-                    </section>
+                    <DetailMediaSection
+                      key={template.architectureDiagram}
+                      sectionClassName={styles.section}
+                      heading="Architecture"
+                      imageClassName={styles.architecture}
+                      src={template.architectureDiagram}
+                      alt={`Architecture diagram for ${template.title}`}
+                    />
                   ) : null}
 
                   {template.resources.length > 0 ? (

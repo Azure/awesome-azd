@@ -582,19 +582,17 @@ describe("unified catalog query", () => {
     expect(serviceState.unavailable).toEqual([]);
     expect(serializeCatalogState(serviceState)).toBe("service=azureai");
 
-    for (const {
-      query,
-      compatibilityTag,
-      rawTag,
-    } of [
+    for (const { query, stateKey, stateValue, rawTag } of [
       {
         query: "?database=Prometheus",
-        compatibilityTag: "prometheus",
+        stateKey: "databases" as const,
+        stateValue: "Prometheus",
         rawTag: "prometheus",
       },
       {
         query: "?tags=meta",
-        compatibilityTag: "meta",
+        stateKey: "legacyTags" as const,
+        stateValue: "meta",
         rawTag: "meta",
       },
     ]) {
@@ -627,11 +625,53 @@ describe("unified catalog query", () => {
         .map((template) => template.normalizedSource)
         .sort();
 
-      expect(state.legacyTags).toEqual([compatibilityTag]);
+      expect(state[stateKey]).toEqual([stateValue]);
       expect(state.unavailable).toEqual([]);
       expect(matchingSources).toEqual(expectedSources);
       expect(expectedSources.length).toBeGreaterThan(0);
     }
+  });
+
+  test("preserves OR semantics for migrated multi-select filters", () => {
+    const prometheusState = parseCatalogState(
+      "?database=Prometheus",
+      catalogTemplates,
+    );
+    const mongoState = parseCatalogState(
+      "?database=MongoDB",
+      catalogTemplates,
+    );
+    const combinedState = parseCatalogState(
+      "?database=Prometheus,MongoDB",
+      catalogTemplates,
+    );
+    const expectedSources = [
+      ...new Set(
+        [
+          ...getMatchingCatalogTemplates(
+            catalogTemplates,
+            prometheusState,
+          ),
+          ...getMatchingCatalogTemplates(catalogTemplates, mongoState),
+        ].map((template) => template.normalizedSource),
+      ),
+    ].sort();
+    const matchingSources = getMatchingCatalogTemplates(
+      catalogTemplates,
+      combinedState,
+    )
+      .map((template) => template.normalizedSource)
+      .sort();
+
+    expect(combinedState.databases).toEqual([
+      "Prometheus",
+      "MongoDB",
+    ]);
+    expect(combinedState.unavailable).toEqual([]);
+    expect(matchingSources).toEqual(expectedSources);
+    expect(serializeCatalogState(combinedState)).toBe(
+      "database=Prometheus%2CMongoDB",
+    );
   });
 
   test("filters templates by every reviewed use case", () => {

@@ -459,6 +459,26 @@ test.describe("Gallery functionality (deploy gate)", () => {
     ).toHaveCount(0);
   });
 
+  test("template details omit unavailable remote preview assets", async ({
+    page,
+  }) => {
+    await page.route(
+      "https://github.com/passadis/azure-a2a-translation/images/a2a-translation-architecture.png",
+      (route) => route.abort(),
+    );
+    await page.goto("templates/passadis/azure-a2a-translation");
+
+    await expect(
+      page.getByRole("heading", {
+        level: 1,
+        name: "Containerized A2A Translation Service with Azure AI Translator",
+      }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("region", { name: "Application preview" }),
+    ).toHaveCount(0);
+  });
+
   test("browser Back restores the clicked card focus and scroll position", async ({
     page,
   }) => {

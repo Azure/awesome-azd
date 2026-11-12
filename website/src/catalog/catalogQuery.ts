@@ -152,6 +152,18 @@ function getValues(
   }
 }
 
+function supportsLegacyTagCompatibility(
+  key: CatalogFacetKey,
+): boolean {
+  return (
+    key === "languages" ||
+    key === "frameworks" ||
+    key === "databases" ||
+    key === "services" ||
+    key === "iac"
+  );
+}
+
 export function getFacetLabel(facet: CatalogFacet, value: string): string {
   return facet.labels?.[value] ?? value;
 }
@@ -204,7 +216,6 @@ export function parseCatalogState(
     authors: [],
     unavailable: [],
   };
-  const legacyTagFallbacks: string[] = [];
   const legacyTagFacet = catalogFacets.find(
     (facet) => facet.key === "legacyTags",
   );
@@ -232,7 +243,7 @@ export function parseCatalogState(
       );
     }
     if (facet.key === "legacyTags") {
-      requested = [...legacyTagFallbacks, ...requested].map(
+      requested = requested.map(
         (value) => canonicalizeCatalogTagId(value) ?? value,
       );
     }
@@ -243,19 +254,15 @@ export function parseCatalogState(
         continue;
       }
 
-      const supportsLegacyTagFallback =
-        facet.key === "languages" ||
-        facet.key === "frameworks" ||
-        facet.key === "databases" ||
-        facet.key === "services" ||
-        facet.key === "iac";
-      const compatibilityIds = supportsLegacyTagFallback
+      const compatibilityIds = supportsLegacyTagCompatibility(
+        facet.key,
+      )
         ? getCatalogTagCompatibilityIds(value).filter((id) =>
             allowedLegacyTags.includes(id),
           )
         : [];
       if (compatibilityIds.length === 1) {
-        legacyTagFallbacks.push(compatibilityIds[0]);
+        accepted.push(value);
         continue;
       }
 
@@ -325,7 +332,20 @@ export function matchesCatalogTemplate(
       if (facet.key === "legacyTags") {
         return state.legacyTags.every((value) => values.includes(value));
       }
-      return values.some((value) => state[facet.key].includes(value));
+      return state[facet.key].some((value) => {
+        if (values.includes(value)) {
+          return true;
+        }
+        if (!supportsLegacyTagCompatibility(facet.key)) {
+          return false;
+        }
+
+        const compatibilityIds = getCatalogTagCompatibilityIds(value);
+        return (
+          compatibilityIds.length === 1 &&
+          template.compatibilityTags.includes(compatibilityIds[0])
+        );
+      });
     })
   );
 }

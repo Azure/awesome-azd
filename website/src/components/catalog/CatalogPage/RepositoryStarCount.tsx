@@ -27,6 +27,7 @@ export function RepositoryStarCount({
     <span
       className={className}
       data-repository-stars
+      role="img"
       aria-label={`${formattedStars} GitHub stars`}
       title={`${formattedStars} GitHub stars`}
     >

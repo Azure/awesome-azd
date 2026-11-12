@@ -1,13 +1,13 @@
 /**
-* Copyright (c) Microsoft Corporation. All rights reserved.
-* Licensed under the MIT License.
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
  */
 
 /* eslint-disable global-require */
 
-import { sortBy } from '../utils/jsUtils';
-import { TagType, Template, Tags } from './tags';
-import templates from '../../static/templates.json'
+import { sortBy } from "../utils/jsUtils";
+import { TagType, Template, Tags } from "./tags";
+import templates from "../../static/templates.json";
 
 // *** ADDING DATA TO AZD GALLERY ****/
 
@@ -61,8 +61,8 @@ function validateTemplates(raw: unknown): Template[] {
     }
 
     const templateType = (entry as Record<string, unknown>).templateType;
-    const isExtensionEntry = typeof templateType === 'string' && templateType !== '';
-    if ((!Array.isArray(tags) || tags.length === 0) && !isExtensionEntry) {
+    const isSpecializedEntry = typeof templateType === 'string' && templateType !== '';
+    if ((!Array.isArray(tags) || tags.length === 0) && !isSpecializedEntry) {
       console.warn(`Template[${i}]: missing or empty 'tags', skipping`);
       return false;
     }
@@ -70,10 +70,10 @@ function validateTemplates(raw: unknown): Template[] {
   }) as Template[];
 }
 
-// Extension templates (e.g. `azd ai agent init` agents with
-// `templateType: "extension.ai.agent"`) live in the same templates.json
-// manifest so specialized `azd` flows can consume a single source of truth,
-// but they are NOT displayed in the awesome-azd gallery.
+// Specialized templates (for example `extension.ai.agent` and
+// `ai-app-templates`) live in the same templates.json manifest so dedicated
+// experiences can consume a single source of truth, but they are not displayed
+// in the "All templates" gallery.
 //
 // Rule: any entry with a `templateType` set is treated as a non-gallery
 // (extension / specialized) entry. This means new extension categories are
@@ -83,11 +83,15 @@ function validateTemplates(raw: unknown): Template[] {
 // validated `Template` objects or raw JSON entries from `templates.json` (which
 // structurally satisfy `Pick` thanks to TS's structural typing), without
 // casting at the call site.
-export function isGalleryTemplate(entry: Pick<Template, 'templateType'>): boolean {
-  return entry.templateType == null || entry.templateType === '';
+export function isGalleryTemplate(
+  entry: Pick<Template, "templateType">,
+): boolean {
+  return entry.templateType == null || entry.templateType === "";
 }
 
-export function filterGalleryTemplates<T extends Pick<Template, 'templateType'>>(entries: T[]): T[] {
+export function filterGalleryTemplates<
+  T extends Pick<Template, "templateType">,
+>(entries: T[]): T[] {
   return entries.filter(isGalleryTemplate);
 }
 
@@ -97,7 +101,7 @@ export function filterGalleryTemplates<T extends Pick<Template, 'templateType'>>
 // `validateTemplates`. This keeps the promise that adding a new extension
 // category is a data-only change.
 const rawGalleryTemplates = filterGalleryTemplates(
-  templates as Array<Record<string, unknown> & { templateType?: string }>
+  templates as Array<Record<string, unknown> & { templateType?: string }>,
 );
 
 // Pre-filtered raw template entries for UI consumers (gallery counts,
@@ -107,10 +111,14 @@ const rawGalleryTemplates = filterGalleryTemplates(
 export const galleryTemplates: ReadonlyArray<Record<string, unknown>> =
   rawGalleryTemplates;
 
-export const unsortedTemplates: Template[] = validateTemplates(rawGalleryTemplates);
+export const unsortedTemplates: Template[] =
+  validateTemplates(rawGalleryTemplates);
 
 export const TagList = Object.keys(Tags) as TagType[];
-export const sortedTagList: ReadonlyArray<TagType> = sortBy(TagList, (tag) => tag);
+export const sortedTagList: ReadonlyArray<TagType> = sortBy(
+  TagList,
+  (tag) => tag,
+);
 function sortTemplates() {
   let result = unsortedTemplates;
   // Sort by template name

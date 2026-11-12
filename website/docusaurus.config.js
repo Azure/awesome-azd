@@ -142,11 +142,13 @@ const config = {
             to: "https://aka.ms/azd",
             label: "Docs",
             position: "left",
+            className: "navbar-external-link",
           },
           {
             to: "https://learn.microsoft.com/azure/architecture/browse/",
             label: "Resources",
             position: "left",
+            className: "navbar-external-link",
           },
 
           // right
@@ -216,6 +218,7 @@ const config = {
   // CONFIG: plugins
   //    See
   plugins: [
+    require.resolve("./route_generator_plugin/catalogRouteGenerator"),
     [
       "@docusaurus/plugin-client-redirects",
       {

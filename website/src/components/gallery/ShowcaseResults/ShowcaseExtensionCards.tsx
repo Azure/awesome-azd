@@ -11,17 +11,18 @@ import ShowcaseExtensionCard from "../ShowcaseExtensionCard";
 
 export default function ShowcaseExtensionCards({
   filteredExtensions,
-  searchName = null,
+  onClear,
 }: {
   filteredExtensions: Extension[];
-  searchName?: string | null;
+  onClear: () => void;
 }) {
   const len = filteredExtensions ? filteredExtensions.length : 0;
   if (len === 0) {
     return (
       <ShowcaseEmptyResult
         id="showcase.extensionsList.noResult"
-        searchName={searchName}
+        itemLabel="extensions"
+        onClear={onClear}
       />
     );
   }

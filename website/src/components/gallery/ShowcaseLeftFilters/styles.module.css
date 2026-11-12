@@ -1,110 +1,104 @@
 /**
-* Copyright (c) Microsoft Corporation. All rights reserved.
-* Licensed under the MIT License.
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
  */
 
-.checkboxListItem {
-  user-select: none;
-  white-space: normal;
-  overflow-wrap: anywhere;
-}
-
-/*
- * Allow long checkbox labels (e.g., long template/tag names) to wrap.
- * NOTE: `.fui-Checkbox__label` targets a Fluent UI internal class name; if
- * Fluent UI renames or restructures it in a future release, this wrapping
- * fix will silently stop working. Re-verify after Fluent UI upgrades.
- */
-.checkboxListItem :global(.fui-Checkbox__label) {
-  white-space: normal;
-  overflow-wrap: anywhere;
-}
-
-.checkboxListItem:last-child {
-  margin-right: 0;
-}
-
-.lastCheckbox {
-  margin-bottom: 7px;
-}
-
-.curatedCheckbox {
-  padding-left: 12px;
-}
-
-.chevronUp {
-  transform: rotate(180deg);
-}
-
-.viewAllItem.viewAllItem {
-  padding: 0;
-}
-
-.viewAllPanel.viewAllPanel {
-  margin: 0;
-}
-
-.viewAllLabel {
-  font-size: 12px;
+.filterAccordion {
+  width: 100%;
 }
 
 .filterCollections {
-  padding-bottom: 7px;
-}
-
-.categoryTitle {
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.color {
-  color: var(--ifm-color-primary);
+  padding-bottom: 6px;
 }
 
 .filterTop {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 0 0 15px 12px;
-}
-
-.clearAll {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  text-decoration-line: underline;
-  cursor: pointer;
-  color: var(--ifm-color-primary);
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
 .filterBy {
-  font-size: 20px;
+  margin: 0;
+  color: var(--catalog-text);
+  font-size: 0.9rem;
   font-weight: 600;
-  line-height: 28px;
+  line-height: 1.35;
+}
+
+.clearAll.clearAll {
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--catalog-blue);
+  font: inherit;
+  font-size: 0.72rem;
+  text-decoration: underline;
+}
+
+.checkboxListItem {
+  width: 100%;
+}
+
+.curatedCheckbox {
+  padding-left: 0;
+}
+
+.categoryItem {
+  border-bottom: 1px solid var(--catalog-border);
+}
+
+.categoryHeader.categoryHeader {
+  width: 100%;
+}
+
+.categoryHeader :global(.fui-AccordionHeader__button) {
+  width: 100%;
+  min-height: 0;
+  gap: 8px;
+  padding: 15px 0;
+  color: var(--catalog-text);
+  font-size: 0.76rem;
+  font-weight: 600;
+}
+
+.categoryHeader :global(.fui-AccordionHeader__expandIcon) {
+  display: none;
+}
+
+.categoryToggle {
+  margin-left: auto;
+  color: var(--catalog-muted);
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+.categoryToggle::before {
+  content: "+";
+}
+
+.categoryHeader
+  :global(.fui-AccordionHeader__button[aria-expanded="true"])
+  .categoryToggle::before {
+  content: "−";
+}
+
+.categoryTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
 }
 
 .filterCount {
-  font-size: 12px;
-  font-weight: 400;
-  color: #8a8a8a;
-  margin-left: 6px;
+  color: var(--catalog-muted);
+  font: 0.6rem var(--ifm-font-family-monospace);
 }
 
-[data-theme="dark"] .filterCount {
-  color: #8a8a8a;
-}
-
-/*
- * Top divider line for each top-level category accordion header.
- * Defined as a CSS class (rather than an inline `style`) so the mobile
- * media query below can override it without needing `!important`.
- */
-.categoryHeader {
-  background: linear-gradient(#D1D1D1 0 0) top / 89.8% 0.6px no-repeat;
-}
-
-@media screen and (max-width: 996px) {
-  .categoryHeader {
-    background: linear-gradient(#D1D1D1 0 0) top / 100% 1px no-repeat;
-  }
+.categoryPanel.categoryPanel {
+  padding: 0 0 14px;
+  margin: 0;
 }

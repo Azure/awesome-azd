@@ -4,63 +4,46 @@
  */
 
 import React, { useState, useMemo, useEffect } from "react";
-import type { Template, TagType } from "../../../data/tags";
-import { sortedTemplates, unsortedTemplates } from "../../../data/templates";
+import type { TagType } from "../../../data/tags";
 import { sortedExtensions, unsortedExtensions } from "../../../data/extensions";
-import type { Extension } from "../../../data/extensionTypes";
-import { Spinner, type ComboboxProps } from "@fluentui/react-components";
-import ShowcaseCards from "./ShowcaseCards";
 import ShowcaseExtensionCards from "./ShowcaseExtensionCards";
-import ShowcaseResultsToolbar from "../ShowcaseResultsToolbar";
+import { ShowcaseResultsStatus } from "../ShowcaseResultsToolbar";
 import ShowcaseAppliedFilters from "../ShowcaseAppliedFilters";
 import ShowcasePagination from "../ShowcasePagination";
 import { useHistory } from "@docusaurus/router";
 import type { Location } from "history";
-import { getContentType } from "@site/src/utils/contentType";
-import {
-  filterTemplates,
-  filterExtensions,
-} from "@site/src/utils/galleryFiltering";
-import {
-  GALLERY_SORT_OPTIONS,
-  getSortedTemplates,
-  getSortedExtensions,
-} from "@site/src/utils/gallerySorting";
-import { getTemplateTags, getExtensionTags } from "@site/src/utils/galleryTags";
+import { filterExtensions } from "@site/src/utils/galleryFiltering";
+import { getSortedExtensions } from "@site/src/utils/gallerySorting";
+import { getExtensionTags } from "@site/src/utils/galleryTags";
 import {
   captureGalleryNavigationState,
   restoreGalleryNavigationState,
   type GalleryNavigationState,
 } from "@site/src/utils/galleryNavigation";
-import { readSearchName, clearSearchFilters } from "@site/src/utils/galleryQuery";
-
-type GalleryItems =
-  | { type: "templates"; items: Template[] }
-  | { type: "extensions"; items: Extension[] };
+import {
+  readSearchName,
+  clearSearchFilters,
+  replaceSearchName,
+} from "@site/src/utils/galleryQuery";
+import styles from "./styles.module.css";
 
 export default function ShowcaseResults({
   setActiveTags,
   selectedTags,
   location,
   selectedAuthors,
+  selectedOptions,
 }: {
   setActiveTags: React.Dispatch<React.SetStateAction<TagType[]>>;
   selectedTags: TagType[];
   location: Location & { state?: GalleryNavigationState | null; search: string };
   selectedAuthors: string[];
+  selectedOptions: string[];
 }) {
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([GALLERY_SORT_OPTIONS[2]]);
-  const [loading, setLoading] = useState(true);
   const searchName = readSearchName(location.search);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 20;
   const history = useHistory();
-
-  // Content type is now derived from the URL pathname (`/extensions`) so the
-  // two galleries live at distinct routes accessible via the navbar. The
-  // legacy `?type=extensions` query param is still honored by getContentType
-  // for backward compatibility with old shared links.
-  const contentType = getContentType(location);
 
   const clearAll = () => {
     history.push({
@@ -69,46 +52,43 @@ export default function ShowcaseResults({
       state: captureGalleryNavigationState(),
     });
   };
+  const clearSearchAndFilters = () => {
+    history.push({
+      ...location,
+      search: replaceSearchName(
+        clearSearchFilters(location.search),
+        null,
+      ),
+      state: captureGalleryNavigationState(),
+    });
+  };
 
   useEffect(() => {
     restoreGalleryNavigationState(location.state);
-    setLoading(false);
   }, [location, selectedOptions]);
 
-  const { type: sortedType, items: sortedItems } = useMemo<GalleryItems>(
-    () => {
-      if (contentType === "extensions") {
-        return {
-          type: contentType,
-          items: getSortedExtensions(unsortedExtensions, sortedExtensions, selectedOptions[0]),
-        };
-      }
-      return {
-        type: contentType,
-        items: getSortedTemplates(unsortedTemplates, sortedTemplates, selectedOptions[0]),
-      };
-    },
-    [contentType, selectedOptions]
+  const sortedItems = useMemo(
+    () =>
+      getSortedExtensions(
+        unsortedExtensions,
+        sortedExtensions,
+        selectedOptions[0],
+      ),
+    [selectedOptions],
   );
 
-  const { type: activeType, items: activeItems } = useMemo<GalleryItems>(
-    () => {
-      if (sortedType === "extensions") {
-        return {
-          type: sortedType,
-          items: filterExtensions(sortedItems, selectedTags, selectedAuthors, searchName),
-        };
-      }
-      return {
-        type: sortedType,
-        items: filterTemplates(sortedItems, selectedTags, selectedAuthors, searchName),
-      };
-    },
-    [sortedType, sortedItems, selectedTags, selectedAuthors, searchName]
+  const activeItems = useMemo(
+    () =>
+      filterExtensions(
+        sortedItems,
+        selectedTags,
+        selectedAuthors,
+        searchName,
+      ),
+    [sortedItems, selectedTags, selectedAuthors, searchName],
   );
 
-  const isExtensions = activeType === "extensions";
-  const totalItems = activeItems ? activeItems.length : 0;
+  const totalItems = activeItems.length;
 
   // Reset on navigation and sort selection, even when their values are unchanged.
   useEffect(() => {
@@ -122,62 +102,47 @@ export default function ShowcaseResults({
 
   useEffect(() => {
     const unionTags = new Set<TagType>();
-    if (activeType === "extensions") {
-      activeItems.forEach((ext) => {
-        getExtensionTags(ext).forEach((tag) => unionTags.add(tag));
-      });
-    } else {
-      activeItems.forEach((template) => {
-        getTemplateTags(template).forEach((tag) => unionTags.add(tag));
-      });
-    }
+    activeItems.forEach((extension) => {
+      getExtensionTags(extension).forEach((tag) => unionTags.add(tag));
+    });
     setActiveTags(Array.from(unionTags));
-  }, [activeItems, activeType, setActiveTags]);
-
-  const sortByOnSelect: NonNullable<ComboboxProps["onOptionSelect"]> = (_event, data) => {
-    setLoading(true);
-    setSelectedOptions(data.selectedOptions);
-  };
+  }, [activeItems, setActiveTags]);
 
   return (
     <>
-      <ShowcaseResultsToolbar
-        totalItems={totalItems}
-        startIndex={startIndex}
-        endIndex={endIndex}
-        isExtensions={isExtensions}
-        searchName={searchName}
-        onSortSelect={sortByOnSelect}
-      />
       <ShowcaseAppliedFilters
         clearAll={clearAll}
         selectedTags={selectedTags}
         selectedAuthors={selectedAuthors}
         location={location}
       />
-      {loading ? (
-        <Spinner labelPosition="below" label="Loading..." />
+      <ShowcaseExtensionCards
+        filteredExtensions={activeItems.slice(startIndex, endIndex)}
+        onClear={clearSearchAndFilters}
+      />
+      {totalPages > 1 && (
+        <ShowcasePagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
+      )}
+      {totalItems > 0 ? (
+        <div className={styles.resultsFooter}>
+          <ShowcaseResultsStatus
+            totalItems={totalItems}
+            startIndex={startIndex}
+            endIndex={endIndex}
+          />
+        </div>
       ) : (
-        <>
-          {activeType === "extensions" ? (
-            <ShowcaseExtensionCards
-              filteredExtensions={activeItems.slice(startIndex, endIndex)}
-              searchName={searchName}
-            />
-          ) : (
-            <ShowcaseCards
-              filteredTemplates={activeItems.slice(startIndex, endIndex)}
-              searchName={searchName}
-            />
-          )}
-          {totalPages > 1 && (
-            <ShowcasePagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={setCurrentPage}
-            />
-          )}
-        </>
+        <div className={styles.visuallyHidden}>
+          <ShowcaseResultsStatus
+            totalItems={totalItems}
+            startIndex={startIndex}
+            endIndex={endIndex}
+          />
+        </div>
       )}
     </>
   );

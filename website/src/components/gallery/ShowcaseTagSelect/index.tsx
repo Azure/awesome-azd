@@ -11,6 +11,7 @@ import { captureGalleryNavigationState } from "@site/src/utils/galleryNavigation
 import { readSearchTags, replaceSearchTags } from "@site/src/utils/galleryQuery";
 import { type TagType } from "@site/src/data/tags";
 import { Checkbox } from "@fluentui/react-components";
+import styles from "./styles.module.css";
 
 export default function ShowcaseTagSelect({
   label,
@@ -49,6 +50,9 @@ export default function ShowcaseTagSelect({
     <>
       <Checkbox
         id={id}
+        className={`${styles.filterOption} ${
+          selectedTags.includes(tag) ? styles.filterOptionSelected : ""
+        }`}
         data-m={contentForAdobeAnalytics}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
@@ -59,8 +63,15 @@ export default function ShowcaseTagSelect({
           toggleTag();
         }}
         checked={selectedTags.includes(tag)}
-        label={count !== undefined ? `${label} (${count})` : label}
-        disabled={!activeTags?.includes(tag)}
+        label={
+          <>
+            <span className={styles.labelText}>{label}</span>
+            {count !== undefined ? <small>{count}</small> : null}
+          </>
+        }
+        disabled={
+          !activeTags?.includes(tag) && !selectedTags.includes(tag)
+        }
       />
     </>
   );

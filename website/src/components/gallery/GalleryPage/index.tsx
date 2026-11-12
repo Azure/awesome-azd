@@ -8,11 +8,10 @@ import useIsBrowser from "@docusaurus/useIsBrowser";
 import ShowcaseLeftFilters from "../ShowcaseLeftFilters";
 import ShowcaseTemplateSearch from "../ShowcaseTemplateSearch";
 import {
-  webLightTheme,
-  webDarkTheme,
-  FluentProvider,
+  Button,
+  type DropdownProps,
 } from "@fluentui/react-components";
-import { initializeIcons } from "@fluentui/react/lib/Icons";
+import SiteFluentProvider from "../../SiteFluentProvider";
 import type { GalleryNavigationState } from "@site/src/utils/galleryNavigation";
 import {
   readSearchTags,
@@ -20,61 +19,96 @@ import {
   readSearchAuthors,
 } from "@site/src/utils/galleryQuery";
 import { type TagType } from "@site/src/data/tags";
-import { TagList } from "@site/src/data/templates";
+import { unsortedExtensions } from "@site/src/data/extensions";
+import { getExtensionTags } from "@site/src/utils/galleryTags";
 import styles from "./styles.module.css";
-import { useColorMode } from "@docusaurus/theme-common";
 import ShowcaseResults from "../ShowcaseResults";
+import ShowcaseResultsToolbar from "../ShowcaseResultsToolbar";
 import { useLocation } from "@docusaurus/router";
+import { initializeFluentIcons } from "@site/src/utils/fluentIcons";
+import { GALLERY_SORT_OPTIONS } from "@site/src/utils/gallerySorting";
 
-initializeIcons();
+initializeFluentIcons();
 
-const BackToTopButton = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+const extensionTags = [
+  ...new Set(unsortedExtensions.flatMap(getExtensionTags)),
+];
+
+export default function GalleryPage(): React.JSX.Element | null {
+  const isBrowser = useIsBrowser();
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [activeTags, setActiveTags] =
+    useState<TagType[]>(extensionTags);
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([
+    GALLERY_SORT_OPTIONS[2],
+  ]);
+  const location = useLocation<GalleryNavigationState>();
+  const hydrationSafeSearch = isBrowser ? location.search : "";
+  const galleryLocation = useMemo(
+    () => ({ ...location, search: hydrationSafeSearch }),
+    [hydrationSafeSearch, location],
+  );
+  const selectedTags = useMemo(
+    () => readSearchTags(hydrationSafeSearch),
+    [hydrationSafeSearch],
+  );
+  const selectedAuthors = useMemo(
+    () => readSearchAuthors(hydrationSafeSearch),
+    [hydrationSafeSearch],
+  );
+  const activeFilterCount = selectedTags.length + selectedAuthors.length;
+  useEffect(() => {
+    if (
+      isBrowser &&
+      readUnknownSearchTags(location.search).length > 0
+    ) {
+      console.warn("Unsupported gallery URL tags were ignored.");
+    }
+  }, [isBrowser, location.search]);
+  const sortByOnSelect: NonNullable<DropdownProps["onOptionSelect"]> = (
+    _event,
+    data,
+  ) => {
+    setSelectedOptions(
+      data.selectedOptions.length > 0
+        ? data.selectedOptions
+        : [GALLERY_SORT_OPTIONS[2]],
+    );
   };
 
   return (
-    <button
-      className={styles.backToTopButton}
-      onClick={scrollToTop}
-      aria-label="Back to top"
-      title="Back to top"
-    >
-      ↑
-    </button>
-  );
-};
-
-export default function GalleryPage(): React.JSX.Element | null {
-  const { colorMode } = useColorMode();
-  const isBrowser = useIsBrowser();
-  const [activeTags, setActiveTags] = useState<TagType[]>(TagList);
-  const location = useLocation<GalleryNavigationState>();
-  const selectedTags = useMemo(
-    () => readSearchTags(location.search),
-    [location.search],
-  );
-  const selectedAuthors = useMemo(
-    () => readSearchAuthors(location.search),
-    [location.search],
-  );
-  useEffect(() => {
-    if (readUnknownSearchTags(location.search).length > 0) {
-      console.warn("Unsupported gallery URL tags were ignored.");
-    }
-  }, [location.search]);
-
-  return isBrowser ? (
-    <FluentProvider
-      theme={colorMode == "dark" ? webDarkTheme : webLightTheme}
-    >
-      <main>
+    <SiteFluentProvider className={styles.fluentProvider}>
+      <main className={styles.page}>
         <ShowcaseTemplateSearch />
+        <ShowcaseResultsToolbar
+          selectedOptions={selectedOptions}
+          onSortSelect={sortByOnSelect}
+        />
+        <div className={styles.mobileFilterBar}>
+          <Button
+            className={styles.mobileFilters}
+            appearance="outline"
+            size="small"
+            aria-controls="extension-filters"
+            aria-expanded={mobileFiltersOpen}
+            onClick={() => {
+              setMobileFiltersOpen((open) => !open);
+            }}
+          >
+            Filters
+            {activeFilterCount > 0 ? ` (${activeFilterCount})` : ""}
+          </Button>
+        </div>
         <div className={styles.filterAndCard}>
-          <div className={styles.filter}>
+          <div
+            id="extension-filters"
+            className={styles.filter}
+            data-open={mobileFiltersOpen}
+            data-testid="extension-filter-panel"
+          >
             <ShowcaseLeftFilters
               activeTags={activeTags}
-              location={location}
+              location={galleryLocation}
               selectedTags={selectedTags}
               selectedAuthors={selectedAuthors}
             />
@@ -83,13 +117,13 @@ export default function GalleryPage(): React.JSX.Element | null {
             <ShowcaseResults
               setActiveTags={setActiveTags}
               selectedTags={selectedTags}
-              location={location}
+              location={galleryLocation}
               selectedAuthors={selectedAuthors}
+              selectedOptions={selectedOptions}
             />
           </div>
         </div>
-        <BackToTopButton />
       </main>
-    </FluentProvider>
-  ) : null;
+    </SiteFluentProvider>
+  );
 }

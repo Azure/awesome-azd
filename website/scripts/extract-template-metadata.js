@@ -49,7 +49,7 @@ const MICROSOFT_ORGS = ["azure", "azure-samples", "microsoft"];
  * Map dependency-file patterns to gallery framework tags.
  *
  * Each detector lists:
- *   tag      – the gallery tag name (must exist in tags.tsx)
+ *   tag      – the gallery tag name (must exist in tags.ts)
  *   patterns – substrings to search for (case-insensitive)
  *   files    – which dependency files to search in
  */

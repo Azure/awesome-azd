@@ -166,9 +166,7 @@ export type TagType =
   | "ext-framework-service-provider"
   | "ext-provisioning-provider"
   | "ext-validation-provider"
-  | "ext-metadata"
-  ;
-
+  | "ext-metadata";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -194,11 +192,13 @@ export const Tags: { [type in TagType]: Tag } = {
   },
   new: {
     label: "New",
-    description: "This tag is used for new templates.",
+    description:
+      "This tag is used for templates added to the catalog within the past month.",
   },
   aicollection: {
     label: "AI Collection",
-    description: "This tag is used for templates included in the Microsoft-curated AI collection.",
+    description:
+      "This tag is used for templates included in the Microsoft-curated AI collection.",
   },
 
   //============  FOR REGULAR USE
@@ -344,7 +344,8 @@ export const Tags: { [type in TagType]: Tag } = {
   },
   aspire: {
     label: ".NET Aspire",
-    description: "Set of tools, templates, and packages for building observable, production ready apps.",
+    description:
+      "Set of tools, templates, and packages for building observable, production ready apps.",
     type: "Tools",
   },
   mcp: {

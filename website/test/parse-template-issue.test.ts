@@ -21,6 +21,9 @@ describe("extractField", () => {
     "### Source Repository",
     "https://github.com/org/repo",
     "",
+    "### Primary Use Case",
+    "Build a web app",
+    "",
     "### Template Title",
     "My Template",
     "",
@@ -108,6 +111,9 @@ describe("parseIssueBody (issues event)", () => {
     "### Source Repository",
     "https://github.com/org/repo",
     "",
+    "### Primary Use Case",
+    "Build a web app",
+    "",
     "### Template Title",
     "My Template",
     "",
@@ -146,6 +152,7 @@ describe("parseIssueBody (issues event)", () => {
     });
     expect(error).toBeUndefined();
     expect(fields.source_repo).toBe("https://github.com/org/repo");
+    expect(fields.primary_use_case).toBe("Build a web app");
     expect(fields.template_title).toBe("My Template");
     expect(fields.description).toBe("A great template");
     expect(fields.author).toBe("Jane Doe");
@@ -158,10 +165,13 @@ describe("parseIssueBody (issues event)", () => {
     expect(fields.azure_services).toBe("App Service, Cosmos DB");
   });
 
-  test("succeeds when only source_repo is provided (other fields optional)", () => {
+  test("succeeds when required fields are provided", () => {
     const partialBody = [
       "### Source Repository",
       "https://github.com/org/repo",
+      "",
+      "### Primary Use Case",
+      "Build an API",
       "",
       "### Template Title",
       "My Template",
@@ -173,6 +183,7 @@ describe("parseIssueBody (issues event)", () => {
     });
     expect(error).toBeUndefined();
     expect(fields.source_repo).toBe("https://github.com/org/repo");
+    expect(fields.primary_use_case).toBe("Build an API");
     expect(fields.template_title).toBe("My Template");
     // Optional fields that were not in the body are empty strings
     expect(fields.description).toBe("");
@@ -232,6 +243,7 @@ describe("parseIssueBody (workflow_dispatch)", () => {
       eventName: "workflow_dispatch",
       inputs: {
         source_repo: "https://github.com/org/repo",
+        primary_use_case: "Build an AI agent",
         template_title: "My Template",
         description: "A great template",
         author: "Jane Doe",
@@ -246,6 +258,7 @@ describe("parseIssueBody (workflow_dispatch)", () => {
     });
     expect(error).toBeUndefined();
     expect(fields.source_repo).toBe("https://github.com/org/repo");
+    expect(fields.primary_use_case).toBe("Build an AI agent");
     expect(fields.template_title).toBe("My Template");
     expect(fields.author_type).toBe("Microsoft");
     expect(fields.iac_provider).toBe("Terraform");
@@ -258,6 +271,7 @@ describe("parseIssueBody (workflow_dispatch)", () => {
       eventName: "workflow_dispatch",
       inputs: {
         source_repo: "",
+        primary_use_case: "Build a web app",
         template_title: "Title",
         description: "Desc",
         author: "Auth",
@@ -283,6 +297,7 @@ describe("parseIssueBody (workflow_dispatch)", () => {
       eventName: "workflow_dispatch",
       inputs: {
         source_repo: "  https://github.com/org/repo  ",
+        primary_use_case: "  Build a web app  ",
         template_title: "  My Template  ",
         description: "  Desc  ",
         author: "  Auth  ",
@@ -296,6 +311,7 @@ describe("parseIssueBody (workflow_dispatch)", () => {
       },
     });
     expect(fields.source_repo).toBe("https://github.com/org/repo");
+    expect(fields.primary_use_case).toBe("Build a web app");
     expect(fields.template_title).toBe("My Template");
   });
 });
@@ -307,6 +323,9 @@ describe("parseIssueBody (auto-detect heading format)", () => {
   const autoDetectBody = [
     "### Source Repository",
     "https://github.com/org/repo",
+    "",
+    "### Primary Use Case",
+    "Build a web app",
     "",
     "### Template Title (optional \u2014 auto-detected from repo)",
     "My Custom Title",
@@ -346,6 +365,7 @@ describe("parseIssueBody (auto-detect heading format)", () => {
     });
     expect(error).toBeUndefined();
     expect(fields.source_repo).toBe("https://github.com/org/repo");
+    expect(fields.primary_use_case).toBe("Build a web app");
     expect(fields.template_title).toBe("My Custom Title");
     expect(fields.description).toBe("A great template");
     expect(fields.author).toBe("Jane Doe");
@@ -362,6 +382,9 @@ describe("parseIssueBody (auto-detect heading format)", () => {
     const minimalBody = [
       "### Source Repository",
       "https://github.com/org/repo",
+      "",
+      "### Primary Use Case",
+      "Start with infrastructure",
     ].join("\n");
 
     const { fields, error } = parseIssueBody({
@@ -370,6 +393,7 @@ describe("parseIssueBody (auto-detect heading format)", () => {
     });
     expect(error).toBeUndefined();
     expect(fields.source_repo).toBe("https://github.com/org/repo");
+    expect(fields.primary_use_case).toBe("Start with infrastructure");
     expect(fields.template_title).toBe("");
     expect(fields.description).toBe("");
     expect(fields.author).toBe("");

@@ -12,17 +12,18 @@ import ShowcaseSurveyCard from "../ShowcaseSurveyCard";
 
 export default function ShowcaseCards({
   filteredTemplates,
-  searchName = null,
+  onClear,
 }: {
   filteredTemplates: Template[];
-  searchName?: string | null;
+  onClear: () => void;
 }) {
   const len = filteredTemplates ? filteredTemplates.length : 0;
   if (len === 0) {
     return (
       <ShowcaseEmptyResult
         id="showcase.usersList.noResult"
-        searchName={searchName}
+        itemLabel="templates"
+        onClear={onClear}
       />
     );
   }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { CookieConsentContext } from "../components/CookieConsentContext";
+import FluentSsrProvider from "../components/SiteFluentProvider/FluentSsrProvider";
 
 const telemetryInit = (onConsentReady = () => {}) => {
   const SET = "set";
@@ -197,9 +198,11 @@ export default function Root({ children }) {
   }, []);
 
   return (
-    <CookieConsentContext.Provider value={siteConsent}>
-      <div id="cookie-banner"></div>
-      {children}
-    </CookieConsentContext.Provider>
+    <FluentSsrProvider>
+      <CookieConsentContext.Provider value={siteConsent}>
+        <div id="cookie-banner"></div>
+        {children}
+      </CookieConsentContext.Provider>
+    </FluentSsrProvider>
   );
 }

@@ -3,7 +3,7 @@
  * Licensed under the MIT License.
  */
 
-import React, { useMemo } from "react";
+import React from "react";
 import Layout from "@theme/Layout";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import BrowserOnly from "@docusaurus/BrowserOnly";
@@ -13,37 +13,57 @@ import {
   webLightTheme,
   webDarkTheme,
 } from "@fluentui/react-components";
-import { galleryTemplates as allTemplates } from "@site/src/data/templates";
+import type { CatalogTemplate } from "@site/src/catalog/catalogData";
+import type { ServicePageConfig } from "@site/src/catalog/servicePages";
 import styles from "./styles.module.css";
 
+type ServiceTemplate = Pick<
+  CatalogTemplate,
+  | "source"
+  | "title"
+  | "description"
+  | "authors"
+  | "preview"
+  | "screenshot"
+  | "architectureDiagram"
+>;
 
-export interface ServicePageConfig {
-  serviceTag: string;
-  title: string;
-  tagline: string;
-  description: string;
-  icon: string;
-  quickStart: { command: string; description: string }[];
-  resources: { title: string; url: string; description: string }[];
-}
+type ServicePageData = {
+  config: ServicePageConfig;
+  templates: ServiceTemplate[];
+  templateCount: number;
+};
 
-function TemplateCard({ template }: { template: any }) {
-  const preview = useBaseUrl(template.preview || "/img/default.png");
+function TemplateCard({ template }: { template: ServiceTemplate }) {
+  const preview = useBaseUrl(
+    template.preview ||
+      template.screenshot ||
+      template.architectureDiagram ||
+      "/img/logo.png",
+  );
   return (
-    <a href={template.source} target="_blank" rel="noopener noreferrer" className={styles.templateCard}>
+    <a
+      href={template.source}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={styles.templateCard}
+    >
       <img src={preview} alt={template.title} className={styles.templateImage} />
       <div className={styles.templateContent}>
         <h3 className={styles.templateTitle}>{template.title}</h3>
         <p className={styles.templateDescription}>{template.description}</p>
         <div className={styles.templateMeta}>
-          {template.author && <span className={styles.author}>by {template.author}</span>}
+          {template.authors.length > 0 && (
+            <span className={styles.author}>
+              by {template.authors.join(", ")}
+            </span>
+          )}
         </div>
       </div>
     </a>
   );
 }
 
-// Wrapper component so useColorMode() is called at the top level (Rules of Hooks)
 function FluentWrapper({ children }: { children: React.ReactNode }) {
   const { colorMode } = useColorMode();
   return (
@@ -53,85 +73,80 @@ function FluentWrapper({ children }: { children: React.ReactNode }) {
   );
 }
 
-function ServicePageContent({ config }: { config: ServicePageConfig }) {
+function ServicePageContent({ servicePage }: { servicePage: ServicePageData }) {
+  const { config, templates, templateCount } = servicePage;
   const icon = useBaseUrl(config.icon);
   const baseUrl = useBaseUrl("/templates");
-
-  const filteredTemplates = useMemo(() => {
-    return allTemplates.filter(
-      (t: any) =>
-        t.tags?.includes(config.serviceTag) ||
-        t.azureServices?.includes(config.serviceTag)
-    );
-  }, [config.serviceTag]);
-
-  const featured = filteredTemplates.slice(0, 6);
-  const hasMore = filteredTemplates.length > 6;
+  const hasMore = templateCount > templates.length;
 
   const content = (
-      <main className={styles.page}>
-        {/* Hero */}
-        <section className={styles.hero}>
-          <div className={styles.heroContent}>
-            <div className={styles.heroIcon}>
-              <img src={icon} alt={config.title} width={48} height={48} />
-            </div>
-            <h1 className={styles.heroTitle}>{config.title}</h1>
-            <p className={styles.heroTagline}>{config.tagline}</p>
-            <p className={styles.heroDescription}>{config.description}</p>
-            <div className={styles.heroStats}>
-              <span className={styles.statBadge}>{filteredTemplates.length} templates</span>
-            </div>
+    <main className={styles.page}>
+      <section className={styles.hero}>
+        <div className={styles.heroContent}>
+          <div className={styles.heroIcon}>
+            <img src={icon} alt={config.title} width={48} height={48} />
           </div>
-        </section>
+          <h1 className={styles.heroTitle}>{config.title}</h1>
+          <p className={styles.heroTagline}>{config.tagline}</p>
+          <p className={styles.heroDescription}>{config.description}</p>
+          <div className={styles.heroStats}>
+            <span className={styles.statBadge}>{templateCount} templates</span>
+          </div>
+        </div>
+      </section>
 
-        {/* Quick Start */}
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Quick start</h2>
-          <div className={styles.quickStartGrid}>
-            {config.quickStart.map((step, i) => (
-              <div key={i} className={styles.quickStartStep}>
-                <span className={styles.stepNumber}>{i + 1}</span>
-                <p className={styles.stepDescription}>{step.description}</p>
-                <code className={styles.stepCommand}>{step.command}</code>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Featured Templates */}
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Featured templates</h2>
-          <div className={styles.templateGrid}>
-            {featured.map((t: any) => (
-              <TemplateCard key={t.source || t.title} template={t} />
-            ))}
-          </div>
-          {hasMore && (
-            <div className={styles.viewAll}>
-              <a
-                href={`${baseUrl}?tags=${config.serviceTag}`}
-                className={styles.viewAllLink}
-              >
-                View all {filteredTemplates.length} templates →
-              </a>
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>Quick start</h2>
+        <div className={styles.quickStartGrid}>
+          {config.quickStart.map((step, index) => (
+            <div key={step.command} className={styles.quickStartStep}>
+              <span className={styles.stepNumber}>{index + 1}</span>
+              <p className={styles.stepDescription}>{step.description}</p>
+              <code className={styles.stepCommand}>{step.command}</code>
             </div>
-          )}
-        </section>
+          ))}
+        </div>
+      </section>
 
-        {/* Resources */}
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Resources</h2>
-          <div className={styles.resourceGrid}>
-            {config.resources.map((r, i) => (
-              <a key={i} href={r.url} target="_blank" rel="noopener noreferrer" className={styles.resourceCard}>
-                <h3 className={styles.resourceTitle}>{r.title}</h3>
-                <p className={styles.resourceDescription}>{r.description}</p>
-              </a>
-            ))}
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>Featured templates</h2>
+        <div className={styles.templateGrid}>
+          {templates.map((template) => (
+            <TemplateCard key={template.source} template={template} />
+          ))}
+        </div>
+        {hasMore && (
+          <div className={styles.viewAll}>
+            <a
+              href={`${baseUrl}?service=${config.serviceTag}`}
+              className={styles.viewAllLink}
+            >
+              View all {templateCount} templates →
+            </a>
           </div>
-        </section>
-      </main>
+        )}
+      </section>
+
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>Resources</h2>
+        <div className={styles.resourceGrid}>
+          {config.resources.map((resource) => (
+            <a
+              key={resource.url}
+              href={resource.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.resourceCard}
+            >
+              <h3 className={styles.resourceTitle}>{resource.title}</h3>
+              <p className={styles.resourceDescription}>
+                {resource.description}
+              </p>
+            </a>
+          ))}
+        </div>
+      </section>
+    </main>
   );
 
   return (
@@ -143,10 +158,15 @@ function ServicePageContent({ config }: { config: ServicePageConfig }) {
   );
 }
 
-export default function ServiceLandingPage({ config }: { config: ServicePageConfig }) {
+export default function ServiceLandingPage({
+  servicePage,
+}: {
+  servicePage: ServicePageData;
+}) {
+  const { config } = servicePage;
   return (
     <Layout title={config.title} description={config.description}>
-      <ServicePageContent config={config} />
+      <ServicePageContent servicePage={servicePage} />
     </Layout>
   );
 }

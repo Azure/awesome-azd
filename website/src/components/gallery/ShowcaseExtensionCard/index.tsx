@@ -9,28 +9,14 @@ import { type Extension } from "../../../data/extensionTypes";
 import { CAPABILITY_BADGES } from "../../../data/extensionCapabilities";
 import extensionRegistries from "../../../data/extensionRegistries.json";
 import { Tags } from "../../../data/tags";
-import { useClipboard } from "../../../utils/useClipboard";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import {
-  Card,
-  CardHeader,
-  CardFooter,
-  Button,
-  CardPreview,
-  Popover,
-  PopoverTrigger,
-  PopoverSurface,
-  Badge,
-  Link as FluentUILink,
-} from "@fluentui/react-components";
-import { Globe16Regular } from "@fluentui/react-icons";
+import { Card, Link as FluentUILink } from "@fluentui/react-components";
+import { Copy16Regular, Globe16Regular } from "@fluentui/react-icons";
+import CopyAction from "../../catalog/CopyAction";
 
 function ShowcaseExtensionCard({ extension }: { extension: Extension }): React.JSX.Element {
-  const { status: copyStatus, copy } = useClipboard();
-  const [isCopyFeedbackOpen, setCopyFeedbackOpen] = React.useState(false);
   const communityLogo = useBaseUrl("/img/Community.svg");
   const msftLogo = useBaseUrl("/img/Microsoft.svg");
-  const copyIcon = useBaseUrl("/img/Copy.svg");
 
   const isBuiltIn = extension.registryUrl === extensionRegistries.builtIn;
   const isMicrosoftAuthored = extension.tags.includes("msft");
@@ -49,43 +35,49 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): React.J
     !isBuiltIn
       ? `azd ext source add -t url -n ${sourceName} -l ${extension.registryUrl}\n${installCommand}`
       : installCommand;
-
   const contentForAdobeAnalytics = JSON.stringify({
     id: extension.displayName,
     cN: "Copy Button (azd ext install)",
   });
+  const headingId = `extension-${extension.id.replace(/[^a-z0-9]/gi, "-")}`;
 
   return (
-    <Card key={extension.id} className={styleCSS.card}>
-      <CardHeader
-        header={
-          <div className={styleCSS.cardHeaderContent}>
+    <Card
+      key={extension.id}
+      appearance="outline"
+      focusMode="off"
+      role="article"
+      className={styleCSS.card}
+      data-extension-card
+    >
+      <div className={styleCSS.cardBody}>
+        <div className={styleCSS.cardTop}>
+          <span className={styleCSS.cardAuthor}>
             <img
               src={headerLogo}
-              width={16}
-              height={16}
-              alt={headerText}
-              className={styleCSS.headerLogo}
+              width={14}
+              height={14}
+              alt=""
+              aria-hidden="true"
             />
-            <div className={styleCSS.headerText}>{headerText}</div>
-          </div>
-        }
-      />
-      <CardPreview className={styleCSS.cardBreakLine} />
-      <div className={styleCSS.cardBody}>
-        <FluentUILink
-          className={styleCSS.cardTitle}
-          href={extension.source}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {extension.displayName}
-        </FluentUILink>
+            {headerText}
+          </span>
+        </div>
+        <h2 id={headingId} className={styleCSS.cardHeading}>
+          <a
+            className={styleCSS.cardTitle}
+            href={extension.source}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {extension.displayName}
+          </a>
+        </h2>
         <div className={styleCSS.cardByline}>
-          <div className={styleCSS.cardTextBy}>by</div>
+          <span>by</span>
           {extension.authorUrl ? (
             <FluentUILink
-              className={`${styleCSS.authorLink} ${styleCSS.linkedAuthor}`}
+              className={styleCSS.authorLink}
               href={extension.authorUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -104,25 +96,24 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): React.J
               title="Documentation website"
             >
               <Globe16Regular className={styleCSS.websiteIcon} />
-              <span>Website</span>
+              <span className={styleCSS.visuallyHidden}>
+                Documentation website
+              </span>
             </FluentUILink>
           )}
         </div>
-        <div className={styleCSS.cardDescription}>{extension.description}</div>
+        <p className={styleCSS.cardDescription}>{extension.description}</p>
         <div className={styleCSS.cardTagContainer}>
           <div className={styleCSS.cardTagsWrapper}>
             {extension.capabilities.map((cap) => {
               const capInfo = CAPABILITY_BADGES[cap] || { label: cap, color: "informative" as const };
               return (
-                <Badge
+                <span
                   key={`cap-${cap}`}
-                  appearance="outline"
-                  size="medium"
-                  color={capInfo.color}
                   className={styleCSS.cardBadge}
                 >
                   {capInfo.label}
-                </Badge>
+                </span>
               );
             })}
             {extension.tags
@@ -134,56 +125,38 @@ function ShowcaseExtensionCard({ extension }: { extension: Extension }): React.J
               .map((tag) => {
                 const tagInfo = Tags[tag];
                 return (
-                  <Badge
+                  <span
                     key={`tag-${tag}`}
-                    appearance="outline"
-                    size="medium"
-                    color="informative"
                     title={tagInfo.description}
                     className={styleCSS.cardBadge}
                   >
                     {tagInfo.label}
-                  </Badge>
+                  </span>
                 );
               })}
           </div>
         </div>
       </div>
-      <CardPreview className={styleCSS.cardBreakLine} />
-      <CardFooter>
+      <div className={styleCSS.commandBar}>
         <code
           id={"command_" + extension.id}
           className={styleCSS.command}
+          title={installCommand}
           aria-label={`Install command for ${extension.displayName}`}
           data-testid="extension-command"
         >
           {installCommand}
         </code>
-        <Popover
-          trapFocus
-          withArrow
-          size="small"
-          open={isCopyFeedbackOpen && copyStatus !== "failed"}
-          onOpenChange={(_event, data) => setCopyFeedbackOpen(data.open)}
+        <CopyAction
+          value={clipboardCommand}
+          idleLabel={`Copy install command for ${extension.displayName}`}
+          copiedLabel={`Copied install command for ${extension.displayName}`}
+          className={styleCSS.copyCommand}
+          analyticsData={contentForAdobeAnalytics}
         >
-          <PopoverTrigger disableButtonEnhancement>
-            <Button
-              size="small"
-              className={styleCSS.copyIconButton}
-              aria-label={`Copy install command for ${extension.displayName}`}
-              onClick={() => {
-                void copy(clipboardCommand);
-              }}
-              data-m={contentForAdobeAnalytics}
-            >
-              <img src={copyIcon} width={20} height={20} alt="Copy" />
-            </Button>
-          </PopoverTrigger>
-          <PopoverSurface tabIndex={-1} className={styleCSS.copyFeedback}>
-            <div role="status" aria-live="polite">{copyStatus === "copied" ? "Copied!" : "Copying..."}</div>
-          </PopoverSurface>
-        </Popover>
-      </CardFooter>
+          <Copy16Regular aria-hidden="true" />
+        </CopyAction>
+      </div>
     </Card>
   );
 }

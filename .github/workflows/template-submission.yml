@@ -13,6 +13,19 @@ on:
       source_repo:
         description: "GitHub repository URL"
         required: true
+      primary_use_case:
+        description: "Primary catalog use case"
+        required: true
+        type: choice
+        options:
+          - Build a web app
+          - Build an API
+          - Build an AI agent
+          - Build an MCP server
+          - Chat with documents
+          - Query a database
+          - Automate a workflow
+          - Start with infrastructure
       template_title:
         description: "Template title (optional - auto-detected)"
         required: false
@@ -89,6 +102,7 @@ jobs:
           GITHUB_EVENT_NAME: ${{ github.event_name }}
           ISSUE_BODY: ${{ github.event.issue.body || '' }}
           INPUT_SOURCE_REPO: ${{ inputs.source_repo }}
+          INPUT_PRIMARY_USE_CASE: ${{ inputs.primary_use_case }}
           INPUT_TEMPLATE_TITLE: ${{ inputs.template_title }}
           INPUT_DESCRIPTION: ${{ inputs.description }}
           INPUT_AUTHOR: ${{ inputs.author }}
@@ -162,7 +176,10 @@ jobs:
           TPL_LANGUAGES: ${{ steps.extract.outputs.languages }}
           TPL_FRAMEWORKS: ${{ steps.extract.outputs.frameworks }}
           TPL_AZURE_SERVICES: ${{ steps.extract.outputs.azure_services }}
-        run: node website/scripts/update-templates-json.js
+          TPL_PRIMARY_USE_CASE: ${{ steps.parse.outputs.primary_use_case }}
+        run: |
+          node website/scripts/update-templates-json.js
+          node website/scripts/update-template-use-cases.js
 
       - name: Create Pull Request
         id: create-pr
@@ -180,9 +197,10 @@ jobs:
             **Title**: ${{ steps.extract.outputs.template_title }}
             **Author**: ${{ steps.extract.outputs.author }}
             **IaC**: ${{ steps.extract.outputs.iac_provider }}
+            **Primary use case**: ${{ steps.parse.outputs.primary_use_case }}
             **Added**: ${{ steps.update.outputs.added || 'None' }}
 
-            Please review the changes to `website/static/templates.json`.
+            Please review the changes to `website/static/templates.json` and `website/src/catalog/template-use-cases.json`.
           labels: template-submission
 
       - name: Comment on success

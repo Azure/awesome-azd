@@ -25,6 +25,8 @@ Place your template repository link here:
       - [ ] Tag the IaC provider (`"bicep"` or `"terraform"`)
       - [ ] Add the `"new"` tag for any newly authored templates
 
+- [ ] Added the normalized repository URL and at least one reviewed use case to https://github.com/Azure/awesome-azd/blob/main/website/src/catalog/template-use-cases.json.
+
 - [ ] In the PR comment, if you can also add a link to the PR where you made your repo `azd` compatible this will allow us to provide feedback on your template and speed up the review process.
 - [ ] If the template is Microsoft-authored, we encourage you to also [publish it to learn.microsoft.com/samples](https://learn.microsoft.com/en-us/help/contribute/samples/process/onboarding?branch=main).
 

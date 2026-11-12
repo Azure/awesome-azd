@@ -1,157 +1,182 @@
-/**
- * Copyright (c) Microsoft Corporation. All rights reserved.
- * Licensed under the MIT License.
- */
-
 .searchContainer {
-  display: inline-block;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  background: var(--site-hero-bg);
+  width: min(1280px, calc(100% - 128px));
+  margin: 0 auto;
 }
 
 .searchArea {
   position: relative;
-  width: 100%;
-  min-height: 340px;
-  display: flex;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(15rem, 2fr);
   align-items: center;
-  justify-content: center;
-  padding: var(--space-3xl) var(--space-lg) var(--space-2xl);
+  gap: 48px;
+  padding: 48px 0;
 }
 
-.heroContent {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  max-width: 720px;
-  width: 100%;
+.searchArea::before {
+  position: absolute;
+  z-index: -1;
+  top: -16px;
+  right: 50%;
+  bottom: -16px;
+  width: min(960px, 100%);
+  transform: translateX(50%);
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in srgb, var(--catalog-blue) 10%, transparent) 0%,
+    transparent 70%
+  );
+  content: "";
+  pointer-events: none;
 }
 
-.heroBadge {
-  composes: heroBadge from "../../../css/hero-buttons.module.css";
+.heroIntro {
+  min-width: 0;
 }
 
 .heroBar {
-  max-width: 720px;
-  text-align: center;
-  margin-bottom: 4px;
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 700;
-  font-family: var(--ifm-heading-font-family);
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  color: var(--site-color-text);
-}
-
-[data-theme="dark"] .heroBar {
-  color: var(--site-color-text);
-}
-
-.heroAccent {
-  color: var(--site-hero-accent);
+  max-width: 680px;
+  margin: 0;
+  color: var(--colorNeutralForeground1, #242424);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.2;
 }
 
 .heroDescription {
-  color: var(--site-color-text-muted);
-  padding: var(--space-sm) 0 var(--space-lg) 0;
-  text-align: center;
-  max-width: 520px;
-  margin: 0 auto;
+  max-width: 680px;
+  margin: 8px 0 0;
+  color: var(--catalog-muted);
+  font-size: 0.94rem;
   line-height: 1.6;
-  font-size: 1rem;
-}
-
-[data-theme="dark"] .heroDescription {
-  color: var(--site-color-text-muted);
 }
 
 .heroActions {
   display: flex;
-  gap: var(--space-md);
-  margin-top: var(--space-lg);
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.heroPrimaryButton {
-  composes: heroPrimaryButton from "../../../css/hero-buttons.module.css";
-}
-
-.heroSecondaryButton {
-  composes: heroSecondaryButton from "../../../css/hero-buttons.module.css";
+  flex-direction: column;
+  align-items: flex-end;
+  justify-self: end;
+  gap: 8px;
 }
 
 .heroSubtext {
-  padding-top: var(--space-lg);
-  padding-bottom: 0;
-  text-align: center;
+  max-width: 260px;
+  margin: 0;
+  color: var(--catalog-muted);
+  font-size: 0.75rem;
+  line-height: 1.6;
+  text-align: right;
 }
 
-.heroSubtext + .heroSubtext {
-  padding-top: 0;
-}
-
-.searchContainer .extensionDocsLink {
-  padding-left: 3px;
-}
-
-[data-theme="dark"] .heroSubtext {
-  color: var(--site-color-text-muted);
-}
-
-.statsBar {
-  display: flex;
+.docsLink.docsLink {
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-  gap: var(--space-xl);
-  padding: var(--space-lg) 0 var(--space-xs) 0;
+  gap: 4px;
+  min-height: 40px;
+  padding: 8px 16px;
+  border: 1px solid var(--catalog-blue);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--catalog-blue);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
 }
 
-.statItem {
+.docsLink:hover {
+  background: var(--colorBrandBackground2, #ebf3fc);
+  color: var(--catalog-blue);
+  text-decoration: none;
+}
+
+.docsLink svg {
+  flex: 0 0 16px;
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+.searchForm {
   display: flex;
-  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+
+.searchBox.searchBox {
+  display: flex;
   align-items: center;
-  gap: 2px;
+  width: 100%;
+  max-width: none;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--catalog-muted);
+  border-radius: 8px;
+  background: var(--catalog-surface);
+  color: var(--catalog-muted);
 }
 
-.statNumber {
-  color: var(--ifm-color-primary);
-  font-size: 1.75rem !important;
-  font-family: var(--ifm-heading-font-family);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  font-variant-numeric: tabular-nums;
+.searchBox:focus-within {
+  border-color: var(--catalog-blue);
+  outline: 3px solid color-mix(in srgb, var(--catalog-blue) 18%, transparent);
+  outline-offset: 1px;
 }
 
-[data-theme="dark"] .statNumber {
-  color: var(--ifm-color-primary);
+.searchBox :global(.fui-SearchBox__input) {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 10px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--catalog-text);
+  font: inherit;
+  font-size: 0.85rem;
 }
 
-.statLabel {
-  color: var(--site-color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-size: 0.6875rem;
-  font-weight: 500;
+.searchBox :global(.fui-SearchBox__input)::placeholder {
+  color: var(--catalog-muted);
+  opacity: 1;
 }
 
-[data-theme="dark"] .statLabel {
-  color: var(--site-color-text-muted);
+.searchBox :global(.fui-SearchBox__contentBefore),
+.searchBox :global(.fui-SearchBox__contentAfter) {
+  color: var(--catalog-muted);
 }
 
-.statDivider {
-  width: 1px;
-  height: 36px;
-  background-color: var(--site-color-border);
+@media (max-width: 900px) {
+  .searchContainer {
+    width: calc(100% - 48px);
+  }
+
+  .searchArea {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 40px 0;
+  }
+
+  .heroActions {
+    align-items: flex-start;
+    justify-self: start;
+  }
+
+  .heroSubtext {
+    text-align: left;
+  }
 }
 
-[data-theme="dark"] .statDivider {
-  background-color: var(--site-color-border);
-}
+@media (max-width: 640px) {
+  .searchContainer {
+    width: calc(100% - 40px);
+  }
 
-.color {
-  color: var(--ifm-color-primary);
+  .searchArea {
+    padding: 40px 0;
+  }
+
+  .heroDescription {
+    font-size: 0.87rem;
+  }
 }

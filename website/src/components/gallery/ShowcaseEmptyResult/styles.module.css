@@ -1,47 +1,28 @@
 /**
-* Copyright (c) Microsoft Corporation. All rights reserved.
-* Licensed under the MIT License.
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
  */
 
 .emptyResult {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 40px;
-}
-
-.message {
-  padding-top: 100px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Outrank Fluent UI's default card rules with component scope. */
-.emptyResult .contributionCard {
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+  padding: 48px 24px;
+  border: 1px solid var(--catalog-border);
   border-radius: 8px;
-  padding: 24px;
+  background: var(--catalog-surface);
+  text-align: center;
 }
 
-.contributionRow {
-  display: flex;
-  column-gap: 30px;
+.emptyResult h2 {
+  margin: 0;
+  color: var(--catalog-text);
+  font-size: 1.2rem;
 }
 
-.illustration {
-  flex: 1;
-}
-
-.contributionText {
-  display: flex;
-  flex-direction: column;
-  row-gap: 5px;
-  padding-right: 50px;
-}
-
-/* Keep for future change on light vs dark theme */
-.colorLink {
-  padding-left: 10px !important;
-  color: var(--ifm-color-primary) !important;
+.emptyResult p {
+  max-width: 560px;
+  margin: 0;
+  color: var(--catalog-muted);
+  font-size: 0.84rem;
 }

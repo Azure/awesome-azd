@@ -1,173 +1,701 @@
-import { test, expect } from "@playwright/test";
+import { test, expect, type Page } from "@playwright/test";
 
-// End-to-end coverage modeled on Azure/ai-app-templates' website.spec.ts,
-// adapted for awesome-azd's paginated gallery (20 cards/page). Assertions
-// against the filtered template *total* read the live "Viewing N templates"
-// status text, since the rendered `.fui-Card` count is capped by pagination.
+function resultsStatus(page: Page) {
+  return page.getByTestId("template-results-count");
+}
+
+async function resultCount(page: Page): Promise<number> {
+  const text = (await resultsStatus(page).textContent()) ?? "";
+  const numbers = text.match(/\d+/g);
+  expect(numbers, `expected numbers in status: "${text}"`).not.toBeNull();
+  return Number(numbers![numbers!.length - 1]);
+}
+
 test.describe("Gallery functionality (deploy gate)", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("templates");
-    await expect(
-      page.locator('[role="status"]').filter({ hasText: /Viewing/ }).first(),
-    ).toBeVisible({ timeout: 15_000 });
+    await expect(resultsStatus(page)).toContainText("templates", {
+      timeout: 15_000,
+    });
+    await expect(page.locator("html")).toHaveAttribute(
+      "data-has-hydrated",
+      "true",
+    );
   });
 
-  // Reads the total from the "Viewing N templates" live region. The page
-  // has multiple aria-live polite regions (color-mode toggle, copy toast,
-  // status counter) so we filter by the literal "Viewing" text.
-  //
-  // The status string takes three forms depending on totalItems:
-  //   "Viewing 0 templates"           (no results)
-  //   "Viewing 1 template"            (single result)
-  //   "Viewing 1-20 of 290 templates" (paginated, > 1 result)
-  // In every case the LAST integer is the total.
-  async function viewingCount(page: import("@playwright/test").Page): Promise<number> {
-    const status = page
-      .locator('[role="status"]')
-      .filter({ hasText: /Viewing/ })
-      .first();
-    await expect(status).toBeVisible();
-    const text = (await status.textContent()) ?? "";
-    const nums = text.match(/\d+/g);
-    expect(nums, `expected numbers in status: "${text}"`).not.toBeNull();
-    return Number(nums![nums!.length - 1]);
+  test("gallery shows the complete unified inventory", async ({ page }) => {
+    expect(await resultCount(page)).toBeGreaterThanOrEqual(250);
+  });
+
+  test("query URLs hydrate without React mismatch errors", async ({
+    page,
+  }) => {
+    const hydrationErrors: string[] = [];
+    page.on("console", (message) => {
+      const text = message.text();
+      if (
+        message.type() === "error" &&
+        /(Hydration failed|hydration mismatch|Minified React error #418)/i.test(
+          text,
+        )
+      ) {
+        hydrationErrors.push(text);
+      }
+    });
+
+    await page.goto("templates?type=ai");
+    await expect(
+      page.getByRole("checkbox", { name: /AI application/ }),
+    ).toBeChecked();
+
+    await page.goto("templates?q=python");
+    await expect(page.locator("#catalog-search")).toHaveValue("python");
+
+    await page.goto("templates?page=2");
+    await expect(resultsStatus(page)).toContainText("21-40 of");
+
+    expect(hydrationErrors).toEqual([]);
+  });
+
+  test("start-with-code restores the catalog query in its back link", async ({
+    page,
+  }) => {
+    await page.goto("templates/start-with-code?type=ai&q=python");
+    await expect(page.locator("html")).toHaveAttribute(
+      "data-has-hydrated",
+      "true",
+    );
+
+    const backLink = page.getByRole("link", {
+      name: "← Back to templates",
+    });
+    await expect(backLink).toHaveAttribute(
+      "href",
+      /\/templates\?type=ai&q=python$/,
+    );
+    await backLink.click();
+
+    await expect(page).toHaveURL(/\/templates\?type=ai&q=python$/);
+    await expect(
+      page.getByRole("checkbox", { name: /AI application/ }),
+    ).toBeChecked();
+    await expect(page.locator("#catalog-search")).toHaveValue("python");
+  });
+
+  test("legacy tags and authors still narrow the unified catalog", async ({
+    page,
+  }) => {
+    const initial = await resultCount(page);
+
+    await page.goto("templates?tags=python");
+    await expect.poll(() => resultCount(page)).toBeLessThan(initial);
+    expect(await resultCount(page)).toBeGreaterThan(0);
+
+    await page.goto("templates?type=ai");
+    await expect(
+      page.getByRole("checkbox", { name: /AI application/ }),
+    ).toBeChecked();
+    const aiCount = await resultCount(page);
+    await page.goto("templates?tags=aicollection");
+    await expect(
+      page.getByRole("checkbox", { name: /AI application/ }),
+    ).toBeChecked();
+    await expect.poll(() => resultCount(page)).toBe(aiCount);
+
+    await page.goto("templates?authors=Microsoft");
+    await expect.poll(() => resultCount(page)).toBeLessThan(initial);
+    expect(await resultCount(page)).toBeGreaterThan(0);
+
+    await page.goto(
+      "templates?authors=Azure%20Cosmos%20DB%20Content%20Team",
+    );
+    await expect(resultsStatus(page)).toContainText("1 of 1 templates");
+    await expect(
+      page.getByRole("link", {
+        name: /Copilot sample app with Azure CosmosDB for NoSQL/,
+      }),
+    ).toBeVisible();
+  });
+
+  test("legacy extension URLs redirect to the extension gallery", async ({
+    page,
+  }) => {
+    await page.goto("templates?type=extensions&name=azure");
+
+    await expect(page).toHaveURL(/\/extensions\?name=azure$/);
+    await expect(
+      page.getByRole("heading", { level: 1, name: "Extension Gallery" }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("searchbox", { name: "Search extensions" }),
+    ).toHaveValue("azure");
+  });
+
+  for (const [route, service] of [
+    ["services/container-apps", "aca"],
+    ["services/azure-functions", "functions"],
+  ] as const) {
+    test(`${route} uses the same inventory as its catalog destination`, async ({
+      page,
+    }) => {
+      await page.goto(route);
+      const viewAll = page.getByRole("link", {
+        name: /View all \d+ templates/,
+      });
+      const label = (await viewAll.textContent()) ?? "";
+      const serviceCount = Number(label.match(/\d+/)?.[0]);
+
+      expect(serviceCount).toBeGreaterThan(0);
+      await viewAll.click();
+      await expect(page).toHaveURL(
+        new RegExp(`/templates\\?service=${service}$`),
+      );
+      await expect.poll(() => resultCount(page)).toBe(serviceCount);
+    });
   }
 
-  test("homepage renders without 404 / error fallback", async ({ page }) => {
-    const body = (await page.textContent("body")) ?? "";
-    expect(body).not.toContain("Page Not Found");
-    expect(body).not.toContain("404 Not Found");
-    await expect(page.locator("body")).toBeVisible();
-  });
+  test("service cards preserve legacy preview images", async ({ page }) => {
+    await page.goto("services/container-apps");
 
-  test("gallery shows a healthy number of templates", async ({ page }) => {
-    // Deploy-gate guardrail: if the data pipeline regresses or the gallery
-    // fails to hydrate, the live counter drops to ~0. A real release has 100+.
-    const total = await viewingCount(page);
-    console.log(`Initial gallery total: ${total}`);
-    expect(total).toBeGreaterThanOrEqual(50);
-  });
-
-  test("page renders at least one template card", async ({ page }) => {
-    const cards = page.locator('[data-testid="showcase-list"] > .fui-Card');
-    await expect(cards.first()).toBeVisible({ timeout: 15_000 });
-    const rendered = await cards.count();
-    expect(rendered).toBeGreaterThan(0);
-  });
-
-  test("template details opens the template in the VS Code azd experience", async ({
-    page,
-  }) => {
-    const firstCard = page.locator('[data-testid="showcase-list"] > .fui-Card').first();
-    await expect(firstCard).toBeVisible({ timeout: 15_000 });
-    await firstCard.getByRole("button").first().click();
-
-    const openInVSCode = page.getByRole("link", { name: "Open in VS Code" });
-    await expect(openInVSCode).toBeVisible();
-
-    const href = await openInVSCode.getAttribute("href");
-    if (href === null) {
-      throw new Error("Open in VS Code link is missing an href");
-    }
-
-    const url = new URL(href);
-    expect(url.origin).toBe("https://vscode.dev");
-    expect(url.pathname).toBe("/azure");
-    expect(url.searchParams.get("vscode-azure-exp")).toBe("azd");
-    expect(url.searchParams.get("az-referer")).toBe("awesome-azd");
-    expect(url.searchParams.get("azdTemplateUrl")).toMatch(
-      /^https:\/\/github\.com\//
+    await expect(
+      page.getByRole("img", {
+        name: "WordPress with Azure Container Apps",
+      }),
+    ).toHaveAttribute(
+      "src",
+      /\/templates\/images\/apptemplate-wordpress-on-ACA\.png$/,
     );
-    await expect(openInVSCode).toHaveAttribute("target", "_blank");
   });
 
-  test('search "azure" narrows results but keeps some', async ({ page }) => {
-    const initial = await viewingCount(page);
-    expect(initial).toBeGreaterThan(0);
-
-    const searchInput = page.locator("#filterBar");
-    await searchInput.click();
-    await searchInput.fill("azure");
-    // The SearchBox's onSearch (URL update + filtering) only fires on Enter.
-    await searchInput.press("Enter");
-
-    await expect(page).toHaveURL(/name=azure/);
-    await expect
-      .poll(async () => viewingCount(page), { timeout: 10_000 })
-      .not.toBe(initial);
-
-    const filtered = await viewingCount(page);
-    console.log(`Gallery total after searching "azure": ${filtered}`);
-    expect(filtered).toBeGreaterThan(0);
-    expect(filtered).toBeLessThanOrEqual(initial);
+  test("page renders the first 20 template cards", async ({ page }) => {
+    const cards = page.locator("[data-template-card]");
+    await expect(page.locator(".fui-FluentProvider")).toBeVisible();
+    await expect(cards.first()).toBeVisible({ timeout: 15_000 });
+    await expect(cards).toHaveCount(20);
   });
 
-  test("nonsense search shows the empty-state message", async ({ page }) => {
-    const searchInput = page.locator("#filterBar");
-    await searchInput.click();
-    await searchInput.fill("zzzznonexistenttemplate");
-    await searchInput.press("Enter");
-
-    await expect(page.locator("text=No templates found")).toBeVisible({
-      timeout: 10_000,
-    });
-  });
-
-  test("section filter (Language → Python) narrows the gallery", async ({
+  test("featured and standard cards match the desktop card design", async ({
     page,
   }) => {
-    const initial = await viewingCount(page);
-    expect(initial).toBeGreaterThan(0);
+    await page.setViewportSize({ width: 1600, height: 1200 });
 
-    // The left-side filter panel uses checkboxes; clicking one applies a
-    // tag filter and updates the URL with ?tags=...
-    // Use the deterministic Fluent UI Checkbox id from ShowcaseLeftFilters
-    // (`showcase_checkbox_id_<tag>`) to avoid matching "Python" mentions
-    // inside template card titles, descriptions, or tag chips.
-    // ShowcaseLeftFilters has two levels of accordions: an outer one per
-    // section (Language, Framework, etc.) and an inner "View All" that
-    // hides tags after the first 6. Python is in the Language section, so
-    // expand that section first, then expand "View All" if needed.
-    const pythonCheckbox = page.locator("#showcase_checkbox_id_python");
-    if (!(await pythonCheckbox.isVisible())) {
-      await page.getByRole("button", { name: /^Language/ }).first().click();
+    for (const [title, featured, language] of [
+      ["Get started with AI agents", true, "Python"],
+      ["RAG chat with Azure AI Search + C#", false, ".NET/C#"],
+    ] as const) {
+      await page.goto(
+        `templates?type=ai&q=${encodeURIComponent(title)}`,
+      );
+      const card = page.locator("[data-template-card]").first();
+      await expect(card).toBeVisible();
+      await expect(card).toHaveCSS("border-radius", "9px");
+      await expect(card).toHaveCSS("padding", "21px");
+      await expect(card).toHaveCSS(
+        "border-top-width",
+        featured ? "3px" : "1px",
+      );
+      await expect(card.locator("h2")).toHaveCSS("font-size", "16.8px");
+      await expect(
+        card.locator('[class*="cardSummary"]'),
+      ).toHaveCSS("font-size", "13.12px");
+      await expect(
+        card.locator('[class*="cardAuthor"]'),
+      ).toHaveCSS("font-size", "10px");
+      await expect(
+        card.getByText(language, { exact: true }).first(),
+      ).toHaveCSS("font-size", "10.4px");
+      await expect(card.locator("code")).toHaveCSS("font-size", "10.88px");
+      await expect(card.locator("code")).toHaveCSS(
+        "border-top-width",
+        "0px",
+      );
+      await expect(card.locator("code")).toHaveCSS(
+        "background-color",
+        "rgba(0, 0, 0, 0)",
+      );
+      await expect(
+        card.getByRole("button", { name: /Copy init command/ }),
+      ).toHaveCSS("width", "32px");
+      await expect(
+        card.getByRole("button", { name: /Copy init command/ }),
+      ).toHaveCSS("height", "32px");
+      await expect(
+        card.getByText("Azure Container Apps", { exact: true }),
+      ).toBeVisible();
     }
-    if (!(await pythonCheckbox.isVisible())) {
-      const viewAllButton = page.getByRole("button", { name: /view all/i }).first();
-      await expect(viewAllButton).toBeVisible();
-      await viewAllButton.click();
+  });
+
+  test("template columns adapt to the available viewport width", async ({
+    page,
+  }) => {
+    const grid = page.getByTestId("template-results");
+
+    for (const [width, expectedColumns] of [
+      [1600, 3],
+      [1200, 2],
+      [600, 1],
+    ] as const) {
+      await page.setViewportSize({ width, height: 1200 });
+      await expect
+        .poll(() =>
+          grid.evaluate((element) => {
+            const cards = Array.from(
+              element.querySelectorAll<HTMLElement>(
+                "[data-template-card]",
+              ),
+            );
+            const firstTop = cards[0]?.getBoundingClientRect().top;
+            return firstTop === undefined
+              ? 0
+              : cards.filter(
+                  (card) =>
+                    Math.abs(card.getBoundingClientRect().top - firstTop) <
+                    1,
+                ).length;
+          }),
+        )
+        .toBe(expectedColumns);
+      const cardWidth = await grid
+        .locator("[data-template-card]")
+        .first()
+        .evaluate((element) => element.getBoundingClientRect().width);
+      expect(cardWidth).toBeGreaterThanOrEqual(285);
+      expect(cardWidth).toBeLessThanOrEqual(350);
     }
-    await expect(pythonCheckbox).toBeVisible({ timeout: 10_000 });
-    await pythonCheckbox.click();
+  });
 
-    await expect(pythonCheckbox).toBeChecked();
-    await expect(page).toHaveURL(/[?&]tags=python(?:&|$)/);
-    await expect
-      .poll(async () => viewingCount(page), { timeout: 10_000 })
-      .not.toBe(initial);
+  test("incomplete final rows preserve the preceding column alignment", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1600, height: 1200 });
+    const cards = page.getByTestId("template-results").locator(
+      "[data-template-card]",
+    );
+    const layout = await cards.evaluateAll((elements) =>
+      elements.map((element) => {
+        const bounds = element.getBoundingClientRect();
+        return {
+          x: bounds.x,
+          top: bounds.top,
+          width: bounds.width,
+        };
+      }),
+    );
+    const firstTop = layout[0]?.top ?? 0;
+    const lastTop = Math.max(...layout.map((card) => card.top));
+    const firstRow = layout.filter(
+      (card) => Math.abs(card.top - firstTop) < 1,
+    );
+    const lastRow = layout.filter(
+      (card) => Math.abs(card.top - lastTop) < 1,
+    );
 
-    const filtered = await viewingCount(page);
-    console.log(`Gallery total after filtering by Python: ${filtered}`);
+    expect(firstRow).toHaveLength(3);
+    expect(lastRow).toHaveLength(2);
+    for (const [index, card] of lastRow.entries()) {
+      expect(card.x).toBeCloseTo(firstRow[index].x, 1);
+      expect(card.width).toBeCloseTo(firstRow[index].width, 1);
+    }
+  });
+
+  test("search fills the row up to the sort control", async ({ page }) => {
+    const searchBox = page.locator(".fui-SearchBox");
+    const sortDropdown = page.getByRole("combobox", { name: "Sort by" });
+    const searchBounds = await searchBox.boundingBox();
+    const sortBounds = await sortDropdown.boundingBox();
+
+    expect(searchBounds).not.toBeNull();
+    expect(sortBounds).not.toBeNull();
+    expect(searchBounds!.width).toBeGreaterThan(800);
+    const gap = sortBounds!.x - (searchBounds!.x + searchBounds!.width);
+    expect(gap).toBeGreaterThan(60);
+    expect(gap).toBeLessThan(90);
+  });
+
+  test("template cards link directly to source repositories", async ({
+    page,
+  }) => {
+    const firstLink = page.locator("a[data-template-title]").first();
+    const source = new URL(
+      (await firstLink.getAttribute("href")) ?? "",
+    );
+    expect(source.hostname).toBe("github.com");
+    await expect(firstLink).toHaveAttribute("target", "_blank");
+    await expect(firstLink).toHaveAttribute(
+      "rel",
+      "noopener noreferrer",
+    );
+  });
+
+  test("browser Back restores the previous filter state", async ({ page }) => {
+    const pythonCheckbox = page.locator("#catalog-languages-python");
+    await page.locator("summary", { hasText: "Language" }).click();
+    await pythonCheckbox.check();
+    await expect(page).toHaveURL(/[?&]language=Python(?:&|$)/);
+
+    await page.goBack();
+
+    await expect(page).toHaveURL(/\/templates$/);
+    await expect(pythonCheckbox).not.toBeChecked();
+  });
+
+  test("agent index documents catalogs and deployment guidance", async ({
+    request,
+  }) => {
+    const response = await request.get("llms.txt");
+    expect(response.ok()).toBe(true);
+    const guidance = await response.text();
+
+    expect(guidance).toContain("# Awesome azd");
+    expect(guidance).toContain(
+      "- [Agent templates](https://azure.github.io/awesome-azd/templates.json):",
+    );
+    expect(guidance).not.toContain("agent-templates.json");
+    expect(guidance).toContain(
+      'entries with `templateType: "extension.ai.agent"`',
+    );
+    expect(guidance).toMatch(
+      /ask for user approval\r?\n\s+before running deployment commands/,
+    );
+  });
+
+  test('search "postgresql" narrows results but keeps some', async ({
+    page,
+  }) => {
+    const initial = await resultCount(page);
+    const searchInput = page.locator("#catalog-search");
+
+    await searchInput.fill("postgresql");
+    await expect(page).not.toHaveURL(/q=postgresql/);
+    expect(await resultCount(page)).toBe(initial);
+    await searchInput.press("Enter");
+
+    await expect(page).toHaveURL(/q=postgresql/);
+    await expect.poll(() => resultCount(page)).not.toBe(initial);
+    const filtered = await resultCount(page);
     expect(filtered).toBeGreaterThan(0);
     expect(filtered).toBeLessThan(initial);
   });
 
-  test("clearing search restores the full gallery", async ({ page }) => {
-    const initial = await viewingCount(page);
+  test("applied search and filter values use pill styling", async ({
+    page,
+  }) => {
+    await page.goto("templates?type=ai&q=tag");
+    const pills = page.getByRole("group", {
+      name: "Applied filters",
+    }).getByRole("button");
 
-    const searchInput = page.locator("#filterBar");
+    await expect(pills).toHaveCount(2);
+    for (const pill of await pills.all()) {
+      await expect(pill).toHaveCSS("border-radius", "999px");
+      await expect(pill).toHaveCSS(
+        "background-color",
+        "rgb(235, 243, 252)",
+      );
+      await expect(pill).toHaveCSS("color", "rgb(15, 108, 189)");
+    }
+  });
+
+  test("filter groups hide values with zero matching templates", async ({
+    page,
+  }) => {
+    await page.goto(
+      `templates?type=ai&q=${encodeURIComponent(
+        "RAG chat with Azure AI Search + C#",
+      )}`,
+    );
+
+    await expect(
+      page.getByRole("checkbox", { name: /Document Q&A 1/ }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("checkbox", { name: /Web apps 1/ }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("checkbox", { name: /APIs 1/ }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("checkbox", { name: /AI agents 0/ }),
+    ).toHaveCount(0);
+  });
+
+  test("use cases work in search and filters without appearing as card tags", async ({
+    page,
+  }) => {
+    const searchInput = page.locator("#catalog-search");
+    await searchInput.fill("Build an AI agent");
+    await searchInput.press("Enter");
+    await expect.poll(() => resultCount(page)).toBeGreaterThan(0);
+    expect(
+      (await page.locator("[data-template-tags]").allTextContents()).some(
+        (text) => /Build an AI agent|AI agents/.test(text),
+      ),
+    ).toBe(false);
+
+    await page.goto("templates");
+    await expect(resultsStatus(page)).toContainText("templates");
+    const aiAgentFilter = page.locator(
+      "#catalog-tasks-build-an-ai-agent",
+    );
+    await aiAgentFilter.check();
+
+    await expect(aiAgentFilter).toBeChecked();
+    expect(new URL(page.url()).searchParams.get("task")).toBe(
+      "Build an AI agent",
+    );
+    await expect.poll(() => resultCount(page)).toBeGreaterThan(0);
+    expect(
+      (await page.locator("[data-template-tags]").allTextContents()).some(
+        (text) => /Build an AI agent|AI agents/.test(text),
+      ),
+    ).toBe(false);
+  });
+
+  test("nonsense search shows the empty-state message", async ({ page }) => {
+    const searchInput = page.locator("#catalog-search");
+    await searchInput.fill("zzzznonexistenttemplate");
+    await searchInput.press("Enter");
+
+    await expect(page.getByText("No matching templates")).toBeVisible({
+      timeout: 10_000,
+    });
+  });
+
+  test("does not request repository metrics", async ({
+    page,
+  }) => {
+    const metadataRequests: string[] = [];
+    page.on("request", (request) => {
+      if (
+        request
+          .url()
+          .startsWith(
+            "https://cachelp6qsotirqelc.z20.web.core.windows.net/",
+          )
+      ) {
+        metadataRequests.push(request.url());
+      }
+    });
+
+    await page.reload();
+    await expect(page.locator("html")).toHaveAttribute(
+      "data-has-hydrated",
+      "true",
+    );
+    await page.waitForTimeout(250);
+
+    expect(metadataRequests).toEqual([]);
+  });
+
+  test("language filtering narrows the gallery", async ({ page }) => {
+    const initial = await resultCount(page);
+    const pythonCheckbox = page.locator("#catalog-languages-python");
+    await page.locator("summary", { hasText: "Language" }).click();
+    await pythonCheckbox.check();
+
+    await expect(pythonCheckbox).toBeChecked();
+    await expect(page).toHaveURL(/[?&]language=Python(?:&|$)/);
+    await expect.poll(() => resultCount(page)).not.toBe(initial);
+    expect(await resultCount(page)).toBeLessThan(initial);
+  });
+
+  test("sort dropdown exposes only Most popular and Latest", async ({
+    page,
+  }) => {
+    const sortDropdown = page.getByRole("combobox", {
+      name: "Sort by",
+    });
+    await sortDropdown.click();
+    await expect(
+      page.getByRole("option", { name: "Most popular" }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("option", { name: "Latest" }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("option", { name: "Old to New" }),
+    ).toHaveCount(0);
+    await expect(
+      page.getByRole("option", { name: "Alphabetical (A - Z)" }),
+    ).toHaveCount(0);
+    await expect(
+      page.getByRole("option", { name: "Alphabetical (Z - A)" }),
+    ).toHaveCount(0);
+
+    await page.getByRole("option", { name: "Latest" }).click();
+    await expect(page).toHaveURL(/[?&]sort=newest(?:&|$)/);
+    await expect(sortDropdown).toHaveText("Latest");
+
+    await sortDropdown.click();
+    await page.getByRole("option", { name: "Most popular" }).click();
+    await expect(page).not.toHaveURL(/[?&]sort=/);
+    await expect(sortDropdown).toHaveText("Most popular");
+  });
+
+  test("start-with-code matches the guided setup flow", async ({ page }) => {
+    await page.goto("templates/start-with-code");
+    await expect(
+      page.getByRole("heading", {
+        level: 1,
+        name: "Start with your own code",
+      }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", {
+        level: 2,
+        name: "Prerequisite: Install azd",
+      }),
+    ).toBeVisible();
+
+    const operatingSystem = page.getByRole("combobox", {
+      name: "Operating system",
+    });
+    await expect(page.locator(".fui-FluentProvider")).toBeVisible();
+    await expect(operatingSystem).toHaveValue("windows");
+    expect(
+      await operatingSystem.evaluate(
+        (element) => element.closest(".fui-Select") !== null,
+      ),
+    ).toBe(true);
+    await expect(
+      page.getByText("winget install microsoft.azd", { exact: true }),
+    ).toBeVisible();
+
+    await operatingSystem.selectOption("macos");
+    await expect(
+      page.getByText("brew tap azure/azd && brew install azd", {
+        exact: true,
+      }),
+    ).toBeVisible();
+    await expect(
+      page.getByLabel(
+        "azd init prompt with three options: Scan current directory, Select a template, and Set up with GitHub Copilot (Preview)",
+      ),
+    ).toBeVisible();
+    await expect(
+      page.getByText("Scan current directory", { exact: true }).last(),
+    ).toBeVisible();
+    await expect(
+      page.getByText("Set up with GitHub Copilot", { exact: true }).last(),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("link", { name: "Read the setup guide" }),
+    ).toHaveCount(0);
+  });
+
+  test("dark-mode copy action hover meets text contrast", async ({ page }) => {
+    await page.evaluate(() => localStorage.setItem("theme", "dark"));
+    await page.reload();
+    await expect(page.locator("html")).toHaveAttribute(
+      "data-theme",
+      "dark",
+    );
+    const copyButton = page.getByRole("button", {
+      name: /Copy init command for/,
+    }).first();
+    await copyButton.hover();
+
+    const contrast = await copyButton.evaluate((element) => {
+      const parseColor = (value: string) =>
+        (value.match(/[\d.]+/g) ?? [])
+          .slice(0, 3)
+          .map(Number)
+          .map((channel) =>
+            value.startsWith("color(srgb") ? channel * 255 : channel,
+          );
+      const luminance = (channels: number[]) => {
+        const [red, green, blue] = channels.map((channel) => {
+          const value = channel / 255;
+          return value <= 0.03928
+            ? value / 12.92
+            : ((value + 0.055) / 1.055) ** 2.4;
+        });
+        return 0.2126 * red + 0.7152 * green + 0.0722 * blue;
+      };
+      const style = window.getComputedStyle(element);
+      const foreground = luminance(parseColor(style.color));
+      const background = luminance(parseColor(style.backgroundColor));
+      return (
+        (Math.max(foreground, background) + 0.05) /
+        (Math.min(foreground, background) + 0.05)
+      );
+    });
+
+    expect(contrast).toBeGreaterThanOrEqual(4.5);
+  });
+
+  test("start-with-code preview label meets text contrast", async ({
+    page,
+  }) => {
+    const contrastRatio = () =>
+      page
+        .getByText("(Preview)", { exact: true })
+        .evaluate((element) => {
+          const parseColor = (value: string) =>
+            (value.match(/[\d.]+/g) ?? [])
+              .slice(0, 3)
+              .map(Number)
+              .map((channel) =>
+                value.startsWith("color(srgb")
+                  ? channel * 255
+                  : channel,
+              );
+          const luminance = (channels: number[]) => {
+            const [red, green, blue] = channels.map((channel) => {
+              const value = channel / 255;
+              return value <= 0.03928
+                ? value / 12.92
+                : ((value + 0.055) / 1.055) ** 2.4;
+            });
+            return 0.2126 * red + 0.7152 * green + 0.0722 * blue;
+          };
+          const style = window.getComputedStyle(element);
+          const foreground = luminance(parseColor(style.color));
+          const terminal = element.closest("figure");
+          if (terminal === null) {
+            throw new Error("Expected preview label inside a terminal.");
+          }
+          const background = luminance(
+            parseColor(window.getComputedStyle(terminal).backgroundColor),
+          );
+          return (
+            (Math.max(foreground, background) + 0.05) /
+            (Math.min(foreground, background) + 0.05)
+          );
+        });
+
+    await page.goto("templates/start-with-code");
+    expect(await contrastRatio()).toBeGreaterThanOrEqual(4.5);
+
+    await page.evaluate(() => localStorage.setItem("theme", "dark"));
+    await page.reload();
+    await expect(page.locator("html")).toHaveAttribute(
+      "data-theme",
+      "dark",
+    );
+    expect(await contrastRatio()).toBeGreaterThanOrEqual(4.5);
+  });
+
+  test("clearing search restores the full gallery", async ({ page }) => {
+    const initial = await resultCount(page);
+    const searchInput = page.locator("#catalog-search");
     await searchInput.fill("python");
     await searchInput.press("Enter");
-    await expect(page).toHaveURL(/name=python/);
-    await expect
-      .poll(async () => viewingCount(page), { timeout: 10_000 })
-      .not.toBe(initial);
+    await expect.poll(() => resultCount(page)).not.toBe(initial);
 
     await searchInput.fill("");
-    await searchInput.press("Enter");
-    await expect(page).not.toHaveURL(/name=python/);
-    await expect
-      .poll(async () => viewingCount(page), { timeout: 10_000 })
-      .toBe(initial);
+    await expect.poll(() => resultCount(page)).toBe(initial);
+  });
+
+  test("slash focuses search and Escape clears it", async ({ page }) => {
+    await page.waitForLoadState("networkidle");
+    await expect(
+      page.locator(".fui-SearchBox").getByText("/", { exact: true }),
+    ).toHaveCount(0);
+    await page.keyboard.press("/");
+    await expect(page.locator("#catalog-search")).toBeFocused();
+    await page.locator("#catalog-search").fill("python");
+    await page.keyboard.press("Escape");
+    await expect(page.locator("#catalog-search")).toHaveValue("");
   });
 });

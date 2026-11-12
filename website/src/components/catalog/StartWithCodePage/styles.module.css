@@ -1,0 +1,310 @@
+/**
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
+ */
+
+.page {
+  --catalog-paper: var(--colorNeutralBackground2, #f5f5f5);
+  --catalog-surface: var(--colorNeutralBackground1, #fff);
+  --catalog-subtle: var(--colorNeutralBackground3, #f0f0f0);
+  --catalog-ink: var(--colorNeutralForeground1, #242424);
+  --catalog-muted: var(--colorNeutralForeground2, #424242);
+  --catalog-line: var(--colorNeutralStroke2, #e0e0e0);
+  --catalog-blue: var(--colorBrandForeground1, #0f6cbd);
+  --catalog-command-bg: var(--catalog-subtle);
+  --catalog-preview: #8a5a00;
+  background: var(--catalog-paper);
+  color: var(--catalog-ink);
+  font-size: 1rem;
+}
+
+:global([data-theme="dark"]) .page {
+  --catalog-preview: #f2c14e;
+}
+
+.fluentProvider.fluentProvider {
+  background: transparent;
+  color: inherit;
+}
+
+.main {
+  width: min(880px, calc(100% - 128px));
+  margin: 0 auto;
+  padding: 24px 0 64px;
+}
+
+.breadcrumb {
+  padding: 24px 0;
+  color: var(--catalog-muted);
+  font-size: 0.73rem;
+}
+
+.breadcrumb a {
+  color: var(--catalog-blue);
+}
+
+.main h1 {
+  margin: 0;
+  font-size: clamp(1.7rem, 3vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+
+.lead {
+  margin: 12px 0 0;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.body {
+  margin-top: 48px;
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.prerequisite {
+  margin-bottom: 48px;
+}
+
+.prerequisite h2,
+.step h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.4;
+}
+
+.prerequisite h2 {
+  margin-bottom: 12px;
+}
+
+.step h2 {
+  margin-bottom: 16px;
+}
+
+.step + .step {
+  margin-top: 48px;
+}
+
+.prerequisite p,
+.step p {
+  margin: 0;
+}
+
+.command {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 16px;
+  margin: 16px 0;
+  border: 1px solid var(--catalog-line);
+  border-radius: 6px;
+  background: var(--catalog-command-bg);
+}
+
+.command pre {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  overflow: auto;
+  background: transparent;
+}
+
+.command code {
+  color: var(--catalog-blue);
+  font-size: 0.8125rem;
+}
+
+.copyCommand {
+  display: grid;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--catalog-muted);
+  place-items: center;
+}
+
+.copyCommand:hover {
+  border-color: var(--catalog-line);
+  color: var(--catalog-blue);
+}
+
+.installCommand {
+  display: inline-flex;
+  max-width: 100%;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 0;
+  padding: 0;
+  margin: 24px 0 0;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #0000001a;
+}
+
+.operatingSystem {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+}
+
+.operatingSystemSelect {
+  height: 100%;
+}
+
+.operatingSystem select {
+  height: 100%;
+  padding: 10px 28px 10px 14px;
+  border: 0;
+  border-right: 1px solid var(--catalog-line);
+  border-radius: 0;
+  appearance: none;
+  outline: 0;
+  background: #0000000a;
+  color: var(--catalog-muted);
+  cursor: pointer;
+  font: 600 0.75rem var(--ifm-font-family-base);
+}
+
+.operatingSystem select:hover,
+.operatingSystem select:focus-visible {
+  background: #0369a10f;
+  color: var(--catalog-blue);
+}
+
+.operatingSystem select:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--catalog-blue);
+}
+
+.operatingSystem select option {
+  background: var(--catalog-surface);
+  color: var(--catalog-ink);
+}
+
+.operatingSystemSelect svg {
+  color: var(--catalog-muted);
+}
+
+.installCommand pre {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  align-items: center;
+  padding: 8px 16px;
+  overflow-x: auto;
+}
+
+.installCommand code {
+  white-space: nowrap;
+}
+
+.installCommand .copyCommand {
+  width: auto;
+  height: auto;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 0;
+}
+
+.terminal {
+  padding: 12px 16px;
+  margin: 12px 0 0;
+  overflow-x: auto;
+  border: 1px solid var(--catalog-line);
+  border-radius: 6px;
+  background: var(--catalog-command-bg);
+}
+
+.terminal pre {
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  background: transparent;
+  color: var(--catalog-ink);
+  font: 0.8125rem/1.8 var(--ifm-font-family-monospace);
+  white-space: pre;
+}
+
+.terminalQuestion {
+  color: var(--catalog-blue);
+  font-weight: 700;
+}
+
+.terminalStrong {
+  font-weight: 600;
+}
+
+.terminalDim {
+  color: var(--catalog-muted);
+}
+
+.terminalPick {
+  color: var(--catalog-blue);
+}
+
+.terminalPreview {
+  color: var(--catalog-preview);
+}
+
+.choices {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0 0;
+}
+
+.choices dt {
+  display: inline;
+  font-weight: 700;
+}
+
+.choices dt::after {
+  margin-inline: 0.4em;
+  color: var(--catalog-muted);
+  content: "—";
+  font-weight: 400;
+}
+
+.choices dd {
+  display: inline;
+  margin: 0;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 900px) {
+  .main {
+    width: calc(100% - 48px);
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .main {
+    width: calc(100% - 40px);
+    padding-bottom: 48px;
+  }
+
+  .body {
+    margin-top: 40px;
+  }
+
+  .installCommand {
+    width: 100%;
+  }
+}

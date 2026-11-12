@@ -3,161 +3,227 @@
  * Licensed under the MIT License.
  */
 
-.cardBreakLine {
-  composes: cardBreakLine from "../gallery-card.module.css";
+.card.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  max-width: 350px;
+  height: 100%;
+  min-width: 0;
+  padding: 21px;
+  overflow: visible;
+  border: 1px solid var(--catalog-border);
+  border-radius: 9px;
+  background: var(--catalog-surface);
+  box-shadow: none;
+  transition:
+    border-color 150ms,
+    box-shadow 150ms,
+    transform 150ms;
 }
 
-.card {
-  composes: card from "../gallery-card.module.css";
-  height: 388px;
+.card:hover {
+  border-color: var(--catalog-blue);
+  box-shadow: 0 5px 16px #0035590c;
+  transform: translateY(-2px);
+}
+
+.card:focus-within {
+  border-color: var(--catalog-blue);
 }
 
 .cardBody {
-  composes: cardBody from "../gallery-card.module.css";
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
 }
 
-.cardHeaderContent {
-  composes: cardHeaderContent from "../gallery-card.module.css";
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
-.headerText {
-  composes: headerText from "../gallery-card.module.css";
+.cardAuthor {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--catalog-muted);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
-.cardDescription {
-  composes: cardDescription from "../gallery-card.module.css";
-  -webkit-line-clamp: 5;
-}
-
-.cardTextBy {
-  composes: cardTextBy from "../gallery-card.module.css";
-}
-
-.cardByline {
-  composes: cardByline from "../gallery-card.module.css";
-}
-
-.card .linkedAuthor,
-.card .cardMetaLink {
-  font-size: 12px;
+.cardAuthor img {
   flex-shrink: 0;
 }
 
-.card .cardBadge {
-  align-content: center;
-  font-size: 10px;
-  width: auto;
+.cardHeading {
+  margin: 0;
+  font-size: 1.05rem;
+  letter-spacing: -0.015em;
+  line-height: 1.32;
+}
+
+.cardTitle {
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--catalog-text);
+  font: inherit;
+  text-decoration: none;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.cardTitle:hover {
+  color: var(--catalog-blue);
+  text-decoration: none;
+}
+
+.cardTitle:focus-visible {
+  outline-offset: 3px;
+}
+
+.cardDescription {
+  display: -webkit-box;
+  min-height: calc(1.65em * 3);
+  margin: 11px 0 16px;
+  overflow: hidden;
+  color: var(--catalog-muted);
+  font-size: 0.82rem;
+  line-height: 1.65;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.cardByline {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  margin-top: 4px;
+  color: var(--catalog-muted);
+  font-size: 0.7rem;
 }
 
 .authorLink {
-  color: #616161 !important;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--catalog-muted) !important;
   text-decoration: underline !important;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.authorLink:hover {
-  color: var(--ifm-color-primary) !important;
+.authorLink:hover,
+.cardMetaLink:hover {
+  color: var(--catalog-blue) !important;
 }
 
-[data-theme="dark"] .authorLink {
-  color: var(--site-color-text-muted) !important;
-  text-decoration: underline !important;
+.cardMetaLink {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  color: var(--catalog-muted) !important;
 }
 
-[data-theme="dark"] .authorLink:hover {
-  color: var(--ifm-color-primary) !important;
+.websiteIcon {
+  width: 14px;
+  height: 14px;
+}
+
+.cardTagContainer {
+  width: 100%;
+  padding-top: 6px;
+  margin-top: auto;
+}
+
+.cardTagsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-width: 0;
+}
+
+.cardBadge {
+  padding: 3px 7px;
+  border: 1px solid var(--catalog-border);
+  border-radius: 4px;
+  background: var(--colorNeutralBackground3, #f0f0f0);
+  color: var(--catalog-muted);
+  font-size: 0.65rem;
+  line-height: 1.2;
+}
+
+.commandBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  margin-top: 16px;
+  border: 1px solid var(--catalog-border);
+  border-radius: 6px;
+  background: var(--colorNeutralBackground3, #f0f0f0);
 }
 
 .command {
   display: flex;
-  align-items: center;
   flex: 1;
+  align-items: center;
   min-width: 0;
-  min-height: 36px;
-  padding: 4px 8px;
-  border: 1px solid var(--site-color-border);
-  font-size: 11px;
-  font-family: var(--ifm-font-family-monospace, 'JetBrains Mono', Consolas, monospace);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--catalog-text);
+  font-family: var(
+    --ifm-font-family-monospace,
+    "JetBrains Mono",
+    Consolas,
+    monospace
+  );
+  font-size: 0.68rem;
   line-height: 1.35;
-  color: #57534E;
-  border-radius: 6px;
-  background: var(--site-hero-bg);
   overflow-wrap: anywhere;
   white-space: normal;
   user-select: text;
 }
 
-.copyIconButton {
-  composes: copyIconButton from "../gallery-card.module.css";
-  align-self: center;
-  flex: 0 0 24px;
-  width: 24px !important;
-  height: 24px !important;
-  min-height: 24px !important;
-  min-width: 24px !important;
-  max-height: 24px !important;
-  max-width: 24px !important;
+.copyCommand {
+  display: grid;
+  flex: 0 0 32px;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--catalog-border);
+  border-radius: 5px;
+  background: var(--catalog-surface);
+  color: var(--catalog-blue);
 }
 
-.copyFeedback {
-  composes: copyFeedback from "../gallery-card.module.css";
+.copyCommand:hover {
+  border-color: var(--catalog-blue);
+  background: var(--colorBrandBackground2, #ebf3fc);
 }
 
-.copyIconButton:focus-visible {
-  outline: 2px solid var(--ifm-color-primary) !important;
+.copyCommand:focus-visible {
+  outline: 2px solid var(--catalog-blue);
   outline-offset: 2px;
 }
 
-.cardTitle {
-  composes: cardTitle from "../gallery-card.module.css";
-  text-decoration: none !important;
-  -webkit-line-clamp: 2 !important;
-  max-height: calc(1.3em * 2) !important;
-}
-
-.cardTitle:hover {
-  text-decoration: none !important;
-}
-
-[data-theme="dark"] .command {
-  color: #A8A29E;
-  border-color: rgba(255, 255, 255, 0.08);
-  background-color: #1A1A1A;
-}
-
-.cardMetaLink {
-  color: var(--site-color-text-muted) !important;
-  text-decoration: underline !important;
-  display: inline-flex;
-  flex-direction: row;
-  align-items: center;
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
   white-space: nowrap;
-}
-
-.card .cardMetaLink {
-  margin-left: auto;
-}
-
-.card .websiteIcon {
-  vertical-align: middle;
-  margin-right: 2px;
-}
-
-.cardMetaLink:hover {
-  color: var(--ifm-color-primary) !important;
-}
-
-[data-theme="dark"] .cardMetaLink {
-  color: #A8A29E !important;
-}
-
-[data-theme="dark"] .cardMetaLink:hover {
-  color: #38BDF8 !important;
-}
-
-.cardTagContainer {
-  composes: cardTagContainer from "../gallery-card.module.css";
-}
-
-.cardTagsWrapper {
-  composes: cardTagsWrapper from "../gallery-card.module.css";
+  border: 0;
 }

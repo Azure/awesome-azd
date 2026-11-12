@@ -75,6 +75,7 @@ All commands must be run from the `website/` directory:
 
 The template gallery is driven by:
 - `website/static/templates.json` - Template metadata (5548 lines)
+- `website/src/catalog/template-use-cases.json` - Reviewed catalog use-case classifications
 - `website/src/data/tags.tsx` - Tag definitions for filtering
 - `website/src/components/gallery/` - Gallery components
 - `website/static/templates/images/` - Template preview images
@@ -130,9 +131,10 @@ When making changes:
 
 **Adding a new template to the gallery:**
 1. Add entry to `website/static/templates.json` with required fields
-2. Ensure all tags exist in `website/src/data/tags.tsx` (add if needed)
-3. Run `npm test` to validate template tags
-4. Test gallery display with `npm run start`
+2. Add its normalized repository URL and at least one reviewed classification to `website/src/catalog/template-use-cases.json`
+3. Ensure all tags exist in `website/src/data/tags.tsx` (add if needed)
+4. Run `npm test` to validate template metadata
+5. Test gallery display with `npm run start`
 
 **Modifying site content:**
 1. Edit files in `website/docs/` for documentation 
@@ -157,6 +159,7 @@ The repository uses GitHub Actions:
 ## Common File Locations
 
 - Template data: `website/static/templates.json`
+- Template use cases: `website/src/catalog/template-use-cases.json`
 - Tag definitions: `website/src/data/tags.tsx`
 - Gallery components: `website/src/components/gallery/`
 - Documentation: `website/docs/`

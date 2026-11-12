@@ -2,6 +2,7 @@ import { describe, expect, jest, test } from "@jest/globals";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import packageJson from "../package.json";
 
 const {
   downloadRepositoryMetrics,
@@ -232,6 +233,23 @@ describe("repository metrics release preparation", () => {
       ).resolves.toBe(existing);
     } finally {
       await fs.promises.rm(directory, { recursive: true, force: true });
+    }
+  });
+
+  test("generates the fallback before source-loading npm entry points", () => {
+    for (const command of [
+      "docusaurus",
+      "start",
+      "build",
+      "deploy",
+      "test",
+      "typecheck",
+    ]) {
+      const preCommand =
+        `pre${command}` as keyof typeof packageJson.scripts;
+      expect(packageJson.scripts[preCommand]).toBe(
+        "node scripts/ensure-repository-metrics.js"
+      );
     }
   });
 

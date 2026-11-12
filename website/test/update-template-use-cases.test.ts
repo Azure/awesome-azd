@@ -77,6 +77,14 @@ describe("updateTemplateUseCases", () => {
 });
 
 describe("normalizeSource", () => {
+  test("strips a Git suffix before a fragment", () => {
+    expect(
+      normalizeSource(
+        "https://github.com/Example/Template.git#readme",
+      ),
+    ).toBe("https://github.com/example/template");
+  });
+
   test("strips GitHub repository subpaths", () => {
     expect(
       normalizeSource(

@@ -29,7 +29,7 @@ function normalizeSource(sourceRepo) {
     throw new Error(`Invalid GitHub repository URL: ${sourceRepo}`);
   }
 
-  return `https://github.com/${parts[0]}/${parts[1]}`;
+  return `https://github.com/${parts[0]}/${parts[1].replace(/\.git$/i, "")}`;
 }
 
 function updateTemplateUseCases({

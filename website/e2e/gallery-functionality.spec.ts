@@ -392,6 +392,13 @@ test.describe("Gallery functionality (deploy gate)", () => {
       "text-decoration-line",
       "underline",
     );
+    const backLink = page.getByRole("link", {
+      name: "Back to templates",
+    });
+    await expect(backLink).toHaveCSS(
+      "text-decoration-line",
+      "none",
+    );
 
     const main = page.locator("main").first();
     await expect(main).toHaveCSS(
@@ -403,6 +410,26 @@ test.describe("Gallery functionality (deploy gate)", () => {
     expect(
       await sidebar.evaluate((element) => element.getBoundingClientRect().width),
     ).toBeCloseTo(440, 0);
+    const getStartedCard = page
+      .getByRole("heading", {
+        level: 2,
+        name: "Get started",
+      })
+      .locator("..");
+    const mainBackground = await main.evaluate(
+      (element) => getComputedStyle(element).backgroundColor,
+    );
+    const cardBackground = await getStartedCard.evaluate(
+      (element) => getComputedStyle(element).backgroundColor,
+    );
+    expect(cardBackground).not.toBe(mainBackground);
+
+    await expect(
+      page.locator("header p").filter({
+        hasText:
+          "Creates a ChatGPT-like frontend with API backend that uses OpenAI chat models to answer questions about uploaded documents.",
+      }),
+    ).toHaveCSS("margin-top", "28px");
 
     const screenshot = page.getByAltText(
       "Application screenshot for RAG chat with Azure AI Search + Python",
@@ -418,11 +445,37 @@ test.describe("Gallery functionality (deploy gate)", () => {
       "border-top-width",
       "1px",
     );
+    await expect(screenshot).toHaveCSS("max-height", "none");
+    await expect(architecture).toHaveCSS("max-height", "none");
+    for (const image of [screenshot, architecture]) {
+      const imageBounds = await image.boundingBox();
+      const frameBounds = await image.locator("..").boundingBox();
+      expect(imageBounds).not.toBeNull();
+      expect(frameBounds).not.toBeNull();
+      expect(imageBounds!.width).toBeCloseTo(frameBounds!.width - 2, 0);
+    }
+
+    await expect(
+      page.getByRole("heading", {
+        level: 2,
+        name: "Architecture",
+      }),
+    ).toHaveCSS("margin-bottom", "28px");
+    await expect(
+      page.getByRole("heading", {
+        level: 2,
+        name: "Resources included",
+      }),
+    ).toHaveCSS("margin-bottom", "28px");
 
     const command = page.locator("code", {
       hasText:
         "azd init -t azure-search-openai-demo",
     });
+    await expect(command.locator("..")).toHaveCSS(
+      "border-top-width",
+      "0px",
+    );
     await expect(command.locator("span")).toHaveCount(3);
     await expect(command.locator("span").nth(1)).toHaveCSS(
       "color",
@@ -472,11 +525,16 @@ test.describe("Gallery functionality (deploy gate)", () => {
       .getByRole("table", { name: "Resources included" })
       .locator("tbody img")
       .first();
+    await expect(
+      page
+        .getByRole("table", { name: "Resources included" })
+        .getByRole("link"),
+    ).toHaveCount(0);
     expect(
       await firstResourceIcon.evaluate(
         (element) => element.getBoundingClientRect().width,
       ),
-    ).toBeLessThanOrEqual(32);
+    ).toBeLessThanOrEqual(36);
   });
 
   test("repository stars render missing and zero states and drive popularity order", async ({
@@ -547,6 +605,12 @@ test.describe("Gallery functionality (deploy gate)", () => {
     await expect(
       page.getByRole("img", {
         name: /Application screenshot/,
+      }),
+    ).toHaveCount(0);
+    await expect(
+      page.getByRole("heading", {
+        level: 2,
+        name: "Architecture",
       }),
     ).toHaveCount(0);
   });

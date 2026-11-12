@@ -5,7 +5,7 @@
 
 export type Tag = {
   label: string;
-  description: string;
+  description?: string;
   productDescription?: string;
   azureIcon?: string;
   darkModeAzureIcon?: string;
@@ -31,145 +31,7 @@ export type Template = {
   extensionTags?: string[];
 };
 
-// NN: Updated TagType to suit Static Web Apps
-export type TagType =
-  | "msft"
-  | "community"
-  | "new"
-  | "featured"
-  | "aiapplication"
-  | "bicep"
-  | "typescript"
-  | "javascript"
-  | "dotnetCsharp"
-  | "java"
-  | "python"
-  | "django"
-  | "reactjs"
-  | "vuejs"
-  | "angular"
-  | "nodejs"
-  | "kubernetes"
-  | "keda"
-  | "grafana"
-  | "prometheus"
-  | "appservice"
-  | "cosmosdb"
-  | "azuredatafactory"
-  | "monitor"
-  | "keyvault"
-  | "aca"
-  | "mongodb"
-  | "neondb"
-  | "functions"
-  | "blobstorage"
-  | "azuredb-postgreSQL"
-  | "azuresql"
-  | "webapps"
-  | "terraform"
-  | "swa"
-  | "dapr"
-  | "servicebus"
-  | "vnets"
-  | "fastapi"
-  | "appinsights"
-  | "loganalytics"
-  | "aisearch"
-  | "openai"
-  | "azureai"
-  | "flask"
-  | "apim"
-  | "spring"
-  | "quarkus"
-  | "javaee"
-  | "thymeleaf"
-  | "sap"
-  | "sapcap"
-  | "sapcloudsdk"
-  | "nestjs"
-  | "dataverse"
-  | "aks"
-  | "azurecdn"
-  | "frontdoor"
-  | "enterprisepatterns"
-  | "jupyter"
-  | "datascience"
-  | "rediscache"
-  | "ai"
-  | "php"
-  | "agw"
-  | "streamlit"
-  | "azurebot"
-  | "ade"
-  | "platformengineering"
-  | "semantickernel"
-  | "webcomponents"
-  | "microfrontend"
-  | "blazor"
-  | "azuredb-mySQL"
-  | "eventhub"
-  | "azuresignalr"
-  | "azurestorage"
-  | "helm"
-  | "dall-e"
-  | "gpt"
-  | "azureappconfig"
-  | "ruby"
-  | "rubyonrails"
-  | "serverlessapi"
-  | "langchain"
-  | "aifoundry"
-  | "apicenter"
-  | "eventgrid"
-  | "diagnosticsettings"
-  | "managedidentity"
-  | "serviceprincipal"
-  | "logicapps"
-  | "msal"
-  | "pinecone"
-  | "nextjs"
-  | "speechservice"
-  | "kernelmemory"
-  | "promptengineering"
-  | "rag"
-  | "langchain4j"
-  | "featureExperimentation"
-  | "featuremanagement"
-  | "go"
-  | "rust"
-  | "axum"
-  | "powershell"
-  | "autogen"
-  | "dab"
-  | "sharepoint"
-  | "virtualmachine"
-  | "sentinel"
-  | "trafficmgr"
-  | "chainlit"
-  | "aspire"
-  | "purview"
-  // | "vpngw"
-  | "loadtesting"
-  | "hyperv"
-  | "fabric"
-  | "vmsqlserver"
-  | "avset"
-  | "bastion"
-  | "mcp"
-  | "privateEndpoints"
-  | "privatelink"
-  | "loadbalancer"
-  | "backup"
-  | "recoveryvault"
-  // Extension capability tags
-  | "ext-custom-commands"
-  | "ext-lifecycle-events"
-  | "ext-mcp-server"
-  | "ext-service-target-provider"
-  | "ext-framework-service-provider"
-  | "ext-provisioning-provider"
-  | "ext-validation-provider"
-  | "ext-metadata";
+export type TagType = keyof typeof tagDefinitions;
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -181,7 +43,7 @@ export type TagType =
 //   - azureIcon = svg path for azure service icon
 //   - url = url for azure service
 //   - darkModeAzureIcon = svg path for azure service icon in dark mode
-export const Tags: { [type in TagType]: Tag } = {
+const tagDefinitions = {
   // =============     FOR ADMIN USE ONLY:
 
   // Special Tag
@@ -290,17 +152,17 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "SAP CAP",
     description:
       "Template architecture uses SAP Cloud Application Programming Model",
-    type: "Framework",
+    type: "Tools",
   },
   thymeleaf: {
     label: "Thymeleaf",
     description: "Template architecture uses Thymeleaf template engine",
-    type: "Framework",
+    type: "Tools",
   },
   "dall-e": {
     label: "Dall-E",
     description: "Template architecture uses Dall-E",
-    type: "Model",
+    type: "Tools",
   },
   jupyter: {
     label: "Jupyter Notebooks",
@@ -317,7 +179,7 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Dapr",
     description:
       "Template architecture uses Distributed Application Runtime (dapr)",
-    type: "Framework",
+    type: "Tools",
   },
   webcomponents: {
     label: "Web Components",
@@ -562,7 +424,7 @@ export const Tags: { [type in TagType]: Tag } = {
   serverlessapi: {
     label: "Serverless API",
     description: "Template architecture uses Serverless API",
-    type: "Topic",
+    type: "Service",
   },
   sharepoint: {
     label: "SharePoint",
@@ -664,10 +526,10 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Service",
   },
   azureai: {
-    label: "Foundry Tools",
-    description: "Template architecture uses Microsoft Foundry tools",
+    label: "Azure AI Service",
+    description: "Template architecture uses Azure AI services",
     azureIcon: "./img/Azure-AI-Service.svg",
-    url: "https://azure.microsoft.com/en-us/products/ai-foundry/tools/",
+    url: "https://azure.microsoft.com/en-us/solutions/ai/",
     type: "Service",
   },
   speechservice: {
@@ -772,7 +634,7 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Microsoft Foundry",
     description: "Template architecture uses Microsoft Foundry",
     azureIcon: "./img/Azure-AI-Studio.svg",
-    url: "https://azure.microsoft.com/en-us/products/ai-foundry",
+    url: "https://azure.microsoft.com/products/ai-foundry",
     type: "Service",
   },
   apicenter: {
@@ -1011,4 +873,259 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Extension provides metadata capabilities",
     type: "Extension Capability",
   },
-};
+
+  // AI catalog metadata retained from the former AI App Templates registry
+  "nodejslts": {
+    "label": "Node.js LTS",
+    "url": "https://nodejs.org/"
+  },
+  "nodejs20": {
+    "label": "Node.js 20",
+    "url": "https://nodejs.org/"
+  },
+  "azurite": {
+    "label": "Azurite",
+    "url": "https://github.com/Azure/Azurite"
+  },
+  "azd": {
+    "label": "Azure Developer CLI (azd)",
+    "url": "https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd?tabs=winget-windows%2Cbrew-mac%2Cscript-linux&pivots=os-windows"
+  },
+  "azcli": {
+    "label": "Azure CLI",
+    "url": "https://learn.microsoft.com/cli/azure/"
+  },
+  "python3.9-3.11": {
+    "label": "Python 3.9, 3.10, or 3.11",
+    "url": "https://www.python.org/downloads/"
+  },
+  "python3.9+": {
+    "label": "Python 3.9+",
+    "url": "https://www.python.org/downloads/"
+  },
+  "python3.10+": {
+    "label": "Python 3.10+",
+    "url": "https://www.python.org/downloads/"
+  },
+  "python3.11+": {
+    "label": "Python 3.11+",
+    "url": "https://www.python.org/downloads/"
+  },
+  "nodejs18+": {
+    "label": "Node.js 18+",
+    "url": "https://nodejs.org/download/"
+  },
+  "git": {
+    "label": "Git",
+    "url": "https://git-scm.com/downloads"
+  },
+  "pwsh7+": {
+    "label": "Powershell 7+ (for Windows users only)",
+    "url": "https://github.com/powershell/powershell"
+  },
+  "functionscoretools": {
+    "label": "Azure Functions Core Tools (should be installed automatically with NPM, only install manually if the API fails to start)",
+    "url": "https://learn.microsoft.com/azure/azure-functions/functions-run-local?tabs=macos%2Cisolated-process%2Cnode-v4%2Cpython-v2%2Chttp-trigger%2Ccontainer-apps&pivots=programming-language-javascript"
+  },
+  ".net8": {
+    "label": ".NET 8",
+    "url": "https://dotnet.microsoft.com/download/dotnet/8.0"
+  },
+  ".net9": {
+    "label": ".NET 9",
+    "url": "https://dotnet.microsoft.com/download/dotnet/9.0"
+  },
+  "docker": {
+    "label": "Docker",
+    "url": "https://www.docker.com/products/docker-desktop/"
+  },
+  "postgreSQL14+": {
+    "label": "PostgreSQL 14+",
+    "url": "https://www.postgresql.org/download/"
+  },
+  "pgvector": {
+    "label": "pgvector",
+    "url": "https://github.com/pgvector/pgvector"
+  },
+  "java17": {
+    "label": "Java 17",
+    "url": "https://learn.microsoft.com/en-us/java/openjdk/download#openjdk-17"
+  },
+  "maven3.8.x": {
+    "label": "Maven 3.8.x",
+    "url": "https://maven.apache.org/download.cgi"
+  },
+  "maven": {
+    "label": "Maven",
+    "url": "https://maven.apache.org/download.cgi"
+  },
+  "nodejs22": {
+    "label": "Node.js 22",
+    "url": "https://docs.npmjs.com/downloading-and-installing-node-js-and-npm"
+  },
+  "go1.18+": {
+    "label": "Go 1.18+",
+    "url": "https://go.dev/dl/"
+  },
+  "k9s": {
+    "label": "K9s (optional for K8s management)",
+    "url": "https://k9scli.io/topics/install/"
+  },
+  "poetry": {
+    "label": "Poetry",
+    "url": "https://pypi.org/project/poetry/"
+  },
+  "swacli": {
+    "label": "SWA CLI",
+    "url": "https://github.com/Azure/static-web-apps-cli"
+  },
+  "redis": {
+    "label": "Redis",
+    "url": "https://redis.io/download"
+  },
+  "pinecone-api": {
+    "label": "Pinecone API Key",
+    "url": "https://app.pinecone.io/-/projects/-/keys"
+  },
+  "odbc-driver-18": {
+    "label": "Microsoft ODBC Driver 18 for SQL Server",
+    "url": "https://learn.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver16"
+  },
+  "sqlcmd-windows": {
+    "label": "sqlcmd(ODBC-Windows)",
+    "url": "https://learn.microsoft.com/sql/tools/sqlcmd/sqlcmd-utility?view=sql-server-ver16&tabs=odbc%2Cwindows%2Cwindows-support&pivots=cs1-bash#download-and-install-sqlcmd"
+  },
+  "sqlcmd-linux": {
+    "label": "sqlcmd(Linux/Mac)",
+    "url": "https://learn.microsoft.com/sql/linux/sql-server-linux-setup-tools?view=sql-server-ver16&tabs=redhat-install"
+  },
+  "golang": {
+    "label": "Go",
+    "type": "Language"
+  },
+  "gpt35turbo": {
+    "label": "GPT-3.5 Turbo",
+    "type": "Model",
+    "url": "https://platform.openai.com/docs/models/gpt-3-5-turbo"
+  },
+  "gpt4turbo": {
+    "label": "GPT-4 Turbo",
+    "type": "Model",
+    "url": "https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4"
+  },
+  "gpt4": {
+    "label": "GPT-4",
+    "type": "Model",
+    "url": "https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4"
+  },
+  "gpt4o": {
+    "label": "GPT-4 Omni",
+    "type": "Model",
+    "url": "https://platform.openai.com/docs/models/gpt-4o"
+  },
+  "gpt4omini": {
+    "label": "GPT-4 Omni mini",
+    "type": "Model",
+    "url": "https://platform.openai.com/docs/models/gpt-4o-mini"
+  },
+  "gpt54": {
+    "label": "GPT-5.4",
+    "type": "Model",
+    "url": "https://platform.openai.com/docs/models/gpt-5.4"
+  },
+  "gpt52": {
+    "label": "GPT-5.2",
+    "type": "Model",
+    "url": "https://platform.openai.com/docs/models/gpt-5.2"
+  },
+  "text-embedding-3-large": {
+    "label": "Text-Embedding-3-Large",
+    "type": "Model",
+    "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=global-standard%2Cstandard-chat-completions#embeddings"
+  },
+  "text-embedding-3-small": {
+    "label": "Text-Embedding-3-Small",
+    "type": "Model",
+    "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=global-standard%2Cstandard-chat-completions#embeddings"
+  },
+  "text-embedding-ada-002": {
+    "label": "Text-Embedding-ADA-002",
+    "type": "Model",
+    "url": "https://learn.microsoft.com/azure/ai-services/openai/concepts/models?tabs=python-secure#embeddings-models"
+  },
+  "llama": {
+    "label": "Code Llama",
+    "type": "Model",
+    "url": "https://llama.meta.com/docs/model-cards-and-prompt-formats/meta-code-llama"
+  },
+  "mistral7b": {
+    "label": "Mistral 7b",
+    "type": "Model"
+  },
+  "deepseek-r1": {
+    "label": "DeepSeek R1",
+    "type": "Model"
+  },
+  "meta": {
+    "label": "Meta models",
+    "type": "Model"
+  },
+  "mistralai": {
+    "label": "Mistral AI models",
+    "type": "Model"
+  },
+  "deepseek": {
+    "label": "DeepSeek models",
+    "type": "Model"
+  },
+  "agent": {
+    "label": "Agent",
+    "type": "Task"
+  },
+  "chat": {
+    "label": "Interactive Chat",
+    "type": "Task"
+  },
+  "search": {
+    "label": "Guided Search",
+    "type": "Task"
+  },
+  "llmops": {
+    "label": "LLM Ops",
+    "type": "Task"
+  },
+  "completions": {
+    "label": "Completions",
+    "type": "Task"
+  },
+  "azurecosmosdb": {
+    "label": "Azure Cosmos DB",
+    "type": "Database",
+    "url": "https://azure.microsoft.com/products/cosmos-db/"
+  },
+  "azureopenai": {
+    "label": "Azure OpenAI Service",
+    "type": "Service",
+    "url": "https://azure.microsoft.com/products/ai-services/openai-service"
+  },
+  "azureaiservice": {
+    "label": "Azure AI Service",
+    "type": "Service",
+    "url": "https://azure.microsoft.com/en-us/solutions/ai/"
+  },
+  "azurespringapps": {
+    "label": "Azure Spring Apps",
+    "type": "Service",
+    "url": "https://azure.microsoft.com/products/spring-apps"
+  },
+  "mcp-client": {
+    "label": "MCP Client",
+    "url": "https://docs.anthropic.com/en/docs/mcp"
+  },
+  "mcp-server": {
+    "label": "MCP Server",
+    "url": "https://docs.anthropic.com/en/docs/mcp"
+  }
+} as const satisfies Record<string, Tag>;
+
+export const Tags: Record<TagType, Tag> = tagDefinitions;

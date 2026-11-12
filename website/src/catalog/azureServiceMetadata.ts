@@ -30,7 +30,7 @@ export const azureServiceMetadata: Record<
   aifoundry: {
     label: "Microsoft Foundry",
     description: "The AI app and agent factory.",
-    url: "https://azure.microsoft.com/en-us/products/ai-foundry",
+    url: "https://azure.microsoft.com/products/ai-foundry",
   },
   aisearch: {
     description: "Enterprise scale search for app development.",
@@ -59,16 +59,16 @@ export const azureServiceMetadata: Record<
       "Increase application availability by distributing virtual machines across fault and update domains.",
   },
   azureai: {
-    label: "Foundry Tools",
+    label: "Azure AI Service",
     description:
       "Build cutting-edge, market-ready AI applications with customizable tools, APIs, and models.",
-    url: "https://azure.microsoft.com/en-us/products/ai-foundry/tools/",
+    url: "https://azure.microsoft.com/en-us/solutions/ai/",
   },
   azureaiservice: {
-    label: "Foundry Tools",
+    label: "Azure AI Service",
     description:
       "Build cutting-edge, market-ready AI applications with customizable tools, APIs, and models.",
-    url: "https://azure.microsoft.com/en-us/products/ai-foundry/tools/",
+    url: "https://azure.microsoft.com/en-us/solutions/ai/",
   },
   azureappconfig: {
     description: "Fast, scalable parameter storage for app configuration.",

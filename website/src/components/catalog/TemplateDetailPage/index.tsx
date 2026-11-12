@@ -55,7 +55,6 @@ type TemplateDetail = Pick<
   | "models"
   | "services"
   | "resources"
-  | "preview"
   | "architectureDiagram"
   | "screenshot"
   | "initCommand"
@@ -442,7 +441,7 @@ export default function TemplateDetailPage({
 }): React.JSX.Element {
   const { template } = templatePage;
   const templatesUrl = useBaseUrl("/templates");
-  const screenshot = template.screenshot ?? template.preview;
+  const screenshot = template.screenshot;
   const canonicalUrl = `https://azure.github.io/awesome-azd${template.detailPath}`;
   const [owner, repositoryName] = new URL(template.source).pathname
     .split("/")
@@ -460,7 +459,7 @@ export default function TemplateDetailPage({
           <main className={styles.page}>
             <div className={styles.container}>
               <div className={styles.breadcrumb}>
-                <Link to={templatesUrl}>
+                <Link to={templatesUrl} className={styles.backLink}>
                   <ArrowLeft16Regular aria-hidden="true" />
                   Back to templates
                 </Link>
@@ -545,6 +544,7 @@ export default function TemplateDetailPage({
                         <Table
                           className={styles.resourceTable}
                           aria-label="Resources included"
+                          size="medium"
                         >
                           <TableHeader>
                             <TableRow>
@@ -567,17 +567,7 @@ export default function TemplateDetailPage({
                                       />
                                     }
                                   >
-                                    {resource.url ? (
-                                      <a
-                                        href={resource.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                      >
-                                        {resource.label}
-                                      </a>
-                                    ) : (
-                                      resource.label
-                                    )}
+                                    {resource.label}
                                   </TableCellLayout>
                                 </TableCell>
                                 <TableCell>

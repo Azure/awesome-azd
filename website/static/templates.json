@@ -170,7 +170,7 @@
     "authorUrl": "https://github.com/Azure/azure-dev",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/pubsub-dapr-csharp-servicebus",
-    "tags": ["msft"],
+    "tags": ["msft", "dapr"],
     "languages": ["dotnetCsharp"],
     "azureServices": [
       "aca",
@@ -181,8 +181,7 @@
       "diagnosticsettings"
     ],
     "IaC": ["bicep"],
-    "id": "b3c37e46-c66a-4a6f-ac07-825f8d9e4af9",
-    "frameworks": ["dapr"]
+    "id": "b3c37e46-c66a-4a6f-ac07-825f8d9e4af9"
   },
   {
     "title": "Microservices App - Dapr PubSub Python ACA ServiceBus",
@@ -191,9 +190,9 @@
     "authorUrl": "https://github.com/Azure/azure-dev",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/pubsub-dapr-python-servicebus",
-    "tags": ["msft"],
+    "tags": ["msft", "dapr"],
     "languages": ["python"],
-    "frameworks": ["flask", "dapr"],
+    "frameworks": ["flask"],
     "azureServices": [
       "aca",
       "servicebus",
@@ -212,7 +211,7 @@
     "authorUrl": "https://github.com/Azure/azure-dev",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/pubsub-dapr-nodejs-servicebus",
-    "tags": ["msft"],
+    "tags": ["msft", "dapr"],
     "languages": ["javascript", "nodejs"],
     "azureServices": [
       "aca",
@@ -223,8 +222,7 @@
       "diagnosticsettings"
     ],
     "IaC": ["bicep"],
-    "id": "a23f5ea7-2d36-4642-9b61-99c9367e54b3",
-    "frameworks": ["dapr"]
+    "id": "a23f5ea7-2d36-4642-9b61-99c9367e54b3"
   },
   {
     "title": "Microservices App - Dapr Bindings Cron C# ACA PostgreSQL",
@@ -233,7 +231,7 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/bindings-dapr-csharp-cron-postgres",
-    "tags": ["msft"],
+    "tags": ["msft", "dapr"],
     "languages": ["dotnetCsharp"],
     "azureServices": [
       "azuredb-postgreSQL",
@@ -245,8 +243,7 @@
       "diagnosticsettings"
     ],
     "IaC": ["bicep"],
-    "id": "eb747c5a-e95f-4859-bb21-b1aef740684a",
-    "frameworks": ["dapr"]
+    "id": "eb747c5a-e95f-4859-bb21-b1aef740684a"
   },
   {
     "title": "Microservices App - Dapr Bindings Cron Python ACA PostgreSQL",
@@ -255,9 +252,9 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/bindings-dapr-python-cron-postgres",
-    "tags": ["msft"],
+    "tags": ["msft", "dapr"],
     "languages": ["python"],
-    "frameworks": ["flask", "dapr"],
+    "frameworks": ["flask"],
     "azureServices": [
       "azuredb-postgreSQL",
       "aca",
@@ -276,7 +273,7 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/bindings-dapr-nodejs-cron-postgres",
-    "tags": ["msft"],
+    "tags": ["msft", "dapr"],
     "languages": ["nodejs", "javascript"],
     "azureServices": [
       "azuredb-postgreSQL",
@@ -288,8 +285,7 @@
       "diagnosticsettings"
     ],
     "IaC": ["bicep"],
-    "id": "bb2a0e5f-cb80-4501-b699-6c6b36a87c8d",
-    "frameworks": ["dapr"]
+    "id": "bb2a0e5f-cb80-4501-b699-6c6b36a87c8d"
   },
   {
     "title": "Microservices App - Dapr Service Invoke Node.js ACA",
@@ -298,7 +294,7 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/svc-invoke-dapr-nodejs",
-    "tags": ["msft"],
+    "tags": ["msft", "dapr"],
     "languages": ["nodejs"],
     "azureServices": [
       "aca",
@@ -308,8 +304,7 @@
       "diagnosticsettings"
     ],
     "IaC": ["bicep"],
-    "id": "aa44bec0-701a-4702-a105-f301e2c05b73",
-    "frameworks": ["dapr"]
+    "id": "aa44bec0-701a-4702-a105-f301e2c05b73"
   },
   {
     "title": "Microservices App - Dapr Service Invoke Python ACA",
@@ -318,9 +313,9 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/svc-invoke-dapr-python",
-    "tags": ["msft"],
+    "tags": ["msft", "dapr"],
     "languages": ["python"],
-    "frameworks": ["flask", "dapr"],
+    "frameworks": ["flask"],
     "azureServices": ["aca", "managedidentity", "loganalytics", "appinsights"],
     "IaC": ["bicep"],
     "id": "89d40b9e-b02c-4ed7-82c4-b4a3bed80706"
@@ -332,7 +327,7 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/svc-invoke-dapr-csharp",
-    "tags": ["msft"],
+    "tags": ["msft", "dapr"],
     "languages": ["dotnetCsharp"],
     "azureServices": [
       "aca",
@@ -342,8 +337,7 @@
       "diagnosticsettings"
     ],
     "IaC": ["bicep"],
-    "id": "4aa93d14-9bf2-4dbc-a7f5-0f8796d922f1",
-    "frameworks": ["dapr"]
+    "id": "4aa93d14-9bf2-4dbc-a7f5-0f8796d922f1"
   },
   {
     "title": "RAG chat with Azure AI Search + Python",
@@ -444,9 +438,9 @@
     "authorUrl": "https://github.com/wangmingliang-ms",
     "author": "Miller Wang",
     "source": "https://github.com/Azure-Samples/spring-petclinic-java-mysql",
-    "tags": ["msft"],
+    "tags": ["msft", "thymeleaf"],
     "languages": ["java"],
-    "frameworks": ["spring", "thymeleaf"],
+    "frameworks": ["spring"],
     "azureServices": [
       "appservice",
       "azuresql",
@@ -1004,9 +998,9 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Mahmut Canga",
     "source": "https://github.com/Azure-Samples/pubsub-dapr-aks-java",
-    "tags": ["msft"],
+    "tags": ["msft", "dapr"],
     "languages": ["java"],
-    "frameworks": ["spring", "dapr"],
+    "frameworks": ["spring"],
     "azureServices": ["aks", "keyvault", "loganalytics", "diagnosticsettings"],
     "IaC": ["bicep"],
     "id": "8b4c552b-5538-4929-924f-3dffbc6ce0df"
@@ -3646,9 +3640,9 @@
     "authorUrl": "https://github.com/passadis",
     "author": "Konstantinos Passadis",
     "source": "https://github.com/passadis/ai-architect-webapp",
-    "tags": ["ai", "mcp", "community"],
+    "tags": ["ai", "mcp", "community", "dapr"],
     "languages": ["python", "javascript", "nodejs"],
-    "frameworks": ["fastapi", "reactjs", "dapr"],
+    "frameworks": ["fastapi", "reactjs"],
     "azureServices": [
       "aca",
       "azureai",

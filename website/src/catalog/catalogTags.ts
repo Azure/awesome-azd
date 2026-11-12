@@ -7,10 +7,6 @@ import {
   Tags as standardTags,
   type Tag as StandardTag,
 } from "../data/tags";
-import {
-  Tags as aiTags,
-  type Tag as AiTag,
-} from "./aiTags";
 import { getAzureServiceMetadata } from "./azureServiceMetadata";
 
 export type CatalogTagMetadata = {
@@ -30,20 +26,12 @@ type TagEntry<T> = {
 };
 
 const standardTagMap = standardTags as Record<string, StandardTag>;
-const aiTagMap = aiTags as Record<string, AiTag>;
 const standardTagsByLowerCase = new Map<string, TagEntry<StandardTag>>(
   Object.entries(standardTagMap).map(([id, tag]) => [
     id.toLowerCase(),
     { id, tag },
   ]),
 );
-const aiTagsByLowerCase = new Map<string, TagEntry<AiTag>>(
-  Object.entries(aiTagMap).map(([id, tag]) => [
-    id.toLowerCase(),
-    { id, tag },
-  ]),
-);
-
 export const catalogTagAliases = new Map<string, string>([
   ["aicollection", "aiapplication"],
   ["azureaiservice", "azureai"],
@@ -105,8 +93,8 @@ const categoryOverrides = new Map<string, string>([
   ["aisearch", "Service"],
   ["aspire", "Framework"],
   ["community", "Authorship"],
-  ["dall-e", "Model"],
-  ["dapr", "Framework"],
+  ["dall-e", "Tools"],
+  ["dapr", "Tools"],
   ["featured", "Status"],
   ["gpt", "Model"],
   ["kubernetes", "Framework"],
@@ -118,9 +106,9 @@ const categoryOverrides = new Map<string, string>([
   ["powershell", "Language"],
   ["prometheus", "Tools"],
   ["sap", "Tools"],
-  ["sapcap", "Framework"],
-  ["serverlessapi", "Topic"],
-  ["thymeleaf", "Framework"],
+  ["sapcap", "Tools"],
+  ["serverlessapi", "Service"],
+  ["thymeleaf", "Tools"],
   ["webapps", "Topic"],
 ]);
 
@@ -131,8 +119,8 @@ const labelOverrides = new Map<string, string>([
 
 const legacyLabelOverrides = new Map<string, readonly string[]>([
   ["aifoundry", ["Azure AI Foundry"]],
-  ["azureai", ["Azure AI Service"]],
-  ["azureaiservice", ["Azure AI Services"]],
+  ["azureai", ["Foundry Tools", "Azure AI Service"]],
+  ["azureaiservice", ["Foundry Tools", "Azure AI Services"]],
   ["azureopenai", ["Azure OpenAI"]],
 ]);
 
@@ -150,9 +138,7 @@ export function canonicalizeCatalogTagId(
   }
 
   return (
-    standardTagsByLowerCase.get(normalizedId)?.id ??
-    aiTagsByLowerCase.get(normalizedId)?.id ??
-    id
+    standardTagsByLowerCase.get(normalizedId)?.id ?? id
   );
 }
 
@@ -171,10 +157,7 @@ export function getCatalogTagCompatibilityIds(
   const normalizedValue = value.trim().toLowerCase();
   const matchingIds = new Set<string>();
 
-  for (const [id, tag] of [
-    ...Object.entries(standardTagMap),
-    ...Object.entries(aiTagMap),
-  ]) {
+  for (const [id, tag] of Object.entries(standardTagMap)) {
     if (
       id.toLowerCase() === normalizedValue ||
       tag.label.toLowerCase() === normalizedValue
@@ -218,12 +201,10 @@ export function getCatalogTagSearchTerms(id: string): string[] {
         id,
         canonicalId,
         standardTagsByLowerCase.get(normalizedId)?.tag.label,
-        aiTagsByLowerCase.get(normalizedId)?.tag.label,
         metadata?.label,
         ...aliasIds,
         ...aliasIds.flatMap((alias) => [
           standardTagsByLowerCase.get(alias)?.tag.label,
-          aiTagsByLowerCase.get(alias)?.tag.label,
           ...(legacyLabelOverrides.get(alias) ?? []),
         ]),
         ...(legacyLabelOverrides.get(normalizedId) ?? []),
@@ -245,21 +226,17 @@ export function getCatalogTagMetadata(
   const standardTag =
     standardTagsByLowerCase.get(normalizedId)?.tag ??
     standardTagsByLowerCase.get(originalId)?.tag;
-  const aiTag =
-    aiTagsByLowerCase.get(normalizedId)?.tag ??
-    aiTagsByLowerCase.get(originalId)?.tag;
   const serviceMetadata =
     getAzureServiceMetadata(canonicalId) ??
     getAzureServiceMetadata(id);
 
-  if (standardTag === undefined && aiTag === undefined) {
+  if (standardTag === undefined) {
     return undefined;
   }
 
   const type =
     categoryOverrides.get(normalizedId) ??
-    standardTag?.type ??
-    aiTag?.type;
+    standardTag.type;
   if (type === undefined) {
     throw new Error(
       `Catalog tag '${canonicalId}' is missing a category.`,
@@ -271,12 +248,11 @@ export function getCatalogTagMetadata(
     label:
       serviceMetadata?.label ??
       labelOverrides.get(normalizedId) ??
-      standardTag?.label ??
-      aiTag?.label ??
+      standardTag.label ??
       canonicalId,
     type,
-    url: serviceMetadata?.url ?? standardTag?.url ?? aiTag?.url,
-    description: standardTag?.description,
+    url: serviceMetadata?.url ?? standardTag.url,
+    description: standardTag.description,
     productDescription:
       serviceMetadata?.description ?? standardTag?.productDescription,
     azureIcon: serviceMetadata?.icon ?? standardTag?.azureIcon,
@@ -285,12 +261,7 @@ export function getCatalogTagMetadata(
   };
 }
 
-const sourceTagIds = [
-  ...new Set([
-    ...Object.keys(standardTagMap),
-    ...Object.keys(aiTagMap),
-  ]),
-];
+const sourceTagIds = Object.keys(standardTagMap);
 
 export const catalogTags: Readonly<
   Record<string, CatalogTagMetadata>

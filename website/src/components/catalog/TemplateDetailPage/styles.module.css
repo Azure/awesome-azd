@@ -49,22 +49,22 @@
 .repositoryMeta a,
 .byline a,
 .getStartedText a,
-.summaryValue a,
-.resourceTable a {
+.summaryValue a {
   color: var(--detail-link);
   text-decoration: underline;
   text-underline-offset: 0.18em;
 }
 
-.breadcrumb a {
+.breadcrumb .backLink {
   display: inline-flex;
   align-items: center;
   gap: 7px;
   font-weight: 500;
+  text-decoration: none;
 }
 
-.breadcrumb a:hover {
-  text-decoration: underline;
+.breadcrumb .backLink:hover {
+  text-decoration: none;
 }
 
 .layout {
@@ -137,7 +137,7 @@
 .description {
   display: block;
   max-width: 760px;
-  margin: 16px 0 0;
+  margin: 28px 0 0;
   color: var(--detail-muted);
   line-height: 1.65;
 }
@@ -147,8 +147,7 @@
 }
 
 .mediaFrame {
-  width: fit-content;
-  max-width: 100%;
+  width: 100%;
   overflow: hidden;
   border: 1px solid var(--detail-line);
   border-radius: 8px;
@@ -158,25 +157,14 @@
 .screenshot,
 .architecture {
   display: block;
-  width: auto;
+  width: 100%;
   height: auto;
-  max-width: 100%;
   background: #fff;
   object-fit: contain;
 }
 
-.screenshot {
-  max-height: 420px;
-}
-
-.architecture {
-  max-height: 460px;
-}
-
 .section {
   margin-top: 48px;
-  padding-top: 32px;
-  border-top: 1px solid var(--detail-line);
 }
 
 .sectionHeading,
@@ -188,7 +176,7 @@
 }
 
 .sectionHeading {
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
 .sidebar {
@@ -202,7 +190,7 @@
   padding: 24px;
   border-color: var(--detail-line);
   border-radius: 10px;
-  background: transparent;
+  background: var(--detail-surface);
   box-shadow: none;
 }
 
@@ -212,7 +200,7 @@
   gap: 8px;
   min-height: 48px;
   padding: 8px 8px 8px 12px;
-  border: 1px solid var(--detail-line);
+  border: 0;
   border-radius: 6px;
   background: var(--detail-command);
 }
@@ -377,6 +365,7 @@
 
 .resourceTableFrame {
   overflow-x: auto;
+  background: var(--detail-surface);
 }
 
 .resourceTable {
@@ -385,10 +374,10 @@
 }
 
 .resourceTable :global(.fui-TableHeaderCell) {
-  padding: 12px;
+  padding: 18px 20px;
   background: var(--detail-subtle);
   color: var(--detail-ink);
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   font-weight: 600;
 }
 
@@ -398,7 +387,7 @@
 }
 
 .resourceTable :global(.fui-TableCell) {
-  padding: 16px 12px;
+  padding: 20px;
   border-bottom: 1px solid var(--detail-line);
   color: var(--detail-muted);
   font-size: 0.9rem;
@@ -410,19 +399,20 @@
   align-items: center;
   font-size: 1rem;
   font-weight: 500;
+  color: var(--detail-ink);
 }
 
 .resourceIcon {
   display: grid;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   place-items: center;
 }
 
 .resourceIcon img {
   grid-area: 1 / 1;
-  max-width: 32px;
-  max-height: 32px;
+  max-width: 36px;
+  max-height: 36px;
 }
 
 .darkIcon {
@@ -484,7 +474,6 @@
 
   .section {
     margin-top: 28px;
-    padding-top: 26px;
   }
 
   .resourceTable :global(.fui-TableHeaderCell:first-child),

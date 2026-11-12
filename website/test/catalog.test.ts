@@ -414,11 +414,15 @@ describe("unified catalog data", () => {
     expect(catalogTags.powershell.type).toBe("Language");
     expect(catalogTags.aisearch.type).toBe("Service");
     expect(catalogTags.rag.type).toBe("Framework");
-    expect(catalogTags.dapr.type).toBe("Framework");
+    expect(catalogTags.dapr.type).toBe("Tools");
     expect(catalogTags.aspire.type).toBe("Framework");
     expect(catalogTags.kubernetes.type).toBe("Framework");
     expect(catalogTags.prometheus.type).toBe("Tools");
     expect(catalogTags.sap.type).toBe("Tools");
+    expect(catalogTags.sapcap.type).toBe("Tools");
+    expect(catalogTags.thymeleaf.type).toBe("Tools");
+    expect(catalogTags["dall-e"].type).toBe("Tools");
+    expect(catalogTags.serverlessapi.type).toBe("Service");
     expect(catalogTags.aiapplication).toMatchObject({
       label: "AI application",
       type: "Application Type",
@@ -428,12 +432,15 @@ describe("unified catalog data", () => {
   test("stores categorized values only in their target template fields", () => {
     const targetFields = new Map([
       ["aspire", "frameworks"],
-      ["dapr", "frameworks"],
+      ["dall-e", "tags"],
+      ["dapr", "tags"],
       ["gpt", "models"],
       ["kubernetes", "frameworks"],
       ["openai", "azureServices"],
       ["powershell", "languages"],
-      ["thymeleaf", "frameworks"],
+      ["sapcap", "tags"],
+      ["serverlessapi", "tags"],
+      ["thymeleaf", "tags"],
     ]);
     const rawTemplates = templates as Array<Record<string, unknown>>;
 
@@ -477,6 +484,13 @@ describe("unified catalog data", () => {
     );
     expect(catalogTags.vmsqlserver.productDescription).toBe(
       "Migrate SQL Server workloads to the cloud at lower total cost of ownership (TCO).",
+    );
+    expect(catalogTags.azureai).toMatchObject({
+      label: "Azure AI Service",
+      url: "https://azure.microsoft.com/en-us/solutions/ai/",
+    });
+    expect(catalogTags.aifoundry.url).toBe(
+      "https://azure.microsoft.com/products/ai-foundry",
     );
   });
 

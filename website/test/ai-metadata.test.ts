@@ -7,7 +7,7 @@ import { describe, expect, test } from "@jest/globals";
 import * as fs from "fs";
 import * as path from "path";
 import templates from "../static/templates.json";
-import { Tags } from "../src/catalog/aiTags";
+import { Tags } from "../src/data/tags";
 import aiAppTemplateOverlap from "./fixtures/ai-app-template-overlap.json";
 
 const websiteRoot = path.resolve(__dirname, "..");

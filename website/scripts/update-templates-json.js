@@ -20,19 +20,24 @@ const {
 const { writeOutputs } = require("./github-output");
 
 /**
- * Load case-insensitive keys and canonical spelling from the TagType union.
+ * Load case-insensitive keys and canonical spelling from tagDefinitions.
  */
 function loadKnownTags() {
   const tagsPath = path.resolve(__dirname, "../src/data/tags.ts");
   const content = fs.readFileSync(tagsPath, "utf8");
-  const declaration = content.match(/export\s+type\s+TagType\s*=\s*([\s\S]*?);/);
+  const declaration = content.match(
+    /const\s+tagDefinitions\s*=\s*\{([\s\S]*?)^\}\s+as\s+const\s+satisfies\s+Record<string,\s*Tag>;/m
+  );
   if (!declaration) {
-    throw new Error("The TagType union is missing from tags.ts");
+    throw new Error("The tagDefinitions object is missing from tags.ts");
   }
-  const union = declaration[1].replace(/\/\*[\s\S]*?\*\/|\/\/[^\r\n]*/g, "");
-  const tags = [...union.matchAll(/"([^"]+)"/g)].map((match) => match[1]);
+  const tags = [
+    ...declaration[1].matchAll(
+      /^ {2}(?:"([^"]+)"|([A-Za-z_$][\w$]*)):\s*\{/gm
+    ),
+  ].map((match) => match[1] ?? match[2]);
   if (tags.length === 0) {
-    throw new Error("The TagType union in tags.ts contains no tags");
+    throw new Error("The tagDefinitions object in tags.ts contains no tags");
   }
   return new Map(tags.map((tag) => [tag.toLowerCase(), tag]));
 }

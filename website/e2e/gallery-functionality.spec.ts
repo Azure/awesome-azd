@@ -615,24 +615,39 @@ test.describe("Gallery functionality (deploy gate)", () => {
     ).toHaveCount(0);
   });
 
-  test("template details omit unavailable remote preview assets", async ({
+  test("template details omit preview sections after image load errors", async ({
     page,
   }) => {
+    await page.setViewportSize({ width: 1440, height: 1200 });
+    let interceptedRequests = 0;
     await page.route(
-      "https://github.com/passadis/azure-a2a-translation/images/a2a-translation-architecture.png",
-      (route) => route.abort(),
+      "**/templates/images/azure-search-openai-demo-image.png",
+      (route) => {
+        interceptedRequests += 1;
+        return route.abort();
+      },
     );
-    await page.goto("templates/passadis/azure-a2a-translation");
+    await page.goto(
+      "templates/azure-samples/azure-search-openai-demo",
+    );
 
     await expect(
       page.getByRole("heading", {
         level: 1,
-        name: "Containerized A2A Translation Service with Azure AI Translator",
+        name: "RAG chat with Azure AI Search + Python",
       }),
     ).toBeVisible();
+    await expect
+      .poll(() => interceptedRequests)
+      .toBeGreaterThan(0);
     await expect(
       page.getByRole("region", { name: "Application preview" }),
     ).toHaveCount(0);
+    await expect(
+      page.getByAltText(
+        "Architecture diagram for RAG chat with Azure AI Search + Python",
+      ),
+    ).toBeVisible();
   });
 
   test("browser Back restores the clicked card focus and scroll position", async ({

@@ -6,8 +6,8 @@
 import React, { useState } from "react";
 import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
-import { useLocation } from "@docusaurus/router";
 import useBaseUrl from "@docusaurus/useBaseUrl";
+import useIsBrowser from "@docusaurus/useIsBrowser";
 import Layout from "@theme/Layout";
 import { Select } from "@fluentui/react-components";
 import { Copy16Regular } from "@fluentui/react-icons";
@@ -99,10 +99,12 @@ function InstallCommand(): React.JSX.Element {
 }
 
 export default function StartWithCodePage(): React.JSX.Element {
-  const location = useLocation();
+  const isBrowser = useIsBrowser();
   const templatesUrl = useBaseUrl("/templates");
   const llmsUrl = useBaseUrl("/llms.txt");
-  const backUrl = `${templatesUrl}${location.search}`;
+  const backUrl = `${templatesUrl}${
+    isBrowser ? window.location.search : ""
+  }`;
 
   return (
     <>

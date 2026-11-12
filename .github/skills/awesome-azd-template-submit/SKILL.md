@@ -23,6 +23,16 @@ The user provides a repository URL and selects the best primary use case.
 Submit this web app template: https://github.com/Azure-Samples/my-ai-app
 ```
 
+Use one exact value:
+- `Build a web app`
+- `Build an API`
+- `Build an AI agent`
+- `Build an MCP server`
+- `Chat with documents`
+- `Query a database`
+- `Automate a workflow`
+- `Start with infrastructure`
+
 ## Steps
 
 ### 1. Validate the URL

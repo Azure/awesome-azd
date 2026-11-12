@@ -57,6 +57,31 @@ test.describe("Gallery functionality (deploy gate)", () => {
     expect(hydrationErrors).toEqual([]);
   });
 
+  test("start-with-code restores the catalog query in its back link", async ({
+    page,
+  }) => {
+    await page.goto("templates/start-with-code?type=ai&q=python");
+    await expect(page.locator("html")).toHaveAttribute(
+      "data-has-hydrated",
+      "true",
+    );
+
+    const backLink = page.getByRole("link", {
+      name: "← Back to templates",
+    });
+    await expect(backLink).toHaveAttribute(
+      "href",
+      /\/templates\?type=ai&q=python$/,
+    );
+    await backLink.click();
+
+    await expect(page).toHaveURL(/\/templates\?type=ai&q=python$/);
+    await expect(
+      page.getByRole("checkbox", { name: /AI application/ }),
+    ).toBeChecked();
+    await expect(page.locator("#catalog-search")).toHaveValue("python");
+  });
+
   test("legacy tags and authors still narrow the unified catalog", async ({
     page,
   }) => {

@@ -63,7 +63,7 @@
 .heroSubtext {
   max-width: 260px;
   margin: 0;
-  color: var(--catalog-text);
+  color: var(--catalog-muted);
   font-size: 0.75rem;
   line-height: 1.6;
   text-align: right;
@@ -72,19 +72,23 @@
 .docsLink.docsLink {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 4px;
-  padding: 0;
-  border: 0;
+  min-height: 40px;
+  padding: 8px 16px;
+  border: 1px solid var(--catalog-blue);
+  border-radius: 8px;
+  background: transparent;
   color: var(--catalog-blue);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  line-height: 1.4;
   text-decoration: none;
 }
 
 .docsLink:hover {
+  background: var(--colorBrandBackground2, #ebf3fc);
   color: var(--catalog-blue);
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .docsLink svg {

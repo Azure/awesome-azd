@@ -8,6 +8,7 @@ import useIsBrowser from "@docusaurus/useIsBrowser";
 import ShowcaseLeftFilters from "../ShowcaseLeftFilters";
 import ShowcaseTemplateSearch from "../ShowcaseTemplateSearch";
 import {
+  Button,
   type DropdownProps,
 } from "@fluentui/react-components";
 import SiteFluentProvider from "../../SiteFluentProvider";
@@ -35,6 +36,7 @@ const extensionTags = [
 
 export default function GalleryPage(): React.JSX.Element | null {
   const isBrowser = useIsBrowser();
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [activeTags, setActiveTags] =
     useState<TagType[]>(extensionTags);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([
@@ -54,6 +56,7 @@ export default function GalleryPage(): React.JSX.Element | null {
     () => readSearchAuthors(hydrationSafeSearch),
     [hydrationSafeSearch],
   );
+  const activeFilterCount = selectedTags.length + selectedAuthors.length;
   useEffect(() => {
     if (
       isBrowser &&
@@ -81,9 +84,26 @@ export default function GalleryPage(): React.JSX.Element | null {
           selectedOptions={selectedOptions}
           onSortSelect={sortByOnSelect}
         />
+        <div className={styles.mobileFilterBar}>
+          <Button
+            className={styles.mobileFilters}
+            appearance="outline"
+            size="small"
+            aria-controls="extension-filters"
+            aria-expanded={mobileFiltersOpen}
+            onClick={() => {
+              setMobileFiltersOpen((open) => !open);
+            }}
+          >
+            Filters
+            {activeFilterCount > 0 ? ` (${activeFilterCount})` : ""}
+          </Button>
+        </div>
         <div className={styles.filterAndCard}>
           <div
+            id="extension-filters"
             className={styles.filter}
+            data-open={mobileFiltersOpen}
             data-testid="extension-filter-panel"
           >
             <ShowcaseLeftFilters

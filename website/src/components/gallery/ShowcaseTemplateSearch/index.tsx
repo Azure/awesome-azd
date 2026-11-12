@@ -3,12 +3,10 @@
  * Licensed under the MIT License.
  */
 
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import Link from "@docusaurus/Link";
 import { useHistory, useLocation } from "@docusaurus/router";
-import {
-  Link as FluentUILink,
-  SearchBox,
-} from "@fluentui/react-components";
+import { SearchBox } from "@fluentui/react-components";
 import { Open16Regular } from "@fluentui/react-icons";
 import { captureGalleryNavigationState } from "@site/src/utils/galleryNavigation";
 import { readSearchName, replaceSearchName } from "@site/src/utils/galleryQuery";
@@ -18,9 +16,12 @@ export function GallerySearchBox(): React.JSX.Element {
   const history = useHistory();
   const location = useLocation();
   const [value, setValue] = useState<string | null>(null);
+  const valueRef = useRef("");
 
   useEffect(() => {
-    setValue(readSearchName(location.search));
+    const searchValue = readSearchName(location.search);
+    valueRef.current = searchValue ?? "";
+    setValue(searchValue);
   }, [location.search]);
 
   const submitSearch = useCallback(
@@ -40,7 +41,7 @@ export function GallerySearchBox(): React.JSX.Element {
       role="search"
       onSubmit={(event) => {
         event.preventDefault();
-        submitSearch(value ?? "");
+        submitSearch(valueRef.current);
       }}
     >
       <SearchBox
@@ -49,11 +50,12 @@ export function GallerySearchBox(): React.JSX.Element {
         appearance="outline"
         size="medium"
         value={value ?? ""}
-        placeholder="Search for an azd extension, capability, or author..."
+        placeholder="Search extensions by name, capability, or author"
         aria-label="Search extensions"
         autoComplete="off"
         dismiss={value ? { "aria-label": "Clear search" } : null}
         onChange={(_event, data) => {
+          valueRef.current = data.value;
           setValue(data.value);
           if (!data.value && readSearchName(location.search)) {
             submitSearch("");
@@ -79,15 +81,15 @@ export default function ShowcaseTemplateSearch(): React.JSX.Element {
             Extensions add new commands, lifecycle hooks, and capabilities to
             azd.
           </p>
-          <FluentUILink
-            href="https://learn.microsoft.com/azure/developer/azure-developer-cli/extensions/overview"
+          <Link
+            to="https://learn.microsoft.com/azure/developer/azure-developer-cli/extensions/overview"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.docsLink}
           >
             Explore extension docs
             <Open16Regular aria-hidden="true" />
-          </FluentUILink>
+          </Link>
         </div>
       </div>
     </section>

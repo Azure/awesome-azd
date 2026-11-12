@@ -70,7 +70,9 @@ test.describe("Gallery card layout", () => {
     await expect(heading.locator("span")).toHaveCount(0);
     await expect(docsLink).toBeVisible();
     await expect(docsLink).toHaveCSS("display", "flex");
-    await expect(docsLink).toHaveCSS("border-top-width", "0px");
+    await expect(docsLink).toHaveCSS("min-height", "40px");
+    await expect(docsLink).toHaveCSS("border-top-width", "1px");
+    await expect(docsLink).toHaveCSS("border-radius", "8px");
     await expect(docsLink.locator("svg")).toBeVisible();
     expect(
       await docsLink.evaluate((element) => {
@@ -89,15 +91,19 @@ test.describe("Gallery card layout", () => {
     ).toBeLessThan(1);
     await expect(page.locator(".fui-FluentProvider")).toBeVisible();
 
-    const search = page.getByPlaceholder(
-      "Search for an azd extension, capability, or author...",
-    );
+    const search = page.getByRole("searchbox", {
+      name: "Search extensions",
+    });
     const searchControl = page.locator(".fui-SearchBox").filter({
       has: search,
     });
     const sortLabel = page.getByText("Sort by", { exact: true });
     const sort = page.getByRole("combobox", { name: "Sort by" });
     await expect(search).toBeVisible();
+    await expect(search).toHaveAttribute(
+      "placeholder",
+      "Search extensions by name, capability, or author",
+    );
     await expect(sort).toBeVisible();
     expect(
       await search.evaluate(
@@ -179,9 +185,27 @@ test.describe("Gallery card layout", () => {
 
     await page.setViewportSize({ width: 1100, height: 1000 });
     await expect.poll(columnCount).toBe(2);
+    await expect(filterPanel).toHaveCSS("width", "220px");
+
+    await page.setViewportSize({ width: 900, height: 1000 });
+    await expect.poll(columnCount).toBe(2);
+    const [tabletFilterBox, tabletGridBox] = await Promise.all([
+      filterPanel.boundingBox(),
+      grid.boundingBox(),
+    ]);
+    expect(tabletFilterBox).not.toBeNull();
+    expect(tabletGridBox).not.toBeNull();
+    expect(tabletFilterBox!.x).toBeLessThan(tabletGridBox!.x);
 
     await page.setViewportSize({ width: 560, height: 1000 });
     await expect.poll(columnCount).toBe(1);
+    const mobileFilters = page.getByRole("button", { name: "Filters" });
+    await expect(mobileFilters).toBeVisible();
+    await expect(mobileFilters).toHaveAttribute("aria-expanded", "false");
+    await expect(filterPanel).toBeHidden();
+    await mobileFilters.click();
+    await expect(mobileFilters).toHaveAttribute("aria-expanded", "true");
+    await expect(filterPanel).toBeVisible();
   });
 
   test("extension results use the templates page width", async ({ page }) => {
@@ -417,10 +441,14 @@ test.describe("Gallery card layout", () => {
 
   test("Fluent v9 extension search submits and clears", async ({ page }) => {
     await page.goto("extensions");
-
-    const search = page.getByPlaceholder(
-      "Search for an azd extension, capability, or author...",
+    await expect(page.locator("html")).toHaveAttribute(
+      "data-has-hydrated",
+      "true",
     );
+
+    const search = page.getByRole("searchbox", {
+      name: "Search extensions",
+    });
     await search.fill("Concurx");
     await search.press("Enter");
 
@@ -440,10 +468,14 @@ test.describe("Gallery card layout", () => {
     page,
   }) => {
     await page.goto("extensions");
-
-    const search = page.getByPlaceholder(
-      "Search for an azd extension, capability, or author...",
+    await expect(page.locator("html")).toHaveAttribute(
+      "data-has-hydrated",
+      "true",
     );
+
+    const search = page.getByRole("searchbox", {
+      name: "Search extensions",
+    });
     await search.fill("zzzznonexistentextension");
     await search.press("Enter");
 

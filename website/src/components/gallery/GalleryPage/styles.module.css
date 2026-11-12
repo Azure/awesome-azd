@@ -13,7 +13,7 @@
   min-height: 100vh;
   background: var(--catalog-bg);
   color: var(--catalog-text);
-  font-size: 0.88rem;
+  font-size: 0.94rem;
 }
 
 .fluentProvider {
@@ -37,6 +37,20 @@
   background: var(--catalog-surface);
 }
 
+.mobileFilterBar {
+  display: none;
+}
+
+.mobileFilters {
+  min-height: 36px;
+  padding: 7px 12px;
+  border: 1px solid var(--catalog-border);
+  border-radius: 6px;
+  background: var(--catalog-surface);
+  color: var(--catalog-text);
+  font-size: 0.78rem;
+}
+
 .card {
   min-width: 0;
   container-name: extension-results;
@@ -50,15 +64,11 @@
   }
 }
 
-@media (max-width: 996px) {
+@media (max-width: 1150px) {
   .filterAndCard {
-    grid-template-columns: 1fr;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 28px;
   }
-
-  .filter {
-    width: 100%;
-  }
-
 }
 
 @media (max-width: 900px) {
@@ -68,8 +78,25 @@
 }
 
 @media (max-width: 640px) {
-  .filterAndCard {
+  .mobileFilterBar {
+    display: block;
     width: calc(100% - 40px);
-    padding-bottom: 36px;
+    margin: 0 auto;
+  }
+
+  .filterAndCard {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    width: calc(100% - 40px);
+    padding: 12px 0 36px;
+  }
+
+  .filter {
+    display: none;
+    width: 100%;
+  }
+
+  .filter[data-open="true"] {
+    display: block;
   }
 }

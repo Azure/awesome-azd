@@ -91,9 +91,7 @@ test.describe("Gallery functionality (deploy gate)", () => {
       page.getByRole("heading", { level: 1, name: "Extension Gallery" }),
     ).toBeVisible();
     await expect(
-      page.getByPlaceholder(
-        "Search for an azd extension, capability, or author...",
-      ),
+      page.getByRole("searchbox", { name: "Search extensions" }),
     ).toHaveValue("azure");
   });
 

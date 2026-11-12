@@ -230,6 +230,29 @@ describe("unified catalog query", () => {
     expect(serializeCatalogState(state)).toBe("type=ai");
   });
 
+  test("translates the legacy AI collection tag without dropping other filters", () => {
+    const state = parseCatalogState(
+      "?tags=aicollection&tags=python",
+      catalogTemplates,
+    );
+    const matches = getMatchingCatalogTemplates(
+      catalogTemplates,
+      state,
+    );
+
+    expect(state.types).toEqual(["ai"]);
+    expect(state.legacyTags).toEqual(["python"]);
+    expect(state.unavailable).toEqual([]);
+    expect(matches.length).toBeGreaterThan(0);
+    expect(
+      matches.every(
+        (template) =>
+          template.isAi && template.legacyTags.includes("python"),
+      ),
+    ).toBe(true);
+    expect(serializeCatalogState(state)).toBe("type=ai&tags=python");
+  });
+
   test("lists Microsoft before Community in the authorship filter", () => {
     const authorshipFacet = catalogFacets.find(
       (facet) => facet.key === "authorship",

@@ -203,10 +203,17 @@ export function parseCatalogState(
 
   for (const facet of catalogFacets) {
     const allowed = getFacetOptions(records, facet);
-    const requested = [facet.param, ...(facet.legacyParams ?? [])]
+    let requested = [facet.param, ...(facet.legacyParams ?? [])]
       .flatMap((param) => query.getAll(param))
       .flatMap((value) => value.split(","))
       .filter(Boolean);
+    if (
+      facet.key === "legacyTags" &&
+      requested.includes("aicollection")
+    ) {
+      state.types = [...new Set([...state.types, "ai"])];
+      requested = requested.filter((value) => value !== "aicollection");
+    }
     state[facet.key] = [
       ...new Set(requested.filter((value) => allowed.includes(value))),
     ];

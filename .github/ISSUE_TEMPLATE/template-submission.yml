@@ -6,8 +6,8 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for submitting your azd template! Just provide the repository URL below.
-        Most fields are **auto-detected** from your repo — only fill them in if you want to override the detected values.
+        Thanks for submitting your azd template! Provide the repository URL and choose its primary use case.
+        Other metadata is **auto-detected** from your repo — only fill it in if you want to override the detected values.
 
   - type: input
     id: source-repo
@@ -15,6 +15,23 @@ body:
       label: "Source Repository"
       description: "GitHub repository URL for your template (we'll auto-detect the rest!)"
       placeholder: "https://github.com/org/repo"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: primary-use-case
+    attributes:
+      label: "Primary Use Case"
+      description: "Choose the best initial catalog classification. Maintainers can add more during review."
+      options:
+        - Build a web app
+        - Build an API
+        - Build an AI agent
+        - Build an MCP server
+        - Chat with documents
+        - Query a database
+        - Automate a workflow
+        - Start with infrastructure
     validations:
       required: true
 

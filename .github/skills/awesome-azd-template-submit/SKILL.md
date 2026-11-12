@@ -3,23 +3,24 @@ name: awesome-azd-template-submit
 description: >-
   Submit or retire an azd template in the awesome-azd gallery. Use when asked to
   submit, add, contribute, remove, retire, or clean up a template in
-  awesome-azd. New submissions require only a GitHub repository URL — all
-  metadata (title, description, languages, frameworks, Azure services, IaC) is
-  auto-detected by the submission pipeline.
+  awesome-azd. New submissions require a GitHub repository URL and primary use
+  case; other metadata (title, description, languages, frameworks, Azure
+  services, IaC) is auto-detected by the submission pipeline.
 ---
 
 # Awesome AZD Template Submission
 
 You submit azd templates to the awesome-azd gallery by filing a GitHub issue
-that triggers the automated submission pipeline. Given a repository URL, you
-create the issue — everything else is auto-detected from the repository.
+that triggers the automated submission pipeline. Given a repository URL and
+primary use case, you create the issue; other metadata is auto-detected from
+the repository.
 
 ## Usage
 
-The user provides a repository URL. That's it.
+The user provides a repository URL and selects the best primary use case.
 
 ```
-Submit this template: https://github.com/Azure-Samples/my-ai-app
+Submit this web app template: https://github.com/Azure-Samples/my-ai-app
 ```
 
 ## Steps
@@ -36,8 +37,8 @@ Parse `{owner}/{repo}` from the URL to use in the issue title.
 
 ### 3. Confirm with the user
 
-Show the user the issue title and source URL. This is a write operation —
-require explicit approval before executing `gh issue create`.
+Show the user the issue title, source URL, and primary use case. This is a
+write operation — require explicit approval before executing `gh issue create`.
 
 ### 4. File the issue
 
@@ -45,9 +46,9 @@ Use the GitHub CLI to create an issue in the `Azure/awesome-azd` repository.
 The issue body must use `### Heading` format matching the issue form fields so
 the automated parser can extract the values.
 
-Only the **Source Repository** field is required. All other fields are
-auto-detected by the pipeline. Do NOT fill in optional fields unless the user
-explicitly provides overrides.
+The **Source Repository** and **Primary Use Case** fields are required. Other
+fields are auto-detected by the pipeline. Do NOT fill in optional fields unless
+the user explicitly provides overrides.
 
 For author attribution, use the source repository owner as the default author.
 Use their GitHub profile as the author URL unless the submitter explicitly
@@ -60,6 +61,10 @@ gh issue create \
   --body "### Source Repository
 
 {url}
+
+### Primary Use Case
+
+{primary-use-case}
 
 ### Template Title
 

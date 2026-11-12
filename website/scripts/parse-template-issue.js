@@ -59,6 +59,7 @@ function parseIssueBody({ eventName, issueBody, inputs }) {
 
   const FIELD_MAP = [
     ["source_repo", "Source Repository"],
+    ["primary_use_case", "Primary Use Case"],
     ["template_title", "Template Title"],
     ["description", "Description"],
     ["author", "Author"],
@@ -83,8 +84,9 @@ function parseIssueBody({ eventName, issueBody, inputs }) {
     }
   }
 
-  // Only the repository URL is required — the rest can be auto-extracted.
-  const required = ["source_repo"];
+  // Metadata can be auto-extracted, but catalog use cases require reviewable
+  // human input.
+  const required = ["source_repo", "primary_use_case"];
   const missing = required.filter((k) => !fields[k]);
   if (missing.length > 0) {
     return {
@@ -109,6 +111,7 @@ if (require.main === module) {
     issueBody: process.env.ISSUE_BODY,
     inputs: {
       source_repo: process.env.INPUT_SOURCE_REPO,
+      primary_use_case: process.env.INPUT_PRIMARY_USE_CASE,
       template_title: process.env.INPUT_TEMPLATE_TITLE,
       description: process.env.INPUT_DESCRIPTION,
       author: process.env.INPUT_AUTHOR,

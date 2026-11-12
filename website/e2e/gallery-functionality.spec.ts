@@ -66,6 +66,17 @@ test.describe("Gallery functionality (deploy gate)", () => {
     await expect.poll(() => resultCount(page)).toBeLessThan(initial);
     expect(await resultCount(page)).toBeGreaterThan(0);
 
+    await page.goto("templates?type=ai");
+    await expect(
+      page.getByRole("checkbox", { name: /AI application/ }),
+    ).toBeChecked();
+    const aiCount = await resultCount(page);
+    await page.goto("templates?tags=aicollection");
+    await expect(
+      page.getByRole("checkbox", { name: /AI application/ }),
+    ).toBeChecked();
+    await expect.poll(() => resultCount(page)).toBe(aiCount);
+
     await page.goto("templates?authors=Microsoft");
     await expect.poll(() => resultCount(page)).toBeLessThan(initial);
     expect(await resultCount(page)).toBeGreaterThan(0);

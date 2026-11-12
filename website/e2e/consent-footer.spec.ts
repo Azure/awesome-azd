@@ -36,7 +36,9 @@ async function navigateToGallery(page: Page, name: string) {
     );
   } else {
     await expect(
-      page.getByRole("status").filter({ hasText: /^Viewing/ }),
+      page
+        .getByRole("status")
+        .filter({ hasText: /^\d+–\d+ of \d+ extensions$/ }),
     ).toContainText(name.toLowerCase());
   }
 }

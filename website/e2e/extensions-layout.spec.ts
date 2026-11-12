@@ -175,13 +175,48 @@ test.describe("Gallery card layout", () => {
     expect(await columnCount()).toBe(3);
 
     await page.setViewportSize({ width: 2048, height: 1000 });
-    await expect.poll(columnCount).toBe(5);
+    await expect.poll(columnCount).toBe(3);
 
     await page.setViewportSize({ width: 1100, height: 1000 });
     await expect.poll(columnCount).toBe(2);
 
     await page.setViewportSize({ width: 560, height: 1000 });
     await expect.poll(columnCount).toBe(1);
+  });
+
+  test("extension results use the templates page width", async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    await page.goto("extensions");
+
+    const extensionFilter = page.getByTestId("extension-filter-panel");
+    const extensionGrid = page.getByTestId("showcase-list");
+    const [extensionFilterBox, extensionGridBox] = await Promise.all([
+      extensionFilter.boundingBox(),
+      extensionGrid.boundingBox(),
+    ]);
+
+    await page.goto("templates");
+    const templateFilter = page.getByLabel("Template filters");
+    const templateGrid = page.getByTestId("template-results");
+    const [templateFilterBox, templateGridBox] = await Promise.all([
+      templateFilter.boundingBox(),
+      templateGrid.boundingBox(),
+    ]);
+
+    expect(extensionFilterBox).not.toBeNull();
+    expect(extensionGridBox).not.toBeNull();
+    expect(templateFilterBox).not.toBeNull();
+    expect(templateGridBox).not.toBeNull();
+    expect(
+      Math.abs(extensionFilterBox!.x - templateFilterBox!.x),
+    ).toBeLessThan(2);
+    expect(
+      Math.abs(
+        extensionGridBox!.x +
+          extensionGridBox!.width -
+          (templateGridBox!.x + templateGridBox!.width),
+      ),
+    ).toBeLessThan(2);
   });
 
   test("extension cards use the templates card treatment", async ({ page }) => {

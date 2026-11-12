@@ -24,7 +24,7 @@
   display: grid;
   grid-template-columns: 240px minmax(0, 1fr);
   gap: 20px;
-  width: min(1920px, calc(100% - 128px));
+  width: min(1280px, calc(100% - 128px));
   margin: 0 auto;
   padding: 0 0 48px;
 }
@@ -53,7 +53,6 @@
 @media (max-width: 996px) {
   .filterAndCard {
     grid-template-columns: 1fr;
-    width: calc(100% - 40px);
   }
 
   .filter {
@@ -62,9 +61,15 @@
 
 }
 
+@media (max-width: 900px) {
+  .filterAndCard {
+    width: calc(100% - 48px);
+  }
+}
+
 @media (max-width: 640px) {
   .filterAndCard {
-    width: calc(100% - 28px);
+    width: calc(100% - 40px);
     padding-bottom: 36px;
   }
 }

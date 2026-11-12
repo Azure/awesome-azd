@@ -569,7 +569,7 @@ export default function CatalogPage(): React.JSX.Element {
                     size="medium"
                     aria-label="Search templates"
                     value={searchValue}
-                    placeholder="Describe the app you want to build or search with keywords"
+                    placeholder="Search templates by name, service, language, or framework"
                     autoComplete="off"
                     dismiss={
                       searchValue

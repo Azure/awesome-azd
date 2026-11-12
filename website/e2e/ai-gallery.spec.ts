@@ -204,7 +204,7 @@ test.describe("Unified AI app templates catalog", () => {
     await openAiGallery(page);
 
     const searchBox = page.getByPlaceholder(
-      "Describe the app you want to build or search with keywords",
+      "Search templates by name, service, language, or framework",
     );
     for (const query of [
       "VoiceRAG",

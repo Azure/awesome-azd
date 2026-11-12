@@ -8,7 +8,7 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
-  width: min(1920px, calc(100% - 128px));
+  width: min(1280px, calc(100% - 128px));
   margin: 12px auto 16px;
 }
 
@@ -56,9 +56,9 @@
   font-size: 0.74rem;
 }
 
-@media (max-width: 996px) {
+@media (max-width: 900px) {
   .discoveryBar {
-    width: calc(100% - 40px);
+    width: calc(100% - 48px);
   }
 }
 
@@ -80,6 +80,6 @@
 
 @media (max-width: 640px) {
   .discoveryBar {
-    width: calc(100% - 28px);
+    width: calc(100% - 40px);
   }
 }

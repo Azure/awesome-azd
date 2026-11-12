@@ -9,7 +9,7 @@
 }
 
 .page {
-  --detail-background: #fcfcf9;
+  --detail-background: #fafafa;
   --detail-surface: #fff;
   --detail-subtle: #f0f2ee;
   --detail-command: #f5f5f2;
@@ -164,19 +164,18 @@
 }
 
 .section {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
   margin-top: 48px;
 }
 
-.sectionHeading,
-.sideHeading {
+.sectionHeading.sectionHeading,
+.sideHeading.sideHeading {
   display: block;
   margin: 0;
   color: var(--detail-ink);
   letter-spacing: -0.015em;
-}
-
-.sectionHeading {
-  margin-bottom: 28px;
 }
 
 .sidebar {
@@ -185,13 +184,21 @@
   gap: 16px;
 }
 
-.sideCard {
+.sideCard.sideCard {
   gap: 18px;
   padding: 24px;
   border-color: var(--detail-line);
   border-radius: 10px;
-  background: var(--detail-surface);
+  background: var(--detail-background);
   box-shadow: none;
+}
+
+.sideCard.getStartedCard {
+  background: #fff;
+}
+
+:global([data-theme="dark"]) .sideCard.getStartedCard {
+  background: var(--detail-surface);
 }
 
 .command {
@@ -200,7 +207,7 @@
   gap: 8px;
   min-height: 48px;
   padding: 8px 8px 8px 12px;
-  border: 0;
+  border: 1px solid var(--detail-line);
   border-radius: 6px;
   background: var(--detail-command);
 }
@@ -209,7 +216,11 @@
   min-width: 0;
   flex: 1;
   overflow-x: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
   background: transparent;
+  box-shadow: none;
   color: var(--detail-ink);
   font-size: 0.76rem;
   white-space: nowrap;
@@ -365,7 +376,7 @@
 
 .resourceTableFrame {
   overflow-x: auto;
-  background: var(--detail-surface);
+  background: var(--detail-background);
 }
 
 .resourceTable {
@@ -462,7 +473,7 @@
     gap: 14px;
   }
 
-  .sideCard {
+  .sideCard.sideCard {
     padding: 20px;
   }
 }

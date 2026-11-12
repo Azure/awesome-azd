@@ -291,7 +291,7 @@ function GetStartedCard({
   return (
     <Card
       appearance="outline"
-      className={styles.sideCard}
+      className={`${styles.sideCard} ${styles.getStartedCard}`}
       aria-labelledby="get-started-heading"
     >
       <Text

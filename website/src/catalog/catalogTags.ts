@@ -109,7 +109,7 @@ const categoryOverrides = new Map<string, string>([
   ["sapcap", "Tools"],
   ["serverlessapi", "Service"],
   ["thymeleaf", "Tools"],
-  ["webapps", "Topic"],
+  ["webapps", "Service"],
 ]);
 
 const labelOverrides = new Map<string, string>([

@@ -62,13 +62,13 @@ export const azureServiceMetadata: Record<
     label: "Azure AI Service",
     description:
       "Build cutting-edge, market-ready AI applications with customizable tools, APIs, and models.",
-    url: "https://azure.microsoft.com/en-us/solutions/ai/",
+    url: "https://azure.microsoft.com/solutions/ai/",
   },
   azureaiservice: {
     label: "Azure AI Service",
     description:
       "Build cutting-edge, market-ready AI applications with customizable tools, APIs, and models.",
-    url: "https://azure.microsoft.com/en-us/solutions/ai/",
+    url: "https://azure.microsoft.com/solutions/ai/",
   },
   azureappconfig: {
     description: "Fast, scalable parameter storage for app configuration.",
@@ -100,7 +100,7 @@ export const azureServiceMetadata: Record<
     label: "Azure SignalR Service",
     description: "Add real-time web functionalities easily.",
     icon: "./img/Azure-SignalR.svg",
-    url: "https://azure.microsoft.com/en-us/products/signalr-service/",
+    url: "https://azure.microsoft.com/products/signalr-service/",
   },
   azurespringapps: {
     label: "Azure Spring Apps",

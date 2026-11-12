@@ -275,18 +275,22 @@ describe("updateTemplatesJson", () => {
     expect(templates[1].tags).toEqual(["community", "new"]);
   });
 
-  test("uses empty preview when none provided", () => {
+  test("omits architecture diagram when none is provided", () => {
     updateTemplatesJson(defaultOpts());
     const templates = readTemplates();
-    expect(templates[1].preview).toBe("");
+    expect(templates[1].architectureDiagram).toBeUndefined();
+    expect(templates[1].preview).toBeUndefined();
   });
 
-  test("uses provided preview image", () => {
+  test("stores the provided preview image as an architecture diagram", () => {
     const opts = defaultOpts();
     opts.previewImage = "https://example.com/img.png";
     updateTemplatesJson(opts);
     const templates = readTemplates();
-    expect(templates[1].preview).toBe("https://example.com/img.png");
+    expect(templates[1].architectureDiagram).toBe(
+      "https://example.com/img.png",
+    );
+    expect(templates[1].preview).toBeUndefined();
   });
 
   test("includes optional tag arrays only when non-empty", () => {
@@ -382,16 +386,17 @@ describe("updateTemplatesJson", () => {
     expect(result.skipped).toBe(false);
     const templates = readTemplates();
     const entry = templates[templates.length - 1];
-    expect(entry.preview).not.toContain("\u200E");
-    expect(entry.preview).toContain("img.png");
+    expect(entry.architectureDiagram).not.toContain("\u200E");
+    expect(entry.architectureDiagram).toContain("img.png");
   });
 
-  test("preview field is empty string when previewImage is empty", () => {
+  test("media fields are absent when previewImage is empty", () => {
     const result = updateTemplatesJson(defaultOpts());
     expect(result.skipped).toBe(false);
     const templates = readTemplates();
     const entry = templates[templates.length - 1];
-    expect(entry.preview).toBe("");
+    expect(entry.preview).toBeUndefined();
+    expect(entry.architectureDiagram).toBeUndefined();
   });
 
   // --- Duplicate bypass via sub-path URL (hack fix) ---

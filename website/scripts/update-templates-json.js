@@ -173,7 +173,7 @@ function updateTemplatesJson({
   validateUrl(sourceRepo, "Source repo");
   if (!authorUrl) throw new Error("Author URL is required");
   validateUrl(authorUrl, "Author");
-  if (previewImage) validateUrl(previewImage, "Preview image");
+  if (previewImage) validateUrl(previewImage, "Architecture diagram");
 
   const resolvedPath =
     templatesPath || path.join("website", "static", "templates.json");
@@ -217,7 +217,6 @@ function updateTemplatesJson({
   const entry = {
     title: _sanitize(title, 200),
     description: _sanitize(description, 500),
-    preview: previewImage ? _sanitize(previewImage, 500) : "",
     authorUrl: _sanitize(authorUrl, 500),
     author: _sanitize(author, 100),
     source: canonicalSource,
@@ -226,6 +225,9 @@ function updateTemplatesJson({
     id: generateId(),
   };
 
+  if (previewImage) {
+    entry.architectureDiagram = _sanitize(previewImage, 500);
+  }
   if (languages.length > 0) entry.languages = languages;
   if (frameworks.length > 0) entry.frameworks = frameworks;
   if (azureServices.length > 0) entry.azureServices = azureServices;

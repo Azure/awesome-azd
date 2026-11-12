@@ -419,7 +419,7 @@ const tagDefinitions = {
   webapps: {
     label: "Web Apps",
     description: "Template architecture uses Web Apps",
-    type: "Topic",
+    type: "Service",
   },
   serverlessapi: {
     label: "Serverless API",
@@ -529,7 +529,7 @@ const tagDefinitions = {
     label: "Azure AI Service",
     description: "Template architecture uses Azure AI services",
     azureIcon: "./img/Azure-AI-Service.svg",
-    url: "https://azure.microsoft.com/en-us/solutions/ai/",
+    url: "https://azure.microsoft.com/solutions/ai/",
     type: "Service",
   },
   speechservice: {
@@ -613,7 +613,7 @@ const tagDefinitions = {
     label: "Azure SignalR Service",
     description: "Template architecture uses Azure SignalR Service",
     azureIcon: "./img/Azure-SignalR.svg",
-    url: "https://azure.microsoft.com/en-us/products/signalr-service/",
+    url: "https://azure.microsoft.com/products/signalr-service/",
     type: "Service",
   },
   azurestorage: {
@@ -1111,7 +1111,7 @@ const tagDefinitions = {
   "azureaiservice": {
     "label": "Azure AI Service",
     "type": "Service",
-    "url": "https://azure.microsoft.com/en-us/solutions/ai/"
+    "url": "https://azure.microsoft.com/solutions/ai/"
   },
   "azurespringapps": {
     "label": "Azure Spring Apps",

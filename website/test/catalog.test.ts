@@ -181,20 +181,42 @@ describe("unified catalog data", () => {
     ).toEqual(["terraform"]);
   });
 
-  test("preserves legacy preview images in the unified view model", () => {
+  test("derives card previews from non-AI architecture diagrams", () => {
     const rawTemplate = templates.find(
       (template) =>
-        typeof template.preview === "string" && template.preview.length > 0,
+        !template.tags?.includes("aiapplication") &&
+        typeof template.architectureDiagram === "string" &&
+        template.architectureDiagram.length > 0,
     );
     if (!rawTemplate) {
-      throw new Error("Expected a template with a legacy preview image.");
+      throw new Error(
+        "Expected a non-AI template with an architecture diagram.",
+      );
     }
 
+    expect(rawTemplate.preview).toBeUndefined();
     expect(
       catalogTemplates.find(
         (template) => template.source === rawTemplate.source,
       )?.preview,
-    ).toBe(rawTemplate.preview);
+    ).toBe(rawTemplate.architectureDiagram);
+  });
+
+  test("stores non-AI detail media as architecture metadata", () => {
+    const nonAiTemplates = templates.filter(
+      (template) => !template.tags?.includes("aiapplication"),
+    );
+
+    expect(
+      nonAiTemplates.filter((template) => template.preview !== undefined),
+    ).toEqual([]);
+    expect(
+      templates.filter(
+        (template) =>
+          template.preview === "./templates/images/test.png" ||
+          template.architectureDiagram === "./templates/images/test.png",
+      ),
+    ).toEqual([]);
   });
 
   test("omits unavailable local detail assets", () => {
@@ -423,6 +445,7 @@ describe("unified catalog data", () => {
     expect(catalogTags.thymeleaf.type).toBe("Tools");
     expect(catalogTags["dall-e"].type).toBe("Tools");
     expect(catalogTags.serverlessapi.type).toBe("Service");
+    expect(catalogTags.webapps.type).toBe("Service");
     expect(catalogTags.aiapplication).toMatchObject({
       label: "AI application",
       type: "Application Type",
@@ -487,8 +510,11 @@ describe("unified catalog data", () => {
     );
     expect(catalogTags.azureai).toMatchObject({
       label: "Azure AI Service",
-      url: "https://azure.microsoft.com/en-us/solutions/ai/",
+      url: "https://azure.microsoft.com/solutions/ai/",
     });
+    expect(catalogTags.azuresignalr.url).toBe(
+      "https://azure.microsoft.com/products/signalr-service/",
+    );
     expect(catalogTags.aifoundry.url).toBe(
       "https://azure.microsoft.com/products/ai-foundry",
     );

@@ -154,7 +154,9 @@ test.describe("Gallery functionality (deploy gate)", () => {
     });
   }
 
-  test("service cards preserve legacy preview images", async ({ page }) => {
+  test("service cards preserve migrated architecture images", async ({
+    page,
+  }) => {
     await page.goto("services/container-apps");
 
     await expect(
@@ -403,7 +405,7 @@ test.describe("Gallery functionality (deploy gate)", () => {
     const main = page.locator("main").first();
     await expect(main).toHaveCSS(
       "background-color",
-      "rgb(252, 252, 249)",
+      "rgb(250, 250, 250)",
     );
     const sidebar = page.locator("aside");
     await expect(sidebar).toHaveCSS("position", "static");
@@ -422,7 +424,18 @@ test.describe("Gallery functionality (deploy gate)", () => {
     const cardBackground = await getStartedCard.evaluate(
       (element) => getComputedStyle(element).backgroundColor,
     );
+    expect(cardBackground).toBe("rgb(255, 255, 255)");
     expect(cardBackground).not.toBe(mainBackground);
+    const summaryCard = page
+      .getByRole("heading", {
+        level: 2,
+        name: "Summary",
+      })
+      .locator("..");
+    await expect(summaryCard).toHaveCSS(
+      "background-color",
+      mainBackground,
+    );
 
     await expect(
       page.locator("header p").filter({
@@ -455,18 +468,20 @@ test.describe("Gallery functionality (deploy gate)", () => {
       expect(imageBounds!.width).toBeCloseTo(frameBounds!.width - 2, 0);
     }
 
-    await expect(
-      page.getByRole("heading", {
+    for (const headingName of [
+      "Architecture",
+      "Resources included",
+    ]) {
+      const heading = page.getByRole("heading", {
         level: 2,
-        name: "Architecture",
-      }),
-    ).toHaveCSS("margin-bottom", "28px");
-    await expect(
-      page.getByRole("heading", {
-        level: 2,
-        name: "Resources included",
-      }),
-    ).toHaveCSS("margin-bottom", "28px");
+        name: headingName,
+      });
+      await expect(heading).toHaveCSS("display", "block");
+      await expect(heading.locator("..")).toHaveCSS(
+        "row-gap",
+        "28px",
+      );
+    }
 
     const command = page.locator("code", {
       hasText:
@@ -474,8 +489,9 @@ test.describe("Gallery functionality (deploy gate)", () => {
     });
     await expect(command.locator("..")).toHaveCSS(
       "border-top-width",
-      "0px",
+      "1px",
     );
+    await expect(command).toHaveCSS("border-top-width", "0px");
     await expect(command.locator("span")).toHaveCount(3);
     await expect(command.locator("span").nth(1)).toHaveCSS(
       "color",
@@ -586,6 +602,32 @@ test.describe("Gallery functionality (deploy gate)", () => {
     ).toBeVisible();
     await expect(
       page.locator("dt", { hasText: /^Models$/ }),
+    ).toHaveCount(0);
+  });
+
+  test("non-AI preview metadata renders only as valid architecture", async ({
+    page,
+  }) => {
+    await page.goto(
+      "templates/azure-samples/apptemplate-wordpress-on-aca",
+    );
+
+    await expect(
+      page.getByAltText(
+        "Architecture diagram for WordPress with Azure Container Apps",
+      ),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("region", { name: "Application preview" }),
+    ).toHaveCount(0);
+
+    await page.goto("templates/azure-samples/azd-starter-bicep");
+
+    await expect(
+      page.getByRole("heading", {
+        level: 2,
+        name: "Architecture",
+      }),
     ).toHaveCount(0);
   });
 

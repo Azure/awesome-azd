@@ -490,8 +490,9 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
   const tasks = getReviewedUseCases(coordinates.normalizedSource);
   const initCommand = formatAzdInitCommand(getTemplateIdentifier(source));
   const readmeUrl = `${source}#readme`;
-  const preview = readOptionalString(record.preview);
   const architectureDiagram = readOptionalString(record.architectureDiagram);
+  const preview =
+    readOptionalString(record.preview) ?? architectureDiagram;
   const screenshot = readOptionalString(record.screenshot);
   const video = readOptionalString(record.video);
   const sampleType = readOptionalString(record.sampleType);

@@ -2,7 +2,6 @@
   {
     "title": "Starter - Bicep",
     "description": "A starter template with Bicep as infrastructure provider",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure/azure-dev",
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/azd-starter-bicep",
@@ -13,7 +12,6 @@
   {
     "title": "Starter - Terraform",
     "description": "A starter template with Terraform as infrastructure provider",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure/azure-dev",
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/azd-starter-terraform",
@@ -25,7 +23,7 @@
   {
     "title": "WordPress with Azure Container Apps",
     "description": "A blueprint to easily and quickly create and deploy your first scalable and secure WordPress site to Azure, leveraging Azure Container Apps with Azure Database for MariaDb.",
-    "preview": "./templates/images/apptemplate-wordpress-on-ACA.png",
+    "architectureDiagram": "./templates/images/apptemplate-wordpress-on-ACA.png",
     "authorUrl": "https://github.com/kpantos",
     "author": "Konstantinos Pantos",
     "source": "https://github.com/Azure-Samples/apptemplate-wordpress-on-ACA",
@@ -52,7 +50,7 @@
   {
     "title": "Rock, Paper, Orleans (RPO) - Distributed .NET",
     "description": "Rock, Paper, Orleans (RPO) is a game built using dotnet, Orleans, and runs in Azure.The idea behind RPO is that you write a \"player bot\" in which you implement your player logic.",
-    "preview": "./templates/images/rock-paper-orleans.png",
+    "architectureDiagram": "./templates/images/rock-paper-orleans.png",
     "authorUrl": "https://rockpaperorleans.net/",
     "author": "Brady Gaster",
     "source": "https://github.com/bradygaster/RockPaperOrleans",
@@ -73,7 +71,7 @@
   {
     "title": "Scalable Django on Azure App Service",
     "description": "Deploy your Django web application with Microsoft Azure, for scale, using a cloud architecture with integrated monitoring and load testing.",
-    "preview": "./templates/images/pycon-django.png",
+    "architectureDiagram": "./templates/images/pycon-django.png",
     "authorUrl": "https://github.com/tonybaloney",
     "author": "Anthony Shaw",
     "source": "https://github.com/tonybaloney/django-on-azure",
@@ -118,7 +116,7 @@
   {
     "title": "Python (Django) Web App with PostgreSQL in VNet",
     "description": "A restaurants review web app that uses whitenoise for static assets and PostgreSQL for the database. Ready for deployment on App Service with a PostgreSQL Flexible Server inside a VNet.",
-    "preview": "./templates/images/msdocs-django-postgresql-sample-app.png",
+    "architectureDiagram": "./templates/images/msdocs-django-postgresql-sample-app.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/msdocs-django-postgresql-sample-app",
@@ -142,7 +140,7 @@
   {
     "title": "Python (Flask) Web App with PostgreSQL in VNet",
     "description": "A restaurants review web app with a PostgreSQL database, written in the Python Flask framework plus SQL-Alchemy plus Alembic for database interactions. Ready for deployment on App Service with a PostgreSQL Flexible Server inside a VNet.",
-    "preview": "./templates/images/msdocs-flask-postgresql-sample-app.png",
+    "architectureDiagram": "./templates/images/msdocs-flask-postgresql-sample-app.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/msdocs-flask-postgresql-sample-app",
@@ -166,7 +164,6 @@
   {
     "title": "Microservices App - Dapr PubSub C# ACA ServiceBus",
     "description": "A complete microservice application featuring Dapr Pub-Sub, deployed to Azure Container Apps and Azure Service Bus Topics with dead-lettering support.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure/azure-dev",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/pubsub-dapr-csharp-servicebus",
@@ -186,7 +183,6 @@
   {
     "title": "Microservices App - Dapr PubSub Python ACA ServiceBus",
     "description": "A complete microservice application featuring Dapr Pub-Sub, deployed to Azure Container Apps and Azure Service Bus Topics with dead-lettering support.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure/azure-dev",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/pubsub-dapr-python-servicebus",
@@ -207,7 +203,6 @@
   {
     "title": "Microservices App - Dapr PubSub Node.js ACA ServiceBus",
     "description": "A complete microservice application featuring Dapr Pub-Sub, deployed to Azure Container Apps and Azure Service Bus Topics with dead-lettering support.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure/azure-dev",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/pubsub-dapr-nodejs-servicebus",
@@ -227,7 +222,7 @@
   {
     "title": "Microservices App - Dapr Bindings Cron C# ACA PostgreSQL",
     "description": "Create microservice to demonstrate Dapr's bindings API to work with external systems as inputs and outputs. The service listens to input binding events from a system CRON and then outputs the contents of local data to a PostgreSQL output binding.",
-    "preview": "./templates/images/bindings-dapr-cron-postgres.png",
+    "architectureDiagram": "./templates/images/bindings-dapr-cron-postgres.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/bindings-dapr-csharp-cron-postgres",
@@ -248,7 +243,7 @@
   {
     "title": "Microservices App - Dapr Bindings Cron Python ACA PostgreSQL",
     "description": "Create a microservice app to demonstrate Dapr's bindings API to work with external systems as inputs and outputs. The service listens to input binding events from a system CRON and then outputs the contents of local data to a postgreSQL output binding.",
-    "preview": "./templates/images/bindings-dapr-cron-postgres.png",
+    "architectureDiagram": "./templates/images/bindings-dapr-cron-postgres.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/bindings-dapr-python-cron-postgres",
@@ -269,7 +264,7 @@
   {
     "title": "Microservices App - Dapr Bindings Cron Node.js ACA PostgreSQL",
     "description": "Create a microservice app to demonstrate Dapr's bindings API to work with external systems as inputs and outputs. The service listens to input binding events from a system CRON and then outputs the contents of local data to a postgreSQL output binding.",
-    "preview": "./templates/images/bindings-dapr-cron-postgres.png",
+    "architectureDiagram": "./templates/images/bindings-dapr-cron-postgres.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/bindings-dapr-nodejs-cron-postgres",
@@ -290,7 +285,7 @@
   {
     "title": "Microservices App - Dapr Service Invoke Node.js ACA",
     "description": "Create two microservices that communicate using Dapr's Service Invocation API. The Service Invocation API enables your applications to communicate reliably and securely by leveraging auto-mTLS and built-in retries.",
-    "preview": "./templates/images/svc-invoke-dapr.png",
+    "architectureDiagram": "./templates/images/svc-invoke-dapr.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/svc-invoke-dapr-nodejs",
@@ -309,7 +304,7 @@
   {
     "title": "Microservices App - Dapr Service Invoke Python ACA",
     "description": "Create two microservices that communicate using Dapr's Service Invocation API. The Service Invocation API enables your applications to communicate reliably and securely by leveraging auto-mTLS and built-in retries.",
-    "preview": "./templates/images/svc-invoke-dapr.png",
+    "architectureDiagram": "./templates/images/svc-invoke-dapr.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/svc-invoke-dapr-python",
@@ -323,7 +318,7 @@
   {
     "title": "Microservices App - Dapr Service Invoke C# ACA",
     "description": "Create two microservices that communicate using Dapr's Service Invocation API. The Service Invocation API enables your applications to communicate reliably and securely by leveraging auto-mTLS and built-in retries.",
-    "preview": "./templates/images/svc-invoke-dapr.png",
+    "architectureDiagram": "./templates/images/svc-invoke-dapr.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/svc-invoke-dapr-csharp",
@@ -379,7 +374,6 @@
   {
     "title": "VoiceRAG with Realtime API",
     "description": "An app that lets users ask questions about a knowledge base over a real-time voice interface, using Azure AI Search and GPT-4o Realtime API.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/aisearch-openai-rag-audio",
@@ -400,7 +394,6 @@
   {
     "title": "Get started with AI agents",
     "description": "This solution deploys a web-based chat application with an AI agent running in Azure Container Apps. The agent leverages the Azure AI Agent service and utilizes Azure AI Search for knowledge retrieval from uploaded files, enabling it to generate responses with citations.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/get-started-with-ai-agents",
@@ -434,7 +427,7 @@
   {
     "title": "Spring PetClinic - Java Spring MySQL",
     "description": "Spring PetClinic application using a set of Azure solutions. Azure App Service for app hosting, Azure Database for MySQL for storage, Azure Key Vault for securing secret and Azure Application Insights for monitoring and logging.",
-    "preview": "./templates/images/spring-petclinic-java-mysql.png",
+    "architectureDiagram": "./templates/images/spring-petclinic-java-mysql.png",
     "authorUrl": "https://github.com/wangmingliang-ms",
     "author": "Miller Wang",
     "source": "https://github.com/Azure-Samples/spring-petclinic-java-mysql",
@@ -456,7 +449,7 @@
   {
     "title": "SAP Cloud SDK on Azure App Service Quickstart (TypeScript)",
     "description": "This repos serves as quick-start project showcasing SAP Cloud SDK for JavaScript OData consumption running on Azure App Services. Its primary purpose is to set you up for success for your SAP extension project on Azure and reduce the lead time to your first successful deployment as much as possible with developer friendly commands.",
-    "preview": "./templates/images/app-service-javascript-sap-cloud-sdk-quickstart.png",
+    "architectureDiagram": "./templates/images/app-service-javascript-sap-cloud-sdk-quickstart.png",
     "authorUrl": "https://github.com/MartinPankraz, https://github.com/lechnerc77",
     "author": "Martin Pankraz, Christian Lechner",
     "source": "https://github.com/Azure-Samples/app-service-javascript-sap-cloud-sdk-quickstart",
@@ -477,7 +470,7 @@
   {
     "title": "AZD Simple Flask app on Azure App Service",
     "description": "A tiny, no-frills, template to deploy Python's Flask web framework to Azure App Service in the free tier.",
-    "preview": "./templates/images/simple-flask-azd.png",
+    "architectureDiagram": "./templates/images/simple-flask-azd.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Anthony Shaw",
     "source": "https://github.com/Azure-Samples/azd-simple-flask-appservice",
@@ -491,7 +484,7 @@
   {
     "title": "Flask Container with CDN",
     "description": "A simple pos website written with Python Flask and Bootstrap. Can be run locally with Docker and then deployed to Azure Container Apps with an Azure CDN in front.",
-    "preview": "./templates/images/flask-cdn-container-app.png",
+    "architectureDiagram": "./templates/images/flask-cdn-container-app.png",
     "authorUrl": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/pamelafox/flask-gallery-container-app",
@@ -512,7 +505,7 @@
   {
     "title": "Flask Surveys Container App",
     "description": "A survey app written with the Python Flask framework which uses Flask-SQLAlchemy with a PostgreSQL database. Can be developed locally with Docker Compose and then deployed to Azure Container Apps (using KeyVault SDK for Flask secrets).",
-    "preview": "./templates/images/flask-surveys-container-app.png",
+    "architectureDiagram": "./templates/images/flask-surveys-container-app.png",
     "authorUrl": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/pamelafox/flask-surveys-container-app",
@@ -534,7 +527,7 @@
   {
     "title": "Flask API on Azure Container Apps",
     "description": "A simple JSON API using the Python Flask framework, designed for deployment on Azure Container Apps.",
-    "preview": "./templates/images/simple-flask-api-container.png",
+    "architectureDiagram": "./templates/images/simple-flask-api-container.png",
     "authorUrl": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/pamelafox/simple-flask-api-container",
@@ -554,7 +547,7 @@
   {
     "title": "FastAPI with API Management",
     "description": "A FastAPI app deployed as a secured Azure Function with an API Management Policy in front, set up such that API calls require a subscription key but auto-generated documentation is publicly viewable. Project also includes 100% test coverage with Pytest plus a development workflow with ruff, isort, and black.",
-    "preview": "./templates/images/fastapi-azure-function-apim.png",
+    "architectureDiagram": "./templates/images/fastapi-azure-function-apim.png",
     "authorUrl": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/pamelafox/fastapi-azure-function-apim",
@@ -576,7 +569,7 @@
   {
     "title": "Flask Chart API on ACA and CDN",
     "description": "A Charts API that renders PNGs of bar and pie charts, built with Python Flask, APIFlask, and matplotlib. Can be run locally with Docker and then deployed to Azure Container Apps with an Azure CDN in front.",
-    "preview": "./templates/images/flask-cdn-container-app.png",
+    "architectureDiagram": "./templates/images/flask-cdn-container-app.png",
     "authorUrl": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/pamelafox/flask-charts-api-container-app",
@@ -597,7 +590,7 @@
   {
     "title": "Static Maps API Function and CDN",
     "description": "A FastAPI app that renders map images for the given location. Deployed as a secured Azure function with an Azure CDN in front for caching.",
-    "preview": "./templates/images/staticmaps-function.png",
+    "architectureDiagram": "./templates/images/staticmaps-function.png",
     "authorUrl": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/pamelafox/staticmaps-function",
@@ -620,7 +613,7 @@
   {
     "title": "Jupyter Notebooks Web App on Azure Container Apps",
     "description": "A web application used for hosting, sharing, and interacting with Jupyter Notebooks via Mercury, hosted on Azure Container Apps.",
-    "preview": "./templates/images/jupyter-mercury-aca.png",
+    "architectureDiagram": "./templates/images/jupyter-mercury-aca.png",
     "authorUrl": "https://github.com/savannahostrowski",
     "author": "Savannah Ostrowski",
     "source": "https://github.com/savannahostrowski/jupyter-mercury-aca",
@@ -634,7 +627,7 @@
   {
     "title": "Python (Django) Web App with PostgreSQL and Key Vault",
     "description": "A Python Django app on App Service with a PostgreSQL flexible server database. Database access is restricted to Azure IPs, and all administrative secrets are stored in Key Vault.",
-    "preview": "./templates/images/django-quiz-app.png",
+    "architectureDiagram": "./templates/images/django-quiz-app.png",
     "authorUrl": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/pamelafox/django-quiz-app",
@@ -654,7 +647,7 @@
   {
     "title": "FastAPI on Azure Container Apps",
     "description": "A simple JSON API using the Python FastAPI app framework, designed for deployment on Azure Container Apps. Includes auto-configuration of gunicorn with uvicorn worker count based on CPUs available.",
-    "preview": "./templates/images/simple-fastapi-container.png",
+    "architectureDiagram": "./templates/images/simple-fastapi-container.png",
     "authorUrl": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/pamelafox/simple-fastapi-container",
@@ -674,7 +667,7 @@
   {
     "title": "Containerized Apps on Azure Kubernetes Service",
     "description": "A base Azure Kubernetes Service template with placeholders to include the application source code (no application source code included) and Kubernetes manifest files.",
-    "preview": "./templates/images/basic-aks-template.png",
+    "architectureDiagram": "./templates/images/basic-aks-template.png",
     "authorUrl": "https://github.com/sabbour/",
     "author": "Ahmed Sabbour",
     "source": "https://github.com/sabbour/aks-app-template",
@@ -694,7 +687,7 @@
   {
     "title": "Python (Flask) Web App with PostgreSQL",
     "description": "A Python Flask app on App Service with a PostgreSQL flexible server database. Database access is restricted to Azure IPs, and admin password is generated randomly",
-    "preview": "./templates/images/flask-db-quiz-example.png",
+    "architectureDiagram": "./templates/images/flask-db-quiz-example.png",
     "authorUrl": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/pamelafox/flask-db-quiz-example",
@@ -714,7 +707,7 @@
   {
     "title": "DotNet Function App with Service Bus",
     "description": "A sample that uses a C# Function App with native Service Bus bindings to both add and react to Queued Messages",
-    "preview": "./templates/images/servicebus-dotnet-functionapp.png",
+    "architectureDiagram": "./templates/images/servicebus-dotnet-functionapp.png",
     "authorUrl": "https://github.com/gordonby",
     "author": "Gordon Byers",
     "source": "https://github.com/Gordonby/servicebus-dotnet-functionapp",
@@ -734,7 +727,7 @@
   {
     "title": "FastAPI, htmx, TailwindCSS on App Service",
     "description": "A sample web app using FastAPI, htmx, and TailwindCSS that demonstrates dynamic design. Does not require a database provision.",
-    "preview": "./templates/images/fastapi-apps-loganalytics.png",
+    "architectureDiagram": "./templates/images/fastapi-apps-loganalytics.png",
     "authorUrl": "https://github.com/tataraba",
     "author": "Mario Munoz",
     "source": "https://github.com/tataraba/musicbinder-azd",
@@ -748,7 +741,7 @@
   {
     "title": "Simple Streamlit",
     "description": "A tiny, no-frills, template to deploy Python's Streamlit web framework to Azure App Service in the free tier.",
-    "preview": "./templates/images/simple-flask-azd.png",
+    "architectureDiagram": "./templates/images/simple-flask-azd.png",
     "authorUrl": "https://github.com/MiguelElGallo",
     "author": "Miguel P. Z.",
     "source": "https://github.com/MiguelElGallo/simple-streamlit-azd",
@@ -762,7 +755,7 @@
   {
     "title": "Docusaurus with Azure Container Apps",
     "description": "A blueprint to easily and quickly create and deploy your product documentation in Docusaurus using Azure Container Apps.",
-    "preview": "./templates/images/docusaurus-aca-template.png",
+    "architectureDiagram": "./templates/images/docusaurus-aca-template.png",
     "authorUrl": "https://github.com/jsburckhardt",
     "author": "Juan Burckhardt",
     "source": "https://github.com/jsburckhardt/docusaurus-aca",
@@ -781,7 +774,7 @@
   {
     "title": "React Web App with Azure API Management exposing SAP OData APIs",
     "description": "Expose your SAP OData APIs via Azure API Management and link it with Azure Static Web App to create & integrate a serverless Web App blazing fast with GitHub Copilot or ChatGPT.",
-    "preview": "./templates/images/apim-odata-reactjs.png",
+    "architectureDiagram": "./templates/images/apim-odata-reactjs.png",
     "authorUrl": "https://github.com/pascalvanderheiden",
     "author": "Pascal van der Heiden",
     "source": "https://github.com/pascalvanderheiden/ais-apim-odata-reactjs",
@@ -805,7 +798,7 @@
   {
     "title": "Azure OpenAI with Azure Bot and Custom API calling, Behind a Firewall",
     "description": "A Teams Chatbot running behind a Firewall that leverages OpenAI to call private APIs.",
-    "preview": "./templates/images/locked-down-bot-openai.png",
+    "architectureDiagram": "./templates/images/locked-down-bot-openai.png",
     "authorUrl": "https://github.com/graemefoster",
     "author": "Graeme Foster",
     "source": "https://github.com/graemefoster/LockedDownChatBot",
@@ -836,7 +829,7 @@
   {
     "title": "Terraform template to bootstrap Azure Deployment Environments",
     "description": "A template to deploy Azure DevCenter with the minimun configuration to start using Azure Deployment Environments and supercharge your platform engineering story. Infrastructure as Code (written in Terraform) will get you started quickly to enable developers to self-serve environments via the Developer Portal, Azure CLI or CI/CD pipelines.",
-    "preview": "./templates/images/azure-deployment-environments.png",
+    "architectureDiagram": "./templates/images/azure-deployment-environments.png",
     "authorUrl": "https://github.com/lopezleandro03",
     "author": "Leandro Lopez",
     "source": "https://github.com/lopezleandro03/azd-devcenter",
@@ -896,7 +889,7 @@
   {
     "title": "Next.js on Container Apps",
     "description": "A blueprint for getting a Next.js app running on Azure Container Apps with CDN and Application Insights.",
-    "preview": "./templates/images/nextjs-aca.png",
+    "architectureDiagram": "./templates/images/nextjs-aca.png",
     "authorUrl": "https://github.com/CMeeg",
     "author": "Chris Meagher",
     "source": "https://github.com/CMeeg/nextjs-aca",
@@ -917,7 +910,7 @@
   {
     "title": "Bicep template to bootstrap Azure Deployment Environments",
     "description": "A template to deploy Azure DevCenter with the minimun configuration to start using Azure Deployment Environments and supercharge your platform engineering story. Infrastructure as Code (written in Bicep) will get you started quickly to enable developers to self-serve environments via the Developer Portal, Azure CLI or CI/CD pipelines.",
-    "preview": "./templates/images/azure-deployment-environments.png",
+    "architectureDiagram": "./templates/images/azure-deployment-environments.png",
     "authorUrl": "https://github.com/Azure/azure-dev",
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/azd-deployment-environments",
@@ -929,7 +922,7 @@
   {
     "title": ".NET eShop on Web App with Redis Cache",
     "description": "A web application hosted in App Services Web App using Redis Cache for shopping cart and session data, and using SQL database for product catelog. Cache aside pattern applied",
-    "preview": "./templates/images/webapp-rediscache-sql-vnet.png",
+    "architectureDiagram": "./templates/images/webapp-rediscache-sql-vnet.png",
     "authorUrl": "https://github.com/CawaMS",
     "author": "Catherine Wang",
     "source": "https://github.com/CawaMS/eShop",
@@ -953,7 +946,7 @@
   {
     "title": "Real time game leaderboard with Azure Container Apps and Redis Cache",
     "description": "Azure container app for a real-time game leaderboard that saves players and scores as sorted set in Azure Cache for Redis",
-    "preview": "./templates/images/containerapp-rediscache-leaderboard.png",
+    "architectureDiagram": "./templates/images/containerapp-rediscache-leaderboard.png",
     "authorUrl": "https://github.com/CawaMS",
     "author": "Catherine Wang",
     "source": "https://github.com/CawaMS/GameLeaderboard",
@@ -973,7 +966,7 @@
   {
     "title": ".NET Redis OutputCache with Azure OpenAI",
     "description": "An AI image gallery.Azure Container app that uses Redis Cache to save web responses for improving Azure Open AI API calls performance, consistency, and efficiency",
-    "preview": "./templates/images/aca-openai-redis-artgallery.png",
+    "architectureDiagram": "./templates/images/aca-openai-redis-artgallery.png",
     "authorUrl": "https://github.com/CawaMS",
     "author": "Catherine Wang",
     "source": "https://github.com/CawaMS/OutputCacheOpenAI",
@@ -994,7 +987,7 @@
   {
     "title": "Microservices App - Dapr PubSub Java AKS",
     "description": "Demonstrate event-driven communication between microservices by leveraging the pub/sub messaging architecture using Dapr for a Java application running in an AKS cluster.",
-    "preview": "./templates/images/dapr-pubsub-java-aks-diagram.png",
+    "architectureDiagram": "./templates/images/dapr-pubsub-java-aks-diagram.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Mahmut Canga",
     "source": "https://github.com/Azure-Samples/pubsub-dapr-aks-java",
@@ -1008,7 +1001,7 @@
   {
     "title": "Agent Landing Zone",
     "description": "Secure, enterprise-ready landing zone for deploying AI agent applications on Microsoft Foundry, with Zero-Trust networking and IaC-first deployment.",
-    "preview": "./templates/images/GPT-Rag-Architecture-Zero-Trust.png",
+    "architectureDiagram": "./templates/images/GPT-Rag-Architecture-Zero-Trust.png",
     "authorUrl": "https://github.com/Azure",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure/agent-landing-zone",
@@ -1044,7 +1037,7 @@
   {
     "title": "Blazor Web App with C# and SQL Database on Azure",
     "description": "A starter project for creating a Blazor web app using C# and a SQL database hosted on Azure. The project contains sample application code which can be removed and replaced with your own application code. Add your own source code and leverage the Infrastructure as Code assets (written in Bicep) to get the app up and running quickly.",
-    "preview": "./templates/images/azd-blazor.png",
+    "architectureDiagram": "./templates/images/azd-blazor.png",
     "authorUrl": "https://jasontaylor.dev",
     "author": "JasonTaylorDev",
     "source": "https://github.com/JasonTaylorDev/azd-blazor",
@@ -1065,7 +1058,7 @@
   {
     "title": "Using FastAPI Framework with Azure Functions to serve paginated data from Snowflake",
     "description": "This is a sample Azure Function app created with the FastAPI framework to serve data from Snowflake using pagination",
-    "preview": "./templates/images/simple-fastapi-snow-azd.png",
+    "architectureDiagram": "./templates/images/simple-fastapi-snow-azd.png",
     "authorUrl": "https://github.com/MiguelElGallo",
     "author": "Miguel P. Z.",
     "source": "https://github.com/MiguelElGallo/simple-fastapi-snow-azd",
@@ -1085,7 +1078,7 @@
   {
     "title": "Python (Flask) Web App with MySQL and Key Vault",
     "description": "A Python Flask app on App Service with a MySQL flexible server database. Database access is restricted to Azure IPs, and all administrative secrets are stored in Key Vault.",
-    "preview": "./templates/images/flask-db-mysql-example.png",
+    "architectureDiagram": "./templates/images/flask-db-mysql-example.png",
     "authorUrl": "https://github.com/john0isaac",
     "author": "John Aziz",
     "source": "https://github.com/john0isaac/flask-webapp-mysql-db",
@@ -1099,7 +1092,7 @@
   {
     "title": "Azure Kubernetes Service Store Demo",
     "description": "Sample microservices app for AKS demos, tutorials, and experiments.",
-    "preview": "./templates/images/aks-store-demo.png",
+    "architectureDiagram": "./templates/images/aks-store-demo.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "AKS Content Team",
     "source": "https://github.com/azure-samples/aks-store-demo",
@@ -1121,7 +1114,7 @@
   {
     "title": "SAP CAP on Azure App Service Quickstart",
     "description": "This repos serves as quick-start project showcasing SAP Cloud Application Programming Model (CAP) for Node.js OData consumption from SAP S/4HANA running on Azure App Services backed with Azure Cosmos DB for PostgreSQL. SAP offers a native module cds-dbs for PostgreSQL integration.",
-    "preview": "./templates/images/app-service-javascript-sap-cap-quickstart.png",
+    "architectureDiagram": "./templates/images/app-service-javascript-sap-cap-quickstart.png",
     "authorUrl": "https://github.com/MartinPankraz, https://github.com/vobu",
     "author": "Martin Pankraz, Volker Buzek",
     "source": "https://github.com/Azure-Samples/app-service-javascript-sap-cap-quickstart",
@@ -1142,7 +1135,7 @@
   {
     "title": "PostgreSQL + Pgvector",
     "description": "Deploy a PostgreSQL Flexible Server with Pgvector extension and keyless auth, then access it from Python scripts.",
-    "preview": "./templates/images/postgres_entra.png",
+    "architectureDiagram": "./templates/images/postgres_entra.png",
     "authorUrl": "https://github.com/pamelafox",
     "author": "Pamela Fox",
     "source": "https://github.com/Azure-Samples/azure-postgres-pgvector-python",
@@ -1155,7 +1148,7 @@
   {
     "title": "Remix on Container Apps",
     "description": "A blueprint for getting a Remix app running on Azure Container Apps with CDN and Application Insights.",
-    "preview": "./templates/images/remix-aca.png",
+    "architectureDiagram": "./templates/images/remix-aca.png",
     "authorUrl": "https://github.com/CMeeg",
     "author": "Chris Meagher",
     "source": "https://github.com/CMeeg/remix-aca",
@@ -1177,7 +1170,7 @@
   {
     "title": "Azure OpenAI Conference Session Assistant",
     "description": "Build a conference assistant using using Vector Search and Retrieval Augmented Generator to allow attendees to ask questions about conference in natural language",
-    "preview": "./templates/images/session-assistant-architecture.png",
+    "architectureDiagram": "./templates/images/session-assistant-architecture.png",
     "authorUrl": "https://ai.lasvegas.vslive.com/",
     "author": "Davide Mauri",
     "source": "https://github.com/Azure-Samples/azure-sql-db-session-recommender-v2",
@@ -1202,7 +1195,7 @@
   {
     "title": "Simple Flask (Python) Web App (Terraform) on Azure",
     "description": "A simple Python Flask website, made for demonstration purposes only, and deployed to Azure App service and Azure Monitoring.",
-    "preview": "./templates/images/flask-app-terraform.png",
+    "architectureDiagram": "./templates/images/flask-app-terraform.png",
     "authorUrl": "https://github.com/john0isaac",
     "author": "John Aziz",
     "source": "https://github.com/john0isaac/simple-flask-app-terraform",
@@ -1216,7 +1209,7 @@
   {
     "title": "Dynamic Configuration for AKS workloads (w/o changing ConfigMaps or with Azure App Configuration)",
     "description": "A sample that demonstrates how to dynamically configure an Azure Kubernetes Service (AKS) workload with Azure App Configuration.",
-    "preview": "./templates/images/azure-appconfig-aks.png",
+    "architectureDiagram": "./templates/images/azure-appconfig-aks.png",
     "authorUrl": "https://github.com/Azure/AppConfiguration",
     "author": "Azure App Configuration",
     "source": "https://github.com/Azure-Samples/azure-appconfig-aks",
@@ -1230,7 +1223,7 @@
   {
     "title": "Chat with your Data Solution Accelerator",
     "description": "A Solution Accelerator for the RAG pattern running in Azure, using Azure AI Search for retrieval and Azure OpenAI large language models to power ChatGPT-style and Q&A experiences. This includes most common requirements and best practices.",
-    "preview": "./templates/images/cwyd-solution-architecture.png",
+    "architectureDiagram": "./templates/images/cwyd-solution-architecture.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/chat-with-your-data-solution-accelerator",
@@ -1261,7 +1254,7 @@
   {
     "title": "Sample Ruby on Rails app deployed (Bicep) on Azure Container App with PostgreSQL",
     "description": "A sample Ruby on Rails Web App, made for demonstration purposes only, and deployed to Azure Container App and PostgreSQL.",
-    "preview": "./templates/images/azure-rails-starter.png",
+    "architectureDiagram": "./templates/images/azure-rails-starter.png",
     "authorUrl": "https://github.com/dbroeglin",
     "author": "Dominique Broeglin",
     "source": "https://github.com/dbroeglin/azure-rails-starter",
@@ -1284,7 +1277,7 @@
   {
     "title": "RAG using Semantic Kernel with Azure OpenAI and Azure Cosmos DB for MongoDB vCore",
     "description": "A Python sample for implementing retrieval augmented generation using Azure Open AI to generate embeddings, Azure Cosmos DB for MongoDB vCore to perform vector search and semantic kernel. Deployed to Azure App service using Azure Developer CLI (azd).",
-    "preview": "./templates/images/rag-semantic-kernel-mongodb-vcore.png",
+    "architectureDiagram": "./templates/images/rag-semantic-kernel-mongodb-vcore.png",
     "authorUrl": "https://github.com/john0isaac",
     "author": "John Aziz",
     "source": "https://github.com/john0isaac/rag-semantic-kernel-mongodb-vcore",
@@ -1338,7 +1331,7 @@
   {
     "title": ".NET Isolated Azure Function with Zip Deploy",
     "description": "Create a .NET Isolated Azure Function and use Zip Push to deploy the code to the Azure Function App. For example, the .NET 8 code in the repository and the release package are used in the template. Execute the AZD UP command from the deployment folder to deploy the function app. Once the Azure Function is deployed, test it using the URL: https://<functionappname>.azurewebsites.net/api/getadventurers.",
-    "preview": "./templates/images/dotnet-azfunc-zipdeploy.png",
+    "architectureDiagram": "./templates/images/dotnet-azfunc-zipdeploy.png",
     "authorUrl": "https://github.com/fboucher",
     "author": "Frank Boucher",
     "source": "https://github.com/FBoucher/ZipDeploy-AzFunc",
@@ -1358,7 +1351,6 @@
   {
     "title": "Azure AI Starter",
     "description": "Bicep template that deploys Azure AI services with configured machine learning models.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure/azure-dev",
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/azd-ai-starter",
@@ -1370,7 +1362,6 @@
   {
     "title": "Azure AI Studio Starter",
     "description": "Bicep template that deploys everything you need to get started with Azure AI Studio.  Includes AI Hub with dependent resources, AI project, AI Services and an online endpoint",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure/azure-dev",
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/azd-aistudio-starter",
@@ -1444,7 +1435,7 @@
   {
     "title": "API Center Analyzer",
     "description": "This sample provides an Azure API Center along with Azure Functions and Azure Event Grid to analyze API specs when registering or updating API specs to Azure API Center.",
-    "preview": "./templates/images/apic-analyzer.png",
+    "architectureDiagram": "./templates/images/apic-analyzer.png",
     "authorUrl": "https://github.com/justinyoo, https://github.com/pierceboggan",
     "author": "Justin Yoo, Pierce Boggan",
     "source": "https://github.com/Azure/APICenter-Analyzer",
@@ -1467,7 +1458,7 @@
   {
     "title": "API Center Portal",
     "description": "This sample provides an Azure API Center along with Azure Static Web Apps that governs API specs registered on Azure API Center for developers and stakeholders.",
-    "preview": "./templates/images/apic-portal.png",
+    "architectureDiagram": "./templates/images/apic-portal.png",
     "authorUrl": "https://github.com/justinyoo, https://github.com/pierceboggan",
     "author": "Justin Yoo, Pierce Boggan",
     "source": "https://github.com/Azure/APICenter-Portal-Starter",
@@ -1487,7 +1478,7 @@
   {
     "title": "GPT Video Analysis-In-A-Box",
     "description": "The GPT Video Analysis in-a-Box project leverages Azure OpenAI GPT-4 Turbo with Vision and Azure Data Factory to provide a low-code solution for analyzing images and videos, making AI adoption simpler and more efficient. This solution, part of the AI-in-a-Box framework by Microsoft Customer Engineers and Architects, ensures quality, efficiency, and rapid deployment of AI and ML solutions across various industries.",
-    "preview": "./templates/images/gpt4-adf-architecture.jpg",
+    "architectureDiagram": "./templates/images/gpt4-adf-architecture.jpg",
     "authorUrl": "https://github.com/Azure/AI-in-a-box",
     "author": "AI-in-a-Box Team",
     "source": "https://github.com/Azure-Samples/gpt-video-analysis-in-a-box",
@@ -1581,7 +1572,7 @@
   {
     "title": "Azure Serverless App with Angular and MSAL",
     "description": "Azure Serverless Template using Angular-standalone, Azure Functions App, Cosmos DB and APIM",
-    "preview": "./templates/images/serverless-application-flow.png",
+    "architectureDiagram": "./templates/images/serverless-application-flow.png",
     "authorUrl": "https://github.com/ryanninodizon",
     "author": "Ryan Niño Dizon",
     "source": "https://github.com/ryanninodizon/AzureServerlessApp-with-auth-for-dotnet-angular",
@@ -1627,7 +1618,7 @@
   {
     "title": "Azure OpenAI On Your Data with Python Streamlit",
     "description": "Showcase the use of Azure OpenAI's native On Your Data feature and integrates it with Streamlit, a robust framework for developing web applications purely in Python. The goal is to create an MVP for RAG with the most streamlined architecture possible.",
-    "preview": "./templates/images/on-your-data-with-streamlit.png",
+    "architectureDiagram": "./templates/images/on-your-data-with-streamlit.png",
     "authorUrl": "https://github.com/charliewei0716",
     "author": "Charlie Wei",
     "source": "https://github.com/charliewei0716/on-your-data-with-streamlit",
@@ -1648,7 +1639,7 @@
   {
     "title": "NLP to SQL In-A-Box",
     "description": "NLP-SQL-in-a-Box is part of Microsoft's AI-in-a-Box framework, designed to simplify the deployment of AI and ML solutions. This project enables users to interact with SQL databases using natural language and speech, leveraging Azure OpenAI, Semantic Kernel, and Azure AI Speech Service to translate spoken queries into SQL statements, execute them, and deliver results audibly, ensuring an intuitive and user-friendly experience.",
-    "preview": "./templates/images/nlp_to_sql_architecture.png",
+    "architectureDiagram": "./templates/images/nlp_to_sql_architecture.png",
     "authorUrl": "https://github.com/Azure/AI-in-a-box",
     "author": "AI-in-a-Box Team",
     "source": "https://github.com/Azure-Samples/nlp-sql-in-a-box",
@@ -1669,7 +1660,7 @@
   {
     "title": "Blob Data Sharing with Azure Functions Flex Consumption",
     "description": "Construct a high-performance, low-latency data sharing solution between different Azure Storage Accounts using Azure Functions Flex Consumption and the Copy Blob API.",
-    "preview": "./templates/images/blob-data-sharing.png",
+    "architectureDiagram": "./templates/images/blob-data-sharing.png",
     "authorUrl": "https://github.com/charliewei0716",
     "author": "Charlie Wei",
     "source": "https://github.com/charliewei0716/blob-data-sharing",
@@ -1754,7 +1745,7 @@
   {
     "title": "Quote of the Day: Feature Experimentation in .NET with Azure App Configuration",
     "description": "An ASP.NET Core web app that demonstrates A/B testing using Azure App Configuration and the Microsoft Feature Management library.",
-    "preview": "./templates/images/quote-of-the-day-diagram.png",
+    "architectureDiagram": "./templates/images/quote-of-the-day-diagram.png",
     "authorUrl": "https://github.com/Azure/AppConfiguration",
     "author": "Azure App Configuration",
     "source": "https://github.com/Azure-Samples/quote-of-the-day-dotnet",
@@ -1772,7 +1763,7 @@
   {
     "title": "Hello AZD",
     "description": "A demo template that provides a getting started and welcome experience for the Azure Developer CLI. Run the template to provision and deploy resources to Azure and experiment with a working sample app.",
-    "preview": "./templates/images/hello-azd.png",
+    "architectureDiagram": "./templates/images/hello-azd.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/hello-azd",
@@ -1812,7 +1803,7 @@
   {
     "title": "RAG using LangChain with Azure OpenAI and Azure Cosmos DB for MongoDB vCore",
     "description": "A Python sample for implementing retrieval augmented generation using Azure Open AI to generate embeddings, Azure Cosmos DB for MongoDB vCore to perform vector search and LangChain. Deployed to Azure App service using Azure Developer CLI (azd).",
-    "preview": "./templates/images/rag-langchain-mongodb-vcore.png",
+    "architectureDiagram": "./templates/images/rag-langchain-mongodb-vcore.png",
     "authorUrl": "https://github.com/john0isaac",
     "author": "John Aziz",
     "source": "https://github.com/Azure-Samples/Cosmic-Food-RAG-app",
@@ -1836,7 +1827,6 @@
   {
     "title": "Azure Functions C# HTTP Trigger using Azure Developer CLI",
     "description": "This repository contains an Azure Functions HTTP trigger quickstart written in C# and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd",
@@ -1856,7 +1846,6 @@
   {
     "title": "Azure Functions Python HTTP Trigger using Azure Developer CLI",
     "description": "This repository contains an Azure Functions HTTP trigger quickstart written in Python and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-python-http-azd",
@@ -1876,7 +1865,6 @@
   {
     "title": "Azure Functions JavaScript HTTP Trigger using Azure Developer CLI",
     "description": "This repository contains an Azure Functions HTTP trigger quickstart written in JavaScript and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-javascript-azd",
@@ -1896,7 +1884,6 @@
   {
     "title": "Azure Functions TypeScript HTTP Trigger using Azure Developer CLI",
     "description": "This repository contains an Azure Functions HTTP trigger quickstart written in TypeScript and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-typescript-azd",
@@ -1916,7 +1903,6 @@
   {
     "title": "Azure Functions Java HTTP Trigger using Azure Developer CLI",
     "description": "This repository contains an Azure Functions HTTP trigger quickstart written in Java and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (AZD). This sample uses managed identity and a virtual network to insure it's secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/azure-functions-java-flex-consumption-azd",
@@ -1936,7 +1922,6 @@
   {
     "title": "Azure Functions PowerShell HTTP Trigger using Azure Developer CLI",
     "description": "This repository contains an Azure Functions HTTP trigger quickstart written in PowerShell and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (AZD). This sample uses managed identity and a virtual network to insure it's secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-powershell-azd",
@@ -1956,7 +1941,7 @@
   {
     "title": "Doc Intelligence-In-A-Box",
     "description": "The Doc Intelligence in-a-Box project leverages Azure AI Document Intelligence to extract data from PDF forms and store the data in a Azure Cosmos DB. This solution, part of the AI-in-a-Box framework by Microsoft Customer Engineers and Architects, ensures quality, efficiency, and rapid deployment of AI and ML solutions across various industries.",
-    "preview": "./templates/images/doc-intelligence-in-a-box.png",
+    "architectureDiagram": "./templates/images/doc-intelligence-in-a-box.png",
     "authorUrl": "https://github.com/Azure/AI-in-a-box",
     "author": "AI-in-a-Box Team",
     "source": "https://github.com/Azure-Samples/doc-intelligence-in-a-box",
@@ -1999,7 +1984,7 @@
   {
     "title": "Order processing workflow with Durable Functions",
     "description": "This repository contains the implementation of an order processing workflow with Durable Functions in C#. The sample is deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd) and is configured with managed identity as the authentication mechanism.",
-    "preview": "./templates/images/order-processing-durable-functions.png",
+    "architectureDiagram": "./templates/images/order-processing-durable-functions.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/Durable-Functions-Order-Processing",
@@ -2020,7 +2005,7 @@
   {
     "title": "Integration Hub with Logic App Standard",
     "description": "Template to deploy shared components like Logic App Standard Plan, Service Bus and Azure Artifacts for an integration platform.",
-    "preview": "./templates/images/integration-hub.png",
+    "architectureDiagram": "./templates/images/integration-hub.png",
     "authorUrl": "https://github.com/marnixcox",
     "author": "Marnix Cox",
     "source": "https://github.com/marnixcox/integration-hub",
@@ -2040,7 +2025,7 @@
   {
     "title": "Logic App Standard and Functions",
     "description": "Template to deploy Logic App Standard and Functions for application integrations.",
-    "preview": "./templates/images/logicapp-standard-func.png",
+    "architectureDiagram": "./templates/images/logicapp-standard-func.png",
     "authorUrl": "https://github.com/marnixcox",
     "author": "Marnix Cox",
     "source": "https://github.com/marnixcox/logicapp-standard-func",
@@ -2061,7 +2046,7 @@
   {
     "title": "Logic App Consumption",
     "description": "Template to deploy Logic App Consumption for (legacy) application integrations.",
-    "preview": "./templates/images/logicapp-standard-func.png",
+    "architectureDiagram": "./templates/images/logicapp-standard-func.png",
     "authorUrl": "https://github.com/marnixcox",
     "author": "Marnix Cox",
     "source": "https://github.com/marnixcox/logicapp-consumption",
@@ -2073,7 +2058,7 @@
   {
     "title": "Java Quarkus Apps on Azure Container Apps",
     "description": "This repo builds and deploys Java Quarkus applications on Azure Container Apps using the Azure Developer CLI (azd).",
-    "preview": "./templates/images/java-quarkus-apps-aca.png",
+    "architectureDiagram": "./templates/images/java-quarkus-apps-aca.png",
     "authorUrl": "https://github.com/majguo",
     "author": "Jianguo Ma",
     "source": "https://github.com/Azure-Samples/java-on-aca-quarkus",
@@ -2127,7 +2112,7 @@
   {
     "title": "Multi-tier App with React.js Dashboard Front-End SPA and Backend Node.js API",
     "description": "A multi-tier app with a dashboard front-end (React + Bootstrap) hosted in Azure Static Web Apps and back-end API (Node.js) hosted in Azure App Service",
-    "preview": "./templates/images/build5nines-azd-react-bootstrap-dashboard.png",
+    "architectureDiagram": "./templates/images/build5nines-azd-react-bootstrap-dashboard.png",
     "authorUrl": "https://build5nines.com",
     "author": "Build5Nines",
     "source": "https://github.com/Build5Nines/azd-react-bootstrap-dashboard",
@@ -2177,7 +2162,7 @@
   {
     "title": "AZD Simple FastAPI app on Azure App Service",
     "description": "A tiny, no-frills, template to deploy Python's FastAPI web framework to Azure App Service in the free tier.",
-    "preview": "./templates/images/simple-fastapi-azd.png",
+    "architectureDiagram": "./templates/images/simple-fastapi-azd.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Renee Noble",
     "source": "https://github.com/Azure-Samples/azd-simple-fastapi-appservice",
@@ -2191,7 +2176,7 @@
   {
     "title": "LlamaIndex RAG chat app with Azure OpenAI and Azure AI Search (JavaScript)",
     "description": "This solution creates a ChatGPT-like, Retrieval Augmented Generation (RAG) agentic application, over your own documents, powered by Llamaindex (TypeScript). It uses Azure OpenAI Service to access GPT models and embedding, and Azure AI Search for data indexing and retrieval.",
-    "preview": "./templates/images/llama-index-vector-search-javascript.png",
+    "architectureDiagram": "./templates/images/llama-index-vector-search-javascript.png",
     "authorUrl": "https://github.com/manekinekko",
     "author": "Wassim Chegham",
     "source": "https://github.com/Azure-Samples/llama-index-vector-search-javascript",
@@ -2213,7 +2198,7 @@
   {
     "title": "Order processing workflow with Durable Functions (Python)",
     "description": "This repository contains the implementation of an order processing workflow with Durable Functions in Python. The sample is deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd) and is configured with managed identity as the authentication mechanism.",
-    "preview": "./templates/images/order-processing-durable-functions.png",
+    "architectureDiagram": "./templates/images/order-processing-durable-functions.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/durable-functions-order-processing-python",
@@ -2235,7 +2220,7 @@
   {
     "title": "Create SharePoint Online webhooks with an Azure function app (Node.js)",
     "description": "A secured Azure function app that connects to your SharePoint Online tenant, to register and manage webhooks, and process the notifications from SharePoint.",
-    "preview": "./templates/images/azd-functions-sharepoint-webhooks.png",
+    "architectureDiagram": "./templates/images/azd-functions-sharepoint-webhooks.png",
     "authorUrl": "https://github.com/Yvand",
     "author": "Yvan Duhamel",
     "source": "https://github.com/Azure-Samples/azd-functions-sharepoint-webhooks",
@@ -2256,7 +2241,6 @@
   {
     "title": "Minimal .NET API with ConferenceAPI sample",
     "description": "A minimal .NET API with ConferenceAPI sample",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/petender",
     "author": "Peter De Tender",
     "source": "https://github.com/petender/ConferenceAPI",
@@ -2269,7 +2253,6 @@
   {
     "title": "API Management with ConferenceAPI",
     "description": "This scenario deploys an Azure API Management Resource with a Standard SKU, as well as a Conference Demo API Web App, allowing for showing different API calls, as well as using API Management Policies for rate-limit and header-modification + demo Products",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/petender",
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-apimwithconfAPI",
@@ -2288,7 +2271,6 @@
   {
     "title": "Azure AI Services with multiple OpenAI models",
     "description": "This scenario deploys an Azure AI Services Resource with multiple OpenAI models, allowing for showing different AI calls, as well as using AI Services for text generation, image generation and more. The deployed models are GPT-3.5-Turbo, GPT-4o, Dall-E-3",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/petender",
     "author": "Peter De Tender",
     "source": "https://github.com/petender/OpenAIMultiModel",
@@ -2300,7 +2282,7 @@
   {
     "title": "Tollbooth Serverless Architecture with Azure Functions",
     "description": "This scenario deploys the building blocks for a serverless automated parking lot / tollbooth / HOV lanes system using Azure Functions and EventGrid. It also has Azure Storage Account, CosmosDB, Azure KeyVault and Application Insights as part of the architecture.",
-    "preview": "./templates/images/tollbooth.png",
+    "architectureDiagram": "./templates/images/tollbooth.png",
     "authorUrl": "https://github.com/rob-foulkrod",
     "author": "Rob Foulkrod",
     "source": "https://github.com/rob-foulkrod/TollBooth",
@@ -2325,7 +2307,6 @@
   {
     "title": "Blazor BadgeMaker with Azure AI Services",
     "description": "The BadgeMaker is a Blazor front-end application that provides a user-friendly interface for designing and generating digital badges. It allows users to customize badges with various templates, colors, and text options.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/rob-foulkrod",
     "author": "Rob Foulkrod",
     "source": "https://github.com/rob-foulkrod/BadgeMaker",
@@ -2347,7 +2328,6 @@
   {
     "title": "Azure Machine Learning",
     "description": "This scenario deploys AzureML Service, together with other resources such as Key Vault, Application Insights, Container Registry and the necessary RBAC permissions.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/rob-foulkrod",
     "author": "Rob Foulkrod",
     "source": "https://github.com/rob-foulkrod/MachineLearningAZD",
@@ -2366,7 +2346,7 @@
   {
     "title": "EShopOnWeb VM Architecture",
     "description": "This scenario is based on a WebVM and SQLVM architecture, showcasing traditional IAAS in Azure.",
-    "preview": "./templates/images/eshoponweb_vm_architecture.png",
+    "architectureDiagram": "./templates/images/eshoponweb_vm_architecture.png",
     "authorUrl": "https://github.com/rob-foulkrod",
     "author": "Rob Foulkrod",
     "source": "https://github.com/rob-foulkrod/IAAS2019",
@@ -2378,7 +2358,7 @@
   {
     "title": "EShopOnWeb ACI Architecture",
     "description": "This scenario is deploying Azure Container Instance, with a sample EShopOnWeb Container with .NET8.",
-    "preview": "./templates/images/eshoponweb_aci.png",
+    "architectureDiagram": "./templates/images/eshoponweb_aci.png",
     "authorUrl": "https://github.com/maartenvandiemen",
     "author": "Maarten van Diemen",
     "source": "https://github.com/maartenvandiemen/AZD-ACI-Demo",
@@ -2390,7 +2370,7 @@
   {
     "title": "EShopOnWeb ACAPPS Architecture",
     "description": "This scenario is deploying Azure Container Apps, with a sample EShopOnWeb Container with .NET8.",
-    "preview": "./templates/images/eshoponweb_aca.png",
+    "architectureDiagram": "./templates/images/eshoponweb_aca.png",
     "authorUrl": "https://github.com/maartenvandiemen",
     "author": "Maarten van Diemen",
     "source": "https://github.com/maartenvandiemen/AZD-ACA-Demo",
@@ -2402,7 +2382,7 @@
   {
     "title": "EShopOnWeb AKS Architecture",
     "description": "This scenario is based on a Kubernetes (AKS) architecture.",
-    "preview": "./templates/images/eshoponweb_aks.png",
+    "architectureDiagram": "./templates/images/eshoponweb_aks.png",
     "authorUrl": "https://github.com/maartenvandiemen",
     "author": "Maarten van Diemen",
     "source": "https://github.com/maartenvandiemen/AZD-AKS-Demo",
@@ -2415,7 +2395,6 @@
   {
     "title": "Azure FrontDoor CDN with sample HTML webapp",
     "description": "This template deploys an Azure FrontDoor CDN, with a sample HTML-based webapp. The webapp allows you to load sample images from different endpoints, one is from within the webapp storage itself, a second one loads from Azure Storage Account Blobs and the last one loads from Azure Frontdoor CDN. This demo shows how static data such as image files can optimize site loading time when using CDN caching.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/petender",
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-fdcdn",
@@ -2433,7 +2412,7 @@
   {
     "title": "EShopOnWeb in Azure App Service and SQL Azure DB",
     "description": "This template deploys the EShopOnWeb .NET 8 application in Azure App Services, connecting to a SQL Azure database instance.",
-    "preview": "./templates/images/eshoponweb_paas.png",
+    "architectureDiagram": "./templates/images/eshoponweb_paas.png",
     "authorUrl": "https://github.com/maartenvandiemen",
     "author": "Maarten van Diemen",
     "source": "https://github.com/maartenvandiemen/AZD-PaaS-Demo",
@@ -2453,7 +2432,6 @@
   {
     "title": "Azure Event Hub with Console App",
     "description": "This template deploys Azure Event Hub, as well as runs a local Console app on your machine to interact with Publisher and Subscriber events.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/true-while",
     "author": "Alex Ivanov",
     "source": "https://github.com/true-while/event-hub-azd",
@@ -2466,7 +2444,7 @@
   {
     "title": "Hub Spoke with VPN Gateway and JumpVM",
     "description": "This scenario deploys an Azure VNET Hub & Spoke architecture including VNET Peering, VPN Gateway and a Windows Server 2022 JumpVM.",
-    "preview": "./templates/images/HubSpokewithJumpVM.png",
+    "architectureDiagram": "./templates/images/HubSpokewithJumpVM.png",
     "authorUrl": "https://github.com/petender",
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-hubspoke",
@@ -2478,7 +2456,6 @@
   {
     "title": "Azure Site 2 Site VPN",
     "description": "This scenario deploys 3 Azure VPN Gateways in 3 different regions (West Europe, Central US and East Asia) and establishes the connections across all 3 of them.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/petender",
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-site2sitevpn/",
@@ -2490,7 +2467,7 @@
   {
     "title": "Azure Functions with Blob Trigger (Watermark text)",
     "description": "This scenario deploys an Azure Functions App, which provides a Blob Trigger. When an image file is uploaded to the /input container, the Function gets triggered and adds a watermark text to the image file. The new image file getes saved into an /output container. Application Insights is also deployed, so you can showcase the necessary monitoring features of Azure Functions monitor, as well as more detailed in App Insights itself.",
-    "preview": "./templates/images/WaterMarkFunction.png",
+    "architectureDiagram": "./templates/images/WaterMarkFunction.png",
     "authorUrl": "https://github.com/maartenvandiemen",
     "author": "Maarten van Diemen",
     "source": "https://github.com/maartenvandiemen/AZD-WatermarkFunction",
@@ -2508,7 +2485,7 @@
   {
     "title": "Azure Sentinel with Data Connectors",
     "description": "This scenario deploys an Azure Sentinel workspace, including a few sample data connectors (AWS, M365, Entra Id and LogicApps.",
-    "preview": "./templates/images/Sentinel.png",
+    "architectureDiagram": "./templates/images/Sentinel.png",
     "authorUrl": "https://github.com/petender",
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-sentinel",
@@ -2520,7 +2497,7 @@
   {
     "title": "Azure Traffic Manager with WebApps",
     "description": "This scenario deploys Azure Traffic Manager with WebApps in 3 regions.",
-    "preview": "./templates/images/trafficmgr.png",
+    "architectureDiagram": "./templates/images/trafficmgr.png",
     "authorUrl": "https://github.com/petender",
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-trafficmgr",
@@ -2532,7 +2509,6 @@
   {
     "title": "SpringBoot OpenAI Chat on Azure App Service",
     "description": "The SpringBoot petclinic using Azure OpenAI, Managed Identity, and hosted with Azure App Service. Get up and running with OpenAI on Azure App Service + Java quickly, securely, and easily.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "denverbrittain",
     "source": "https://github.com/Azure-Samples/SpringBoot-Petclinic-AI-Chat-on-App-Service",
@@ -2555,7 +2531,7 @@
   {
     "title": "Azure OpenAI RAG with Java, LangChain4j and Quarkus",
     "description": "Create a Java service using Quarkus, OpenAI SDK, and LangChain4j to build a chatbot that answers questions based on document data, with a website interface for API interaction.",
-    "preview": "./templates/images/rag-java-quarkus-langchain4j.png",
+    "architectureDiagram": "./templates/images/rag-java-quarkus-langchain4j.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Sandra Ahlgrimm",
     "source": "https://github.com/Azure-Samples/azure-openai-rag-workshop-java",
@@ -2580,7 +2556,7 @@
   {
     "title": "Azure Integration Services Quickstart",
     "description": "Deploys Azure Integration Services, including Azure API Management, Function App, Logic App, Service Bus and Event Hubs namespace, along with supporting resources such as Application Insights, Key Vault and Storage Account. This template is ideal for demos, testing or getting started with Azure Integration Services.",
-    "preview": "./templates/images/azure-integration-services-quickstart.png",
+    "architectureDiagram": "./templates/images/azure-integration-services-quickstart.png",
     "authorUrl": "https://github.com/ronaldbosma",
     "author": "Ronald Bosma",
     "source": "https://github.com/ronaldbosma/azure-integration-services-quickstart",
@@ -2606,7 +2582,7 @@
   {
     "title": ".NET Aspire Azure Storage Demo",
     "description": "This project demonstrates how to use Azure Table Storage with a .NET Minimal API in an .NET Aspire solution. Debeing deploy into Azure Container Apps (ACA).",
-    "preview": "./templates/images/aspire-az-storage.png",
+    "architectureDiagram": "./templates/images/aspire-az-storage.png",
     "authorUrl": "https://github.com/fboucher",
     "author": "Frank Boucher",
     "source": "https://github.com/FBoucher/AspireAzStorage",
@@ -2626,7 +2602,7 @@
   {
     "title": "Indexing PDFs from blob to ai search with durable functions for RAG Applications",
     "description": "Indexadillo helps you push data to Azure AI Search in a scalable, observable way. Instead of using a pull-based DSL approach, this solution uses Azure Durable Functions to handle everything from parsing your documents to uploading embeddings.",
-    "preview": "./templates/images/indexadillo-resources.png",
+    "architectureDiagram": "./templates/images/indexadillo-resources.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Felix Monckemeyer",
     "source": "https://github.com/Azure-Samples/indexadillo",
@@ -2650,7 +2626,7 @@
   {
     "title": "Purview Demo Environment",
     "description": "This deploys Purview, a storage account, Data factory, Synapse, and a SQL Database. It Adds the storage account and database to collections, creates an runs a pipeline, and reports the lineage.",
-    "preview": "https://github.com/user-attachments/assets/1f6f3121-a626-40f6-a228-a5153dde579b",
+    "architectureDiagram": "https://github.com/user-attachments/assets/1f6f3121-a626-40f6-a228-a5153dde579b",
     "authorUrl": "https://github.com/rob-foulkrod",
     "author": "Rob Foulkrod",
     "source": "https://github.com/rob-foulkrod/purviewEnvironment-azd",
@@ -2669,7 +2645,7 @@
   {
     "title": "Service endpoint, private endpoint and private link service",
     "description": "This is a complete demo for Service endpoint, private endpoint and private link service",
-    "preview": "https://github.com/user-attachments/assets/fb691a32-37d0-4144-aa47-86bbd1ff1bb0",
+    "architectureDiagram": "https://github.com/user-attachments/assets/fb691a32-37d0-4144-aa47-86bbd1ff1bb0",
     "authorUrl": "https://github.com/sarahallali",
     "author": "Sarah Allali",
     "source": "https://github.com/sarahallali/azd-Privatelink-Pendpoint",
@@ -2681,7 +2657,7 @@
   {
     "title": "Azure Nested Hypervisor Demos",
     "description": "This repository showcases a collection of demos leveraging Azure's nested hypervisor capabilities, integrating powerful tools like Azure Arc, Defender for Identity, and more. These demos are designed to demonstrate hybrid cloud management, advanced security, and multi-cloud governance scenarios.",
-    "preview": "https://raw.githubusercontent.com/koenraadhaedens/azd-nestedhv-dc-rtr/refs/heads/main/media/azure-nested-vm.png",
+    "architectureDiagram": "https://raw.githubusercontent.com/koenraadhaedens/azd-nestedhv-dc-rtr/refs/heads/main/media/azure-nested-vm.png",
     "authorUrl": "https://github.com/koenraadhaedens",
     "author": "Koenraad Haedens",
     "source": "https://github.com/koenraadhaedens/azd-nestedhv-dc-rtr",
@@ -2693,7 +2669,7 @@
   {
     "title": "Windows 11 Developer Pc",
     "description": "A Windows 11 developer PC that can be used for installing demos and showcasing them during deliveries.",
-    "preview": "https://raw.githubusercontent.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER/refs/heads/main/media/devpc.png",
+    "architectureDiagram": "https://raw.githubusercontent.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER/refs/heads/main/media/devpc.png",
     "authorUrl": "https://github.com/koenraadhaedens",
     "author": "Koenraad Haedens",
     "source": "https://github.com/koenraadhaedens/AZD-WIN11-DEV-PC-DOCKER",
@@ -2705,7 +2681,7 @@
   {
     "title": "Azure hosted Dev Container",
     "description": "an automated way to deploy a development environment inside a container, accessible as a web-based VS Code instance. The container includes all essential dependencies like Python, Node.js, and .NET, making it a ready-to-use development workspace.",
-    "preview": "https://raw.githubusercontent.com/koenraadhaedens/azd-infra-dev-containers/refs/heads/main/media/vscodeweb.png",
+    "architectureDiagram": "https://raw.githubusercontent.com/koenraadhaedens/azd-infra-dev-containers/refs/heads/main/media/vscodeweb.png",
     "authorUrl": "https://github.com/koenraadhaedens",
     "author": "Koenraad Haedens",
     "source": "https://github.com/koenraadhaedens/azd-infra-dev-containers",
@@ -2716,7 +2692,7 @@
   {
     "title": "Functions E2E HTTP to Event Hubs",
     "description": "This demo deploys a flexible, consumption-based Azure Functions app integrated with Event Hubs through private endpoints and a virtual network. It includes load testing, secure networking, and real-time monitoring via Application Insights.",
-    "preview": "https://raw.githubusercontent.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs/main/img/HTTP-VNET-EH.png",
+    "architectureDiagram": "https://raw.githubusercontent.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs/main/img/HTTP-VNET-EH.png",
     "authorUrl": "https://github.com/rob-foulkrod",
     "author": "Rob Foulkrod",
     "source": "https://github.com/rob-foulkrod/tdd-functions-e2e-http-to-eventhubs",
@@ -2743,7 +2719,7 @@
   {
     "title": "Azure Security Scenarios",
     "description": "This scenario is used to demonstrate security principals and deploys Azure Firewall, Front Door, Application Gateway, Web Application Firewall to protect OWASP Juice Shop website.",
-    "preview": "./templates/images/owasp.png",
+    "architectureDiagram": "./templates/images/owasp.png",
     "authorUrl": "https://github.com/true-while",
     "author": "Alex Ivanov",
     "source": "https://github.com/true-while/owasp-azd/",
@@ -2764,7 +2740,7 @@
   {
     "title": "FastAPI Containerized App on Azure App Service",
     "description": "A simple template to deploy Python containerized FastAPI App to Azure App Service in the free tier.",
-    "preview": "./templates/images/simple-fastapi-container-azd.png",
+    "architectureDiagram": "./templates/images/simple-fastapi-container-azd.png",
     "authorUrl": "https://github.com/madebygps",
     "author": "Gwyneth Peña-Siguenza",
     "source": "https://github.com/madebygps/azd-simple-fastapi-container-appservice",
@@ -2778,7 +2754,7 @@
   {
     "title": "LiteLLM in Azure Container Apps with PostgreSQL database",
     "description": "A template to deploy LiteLLM, open-source Python AI LLM Proxy API, to Azure Container Apps with Azure Database for PostgreSQL.",
-    "preview": "./templates/images/build5nines-azd-litellm.png",
+    "architectureDiagram": "./templates/images/build5nines-azd-litellm.png",
     "authorUrl": "https://build5nines.com",
     "author": "Build5Nines",
     "source": "https://github.com/Build5Nines/azd-litellm",
@@ -2799,7 +2775,7 @@
   {
     "title": "MCP Server written in TypeScript running in Azure Container Apps",
     "description": "A template to deploy a Model Context Protocol (MCP) server written in TypeScript to Azure Container Apps using SSE Transport.",
-    "preview": "./templates/images/powergentic-azd-mcp-ts.png",
+    "architectureDiagram": "./templates/images/powergentic-azd-mcp-ts.png",
     "authorUrl": "https://powergentic.ai",
     "author": "Powergentic",
     "source": "https://github.com/powergentic/azd-mcp-ts",
@@ -2812,7 +2788,7 @@
   {
     "title": "Azure Load Testing",
     "description": "This scenario is used to demonstrate Azure Load Testing.",
-    "preview": "./templates/images/azloadtest.png",
+    "architectureDiagram": "./templates/images/azloadtest.png",
     "authorUrl": "https://github.com/maartenvandiemen",
     "author": "Maarten van Diemen",
     "source": "https://github.com/maartenvandiemen/azd-loadtest/",
@@ -2830,7 +2806,6 @@
   {
     "title": "Azure Secured Data Solutions",
     "description": "This scenario is used to demonstrate different Azure Data Solutions, using secured connectivity.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/true-while",
     "author": "Alex Ivanov",
     "source": "https://github.com/true-while/secure-data-solutions/",
@@ -2848,7 +2823,7 @@
   {
     "title": "Remote MCP Functions with TypeScript",
     "description": "This scenario demonstrates how to to easily build and deploy a custom remote MCP (Message Control Protocol) server to the cloud using Azure functions and TypeScript.",
-    "preview": "./templates/images/azure-functions-mcp-server-typescript.png",
+    "architectureDiagram": "./templates/images/azure-functions-mcp-server-typescript.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/remote-mcp-functions-typescript",
@@ -2868,7 +2843,7 @@
   {
     "title": "Remote MCP Functions with .NET",
     "description": "This scenario demonstrates how to to easily build and deploy a custom remote MCP (Message Control Protocol) server to the cloud using Azure functions and .NET.",
-    "preview": "./templates/images/azure-functions-mcp-server-dotnet.png",
+    "architectureDiagram": "./templates/images/azure-functions-mcp-server-dotnet.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/remote-mcp-functions-dotnet",
@@ -2888,7 +2863,7 @@
   {
     "title": "Remote MCP Functions with Python",
     "description": "This scenario demonstrates how to to easily build and deploy a custom remote MCP (Message Control Protocol) server to the cloud using Azure functions and Python.",
-    "preview": "./templates/images/azure-functions-mcp-server-python.png",
+    "architectureDiagram": "./templates/images/azure-functions-mcp-server-python.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Paul Yuknewicz",
     "source": "https://github.com/Azure-Samples/remote-mcp-functions-python",
@@ -2932,7 +2907,7 @@
   {
     "title": "Multi-tenant RAG Chat in Azure: Vector store per user",
     "description": "RAG Chat example on Azure creates one Neon database project per user, each user's data will be completely isolated.",
-    "preview": "./templates/images/rag-neon-vector-store-per-user.png",
+    "architectureDiagram": "./templates/images/rag-neon-vector-store-per-user.png",
     "authorUrl": "https://neon.tech/demos",
     "author": "Bobur Umurzokov",
     "source": "https://github.com/neondatabase/azure-tenant-ai-chat",
@@ -2955,7 +2930,7 @@
   {
     "title": "Remote MCP Servers using Azure API Management",
     "description": "This repo builds and deploys remote MCP servers using Azure API Management as your auth gateway and Azure Functions as your deployment location.",
-    "preview": "./templates/images/remote-mcp-apim-auth.png",
+    "architectureDiagram": "./templates/images/remote-mcp-apim-auth.png",
     "author": "Julia Kasper",
     "source": "https://github.com/Azure-Samples/remote-mcp-apim-functions-python",
     "tags": ["msft", "ai", "mcp"],
@@ -2977,7 +2952,7 @@
   {
     "title": "MCP Server written in C# running in Azure Container Apps",
     "description": "A template to deploy a Model Context Protocol (MCP) server written in C# to Azure Container Apps using SSE Transport.",
-    "preview": "./templates/images/powergentic-azd-mcp-csharp.png",
+    "architectureDiagram": "./templates/images/powergentic-azd-mcp-csharp.png",
     "author": "Powergentic",
     "source": "https://github.com/powergentic/azd-mcp-csharp",
     "tags": ["community", "ai", "mcp"],
@@ -2989,7 +2964,7 @@
   {
     "title": "This template helps you quickly publish a static website to Azure Web App (Static Site).",
     "description": "The template is designed to simplify the process of deploying static websites to Azure, leveraging the Azure Developer CLI (azd) for streamlined setup and deployment.",
-    "preview": "./templates/images/staticSite.png",
+    "architectureDiagram": "./templates/images/staticSite.png",
     "author": "Evgeny Rudinsky",
     "source": "https://github.com/erudinsky/azd-static-web-vuejs",
     "tags": ["community"],
@@ -3002,7 +2977,7 @@
   {
     "title": "Deploy DeepSeek-R1 on Azure Container Apps with Serverless GPUs.",
     "description": "This scenario deploys deploy DeepSeek-R1 on Azure Container Apps with Serverless GPUs",
-    "preview": "./templates/images/deepseekr1.jpg",
+    "architectureDiagram": "./templates/images/deepseekr1.jpg",
     "author": "Dave Rendon",
     "source": "https://github.com/daverendon/azd-deepseek-r1-on-azure-container-apps",
     "tags": ["community"],
@@ -3013,7 +2988,7 @@
   {
     "title": "YouTube Summarizer with OpenAI and Blazor .NET",
     "description": "This scenario deploys a Blazor .NET FrontEnd application, together with Azure OpenAI Service, to provide a summary of YouTube videos in 5 bullet points",
-    "preview": "./templates/images/YoutubeSummarizer.png",
+    "architectureDiagram": "./templates/images/YoutubeSummarizer.png",
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-youtubesummarizer-openai",
     "tags": ["community"],
@@ -3025,7 +3000,7 @@
   {
     "title": "Vite + Lit AI Chat UI Starter",
     "description": "A ready-to-integrate chat interface template using Vite and Lit for AI-powered conversations.",
-    "preview": "./templates/images/vite-lit-ai-chat-interface.png",
+    "architectureDiagram": "./templates/images/vite-lit-ai-chat-interface.png",
     "author": "Julia Muiruri",
     "source": "https://github.com/Azure-Samples/vite-chat-interface",
     "tags": ["msft"],
@@ -3037,7 +3012,6 @@
   {
     "title": "International Space Station (ISS) Tracker with Fabric and Event Hubs",
     "description": "This scenario deploys an Azure Fabric Cluster with a sample application that tracks the International Space Station (ISS) using Azure Event Hubs and Azure LogicApps.",
-    "preview": "./templates/images/test.png",
     "author": "Peter De Tender",
     "source": "https://github.com/petender/issdata",
     "tags": ["community"],
@@ -3048,7 +3022,7 @@
   {
     "title": "Deploy a baseline web application",
     "description": "This repository provides a baseline for deploying web applications with Deployment Slots, Azure SQL Connectivity and KeyVault.",
-    "preview": "./templates/images/baseline-webapp.png",
+    "architectureDiagram": "./templates/images/baseline-webapp.png",
     "author": "Dave Rendon",
     "source": "https://github.com/daverendon/azd-baseline-webapp",
     "tags": ["community"],
@@ -3065,7 +3039,7 @@
   {
     "title": "Cognitive Services Python App with ServiceEndpoint",
     "description": "This sample scenario deploys Microsoft.CognitiveServices (Face API, Speech, Vision, OpenAI) with a sample Python app. It also showcases a secure setup, where connectivity to the Cognitive Services is only allowed from a Client IP or the webapp Service Endpoint, not public network.",
-    "preview": "./templates/images/azd-vision-face-diagram.png",
+    "architectureDiagram": "./templates/images/azd-vision-face-diagram.png",
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-vision-face",
     "tags": ["community"],
@@ -3078,7 +3052,6 @@
   {
     "title": "Azure SQL w/ Azure OpenAI Blazor chat app on Azure App Service",
     "description": "Create a .NET Blazor chat app with Azure SQL data using a hybrid vector search and Azure OpenAI.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/jeffwmartinez",
     "author": "Jeff Martinez",
     "source": "https://github.com/Azure-Samples/blazor-azure-sql-vector-search",
@@ -3092,7 +3065,7 @@
   {
     "title": "C# API App with Swagger UI deployed to Azure App Service",
     "description": "A simple C# .NET 9 API app with Swagger UI deployed to Azure App Service. The app is a simple REST API with 'TODO' endpoints as a starting point for your own API app.",
-    "preview": "./templates/images/build5nines-azd-csharp-api-swagger.png",
+    "architectureDiagram": "./templates/images/build5nines-azd-csharp-api-swagger.png",
     "author": "Build5Nines",
     "source": "https://github.com/Build5Nines/azd-csharp-api-swagger",
     "tags": ["community"],
@@ -3104,7 +3077,7 @@
   {
     "title": "AI-Powered Code Snippet Manager with Azure Functions and MCP",
     "description": "Build a modern code snippet management system using an MCP server built on Azure Functions with bindings to Cosmos DB DiskANN vector search and AI Agents Service for deep wiki and code style generation. This solution enables intelligent code snippet discovery and reuse through GitHub Copilot integration.",
-    "preview": "./templates/images/snippy-architecture.png",
+    "architectureDiagram": "./templates/images/snippy-architecture.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Govind Kamtamneni",
     "source": "https://github.com/Azure-Samples/snippy",
@@ -3129,7 +3102,7 @@
   {
     "title": "Azure VM Win2022 as ADDS Domain Controller, secured by Bastion",
     "description": "This scenario deploys an Azure Bastion Host Service, allowing secured connectivity to a Windows Server 2022 running as Active Directory Domain Controller, deployed through DSC VM Extensions. An internal DNS domain gets created, but no other OUs or User accounts. You will get prompted for administrative credentials during the azd setup.",
-    "preview": "./templates/images/addsvm_with_bastion.png",
+    "architectureDiagram": "./templates/images/addsvm_with_bastion.png",
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-addsvm",
     "tags": ["community"],
@@ -3140,7 +3113,7 @@
   {
     "title": "SQL Server 2019 AlwaysOn Cluster with ADDS VM and Management VM, secured by Bastion",
     "description": "This scenario deploys a SQL Server 2019 Always On Cluster, together with the required Active Directory Domain Controller VM, a remote Management VM Host, protected by Bastion Host. You will get prompted for administrative credentials during the azd setup.",
-    "preview": "./templates/images/SQLAO_with_Bastion.png",
+    "architectureDiagram": "./templates/images/SQLAO_with_Bastion.png",
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-sqlao",
     "tags": ["community"],
@@ -3159,7 +3132,7 @@
   {
     "title": "Aspire with Key Vault + App Config + Service Bus/RabbitMQ",
     "description": "Containerized ASP.NET apps with Key Vault, App Config and Service Bus and orchestrated using Aspire. Supports completely disconnected local development using RabbitMQ",
-    "preview": "./templates/images/azd-aspire-basic.png",
+    "architectureDiagram": "./templates/images/azd-aspire-basic.png",
     "authorUrl": "https://github.com/fabio-marini",
     "author": "Fabio Marini",
     "source": "https://github.com/fabio-marini/azd-aspire-basic",
@@ -3181,7 +3154,7 @@
   {
     "title": "Service Endpoints and Securing Storage",
     "description": "This demo guides you through a hands-on exercise to build and secure a networked environment in Azure. You will start by creating a virtual network and adding a subnet with a configured storage endpoint. Next, you will implement network security groups. Following this, you will create a storage account with a file share and deploy virtual machines into their respective subnets. Finally, you will test the storage connection from both the private and public subnets to verify that access is correctly allowed from the private subnet and denied from the public subnet.",
-    "preview": "./templates/images/diagram-service-endpoints-and-securing-storage.png",
+    "architectureDiagram": "./templates/images/diagram-service-endpoints-and-securing-storage.png",
     "author": "Dave Rendon",
     "source": "https://github.com/daverendon/azd-service-endpoints-and-securing-storage",
     "tags": ["community"],
@@ -3192,7 +3165,7 @@
   {
     "title": "Fast Food Drive thru Operator Ai Agent with Semantic Kernel and GPT 3.5 Turbo",
     "description": "This AI-powered Fast Food Drive-Thru Operator leverages Semantic Kernel and Azure OpenAI GPT-3.5 turbo to streamline customer interactions, improve efficiency, and automate order processing.",
-    "preview": "./templates/images/michelmsft_GoodFood.png",
+    "architectureDiagram": "./templates/images/michelmsft_GoodFood.png",
     "author": "Michel Agah",
     "source": "https://github.com/michelmsft/GoodFood/",
     "tags": ["community"],
@@ -3205,7 +3178,7 @@
   {
     "title": "Azure App Configuration",
     "description": "Demo to show possibilities of Azure App Configuration",
-    "preview": "./templates/images/AZD-AppConfiguration_mvd.png",
+    "architectureDiagram": "./templates/images/AZD-AppConfiguration_mvd.png",
     "author": "Maarten van Diemen",
     "source": "https://github.com/maartenvandiemen/AZD-AppConfiguration",
     "tags": ["community"],
@@ -3222,7 +3195,7 @@
   {
     "title": "Utilize Private Link for accessing apps on networks with overlapping addresses",
     "description": "This scenario is aligned with the Az-104 and Az-700 path and provides a demo solution for managing overlapping IP address spaces with Azure Private Link.",
-    "preview": "./templates/images/diagram-private-link.png",
+    "architectureDiagram": "./templates/images/diagram-private-link.png",
     "author": "Dave Rendon",
     "source": "https://github.com/daverendon/azd-private-link",
     "tags": ["community"],
@@ -3243,7 +3216,7 @@
   {
     "title": "Azure SQL Workload Simulator Demo",
     "description": "This project sets up an Azure environment with a SQL workload simulator, After 24 hrs you will be able to demo Azure SQL Database Performance Recommendations.",
-    "preview": "./templates/images/sql_workload_simulator.png",
+    "architectureDiagram": "./templates/images/sql_workload_simulator.png",
     "author": "Koenraad Haedens",
     "source": "https://github.com/koenraadhaedens/azd-sqlworloadsim",
     "tags": ["community"],
@@ -3260,7 +3233,7 @@
   {
     "title": "Azure Functions C# Event Grid Blob Trigger using Azure Developer CLI",
     "description": "This template repository contains a Blob trigger with the Event Grid source type reference sample for functions written in C# (isolated process mode) and deployed to Azure using the Azure Developer CLI (azd).",
-    "preview": "./templates/images/azure-functions-eventgrid-blob-csharp.png",
+    "architectureDiagram": "./templates/images/azure-functions-eventgrid-blob-csharp.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd-eventgrid-blob",
@@ -3282,7 +3255,7 @@
   {
     "title": "AZ-104 All-in-one demo",
     "description": "This project sets up an Azure environment for AZ-104 course demo purposes.",
-    "preview": "https://github.com/SQLtattoo/azd-az104-all-in-one/blob/master/demoguide/images/az104allinone-diagram.png?raw=true",
+    "architectureDiagram": "https://github.com/SQLtattoo/azd-az104-all-in-one/blob/master/demoguide/images/az104allinone-diagram.png?raw=true",
     "author": "Vassilis Ioannidis",
     "source": "https://github.com/SQLtattoo/azd-az104-all-in-one",
     "tags": ["community"],
@@ -3308,7 +3281,7 @@
   {
     "title": "Azure AI Foundry Agent Service",
     "description": "This scenario deploys an Azure AI Foundry Hub and Project, as well as an AI Services Agent. You still need to add an Agent description, knowledge and actions to build something useful with it",
-    "preview": "https://github.com/petender/azd-ai-agent-service/blob/main/demoguide/AIFoundrywithAgent.png?raw=true",
+    "architectureDiagram": "https://github.com/petender/azd-ai-agent-service/blob/main/demoguide/AIFoundrywithAgent.png?raw=true",
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-ai-agent-service",
     "tags": ["community"],
@@ -3326,7 +3299,7 @@
   {
     "title": "Azure AI Foundry with Sora Video Generation Model",
     "description": "This scenario deploys an Azure AI Foundry Hub and Project, with the Sora Video Generation Model. The demo scenario relies on the Video Playground, but you could also use it in your own application.",
-    "preview": "https://github.com/petender/azd-foundrysora/blob/main/demoguide/AIFoundrywithSora.png?raw=true",
+    "architectureDiagram": "https://github.com/petender/azd-foundrysora/blob/main/demoguide/AIFoundrywithSora.png?raw=true",
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-foundrysora",
     "tags": ["community"],
@@ -3343,7 +3316,7 @@
   {
     "title": "Azure Functions with SQL Triggers and Bindings (Python)",
     "description": "An Azure Functions QuickStart template demonstrating SQL Triggers and SQL Output Bindings with Azure SQL Database using Python v2 programming model. Features event-driven integration for both writing to and reacting to changes in SQL Database.",
-    "preview": "./templates/images/functions-quickstart-python-azd-sql.png",
+    "architectureDiagram": "./templates/images/functions-quickstart-python-azd-sql.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Samples",
     "source": "https://github.com/Azure-Samples/functions-quickstart-python-azd-sql",
@@ -3368,7 +3341,7 @@
   {
     "title": "Azure Functions TypeScript CosmosDB Trigger",
     "description": "An Azure Functions quickstart project that demonstrates how to use a Cosmos DB Trigger with Azure Developer CLI (azd) for quick and easy deployment, using TypeScript and Node.js. The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
-    "preview": "./templates/images/functions-quickstart-typescript-azd-cosmosdb.png",
+    "architectureDiagram": "./templates/images/functions-quickstart-typescript-azd-cosmosdb.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Samples",
     "source": "https://github.com/Azure-Samples/functions-quickstart-typescript-azd-cosmosdb",
@@ -3390,7 +3363,7 @@
   {
     "title": "Azure Functions Python with Cosmos DB Triggers and Bindings using Azure Developer CLI",
     "description": "This repository demonstrates how to use both Cosmos DB Triggers and Output Bindings with Azure Functions in Python. Shows event-driven integration with Azure Cosmos DB using the Azure Developer CLI (azd) for rapid deployment to Azure Functions Flex Consumption.",
-    "preview": "./templates/images/functions-quickstart-python-azd-cosmosdb.png",
+    "architectureDiagram": "./templates/images/functions-quickstart-python-azd-cosmosdb.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-python-azd-cosmosdb",
@@ -3412,7 +3385,7 @@
   {
     "title": "Azure Functions with SQL Triggers and Bindings (.NET)",
     "description": "An Azure Functions QuickStart project that demonstrates how to use both SQL Triggers and SQL Output Bindings with the Azure Developer CLI (azd) for rapid, event-driven integration with Azure SQL Database.",
-    "preview": "./templates/images/functions-quickstart-dotnet-azd-sql.png",
+    "architectureDiagram": "./templates/images/functions-quickstart-dotnet-azd-sql.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Samples",
     "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd-sql",
@@ -3436,7 +3409,7 @@
   {
     "title": "Azure Functions with SQL Triggers and Bindings (TypeScript)",
     "description": "An Azure Functions QuickStart project that demonstrates how to use both SQL Triggers and SQL Output Bindings with the Azure Developer CLI (azd) for rapid, event-driven integration with Azure SQL Database.",
-    "preview": "./templates/images/functions-quickstart-typescript-azd-sql.png",
+    "architectureDiagram": "./templates/images/functions-quickstart-typescript-azd-sql.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Samples",
     "source": "https://github.com/Azure-Samples/functions-quickstart-typescript-azd-sql",
@@ -3461,7 +3434,7 @@
   {
     "title": "Azure Functions with Cosmos DB Bindings (.NET)",
     "description": "An Azure Functions QuickStart project that demonstrates how to use Cosmos DB bindings with the Azure Developer CLI (azd) for rapid, event-driven integration with Azure Cosmos DB.",
-    "preview": "./templates/images/functions-quickstart-dotnet-azd-cosmosdb.png",
+    "architectureDiagram": "./templates/images/functions-quickstart-dotnet-azd-cosmosdb.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Samples",
     "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd-cosmosdb",
@@ -3556,7 +3529,6 @@
   {
     "title": "API Management with ConferenceAPI and OAuth",
     "description": "Deploy Azure API Management with OAuth2-Protected Conference API and Entra ID Integration Using AZD",
-    "preview": "./templates/images/test.png",
     "author": "Rob Foulkrod",
     "source": "https://github.com/rob-foulkrod/azd-apimwithconfAPI-OAuth",
     "tags": ["community"],
@@ -3568,7 +3540,7 @@
   {
     "title": "Microsoft Sentinel-based threat detection and response",
     "description": "This scenario is aligned with the AZ-500 and AZ-104 path and provides a demo solution for a proof of concept of Microsoft Sentinel-based threat detection and response.",
-    "preview": "./templates/images/azd-microsoft-sentinel-diagram.png",
+    "architectureDiagram": "./templates/images/azd-microsoft-sentinel-diagram.png",
     "author": "Dave Rendon",
     "source": "https://github.com/daverendon/azd-microsoft-sentinel",
     "tags": ["community"],
@@ -3586,7 +3558,7 @@
   {
     "title": "Introduction to Azure PostgreSQL and AI",
     "description": "Azure PostgreSQL & AI Demo offers step-by-step guidance for connecting, configuring, and integrating AI with PostgreSQL in Azure using modern tools.",
-    "preview": "./templates/images/pgdemo.png",
+    "architectureDiagram": "./templates/images/pgdemo.png",
     "author": "Alex Ivanov",
     "source": "https://github.com/true-while/pg-ai-azd",
     "tags": ["community", "jupyter"],
@@ -3597,7 +3569,7 @@
   {
     "title": "Containerized A2A Translation Service with Azure AI Translator",
     "description": "Complete Agent-to-Agent translation service using Azure Container Apps, Storage Queues, and AI Translator. Features async processing, managed identity authentication, and a web GUI for file uploads.",
-    "preview": "https://github.com/passadis/azure-a2a-translation/images/a2a-translation-architecture.png",
+    "architectureDiagram": "https://github.com/passadis/azure-a2a-translation/images/a2a-translation-architecture.png",
     "authorUrl": "https://github.com/passadis",
     "author": "Konstantinos Passadis",
     "source": "https://github.com/passadis/azure-a2a-translation",
@@ -3622,7 +3594,7 @@
   {
     "title": "Simple FastMCP with Azure OpenAI",
     "description": "A minimal FastMCP application template that deploys to Azure App Service. FastMCP provides Model Context Protocol server capabilities, enabling AI assistants to interact with external systems and data sources through a standardized interface.",
-    "preview": "https://raw.githubusercontent.com/MiguelElGallo/myfirstmcp-openai/main/diagram.png",
+    "architectureDiagram": "https://raw.githubusercontent.com/MiguelElGallo/myfirstmcp-openai/main/diagram.png",
     "authorUrl": "https://github.com/MiguelElGallo",
     "author": "Miguel P. Z.",
     "source": "https://github.com/MiguelElGallo/myfirstmcp-openai",
@@ -3636,7 +3608,7 @@
   {
     "title": "Agentic Azure Architecture Document and Diagram Generator with MCP Validation",
     "description": "Intelligent Azure architecture document and diagram generator using AI Foundry agents, MCP service validation, and comprehensive Azure component library. Features automatic import correction, smart component validation using MCP, Dapr for secure and easy Service to Service communications, and professional document and diagram rendering. A must have tool for every Azure Architect and Engineer",
-    "preview": "https://github.com/passadis/ai-architect-webapp/images/ai-architect-architecture.png",
+    "architectureDiagram": "https://github.com/passadis/ai-architect-webapp/images/ai-architect-architecture.png",
     "authorUrl": "https://github.com/passadis",
     "author": "Konstantinos Passadis",
     "source": "https://github.com/passadis/ai-architect-webapp",
@@ -3661,7 +3633,7 @@
   {
     "title": "Durable Functions Fan-Out/Fan-In using Azure Developer CLI",
     "description": "A Durable Functions quickstart written in C# demonstrating the fan-out/fan-in pattern. It's deployed to Azure Functions Flex Consumption plan using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
-    "preview": "./templates/images/durable-functions-quickstart-dotnet.png",
+    "architectureDiagram": "./templates/images/durable-functions-quickstart-dotnet.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/durable-functions-quickstart-dotnet-azd",
@@ -3681,7 +3653,7 @@
   {
     "title": "Deploy a Network-hardened web app with private PaaS datastore",
     "description": "This scenario is aligned with the AZ-500 and AZ-104 path and provides a demo solution for creating an Azure App Service web app in a tightly controlled network environment with strict inbound and outbound network policies.",
-    "preview": "./templates/images/azd-hardened-webapp-diagram.png",
+    "architectureDiagram": "./templates/images/azd-hardened-webapp-diagram.png",
     "author": "Dave Rendon",
     "source": "https://github.com/daverendon/azd-hardened-webapp",
     "tags": ["community"],
@@ -3698,7 +3670,7 @@
   {
     "title": "AI Foundry Agent Service with Bing Search Grounding and OpenAI Deep Research LLM",
     "description": "This scenario deploys an Azure AI Foundry Project, an Azure AI Foundry Agent Service and Bing Search Grounding. A Python with Flask Web App offers a use case to perform Deep Research",
-    "preview": "./templates/images/DeepResearcherArchitecture.png",
+    "architectureDiagram": "./templates/images/DeepResearcherArchitecture.png",
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-researcher",
     "tags": ["community"],
@@ -3740,7 +3712,7 @@
   {
     "title": "Logic App AI Agents and AI Foundry",
     "description": "Template for deploying Logic App Standard Autonomous and Conversational AI Agents and AI Foundry.",
-    "preview": "./templates/images/logicapp-ai-agent.png",
+    "architectureDiagram": "./templates/images/logicapp-ai-agent.png",
     "author": "Marnix Cox",
     "source": "https://github.com/marnixcox/logicapp-ai-agent",
     "tags": ["community", "ai"],
@@ -3762,7 +3734,7 @@
   {
     "title": "Deploy Label Studio directly from Docker Hub on Azure Container Apps",
     "description": "An end-to-end sample deploying a public image (Label Studio) directly to Azure Container Apps with a persistent storage volume.",
-    "preview": "./templates/images/aca-public-image-arch.png",
+    "architectureDiagram": "./templates/images/aca-public-image-arch.png",
     "authorUrl": "https://github.com/bderusha",
     "author": "Bill DeRusha",
     "source": "https://github.com/bderusha/azd-label-studio",
@@ -3781,7 +3753,6 @@
   {
     "title": "Azure Functions TypeScript Event Grid Blob Trigger using Azure Developer CLI",
     "description": "This template repository contains an Azure Functions reference sample using the Blob trigger with Event Grid source type, written in TypeScript (v4 programming model) and deployed to Azure using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-typescript-azd-eventgrid-blob",
@@ -3803,7 +3774,6 @@
   {
     "title": "Azure Functions Python Event Grid Blob Trigger using Azure Developer CLI",
     "description": "This template repository contains an Azure Functions reference sample using the Blob trigger with Event Grid source type, written in Python (v2 programming model) and deployed to Azure using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-python-azd-eventgrid-blob",
@@ -3825,7 +3795,6 @@
   {
     "title": "Azure Functions JavaScript Event Grid Blob Trigger using Azure Developer CLI",
     "description": "This template repository contains an Azure Functions reference sample using the Blob trigger with Event Grid source type, written in JavaScript (v4 programming model) and deployed to Azure using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-javascript-azd-eventgrid-blob",
@@ -3847,7 +3816,6 @@
   {
     "title": "Azure Functions PowerShell Event Grid Blob Trigger using Azure Developer CLI",
     "description": "This template repository contains an Azure Functions reference sample using the Blob trigger with Event Grid source type, written in PowerShell 7.4 (isolated process mode) and deployed to Azure using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-powershell-azd-eventgrid-blob",
@@ -3869,7 +3837,6 @@
   {
     "title": "Azure Functions Java Event Grid Blob Trigger using Azure Developer CLI",
     "description": "This template repository contains an Azure Functions reference sample using the Blob trigger with Event Grid source type, written in Java and deployed to Azure using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-java-azd-eventgrid-blob",
@@ -3891,7 +3858,6 @@
   {
     "title": "Azure Container Apps dynamic sessions with a Python code interpreter",
     "description": "This project demonstrates how to use Azure Container Apps dynamic sessions with a Python code interpreter to create an AI-powered application that can execute Python code securely and return results in real-time.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/jeffwmartinez",
     "author": "Jeff Martinez",
     "source": "https://github.com/Azure-Samples/aca-python-code-interpreter-session",
@@ -3912,7 +3878,7 @@
   {
     "title": "Remote self-hosted Azure MCP Server with managed identity for Copilot Studio integration",
     "description": "This template demonstrates how to self-host a remote Azure MCP Server as an Azure Container App which can use its managed identity to read Azure resources. This template also creates Entra app registrations for connecting Copilot Studio to this remote Azure MCP Server.",
-    "preview": "./templates/images/azmcp-copilot-studio-aca-mi.png",
+    "architectureDiagram": "./templates/images/azmcp-copilot-studio-aca-mi.png",
     "authorUrl": "https://github.com/microsoft/mcp/tree/main/servers/Azure.Mcp.Server",
     "author": "Chunan Ye",
     "source": "https://github.com/Azure-Samples/azmcp-copilot-studio-aca-mi",
@@ -3924,7 +3890,7 @@
   {
     "title": "AI Travel Agents - Multi-Agent MCP Orchestration with LangChain.js, LlamaIndex.TS, and Microsoft Agent Framework",
     "description": "A comprehensive reference application demonstrating multi-agent AI orchestration for travel agency operations using three orchestration frameworks (LangChain.js, LlamaIndex.TS, and Microsoft Agent Framework). Features MCP (Model Context Protocol) servers built in TypeScript, Python, Java, and .NET, deployed as serverless Azure Container Apps with OpenTelemetry monitoring.",
-    "preview": "./templates/images/ai-travel-agents-architecture-diagram.png",
+    "architectureDiagram": "./templates/images/ai-travel-agents-architecture-diagram.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Microsoft DevRel",
     "source": "https://github.com/Azure-Samples/azure-ai-travel-agents",
@@ -3959,7 +3925,7 @@
   {
     "title": "Remote self-hosted Azure MCP Server with managed identity for Microsoft Foundry integration",
     "description": "This template demonstrates how to self-host a remote Azure MCP Server as an Azure Container App which can use its managed identity to read Azure resources. This template also creates Entra app registrations for connecting Microsoft Foundry agent to this remote Azure MCP Server.",
-    "preview": "./templates/images/azmcp-foundry-aca-mi.png",
+    "architectureDiagram": "./templates/images/azmcp-foundry-aca-mi.png",
     "authorUrl": "https://github.com/microsoft/mcp/tree/main/servers/Azure.Mcp.Server",
     "author": "Anu Thomas",
     "source": "https://github.com/Azure-Samples/azmcp-foundry-aca-mi",
@@ -3978,7 +3944,7 @@
   {
     "title": "Protect API Management with OAuth",
     "description": "Demonstrates how to secure an API in Azure API Management with OAuth, including Entra ID app registration examples.",
-    "preview": "./templates/images/protect-apim-with-oauth.png",
+    "architectureDiagram": "./templates/images/protect-apim-with-oauth.png",
     "authorUrl": "https://github.com/ronaldbosma",
     "author": "Ronald Bosma",
     "source": "https://github.com/ronaldbosma/protect-apim-with-oauth",
@@ -4014,7 +3980,7 @@
   {
     "title": "Call API Management backend with OAuth",
     "description": "Demonstrates multiple ways to call OAuth-protected backend APIs through Azure API Management. This template demonstrates three authentication scenarios: Credential Manager, send-request policy with client secret and send-request policy with client certificate (client assertion).",
-    "preview": "./templates/images/call-apim-backend-with-oauth.png",
+    "architectureDiagram": "./templates/images/call-apim-backend-with-oauth.png",
     "authorUrl": "https://github.com/ronaldbosma",
     "author": "Ronald Bosma",
     "source": "https://github.com/ronaldbosma/call-apim-backend-with-oauth",
@@ -4027,7 +3993,6 @@
   {
     "title": "Azure Functions C# Timer Trigger using Azure Developer CLI",
     "description": "This repository contains an Azure Functions Timer trigger quickstart written in C# and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (AZD). This sample uses managed identity and a virtual network to ensure it's secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd-timer",
@@ -4047,7 +4012,7 @@
   {
     "title": "FastAPI Membership API Template for Azure Container Apps",
     "description": "This template allows you to deploy a membership API built with FastAPI to Azure Container Apps, using Azure Database for PostgreSQL",
-    "preview": "./templates/images/fastapi-postgres-aca.png",
+    "architectureDiagram": "./templates/images/fastapi-postgres-aca.png",
     "authorUrl": "https://github.com/EstopaceMA",
     "author": "Mark Anthony Estopace",
     "source": "https://github.com/EstopaceMA/fastapi-postgres-aca",
@@ -4067,7 +4032,6 @@
   {
     "title": "Getting Started with Remote MCP Servers using Azure Functions (Java)",
     "description": "A quick-start showing how to build and deploy a remote MCP server with Azure Functions (Java). Run it locally for debugging, then ship it to the cloud with azd up in minutes. The server is secured by design (system keys + HTTPS), supports OAuth via EasyAuth or API Management, and can be isolated inside a VNet.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Samples",
     "source": "https://github.com/Azure-Samples/remote-mcp-functions-java",
@@ -4088,7 +4052,7 @@
   {
     "title": "Azure Storage Account with Blobs and File Share",
     "description": "This scenario deploys an Azure Storage Account with Blob and File Share, as well as sample data (Seattle scenery images).",
-    "preview": "./templates/images/azstorage.png",
+    "architectureDiagram": "./templates/images/azstorage.png",
     "authorUrl": "https://github.com/petender",
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-storaccnt",
@@ -4100,7 +4064,7 @@
   {
     "title": "Azure Monitor custom logs, and external telemetry",
     "description": "This scenario deploys an Log Analytics workspace with a custom table to ingest logs and external telemetry.",
-    "preview": "./templates/images/monitor-diagram.png",
+    "architectureDiagram": "./templates/images/monitor-diagram.png",
     "authorUrl": "https://github.com/kareldewinter",
     "author": "Karel De Winter",
     "source": "https://github.com/kareldewinter/tdd-azd-monitor",
@@ -4112,7 +4076,7 @@
   {
     "title": "Call API Management with Managed Identity",
     "description": "Demonstrates calling Azure API Management from Azure Functions and Logic Apps using managed identities with OAuth, including one APIM API securely calling another without secrets.",
-    "preview": "https://raw.githubusercontent.com/ronaldbosma/call-apim-with-managed-identity/refs/heads/main/images/diagrams-overview.png",
+    "architectureDiagram": "https://raw.githubusercontent.com/ronaldbosma/call-apim-with-managed-identity/refs/heads/main/images/diagrams-overview.png",
     "authorUrl": "https://github.com/ronaldbosma",
     "author": "Ronald Bosma",
     "source": "https://github.com/ronaldbosma/call-apim-with-managed-identity",
@@ -4132,7 +4096,7 @@
   {
     "title": "Building a Multi-Agent Support Triage System with AZD and Azure AI Foundry",
     "description": "This scenario demonstrates a full implementation of a production-ready multi-agent solution on Azure using Azure AI Foundry Agent Service.",
-    "preview": "./templates/images/azd-multiagent-resource-group.png",
+    "architectureDiagram": "./templates/images/azd-multiagent-resource-group.png",
     "authorUrl": "https://github.com/daverendon",
     "author": "Dave Rendon",
     "source": "https://github.com/daverendon/azd-multiagent",
@@ -4155,7 +4119,7 @@
     "authorUrl": "https://github.com/koenraadhaedens",
     "author": "Koenraad Haedens",
     "source": "https://github.com/koenraadhaedens/azd-firewall-send-syslog-messages",
-    "preview": "https://raw.githubusercontent.com/koenraadhaedens/azd-firewall-send-syslog-messages/main/media/fwsysdiagram.png",
+    "architectureDiagram": "https://raw.githubusercontent.com/koenraadhaedens/azd-firewall-send-syslog-messages/main/media/fwsysdiagram.png",
     "tags": ["community"],
     "languages": ["python"],
     "azureServices": ["sentinel", "aca", "vnets", "virtualmachine"],
@@ -4165,7 +4129,6 @@
   {
     "title": "Azure App Service as MCP Back-End with Product Catalog sample data",
     "description": "This scenario deploys an Azure App Service back-end as MCP Server, with sample product catalog data. The app can be used with Microsoft Foundry MCP Client, Copilot Studio or any other MCP Scenario.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/petender/",
     "author": "Peter De Tender",
     "source": "https://github.com/petender/demo-mcp-productcatalog",
@@ -4178,7 +4141,6 @@
   {
     "title": "Azure Document Intelligence for your custom PDF, Docx or images text transformation",
     "description": "This scenario deploys an Azure Document Intelligence solution for extracting and transforming text from your custom PDF, Docx, or image files.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/petender/",
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-betternotes-ai",
@@ -4199,7 +4161,6 @@
   {
     "title": "Azure VM Backup with Recovery Services Vault",
     "description": "This template can be used as a demo scenario for Azure Backup to showcase a Windows VM backup protection. It deploys all necessary resources such as Azure Recovery Services Vault, a Windows Server 2022 Virtual Machine and the necessary backup job.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/petender/",
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-vmbackup",
@@ -4217,7 +4178,6 @@
   {
     "title": "Azure VM Disaster Recovery with Recovery Services Vault (ASR)",
     "description": "This template can be used as a demo scenario for Azure Recovery Vault to showcase a Windows VM disaster recovery protection. It deploys all necessary resources such as Azure Recovery Services Vault, a Windows Server 2022 Virtual Machine and the necessary recovery job.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/petender/",
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-asrdemo",
@@ -4237,7 +4197,7 @@
   {
     "title": "Azure Routing Demo",
     "description": "This scenario deploys an Azure Hub & Spoke VNet example topology and 3 Windows Server VMs. You can use it to demonstrate VNet-Peerings and Route Tables.",
-    "preview": "./templates/images/AzureRoutingDemo.png",
+    "architectureDiagram": "./templates/images/AzureRoutingDemo.png",
     "authorUrl": "https://github.com/jmenne",
     "author": "Joerg Menne",
     "source": "https://github.com/jmenne/azd-routingdemo",
@@ -4249,7 +4209,6 @@
   {
     "title": "Azure Container Apps dynamic sessions with a custom container and Microsoft Agent Framework",
     "description": "This project demonstrates how to use Azure Container Apps dynamic sessions with a custom container to create an AI-powered agent using Microsoft Agent Framework that can execute Python code securely with pre-installed libraries",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/jeffwmartinez",
     "author": "Jeff Martinez",
     "source": "https://github.com/Azure-Samples/dynamic-sessions-custom-container",
@@ -4269,7 +4228,7 @@
   {
     "title": "Quarkus Todo API Template for Azure Container Apps",
     "description": "This template allows you to deploy a Todo API built with Quarkus to Azure Container Apps, using Azure Database for PostgreSQL",
-    "preview": "./templates/images/quarkus-postgres-aca-architecture.png",
+    "architectureDiagram": "./templates/images/quarkus-postgres-aca-architecture.png",
     "authorUrl": "https://github.com/EstopaceMA",
     "author": "Mark Anthony Estopace",
     "source": "https://github.com/EstopaceMA/quarkus-postgres-aca",
@@ -4283,7 +4242,7 @@
   {
     "title": "MCP Server with OAuth 2.1 and On-Behalf-Of Flow",
     "description": "An Azure Developer CLI (azd) ready template for deploying an MCP (Model Context Protocol) server with OAuth 2.1 authentication and On-Behalf-Of (OBO) flow to Azure Container Apps. Features full authentication with Azure AD (Entra ID), On-Behalf-Of flow for Microsoft Graph API, RFC 9728 compliance, secretless deployment using Federated Identity Credentials, and serverless auto-scaling deployment.",
-    "preview": "./templates/images/mcp-obo-aca.png",
+    "architectureDiagram": "./templates/images/mcp-obo-aca.png",
     "authorUrl": "https://github.com/jsburckhardt",
     "author": "jsburckhardt",
     "source": "https://github.com/jsburckhardt/mcp-obo-aca",
@@ -4297,7 +4256,6 @@
   {
     "title": "Azure Functions TypeScript Event Hub Trigger using Azure Developer CLI",
     "description": "This repository contains an Azure Functions Event Hub trigger quickstart written in TypeScript and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-typescript-azd-eventhub",
@@ -4318,7 +4276,6 @@
   {
     "title": "Azure Functions Python Event Hub Trigger using Azure Developer CLI",
     "description": "This repository contains an Azure Functions Event Hub trigger quickstart written in Python and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-python-azd-eventhub",
@@ -4339,7 +4296,6 @@
   {
     "title": "Azure Functions .NET Event Hub Trigger using Azure Developer CLI",
     "description": "This repository contains an Azure Functions Event Hub trigger quickstart written in .NET and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd-eventhub",
@@ -4361,7 +4317,6 @@
   {
     "title": "Azure Functions Java Event Hub Trigger using Azure Developer CLI",
     "description": "This repository contains an Azure Functions Event Hub trigger quickstart written in Java and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-java-azd-eventhub",
@@ -4382,7 +4337,6 @@
   {
     "title": "Azure Functions JavaScript Event Hub Trigger using Azure Developer CLI",
     "description": "This repository contains an Azure Functions Event Hub trigger quickstart written in JavaScript and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-javascript-azd-eventhub",
@@ -4403,7 +4357,6 @@
   {
     "title": "Azure Functions PowerShell Event Hub Trigger using Azure Developer CLI",
     "description": "This repository contains an Azure Functions Event Hub trigger quickstart written in PowerShell and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-powershell-azd-eventhub",
@@ -4424,7 +4377,7 @@
   {
     "title": "Azure App Service + Foundry Chat Starter",
     "description": "One-click azd template that deploys a Blazor Server chat app on Azure App Service integrated with Azure Foundry, VNet, managed identity, and Application Insights.",
-    "preview": "./templates/images/app-service-foundry.png",
+    "architectureDiagram": "./templates/images/app-service-foundry.png",
     "authorUrl": "https://github.com/seligj95",
     "author": "Jordan Selig",
     "source": "https://github.com/seligj95/app-service-foundry-chat",
@@ -4448,7 +4401,7 @@
   {
     "title": "Unified AI Gateway Design Pattern with Azure API Management",
     "description": "Demonstrates the Unified AI Gateway design pattern using Azure API Management to route requests to multiple AI services (Microsoft Foundry and Google Gemini) through a single endpoint with authentication, load balancing, and token limiting.",
-    "preview": "./templates/images/apim-unified-ai-gateway.png",
+    "architectureDiagram": "./templates/images/apim-unified-ai-gateway.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure API Management Team",
     "source": "https://github.com/Azure-Samples/APIM-Unified-AI-Gateway-Sample",
@@ -4469,7 +4422,7 @@
   {
     "title": "AKS KEDA Prometheus Scaler Demo",
     "description": "A sample multi app deployment to get started with KEDA scale rules in AKS. Save on costs testing scale locally or in AKS with public IP nginx ingress controller or private IP via VNET + load balancer. Options available to add Azure Container Registry, Azure Managed Grafana and the AKS App Routing Addon",
-    "preview": "./templates/images/aks-kedaprometheus-demo.png",
+    "architectureDiagram": "./templates/images/aks-kedaprometheus-demo.png",
     "authorUrl": "https://github.com/degero",
     "author": "Chad Paynter",
     "source": "https://github.com/degero-examples/azure-akskedaprometheus-demo",
@@ -4493,7 +4446,7 @@
   {
     "title": "Azure Cosmos DB MCP Toolkit",
     "description": "An MCP Toolkit enabling agents and agentic apps to work with Azure Cosmos DB.",
-    "preview": "./templates/images/mcp-kit-aca-cosmos.png",
+    "architectureDiagram": "./templates/images/mcp-kit-aca-cosmos.png",
     "authorUrl": "https://github.com/AzureCosmosDB",
     "author": "Azure Cosmos DB",
     "source": "https://github.com/AzureCosmosDB/MCPToolKit",
@@ -4506,7 +4459,7 @@
   {
     "title": "Track Availability in Application Insights using Standard Test, Azure Function and Logic App Workflow",
     "description": "A demo that shows three different ways to track availability in Application Insights using a standard test (webtest), an Azure Function (.NET) and a Logic App workflow",
-    "preview": "https://raw.githubusercontent.com/ronaldbosma/track-availability-in-app-insights/main/images/diagrams-overview.png",
+    "architectureDiagram": "https://raw.githubusercontent.com/ronaldbosma/track-availability-in-app-insights/main/images/diagrams-overview.png",
     "authorUrl": "https://github.com/ronaldbosma",
     "author": "Ronald Bosma",
     "source": "https://github.com/ronaldbosma/track-availability-in-app-insights",
@@ -4528,7 +4481,7 @@
   {
     "title": "Azure AI integration of customer users with C# applications and enterprise data, using OAuth 2.0 token intelligence.",
     "description": "A secured A2A and MCP flow, where customer users send commands to backend agents and resource servers apply token-based authorization. Includes a container apps deployment where tokens enable agents to complete complex flows, while resource servers and API gateways can apply dynamic access controls.",
-    "preview": "./templates/images/curity-autonomous-ai-agent.jpg",
+    "architectureDiagram": "./templates/images/curity-autonomous-ai-agent.jpg",
     "authorUrl": "https://curity.io",
     "author": "Curity Team",
     "source": "https://github.com/curityio/azd-ai-autonomous-agent",
@@ -4548,7 +4501,7 @@
   {
     "title": "ToDo list - Razor Pages + Azure Functions + Storage Table (Managed Identity access)",
     "description": "A complete ToDo app with front-end in Razor pages hosted in App Service, backend in Azure Functions hosted in function app and data in Azure Table Storage. Uses Managed Identity to access data (no connection strings or keys). Uses Azure Developer CLI (azd) to build, deploy, and monitor.",
-    "preview": "./templates/images/todo-razorpages-azurefunctions-table.png",
+    "architectureDiagram": "./templates/images/todo-razorpages-azurefunctions-table.png",
     "authorUrl": "https://github.com/massimobonanni",
     "author": "Massimo Bonanni",
     "source": "https://github.com/massimobonanni/AZD-ToDoList",
@@ -4568,7 +4521,7 @@
   {
     "title": "Azure Functions with Service Bus and VNet (Python)",
     "description": "End-to-end Python sample demonstrating secure triggering of a Flex Consumption function app from a Service Bus instance secured in a virtual network, using managed identity and VNet integration.",
-    "preview": "./templates/images/functions-e2e-sb-vnet.png",
+    "architectureDiagram": "./templates/images/functions-e2e-sb-vnet.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Anthony Chu",
     "source": "https://github.com/Azure-Samples/functions-quickstart-python-azd-service-bus",
@@ -4590,7 +4543,7 @@
   {
     "title": "Rust MCP Server on Azure Container Apps",
     "description": "A zero-trust, read-only Model Context Protocol (MCP) server written in Rust on top of axum, deployed to Azure Container Apps with Bicep. Designed as a memory-safe, low-latency option for AI agent tool execution as an alternative to Python or Node.js stacks.",
-    "preview": "./templates/images/rust-mcp-azure.png",
+    "architectureDiagram": "./templates/images/rust-mcp-azure.png",
     "authorUrl": "https://github.com/zubeyralmaho",
     "author": "zubeyralmaho",
     "source": "https://github.com/zubeyralmaho/rust-mcp-azure",
@@ -4604,7 +4557,6 @@
   {
     "title": "Serverless Repo Digest Agent",
     "description": "A daily GitHub repository digest agent running on the Azure Functions serverless agents runtime with Azure AI Gateway and GitHub MCP tools.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/paulyuk",
     "author": "paulyuk",
     "source": "https://github.com/paulyuk/serverless-repo-digest-agent",
@@ -5301,7 +5253,6 @@
   {
     "title": "Azure Static Web App with Next.js and Postgres",
     "description": "An Azure Static Web App (SWA) template configured with Next.js, Tailwind, Entra SWA Auth, Node.js Azure Functions, and Postgres. Great as a Vercel/Supabase alternative that is native to Azure.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/benleane83",
     "author": "benleane83",
     "source": "https://github.com/benleane83/azure-swa-nextjs-postgres",
@@ -5322,7 +5273,7 @@
   {
     "title": "Azure Functions JavaScript Cosmos DB Trigger",
     "description": "An Azure Functions quickstart project that demonstrates how to use a Cosmos DB Trigger with Azure Developer CLI (azd) for quick and easy deployment, using JavaScript and Node.js. The sample uses managed identity to make deployment secure by default.",
-    "preview": "./templates/images/functions-quickstart-javascript-azd-cosmosdb.png",
+    "architectureDiagram": "./templates/images/functions-quickstart-javascript-azd-cosmosdb.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Samples",
     "source": "https://github.com/Azure-Samples/functions-quickstart-javascript-azd-cosmosdb",
@@ -5344,7 +5295,7 @@
   {
     "title": "Azure Functions PowerShell Cosmos DB Trigger",
     "description": "An Azure Functions quickstart project that demonstrates how to use a Cosmos DB Trigger with Azure Developer CLI (azd) for quick and easy deployment, using PowerShell. The sample uses managed identity to make deployment secure by default.",
-    "preview": "./templates/images/functions-quickstart-powershell-azd-cosmosdb.png",
+    "architectureDiagram": "./templates/images/functions-quickstart-powershell-azd-cosmosdb.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Samples",
     "source": "https://github.com/Azure-Samples/functions-quickstart-powershell-azd-cosmosdb",
@@ -5366,7 +5317,7 @@
   {
     "title": "Azure Functions Java Cosmos DB Trigger",
     "description": "An Azure Functions quickstart project that demonstrates how to use a Cosmos DB Trigger with Azure Developer CLI (azd) for quick and easy deployment, using Java. The sample uses managed identity to make deployment secure by default.",
-    "preview": "./templates/images/functions-quickstart-java-azd-cosmosdb.png",
+    "architectureDiagram": "./templates/images/functions-quickstart-java-azd-cosmosdb.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Samples",
     "source": "https://github.com/Azure-Samples/functions-quickstart-java-azd-cosmosdb",
@@ -5388,7 +5339,6 @@
   {
     "title": "Azure Functions Flex Consumption - Durable Text Analysis with Azure Files OS Mount",
     "description": "Durable Functions fan-out/fan-in orchestration that analyzes text files stored on an Azure Files OS mount. An HTTP trigger starts the orchestration, which fans out to analyze each text file in parallel and aggregates results.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Samples",
     "source": "https://github.com/Azure-Samples/Azure-Functions-Flex-Consumption-with-Azure-Files-OS-Mount-Samples",
@@ -5798,7 +5748,6 @@
   {
     "title": "Chainlit Agent",
     "description": "Chainlit Agent: Intelligent Assistant with Azure AI Agent. With Frontend with chainlit and backend with fastapi. Using Azure AI Agent service for RAG pattern. ",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/zhenbzha/",
     "author": "Zhenbo Zhang",
     "source": "https://github.com/zhenbzha/chainlit-agent",
@@ -6063,7 +6012,6 @@
   {
     "title": "Call Center Voice Agent Accelerator with Azure Voice Live API",
     "description": "Call Center Real-time Voice Agent solution accelerator is a lightweight template to create speech-to-speech voice agents that deliver personalized self-service experiences and natural-sounding voices, seamlessly integrated with telephony systems. This solution accelerator uses Azure Voice Live API and Azure Communication Services.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Emma-ms",
     "author": "Emma Chen",
     "source": "https://github.com/Azure-Samples/call-center-voice-agent-accelerator",
@@ -6095,7 +6043,6 @@
   {
     "title": "AI application with SharePoint knowledge and actions",
     "description": "This project features a web application and an agent designed to help users process information from their SharePoint content and generate summary reports. The application leverages the Azure AI Foundry SDK to host and communicate with the agent, which utilizes the Copilot Retrieval API for semantic queries of relevant SharePoint content. The Retrieval API relies on SharePoint’s built-in semantic index and access control.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/tmarwendo-microsoft",
     "author": "Yogesh Ratnaparkhi",
     "source": "https://github.com/microsoft/app-with-sharepoint-knowledge",
@@ -6114,7 +6061,6 @@
   {
     "title": "NLWeb Agent Demo",
     "description": "NLWeb is an open project developed by Microsoft that aims to make it simple to create a rich, natural language interface for websites using the model of their choice and their own data. This sample demonstrates developers can easily deploy the NLWeb as a foundry agent.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/hengyl",
     "author": "Heng-yi Liu",
     "source": "https://github.com/hengyl/nlweb-agent-demo",
@@ -6330,7 +6276,6 @@
   {
     "title": "Azure Functions Python Timer Trigger using Azure Developer CLI",
     "description": "This repository contains an Azure Functions Timer trigger quickstart written in Python and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (AZD). This sample uses managed identity and a virtual network to ensure it's secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-python-azd-timer",
@@ -6350,7 +6295,6 @@
   {
     "title": "Azure Functions JavaScript Timer Trigger using Azure Developer CLI",
     "description": "This repository contains an Azure Functions Timer trigger quickstart written in JavaScript and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (AZD). This sample uses managed identity and a virtual network to ensure it's secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-javascript-azd-timer",
@@ -6370,7 +6314,6 @@
   {
     "title": "Azure Functions TypeScript Timer Trigger using Azure Developer CLI",
     "description": "This repository contains an Azure Functions Timer trigger quickstart written in TypeScript and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (AZD). This sample uses managed identity and a virtual network to ensure it's secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-typescript-azd-timer",
@@ -6390,7 +6333,6 @@
   {
     "title": "Durable Functions Fan-Out/Fan-In using Azure Developer CLI (Java)",
     "description": "A Durable Functions quickstart written in Java demonstrating the fan-out/fan-in pattern. It's deployed to Azure Functions Flex Consumption plan using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/durable-functions-quickstart-java-azd",
@@ -6410,7 +6352,6 @@
   {
     "title": "Durable Functions Fan-Out/Fan-In using Azure Developer CLI (JavaScript)",
     "description": "A Durable Functions quickstart written in JavaScript demonstrating the fan-out/fan-in pattern. It's deployed to Azure Functions Flex Consumption plan using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/durable-functions-quickstart-javascript-azd",
@@ -6430,7 +6371,6 @@
   {
     "title": "Durable Functions Fan-Out/Fan-In using Azure Developer CLI (PowerShell)",
     "description": "A Durable Functions quickstart written in PowerShell demonstrating the fan-out/fan-in pattern. It's deployed to Azure Functions Flex Consumption plan using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/durable-functions-quickstart-powershell-azd",
@@ -6450,7 +6390,6 @@
   {
     "title": "Durable Functions Fan-Out/Fan-In using Azure Developer CLI (Python)",
     "description": "A Durable Functions quickstart written in Python demonstrating the fan-out/fan-in pattern. It's deployed to Azure Functions Flex Consumption plan using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/durable-functions-quickstart-python-azd",
@@ -6470,7 +6409,6 @@
   {
     "title": "Durable Functions Fan-Out/Fan-In using Azure Developer CLI (TypeScript)",
     "description": "A Durable Functions quickstart written in TypeScript demonstrating the fan-out/fan-in pattern. It's deployed to Azure Functions Flex Consumption plan using the Azure Developer CLI (azd). The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/durable-functions-quickstart-typescript-azd",
@@ -6490,7 +6428,6 @@
   {
     "title": "Remote MCP Functions with JavaScript",
     "description": "This scenario demonstrates how to easily build and deploy a custom remote MCP (Model Context Protocol) server to the cloud using Azure Functions and JavaScript. The MCP server is configured with built-in authentication using Microsoft Entra as the identity provider.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/remote-mcp-functions-javascript",
@@ -6510,7 +6447,6 @@
   {
     "title": "Long-running MCP tools using Durable Functions (.NET/C#)",
     "description": "A sample Azure Functions MCP server (.NET isolated) that shows how to run long-running MCP tools by backing them with Durable Functions and a budgeted start and poll pattern. It's deployed using the Azure Developer CLI (azd) and uses the Durable Task Scheduler backend with managed identity in Azure.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/mcp-functions-long-running-tools",
@@ -6530,7 +6466,6 @@
   {
     "title": "Azure Functions Java Timer Trigger using Azure Developer CLI",
     "description": "This repository contains an Azure Functions Timer trigger quickstart written in Java and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (AZD). This sample uses managed identity and a virtual network to ensure it's secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-java-azd-timer",
@@ -6550,7 +6485,6 @@
   {
     "title": "Azure Functions PowerShell Timer Trigger using Azure Developer CLI",
     "description": "This repository contains an Azure Functions Timer trigger quickstart written in PowerShell and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (AZD). This sample uses managed identity and a virtual network to ensure it's secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-powershell-azd-timer",
@@ -6570,7 +6504,6 @@
   {
     "title": "Azure Functions C# HTTP Trigger using Azure Developer CLI (Terraform)",
     "description": "This repository contains an Azure Functions HTTP trigger quickstart written in C# (isolated process mode) and deployed to Azure Functions Flex Consumption using the Azure Developer CLI (azd) with Terraform as the IaC provider. The sample uses managed identity and a virtual network to make sure deployment is secure by default.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-dotnet-azd-tf",
@@ -6591,7 +6524,7 @@
   {
     "title": "mTLS with Azure API Management and Application Gateway",
     "description": "A demo that shows how to use mutual TLS (mTLS) with Azure API Management and Application Gateway. It shows how to validate client certificates when calling API Management directly and when API Management is behind an Application Gateway. It also demonstrates how to secure connections from API Management to backend systems using mTLS.",
-    "preview": "./templates/images/mtls-with-apim-and-agw.png",
+    "architectureDiagram": "./templates/images/mtls-with-apim-and-agw.png",
     "authorUrl": "https://github.com/ronaldbosma",
     "author": "Ronald Bosma",
     "source": "https://github.com/ronaldbosma/mtls-with-apim-and-agw",
@@ -6613,7 +6546,6 @@
   {
     "title": "Daily Repo Digest with AI Gateway",
     "description": "A Python Foundry Hosted Agent sample that runs a Microsoft Agent Framework repo-digest agent. Model requests and read-only GitHub MCP calls are routed through Azure AI Gateway, and the template deploys end to end with azd up using Bicep infrastructure. This is the sample used by the AI Gateway quickstart.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Microsoft",
     "source": "https://github.com/Azure-Samples/simple-foundry-hosted-agent-python-aigateway",
@@ -6634,7 +6566,6 @@
   {
     "title": "Azure Functions Hosted Skill: Expense Processor",
     "description": "A markdown-first Azure Functions hosted skill for queue-driven expense processing. It reads expense requests, applies matching policy documents, and routes decisions to approved, review, or flagged queues.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Microsoft",
     "source": "https://github.com/Azure-Samples/hosted-skills-expense-processor",
@@ -6657,7 +6588,6 @@
   {
     "title": "M365 Inbox Agent for Azure Functions (Python)",
     "description": "An AI agent that triages a Microsoft 365 inbox, escalating urgent mail to Teams, drafting replies, and sending daily briefings based on rules written in Markdown.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/m365-inbox-serverless-agent-python",
@@ -6680,7 +6610,6 @@
   {
     "title": "Document Reviewer",
     "description": "A markdown-first Azure Functions serverless agent that reviews new SharePoint PDF and DOCX files and posts an evidence-backed brief to one Microsoft Teams channel.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Samples",
     "source": "https://github.com/Azure-Samples/document-reviewer",
@@ -6702,7 +6631,6 @@
   {
     "title": "Flexible Azure Landing Zone (Bicep-Based)",
     "description": "A modular Azure landing zone with hub-spoke networking, optional security controls, monitoring, and a scalable architecture.",
-    "preview": "./templates/images/test.png",
     "authorUrl": "https://github.com/durga533",
     "author": "Durga Prasad Katrapally",
     "source": "https://github.com/durga533/azure-landingzone-setup",
@@ -6714,7 +6642,7 @@
   {
     "title": "Microhack - Ask, Analyze, Act - Talk to Your Data in the Era of AI",
     "description": "This MicroHack scenario walks through the use of modernizing SQL Server workloads and building an analytics- and AI-ready data foundation using Fabric and SQL Managed Instance. The scenario demonstrates the end-to-end journey from database mirroring and analytics enablement to Data Agent configuration and real user interaction via Copilot.",
-    "preview": "./templates/images/Microhack-Talktoyourdata.png",
+    "architectureDiagram": "./templates/images/Microhack-Talktoyourdata.png",
     "authorUrl": "https://github.com/henrikmotzkus",
     "author": "Henrik Motzkus",
     "source": "https://github.com/Azure-Samples/Microhack-Ask-Analyze-Act",
@@ -6734,7 +6662,7 @@
   {
     "title": "Text Semantic Search using embedding models in Microsoft Foundry and Azure PostgreSQL",
     "description": "A .NET application that generates text embeddings with Microsoft Foundry, stores them in Azure Database for PostgreSQL with pgvector, and searches for semantically similar text. It provisions a Blazor Server frontend and Azure Functions API using Bicep.",
-    "preview": "./templates/images/db-semantic-search-architecture.png",
+    "architectureDiagram": "./templates/images/db-semantic-search-architecture.png",
     "authorUrl": "https://info.massimobonanni.it/",
     "author": "Massimo Bonanni",
     "source": "https://github.com/massimobonanni/DBSemanticSearch",
@@ -6758,7 +6686,7 @@
   {
     "title": "LangChain AG-UI Chat with Angular, Hono, and LangGraph on Azure Container Apps",
     "description": "A streaming AI chat application with generative UI tool components, connecting an Angular (@copilotkit/angular) frontend to a LangGraph Server via the AG-UI protocol and @ag-ui/langgraph on a Hono API. Demonstrates a fully self-hosted deployment on Azure Container Apps using official AG-UI and CopilotKit packages.",
-    "preview": "./templates/images/langchain-ag-ui-angular.png",
+    "architectureDiagram": "./templates/images/langchain-ag-ui-angular.png",
     "authorUrl": "https://github.com/JayChase",
     "author": "Jay Chase",
     "source": "https://github.com/JayChase/langchain-ag-ui-angular",

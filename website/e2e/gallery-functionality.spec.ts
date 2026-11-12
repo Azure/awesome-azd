@@ -624,6 +624,58 @@ test.describe("Gallery functionality (deploy gate)", () => {
     expect(contrast).toBeGreaterThanOrEqual(4.5);
   });
 
+  test("start-with-code preview label meets text contrast", async ({
+    page,
+  }) => {
+    const contrastRatio = () =>
+      page
+        .getByText("(Preview)", { exact: true })
+        .evaluate((element) => {
+          const parseColor = (value: string) =>
+            (value.match(/[\d.]+/g) ?? [])
+              .slice(0, 3)
+              .map(Number)
+              .map((channel) =>
+                value.startsWith("color(srgb")
+                  ? channel * 255
+                  : channel,
+              );
+          const luminance = (channels: number[]) => {
+            const [red, green, blue] = channels.map((channel) => {
+              const value = channel / 255;
+              return value <= 0.03928
+                ? value / 12.92
+                : ((value + 0.055) / 1.055) ** 2.4;
+            });
+            return 0.2126 * red + 0.7152 * green + 0.0722 * blue;
+          };
+          const style = window.getComputedStyle(element);
+          const foreground = luminance(parseColor(style.color));
+          const terminal = element.closest("figure");
+          if (terminal === null) {
+            throw new Error("Expected preview label inside a terminal.");
+          }
+          const background = luminance(
+            parseColor(window.getComputedStyle(terminal).backgroundColor),
+          );
+          return (
+            (Math.max(foreground, background) + 0.05) /
+            (Math.min(foreground, background) + 0.05)
+          );
+        });
+
+    await page.goto("templates/start-with-code");
+    expect(await contrastRatio()).toBeGreaterThanOrEqual(4.5);
+
+    await page.evaluate(() => localStorage.setItem("theme", "dark"));
+    await page.reload();
+    await expect(page.locator("html")).toHaveAttribute(
+      "data-theme",
+      "dark",
+    );
+    expect(await contrastRatio()).toBeGreaterThanOrEqual(4.5);
+  });
+
   test("clearing search restores the full gallery", async ({ page }) => {
     const initial = await resultCount(page);
     const searchInput = page.locator("#catalog-search");

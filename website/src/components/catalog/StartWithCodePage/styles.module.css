@@ -12,9 +12,14 @@
   --catalog-line: var(--colorNeutralStroke2, #e0e0e0);
   --catalog-blue: var(--colorBrandForeground1, #0f6cbd);
   --catalog-command-bg: var(--catalog-subtle);
+  --catalog-preview: #8a5a00;
   background: var(--catalog-paper);
   color: var(--catalog-ink);
   font-size: 1rem;
+}
+
+:global([data-theme="dark"]) .page {
+  --catalog-preview: #f2c14e;
 }
 
 .fluentProvider.fluentProvider {
@@ -244,7 +249,7 @@
 }
 
 .terminalPreview {
-  color: #d6a33a;
+  color: var(--catalog-preview);
 }
 
 .choices {

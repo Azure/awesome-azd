@@ -6,6 +6,7 @@
 export type Tag = {
   label: string;
   description: string;
+  productDescription?: string;
   azureIcon?: string;
   darkModeAzureIcon?: string;
   url?: string;

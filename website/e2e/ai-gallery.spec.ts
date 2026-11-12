@@ -227,7 +227,7 @@ test.describe("Unified AI app templates catalog", () => {
     expect(remoteSearchRequests).toEqual([]);
   });
 
-  test("links AI templates directly to their repositories", async ({
+  test("links AI templates to their detail pages", async ({
     page,
   }) => {
     await openAiGallery(page);
@@ -237,12 +237,8 @@ test.describe("Unified AI app templates catalog", () => {
 
     await expect(templateLink).toHaveAttribute(
       "href",
-      "https://github.com/Azure-Samples/azure-search-openai-demo",
+      "/awesome-azd/templates/azure-samples/azure-search-openai-demo",
     );
-    await expect(templateLink).toHaveAttribute("target", "_blank");
-    await expect(templateLink).toHaveAttribute(
-      "rel",
-      "noopener noreferrer",
-    );
+    await expect(templateLink).not.toHaveAttribute("target", "_blank");
   });
 });

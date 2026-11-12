@@ -4,6 +4,8 @@
  */
 
 import { describe, expect, test } from "@jest/globals";
+import * as fs from "fs";
+import * as path from "path";
 import templates from "../static/templates.json";
 import reviewedTemplateUseCases from "../src/catalog/template-use-cases.json";
 import { catalogTemplates } from "../src/catalog/catalogData";
@@ -17,6 +19,8 @@ import {
   serializeCatalogState,
   sortCatalogTemplates,
 } from "../src/catalog/catalogQuery";
+
+const websiteRoot = path.resolve(__dirname, "..");
 
 describe("unified catalog data", () => {
   test("includes standard and AI templates without duplicate sources", () => {
@@ -137,6 +141,72 @@ describe("unified catalog data", () => {
         (template) => template.source === rawTemplate.source,
       )?.preview,
     ).toBe(rawTemplate.preview);
+  });
+
+  test("creates stable repository detail routes for every template", () => {
+    const detailPaths = catalogTemplates.map(
+      (template) => template.detailPath,
+    );
+
+    expect(new Set(detailPaths).size).toBe(catalogTemplates.length);
+    expect(
+      catalogTemplates.find(
+        (template) =>
+          template.source ===
+          "https://github.com/Azure-Samples/azure-search-openai-demo",
+      ),
+    ).toMatchObject({
+      repository: "azure-samples/azure-search-openai-demo",
+      detailPath:
+        "/templates/azure-samples/azure-search-openai-demo",
+    });
+  });
+
+  test("merges product descriptions and portal icons for resources", () => {
+    const resources = catalogTemplates.flatMap(
+      (template) => template.resources,
+    );
+
+    expect(resources.length).toBeGreaterThan(0);
+    expect(
+      resources.every(
+        (resource) =>
+          resource.icon &&
+          resource.url &&
+          /^https:\/\//.test(resource.url) &&
+          resource.description &&
+          !/^Template (?:architecture|for)\b/.test(
+            resource.description,
+          ) &&
+          !resource.description.startsWith("Learn more about "),
+      ),
+    ).toBe(true);
+    for (const icon of new Set(
+      resources.flatMap((resource) =>
+        [resource.icon, resource.darkModeIcon].filter(
+          (value): value is string => value != null,
+        ),
+      ),
+    )) {
+      const assetPath = icon.replace(/^\.?\//, "");
+      if (!fs.existsSync(path.join(websiteRoot, "static", assetPath))) {
+        throw new Error(`Missing resource icon ${icon}`);
+      }
+    }
+    expect(
+      catalogTemplates
+        .find(
+          (template) =>
+            template.source ===
+            "https://github.com/Azure-Samples/azure-search-openai-demo",
+        )
+        ?.resources.find((resource) => resource.id === "appservice"),
+    ).toMatchObject({
+      label: "Azure App Service",
+      description:
+        "Quickly create powerful cloud apps for web and mobile.",
+      icon: "./img/Azure-App-Service.svg",
+    });
   });
 
   test("derives featured status only from the existing featured tag", () => {

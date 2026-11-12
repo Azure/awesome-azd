@@ -12,12 +12,40 @@ function dataFileName(prefix: string, value: string): string {
 function toServiceTemplate(template: CatalogTemplate) {
   return {
     source: template.source,
+    detailPath: template.detailPath,
     title: template.title,
     description: template.description,
     authors: template.authors,
     preview: template.preview,
     screenshot: template.screenshot,
     architectureDiagram: template.architectureDiagram,
+  };
+}
+
+function toTemplateDetail(template: CatalogTemplate) {
+  return {
+    title: template.title,
+    description: template.description,
+    source: template.source,
+    repository: template.repository,
+    detailPath: template.detailPath,
+    authors: template.authors,
+    authorUrls: template.authorUrls,
+    isAi: template.isAi,
+    tasks: template.tasks,
+    languages: template.languages,
+    frameworks: template.frameworks,
+    databases: template.databases,
+    iac: template.iac,
+    services: template.services,
+    tools: template.tools,
+    topics: template.topics,
+    models: template.models,
+    resources: template.resources,
+    preview: template.preview,
+    architectureDiagram: template.architectureDiagram,
+    screenshot: template.screenshot,
+    initCommand: template.initCommand,
   };
 }
 
@@ -53,6 +81,23 @@ export default function catalogRouteGenerator(
           modules,
         });
       };
+
+      for (const template of catalogTemplates) {
+        const detailPageDataPath = await actions.createData(
+          dataFileName("template", template.repository),
+          { template: toTemplateDetail(template) },
+        );
+
+        addRoute(
+          `${context.siteConfig.baseUrl}${template.detailPath.replace(
+            /^\//,
+            "",
+          )}`,
+          template.normalizedSource,
+          "@site/src/components/catalog/TemplateDetailPage",
+          { templatePage: detailPageDataPath },
+        );
+      }
 
       for (const servicePage of servicePages) {
         const matchingTemplates = catalogTemplates.filter((template) =>

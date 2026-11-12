@@ -205,6 +205,7 @@ function TemplateCard({
 }): React.JSX.Element {
   const microsoftIcon = useBaseUrl("/img/Microsoft.svg");
   const communityIcon = useBaseUrl("/img/Community.svg");
+  const detailUrl = useBaseUrl(template.detailPath);
   const service =
     template.resources.find(
       (resource) => resource.role === "Application hosting",
@@ -230,12 +231,10 @@ function TemplateCard({
       }`}
       data-template-card
     >
-      <a
+      <Link
         id={`${headingId}-link`}
         className={styles.cardLink}
-        href={template.source}
-        target="_blank"
-        rel="noopener noreferrer"
+        to={detailUrl}
         aria-labelledby={headingId}
         data-template-title={template.title}
       >
@@ -291,7 +290,7 @@ function TemplateCard({
             statClassName={styles.repoStat}
           />
         </div>
-      </a>
+      </Link>
       <div className={styles.cardCommand}>
         <code title={template.initCommand}>{template.initCommand}</code>
         <CopyAction

@@ -20,6 +20,7 @@ import {
   formatAzdInitCommand,
   getTemplateIdentifier,
 } from "../utils/templateCommands";
+import { getAzureServiceMetadata } from "./azureServiceMetadata";
 
 export const catalogTasks = [
   "Build a web app",
@@ -45,6 +46,9 @@ export type CatalogResource = {
   id: string;
   label: string;
   role: string;
+  description: string;
+  icon?: string;
+  darkModeIcon?: string;
   url?: string;
 };
 
@@ -54,6 +58,8 @@ export type CatalogTemplate = {
   description: string;
   source: string;
   normalizedSource: string;
+  repository: string;
+  detailPath: string;
   authors: string[];
   legacyAuthors: string[];
   authorUrls: string[];
@@ -120,6 +126,23 @@ type TagMetadata = Pick<
 
 const standardTagMap = standardTags as Record<string, StandardTag>;
 const aiTagMap = aiTags as Record<string, AiTag>;
+const standardTagAliases = new Map([
+  ["azureaiservice", "azureai"],
+  ["azurecosmosdb", "cosmosdb"],
+  ["azuredb-mysql", "azuredb-mySQL"],
+]);
+const standardTagMapByLowerCase = new Map(
+  Object.entries(standardTagMap).map(([id, tag]) => [
+    id.toLowerCase(),
+    tag,
+  ]),
+);
+const aiTagMapByLowerCase = new Map(
+  Object.entries(aiTagMap).map(([id, tag]) => [
+    id.toLowerCase(),
+    tag,
+  ]),
+);
 const canonicalTagLabels = new Map([
   ["azuredb-postgresql", "Azure Database for PostgreSQL"],
 ]);
@@ -239,10 +262,51 @@ function getCoordinates(source: string): {
   };
 }
 
-function getTagMetadata(id: string, isAi: boolean): TagMetadata | undefined {
-  return (isAi ? aiTagMap[id] ?? standardTagMap[id] : standardTagMap[id] ?? aiTagMap[id]) as
-    | TagMetadata
-    | undefined;
+type CatalogTagMetadata = TagMetadata & {
+  description?: string;
+  productDescription?: string;
+  azureIcon?: string;
+  darkModeAzureIcon?: string;
+};
+
+function getStandardTag(id: string): StandardTag | undefined {
+  const alias = standardTagAliases.get(id);
+  return (
+    standardTagMap[id] ??
+    (alias ? standardTagMap[alias] : undefined) ??
+    standardTagMapByLowerCase.get(id.toLowerCase())
+  );
+}
+
+function getAiTag(id: string): AiTag | undefined {
+  return aiTagMap[id] ?? aiTagMapByLowerCase.get(id.toLowerCase());
+}
+
+function getTagMetadata(
+  id: string,
+  isAi: boolean,
+): CatalogTagMetadata | undefined {
+  const standardTag = getStandardTag(id);
+  const aiTag = getAiTag(id);
+  const serviceMetadata = getAzureServiceMetadata(id);
+  if (standardTag === undefined && aiTag === undefined) {
+    return undefined;
+  }
+
+  const preferredTag = isAi ? aiTag ?? standardTag : standardTag ?? aiTag;
+  return {
+    ...standardTag,
+    ...aiTag,
+    ...preferredTag,
+    label: serviceMetadata?.label ?? preferredTag?.label ?? id,
+    url: serviceMetadata?.url ?? preferredTag?.url,
+    description: standardTag?.description,
+    productDescription:
+      serviceMetadata?.description ?? standardTag?.productDescription,
+    azureIcon: serviceMetadata?.icon ?? standardTag?.azureIcon,
+    darkModeAzureIcon:
+      serviceMetadata?.darkModeIcon ?? standardTag?.darkModeAzureIcon,
+  };
 }
 
 function getTagLabel(id: string, isAi: boolean): string {
@@ -442,10 +506,17 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
   });
   const resources = serviceIds.reduce<CatalogResource[]>((result, tag) => {
     const metadata = getTagMetadata(tag, isAi);
+    const label = metadata?.label ?? tag;
     const resource = {
       id: tag,
-      label: metadata?.label ?? tag,
+      label,
       role: getResourceRole(tag),
+      description:
+        metadata?.productDescription ??
+        metadata?.description ??
+        `Learn more about ${label}.`,
+      icon: metadata?.azureIcon,
+      darkModeIcon: metadata?.darkModeAzureIcon,
       url: metadata?.url,
     };
     if (!result.some((candidate) => candidate.label === resource.label)) {
@@ -491,6 +562,10 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     description,
     source,
     normalizedSource: coordinates.normalizedSource,
+    repository: new URL(coordinates.normalizedSource).pathname.slice(1),
+    detailPath: `/templates/${new URL(
+      coordinates.normalizedSource,
+    ).pathname.slice(1)}`,
     authors,
     legacyAuthors,
     authorUrls,

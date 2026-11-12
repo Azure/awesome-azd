@@ -312,16 +312,59 @@ test.describe("Gallery functionality (deploy gate)", () => {
     expect(gap).toBeLessThan(90);
   });
 
-  test("template cards link directly to source repositories", async ({
+  test("template cards open repository detail pages", async ({
     page,
   }) => {
-    const firstLink = page.locator("a[data-template-title]").first();
-    const source = new URL(
-      (await firstLink.getAttribute("href")) ?? "",
+    await page.goto(
+      "templates?q=RAG%20chat%20with%20Azure%20AI%20Search%20%2B%20Python",
     );
-    expect(source.hostname).toBe("github.com");
-    await expect(firstLink).toHaveAttribute("target", "_blank");
-    await expect(firstLink).toHaveAttribute(
+    const detailLink = page.locator("a[data-template-title]").first();
+    await expect(detailLink).toHaveAttribute(
+      "href",
+      "/awesome-azd/templates/azure-samples/azure-search-openai-demo",
+    );
+    await expect(detailLink).not.toHaveAttribute("target", "_blank");
+
+    await detailLink.click();
+
+    await expect(page).toHaveURL(
+      /\/templates\/azure-samples\/azure-search-openai-demo\/?$/,
+    );
+    await expect(
+      page.getByRole("heading", {
+        level: 1,
+        name: "RAG chat with Azure AI Search + Python",
+      }),
+    ).toBeVisible();
+    await expect(
+      page.getByAltText(
+        "Application screenshot for RAG chat with Azure AI Search + Python",
+      ),
+    ).toBeVisible();
+    await expect(
+      page.getByAltText(
+        "Architecture diagram for RAG chat with Azure AI Search + Python",
+      ),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", {
+        level: 2,
+        name: "Resources included",
+      }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", { level: 3, name: "Models" }),
+    ).toBeVisible();
+
+    const repositoryLink = page.getByRole("link", {
+      name: /azure-samples\/azure-search-openai-demo/,
+    });
+    await expect(repositoryLink).toHaveAttribute(
+      "href",
+      "https://github.com/Azure-Samples/azure-search-openai-demo",
+    );
+    await expect(repositoryLink).toHaveAttribute("target", "_blank");
+    await expect(repositoryLink).toHaveAttribute(
       "rel",
       "noopener noreferrer",
     );
@@ -358,6 +401,24 @@ test.describe("Gallery functionality (deploy gate)", () => {
     );
     await expect(
       missingStarsCard.locator("[data-repository-stars]"),
+    ).toHaveCount(0);
+  });
+
+  test("template details hide Models when metadata has none", async ({
+    page,
+  }) => {
+    await page.goto(
+      "templates/azure-samples/svc-invoke-dapr-csharp",
+    );
+
+    await expect(
+      page.getByRole("heading", {
+        level: 1,
+        name: "Microservices App - Dapr Service Invoke C# ACA",
+      }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", { level: 3, name: "Models" }),
     ).toHaveCount(0);
   });
 

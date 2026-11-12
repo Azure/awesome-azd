@@ -30,9 +30,14 @@ async function openAiGallery(page: Page) {
       name: "Your next app. Ready to build.",
     }),
   ).toBeVisible();
+  await expect(page.locator("html")).toHaveAttribute(
+    "data-has-hydrated",
+    "true",
+    { timeout: 15_000 },
+  );
   await expect(
     page.getByRole("checkbox", { name: /AI application/ }),
-  ).toBeChecked();
+  ).toBeChecked({ timeout: 15_000 });
   await expect(page.getByTestId("template-results-count")).toContainText(
     `${aiTemplateCount} templates`,
   );

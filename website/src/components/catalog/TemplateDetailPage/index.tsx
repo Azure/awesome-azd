@@ -9,19 +9,34 @@ import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import Layout from "@theme/Layout";
 import {
+  Button,
+  Card,
+  Divider,
+  Table,
+  TableBody,
+  TableCell,
+  TableCellLayout,
+  TableHeader,
+  TableHeaderCell,
+  TableRow,
+  Tag,
+  Text,
+} from "@fluentui/react-components";
+import {
   ArrowLeft16Regular,
   Calculator16Regular,
   Code16Regular,
   Copy16Regular,
   Cube16Regular,
   Open16Regular,
-  Person16Regular,
+  Star16Regular,
   Tag16Regular,
 } from "@fluentui/react-icons";
 import type {
   CatalogResource,
   CatalogTemplate,
 } from "../../../catalog/catalogData";
+import { getOpenInVSCodeUrl } from "../../../utils/vscode";
 import SiteFluentProvider from "../../SiteFluentProvider";
 import CopyAction from "../CopyAction";
 import styles from "./styles.module.css";
@@ -35,16 +50,11 @@ type TemplateDetail = Pick<
   | "detailPath"
   | "authors"
   | "authorUrls"
-  | "isAi"
+  | "stars"
   | "tasks"
   | "languages"
-  | "frameworks"
-  | "databases"
-  | "iac"
-  | "services"
-  | "tools"
-  | "topics"
   | "models"
+  | "services"
   | "resources"
   | "preview"
   | "architectureDiagram"
@@ -55,6 +65,12 @@ type TemplateDetail = Pick<
 type TemplatePageData = {
   template: TemplateDetail;
 };
+
+const starFormatter = new Intl.NumberFormat("en-US");
+const compactStarFormatter = new Intl.NumberFormat("en-US", {
+  notation: "compact",
+  maximumFractionDigits: 1,
+});
 
 function unique(values: readonly string[]): string[] {
   return [...new Set(values)];
@@ -68,40 +84,21 @@ function DetailImage({
   src,
   alt,
   className,
-  link,
 }: {
   src: string;
   alt: string;
   className: string;
-  link?: boolean;
 }): React.JSX.Element {
   const external = /^https?:\/\//i.test(src);
   const localUrl = useBaseUrl(external ? "/" : localAssetPath(src));
-  const resolvedSrc = external ? src : localUrl;
-  const image = (
+
+  return (
     <img
       className={className}
-      src={resolvedSrc}
+      src={external ? src : localUrl}
       alt={alt}
       loading="lazy"
     />
-  );
-
-  return link ? (
-    <a
-      className={styles.imageLink}
-      href={resolvedSrc}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={`View full-size ${alt.toLowerCase()}`}
-    >
-      {image}
-      <span>
-        View full size <Open16Regular aria-hidden="true" />
-      </span>
-    </a>
-  ) : (
-    image
   );
 }
 
@@ -133,38 +130,66 @@ function ResourceIcon({
   );
 }
 
-function ResourceCard({
-  resource,
+function TemplateStarCount({
+  stars,
 }: {
-  resource: CatalogResource;
-}): React.JSX.Element {
-  const content = (
-    <>
-      <ResourceIcon resource={resource} />
-      <span className={styles.resourceContent}>
-        <span className={styles.resourceHeading}>
-          <strong>{resource.label}</strong>
-          {resource.url ? <Open16Regular aria-hidden="true" /> : null}
-        </span>
-        <span className={styles.resourceRole}>{resource.role}</span>
-        <span className={styles.resourceDescription}>
-          {resource.description}
-        </span>
-      </span>
-    </>
-  );
+  stars?: number;
+}): React.JSX.Element | null {
+  if (stars === undefined) {
+    return null;
+  }
 
-  return resource.url ? (
-    <a
-      className={styles.resourceCard}
-      href={resource.url}
-      target="_blank"
-      rel="noopener noreferrer"
+  const formattedStars = starFormatter.format(stars);
+  const starLabel = `${formattedStars} GitHub ${
+    stars === 1 ? "star" : "stars"
+  } (snapshot)`;
+
+  return (
+    <span
+      className={styles.repositoryStars}
+      data-repository-stars
+      role="img"
+      aria-label={starLabel}
+      title={starLabel}
     >
-      {content}
-    </a>
-  ) : (
-    <div className={styles.resourceCard}>{content}</div>
+      <Star16Regular aria-hidden="true" />
+      <span aria-hidden="true">
+        {compactStarFormatter.format(stars)}
+      </span>
+    </span>
+  );
+}
+
+function AuthorByline({
+  authors,
+  authorUrls,
+}: {
+  authors: readonly string[];
+  authorUrls: readonly string[];
+}): React.JSX.Element {
+  return (
+    <span className={styles.authors}>
+      {authors.map((author, index) => {
+        const url = authorUrls[index];
+        const separator = index === 0 ? null : ", ";
+        return (
+          <React.Fragment key={`${author}-${url ?? index}`}>
+            {separator}
+            {url ? (
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {author}
+              </a>
+            ) : (
+              author
+            )}
+          </React.Fragment>
+        );
+      })}
+    </span>
   );
 }
 
@@ -182,21 +207,169 @@ function SummaryItem({
       <span className={styles.summaryIcon} aria-hidden="true">
         {icon}
       </span>
-      <div>
-        <h3>{label}</h3>
-        <div className={styles.summaryValue}>{children}</div>
-      </div>
+      <dt className={styles.summaryLabel}>{label}</dt>
+      <dd className={styles.summaryValue}>{children}</dd>
     </div>
   );
 }
 
-function TagList({ values }: { values: readonly string[] }) {
+function TagList({
+  values,
+}: {
+  values: readonly string[];
+}): React.JSX.Element {
   return (
     <div className={styles.tags}>
       {values.map((value) => (
-        <span key={value}>{value}</span>
+        <Tag
+          key={value}
+          appearance="outline"
+          shape="circular"
+          size="small"
+        >
+          {value}
+        </Tag>
       ))}
     </div>
+  );
+}
+
+function GetStartedCard({
+  template,
+}: {
+  template: TemplateDetail;
+}): React.JSX.Element {
+  const vscodeUrl = getOpenInVSCodeUrl(template.source);
+  const codespacesUrl = `https://codespaces.new/${template.repository}`;
+
+  return (
+    <Card
+      appearance="outline"
+      className={styles.sideCard}
+      aria-labelledby="get-started-heading"
+    >
+      <Text
+        as="h2"
+        id="get-started-heading"
+        size={500}
+        weight="semibold"
+        className={styles.sideHeading}
+      >
+        Get started
+      </Text>
+      <div className={styles.command}>
+        <code>{template.initCommand}</code>
+        <CopyAction
+          value={template.initCommand}
+          idleLabel={`Copy init command for ${template.title}`}
+          copiedLabel={`Copied init command for ${template.title}`}
+          className={styles.copyCommand}
+        >
+          <Copy16Regular aria-hidden="true" />
+        </CopyAction>
+      </div>
+      <Text as="p" className={styles.getStartedText}>
+        Use the Azure Developer CLI (azd) to deploy this template.{" "}
+        <a
+          href="https://aka.ms/azd"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn more about azd <Open16Regular aria-hidden="true" />
+        </a>
+      </Text>
+      <Divider appearance="subtle">or</Divider>
+      <div className={styles.actionStack}>
+        <Button
+          as="a"
+          href={vscodeUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          appearance="primary"
+          icon={<Code16Regular aria-hidden="true" />}
+        >
+          Open in VS Code for the Web
+        </Button>
+        <Button
+          as="a"
+          href={codespacesUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          appearance="secondary"
+          icon={<Open16Regular aria-hidden="true" />}
+        >
+          Open in GitHub Codespaces
+        </Button>
+      </div>
+    </Card>
+  );
+}
+
+function SummaryCard({
+  template,
+}: {
+  template: TemplateDetail;
+}): React.JSX.Element {
+  const summaryTags = unique([
+    ...template.tasks,
+    ...template.services,
+    ...template.models,
+  ]);
+
+  return (
+    <Card
+      appearance="outline"
+      className={styles.sideCard}
+      aria-labelledby="summary-heading"
+    >
+      <Text
+        as="h2"
+        id="summary-heading"
+        size={500}
+        weight="semibold"
+        className={styles.sideHeading}
+      >
+        Summary
+      </Text>
+      <dl className={styles.summary}>
+        <SummaryItem
+          icon={<Code16Regular />}
+          label="Languages"
+        >
+          {template.languages.length > 0
+            ? template.languages.join(", ")
+            : "Bring your own code"}
+        </SummaryItem>
+
+        {template.models.length > 0 ? (
+          <SummaryItem
+            icon={<Cube16Regular />}
+            label="Models"
+          >
+            {template.models.join(", ")}
+          </SummaryItem>
+        ) : null}
+
+        {summaryTags.length > 0 ? (
+          <SummaryItem icon={<Tag16Regular />} label="Tags">
+            <TagList values={summaryTags} />
+          </SummaryItem>
+        ) : null}
+
+        <SummaryItem
+          icon={<Calculator16Regular />}
+          label="Estimated cost"
+        >
+          <a
+            href="https://azure.microsoft.com/pricing/calculator/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Pricing calculator <Open16Regular aria-hidden="true" />
+          </a>
+        </SummaryItem>
+      </dl>
+    </Card>
   );
 }
 
@@ -209,19 +382,9 @@ export default function TemplateDetailPage({
   const templatesUrl = useBaseUrl("/templates");
   const screenshot = template.screenshot ?? template.preview;
   const canonicalUrl = `https://azure.github.io/awesome-azd${template.detailPath}`;
-  const vscodeUrl = `https://vscode.dev/azure?azdTemplateUrl=${encodeURIComponent(
-    template.source,
-  )}`;
-  const codespacesUrl = `https://codespaces.new/${template.repository}`;
-  const summaryTags = unique([
-    ...template.tasks,
-    ...template.frameworks,
-    ...template.databases,
-    ...template.services,
-    ...template.tools,
-    ...template.topics,
-    ...template.iac,
-  ]);
+  const [owner, repositoryName] = new URL(template.source).pathname
+    .split("/")
+    .filter(Boolean);
 
   return (
     <>
@@ -233,7 +396,7 @@ export default function TemplateDetailPage({
       <Layout title={template.title} description={template.description}>
         <SiteFluentProvider className={styles.fluentProvider}>
           <main className={styles.page}>
-            <div className={styles.main}>
+            <div className={styles.container}>
               <div className={styles.breadcrumb}>
                 <Link to={templatesUrl}>
                   <ArrowLeft16Regular aria-hidden="true" />
@@ -241,188 +404,146 @@ export default function TemplateDetailPage({
                 </Link>
               </div>
 
-              <a
-                className={styles.repository}
-                href={template.source}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {template.repository}
-                <Open16Regular aria-hidden="true" />
-              </a>
-
-              <header className={styles.hero}>
-                <div>
-                  {template.isAi ? (
-                    <span className={styles.eyebrow}>AI app template</span>
-                  ) : null}
-                  <h1>{template.title}</h1>
-                  <p>{template.description}</p>
-                </div>
-              </header>
-
-              {screenshot ? (
-                <section
-                  className={styles.visualSection}
-                  aria-label="Application preview"
-                >
-                  <DetailImage
-                    className={styles.screenshot}
-                    src={screenshot}
-                    alt={`Application screenshot for ${template.title}`}
-                  />
-                </section>
-              ) : null}
-
-              {template.architectureDiagram ? (
-                <section className={styles.section}>
-                  <h2>Architecture</h2>
-                  <DetailImage
-                    className={styles.architecture}
-                    src={template.architectureDiagram}
-                    alt={`Architecture diagram for ${template.title}`}
-                    link
-                  />
-                </section>
-              ) : null}
-
-              {template.resources.length > 0 ? (
-                <section className={styles.section}>
-                  <h2>Resources included</h2>
-                  <div className={styles.resourceGrid}>
-                    {template.resources.map((resource) => (
-                      <ResourceCard
-                        key={`${resource.id}-${resource.label}`}
-                        resource={resource}
-                      />
-                    ))}
-                  </div>
-                </section>
-              ) : null}
-
-              <section className={styles.section}>
-                <h2>Get started</h2>
-                <div className={styles.getStarted}>
-                  <a
-                    className={styles.primaryAction}
-                    href={template.source}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    View on GitHub
-                    <Open16Regular aria-hidden="true" />
-                  </a>
-                  <div className={styles.command}>
-                    <code>{template.initCommand}</code>
-                    <CopyAction
-                      value={template.initCommand}
-                      idleLabel={`Copy init command for ${template.title}`}
-                      copiedLabel={`Copied init command for ${template.title}`}
-                      className={styles.copyCommand}
-                    >
-                      <Copy16Regular aria-hidden="true" />
-                    </CopyAction>
-                  </div>
-                  <p>
-                    Use the Azure Developer CLI (azd) to initialize and deploy
-                    this template.{" "}
-                    <a
-                      href="https://aka.ms/azd"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Learn more about azd
-                    </a>
-                    .
-                  </p>
-                  <div className={styles.secondaryActions}>
-                    <a
-                      href={vscodeUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Open in VS Code for the Web
-                    </a>
-                    <a
-                      href={codespacesUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Open in GitHub Codespaces
-                    </a>
-                  </div>
-                </div>
-              </section>
-
-              <section className={styles.section}>
-                <h2>Summary</h2>
-                <div className={styles.summaryGrid}>
-                  <SummaryItem
-                    icon={<Person16Regular />}
-                    label="Created by"
-                  >
-                    <div className={styles.authorList}>
-                      {template.authors.map((author, index) => {
-                        const url = template.authorUrls[index];
-                        return url ? (
-                          <a
-                            key={`${author}-${url}`}
-                            href={url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {author}
-                          </a>
-                        ) : (
-                          <span key={`${author}-${index}`}>{author}</span>
-                        );
-                      })}
+              <div className={styles.layout}>
+                <div className={styles.content}>
+                  <header className={styles.hero}>
+                    <div className={styles.repositoryMeta}>
+                      <a
+                        href={template.source}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {owner} / {repositoryName}
+                      </a>
+                      <TemplateStarCount stars={template.stars} />
                     </div>
-                  </SummaryItem>
-
-                  <SummaryItem
-                    icon={<Code16Regular />}
-                    label="Languages"
-                  >
-                    {template.languages.length > 0 ? (
-                      <TagList values={template.languages} />
-                    ) : (
-                      "Bring your own code"
-                    )}
-                  </SummaryItem>
-
-                  {template.models.length > 0 ? (
-                    <SummaryItem
-                      icon={<Cube16Regular />}
-                      label="Models"
+                    <Text
+                      as="h1"
+                      size={800}
+                      weight="semibold"
+                      className={styles.title}
                     >
-                      <TagList values={template.models} />
-                    </SummaryItem>
+                      {template.title}
+                    </Text>
+                    <div className={styles.byline}>
+                      <span>
+                        by{" "}
+                        <AuthorByline
+                          authors={template.authors}
+                          authorUrls={template.authorUrls}
+                        />
+                      </span>
+                      <span aria-hidden="true">•</span>
+                      <a
+                        href={template.source}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        View on GitHub
+                      </a>
+                    </div>
+                    <Text as="p" size={400} className={styles.description}>
+                      {template.description}
+                    </Text>
+                  </header>
+
+                  {screenshot ? (
+                    <section
+                      className={styles.previewSection}
+                      aria-label="Application preview"
+                    >
+                      <DetailImage
+                        className={styles.screenshot}
+                        src={screenshot}
+                        alt={`Application screenshot for ${template.title}`}
+                      />
+                    </section>
                   ) : null}
 
-                  {summaryTags.length > 0 ? (
-                    <SummaryItem
-                      icon={<Tag16Regular />}
-                      label="Tags"
-                    >
-                      <TagList values={summaryTags} />
-                    </SummaryItem>
+                  {template.architectureDiagram ? (
+                    <section className={styles.section}>
+                      <Text
+                        as="h2"
+                        size={500}
+                        weight="semibold"
+                        className={styles.sectionHeading}
+                      >
+                        Architecture
+                      </Text>
+                      <DetailImage
+                        className={styles.architecture}
+                        src={template.architectureDiagram}
+                        alt={`Architecture diagram for ${template.title}`}
+                      />
+                    </section>
                   ) : null}
 
-                  <SummaryItem
-                    icon={<Calculator16Regular />}
-                    label="Estimated cost"
-                  >
-                    <a
-                      href="https://azure.microsoft.com/pricing/calculator/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Pricing calculator
-                    </a>
-                  </SummaryItem>
+                  {template.resources.length > 0 ? (
+                    <section className={styles.section}>
+                      <Text
+                        as="h2"
+                        size={500}
+                        weight="semibold"
+                        className={styles.sectionHeading}
+                      >
+                        Resources included
+                      </Text>
+                      <div className={styles.resourceTableFrame}>
+                        <Table
+                          className={styles.resourceTable}
+                          aria-label="Resources included"
+                        >
+                          <TableHeader>
+                            <TableRow>
+                              <TableHeaderCell>
+                                Resource
+                              </TableHeaderCell>
+                              <TableHeaderCell>
+                                Description
+                              </TableHeaderCell>
+                            </TableRow>
+                          </TableHeader>
+                          <TableBody>
+                            {template.resources.map((resource) => (
+                              <TableRow key={resource.id}>
+                                <TableCell>
+                                  <TableCellLayout
+                                    media={
+                                      <ResourceIcon
+                                        resource={resource}
+                                      />
+                                    }
+                                  >
+                                    {resource.url ? (
+                                      <a
+                                        href={resource.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                      >
+                                        {resource.label}
+                                      </a>
+                                    ) : (
+                                      resource.label
+                                    )}
+                                  </TableCellLayout>
+                                </TableCell>
+                                <TableCell>
+                                  {resource.description}
+                                </TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                        </Table>
+                      </div>
+                    </section>
+                  ) : null}
                 </div>
-              </section>
+
+                <aside className={styles.sidebar}>
+                  <GetStartedCard template={template} />
+                  <SummaryCard template={template} />
+                </aside>
+              </div>
             </div>
           </main>
         </SiteFluentProvider>

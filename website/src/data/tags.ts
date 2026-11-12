@@ -115,7 +115,6 @@ export type TagType =
   | "rubyonrails"
   | "serverlessapi"
   | "langchain"
-  | "aicollection"
   | "aifoundry"
   | "apicenter"
   | "eventgrid"
@@ -186,20 +185,18 @@ export const Tags: { [type in TagType]: Tag } = {
   msft: {
     label: "Microsoft Authored",
     description: "This tag is used for Microsoft azd templates.",
+    type: "Authorship",
   },
   community: {
     label: "Community Authored",
     description: "This tag is used for community templates.",
+    type: "Authorship",
   },
   new: {
     label: "New",
     description:
       "This tag is used for templates added to the catalog within the past month.",
-  },
-  aicollection: {
-    label: "AI Collection",
-    description:
-      "This tag is used for templates included in the Microsoft-curated AI collection.",
+    type: "Status",
   },
 
   //============  FOR REGULAR USE
@@ -268,7 +265,7 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "SAP",
     description:
       "Template architecture uses Systems Applications and Products in data processing (SAP)",
-    type: "Tools",
+    type: "Platform",
   },
   sapcloudsdk: {
     label: "SAP Cloud SDK",
@@ -279,17 +276,17 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "SAP CAP",
     description:
       "Template architecture uses SAP Cloud Application Programming Model",
-    type: "Tools",
+    type: "Framework",
   },
   thymeleaf: {
     label: "Thymeleaf",
     description: "Template architecture uses Thymeleaf template engine",
-    type: "Tools",
+    type: "Framework",
   },
   "dall-e": {
     label: "Dall-E",
     description: "Template architecture uses Dall-E",
-    type: "Tools",
+    type: "Model",
   },
   jupyter: {
     label: "Jupyter Notebooks",
@@ -306,7 +303,7 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Dapr",
     description:
       "Template architecture uses Distributed Application Runtime (dapr)",
-    type: "Tools",
+    type: "Framework",
   },
   webcomponents: {
     label: "Web Components",
@@ -321,7 +318,7 @@ export const Tags: { [type in TagType]: Tag } = {
   gpt: {
     label: "GPT",
     description: "Template architecture uses GPT AI model",
-    type: "Tools",
+    type: "Model",
   },
   msal: {
     label: "Microsoft Authentication Library",
@@ -336,7 +333,7 @@ export const Tags: { [type in TagType]: Tag } = {
   powershell: {
     label: "PowerShell",
     description: "Template architecture uses PowerShell",
-    type: "Tools",
+    type: "Language",
   },
   dab: {
     label: "Data API builder",
@@ -347,7 +344,7 @@ export const Tags: { [type in TagType]: Tag } = {
     label: ".NET Aspire",
     description:
       "Set of tools, templates, and packages for building observable, production ready apps.",
-    type: "Tools",
+    type: "Framework",
   },
   mcp: {
     label: "Model Context Protocol",
@@ -381,7 +378,7 @@ export const Tags: { [type in TagType]: Tag } = {
   prometheus: {
     label: "Prometheus",
     description: "Template architecture uses Prometheus",
-    type: "Database",
+    type: "Tools",
   },
   pinecone: {
     label: "Pinecone",
@@ -481,7 +478,7 @@ export const Tags: { [type in TagType]: Tag } = {
   microfrontend: {
     label: "Micro Frontend",
     description: "Template architecture uses Micro Frontend",
-    type: "Framework",
+    type: "Topic",
   },
   blazor: {
     label: "Blazor",
@@ -546,12 +543,12 @@ export const Tags: { [type in TagType]: Tag } = {
   webapps: {
     label: "Web Apps",
     description: "Template architecture uses Web Apps",
-    type: "Service",
+    type: "Topic",
   },
   serverlessapi: {
     label: "Serverless API",
     description: "Template architecture uses Serverless API",
-    type: "Service",
+    type: "Topic",
   },
   sharepoint: {
     label: "SharePoint",
@@ -653,10 +650,10 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Service",
   },
   azureai: {
-    label: "Azure AI Service",
-    description: "Template architecture uses Azure AI Service",
+    label: "Foundry Tools",
+    description: "Template architecture uses Microsoft Foundry tools",
     azureIcon: "./img/Azure-AI-Service.svg",
-    url: "https://azure.microsoft.com/solutions/ai",
+    url: "https://azure.microsoft.com/en-us/products/ai-foundry/tools/",
     type: "Service",
   },
   speechservice: {
@@ -751,10 +748,10 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Service",
   },
   aifoundry: {
-    label: "Azure AI Foundry",
-    description: "Template architecture uses Azure AI Foundry",
+    label: "Microsoft Foundry",
+    description: "Template architecture uses Microsoft Foundry",
     azureIcon: "./img/Azure-AI-Studio.svg",
-    url: "https://azure.microsoft.com/products/ai-studio",
+    url: "https://azure.microsoft.com/en-us/products/ai-foundry",
     type: "Service",
   },
   apicenter: {

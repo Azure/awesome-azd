@@ -157,6 +157,10 @@ export const Tags = {
     "label": "Go",
     "type": "Language"
   },
+  "golang": {
+    "label": "Go",
+    "type": "Language"
+  },
   "dotnetCsharp": {
     "label": ".NET/C#",
     "type": "Language"
@@ -172,26 +176,6 @@ export const Tags = {
   "typescript": {
     "label": "TypeScript",
     "type": "Language"
-  },
-  "golang": {
-    "label": "Go",
-    "type": "Language"
-  },
-  "azureopenai": {
-    "label": "Azure OpenAI",
-    "type": "Collection"
-  },
-  "meta": {
-    "label": "Meta",
-    "type": "Collection"
-  },
-  "mistralai": {
-    "label": "Mistral AI",
-    "type": "Collection"
-  },
-  "deepseek": {
-    "label": "DeepSeek AI",
-    "type": "Collection"
   },
   "gpt35turbo": {
     "label": "GPT-3.5 Turbo",
@@ -256,6 +240,18 @@ export const Tags = {
     "label": "DeepSeek R1",
     "type": "Model"
   },
+  "meta": {
+    "label": "Meta models",
+    "type": "Model"
+  },
+  "mistralai": {
+    "label": "Mistral AI models",
+    "type": "Model"
+  },
+  "deepseek": {
+    "label": "DeepSeek models",
+    "type": "Model"
+  },
   "agent": {
     "label": "Agent",
     "type": "Task"
@@ -281,12 +277,12 @@ export const Tags = {
     "type": "Database",
     "url": "https://azure.microsoft.com/products/postgresql"
   },
-  "azuredb-mysql": {
+  "azuredb-mySQL": {
     "label": "Azure Database for MySQL",
     "type": "Database",
     "url": "https://learn.microsoft.com/azure/mysql/flexible-server/overview"
   },
-  "azuredb-mySQL": {
+  "azuredb-mysql": {
     "label": "Azure Database for MySQL",
     "type": "Database",
     "url": "https://learn.microsoft.com/azure/mysql/flexible-server/overview"
@@ -307,7 +303,7 @@ export const Tags = {
   },
   "aisearch": {
     "label": "Azure AI Search",
-    "type": "Database",
+    "type": "Service",
     "url": "https://azure.microsoft.com/products/ai-services/ai-search"
   },
   "bicep": {
@@ -383,15 +379,20 @@ export const Tags = {
     "type": "Service",
     "url": "https://azure.microsoft.com/products/ai-services/openai-service"
   },
-  "azureai": {
-    "label": "Azure AI Service",
+  "azureopenai": {
+    "label": "Azure OpenAI Service",
     "type": "Service",
-    "url": "https://azure.microsoft.com/solutions/ai"
+    "url": "https://azure.microsoft.com/products/ai-services/openai-service"
+  },
+  "azureai": {
+    "label": "Foundry Tools",
+    "type": "Service",
+    "url": "https://azure.microsoft.com/en-us/products/ai-foundry/tools/"
   },
   "azureaiservice": {
-    "label": "Azure AI Services",
+    "label": "Foundry Tools",
     "type": "Service",
-    "url": "https://azure.microsoft.com/solutions/ai"
+    "url": "https://azure.microsoft.com/en-us/products/ai-foundry/tools/"
   },
   "speechservice": {
     "label": "Azure Speech Services",

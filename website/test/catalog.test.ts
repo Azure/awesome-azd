@@ -7,6 +7,12 @@ import { describe, expect, test } from "@jest/globals";
 import * as fs from "fs";
 import * as path from "path";
 import templates from "../static/templates.json";
+import {
+  canonicalizeCatalogTagIds,
+  catalogTagAliases,
+  catalogTags,
+  removedCatalogTags,
+} from "../src/catalog/catalogTags";
 import reviewedTemplateUseCases from "../src/catalog/template-use-cases.json";
 import { catalogTemplates } from "../src/catalog/catalogData";
 import {
@@ -19,6 +25,7 @@ import {
   serializeCatalogState,
   sortCatalogTemplates,
 } from "../src/catalog/catalogQuery";
+import { resolveDetailAsset } from "../route_generator_plugin/catalogRouteGenerator";
 
 const websiteRoot = path.resolve(__dirname, "..");
 
@@ -143,6 +150,30 @@ describe("unified catalog data", () => {
     ).toBe(rawTemplate.preview);
   });
 
+  test("omits unavailable local detail assets", () => {
+    expect(
+      resolveDetailAsset(
+        websiteRoot,
+        "./templates/images/does-not-exist.png",
+      ),
+    ).toBeUndefined();
+    expect(
+      resolveDetailAsset(
+        websiteRoot,
+        "./img/Azure-App-Service.svg",
+      ),
+    ).toBe("./img/Azure-App-Service.svg");
+    expect(
+      resolveDetailAsset(
+        websiteRoot,
+        "https://example.com/preview.png",
+      ),
+    ).toBe("https://example.com/preview.png");
+    expect(
+      resolveDetailAsset(websiteRoot, "../package.json"),
+    ).toBeUndefined();
+  });
+
   test("creates stable repository detail routes for every template", () => {
     const detailPaths = catalogTemplates.map(
       (template) => template.detailPath,
@@ -245,6 +276,114 @@ describe("unified catalog data", () => {
     ];
 
     expect(labels).toEqual(["Azure Database for PostgreSQL"]);
+  });
+
+  test("exposes one categorized canonical tag taxonomy", () => {
+    expect(
+      Object.values(catalogTags).every(
+        (tag) => tag.type.trim().length > 0,
+      ),
+    ).toBe(true);
+    expect(
+      Object.values(catalogTags).filter(
+        (tag) => tag.type === "Collection",
+      ),
+    ).toEqual([]);
+
+    const idsByCategoryAndLabel = new Map<string, string[]>();
+    for (const tag of Object.values(catalogTags)) {
+      const key = `${tag.type}:${tag.label.toLowerCase()}`;
+      const ids = idsByCategoryAndLabel.get(key) ?? [];
+      ids.push(tag.id);
+      idsByCategoryAndLabel.set(key, ids);
+    }
+    expect(
+      [...idsByCategoryAndLabel.values()].filter(
+        (ids) => ids.length > 1,
+      ),
+    ).toEqual([]);
+  });
+
+  test("collapses aliases and replaces collection tags with services", () => {
+    expect(
+      canonicalizeCatalogTagIds([
+        "azureaiservice",
+        "azurecosmosdb",
+        "azuredb-mysql",
+        "azureopenai",
+        "golang",
+      ]),
+    ).toEqual([
+      "azureai",
+      "cosmosdb",
+      "azuredb-mySQL",
+      "openai",
+      "go",
+    ]);
+
+    for (const alias of catalogTagAliases.keys()) {
+      expect(catalogTags).not.toHaveProperty(alias);
+    }
+    for (const removedTag of removedCatalogTags) {
+      expect(catalogTags).not.toHaveProperty(removedTag);
+      expect(
+        catalogTemplates.some((template) =>
+          template.legacyTags.includes(removedTag),
+        ),
+      ).toBe(false);
+    }
+
+    const azureOpenAiTemplates = (templates as Array<{
+      source?: string;
+      tags?: unknown;
+    }>).filter(
+      (template) =>
+        Array.isArray(template.tags) &&
+        template.tags.includes("azureopenai"),
+    );
+    expect(azureOpenAiTemplates.length).toBeGreaterThan(0);
+    for (const rawTemplate of azureOpenAiTemplates) {
+      const template = catalogTemplates.find(
+        (candidate) => candidate.source === rawTemplate.source,
+      );
+      expect(template?.legacyTags).not.toContain("azureopenai");
+      expect(template?.serviceIds).toContain("openai");
+    }
+  });
+
+  test("uses the reviewed categories for ambiguous tags", () => {
+    expect(catalogTags.powershell.type).toBe("Language");
+    expect(catalogTags.aisearch.type).toBe("Service");
+    expect(catalogTags.rag.type).toBe("Framework");
+    expect(catalogTags.dapr.type).toBe("Framework");
+    expect(catalogTags.aspire.type).toBe("Framework");
+    expect(catalogTags.prometheus.type).toBe("Tools");
+  });
+
+  test("shows every merged Azure service on template details", () => {
+    const rawTemplate = (templates as Array<{
+      source?: string;
+      azureServices?: unknown;
+    }>).find(
+      (template) =>
+        template.source ===
+        "https://github.com/Azure-Samples/azure-search-openai-demo",
+    );
+    const template = catalogTemplates.find(
+      (candidate) => candidate.source === rawTemplate?.source,
+    );
+    const expectedServiceIds = canonicalizeCatalogTagIds(
+      Array.isArray(rawTemplate?.azureServices)
+        ? rawTemplate.azureServices.filter(
+            (value): value is string => typeof value === "string",
+          )
+        : [],
+    );
+
+    expect(template?.serviceIds).toEqual(expectedServiceIds);
+    expect(template?.resources.map((resource) => resource.id)).toEqual(
+      expectedServiceIds,
+    );
   });
 
   test("does not duplicate resources when legacy service aliases are preserved", () => {
@@ -377,6 +516,7 @@ describe("unified catalog query", () => {
       target.description,
       target.legacyTags[0],
       target.authors[0],
+      "azureopenai",
       ...target.tasks,
     ];
 
@@ -394,6 +534,103 @@ describe("unified catalog query", () => {
         matches.map((template) => template.normalizedSource),
       ).toContain(target.normalizedSource);
       expect(query).toBeTruthy();
+    }
+  });
+
+  test("preserves legacy Azure service names in local search", () => {
+    const rawSources = new Set(
+      (
+        templates as Array<{
+          source?: string;
+          azureServices?: unknown;
+        }>
+      )
+        .filter(
+          (template) =>
+            Array.isArray(template.azureServices) &&
+            template.azureServices.includes("azureaiservice"),
+        )
+        .map((template) => template.source)
+        .filter(
+          (source): source is string => typeof source === "string",
+        ),
+    );
+    const expectedSources = catalogTemplates
+      .filter((template) => rawSources.has(template.source))
+      .map((template) => template.normalizedSource);
+    const state = parseCatalogState(
+      `?${new URLSearchParams({ q: "Azure AI Services" })}`,
+      catalogTemplates,
+    );
+    const matchingSources = getMatchingCatalogTemplates(
+      catalogTemplates,
+      state,
+    ).map((template) => template.normalizedSource);
+
+    expect(expectedSources.length).toBeGreaterThan(0);
+    expect(matchingSources).toEqual(
+      expect.arrayContaining(expectedSources),
+    );
+  });
+
+  test("migrates renamed and reclassified saved filters", () => {
+    const serviceState = parseCatalogState(
+      "?service=azureaiservice",
+      catalogTemplates,
+    );
+    expect(serviceState.services).toEqual(["azureai"]);
+    expect(serviceState.unavailable).toEqual([]);
+    expect(serializeCatalogState(serviceState)).toBe("service=azureai");
+
+    for (const {
+      query,
+      compatibilityTag,
+      rawTag,
+    } of [
+      {
+        query: "?database=Prometheus",
+        compatibilityTag: "prometheus",
+        rawTag: "prometheus",
+      },
+      {
+        query: "?tags=meta",
+        compatibilityTag: "meta",
+        rawTag: "meta",
+      },
+    ]) {
+      const rawSources = new Set(
+        (
+          templates as Array<{
+            source?: string;
+            tags?: unknown;
+          }>
+        )
+          .filter(
+            (template) =>
+              Array.isArray(template.tags) &&
+              template.tags.includes(rawTag),
+          )
+          .map((template) => template.source)
+          .filter(
+            (source): source is string => typeof source === "string",
+          ),
+      );
+      const expectedSources = catalogTemplates
+        .filter((template) => rawSources.has(template.source))
+        .map((template) => template.normalizedSource)
+        .sort();
+      const state = parseCatalogState(query, catalogTemplates);
+      const matchingSources = getMatchingCatalogTemplates(
+        catalogTemplates,
+        state,
+      )
+        .map((template) => template.normalizedSource)
+        .sort();
+
+      expect(state.legacyTags).toEqual([compatibilityTag]);
+      expect(state.unavailable).toEqual([]);
+      expect(matchingSources).toEqual(expectedSources);
+      expect(expectedSources.length).toBeGreaterThan(0);
     }
   });
 
@@ -539,6 +776,26 @@ describe("unified catalog query", () => {
     expect(
       matches.every((template) =>
         template.legacyAuthors.includes("Azure Cosmos DB Content Team"),
+      ),
+    ).toBe(true);
+  });
+
+  test("translates legacy tag aliases to canonical service tags", () => {
+    const state = parseCatalogState(
+      "?tags=azureopenai",
+      catalogTemplates,
+    );
+    const matches = getMatchingCatalogTemplates(
+      catalogTemplates,
+      state,
+    );
+
+    expect(state.legacyTags).toEqual(["openai"]);
+    expect(state.unavailable).toEqual([]);
+    expect(matches.length).toBeGreaterThan(0);
+    expect(
+      matches.every((template) =>
+        template.serviceIds.includes("openai"),
       ),
     ).toBe(true);
   });

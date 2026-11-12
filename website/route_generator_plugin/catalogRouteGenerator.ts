@@ -1,3 +1,5 @@
+import * as fs from "fs";
+import * as path from "path";
 import type { LoadContext, Plugin } from "@docusaurus/types";
 import {
   catalogTemplates,
@@ -7,6 +9,32 @@ import { servicePages } from "../src/catalog/servicePages";
 
 function dataFileName(prefix: string, value: string): string {
   return `${prefix}-${value.replace(/[^a-z0-9._-]/gi, "-")}.json`;
+}
+
+export function resolveDetailAsset(
+  siteDir: string,
+  value: string | undefined,
+): string | undefined {
+  if (value === undefined || /^https?:\/\//i.test(value)) {
+    return value;
+  }
+
+  const staticRoot = path.resolve(siteDir, "static");
+  const assetPath = path.resolve(
+    staticRoot,
+    value.replace(/^\.?\//, ""),
+  );
+  const relativePath = path.relative(staticRoot, assetPath);
+  if (
+    relativePath.startsWith("..") ||
+    path.isAbsolute(relativePath) ||
+    !fs.existsSync(assetPath) ||
+    !fs.statSync(assetPath).isFile()
+  ) {
+    return undefined;
+  }
+
+  return value;
 }
 
 function toServiceTemplate(template: CatalogTemplate) {
@@ -22,7 +50,10 @@ function toServiceTemplate(template: CatalogTemplate) {
   };
 }
 
-function toTemplateDetail(template: CatalogTemplate) {
+function toTemplateDetail(
+  template: CatalogTemplate,
+  siteDir: string,
+) {
   return {
     title: template.title,
     description: template.description,
@@ -32,6 +63,7 @@ function toTemplateDetail(template: CatalogTemplate) {
     authors: template.authors,
     authorUrls: template.authorUrls,
     isAi: template.isAi,
+    stars: template.stars,
     tasks: template.tasks,
     languages: template.languages,
     frameworks: template.frameworks,
@@ -42,9 +74,12 @@ function toTemplateDetail(template: CatalogTemplate) {
     topics: template.topics,
     models: template.models,
     resources: template.resources,
-    preview: template.preview,
-    architectureDiagram: template.architectureDiagram,
-    screenshot: template.screenshot,
+    preview: resolveDetailAsset(siteDir, template.preview),
+    architectureDiagram: resolveDetailAsset(
+      siteDir,
+      template.architectureDiagram,
+    ),
+    screenshot: resolveDetailAsset(siteDir, template.screenshot),
     initCommand: template.initCommand,
   };
 }
@@ -85,7 +120,7 @@ export default function catalogRouteGenerator(
       for (const template of catalogTemplates) {
         const detailPageDataPath = await actions.createData(
           dataFileName("template", template.repository),
-          { template: toTemplateDetail(template) },
+          { template: toTemplateDetail(template, context.siteDir) },
         );
 
         addRoute(

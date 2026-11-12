@@ -200,8 +200,10 @@ function FacetSection({
 
 function TemplateCard({
   template,
+  onNavigate,
 }: {
   template: CatalogTemplate;
+  onNavigate: () => void;
 }): React.JSX.Element {
   const microsoftIcon = useBaseUrl("/img/Microsoft.svg");
   const communityIcon = useBaseUrl("/img/Community.svg");
@@ -237,6 +239,19 @@ function TemplateCard({
         to={detailUrl}
         aria-labelledby={headingId}
         data-template-title={template.title}
+        onClick={(event) => {
+          if (
+            event.defaultPrevented ||
+            event.button !== 0 ||
+            event.ctrlKey ||
+            event.metaKey ||
+            event.shiftKey ||
+            event.altKey
+          ) {
+            return;
+          }
+          onNavigate();
+        }}
       >
         <div className={styles.cardTop}>
           <span className={styles.cardAuthor}>
@@ -371,6 +386,13 @@ export default function CatalogPage(): React.JSX.Element {
     },
     [history, location],
   );
+
+  const captureDetailNavigationState = useCallback(() => {
+    history.replace({
+      ...location,
+      state: captureGalleryNavigationState(),
+    });
+  }, [history, location]);
 
   const submitSearch = useCallback(() => {
     const query = (
@@ -758,6 +780,7 @@ export default function CatalogPage(): React.JSX.Element {
                         <TemplateCard
                           key={template.id}
                           template={template}
+                          onNavigate={captureDetailNavigationState}
                         />
                       ))}
                     </div>

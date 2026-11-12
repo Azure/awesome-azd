@@ -353,11 +353,20 @@ test.describe("Gallery functionality (deploy gate)", () => {
       }),
     ).toBeVisible();
     await expect(
-      page.getByRole("heading", { level: 3, name: "Models" }),
+      page.locator("dt", { hasText: /^Models$/ }),
     ).toBeVisible();
+    await expect(
+      page.getByRole("table", { name: "Resources included" }).getByRole("row"),
+    ).toHaveCount(19);
+    await expect(
+      page.locator("[data-repository-stars]"),
+    ).toHaveAttribute(
+      "aria-label",
+      "9,876 GitHub stars (snapshot)",
+    );
 
     const repositoryLink = page.getByRole("link", {
-      name: /azure-samples\/azure-search-openai-demo/,
+      name: /Azure-Samples \/ azure-search-openai-demo/i,
     });
     await expect(repositoryLink).toHaveAttribute(
       "href",
@@ -367,6 +376,14 @@ test.describe("Gallery functionality (deploy gate)", () => {
     await expect(repositoryLink).toHaveAttribute(
       "rel",
       "noopener noreferrer",
+    );
+    await expect(
+      page.getByRole("link", {
+        name: "Open in VS Code for the Web",
+      }),
+    ).toHaveAttribute(
+      "href",
+      "https://vscode.dev/azure?vscode-azure-exp=azd&az-referer=awesome-azd&azdTemplateUrl=https%3A%2F%2Fgithub.com%2FAzure-Samples%2Fazure-search-openai-demo",
     );
   });
 
@@ -418,8 +435,65 @@ test.describe("Gallery functionality (deploy gate)", () => {
       }),
     ).toBeVisible();
     await expect(
-      page.getByRole("heading", { level: 3, name: "Models" }),
+      page.locator("dt", { hasText: /^Models$/ }),
     ).toHaveCount(0);
+  });
+
+  test("template details omit unavailable local preview assets", async ({
+    page,
+  }) => {
+    await page.goto(
+      "templates/azure-samples/pubsub-dapr-aks-java",
+    );
+
+    await expect(
+      page.getByRole("heading", {
+        level: 1,
+        name: "Microservices App - Dapr PubSub Java AKS",
+      }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("img", {
+        name: /Application screenshot/,
+      }),
+    ).toHaveCount(0);
+  });
+
+  test("browser Back restores the clicked card focus and scroll position", async ({
+    page,
+  }) => {
+    await page.goto("templates?page=2");
+    await expect(resultsStatus(page)).toContainText("21-40 of");
+    await expect(page.locator("html")).toHaveAttribute(
+      "data-has-hydrated",
+      "true",
+    );
+    const cards = page.locator("[data-template-card]");
+    await expect(cards).toHaveCount(20);
+    const detailLink = cards.last().locator("a[data-template-title]");
+    await expect(detailLink).toBeVisible();
+    await detailLink.scrollIntoViewIfNeeded();
+    await detailLink.focus();
+    const focusedId = await detailLink.getAttribute("id");
+    const scrollTop = await page.evaluate(() => window.scrollY);
+
+    expect(focusedId).not.toBeNull();
+    expect(scrollTop).toBeGreaterThan(0);
+    await detailLink.click();
+    await expect(page).toHaveURL(/\/templates\/[^/]+\/[^/]+\/?$/);
+
+    await page.goBack();
+
+    await expect(page).toHaveURL(/\/templates\?page=2$/);
+    await expect(page.locator(`#${focusedId}`)).toBeFocused();
+    await expect
+      .poll(async () => {
+        const restoredScrollTop = await page.evaluate(
+          () => window.scrollY,
+        );
+        return Math.abs(restoredScrollTop - scrollTop);
+      })
+      .toBeLessThan(5);
   });
 
   test("browser Back restores the previous filter state", async ({ page }) => {

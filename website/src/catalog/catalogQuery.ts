@@ -7,6 +7,10 @@ import {
   catalogTasks,
   type CatalogTemplate,
 } from "./catalogData";
+import {
+  canonicalizeCatalogTagId,
+  getCatalogTagCompatibilityIds,
+} from "./catalogTags";
 
 export type CatalogFacetKey =
   | "types"
@@ -142,7 +146,7 @@ function getValues(
     case "authorship":
       return [template.authorship];
     case "legacyTags":
-      return template.legacyTags;
+      return template.compatibilityTags;
     case "authors":
       return [...template.authors, ...template.legacyAuthors];
   }
@@ -200,6 +204,14 @@ export function parseCatalogState(
     authors: [],
     unavailable: [],
   };
+  const legacyTagFallbacks: string[] = [];
+  const legacyTagFacet = catalogFacets.find(
+    (facet) => facet.key === "legacyTags",
+  );
+  if (!legacyTagFacet) {
+    throw new Error("Expected the legacy tag facet.");
+  }
+  const allowedLegacyTags = getFacetOptions(records, legacyTagFacet);
 
   for (const facet of catalogFacets) {
     const allowed = getFacetOptions(records, facet);
@@ -214,14 +226,42 @@ export function parseCatalogState(
       state.types = [...new Set([...state.types, "ai"])];
       requested = requested.filter((value) => value !== "aicollection");
     }
-    state[facet.key] = [
-      ...new Set(requested.filter((value) => allowed.includes(value))),
-    ];
-    state.unavailable.push(
-      ...requested
-        .filter((value) => !allowed.includes(value))
-        .map((value) => `${facet.label}: ${value}`),
-    );
+    if (facet.key === "services") {
+      requested = requested.map(
+        (value) => canonicalizeCatalogTagId(value) ?? value,
+      );
+    }
+    if (facet.key === "legacyTags") {
+      requested = [...legacyTagFallbacks, ...requested].map(
+        (value) => canonicalizeCatalogTagId(value) ?? value,
+      );
+    }
+    const accepted: string[] = [];
+    for (const value of requested) {
+      if (allowed.includes(value)) {
+        accepted.push(value);
+        continue;
+      }
+
+      const supportsLegacyTagFallback =
+        facet.key === "languages" ||
+        facet.key === "frameworks" ||
+        facet.key === "databases" ||
+        facet.key === "services" ||
+        facet.key === "iac";
+      const compatibilityIds = supportsLegacyTagFallback
+        ? getCatalogTagCompatibilityIds(value).filter((id) =>
+            allowedLegacyTags.includes(id),
+          )
+        : [];
+      if (compatibilityIds.length === 1) {
+        legacyTagFallbacks.push(compatibilityIds[0]);
+        continue;
+      }
+
+      state.unavailable.push(`${facet.label}: ${value}`);
+    }
+    state[facet.key] = [...new Set(accepted)];
   }
 
   return state;

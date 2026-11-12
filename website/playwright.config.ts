@@ -18,9 +18,9 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: "npm run serve",
+    command: "node scripts/build-e2e-site.js && npm run serve",
     url: "http://localhost:3000/awesome-azd/",
     reuseExistingServer: !process.env.CI,
-    timeout: 120_000,
+    timeout: 180_000,
   },
 });

@@ -179,9 +179,14 @@ test.describe("Gallery functionality (deploy gate)", () => {
   }) => {
     await page.setViewportSize({ width: 1600, height: 1200 });
 
-    for (const [title, featured, language] of [
-      ["Get started with AI agents", true, "Python"],
-      ["RAG chat with Azure AI Search + C#", false, ".NET/C#"],
+    for (const [title, featured, language, service] of [
+      ["Get started with AI agents", true, "Python", "Azure AI Search"],
+      [
+        "RAG chat with Azure AI Search + C#",
+        false,
+        ".NET/C#",
+        "Azure Container Apps",
+      ],
     ] as const) {
       await page.goto(
         `templates?type=ai&q=${encodeURIComponent(title)}`,
@@ -220,7 +225,7 @@ test.describe("Gallery functionality (deploy gate)", () => {
         card.getByRole("button", { name: /Copy init command/ }),
       ).toHaveCSS("height", "32px");
       await expect(
-        card.getByText("Azure Container Apps", { exact: true }),
+        card.getByText(service, { exact: true }),
       ).toBeVisible();
     }
   });
@@ -315,6 +320,7 @@ test.describe("Gallery functionality (deploy gate)", () => {
   test("template cards open repository detail pages", async ({
     page,
   }) => {
+    await page.setViewportSize({ width: 1440, height: 1200 });
     await page.goto(
       "templates?q=RAG%20chat%20with%20Azure%20AI%20Search%20%2B%20Python",
     );
@@ -357,7 +363,7 @@ test.describe("Gallery functionality (deploy gate)", () => {
     ).toBeVisible();
     await expect(
       page.getByRole("table", { name: "Resources included" }).getByRole("row"),
-    ).toHaveCount(19);
+    ).toHaveCount(7);
     await expect(
       page.locator("[data-repository-stars]"),
     ).toHaveAttribute(
@@ -377,14 +383,95 @@ test.describe("Gallery functionality (deploy gate)", () => {
       "rel",
       "noopener noreferrer",
     );
-    await expect(
-      page.getByRole("link", {
-        name: "Open in VS Code for the Web",
-      }),
-    ).toHaveAttribute(
+    await expect(repositoryLink).toHaveCSS(
+      "text-decoration-line",
+      "underline",
+    );
+
+    const main = page.locator("main").first();
+    await expect(main).toHaveCSS(
+      "background-color",
+      "rgb(252, 252, 249)",
+    );
+    const sidebar = page.locator("aside");
+    await expect(sidebar).toHaveCSS("position", "static");
+    expect(
+      await sidebar.evaluate((element) => element.getBoundingClientRect().width),
+    ).toBeCloseTo(440, 0);
+
+    const screenshot = page.getByAltText(
+      "Application screenshot for RAG chat with Azure AI Search + Python",
+    );
+    const architecture = page.getByAltText(
+      "Architecture diagram for RAG chat with Azure AI Search + Python",
+    );
+    await expect(screenshot.locator("..")).toHaveCSS(
+      "border-top-width",
+      "1px",
+    );
+    await expect(architecture.locator("..")).toHaveCSS(
+      "border-top-width",
+      "1px",
+    );
+
+    const command = page.locator("code", {
+      hasText:
+        "azd init -t azure-search-openai-demo",
+    });
+    await expect(command.locator("span")).toHaveCount(3);
+    await expect(command.locator("span").nth(1)).toHaveCSS(
+      "color",
+      "rgb(0, 95, 184)",
+    );
+    await expect(command.locator("span").nth(2)).toHaveCSS(
+      "color",
+      "rgb(23, 105, 44)",
+    );
+
+    const learnLink = page.getByRole("link", {
+      name: /Learn more about azd/,
+    });
+    await expect(learnLink).toHaveCSS(
+      "text-decoration-line",
+      "underline",
+    );
+    const getStartedText = learnLink.locator("..");
+    const sentenceBounds = await getStartedText.locator("span").first().boundingBox();
+    const learnBounds = await learnLink.boundingBox();
+    expect(sentenceBounds).not.toBeNull();
+    expect(learnBounds).not.toBeNull();
+    expect(learnBounds!.y).toBeGreaterThan(sentenceBounds!.y);
+
+    const vscodeLink = page.getByRole("link", {
+      name: "Open in VS Code for the Web",
+    });
+    await expect(vscodeLink).toHaveAttribute(
       "href",
       "https://vscode.dev/azure?vscode-azure-exp=azd&az-referer=awesome-azd&azdTemplateUrl=https%3A%2F%2Fgithub.com%2FAzure-Samples%2Fazure-search-openai-demo",
     );
+    await expect(vscodeLink.locator("img")).toHaveAttribute(
+      "src",
+      /\/img\/vscode\.svg$/,
+    );
+
+    const pricingLink = page.getByRole("link", {
+      name: /Pricing calculator/,
+    });
+    await expect(pricingLink).toHaveCSS(
+      "text-decoration-line",
+      "underline",
+    );
+    await expect(pricingLink).toHaveCSS("white-space", "nowrap");
+
+    const firstResourceIcon = page
+      .getByRole("table", { name: "Resources included" })
+      .locator("tbody img")
+      .first();
+    expect(
+      await firstResourceIcon.evaluate(
+        (element) => element.getBoundingClientRect().width,
+      ),
+    ).toBeLessThanOrEqual(32);
   });
 
   test("repository stars render missing and zero states and drive popularity order", async ({
@@ -595,7 +682,7 @@ test.describe("Gallery functionality (deploy gate)", () => {
     );
 
     await expect(
-      page.getByRole("checkbox", { name: /Document Q&A 1/ }),
+      page.getByRole("checkbox", { name: /Document Q&A 2/ }),
     ).toBeVisible();
     await expect(
       page.getByRole("checkbox", { name: /Web apps 1/ }),
@@ -604,7 +691,10 @@ test.describe("Gallery functionality (deploy gate)", () => {
       page.getByRole("checkbox", { name: /APIs 1/ }),
     ).toBeVisible();
     await expect(
-      page.getByRole("checkbox", { name: /AI agents 0/ }),
+      page.getByRole("checkbox", { name: /AI agents 1/ }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("checkbox", { name: /Workflow automation 0/ }),
     ).toHaveCount(0);
   });
 

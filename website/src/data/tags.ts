@@ -36,6 +36,8 @@ export type TagType =
   | "msft"
   | "community"
   | "new"
+  | "featured"
+  | "aiapplication"
   | "bicep"
   | "typescript"
   | "javascript"
@@ -106,6 +108,7 @@ export type TagType =
   | "blazor"
   | "azuredb-mySQL"
   | "eventhub"
+  | "azuresignalr"
   | "azurestorage"
   | "helm"
   | "dall-e"
@@ -198,6 +201,17 @@ export const Tags: { [type in TagType]: Tag } = {
       "This tag is used for templates added to the catalog within the past month.",
     type: "Status",
   },
+  featured: {
+    label: "Featured Template",
+    description: "This template is featured in the catalog.",
+    type: "Status",
+  },
+  aiapplication: {
+    label: "AI application",
+    description:
+      "This template is part of the Microsoft-curated AI application catalog.",
+    type: "Application Type",
+  },
 
   //============  FOR REGULAR USE
 
@@ -265,7 +279,7 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "SAP",
     description:
       "Template architecture uses Systems Applications and Products in data processing (SAP)",
-    type: "Platform",
+    type: "Tools",
   },
   sapcloudsdk: {
     label: "SAP Cloud SDK",
@@ -527,11 +541,11 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Framework",
   },
 
-  // ---- Platform
+  // ---- Framework
   kubernetes: {
     label: "Kubernetes",
     description: "Template architecture uses Kubernetes",
-    type: "Platform",
+    type: "Framework",
   },
 
   // ---- Service
@@ -731,6 +745,13 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure Event Hubs",
     azureIcon: "./img/Azure-Event-Hubs.svg",
     url: "https://azure.microsoft.com/products/event-hubs",
+    type: "Service",
+  },
+  azuresignalr: {
+    label: "Azure SignalR Service",
+    description: "Template architecture uses Azure SignalR Service",
+    azureIcon: "./img/Azure-SignalR.svg",
+    url: "https://azure.microsoft.com/en-us/products/signalr-service/",
     type: "Service",
   },
   azurestorage: {

@@ -355,8 +355,7 @@ function getResourceRole(id: string): string {
 
 function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
   const templateType = readOptionalString(record.templateType);
-  const isAi = templateType === "ai-app-templates";
-  if (templateType !== undefined && !isAi) {
+  if (templateType !== undefined) {
     return null;
   }
 
@@ -375,6 +374,7 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
   const rawModelIds = readStringArray(record.models);
   const rawPrerequisiteIds = readStringArray(record.prerequisites);
   const tags = canonicalizeCatalogTagIds(rawTags);
+  const isAi = tags.includes("aiapplication");
   const languageIds = unique([
     ...canonicalizeCatalogTagIds(rawLanguageIds),
     ...tags.filter(

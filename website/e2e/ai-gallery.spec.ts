@@ -4,7 +4,7 @@ import templates from "../static/templates.json";
 const featuredTemplateTitle = "RAG chat with Azure AI Search + Python";
 const renamedAiTemplateTitle = "VoiceRAG with Realtime API";
 const aiTemplateCount = templates.filter(
-  (template) => template.templateType === "ai-app-templates",
+  (template) => template.tags?.includes("aiapplication"),
 ).length;
 
 function resultLinks(page: Page) {

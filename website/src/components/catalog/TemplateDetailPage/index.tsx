@@ -11,7 +11,6 @@ import Layout from "@theme/Layout";
 import {
   Button,
   Card,
-  Divider,
   Table,
   TableBody,
   TableCell,
@@ -115,13 +114,15 @@ function DetailMediaSection({
           {heading}
         </Text>
       ) : null}
-      <img
-        className={imageClassName}
-        src={external ? src : localUrl}
-        alt={alt}
-        loading="lazy"
-        onError={() => setUnavailable(true)}
-      />
+      <div className={styles.mediaFrame}>
+        <img
+          className={imageClassName}
+          src={external ? src : localUrl}
+          alt={alt}
+          loading="lazy"
+          onError={() => setUnavailable(true)}
+        />
+      </div>
     </section>
   );
 }
@@ -228,10 +229,12 @@ function SummaryItem({
 }): React.JSX.Element {
   return (
     <div className={styles.summaryItem}>
-      <span className={styles.summaryIcon} aria-hidden="true">
-        {icon}
-      </span>
-      <dt className={styles.summaryLabel}>{label}</dt>
+      <dt className={styles.summaryLabel}>
+        <span className={styles.summaryIcon} aria-hidden="true">
+          {icon}
+        </span>
+        {label}
+      </dt>
       <dd className={styles.summaryValue}>{children}</dd>
     </div>
   );
@@ -258,6 +261,25 @@ function TagList({
   );
 }
 
+function InitCommand({
+  command,
+}: {
+  command: string;
+}): React.JSX.Element {
+  const match = /^(azd init)\s+(-t)\s+(.+)$/.exec(command);
+  if (!match) {
+    return <code>{command}</code>;
+  }
+
+  return (
+    <code>
+      <span>{match[1]}</span>{" "}
+      <span className={styles.commandFlag}>{match[2]}</span>{" "}
+      <span className={styles.commandTemplate}>{match[3]}</span>
+    </code>
+  );
+}
+
 function GetStartedCard({
   template,
 }: {
@@ -265,6 +287,7 @@ function GetStartedCard({
 }): React.JSX.Element {
   const vscodeUrl = getOpenInVSCodeUrl(template.source);
   const codespacesUrl = `https://codespaces.new/${template.repository}`;
+  const vscodeIconUrl = useBaseUrl("/img/vscode.svg");
 
   return (
     <Card
@@ -282,7 +305,7 @@ function GetStartedCard({
         Get started
       </Text>
       <div className={styles.command}>
-        <code>{template.initCommand}</code>
+        <InitCommand command={template.initCommand} />
         <CopyAction
           value={template.initCommand}
           idleLabel={`Copy init command for ${template.title}`}
@@ -293,7 +316,9 @@ function GetStartedCard({
         </CopyAction>
       </div>
       <Text as="p" className={styles.getStartedText}>
-        Use the Azure Developer CLI (azd) to deploy this template.{" "}
+        <span>
+          Use the Azure Developer CLI (azd) to deploy this template.
+        </span>
         <a
           href="https://aka.ms/azd"
           target="_blank"
@@ -302,15 +327,27 @@ function GetStartedCard({
           Learn more about azd <Open16Regular aria-hidden="true" />
         </a>
       </Text>
-      <Divider appearance="subtle">or</Divider>
+      <div className={styles.orDivider} role="separator" aria-label="or">
+        <span />
+        <span className={styles.orLabel}>or</span>
+        <span />
+      </div>
       <div className={styles.actionStack}>
         <Button
           as="a"
           href={vscodeUrl}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Open in VS Code for the Web"
           appearance="primary"
-          icon={<Code16Regular aria-hidden="true" />}
+          icon={
+            <img
+              className={styles.vscodeIcon}
+              src={vscodeIconUrl}
+              alt=""
+              aria-hidden="true"
+            />
+          }
         >
           Open in VS Code for the Web
         </Button>
@@ -319,6 +356,7 @@ function GetStartedCard({
           href={codespacesUrl}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Open in GitHub Codespaces"
           appearance="secondary"
           icon={<Open16Regular aria-hidden="true" />}
         >

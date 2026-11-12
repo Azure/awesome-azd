@@ -45,23 +45,22 @@ const aiTagsByLowerCase = new Map<string, TagEntry<AiTag>>(
 );
 
 export const catalogTagAliases = new Map<string, string>([
+  ["aicollection", "aiapplication"],
   ["azureaiservice", "azureai"],
   ["azurecosmosdb", "cosmosdb"],
   ["azuredb-mysql", "azuredb-mySQL"],
   ["azureopenai", "openai"],
+  ["deepseek", "deepseek-r1"],
   ["golang", "go"],
+  ["meta", "llama"],
+  ["mistralai", "mistral7b"],
 ]);
 
 export const collectionServiceReplacements = new Map<string, string>([
   ["azureopenai", "openai"],
 ]);
 
-export const removedCatalogTags = new Set([
-  "aicollection",
-  "deepseek",
-  "meta",
-  "mistralai",
-]);
+export const removedCatalogTags = new Set<string>();
 
 const prerequisiteTags = [
   ".net8",
@@ -102,6 +101,7 @@ const categoryOverrides = new Map<string, string>([
     (id) => [id, "Prerequisite"] as const,
   ),
   ["aifoundry", "Service"],
+  ["aiapplication", "Application Type"],
   ["aisearch", "Service"],
   ["aspire", "Framework"],
   ["community", "Authorship"],
@@ -109,6 +109,7 @@ const categoryOverrides = new Map<string, string>([
   ["dapr", "Framework"],
   ["featured", "Status"],
   ["gpt", "Model"],
+  ["kubernetes", "Framework"],
   ["mcp-client", "Tools"],
   ["mcp-server", "Tools"],
   ["microfrontend", "Topic"],
@@ -116,7 +117,7 @@ const categoryOverrides = new Map<string, string>([
   ["new", "Status"],
   ["powershell", "Language"],
   ["prometheus", "Tools"],
-  ["sap", "Platform"],
+  ["sap", "Tools"],
   ["sapcap", "Framework"],
   ["serverlessapi", "Topic"],
   ["thymeleaf", "Framework"],
@@ -197,6 +198,15 @@ export function getCatalogTagCompatibilityIds(
 export function getCatalogTagSearchTerms(id: string): string[] {
   const normalizedId = id.toLowerCase();
   const canonicalId = canonicalizeCatalogTagId(id);
+  const aliasIds =
+    canonicalId === undefined
+      ? []
+      : [...catalogTagAliases.entries()]
+          .filter(
+            ([, target]) =>
+              target.toLowerCase() === canonicalId.toLowerCase(),
+          )
+          .map(([alias]) => alias);
   const metadata =
     canonicalId === undefined
       ? undefined
@@ -210,6 +220,12 @@ export function getCatalogTagSearchTerms(id: string): string[] {
         standardTagsByLowerCase.get(normalizedId)?.tag.label,
         aiTagsByLowerCase.get(normalizedId)?.tag.label,
         metadata?.label,
+        ...aliasIds,
+        ...aliasIds.flatMap((alias) => [
+          standardTagsByLowerCase.get(alias)?.tag.label,
+          aiTagsByLowerCase.get(alias)?.tag.label,
+          ...(legacyLabelOverrides.get(alias) ?? []),
+        ]),
         ...(legacyLabelOverrides.get(normalizedId) ?? []),
       ].filter((value): value is string => Boolean(value)),
     ),

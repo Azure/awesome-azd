@@ -124,6 +124,11 @@ export const catalogFacets: readonly CatalogFacet[] = [
   },
 ] as const;
 
+const aiApplicationTagIds = new Set([
+  "aicollection",
+  "aiapplication",
+]);
+
 function getValues(
   template: CatalogTemplate,
   key: CatalogFacetKey,
@@ -232,10 +237,14 @@ export function parseCatalogState(
       .filter(Boolean);
     if (
       facet.key === "legacyTags" &&
-      requested.includes("aicollection")
+      requested.some((value) =>
+        aiApplicationTagIds.has(value.toLowerCase()),
+      )
     ) {
       state.types = [...new Set([...state.types, "ai"])];
-      requested = requested.filter((value) => value !== "aicollection");
+      requested = requested.filter(
+        (value) => !aiApplicationTagIds.has(value.toLowerCase()),
+      );
     }
     if (facet.key === "services") {
       requested = requested.map(

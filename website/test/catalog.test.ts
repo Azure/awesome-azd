@@ -34,15 +34,17 @@ describe("unified catalog data", () => {
     const expectedCount = templates.filter(
       (template) =>
         template.templateType == null ||
-        template.templateType === "" ||
-        template.templateType === "ai-app-templates",
+        template.templateType === "",
     ).length;
 
     expect(catalogTemplates).toHaveLength(expectedCount);
     expect(catalogTemplates.filter((template) => template.isAi)).toHaveLength(
       templates.filter(
-        (template) => template.templateType === "ai-app-templates",
+        (template) => template.tags?.includes("aiapplication"),
       ).length,
+    );
+    expect(catalogTemplates.filter((template) => template.isAi)).toHaveLength(
+      56,
     );
     expect(
       new Set(
@@ -103,12 +105,12 @@ describe("unified catalog data", () => {
     ).toEqual(["Build a web app", "Start with infrastructure"]);
   });
 
-  test("preserves reviewed catalog-retention and authorship decisions", () => {
+  test("includes the approved upstream AI additions and preserves authorship decisions", () => {
     const sources = catalogTemplates.map((template) => template.source);
-    expect(sources).not.toContain(
+    expect(sources).toContain(
       "https://github.com/Azure-Samples/Azure-Language-OpenAI-Conversational-Agent-Accelerator",
     );
-    expect(sources).not.toContain(
+    expect(sources).toContain(
       "https://github.com/Azure-Samples/Copilot-Studio-with-Azure-AI-Search",
     );
     expect(
@@ -250,8 +252,7 @@ describe("unified catalog data", () => {
       .filter(
         (template) =>
           (template.templateType == null ||
-            template.templateType === "" ||
-            template.templateType === "ai-app-templates") &&
+            template.templateType === "") &&
           Array.isArray(template.tags) &&
           template.tags.includes("featured"),
       )
@@ -289,6 +290,11 @@ describe("unified catalog data", () => {
         (tag) => tag.type === "Collection",
       ),
     ).toEqual([]);
+    expect(
+      Object.values(catalogTags).filter(
+        (tag) => tag.type === "Platform",
+      ),
+    ).toEqual([]);
 
     const idsByCategoryAndLabel = new Map<string, string[]>();
     for (const tag of Object.values(catalogTags)) {
@@ -307,6 +313,7 @@ describe("unified catalog data", () => {
   test("collapses aliases and replaces collection tags with services", () => {
     expect(
       canonicalizeCatalogTagIds([
+        "aicollection",
         "azureaiservice",
         "azurecosmosdb",
         "azuredb-mysql",
@@ -314,6 +321,7 @@ describe("unified catalog data", () => {
         "golang",
       ]),
     ).toEqual([
+      "aiapplication",
       "azureai",
       "cosmosdb",
       "azuredb-mySQL",
@@ -333,22 +341,28 @@ describe("unified catalog data", () => {
       ).toBe(false);
     }
 
-    const azureOpenAiTemplates = (templates as Array<{
+    const aiApplications = (templates as Array<{
       source?: string;
       tags?: unknown;
+      templateType?: unknown;
     }>).filter(
       (template) =>
         Array.isArray(template.tags) &&
-        template.tags.includes("azureopenai"),
+        template.tags.includes("aiapplication"),
     );
-    expect(azureOpenAiTemplates.length).toBeGreaterThan(0);
-    for (const rawTemplate of azureOpenAiTemplates) {
-      const template = catalogTemplates.find(
-        (candidate) => candidate.source === rawTemplate.source,
-      );
-      expect(template?.legacyTags).not.toContain("azureopenai");
-      expect(template?.serviceIds).toContain("openai");
+    expect(aiApplications).toHaveLength(56);
+    for (const rawTemplate of aiApplications) {
+      expect(rawTemplate.templateType).toBeUndefined();
+      expect(rawTemplate.tags).not.toContain("aicollection");
+      expect(rawTemplate.tags).not.toContain("azureopenai");
     }
+    expect(
+      catalogTemplates.find(
+        (template) =>
+          template.source ===
+          "https://github.com/Azure-Samples/azure-search-openai-demo",
+      )?.serviceIds,
+    ).toContain("openai");
   });
 
   test("uses the reviewed categories for ambiguous tags", () => {
@@ -357,7 +371,68 @@ describe("unified catalog data", () => {
     expect(catalogTags.rag.type).toBe("Framework");
     expect(catalogTags.dapr.type).toBe("Framework");
     expect(catalogTags.aspire.type).toBe("Framework");
+    expect(catalogTags.kubernetes.type).toBe("Framework");
     expect(catalogTags.prometheus.type).toBe("Tools");
+    expect(catalogTags.sap.type).toBe("Tools");
+    expect(catalogTags.aiapplication).toMatchObject({
+      label: "AI application",
+      type: "Application Type",
+    });
+  });
+
+  test("stores categorized values only in their target template fields", () => {
+    const targetFields = new Map([
+      ["aspire", "frameworks"],
+      ["dapr", "frameworks"],
+      ["gpt", "models"],
+      ["kubernetes", "frameworks"],
+      ["openai", "azureServices"],
+      ["powershell", "languages"],
+      ["thymeleaf", "frameworks"],
+    ]);
+    const rawTemplates = templates as Array<Record<string, unknown>>;
+
+    for (const template of rawTemplates) {
+      if (
+        typeof template.templateType === "string" &&
+        template.templateType.startsWith("extension.")
+      ) {
+        continue;
+      }
+      for (const [tag, targetField] of targetFields) {
+        for (const field of [
+          "tags",
+          "languages",
+          "frameworks",
+          "azureServices",
+          "models",
+        ]) {
+          if (field === targetField) {
+            continue;
+          }
+          expect(
+            Array.isArray(template[field])
+              ? template[field].includes(tag)
+              : false,
+          ).toBe(false);
+        }
+      }
+    }
+  });
+
+  test("uses current Azure product descriptions for reviewed services", () => {
+    expect(catalogTags.azurespringapps.productDescription).toBe(
+      "Build and deploy Spring Boot applications with a fully managed service from Microsoft and VMware.",
+    );
+    expect(catalogTags.loadtesting.productDescription).toBe(
+      "Optimize app performance with high-scale load testing.",
+    );
+    expect(catalogTags.privatelink.productDescription).toBe(
+      "Private access to services hosted on the Azure platform, keeping your data on the Microsoft network.",
+    );
+    expect(catalogTags.vmsqlserver.productDescription).toBe(
+      "Migrate SQL Server workloads to the cloud at lower total cost of ownership (TCO).",
+    );
   });
 
   test("shows every merged Azure service on template details", () => {
@@ -462,6 +537,24 @@ describe("unified catalog query", () => {
     expect(serializeCatalogState(state)).toBe("type=ai&tags=python");
   });
 
+  test("uses the aiapplication tag as the canonical AI type filter", () => {
+    const state = parseCatalogState(
+      "?tags=aiapplication",
+      catalogTemplates,
+    );
+    const matches = getMatchingCatalogTemplates(
+      catalogTemplates,
+      state,
+    );
+
+    expect(state.types).toEqual(["ai"]);
+    expect(state.legacyTags).toEqual([]);
+    expect(state.unavailable).toEqual([]);
+    expect(matches).toHaveLength(56);
+    expect(matches.every((template) => template.isAi)).toBe(true);
+    expect(serializeCatalogState(state)).toBe("type=ai");
+  });
+
   test("lists Microsoft before Community in the authorship filter", () => {
     const authorshipFacet = catalogFacets.find(
       (facet) => facet.key === "authorship",
@@ -538,25 +631,8 @@ describe("unified catalog query", () => {
   });
 
   test("preserves legacy Azure service names in local search", () => {
-    const rawSources = new Set(
-      (
-        templates as Array<{
-          source?: string;
-          azureServices?: unknown;
-        }>
-      )
-        .filter(
-          (template) =>
-            Array.isArray(template.azureServices) &&
-            template.azureServices.includes("azureaiservice"),
-        )
-        .map((template) => template.source)
-        .filter(
-          (source): source is string => typeof source === "string",
-        ),
-    );
     const expectedSources = catalogTemplates
-      .filter((template) => rawSources.has(template.source))
+      .filter((template) => template.serviceIds.includes("azureai"))
       .map((template) => template.normalizedSource);
     const state = parseCatalogState(
       `?${new URLSearchParams({ q: "Azure AI Services" })}`,
@@ -592,8 +668,8 @@ describe("unified catalog query", () => {
       {
         query: "?tags=meta",
         stateKey: "legacyTags" as const,
-        stateValue: "meta",
-        rawTag: "meta",
+        stateValue: "llama",
+        rawTag: "llama",
       },
     ]) {
       const rawSources = new Set(
@@ -605,8 +681,15 @@ describe("unified catalog query", () => {
         )
           .filter(
             (template) =>
-              Array.isArray(template.tags) &&
-              template.tags.includes(rawTag),
+              (Array.isArray(template.tags) &&
+                template.tags.includes(rawTag)) ||
+              (Array.isArray(
+                (template as Record<string, unknown>).models,
+              ) &&
+                (
+                  (template as Record<string, unknown>)
+                    .models as unknown[]
+                ).includes(rawTag)),
           )
           .map((template) => template.source)
           .filter(
@@ -755,7 +838,7 @@ describe("unified catalog query", () => {
 
   test("uses reviewed migration services and languages", () => {
     const cargoState = parseCatalogState(
-      "?tags=aks&q=cargo%20tracker",
+      "?service=openai&q=cargo%20tracker",
       catalogTemplates,
     );
     const cargoMatches = getMatchingCatalogTemplates(
@@ -776,7 +859,7 @@ describe("unified catalog query", () => {
     expect(cargoMatches.map((template) => template.source)).toContain(
       "https://github.com/Azure-Samples/cargotracker-liberty-aks-azd",
     );
-    expect(purviewTemplate?.serviceIds).toContain("purview");
+    expect(purviewTemplate?.serviceIds).not.toContain("purview");
     expect(ragTemplate?.languages).toContain("TypeScript");
     expect(ragTemplate?.legacyTags).not.toContain("nodejs");
   });

@@ -105,7 +105,7 @@ export const azureServiceMetadata: Record<
   azurespringapps: {
     label: "Azure Spring Apps",
     description:
-      "Build or migrate Spring applications with a fully managed service from Microsoft and VMware.",
+      "Build and deploy Spring Boot applications with a fully managed service from Microsoft and VMware.",
     icon: "./img/Azure-Spring-Apps.svg",
     url: "https://azure.microsoft.com/en-us/products/spring-apps/",
   },
@@ -169,8 +169,7 @@ export const azureServiceMetadata: Record<
       "Deliver high availability and network performance to your apps.",
   },
   loadtesting: {
-    description:
-      "Run high-scale tests to identify quality and performance issues using a fully managed Azure service.",
+    description: "Optimize app performance with high-scale load testing.",
     url: "https://azure.microsoft.com/en-us/products/app-testing/",
   },
   loganalytics: {
@@ -198,7 +197,7 @@ export const azureServiceMetadata: Record<
   },
   privatelink: {
     description:
-      "Private access to services hosted on Azure while keeping your data on the Microsoft network.",
+      "Private access to services hosted on the Azure platform, keeping your data on the Microsoft network.",
   },
   purview: {
     label: "Microsoft Purview",
@@ -247,7 +246,7 @@ export const azureServiceMetadata: Record<
   },
   vmsqlserver: {
     description:
-      "Migrate SQL Server workloads to the cloud at lower total cost of ownership.",
+      "Migrate SQL Server workloads to the cloud at lower total cost of ownership (TCO).",
   },
   vnets: {
     description:

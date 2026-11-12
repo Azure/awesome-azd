@@ -56,7 +56,7 @@
     "authorUrl": "https://rockpaperorleans.net/",
     "author": "Brady Gaster",
     "source": "https://github.com/bradygaster/RockPaperOrleans",
-    "tags": ["community", "aspire"],
+    "tags": ["community"],
     "languages": ["dotnetCsharp"],
     "azureServices": [
       "cosmosdb",
@@ -67,7 +67,8 @@
       "azurestorage"
     ],
     "IaC": ["bicep"],
-    "id": "01b5c589-eb46-4fc1-b6ed-6f9315276f8b"
+    "id": "01b5c589-eb46-4fc1-b6ed-6f9315276f8b",
+    "frameworks": ["aspire"]
   },
   {
     "title": "Scalable Django on Azure App Service",
@@ -99,29 +100,12 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/azure-search-openai-demo-csharp",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["dotnetCsharp"],
     "frameworks": ["blazor", "semantickernel"],
-    "azureServices": [
-      "aisearch",
-      "openai",
-      "aca",
-      "monitor",
-      "blobstorage",
-      "aks",
-      "rediscache",
-      "functions",
-      "azureaiservice",
-      "keyvault",
-      "appinsights",
-      "managedidentity",
-      "azurestorage",
-      "loganalytics",
-      "diagnosticsettings"
-    ],
+    "azureServices": ["aisearch", "openai", "aca", "monitor", "blobstorage"],
     "IaC": ["bicep"],
     "id": "75989eb4-f7e0-4dab-be54-262775942d4e",
-    "templateType": "ai-app-templates",
     "authors": ["Azure Content Team"],
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt4omini"],
@@ -186,7 +170,7 @@
     "authorUrl": "https://github.com/Azure/azure-dev",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/pubsub-dapr-csharp-servicebus",
-    "tags": ["dapr", "msft"],
+    "tags": ["msft"],
     "languages": ["dotnetCsharp"],
     "azureServices": [
       "aca",
@@ -197,7 +181,8 @@
       "diagnosticsettings"
     ],
     "IaC": ["bicep"],
-    "id": "b3c37e46-c66a-4a6f-ac07-825f8d9e4af9"
+    "id": "b3c37e46-c66a-4a6f-ac07-825f8d9e4af9",
+    "frameworks": ["dapr"]
   },
   {
     "title": "Microservices App - Dapr PubSub Python ACA ServiceBus",
@@ -206,9 +191,9 @@
     "authorUrl": "https://github.com/Azure/azure-dev",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/pubsub-dapr-python-servicebus",
-    "tags": ["dapr", "msft"],
+    "tags": ["msft"],
     "languages": ["python"],
-    "frameworks": ["flask"],
+    "frameworks": ["flask", "dapr"],
     "azureServices": [
       "aca",
       "servicebus",
@@ -227,7 +212,7 @@
     "authorUrl": "https://github.com/Azure/azure-dev",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/pubsub-dapr-nodejs-servicebus",
-    "tags": ["dapr", "msft"],
+    "tags": ["msft"],
     "languages": ["javascript", "nodejs"],
     "azureServices": [
       "aca",
@@ -238,7 +223,8 @@
       "diagnosticsettings"
     ],
     "IaC": ["bicep"],
-    "id": "a23f5ea7-2d36-4642-9b61-99c9367e54b3"
+    "id": "a23f5ea7-2d36-4642-9b61-99c9367e54b3",
+    "frameworks": ["dapr"]
   },
   {
     "title": "Microservices App - Dapr Bindings Cron C# ACA PostgreSQL",
@@ -247,7 +233,7 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/bindings-dapr-csharp-cron-postgres",
-    "tags": ["dapr", "msft"],
+    "tags": ["msft"],
     "languages": ["dotnetCsharp"],
     "azureServices": [
       "azuredb-postgreSQL",
@@ -259,7 +245,8 @@
       "diagnosticsettings"
     ],
     "IaC": ["bicep"],
-    "id": "eb747c5a-e95f-4859-bb21-b1aef740684a"
+    "id": "eb747c5a-e95f-4859-bb21-b1aef740684a",
+    "frameworks": ["dapr"]
   },
   {
     "title": "Microservices App - Dapr Bindings Cron Python ACA PostgreSQL",
@@ -268,9 +255,9 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/bindings-dapr-python-cron-postgres",
-    "tags": ["dapr", "msft"],
+    "tags": ["msft"],
     "languages": ["python"],
-    "frameworks": ["flask"],
+    "frameworks": ["flask", "dapr"],
     "azureServices": [
       "azuredb-postgreSQL",
       "aca",
@@ -289,7 +276,7 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/bindings-dapr-nodejs-cron-postgres",
-    "tags": ["dapr", "msft"],
+    "tags": ["msft"],
     "languages": ["nodejs", "javascript"],
     "azureServices": [
       "azuredb-postgreSQL",
@@ -301,7 +288,8 @@
       "diagnosticsettings"
     ],
     "IaC": ["bicep"],
-    "id": "bb2a0e5f-cb80-4501-b699-6c6b36a87c8d"
+    "id": "bb2a0e5f-cb80-4501-b699-6c6b36a87c8d",
+    "frameworks": ["dapr"]
   },
   {
     "title": "Microservices App - Dapr Service Invoke Node.js ACA",
@@ -310,11 +298,18 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/svc-invoke-dapr-nodejs",
-    "tags": ["dapr", "msft"],
+    "tags": ["msft"],
     "languages": ["nodejs"],
-    "azureServices": ["aca", "managedidentity", "loganalytics", "appinsights", "diagnosticsettings"],
+    "azureServices": [
+      "aca",
+      "managedidentity",
+      "loganalytics",
+      "appinsights",
+      "diagnosticsettings"
+    ],
     "IaC": ["bicep"],
-    "id": "aa44bec0-701a-4702-a105-f301e2c05b73"
+    "id": "aa44bec0-701a-4702-a105-f301e2c05b73",
+    "frameworks": ["dapr"]
   },
   {
     "title": "Microservices App - Dapr Service Invoke Python ACA",
@@ -323,9 +318,9 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/svc-invoke-dapr-python",
-    "tags": ["dapr", "msft"],
+    "tags": ["msft"],
     "languages": ["python"],
-    "frameworks": ["flask"],
+    "frameworks": ["flask", "dapr"],
     "azureServices": ["aca", "managedidentity", "loganalytics", "appinsights"],
     "IaC": ["bicep"],
     "id": "89d40b9e-b02c-4ed7-82c4-b4a3bed80706"
@@ -337,11 +332,18 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/svc-invoke-dapr-csharp",
-    "tags": ["dapr", "msft"],
+    "tags": ["msft"],
     "languages": ["dotnetCsharp"],
-    "azureServices": ["aca", "managedidentity", "loganalytics", "appinsights", "diagnosticsettings"],
+    "azureServices": [
+      "aca",
+      "managedidentity",
+      "loganalytics",
+      "appinsights",
+      "diagnosticsettings"
+    ],
     "IaC": ["bicep"],
-    "id": "4aa93d14-9bf2-4dbc-a7f5-0f8796d922f1"
+    "id": "4aa93d14-9bf2-4dbc-a7f5-0f8796d922f1",
+    "frameworks": ["dapr"]
   },
   {
     "title": "RAG chat with Azure AI Search + Python",
@@ -350,32 +352,26 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/azure-search-openai-demo",
-    "tags": ["featured", "azureopenai"],
+    "tags": ["featured", "aiapplication"],
     "languages": ["python", "typescript"],
-    "frameworks": ["fastapi", "flask", "django", "langchain", "autogen", "reactjs"],
+    "frameworks": [
+      "fastapi",
+      "flask",
+      "django",
+      "langchain",
+      "autogen",
+      "reactjs"
+    ],
     "azureServices": [
       "appservice",
       "openai",
       "aisearch",
       "blobstorage",
       "monitor",
-      "aca",
-      "speechservice",
-      "functions",
-      "appinsights",
-      "azurestorage",
-      "azureaiservice",
-      "azurecosmosdb",
-      "loganalytics",
-      "keyvault",
-      "managedidentity",
-      "diagnosticsettings",
-      "vnets",
-      "privateEndpoints"
+      "aca"
     ],
     "IaC": ["bicep"],
     "id": "5f6de8e1-9742-4888-ae09-30347b4f4445",
-    "templateType": "ai-app-templates",
     "authors": ["Azure Content Team"],
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt4omini"],
@@ -393,20 +389,12 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/aisearch-openai-rag-audio",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["python", "typescript", "javascript"],
     "frameworks": ["rag", "reactjs"],
-    "azureServices": [
-      "aca",
-      "managedidentity",
-      "openai",
-      "aisearch",
-      "loganalytics",
-      "azurestorage"
-    ],
+    "azureServices": ["aca", "managedidentity", "openai", "aisearch"],
     "IaC": ["bicep"],
     "id": "91c1f2a8-d8ef-40f7-b5fd-35c86fb454f1",
-    "templateType": "ai-app-templates",
     "authors": ["Pamela Fox"],
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt4o"],
@@ -422,8 +410,8 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/get-started-with-ai-agents",
-    "tags": ["azureopenai", "featured"],
-    "languages": ["python", "javascript", "typescript"],
+    "tags": ["featured", "aiapplication"],
+    "languages": ["python", "javascript"],
     "frameworks": ["fastapi", "reactjs"],
     "azureServices": [
       "aisearch",
@@ -431,17 +419,10 @@
       "openai",
       "serviceprincipal",
       "aifoundry",
-      "blobstorage",
-      "aca",
-      "azurestorage",
-      "loganalytics",
-      "managedidentity",
-      "azureaiservice",
-      "diagnosticsettings"
+      "blobstorage"
     ],
     "IaC": ["bicep"],
     "id": "35fede2d-4da6-43e2-b679-c593c6fd40da",
-    "templateType": "ai-app-templates",
     "authors": ["Howie Leung", "Nikolay Rovinskiy", "Sophia Ramsey"],
     "authorUrls": [
       "https://github.com/howieleung",
@@ -462,9 +443,9 @@
     "authorUrl": "https://github.com/wangmingliang-ms",
     "author": "Miller Wang",
     "source": "https://github.com/Azure-Samples/spring-petclinic-java-mysql",
-    "tags": ["thymeleaf", "msft"],
+    "tags": ["msft"],
     "languages": ["java"],
-    "frameworks": ["spring"],
+    "frameworks": ["spring", "thymeleaf"],
     "azureServices": [
       "appservice",
       "azuresql",
@@ -487,7 +468,14 @@
     "tags": ["webapps", "sap", "sapcloudsdk", "msft"],
     "languages": ["typescript", "nodejs"],
     "frameworks": ["nestjs"],
-    "azureServices": ["apim", "keyvault", "appinsights", "functions", "appservice", "loganalytics"],
+    "azureServices": [
+      "apim",
+      "keyvault",
+      "appinsights",
+      "functions",
+      "appservice",
+      "loganalytics"
+    ],
     "IaC": ["bicep", "terraform"],
     "id": "bcb1fed3-63ff-4f1b-a72b-638f548651bf"
   },
@@ -558,7 +546,13 @@
     "tags": ["community"],
     "languages": ["python"],
     "frameworks": ["flask"],
-    "azureServices": ["aca", "managedidentity", "loganalytics", "appinsights", "diagnosticsettings"],
+    "azureServices": [
+      "aca",
+      "managedidentity",
+      "loganalytics",
+      "appinsights",
+      "diagnosticsettings"
+    ],
     "IaC": ["bicep"],
     "id": "a7276a20-b29f-44e2-8d63-1cdaf2cc766b"
   },
@@ -652,7 +646,13 @@
     "tags": ["webapps", "community"],
     "languages": ["python"],
     "frameworks": ["django"],
-    "azureServices": ["appservice", "azuredb-postgreSQL", "keyvault", "appinsights", "loganalytics"],
+    "azureServices": [
+      "appservice",
+      "azuredb-postgreSQL",
+      "keyvault",
+      "appinsights",
+      "loganalytics"
+    ],
     "IaC": ["bicep"],
     "id": "f8ac8c5b-c769-4c68-9a9c-487aeaedd2fb"
   },
@@ -666,7 +666,13 @@
     "tags": ["community"],
     "languages": ["python"],
     "frameworks": ["fastapi"],
-    "azureServices": ["aca", "managedidentity", "loganalytics", "appinsights", "diagnosticsettings"],
+    "azureServices": [
+      "aca",
+      "managedidentity",
+      "loganalytics",
+      "appinsights",
+      "diagnosticsettings"
+    ],
     "IaC": ["bicep"],
     "id": "ab71af49-3402-4dd0-858b-d100eae4c83a"
   },
@@ -677,7 +683,7 @@
     "authorUrl": "https://github.com/sabbour/",
     "author": "Ahmed Sabbour",
     "source": "https://github.com/sabbour/aks-app-template",
-    "tags": ["kubernetes", "keda", "prometheus", "community"],
+    "tags": ["keda", "prometheus", "community"],
     "azureServices": [
       "aks",
       "grafana",
@@ -687,7 +693,8 @@
       "managedidentity"
     ],
     "IaC": ["bicep"],
-    "id": "9dffb7ca-0b35-4d13-bd50-899a904fdac3"
+    "id": "9dffb7ca-0b35-4d13-bd50-899a904fdac3",
+    "frameworks": ["kubernetes"]
   },
   {
     "title": "Python (Flask) Web App with PostgreSQL",
@@ -699,7 +706,13 @@
     "tags": ["webapps", "community"],
     "languages": ["python"],
     "frameworks": ["flask"],
-    "azureServices": ["appservice", "azuredb-postgreSQL", "appinsights", "keyvault", "loganalytics"],
+    "azureServices": [
+      "appservice",
+      "azuredb-postgreSQL",
+      "appinsights",
+      "keyvault",
+      "loganalytics"
+    ],
     "IaC": ["bicep"],
     "id": "ae207d42-35cf-420d-b932-2626e7c2bf19"
   },
@@ -760,7 +773,13 @@
     "source": "https://github.com/jsburckhardt/docusaurus-aca",
     "tags": ["community"],
     "languages": ["javascript"],
-    "azureServices": ["aca", "managedidentity", "loganalytics", "appinsights", "diagnosticsettings"],
+    "azureServices": [
+      "aca",
+      "managedidentity",
+      "loganalytics",
+      "appinsights",
+      "diagnosticsettings"
+    ],
     "IaC": ["bicep"],
     "id": "11812855-671c-469b-8e31-bf81a9edbb75"
   },
@@ -771,7 +790,7 @@
     "authorUrl": "https://github.com/pascalvanderheiden",
     "author": "Pascal van der Heiden",
     "source": "https://github.com/pascalvanderheiden/ais-apim-odata-reactjs",
-    "tags": ["sap", "gpt", "community"],
+    "tags": ["sap", "community"],
     "languages": ["typescript", "javascript"],
     "frameworks": ["reactjs"],
     "azureServices": [
@@ -785,7 +804,8 @@
       "diagnosticsettings"
     ],
     "IaC": ["bicep"],
-    "id": "e49261a5-6d65-4f0f-ab39-f747b9f10d9c"
+    "id": "e49261a5-6d65-4f0f-ab39-f747b9f10d9c",
+    "models": ["gpt"]
   },
   {
     "title": "Azure OpenAI with Azure Bot and Custom API calling, Behind a Firewall",
@@ -826,7 +846,13 @@
     "author": "Leandro Lopez",
     "source": "https://github.com/lopezleandro03/azd-devcenter",
     "tags": ["platformengineering", "community"],
-    "azureServices": ["ade", "loganalytics", "monitor", "diagnosticsettings", "keyvault"],
+    "azureServices": [
+      "ade",
+      "loganalytics",
+      "monitor",
+      "diagnosticsettings",
+      "keyvault"
+    ],
     "IaC": ["terraform"],
     "id": "9d682481-a26a-4037-8503-32d0fc49e52b"
   },
@@ -837,8 +863,8 @@
     "authorUrl": "https://github.com/dantelmomsft",
     "author": "Davide Antelmo",
     "source": "https://github.com/Azure-Samples/azure-search-openai-demo-java",
-    "tags": ["azureopenai"],
-    "languages": ["java", "typescript", "python"],
+    "tags": ["aiapplication"],
+    "languages": ["java", "typescript"],
     "frameworks": [
       "spring",
       "semantickernel",
@@ -850,26 +876,9 @@
       "autogen",
       "langchain4j"
     ],
-    "azureServices": [
-      "openai",
-      "aisearch",
-      "appservice",
-      "aca",
-      "aks",
-      "azurecosmosdb",
-      "appinsights",
-      "managedidentity",
-      "azurestorage",
-      "servicebus",
-      "eventgrid",
-      "keyvault",
-      "loganalytics",
-      "diagnosticsettings",
-      "aifoundry"
-    ],
+    "azureServices": ["openai", "aisearch", "appservice", "aca", "aks"],
     "IaC": ["bicep"],
     "id": "68592edf-9c61-4208-84b0-fd264282af94",
-    "templateType": "ai-app-templates",
     "authors": ["Azure Content Team"],
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt4omini"],
@@ -994,9 +1003,9 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Mahmut Canga",
     "source": "https://github.com/Azure-Samples/pubsub-dapr-aks-java",
-    "tags": ["dapr", "msft"],
+    "tags": ["msft"],
     "languages": ["java"],
-    "frameworks": ["spring"],
+    "frameworks": ["spring", "dapr"],
     "azureServices": ["aks", "keyvault", "loganalytics", "diagnosticsettings"],
     "IaC": ["bicep"],
     "id": "8b4c552b-5538-4929-924f-3dffbc6ce0df"
@@ -1008,7 +1017,7 @@
     "authorUrl": "https://github.com/Azure",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure/agent-landing-zone",
-    "tags": ["gpt", "ai", "msft"],
+    "tags": ["ai", "msft"],
     "languages": ["python", "typescript", "nodejs"],
     "frameworks": ["rag"],
     "azureServices": [
@@ -1034,7 +1043,8 @@
       "privateEndpoints"
     ],
     "IaC": ["bicep", "terraform"],
-    "id": "79f4bbff-490c-4919-b187-31b1af47aba4"
+    "id": "79f4bbff-490c-4919-b187-31b1af47aba4",
+    "models": ["gpt"]
   },
   {
     "title": "Blazor Web App with C# and SQL Database on Azure",
@@ -1067,7 +1077,13 @@
     "tags": ["community"],
     "languages": ["python", "typescript"],
     "frameworks": ["fastapi"],
-    "azureServices": ["functions", "azurestorage", "loganalytics", "appinsights", "keyvault"],
+    "azureServices": [
+      "functions",
+      "azurestorage",
+      "loganalytics",
+      "appinsights",
+      "keyvault"
+    ],
     "IaC": ["bicep"],
     "id": "d2e36461-54b6-4ff7-be56-f2c0b029732e"
   },
@@ -1092,9 +1108,9 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "AKS Content Team",
     "source": "https://github.com/azure-samples/aks-store-demo",
-    "tags": ["ai", "msft", "kubernetes", "helm"],
+    "tags": ["ai", "msft", "helm"],
     "languages": ["typescript", "go", "javascript", "python"],
-    "frameworks": ["fastapi", "vuejs"],
+    "frameworks": ["fastapi", "vuejs", "kubernetes"],
     "azureServices": [
       "aks",
       "openai",
@@ -1209,11 +1225,12 @@
     "authorUrl": "https://github.com/Azure/AppConfiguration",
     "author": "Azure App Configuration",
     "source": "https://github.com/Azure-Samples/azure-appconfig-aks",
-    "tags": ["kubernetes", "webapps", "msft"],
+    "tags": ["webapps", "msft"],
     "languages": ["dotnetCsharp"],
     "azureServices": ["azureappconfig", "aks", "managedidentity"],
     "IaC": ["bicep"],
-    "id": "2ec02506-2785-4b99-bcca-0e5c5cc1e4a9"
+    "id": "2ec02506-2785-4b99-bcca-0e5c5cc1e4a9",
+    "frameworks": ["kubernetes"]
   },
   {
     "title": "Chat with your Data Solution Accelerator",
@@ -1222,7 +1239,7 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/chat-with-your-data-solution-accelerator",
-    "tags": ["gpt", "ai", "msft"],
+    "tags": ["ai", "msft"],
     "languages": ["python", "typescript"],
     "frameworks": ["flask", "rag", "fastapi", "langchain", "reactjs"],
     "azureServices": [
@@ -1243,7 +1260,8 @@
       "virtualmachine"
     ],
     "IaC": ["bicep"],
-    "id": "3f9352e8-6295-4f72-a214-81d0ca7769de"
+    "id": "3f9352e8-6295-4f72-a214-81d0ca7769de",
+    "models": ["gpt"]
   },
   {
     "title": "Sample Ruby on Rails app deployed (Bicep) on Azure Container App with PostgreSQL",
@@ -1275,12 +1293,20 @@
     "authorUrl": "https://github.com/john0isaac",
     "author": "John Aziz",
     "source": "https://github.com/john0isaac/rag-semantic-kernel-mongodb-vcore",
-    "tags": ["gpt", "mongodb", "ai", "community", "jupyter"],
+    "tags": ["mongodb", "ai", "community", "jupyter"],
     "languages": ["python"],
     "frameworks": ["rag", "flask", "autogen", "semantickernel"],
-    "azureServices": ["openai", "cosmosdb", "appservice", "keyvault", "azureai", "appinsights"],
+    "azureServices": [
+      "openai",
+      "cosmosdb",
+      "appservice",
+      "keyvault",
+      "azureai",
+      "appinsights"
+    ],
     "IaC": ["bicep"],
-    "id": "ab57b3ff-d197-49e8-8f46-c4037a3f70bc"
+    "id": "ab57b3ff-d197-49e8-8f46-c4037a3f70bc",
+    "models": ["gpt"]
   },
   {
     "title": "Serverless GenAI assistant with LangChain",
@@ -1289,7 +1315,7 @@
     "authorUrl": "https://github.com/glaucia86, https://github.com/sinedied",
     "author": "Glaucia Lemos, Yohan Lasorsa",
     "source": "https://github.com/Azure-Samples/serverless-chat-langchainjs",
-    "tags": ["mistralai", "azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["javascript", "typescript"],
     "frameworks": ["langchain", "rag"],
     "azureServices": [
@@ -1298,15 +1324,10 @@
       "blobstorage",
       "swa",
       "functions",
-      "azurecosmosdb",
-      "cosmosdb",
-      "azureai",
-      "azurestorage",
-      "vnets"
+      "cosmosdb"
     ],
     "IaC": ["bicep"],
     "id": "10db7027-bc05-450f-8664-a3a9d783cc08",
-    "templateType": "ai-app-templates",
     "authors": ["Glaucia Lemos", "Yohan Lasorsa"],
     "authorUrls": [
       "https://github.com/glaucia86",
@@ -1314,13 +1335,7 @@
     ],
     "models": ["mistral7b", "gpt4turbo"],
     "appType": ["chat"],
-    "prerequisites": [
-      "azd",
-      "nodejslts",
-      "git",
-      "pwsh7+",
-      "functionscoretools"
-    ],
+    "prerequisites": ["azd", "nodejslts", "git", "pwsh7+", "functionscoretools"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/serverless-chat-langchainjs-chat.png",
     "screenshot": "/templates/images/serverless-chat-langchainjs-image.png"
@@ -1386,21 +1401,12 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/openai-chat-app-quickstart",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["python"],
     "frameworks": ["flask", "autogen"],
-    "azureServices": [
-      "managedidentity",
-      "azureaiservice",
-      "openai",
-      "aca",
-      "loganalytics",
-      "appinsights",
-      "diagnosticsettings"
-    ],
+    "azureServices": ["managedidentity", "azureai", "openai", "aca"],
     "IaC": ["bicep"],
     "id": "aa4f579e-05a3-48be-ac1e-253f54d839b2",
-    "templateType": "ai-app-templates",
     "authors": ["Azure Content Team"],
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt4omini"],
@@ -1417,23 +1423,12 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/rag-postgres-openai-python",
-    "tags": ["meta", "azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["python", "typescript"],
     "frameworks": ["rag", "fastapi", "flask", "django", "autogen", "reactjs"],
-    "azureServices": [
-      "azuredb-postgreSQL",
-      "aca",
-      "openai",
-      "monitor",
-      "appinsights",
-      "azurestorage",
-      "managedidentity",
-      "loganalytics",
-      "diagnosticsettings"
-    ],
+    "azureServices": ["azuredb-postgreSQL", "aca", "openai", "monitor"],
     "IaC": ["bicep"],
     "id": "952bd229-f367-4875-b95c-5c0c430abe45",
-    "templateType": "ai-app-templates",
     "authors": ["Azure Content Team"],
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt4omini", "llama"],
@@ -1484,7 +1479,13 @@
     "tags": ["msft"],
     "languages": ["typescript"],
     "frameworks": ["reactjs"],
-    "azureServices": ["apicenter", "swa", "serviceprincipal", "loganalytics", "appinsights"],
+    "azureServices": [
+      "apicenter",
+      "swa",
+      "serviceprincipal",
+      "loganalytics",
+      "appinsights"
+    ],
     "IaC": ["bicep"],
     "id": "289b66c8-939c-4a10-9a63-266f196d65fd"
   },
@@ -1515,12 +1516,11 @@
     "authorUrl": "https://github.com/Arize-ai",
     "author": "Arize AI Team",
     "source": "https://github.com/Arize-ai/phoenix-on-azure",
-    "tags": [],
+    "tags": ["aiapplication"],
     "languages": ["python"],
-    "azureServices": ["aca", "monitor", "azuredb-postgreSQL", "loganalytics"],
+    "azureServices": ["aca", "monitor"],
     "IaC": ["bicep"],
     "id": "2274c45c-6864-47a6-b479-9cb8885eaca0",
-    "templateType": "ai-app-templates",
     "authors": ["Arize AI Team"],
     "authorUrls": ["https://github.com/Arize-ai/"],
     "models": [],
@@ -1536,19 +1536,12 @@
     "authorUrl": "https://github.com/AzureCosmosDB",
     "author": "Azure Cosmos DB Content Team",
     "source": "https://github.com/AzureCosmosDB/cosmosdb-nosql-copilot",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["dotnetCsharp", "javascript"],
     "frameworks": ["semantickernel", "blazor"],
-    "azureServices": [
-      "managedidentity",
-      "openai",
-      "appservice",
-      "azurecosmosdb",
-      "cosmosdb"
-    ],
+    "azureServices": ["managedidentity", "openai", "appservice", "cosmosdb"],
     "IaC": ["bicep"],
     "id": "361872a4-3321-4d89-8d6e-cd157ce6500d",
-    "templateType": "ai-app-templates",
     "authors": ["Mark Brown", "Jordan Matthiesen"],
     "authorUrls": [
       "https://github.com/Azure-Samples",
@@ -1568,21 +1561,12 @@
     "authorUrl": "https://github.com/run-llama/llama_index",
     "author": "Marlene Mhangami",
     "source": "https://github.com/Azure-Samples/llama-index-python",
-    "tags": ["meta", "azureopenai"],
-    "languages": ["python", "typescript"],
+    "tags": ["aiapplication"],
+    "languages": ["python"],
     "frameworks": ["rag", "fastapi", "reactjs", "nextjs"],
-    "azureServices": [
-      "aca",
-      "openai",
-      "managedidentity",
-      "appinsights",
-      "loganalytics",
-      "keyvault",
-      "azureaiservice"
-    ],
+    "azureServices": ["aca", "openai", "managedidentity"],
     "IaC": ["bicep"],
     "id": "7ecf2af4-4784-4bd5-b826-30a99e2682f0",
-    "templateType": "ai-app-templates",
     "authors": ["Marlene Mhangami"],
     "authorUrls": ["https://github.com/marlenezw"],
     "models": ["gpt35turbo", "llama"],
@@ -1629,13 +1613,12 @@
     "authorUrl": "https://github.com/manekinekko",
     "author": "Wassim Chegham",
     "source": "https://github.com/Azure-Samples/llama-index-javascript",
-    "tags": ["meta", "azureopenai"],
-    "languages": ["typescript", "javascript"],
+    "tags": ["aiapplication"],
+    "languages": ["typescript"],
     "frameworks": ["rag", "reactjs", "nextjs"],
     "azureServices": ["managedidentity", "aca", "openai"],
     "IaC": ["bicep"],
     "id": "95b73b72-e014-4f01-8ff7-7d7ace9b8b01",
-    "templateType": "ai-app-templates",
     "authors": ["Wassim Chegham"],
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt35turbo", "llama"],
@@ -1674,12 +1657,19 @@
     "authorUrl": "https://github.com/Azure/AI-in-a-box",
     "author": "AI-in-a-Box Team",
     "source": "https://github.com/Azure-Samples/nlp-sql-in-a-box",
-    "tags": ["msft", "gpt", "ai"],
+    "tags": ["msft", "ai"],
     "languages": ["python"],
     "frameworks": ["semantickernel"],
-    "azureServices": ["openai", "azuresql", "speechservice", "azureai", "managedidentity"],
+    "azureServices": [
+      "openai",
+      "azuresql",
+      "speechservice",
+      "azureai",
+      "managedidentity"
+    ],
     "IaC": ["bicep"],
-    "id": "aea29f41-d5d6-4457-bd01-102cb8069a1e"
+    "id": "aea29f41-d5d6-4457-bd01-102cb8069a1e",
+    "models": ["gpt"]
   },
   {
     "title": "Blob Data Sharing with Azure Functions Flex Consumption",
@@ -1708,12 +1698,11 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/azure-openai-chat-frontend",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["javascript", "typescript"],
-    "azureServices": ["swa", "aisearch", "openai", "blobstorage", "loganalytics", "appinsights"],
+    "azureServices": ["swa", "aisearch", "openai"],
     "IaC": ["bicep"],
     "id": "2e20a073-7ed2-44a9-839c-9ca51dddd8e8",
-    "templateType": "ai-app-templates",
     "authors": ["Azure Content Team"],
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": [],
@@ -1730,20 +1719,11 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/azure-openai-assistant-javascript",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["javascript"],
-    "azureServices": [
-      "swa",
-      "functions",
-      "openai",
-      "managedidentity",
-      "azurestorage",
-      "appinsights",
-      "keyvault"
-    ],
+    "azureServices": ["swa", "functions", "openai", "managedidentity"],
     "IaC": ["bicep"],
     "id": "698493d2-840a-4225-944c-adce06b74505",
-    "templateType": "ai-app-templates",
     "authors": ["Azure Content Team"],
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt35turbo"],
@@ -1760,22 +1740,12 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/openai-chat-vision-quickstart",
-    "tags": ["azureopenai"],
-    "languages": ["python", "javascript"],
+    "tags": ["aiapplication"],
+    "languages": ["python"],
     "frameworks": ["flask", "autogen"],
-    "azureServices": [
-      "managedidentity",
-      "aca",
-      "azureaiservice",
-      "openai",
-      "azureai",
-      "loganalytics",
-      "appinsights",
-      "diagnosticsettings"
-    ],
+    "azureServices": ["managedidentity", "aca", "azureai", "openai"],
     "IaC": ["bicep"],
     "id": "42b6c92c-f4d1-4002-923e-ce1d265ef590",
-    "templateType": "ai-app-templates",
     "authors": ["Azure Content Team"],
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt4o"],
@@ -1795,7 +1765,12 @@
     "source": "https://github.com/Azure-Samples/quote-of-the-day-dotnet",
     "tags": ["msft", "featureExperimentation", "featuremanagement"],
     "languages": ["dotnetCsharp"],
-    "azureServices": ["appinsights", "appservice", "azureappconfig", "loganalytics"],
+    "azureServices": [
+      "appinsights",
+      "appservice",
+      "azureappconfig",
+      "loganalytics"
+    ],
     "IaC": ["bicep"],
     "id": "aef3a42a-675e-4821-8a91-2f17e027a2aa"
   },
@@ -1808,7 +1783,13 @@
     "source": "https://github.com/Azure-Samples/hello-azd",
     "tags": ["msft"],
     "languages": ["dotnetCsharp"],
-    "azureServices": ["blobstorage", "aca", "cosmosdb", "managedidentity", "azurestorage"],
+    "azureServices": [
+      "blobstorage",
+      "aca",
+      "cosmosdb",
+      "managedidentity",
+      "azurestorage"
+    ],
     "IaC": ["bicep"],
     "id": "42520a78-aa7f-49c6-92ed-e7b5713c4d2b"
   },
@@ -1819,21 +1800,12 @@
     "authorUrl": "https://github.com/sinedied",
     "author": "Yohan Lasorsa",
     "source": "https://github.com/Azure-Samples/openai-secure-ui-js",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["typescript", "javascript"],
     "frameworks": ["reactjs", "vuejs", "angular"],
-    "azureServices": [
-      "swa",
-      "functions",
-      "managedidentity",
-      "openai",
-      "azureai",
-      "azurestorage",
-      "vnets"
-    ],
+    "azureServices": ["swa", "functions", "managedidentity", "openai"],
     "IaC": ["bicep"],
     "id": "bfc3528d-453f-48dd-b450-13e0cc84b49e",
-    "templateType": "ai-app-templates",
     "authors": ["Yohan Lasorsa"],
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt35turbo"],
@@ -1849,7 +1821,7 @@
     "authorUrl": "https://github.com/john0isaac",
     "author": "John Aziz",
     "source": "https://github.com/Azure-Samples/Cosmic-Food-RAG-app",
-    "tags": ["gpt", "mongodb", "ai", "msft", "jupyter"],
+    "tags": ["mongodb", "ai", "msft", "jupyter"],
     "languages": ["python", "typescript"],
     "frameworks": ["rag", "langchain", "reactjs"],
     "azureServices": [
@@ -1863,7 +1835,8 @@
       "loganalytics"
     ],
     "IaC": ["bicep"],
-    "id": "179f354d-814a-4e5a-b445-244bb227e3be"
+    "id": "179f354d-814a-4e5a-b445-244bb227e3be",
+    "models": ["gpt"]
   },
   {
     "title": "Azure Functions C# HTTP Trigger using Azure Developer CLI",
@@ -1972,7 +1945,7 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-powershell-azd",
-    "tags": ["powershell", "msft"],
+    "tags": ["msft"],
     "azureServices": [
       "functions",
       "managedidentity",
@@ -1982,7 +1955,8 @@
       "azurestorage"
     ],
     "IaC": ["bicep"],
-    "id": "018854d1-117c-45d6-a3c8-1f3222b87d26"
+    "id": "018854d1-117c-45d6-a3c8-1f3222b87d26",
+    "languages": ["powershell"]
   },
   {
     "title": "Doc Intelligence-In-A-Box",
@@ -2015,12 +1989,11 @@
     "authorUrl": "https://github.com/sinedied",
     "author": "Yohan Lasorsa",
     "source": "https://github.com/Azure-Samples/azure-openai-keyless-js",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["typescript", "javascript"],
-    "azureServices": ["managedidentity", "openai", "azureai"],
+    "azureServices": ["managedidentity", "openai"],
     "IaC": ["bicep"],
     "id": "3f3f82ee-8982-4343-a231-069591a8d531",
-    "templateType": "ai-app-templates",
     "authors": ["Yohan Lasorsa"],
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt35turbo"],
@@ -2056,9 +2029,16 @@
     "authorUrl": "https://github.com/marnixcox",
     "author": "Marnix Cox",
     "source": "https://github.com/marnixcox/integration-hub",
-    "tags": ["community", "powershell"],
-    "languages": ["dotnetCsharp"],
-    "azureServices": ["functions", "servicebus", "logicapps", "keyvault", "monitor", "appservice"],
+    "tags": ["community"],
+    "languages": ["dotnetCsharp", "powershell"],
+    "azureServices": [
+      "functions",
+      "servicebus",
+      "logicapps",
+      "keyvault",
+      "monitor",
+      "appservice"
+    ],
     "IaC": ["bicep"],
     "id": "958495bd-80ef-45b1-828a-ef921a66aeb4"
   },
@@ -2125,26 +2105,19 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Songbo Wang",
     "source": "https://github.com/Azure-Samples/java-on-aca",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["java", "javascript", "typescript"],
     "frameworks": ["spring", "javaee"],
     "azureServices": [
       "managedidentity",
-      "azureaiservice",
+      "azureai",
       "monitor",
       "aca",
-      "azuredb-mysql",
-      "openai",
       "azuredb-mySQL",
-      "keyvault",
-      "appinsights",
-      "vnets",
-      "loganalytics",
-      "diagnosticsettings"
+      "openai"
     ],
     "IaC": ["bicep"],
     "id": "267dd459-3127-4ab0-a0fa-3f3b79f5e734",
-    "templateType": "ai-app-templates",
     "authors": ["Songbo Wang", "Hao Zhang"],
     "authorUrls": [
       "https://github.com/Azure-Samples",
@@ -2185,7 +2158,7 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Zhihao Guo",
     "source": "https://github.com/Azure-Samples/cargotracker-liberty-aks-azd",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["java", "javascript", "typescript"],
     "frameworks": ["javaee", "langchain4j"],
     "azureServices": [
@@ -2193,17 +2166,10 @@
       "keyvault",
       "monitor",
       "azuredb-postgreSQL",
-      "openai",
-      "aks",
-      "vnets",
-      "appinsights",
-      "loganalytics",
-      "azureaiservice",
-      "agw"
+      "openai"
     ],
     "IaC": ["bicep"],
     "id": "84555da7-3f3a-4451-9b10-cb083e481a41",
-    "templateType": "ai-app-templates",
     "authors": ["Zhihao Guo"],
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt4o"],
@@ -2313,7 +2279,13 @@
     "source": "https://github.com/petender/azd-apimwithconfAPI",
     "tags": ["community"],
     "languages": ["dotnetCsharp"],
-    "azureServices": ["appservice", "apim", "monitor", "managedidentity", "keyvault"],
+    "azureServices": [
+      "appservice",
+      "apim",
+      "monitor",
+      "managedidentity",
+      "keyvault"
+    ],
     "IaC": ["bicep"],
     "id": "1ca6fb57-44a8-4d29-9c0b-43ec4c44bf9a"
   },
@@ -2438,10 +2410,11 @@
     "authorUrl": "https://github.com/maartenvandiemen",
     "author": "Maarten van Diemen",
     "source": "https://github.com/maartenvandiemen/AZD-AKS-Demo",
-    "tags": ["community", "helm", "kubernetes"],
+    "tags": ["community", "helm"],
     "azureServices": ["aks", "managedidentity", "monitor", "grafana"],
     "IaC": ["bicep"],
-    "id": "b88a6ad2-2084-4fe4-b441-3e8b71dcf292"
+    "id": "b88a6ad2-2084-4fe4-b441-3e8b71dcf292",
+    "frameworks": ["kubernetes"]
   },
   {
     "title": "Azure FrontDoor CDN with sample HTML webapp",
@@ -2452,7 +2425,12 @@
     "source": "https://github.com/petender/azd-fdcdn",
     "tags": ["community"],
     "languages": ["dotnetCsharp", "javascript"],
-    "azureServices": ["frontdoor", "appservice", "azurestorage", "managedidentity"],
+    "azureServices": [
+      "frontdoor",
+      "appservice",
+      "azurestorage",
+      "managedidentity"
+    ],
     "IaC": ["bicep"],
     "id": "d2e8d2a8-af7c-43f2-9580-cbccd0a5eb57"
   },
@@ -2466,7 +2444,13 @@
     "tags": ["community"],
     "languages": ["dotnetCsharp"],
     "frameworks": ["blazor"],
-    "azureServices": ["appservice", "azuresql", "appinsights", "loganalytics", "keyvault"],
+    "azureServices": [
+      "appservice",
+      "azuresql",
+      "appinsights",
+      "loganalytics",
+      "keyvault"
+    ],
     "IaC": ["bicep"],
     "id": "3fe5335b-c2d3-4226-a8d0-6c7bc92d31d4"
   },
@@ -2516,7 +2500,12 @@
     "source": "https://github.com/maartenvandiemen/AZD-WatermarkFunction",
     "tags": ["community"],
     "languages": ["dotnetCsharp"],
-    "azureServices": ["functions", "azurestorage", "appinsights", "loganalytics"],
+    "azureServices": [
+      "functions",
+      "azurestorage",
+      "appinsights",
+      "loganalytics"
+    ],
     "IaC": ["bicep"],
     "id": "95e9ffd4-58b5-47ac-a6b9-057ad54ef40d"
   },
@@ -2625,11 +2614,18 @@
     "authorUrl": "https://github.com/fboucher",
     "author": "Frank Boucher",
     "source": "https://github.com/FBoucher/AspireAzStorage",
-    "tags": ["community", "aspire"],
+    "tags": ["community"],
     "languages": ["dotnetCsharp"],
-    "azureServices": ["aca", "loganalytics", "managedidentity", "blobstorage", "azurestorage"],
+    "azureServices": [
+      "aca",
+      "loganalytics",
+      "managedidentity",
+      "blobstorage",
+      "azurestorage"
+    ],
     "IaC": ["bicep"],
-    "id": "c9e16274-a367-4140-aab1-64bb117d67ba"
+    "id": "c9e16274-a367-4140-aab1-64bb117d67ba",
+    "frameworks": ["aspire"]
   },
   {
     "title": "Indexing PDFs from blob to ai search with durable functions for RAG Applications",
@@ -2826,7 +2822,12 @@
     "source": "https://github.com/maartenvandiemen/azd-loadtest/",
     "tags": ["community"],
     "languages": ["dotnetCsharp", "python"],
-    "azureServices": ["loadtesting", "appservice", "appinsights", "loganalytics"],
+    "azureServices": [
+      "loadtesting",
+      "appservice",
+      "appinsights",
+      "loganalytics"
+    ],
     "IaC": ["bicep"],
     "id": "701855fd-df76-45ce-82c9-8ef5185b11dc"
   },
@@ -2838,7 +2839,13 @@
     "author": "Alex Ivanov",
     "source": "https://github.com/true-while/secure-data-solutions/",
     "tags": ["community"],
-    "azureServices": ["azurestorage", "keyvault", "cosmosdb", "azuresql", "blobstorage"],
+    "azureServices": [
+      "azurestorage",
+      "keyvault",
+      "cosmosdb",
+      "azuresql",
+      "blobstorage"
+    ],
     "IaC": ["bicep"],
     "id": "28a4a306-e179-4742-8002-b42c56469a60"
   },
@@ -2909,32 +2916,22 @@
     "authorUrl": "https://neon.tech/demos",
     "author": "Bobur Umurzokov",
     "source": "https://github.com/neondatabase/rag-neon-postgres-openai-azure-python",
-    "tags": ["azureopenai"],
-    "languages": ["python", "typescript", "javascript"],
+    "tags": ["aiapplication"],
+    "languages": ["python", "typescript"],
     "frameworks": ["rag", "fastapi", "flask", "django", "autogen", "reactjs"],
-    "azureServices": [
-      "aisearch",
-      "aca",
-      "openai",
-      "appinsights",
-      "managedidentity",
-      "azureaiservice",
-      "loganalytics",
-      "diagnosticsettings"
-    ],
+    "azureServices": ["aisearch", "aca", "openai"],
     "IaC": ["bicep"],
     "id": "ffe86fd0-7394-4c28-a1ce-9ae7115254cc",
-    "templateType": "ai-app-templates",
     "authors": ["Bobur Umurzokov"],
     "authorUrls": ["https://github.com/Boburmirzo"],
     "models": ["llama"],
     "appType": ["chat"],
     "prerequisites": ["python3.9-3.11", "azd", "git", "nodejs18+"],
     "sampleType": "full_sample",
-    "architectureDiagram": "/templates/images/rag-neon-postgres-openai-azure-python.png",
     "legacySources": [
       "https://github.com/neondatabase-labs/rag-neon-postgres-openai-azure-python"
-    ]
+    ],
+    "architectureDiagram": "/templates/images/rag-neon-postgres-openai-azure-python.png"
   },
   {
     "title": "Multi-tenant RAG Chat in Azure: Vector store per user",
@@ -2943,7 +2940,7 @@
     "authorUrl": "https://neon.tech/demos",
     "author": "Bobur Umurzokov",
     "source": "https://github.com/neondatabase/azure-tenant-ai-chat",
-    "tags": ["gpt", "neondb", "ai", "community"],
+    "tags": ["neondb", "ai", "community"],
     "languages": ["javascript", "typescript", "nodejs"],
     "frameworks": ["rag", "reactjs", "nextjs"],
     "azureServices": [
@@ -2956,7 +2953,8 @@
       "diagnosticsettings"
     ],
     "IaC": ["bicep"],
-    "id": "6ea9084f-92cb-4e70-bece-608138754978"
+    "id": "6ea9084f-92cb-4e70-bece-608138754978",
+    "models": ["gpt"]
   },
   {
     "title": "Remote MCP Servers using Azure API Management",
@@ -3058,7 +3056,13 @@
     "author": "Dave Rendon",
     "source": "https://github.com/daverendon/azd-baseline-webapp",
     "tags": ["community"],
-    "azureServices": ["appservice", "loganalytics", "azuresql", "keyvault", "monitor"],
+    "azureServices": [
+      "appservice",
+      "loganalytics",
+      "azuresql",
+      "keyvault",
+      "monitor"
+    ],
     "IaC": ["bicep"],
     "id": "2a093492-1042-48ba-a67e-fab226d25c59"
   },
@@ -3163,7 +3167,7 @@
     "authorUrl": "https://github.com/fabio-marini",
     "author": "Fabio Marini",
     "source": "https://github.com/fabio-marini/azd-aspire-basic",
-    "tags": ["community", "aspire", "webapps"],
+    "tags": ["community", "webapps"],
     "languages": ["dotnetCsharp"],
     "azureServices": [
       "keyvault",
@@ -3175,7 +3179,8 @@
       "managedidentity"
     ],
     "IaC": ["bicep"],
-    "id": "6d1f791c-5216-43aa-a5be-574fa3e0fa16"
+    "id": "6d1f791c-5216-43aa-a5be-574fa3e0fa16",
+    "frameworks": ["aspire"]
   },
   {
     "title": "Service Endpoints and Securing Storage",
@@ -3209,7 +3214,12 @@
     "source": "https://github.com/maartenvandiemen/AZD-AppConfiguration",
     "tags": ["community"],
     "languages": ["dotnetCsharp"],
-    "azureServices": ["functions", "azureappconfig", "azurestorage", "managedidentity"],
+    "azureServices": [
+      "functions",
+      "azureappconfig",
+      "azurestorage",
+      "managedidentity"
+    ],
     "IaC": ["bicep"],
     "id": "39b30820-7291-4dfa-907e-10eaba4b9d84"
   },
@@ -3241,7 +3251,13 @@
     "author": "Koenraad Haedens",
     "source": "https://github.com/koenraadhaedens/azd-sqlworloadsim",
     "tags": ["community"],
-    "azureServices": ["azuresql", "keyvault", "virtualmachine", "vnets", "privateEndpoints"],
+    "azureServices": [
+      "azuresql",
+      "keyvault",
+      "virtualmachine",
+      "vnets",
+      "privateEndpoints"
+    ],
     "IaC": ["bicep"],
     "id": "4c901c4a-bd10-45e1-a6b2-e34a4248041e"
   },
@@ -3301,7 +3317,13 @@
     "source": "https://github.com/petender/azd-ai-agent-service",
     "tags": ["community"],
     "languages": ["python"],
-    "azureServices": ["azureai", "aifoundry", "openai", "keyvault", "azurestorage"],
+    "azureServices": [
+      "azureai",
+      "aifoundry",
+      "openai",
+      "keyvault",
+      "azurestorage"
+    ],
     "IaC": ["bicep"],
     "id": "b00a6197-ad6d-4c99-b2a8-5e18da8ecb49"
   },
@@ -3312,7 +3334,13 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-foundrysora",
     "tags": ["community"],
-    "azureServices": ["azureai", "aifoundry", "openai", "keyvault", "azurestorage"],
+    "azureServices": [
+      "azureai",
+      "aifoundry",
+      "openai",
+      "keyvault",
+      "azurestorage"
+    ],
     "IaC": ["bicep"],
     "id": "9150216e-8078-4796-945f-a28e7b754a90"
   },
@@ -3464,7 +3492,7 @@
     "authorUrl": "https://github.com/PramodKumarHK89",
     "author": "Purview P4AI Team",
     "source": "https://github.com/Azure-Samples/serverless-chat-langchainjs-purview",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["typescript"],
     "frameworks": ["langchain"],
     "azureServices": [
@@ -3472,34 +3500,20 @@
       "functions",
       "blobstorage",
       "openai",
-      "azureaiservice",
+      "azureai",
       "aifoundry",
       "managedidentity",
       "serviceprincipal",
-      "azurecosmosdb",
-      "purview",
-      "vnets",
-      "appinsights",
       "cosmosdb",
-      "swa",
-      "azurestorage",
-      "keyvault",
-      "loganalytics"
+      "purview"
     ],
     "IaC": ["bicep"],
     "id": "348AFC2B-8A26-4C0C-91C8-4F04F4D937FD",
-    "templateType": "ai-app-templates",
     "authors": ["Pramod HK"],
     "authorUrls": ["https://github.com/PramodKumarHK89"],
     "models": ["text-embedding-ada-002", "gpt4omini"],
     "appType": ["chat", "search", "llmops", "completions"],
-    "prerequisites": [
-      "azd",
-      "pwsh7+",
-      "nodejs18+",
-      "git",
-      "functionscoretools"
-    ],
+    "prerequisites": ["azd", "pwsh7+", "nodejs18+", "git", "functionscoretools"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/purview-api-sample-arch.png",
     "screenshot": "/templates/images/purview-api-sample-image.png"
@@ -3511,38 +3525,26 @@
     "authorUrl": "https://github.com/PramodKumarHK89",
     "author": "Purview P4AI Team",
     "source": "https://github.com/Azure-Samples/azure-search-openai-demo-purviewdatasecurity",
-    "tags": ["azureopenai"],
-    "languages": ["python", "typescript"],
-    "frameworks": ["fastapi", "flask", "django", "langchain", "autogen", "reactjs"],
+    "tags": ["aiapplication"],
+    "languages": ["python"],
+    "frameworks": [
+      "fastapi",
+      "flask",
+      "django",
+      "langchain",
+      "autogen",
+      "reactjs"
+    ],
     "azureServices": [
       "aisearch",
       "appinsights",
       "blobstorage",
       "openai",
-      "azureaiservice",
-      "managedidentity",
-      "vnets",
-      "eventgrid",
-      "purview",
-      "aca",
-      "speechservice",
-      "azurecosmosdb",
-      "loganalytics",
-      "keyvault",
-      "diagnosticsettings",
-      "azurestorage",
-      "aifoundry",
-      "privateEndpoints"
+      "azureai"
     ],
     "IaC": ["bicep"],
     "id": "F5B15030-D351-462E-8F5F-A054EEBEFCA3",
-    "templateType": "ai-app-templates",
-    "authors": [
-      "Pramod HK",
-      "Jithesh Nair",
-      "Kyle Marsh",
-      "Arpitha Dhanapathi"
-    ],
+    "authors": ["Pramod HK", "Jithesh Nair", "Kyle Marsh", "Arpitha Dhanapathi"],
     "authorUrls": [
       "https://github.com/PramodKumarHK89",
       "https://github.com/microsoft",
@@ -3641,9 +3643,9 @@
     "authorUrl": "https://github.com/passadis",
     "author": "Konstantinos Passadis",
     "source": "https://github.com/passadis/ai-architect-webapp",
-    "tags": ["ai", "dapr", "mcp", "community"],
+    "tags": ["ai", "mcp", "community"],
     "languages": ["python", "javascript", "nodejs"],
-    "frameworks": ["fastapi", "reactjs"],
+    "frameworks": ["fastapi", "reactjs", "dapr"],
     "azureServices": [
       "aca",
       "azureai",
@@ -3686,7 +3688,13 @@
     "author": "Dave Rendon",
     "source": "https://github.com/daverendon/azd-hardened-webapp",
     "tags": ["community"],
-    "azureServices": ["appservice", "vnets", "privateEndpoints", "frontdoor", "azuresql"],
+    "azureServices": [
+      "appservice",
+      "vnets",
+      "privateEndpoints",
+      "frontdoor",
+      "azuresql"
+    ],
     "IaC": ["bicep"],
     "id": "eabd4fa2-7948-4ba5-a3de-f9afffe46b1f"
   },
@@ -3738,7 +3746,7 @@
     "preview": "./templates/images/logicapp-ai-agent.png",
     "author": "Marnix Cox",
     "source": "https://github.com/marnixcox/logicapp-ai-agent",
-    "tags": ["community", "ai", "gpt"],
+    "tags": ["community", "ai"],
     "azureServices": [
       "azureai",
       "aifoundry",
@@ -3751,7 +3759,8 @@
       "azurestorage"
     ],
     "IaC": ["bicep"],
-    "id": "778bea03-523e-4bcb-b555-e8de18333a60"
+    "id": "778bea03-523e-4bcb-b555-e8de18333a60",
+    "models": ["gpt"]
   },
   {
     "title": "Deploy Label Studio directly from Docker Hub on Azure Container Apps",
@@ -3845,7 +3854,7 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-powershell-azd-eventgrid-blob",
-    "tags": ["msft", "powershell"],
+    "tags": ["msft"],
     "azureServices": [
       "functions",
       "blobstorage",
@@ -3857,7 +3866,8 @@
       "azurestorage"
     ],
     "IaC": ["bicep"],
-    "id": "d0d40d21-8951-4421-ac04-a929dcbb357e"
+    "id": "d0d40d21-8951-4421-ac04-a929dcbb357e",
+    "languages": ["powershell"]
   },
   {
     "title": "Azure Functions Java Event Grid Blob Trigger using Azure Developer CLI",
@@ -3891,7 +3901,14 @@
     "tags": ["msft", "ai"],
     "languages": ["python"],
     "frameworks": ["fastapi", "semantickernel"],
-    "azureServices": ["managedidentity", "openai", "aca", "appinsights", "loganalytics", "keyvault"],
+    "azureServices": [
+      "managedidentity",
+      "openai",
+      "aca",
+      "appinsights",
+      "loganalytics",
+      "keyvault"
+    ],
     "IaC": ["bicep"],
     "id": "9153c2d5-acfd-4c68-bc9b-25865d5ac2a8"
   },
@@ -3923,8 +3940,22 @@
       "java",
       "dotnetCsharp"
     ],
-    "frameworks": ["angular", "langchain", "fastapi", "vuejs", "nextjs", "spring"],
-    "azureServices": ["aca", "azureai", "aifoundry", "openai", "monitor", "managedidentity"],
+    "frameworks": [
+      "angular",
+      "langchain",
+      "fastapi",
+      "vuejs",
+      "nextjs",
+      "spring"
+    ],
+    "azureServices": [
+      "aca",
+      "azureai",
+      "aifoundry",
+      "openai",
+      "monitor",
+      "managedidentity"
+    ],
     "IaC": ["bicep"],
     "id": "178c3fdb-04b5-4423-b451-5f7dc7d097fff"
   },
@@ -4026,7 +4057,13 @@
     "tags": ["community"],
     "languages": ["python"],
     "frameworks": ["fastapi"],
-    "azureServices": ["aca", "azuredb-postgreSQL", "keyvault", "vnets", "loganalytics"],
+    "azureServices": [
+      "aca",
+      "azuredb-postgreSQL",
+      "keyvault",
+      "vnets",
+      "loganalytics"
+    ],
     "IaC": ["terraform"],
     "id": "d9663d15-fd8f-4e74-8200-6221f63c3ce8"
   },
@@ -4105,7 +4142,13 @@
     "tags": ["community"],
     "languages": ["python"],
     "frameworks": ["fastapi"],
-    "azureServices": ["azureai", "aca", "aifoundry", "openai", "managedidentity"],
+    "azureServices": [
+      "azureai",
+      "aca",
+      "aifoundry",
+      "openai",
+      "managedidentity"
+    ],
     "IaC": ["bicep"],
     "id": "7e9f2d4a-5c8b-4e3d-9a6f-2b7c4e8d1a5f"
   },
@@ -4164,7 +4207,13 @@
     "author": "Peter De Tender",
     "source": "https://github.com/petender/azd-vmbackup",
     "tags": ["community"],
-    "azureServices": ["backup", "recoveryvault", "virtualmachine", "azurestorage", "vnets"],
+    "azureServices": [
+      "backup",
+      "recoveryvault",
+      "virtualmachine",
+      "azurestorage",
+      "vnets"
+    ],
     "IaC": ["bicep"],
     "id": "5c2e9f7b-4d8a-4b6e-9f3c-7e5d2a8b4f6c"
   },
@@ -4210,7 +4259,13 @@
     "tags": ["msft", "ai"],
     "languages": ["python"],
     "frameworks": ["flask"],
-    "azureServices": ["managedidentity", "openai", "aca", "loganalytics", "vnets"],
+    "azureServices": [
+      "managedidentity",
+      "openai",
+      "aca",
+      "loganalytics",
+      "vnets"
+    ],
     "IaC": ["bicep"],
     "id": "1153c2d5-acfd-4c68-bc9b-25865d5ac2a9"
   },
@@ -4355,7 +4410,7 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-powershell-azd-eventhub",
-    "tags": ["msft", "powershell"],
+    "tags": ["msft"],
     "azureServices": [
       "functions",
       "eventhub",
@@ -4366,7 +4421,8 @@
       "azurestorage"
     ],
     "IaC": ["bicep"],
-    "id": "8a38b396-f88b-472a-b81c-a30e81ca8414"
+    "id": "8a38b396-f88b-472a-b81c-a30e81ca8414",
+    "languages": ["powershell"]
   },
   {
     "title": "Azure App Service + Foundry Chat Starter",
@@ -4420,7 +4476,7 @@
     "authorUrl": "https://github.com/degero",
     "author": "Chad Paynter",
     "source": "https://github.com/degero-examples/azure-akskedaprometheus-demo",
-    "tags": ["community", "kubernetes", "helm", "prometheus"],
+    "tags": ["community", "helm", "prometheus"],
     "azureServices": [
       "aks",
       "managedidentity",
@@ -4434,7 +4490,8 @@
     ],
     "languages": [],
     "IaC": ["bicep"],
-    "id": "f4c8a9b2-7d3e-4f6a-9c1b-8e2d5a3f6c7b"
+    "id": "f4c8a9b2-7d3e-4f6a-9c1b-8e2d5a3f6c7b",
+    "frameworks": ["kubernetes"]
   },
   {
     "title": "Azure Cosmos DB MCP Toolkit",
@@ -4480,7 +4537,14 @@
     "source": "https://github.com/curityio/azd-ai-autonomous-agent",
     "tags": ["community", "ai", "mcp"],
     "languages": ["dotnetCsharp", "javascript"],
-    "azureServices": ["aca", "aifoundry", "azurestorage", "managedidentity", "azuresql", "vnets"],
+    "azureServices": [
+      "aca",
+      "aifoundry",
+      "azurestorage",
+      "managedidentity",
+      "azuresql",
+      "vnets"
+    ],
     "IaC": ["bicep"],
     "id": "4218b822-4eca-451e-8b9b-c89a9be0dec5"
   },
@@ -5287,7 +5351,7 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Samples",
     "source": "https://github.com/Azure-Samples/functions-quickstart-powershell-azd-cosmosdb",
-    "tags": ["msft", "powershell"],
+    "tags": ["msft"],
     "azureServices": [
       "functions",
       "cosmosdb",
@@ -5299,7 +5363,8 @@
       "privateEndpoints"
     ],
     "IaC": ["bicep"],
-    "id": "5bf546d1-1ce4-4734-93a0-bce61e71aaff"
+    "id": "5bf546d1-1ce4-4734-93a0-bce61e71aaff",
+    "languages": ["powershell"]
   },
   {
     "title": "Azure Functions Java Cosmos DB Trigger",
@@ -5350,24 +5415,18 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Davide Antelmo",
     "source": "https://github.com/Azure-Samples/agent-openai-java-banking-assistant",
-    "tags": ["azureopenai"],
-    "languages": ["java", "typescript"],
+    "tags": ["aiapplication"],
+    "languages": ["java"],
     "frameworks": ["reactjs", "spring", "langchain4j"],
     "azureServices": [
       "aca",
       "managedidentity",
       "monitor",
       "openai",
-      "blobstorage",
-      "azureaiservice",
-      "appinsights",
-      "azurestorage",
-      "loganalytics",
-      "diagnosticsettings"
+      "blobstorage"
     ],
     "IaC": ["bicep"],
     "id": "ceff248b-085a-4725-b8f8-2839aa1e95a0",
-    "templateType": "ai-app-templates",
     "authors": ["Davide Antelmo"],
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt4o", "gpt4omini"],
@@ -5384,21 +5443,12 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Jordan Matthiesen",
     "source": "https://github.com/Azure-Samples/ai-chat-quickstart-csharp",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["dotnetCsharp"],
     "frameworks": ["semantickernel"],
-    "azureServices": [
-      "openai",
-      "aisearch",
-      "aca",
-      "loganalytics",
-      "managedidentity",
-      "appinsights",
-      "diagnosticsettings"
-    ],
+    "azureServices": ["openai", "aisearch", "aca"],
     "IaC": ["bicep"],
     "id": "34160936-7676-49ab-822f-604b3dd68a2e",
-    "templateType": "ai-app-templates",
     "authors": ["Jordan Matthiesen"],
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt4omini"],
@@ -5415,12 +5465,11 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Pamela Fox",
     "source": "https://github.com/Azure-Samples/azure-openai-keyless-python",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["python"],
     "azureServices": ["managedidentity", "openai"],
     "IaC": ["bicep"],
     "id": "10e4f4cf-4efe-44ed-a826-749710c32fe8",
-    "templateType": "ai-app-templates",
     "authors": ["Pamela Fox"],
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt4omini"],
@@ -5436,20 +5485,11 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Kevin Guo",
     "source": "https://github.com/Azure-Samples/signalr-ai-streaming",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["dotnetCsharp", "javascript", "typescript"],
-    "azureServices": [
-      "managedidentity",
-      "openai",
-      "aca",
-      "azuresignalr",
-      "azureaiservice",
-      "appinsights",
-      "loganalytics"
-    ],
+    "azureServices": ["managedidentity", "openai", "aca", "azuresignalr"],
     "IaC": ["bicep"],
     "id": "300b0171-5ed8-46f4-beff-b740aafad8a9",
-    "templateType": "ai-app-templates",
     "authors": ["Kevin Guo", "Chenyang Liu"],
     "authorUrls": [
       "https://github.com/Azure-Samples",
@@ -5468,19 +5508,11 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Jordan Matthiesen",
     "source": "https://github.com/Azure-Samples/ai-chat-aspire-meai-csharp",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["dotnetCsharp"],
-    "azureServices": [
-      "managedidentity",
-      "azureaiservice",
-      "aca",
-      "openai",
-      "azureai",
-      "loganalytics"
-    ],
+    "azureServices": ["managedidentity", "azureai", "aca", "openai"],
     "IaC": ["bicep"],
     "id": "5e98ec21-396b-482a-b93e-820e4163ca09",
-    "templateType": "ai-app-templates",
     "authors": ["Jordan Matthiesen", "Luis Quintanilla"],
     "authorUrls": [
       "https://github.com/Azure-Samples",
@@ -5499,13 +5531,12 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Pamela Fox",
     "source": "https://github.com/Azure-Samples/azure-openai-entity-extraction",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["python"],
     "frameworks": ["fastapi"],
     "azureServices": ["openai"],
     "IaC": ["bicep"],
     "id": "95abca34-e2e8-4e1d-b56c-242133ec07d5",
-    "templateType": "ai-app-templates",
     "authors": ["Pamela Fox", "Anthony Shaw"],
     "authorUrls": [
       "https://github.com/Azure-Samples",
@@ -5524,12 +5555,11 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Richard Park",
     "source": "https://github.com/Azure-Samples/azure-openai-keyless-go",
-    "tags": ["azureopenai"],
-    "languages": ["golang", "go"],
+    "tags": ["aiapplication"],
+    "languages": ["go"],
     "azureServices": ["managedidentity", "openai"],
     "IaC": ["bicep"],
     "id": "7495894d-fc02-4639-83d0-f1c58091e19d",
-    "templateType": "ai-app-templates",
     "authors": ["Richard Park", "Azure SDK for Go"],
     "authorUrls": [
       "https://github.com/Azure-Samples",
@@ -5548,23 +5578,12 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "John Oliver",
     "source": "https://github.com/Azure-Samples/semantic-kernel-customer-assistant-demo-java",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["java", "typescript", "javascript"],
     "frameworks": ["semantickernel", "reactjs", "quarkus"],
-    "azureServices": [
-      "aca",
-      "managedidentity",
-      "openai",
-      "azureaiservice",
-      "appinsights",
-      "keyvault",
-      "apim",
-      "loganalytics",
-      "diagnosticsettings"
-    ],
+    "azureServices": ["aca", "managedidentity", "openai"],
     "IaC": ["bicep"],
     "id": "b89c8c75-848a-4c4c-b208-38876b419088",
-    "templateType": "ai-app-templates",
     "authors": ["John Oliver", "Derek Keeler"],
     "authorUrls": [
       "https://github.com/Azure-Samples",
@@ -5583,7 +5602,7 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Cassie Breviu",
     "source": "https://github.com/Azure-Samples/contoso-creative-writer",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["python", "javascript", "typescript"],
     "frameworks": ["fastapi", "reactjs"],
     "azureServices": [
@@ -5591,17 +5610,10 @@
       "aisearch",
       "aifoundry",
       "aca",
-      "openai",
-      "azureaiservice",
-      "appinsights",
-      "loganalytics",
-      "diagnosticsettings",
-      "keyvault",
-      "azurestorage"
+      "openai"
     ],
     "IaC": ["bicep"],
     "id": "eb6c5562-f142-4b3c-9e7a-c0ee4096f3c3",
-    "templateType": "ai-app-templates",
     "authors": ["Cassie Breviu", "Seth Juarez"],
     "authorUrls": [
       "https://github.com/Azure-Samples",
@@ -5620,20 +5632,17 @@
     "authorUrl": "https://github.com/CawaMS",
     "author": "Catherine Wang",
     "source": "https://github.com/Azure-Samples/azure-redis-dalle-semantic-caching",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["dotnetCsharp"],
     "azureServices": [
       "keyvault",
       "aca",
       "openai",
       "rediscache",
-      "managedidentity",
-      "appinsights",
-      "loganalytics"
+      "managedidentity"
     ],
     "IaC": ["bicep"],
     "id": "46da3763-3935-4c26-b6f1-ba175f5d48b3",
-    "templateType": "ai-app-templates",
     "authors": ["Catherine Wang"],
     "authorUrls": ["https://github.com/CawaMS"],
     "models": ["text-embedding-ada-002"],
@@ -5650,7 +5659,7 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Malory Rose",
     "source": "https://github.com/microsoft/Conversation-Knowledge-Mining-Solution-Accelerator",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["javascript", "typescript", "python"],
     "frameworks": ["fastapi", "reactjs"],
     "azureServices": [
@@ -5661,19 +5670,14 @@
       "functions",
       "blobstorage",
       "openai",
-      "azureaiservice",
+      "azureai",
       "azurecdn",
       "azurestorage",
       "azureappconfig",
-      "aifoundry",
-      "azureai",
-      "loganalytics",
-      "azurecosmosdb",
-      "vnets"
+      "aifoundry"
     ],
     "IaC": ["bicep"],
     "id": "96005af9-c851-47c0-8cef-d7e9b067647d",
-    "templateType": "ai-app-templates",
     "authors": ["Malory Rose", "Blessing Sanusi", "Mark Taylor", "Anish Arora"],
     "authorUrls": [
       "https://github.com/Azure-Samples",
@@ -5695,24 +5699,12 @@
     "authorUrl": "https://github.com/howieleung",
     "author": "Howie Leung",
     "source": "https://github.com/Azure-Samples/get-started-with-ai-chat",
-    "tags": ["azureopenai", "featured"],
-    "languages": ["python", "javascript", "typescript"],
+    "tags": ["featured", "aiapplication"],
+    "languages": ["python", "javascript"],
     "frameworks": ["fastapi", "reactjs"],
-    "azureServices": [
-      "aisearch",
-      "appinsights",
-      "openai",
-      "aifoundry",
-      "aca",
-      "loganalytics",
-      "managedidentity",
-      "azurestorage",
-      "azureaiservice",
-      "diagnosticsettings"
-    ],
+    "azureServices": ["aisearch", "appinsights", "openai", "aifoundry"],
     "IaC": ["bicep"],
     "id": "1b9bcb52-0c7a-459f-bb90-085ec0c64558",
-    "templateType": "ai-app-templates",
     "authors": ["Howie Leung", "Nikolay Rovinskiy", "Sophia Ramsey"],
     "authorUrls": [
       "https://github.com/howieleung",
@@ -5723,9 +5715,6 @@
     "appType": ["chat", "search"],
     "prerequisites": ["python3.9-3.11", "docker", "azd", "git"],
     "sampleType": "full_sample",
-    "legacySources": [
-      "https://github.com/Azure-Samples/azureai-basic-python"
-    ],
     "architectureDiagram": "/templates/images/get-started-with-ai-chat-arch.png",
     "screenshot": "/templates/images/get-started-with-ai-chat-image.png"
   },
@@ -5736,31 +5725,21 @@
     "authorUrl": "https://github.com/microsoft/solution-accelerators",
     "author": "Todd Herman",
     "source": "https://github.com/microsoft/content-processing-solution-accelerator",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["python", "typescript"],
     "frameworks": ["fastapi", "reactjs"],
     "azureServices": [
       "keyvault",
       "blobstorage",
       "openai",
-      "azureaiservice",
+      "azureai",
       "azurestorage",
       "aifoundry",
       "azureappconfig",
-      "serviceprincipal",
-      "azureai",
-      "appinsights",
-      "aca",
-      "managedidentity",
-      "azurecosmosdb",
-      "vnets",
-      "loganalytics",
-      "speechservice",
-      "diagnosticsettings"
+      "serviceprincipal"
     ],
     "IaC": ["bicep"],
     "id": "301cc025-6d90-483f-a69a-709f0a97b7f5",
-    "templateType": "ai-app-templates",
     "authors": [
       "Todd Herman",
       "DB Lee",
@@ -5795,28 +5774,12 @@
     "authorUrl": "https://github.com/microsoft/Modernize-your-code-solution-accelerator",
     "author": "Mark Taylor",
     "source": "https://github.com/microsoft/Modernize-your-code-solution-accelerator",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["python", "typescript"],
     "frameworks": ["fastapi", "reactjs", "semantickernel"],
-    "azureServices": [
-      "blobstorage",
-      "openai",
-      "aifoundry",
-      "keyvault",
-      "appinsights",
-      "loganalytics",
-      "aca",
-      "azureaiservice",
-      "managedidentity",
-      "vnets",
-      "speechservice",
-      "azurestorage",
-      "azurecosmosdb",
-      "diagnosticsettings"
-    ],
+    "azureServices": ["blobstorage", "openai", "aifoundry", "keyvault"],
     "IaC": ["bicep"],
     "id": "844b9db1-9c39-4d98-9c7a-f929d2ae9643",
-    "templateType": "ai-app-templates",
     "authors": [
       "Mark Taylor",
       "Francia Riesco",
@@ -5842,7 +5805,7 @@
     "authorUrl": "https://github.com/zhenbzha/",
     "author": "Zhenbo Zhang",
     "source": "https://github.com/zhenbzha/chainlit-agent",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["python"],
     "frameworks": ["chainlit", "rag", "fastapi"],
     "azureServices": [
@@ -5854,17 +5817,14 @@
       "aca",
       "blobstorage",
       "openai",
-      "azureaiservice",
+      "azureai",
       "azurestorage",
       "aifoundry",
       "managedidentity",
-      "serviceprincipal",
-      "azureai",
-      "diagnosticsettings"
+      "serviceprincipal"
     ],
     "IaC": ["bicep"],
     "id": "7172a823-3b01-4fd3-ab57-a94b7813c77c",
-    "templateType": "ai-app-templates",
     "authors": ["Zhenbo Zhang"],
     "authorUrls": ["https://github.com/zhenbzha/"],
     "models": ["gpt4o", "text-embedding-3-large"],
@@ -5880,24 +5840,18 @@
     "authorUrl": "https://github.com/dminkovski",
     "author": "David Minkovski",
     "source": "https://github.com/dminkovski/agent-openai-banking-assistant-csharp",
-    "tags": [],
+    "tags": ["aiapplication"],
     "languages": ["dotnetCsharp", "typescript"],
     "frameworks": ["semantickernel", "reactjs"],
     "azureServices": [
       "aca",
       "blobstorage",
-      "azureaiservice",
-      "managedidentity",
-      "serviceprincipal",
       "azureai",
-      "appinsights",
-      "azurestorage",
-      "loganalytics",
-      "diagnosticsettings"
+      "managedidentity",
+      "serviceprincipal"
     ],
     "IaC": ["bicep"],
     "id": "99452db8-12d6-4b0f-8240-98323826cd65",
-    "templateType": "ai-app-templates",
     "authors": ["David Minkovski"],
     "authorUrls": ["https://github.com/dminkovski"],
     "models": ["gpt4o"],
@@ -5914,29 +5868,19 @@
     "authorUrl": "https://github.com/marktayl1",
     "author": "Mark Taylor",
     "source": "https://github.com/microsoft/Multi-Agent-Custom-Automation-Engine-Solution-Accelerator",
-    "tags": [],
-    "languages": ["python", "typescript"],
+    "tags": ["aiapplication"],
+    "languages": ["python"],
     "frameworks": ["autogen", "fastapi", "reactjs"],
     "azureServices": [
       "appservice",
       "keyvault",
-      "azureaiservice",
+      "azureai",
       "aifoundry",
       "serviceprincipal",
-      "appinsights",
-      "azureai",
-      "loganalytics",
-      "managedidentity",
-      "aisearch",
-      "blobstorage",
-      "azurestorage",
-      "azurecosmosdb",
-      "aca",
-      "vnets"
+      "appinsights"
     ],
     "IaC": ["bicep"],
     "id": "8620033b-474a-471c-9601-48c84a632576",
-    "templateType": "ai-app-templates",
     "authors": [
       "Mark Taylor",
       "Francia Riesco",
@@ -5961,13 +5905,17 @@
     "authorUrl": "https://github.com/robertopc1",
     "author": "Roberto Perez",
     "source": "https://github.com/robertopc1/Redis_LLMmemory",
-    "tags": [],
+    "tags": ["aiapplication"],
     "languages": ["python"],
     "frameworks": ["streamlit"],
-    "azureServices": ["rediscache", "aifoundry", "managedidentity", "appservice", "openai"],
+    "azureServices": [
+      "rediscache",
+      "aifoundry",
+      "managedidentity",
+      "appservice"
+    ],
     "IaC": ["bicep"],
     "id": "a5373179-d11a-4ccf-8fbf-066c09f5bf6d",
-    "templateType": "ai-app-templates",
     "authors": ["Roberto Perez", "Kyle Teegarden"],
     "authorUrls": [
       "https://github.com/robertopc1",
@@ -5987,26 +5935,21 @@
     "authorUrl": "https://github.com/matthiasblondeel",
     "author": "Matthias Blondeel",
     "source": "https://github.com/Azure-Samples/healthcare-agent-orchestrator",
-    "tags": ["azureopenai"],
-    "languages": ["python", "typescript"],
+    "tags": ["aiapplication"],
+    "languages": ["python"],
     "frameworks": ["fastapi", "autogen", "reactjs", "semantickernel"],
     "azureServices": [
       "appservice",
       "openai",
       "keyvault",
       "blobstorage",
-      "azureaiservice",
+      "azureai",
       "azurebot",
       "azurestorage",
-      "managedidentity",
-      "azureai",
-      "vnets",
-      "aifoundry",
-      "appinsights"
+      "managedidentity"
     ],
     "IaC": ["bicep"],
     "id": "0b0d1958-9798-4695-abdb-b197391b04ff",
-    "templateType": "ai-app-templates",
     "authors": ["Matthias Blondeel", "Frank Tuan"],
     "authorUrls": [
       "https://github.com/matthiasblondeel",
@@ -6027,28 +5970,18 @@
     "authorUrl": "https://github.com/malrose07",
     "author": "Malory Rose",
     "source": "https://github.com/microsoft/agentic-applications-for-unified-data-foundation-solution-accelerator",
-    "tags": ["azureopenai"],
-    "languages": ["python", "dotnetCsharp", "typescript"],
+    "tags": ["aiapplication"],
+    "languages": ["python"],
     "frameworks": ["semantickernel", "fastapi", "reactjs"],
     "azureServices": [
       "appservice",
       "openai",
       "aifoundry",
       "managedidentity",
-      "keyvault",
-      "loganalytics",
-      "fabric",
-      "appinsights",
-      "azureaiservice",
-      "aisearch",
-      "blobstorage",
-      "azurestorage",
-      "azurecosmosdb",
-      "vnets"
+      "keyvault"
     ],
     "IaC": ["bicep"],
     "id": "bde9074d-fd19-4bad-b9b2-39167d948708",
-    "templateType": "ai-app-templates",
     "authors": ["Malory Rose", "Nalini Chandhi", "Travis Hilbert"],
     "authorUrls": [
       "https://github.com/malrose07",
@@ -6068,12 +6001,11 @@
     "authorUrl": "https://github.com/alguadam",
     "author": "Alvaro Guadamillas Herranz",
     "source": "https://github.com/microsoft/unified-data-foundation-with-fabric-solution-accelerator",
-    "tags": [],
+    "tags": ["aiapplication"],
     "languages": ["python"],
-    "azureServices": ["fabric", "managedidentity"],
+    "azureServices": ["fabric"],
     "IaC": ["bicep"],
     "id": "c61ce07d-3a76-4181-bbe2-35a43bce0a10",
-    "templateType": "ai-app-templates",
     "authors": ["Alvaro Guadamillas Herranz", "Gaiye Zhou"],
     "authorUrls": [
       "https://github.com/alguadam",
@@ -6093,8 +6025,8 @@
     "authorUrl": "https://github.com/shshr",
     "author": "Shivam Shrivastava",
     "source": "https://github.com/microsoft/release-manager-assistant",
-    "tags": ["azureopenai"],
-    "languages": ["python", "typescript", "javascript"],
+    "tags": ["aiapplication"],
+    "languages": ["python", "typescript"],
     "frameworks": ["flask", "reactjs"],
     "azureServices": [
       "monitor",
@@ -6105,17 +6037,14 @@
       "blobstorage",
       "swa",
       "openai",
-      "azureaiservice",
+      "azureai",
       "rediscache",
       "azurestorage",
       "aifoundry",
-      "managedidentity",
-      "azureai",
-      "vnets"
+      "managedidentity"
     ],
     "IaC": ["bicep"],
     "id": "b3ba80ee-65e8-463e-a3ce-ff1172b043e1",
-    "templateType": "ai-app-templates",
     "authors": ["Shivam Shrivastava"],
     "authorUrls": ["https://github.com/shshr"],
     "models": ["text-embedding-ada-002", "gpt4o"],
@@ -6141,25 +6070,19 @@
     "authorUrl": "https://github.com/Emma-ms",
     "author": "Emma Chen",
     "source": "https://github.com/Azure-Samples/call-center-voice-agent-accelerator",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["python"],
     "azureServices": [
       "keyvault",
-      "azureaiservice",
+      "azureai",
       "azurestorage",
       "eventgrid",
       "logicapps",
       "aifoundry",
-      "openai",
-      "azureai",
-      "aca",
-      "managedidentity",
-      "loganalytics",
-      "appinsights"
+      "openai"
     ],
     "IaC": ["bicep"],
     "id": "52a503ba-66bf-449e-9c74-bc6bf54302b4",
-    "templateType": "ai-app-templates",
     "authors": ["Emma Chen", "Nate Ko", "Archer Zhao", "Heiko Rahmel"],
     "authorUrls": [
       "https://github.com/Emma-ms",
@@ -6179,12 +6102,11 @@
     "authorUrl": "https://github.com/tmarwendo-microsoft",
     "author": "Yogesh Ratnaparkhi",
     "source": "https://github.com/microsoft/app-with-sharepoint-knowledge",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["dotnetCsharp"],
-    "azureServices": ["openai", "aifoundry", "aca", "managedidentity", "azureaiservice"],
+    "azureServices": ["openai", "aifoundry"],
     "IaC": ["bicep"],
     "id": "aa5062a0-6e08-48f6-b2f1-ccb9b51b0538",
-    "templateType": "ai-app-templates",
     "authors": ["Yogesh Ratnaparkhi"],
     "authorUrls": ["https://github.com/tmarwendo-microsoft"],
     "models": ["gpt4", "gpt4o"],
@@ -6199,12 +6121,11 @@
     "authorUrl": "https://github.com/hengyl",
     "author": "Heng-yi Liu",
     "source": "https://github.com/hengyl/nlweb-agent-demo",
-    "tags": [],
+    "tags": ["aiapplication"],
     "languages": ["python"],
-    "azureServices": ["aisearch", "appinsights", "aifoundry", "azureaiservice", "loganalytics"],
+    "azureServices": ["aisearch", "appinsights", "aifoundry"],
     "IaC": ["bicep"],
     "id": "7dbcc4a1-ae8c-4838-be66-ca999656ea57",
-    "templateType": "ai-app-templates",
     "authors": ["Heng-yi Liu"],
     "authorUrls": ["https://github.com/hengyl"],
     "models": ["gpt4omini"],
@@ -6219,24 +6140,18 @@
     "authorUrl": "https://github.com/TravisHilbert",
     "author": "Travis Hilbert",
     "source": "https://github.com/microsoft/customer-chatbot-solution-accelerator",
-    "tags": ["azureopenai"],
-    "languages": ["python", "typescript"],
+    "tags": ["aiapplication"],
+    "languages": ["python"],
     "frameworks": ["fastapi", "reactjs"],
     "azureServices": [
       "aisearch",
       "appservice",
       "aifoundry",
       "openai",
-      "managedidentity",
-      "loganalytics",
-      "appinsights",
-      "azureaiservice",
-      "azurecosmosdb",
-      "vnets"
+      "managedidentity"
     ],
     "IaC": ["bicep"],
     "id": "249c8387-2972-4280-b103-6698ef4729f3",
-    "templateType": "ai-app-templates",
     "authors": ["Travis Hilbert", "Solomon Pickett", "Brittnee Keller"],
     "authorUrls": [
       "https://github.com/TravisHilbert",
@@ -6256,12 +6171,11 @@
     "authorUrl": "https://github.com/alguadam",
     "author": "Alvaro Guadamillas Herranz",
     "source": "https://github.com/microsoft/real-time-intelligence-operations-solution-accelerator",
-    "tags": [],
+    "tags": ["aiapplication"],
     "languages": ["python"],
     "azureServices": ["eventhub", "fabric"],
     "IaC": ["bicep"],
     "id": "10274e4d-410d-403c-a82f-b682445294d9",
-    "templateType": "ai-app-templates",
     "authors": ["Alvaro Guadamillas Herranz", "Gaiye Zhou", "Seth Steenken"],
     "authorUrls": [
       "https://github.com/alguadam",
@@ -6282,8 +6196,8 @@
     "authorUrl": "https://github.com/dantelmomsft",
     "author": "Davide Antelmo",
     "source": "https://github.com/Azure-Samples/agent-openai-python-banking-assistant",
-    "tags": ["azureopenai"],
-    "languages": ["python", "typescript", "java"],
+    "tags": ["aiapplication"],
+    "languages": ["python"],
     "frameworks": ["fastapi", "reactjs", "spring"],
     "azureServices": [
       "appinsights",
@@ -6292,16 +6206,10 @@
       "managedidentity",
       "serviceprincipal",
       "blobstorage",
-      "openai",
-      "azureaiservice",
-      "azurestorage",
-      "azurecosmosdb",
-      "loganalytics",
-      "diagnosticsettings"
+      "openai"
     ],
     "IaC": ["bicep"],
     "id": "bff7086b-ad44-4978-acaf-9b383f9f5914",
-    "templateType": "ai-app-templates",
     "authors": ["Davide Antelmo"],
     "authorUrls": ["https://github.com/dantelmomsft"],
     "models": ["gpt4o", "gpt4"],
@@ -6318,7 +6226,7 @@
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
     "source": "https://github.com/microsoft/Prior-Authorization-Multi-Agent-Solution-Accelerator",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["python", "typescript", "javascript"],
     "frameworks": ["fastapi", "reactjs", "nextjs"],
     "azureServices": [
@@ -6327,13 +6235,10 @@
       "aca",
       "openai",
       "aifoundry",
-      "managedidentity",
-      "loganalytics",
-      "azureaiservice"
+      "managedidentity"
     ],
     "IaC": ["bicep"],
     "id": "af79e745-3513-45ff-a5d1-845cdc627c7d",
-    "templateType": "ai-app-templates",
     "authors": ["Microsoft Foundry Team"],
     "authorUrls": ["https://github.com/microsoft-foundry"],
     "models": ["gpt54"],
@@ -6349,13 +6254,12 @@
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
     "source": "https://github.com/Azure-Samples/sovereign-chat-experience-starter",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["typescript"],
     "frameworks": ["reactjs"],
-    "azureServices": ["aks", "openai", "aifoundry", "managedidentity", "azureaiservice"],
+    "azureServices": ["aks", "openai", "aifoundry"],
     "IaC": ["bicep"],
     "id": "7d053418-950f-4007-8bd9-a49881298910",
-    "templateType": "ai-app-templates",
     "authors": ["Microsoft Foundry Team"],
     "authorUrls": ["https://github.com/microsoft-foundry"],
     "models": ["gpt4omini"],
@@ -6372,20 +6276,17 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Video Indexer",
     "source": "https://github.com/Azure-Samples/Video-Agents-Foundry-Solution",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["dotnetCsharp", "python"],
     "azureServices": [
       "aks",
       "managedidentity",
       "azurestorage",
-      "azureaiservice",
       "azureai",
-      "openai",
-      "blobstorage"
+      "openai"
     ],
     "IaC": ["bicep"],
     "id": "88c10b7d-ae42-4b31-8666-ff3971ec4d1a",
-    "templateType": "ai-app-templates",
     "authors": ["Video Indexer"],
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["mistral7b", "gpt52"],
@@ -6402,20 +6303,17 @@
     "authorUrl": "https://github.com/microsoft",
     "author": "Microsoft",
     "source": "https://github.com/microsoft/microsoft-iq-solution-accelerator",
-    "tags": ["azureopenai"],
+    "tags": ["aiapplication"],
     "languages": ["python"],
     "azureServices": [
       "aisearch",
       "loganalytics",
       "azurestorage",
       "aifoundry",
-      "managedidentity",
-      "blobstorage",
-      "azureaiservice"
+      "openai"
     ],
     "IaC": ["bicep"],
     "id": "7061e7cc-bdf1-4e77-83b0-6ca3d78a6c1a",
-    "templateType": "ai-app-templates",
     "authors": ["Microsoft"],
     "authorUrls": ["https://github.com/microsoft"],
     "models": [
@@ -6539,7 +6437,7 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/durable-functions-quickstart-powershell-azd",
-    "tags": ["msft", "powershell"],
+    "tags": ["msft"],
     "azureServices": [
       "functions",
       "azurestorage",
@@ -6549,7 +6447,8 @@
       "loganalytics"
     ],
     "IaC": ["bicep"],
-    "id": "f47c517f-2b8d-4db4-80b3-2ca5d3661d3c"
+    "id": "f47c517f-2b8d-4db4-80b3-2ca5d3661d3c",
+    "languages": ["powershell"]
   },
   {
     "title": "Durable Functions Fan-Out/Fan-In using Azure Developer CLI (Python)",
@@ -6658,7 +6557,7 @@
     "authorUrl": "https://github.com/Azure-Samples",
     "author": "Azure Functions Team",
     "source": "https://github.com/Azure-Samples/functions-quickstart-powershell-azd-timer",
-    "tags": ["msft", "powershell"],
+    "tags": ["msft"],
     "azureServices": [
       "functions",
       "managedidentity",
@@ -6668,7 +6567,8 @@
       "azurestorage"
     ],
     "IaC": ["bicep"],
-    "id": "8b91b751-45bf-4e9a-9a51-f072018ecee2"
+    "id": "8b91b751-45bf-4e9a-9a51-f072018ecee2",
+    "languages": ["powershell"]
   },
   {
     "title": "Azure Functions C# HTTP Trigger using Azure Developer CLI (Terraform)",
@@ -6823,7 +6723,14 @@
     "source": "https://github.com/Azure-Samples/Microhack-Ask-Analyze-Act",
     "tags": ["ai", "msft"],
     "languages": ["nodejs"],
-    "azureServices": ["fabric", "azuresql", "azurestorage", "appservice", "vnets", "blobstorage"],
+    "azureServices": [
+      "fabric",
+      "azuresql",
+      "azurestorage",
+      "appservice",
+      "vnets",
+      "blobstorage"
+    ],
     "IaC": ["terraform"],
     "id": "64577715-e9a4-4a65-a514-4233763474c2"
   },
@@ -6858,7 +6765,7 @@
     "authorUrl": "https://github.com/JayChase",
     "author": "Jay Chase",
     "source": "https://github.com/JayChase/langchain-ag-ui-angular",
-    "tags": ["community", "new", "ai", "gpt", "msal", "enterprisepatterns"],
+    "tags": ["community", "new", "ai", "msal", "enterprisepatterns"],
     "languages": ["typescript", "nodejs"],
     "frameworks": ["angular", "langchain"],
     "azureServices": [
@@ -6878,6 +6785,90 @@
       "azurestorage"
     ],
     "IaC": ["bicep"],
-    "id": "8f3c6a92-4e1b-4d7c-9a52-6b8e3d1f0c4a"
+    "id": "8f3c6a92-4e1b-4d7c-9a52-6b8e3d1f0c4a",
+    "models": ["gpt"]
+  },
+  {
+    "title": "Azure Language OpenAI Conversational Agent Accelerator",
+    "description": "A solution accelerator project harnessing the capabilities of Azure AI Language to augment an existing Azure OpenAI RAG chat app. Utilize Conversational Language Understanding (CLU) and Custom Question Answering (CQA) to dynamically improve a RAG chat experience.",
+    "authorUrl": "https://github.com/murraysean",
+    "author": "Sean Murray, Yanling Xiong",
+    "source": "https://github.com/Azure-Samples/Azure-Language-OpenAI-Conversational-Agent-Accelerator",
+    "tags": ["aiapplication"],
+    "languages": ["python", "javascript"],
+    "azureServices": [
+      "aisearch",
+      "aca",
+      "blobstorage",
+      "openai",
+      "azurestorage",
+      "managedidentity",
+      "azureai",
+      "aifoundry"
+    ],
+    "id": "d9b71e18-c597-5234-8784-ebfc31218206",
+    "authors": ["Sean Murray", "Yanling Xiong"],
+    "authorUrls": [
+      "https://github.com/murraysean",
+      "https://github.com/ylxiongwork"
+    ],
+    "models": [
+      "text-embedding-ada-002",
+      "text-embedding-3-small",
+      "gpt4omini",
+      "gpt4o"
+    ],
+    "appType": ["agent", "chat"],
+    "prerequisites": ["azd", "git"],
+    "sampleType": "full_sample",
+    "architectureDiagram": "/templates/images/Azure-Language-OpenAI-Conversational-Agent-Accelerator-arch.png",
+    "screenshot": "/templates/images/Azure-Language-OpenAI-Conversational-Agent-Accelerator-image.png"
+  },
+  {
+    "title": "Copilot-Studio-with-Azure-AI-Search",
+    "description": "AZD template for deploying Azure Copilot Studio with Azure AI search",
+    "authorUrl": "https://github.com/ianjensenisme",
+    "author": "Ian Jensen, Hadwa Gaber, Matt Dotson, Mateusz Wasilewski",
+    "source": "https://github.com/Azure-Samples/Copilot-Studio-with-Azure-AI-Search",
+    "tags": ["aiapplication"],
+    "languages": ["python", "dotnetCsharp"],
+    "azureServices": [
+      "aisearch",
+      "monitor",
+      "appinsights",
+      "loganalytics",
+      "aca",
+      "blobstorage",
+      "vnets",
+      "openai",
+      "managedidentity",
+      "azurestorage",
+      "functions"
+    ],
+    "id": "8051268d-072f-5bec-bc4b-653784688ef1",
+    "authors": [
+      "Ian Jensen",
+      "Hadwa Gaber",
+      "Matt Dotson",
+      "Mateusz Wasilewski"
+    ],
+    "authorUrls": [
+      "https://github.com/ianjensenisme",
+      "https://github.com/HadwaAbdelhalem",
+      "https://github.com/mattdot",
+      "https://github.com/mawasile"
+    ],
+    "models": ["gpt4"],
+    "appType": ["search"],
+    "prerequisites": [
+      "azd",
+      "pwsh7+",
+      "docker",
+      "git",
+      "python3.9-3.11",
+      ".net8",
+      "nodejs"
+    ],
+    "sampleType": "full_sample"
   }
 ]

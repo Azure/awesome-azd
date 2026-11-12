@@ -25,7 +25,6 @@ const allowedAiRecordKeys = new Set([
   "frameworks",
   "azureServices",
   "IaC",
-  "templateType",
   "authors",
   "authorUrls",
   "models",
@@ -180,10 +179,16 @@ function expectSanitizedImage(filePath: string): void {
 describe("privacy-safe AI catalog metadata", () => {
   const records = templates as JsonObject[];
   const aiRecords = records.filter(
-    (record) => record.templateType === "ai-app-templates",
+    (record) =>
+      Array.isArray(record.tags) &&
+      record.tags.includes("aiapplication"),
   );
 
   test("preserves every reviewed AI migration overlap", () => {
+    expect(aiRecords).toHaveLength(56);
+    expect(
+      aiRecords.filter((record) => record.templateType !== undefined),
+    ).toEqual([]);
     const aiSources = new Set(
       aiRecords.map((record) => normalizeSource(String(record.source))),
     );
@@ -283,7 +288,7 @@ describe("privacy-safe AI catalog metadata", () => {
       }
     }
 
-    expect(assetPaths.size).toBe(77);
+    expect(assetPaths.size).toBe(79);
     for (const asset of assetPaths) {
       const filePath = path.join(websiteRoot, "static", asset.slice(1));
       if (!fs.existsSync(filePath)) {

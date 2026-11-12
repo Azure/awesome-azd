@@ -279,11 +279,11 @@ function TemplateCard({
           {template.isAi ? (
             <span
               className={styles.cardAi}
-              title="AI app template"
+              title="AI application"
             >
               <AiIcon />
               <span className={styles.visuallyHidden}>
-                AI app template:{" "}
+                AI application:{" "}
               </span>
             </span>
           ) : null}

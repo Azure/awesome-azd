@@ -38,8 +38,8 @@ export default function ResearchPage(): React.JSX.Element {
             <section>
               <h2>One public catalog</h2>
               <p>
-                Standard templates and records marked{" "}
-                <code>ai-app-templates</code> are presented together. Other
+                Standard templates and records tagged{" "}
+                <code>aiapplication</code> are presented together. Other
                 specialized record types remain outside the public template
                 gallery.
               </p>

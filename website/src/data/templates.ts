@@ -70,10 +70,9 @@ function validateTemplates(raw: unknown): Template[] {
   }) as Template[];
 }
 
-// Specialized templates (for example `extension.ai.agent` and
-// `ai-app-templates`) live in the same templates.json manifest so dedicated
-// experiences can consume a single source of truth, but they are not displayed
-// in the "All templates" gallery.
+// Specialized templates (for example `extension.ai.agent`) live in the same
+// templates.json manifest so dedicated experiences can consume a single source
+// of truth, but they are not displayed in the "All templates" gallery.
 //
 // Rule: any entry with a `templateType` set is treated as a non-gallery
 // (extension / specialized) entry. This means new extension categories are

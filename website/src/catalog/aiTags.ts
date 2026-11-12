@@ -13,6 +13,10 @@ export const Tags = {
   "featured": {
     "label": "Featured Template"
   },
+  "new": {
+    "label": "New",
+    "type": "Status"
+  },
   "aiapplication": {
     "label": "AI application",
     "type": "Application Type"

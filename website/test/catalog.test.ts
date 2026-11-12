@@ -122,7 +122,7 @@ describe("unified catalog data", () => {
     ).toBe("Community");
   });
 
-  test("keeps new tags only on the two templates added within the past month", () => {
+  test("keeps new tags on newly added catalog entries", () => {
     expect(
       catalogTemplates
         .filter((template) => template.legacyTags.includes("new"))
@@ -130,10 +130,55 @@ describe("unified catalog data", () => {
         .sort(),
     ).toEqual(
       [
+        "https://github.com/Azure-Samples/Azure-Language-OpenAI-Conversational-Agent-Accelerator",
+        "https://github.com/Azure-Samples/Copilot-Studio-with-Azure-AI-Search",
         "https://github.com/JayChase/langchain-ag-ui-angular",
         "https://github.com/massimobonanni/DBSemanticSearch",
       ].sort(),
     );
+  });
+
+  test("preserves verified hosting services and infrastructure metadata", () => {
+    const rawTemplates = templates as Array<{
+      source?: string;
+      azureServices?: string[];
+      IaC?: string[];
+    }>;
+    const bySource = new Map(
+      rawTemplates.map((template) => [template.source, template]),
+    );
+
+    for (const [source, service] of [
+      [
+        "https://github.com/Azure-Samples/get-started-with-ai-agents",
+        "aca",
+      ],
+      [
+        "https://github.com/Azure-Samples/cargotracker-liberty-aks-azd",
+        "aks",
+      ],
+      [
+        "https://github.com/Azure-Samples/azure-search-openai-demo-purviewdatasecurity",
+        "aca",
+      ],
+      [
+        "https://github.com/Azure-Samples/get-started-with-ai-chat",
+        "aca",
+      ],
+    ]) {
+      expect(bySource.get(source)?.azureServices).toContain(service);
+    }
+
+    expect(
+      bySource.get(
+        "https://github.com/Azure-Samples/Azure-Language-OpenAI-Conversational-Agent-Accelerator",
+      )?.IaC,
+    ).toEqual(["bicep"]);
+    expect(
+      bySource.get(
+        "https://github.com/Azure-Samples/Copilot-Studio-with-Azure-AI-Search",
+      )?.IaC,
+    ).toEqual(["terraform"]);
   });
 
   test("preserves legacy preview images in the unified view model", () => {

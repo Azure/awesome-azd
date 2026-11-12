@@ -180,7 +180,12 @@ test.describe("Gallery functionality (deploy gate)", () => {
     await page.setViewportSize({ width: 1600, height: 1200 });
 
     for (const [title, featured, language, service] of [
-      ["Get started with AI agents", true, "Python", "Azure AI Search"],
+      [
+        "Get started with AI agents",
+        true,
+        "Python",
+        "Azure Container Apps",
+      ],
       [
         "RAG chat with Azure AI Search + C#",
         false,

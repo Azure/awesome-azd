@@ -419,7 +419,8 @@
       "openai",
       "serviceprincipal",
       "aifoundry",
-      "blobstorage"
+      "blobstorage",
+      "aca"
     ],
     "IaC": ["bicep"],
     "id": "35fede2d-4da6-43e2-b679-c593c6fd40da",
@@ -2166,7 +2167,8 @@
       "keyvault",
       "monitor",
       "azuredb-postgreSQL",
-      "openai"
+      "openai",
+      "aks"
     ],
     "IaC": ["bicep"],
     "id": "84555da7-3f3a-4451-9b10-cb083e481a41",
@@ -3540,7 +3542,8 @@
       "appinsights",
       "blobstorage",
       "openai",
-      "azureai"
+      "azureai",
+      "aca"
     ],
     "IaC": ["bicep"],
     "id": "F5B15030-D351-462E-8F5F-A054EEBEFCA3",
@@ -5702,7 +5705,7 @@
     "tags": ["featured", "aiapplication"],
     "languages": ["python", "javascript"],
     "frameworks": ["fastapi", "reactjs"],
-    "azureServices": ["aisearch", "appinsights", "openai", "aifoundry"],
+    "azureServices": ["aisearch", "appinsights", "openai", "aifoundry", "aca"],
     "IaC": ["bicep"],
     "id": "1b9bcb52-0c7a-459f-bb90-085ec0c64558",
     "authors": ["Howie Leung", "Nikolay Rovinskiy", "Sophia Ramsey"],
@@ -6794,7 +6797,7 @@
     "authorUrl": "https://github.com/murraysean",
     "author": "Sean Murray, Yanling Xiong",
     "source": "https://github.com/Azure-Samples/Azure-Language-OpenAI-Conversational-Agent-Accelerator",
-    "tags": ["aiapplication"],
+    "tags": ["new", "aiapplication"],
     "languages": ["python", "javascript"],
     "azureServices": [
       "aisearch",
@@ -6806,6 +6809,7 @@
       "azureai",
       "aifoundry"
     ],
+    "IaC": ["bicep"],
     "id": "d9b71e18-c597-5234-8784-ebfc31218206",
     "authors": ["Sean Murray", "Yanling Xiong"],
     "authorUrls": [
@@ -6830,7 +6834,7 @@
     "authorUrl": "https://github.com/ianjensenisme",
     "author": "Ian Jensen, Hadwa Gaber, Matt Dotson, Mateusz Wasilewski",
     "source": "https://github.com/Azure-Samples/Copilot-Studio-with-Azure-AI-Search",
-    "tags": ["aiapplication"],
+    "tags": ["new", "aiapplication"],
     "languages": ["python", "dotnetCsharp"],
     "azureServices": [
       "aisearch",
@@ -6845,6 +6849,7 @@
       "azurestorage",
       "functions"
     ],
+    "IaC": ["terraform"],
     "id": "8051268d-072f-5bec-bc4b-653784688ef1",
     "authors": [
       "Ian Jensen",

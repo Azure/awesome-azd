@@ -12,6 +12,10 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
+    "prestart": "node scripts/ensure-repository-metrics.js",
+    "prebuild": "node scripts/ensure-repository-metrics.js",
+    "pretest": "node scripts/ensure-repository-metrics.js",
+    "pretypecheck": "node scripts/ensure-repository-metrics.js",
     "test": "jest",
     "typecheck": "tsc --noEmit --pretty false",
     "test:e2e": "playwright test"

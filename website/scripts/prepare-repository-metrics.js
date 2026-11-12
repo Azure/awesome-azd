@@ -374,6 +374,15 @@ async function prepareRepositoryMetrics(options = {}) {
   const outputPath =
     options.outputPath ??
     path.join(__dirname, "..", "static", "repository-metrics.json");
+  const moduleOutputPath =
+    options.moduleOutputPath ??
+    path.join(
+      __dirname,
+      "..",
+      "src",
+      "catalog",
+      "repository-metrics.generated.json"
+    );
   const maxAgeHours =
     options.maxAgeHours ?? DEFAULT_MAX_AGE_HOURS;
 
@@ -398,9 +407,13 @@ async function prepareRepositoryMetrics(options = {}) {
     }
   );
 
-  await writeJsonAtomically(outputPath, sanitizedAggregate);
+  await Promise.all([
+    writeJsonAtomically(outputPath, sanitizedAggregate),
+    writeJsonAtomically(moduleOutputPath, sanitizedAggregate),
+  ]);
   return {
     outputPath,
+    moduleOutputPath,
     repositoryCount: expectedRepositorySlugs.length,
   };
 }
@@ -426,12 +439,12 @@ if (require.main === module) {
       process.env.REPOSITORY_METRICS_MAX_AGE_HOURS
     ),
   })
-    .then(({ outputPath, repositoryCount }) => {
+    .then(({ outputPath, moduleOutputPath, repositoryCount }) => {
       console.log(
         `Prepared repository metrics for ${repositoryCount} repositories at ${path.relative(
           process.cwd(),
           outputPath
-        )}.`
+        )} and ${path.relative(process.cwd(), moduleOutputPath)}.`
       );
     })
     .catch((error) => {

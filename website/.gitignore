@@ -8,6 +8,7 @@
 .docusaurus
 .cache-loader
 /static/repository-metrics.json
+/src/catalog/repository-metrics.generated.json
 
 # Misc
 .DS_Store

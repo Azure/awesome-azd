@@ -1,11 +1,19 @@
 import { describe, expect, jest, test } from "@jest/globals";
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
 
 const {
   downloadRepositoryMetrics,
   getExpectedRepositorySlugs,
+  prepareRepositoryMetrics,
   readMetricsUrl,
   validateRepositoryMetricsAggregate,
 } = require("../scripts/prepare-repository-metrics");
+const {
+  EMPTY_REPOSITORY_METRICS,
+  ensureRepositoryMetricsFile,
+} = require("../scripts/ensure-repository-metrics");
 
 const now = new Date("2026-11-11T12:00:00.000Z");
 const generatedAt = "2026-11-11T00:00:00.000Z";
@@ -198,5 +206,89 @@ describe("repository metrics release preparation", () => {
         redirect: "error",
       })
     );
+  });
+
+  test("creates an empty generated fallback without overwriting existing metrics", async () => {
+    const directory = await fs.promises.mkdtemp(
+      path.join(os.tmpdir(), "awesome-azd-metrics-")
+    );
+    const outputPath = path.join(directory, "repository-metrics.json");
+
+    try {
+      await expect(
+        ensureRepositoryMetricsFile(outputPath)
+      ).resolves.toBe(true);
+      await expect(
+        fs.promises.readFile(outputPath, "utf8")
+      ).resolves.toBe(`${JSON.stringify(EMPTY_REPOSITORY_METRICS)}\n`);
+
+      const existing = JSON.stringify(validAggregate());
+      await fs.promises.writeFile(outputPath, existing);
+      await expect(
+        ensureRepositoryMetricsFile(outputPath)
+      ).resolves.toBe(false);
+      await expect(
+        fs.promises.readFile(outputPath, "utf8")
+      ).resolves.toBe(existing);
+    } finally {
+      await fs.promises.rm(directory, { recursive: true, force: true });
+    }
+  });
+
+  test("writes validated metrics to both the public asset and build module", async () => {
+    const directory = await fs.promises.mkdtemp(
+      path.join(os.tmpdir(), "awesome-azd-metrics-")
+    );
+    const catalogPath = path.join(directory, "templates.json");
+    const outputPath = path.join(directory, "static", "repository-metrics.json");
+    const moduleOutputPath = path.join(
+      directory,
+      "src",
+      "repository-metrics.generated.json"
+    );
+    const aggregate = validAggregate();
+    const fetchImpl = jest.fn(async () => ({
+      ok: true,
+      status: 200,
+      headers: {
+        get: (name: string) =>
+          name === "content-type" ? "application/json" : null,
+      },
+      body: null,
+      text: async () => JSON.stringify(aggregate),
+    }));
+
+    try {
+      await fs.promises.writeFile(
+        catalogPath,
+        JSON.stringify([
+          { source: "https://github.com/example/one" },
+          { source: "https://github.com/example/two" },
+        ])
+      );
+
+      await expect(
+        prepareRepositoryMetrics({
+          catalogPath,
+          outputPath,
+          moduleOutputPath,
+          sourceUrl: "https://cache.example.net/repository-metrics.json",
+          fetchImpl,
+          now,
+        })
+      ).resolves.toEqual({
+        outputPath,
+        moduleOutputPath,
+        repositoryCount: 2,
+      });
+
+      for (const generatedPath of [outputPath, moduleOutputPath]) {
+        await expect(
+          fs.promises.readFile(generatedPath, "utf8")
+        ).resolves.toBe(`${JSON.stringify(aggregate)}\n`);
+      }
+    } finally {
+      await fs.promises.rm(directory, { recursive: true, force: true });
+    }
   });
 });

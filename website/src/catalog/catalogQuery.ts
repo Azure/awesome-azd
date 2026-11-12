@@ -326,8 +326,17 @@ export function sortCatalogTemplates(
 
   return result.sort(
     (left, right) => {
-      if (left.featured !== right.featured) {
-        return left.featured ? -1 : 1;
+      const leftHasStars = left.stars !== undefined;
+      const rightHasStars = right.stars !== undefined;
+      if (leftHasStars !== rightHasStars) {
+        return leftHasStars ? -1 : 1;
+      }
+      if (
+        left.stars !== undefined &&
+        right.stars !== undefined &&
+        left.stars !== right.stars
+      ) {
+        return right.stars - left.stars;
       }
       return (
         (sourceOrder.get(left.normalizedSource) ??

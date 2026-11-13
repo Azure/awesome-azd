@@ -5,8 +5,8 @@
 
 import React, { useState, useMemo, useEffect } from "react";
 import useIsBrowser from "@docusaurus/useIsBrowser";
-import ShowcaseLeftFilters from "../ShowcaseLeftFilters";
-import ShowcaseTemplateSearch from "../ShowcaseTemplateSearch";
+import ExtensionFilters from "../ExtensionFilters";
+import ExtensionGalleryHeader from "../ExtensionGalleryHeader";
 import {
   Button,
   type DropdownProps,
@@ -22,11 +22,11 @@ import { type TagType } from "@site/src/data/tags";
 import { unsortedExtensions } from "@site/src/data/extensions";
 import { getExtensionTags } from "@site/src/utils/galleryTags";
 import styles from "./styles.module.css";
-import ShowcaseResults from "../ShowcaseResults";
-import ShowcaseResultsToolbar from "../ShowcaseResultsToolbar";
+import ExtensionResults from "../ExtensionResults";
+import ExtensionResultsToolbar from "../ExtensionResultsToolbar";
 import { useLocation } from "@docusaurus/router";
 import { initializeFluentIcons } from "@site/src/utils/fluentIcons";
-import { GALLERY_SORT_OPTIONS } from "@site/src/utils/gallerySorting";
+import { EXTENSION_SORT_OPTIONS } from "@site/src/utils/gallerySorting";
 
 initializeFluentIcons();
 
@@ -34,17 +34,16 @@ const extensionTags = [
   ...new Set(unsortedExtensions.flatMap(getExtensionTags)),
 ];
 
-export default function GalleryPage(): React.JSX.Element | null {
+export default function ExtensionGalleryPage(): React.JSX.Element {
   const isBrowser = useIsBrowser();
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
-  const [activeTags, setActiveTags] =
-    useState<TagType[]>(extensionTags);
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([
-    GALLERY_SORT_OPTIONS[2],
+  const [activeTags, setActiveTags] = useState<TagType[]>(extensionTags);
+  const [selectedSortOptions, setSelectedSortOptions] = useState<string[]>([
+    EXTENSION_SORT_OPTIONS[2],
   ]);
   const location = useLocation<GalleryNavigationState>();
   const hydrationSafeSearch = isBrowser ? location.search : "";
-  const galleryLocation = useMemo(
+  const extensionLocation = useMemo(
     () => ({ ...location, search: hydrationSafeSearch }),
     [hydrationSafeSearch, location],
   );
@@ -65,24 +64,24 @@ export default function GalleryPage(): React.JSX.Element | null {
       console.warn("Unsupported gallery URL tags were ignored.");
     }
   }, [isBrowser, location.search]);
-  const sortByOnSelect: NonNullable<DropdownProps["onOptionSelect"]> = (
+  const handleSortSelect: NonNullable<DropdownProps["onOptionSelect"]> = (
     _event,
     data,
   ) => {
-    setSelectedOptions(
+    setSelectedSortOptions(
       data.selectedOptions.length > 0
         ? data.selectedOptions
-        : [GALLERY_SORT_OPTIONS[2]],
+        : [EXTENSION_SORT_OPTIONS[2]],
     );
   };
 
   return (
     <SiteFluentProvider className={styles.fluentProvider}>
       <main className={styles.page}>
-        <ShowcaseTemplateSearch />
-        <ShowcaseResultsToolbar
-          selectedOptions={selectedOptions}
-          onSortSelect={sortByOnSelect}
+        <ExtensionGalleryHeader />
+        <ExtensionResultsToolbar
+          selectedSortOptions={selectedSortOptions}
+          onSortSelect={handleSortSelect}
         />
         <div className={styles.mobileFilterBar}>
           <Button
@@ -106,20 +105,20 @@ export default function GalleryPage(): React.JSX.Element | null {
             data-open={mobileFiltersOpen}
             data-testid="extension-filter-panel"
           >
-            <ShowcaseLeftFilters
+            <ExtensionFilters
               activeTags={activeTags}
-              location={galleryLocation}
+              location={extensionLocation}
               selectedTags={selectedTags}
               selectedAuthors={selectedAuthors}
             />
           </div>
           <div className={styles.card}>
-            <ShowcaseResults
+            <ExtensionResults
               setActiveTags={setActiveTags}
               selectedTags={selectedTags}
-              location={galleryLocation}
+              location={extensionLocation}
               selectedAuthors={selectedAuthors}
-              selectedOptions={selectedOptions}
+              selectedSortOptions={selectedSortOptions}
             />
           </div>
         </div>

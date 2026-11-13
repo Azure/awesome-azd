@@ -5,9 +5,12 @@
 
 import React, { useState, useMemo, useEffect } from "react";
 import type { TagType } from "../../../data/tags";
-import { sortedExtensions, unsortedExtensions } from "../../../data/extensions";
+import {
+  sortedExtensions as alphabeticalExtensions,
+  unsortedExtensions,
+} from "../../../data/extensions";
 import ShowcaseExtensionCards from "./ShowcaseExtensionCards";
-import { ShowcaseResultsStatus } from "../ShowcaseResultsToolbar";
+import { ExtensionResultsStatus } from "../ExtensionResultsToolbar";
 import ShowcaseAppliedFilters from "../ShowcaseAppliedFilters";
 import ShowcasePagination from "../ShowcasePagination";
 import { useHistory } from "@docusaurus/router";
@@ -27,25 +30,26 @@ import {
 } from "@site/src/utils/galleryQuery";
 import styles from "./styles.module.css";
 
-export default function ShowcaseResults({
+const extensionPageSize = 20;
+
+export default function ExtensionResults({
   setActiveTags,
   selectedTags,
   location,
   selectedAuthors,
-  selectedOptions,
+  selectedSortOptions,
 }: {
   setActiveTags: React.Dispatch<React.SetStateAction<TagType[]>>;
   selectedTags: TagType[];
   location: Location & { state?: GalleryNavigationState | null; search: string };
   selectedAuthors: string[];
-  selectedOptions: string[];
+  selectedSortOptions: string[];
 }) {
   const searchName = readSearchName(location.search);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 20;
   const history = useHistory();
 
-  const clearAll = () => {
+  const clearFilters = () => {
     history.push({
       ...location,
       search: clearSearchFilters(location.search),
@@ -65,59 +69,58 @@ export default function ShowcaseResults({
 
   useEffect(() => {
     restoreGalleryNavigationState(location.state);
-  }, [location, selectedOptions]);
+  }, [location, selectedSortOptions]);
 
-  const sortedItems = useMemo(
+  const orderedExtensions = useMemo(
     () =>
       getSortedExtensions(
         unsortedExtensions,
-        sortedExtensions,
-        selectedOptions[0],
+        alphabeticalExtensions,
+        selectedSortOptions[0],
       ),
-    [selectedOptions],
+    [selectedSortOptions],
   );
 
-  const activeItems = useMemo(
+  const matchingExtensions = useMemo(
     () =>
       filterExtensions(
-        sortedItems,
+        orderedExtensions,
         selectedTags,
         selectedAuthors,
         searchName,
       ),
-    [sortedItems, selectedTags, selectedAuthors, searchName],
+    [orderedExtensions, selectedTags, selectedAuthors, searchName],
   );
 
-  const totalItems = activeItems.length;
+  const totalExtensions = matchingExtensions.length;
 
   // Reset on navigation and sort selection, even when their values are unchanged.
   useEffect(() => {
     setCurrentPage(1);
-  }, [location, selectedOptions]);
+  }, [location, selectedSortOptions]);
 
-  // Calculate pagination
-  const totalPages = Math.ceil(totalItems / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
+  const totalPages = Math.ceil(totalExtensions / extensionPageSize);
+  const startIndex = (currentPage - 1) * extensionPageSize;
+  const endIndex = startIndex + extensionPageSize;
 
   useEffect(() => {
     const unionTags = new Set<TagType>();
-    activeItems.forEach((extension) => {
+    matchingExtensions.forEach((extension) => {
       getExtensionTags(extension).forEach((tag) => unionTags.add(tag));
     });
     setActiveTags(Array.from(unionTags));
-  }, [activeItems, setActiveTags]);
+  }, [matchingExtensions, setActiveTags]);
 
   return (
     <>
       <ShowcaseAppliedFilters
-        clearAll={clearAll}
+        clearAll={clearFilters}
         selectedTags={selectedTags}
         selectedAuthors={selectedAuthors}
         location={location}
       />
       <ShowcaseExtensionCards
-        filteredExtensions={activeItems.slice(startIndex, endIndex)}
+        filteredExtensions={matchingExtensions.slice(startIndex, endIndex)}
         onClear={clearSearchAndFilters}
       />
       {totalPages > 1 && (
@@ -127,18 +130,18 @@ export default function ShowcaseResults({
           onPageChange={setCurrentPage}
         />
       )}
-      {totalItems > 0 ? (
+      {totalExtensions > 0 ? (
         <div className={styles.resultsFooter}>
-          <ShowcaseResultsStatus
-            totalItems={totalItems}
+          <ExtensionResultsStatus
+            totalItems={totalExtensions}
             startIndex={startIndex}
             endIndex={endIndex}
           />
         </div>
       ) : (
         <div className={styles.visuallyHidden}>
-          <ShowcaseResultsStatus
-            totalItems={totalItems}
+          <ExtensionResultsStatus
+            totalItems={totalExtensions}
             startIndex={startIndex}
             endIndex={endIndex}
           />

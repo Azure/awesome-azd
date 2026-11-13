@@ -3,7 +3,6 @@
  * Licensed under the MIT License.
  */
 
-import React from "react";
 import {
   AccordionHeader,
   AccordionItem,
@@ -14,7 +13,7 @@ import { Tags, type TagType } from "../../../data/tags";
 import ShowcaseTagSelect from "../ShowcaseTagSelect";
 import styles from "./styles.module.css";
 
-type FilterTagOptionsProps = {
+type ExtensionFilterSectionProps = {
   tags: TagType[];
   activeTags: TagType[];
   selectedTags: TagType[];
@@ -22,7 +21,7 @@ type FilterTagOptionsProps = {
   tagCounts?: Record<string, number>;
 };
 
-export default function ShowcaseFilterSection({
+export default function ExtensionFilterSection({
   title,
   value,
   tags,
@@ -30,7 +29,7 @@ export default function ShowcaseFilterSection({
   selectedTags,
   location,
   tagCounts,
-}: FilterTagOptionsProps & { title: string; value: string }) {
+}: ExtensionFilterSectionProps & { title: string; value: string }) {
   const visibleTags = tags.filter(
     (tag) => activeTags.includes(tag) || selectedTags.includes(tag),
   );

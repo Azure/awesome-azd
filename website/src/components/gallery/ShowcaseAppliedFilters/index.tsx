@@ -3,7 +3,6 @@
  * Licensed under the MIT License.
  */
 
-import React from "react";
 import { Badge, Body1 } from "@fluentui/react-components";
 import { Dismiss20Filled } from "@fluentui/react-icons";
 import { useHistory } from "@docusaurus/router";
@@ -53,7 +52,7 @@ export default function ShowcaseAppliedFilters({
     });
   }
 
-  return selectedTags && selectedTags.length > 0 || (selectedAuthors && selectedAuthors.length > 0) ? (
+  return selectedTags.length > 0 || selectedAuthors.length > 0 ? (
     <div className={styles.filterAppliedBar}>
       <Body1>
         Filters applied:

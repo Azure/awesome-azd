@@ -12,7 +12,7 @@ import { captureGalleryNavigationState } from "@site/src/utils/galleryNavigation
 import { readSearchName, replaceSearchName } from "@site/src/utils/galleryQuery";
 import styles from "./styles.module.css";
 
-export function GallerySearchBox(): React.JSX.Element {
+export function ExtensionSearchBox(): React.JSX.Element {
   const history = useHistory();
   const location = useLocation();
   const [value, setValue] = useState<string | null>(null);
@@ -66,7 +66,7 @@ export function GallerySearchBox(): React.JSX.Element {
   );
 }
 
-export default function ShowcaseTemplateSearch(): React.JSX.Element {
+export default function ExtensionGalleryHeader(): React.JSX.Element {
   return (
     <section className={styles.searchContainer}>
       <div className={styles.searchArea}>

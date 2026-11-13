@@ -13,36 +13,8 @@ export type Tag = {
   type?: string;
 };
 
-export type Template = {
-  id: string;
-  title: string;
-  description: string;
-  preview?: string;
-  authorUrl: string;
-  author: string;
-  source: string;
-  tags: TagType[];
-  languages?: TagType[];
-  frameworks?: TagType[];
-  azureServices?: TagType[];
-  IaC?: TagType[];
-  templateType?: string;
-  extensionFramework?: string;
-  extensionTags?: string[];
-};
-
 export type TagType = keyof typeof tagDefinitions;
 
-// LIST OF AVAILABLE TAGS
-// Each tag in lit about must have a defined object here
-// One or more tags can be associated per card
-// Tag Metadata:
-//   - label = short name seen in tag
-//   - description = explainer for usage
-//   - type = type of tag
-//   - azureIcon = svg path for azure service icon
-//   - url = url for azure service
-//   - darkModeAzureIcon = svg path for azure service icon in dark mode
 const tagDefinitions = {
   // =============     FOR ADMIN USE ONLY:
 
@@ -874,7 +846,7 @@ const tagDefinitions = {
     type: "Extension Capability",
   },
 
-  // AI catalog metadata retained from the former AI App Templates registry
+  // Compatibility tags migrated from the AI App Templates registry.
   "golang": {
     "label": "Go",
     "type": "Language"

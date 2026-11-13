@@ -11,11 +11,11 @@ import {
   Text,
   type DropdownProps,
 } from "@fluentui/react-components";
-import { GALLERY_SORT_OPTIONS } from "@site/src/utils/gallerySorting";
-import { GallerySearchBox } from "../ShowcaseTemplateSearch";
+import { EXTENSION_SORT_OPTIONS } from "@site/src/utils/gallerySorting";
+import { ExtensionSearchBox } from "../ExtensionGalleryHeader";
 import styles from "./styles.module.css";
 
-export function ShowcaseResultsStatus({
+export function ExtensionResultsStatus({
   totalItems,
   startIndex,
   endIndex,
@@ -46,19 +46,20 @@ export function ShowcaseResultsStatus({
   );
 }
 
-export default function ShowcaseResultsToolbar({
-  selectedOptions,
+export default function ExtensionResultsToolbar({
+  selectedSortOptions,
   onSortSelect,
 }: {
-  selectedOptions: string[];
+  selectedSortOptions: string[];
   onSortSelect: NonNullable<DropdownProps["onOptionSelect"]>;
 }): React.JSX.Element {
-  const selectedSort = selectedOptions[0] ?? GALLERY_SORT_OPTIONS[2];
+  const selectedSort =
+    selectedSortOptions[0] ?? EXTENSION_SORT_OPTIONS[2];
 
   return (
     <div className={styles.discoveryBar}>
       <div className={styles.searchGroup}>
-        <GallerySearchBox />
+        <ExtensionSearchBox />
       </div>
       <div className={styles.sortControls}>
         <Label
@@ -79,7 +80,7 @@ export default function ShowcaseResultsToolbar({
           aria-labelledby="extension-sort-label"
           onOptionSelect={onSortSelect}
         >
-          {GALLERY_SORT_OPTIONS.map((option) => (
+          {EXTENSION_SORT_OPTIONS.map((option) => (
             <Option key={option}>{option}</Option>
           ))}
         </Dropdown>

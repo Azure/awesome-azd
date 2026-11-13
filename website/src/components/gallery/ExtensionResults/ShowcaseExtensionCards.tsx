@@ -3,7 +3,6 @@
  * Licensed under the MIT License.
  */
 
-import React from "react";
 import ShowcaseEmptyResult from "../ShowcaseEmptyResult";
 import { type Extension } from "../../../data/extensionTypes";
 import styles from "./styles.module.css";
@@ -16,8 +15,7 @@ export default function ShowcaseExtensionCards({
   filteredExtensions: Extension[];
   onClear: () => void;
 }) {
-  const len = filteredExtensions ? filteredExtensions.length : 0;
-  if (len === 0) {
+  if (filteredExtensions.length === 0) {
     return (
       <ShowcaseEmptyResult
         id="showcase.extensionsList.noResult"
@@ -32,9 +30,10 @@ export default function ShowcaseExtensionCards({
       <div className={styles.showcaseFavorite}>
         <div className={styles.showcaseList} data-testid="showcase-list">
           {filteredExtensions.map((extension) => (
-            <React.Fragment key={extension.id}>
-              <ShowcaseExtensionCard extension={extension} />
-            </React.Fragment>
+            <ShowcaseExtensionCard
+              key={extension.id}
+              extension={extension}
+            />
           ))}
         </div>
       </div>

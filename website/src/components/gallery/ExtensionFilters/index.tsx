@@ -17,10 +17,10 @@ import { captureGalleryNavigationState } from "../../../utils/galleryNavigation"
 import { getExtensionTags } from "../../../utils/galleryTags";
 import { clearSearchFilters } from "../../../utils/galleryQuery";
 import ShowcaseTagSelect from "../ShowcaseTagSelect";
-import ShowcaseFilterSection from "./ShowcaseFilterSection";
+import ExtensionFilterSection from "./ExtensionFilterSection";
 import styles from "./styles.module.css";
 
-const hiddenCollectionTags = new Set<string>([
+const hiddenExtensionTags = new Set<string>([
   "new",
   "popular",
   "aicollection",
@@ -36,17 +36,18 @@ const tagCounts = unsortedExtensions.reduce<Record<string, number>>(
   },
   {},
 );
-const collectionTags = sortedTags.filter(
+const generalTags = sortedTags.filter(
   (tag) =>
     Tags[tag].type === undefined &&
-    !hiddenCollectionTags.has(tag) &&
+    !hiddenExtensionTags.has(tag) &&
     (tagCounts[tag] ?? 0) > 0,
 );
 const capabilityTags = sortedTags.filter(
   (tag) => Tags[tag].type === "Extension Capability",
 );
+const capabilitiesSectionId = "capabilities";
 
-export default function ShowcaseLeftFilters({
+export default function ExtensionFilters({
   activeTags,
   location,
   selectedTags,
@@ -57,7 +58,9 @@ export default function ShowcaseLeftFilters({
   selectedTags: TagType[];
   selectedAuthors: string[];
 }) {
-  const [openItems, setOpenItems] = React.useState<string[]>(["9"]);
+  const [openItems, setOpenItems] = React.useState<string[]>([
+    capabilitiesSectionId,
+  ]);
   const history = useHistory();
   const handleToggle: AccordionToggleEventHandler<string> = (_event, data) => {
     setOpenItems(data.openItems);
@@ -92,7 +95,7 @@ export default function ShowcaseLeftFilters({
             </Button>
           ) : null}
         </div>
-        {collectionTags.map((tag) => (
+        {generalTags.map((tag) => (
           <div
             key={`showcase_checkbox_key_${tag}`}
             className={`${styles.checkboxListItem} ${styles.curatedCheckbox}`}
@@ -110,9 +113,9 @@ export default function ShowcaseLeftFilters({
         ))}
       </div>
       {capabilityTags.length > 0 ? (
-        <ShowcaseFilterSection
+        <ExtensionFilterSection
           title="Capabilities"
-          value="9"
+          value={capabilitiesSectionId}
           tags={capabilityTags}
           activeTags={activeTags}
           selectedTags={selectedTags}

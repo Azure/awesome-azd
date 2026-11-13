@@ -436,6 +436,22 @@ test.describe("Gallery functionality (deploy gate)", () => {
       "background-color",
       mainBackground,
     );
+    for (const card of [getStartedCard, summaryCard]) {
+      expect(
+        await card.evaluate((element) => {
+          const outline = getComputedStyle(element, "::after");
+          return {
+            borderRadius: outline.borderRadius,
+            borderStyle: outline.borderTopStyle,
+            borderWidth: outline.borderTopWidth,
+          };
+        }),
+      ).toEqual({
+        borderRadius: "10px",
+        borderStyle: "solid",
+        borderWidth: "1px",
+      });
+    }
 
     await expect(
       page.locator("header p").filter({

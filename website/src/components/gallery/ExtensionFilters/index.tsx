@@ -16,6 +16,7 @@ import { Tags, type TagType } from "../../../data/tags";
 import { captureGalleryNavigationState } from "../../../utils/galleryNavigation";
 import { getExtensionTags } from "../../../utils/galleryTags";
 import { clearSearchFilters } from "../../../utils/galleryQuery";
+import controlStyles from "../../GalleryControls/styles.module.css";
 import ShowcaseTagSelect from "../ShowcaseTagSelect";
 import ExtensionFilterSection from "./ExtensionFilterSection";
 import styles from "./styles.module.css";
@@ -51,12 +52,10 @@ export default function ExtensionFilters({
   activeTags,
   location,
   selectedTags,
-  selectedAuthors,
 }: {
   activeTags: TagType[];
   location: Location;
   selectedTags: TagType[];
-  selectedAuthors: string[];
 }) {
   const [openItems, setOpenItems] = React.useState<string[]>([
     capabilitiesSectionId,
@@ -84,16 +83,14 @@ export default function ExtensionFilters({
       <div className={styles.filterCollections}>
         <div className={styles.filterTop}>
           <h2 className={styles.filterBy}>Filter extensions</h2>
-          {selectedTags.length > 0 || selectedAuthors.length > 0 ? (
-            <Button
-              appearance="transparent"
-              size="small"
-              className={styles.clearAll}
-              onClick={clearAll}
-            >
-              Clear all
-            </Button>
-          ) : null}
+          <Button
+            appearance="transparent"
+            size="small"
+            className={controlStyles.clearAll}
+            onClick={clearAll}
+          >
+            Clear all
+          </Button>
         </div>
         {generalTags.map((tag) => (
           <div

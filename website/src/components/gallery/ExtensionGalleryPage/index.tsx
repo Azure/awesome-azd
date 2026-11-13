@@ -106,7 +106,6 @@ export default function ExtensionGalleryPage(): React.JSX.Element {
               activeTags={activeTags}
               location={extensionLocation}
               selectedTags={selectedTags}
-              selectedAuthors={selectedAuthors}
             />
           </div>
           <div className={styles.card}>

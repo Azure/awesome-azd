@@ -502,6 +502,7 @@ export default function CatalogPage({
                     <Button
                       appearance="transparent"
                       size="small"
+                      className={controlStyles.clearAll}
                       onClick={clearAll}
                     >
                       Clear all
@@ -530,7 +531,7 @@ export default function CatalogPage({
                   aria-label="Template results"
                 >
                   <div
-                    className={styles.activeFilters}
+                    className={controlStyles.activeFilters}
                     role="group"
                     aria-label="Applied filters"
                   >

@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 import type { LoadContext, Plugin } from "@docusaurus/types";
-import { catalogTemplates } from "../src/catalog/catalogData";
+import { createCatalogTemplates } from "../src/catalog/catalogData";
 import { servicePages } from "../src/catalog/servicePages";
 import { createCatalogPageData } from "../src/catalog/catalogWireFormat";
 import type {
@@ -10,6 +10,53 @@ import type {
 } from "../src/catalog/catalogTypes";
 
 const dataCreationBatchSize = 32;
+
+function getCatalogMetadataPaths(siteDir: string) {
+  return {
+    templates: path.join(siteDir, "static", "templates.json"),
+    reviewedUseCases: path.join(
+      siteDir,
+      "src",
+      "catalog",
+      "template-use-cases.json",
+    ),
+    repositoryMetrics: path.join(
+      siteDir,
+      "src",
+      "catalog",
+      "repository-metrics.generated.json",
+    ),
+  };
+}
+
+async function readJsonFile(filePath: string): Promise<unknown> {
+  const contents = await fs.promises.readFile(filePath, "utf8");
+  try {
+    return JSON.parse(contents) as unknown;
+  } catch (error) {
+    const message =
+      error instanceof Error ? error.message : String(error);
+    throw new Error(`Invalid JSON in '${filePath}': ${message}`);
+  }
+}
+
+export async function loadCatalogTemplates(
+  siteDir: string,
+): Promise<CatalogTemplate[]> {
+  const metadataPaths = getCatalogMetadataPaths(siteDir);
+  const [templates, reviewedUseCases, repositoryMetrics] =
+    await Promise.all([
+      readJsonFile(metadataPaths.templates),
+      readJsonFile(metadataPaths.reviewedUseCases),
+      readJsonFile(metadataPaths.repositoryMetrics),
+    ]);
+
+  return createCatalogTemplates(
+    templates,
+    reviewedUseCases,
+    repositoryMetrics,
+  );
+}
 
 export function dataFileName(prefix: string, value: string): string {
   return `${prefix}-${encodeURIComponent(value)}.json`;
@@ -101,25 +148,13 @@ async function mapInBatches<T, R>(
 
 export default function catalogRouteGenerator(
   context: LoadContext,
-): Plugin<void> {
+): Plugin<CatalogTemplate[]> {
   return {
     name: "catalog-route-generator-plugin",
-    getPathsToWatch: () => [
-      path.join(context.siteDir, "static", "templates.json"),
-      path.join(
-        context.siteDir,
-        "src",
-        "catalog",
-        "template-use-cases.json",
-      ),
-      path.join(
-        context.siteDir,
-        "src",
-        "catalog",
-        "repository-metrics.generated.json",
-      ),
-    ],
-    contentLoaded: async ({ actions }) => {
+    getPathsToWatch: () =>
+      Object.values(getCatalogMetadataPaths(context.siteDir)),
+    loadContent: () => loadCatalogTemplates(context.siteDir),
+    contentLoaded: async ({ content: catalogTemplates, actions }) => {
       const routes = new Map<string, string>();
 
       const addRoute = (

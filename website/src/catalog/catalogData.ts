@@ -115,8 +115,49 @@ const aiServiceIds = new Set([
   "azurebot",
   "openai",
 ]);
-const reviewedUseCases = reviewedTemplateUseCases as Record<string, unknown>;
 const catalogTaskSet = new Set<string>(catalogTasks);
+
+type CatalogBuildContext = {
+  reviewedUseCases: Record<string, unknown>;
+  repositoryMetrics: Parameters<typeof getRepositoryStars>[0];
+};
+
+function readRecord(
+  value: unknown,
+  field: string,
+): Record<string, unknown> {
+  if (
+    typeof value !== "object" ||
+    value === null ||
+    Array.isArray(value)
+  ) {
+    throw new Error(`Catalog metadata is missing a valid '${field}' object.`);
+  }
+  return value as Record<string, unknown>;
+}
+
+function readRepositoryMetrics(
+  value: unknown,
+): Parameters<typeof getRepositoryStars>[0] {
+  const record = readRecord(value, "repositoryMetrics");
+  const repositories = record.repositories;
+  if (
+    repositories !== undefined &&
+    (typeof repositories !== "object" ||
+      repositories === null ||
+      Array.isArray(repositories))
+  ) {
+    throw new Error(
+      "Catalog metadata has an invalid 'repositoryMetrics.repositories' object.",
+    );
+  }
+
+  return {
+    repositories: repositories as
+      | Record<string, { stars?: unknown }>
+      | undefined,
+  };
+}
 
 function readString(value: unknown, field: string): string {
   if (typeof value !== "string" || value.trim().length === 0) {
@@ -236,7 +277,10 @@ function getAuthorship(
   return "Community";
 }
 
-function getReviewedUseCases(normalizedSource: string): CatalogTask[] {
+function getReviewedUseCases(
+  normalizedSource: string,
+  reviewedUseCases: Record<string, unknown>,
+): CatalogTask[] {
   const value = reviewedUseCases[normalizedSource];
   if (
     !Array.isArray(value) ||
@@ -288,7 +332,10 @@ function getResourceRole(id: string): string {
   return "Azure service";
 }
 
-function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
+function toCatalogTemplate(
+  record: RawTemplate,
+  context: CatalogBuildContext,
+): CatalogTemplate | null {
   const templateType = readOptionalString(record.templateType);
   if (templateType !== undefined) {
     return null;
@@ -411,7 +458,10 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     return result;
   }, []);
   const authorship = getAuthorship(coordinates.owner, authors, tags);
-  const tasks = getReviewedUseCases(coordinates.normalizedSource);
+  const tasks = getReviewedUseCases(
+    coordinates.normalizedSource,
+    context.reviewedUseCases,
+  );
   const initCommand = formatAzdInitCommand(getTemplateIdentifier(source));
   const readmeUrl = `${source}#readme`;
   const primaryService =
@@ -471,7 +521,7 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     authorship,
     isAi,
     featured: tags.includes("featured"),
-    stars: getRepositoryStars(repositoryMetrics, source),
+    stars: getRepositoryStars(context.repositoryMetrics, source),
     tasks,
     collections: isAi ? ["ai"] : [],
     legacyTags,
@@ -500,7 +550,31 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
   };
 }
 
-export const catalogTemplates = (templates as RawTemplate[])
-  .map(toCatalogTemplate)
-  .filter((template): template is CatalogTemplate => template !== null);
+export function createCatalogTemplates(
+  rawTemplates: unknown,
+  rawReviewedUseCases: unknown,
+  rawRepositoryMetrics: unknown,
+): CatalogTemplate[] {
+  if (!Array.isArray(rawTemplates)) {
+    throw new Error("Catalog metadata is missing a valid 'templates' array.");
+  }
+
+  const context: CatalogBuildContext = {
+    reviewedUseCases: readRecord(
+      rawReviewedUseCases,
+      "reviewedUseCases",
+    ),
+    repositoryMetrics: readRepositoryMetrics(rawRepositoryMetrics),
+  };
+
+  return (rawTemplates as RawTemplate[])
+    .map((template) => toCatalogTemplate(template, context))
+    .filter((template): template is CatalogTemplate => template !== null);
+}
+
+export const catalogTemplates = createCatalogTemplates(
+  templates,
+  reviewedTemplateUseCases,
+  repositoryMetrics,
+);
 

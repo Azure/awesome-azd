@@ -5,6 +5,7 @@
 
 import { describe, expect, test } from "@jest/globals";
 import * as fs from "fs";
+import * as os from "os";
 import * as path from "path";
 import templates from "../static/templates.json";
 import {
@@ -27,6 +28,7 @@ import {
 } from "../src/catalog/catalogQuery";
 import {
   dataFileName,
+  loadCatalogTemplates,
   resolveDetailAsset,
 } from "../route_generator_plugin/catalogRouteGenerator";
 import {
@@ -37,6 +39,70 @@ import {
 const websiteRoot = path.resolve(__dirname, "..");
 
 describe("unified catalog data", () => {
+  test("reloads watched metadata from disk", async () => {
+    const siteDir = fs.mkdtempSync(
+      path.join(os.tmpdir(), "awesome-azd-catalog-"),
+    );
+    const staticDir = path.join(siteDir, "static");
+    const catalogDir = path.join(siteDir, "src", "catalog");
+    const source = "https://github.com/example/reloadable-template";
+    fs.mkdirSync(staticDir, { recursive: true });
+    fs.mkdirSync(catalogDir, { recursive: true });
+
+    const writeMetadata = (
+      title: string,
+      task: "Build a web app" | "Build an API",
+      stars: number,
+    ) => {
+      fs.writeFileSync(
+        path.join(staticDir, "templates.json"),
+        JSON.stringify([
+          {
+            id: "reloadable-template",
+            title,
+            description: "Reloadable catalog metadata.",
+            source,
+            author: "Example",
+            tags: [],
+          },
+        ]),
+      );
+      fs.writeFileSync(
+        path.join(catalogDir, "template-use-cases.json"),
+        JSON.stringify({ [source]: [task] }),
+      );
+      fs.writeFileSync(
+        path.join(catalogDir, "repository-metrics.generated.json"),
+        JSON.stringify({
+          repositories: {
+            "example/reloadable-template": { stars },
+          },
+        }),
+      );
+    };
+
+    try {
+      writeMetadata("Initial title", "Build a web app", 1);
+      const initialCatalog = await loadCatalogTemplates(siteDir);
+
+      writeMetadata("Updated title", "Build an API", 2);
+      const updatedCatalog = await loadCatalogTemplates(siteDir);
+
+      expect(initialCatalog[0]).toMatchObject({
+        title: "Initial title",
+        tasks: ["Build a web app"],
+        stars: 1,
+      });
+      expect(updatedCatalog[0]).toMatchObject({
+        title: "Updated title",
+        tasks: ["Build an API"],
+        stars: 2,
+      });
+    } finally {
+      fs.rmSync(siteDir, { recursive: true, force: true });
+    }
+  });
+
   test("does not expose prerequisite metadata or prerequisite-only tags", () => {
     expect(
       (templates as unknown as Array<Record<string, unknown>>).filter(

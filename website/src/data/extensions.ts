@@ -8,6 +8,8 @@ import { type Extension } from './extensionTypes';
 import extensionsData from '../../static/extensions.json';
 
 const SAFE_EXTENSION_ID = /^[a-zA-Z0-9@][a-zA-Z0-9._@-]*$/;
+const SAFE_REGISTRY_URL =
+  /^https:\/\/raw\.githubusercontent\.com\/[a-zA-Z0-9._/-]+$/i;
 const SAFE_REGISTRY_PATH = /^\/[a-zA-Z0-9._/-]+$/;
 const CONTROL_CHARACTERS = /[\u0000-\u001f\u007f]/;
 
@@ -34,7 +36,7 @@ function isSafeHttpsUrl(value: unknown): value is string {
 }
 
 function isSafeRegistryUrl(value: unknown): value is string {
-  if (!isSafeHttpsUrl(value)) {
+  if (!isSafeHttpsUrl(value) || !SAFE_REGISTRY_URL.test(value)) {
     return false;
   }
 

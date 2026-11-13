@@ -68,6 +68,10 @@ describe("extension metadata validation", () => {
       "registryUrl",
       "https://raw.githubusercontent.com/example/extensions/main/registry.json;calc",
     ],
+    [
+      "registryUrl",
+      "https://raw.githubusercontent.com/$(printf INJECTED)/../example/extensions/main/registry.json",
+    ],
   ] as const)("rejects an unsafe %s", (field, value) => {
     const warn = jest.spyOn(console, "warn").mockImplementation(() => {});
 

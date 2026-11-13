@@ -56,8 +56,8 @@
   },
   {
     "id": "azure.ai.agents",
-    "displayName": "Foundry agents (Beta)",
-    "description": "Ship agents with Microsoft Foundry from your terminal. (Beta)",
+    "displayName": "Foundry agents",
+    "description": "Ship prompt, hosted, and voice agents with Microsoft Foundry from your terminal.",
     "author": "Foundry Team",
     "authorUrl": "https://github.com/Azure",
     "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.agents",
@@ -146,8 +146,8 @@
   },
   {
     "id": "azure.ai.inspector",
-    "displayName": "Foundry Agent Inspector (Beta)",
-    "description": "Browser-based inspector UI for locally running Foundry agents. (Beta)",
+    "displayName": "Foundry Agent Inspector",
+    "description": "Browser-based inspector UI for locally running Foundry agents.",
     "author": "Foundry Team",
     "authorUrl": "https://github.com/Azure",
     "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.inspector",
@@ -164,8 +164,8 @@
   },
   {
     "id": "microsoft.foundry",
-    "displayName": "Microsoft Foundry (Beta)",
-    "description": "A meta-package, bundling together all of the Microsoft Foundry AZD extensions for easy install. (Beta)",
+    "displayName": "Microsoft Foundry",
+    "description": "A meta-package, bundling together all of the Microsoft Foundry AZD extensions for easy install.",
     "author": "Foundry Team",
     "authorUrl": "https://github.com/Azure",
     "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/microsoft.foundry",
@@ -179,8 +179,8 @@
   },
   {
     "id": "azure.ai.connections",
-    "displayName": "Foundry Connections (Beta)",
-    "description": "Manage Microsoft Foundry Connections from your terminal. (Beta)",
+    "displayName": "Foundry Connections",
+    "description": "Manage Microsoft Foundry Connections from your terminal.",
     "author": "Foundry Team",
     "authorUrl": "https://github.com/Azure",
     "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.connections",
@@ -198,8 +198,8 @@
   },
   {
     "id": "azure.ai.projects",
-    "displayName": "Foundry Projects (Beta)",
-    "description": "Manage Microsoft Foundry Project resources from your terminal. (Beta)",
+    "displayName": "Foundry Projects",
+    "description": "Manage Microsoft Foundry Project resources from your terminal.",
     "author": "Foundry Team",
     "authorUrl": "https://github.com/Azure",
     "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.projects",
@@ -220,8 +220,8 @@
   },
   {
     "id": "azure.ai.routines",
-    "displayName": "Foundry Routines (Beta)",
-    "description": "Manage Microsoft Foundry Routines from your terminal. (Beta)",
+    "displayName": "Foundry Routines",
+    "description": "Manage Microsoft Foundry Routines from your terminal.",
     "author": "Foundry Team",
     "authorUrl": "https://github.com/Azure",
     "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.routines",
@@ -239,8 +239,8 @@
   },
   {
     "id": "azure.ai.skills",
-    "displayName": "Foundry skills (Beta)",
-    "description": "Manage Microsoft Foundry skills (reusable agent behavioral guidelines) from your terminal. (Beta)",
+    "displayName": "Foundry skills",
+    "description": "Manage Microsoft Foundry skills (reusable agent behavioral guidelines) from your terminal.",
     "author": "Foundry Team",
     "authorUrl": "https://github.com/Azure",
     "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.skills",
@@ -258,8 +258,8 @@
   },
   {
     "id": "azure.ai.toolboxes",
-    "displayName": "Foundry Toolboxes (Beta)",
-    "description": "Manage Microsoft Foundry Toolboxes from your terminal. (Beta)",
+    "displayName": "Foundry Toolboxes",
+    "description": "Manage Microsoft Foundry Toolboxes from your terminal.",
     "author": "Foundry Team",
     "authorUrl": "https://github.com/Azure",
     "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.toolboxes",
@@ -273,6 +273,64 @@
       "msft",
       "ai",
       "aifoundry"
+    ]
+  },
+  {
+    "id": "azure.ai.content-understanding",
+    "displayName": "Azure Content Understanding (Preview)",
+    "description": "Extension for Azure Content Understanding. (Preview)",
+    "author": "Foundry Team",
+    "authorUrl": "https://github.com/Azure",
+    "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.content-understanding",
+    "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
+    "capabilities": [
+      "custom-commands",
+      "metadata"
+    ],
+    "tags": [
+      "msft",
+      "ai",
+      "aifoundry",
+      "new"
+    ]
+  },
+  {
+    "id": "azure.ai.dataset",
+    "displayName": "Foundry datasets (Beta)",
+    "description": "Register and version Foundry datasets from your terminal. (Beta)",
+    "author": "Foundry Team",
+    "authorUrl": "https://github.com/Azure",
+    "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.dataset",
+    "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
+    "capabilities": [
+      "custom-commands",
+      "metadata"
+    ],
+    "tags": [
+      "msft",
+      "ai",
+      "aifoundry",
+      "new"
+    ]
+  },
+  {
+    "id": "azure.ai.evaluations",
+    "displayName": "Foundry evaluations (Beta)",
+    "description": "Define and run Foundry evaluations from your terminal. (Beta)",
+    "author": "Foundry Team",
+    "authorUrl": "https://github.com/Azure",
+    "source": "https://github.com/Azure/azure-dev/tree/main/cli/azd/extensions/azure.ai.evaluations",
+    "registryUrl": "https://raw.githubusercontent.com/Azure/azure-dev/main/cli/azd/extensions/registry.json",
+    "capabilities": [
+      "custom-commands",
+      "service-target-provider",
+      "metadata"
+    ],
+    "tags": [
+      "msft",
+      "ai",
+      "aifoundry",
+      "new"
     ]
   }
 ]

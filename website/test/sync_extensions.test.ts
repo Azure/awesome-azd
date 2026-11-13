@@ -12,7 +12,14 @@ const {
 } = require('../scripts/sync-extensions');
 const { readExtensionRegistry } = require('../scripts/read-extension-registry');
 
-const showResult = {
+const currentShowResult = {
+  id: 'microsoft.azd.test',
+  name: 'Test extension',
+  description: 'Test description',
+  capabilities: ['custom-commands'],
+};
+
+const legacyShowResult = {
   Id: 'microsoft.azd.test',
   Name: 'Test extension',
   Description: 'Test description',
@@ -20,7 +27,10 @@ const showResult = {
 };
 
 describe('Extension catalog synchronization', () => {
-  test('reads extension metadata through azd validation, list, and show', () => {
+  test.each([
+    ['current lowercase', currentShowResult],
+    ['legacy PascalCase', legacyShowResult],
+  ])('reads %s extension metadata through azd validation, list, and show', (_, showResult) => {
     const commands: string[][] = [];
     const execute = (args: string[]) => {
       commands.push(args);
@@ -61,13 +71,11 @@ describe('Extension catalog synchronization', () => {
     );
   });
 
-  // `azd extension show` marshals its result without JSON struct tags, so its
-  // key names are an incidental contract that a future azd release could change
-  // without notice. That must fail loudly rather than produce a catalog with
-  // missing display names or descriptions.
+  // Required metadata must still fail closed after supporting both known output
+  // shapes rather than silently falling back to incomplete catalog entries.
   test.each([
-    ['display name', { ...showResult, Name: '' }],
-    ['description', { ...showResult, Description: undefined }],
+    ['display name', { ...currentShowResult, name: '' }],
+    ['description', { ...currentShowResult, description: undefined }],
   ])('rejects azd show output missing a %s', (field, details) => {
     const execute = (args: string[]) => {
       if (args[1] === 'source') return { valid: true };
@@ -77,6 +85,21 @@ describe('Extension catalog synchronization', () => {
 
     expect(() => readExtensionRegistry(BUILT_IN_REGISTRY_URL, execute)).toThrow(
       `azd returned no ${field} for extension "microsoft.azd.test"`,
+    );
+  });
+
+  test.each([
+    ['current lowercase', { ...currentShowResult, capabilities: 'metadata' }],
+    ['legacy PascalCase', { ...legacyShowResult, Capabilities: 'metadata' }],
+  ])('rejects non-array capabilities in %s output', (_, details) => {
+    const execute = (args: string[]) => {
+      if (args[1] === 'source') return { valid: true };
+      if (args[1] === 'list') return [{ id: 'microsoft.azd.test' }];
+      return details;
+    };
+
+    expect(() => readExtensionRegistry(BUILT_IN_REGISTRY_URL, execute)).toThrow(
+      'azd returned non-array capabilities for extension "microsoft.azd.test"',
     );
   });
 

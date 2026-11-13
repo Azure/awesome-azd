@@ -5,12 +5,12 @@
 
 import React from "react";
 import Layout from "@theme/Layout";
-import GalleryPage from "../components/gallery/GalleryPage";
+import ExtensionGalleryPage from "../components/gallery/ExtensionGalleryPage";
 
 export default function Extensions(): React.JSX.Element {
   return (
     <Layout>
-      <GalleryPage />
+      <ExtensionGalleryPage />
     </Layout>
   );
 }

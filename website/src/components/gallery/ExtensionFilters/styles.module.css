@@ -1,0 +1,104 @@
+/**
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
+ */
+
+.filterAccordion {
+  width: 100%;
+}
+
+.filterCollections {
+  padding-bottom: 6px;
+}
+
+.filterTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.filterBy {
+  margin: 0;
+  color: var(--catalog-ink);
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.clearAll.clearAll {
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--catalog-blue);
+  font: inherit;
+  font-size: 0.72rem;
+  text-decoration: underline;
+}
+
+.checkboxListItem {
+  width: 100%;
+}
+
+.curatedCheckbox {
+  padding-left: 0;
+}
+
+.categoryItem {
+  border-bottom: 1px solid var(--catalog-line);
+}
+
+.categoryHeader.categoryHeader {
+  width: 100%;
+}
+
+.categoryHeader :global(.fui-AccordionHeader__button) {
+  width: 100%;
+  min-height: 0;
+  gap: 8px;
+  padding: 15px 0;
+  color: var(--catalog-ink);
+  font-size: 0.76rem;
+  font-weight: 600;
+}
+
+.categoryHeader :global(.fui-AccordionHeader__expandIcon) {
+  display: none;
+}
+
+.categoryToggle {
+  margin-left: auto;
+  color: var(--catalog-muted);
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+.categoryToggle::before {
+  content: "+";
+}
+
+.categoryHeader
+  :global(.fui-AccordionHeader__button[aria-expanded="true"])
+  .categoryToggle::before {
+  content: "−";
+}
+
+.categoryTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.filterCount {
+  color: var(--catalog-muted);
+  font: 0.6rem var(--ifm-font-family-monospace);
+}
+
+.categoryPanel.categoryPanel {
+  padding: 0 0 14px;
+  margin: 0;
+}

@@ -4,17 +4,7 @@
  */
 
 import type { Extension } from "../data/extensionTypes";
-import type { TagType, Template } from "../data/tags";
-
-export function getTemplateTags(template: Template): TagType[] {
-  return [
-    ...(template.tags || []),
-    ...(template.languages || []),
-    ...(template.frameworks || []),
-    ...(template.azureServices || []),
-    ...(template.IaC || []),
-  ];
-}
+import type { TagType } from "../data/tags";
 
 export function getExtensionTags(extension: Extension): TagType[] {
   return [

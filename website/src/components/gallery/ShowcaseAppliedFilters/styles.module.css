@@ -18,7 +18,7 @@
 .filterBadge {
   min-height: 28px;
   padding: 6px 10px !important;
-  border-color: var(--catalog-border) !important;
+  border-color: var(--catalog-line) !important;
   border-radius: 999px !important;
   background: var(--colorBrandBackground2, #ebf3fc) !important;
   color: var(--catalog-blue) !important;
@@ -40,6 +40,6 @@
 }
 
 [data-theme="dark"] .filterBadge {
-  border-color: var(--catalog-border) !important;
+  border-color: var(--catalog-line) !important;
   background: var(--colorBrandBackground2, #0b3a5b) !important;
 }

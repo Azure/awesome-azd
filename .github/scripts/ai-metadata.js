@@ -6,7 +6,7 @@
  * and structured metadata generation.
  */
 
-// Valid tags from website/src/data/tags.tsx grouped by category
+// Valid tags from website/src/data/tags.ts grouped by category
 const VALID_TAGS = {
   languages: [
     "javascript", "typescript", "dotnetCsharp", "java", "python",

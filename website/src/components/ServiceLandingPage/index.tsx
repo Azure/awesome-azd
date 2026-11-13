@@ -14,7 +14,7 @@ import {
   webLightTheme,
   webDarkTheme,
 } from "@fluentui/react-components";
-import type { CatalogTemplate } from "@site/src/catalog/catalogData";
+import type { CatalogTemplate } from "@site/src/catalog/catalogTypes";
 import type { ServicePageConfig } from "@site/src/catalog/servicePages";
 import styles from "./styles.module.css";
 

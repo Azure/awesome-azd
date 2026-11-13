@@ -541,11 +541,27 @@ test.describe("Gallery functionality (deploy gate)", () => {
       .getByRole("table", { name: "Resources included" })
       .locator("tbody img")
       .first();
+    const resourceTable = page.getByRole("table", {
+      name: "Resources included",
+    });
     await expect(
-      page
-        .getByRole("table", { name: "Resources included" })
-        .getByRole("link"),
+      resourceTable.getByRole("link"),
     ).toHaveCount(0);
+    await expect(resourceTable.locator("tbody tr").nth(1)).toHaveCSS(
+      "background-color",
+      "rgba(0, 0, 0, 0)",
+    );
+    await expect(resourceTable.locator("tbody td").first()).toHaveCSS(
+      "border-right-width",
+      "0px",
+    );
+    await expect(resourceTable.locator("tbody td").nth(1)).toHaveCSS(
+      "font-size",
+      "16px",
+    );
+    await expect(
+      resourceTable.locator(".fui-TableCellLayout").first(),
+    ).toHaveCSS("gap", "16px");
     expect(
       await firstResourceIcon.evaluate(
         (element) => element.getBoundingClientRect().width,

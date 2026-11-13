@@ -3,7 +3,6 @@
  * Licensed under the MIT License.
  */
 
-import React from "react";
 import GettingStartedPage from "./getting-started";
 
 export default function HomePage() {

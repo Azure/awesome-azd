@@ -18,33 +18,20 @@ import useIsBrowser from "@docusaurus/useIsBrowser";
 import Layout from "@theme/Layout";
 import {
   Button,
-  Card,
-  Checkbox,
   Dropdown,
   Label,
   Option,
   SearchBox,
 } from "@fluentui/react-components";
-import {
-  Copy16Regular,
-  Sparkle16Regular,
-  Star16Regular,
-} from "@fluentui/react-icons";
-import {
-  catalogTemplates,
-  type CatalogTemplate,
-} from "../../../catalog/catalogData";
+import type { CatalogListingTemplate } from "../../../catalog/catalogTypes";
 import {
   catalogFacets,
   clearCatalogState,
   getFacetLabel,
-  getFacetOptions,
-  getFacetValueCounts,
-  getMatchingCatalogTemplates,
   parseCatalogState,
+  queryCatalog,
   serializeCatalogState,
   sortCatalogTemplates,
-  type CatalogFacet,
   type CatalogFacetKey,
   type CatalogSort,
   type CatalogState,
@@ -55,20 +42,31 @@ import {
   restoreGalleryNavigationState,
   type GalleryNavigationState,
 } from "../../../utils/galleryNavigation";
+import { serializeStructuredData } from "../../../utils/structuredData";
+import controlStyles from "../../GalleryControls/styles.module.css";
 import SiteFluentProvider from "../../SiteFluentProvider";
-import CopyAction from "../CopyAction";
-import { RepositoryStarCount } from "./RepositoryStarCount";
+import FacetSection from "./FacetSection";
+import TemplateCard from "./TemplateCard";
 import styles from "./styles.module.css";
 
 const itemsPerPage = 20;
 const canonicalUrl = "https://azure.github.io/awesome-azd/templates";
 const catalogJsonUrl = "https://aka.ms/awesome-azd/templates.json";
-const sourceOrder = new Map(
-  catalogTemplates.map((template, index) => [
-    template.normalizedSource,
-    index,
-  ]),
-);
+const catalogTitle = "Templates | Azure Developer CLI";
+const catalogDescription =
+  "Discover, understand, and start with an Azure Developer CLI template.";
+const catalogStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Azure Developer CLI templates",
+  description: catalogDescription,
+  url: canonicalUrl,
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${canonicalUrl}?q={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
+};
 const catalogSortOptions: ReadonlyArray<{
   value: CatalogSort;
   label: string;
@@ -83,245 +81,6 @@ const catalogSortLabels: Record<CatalogSort, string> = {
   az: "Alphabetical (A - Z)",
   za: "Alphabetical (Z - A)",
 };
-
-function AiIcon(): React.JSX.Element {
-  return <Sparkle16Regular className={styles.aiIcon} aria-hidden="true" />;
-}
-
-function StarIcon(): React.JSX.Element {
-  return <Star16Regular aria-hidden="true" />;
-}
-
-function CopyIcon(): React.JSX.Element {
-  return <Copy16Regular aria-hidden="true" />;
-}
-
-function FacetSection({
-  facet,
-  state,
-  onChange,
-}: {
-  facet: CatalogFacet;
-  state: CatalogState;
-  onChange: (
-    key: CatalogFacetKey,
-    value: string,
-    checked: boolean,
-  ) => void;
-}): React.JSX.Element | null {
-  const selected = state[facet.key];
-  const [open, setOpen] = useState(
-    facet.open === true || selected.length > 0,
-  );
-  const options = useMemo(
-    () => getFacetOptions(catalogTemplates, facet),
-    [facet],
-  );
-  const valueCounts = useMemo(
-    () => getFacetValueCounts(catalogTemplates, state, facet),
-    [facet, state],
-  );
-
-  useEffect(() => {
-    if (selected.length > 0) {
-      setOpen(true);
-    }
-  }, [selected.length]);
-
-  const optionsWithCounts = useMemo(
-    () =>
-      options
-        .map((value) => ({
-          value,
-          count: valueCounts.get(value) ?? 0,
-        }))
-        .filter(
-          ({ value, count }) =>
-            count > 0 || selected.includes(value),
-        ),
-    [options, selected, valueCounts],
-  );
-
-  if (optionsWithCounts.length === 0) {
-    return null;
-  }
-
-  return (
-    <details
-      className={styles.facet}
-      open={open}
-      onToggle={(event) => {
-        setOpen(event.currentTarget.open);
-      }}
-    >
-      <summary>
-        {facet.label}
-        <span title="Filter items">{optionsWithCounts.length}</span>
-      </summary>
-      <fieldset>
-        <legend className={styles.visuallyHidden}>{facet.label}</legend>
-        {optionsWithCounts.map(({ value, count }) => {
-          const label = getFacetLabel(facet, value);
-          const id = `catalog-${facet.key}-${value
-            .toLowerCase()
-            .replace(/[^a-z0-9]+/g, "-")}`;
-
-          const checked = selected.includes(value);
-
-          return (
-            <Checkbox
-              key={value}
-              id={id}
-              value={value}
-              className={`${styles.filterOption} ${
-                checked ? styles.filterOptionSelected : ""
-              }`}
-              checked={checked}
-              onChange={(_event, data) => {
-                onChange(facet.key, value, data.checked === true);
-              }}
-              label={
-                <>
-                  <span className={styles.filterValue}>
-                    {facet.key === "types" && value === "ai" ? (
-                      <AiIcon />
-                    ) : null}
-                    <span>{label}</span>
-                  </span>
-                  <small>{count}</small>
-                </>
-              }
-            />
-          );
-        })}
-      </fieldset>
-    </details>
-  );
-}
-
-function TemplateCard({
-  template,
-  onNavigate,
-}: {
-  template: CatalogTemplate;
-  onNavigate: (detailUrl: string) => void;
-}): React.JSX.Element {
-  const microsoftIcon = useBaseUrl("/img/Microsoft.svg");
-  const communityIcon = useBaseUrl("/img/Community.svg");
-  const detailUrl = useBaseUrl(template.detailPath);
-  const service =
-    template.resources.find(
-      (resource) => resource.role === "Application hosting",
-    )?.label ??
-    template.host ??
-    template.services[0];
-  const cardTags = [
-    ...(template.languages.length > 0
-      ? template.languages
-      : ["Bring your own code"]),
-    ...template.iac.slice(0, 1),
-    ...(service ? [service] : []),
-  ];
-  const headingId = `template-${template.id}`;
-
-  return (
-    <Card
-      appearance="outline"
-      focusMode="off"
-      role="article"
-      className={`${styles.card} ${
-        template.featured ? styles.promotedCard : ""
-      }`}
-      data-template-card
-    >
-      <Link
-        id={`${headingId}-link`}
-        className={styles.cardLink}
-        to={detailUrl}
-        aria-labelledby={headingId}
-        data-template-title={template.title}
-        onClick={(event) => {
-          if (
-            event.defaultPrevented ||
-            event.button !== 0 ||
-            event.ctrlKey ||
-            event.metaKey ||
-            event.shiftKey ||
-            event.altKey
-          ) {
-            return;
-          }
-          event.preventDefault();
-          onNavigate(detailUrl);
-        }}
-      >
-        <div className={styles.cardTop}>
-          <span className={styles.cardAuthor}>
-            <img
-              src={
-                template.authorship === "Microsoft"
-                  ? microsoftIcon
-                  : communityIcon
-              }
-              width="14"
-              height="14"
-              alt=""
-              aria-hidden="true"
-            />
-            {template.authorship} Authored
-          </span>
-          {template.featured ? (
-            <span className={styles.featuredBadge}>
-              <StarIcon />
-              Featured
-            </span>
-          ) : null}
-        </div>
-        <h2 id={headingId}>
-          {template.isAi ? (
-            <span
-              className={styles.cardAi}
-              title="AI application"
-            >
-              <AiIcon />
-              <span className={styles.visuallyHidden}>
-                AI application:{" "}
-              </span>
-            </span>
-          ) : null}
-          {template.title}
-        </h2>
-        <p className={styles.cardSummary}>{template.description}</p>
-        <div className={styles.cardMeta}>
-          <div className={styles.cardTags} data-template-tags>
-            {cardTags.map((tag) => (
-              <span key={tag} className={styles.tag}>
-                {tag}
-              </span>
-            ))}
-          </div>
-          <RepositoryStarCount
-            stars={template.stars}
-            icon={<StarIcon />}
-            className={styles.repoStats}
-            statClassName={styles.repoStat}
-          />
-        </div>
-      </Link>
-      <div className={styles.cardCommand}>
-        <code title={template.initCommand}>{template.initCommand}</code>
-        <CopyAction
-          value={template.initCommand}
-          idleLabel={`Copy init command for ${template.title}`}
-          copiedLabel={`Copied init command for ${template.title}`}
-          className={styles.copyCommand}
-        >
-          <CopyIcon />
-        </CopyAction>
-      </div>
-    </Card>
-  );
-}
 
 function getPaginationItems(
   currentPage: number,
@@ -355,7 +114,11 @@ function getPaginationItems(
   ];
 }
 
-export default function CatalogPage(): React.JSX.Element {
+export default function CatalogPage({
+  templates,
+}: {
+  templates: readonly CatalogListingTemplate[];
+}): React.JSX.Element {
   const history = useHistory();
   const location = useLocation();
   const isBrowser = useIsBrowser();
@@ -363,13 +126,23 @@ export default function CatalogPage(): React.JSX.Element {
   const resultsRef = useRef<HTMLElement>(null);
   const hydrationSafeSearch = isBrowser ? location.search : "";
   const state = useMemo(
-    () => parseCatalogState(hydrationSafeSearch, catalogTemplates),
-    [hydrationSafeSearch],
+    () => parseCatalogState(hydrationSafeSearch, templates),
+    [hydrationSafeSearch, templates],
   );
   const [searchValue, setSearchValue] = useState(state.q);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const startWithCodeUrl = useBaseUrl("/templates/start-with-code");
   const llmsUrl = useBaseUrl("/llms.txt");
+  const sourceOrder = useMemo(
+    () =>
+      new Map(
+        templates.map((template, index) => [
+          template.id,
+          index,
+        ]),
+      ),
+    [templates],
+  );
 
   const pushState = useCallback(
     (nextState: CatalogState) => {
@@ -506,18 +279,18 @@ export default function CatalogPage(): React.JSX.Element {
     };
   }, [pushState, searchValue, state]);
 
-  const matchingTemplates = useMemo(
-    () => getMatchingCatalogTemplates(catalogTemplates, state),
-    [state],
+  const queryResult = useMemo(
+    () => queryCatalog(templates, state),
+    [templates, state],
   );
   const sortedTemplates = useMemo(
     () =>
       sortCatalogTemplates(
-        matchingTemplates,
+        queryResult.templates,
         state,
         sourceOrder,
       ),
-    [matchingTemplates, state],
+    [queryResult.templates, sourceOrder, state],
   );
   const totalItems = sortedTemplates.length;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
@@ -564,13 +337,27 @@ export default function CatalogPage(): React.JSX.Element {
   return (
     <>
       <Head>
-        <title>Templates | Azure Developer CLI</title>
+        <title>{catalogTitle}</title>
         <link rel="canonical" href={canonicalUrl} />
         <link rel="describedby" href={llmsUrl} />
-        <meta
-          name="description"
-          content="Discover, understand, and start with an Azure Developer CLI template."
+        <link
+          rel="alternate"
+          type="application/json"
+          href={catalogJsonUrl}
+          title="Azure Developer CLI template catalog"
         />
+        <meta name="description" content={catalogDescription} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Awesome azd" />
+        <meta property="og:title" content={catalogTitle} />
+        <meta property="og:description" content={catalogDescription} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={catalogTitle} />
+        <meta name="twitter:description" content={catalogDescription} />
+        <script type="application/ld+json">
+          {serializeStructuredData(catalogStructuredData)}
+        </script>
       </Head>
       <Layout>
         <SiteFluentProvider className={styles.fluentProvider}>
@@ -606,7 +393,7 @@ export default function CatalogPage(): React.JSX.Element {
                   <SearchBox
                     ref={searchInputRef}
                     id="catalog-search"
-                    className={styles.search}
+                    className={controlStyles.search}
                     appearance="outline"
                     size="medium"
                     aria-label="Search templates"
@@ -633,7 +420,7 @@ export default function CatalogPage(): React.JSX.Element {
                 </form>
                 <div className={styles.sortGroup}>
                   <Label
-                    className={styles.sortLabel}
+                    className={controlStyles.sortLabel}
                     htmlFor="catalog-sort"
                     size="small"
                     weight="semibold"
@@ -642,7 +429,7 @@ export default function CatalogPage(): React.JSX.Element {
                   </Label>
                   <Dropdown
                     id="catalog-sort"
-                    className={styles.sortControl}
+                    className={controlStyles.sortControl}
                     appearance="outline"
                     size="medium"
                     clearable={false}
@@ -726,7 +513,12 @@ export default function CatalogPage(): React.JSX.Element {
                       <FacetSection
                         key={facet.key}
                         facet={facet}
+                        records={templates}
                         state={state}
+                        valueCounts={
+                          queryResult.facetCounts.get(facet.key) ??
+                          new Map()
+                        }
                         onChange={changeFacet}
                       />
                     ))}
@@ -885,7 +677,7 @@ export default function CatalogPage(): React.JSX.Element {
                   approve commands before they run.
                 </p>
                 <small>
-                  {catalogTemplates.length} public templates from the live
+                  {templates.length} public templates from the live
                   catalog.
                 </small>
               </div>

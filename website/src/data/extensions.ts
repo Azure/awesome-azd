@@ -7,90 +7,144 @@ import { sortBy } from '../utils/jsUtils';
 import { type Extension } from './extensionTypes';
 import extensionsData from '../../static/extensions.json';
 
-// SECURITY: Regex for safe extension ids — only allow alphanumeric, dots,
-// hyphens, underscores, and at-signs. Ids are used to build the rendered
-// `azd ext install <id>` command displayed on cards, so they must reject
-// shell metacharacters (;|&$`\) and whitespace to prevent command injection
-// if a user copy-pastes the rendered text into a terminal.
-const SAFE_EXTENSION_ID = /^[a-zA-Z0-9.\-_@]+$/;
+const SAFE_EXTENSION_ID = /^[a-zA-Z0-9@][a-zA-Z0-9._@-]*$/;
+const SAFE_REGISTRY_URL =
+  /^https:\/\/raw\.githubusercontent\.com\/[a-zA-Z0-9._/-]+$/i;
+const SAFE_REGISTRY_PATH = /^\/[a-zA-Z0-9._/-]+$/;
+const CONTROL_CHARACTERS = /[\u0000-\u001f\u007f]/;
 
-function validateExtensions(raw: unknown): Extension[] {
+function isSafeHttpsUrl(value: unknown): value is string {
+  if (
+    typeof value !== 'string' ||
+    !value ||
+    CONTROL_CHARACTERS.test(value)
+  ) {
+    return false;
+  }
+
+  try {
+    const url = new URL(value);
+    return (
+      url.protocol === 'https:' &&
+      !url.username &&
+      !url.password &&
+      !url.port
+    );
+  } catch {
+    return false;
+  }
+}
+
+function isSafeRegistryUrl(value: unknown): value is string {
+  if (!isSafeHttpsUrl(value) || !SAFE_REGISTRY_URL.test(value)) {
+    return false;
+  }
+
+  const url = new URL(value);
+  return (
+    url.hostname.toLowerCase() === 'raw.githubusercontent.com' &&
+    !url.search &&
+    !url.hash &&
+    SAFE_REGISTRY_PATH.test(url.pathname)
+  );
+}
+
+export function validateExtensions(raw: unknown): Extension[] {
   if (!Array.isArray(raw)) {
     console.warn('Extensions data is not an array, returning empty list');
     return [];
   }
-  return (raw as Record<string, unknown>[]).filter((entry, i) => {
+
+  return raw.flatMap((entry, i) => {
     if (typeof entry !== 'object' || entry === null) {
       console.warn(`Extension[${i}]: not a valid object, skipping`);
-      return false;
+      return [];
     }
-    const id = entry.id;
-    const displayName = entry.displayName;
-    const description = entry.description;
+
+    const record = entry as Record<string, unknown>;
+    const id = record.id;
+    const displayName = record.displayName;
+    const description = record.description;
     if (typeof id !== 'string' || !id) {
       console.warn(`Extension[${i}]: missing or invalid 'id', skipping`);
-      return false;
+      return [];
     }
     if (!SAFE_EXTENSION_ID.test(id)) {
       console.warn(`Extension[${i}]: unsafe characters in 'id', skipping`);
-      return false;
+      return [];
     }
     if (typeof displayName !== 'string' || !displayName) {
       console.warn(`Extension[${i}]: missing or invalid 'displayName', skipping`);
-      return false;
+      return [];
     }
     if (typeof description !== 'string' || !description) {
       console.warn(`Extension[${i}]: missing or invalid 'description', skipping`);
-      return false;
+      return [];
     }
-    // Validate remaining fields consumed by extension cards and filters.
-    const author = entry.author;
-    const authorUrl = entry.authorUrl;
-    const source = entry.source;
-    const registryUrl = entry.registryUrl;
+
+    const author = record.author;
+    const authorUrl = record.authorUrl;
+    const source = record.source;
+    const registryUrl = record.registryUrl;
+    const website = record.website;
     if (typeof author !== 'string' || !author) {
       console.warn(`Extension[${i}]: missing or invalid 'author', skipping`);
-      return false;
+      return [];
     }
-    if (authorUrl != null && typeof authorUrl !== 'string') {
-      console.warn(`Extension[${i}]: invalid 'authorUrl' type, skipping`);
-      return false;
+    if (authorUrl != null && !isSafeHttpsUrl(authorUrl)) {
+      console.warn(`Extension[${i}]: unsafe 'authorUrl', skipping`);
+      return [];
     }
-    if (typeof source !== 'string' || !source) {
-      console.warn(`Extension[${i}]: missing or invalid 'source', skipping`);
-      return false;
+    if (!isSafeHttpsUrl(source)) {
+      console.warn(`Extension[${i}]: unsafe or invalid 'source', skipping`);
+      return [];
     }
-    if (typeof registryUrl !== 'string' || !registryUrl) {
-      console.warn(`Extension[${i}]: missing or invalid 'registryUrl', skipping`);
-      return false;
+    if (!isSafeRegistryUrl(registryUrl)) {
+      console.warn(`Extension[${i}]: unsafe or invalid 'registryUrl', skipping`);
+      return [];
     }
-    // Validate required array fields (coerce missing to empty arrays).
-    const capabilities = entry.capabilities;
-    const tags = entry.tags;
-    if (capabilities != null && !Array.isArray(capabilities)) {
+    if (website != null && !isSafeHttpsUrl(website)) {
+      console.warn(`Extension[${i}]: unsafe 'website', skipping`);
+      return [];
+    }
+
+    const capabilities = record.capabilities;
+    const tags = record.tags;
+    if (
+      capabilities != null &&
+      (!Array.isArray(capabilities) ||
+        !capabilities.every((value) => typeof value === 'string'))
+    ) {
       console.warn(`Extension[${i}]: invalid 'capabilities' type, skipping`);
-      return false;
+      return [];
     }
-    if (capabilities == null) {
-      (entry as Record<string, unknown>).capabilities = [];
-    }
-    if (tags != null && !Array.isArray(tags)) {
+    if (
+      tags != null &&
+      (!Array.isArray(tags) ||
+        !tags.every((value) => typeof value === 'string'))
+    ) {
       console.warn(`Extension[${i}]: invalid 'tags' type, skipping`);
-      return false;
+      return [];
     }
-    if (tags == null) {
-      (entry as Record<string, unknown>).tags = [];
-    }
-    return true;
-  }) as Extension[];
+
+    return [{
+      id,
+      displayName,
+      description,
+      author,
+      ...(authorUrl ? { authorUrl } : {}),
+      source,
+      registryUrl,
+      capabilities: (capabilities ?? []) as Extension['capabilities'],
+      tags: (tags ?? []) as Extension['tags'],
+      ...(website ? { website } : {}),
+    }];
+  });
 }
 
 export const unsortedExtensions: Extension[] = validateExtensions(extensionsData);
 
-function sortExtensions() {
-  let result = unsortedExtensions;
-  result = sortBy(result, (ext) => ext.displayName.toLowerCase());
-  return result;
-}
-
-export const sortedExtensions = sortExtensions();
+export const sortedExtensions = sortBy(
+  unsortedExtensions,
+  (extension) => extension.displayName.toLowerCase(),
+);

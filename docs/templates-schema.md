@@ -1,128 +1,109 @@
 # `templates.json` Schema
 
-> Reference for `website/static/templates.json` — the single source of truth
-> for both the awesome-azd gallery and `azd` extension manifests (e.g. the
-> agent template list consumed by `azd ai agent init`).
+> Reference for `website/static/templates.json`, the shared source for the
+> Awesome azd website catalog and specialized `azd` extension manifests.
 
-## 1. Overview
+## 1. Entry types
 
-`templates.json` is a flat array of template entries. Three kinds of entries
-co-exist in the same file, distinguished by an optional `templateType`
-discriminator:
+`templates.json` is a flat array containing website catalog records and
+extension records.
 
-| Kind             | `templateType`                        | Surfaces in unified catalog? | Consumed by                        |
-| ---------------- | ------------------------------------- | ---------------------------- | ---------------------------------- |
-| Gallery template | absent / `null` / `""`                | ✅ yes                       | awesome-azd website                |
-| AI app template  | `ai-app-templates`                    | ✅ yes                       | awesome-azd website                |
-| Extension entry  | `extension.<category>.<type>` (e.g. `extension.ai.agent`) | ❌ no | `azd` extension flows (e.g. `azd ai agent init`) |
+| Kind | Identification | Website catalog | Consumer |
+| ---- | -------------- | --------------- | -------- |
+| Catalog template | `templateType` is absent, `null`, or empty | Included | Awesome azd website |
+| AI application template | Catalog template with `aiapplication` in `tags` | Included | Awesome azd website |
+| Extension entry | Non-empty `extension.<category>.<type>` value | Excluded | Matching `azd` extension flow |
 
-The unified catalog adapter explicitly accepts standard gallery records and
-`ai-app-templates` records (see
-[`catalogData.ts`](../website/src/catalog/catalogData.ts)). The legacy gallery
-adapter still filters out every entry with a `templateType` set (see
-[`filterGalleryTemplates`](../website/src/data/templates.ts)), so specialized
-records never enter that older component path.
+Any non-empty `templateType` is skipped by the website catalog builder. AI
+application templates must therefore use the `aiapplication` tag and must not
+set `templateType` to `ai-app-templates`.
 
-## 2. Common fields (all entries)
+## 2. Website catalog fields
 
-These fields are shared by the records. The gallery runtime loader checks
-them only after filtering out specialized extension entries. Those entries
-follow their consumer's catalog checks instead.
+The catalog builder validates records only after excluding extension entries.
 
-| Field        | Type     | Required | Notes                                                              |
-| ------------ | -------- | -------- | ------------------------------------------------------------------ |
-| `title`      | string   | ✅       | Non-empty.                                                         |
-| `description`| string   | ✅       | Non-empty.                                                         |
-| `author`     | string   | ✅       | Non-empty.                                                         |
-| `authorUrl`  | string   | ⚠️       | Optional in JSON; the gallery loader coerces it to `""` if missing. Must be a string when present. |
-| `source`     | string   | ✅       | The gallery loader requires a `https://github.com/` prefix.           |
+| Field | Type | Requirement |
+| ----- | ---- | ----------- |
+| `id` | string | Required and non-empty. Used as the stable listing identifier. |
+| `title` | string | Required and non-empty. |
+| `description` | string | Required and non-empty. |
+| `source` | string | Required canonical GitHub repository URL. |
+| `author` | string | Required unless `authors` and aligned `authorUrls` arrays are provided. |
+| `authorUrl` | string | Optional profile URL for the single-author form. |
+| `authors` | string[] | Optional multi-author display names. |
+| `authorUrls` | string[] | Required with `authors`; indexes must align. |
 
-> ⚠️ **Gotcha — GitHub source URL:** The gallery loader drops gallery records
-> with an incompatible `source` URL and logs a warning. Specialized entries
-> are excluded before that loader runs; this runtime check does not establish
-> their consumer's URL requirements.
+Catalog `source` values must use HTTPS, host `github.com`, contain exactly an
+owner and repository path, and contain no query or fragment. A trailing `.git`
+suffix is normalized away.
 
-## 3. Gallery-only fields
+Every included source must also have one or more reviewed entries in
+`website/src/catalog/template-use-cases.json`.
 
-| Field           | Type        | Required for gallery | Notes                                                                                |
-| --------------- | ----------- | -------------------- | ------------------------------------------------------------------------------------ |
-| `id`            | string      | ✅                   | Stable, unique UUID used as the card key. Required by the gallery model and contributor guide, but not checked by the runtime loader. |
-| `tags`          | `TagType[]` | ✅                   | Non-empty array. Values must come from the [`TagType` union](../website/src/data/tags.tsx). |
-| `preview`       | string      | optional             | Path/URL to preview image.                                                           |
-| `languages`     | `TagType[]` | optional             | Same `TagType` union as `tags`.                                                      |
-| `frameworks`    | `TagType[]` | optional             | Same.                                                                                |
-| `azureServices` | `TagType[]` | optional             | Same.                                                                                |
-| `IaC`           | `TagType[]` | optional             | Same.                                                                                |
+## 3. Catalog metadata
 
-AI app templates may also use these reviewed public enrichment fields:
+These catalog arrays are optional. Empty or missing arrays are normalized to an
+empty list.
 
-| Field                 | Type       | Notes |
-| --------------------- | ---------- | ----- |
-| `authors`             | `string[]` | Display author names. Must align by index with `authorUrls`. |
-| `authorUrls`          | `string[]` | Public HTTPS author profile URLs. |
-| `models`              | `string[]` | Declared model identifiers. |
-| `appType`             | `string[]` | Declared application-type identifiers. |
-| `sampleType`          | string     | Optional sample classification. |
-| `architectureDiagram` | string     | Local reviewed architecture image path. |
-| `screenshot`          | string     | Local reviewed screenshot path. |
-| `video`               | string     | Optional public video URL. |
-| `legacySources`       | `string[]` | Previous public repository sources that should resolve to the canonical record. |
+| Field | Purpose |
+| ----- | ------- |
+| `tags` | Authorship, status, application type, tools, topics, models, and compatibility metadata. |
+| `languages` | Programming-language identifiers. |
+| `frameworks` | Framework identifiers. |
+| `azureServices` | Azure resources provisioned by the template. |
+| `IaC` | Infrastructure-as-code identifiers. |
+| `models` | AI model identifiers. |
+| `appType` | Additional application classifications. |
 
-Operational fields from the retired AI service, including email addresses,
-validation state, deletion state, and environment configuration, are not part
+Use `aiapplication` in `tags` for AI application templates. Do not add the
+legacy `aicollection` alias, and do not duplicate values across an array.
+Contributor tests validate taxonomy placement, canonical aliases, and
+duplicates against [`website/src/data/tags.ts`](../website/src/data/tags.ts).
+
+Optional public enrichment fields include:
+
+- `preview`
+- `architectureDiagram`
+- `screenshot`
+- `video`
+- `sampleType`
+- `legacySources`
+- `host`
+
+Operational metadata from retired services, including email addresses,
+validation state, deletion state, and environment configuration, is not part
 of the public catalog contract.
 
-### Reviewed use-case metadata
+## 4. Extension fields
 
-The Templates experience supports one or more reviewed use cases per public
-template. These classifications are stored separately in
-`website/src/catalog/template-use-cases.json`, keyed by normalized public
-repository source. The unified catalog requires exact coverage, rejects
-unknown or duplicate use cases, includes every use case in local search, and
-matches a template when any selected use case applies.
+Extension entries are skipped before website catalog validation and follow the
+requirements of their consuming `azd` flow.
 
-> ⚠️ **Gotcha — tag taxonomy coupling:** Adding a brand-new value to `tags`,
-> `languages`, etc. requires updating the `TagType` union in
-> [`website/src/data/tags.tsx`](../website/src/data/tags.tsx). The gallery loader
-> does not strip unknown catalog tags. Submission automation restores canonical
-> spelling for case-insensitive matches and warns on unknown values; catalog
-> taxonomy checks remain separate from runtime loading.
+| Field | Type | Requirement |
+| ----- | ---- | ----------- |
+| `templateType` | string | Required discriminator using `extension.<category>.<type>`. |
+| `extensionFramework` | string | Optional framework label. |
+| `extensionTags` | string[] | Optional consumer-specific tags. |
+| `id` | string | Consumer-specific stable identifier. |
 
-The administrative `new` tag is reserved for templates added to the catalog
-within the past month. Its expiry is currently reviewed manually; automated
-expiry validation is tracked as follow-up work.
+Extension entries do not need website catalog tags or reviewed catalog use
+cases unless their consumer explicitly requires them.
 
-## 4. Extension-only fields
+## 5. `templateType` namespace
 
-| Field               | Type     | Required for extension | Notes                                                                 |
-| ------------------- | -------- | ---------------------- | --------------------------------------------------------------------- |
-| `templateType`      | string   | ✅                     | Discriminator. Extension entries use the namespace `extension.<category>.<type>`. |
-| `extensionFramework`| string   | optional               | Free-form label (e.g. `"Agent Framework"`).                           |
-| `extensionTags`     | string[] | optional               | Free-form tags scoped to the extension consumer; **not** validated against `TagType`. |
-| `id`                | string   | optional               | Stable identifier (UUID v5 derived from `source` for agent templates). |
+Use a three-part dotted namespace for extension records.
 
-Extension entries **do not** need a `tags` field. `validateTemplates` skips
-the `tags` requirement when `templateType` is set (defense-in-depth on top of
-the upstream filter).
+| `templateType` | Consumer | Status |
+| -------------- | -------- | ------ |
+| `extension.ai.agent` | `azd ai agent init` agent templates | In use |
+| `extension.mcp.server` | MCP server template flow | Reserved |
 
-## 5. `templateType` namespace convention
-
-Use a three-part dotted namespace: `extension.<category>.<type>`.
-
-| `templateType`            | Consumer                                          | Status     |
-| ------------------------- | ------------------------------------------------- | ---------- |
-| `ai-app-templates`        | Unified Awesome azd catalog                       | In use     |
-| `extension.ai.agent`      | `azd ai agent init` — agent templates             | In use     |
-| `extension.mcp.server`    | (reserved — MCP server templates)                 | Reserved   |
-
-Adding a new extension category is a **data-only change**: pick a new
-`extension.<category>.<type>` value and append entries. The
-`ai-app-templates` discriminator is the only non-empty value currently
-included by the unified catalog adapter.
+Adding a category requires both data entries and consumer support for filtering
+and validating the new discriminator.
 
 ## 6. Example entries
 
-### Gallery entry
+### AI application catalog entry
 
 ```jsonc
 {
@@ -133,19 +114,19 @@ included by the unified catalog adapter.
   "authorUrl": "https://github.com/Azure-Samples",
   "source": "https://github.com/Azure-Samples/remote-mcp-functions-typescript",
   "preview": "./templates/images/azure-functions-mcp-server-typescript.png",
-  "tags": ["msft", "ai", "mcp"],
-  "languages": ["typescript", "nodejs"],
+  "tags": ["msft", "aiapplication", "mcp-server"],
+  "languages": ["typescript"],
   "azureServices": ["functions"],
   "IaC": ["bicep"]
 }
 ```
 
-### Extension entry (agent template)
+### Extension entry
 
 ```jsonc
 {
   "title": "Hello World (.NET, Agent Framework)",
-  "description": "Minimal Hello World agent using the Responses protocol with the Agent Framework approach in C#.",
+  "description": "Minimal Hello World agent using the Responses protocol.",
   "author": "Microsoft Foundry Team",
   "authorUrl": "https://github.com/microsoft-foundry",
   "source": "https://github.com/microsoft-foundry/foundry-samples/blob/main/samples/csharp/hosted-agents/agent-framework/hello-world/agent.manifest.yaml",
@@ -157,46 +138,41 @@ included by the unified catalog adapter.
 }
 ```
 
-## 7. Validation pipeline
+## 7. Website validation pipeline
 
-The data layer ([`website/src/data/templates.ts`](../website/src/data/templates.ts))
-applies these steps in order:
+1. **Load current metadata** — the catalog route plugin reads
+   `static/templates.json`, `template-use-cases.json`, and generated repository
+   metrics during each content load.
+2. **Build the catalog** —
+   [`catalogBuilder.ts`](../website/src/catalog/catalogBuilder.ts) skips records
+   with a non-empty `templateType`, validates required catalog metadata, and
+   normalizes accepted records. Invalid metadata throws and stops the
+   development reload or production build instead of silently dropping the
+   record.
+3. **Generate route data** — the route plugin creates the compact listing,
+   canonical detail pages, and service-page payloads from the validated
+   catalog.
 
-1. **Legacy gallery adapter** — `filterGalleryTemplates` drops every entry
-   with a non-empty `templateType`. Result is the standard legacy gallery
-   dataset.
-2. **`validateTemplates`** — check required text fields, the GitHub source URL,
-   `authorUrl` type/default, and a non-empty gallery `tags` array. Invalid
-   entries are dropped with a `console.warn`. This is not a full schema
-   decoder: identity, taxonomy membership, and optional array contents are
-   not checked here.
-3. **Unified catalog adapter** — `catalogData.ts` independently accepts
-   absent / null / empty `templateType` values plus `ai-app-templates`, then
-   normalizes both into the shared catalog model used by `/templates` and
-   canonical detail pages. Every accepted source must also have one or more
-   reviewed entries in `template-use-cases.json`.
+[`catalogData.ts`](../website/src/catalog/catalogData.ts) supplies bundled JSON
+to the same builder for tests and other static consumers.
 
-`validateTemplates` also relaxes the `tags` requirement for any entry where
-`templateType` is set, as defense-in-depth in case the pipeline ordering is
-ever changed.
-
-## 8. Adding a new extension category — checklist
+## 8. Adding an extension category
 
 1. Pick an `extension.<category>.<type>` namespace.
-2. Append entries to `website/static/templates.json`. Required fields per §2;
-   optional extension fields per §4.
-3. Confirm `source` URLs start with `https://github.com/`.
-4. Run `npm test` in `website/` — at minimum the
-   `gallery-filter` and `agent-templates` style tests should pass for any
-   new category.
-5. Consumer-side: ensure the `azd` flow that reads `templates.json` filters
-   by your new `templateType`.
+2. Add entries to `website/static/templates.json`.
+3. Define and validate the consumer-specific required fields.
+4. Ensure the consuming `azd` flow filters by the new `templateType`.
+5. Run `npm test` in `website/`; at minimum the `agent-templates`, `catalog`,
+   and `tags_match` tests must pass.
 
 ## 9. Related files
 
-- [`website/static/templates.json`](../website/static/templates.json) — the data
-- [`website/src/catalog/template-use-cases.json`](../website/src/catalog/template-use-cases.json) — reviewed catalog use cases
-- [`website/src/data/tags.tsx`](../website/src/data/tags.tsx) — `Template` / `TagType` definitions
-- [`website/src/data/templates.ts`](../website/src/data/templates.ts) — filter + validation logic
-- [`website/test/gallery-filter.test.ts`](../website/test/gallery-filter.test.ts) — gallery/extension filtering contract
-- [`website/test/agent-templates.test.ts`](../website/test/agent-templates.test.ts) — `extension.ai.agent` shape & uniqueness
+- [`website/static/templates.json`](../website/static/templates.json)
+- [`website/src/catalog/catalogBuilder.ts`](../website/src/catalog/catalogBuilder.ts)
+- [`website/src/catalog/catalogData.ts`](../website/src/catalog/catalogData.ts)
+- [`website/route_generator_plugin/catalogRouteGenerator.ts`](../website/route_generator_plugin/catalogRouteGenerator.ts)
+- [`website/src/catalog/template-use-cases.json`](../website/src/catalog/template-use-cases.json)
+- [`website/src/data/tags.ts`](../website/src/data/tags.ts)
+- [`website/test/catalog.test.ts`](../website/test/catalog.test.ts)
+- [`website/test/tags_match.test.ts`](../website/test/tags_match.test.ts)
+- [`website/test/agent-templates.test.ts`](../website/test/agent-templates.test.ts)

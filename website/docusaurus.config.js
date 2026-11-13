@@ -1,26 +1,18 @@
 // @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
-
-// USAGE: Config object can be accessed via React context as `{siteConfig}`
-//   See: https://docusaurus.io/docs/configuration#custom-configurations
-/** @type {import('@docusaurus/types').Config} */
 
 import { themes as prismThemes } from "prism-react-renderer";
 import { manageCookieLabel } from "./constants.js";
 
+/** @type {import('@docusaurus/types').Config} */
 const config = {
-  // CONFIG: Add Custom Fields - globally reference them from siteConfig
-  //    See: https://docusaurus.io/docs/deployment#using-environment-variables
   customFields: {
     description:
       "Azure Developer CLI (azd) templates are idiomatic application templates created using the `azd` conventions so that you can use `azd` to get started on Azure.",
   },
 
-  // CONFIG: Landing Pages uses this (also globally via siteConfig)
   title: "Azure Developer CLI",
   tagline: "Discover - Create - Contribute",
 
-  // CONIFIG: Used for GitHub Pages
   url: "https://azure.github.io",
   baseUrl: "/awesome-azd/",
   favicon: "img/favicon.ico",
@@ -28,27 +20,38 @@ const config = {
   projectName: "awesome-azd",
   deploymentBranch: "gh-pages",
 
-  // CONFIG: Early detection for site health
   onBrokenLinks: "throw",
 
-  // CONFIG: Markdown hooks
-  //    See: https://docusaurus.io/docs/api/docusaurus-config#markdown
   markdown: {
     hooks: {
       onBrokenMarkdownLinks: "warn",
     },
   },
 
-  // CONFIG: Localization if supporting multiple languages
   i18n: {
     defaultLocale: "en",
     locales: ["en"],
   },
 
-  // CONFIG: Google Fonts for Warm Precision design
-  // NOTE: SRI cannot be used for Google Fonts because responses vary by user-agent
-  // (different font formats for different browsers). Self-hosting fonts is an
-  // alternative but requires ongoing maintenance for updates.
+  headTags: [
+    {
+      tagName: "link",
+      attributes: {
+        rel: "preconnect",
+        href: "https://fonts.googleapis.com",
+      },
+    },
+    {
+      tagName: "link",
+      attributes: {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+        crossorigin: "anonymous",
+      },
+    },
+  ],
+
+  // Google Fonts responses vary by user agent, so a fixed SRI hash is invalid.
   stylesheets: [
     {
       href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap",
@@ -56,11 +59,7 @@ const config = {
     },
   ],
 
-  // CONFIG: scripts
-  // NOTE: We deliberately do NOT pin SRI integrity hashes on these scripts.
-  // Both URLs are *versionless* (no semver in the path) and Microsoft updates
-  // them in place. A pinned hash on a moving target silently breaks the script
-  // load whenever the CDN is updated
+  // These versionless Microsoft scripts cannot use stable SRI hashes.
   scripts: [
     {
       src: "https://js.monitor.azure.com/scripts/c/ms.analytics-web-4.min.js",
@@ -72,13 +71,9 @@ const config = {
     },
   ],
 
-  // CONFIG: theme = set properties for UI like navbar, footer, docs, copyright etc.
-  //    See: https://docusaurus.io/docs/api/docusaurus-config#themeConfig
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // CONFIG: sidebar
-      //    See:
       docs: {
         sidebar: {
           hideable: true,
@@ -86,16 +81,12 @@ const config = {
         },
       },
 
-      // CONFIG: default theme color mode
-      //    See:
       colorMode: {
         defaultMode: "light",
         disableSwitch: false,
         respectPrefersColorScheme: true,
       },
 
-      // CONFIG: navbar logo, items, style, stickiness
-      //    See: https://docusaurus.io/docs/next/api/themes/configuration#navbar
       navbar: {
         title: "Azure Developer CLI",
         logo: {
@@ -150,17 +141,12 @@ const config = {
             position: "left",
             className: "navbar-external-link",
           },
-
-          // right
           {
             href: "https://github.com/Azure/awesome-azd",
             position: "right",
             className: "header-github-link",
             "aria-label": "GitHub repository",
           },
-
-          // CONFIG:
-          // Make sure you have class defined in src/css/custom.css
           {
             to: "https://azure.github.io/awesome-azd/docs/contribute",
             label: "Add a template",
@@ -169,9 +155,6 @@ const config = {
           },
         ],
       },
-
-      // CONFIG:
-      //    See:
       footer: {
         style: "light",
         links: [
@@ -201,22 +184,11 @@ const config = {
           },
         ],
       },
-
-      // CONFIG: the prism-react-renderer to highlight code blocks, add magic comments (influence code highlighting)
-      // Change: 'theme' and `darkTheme` constants at top of this config file
-      //    See: https://docusaurus.io/docs/next/api/themes/configuration#codeblock-theme
-      //    See: https://docusaurus.io/docs/next/markdown-features/code-blocks#custom-magic-comments
-      //    For additional languages e.g., 'csharp','java','js','typescript','python', 'rust', 'html','css', 'go', 'dart'
-      //    See: https://docusaurus.io/docs/next/markdown-features/code-blocks#supported-languages
-      //    See: https://prismjs.com/#supported-languagescshar
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
       },
     }),
-
-  // CONFIG: plugins
-  //    See
   plugins: [
     require.resolve("./route_generator_plugin/catalogRouteGenerator"),
     [
@@ -252,29 +224,17 @@ const config = {
       },
     ],
   ],
-
-  // CONFIG: Set presets for chosen theme
   presets: [
     [
       "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
-        // CONFIG: docs = collections of pages, tutorials, documentation
-        //    See: https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-docs
-        // FIXME: TEMPORARILY DISABLE DOCS
-        // docs: { sidebarPath: require.resolve("./sidebars.js"), },
-        // docs: false,
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
         },
 
-        // CONFIG: blog = timestamped pages, tags, site feed
-        //    See: https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog
-        // FIXME: TEMPORARILY DISABLE BLOG
         blog: false,
 
-        // CONFIG: theme = currently using `classic`
-        //    See: https://docusaurus.io/docs/api/themes/@docusaurus/theme-classic
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },

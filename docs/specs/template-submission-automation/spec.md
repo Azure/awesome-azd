@@ -7,7 +7,7 @@ Trusted internal partners cannot publish templates to awesome-azd fast enough. T
 1. Manually editing a 5500-line `templates.json` file
 2. Manually generating a UUID
 3. Manually uploading a preview image
-4. Manually determining correct tags from `tags.tsx`
+4. Manually determining correct tags from `tags.ts`
 5. Opening a PR with a manual checklist
 6. Waiting for human review
 7. Waiting for manual `workflow_dispatch` deploy

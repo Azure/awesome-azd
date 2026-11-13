@@ -35,36 +35,17 @@ import {
 } from "@fluentui/react-icons";
 import type {
   CatalogResource,
-  CatalogTemplate,
-} from "../../../catalog/catalogData";
+  CatalogTemplateDetail,
+} from "../../../catalog/catalogTypes";
 import { getGalleryReturnLocation } from "../../../utils/galleryNavigation";
+import { serializeStructuredData } from "../../../utils/structuredData";
 import { getOpenInVSCodeUrl } from "../../../utils/vscode";
 import SiteFluentProvider from "../../SiteFluentProvider";
 import CopyAction from "../CopyAction";
 import styles from "./styles.module.css";
 
-type TemplateDetail = Pick<
-  CatalogTemplate,
-  | "title"
-  | "description"
-  | "source"
-  | "repository"
-  | "detailPath"
-  | "authors"
-  | "authorUrls"
-  | "stars"
-  | "tasks"
-  | "languages"
-  | "models"
-  | "services"
-  | "resources"
-  | "architectureDiagram"
-  | "screenshot"
-  | "initCommand"
->;
-
 type TemplatePageData = {
-  template: TemplateDetail;
+  template: CatalogTemplateDetail;
 };
 
 const starFormatter = new Intl.NumberFormat("en-US");
@@ -72,9 +53,20 @@ const compactStarFormatter = new Intl.NumberFormat("en-US", {
   notation: "compact",
   maximumFractionDigits: 1,
 });
+const siteBaseUrl = "https://azure.github.io/awesome-azd";
 
 function unique(values: readonly string[]): string[] {
   return [...new Set(values)];
+}
+
+function absoluteAssetUrl(value: string | undefined): string | undefined {
+  if (!value) {
+    return undefined;
+  }
+  if (/^https?:\/\//i.test(value)) {
+    return value;
+  }
+  return `${siteBaseUrl}/${value.replace(/^\.?\//, "")}`;
 }
 
 function localAssetPath(value: string): string {
@@ -285,7 +277,7 @@ function InitCommand({
 function GetStartedCard({
   template,
 }: {
-  template: TemplateDetail;
+  template: CatalogTemplateDetail;
 }): React.JSX.Element {
   const vscodeUrl = getOpenInVSCodeUrl(template.source);
   const codespacesUrl = `https://codespaces.new/${template.repository}`;
@@ -372,7 +364,7 @@ function GetStartedCard({
 function SummaryCard({
   template,
 }: {
-  template: TemplateDetail;
+  template: CatalogTemplateDetail;
 }): React.JSX.Element {
   const summaryTags = unique([
     ...template.tasks,
@@ -455,7 +447,28 @@ export default function TemplateDetailPage({
       ? templatesUrl
       : `${galleryReturnLocation.pathname}${galleryReturnLocation.search}${galleryReturnLocation.hash}`;
   const screenshot = template.screenshot;
-  const canonicalUrl = `https://azure.github.io/awesome-azd${template.detailPath}`;
+  const canonicalUrl = `${siteBaseUrl}${template.detailPath}`;
+  const pageTitle = `${template.title} | Awesome azd`;
+  const socialImage = absoluteAssetUrl(
+    template.preview ??
+      template.screenshot ??
+      template.architectureDiagram,
+  );
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    name: template.title,
+    description: template.description,
+    url: canonicalUrl,
+    codeRepository: template.source,
+    programmingLanguage: template.languages,
+    keywords: unique([
+      ...template.tasks,
+      ...template.services,
+      ...template.models,
+    ]).join(", "),
+    ...(socialImage ? { image: socialImage } : {}),
+  };
   const [owner, repositoryName] = new URL(template.source).pathname
     .split("/")
     .filter(Boolean);
@@ -463,11 +476,34 @@ export default function TemplateDetailPage({
   return (
     <>
       <Head>
-        <title>{template.title} | Awesome azd</title>
+        <title>{pageTitle}</title>
         <link rel="canonical" href={canonicalUrl} />
         <meta name="description" content={template.description} />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="Awesome azd" />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={template.description} />
+        <meta property="og:url" content={canonicalUrl} />
+        {socialImage ? (
+          <meta property="og:image" content={socialImage} />
+        ) : null}
+        <meta
+          name="twitter:card"
+          content={socialImage ? "summary_large_image" : "summary"}
+        />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta
+          name="twitter:description"
+          content={template.description}
+        />
+        {socialImage ? (
+          <meta name="twitter:image" content={socialImage} />
+        ) : null}
+        <script type="application/ld+json">
+          {serializeStructuredData(structuredData)}
+        </script>
       </Head>
-      <Layout title={template.title} description={template.description}>
+      <Layout>
         <SiteFluentProvider className={styles.fluentProvider}>
           <main className={styles.page}>
             <div className={styles.container}>

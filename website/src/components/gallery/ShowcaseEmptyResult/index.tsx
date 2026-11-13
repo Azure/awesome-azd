@@ -3,7 +3,6 @@
  * Licensed under the MIT License.
  */
 
-import React from "react";
 import { Button } from "@fluentui/react-components";
 import styles from "./styles.module.css";
 

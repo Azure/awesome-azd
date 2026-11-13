@@ -44,7 +44,8 @@ Key directories and files:
 - `website/` - Main Docusaurus application
   - `src/` - React components, pages, and data
   - `docs/` - Markdown documentation files
-  - `static/` - Static assets including `templates.json` (5548 lines)
+  - `static/` - Static assets including `templates.json` and `extensions.json`
+  - `route_generator_plugin/` - Build-time catalog and detail route generation
   - `package.json` - Dependencies and npm scripts
 - `.github/workflows/` - CI/CD pipelines (release.yml, test-deploy.yml)
 - `README.md` - Project overview and resources
@@ -58,6 +59,7 @@ All commands must be run from the `website/` directory:
 - `npm test` - Run Jest tests (validates templates.json against tags)
 - `npm run typecheck` - Check application types using the project TypeScript configuration
 - `npm run build` - Build production website to `build/` directory
+- `npm run test:e2e` - Run Playwright UX and behavior regression tests
 - `npm run start` - Start development server at http://localhost:3000/awesome-azd/
 - `npm run serve` - Serve production build locally
 - `npm run docusaurus` - Direct Docusaurus CLI access
@@ -74,10 +76,13 @@ All commands must be run from the `website/` directory:
 ## Template Gallery System
 
 The template gallery is driven by:
-- `website/static/templates.json` - Template metadata (5548 lines)
+- `website/static/templates.json` - Template metadata
 - `website/src/catalog/template-use-cases.json` - Reviewed catalog use-case classifications
-- `website/src/data/tags.tsx` - Tag definitions for filtering
-- `website/src/components/gallery/` - Gallery components
+- `website/src/data/tags.ts` - Shared tag definitions
+- `website/src/catalog/` - Catalog validation, filtering, metadata, and compact page data
+- `website/route_generator_plugin/catalogRouteGenerator.ts` - Build-time catalog, detail, and service routes
+- `website/src/components/catalog/` - Template catalog and detail UI
+- `website/src/components/gallery/` - Extension gallery UI
 - `website/static/templates/images/` - Template preview images
 
 ### Template Requirements
@@ -132,7 +137,7 @@ When making changes:
 **Adding a new template to the gallery:**
 1. Add entry to `website/static/templates.json` with required fields
 2. Add its normalized repository URL and at least one reviewed classification to `website/src/catalog/template-use-cases.json`
-3. Ensure all tags exist in `website/src/data/tags.tsx` (add if needed)
+3. Ensure all tags exist in `website/src/data/tags.ts` (add if needed)
 4. Run `npm test` to validate template metadata
 5. Test gallery display with `npm run start`
 
@@ -159,8 +164,10 @@ The repository uses GitHub Actions:
 ## Common File Locations
 
 - Template data: `website/static/templates.json`
+- Extension data: `website/static/extensions.json`
 - Template use cases: `website/src/catalog/template-use-cases.json`
-- Tag definitions: `website/src/data/tags.tsx`
+- Tag definitions: `website/src/data/tags.ts`
+- Template catalog components: `website/src/components/catalog/`
 - Gallery components: `website/src/components/gallery/`
 - Documentation: `website/docs/`
 - Main pages: `website/src/pages/`
@@ -188,7 +195,6 @@ Key Azure Developer CLI (azd) documentation:
 - [Making projects azd compatible](https://learn.microsoft.com/azure/developer/azure-developer-cli/make-azd-compatible)
 
 The build succeeds reliably and the website functions correctly when all steps are followed precisely.
-The build succeeds reliably and the website functions correctly when all steps are followed precisely.
 
 ## Pull Request Review Guidelines
 
@@ -199,9 +205,9 @@ When reviewing pull requests for this repository, follow these guidelines:
 If the PR makes changes to `website/static/templates.json`, perform the following checks:
 
 1. **Validate Template Syntax**: Review each new template entry to ensure:
-   - All required fields are present: `title`, `description`, `preview`, `authorUrl`, `author`, `source`, `tags`, `id`
+   - All required fields are present: `title`, `description`, `source`, `author`/`authors`, `tags`, and `id`
    - The `id` field is a unique UUID
-   - The `preview` path points to an existing image file or uses the default test image
+   - Any `preview`, `screenshot`, or `architectureDiagram` path points to an existing image
    - The `source` URL is a valid GitHub repository URL
    - JSON syntax is correct (proper quotes, commas, brackets)
 
@@ -210,42 +216,41 @@ If the PR makes changes to `website/static/templates.json`, perform the followin
    - The "new" tag should be included for templates that are being newly showcased
    - Example: `"tags": ["msft", "new"]` or `"tags": ["community", "new"]`
 
-   - **Verify "aicollection" Tag**: If a template includes the `"aicollection"` tag:
-     - This tag is reserved for templates that are part of the Microsoft-curated AI collection
-     - Verify the template is listed at https://azure.github.io/ai-app-templates/
-     - If the template is NOT found in the AI collection website:
-       - Request the user to remove the `"aicollection"` tag from the template's `tags` array
-       - Example comment: "The `aicollection` tag is reserved for templates included in the Microsoft-curated AI collection at https://azure.github.io/ai-app-templates/. Since this template is not listed there, please remove the `aicollection` tag."
-     - If unable to verify due to site access issues, note this limitation in your review
+   - **Verify AI Application Metadata**:
+     - Use `"aiapplication"` for AI application templates.
+     - Do not add the legacy `"aicollection"` value to template metadata. It is accepted only as a backwards-compatible catalog URL alias.
+     - Run `npm test` to validate AI metadata, canonical aliases, and duplicate tags.
 
-3. **Validate All Tags**: Ensure all tags used in the template are defined in `website/src/data/tags.tsx`:
+3. **Validate All Tags**: Ensure all tags used in the template are defined in `website/src/data/tags.ts`:
    - Check tags in the `tags` array
    - Check tags in the `languages` array
    - Check tags in the `frameworks` array
    - Check tags in the `azureServices` array
    - Check tags in the `IaC` array
-   - If any tag is not defined in `tags.tsx`, request that the tag be added to that file first
+   - Check tags in the `models` and `appType` arrays when present
+   - If any tag is not defined in `tags.ts`, request that the tag be added to that file first
    - Run `npm test` from the `website/` directory to automatically validate tags against the defined list
    
    **Verify Correct Tag Placement by Category**:
-   - Each tag in `tags.tsx` has a `type` field that indicates its category
+   - Each tag in `tags.ts` has a `type` field that indicates its category
    - Tags should be placed in the appropriate array based on their `type`:
      - Tags with `type: "Language"` → should ONLY be in the `languages` array
      - Tags with `type: "Framework"` → should ONLY be in the `frameworks` array
      - Tags with `type: "Infrastructure as Code"` → should ONLY be in the `IaC` array
-     - Tags with `type: "Service"` AND have `azureIcon` property (Azure services) → should ONLY be in the `azureServices` array
-     - Tags with `type: "Service"` WITHOUT `azureIcon` property (non-Azure services) → should be in the `tags` array
-     - Special tags (`msft`, `community`, `new`, `popular`, `aicollection`) → should be in the `tags` array
-   - Example: `appservice` has `type: "Service"` AND `azureIcon`, so it belongs in `azureServices`, NOT in `tags`
-   - Example: `sharepoint` has `type: "Service"` but NO `azureIcon`, so it belongs in `tags`, NOT in `azureServices`
+     - Tags with `type: "Model"` → should ONLY be in the `models` array
+     - Azure resource tags with `type: "Service"` → should ONLY be in the `azureServices` array
+     - Non-Azure services, tools, and topics → should be in the `tags` array
+     - Special tags (`msft`, `community`, `new`, `featured`, `aiapplication`) → should be in the `tags` array
+   - Example: `appservice` is an Azure resource, so it belongs in `azureServices`, NOT in `tags`
+   - Example: `sharepoint` is a non-Azure service tag, so it belongs in `tags`, NOT in `azureServices`
    
    **Check for Duplicate Tags Across Arrays**:
    - Verify that no tag appears in multiple arrays
    - If a tag is duplicated (e.g., `appservice` in both `tags` and `azureServices`):
      - Request removal from the incorrect array
-     - Keep it only in the correct array based on its `type` field and presence of `azureIcon`
-   - Example: If `appservice` (has `azureIcon`) appears in both `tags` and `azureServices`, suggest removing it from `tags` and keeping it only in `azureServices`
-   - Example: If `sharepoint` (no `azureIcon`) appears in both `tags` and `azureServices`, suggest removing it from `azureServices` and keeping it only in `tags`
+     - Keep it only in the category represented by its tag definition
+   - Example: If `appservice` appears in both `tags` and `azureServices`, remove it from `tags` and keep it only in `azureServices`
+   - Example: If `sharepoint` appears in both `tags` and `azureServices`, remove it from `azureServices` and keep it only in `tags`
 
 4. **Testing Requirements Based on Template Type**:
 

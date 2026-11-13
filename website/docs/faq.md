@@ -74,7 +74,7 @@ You can contribute azd-templates in two contexts:
 
 [Submit a PR + fill out the checklist](https://aka.ms/awesome-azd-contribute)
 
-An internal team will review submissions
+Project maintainers will review submissions.
  - Validate that templates function as desired
  - Accept contribution - issue is closed.
  - Suggest modifications - issue stays open.

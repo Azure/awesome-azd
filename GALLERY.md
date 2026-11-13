@@ -1,6 +1,6 @@
 # AZD Templates Gallery
 
-Currently, azd templates can be discovered using the [azd-templates](https://github.com/topics/azd-templates) topic on Github or browsing the our [**hosted gallery**](https://azure.github.io/awesome-azd).
+Currently, azd templates can be discovered using the [azd-templates](https://github.com/topics/azd-templates) topic on GitHub or by browsing our [**hosted gallery**](https://azure.github.io/awesome-azd).
 
 ## 1. Landing Page
 

@@ -384,11 +384,19 @@
   table-layout: fixed;
 }
 
+.resourceTable :global(.fui-TableRow),
+.resourceTable :global(.fui-TableBody > .fui-TableRow) {
+  border: 0;
+  background: transparent;
+}
+
 .resourceTable :global(.fui-TableHeaderCell) {
-  padding: 18px 20px;
-  background: var(--detail-subtle);
+  padding: 18px 16px;
+  border: 0;
+  border-bottom: 1px solid var(--detail-line);
+  background: var(--detail-command);
   color: var(--detail-ink);
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 600;
 }
 
@@ -398,18 +406,20 @@
 }
 
 .resourceTable :global(.fui-TableCell) {
-  padding: 20px;
+  padding: 20px 16px;
+  border: 0;
   border-bottom: 1px solid var(--detail-line);
-  color: var(--detail-muted);
-  font-size: 0.9rem;
-  line-height: 1.6;
+  color: var(--detail-ink);
+  font-size: 1rem;
+  line-height: 1.5;
   vertical-align: middle;
 }
 
 .resourceTable :global(.fui-TableCellLayout) {
   align-items: center;
+  gap: 16px;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--detail-ink);
 }
 

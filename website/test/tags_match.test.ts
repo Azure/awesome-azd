@@ -1,33 +1,50 @@
 import { describe, expect, test } from "@jest/globals";
 import { Tags } from "../src/data/tags";
 import { CAPABILITY_BADGES } from "../src/data/extensionCapabilities";
+import { validateExtensions } from "../src/data/extensions";
 import Templates from "../static/templates.json";
 import Extensions from "../static/extensions.json";
 
-describe("Template tests", () => {
-  test("Gallery tags exist", () => {
-    // Specialized template types use their own gallery and tag schema.
-    var tags = new Array<string>();
-    Templates.forEach((template) => {
-      if ("templateType" in template && template.templateType) {
-        return;
+const templateTagFields = [
+  "tags",
+  "languages",
+  "frameworks",
+  "azureServices",
+  "IaC",
+  "models",
+  "appType",
+] as const;
+
+type TemplateRecord = Record<string, unknown> & {
+  source?: string;
+  title?: string;
+  templateType?: string;
+};
+
+function getTagValues(
+  template: TemplateRecord,
+  field: (typeof templateTagFields)[number],
+): string[] {
+  const values = template[field];
+  return Array.isArray(values)
+    ? values.filter((value): value is string => typeof value === "string")
+    : [];
+}
+
+const galleryTemplates = (Templates as TemplateRecord[]).filter(
+  (template) => !template.templateType,
+);
+
+describe("Template metadata", () => {
+  test("defines every catalog tag", () => {
+    const usedTags = new Set<string>();
+    for (const template of galleryTemplates) {
+      for (const field of templateTagFields) {
+        getTagValues(template, field).forEach((tag) => usedTags.add(tag));
       }
-      // Collect tags from all arrays
-      const allTags = [
-        ...(template.tags || []),
-        ...(template.languages || []),
-        ...(template.frameworks || []),
-        ...(template.azureServices || []),
-        ...(template.IaC || []),
-      ];
-      allTags.forEach((tag) => {
-        if (!tags.includes(tag)) {
-          tags.push(tag);
-        }
-      });
-    });
-    // Check if all tags exist in the Tags enum
-    tags.forEach((tag) => {
+    }
+
+    for (const tag of usedTags) {
       const tagDefinition = Tags[tag];
       if (tagDefinition === undefined) {
         console.error(
@@ -35,21 +52,49 @@ describe("Template tests", () => {
         );
       }
       expect(tagDefinition).toBeDefined();
-    });
+    }
+  });
+
+  test("does not duplicate tags within or across categories", () => {
+    for (const template of galleryTemplates) {
+      const source = template.source ?? template.title ?? "unknown template";
+      const categoriesByTag = new Map<string, string>();
+
+      for (const field of templateTagFields) {
+        const values = getTagValues(template, field);
+        const duplicateValues = values.filter(
+          (tag, index) => values.indexOf(tag) !== index,
+        );
+        if (duplicateValues.length > 0) {
+          throw new Error(
+            `${source} repeats ${[...new Set(duplicateValues)].join(", ")} in ${field}`,
+          );
+        }
+
+        for (const tag of values) {
+          const previousField = categoriesByTag.get(tag);
+          if (previousField !== undefined) {
+            throw new Error(
+              `${source} places ${tag} in both ${previousField} and ${field}`,
+            );
+          }
+          categoriesByTag.set(tag, field);
+        }
+      }
+    }
   });
 });
 
-describe("Extension tests", () => {
-  test("Extension tags exist", () => {
-    var tags = new Array<string>();
-    Extensions.forEach((extension: any) => {
-      (extension.tags || []).forEach((tag: string) => {
-        if (!tags.includes(tag)) {
-          tags.push(tag);
-        }
-      });
-    });
-    tags.forEach((tag) => {
+describe("Extension metadata", () => {
+  test("passes runtime validation without dropping records", () => {
+    expect(validateExtensions(Extensions)).toHaveLength(Extensions.length);
+  });
+
+  test("defines every extension tag", () => {
+    const usedTags = new Set(
+      Extensions.flatMap((extension) => extension.tags ?? []),
+    );
+    for (const tag of usedTags) {
       const tagDefinition = Tags[tag];
       if (tagDefinition === undefined) {
         console.error(
@@ -57,17 +102,17 @@ describe("Extension tests", () => {
         );
       }
       expect(tagDefinition).toBeDefined();
-    });
+    }
   });
 
   test("Extension IDs are unique", () => {
-    const ids = Extensions.map((ext: any) => ext.id);
+    const ids = Extensions.map((extension) => extension.id);
     const uniqueIds = new Set(ids);
     expect(ids.length).toBe(uniqueIds.size);
   });
 
   test("Extensions have required fields", () => {
-    Extensions.forEach((extension: any) => {
+    Extensions.forEach((extension) => {
       expect(extension.id).toBeDefined();
       expect(extension.displayName).toBeDefined();
       expect(extension.description).toBeDefined();
@@ -79,17 +124,11 @@ describe("Extension tests", () => {
     });
   });
 
-  // Capabilities are written straight from azd into the catalog by the sync
-  // workflow, but three separate places must know about each one: the `ext-`
-  // tag definition, that tag's "Extension Capability" type (which is how
-  // ShowcaseLeftFilters selects sidebar entries), and the card's badge map.
-  // Each gap degrades silently — a missing tag or wrong type drops the
-  // capability from the filter sidebar, and a missing badge entry renders it
-  // as a raw kebab-case label. Assert all three so a new azd capability fails
-  // the sync job instead of shipping a half-wired badge.
+  // Keep the synchronized tag definition, filter category, and card badge in
+  // lockstep so new capabilities cannot silently ship with partial UI support.
   test("Extension capabilities are fully wired for display and filtering", () => {
-    Extensions.forEach((extension: any) => {
-      extension.capabilities.forEach((capability: string) => {
+    Extensions.forEach((extension) => {
+      extension.capabilities.forEach((capability) => {
         const tag = `ext-${capability}`;
         const tagDefinition = Tags[tag];
         if (tagDefinition === undefined) {

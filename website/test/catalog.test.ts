@@ -174,7 +174,7 @@ describe("unified catalog data", () => {
     ).toBe("Community");
   });
 
-  test("keeps new tags on newly added catalog entries", () => {
+  test("keeps new tags as metadata without exposing a filter", () => {
     expect(
       catalogTemplates
         .filter((template) => template.legacyTags.includes("new"))
@@ -188,6 +188,25 @@ describe("unified catalog data", () => {
         "https://github.com/massimobonanni/DBSemanticSearch",
       ].sort(),
     );
+
+    const legacyTagFacet = catalogFacets.find(
+      (facet) => facet.key === "legacyTags",
+    );
+    if (!legacyTagFacet) {
+      throw new Error("Expected the legacy tag facet.");
+    }
+    expect(
+      getFacetOptions(catalogTemplates, legacyTagFacet),
+    ).not.toContain("new");
+
+    const state = parseCatalogState(
+      "?tags=new&type=ai",
+      catalogTemplates,
+    );
+    expect(state.legacyTags).toEqual([]);
+    expect(state.types).toEqual(["ai"]);
+    expect(state.unavailable).toEqual([]);
+    expect(serializeCatalogState(state)).toBe("type=ai");
   });
 
   test("preserves verified hosting services and infrastructure metadata", () => {

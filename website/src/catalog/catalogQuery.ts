@@ -128,6 +128,7 @@ const aiApplicationTagIds = new Set([
   "aicollection",
   "aiapplication",
 ]);
+const nonFilterableLegacyTags = new Set(["new"]);
 
 function getValues(
   template: CatalogTemplate,
@@ -151,7 +152,9 @@ function getValues(
     case "authorship":
       return [template.authorship];
     case "legacyTags":
-      return template.compatibilityTags;
+      return template.compatibilityTags.filter(
+        (tag) => !nonFilterableLegacyTags.has(tag.toLowerCase()),
+      );
     case "authors":
       return [...template.authors, ...template.legacyAuthors];
   }
@@ -252,9 +255,12 @@ export function parseCatalogState(
       );
     }
     if (facet.key === "legacyTags") {
-      requested = requested.map(
-        (value) => canonicalizeCatalogTagId(value) ?? value,
-      );
+      requested = requested
+        .filter(
+          (value) =>
+            !nonFilterableLegacyTags.has(value.toLowerCase()),
+        )
+        .map((value) => canonicalizeCatalogTagId(value) ?? value);
     }
     const accepted: string[] = [];
     for (const value of requested) {

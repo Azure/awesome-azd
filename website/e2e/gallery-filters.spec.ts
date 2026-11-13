@@ -31,6 +31,21 @@ test.describe("Gallery Filtering", () => {
     await expect(pythonCheckbox.locator("xpath=..")).toContainText(/\d+/);
   });
 
+  test("New metadata is not exposed as a filter", async ({ page }) => {
+    const initialStatus = await resultsStatus(page).textContent();
+
+    await expect(
+      page.getByRole("checkbox", { name: /^New(?:\s|$)/i }),
+    ).toHaveCount(0);
+    await page.goto("templates?tags=new");
+    await expect(resultsStatus(page)).toHaveText(initialStatus ?? "");
+    await expect(
+      page
+        .getByRole("group", { name: "Applied filters" })
+        .getByRole("button", { name: /new/i }),
+    ).toHaveCount(0);
+  });
+
   test("filter rows align checkboxes with labels in the wider panel", async ({
     page,
   }) => {

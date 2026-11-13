@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 import type { LoadContext, Plugin } from "@docusaurus/types";
-import { createCatalogTemplates } from "../src/catalog/catalogData";
+import { createCatalogTemplates } from "../src/catalog/catalogBuilder";
 import { servicePages } from "../src/catalog/servicePages";
 import { createCatalogPageData } from "../src/catalog/catalogWireFormat";
 import type {

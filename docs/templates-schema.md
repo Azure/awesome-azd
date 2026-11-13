@@ -16,12 +16,11 @@ discriminator:
 | AI app template  | `ai-app-templates`                    | ✅ yes                       | awesome-azd website                |
 | Extension entry  | `extension.<category>.<type>` (e.g. `extension.ai.agent`) | ❌ no | `azd` extension flows (e.g. `azd ai agent init`) |
 
-The unified catalog adapter explicitly accepts standard gallery records and
+The unified catalog builder explicitly accepts standard gallery records and
 `ai-app-templates` records (see
-[`catalogData.ts`](../website/src/catalog/catalogData.ts)). The legacy gallery
-adapter still filters out every entry with a `templateType` set (see
-[`filterGalleryTemplates`](../website/src/data/templates.ts)), so specialized
-records never enter that older component path.
+[`catalogBuilder.ts`](../website/src/catalog/catalogBuilder.ts)).
+[`catalogData.ts`](../website/src/catalog/catalogData.ts) is the thin wrapper
+that supplies the bundled static catalog data.
 
 ## 2. Common fields (all entries)
 
@@ -170,11 +169,14 @@ applies these steps in order:
    entries are dropped with a `console.warn`. This is not a full schema
    decoder: identity, taxonomy membership, and optional array contents are
    not checked here.
-3. **Unified catalog adapter** — `catalogData.ts` independently accepts
-   absent / null / empty `templateType` values plus `ai-app-templates`, then
-   normalizes both into the shared catalog model used by `/templates` and
-   canonical detail pages. Every accepted source must also have one or more
-   reviewed entries in `template-use-cases.json`.
+3. **Unified catalog builder** — [`catalogBuilder.ts`](../website/src/catalog/catalogBuilder.ts)
+   accepts absent / null / empty `templateType` values plus
+   `ai-app-templates`, then normalizes both into the shared catalog model used
+   by `/templates` and canonical detail pages.
+   [`catalogData.ts`](../website/src/catalog/catalogData.ts) is the thin wrapper
+   that passes the bundled static JSON inputs to this builder. Every accepted
+   source must also have one or more reviewed entries in
+   `template-use-cases.json`.
 
 `validateTemplates` also relaxes the `tags` requirement for any entry where
 `templateType` is set, as defense-in-depth in case the pipeline ordering is

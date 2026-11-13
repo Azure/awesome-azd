@@ -171,7 +171,6 @@ function supportsLegacyTagCompatibility(
     key === "iac"
   );
 }
-
 export function getFacetLabel(facet: CatalogFacet, value: string): string {
   return facet.labels?.[value] ?? value;
 }
@@ -371,19 +370,6 @@ function matchesFacet(
   });
 }
 
-export function matchesCatalogTemplate(
-  template: CatalogListingTemplate,
-  state: CatalogState,
-  ignoredFacet?: CatalogFacetKey,
-): boolean {
-  return (
-    matchesSearch(template, getSearchTokens(state)) &&
-    catalogFacets.every((facet) => {
-      return facet.key === ignoredFacet || matchesFacet(template, state, facet);
-    })
-  );
-}
-
 export type CatalogQueryResult<
   T extends CatalogListingTemplate = CatalogListingTemplate,
 > = {
@@ -513,12 +499,3 @@ export function sortCatalogTemplates<T extends CatalogListingTemplate>(
     },
   );
 }
-
-export function getFacetValueCounts(
-  records: readonly CatalogListingTemplate[],
-  state: CatalogState,
-  facet: CatalogFacet,
-): ReadonlyMap<string, number> {
-  return queryCatalog(records, state).facetCounts.get(facet.key) ?? new Map();
-}
-

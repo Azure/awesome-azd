@@ -119,7 +119,6 @@ export default function CatalogPage({
 }: {
   templates: readonly CatalogListingTemplate[];
 }): React.JSX.Element {
-  const catalogTemplates = templates;
   const history = useHistory();
   const location = useLocation();
   const isBrowser = useIsBrowser();
@@ -127,8 +126,8 @@ export default function CatalogPage({
   const resultsRef = useRef<HTMLElement>(null);
   const hydrationSafeSearch = isBrowser ? location.search : "";
   const state = useMemo(
-    () => parseCatalogState(hydrationSafeSearch, catalogTemplates),
-    [hydrationSafeSearch],
+    () => parseCatalogState(hydrationSafeSearch, templates),
+    [hydrationSafeSearch, templates],
   );
   const [searchValue, setSearchValue] = useState(state.q);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
@@ -137,12 +136,12 @@ export default function CatalogPage({
   const sourceOrder = useMemo(
     () =>
       new Map(
-        catalogTemplates.map((template, index) => [
+        templates.map((template, index) => [
           template.id,
           index,
         ]),
       ),
-    [catalogTemplates],
+    [templates],
   );
 
   const pushState = useCallback(
@@ -281,8 +280,8 @@ export default function CatalogPage({
   }, [pushState, searchValue, state]);
 
   const queryResult = useMemo(
-    () => queryCatalog(catalogTemplates, state),
-    [catalogTemplates, state],
+    () => queryCatalog(templates, state),
+    [templates, state],
   );
   const sortedTemplates = useMemo(
     () =>
@@ -514,7 +513,7 @@ export default function CatalogPage({
                       <FacetSection
                         key={facet.key}
                         facet={facet}
-                        records={catalogTemplates}
+                        records={templates}
                         state={state}
                         valueCounts={
                           queryResult.facetCounts.get(facet.key) ??
@@ -678,7 +677,7 @@ export default function CatalogPage({
                   approve commands before they run.
                 </p>
                 <small>
-                  {catalogTemplates.length} public templates from the live
+                  {templates.length} public templates from the live
                   catalog.
                 </small>
               </div>

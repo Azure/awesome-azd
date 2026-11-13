@@ -33,12 +33,6 @@ export const catalogTasks = [
 export type CatalogTask = (typeof catalogTasks)[number];
 export type CatalogAuthorship = "Community" | "Microsoft";
 
-export type CatalogPrerequisite = {
-  id: string;
-  label: string;
-  url?: string;
-};
-
 export type CatalogResource = {
   id: string;
   label: string;
@@ -78,7 +72,6 @@ export type CatalogTemplate = {
   topics: string[];
   models: string[];
   host?: string;
-  prerequisites: CatalogPrerequisite[];
   resources: CatalogResource[];
   preview?: string;
   architectureDiagram?: string;
@@ -106,7 +99,6 @@ type RawTemplate = {
   IaC?: unknown;
   appType?: unknown;
   models?: unknown;
-  prerequisites?: unknown;
   legacySources?: unknown;
   preview?: unknown;
   architectureDiagram?: unknown;
@@ -372,7 +364,6 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
   const rawServiceIds = readStringArray(record.azureServices);
   const rawIacIds = readStringArray(record.IaC);
   const rawModelIds = readStringArray(record.models);
-  const rawPrerequisiteIds = readStringArray(record.prerequisites);
   const tags = canonicalizeCatalogTagIds(rawTags);
   const isAi = tags.includes("aiapplication");
   const languageIds = unique([
@@ -438,7 +429,6 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
       ...rawServiceIds,
       ...rawIacIds,
       ...rawModelIds,
-      ...rawPrerequisiteIds,
     ].flatMap(getCatalogTagSearchTerms),
   );
   const toolIds = tags.filter(
@@ -456,16 +446,6 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
   const topics = getLabels(topicIds);
   const models = getLabels(modelIds);
   const host = readOptionalString(record.host);
-  const prerequisites = canonicalizeCatalogTagIds(
-    rawPrerequisiteIds,
-  ).map((tag) => {
-    const metadata = getCatalogTagMetadata(tag);
-    return {
-      id: tag,
-      label: metadata?.label ?? tag,
-      url: metadata?.url,
-    };
-  });
   const resources = serviceIds.reduce<CatalogResource[]>((result, tag) => {
     const metadata = getCatalogTagMetadata(tag);
     const label = metadata?.label ?? tag;
@@ -554,7 +534,6 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     topics,
     models,
     host,
-    prerequisites,
     resources,
     preview,
     architectureDiagram,

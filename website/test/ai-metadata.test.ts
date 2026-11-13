@@ -29,7 +29,6 @@ const allowedAiRecordKeys = new Set([
   "authorUrls",
   "models",
   "appType",
-  "prerequisites",
   "sampleType",
   "architectureDiagram",
   "screenshot",
@@ -227,7 +226,6 @@ describe("privacy-safe AI catalog metadata", () => {
         "models",
         "appType",
         "azureServices",
-        "prerequisites",
         "tags",
       ] as const) {
         for (const tag of expectStringArray(record[field], field)) {

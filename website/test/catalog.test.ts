@@ -33,6 +33,55 @@ import {
 const websiteRoot = path.resolve(__dirname, "..");
 
 describe("unified catalog data", () => {
+  test("does not expose prerequisite metadata or prerequisite-only tags", () => {
+    expect(
+      (templates as unknown as Array<Record<string, unknown>>).filter(
+        (template) => template.prerequisites !== undefined,
+      ),
+    ).toEqual([]);
+    expect(
+      Object.values(catalogTags).filter(
+        (tag) => tag.type === "Prerequisite",
+      ),
+    ).toEqual([]);
+
+    for (const tag of [
+      ".net8",
+      ".net9",
+      "azcli",
+      "azd",
+      "azurite",
+      "docker",
+      "functionscoretools",
+      "git",
+      "go1.18+",
+      "java17",
+      "k9s",
+      "maven",
+      "maven3.8.x",
+      "nodejs18+",
+      "nodejs20",
+      "nodejs22",
+      "nodejslts",
+      "odbc-driver-18",
+      "pgvector",
+      "pinecone-api",
+      "poetry",
+      "postgreSQL14+",
+      "pwsh7+",
+      "python3.10+",
+      "python3.11+",
+      "python3.9+",
+      "python3.9-3.11",
+      "redis",
+      "sqlcmd-linux",
+      "sqlcmd-windows",
+      "swacli",
+    ]) {
+      expect((catalogTags as Record<string, unknown>)[tag]).toBeUndefined();
+    }
+  });
+
   test("includes standard and AI templates without duplicate sources", () => {
     const expectedCount = templates.filter(
       (template) =>

@@ -50,44 +50,7 @@ export const collectionServiceReplacements = new Map<string, string>([
 
 export const removedCatalogTags = new Set<string>();
 
-const prerequisiteTags = [
-  ".net8",
-  ".net9",
-  "azcli",
-  "azd",
-  "azurite",
-  "docker",
-  "functionscoretools",
-  "git",
-  "go1.18+",
-  "java17",
-  "k9s",
-  "maven",
-  "maven3.8.x",
-  "nodejs18+",
-  "nodejs20",
-  "nodejs22",
-  "nodejslts",
-  "odbc-driver-18",
-  "pgvector",
-  "pinecone-api",
-  "poetry",
-  "postgresql14+",
-  "pwsh7+",
-  "python3.10+",
-  "python3.11+",
-  "python3.9+",
-  "python3.9-3.11",
-  "redis",
-  "sqlcmd-linux",
-  "sqlcmd-windows",
-  "swacli",
-] as const;
-
 const categoryOverrides = new Map<string, string>([
-  ...prerequisiteTags.map(
-    (id) => [id, "Prerequisite"] as const,
-  ),
   ["aifoundry", "Service"],
   ["aiapplication", "Application Type"],
   ["aisearch", "Service"],

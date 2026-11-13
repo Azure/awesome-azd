@@ -108,7 +108,6 @@
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt4omini"],
     "appType": ["search"],
-    "prerequisites": ["azd", ".net8", "git", "pwsh7+", "docker"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/azure-search-openai-demo-csharp-arch.png",
     "screenshot": "/templates/images/azure-search-openai-demo-csharp-image.png"
@@ -365,7 +364,6 @@
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt4omini"],
     "appType": ["search"],
-    "prerequisites": ["azd", "nodejs18+", "git", "pwsh7+", "python3.9-3.11"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/azure-search-openai-demo-arch.png",
     "screenshot": "/templates/images/azure-search-openai-demo-image.png",
@@ -387,7 +385,6 @@
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt4o"],
     "appType": ["chat"],
-    "prerequisites": ["python3.11+", "azd", "git", "pwsh7+", "nodejs"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/aisearch-openai-rag-audio.png"
   },
@@ -419,7 +416,6 @@
     ],
     "models": ["gpt4omini"],
     "appType": ["agent", "chat", "search"],
-    "prerequisites": ["python3.9-3.11", "azd", "git", "docker"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/get-started-with-ai-agents-arch.png",
     "screenshot": "/templates/images/get-started-with-ai-agents-image.png"
@@ -871,17 +867,6 @@
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt4omini"],
     "appType": ["search"],
-    "prerequisites": [
-      "azd",
-      "java17",
-      "nodejs",
-      "maven3.8.x",
-      "helm",
-      "k9s",
-      "git",
-      "pwsh7+",
-      "docker"
-    ],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/azure-search-openai-demo-java-arch.png",
     "screenshot": "/templates/images/azure-search-openai-demo-java-image.png"
@@ -1323,7 +1308,6 @@
     ],
     "models": ["mistral7b", "gpt4turbo"],
     "appType": ["chat"],
-    "prerequisites": ["azd", "nodejslts", "git", "pwsh7+", "functionscoretools"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/serverless-chat-langchainjs-chat.png",
     "screenshot": "/templates/images/serverless-chat-langchainjs-image.png"
@@ -1397,7 +1381,6 @@
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt4omini"],
     "appType": ["chat"],
-    "prerequisites": ["azd", "docker", "git", "python3.10+"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/openai-chat-app-quickstart-arch.png",
     "screenshot": "/templates/images/openai-chat-vision-quickstart-image.png"
@@ -1419,15 +1402,6 @@
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt4omini", "llama"],
     "appType": ["search"],
-    "prerequisites": [
-      "azd",
-      "docker",
-      "git",
-      "nodejs18+",
-      "python3.10+",
-      "postgreSQL14+",
-      "pgvector"
-    ],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/rag-postgres-openai-python-arch.png",
     "screenshot": "/templates/images/rag-postgres-openai-python-image.png"
@@ -1511,7 +1485,6 @@
     "authorUrls": ["https://github.com/Arize-ai/"],
     "models": [],
     "appType": ["llmops"],
-    "prerequisites": ["azd", "python3.9-3.11"],
     "sampleType": "full_sample",
     "screenshot": "/templates/images/phoenix-on-azure-image.png"
   },
@@ -1535,7 +1508,6 @@
     ],
     "models": ["gpt4o", "text-embedding-3-large"],
     "appType": ["chat"],
-    "prerequisites": [".net8", "azd"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/cosmos-nosql-copilot.png",
     "screenshot": "/templates/images/cosmosdb-nosql-copilot-image.png"
@@ -1557,14 +1529,6 @@
     "authorUrls": ["https://github.com/marlenezw"],
     "models": ["gpt35turbo", "llama"],
     "appType": ["chat"],
-    "prerequisites": [
-      "azd",
-      "nodejslts",
-      "python3.9-3.11",
-      "git",
-      "pwsh7+",
-      "poetry"
-    ],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/llama-index-python-arch.png",
     "screenshot": "/templates/images/llama-index-python-image.png"
@@ -1609,7 +1573,6 @@
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt35turbo", "llama"],
     "appType": ["chat"],
-    "prerequisites": ["azd", "docker", "nodejslts", "git", "pwsh7+"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/llama-index-javascript-arch.png",
     "screenshot": "/templates/images/llama-index-javascript-image.png",
@@ -1693,7 +1656,6 @@
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": [],
     "appType": ["chat"],
-    "prerequisites": ["nodejslts", "azd"],
     "sampleType": "building_block",
     "architectureDiagram": "/templates/images/azure-openai-chat-frontend-arch.png",
     "screenshot": "/templates/images/azure-openai-chat-frontend-image.png"
@@ -1714,7 +1676,6 @@
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt35turbo"],
     "appType": ["agent"],
-    "prerequisites": ["azd", "nodejslts", "git", "pwsh7+", "swacli"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/azure-openai-assistant-javascript-arch.png",
     "screenshot": "/templates/images/azure-openai-assistant-demo-image.png"
@@ -1736,7 +1697,6 @@
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt4o"],
     "appType": ["chat"],
-    "prerequisites": ["azd", "python3.10+", "redis", "docker", "git"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/openai-chat-vision-quickstart-arch.png",
     "screenshot": "/templates/images/openai-chat-vision-quickstart-image.png",
@@ -1796,7 +1756,6 @@
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt35turbo"],
     "appType": ["chat"],
-    "prerequisites": ["nodejslts", "azd", "git", "pwsh7+"],
     "sampleType": "building_block",
     "architectureDiagram": "/templates/images/openai-secure-ui-js.png"
   },
@@ -1978,7 +1937,6 @@
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt35turbo"],
     "appType": ["chat"],
-    "prerequisites": ["nodejslts", "azd", "git", "pwsh7+"],
     "sampleType": "building_block"
   },
   {
@@ -2105,7 +2063,6 @@
     ],
     "models": ["gpt4o", "text-embedding-ada-002"],
     "appType": ["completions"],
-    "prerequisites": ["java17", "azd", "git", "pwsh7+"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/java-on-aca.png"
   },
@@ -2155,7 +2112,6 @@
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt4o"],
     "appType": ["completions"],
-    "prerequisites": ["java17", "azd", "docker", "git", "maven"],
     "sampleType": "full_sample",
     "screenshot": "/templates/images/cargotracker-liberty-aks-azd.png"
   },
@@ -2897,7 +2853,6 @@
     "authorUrls": ["https://github.com/Boburmirzo"],
     "models": ["llama"],
     "appType": ["chat"],
-    "prerequisites": ["python3.9-3.11", "azd", "git", "nodejs18+"],
     "sampleType": "full_sample",
     "legacySources": [
       "https://github.com/neondatabase-labs/rag-neon-postgres-openai-azure-python"
@@ -3482,7 +3437,6 @@
     "authorUrls": ["https://github.com/PramodKumarHK89"],
     "models": ["text-embedding-ada-002", "gpt4omini"],
     "appType": ["chat", "search", "llmops", "completions"],
-    "prerequisites": ["azd", "pwsh7+", "nodejs18+", "git", "functionscoretools"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/purview-api-sample-arch.png",
     "screenshot": "/templates/images/purview-api-sample-image.png"
@@ -3523,7 +3477,6 @@
     ],
     "models": ["gpt4", "text-embedding-ada-002"],
     "appType": ["chat", "search"],
-    "prerequisites": ["azd", "python3.9-3.11", "nodejs18+", "git", "pwsh7+"],
     "sampleType": "full_sample"
   },
   {
@@ -5378,7 +5331,6 @@
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt4o", "gpt4omini"],
     "appType": ["agent", "chat"],
-    "prerequisites": ["java17", "azd", "maven3.8.x", "nodejs", "git", "pwsh7+"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/agent-openai-java-banking-assistant-arch.png",
     "screenshot": "/templates/images/agent-openai-java-banking-assistant-image.png"
@@ -5400,7 +5352,6 @@
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt4omini"],
     "appType": ["chat"],
-    "prerequisites": ["azd", ".net8", "git"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/ai-chat-quickstart-csharp.png",
     "screenshot": "/templates/images/ai-chat-quickstart-csharp-image.png"
@@ -5421,7 +5372,6 @@
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["gpt4omini"],
     "appType": ["chat"],
-    "prerequisites": ["python3.9-3.11", "azd", "git", "pwsh7+"],
     "sampleType": "building_block",
     "architectureDiagram": "/templates/images/azure-openai-keyless-python.png"
   },
@@ -5444,7 +5394,6 @@
     ],
     "models": ["gpt4o"],
     "appType": ["chat"],
-    "prerequisites": [".net8", "azd", "docker"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/signalr-ai-streaming.png"
   },
@@ -5467,7 +5416,6 @@
     ],
     "models": ["gpt4o"],
     "appType": ["completions"],
-    "prerequisites": [".net8", "azd", "git"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/ai-chat-aspire-meai-csharp.png"
   },
@@ -5491,7 +5439,6 @@
     ],
     "models": ["gpt4o"],
     "appType": ["completions"],
-    "prerequisites": ["python3.9-3.11", "azd"],
     "sampleType": "building_block",
     "architectureDiagram": "/templates/images/azure-openai-entity-extraction.png"
   },
@@ -5514,7 +5461,6 @@
     ],
     "models": ["gpt35turbo"],
     "appType": ["completions"],
-    "prerequisites": ["go1.18+", "azd", "git"],
     "sampleType": "building_block",
     "architectureDiagram": "/templates/images/azure-openai-keyless-go.png"
   },
@@ -5538,7 +5484,6 @@
     ],
     "models": ["gpt4o"],
     "appType": ["chat"],
-    "prerequisites": ["docker", "java17", "azd", "git", "pwsh7+"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/semantic-kernel-customer-assistant-demo-java.png"
   },
@@ -5568,7 +5513,6 @@
     ],
     "models": ["gpt35turbo", "gpt4o", "text-embedding-ada-002"],
     "appType": ["chat"],
-    "prerequisites": ["python3.10+", "azd", "docker", "git"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/contoso-creative-writer.png"
   },
@@ -5594,7 +5538,6 @@
     "authorUrls": ["https://github.com/CawaMS"],
     "models": ["text-embedding-ada-002"],
     "appType": ["agent", "search", "completions"],
-    "prerequisites": ["azd", "git", ".net9", "redis", "docker"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/azure-redis-dalle-semantic-caching-arch.png",
     "screenshot": "/templates/images/azure-redis-dalle-semantic-caching-image.png"
@@ -5634,7 +5577,6 @@
     ],
     "models": ["gpt4", "text-embedding-ada-002", "gpt4o", "gpt4omini"],
     "appType": ["agent", "chat", "search", "completions"],
-    "prerequisites": ["python3.10+", "git", "docker", "azd"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/Conversation-Knowledge-Mining-Solution-Accelerator-arch.png",
     "screenshot": "/templates/images/Conversation-Knowledge-Mining-Solution-Accelerator-image.png"
@@ -5660,7 +5602,6 @@
     ],
     "models": ["gpt4omini"],
     "appType": ["chat", "search"],
-    "prerequisites": ["python3.9-3.11", "docker", "azd", "git"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/get-started-with-ai-chat-arch.png",
     "screenshot": "/templates/images/get-started-with-ai-chat-image.png"
@@ -5709,7 +5650,6 @@
     ],
     "models": ["gpt4o"],
     "appType": [],
-    "prerequisites": ["azd", "python3.11+", "docker"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/content-processing-solution-accelerator-arch.png",
     "screenshot": "/templates/images/content-processing-solution-accelerator-image.png"
@@ -5741,7 +5681,6 @@
     ],
     "models": ["gpt4o"],
     "appType": ["agent"],
-    "prerequisites": ["python3.10+", "azd", "docker", "git"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/Modernize-your-code-solution-accelerator-arch.png"
   },
@@ -5775,7 +5714,6 @@
     "authorUrls": ["https://github.com/zhenbzha/"],
     "models": ["gpt4o", "text-embedding-3-large"],
     "appType": ["agent", "chat", "search", "completions"],
-    "prerequisites": ["azd", "python3.11+", "git", "docker"],
     "sampleType": "full_sample",
     "screenshot": "/templates/images/chainlit-agent-image.png"
   },
@@ -5802,7 +5740,6 @@
     "authorUrls": ["https://github.com/dminkovski"],
     "models": ["gpt4o"],
     "appType": ["agent", "chat"],
-    "prerequisites": ["azd", "pwsh7+", "nodejs", "git", ".net9", "docker"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/agent-openai-banking-assistant-csharp-arch.png",
     "screenshot": "/templates/images/agent-openai-banking-assistant-csharp-image.gif"
@@ -5839,7 +5776,6 @@
     ],
     "models": ["gpt4o"],
     "appType": ["agent"],
-    "prerequisites": ["azd", "python3.10+", "azcli"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/Multi-Agent-Custom-Automation-Engine-Solution-Accelerator-arch.png",
     "screenshot": "/templates/images/Multi-Agent-Custom-Automation-Engine-Solution-Accelerator-image.png"
@@ -5869,7 +5805,6 @@
     ],
     "models": ["gpt4o"],
     "appType": ["completions", "chat"],
-    "prerequisites": ["redis", "azd", "python3.10+"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/Redis_LLMmemory-arch.png",
     "screenshot": "/templates/images/Redis_LLMmemory-image.png"
@@ -5903,7 +5838,6 @@
     ],
     "models": ["gpt4o"],
     "appType": ["agent"],
-    "prerequisites": ["python3.11+", "azd", "azcli"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/healthcare-agent-orchestrator-arch.png",
     "screenshot": "/templates/images/healthcare-agent-orchestrator-image.png",
@@ -5936,7 +5870,6 @@
     ],
     "models": ["gpt4omini"],
     "appType": ["agent", "chat"],
-    "prerequisites": ["azd", "git", "python3.9-3.11"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/agentic-applications-for-unified-data-foundation-solution-accelerator.png"
   },
@@ -5959,7 +5892,6 @@
     ],
     "models": ["gpt4"],
     "appType": ["chat"],
-    "prerequisites": ["python3.9-3.11", "azd"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/unified-data-foundation-with-fabric-solution-accelerator-arch.png",
     "screenshot": "/templates/images/unified-data-foundation-with-fabric-solution-accelerator-image.png"
@@ -5995,16 +5927,6 @@
     "authorUrls": ["https://github.com/shshr"],
     "models": ["text-embedding-ada-002", "gpt4o"],
     "appType": ["agent"],
-    "prerequisites": [
-      "azd",
-      "python3.11+",
-      "nodejs18+",
-      "pwsh7+",
-      "docker",
-      "nodejs",
-      "swacli",
-      "redis"
-    ],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/release-manager-assistant-arch.png",
     "video": "https://github.com/user-attachments/assets/fad365a9-f777-4aae-80e4-a437c5ad50e7"
@@ -6037,7 +5959,6 @@
     ],
     "models": ["gpt4o", "gpt4omini"],
     "appType": ["agent"],
-    "prerequisites": ["python3.11+", "docker", "azd"],
     "sampleType": "full_sample"
   },
   {
@@ -6055,7 +5976,6 @@
     "authorUrls": ["https://github.com/tmarwendo-microsoft"],
     "models": ["gpt4", "gpt4o"],
     "appType": ["agent", "chat"],
-    "prerequisites": ["azd", "git", "docker", ".net8"],
     "sampleType": "full_sample"
   },
   {
@@ -6073,7 +5993,6 @@
     "authorUrls": ["https://github.com/hengyl"],
     "models": ["gpt4omini"],
     "appType": ["agent"],
-    "prerequisites": ["python3.9-3.11", "azd", "git", "pwsh7+"],
     "sampleType": "full_sample"
   },
   {
@@ -6103,7 +6022,6 @@
     ],
     "models": ["gpt4omini"],
     "appType": ["agent", "chat", "search"],
-    "prerequisites": ["python3.9-3.11", "azd", "pwsh7+", "docker", "git"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/customer-chatbot-solution-accelerator-arch.png"
   },
@@ -6127,7 +6045,6 @@
     ],
     "models": ["gpt4"],
     "appType": ["agent", "chat"],
-    "prerequisites": ["azd", "azcli", "git", "python3.9+"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/real-time-intelligence-operations-solution-accelerator-arch.png",
     "screenshot": "/templates/images/real-time-intelligence-operations-solution-accelerator-image.png"
@@ -6157,7 +6074,6 @@
     "authorUrls": ["https://github.com/dantelmomsft"],
     "models": ["gpt4o", "gpt4"],
     "appType": ["agent", "chat"],
-    "prerequisites": ["azd", "python3.11+", "nodejs18+", "git", "pwsh7+"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/agent-openai-python-banking-assistant.png",
     "screenshot": "/templates/images/agent-openai-python-banking-assistant.gif"
@@ -6186,7 +6102,6 @@
     "authorUrls": ["https://github.com/microsoft-foundry"],
     "models": ["gpt54"],
     "appType": ["agent"],
-    "prerequisites": ["azd", "git", "docker", "python3.10+", "nodejs18+"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/Prior-Authorization-Multi-Agent-Solution-Accelerator-arch.png"
   },
@@ -6207,7 +6122,6 @@
     "authorUrls": ["https://github.com/microsoft-foundry"],
     "models": ["gpt4omini"],
     "appType": ["chat"],
-    "prerequisites": ["azd", "nodejs20", "git"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/Sovereign-Chat-Experience-Starter-arch.png",
     "screenshot": "/templates/images/Foundry-Azure-Local-Chat-image.png"
@@ -6234,7 +6148,6 @@
     "authorUrls": ["https://github.com/Azure-Samples"],
     "models": ["mistral7b", "gpt52"],
     "appType": ["agent", "chat"],
-    "prerequisites": ["azd", "helm", "pwsh7+"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/Video-Agents-Foundry-Solution-arch.png",
     "screenshot": "/templates/images/Video-Agents-Foundry-Solution-image.png"
@@ -6269,7 +6182,6 @@
       "gpt35turbo"
     ],
     "appType": ["agent", "chat", "search"],
-    "prerequisites": ["azd", "python3.9+", "pwsh7+"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/microsoft-iq-solution-accelerator-arch.png"
   },
@@ -6745,7 +6657,6 @@
       "gpt4o"
     ],
     "appType": ["agent", "chat"],
-    "prerequisites": ["azd", "git"],
     "sampleType": "full_sample",
     "architectureDiagram": "/templates/images/Azure-Language-OpenAI-Conversational-Agent-Accelerator-arch.png",
     "screenshot": "/templates/images/Azure-Language-OpenAI-Conversational-Agent-Accelerator-image.png"
@@ -6787,15 +6698,6 @@
     ],
     "models": ["gpt4"],
     "appType": ["search"],
-    "prerequisites": [
-      "azd",
-      "pwsh7+",
-      "docker",
-      "git",
-      "python3.9-3.11",
-      ".net8",
-      "nodejs"
-    ],
     "sampleType": "full_sample"
   }
 ]

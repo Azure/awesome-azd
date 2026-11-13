@@ -808,7 +808,7 @@ test.describe("Gallery functionality (deploy gate)", () => {
     );
 
     await expect(
-      page.getByRole("checkbox", { name: /Document Q&A 2/ }),
+      page.getByRole("checkbox", { name: /Document Q&A 1/ }),
     ).toBeVisible();
     await expect(
       page.getByRole("checkbox", { name: /Web apps 1/ }),
@@ -817,8 +817,8 @@ test.describe("Gallery functionality (deploy gate)", () => {
       page.getByRole("checkbox", { name: /APIs 1/ }),
     ).toBeVisible();
     await expect(
-      page.getByRole("checkbox", { name: /AI agents 1/ }),
-    ).toBeVisible();
+      page.getByRole("checkbox", { name: /AI agents 0/ }),
+    ).toHaveCount(0);
     await expect(
       page.getByRole("checkbox", { name: /Workflow automation 0/ }),
     ).toHaveCount(0);

@@ -37,11 +37,9 @@ function runAzdJson(args) {
 }
 
 /**
- * `azd extension show` marshals its result without JSON struct tags, so its keys
- * are Go field names (Name, Description, Capabilities) while `azd extension list`
- * uses tagged lowercase keys. That contract is incidental rather than declared,
- * so every mapped field is checked here: if azd's output shape ever changes, the
- * caller must fail loudly rather than write a catalog with missing metadata.
+ * Current `azd extension show` output uses tagged lowercase keys, while older
+ * releases exposed Go field names. Support both explicit contracts and validate
+ * every mapped field so an unsupported shape cannot write incomplete metadata.
  */
 function requireText(value, field, id) {
   if (typeof value !== "string" || value.trim() === "") {
@@ -113,15 +111,19 @@ function readExtensionRegistry(registryUrl, execute) {
     ]);
     // azd marshals an absent capability list as JSON null, so normalize it to an
     // empty array before the array check below.
-    const capabilities = details.Capabilities ?? [];
+    const capabilities = details.capabilities ?? details.Capabilities ?? [];
     if (!Array.isArray(capabilities)) {
       throw new Error(`azd returned non-array capabilities for extension "${id}".`);
     }
 
     return {
       id,
-      displayName: requireText(details.Name, "display name", id),
-      description: requireText(details.Description, "description", id),
+      displayName: requireText(details.name ?? details.Name, "display name", id),
+      description: requireText(
+        details.description ?? details.Description,
+        "description",
+        id,
+      ),
       capabilities,
     };
   });

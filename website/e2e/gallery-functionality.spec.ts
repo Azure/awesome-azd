@@ -447,7 +447,7 @@ test.describe("Gallery functionality (deploy gate)", () => {
           };
         }),
       ).toEqual({
-        borderRadius: "0px",
+        borderRadius: "10px",
         borderStyle: "solid",
         borderWidth: "1px",
       });

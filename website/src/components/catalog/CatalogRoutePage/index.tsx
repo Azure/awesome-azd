@@ -3,18 +3,28 @@
  * Licensed under the MIT License.
  */
 
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import Link from "@docusaurus/Link";
 import { useHistory, useLocation } from "@docusaurus/router";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import useIsBrowser from "@docusaurus/useIsBrowser";
 import Layout from "@theme/Layout";
-import CatalogPage from "../../components/catalog/CatalogPage";
+import type { CatalogPageData } from "../../../catalog/catalogTypes";
+import { decodeCatalogPageData } from "../../../catalog/catalogWireFormat";
+import CatalogPage from "../CatalogPage";
 
-export default function Templates(): React.JSX.Element {
+export default function CatalogRoutePage({
+  catalogPage,
+}: {
+  catalogPage: CatalogPageData;
+}): React.JSX.Element {
   const history = useHistory();
   const location = useLocation();
   const isBrowser = useIsBrowser();
+  const templates = useMemo(
+    () => decodeCatalogPageData(catalogPage),
+    [catalogPage],
+  );
   const extensionsUrl = useBaseUrl("/extensions");
   const search = new URLSearchParams(isBrowser ? location.search : "");
   const isLegacyExtensionsUrl =
@@ -44,5 +54,5 @@ export default function Templates(): React.JSX.Element {
     );
   }
 
-  return <CatalogPage />;
+  return <CatalogPage templates={templates} />;
 }

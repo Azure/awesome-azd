@@ -19,9 +19,9 @@ import {
   catalogFacets,
   clearCatalogState,
   getFacetOptions,
-  getFacetValueCounts,
   getMatchingCatalogTemplates,
   parseCatalogState,
+  queryCatalog,
   serializeCatalogState,
   sortCatalogTemplates,
 } from "../src/catalog/catalogQuery";
@@ -29,6 +29,10 @@ import {
   dataFileName,
   resolveDetailAsset,
 } from "../route_generator_plugin/catalogRouteGenerator";
+import {
+  createCatalogPageData,
+  decodeCatalogPageData,
+} from "../src/catalog/catalogWireFormat";
 
 const websiteRoot = path.resolve(__dirname, "..");
 
@@ -124,6 +128,53 @@ describe("unified catalog data", () => {
     expect(
       catalogTemplates.some((template) => "markdownUrl" in template),
     ).toBe(false);
+  });
+
+  test("projects a route-local listing payload without detail-only data", () => {
+    const template = catalogTemplates[0];
+    const pageData = createCatalogPageData(catalogTemplates);
+    const listing = decodeCatalogPageData(pageData)[0];
+
+    expect(pageData.schemaVersion).toBe(2);
+    expect(pageData.templates).toHaveLength(catalogTemplates.length);
+    expect(
+      decodeCatalogPageData(pageData).map((record) => record.searchText),
+    ).toEqual(catalogTemplates.map((record) => record.searchText));
+    expect(listing).toMatchObject({
+      id: template.id,
+      title: template.title,
+      detailPath: template.detailPath,
+      primaryService: template.primaryService,
+    });
+    expect(listing).not.toHaveProperty("source");
+    expect(listing).not.toHaveProperty("authorUrls");
+    expect(listing).not.toHaveProperty("resources");
+    expect(listing).not.toHaveProperty("preview");
+    expect(listing).not.toHaveProperty("architectureDiagram");
+    expect(listing).not.toHaveProperty("screenshot");
+  });
+
+  test.each([
+    "?q=azure+openai",
+    "?type=ai&language=Python",
+    "?tags=azureopenai",
+    "?service=aca&sort=newest",
+  ])("preserves catalog query behavior in the compact payload for %s", (query) => {
+    const decodedTemplates = decodeCatalogPageData(
+      createCatalogPageData(catalogTemplates),
+    );
+    const originalState = parseCatalogState(query, catalogTemplates);
+    const decodedState = parseCatalogState(query, decodedTemplates);
+
+    expect(
+      getMatchingCatalogTemplates(decodedTemplates, decodedState).map(
+        (template) => template.id,
+      ),
+    ).toEqual(
+      getMatchingCatalogTemplates(catalogTemplates, originalState).map(
+        (template) => template.id,
+      ),
+    );
   });
 
   test("has reviewed use cases for every catalog template", () => {
@@ -764,17 +815,17 @@ describe("unified catalog query", () => {
       "?type=ai&language=Python",
       catalogTemplates,
     );
-    const counts = getFacetValueCounts(
-      catalogTemplates,
-      state,
-      languageFacet,
-    );
+    const queryResult = queryCatalog(catalogTemplates, state);
+    const counts = queryResult.facetCounts.get(languageFacet.key);
     const expectedTypeScriptCount = catalogTemplates.filter(
       (template) =>
         template.isAi && template.languages.includes("TypeScript"),
     ).length;
 
-    expect(counts.get("TypeScript")).toBe(expectedTypeScriptCount);
+    expect(counts?.get("TypeScript")).toBe(expectedTypeScriptCount);
+    expect(queryResult.templates).toEqual(
+      getMatchingCatalogTemplates(catalogTemplates, state),
+    );
   });
 
   test("searches title, description, tags, authors, and use case locally", () => {
@@ -1139,7 +1190,7 @@ describe("unified catalog query", () => {
   test("restores the previous chronology and alphabetical orders", () => {
     const sourceOrder = new Map(
       catalogTemplates.map((template, index) => [
-        template.normalizedSource,
+        template.id,
         index,
       ]),
     );
@@ -1190,7 +1241,7 @@ describe("unified catalog query", () => {
     }));
     const sourceOrder = new Map(
       records.map((template, index) => [
-        template.normalizedSource,
+        template.id,
         index,
       ]),
     );

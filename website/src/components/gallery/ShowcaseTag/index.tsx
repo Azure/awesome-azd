@@ -5,8 +5,12 @@
 
 import React from "react";
 import styles from "./styles.module.css";
-import { Tag, Tags, type TagType } from "../../../data/tags";
-import { sortedTagList } from "../../../data/templates";
+import {
+  Tag,
+  Tags,
+  sortedTagList,
+  type TagType,
+} from "../../../data/tags";
 import { sortBy } from "@site/src/utils/jsUtils";
 import { Badge, Tooltip } from "@fluentui/react-components";
 

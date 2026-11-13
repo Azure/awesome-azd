@@ -18,70 +18,13 @@ import {
   formatAzdInitCommand,
   getTemplateIdentifier,
 } from "../utils/templateCommands";
-
-export const catalogTasks = [
-  "Build a web app",
-  "Build an API",
-  "Build an AI agent",
-  "Build an MCP server",
-  "Chat with documents",
-  "Query a database",
-  "Automate a workflow",
-  "Start with infrastructure",
-] as const;
-
-export type CatalogTask = (typeof catalogTasks)[number];
-export type CatalogAuthorship = "Community" | "Microsoft";
-
-export type CatalogResource = {
-  id: string;
-  label: string;
-  role: string;
-  description: string;
-  icon?: string;
-  darkModeIcon?: string;
-  url?: string;
-};
-
-export type CatalogTemplate = {
-  id: string;
-  title: string;
-  description: string;
-  source: string;
-  normalizedSource: string;
-  repository: string;
-  detailPath: string;
-  authors: string[];
-  legacyAuthors: string[];
-  authorUrls: string[];
-  authorship: CatalogAuthorship;
-  isAi: boolean;
-  featured: boolean;
-  stars?: number;
-  tasks: CatalogTask[];
-  collections: string[];
-  legacyTags: string[];
-  compatibilityTags: string[];
-  languages: string[];
-  frameworks: string[];
-  databases: string[];
-  iac: string[];
-  serviceIds: string[];
-  services: string[];
-  tools: string[];
-  topics: string[];
-  models: string[];
-  host?: string;
-  resources: CatalogResource[];
-  preview?: string;
-  architectureDiagram?: string;
-  screenshot?: string;
-  video?: string;
-  sampleType?: string;
-  initCommand: string;
-  readmeUrl: string;
-  searchText: string;
-};
+import {
+  catalogTasks,
+  type CatalogAuthorship,
+  type CatalogResource,
+  type CatalogTask,
+  type CatalogTemplate,
+} from "./catalogTypes";
 
 type RawTemplate = {
   id?: unknown;
@@ -471,6 +414,12 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
   const tasks = getReviewedUseCases(coordinates.normalizedSource);
   const initCommand = formatAzdInitCommand(getTemplateIdentifier(source));
   const readmeUrl = `${source}#readme`;
+  const primaryService =
+    resources.find(
+      (resource) => resource.role === "Application hosting",
+    )?.label ??
+    host ??
+    services[0];
   const architectureDiagram = readOptionalString(record.architectureDiagram);
   const screenshot = readOptionalString(record.screenshot);
   const preview =
@@ -479,6 +428,14 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     architectureDiagram;
   const video = readOptionalString(record.video);
   const sampleType = readOptionalString(record.sampleType);
+  const listingSearchTerms = unique([
+    ...legacySearchTerms,
+    ...appTypes,
+    ...services,
+    ...tools,
+    ...topics,
+    ...models,
+  ]);
   const searchText = [
     title,
     description,
@@ -486,20 +443,14 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     coordinates.repo,
     ...authors,
     ...legacyAuthors,
-    ...rawTags,
-    ...legacySearchTerms,
-    ...tags,
-    ...appTypes,
+    ...compatibilityTags,
     ...languages,
     ...frameworks,
     ...databases,
     ...iac,
-    ...services,
-    ...tools,
-    ...topics,
-    ...models,
     ...tasks,
     authorship,
+    ...listingSearchTerms,
   ]
     .join(" ")
     .toLowerCase();
@@ -530,6 +481,7 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     databases,
     iac,
     serviceIds,
+    primaryService,
     services,
     tools,
     topics,
@@ -543,6 +495,7 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     sampleType,
     initCommand,
     readmeUrl,
+    listingSearchTerms,
     searchText,
   };
 }

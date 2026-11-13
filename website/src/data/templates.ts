@@ -6,8 +6,14 @@
 /* eslint-disable global-require */
 
 import { sortBy } from "../utils/jsUtils";
-import { TagType, Template, Tags } from "./tags";
+import {
+  TagList,
+  sortedTagList,
+  type Template,
+} from "./tags";
 import templates from "../../static/templates.json";
+
+export { TagList, sortedTagList };
 
 // *** ADDING DATA TO AZD GALLERY ****/
 
@@ -113,11 +119,6 @@ export const galleryTemplates: ReadonlyArray<Record<string, unknown>> =
 export const unsortedTemplates: Template[] =
   validateTemplates(rawGalleryTemplates);
 
-export const TagList = Object.keys(Tags) as TagType[];
-export const sortedTagList: ReadonlyArray<TagType> = sortBy(
-  TagList,
-  (tag) => tag,
-);
 function sortTemplates() {
   let result = unsortedTemplates;
   // Sort by template name

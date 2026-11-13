@@ -5,8 +5,11 @@
 
 import React from "react";
 import styles from "./styles.module.css";
-import { Tags, type TagType } from "../../../data/tags";
-import { sortedTagList } from "../../../data/templates";
+import {
+  Tags,
+  sortedTagList,
+  type TagType,
+} from "../../../data/tags";
 import { sortBy } from "@site/src/utils/jsUtils";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { DefaultButton, Popup } from "@fluentui/react";

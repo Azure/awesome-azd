@@ -45,6 +45,24 @@ const config = {
     locales: ["en"],
   },
 
+  headTags: [
+    {
+      tagName: "link",
+      attributes: {
+        rel: "preconnect",
+        href: "https://fonts.googleapis.com",
+      },
+    },
+    {
+      tagName: "link",
+      attributes: {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+        crossorigin: "anonymous",
+      },
+    },
+  ],
+
   // CONFIG: Google Fonts for Warm Precision design
   // NOTE: SRI cannot be used for Google Fonts because responses vary by user-agent
   // (different font formats for different browsers). Self-hosting fonts is an
@@ -272,6 +290,11 @@ const config = {
         //    See: https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog
         // FIXME: TEMPORARILY DISABLE BLOG
         blog: false,
+
+        sitemap: {
+          changefreq: "weekly",
+          priority: 0.5,
+        },
 
         // CONFIG: theme = currently using `classic`
         //    See: https://docusaurus.io/docs/api/themes/@docusaurus/theme-classic

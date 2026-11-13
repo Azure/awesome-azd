@@ -1,11 +1,15 @@
 import * as fs from "fs";
 import * as path from "path";
 import type { LoadContext, Plugin } from "@docusaurus/types";
-import {
-  catalogTemplates,
-  type CatalogTemplate,
-} from "../src/catalog/catalogData";
+import { catalogTemplates } from "../src/catalog/catalogData";
 import { servicePages } from "../src/catalog/servicePages";
+import { createCatalogPageData } from "../src/catalog/catalogWireFormat";
+import type {
+  CatalogTemplate,
+  CatalogTemplateDetail,
+} from "../src/catalog/catalogTypes";
+
+const dataCreationBatchSize = 32;
 
 export function dataFileName(prefix: string, value: string): string {
   return `${prefix}-${encodeURIComponent(value)}.json`;
@@ -53,7 +57,7 @@ function toServiceTemplate(template: CatalogTemplate) {
 function toTemplateDetail(
   template: CatalogTemplate,
   siteDir: string,
-) {
+): CatalogTemplateDetail {
   return {
     title: template.title,
     description: template.description,
@@ -62,16 +66,10 @@ function toTemplateDetail(
     detailPath: template.detailPath,
     authors: template.authors,
     authorUrls: template.authorUrls,
-    isAi: template.isAi,
     stars: template.stars,
     tasks: template.tasks,
     languages: template.languages,
-    frameworks: template.frameworks,
-    databases: template.databases,
-    iac: template.iac,
     services: template.services,
-    tools: template.tools,
-    topics: template.topics,
     models: template.models,
     resources: template.resources,
     preview: resolveDetailAsset(siteDir, template.preview),
@@ -84,11 +82,43 @@ function toTemplateDetail(
   };
 }
 
+async function mapInBatches<T, R>(
+  values: readonly T[],
+  mapper: (value: T) => Promise<R>,
+): Promise<R[]> {
+  const results: R[] = [];
+  for (let index = 0; index < values.length; index += dataCreationBatchSize) {
+    results.push(
+      ...(await Promise.all(
+        values
+          .slice(index, index + dataCreationBatchSize)
+          .map(mapper),
+      )),
+    );
+  }
+  return results;
+}
+
 export default function catalogRouteGenerator(
   context: LoadContext,
 ): Plugin<void> {
   return {
     name: "catalog-route-generator-plugin",
+    getPathsToWatch: () => [
+      path.join(context.siteDir, "static", "templates.json"),
+      path.join(
+        context.siteDir,
+        "src",
+        "catalog",
+        "template-use-cases.json",
+      ),
+      path.join(
+        context.siteDir,
+        "src",
+        "catalog",
+        "repository-metrics.generated.json",
+      ),
+    ],
     contentLoaded: async ({ actions }) => {
       const routes = new Map<string, string>();
 
@@ -117,12 +147,29 @@ export default function catalogRouteGenerator(
         });
       };
 
-      for (const template of catalogTemplates) {
-        const detailPageDataPath = await actions.createData(
-          dataFileName("template", template.repository),
-          { template: toTemplateDetail(template, context.siteDir) },
-        );
+      const catalogPageDataPath = await actions.createData(
+        "catalog-page.json",
+        createCatalogPageData(catalogTemplates),
+      );
+      addRoute(
+        `${context.siteConfig.baseUrl}templates`,
+        "catalog",
+        "@site/src/components/catalog/CatalogRoutePage",
+        { catalogPage: catalogPageDataPath },
+      );
 
+      const detailPages = await mapInBatches(
+        catalogTemplates,
+        async (template) => ({
+          template,
+          dataPath: await actions.createData(
+            dataFileName("template", template.repository),
+            { template: toTemplateDetail(template, context.siteDir) },
+          ),
+        }),
+      );
+
+      for (const { template, dataPath } of detailPages) {
         addRoute(
           `${context.siteConfig.baseUrl}${template.detailPath.replace(
             /^\//,
@@ -130,14 +177,22 @@ export default function catalogRouteGenerator(
           )}`,
           template.normalizedSource,
           "@site/src/components/catalog/TemplateDetailPage",
-          { templatePage: detailPageDataPath },
+          { templatePage: dataPath },
         );
       }
 
+      const templatesByService = new Map<string, CatalogTemplate[]>();
+      for (const template of catalogTemplates) {
+        for (const serviceId of template.serviceIds) {
+          const templates = templatesByService.get(serviceId) ?? [];
+          templates.push(template);
+          templatesByService.set(serviceId, templates);
+        }
+      }
+
       for (const servicePage of servicePages) {
-        const matchingTemplates = catalogTemplates.filter((template) =>
-          template.serviceIds.includes(servicePage.config.serviceTag),
-        );
+        const matchingTemplates =
+          templatesByService.get(servicePage.config.serviceTag) ?? [];
         const servicePageDataPath = await actions.createData(
           dataFileName("service", servicePage.config.serviceTag),
           {

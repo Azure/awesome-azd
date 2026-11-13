@@ -1005,3 +1005,5 @@ const tagDefinitions = {
 } as const satisfies Record<string, Tag>;
 
 export const Tags: Record<TagType, Tag> = tagDefinitions;
+export const TagList = Object.keys(Tags) as TagType[];
+export const sortedTagList: ReadonlyArray<TagType> = [...TagList].sort();

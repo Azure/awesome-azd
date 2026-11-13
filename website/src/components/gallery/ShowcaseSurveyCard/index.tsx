@@ -51,7 +51,7 @@ export default function ShowcaseSurveyCard(): React.JSX.Element | null {
   const { colorMode } = useColorMode();
   const closeIcon = useBaseUrl("/img/close.svg");
   const surveyIcon = useBaseUrl(
-    colorMode != "dark" ? "/img/chatPencil.svg" : "/img/chatPencilDark.svg"
+    colorMode != "dark" ? "/img/chatPencil.png" : "/img/chatPencilDark.png"
   );
   const openLinkIcon = useBaseUrl("/img/openLink.svg");
   if (storedDismissed !== false) {

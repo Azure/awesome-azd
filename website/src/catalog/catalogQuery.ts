@@ -5,8 +5,8 @@
 
 import {
   catalogTasks,
-  type CatalogTemplate,
-} from "./catalogData";
+  type CatalogListingTemplate,
+} from "./catalogTypes";
 import {
   canonicalizeCatalogTagId,
   getCatalogTagCompatibilityIds,
@@ -131,7 +131,7 @@ const aiApplicationTagIds = new Set([
 const nonFilterableLegacyTags = new Set(["new"]);
 
 function getValues(
-  template: CatalogTemplate,
+  template: CatalogListingTemplate,
   key: CatalogFacetKey,
 ): string[] {
   switch (key) {
@@ -177,7 +177,7 @@ export function getFacetLabel(facet: CatalogFacet, value: string): string {
 }
 
 export function getFacetOptions(
-  records: readonly CatalogTemplate[],
+  records: readonly CatalogListingTemplate[],
   facet: CatalogFacet,
 ): string[] {
   return facet.values
@@ -191,7 +191,7 @@ export function getFacetOptions(
 
 export function parseCatalogState(
   search: string,
-  records: readonly CatalogTemplate[],
+  records: readonly CatalogListingTemplate[],
 ): CatalogState {
   const query = new URLSearchParams(search);
   const requestedSort = query.get("sort");
@@ -327,67 +327,145 @@ export function clearCatalogState(): CatalogState {
   };
 }
 
+function getSearchTokens(state: CatalogState): string[] {
+  return state.q.trim().toLowerCase().split(/\s+/).filter(Boolean);
+}
+
+function matchesSearch(
+  template: CatalogListingTemplate,
+  tokens: readonly string[],
+): boolean {
+  return (
+    tokens.length === 0 ||
+    tokens.every((token) => template.searchText.includes(token))
+  );
+}
+
+function matchesFacet(
+  template: CatalogListingTemplate,
+  state: CatalogState,
+  facet: CatalogFacet,
+): boolean {
+  if (state[facet.key].length === 0) {
+    return true;
+  }
+
+  const values = getValues(template, facet.key);
+  if (facet.key === "legacyTags") {
+    return state.legacyTags.every((value) => values.includes(value));
+  }
+
+  return state[facet.key].some((value) => {
+    if (values.includes(value)) {
+      return true;
+    }
+    if (!supportsLegacyTagCompatibility(facet.key)) {
+      return false;
+    }
+
+    const compatibilityIds = getCatalogTagCompatibilityIds(value);
+    return (
+      compatibilityIds.length === 1 &&
+      template.compatibilityTags.includes(compatibilityIds[0])
+    );
+  });
+}
+
 export function matchesCatalogTemplate(
-  template: CatalogTemplate,
+  template: CatalogListingTemplate,
   state: CatalogState,
   ignoredFacet?: CatalogFacetKey,
 ): boolean {
-  const tokens = state.q.trim().toLowerCase().split(/\s+/).filter(Boolean);
-  const queryMatch =
-    tokens.length === 0 ||
-    tokens.every((token) => template.searchText.includes(token));
-
   return (
-    queryMatch &&
+    matchesSearch(template, getSearchTokens(state)) &&
     catalogFacets.every((facet) => {
-      if (facet.key === ignoredFacet || state[facet.key].length === 0) {
-        return true;
-      }
-      const values = getValues(template, facet.key);
-      if (facet.key === "legacyTags") {
-        return state.legacyTags.every((value) => values.includes(value));
-      }
-      return state[facet.key].some((value) => {
-        if (values.includes(value)) {
-          return true;
-        }
-        if (!supportsLegacyTagCompatibility(facet.key)) {
-          return false;
-        }
-
-        const compatibilityIds = getCatalogTagCompatibilityIds(value);
-        return (
-          compatibilityIds.length === 1 &&
-          template.compatibilityTags.includes(compatibilityIds[0])
-        );
-      });
+      return facet.key === ignoredFacet || matchesFacet(template, state, facet);
     })
   );
 }
 
-export function getMatchingCatalogTemplates(
-  records: readonly CatalogTemplate[],
+export type CatalogQueryResult<
+  T extends CatalogListingTemplate = CatalogListingTemplate,
+> = {
+  templates: T[];
+  facetCounts: ReadonlyMap<
+    CatalogFacetKey,
+    ReadonlyMap<string, number>
+  >;
+};
+
+export function queryCatalog<T extends CatalogListingTemplate>(
+  records: readonly T[],
   state: CatalogState,
-): CatalogTemplate[] {
-  return records.filter((template) =>
-    matchesCatalogTemplate(template, state),
+): CatalogQueryResult<T> {
+  const templates: T[] = [];
+  const facetCounts = new Map<
+    CatalogFacetKey,
+    Map<string, number>
+  >(
+    catalogFacets.map((facet) => [facet.key, new Map<string, number>()]),
   );
+  const tokens = getSearchTokens(state);
+
+  for (const template of records) {
+    if (!matchesSearch(template, tokens)) {
+      continue;
+    }
+
+    const failedFacets = catalogFacets.filter(
+      (facet) => !matchesFacet(template, state, facet),
+    );
+    if (failedFacets.length === 0) {
+      templates.push(template);
+    }
+    if (failedFacets.length > 1) {
+      continue;
+    }
+
+    for (const facet of catalogFacets) {
+      if (
+        failedFacets.length === 1 &&
+        failedFacets[0].key !== facet.key
+      ) {
+        continue;
+      }
+
+      const counts = facetCounts.get(facet.key);
+      if (!counts) {
+        throw new Error(`Missing count map for catalog facet '${facet.key}'.`);
+      }
+      for (const value of new Set(getValues(template, facet.key))) {
+        counts.set(value, (counts.get(value) ?? 0) + 1);
+      }
+    }
+  }
+
+  return { templates, facetCounts };
 }
 
-export function sortCatalogTemplates(
-  records: readonly CatalogTemplate[],
+export function getMatchingCatalogTemplates<
+  T extends CatalogListingTemplate,
+>(
+  records: readonly T[],
+  state: CatalogState,
+): T[] {
+  return queryCatalog(records, state).templates;
+}
+
+export function sortCatalogTemplates<T extends CatalogListingTemplate>(
+  records: readonly T[],
   state: CatalogState,
   sourceOrder: ReadonlyMap<string, number>,
-): CatalogTemplate[] {
+): T[] {
   const result = [...records];
   if (state.sort === "newest" || state.sort === "oldest") {
     const direction = state.sort === "newest" ? -1 : 1;
     return result.sort(
       (left, right) =>
         direction *
-        ((sourceOrder.get(left.normalizedSource) ??
+        ((sourceOrder.get(left.id) ??
           Number.MAX_SAFE_INTEGER) -
-          (sourceOrder.get(right.normalizedSource) ??
+          (sourceOrder.get(right.id) ??
             Number.MAX_SAFE_INTEGER)),
     );
   }
@@ -427,9 +505,9 @@ export function sortCatalogTemplates(
         return right.stars - left.stars;
       }
       return (
-        (sourceOrder.get(left.normalizedSource) ??
+        (sourceOrder.get(left.id) ??
           Number.MAX_SAFE_INTEGER) -
-        (sourceOrder.get(right.normalizedSource) ??
+        (sourceOrder.get(right.id) ??
           Number.MAX_SAFE_INTEGER)
       );
     },
@@ -437,22 +515,10 @@ export function sortCatalogTemplates(
 }
 
 export function getFacetValueCounts(
-  records: readonly CatalogTemplate[],
+  records: readonly CatalogListingTemplate[],
   state: CatalogState,
   facet: CatalogFacet,
 ): ReadonlyMap<string, number> {
-  const counts = new Map<string, number>();
-
-  for (const template of records) {
-    if (!matchesCatalogTemplate(template, state, facet.key)) {
-      continue;
-    }
-
-    for (const value of new Set(getValues(template, facet.key))) {
-      counts.set(value, (counts.get(value) ?? 0) + 1);
-    }
-  }
-
-  return counts;
+  return queryCatalog(records, state).facetCounts.get(facet.key) ?? new Map();
 }
 

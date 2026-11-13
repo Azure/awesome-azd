@@ -1,6 +1,7 @@
 import { describe, expect, test } from "@jest/globals";
 import { Tags } from "../src/data/tags";
 import { CAPABILITY_BADGES } from "../src/data/extensionCapabilities";
+import { validateExtensions } from "../src/data/extensions";
 import Templates from "../static/templates.json";
 import Extensions from "../static/extensions.json";
 
@@ -85,6 +86,10 @@ describe("Template metadata", () => {
 });
 
 describe("Extension metadata", () => {
+  test("passes runtime validation without dropping records", () => {
+    expect(validateExtensions(Extensions)).toHaveLength(Extensions.length);
+  });
+
   test("defines every extension tag", () => {
     const usedTags = new Set(
       Extensions.flatMap((extension) => extension.tags ?? []),

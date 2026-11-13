@@ -14,6 +14,7 @@ import {
   type CatalogFacetKey,
   type CatalogState,
 } from "../../../catalog/catalogQuery";
+import controlStyles from "../../GalleryControls/styles.module.css";
 import styles from "./styles.module.css";
 
 function AiIcon(): React.JSX.Element {
@@ -96,8 +97,8 @@ export default function FacetSection({
               key={value}
               id={id}
               value={value}
-              className={`${styles.filterOption} ${
-                checked ? styles.filterOptionSelected : ""
+              className={`${controlStyles.filterOption} ${
+                checked ? controlStyles.filterOptionSelected : ""
               }`}
               checked={checked}
               onChange={(_event, data) => {

@@ -4,15 +4,17 @@
  */
 
 .page {
-  --catalog-bg: var(--colorNeutralBackground2, #f5f5f5);
+  --catalog-paper: var(--colorNeutralBackground2, #f5f5f5);
   --catalog-surface: var(--colorNeutralBackground1, #fff);
-  --catalog-text: var(--colorNeutralForeground1, #242424);
+  --catalog-subtle: var(--colorNeutralBackground3, #f0f0f0);
+  --catalog-ink: var(--colorNeutralForeground1, #242424);
   --catalog-muted: var(--colorNeutralForeground2, #424242);
-  --catalog-border: var(--colorNeutralStroke2, #e0e0e0);
+  --catalog-line: var(--colorNeutralStroke2, #e0e0e0);
   --catalog-blue: var(--colorBrandForeground1, #0f6cbd);
+  --catalog-blue-tint: var(--colorBrandBackground2, #ebf3fc);
   min-height: 100vh;
-  background: var(--catalog-bg);
-  color: var(--catalog-text);
+  background: var(--catalog-paper);
+  color: var(--catalog-ink);
   font-size: 0.94rem;
 }
 
@@ -32,7 +34,7 @@
 .filter {
   align-self: start;
   padding: 16px;
-  border: 1px solid var(--catalog-border);
+  border: 1px solid var(--catalog-line);
   border-radius: 8px;
   background: var(--catalog-surface);
 }
@@ -44,10 +46,10 @@
 .mobileFilters {
   min-height: 36px;
   padding: 7px 12px;
-  border: 1px solid var(--catalog-border);
+  border: 1px solid var(--catalog-line);
   border-radius: 6px;
   background: var(--catalog-surface);
-  color: var(--catalog-text);
+  color: var(--catalog-ink);
   font-size: 0.78rem;
 }
 

@@ -22,6 +22,7 @@ import {
   clearSearchFilters,
 } from "../src/utils/galleryQuery";
 import { splitAuthors } from "../src/utils/jsUtils";
+import { validateExtensions } from "../src/data/extensions";
 
 const extensions: Extension[] = [
   {
@@ -46,6 +47,40 @@ const extensions: Extension[] = [
     tags: ["msft"],
   },
 ];
+
+describe("extension metadata validation", () => {
+  const safeExtension: Extension = {
+    ...extensions[0],
+    registryUrl:
+      "https://raw.githubusercontent.com/example/extensions/main/registry.json",
+  };
+
+  test("accepts HTTPS links and a shell-safe raw GitHub registry URL", () => {
+    expect(validateExtensions([safeExtension])).toEqual([safeExtension]);
+  });
+
+  test.each([
+    ["id", "--help"],
+    ["source", "javascript:alert(1)"],
+    ["authorUrl", "https://user:password@github.com/example"],
+    ["website", "data:text/html,test"],
+    [
+      "registryUrl",
+      "https://raw.githubusercontent.com/example/extensions/main/registry.json;calc",
+    ],
+  ] as const)("rejects an unsafe %s", (field, value) => {
+    const warn = jest.spyOn(console, "warn").mockImplementation(() => {});
+
+    expect(
+      validateExtensions([{ ...safeExtension, [field]: value }]),
+    ).toEqual([]);
+    expect(warn).toHaveBeenCalledWith(
+      expect.stringContaining(`'${field}'`),
+    );
+
+    warn.mockRestore();
+  });
+});
 
 describe("extension gallery tag helpers", () => {
   test("appends derived extension capabilities after catalog tags", () => {

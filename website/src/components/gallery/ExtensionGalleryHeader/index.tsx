@@ -10,6 +10,7 @@ import { SearchBox } from "@fluentui/react-components";
 import { Open16Regular } from "@fluentui/react-icons";
 import { captureGalleryNavigationState } from "@site/src/utils/galleryNavigation";
 import { readSearchName, replaceSearchName } from "@site/src/utils/galleryQuery";
+import controlStyles from "../../GalleryControls/styles.module.css";
 import styles from "./styles.module.css";
 
 export function ExtensionSearchBox(): React.JSX.Element {
@@ -46,7 +47,7 @@ export function ExtensionSearchBox(): React.JSX.Element {
     >
       <SearchBox
         id="filterBar"
-        className={styles.searchBox}
+        className={controlStyles.search}
         appearance="outline"
         size="medium"
         value={value ?? ""}

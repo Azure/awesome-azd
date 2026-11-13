@@ -15,15 +15,18 @@ Place your template repository link here:
     - [ ] **Link to Author's GitHub or other relevant website** - Used for attribution
     - [ ] **Author's Name** -  Name to credit on the gallery card
     - [ ] **Link to template source** - Link to the template GitHub repo 
-    - [ ] **Tags** - Specify [tags](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) to represent the template. If you don't see a relevant tag for your template? Feel free to add one!
-    - [ ] **Languages Tags** - [Tags for languages](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) representing the template.
-    - [ ] **Azure Services Tags** - [Tags for azure services](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.tsx) representing the template.
+    - [ ] **Tags** - Specify special, tool, or topic [tags](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.ts). Use `"aiapplication"` for AI application templates; do not add the legacy `"aicollection"` value.
+    - [ ] **Languages** - [Language tags](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.ts) used by the template.
+    - [ ] **Frameworks** - [Framework tags](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.ts) used by the template.
+    - [ ] **Azure Services** - [Azure service tags](https://github.com/Azure/awesome-azd/blob/main/website/src/data/tags.ts) provisioned by the template.
+    - [ ] **Models** - Model tags used by AI templates, when applicable.
+    - [ ] **IaC** - The infrastructure-as-code provider (`"bicep"` or `"terraform"`).
     - [ ] **ID** - Please provide a unique uuid.
         
         **Required tags**:
       - [ ] Tag your template as Microsoft-authored (`"msft"`) or Community-authored (`"community"`)
-      - [ ] Tag the IaC provider (`"bicep"` or `"terraform"`)
       - [ ] Add the `"new"` tag for any newly authored templates
+      - [ ] Confirm no tag is duplicated within or across metadata arrays
 
 - [ ] Added the normalized repository URL and at least one reviewed use case to https://github.com/Azure/awesome-azd/blob/main/website/src/catalog/template-use-cases.json.
 

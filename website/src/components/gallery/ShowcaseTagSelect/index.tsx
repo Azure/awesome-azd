@@ -11,6 +11,7 @@ import { captureGalleryNavigationState } from "@site/src/utils/galleryNavigation
 import { readSearchTags, replaceSearchTags } from "@site/src/utils/galleryQuery";
 import { type TagType } from "@site/src/data/tags";
 import { Checkbox } from "@fluentui/react-components";
+import controlStyles from "../../GalleryControls/styles.module.css";
 import styles from "./styles.module.css";
 
 export default function ShowcaseTagSelect({
@@ -31,7 +32,6 @@ export default function ShowcaseTagSelect({
   count?: number;
 }): React.JSX.Element {
   const history = useHistory();
-  // updates only the url query
   const toggleTag = () => {
     const tags = readSearchTags(location.search);
     const newTags = toggleListItem(tags, tag);
@@ -44,35 +44,36 @@ export default function ShowcaseTagSelect({
   };
 
   const tagId = id.replace("showcase_checkbox_id_", "");
-  const contentForAdobeAnalytics = `{\"id\":\"${tagId}\",\"cN\":\"Tags\"}`;
+  const contentForAdobeAnalytics = JSON.stringify({
+    id: tagId,
+    cN: "Tags",
+  });
 
   return (
-    <>
-      <Checkbox
-        id={id}
-        className={`${styles.filterOption} ${
-          selectedTags.includes(tag) ? styles.filterOptionSelected : ""
-        }`}
-        data-m={contentForAdobeAnalytics}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            toggleTag();
-          }
-        }}
-        onChange={() => {
+    <Checkbox
+      id={id}
+      className={`${controlStyles.filterOption} ${
+        selectedTags.includes(tag)
+          ? controlStyles.filterOptionSelected
+          : ""
+      }`}
+      data-m={contentForAdobeAnalytics}
+      onKeyDown={(event) => {
+        if (event.key === "Enter") {
           toggleTag();
-        }}
-        checked={selectedTags.includes(tag)}
-        label={
-          <>
-            <span className={styles.labelText}>{label}</span>
-            {count !== undefined ? <small>{count}</small> : null}
-          </>
         }
-        disabled={
-          !activeTags?.includes(tag) && !selectedTags.includes(tag)
-        }
-      />
-    </>
+      }}
+      onChange={toggleTag}
+      checked={selectedTags.includes(tag)}
+      label={
+        <>
+          <span className={styles.labelText}>{label}</span>
+          {count !== undefined ? <small>{count}</small> : null}
+        </>
+      }
+      disabled={
+        !activeTags.includes(tag) && !selectedTags.includes(tag)
+      }
+    />
   );
 }

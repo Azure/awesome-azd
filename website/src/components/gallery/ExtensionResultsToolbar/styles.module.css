@@ -26,30 +26,6 @@
   min-width: 0;
 }
 
-.sortLabel {
-  flex: 0 0 auto;
-  color: var(--catalog-text);
-  white-space: nowrap;
-}
-
-.sortControl.sortControl {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  min-height: 40px;
-  padding: 0 12px;
-  border: 1px solid var(--catalog-muted);
-  border-radius: 8px;
-  background: var(--catalog-surface);
-  color: var(--catalog-text);
-  font-size: 0.9rem;
-}
-
-.sortControl:focus-within {
-  outline: 3px solid var(--catalog-blue);
-  outline-offset: 1px;
-}
-
 .viewingStatus {
   display: block;
   color: var(--catalog-muted);
@@ -73,9 +49,6 @@
     flex-basis: auto;
   }
 
-  .sortControl {
-    width: 100%;
-  }
 }
 
 @media (max-width: 640px) {

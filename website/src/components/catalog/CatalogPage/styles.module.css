@@ -142,70 +142,6 @@
   min-width: 0;
 }
 
-.page .search {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  max-width: none;
-  min-height: 40px;
-  padding: 0 12px;
-  border: 1px solid var(--catalog-muted);
-  border-radius: 8px;
-  background: var(--catalog-surface);
-  color: var(--catalog-muted);
-}
-
-.page .search:focus-within {
-  border-color: var(--catalog-blue);
-  outline: 3px solid color-mix(in srgb, var(--catalog-blue) 18%, transparent);
-  outline-offset: 1px;
-}
-
-.search :global(.fui-SearchBox__input) {
-  flex: 1;
-  min-width: 0;
-  padding: 8px 10px;
-  border: 0;
-  outline: 0;
-  background: transparent;
-  color: var(--catalog-ink);
-  font: inherit;
-  font-size: 0.85rem;
-}
-
-.search :global(.fui-SearchBox__input)::placeholder {
-  color: var(--catalog-muted);
-  opacity: 1;
-}
-
-.search :global(.fui-SearchBox__contentBefore),
-.search :global(.fui-SearchBox__contentAfter) {
-  color: var(--catalog-muted);
-}
-
-.sortLabel {
-  color: var(--catalog-ink);
-  white-space: nowrap;
-}
-
-.page .sortControl {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  min-height: 40px;
-  padding: 0 12px;
-  border: 1px solid var(--catalog-muted);
-  border-radius: 8px;
-  background: var(--catalog-surface);
-  color: var(--catalog-ink);
-  font-size: 0.9rem;
-}
-
-.sortControl:focus-within {
-  outline: 3px solid var(--catalog-blue);
-  outline-offset: 2px;
-}
-
 .warning {
   flex-basis: 100%;
   margin: 0;
@@ -307,52 +243,6 @@
   border: 0;
 }
 
-.filterOption {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  width: 100%;
-  max-width: none;
-  min-height: 32px;
-  padding: 4px 0;
-  color: var(--catalog-muted);
-  cursor: pointer;
-  font-size: 0.74rem;
-}
-
-.facet fieldset > .filterOption {
-  display: flex;
-  align-self: stretch;
-  width: 100%;
-  max-width: none;
-}
-
-.filterOption :global(.fui-Checkbox__indicator) {
-  align-self: center;
-  flex-shrink: 0;
-  width: 15px;
-  height: 15px;
-  margin: 4px 8px;
-  border-color: var(--catalog-muted);
-}
-
-.filterOption :global(.fui-Checkbox__label) {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  gap: 9px;
-  min-width: 0;
-  padding: 4px 0;
-  margin: 0;
-  color: inherit;
-  font: inherit;
-}
-
-.filterOptionSelected :global(.fui-Checkbox__label) {
-  color: var(--catalog-ink);
-  font-weight: 600;
-}
-
 .filterValue {
   display: inline-flex;
   flex: 1;
@@ -363,13 +253,6 @@
 
 .filterValue > span {
   min-width: 0;
-}
-
-.filterOption small {
-  flex-shrink: 0;
-  padding-left: 6px;
-  margin-left: auto;
-  font-size: 0.65rem;
 }
 
 .aiIcon {

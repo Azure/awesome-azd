@@ -42,6 +42,7 @@ import {
   restoreGalleryNavigationState,
   type GalleryNavigationState,
 } from "../../../utils/galleryNavigation";
+import controlStyles from "../../GalleryControls/styles.module.css";
 import SiteFluentProvider from "../../SiteFluentProvider";
 import FacetSection from "./FacetSection";
 import TemplateCard from "./TemplateCard";
@@ -392,7 +393,7 @@ export default function CatalogPage({
                   <SearchBox
                     ref={searchInputRef}
                     id="catalog-search"
-                    className={styles.search}
+                    className={controlStyles.search}
                     appearance="outline"
                     size="medium"
                     aria-label="Search templates"
@@ -419,7 +420,7 @@ export default function CatalogPage({
                 </form>
                 <div className={styles.sortGroup}>
                   <Label
-                    className={styles.sortLabel}
+                    className={controlStyles.sortLabel}
                     htmlFor="catalog-sort"
                     size="small"
                     weight="semibold"
@@ -428,7 +429,7 @@ export default function CatalogPage({
                   </Label>
                   <Dropdown
                     id="catalog-sort"
-                    className={styles.sortControl}
+                    className={controlStyles.sortControl}
                     appearance="outline"
                     size="medium"
                     clearable={false}

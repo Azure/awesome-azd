@@ -12,6 +12,7 @@ import {
   type DropdownProps,
 } from "@fluentui/react-components";
 import { EXTENSION_SORT_OPTIONS } from "@site/src/utils/gallerySorting";
+import controlStyles from "../../GalleryControls/styles.module.css";
 import { ExtensionSearchBox } from "../ExtensionGalleryHeader";
 import styles from "./styles.module.css";
 
@@ -67,13 +68,13 @@ export default function ExtensionResultsToolbar({
           id="extension-sort-label"
           size="small"
           weight="semibold"
-          className={styles.sortLabel}
+          className={controlStyles.sortLabel}
         >
           Sort by
         </Label>
         <Dropdown
           id="extension-sort"
-          className={styles.sortControl}
+          className={controlStyles.sortControl}
           appearance="outline"
           selectedOptions={[selectedSort]}
           value={selectedSort}

@@ -21,7 +21,7 @@
 
 .filterBy {
   margin: 0;
-  color: var(--catalog-text);
+  color: var(--catalog-ink);
   font-size: 0.9rem;
   font-weight: 600;
   line-height: 1.35;
@@ -48,7 +48,7 @@
 }
 
 .categoryItem {
-  border-bottom: 1px solid var(--catalog-border);
+  border-bottom: 1px solid var(--catalog-line);
 }
 
 .categoryHeader.categoryHeader {
@@ -60,7 +60,7 @@
   min-height: 0;
   gap: 8px;
   padding: 15px 0;
-  color: var(--catalog-text);
+  color: var(--catalog-ink);
   font-size: 0.76rem;
   font-weight: 600;
 }

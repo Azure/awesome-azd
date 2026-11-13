@@ -25,10 +25,7 @@ import styles from "./styles.module.css";
 import ExtensionResults from "../ExtensionResults";
 import ExtensionResultsToolbar from "../ExtensionResultsToolbar";
 import { useLocation } from "@docusaurus/router";
-import { initializeFluentIcons } from "@site/src/utils/fluentIcons";
 import { EXTENSION_SORT_OPTIONS } from "@site/src/utils/gallerySorting";
-
-initializeFluentIcons();
 
 const extensionTags = [
   ...new Set(unsortedExtensions.flatMap(getExtensionTags)),

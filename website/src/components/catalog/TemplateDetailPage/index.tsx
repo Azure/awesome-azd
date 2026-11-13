@@ -38,6 +38,7 @@ import type {
   CatalogTemplateDetail,
 } from "../../../catalog/catalogTypes";
 import { getGalleryReturnLocation } from "../../../utils/galleryNavigation";
+import { serializeStructuredData } from "../../../utils/structuredData";
 import { getOpenInVSCodeUrl } from "../../../utils/vscode";
 import SiteFluentProvider from "../../SiteFluentProvider";
 import CopyAction from "../CopyAction";
@@ -499,7 +500,7 @@ export default function TemplateDetailPage({
           <meta name="twitter:image" content={socialImage} />
         ) : null}
         <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
+          {serializeStructuredData(structuredData)}
         </script>
       </Head>
       <Layout>

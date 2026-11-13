@@ -42,6 +42,7 @@ import {
   restoreGalleryNavigationState,
   type GalleryNavigationState,
 } from "../../../utils/galleryNavigation";
+import { serializeStructuredData } from "../../../utils/structuredData";
 import controlStyles from "../../GalleryControls/styles.module.css";
 import SiteFluentProvider from "../../SiteFluentProvider";
 import FacetSection from "./FacetSection";
@@ -356,7 +357,7 @@ export default function CatalogPage({
         <meta name="twitter:title" content={catalogTitle} />
         <meta name="twitter:description" content={catalogDescription} />
         <script type="application/ld+json">
-          {JSON.stringify(catalogStructuredData)}
+          {serializeStructuredData(catalogStructuredData)}
         </script>
       </Head>
       <Layout>

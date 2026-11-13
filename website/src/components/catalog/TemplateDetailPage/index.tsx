@@ -6,7 +6,9 @@
 import React from "react";
 import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
+import { useHistory, useLocation } from "@docusaurus/router";
 import useBaseUrl from "@docusaurus/useBaseUrl";
+import useIsBrowser from "@docusaurus/useIsBrowser";
 import Layout from "@theme/Layout";
 import {
   Button,
@@ -35,6 +37,7 @@ import type {
   CatalogResource,
   CatalogTemplate,
 } from "../../../catalog/catalogData";
+import { getGalleryReturnLocation } from "../../../utils/galleryNavigation";
 import { getOpenInVSCodeUrl } from "../../../utils/vscode";
 import SiteFluentProvider from "../../SiteFluentProvider";
 import CopyAction from "../CopyAction";
@@ -440,7 +443,17 @@ export default function TemplateDetailPage({
   templatePage: TemplatePageData;
 }): React.JSX.Element {
   const { template } = templatePage;
+  const history = useHistory();
+  const location = useLocation();
+  const isBrowser = useIsBrowser();
   const templatesUrl = useBaseUrl("/templates");
+  const galleryReturnLocation = isBrowser
+    ? getGalleryReturnLocation(location.state)
+    : undefined;
+  const returnUrl =
+    galleryReturnLocation === undefined
+      ? templatesUrl
+      : `${galleryReturnLocation.pathname}${galleryReturnLocation.search}${galleryReturnLocation.hash}`;
   const screenshot = template.screenshot;
   const canonicalUrl = `https://azure.github.io/awesome-azd${template.detailPath}`;
   const [owner, repositoryName] = new URL(template.source).pathname
@@ -459,7 +472,25 @@ export default function TemplateDetailPage({
           <main className={styles.page}>
             <div className={styles.container}>
               <div className={styles.breadcrumb}>
-                <Link to={templatesUrl} className={styles.backLink}>
+                <Link
+                  to={returnUrl}
+                  className={styles.backLink}
+                  onClick={(event) => {
+                    if (
+                      galleryReturnLocation === undefined ||
+                      event.defaultPrevented ||
+                      event.button !== 0 ||
+                      event.ctrlKey ||
+                      event.metaKey ||
+                      event.shiftKey ||
+                      event.altKey
+                    ) {
+                      return;
+                    }
+                    event.preventDefault();
+                    history.push(galleryReturnLocation);
+                  }}
+                >
                   <ArrowLeft16Regular aria-hidden="true" />
                   Back to templates
                 </Link>

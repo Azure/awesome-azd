@@ -420,6 +420,7 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     ...rawServiceIds,
     ...rawIacIds,
     ...rawModelIds,
+    ...modelIds,
   ]);
   const legacySearchTerms = unique(
     [

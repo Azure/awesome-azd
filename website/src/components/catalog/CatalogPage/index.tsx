@@ -51,6 +51,7 @@ import {
 } from "../../../catalog/catalogQuery";
 import {
   captureGalleryNavigationState,
+  createTemplateDetailNavigationState,
   restoreGalleryNavigationState,
   type GalleryNavigationState,
 } from "../../../utils/galleryNavigation";
@@ -203,7 +204,7 @@ function TemplateCard({
   onNavigate,
 }: {
   template: CatalogTemplate;
-  onNavigate: () => void;
+  onNavigate: (detailUrl: string) => void;
 }): React.JSX.Element {
   const microsoftIcon = useBaseUrl("/img/Microsoft.svg");
   const communityIcon = useBaseUrl("/img/Community.svg");
@@ -250,7 +251,8 @@ function TemplateCard({
           ) {
             return;
           }
-          onNavigate();
+          event.preventDefault();
+          onNavigate(detailUrl);
         }}
       >
         <div className={styles.cardTop}>
@@ -387,10 +389,22 @@ export default function CatalogPage(): React.JSX.Element {
     [history, location],
   );
 
-  const captureDetailNavigationState = useCallback(() => {
+  const navigateToDetail = useCallback((detailUrl: string) => {
+    const navigationState = captureGalleryNavigationState();
     history.replace({
       ...location,
-      state: captureGalleryNavigationState(),
+      state: navigationState,
+    });
+    history.push({
+      pathname: detailUrl,
+      state: createTemplateDetailNavigationState(
+        {
+          pathname: location.pathname,
+          search: location.search,
+          hash: location.hash,
+        },
+        navigationState,
+      ),
     });
   }, [history, location]);
 
@@ -780,7 +794,7 @@ export default function CatalogPage(): React.JSX.Element {
                         <TemplateCard
                           key={template.id}
                           template={template}
-                          onNavigate={captureDetailNavigationState}
+                          onNavigate={navigateToDetail}
                         />
                       ))}
                     </div>

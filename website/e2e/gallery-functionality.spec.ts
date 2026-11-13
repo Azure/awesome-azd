@@ -603,6 +603,9 @@ test.describe("Gallery functionality (deploy gate)", () => {
     await expect(
       page.locator("dt", { hasText: /^Models$/ }),
     ).toHaveCount(0);
+    await expect(
+      page.getByRole("link", { name: "Back to templates" }),
+    ).toHaveAttribute("href", "/awesome-azd/templates");
   });
 
   test("non-AI preview metadata renders only as valid architecture", async ({
@@ -716,6 +719,48 @@ test.describe("Gallery functionality (deploy gate)", () => {
     await expect(page).toHaveURL(/\/templates\/[^/]+\/[^/]+\/?$/);
 
     await page.goBack();
+
+    await expect(page).toHaveURL(/\/templates\?page=2$/);
+    await expect(page.locator(`#${focusedId}`)).toBeFocused();
+    await expect
+      .poll(async () => {
+        const restoredScrollTop = await page.evaluate(
+          () => window.scrollY,
+        );
+        return Math.abs(restoredScrollTop - scrollTop);
+      })
+      .toBeLessThan(5);
+  });
+
+  test("detail return link restores the gallery query, focus, and scroll position", async ({
+    page,
+  }) => {
+    await page.goto("templates?page=2");
+    await expect(resultsStatus(page)).toContainText("21-40 of");
+    await expect(page.locator("html")).toHaveAttribute(
+      "data-has-hydrated",
+      "true",
+    );
+    const cards = page.locator("[data-template-card]");
+    await expect(cards).toHaveCount(20);
+    const detailLink = cards.last().locator("a[data-template-title]");
+    await detailLink.scrollIntoViewIfNeeded();
+    await detailLink.focus();
+    const focusedId = await detailLink.getAttribute("id");
+    const scrollTop = await page.evaluate(() => window.scrollY);
+
+    expect(focusedId).not.toBeNull();
+    expect(scrollTop).toBeGreaterThan(0);
+    await detailLink.click();
+
+    const returnLink = page.getByRole("link", {
+      name: "Back to templates",
+    });
+    await expect(returnLink).toHaveAttribute(
+      "href",
+      "/awesome-azd/templates?page=2",
+    );
+    await returnLink.click();
 
     await expect(page).toHaveURL(/\/templates\?page=2$/);
     await expect(page.locator(`#${focusedId}`)).toBeFocused();

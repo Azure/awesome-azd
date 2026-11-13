@@ -942,9 +942,7 @@ describe("extractMetadata", () => {
     expect(meta.azureServices).toContain("aca");
     expect(meta.azureServices).toContain("openai");
     expect(meta.iacProvider).toBe("Bicep");
-    expect(meta.previewImage).toBe(
-      "https://raw.githubusercontent.com/Azure-Samples/todo-python-mongo/main/docs/screenshot.png"
-    );
+    expect(meta).not.toHaveProperty("previewImage");
     expect(meta.frameworks).toEqual(
       expect.arrayContaining(["reactjs", "nextjs"])
     );

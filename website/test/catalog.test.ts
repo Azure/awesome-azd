@@ -25,7 +25,10 @@ import {
   serializeCatalogState,
   sortCatalogTemplates,
 } from "../src/catalog/catalogQuery";
-import { resolveDetailAsset } from "../route_generator_plugin/catalogRouteGenerator";
+import {
+  dataFileName,
+  resolveDetailAsset,
+} from "../route_generator_plugin/catalogRouteGenerator";
 
 const websiteRoot = path.resolve(__dirname, "..");
 
@@ -202,6 +205,24 @@ describe("unified catalog data", () => {
     ).toBe(rawTemplate.architectureDiagram);
   });
 
+  test("prefers classified screenshots for card previews", () => {
+    const rawTemplate = templates.find(
+      (template) =>
+        template.preview === undefined &&
+        typeof template.screenshot === "string" &&
+        template.screenshot.length > 0,
+    );
+    if (!rawTemplate) {
+      throw new Error("Expected a template with a classified screenshot.");
+    }
+
+    expect(
+      catalogTemplates.find(
+        (template) => template.source === rawTemplate.source,
+      )?.preview,
+    ).toBe(rawTemplate.screenshot);
+  });
+
   test("stores non-AI detail media as architecture metadata", () => {
     const nonAiTemplates = templates.filter(
       (template) => !template.tags?.includes("aiapplication"),
@@ -260,6 +281,15 @@ describe("unified catalog data", () => {
       detailPath:
         "/templates/azure-samples/azure-search-openai-demo",
     });
+  });
+
+  test("creates collision-safe route data filenames", () => {
+    const first = dataFileName("template", "example/one-two");
+    const second = dataFileName("template", "example-one/two");
+
+    expect(first).toBe("template-example%2Fone-two.json");
+    expect(second).toBe("template-example-one%2Ftwo.json");
+    expect(first).not.toBe(second);
   });
 
   test("merges product descriptions and portal icons for resources", () => {

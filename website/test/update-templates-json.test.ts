@@ -194,7 +194,8 @@ describe("updateTemplatesJson", () => {
     author: "Jane Doe",
     authorUrl: "https://github.com/janedoe",
     authorType: "Community",
-    previewImage: "",
+    screenshot: "",
+    architectureDiagram: "",
     iacProvider: "Bicep",
     languages: [] as string[],
     frameworks: [] as string[],
@@ -275,21 +276,35 @@ describe("updateTemplatesJson", () => {
     expect(templates[1].tags).toEqual(["community", "new"]);
   });
 
-  test("omits architecture diagram when none is provided", () => {
+  test("omits classified media when none is provided", () => {
     updateTemplatesJson(defaultOpts());
     const templates = readTemplates();
     expect(templates[1].architectureDiagram).toBeUndefined();
+    expect(templates[1].screenshot).toBeUndefined();
     expect(templates[1].preview).toBeUndefined();
   });
 
-  test("stores the provided preview image as an architecture diagram", () => {
+  test("stores a provided architecture diagram in its classified field", () => {
     const opts = defaultOpts();
-    opts.previewImage = "https://example.com/img.png";
+    opts.architectureDiagram = "https://example.com/architecture.png";
     updateTemplatesJson(opts);
     const templates = readTemplates();
     expect(templates[1].architectureDiagram).toBe(
-      "https://example.com/img.png",
+      "https://example.com/architecture.png",
     );
+    expect(templates[1].screenshot).toBeUndefined();
+    expect(templates[1].preview).toBeUndefined();
+  });
+
+  test("stores a provided application screenshot in its classified field", () => {
+    const opts = defaultOpts();
+    opts.screenshot = "https://example.com/screenshot.png";
+    updateTemplatesJson(opts);
+    const templates = readTemplates();
+    expect(templates[1].screenshot).toBe(
+      "https://example.com/screenshot.png",
+    );
+    expect(templates[1].architectureDiagram).toBeUndefined();
     expect(templates[1].preview).toBeUndefined();
   });
 
@@ -330,9 +345,15 @@ describe("updateTemplatesJson", () => {
     expect(() => updateTemplatesJson(opts)).toThrow();
   });
 
-  test("throws on private IP in preview image URL", () => {
+  test("throws on private IP in application screenshot URL", () => {
     const opts = defaultOpts();
-    opts.previewImage = "https://192.168.1.1/img.png";
+    opts.screenshot = "https://192.168.1.1/img.png";
+    expect(() => updateTemplatesJson(opts)).toThrow(/private/);
+  });
+
+  test("throws on private IP in architecture diagram URL", () => {
+    const opts = defaultOpts();
+    opts.architectureDiagram = "https://192.168.1.1/img.png";
     expect(() => updateTemplatesJson(opts)).toThrow(/private/);
   });
 
@@ -377,11 +398,11 @@ describe("updateTemplatesJson", () => {
     expect(entry.description).toContain("bold");
   });
 
-  // --- Preview image sanitization (hack fix) ---
-  test("sanitizes preview image URL — strips bidi overrides and null bytes", () => {
+  // --- Media URL sanitization (hack fix) ---
+  test("sanitizes architecture diagram URL — strips bidi overrides and null bytes", () => {
     const opts = defaultOpts();
     opts.sourceRepo = "https://github.com/org/preview-test";
-    opts.previewImage = "https://github.com/img\u200E.png";
+    opts.architectureDiagram = "https://github.com/img\u200E.png";
     const result = updateTemplatesJson(opts);
     expect(result.skipped).toBe(false);
     const templates = readTemplates();
@@ -390,12 +411,13 @@ describe("updateTemplatesJson", () => {
     expect(entry.architectureDiagram).toContain("img.png");
   });
 
-  test("media fields are absent when previewImage is empty", () => {
+  test("media fields are absent when classified media is empty", () => {
     const result = updateTemplatesJson(defaultOpts());
     expect(result.skipped).toBe(false);
     const templates = readTemplates();
     const entry = templates[templates.length - 1];
     expect(entry.preview).toBeUndefined();
+    expect(entry.screenshot).toBeUndefined();
     expect(entry.architectureDiagram).toBeUndefined();
   });
 

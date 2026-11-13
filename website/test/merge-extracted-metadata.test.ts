@@ -9,7 +9,7 @@ describe("mergeMetadata", () => {
     author: "Extracted Author",
     authorUrl: "https://github.com/extracted",
     authorType: "Community",
-    previewImage: "",
+    previewImage: "https://example.com/unclassified-readme-image.png",
     iacProvider: "Bicep",
     languages: ["python", "javascript"],
     frameworks: ["flask"],
@@ -26,6 +26,8 @@ describe("mergeMetadata", () => {
     expect(result.description).toBe("Extracted desc");
     expect(result.author).toBe("Extracted Author");
     expect(result.languages).toBe("python, javascript");
+    expect(result.screenshot).toBe("");
+    expect(result.architecture_diagram).toBe("");
   });
 
   it("form values take precedence over extracted values", async () => {
@@ -34,11 +36,17 @@ describe("mergeMetadata", () => {
       formValues: {
         title: "Form Title",
         description: "Form desc",
+        screenshot: "https://example.com/screenshot.png",
+        architectureDiagram: "https://example.com/architecture.png",
       },
       extractFn: fakeExtract,
     });
     expect(result.template_title).toBe("Form Title");
     expect(result.description).toBe("Form desc");
+    expect(result.screenshot).toBe("https://example.com/screenshot.png");
+    expect(result.architecture_diagram).toBe(
+      "https://example.com/architecture.png"
+    );
     // Non-overridden fields fall back to extracted
     expect(result.author).toBe("Extracted Author");
   });

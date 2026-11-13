@@ -142,7 +142,8 @@ function parseTags(csv) {
  * @param {string} options.author
  * @param {string} options.authorUrl
  * @param {string} options.authorType
- * @param {string} options.previewImage
+ * @param {string} options.screenshot
+ * @param {string} options.architectureDiagram
  * @param {string} options.iacProvider
  * @param {string[]} options.languages
  * @param {string[]} options.frameworks
@@ -159,7 +160,8 @@ function updateTemplatesJson({
   author,
   authorUrl,
   authorType,
-  previewImage,
+  screenshot,
+  architectureDiagram,
   iacProvider,
   languages,
   frameworks,
@@ -173,7 +175,10 @@ function updateTemplatesJson({
   validateUrl(sourceRepo, "Source repo");
   if (!authorUrl) throw new Error("Author URL is required");
   validateUrl(authorUrl, "Author");
-  if (previewImage) validateUrl(previewImage, "Architecture diagram");
+  if (screenshot) validateUrl(screenshot, "Application screenshot");
+  if (architectureDiagram) {
+    validateUrl(architectureDiagram, "Architecture diagram");
+  }
 
   const resolvedPath =
     templatesPath || path.join("website", "static", "templates.json");
@@ -225,8 +230,9 @@ function updateTemplatesJson({
     id: generateId(),
   };
 
-  if (previewImage) {
-    entry.architectureDiagram = _sanitize(previewImage, 500);
+  if (screenshot) entry.screenshot = _sanitize(screenshot, 500);
+  if (architectureDiagram) {
+    entry.architectureDiagram = _sanitize(architectureDiagram, 500);
   }
   if (languages.length > 0) entry.languages = languages;
   if (frameworks.length > 0) entry.frameworks = frameworks;
@@ -254,7 +260,8 @@ if (require.main === module) {
       author: sanitize(process.env.TPL_AUTHOR || "", 100),
       authorUrl: process.env.TPL_AUTHOR_URL,
       authorType: process.env.TPL_AUTHOR_TYPE,
-      previewImage: process.env.TPL_PREVIEW_IMAGE,
+      screenshot: process.env.TPL_SCREENSHOT,
+      architectureDiagram: process.env.TPL_ARCHITECTURE_DIAGRAM,
       iacProvider: process.env.TPL_IAC_PROVIDER,
       languages: parseTags(process.env.TPL_LANGUAGES),
       frameworks: parseTags(process.env.TPL_FRAMEWORKS),

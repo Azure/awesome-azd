@@ -491,9 +491,11 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
   const initCommand = formatAzdInitCommand(getTemplateIdentifier(source));
   const readmeUrl = `${source}#readme`;
   const architectureDiagram = readOptionalString(record.architectureDiagram);
-  const preview =
-    readOptionalString(record.preview) ?? architectureDiagram;
   const screenshot = readOptionalString(record.screenshot);
+  const preview =
+    readOptionalString(record.preview) ??
+    screenshot ??
+    architectureDiagram;
   const video = readOptionalString(record.video);
   const sampleType = readOptionalString(record.sampleType);
   const searchText = [

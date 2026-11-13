@@ -7,8 +7,8 @@ import {
 } from "../src/catalog/catalogData";
 import { servicePages } from "../src/catalog/servicePages";
 
-function dataFileName(prefix: string, value: string): string {
-  return `${prefix}-${value.replace(/[^a-z0-9._-]/gi, "-")}.json`;
+export function dataFileName(prefix: string, value: string): string {
+  return `${prefix}-${encodeURIComponent(value)}.json`;
 }
 
 export function resolveDetailAsset(

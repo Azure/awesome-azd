@@ -187,10 +187,14 @@
 .sideCard.sideCard {
   gap: 18px;
   padding: 24px;
-  border-color: var(--detail-line);
-  border-radius: 10px;
+  border-radius: 0;
   background: var(--detail-background);
   box-shadow: none;
+}
+
+.sideCard.sideCard::after {
+  border-color: var(--detail-line);
+  border-radius: 0;
 }
 
 .sideCard.getStartedCard {

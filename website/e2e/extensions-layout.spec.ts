@@ -68,6 +68,12 @@ test.describe("Gallery card layout", () => {
     await expect(heading).toBeVisible();
     await expect(heading).toHaveCSS("color", "rgb(36, 36, 36)");
     await expect(heading.locator("span")).toHaveCount(0);
+    await expect(
+      page.getByText(
+        "Extensions add new commands, lifecycle hooks, and capabilities to azd.",
+        { exact: true },
+      ),
+    ).toHaveCount(0);
     await expect(docsLink).toBeVisible();
     await expect(docsLink).toHaveCSS("display", "flex");
     await expect(docsLink).toHaveCSS("min-height", "40px");
@@ -388,10 +394,26 @@ test.describe("Gallery card layout", () => {
     ).toBe('"+"');
     await category.click();
 
-    await option.getByRole("checkbox").check();
     const clearAll = panel.getByRole("button", { name: "Clear all" });
     await expect(clearAll).toBeVisible();
     await expect(clearAll).toHaveCSS("text-decoration-line", "underline");
+
+    await option.getByRole("checkbox").check();
+    const appliedFilters = page.getByRole("group", {
+      name: "Applied filters",
+    });
+    await expect(
+      appliedFilters.getByText("Filters applied:", { exact: true }),
+    ).toHaveCount(0);
+    await expect(
+      appliedFilters.getByRole("button", { name: "Clear all" }),
+    ).toHaveCount(0);
+    const appliedFilter = appliedFilters.getByRole("button").first();
+    await expect(appliedFilter).toHaveCSS("min-height", "28px");
+    await expect(appliedFilter).toHaveCSS("border-radius", "999px");
+    await expect(
+      appliedFilter.locator('span[aria-hidden="true"]'),
+    ).toHaveText("×");
   });
 
   test("sparse gallery results stay left aligned", async ({ page }) => {

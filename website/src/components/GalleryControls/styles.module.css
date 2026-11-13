@@ -112,3 +112,43 @@
   margin-left: auto;
   font-size: 0.65rem;
 }
+
+.clearAll.clearAll {
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--catalog-blue);
+  font: inherit;
+  font-size: 0.72rem;
+  text-decoration: underline;
+}
+
+.activeFilters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.activeFilters:empty {
+  display: none;
+}
+
+.activeFilters button {
+  min-height: 28px;
+  padding: 6px 10px;
+  border: 1px solid var(--catalog-line);
+  border-radius: 999px;
+  background: var(--catalog-blue-tint);
+  color: var(--catalog-blue);
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.activeFilters button:hover {
+  border-color: var(--catalog-blue);
+  background: var(--catalog-blue-tint);
+  color: var(--catalog-blue);
+}

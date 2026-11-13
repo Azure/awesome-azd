@@ -54,19 +54,8 @@
 
 .heroActions {
   display: flex;
-  flex-direction: column;
   align-items: flex-end;
   justify-self: end;
-  gap: 8px;
-}
-
-.heroSubtext {
-  max-width: 260px;
-  margin: 0;
-  color: var(--catalog-muted);
-  font-size: 0.75rem;
-  line-height: 1.6;
-  text-align: right;
 }
 
 .docsLink.docsLink {
@@ -119,10 +108,6 @@
   .heroActions {
     align-items: flex-start;
     justify-self: start;
-  }
-
-  .heroSubtext {
-    text-align: left;
   }
 }
 

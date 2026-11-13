@@ -49,13 +49,6 @@ export default function ExtensionResults({
   const [currentPage, setCurrentPage] = useState(1);
   const history = useHistory();
 
-  const clearFilters = () => {
-    history.push({
-      ...location,
-      search: clearSearchFilters(location.search),
-      state: captureGalleryNavigationState(),
-    });
-  };
   const clearSearchAndFilters = () => {
     history.push({
       ...location,
@@ -114,7 +107,6 @@ export default function ExtensionResults({
   return (
     <>
       <ShowcaseAppliedFilters
-        clearAll={clearFilters}
         selectedTags={selectedTags}
         selectedAuthors={selectedAuthors}
         location={location}

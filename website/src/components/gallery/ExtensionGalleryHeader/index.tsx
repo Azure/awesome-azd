@@ -78,10 +78,6 @@ export default function ExtensionGalleryHeader(): React.JSX.Element {
           </p>
         </div>
         <div className={styles.heroActions}>
-          <p className={styles.heroSubtext}>
-            Extensions add new commands, lifecycle hooks, and capabilities to
-            azd.
-          </p>
           <Link
             to="https://learn.microsoft.com/azure/developer/azure-developer-cli/extensions/overview"
             target="_blank"

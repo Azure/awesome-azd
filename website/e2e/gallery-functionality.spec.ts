@@ -571,6 +571,18 @@ test.describe("Gallery functionality (deploy gate)", () => {
     await expect(
       cards.nth(1).getByRole("img", { name: "0 GitHub stars" }),
     ).toBeVisible();
+    await expect(cards.nth(2).locator("a[data-template-title]")).toHaveAttribute(
+      "data-template-title",
+      "Get started with AI agents",
+    );
+    await expect(cards.nth(2).locator("[data-repository-stars]")).toHaveCount(0);
+    await expect(cards.nth(3).locator("a[data-template-title]")).toHaveAttribute(
+      "data-template-title",
+      "Starter - Bicep",
+    );
+    await expect(
+      cards.nth(3).getByRole("img", { name: "50,000 GitHub stars" }),
+    ).toBeVisible();
 
     await page.goto(
       `templates?q=${encodeURIComponent("Get started with AI agents")}`,

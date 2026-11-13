@@ -1181,12 +1181,12 @@ describe("unified catalog query", () => {
     );
   });
 
-  test("sorts stars descending, keeps ties stable, and puts missing values last", () => {
-    const records = catalogTemplates.slice(0, 4).map((template, index) => ({
+  test("sorts featured templates first, then starred templates, then missing values", () => {
+    const records = catalogTemplates.slice(0, 7).map((template, index) => ({
       ...template,
       normalizedSource: `https://github.com/example/template-${index}`,
-      featured: index === 1,
-      stars: [25, undefined, 0, 25][index],
+      featured: [1, 3, 5].includes(index),
+      stars: [500, undefined, undefined, 25, 100, 250, 100][index],
     }));
     const sourceOrder = new Map(
       records.map((template, index) => [
@@ -1201,14 +1201,22 @@ describe("unified catalog query", () => {
     );
 
     expect(sorted.map((template) => template.stars)).toEqual([
+      250,
       25,
-      25,
-      0,
+      undefined,
+      500,
+      100,
+      100,
       undefined,
     ]);
-    expect(sorted.slice(0, 2).map((template) => template.id)).toEqual([
-      records[0].id,
+    expect(sorted.map((template) => template.id)).toEqual([
+      records[5].id,
       records[3].id,
+      records[1].id,
+      records[0].id,
+      records[4].id,
+      records[6].id,
+      records[2].id,
     ]);
   });
 });

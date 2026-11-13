@@ -401,6 +401,19 @@ export function sortCatalogTemplates(
 
   return result.sort(
     (left, right) => {
+      const leftGroup = left.featured
+        ? 0
+        : left.stars !== undefined
+          ? 1
+          : 2;
+      const rightGroup = right.featured
+        ? 0
+        : right.stars !== undefined
+          ? 1
+          : 2;
+      if (leftGroup !== rightGroup) {
+        return leftGroup - rightGroup;
+      }
       const leftHasStars = left.stars !== undefined;
       const rightHasStars = right.stars !== undefined;
       if (leftHasStars !== rightHasStars) {

@@ -47,8 +47,11 @@ on:
           - ""
           - Community
           - Microsoft
-      preview_image:
-        description: "Preview image URL (optional)"
+      screenshot:
+        description: "Application screenshot URL (optional)"
+        required: false
+      architecture_diagram:
+        description: "Architecture diagram URL (optional)"
         required: false
       iac_provider:
         description: "IaC provider (optional - auto-detected)"
@@ -108,7 +111,8 @@ jobs:
           INPUT_AUTHOR: ${{ inputs.author }}
           INPUT_AUTHOR_URL: ${{ inputs.author_url }}
           INPUT_AUTHOR_TYPE: ${{ inputs.author_type }}
-          INPUT_PREVIEW_IMAGE: ${{ inputs.preview_image }}
+          INPUT_SCREENSHOT: ${{ inputs.screenshot }}
+          INPUT_ARCHITECTURE_DIAGRAM: ${{ inputs.architecture_diagram }}
           INPUT_IAC_PROVIDER: ${{ inputs.iac_provider }}
           INPUT_LANGUAGES: ${{ inputs.languages }}
           INPUT_FRAMEWORKS: ${{ inputs.frameworks }}
@@ -131,7 +135,8 @@ jobs:
           FORM_LANGUAGES: ${{ steps.parse.outputs.languages }}
           FORM_FRAMEWORKS: ${{ steps.parse.outputs.frameworks }}
           FORM_AZURE_SERVICES: ${{ steps.parse.outputs.azure_services }}
-          FORM_PREVIEW_IMAGE: ${{ steps.parse.outputs.preview_image }}
+          FORM_SCREENSHOT: ${{ steps.parse.outputs.screenshot }}
+          FORM_ARCHITECTURE_DIAGRAM: ${{ steps.parse.outputs.architecture_diagram }}
         run: node website/scripts/merge-extracted-metadata.js
 
       - name: Validate template repository
@@ -171,7 +176,8 @@ jobs:
           TPL_AUTHOR: ${{ steps.extract.outputs.author }}
           TPL_AUTHOR_URL: ${{ steps.extract.outputs.author_url }}
           TPL_AUTHOR_TYPE: ${{ steps.extract.outputs.author_type }}
-          TPL_PREVIEW_IMAGE: ${{ steps.extract.outputs.preview_image }}
+          TPL_SCREENSHOT: ${{ steps.extract.outputs.screenshot }}
+          TPL_ARCHITECTURE_DIAGRAM: ${{ steps.extract.outputs.architecture_diagram }}
           TPL_IAC_PROVIDER: ${{ steps.extract.outputs.iac_provider }}
           TPL_LANGUAGES: ${{ steps.extract.outputs.languages }}
           TPL_FRAMEWORKS: ${{ steps.extract.outputs.frameworks }}

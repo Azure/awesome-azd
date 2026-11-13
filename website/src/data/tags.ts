@@ -5,7 +5,8 @@
 
 export type Tag = {
   label: string;
-  description: string;
+  description?: string;
+  productDescription?: string;
   azureIcon?: string;
   darkModeAzureIcon?: string;
   url?: string;
@@ -30,143 +31,7 @@ export type Template = {
   extensionTags?: string[];
 };
 
-// NN: Updated TagType to suit Static Web Apps
-export type TagType =
-  | "msft"
-  | "community"
-  | "new"
-  | "bicep"
-  | "typescript"
-  | "javascript"
-  | "dotnetCsharp"
-  | "java"
-  | "python"
-  | "django"
-  | "reactjs"
-  | "vuejs"
-  | "angular"
-  | "nodejs"
-  | "kubernetes"
-  | "keda"
-  | "grafana"
-  | "prometheus"
-  | "appservice"
-  | "cosmosdb"
-  | "azuredatafactory"
-  | "monitor"
-  | "keyvault"
-  | "aca"
-  | "mongodb"
-  | "neondb"
-  | "functions"
-  | "blobstorage"
-  | "azuredb-postgreSQL"
-  | "azuresql"
-  | "webapps"
-  | "terraform"
-  | "swa"
-  | "dapr"
-  | "servicebus"
-  | "vnets"
-  | "fastapi"
-  | "appinsights"
-  | "loganalytics"
-  | "aisearch"
-  | "openai"
-  | "azureai"
-  | "flask"
-  | "apim"
-  | "spring"
-  | "quarkus"
-  | "javaee"
-  | "thymeleaf"
-  | "sap"
-  | "sapcap"
-  | "sapcloudsdk"
-  | "nestjs"
-  | "dataverse"
-  | "aks"
-  | "azurecdn"
-  | "frontdoor"
-  | "enterprisepatterns"
-  | "jupyter"
-  | "datascience"
-  | "rediscache"
-  | "ai"
-  | "php"
-  | "agw"
-  | "streamlit"
-  | "azurebot"
-  | "ade"
-  | "platformengineering"
-  | "semantickernel"
-  | "webcomponents"
-  | "microfrontend"
-  | "blazor"
-  | "azuredb-mySQL"
-  | "eventhub"
-  | "azurestorage"
-  | "helm"
-  | "dall-e"
-  | "gpt"
-  | "azureappconfig"
-  | "ruby"
-  | "rubyonrails"
-  | "serverlessapi"
-  | "langchain"
-  | "aicollection"
-  | "aifoundry"
-  | "apicenter"
-  | "eventgrid"
-  | "diagnosticsettings"
-  | "managedidentity"
-  | "serviceprincipal"
-  | "logicapps"
-  | "msal"
-  | "pinecone"
-  | "nextjs"
-  | "speechservice"
-  | "kernelmemory"
-  | "promptengineering"
-  | "rag"
-  | "langchain4j"
-  | "featureExperimentation"
-  | "featuremanagement"
-  | "go"
-  | "rust"
-  | "axum"
-  | "powershell"
-  | "autogen"
-  | "dab"
-  | "sharepoint"
-  | "virtualmachine"
-  | "sentinel"
-  | "trafficmgr"
-  | "chainlit"
-  | "aspire"
-  | "purview"
-  // | "vpngw"
-  | "loadtesting"
-  | "hyperv"
-  | "fabric"
-  | "vmsqlserver"
-  | "avset"
-  | "bastion"
-  | "mcp"
-  | "privateEndpoints"
-  | "privatelink"
-  | "loadbalancer"
-  | "backup"
-  | "recoveryvault"
-  // Extension capability tags
-  | "ext-custom-commands"
-  | "ext-lifecycle-events"
-  | "ext-mcp-server"
-  | "ext-service-target-provider"
-  | "ext-framework-service-provider"
-  | "ext-provisioning-provider"
-  | "ext-validation-provider"
-  | "ext-metadata";
+export type TagType = keyof typeof tagDefinitions;
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -178,27 +43,36 @@ export type TagType =
 //   - azureIcon = svg path for azure service icon
 //   - url = url for azure service
 //   - darkModeAzureIcon = svg path for azure service icon in dark mode
-export const Tags: { [type in TagType]: Tag } = {
+const tagDefinitions = {
   // =============     FOR ADMIN USE ONLY:
 
   // Special Tag
   msft: {
     label: "Microsoft Authored",
     description: "This tag is used for Microsoft azd templates.",
+    type: "Authorship",
   },
   community: {
     label: "Community Authored",
     description: "This tag is used for community templates.",
+    type: "Authorship",
   },
   new: {
     label: "New",
     description:
       "This tag is used for templates added to the catalog within the past month.",
+    type: "Status",
   },
-  aicollection: {
-    label: "AI Collection",
+  featured: {
+    label: "Featured Template",
+    description: "This template is featured in the catalog.",
+    type: "Status",
+  },
+  aiapplication: {
+    label: "AI application",
     description:
-      "This tag is used for templates included in the Microsoft-curated AI collection.",
+      "This template is part of the Microsoft-curated AI application catalog.",
+    type: "Application Type",
   },
 
   //============  FOR REGULAR USE
@@ -320,7 +194,7 @@ export const Tags: { [type in TagType]: Tag } = {
   gpt: {
     label: "GPT",
     description: "Template architecture uses GPT AI model",
-    type: "Tools",
+    type: "Model",
   },
   msal: {
     label: "Microsoft Authentication Library",
@@ -335,7 +209,7 @@ export const Tags: { [type in TagType]: Tag } = {
   powershell: {
     label: "PowerShell",
     description: "Template architecture uses PowerShell",
-    type: "Tools",
+    type: "Language",
   },
   dab: {
     label: "Data API builder",
@@ -346,7 +220,7 @@ export const Tags: { [type in TagType]: Tag } = {
     label: ".NET Aspire",
     description:
       "Set of tools, templates, and packages for building observable, production ready apps.",
-    type: "Tools",
+    type: "Framework",
   },
   mcp: {
     label: "Model Context Protocol",
@@ -380,7 +254,7 @@ export const Tags: { [type in TagType]: Tag } = {
   prometheus: {
     label: "Prometheus",
     description: "Template architecture uses Prometheus",
-    type: "Database",
+    type: "Tools",
   },
   pinecone: {
     label: "Pinecone",
@@ -480,7 +354,7 @@ export const Tags: { [type in TagType]: Tag } = {
   microfrontend: {
     label: "Micro Frontend",
     description: "Template architecture uses Micro Frontend",
-    type: "Framework",
+    type: "Topic",
   },
   blazor: {
     label: "Blazor",
@@ -529,11 +403,11 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Framework",
   },
 
-  // ---- Platform
+  // ---- Framework
   kubernetes: {
     label: "Kubernetes",
     description: "Template architecture uses Kubernetes",
-    type: "Platform",
+    type: "Framework",
   },
 
   // ---- Service
@@ -653,9 +527,9 @@ export const Tags: { [type in TagType]: Tag } = {
   },
   azureai: {
     label: "Azure AI Service",
-    description: "Template architecture uses Azure AI Service",
+    description: "Template architecture uses Azure AI services",
     azureIcon: "./img/Azure-AI-Service.svg",
-    url: "https://azure.microsoft.com/solutions/ai",
+    url: "https://azure.microsoft.com/solutions/ai/",
     type: "Service",
   },
   speechservice: {
@@ -735,6 +609,13 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/products/event-hubs",
     type: "Service",
   },
+  azuresignalr: {
+    label: "Azure SignalR Service",
+    description: "Template architecture uses Azure SignalR Service",
+    azureIcon: "./img/Azure-SignalR.svg",
+    url: "https://azure.microsoft.com/products/signalr-service/",
+    type: "Service",
+  },
   azurestorage: {
     label: "Azure Storage",
     description: "Template architecture uses Azure Storage",
@@ -750,10 +631,10 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Service",
   },
   aifoundry: {
-    label: "Azure AI Foundry",
-    description: "Template architecture uses Azure AI Foundry",
+    label: "Microsoft Foundry",
+    description: "Template architecture uses Microsoft Foundry",
     azureIcon: "./img/Azure-AI-Studio.svg",
-    url: "https://azure.microsoft.com/products/ai-studio",
+    url: "https://azure.microsoft.com/products/ai-foundry",
     type: "Service",
   },
   apicenter: {
@@ -992,4 +873,135 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Extension provides metadata capabilities",
     type: "Extension Capability",
   },
-};
+
+  // AI catalog metadata retained from the former AI App Templates registry
+  "golang": {
+    "label": "Go",
+    "type": "Language"
+  },
+  "gpt35turbo": {
+    "label": "GPT-3.5 Turbo",
+    "type": "Model",
+    "url": "https://platform.openai.com/docs/models/gpt-3-5-turbo"
+  },
+  "gpt4turbo": {
+    "label": "GPT-4 Turbo",
+    "type": "Model",
+    "url": "https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4"
+  },
+  "gpt4": {
+    "label": "GPT-4",
+    "type": "Model",
+    "url": "https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4"
+  },
+  "gpt4o": {
+    "label": "GPT-4 Omni",
+    "type": "Model",
+    "url": "https://platform.openai.com/docs/models/gpt-4o"
+  },
+  "gpt4omini": {
+    "label": "GPT-4 Omni mini",
+    "type": "Model",
+    "url": "https://platform.openai.com/docs/models/gpt-4o-mini"
+  },
+  "gpt54": {
+    "label": "GPT-5.4",
+    "type": "Model",
+    "url": "https://platform.openai.com/docs/models/gpt-5.4"
+  },
+  "gpt52": {
+    "label": "GPT-5.2",
+    "type": "Model",
+    "url": "https://platform.openai.com/docs/models/gpt-5.2"
+  },
+  "text-embedding-3-large": {
+    "label": "Text-Embedding-3-Large",
+    "type": "Model",
+    "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=global-standard%2Cstandard-chat-completions#embeddings"
+  },
+  "text-embedding-3-small": {
+    "label": "Text-Embedding-3-Small",
+    "type": "Model",
+    "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=global-standard%2Cstandard-chat-completions#embeddings"
+  },
+  "text-embedding-ada-002": {
+    "label": "Text-Embedding-ADA-002",
+    "type": "Model",
+    "url": "https://learn.microsoft.com/azure/ai-services/openai/concepts/models?tabs=python-secure#embeddings-models"
+  },
+  "llama": {
+    "label": "Code Llama",
+    "type": "Model",
+    "url": "https://llama.meta.com/docs/model-cards-and-prompt-formats/meta-code-llama"
+  },
+  "mistral7b": {
+    "label": "Mistral 7b",
+    "type": "Model"
+  },
+  "deepseek-r1": {
+    "label": "DeepSeek R1",
+    "type": "Model"
+  },
+  "meta": {
+    "label": "Meta models",
+    "type": "Model"
+  },
+  "mistralai": {
+    "label": "Mistral AI models",
+    "type": "Model"
+  },
+  "deepseek": {
+    "label": "DeepSeek models",
+    "type": "Model"
+  },
+  "agent": {
+    "label": "Agent",
+    "type": "Task"
+  },
+  "chat": {
+    "label": "Interactive Chat",
+    "type": "Task"
+  },
+  "search": {
+    "label": "Guided Search",
+    "type": "Task"
+  },
+  "llmops": {
+    "label": "LLM Ops",
+    "type": "Task"
+  },
+  "completions": {
+    "label": "Completions",
+    "type": "Task"
+  },
+  "azurecosmosdb": {
+    "label": "Azure Cosmos DB",
+    "type": "Database",
+    "url": "https://azure.microsoft.com/products/cosmos-db/"
+  },
+  "azureopenai": {
+    "label": "Azure OpenAI Service",
+    "type": "Service",
+    "url": "https://azure.microsoft.com/products/ai-services/openai-service"
+  },
+  "azureaiservice": {
+    "label": "Azure AI Service",
+    "type": "Service",
+    "url": "https://azure.microsoft.com/solutions/ai/"
+  },
+  "azurespringapps": {
+    "label": "Azure Spring Apps",
+    "type": "Service",
+    "url": "https://azure.microsoft.com/products/spring-apps"
+  },
+  "mcp-client": {
+    "label": "MCP Client",
+    "url": "https://docs.anthropic.com/en/docs/mcp"
+  },
+  "mcp-server": {
+    "label": "MCP Server",
+    "url": "https://docs.anthropic.com/en/docs/mcp"
+  }
+} as const satisfies Record<string, Tag>;
+
+export const Tags: Record<TagType, Tag> = tagDefinitions;

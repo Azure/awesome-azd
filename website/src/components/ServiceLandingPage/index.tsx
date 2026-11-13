@@ -4,6 +4,7 @@
  */
 
 import React from "react";
+import Link from "@docusaurus/Link";
 import Layout from "@theme/Layout";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import BrowserOnly from "@docusaurus/BrowserOnly";
@@ -20,6 +21,7 @@ import styles from "./styles.module.css";
 type ServiceTemplate = Pick<
   CatalogTemplate,
   | "source"
+  | "detailPath"
   | "title"
   | "description"
   | "authors"
@@ -41,11 +43,10 @@ function TemplateCard({ template }: { template: ServiceTemplate }) {
       template.architectureDiagram ||
       "/img/logo.png",
   );
+  const detailUrl = useBaseUrl(template.detailPath);
   return (
-    <a
-      href={template.source}
-      target="_blank"
-      rel="noopener noreferrer"
+    <Link
+      to={detailUrl}
       className={styles.templateCard}
     >
       <img src={preview} alt={template.title} className={styles.templateImage} />
@@ -60,7 +61,7 @@ function TemplateCard({ template }: { template: ServiceTemplate }) {
           )}
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
 

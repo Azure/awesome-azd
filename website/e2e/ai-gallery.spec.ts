@@ -4,7 +4,7 @@ import templates from "../static/templates.json";
 const featuredTemplateTitle = "RAG chat with Azure AI Search + Python";
 const renamedAiTemplateTitle = "VoiceRAG with Realtime API";
 const aiTemplateCount = templates.filter(
-  (template) => template.templateType === "ai-app-templates",
+  (template) => template.tags?.includes("aiapplication"),
 ).length;
 
 function resultLinks(page: Page) {
@@ -30,9 +30,14 @@ async function openAiGallery(page: Page) {
       name: "Your next app. Ready to build.",
     }),
   ).toBeVisible();
+  await expect(page.locator("html")).toHaveAttribute(
+    "data-has-hydrated",
+    "true",
+    { timeout: 15_000 },
+  );
   await expect(
     page.getByRole("checkbox", { name: /AI application/ }),
-  ).toBeChecked();
+  ).toBeChecked({ timeout: 15_000 });
   await expect(page.getByTestId("template-results-count")).toContainText(
     `${aiTemplateCount} templates`,
   );
@@ -227,7 +232,7 @@ test.describe("Unified AI app templates catalog", () => {
     expect(remoteSearchRequests).toEqual([]);
   });
 
-  test("links AI templates directly to their repositories", async ({
+  test("links AI templates to their detail pages", async ({
     page,
   }) => {
     await openAiGallery(page);
@@ -237,12 +242,8 @@ test.describe("Unified AI app templates catalog", () => {
 
     await expect(templateLink).toHaveAttribute(
       "href",
-      "https://github.com/Azure-Samples/azure-search-openai-demo",
+      "/awesome-azd/templates/azure-samples/azure-search-openai-demo",
     );
-    await expect(templateLink).toHaveAttribute("target", "_blank");
-    await expect(templateLink).toHaveAttribute(
-      "rel",
-      "noopener noreferrer",
-    );
+    await expect(templateLink).not.toHaveAttribute("target", "_blank");
   });
 });

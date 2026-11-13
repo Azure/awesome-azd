@@ -80,10 +80,18 @@ body:
       required: false
 
   - type: input
-    id: preview-image
+    id: application-screenshot
     attributes:
-      label: "Preview Image URL (optional)"
-      description: "URL to an architecture diagram or screenshot"
+      label: "Application Screenshot URL (optional)"
+      description: "URL to an image that shows the running application"
+    validations:
+      required: false
+
+  - type: input
+    id: architecture-diagram
+    attributes:
+      label: "Architecture Diagram URL (optional)"
+      description: "URL to a diagram that shows the Azure services and their connections"
     validations:
       required: false
 

@@ -46,7 +46,9 @@ async function mergeMetadata({ sourceRepo, formValues = {}, extractFn }) {
       formValues.authorUrl || extracted.authorUrl || "",
     author_type:
       formValues.authorType || extracted.authorType || "",
-    preview_image: formValues.previewImage || extracted.previewImage || "",
+    // README images are not reliable enough to classify automatically.
+    screenshot: formValues.screenshot || "",
+    architecture_diagram: formValues.architectureDiagram || "",
     iac_provider:
       formValues.iacProvider || extracted.iacProvider || "",
     languages:
@@ -83,7 +85,8 @@ if (require.main === module) {
         author: process.env.FORM_AUTHOR,
         authorUrl: process.env.FORM_AUTHOR_URL,
         authorType: process.env.FORM_AUTHOR_TYPE,
-        previewImage: process.env.FORM_PREVIEW_IMAGE,
+        screenshot: process.env.FORM_SCREENSHOT,
+        architectureDiagram: process.env.FORM_ARCHITECTURE_DIAGRAM,
         iacProvider: process.env.FORM_IAC_PROVIDER,
         languages: process.env.FORM_LANGUAGES,
         frameworks: process.env.FORM_FRAMEWORKS,

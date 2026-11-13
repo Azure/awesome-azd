@@ -7,13 +7,11 @@ import templates from "../../static/templates.json";
 import repositoryMetrics from "./repository-metrics.generated.json";
 import reviewedTemplateUseCases from "./template-use-cases.json";
 import {
-  Tags as standardTags,
-  type Tag as StandardTag,
-} from "../data/tags";
-import {
-  Tags as aiTags,
-  type Tag as AiTag,
-} from "./aiTags";
+  canonicalizeCatalogTagIds,
+  collectionServiceReplacements,
+  getCatalogTagMetadata,
+  getCatalogTagSearchTerms,
+} from "./catalogTags";
 import { normalizeTemplateSource } from "./templateSources";
 import { getRepositoryStars } from "./repositoryMetrics";
 import {
@@ -35,16 +33,13 @@ export const catalogTasks = [
 export type CatalogTask = (typeof catalogTasks)[number];
 export type CatalogAuthorship = "Community" | "Microsoft";
 
-export type CatalogPrerequisite = {
-  id: string;
-  label: string;
-  url?: string;
-};
-
 export type CatalogResource = {
   id: string;
   label: string;
   role: string;
+  description: string;
+  icon?: string;
+  darkModeIcon?: string;
   url?: string;
 };
 
@@ -54,6 +49,8 @@ export type CatalogTemplate = {
   description: string;
   source: string;
   normalizedSource: string;
+  repository: string;
+  detailPath: string;
   authors: string[];
   legacyAuthors: string[];
   authorUrls: string[];
@@ -64,6 +61,7 @@ export type CatalogTemplate = {
   tasks: CatalogTask[];
   collections: string[];
   legacyTags: string[];
+  compatibilityTags: string[];
   languages: string[];
   frameworks: string[];
   databases: string[];
@@ -74,7 +72,6 @@ export type CatalogTemplate = {
   topics: string[];
   models: string[];
   host?: string;
-  prerequisites: CatalogPrerequisite[];
   resources: CatalogResource[];
   preview?: string;
   architectureDiagram?: string;
@@ -102,7 +99,6 @@ type RawTemplate = {
   IaC?: unknown;
   appType?: unknown;
   models?: unknown;
-  prerequisites?: unknown;
   legacySources?: unknown;
   preview?: unknown;
   architectureDiagram?: unknown;
@@ -113,34 +109,21 @@ type RawTemplate = {
   host?: unknown;
 };
 
-type TagMetadata = Pick<
-  StandardTag & AiTag,
-  "label" | "type" | "url"
->;
-
-const standardTagMap = standardTags as Record<string, StandardTag>;
-const aiTagMap = aiTags as Record<string, AiTag>;
-const canonicalTagLabels = new Map([
-  ["azuredb-postgresql", "Azure Database for PostgreSQL"],
-]);
 const microsoftOwners = new Set([
   "azure",
   "azure-samples",
   "azurecosmosdb",
   "microsoft",
 ]);
-const frameworkLikeTags = new Set(["aspire", "dapr"]);
 const databaseLikeTags = new Set([
   "aisearch",
   "azuresql",
-  "azurecosmosdb",
   "azuredb-mysql",
   "azuredb-postgresql",
   "cosmosdb",
   "mongodb",
   "neondb",
   "pinecone",
-  "prometheus",
 ]);
 const hostServiceIds = new Set([
   "aca",
@@ -186,7 +169,6 @@ const aiServiceIds = new Set([
   "aifoundry",
   "aisearch",
   "azureai",
-  "azureaiservice",
   "azurebot",
   "openai",
 ]);
@@ -239,22 +221,12 @@ function getCoordinates(source: string): {
   };
 }
 
-function getTagMetadata(id: string, isAi: boolean): TagMetadata | undefined {
-  return (isAi ? aiTagMap[id] ?? standardTagMap[id] : standardTagMap[id] ?? aiTagMap[id]) as
-    | TagMetadata
-    | undefined;
+function getTagLabel(id: string): string {
+  return getCatalogTagMetadata(id)?.label ?? id;
 }
 
-function getTagLabel(id: string, isAi: boolean): string {
-  return (
-    canonicalTagLabels.get(id.toLowerCase()) ??
-    getTagMetadata(id, isAi)?.label ??
-    id
-  );
-}
-
-function getLabels(ids: readonly string[], isAi: boolean): string[] {
-  return unique(ids.map((id) => getTagLabel(id, isAi)));
+function getLabels(ids: readonly string[]): string[] {
+  return unique(ids.map(getTagLabel));
 }
 
 function getAuthors(record: RawTemplate): {
@@ -375,8 +347,7 @@ function getResourceRole(id: string): string {
 
 function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
   const templateType = readOptionalString(record.templateType);
-  const isAi = templateType === "ai-app-templates";
-  if (templateType !== undefined && !isAi) {
+  if (templateType !== undefined) {
     return null;
   }
 
@@ -387,27 +358,46 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
   const coordinates = getCoordinates(source);
   const { authors, authorUrls } = getAuthors(record);
   const legacyAuthors = getLegacyAuthors(record, authors);
-  const tags = readStringArray(record.tags);
-  const languageIds = readStringArray(record.languages);
-  const legacyFrameworkIds = readStringArray(record.frameworks);
+  const rawTags = readStringArray(record.tags);
+  const rawLanguageIds = readStringArray(record.languages);
+  const rawFrameworkIds = readStringArray(record.frameworks);
+  const rawServiceIds = readStringArray(record.azureServices);
+  const rawIacIds = readStringArray(record.IaC);
+  const rawModelIds = readStringArray(record.models);
+  const tags = canonicalizeCatalogTagIds(rawTags);
+  const isAi = tags.includes("aiapplication");
+  const languageIds = unique([
+    ...canonicalizeCatalogTagIds(rawLanguageIds),
+    ...tags.filter(
+      (tag) => getCatalogTagMetadata(tag)?.type === "Language",
+    ),
+  ]);
+  const legacyFrameworkIds =
+    canonicalizeCatalogTagIds(rawFrameworkIds);
   const frameworkIds = unique([
     ...legacyFrameworkIds,
-    ...tags.filter((tag) => {
-      const metadata = getTagMetadata(tag, isAi);
-      return metadata?.type === "Framework" || frameworkLikeTags.has(tag);
-    }),
+    ...tags.filter(
+      (tag) => getCatalogTagMetadata(tag)?.type === "Framework",
+    ),
   ]);
-  const serviceIds = readStringArray(record.azureServices);
+  const serviceIds = unique([
+    ...canonicalizeCatalogTagIds(rawServiceIds),
+    ...rawTags
+      .map((tag) =>
+        collectionServiceReplacements.get(tag.toLowerCase()),
+      )
+      .filter((tag): tag is string => tag !== undefined),
+  ]);
   const databaseIds = unique(
     [...tags, ...serviceIds].filter((tag) => {
-      const metadata = getTagMetadata(tag, isAi);
+      const metadata = getCatalogTagMetadata(tag);
       return (
         metadata?.type === "Database" ||
         databaseLikeTags.has(tag.toLowerCase())
       );
     }),
   );
-  const iacIds = readStringArray(record.IaC);
+  const iacIds = canonicalizeCatalogTagIds(rawIacIds);
   const legacyTags = unique([
     ...tags,
     ...languageIds,
@@ -416,36 +406,60 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     ...iacIds,
   ]);
   const appTypes = readStringArray(record.appType);
-  const modelIds = readStringArray(record.models);
+  const modelIds = unique([
+    ...canonicalizeCatalogTagIds(rawModelIds),
+    ...tags.filter(
+      (tag) => getCatalogTagMetadata(tag)?.type === "Model",
+    ),
+  ]);
+  const compatibilityTags = unique([
+    ...legacyTags,
+    ...rawTags,
+    ...rawLanguageIds,
+    ...rawFrameworkIds,
+    ...rawServiceIds,
+    ...rawIacIds,
+    ...rawModelIds,
+    ...modelIds,
+  ]);
+  const legacySearchTerms = unique(
+    [
+      ...rawTags,
+      ...rawLanguageIds,
+      ...rawFrameworkIds,
+      ...rawServiceIds,
+      ...rawIacIds,
+      ...rawModelIds,
+    ].flatMap(getCatalogTagSearchTerms),
+  );
   const toolIds = tags.filter(
-    (tag) => getTagMetadata(tag, isAi)?.type === "Tools",
+    (tag) => getCatalogTagMetadata(tag)?.type === "Tools",
   );
   const topicIds = tags.filter(
-    (tag) => getTagMetadata(tag, isAi)?.type === "Topic",
+    (tag) => getCatalogTagMetadata(tag)?.type === "Topic",
   );
-  const languages = getLabels(languageIds, isAi);
-  const frameworks = getLabels(frameworkIds, isAi);
-  const databases = getLabels(databaseIds, isAi);
-  const iac = getLabels(iacIds, isAi);
-  const services = getLabels(serviceIds, isAi);
-  const tools = getLabels(toolIds, isAi);
-  const topics = getLabels(topicIds, isAi);
-  const models = getLabels(modelIds, isAi);
+  const languages = getLabels(languageIds);
+  const frameworks = getLabels(frameworkIds);
+  const databases = getLabels(databaseIds);
+  const iac = getLabels(iacIds);
+  const services = getLabels(serviceIds);
+  const tools = getLabels(toolIds);
+  const topics = getLabels(topicIds);
+  const models = getLabels(modelIds);
   const host = readOptionalString(record.host);
-  const prerequisites = readStringArray(record.prerequisites).map((tag) => {
-    const metadata = getTagMetadata(tag, true);
-    return {
-      id: tag,
-      label: metadata?.label ?? tag,
-      url: metadata?.url,
-    };
-  });
   const resources = serviceIds.reduce<CatalogResource[]>((result, tag) => {
-    const metadata = getTagMetadata(tag, isAi);
+    const metadata = getCatalogTagMetadata(tag);
+    const label = metadata?.label ?? tag;
     const resource = {
       id: tag,
-      label: metadata?.label ?? tag,
+      label,
       role: getResourceRole(tag),
+      description:
+        metadata?.productDescription ??
+        metadata?.description ??
+        `Learn more about ${label}.`,
+      icon: metadata?.azureIcon,
+      darkModeIcon: metadata?.darkModeAzureIcon,
       url: metadata?.url,
     };
     if (!result.some((candidate) => candidate.label === resource.label)) {
@@ -457,9 +471,12 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
   const tasks = getReviewedUseCases(coordinates.normalizedSource);
   const initCommand = formatAzdInitCommand(getTemplateIdentifier(source));
   const readmeUrl = `${source}#readme`;
-  const preview = readOptionalString(record.preview);
   const architectureDiagram = readOptionalString(record.architectureDiagram);
   const screenshot = readOptionalString(record.screenshot);
+  const preview =
+    readOptionalString(record.preview) ??
+    screenshot ??
+    architectureDiagram;
   const video = readOptionalString(record.video);
   const sampleType = readOptionalString(record.sampleType);
   const searchText = [
@@ -469,6 +486,8 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     coordinates.repo,
     ...authors,
     ...legacyAuthors,
+    ...rawTags,
+    ...legacySearchTerms,
     ...tags,
     ...appTypes,
     ...languages,
@@ -491,6 +510,10 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     description,
     source,
     normalizedSource: coordinates.normalizedSource,
+    repository: new URL(coordinates.normalizedSource).pathname.slice(1),
+    detailPath: `/templates/${new URL(
+      coordinates.normalizedSource,
+    ).pathname.slice(1)}`,
     authors,
     legacyAuthors,
     authorUrls,
@@ -501,6 +524,7 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     tasks,
     collections: isAi ? ["ai"] : [],
     legacyTags,
+    compatibilityTags,
     languages,
     frameworks,
     databases,
@@ -511,7 +535,6 @@ function toCatalogTemplate(record: RawTemplate): CatalogTemplate | null {
     topics,
     models,
     host,
-    prerequisites,
     resources,
     preview,
     architectureDiagram,

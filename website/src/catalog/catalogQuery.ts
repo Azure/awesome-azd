@@ -7,6 +7,10 @@ import {
   catalogTasks,
   type CatalogTemplate,
 } from "./catalogData";
+import {
+  canonicalizeCatalogTagId,
+  getCatalogTagCompatibilityIds,
+} from "./catalogTags";
 
 export type CatalogFacetKey =
   | "types"
@@ -120,6 +124,12 @@ export const catalogFacets: readonly CatalogFacet[] = [
   },
 ] as const;
 
+const aiApplicationTagIds = new Set([
+  "aicollection",
+  "aiapplication",
+]);
+const nonFilterableLegacyTags = new Set(["new"]);
+
 function getValues(
   template: CatalogTemplate,
   key: CatalogFacetKey,
@@ -142,10 +152,24 @@ function getValues(
     case "authorship":
       return [template.authorship];
     case "legacyTags":
-      return template.legacyTags;
+      return template.compatibilityTags.filter(
+        (tag) => !nonFilterableLegacyTags.has(tag.toLowerCase()),
+      );
     case "authors":
       return [...template.authors, ...template.legacyAuthors];
   }
+}
+
+function supportsLegacyTagCompatibility(
+  key: CatalogFacetKey,
+): boolean {
+  return (
+    key === "languages" ||
+    key === "frameworks" ||
+    key === "databases" ||
+    key === "services" ||
+    key === "iac"
+  );
 }
 
 export function getFacetLabel(facet: CatalogFacet, value: string): string {
@@ -200,6 +224,13 @@ export function parseCatalogState(
     authors: [],
     unavailable: [],
   };
+  const legacyTagFacet = catalogFacets.find(
+    (facet) => facet.key === "legacyTags",
+  );
+  if (!legacyTagFacet) {
+    throw new Error("Expected the legacy tag facet.");
+  }
+  const allowedLegacyTags = getFacetOptions(records, legacyTagFacet);
 
   for (const facet of catalogFacets) {
     const allowed = getFacetOptions(records, facet);
@@ -209,19 +240,50 @@ export function parseCatalogState(
       .filter(Boolean);
     if (
       facet.key === "legacyTags" &&
-      requested.includes("aicollection")
+      requested.some((value) =>
+        aiApplicationTagIds.has(value.toLowerCase()),
+      )
     ) {
       state.types = [...new Set([...state.types, "ai"])];
-      requested = requested.filter((value) => value !== "aicollection");
+      requested = requested.filter(
+        (value) => !aiApplicationTagIds.has(value.toLowerCase()),
+      );
     }
-    state[facet.key] = [
-      ...new Set(requested.filter((value) => allowed.includes(value))),
-    ];
-    state.unavailable.push(
-      ...requested
-        .filter((value) => !allowed.includes(value))
-        .map((value) => `${facet.label}: ${value}`),
-    );
+    if (facet.key === "services") {
+      requested = requested.map(
+        (value) => canonicalizeCatalogTagId(value) ?? value,
+      );
+    }
+    if (facet.key === "legacyTags") {
+      requested = requested
+        .filter(
+          (value) =>
+            !nonFilterableLegacyTags.has(value.toLowerCase()),
+        )
+        .map((value) => canonicalizeCatalogTagId(value) ?? value);
+    }
+    const accepted: string[] = [];
+    for (const value of requested) {
+      if (allowed.includes(value)) {
+        accepted.push(value);
+        continue;
+      }
+
+      const compatibilityIds = supportsLegacyTagCompatibility(
+        facet.key,
+      )
+        ? getCatalogTagCompatibilityIds(value).filter((id) =>
+            allowedLegacyTags.includes(id),
+          )
+        : [];
+      if (compatibilityIds.length === 1) {
+        accepted.push(value);
+        continue;
+      }
+
+      state.unavailable.push(`${facet.label}: ${value}`);
+    }
+    state[facet.key] = [...new Set(accepted)];
   }
 
   return state;
@@ -285,7 +347,20 @@ export function matchesCatalogTemplate(
       if (facet.key === "legacyTags") {
         return state.legacyTags.every((value) => values.includes(value));
       }
-      return values.some((value) => state[facet.key].includes(value));
+      return state[facet.key].some((value) => {
+        if (values.includes(value)) {
+          return true;
+        }
+        if (!supportsLegacyTagCompatibility(facet.key)) {
+          return false;
+        }
+
+        const compatibilityIds = getCatalogTagCompatibilityIds(value);
+        return (
+          compatibilityIds.length === 1 &&
+          template.compatibilityTags.includes(compatibilityIds[0])
+        );
+      });
     })
   );
 }
@@ -326,6 +401,19 @@ export function sortCatalogTemplates(
 
   return result.sort(
     (left, right) => {
+      const leftGroup = left.featured
+        ? 0
+        : left.stars !== undefined
+          ? 1
+          : 2;
+      const rightGroup = right.featured
+        ? 0
+        : right.stars !== undefined
+          ? 1
+          : 2;
+      if (leftGroup !== rightGroup) {
+        return leftGroup - rightGroup;
+      }
       const leftHasStars = left.stars !== undefined;
       const rightHasStars = right.stars !== undefined;
       if (leftHasStars !== rightHasStars) {

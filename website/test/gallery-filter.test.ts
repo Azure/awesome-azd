@@ -13,11 +13,9 @@ import { Template } from "../src/data/tags";
 describe("Gallery filter: exclude specialized template types", () => {
   test("isGalleryTemplate returns false for any non-empty templateType", () => {
     const extension = { templateType: "extension.ai.agent" } as Template;
-    const aiCollection = { templateType: "ai-app-templates" } as Template;
     const future = { templateType: "extension.mcp.server" } as Template;
     const other = { templateType: "something-else" } as Template;
     expect(isGalleryTemplate(extension)).toBe(false);
-    expect(isGalleryTemplate(aiCollection)).toBe(false);
     expect(isGalleryTemplate(future)).toBe(false);
     expect(isGalleryTemplate(other)).toBe(false);
   });
@@ -37,12 +35,12 @@ describe("Gallery filter: exclude specialized template types", () => {
     const input = [
       { title: "a", templateType: "extension.ai.agent" },
       { title: "b" },
-      { title: "c", templateType: "ai-app-templates" },
+      { title: "c", tags: ["aiapplication"] },
       { title: "d", templateType: null },
       { title: "e", templateType: "something-else" },
     ] as unknown as Template[];
     const result = filterGalleryTemplates(input);
-    expect(result.map((u) => u.title)).toEqual(["b", "d"]);
+    expect(result.map((u) => u.title)).toEqual(["b", "c", "d"]);
   });
 
   test("unsortedUsers contains no entries with templateType set", () => {

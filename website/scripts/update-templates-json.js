@@ -20,19 +20,24 @@ const {
 const { writeOutputs } = require("./github-output");
 
 /**
- * Load case-insensitive keys and canonical spelling from the TagType union.
+ * Load case-insensitive keys and canonical spelling from tagDefinitions.
  */
 function loadKnownTags() {
   const tagsPath = path.resolve(__dirname, "../src/data/tags.ts");
   const content = fs.readFileSync(tagsPath, "utf8");
-  const declaration = content.match(/export\s+type\s+TagType\s*=\s*([\s\S]*?);/);
+  const declaration = content.match(
+    /const\s+tagDefinitions\s*=\s*\{([\s\S]*?)^\}\s+as\s+const\s+satisfies\s+Record<string,\s*Tag>;/m
+  );
   if (!declaration) {
-    throw new Error("The TagType union is missing from tags.ts");
+    throw new Error("The tagDefinitions object is missing from tags.ts");
   }
-  const union = declaration[1].replace(/\/\*[\s\S]*?\*\/|\/\/[^\r\n]*/g, "");
-  const tags = [...union.matchAll(/"([^"]+)"/g)].map((match) => match[1]);
+  const tags = [
+    ...declaration[1].matchAll(
+      /^ {2}(?:"([^"]+)"|([A-Za-z_$][\w$]*)):\s*\{/gm
+    ),
+  ].map((match) => match[1] ?? match[2]);
   if (tags.length === 0) {
-    throw new Error("The TagType union in tags.ts contains no tags");
+    throw new Error("The tagDefinitions object in tags.ts contains no tags");
   }
   return new Map(tags.map((tag) => [tag.toLowerCase(), tag]));
 }
@@ -137,7 +142,8 @@ function parseTags(csv) {
  * @param {string} options.author
  * @param {string} options.authorUrl
  * @param {string} options.authorType
- * @param {string} options.previewImage
+ * @param {string} options.screenshot
+ * @param {string} options.architectureDiagram
  * @param {string} options.iacProvider
  * @param {string[]} options.languages
  * @param {string[]} options.frameworks
@@ -154,7 +160,8 @@ function updateTemplatesJson({
   author,
   authorUrl,
   authorType,
-  previewImage,
+  screenshot,
+  architectureDiagram,
   iacProvider,
   languages,
   frameworks,
@@ -168,7 +175,10 @@ function updateTemplatesJson({
   validateUrl(sourceRepo, "Source repo");
   if (!authorUrl) throw new Error("Author URL is required");
   validateUrl(authorUrl, "Author");
-  if (previewImage) validateUrl(previewImage, "Preview image");
+  if (screenshot) validateUrl(screenshot, "Application screenshot");
+  if (architectureDiagram) {
+    validateUrl(architectureDiagram, "Architecture diagram");
+  }
 
   const resolvedPath =
     templatesPath || path.join("website", "static", "templates.json");
@@ -212,7 +222,6 @@ function updateTemplatesJson({
   const entry = {
     title: _sanitize(title, 200),
     description: _sanitize(description, 500),
-    preview: previewImage ? _sanitize(previewImage, 500) : "",
     authorUrl: _sanitize(authorUrl, 500),
     author: _sanitize(author, 100),
     source: canonicalSource,
@@ -221,6 +230,10 @@ function updateTemplatesJson({
     id: generateId(),
   };
 
+  if (screenshot) entry.screenshot = _sanitize(screenshot, 500);
+  if (architectureDiagram) {
+    entry.architectureDiagram = _sanitize(architectureDiagram, 500);
+  }
   if (languages.length > 0) entry.languages = languages;
   if (frameworks.length > 0) entry.frameworks = frameworks;
   if (azureServices.length > 0) entry.azureServices = azureServices;
@@ -247,7 +260,8 @@ if (require.main === module) {
       author: sanitize(process.env.TPL_AUTHOR || "", 100),
       authorUrl: process.env.TPL_AUTHOR_URL,
       authorType: process.env.TPL_AUTHOR_TYPE,
-      previewImage: process.env.TPL_PREVIEW_IMAGE,
+      screenshot: process.env.TPL_SCREENSHOT,
+      architectureDiagram: process.env.TPL_ARCHITECTURE_DIAGRAM,
       iacProvider: process.env.TPL_IAC_PROVIDER,
       languages: parseTags(process.env.TPL_LANGUAGES),
       frameworks: parseTags(process.env.TPL_FRAMEWORKS),

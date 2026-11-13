@@ -608,7 +608,6 @@ async function extractMetadata(repoUrl) {
     frameworks: [],
     azureServices: [],
     iacProvider: "",
-    previewImage: "",
   };
 
   let defaultBranch = "main";
@@ -678,7 +677,7 @@ async function extractMetadata(repoUrl) {
     // azure.yaml not found or invalid — non-fatal
   }
 
-  // ---- README (title + preview image) --------------------------------------
+  // ---- README (title) ------------------------------------------------------
   let readmeContent = "";
   try {
     readmeContent = await fetchReadme(owner, repo, defaultBranch);
@@ -687,16 +686,6 @@ async function extractMetadata(repoUrl) {
       if (readmeTitle) {
         result.title = sanitize(readmeTitle, 200);
       }
-    }
-
-    const previewImage = extractReadmeImage(
-      readmeContent,
-      owner,
-      repo,
-      defaultBranch
-    );
-    if (previewImage) {
-      result.previewImage = previewImage;
     }
   } catch {
     // README not available — non-fatal

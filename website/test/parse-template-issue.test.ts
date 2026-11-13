@@ -39,8 +39,11 @@ describe("extractField", () => {
     "### Author Type",
     "Community",
     "",
-    "### Preview Image URL",
-    "_No response_",
+    "### Application Screenshot URL",
+    "https://example.com/screenshot.png",
+    "",
+    "### Architecture Diagram URL",
+    "https://example.com/architecture.png",
     "",
     "### IaC Provider",
     "Bicep",
@@ -66,7 +69,12 @@ describe("extractField", () => {
   });
 
   test("extracts multi-word field name", () => {
-    expect(extractField(body, "Preview Image URL")).toBe("");
+    expect(extractField(body, "Application Screenshot URL")).toBe(
+      "https://example.com/screenshot.png"
+    );
+    expect(extractField(body, "Architecture Diagram URL")).toBe(
+      "https://example.com/architecture.png"
+    );
   });
 
   test("returns empty string for _No response_", () => {
@@ -129,8 +137,11 @@ describe("parseIssueBody (issues event)", () => {
     "### Author Type",
     "Community",
     "",
-    "### Preview Image URL",
-    "_No response_",
+    "### Application Screenshot URL",
+    "https://example.com/screenshot.png",
+    "",
+    "### Architecture Diagram URL",
+    "https://example.com/architecture.png",
     "",
     "### IaC Provider",
     "Bicep",
@@ -158,7 +169,10 @@ describe("parseIssueBody (issues event)", () => {
     expect(fields.author).toBe("Jane Doe");
     expect(fields.author_url).toBe("https://github.com/janedoe");
     expect(fields.author_type).toBe("Community");
-    expect(fields.preview_image).toBe("");
+    expect(fields.screenshot).toBe("https://example.com/screenshot.png");
+    expect(fields.architecture_diagram).toBe(
+      "https://example.com/architecture.png"
+    );
     expect(fields.iac_provider).toBe("Bicep");
     expect(fields.languages).toBe("Python, JavaScript");
     expect(fields.frameworks).toBe("");
@@ -249,7 +263,8 @@ describe("parseIssueBody (workflow_dispatch)", () => {
         author: "Jane Doe",
         author_url: "https://github.com/janedoe",
         author_type: "Microsoft",
-        preview_image: "",
+        screenshot: "https://example.com/screenshot.png",
+        architecture_diagram: "https://example.com/architecture.png",
         iac_provider: "Terraform",
         languages: "Go",
         frameworks: "",
@@ -263,7 +278,10 @@ describe("parseIssueBody (workflow_dispatch)", () => {
     expect(fields.author_type).toBe("Microsoft");
     expect(fields.iac_provider).toBe("Terraform");
     expect(fields.languages).toBe("Go");
-    expect(fields.preview_image).toBe("");
+    expect(fields.screenshot).toBe("https://example.com/screenshot.png");
+    expect(fields.architecture_diagram).toBe(
+      "https://example.com/architecture.png"
+    );
   });
 
   test("returns error when source_repo is empty", () => {
@@ -303,7 +321,8 @@ describe("parseIssueBody (workflow_dispatch)", () => {
         author: "  Auth  ",
         author_url: "  https://github.com/auth  ",
         author_type: "Community",
-        preview_image: "",
+        screenshot: "",
+        architecture_diagram: "",
         iac_provider: "Bicep",
         languages: "",
         frameworks: "",
@@ -342,8 +361,11 @@ describe("parseIssueBody (auto-detect heading format)", () => {
     "### Author Type (optional \u2014 auto-detected)",
     "Community",
     "",
-    "### Preview Image URL (optional)",
-    "_No response_",
+    "### Application Screenshot URL (optional)",
+    "https://example.com/screenshot.png",
+    "",
+    "### Architecture Diagram URL (optional)",
+    "https://example.com/architecture.png",
     "",
     "### IaC Provider (optional \u2014 auto-detected from infra/ directory)",
     "Bicep",
@@ -371,7 +393,10 @@ describe("parseIssueBody (auto-detect heading format)", () => {
     expect(fields.author).toBe("Jane Doe");
     expect(fields.author_url).toBe("https://github.com/janedoe");
     expect(fields.author_type).toBe("Community");
-    expect(fields.preview_image).toBe("");
+    expect(fields.screenshot).toBe("https://example.com/screenshot.png");
+    expect(fields.architecture_diagram).toBe(
+      "https://example.com/architecture.png"
+    );
     expect(fields.iac_provider).toBe("Bicep");
     expect(fields.languages).toBe("Python, JavaScript");
     expect(fields.frameworks).toBe("");
@@ -399,7 +424,8 @@ describe("parseIssueBody (auto-detect heading format)", () => {
     expect(fields.author).toBe("");
     expect(fields.author_url).toBe("");
     expect(fields.author_type).toBe("");
-    expect(fields.preview_image).toBe("");
+    expect(fields.screenshot).toBe("");
+    expect(fields.architecture_diagram).toBe("");
     expect(fields.iac_provider).toBe("");
     expect(fields.languages).toBe("");
     expect(fields.frameworks).toBe("");

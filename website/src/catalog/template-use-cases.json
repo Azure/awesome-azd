@@ -1009,5 +1009,14 @@
     "Build a web app",
     "Build an API",
     "Build an AI agent"
+  ],
+  "https://github.com/azure-samples/azure-language-openai-conversational-agent-accelerator": [
+    "Build a web app",
+    "Build an AI agent",
+    "Chat with documents"
+  ],
+  "https://github.com/azure-samples/copilot-studio-with-azure-ai-search": [
+    "Build an AI agent",
+    "Chat with documents"
   ]
 }

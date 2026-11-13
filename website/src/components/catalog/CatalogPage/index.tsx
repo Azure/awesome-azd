@@ -51,6 +51,7 @@ import {
 } from "../../../catalog/catalogQuery";
 import {
   captureGalleryNavigationState,
+  createTemplateDetailNavigationState,
   restoreGalleryNavigationState,
   type GalleryNavigationState,
 } from "../../../utils/galleryNavigation";
@@ -200,11 +201,14 @@ function FacetSection({
 
 function TemplateCard({
   template,
+  onNavigate,
 }: {
   template: CatalogTemplate;
+  onNavigate: (detailUrl: string) => void;
 }): React.JSX.Element {
   const microsoftIcon = useBaseUrl("/img/Microsoft.svg");
   const communityIcon = useBaseUrl("/img/Community.svg");
+  const detailUrl = useBaseUrl(template.detailPath);
   const service =
     template.resources.find(
       (resource) => resource.role === "Application hosting",
@@ -230,14 +234,26 @@ function TemplateCard({
       }`}
       data-template-card
     >
-      <a
+      <Link
         id={`${headingId}-link`}
         className={styles.cardLink}
-        href={template.source}
-        target="_blank"
-        rel="noopener noreferrer"
+        to={detailUrl}
         aria-labelledby={headingId}
         data-template-title={template.title}
+        onClick={(event) => {
+          if (
+            event.defaultPrevented ||
+            event.button !== 0 ||
+            event.ctrlKey ||
+            event.metaKey ||
+            event.shiftKey ||
+            event.altKey
+          ) {
+            return;
+          }
+          event.preventDefault();
+          onNavigate(detailUrl);
+        }}
       >
         <div className={styles.cardTop}>
           <span className={styles.cardAuthor}>
@@ -265,11 +281,11 @@ function TemplateCard({
           {template.isAi ? (
             <span
               className={styles.cardAi}
-              title="AI app template"
+              title="AI application"
             >
               <AiIcon />
               <span className={styles.visuallyHidden}>
-                AI app template:{" "}
+                AI application:{" "}
               </span>
             </span>
           ) : null}
@@ -291,7 +307,7 @@ function TemplateCard({
             statClassName={styles.repoStat}
           />
         </div>
-      </a>
+      </Link>
       <div className={styles.cardCommand}>
         <code title={template.initCommand}>{template.initCommand}</code>
         <CopyAction
@@ -372,6 +388,25 @@ export default function CatalogPage(): React.JSX.Element {
     },
     [history, location],
   );
+
+  const navigateToDetail = useCallback((detailUrl: string) => {
+    const navigationState = captureGalleryNavigationState();
+    history.replace({
+      ...location,
+      state: navigationState,
+    });
+    history.push({
+      pathname: detailUrl,
+      state: createTemplateDetailNavigationState(
+        {
+          pathname: location.pathname,
+          search: location.search,
+          hash: location.hash,
+        },
+        navigationState,
+      ),
+    });
+  }, [history, location]);
 
   const submitSearch = useCallback(() => {
     const query = (
@@ -759,6 +794,7 @@ export default function CatalogPage(): React.JSX.Element {
                         <TemplateCard
                           key={template.id}
                           template={template}
+                          onNavigate={navigateToDetail}
                         />
                       ))}
                     </div>

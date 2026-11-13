@@ -62,7 +62,6 @@ AI app templates may also use these reviewed public enrichment fields:
 | `authorUrls`          | `string[]` | Public HTTPS author profile URLs. |
 | `models`              | `string[]` | Declared model identifiers. |
 | `appType`             | `string[]` | Declared application-type identifiers. |
-| `prerequisites`       | `string[]` | Declared prerequisite identifiers. |
 | `sampleType`          | string     | Optional sample classification. |
 | `architectureDiagram` | string     | Local reviewed architecture image path. |
 | `screenshot`          | string     | Local reviewed screenshot path. |

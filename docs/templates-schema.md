@@ -158,29 +158,25 @@ included by the unified catalog adapter.
 
 ## 7. Validation pipeline
 
-The data layer ([`website/src/data/templates.ts`](../website/src/data/templates.ts))
-applies these steps in order:
+The website catalog applies these steps in order:
 
-1. **Legacy gallery adapter** — `filterGalleryTemplates` drops every entry
-   with a non-empty `templateType`. Result is the standard legacy gallery
-   dataset.
-2. **`validateTemplates`** — check required text fields, the GitHub source URL,
-   `authorUrl` type/default, and a non-empty gallery `tags` array. Invalid
-   entries are dropped with a `console.warn`. This is not a full schema
-   decoder: identity, taxonomy membership, and optional array contents are
-   not checked here.
-3. **Unified catalog builder** — [`catalogBuilder.ts`](../website/src/catalog/catalogBuilder.ts)
-   accepts absent / null / empty `templateType` values plus
-   `ai-app-templates`, then normalizes both into the shared catalog model used
-   by `/templates` and canonical detail pages.
-   [`catalogData.ts`](../website/src/catalog/catalogData.ts) is the thin wrapper
-   that passes the bundled static JSON inputs to this builder. Every accepted
-   source must also have one or more reviewed entries in
-   `template-use-cases.json`.
+1. **Load current metadata** — the catalog route plugin reads
+   `static/templates.json`, `template-use-cases.json`, and generated repository
+   metrics during each content load.
+2. **Build the catalog** —
+   [`catalogBuilder.ts`](../website/src/catalog/catalogBuilder.ts) skips records
+   with a non-empty `templateType` and normalizes standard and
+   `ai-app-templates` records into the shared catalog model. Invalid required
+   fields, sources, authorship metadata, or reviewed use cases throw an error
+   and stop the development reload or production build instead of silently
+   dropping the record.
+3. **Generate route data** — the route plugin creates the compact listing,
+   canonical detail pages, and service-page payloads from that validated
+   catalog.
 
-`validateTemplates` also relaxes the `tags` requirement for any entry where
-`templateType` is set, as defense-in-depth in case the pipeline ordering is
-ever changed.
+[`catalogData.ts`](../website/src/catalog/catalogData.ts) is the thin wrapper
+that passes the bundled static JSON inputs to the same builder for tests and
+other static consumers.
 
 ## 8. Adding a new extension category — checklist
 
@@ -188,9 +184,8 @@ ever changed.
 2. Append entries to `website/static/templates.json`. Required fields per §2;
    optional extension fields per §4.
 3. Confirm `source` URLs start with `https://github.com/`.
-4. Run `npm test` in `website/` — at minimum the
-   `gallery-filter` and `agent-templates` style tests should pass for any
-   new category.
+4. Run `npm test` in `website/` — at minimum the `agent-templates`, `catalog`,
+   and `tags_match` tests should pass for any new category.
 5. Consumer-side: ensure the `azd` flow that reads `templates.json` filters
    by your new `templateType`.
 

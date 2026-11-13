@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-## 0.8.0 (2026-11-13)
+## 1.0.0 (2026-11-13)
 
 ### Features Added
 
@@ -13,7 +13,6 @@
 ### Other changes
 
 - [[860]](https://github.com/Azure/awesome-azd/pull/860) Improve gallery filter sidebar layout and mobile responsiveness.
-- [[1114]](https://github.com/Azure/awesome-azd/pull/1114) Update peter-evans/create-pull-request from 8.1.1 to 8.1.2.
 - [[1116]](https://github.com/Azure/awesome-azd/pull/1116) Refactor and optimize the catalog architecture for smaller page payloads, consistent gallery controls, canonical metadata, and safer extension links.
 
 ## 0.7.0 (2025-12-03)

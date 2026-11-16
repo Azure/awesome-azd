@@ -166,7 +166,7 @@ describe("unified catalog data", () => {
       ).length,
     );
     expect(catalogTemplates.filter((template) => template.isAi)).toHaveLength(
-      56,
+      54,
     );
     expect(
       new Set(
@@ -624,7 +624,7 @@ describe("unified catalog data", () => {
         Array.isArray(template.tags) &&
         template.tags.includes("aiapplication"),
     );
-    expect(aiApplications).toHaveLength(56);
+    expect(aiApplications).toHaveLength(54);
     for (const rawTemplate of aiApplications) {
       expect(rawTemplate.templateType).toBeUndefined();
       expect(rawTemplate.tags).not.toContain("aicollection");

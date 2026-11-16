@@ -1,5 +1,9 @@
 # Template Submission Automation
 
+> **Status: Retired.** The template submission workflow was removed. Template
+> contributions now use the manual pull request process in
+> `website/docs/contribute.md`.
+
 ## Problem
 
 Trusted internal partners cannot publish templates to awesome-azd fast enough. The current process requires:

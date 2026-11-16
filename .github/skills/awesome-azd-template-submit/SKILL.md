@@ -3,172 +3,18 @@ name: awesome-azd-template-submit
 description: >-
   Submit or retire an azd template in the awesome-azd gallery. Use when asked to
   submit, add, contribute, remove, retire, or clean up a template in
-  awesome-azd. New submissions require a GitHub repository URL and primary use
-  case; other metadata (title, description, languages, frameworks, Azure
-  services, IaC) is auto-detected by the submission pipeline.
+  awesome-azd.
 ---
 
 # Awesome AZD Template Submission
 
-You submit azd templates to the awesome-azd gallery by filing a GitHub issue
-that triggers the automated submission pipeline. Given a repository URL and
-primary use case, you create the issue; other metadata is auto-detected from
-the repository.
+New templates are submitted by pull request. Follow the manual contribution
+instructions in `website/docs/contribute.md`. Do not create a submission issue
+expecting automation to validate the template or open a pull request.
 
-## Usage
-
-The user provides a repository URL and selects the best primary use case.
-
-```
-Submit this web app template: https://github.com/Azure-Samples/my-ai-app
-```
-
-Use one exact value:
-- `Build a web app`
-- `Build an API`
-- `Build an AI agent`
-- `Build an MCP server`
-- `Chat with documents`
-- `Query a database`
-- `Automate a workflow`
-- `Start with infrastructure`
-
-## Steps
-
-### 1. Validate the URL
-
-Confirm the URL points to a valid GitHub repository
-(`https://github.com/{owner}/{repo}`). If the URL is malformed or missing, ask
-the user to provide one.
-
-### 2. Extract the repo name for the issue title
-
-Parse `{owner}/{repo}` from the URL to use in the issue title.
-
-### 3. Confirm with the user
-
-Show the user the issue title, source URL, and primary use case. This is a
-write operation — require explicit approval before executing `gh issue create`.
-
-### 4. File the issue
-
-Use the GitHub CLI to create an issue in the `Azure/awesome-azd` repository.
-The issue body must use `### Heading` format matching the issue form fields so
-the automated parser can extract the values.
-
-The **Source Repository** and **Primary Use Case** fields are required. Other
-fields are auto-detected by the pipeline. Do NOT fill in optional fields unless
-the user explicitly provides overrides.
-
-For author attribution, use the source repository owner as the default author.
-Use their GitHub profile as the author URL unless the submitter explicitly
-declares a different author URL.
-
-```bash
-gh issue create \
-  --repo Azure/awesome-azd \
-  --title "[Template]: {repo-name}" \
-  --body "### Source Repository
-
-{url}
-
-### Primary Use Case
-
-{primary-use-case}
-
-### Template Title
-
-_No response_
-
-### Description
-
-_No response_
-
-### Author
-
-_No response_
-
-### Author URL
-
-_No response_
-
-### Author Type
-
-_No response_
-
-### Trusted Author
-
-_No response_
-
-### Preview Image URL
-
-_No response_
-
-### IaC Provider
-
-_No response_
-
-### Languages
-
-_No response_
-
-### Frameworks
-
-_No response_
-
-### Azure Services
-
-_No response_
-
-### Additional Information
-
-_No response_"
-```
-
-### 5. Confirm success
-
-After filing, report the issue URL and explain that:
-- A maintainer will review and add the `template-submission` label to trigger
-  processing
-- The pipeline auto-extracts metadata, validates the repo, and creates a PR
-- The user will be notified on the issue when the PR is ready for review
-
-## Trusted authors
-
-Use the **Trusted Author** field only when the GitHub issue creator is a trusted
-author. Trusted authors do not need manual template testing requested from
-@HarveyLink or deployment proof requested from the PR author.
-
-Current trusted authors:
-- paulyuk
-
-Before requesting testing, check whether the template submission issue was
-created by a trusted author. Do not request manual testing or deployment proof
-for trusted authors.
-
-For community templates (those without the `msft` tag), comment on the PR and
-mention @HarveyLink to request manual testing. For Microsoft templates (those with
-the `msft` tag), ask the PR author for a test pipeline link or other proof of
-successful deployment.
-
-When mentioning people in issue or PR comments, write the mention as plain text
-such as @HarveyLink. Do not wrap mentions in inline code formatting, because that
-prevents GitHub notifications.
-
-## Handling user overrides
-
-If the user provides additional context like language, framework, or Azure
-services, include those in the appropriate fields instead of `_No response_`.
-
-Example:
-
-```
-Submit https://github.com/Azure-Samples/my-app with language python and services openai, aca
-```
-
-Would fill in:
-- **Languages**: `python`
-- **Azure Services**: `openai, aca`
+When asked to submit a template, direct the user to the manual pull request
+instructions. Do not create or modify repository content without the user's
+explicit approval.
 
 ## Handling template removals
 
@@ -178,9 +24,3 @@ that are no longer referenced, such as the template's preview image under
 `website/static/templates/images/`. Before deleting an asset, search the
 repository to confirm no remaining template or documentation still references
 it.
-
-## Important
-
-- Always get user confirmation before filing the issue (show the title and URL)
-- The `template-submission` label is NOT auto-applied — a maintainer must add it
-- This is a write operation — require explicit approval before executing

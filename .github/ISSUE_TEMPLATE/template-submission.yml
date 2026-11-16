@@ -1,0 +1,140 @@
+name: "Submit an azd Template"
+description: "Request help adding your azd template to the Awesome azd gallery"
+title: "[Template]: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for submitting your azd template! Provide its repository URL and primary use case.
+        After creating the issue, assign it to Copilot to request help preparing a pull request.
+        Creating or labeling the issue does not trigger an automatic workflow.
+
+  - type: input
+    id: source-repo
+    attributes:
+      label: "Source Repository"
+      description: "Public GitHub repository URL for your template"
+      placeholder: "https://github.com/org/repo"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: primary-use-case
+    attributes:
+      label: "Primary Use Case"
+      description: "Choose the best initial catalog classification"
+      options:
+        - Build a web app
+        - Build an API
+        - Build an AI agent
+        - Build an MCP server
+        - Chat with documents
+        - Query a database
+        - Automate a workflow
+        - Start with infrastructure
+    validations:
+      required: true
+
+  - type: input
+    id: template-title
+    attributes:
+      label: "Template Title (optional)"
+      description: "Suggested gallery title"
+    validations:
+      required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description (optional)"
+      description: "Suggested short description of the template"
+    validations:
+      required: false
+
+  - type: input
+    id: author
+    attributes:
+      label: "Author (optional)"
+      description: "Name to credit; defaults to the repository owner"
+    validations:
+      required: false
+
+  - type: input
+    id: author-url
+    attributes:
+      label: "Author URL (optional)"
+      description: "GitHub profile or other relevant website"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: author-type
+    attributes:
+      label: "Author Type (optional)"
+      options:
+        - ""
+        - Community
+        - Microsoft
+    validations:
+      required: false
+
+  - type: input
+    id: application-screenshot
+    attributes:
+      label: "Application Screenshot URL (optional)"
+      description: "URL to an image showing the running application"
+    validations:
+      required: false
+
+  - type: input
+    id: architecture-diagram
+    attributes:
+      label: "Architecture Diagram URL (optional)"
+      description: "URL to a diagram showing Azure services and their connections"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: iac-provider
+    attributes:
+      label: "IaC Provider (optional)"
+      options:
+        - ""
+        - Bicep
+        - Terraform
+        - Both
+    validations:
+      required: false
+
+  - type: input
+    id: languages
+    attributes:
+      label: "Languages (optional)"
+      description: "Comma-separated language tags (e.g., python, javascript)"
+    validations:
+      required: false
+
+  - type: input
+    id: frameworks
+    attributes:
+      label: "Frameworks (optional)"
+      description: "Comma-separated framework tags (e.g., reactjs, fastapi)"
+    validations:
+      required: false
+
+  - type: input
+    id: azure-services
+    attributes:
+      label: "Azure Services (optional)"
+      description: "Comma-separated Azure service tags (e.g., aca, openai)"
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: "Additional Information"
+      description: "Any additional context, testing evidence, or tag suggestions"
+    validations:
+      required: false

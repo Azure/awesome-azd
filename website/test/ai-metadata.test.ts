@@ -273,7 +273,7 @@ describe("privacy-safe AI catalog metadata", () => {
     }
   });
 
-  test("references 79 local, metadata-free catalog images", () => {
+  test("references 77 local, metadata-free catalog images", () => {
     const assetPaths = new Set<string>();
     for (const record of aiRecords) {
       for (const field of ["architectureDiagram", "screenshot"] as const) {
@@ -286,7 +286,7 @@ describe("privacy-safe AI catalog metadata", () => {
       }
     }
 
-    expect(assetPaths.size).toBe(79);
+    expect(assetPaths.size).toBe(77);
     for (const asset of assetPaths) {
       const filePath = path.join(websiteRoot, "static", asset.slice(1));
       if (!fs.existsSync(filePath)) {

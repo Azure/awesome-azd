@@ -166,7 +166,7 @@ describe("unified catalog data", () => {
       ).length,
     );
     expect(catalogTemplates.filter((template) => template.isAi)).toHaveLength(
-      56,
+      54,
     );
     expect(
       new Set(
@@ -274,14 +274,17 @@ describe("unified catalog data", () => {
     ).toEqual(["Build a web app", "Start with infrastructure"]);
   });
 
-  test("includes the approved upstream AI additions and preserves authorship decisions", () => {
+  test("excludes archived templates", () => {
     const sources = catalogTemplates.map((template) => template.source);
-    expect(sources).toContain(
+    expect(sources).not.toContain(
       "https://github.com/Azure-Samples/Azure-Language-OpenAI-Conversational-Agent-Accelerator",
     );
-    expect(sources).toContain(
+    expect(sources).not.toContain(
       "https://github.com/Azure-Samples/Copilot-Studio-with-Azure-AI-Search",
     );
+  });
+
+  test("preserves authorship decisions", () => {
     expect(
       catalogTemplates.find(
         (template) =>
@@ -299,8 +302,6 @@ describe("unified catalog data", () => {
         .sort(),
     ).toEqual(
       [
-        "https://github.com/Azure-Samples/Azure-Language-OpenAI-Conversational-Agent-Accelerator",
-        "https://github.com/Azure-Samples/Copilot-Studio-with-Azure-AI-Search",
         "https://github.com/JayChase/langchain-ag-ui-angular",
         "https://github.com/massimobonanni/DBSemanticSearch",
       ].sort(),
@@ -357,16 +358,6 @@ describe("unified catalog data", () => {
       expect(bySource.get(source)?.azureServices).toContain(service);
     }
 
-    expect(
-      bySource.get(
-        "https://github.com/Azure-Samples/Azure-Language-OpenAI-Conversational-Agent-Accelerator",
-      )?.IaC,
-    ).toEqual(["bicep"]);
-    expect(
-      bySource.get(
-        "https://github.com/Azure-Samples/Copilot-Studio-with-Azure-AI-Search",
-      )?.IaC,
-    ).toEqual(["terraform"]);
   });
 
   test("derives card previews from non-AI architecture diagrams", () => {
@@ -467,6 +458,7 @@ describe("unified catalog data", () => {
         "/templates/azure-samples/azure-search-openai-demo",
     });
   });
+
 
   test("creates collision-safe route data filenames", () => {
     const first = dataFileName("template", "example/one-two");
@@ -632,7 +624,7 @@ describe("unified catalog data", () => {
         Array.isArray(template.tags) &&
         template.tags.includes("aiapplication"),
     );
-    expect(aiApplications).toHaveLength(56);
+    expect(aiApplications).toHaveLength(54);
     for (const rawTemplate of aiApplications) {
       expect(rawTemplate.templateType).toBeUndefined();
       expect(rawTemplate.tags).not.toContain("aicollection");
@@ -850,7 +842,7 @@ describe("unified catalog query", () => {
     expect(state.types).toEqual(["ai"]);
     expect(state.legacyTags).toEqual([]);
     expect(state.unavailable).toEqual([]);
-    expect(matches).toHaveLength(56);
+    expect(matches).toHaveLength(54);
     expect(matches.every((template) => template.isAi)).toBe(true);
     expect(serializeCatalogState(state)).toBe("type=ai");
   });
@@ -1337,4 +1329,3 @@ describe("unified catalog query", () => {
     ]);
   });
 });
-

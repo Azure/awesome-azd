@@ -187,26 +187,6 @@ describe("unified catalog data", () => {
     );
   });
 
-  test("includes SAHAYA with its reviewed AI agent use case", () => {
-    const metadata = templates.find(
-      (candidate) =>
-        candidate.source ===
-        "https://github.com/mohitmohan-innovator/sahaya",
-    );
-    const template = catalogTemplates.find(
-      (candidate) =>
-        candidate.source ===
-        "https://github.com/mohitmohan-innovator/sahaya",
-    );
-
-    expect(metadata?.tags).not.toContain("aiapplication");
-    expect(template).toMatchObject({
-      title: "SAHAYA: Multi-Agent Relief Claim Adjudication with Microsoft Foundry",
-      tasks: ["Build an AI agent"],
-    });
-    expect(template?.isAi).toBe(false);
-  });
-
   test("does not expose author email fields through the unified view model", () => {
     expect(
       catalogTemplates.flatMap((template) => template.authors),

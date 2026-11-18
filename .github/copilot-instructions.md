@@ -217,7 +217,7 @@ If the PR makes changes to `website/static/templates.json`, perform the followin
    - Example: `"tags": ["msft", "new"]` or `"tags": ["community", "new"]`
 
    - **Verify AI Application Metadata**:
-     - Use `"aiapplication"` for AI application templates.
+     - Use `"aiapplication"` only for Microsoft-authored templates (those tagged `"msft"`); do not use it for community templates.
      - Do not add the legacy `"aicollection"` value to template metadata. It is accepted only as a backwards-compatible catalog URL alias.
      - Run `npm test` to validate AI metadata, canonical aliases, and duplicate tags.
 
@@ -255,6 +255,7 @@ If the PR makes changes to `website/static/templates.json`, perform the followin
 4. **Testing Requirements Based on Template Type**:
 
    Template type is determined by checking if the `"msft"` tag is present in the template's `tags` array.
+   Do not add new tests for individual template contributions. Existing catalog metadata validation is sufficient.
    Before requesting testing, check whether the template submission issue was created by a trusted author. If the issue creator is trusted, do not request manual template testing or deployment proof.
 
    **Trusted Authors:**

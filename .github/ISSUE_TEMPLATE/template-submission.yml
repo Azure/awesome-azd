@@ -1,20 +1,19 @@
 name: "Submit an azd Template"
-description: "Request help adding your azd template to the Awesome azd gallery"
+description: "Add your azd template to the Awesome azd gallery"
 title: "[Template]: "
 labels: []
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for submitting your azd template! Provide its repository URL and primary use case.
-        After creating the issue, assign it to Copilot to request help preparing a pull request.
-        Creating or labeling the issue does not trigger an automatic workflow.
+        Thanks for submitting your azd template! Provide the repository URL and choose its primary use case.
+        Other metadata is **auto-detected** from your repo — only fill it in if you want to override the detected values.
 
   - type: input
     id: source-repo
     attributes:
       label: "Source Repository"
-      description: "Public GitHub repository URL for your template"
+      description: "GitHub repository URL for your template (we'll auto-detect the rest!)"
       placeholder: "https://github.com/org/repo"
     validations:
       required: true
@@ -23,7 +22,7 @@ body:
     id: primary-use-case
     attributes:
       label: "Primary Use Case"
-      description: "Choose the best initial catalog classification"
+      description: "Choose the best initial catalog classification. Maintainers can add more during review."
       options:
         - Build a web app
         - Build an API
@@ -39,39 +38,40 @@ body:
   - type: input
     id: template-title
     attributes:
-      label: "Template Title (optional)"
-      description: "Suggested gallery title"
+      label: "Template Title (optional — auto-detected from repo)"
+      description: "Override the auto-detected title"
     validations:
       required: false
 
   - type: textarea
     id: description
     attributes:
-      label: "Description (optional)"
-      description: "Suggested short description of the template"
+      label: "Description (optional — auto-detected from repo)"
+      description: "Override the auto-detected description"
     validations:
       required: false
 
   - type: input
     id: author
     attributes:
-      label: "Author (optional)"
-      description: "Name to credit; defaults to the repository owner"
+      label: "Author (optional — auto-detected from repo owner)"
+      description: "Override the auto-detected author name"
     validations:
       required: false
 
   - type: input
     id: author-url
     attributes:
-      label: "Author URL (optional)"
-      description: "GitHub profile or other relevant website"
+      label: "Author URL (optional — auto-detected from repo owner)"
+      description: "Override the auto-detected author URL"
     validations:
       required: false
 
   - type: dropdown
     id: author-type
     attributes:
-      label: "Author Type (optional)"
+      label: "Author Type (optional — auto-detected)"
+      description: "Override the auto-detected author type"
       options:
         - ""
         - Community
@@ -83,7 +83,7 @@ body:
     id: application-screenshot
     attributes:
       label: "Application Screenshot URL (optional)"
-      description: "URL to an image showing the running application"
+      description: "URL to an image that shows the running application"
     validations:
       required: false
 
@@ -91,14 +91,15 @@ body:
     id: architecture-diagram
     attributes:
       label: "Architecture Diagram URL (optional)"
-      description: "URL to a diagram showing Azure services and their connections"
+      description: "URL to a diagram that shows the Azure services and their connections"
     validations:
       required: false
 
   - type: dropdown
     id: iac-provider
     attributes:
-      label: "IaC Provider (optional)"
+      label: "IaC Provider (optional — auto-detected from infra/ directory)"
+      description: "Override the auto-detected IaC provider"
       options:
         - ""
         - Bicep
@@ -110,7 +111,7 @@ body:
   - type: input
     id: languages
     attributes:
-      label: "Languages (optional)"
+      label: "Languages (optional — auto-detected from repo)"
       description: "Comma-separated language tags (e.g., python, javascript)"
     validations:
       required: false
@@ -126,7 +127,7 @@ body:
   - type: input
     id: azure-services
     attributes:
-      label: "Azure Services (optional)"
+      label: "Azure Services (optional — auto-detected from repo topics)"
       description: "Comma-separated Azure service tags (e.g., aca, openai)"
     validations:
       required: false
@@ -135,6 +136,6 @@ body:
     id: additional-info
     attributes:
       label: "Additional Information"
-      description: "Any additional context, testing evidence, or tag suggestions"
+      description: "Any additional context about your template (optional)"
     validations:
       required: false

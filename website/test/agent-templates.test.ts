@@ -9,7 +9,8 @@ const AGENT_TYPE = 'extension.ai.agent';
 
 // Deterministic UUID v5 derivation used at the extension.ai.agent migration.
 // Scope: this function — and the determinism test that uses it — apply ONLY to
-// extension.ai.agent entries. Gallery templates have independently assigned
+// extension.ai.agent entries. Gallery templates added via the interactive
+// `npm run add-template` script (scripts/update-templates-json.js) get random
 // UUIDs and are intentionally exempt from this check.
 // Input: "awesome-azd:agent:" + source. Output: RFC 4122 UUID v5 string.
 function deterministicAgentId(source: string): string {

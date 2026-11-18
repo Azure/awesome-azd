@@ -13,10 +13,7 @@ Our template gallery will be at its best when our community is involved in creat
 
 We welcome contributions of [requested templates](https://github.com/Azure/awesome-azd/issues?q=is%3Aopen+is%3Aissue+label%3Arequested-contribution) as well as any others, subject to review. 
 
-To submit a template, either [open a template submission issue](https://github.com/Azure/awesome-azd/issues/new?template=template-submission.yml) and assign it to Copilot for help preparing a pull request, or submit the pull request yourself. Creating or labeling an issue does not run an automatic processing workflow.
-
-### Manual Pull Request Checklist
-
+To submit a template:
 1. Add an entry to [website/static/templates.json](https://github.com/Azure/awesome-azd/blob/main/website/static/templates.json) that includes:
     - **Template title** - A short title that reflects the local application stack that someone could use to get their application on Azure (e.g. "Containerized React Web App with Java API and MongoDB")
     - **Description** - 1-2 sentence description of the architecture (e.g. Azure services) or solution that is defined by the template.
@@ -40,6 +37,14 @@ If you would like to contribute a template but are not sure where to start, [mak
 1.  Set up a new environment (with `azd init`)
 2.  Add Bicep files
 3.  Update azure.yaml 
+
+### Automated Template Submission
+
+For a faster submission experience, use the automated pipeline:
+
+1. **[Submit a template issue](https://github.com/Azure/awesome-azd/issues/new?template=template-submission.yml)** — Fill out the form with your template details
+2. **Automatic validation** — A workflow validates your repository, adds the required catalog use-case mapping, and creates a PR automatically
+3. **Review & merge** — A maintainer reviews and approves the PR
 
 ### [Submit a Resource](https://github.com/Azure/awesome-azd/compare)
 Did you write or find an article that helped you get started with `azd`? Or maybe you created or found a video that showed you how to create an azd template? Whatever the resource might be, we would love for you to share it with our community! Submit content you think should be included in `awesome-azd/README.md`

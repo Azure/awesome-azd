@@ -166,7 +166,7 @@ describe("unified catalog data", () => {
       ).length,
     );
     expect(catalogTemplates.filter((template) => template.isAi)).toHaveLength(
-      55,
+      54,
     );
     expect(
       new Set(
@@ -188,17 +188,23 @@ describe("unified catalog data", () => {
   });
 
   test("includes SAHAYA with its reviewed AI agent use case", () => {
+    const metadata = templates.find(
+      (candidate) =>
+        candidate.source ===
+        "https://github.com/mohitmohan-innovator/sahaya",
+    );
     const template = catalogTemplates.find(
       (candidate) =>
         candidate.source ===
         "https://github.com/mohitmohan-innovator/sahaya",
     );
 
+    expect(metadata?.tags).not.toContain("aiapplication");
     expect(template).toMatchObject({
       title: "SAHAYA: Multi-Agent Relief Claim Adjudication with Microsoft Foundry",
       tasks: ["Build an AI agent"],
-      isAi: true,
     });
+    expect(template?.isAi).toBe(false);
   });
 
   test("does not expose author email fields through the unified view model", () => {
@@ -638,7 +644,7 @@ describe("unified catalog data", () => {
         Array.isArray(template.tags) &&
         template.tags.includes("aiapplication"),
     );
-    expect(aiApplications).toHaveLength(55);
+    expect(aiApplications).toHaveLength(54);
     for (const rawTemplate of aiApplications) {
       expect(rawTemplate.templateType).toBeUndefined();
       expect(rawTemplate.tags).not.toContain("aicollection");
@@ -856,7 +862,7 @@ describe("unified catalog query", () => {
     expect(state.types).toEqual(["ai"]);
     expect(state.legacyTags).toEqual([]);
     expect(state.unavailable).toEqual([]);
-    expect(matches).toHaveLength(55);
+    expect(matches).toHaveLength(54);
     expect(matches.every((template) => template.isAi)).toBe(true);
     expect(serializeCatalogState(state)).toBe("type=ai");
   });

@@ -6624,5 +6624,21 @@
     "IaC": ["bicep"],
     "id": "8f3c6a92-4e1b-4d7c-9a52-6b8e3d1f0c4a",
     "models": ["gpt"]
+  },
+  {
+    "title": "SAHAYA: Multi-Agent Relief Claim Adjudication with Microsoft Foundry",
+    "description": "Five specialist agents on Microsoft Foundry, orchestrated with Microsoft Agent Framework, turn a bilingual disaster relief claim into an evidence-checked, norm-cited recommendation. A human approval gate and deterministic code backstop keep every decision with an officer.",
+    "screenshot": "https://github.com/mohitmohan-innovator/sahaya/blob/main/docs/images/officer-console-case.png?raw=true",
+    "architectureDiagram": "https://github.com/mohitmohan-innovator/sahaya/blob/main/docs/images/architecture.png?raw=true",
+    "authorUrl": "https://github.com/mohitmohan-innovator",
+    "author": "Mohit Mohan Menon",
+    "source": "https://github.com/mohitmohan-innovator/sahaya",
+    "tags": ["community", "new", "aiapplication"],
+    "languages": ["python"],
+    "frameworks": ["fastapi", "microsoftagentframework"],
+    "azureServices": ["aifoundry", "openai", "aisearch", "appinsights", "loganalytics"],
+    "IaC": ["bicep"],
+    "id": "28f1e7a4-d9c6-4b13-8a20-6f5c2d9e7b41",
+    "models": ["gpt4o", "text-embedding-3-large"]
   }
 ]

@@ -184,7 +184,7 @@ describe("privacy-safe AI catalog metadata", () => {
   );
 
   test("preserves every reviewed AI migration overlap", () => {
-    expect(aiRecords).toHaveLength(54);
+    expect(aiRecords).toHaveLength(55);
     expect(
       aiRecords.filter((record) => record.templateType !== undefined),
     ).toEqual([]);

@@ -268,6 +268,11 @@ const tagDefinitions = {
     description: "Template architecture uses FastAPI web framework",
     type: "Framework",
   },
+  microsoftagentframework: {
+    label: "Microsoft Agent Framework",
+    description: "Template architecture uses Microsoft Agent Framework",
+    type: "Framework",
+  },
   flask: {
     label: "Flask",
     description: "Template architecture uses Flask web framework",

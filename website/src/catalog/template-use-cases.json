@@ -19,6 +19,9 @@
     "Build an API",
     "Chat with documents"
   ],
+  "https://github.com/mohitmohan-innovator/sahaya": [
+    "Build an AI agent"
+  ],
   "https://github.com/azure-samples/msdocs-django-postgresql-sample-app": [
     "Build a web app"
   ],

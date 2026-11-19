@@ -144,16 +144,18 @@ jobs:
         env:
           SOURCE_REPO: ${{ steps.extract.outputs.source_repo }}
         run: |
+          result_file="$RUNNER_TEMP/template-validation-result.json"
+          error_file="$RUNNER_TEMP/template-validation-errors.log"
           DELIM="EOF_$(openssl rand -hex 8)"
-          if node website/scripts/validate-template.js "$SOURCE_REPO" > validation_result.json 2>validation_errors.log; then
-            echo "valid=true" >> $GITHUB_OUTPUT
+          if node website/scripts/validate-template.js "$SOURCE_REPO" > "$result_file" 2> "$error_file"; then
+            echo "valid=true" >> "$GITHUB_OUTPUT"
           else
-            echo "valid=false" >> $GITHUB_OUTPUT
+            echo "valid=false" >> "$GITHUB_OUTPUT"
             {
               echo "errors<<$DELIM"
-              cat validation_result.json validation_errors.log
+              cat "$result_file" "$error_file"
               echo "$DELIM"
-            } >> $GITHUB_OUTPUT
+            } >> "$GITHUB_OUTPUT"
           fi
 
       - name: Comment on validation failure
@@ -195,6 +197,9 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Add template from ${{ github.event_name == 'workflow_dispatch' && 'manual dispatch' || format('issue #{0}', github.event.issue.number) }}"
           branch: "template-submission-${{ github.event_name == 'workflow_dispatch' && github.run_id || github.event.issue.number }}"
+          add-paths: |
+            website/static/templates.json
+            website/src/catalog/template-use-cases.json
           title: "Add template: ${{ steps.extract.outputs.template_title }}"
           body: |
             This PR was automatically generated${{ github.event_name != 'workflow_dispatch' && format(' from issue #{0}', github.event.issue.number) || '' }}.

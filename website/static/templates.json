@@ -6633,7 +6633,7 @@
     "authorUrl": "https://github.com/mohitmohan-innovator",
     "author": "Mohit Mohan Menon",
     "source": "https://github.com/mohitmohan-innovator/sahaya",
-    "tags": ["community", "new", "ai"],
+    "tags": ["community", "ai"],
     "languages": ["python"],
     "frameworks": ["fastapi", "microsoftagentframework"],
     "azureServices": ["aifoundry", "openai", "aisearch", "appinsights", "loganalytics"],

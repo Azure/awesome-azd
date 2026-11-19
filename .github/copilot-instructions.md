@@ -211,10 +211,7 @@ If the PR makes changes to `website/static/templates.json`, perform the followin
    - The `source` URL is a valid GitHub repository URL
    - JSON syntax is correct (proper quotes, commas, brackets)
 
-2. **Check for "new" Tag**: If a template is being added for the first time or is newly featured:
-   - Verify whether the `"new"` tag has been added to the template's `tags` array
-   - The "new" tag should be included for templates that are being newly showcased
-   - Example: `"tags": ["msft", "new"]` or `"tags": ["community", "new"]`
+2. **Do not add the "new" tag**: Do not add `"new"` to a template's `tags` array, including newly added or featured templates.
 
    - **Verify AI Application Metadata**:
      - Use `"aiapplication"` only for Microsoft-authored templates (those tagged `"msft"`); do not use it for community templates.

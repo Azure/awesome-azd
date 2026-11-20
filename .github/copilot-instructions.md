@@ -211,13 +211,10 @@ If the PR makes changes to `website/static/templates.json`, perform the followin
    - The `source` URL is a valid GitHub repository URL
    - JSON syntax is correct (proper quotes, commas, brackets)
 
-2. **Check for "new" Tag**: If a template is being added for the first time or is newly featured:
-   - Verify whether the `"new"` tag has been added to the template's `tags` array
-   - The "new" tag should be included for templates that are being newly showcased
-   - Example: `"tags": ["msft", "new"]` or `"tags": ["community", "new"]`
+2. **Do not add the "new" tag**: Do not add `"new"` to a template's `tags` array, including newly added or featured templates.
 
    - **Verify AI Application Metadata**:
-     - Use `"aiapplication"` for AI application templates.
+     - Use `"aiapplication"` only for Microsoft-authored templates (those tagged `"msft"`); do not use it for community templates.
      - Do not add the legacy `"aicollection"` value to template metadata. It is accepted only as a backwards-compatible catalog URL alias.
      - Run `npm test` to validate AI metadata, canonical aliases, and duplicate tags.
 
@@ -255,6 +252,7 @@ If the PR makes changes to `website/static/templates.json`, perform the followin
 4. **Testing Requirements Based on Template Type**:
 
    Template type is determined by checking if the `"msft"` tag is present in the template's `tags` array.
+   Do not add new tests for individual template contributions. Existing catalog metadata validation is sufficient.
    Before requesting testing, check whether the template submission issue was created by a trusted author. If the issue creator is trusted, do not request manual template testing or deployment proof.
 
    **Trusted Authors:**
@@ -264,7 +262,7 @@ If the PR makes changes to `website/static/templates.json`, perform the followin
 
    **For Community Templates (tags do NOT contain "msft"):**
    - @ mention the manual test team member @HarveyLink in a PR comment to request testing of the template
-   - Example comment: "@HarveyLink Please test this community template to ensure it works as expected."
+   - Example comment: @HarveyLink Please test this community template to ensure it works as expected.
    - Do not suppress this request. Write the mention as plain text, without inline code or quotation marks, so it sends a valid notification.
    
    **For Microsoft Templates (tags contain "msft"):**
@@ -272,7 +270,7 @@ If the PR makes changes to `website/static/templates.json`, perform the followin
    - Request either:
      - A link to a test pipeline that validates the template
      - Screenshots or other proof showing the template deploys successfully
-   - Example comment: "@author_username Please provide a test pipeline link or proof of success for this Microsoft-authored template."
+   - Example comment: @author_username Please provide a test pipeline link or proof of success for this Microsoft-authored template.
    - Note: Replace `author_username` with the actual GitHub username of the PR author (e.g., @johndoe)
 
 ### General PR Review Best Practices

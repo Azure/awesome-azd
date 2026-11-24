@@ -4618,7 +4618,7 @@
     "extensionTags": ["workflows", "translation", "Responses Protocol"]
   },
   {
-    "title": "Basic Chat (Responses, LangGraph, Python)",
+    "title": "Basic Chat (Responses, LangChain/LangGraph, Python)",
     "description": "A multi-turn LangGraph chat agent with local time and calculator tools, hosted on Foundry over the Responses protocol with server-side conversation state.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -4631,7 +4631,8 @@
       "LangGraph",
       "local tools",
       "multi-turn",
-      "Responses Protocol"
+      "Responses Protocol",
+      "featured"
     ]
   },
   {

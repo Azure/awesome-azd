@@ -97,6 +97,35 @@ describe("repository metrics release preparation", () => {
     ).toEqual(validAggregate());
   });
 
+  test("rejects legacy data when schema v2 is required", () => {
+    expect(() =>
+      validateRepositoryMetricsAggregate(
+        legacyAggregate(),
+        expectedRepositories,
+        {
+          now,
+          allowLegacySchema: false,
+        }
+      )
+    ).toThrow("schemaVersion");
+  });
+
+  test("rejects incomplete data when full coverage is required", () => {
+    const aggregate = validAggregate();
+    delete aggregate.repositories["example/two"];
+
+    expect(() =>
+      validateRepositoryMetricsAggregate(
+        aggregate,
+        expectedRepositories,
+        {
+          now,
+          rejectMissingRepositories: true,
+        }
+      )
+    ).toThrow("missing current templates");
+  });
+
   test("warns instead of rejecting stale repository metrics", () => {
     const aggregate = validAggregate();
     aggregate.generatedAt = "2026-11-09T11:59:59.999Z";
@@ -219,6 +248,15 @@ describe("repository metrics release preparation", () => {
         aggregate.storageAccount = "private";
       },
     ],
+    [
+      "retired repository data",
+      (aggregate: any) => {
+        aggregate.repositories["example/retired"] = {
+          stars: 3,
+          email: "author@example.com",
+        };
+      },
+    ],
   ])("rejects malformed data: %s", (_description, mutate) => {
     const aggregate = validAggregate();
     mutate(aggregate);
@@ -335,6 +373,68 @@ describe("repository metrics release preparation", () => {
       });
     }
   });
+
+  test.each([
+    [
+      "legacy schema",
+      () => legacyAggregate(),
+      "schemaVersion",
+    ],
+    [
+      "incomplete coverage",
+      () => {
+        const aggregate = validAggregate();
+        delete aggregate.repositories["example/two"];
+        return aggregate;
+      },
+      "missing current templates",
+    ],
+  ])(
+    "rejects live source data with %s",
+    async (_description, aggregateFactory, expectedError) => {
+      const directory = await fs.promises.mkdtemp(
+        path.join(os.tmpdir(), "awesome-azd-metrics-")
+      );
+      const catalogPath = path.join(directory, "templates.json");
+      const fetchImpl = jest.fn(async () => ({
+        ok: true,
+        status: 200,
+        headers: {
+          get: (name: string) =>
+            name === "content-type" ? "application/json" : null,
+        },
+        body: null,
+        text: async () => JSON.stringify(aggregateFactory()),
+      }));
+
+      try {
+        await fs.promises.writeFile(
+          catalogPath,
+          JSON.stringify([
+            { source: "https://github.com/example/one" },
+            { source: "https://github.com/example/two" },
+          ])
+        );
+
+        await expect(
+          validateRepositoryMetricsSource({
+            catalogPath,
+            sourceUrl:
+              "https://cache.example.net/repository-metrics.json",
+            fetchImpl,
+            now,
+            maxAgeHours: 48,
+            onWarning: () => {},
+          })
+        ).rejects.toThrow(expectedError);
+      } finally {
+        await fs.promises.rm(directory, {
+          recursive: true,
+          force: true,
+        });
+      }
+    }
+  );
 
   test("creates an empty schema v2 fallback without overwriting existing metrics", async () => {
     const directory = await fs.promises.mkdtemp(
@@ -488,7 +588,28 @@ describe("repository metrics release preparation", () => {
     }
   });
 
-  test("does not replace the bundled snapshot with stale live data", async () => {
+  test.each([
+    [
+      "stale",
+      () => {
+        const aggregate = validAggregate();
+        aggregate.generatedAt = "2026-11-09T11:59:59.999Z";
+        return aggregate;
+      },
+    ],
+    [
+      "incomplete",
+      () => {
+        const aggregate = validAggregate();
+        delete aggregate.repositories["example/two"];
+        return aggregate;
+      },
+    ],
+    ["legacy", () => legacyAggregate()],
+  ])("does not replace the bundled snapshot with %s live data", async (
+    _description: string,
+    aggregateFactory: () => any
+  ) => {
     const directory = await fs.promises.mkdtemp(
       path.join(os.tmpdir(), "awesome-azd-metrics-")
     );
@@ -498,8 +619,6 @@ describe("repository metrics release preparation", () => {
       directory,
       "repository-metrics.generated.json"
     );
-    const staleAggregate = validAggregate();
-    staleAggregate.generatedAt = "2026-11-09T11:59:59.999Z";
     const fetchImpl = jest.fn(async () => ({
       ok: true,
       status: 200,
@@ -508,7 +627,7 @@ describe("repository metrics release preparation", () => {
           name === "content-type" ? "application/json" : null,
       },
       body: null,
-      text: async () => JSON.stringify(staleAggregate),
+      text: async () => JSON.stringify(aggregateFactory()),
     }));
 
     try {

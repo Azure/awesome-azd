@@ -191,10 +191,12 @@ function validateRepositoryMetricsAggregate(
     ["schemaVersion", "generatedAt", "repositories"],
     "Repository metrics aggregate"
   );
+  const isLegacySchema =
+    aggregate.schemaVersion ===
+    LEGACY_REPOSITORY_METRICS_SCHEMA_VERSION;
   if (
     aggregate.schemaVersion !== REPOSITORY_METRICS_SCHEMA_VERSION &&
-    aggregate.schemaVersion !==
-      LEGACY_REPOSITORY_METRICS_SCHEMA_VERSION
+    (!isLegacySchema || options.allowLegacySchema === false)
   ) {
     throw new Error(
       `Repository metrics schemaVersion must be ${REPOSITORY_METRICS_SCHEMA_VERSION}.`
@@ -227,46 +229,16 @@ function validateRepositoryMetricsAggregate(
 
   const expectedSlugs = [...new Set(expectedRepositorySlugs)].sort();
   const actualSlugs = Object.keys(aggregate.repositories).sort();
+  const validatedStars = {};
   for (const slug of actualSlugs) {
     if (
       normalizeRepositorySource(`https://github.com/${slug}`) !== slug
     ) {
       throw new Error(`Repository slug must be canonical: ${slug}.`);
     }
-  }
 
-  const missing = expectedSlugs.filter(
-    (slug) => !actualSlugs.includes(slug)
-  );
-  const unexpected = actualSlugs.filter(
-    (slug) => !expectedSlugs.includes(slug)
-  );
-  if (missing.length > 0) {
-    onWarning(
-      `Repository metrics are missing current templates: ${formatValues(
-        missing
-      )}.`
-    );
-  }
-  if (unexpected.length > 0) {
-    onWarning(
-      `Repository metrics contain retired templates that will be ignored: ${formatValues(
-        unexpected
-      )}.`
-    );
-  }
-
-  const repositories = {};
-  for (const slug of expectedSlugs) {
     const metrics = aggregate.repositories[slug];
-    if (metrics === undefined) {
-      continue;
-    }
-
-    if (
-      aggregate.schemaVersion ===
-      LEGACY_REPOSITORY_METRICS_SCHEMA_VERSION
-    ) {
+    if (isLegacySchema) {
       assertExactKeys(
         metrics,
         ["stars", "forks", "updatedOn"],
@@ -284,8 +256,45 @@ function validateRepositoryMetricsAggregate(
       assertExactKeys(metrics, ["stars"], slug);
     }
 
+    validatedStars[slug] = readNonNegativeInteger(
+      metrics.stars,
+      `${slug}.stars`
+    );
+  }
+
+  const missing = expectedSlugs.filter(
+    (slug) => !actualSlugs.includes(slug)
+  );
+  const unexpected = actualSlugs.filter(
+    (slug) => !expectedSlugs.includes(slug)
+  );
+  if (missing.length > 0) {
+    const message =
+      `Repository metrics are missing current templates: ${formatValues(
+        missing
+      )}.`;
+    if (options.rejectMissingRepositories) {
+      throw new Error(message);
+    }
+    onWarning(message);
+  }
+  if (unexpected.length > 0) {
+    onWarning(
+      `Repository metrics contain retired templates that will be ignored: ${formatValues(
+        unexpected
+      )}.`
+    );
+  }
+
+  const repositories = {};
+  for (const slug of expectedSlugs) {
+    const stars = validatedStars[slug];
+    if (stars === undefined) {
+      continue;
+    }
+
     repositories[slug] = {
-      stars: readNonNegativeInteger(metrics.stars, `${slug}.stars`),
+      stars,
     };
   }
 
@@ -441,6 +450,8 @@ async function validateRepositoryMetricsSource(options = {}) {
       now: options.now,
       onWarning: options.onWarning ?? console.warn,
       rejectStale: true,
+      allowLegacySchema: false,
+      rejectMissingRepositories: true,
     }
   );
 
@@ -509,6 +520,10 @@ async function prepareRepositoryMetrics(options = {}) {
           now: options.now,
           onWarning,
           rejectStale: options.requireRemoteMetrics === true,
+          allowLegacySchema:
+            options.requireRemoteMetrics !== true,
+          rejectMissingRepositories:
+            options.requireRemoteMetrics === true,
         }
       );
     } catch (error) {

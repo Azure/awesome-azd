@@ -35,6 +35,13 @@ const config = {
 
   headTags: [
     {
+      tagName: "meta",
+      attributes: {
+        name: "color-scheme",
+        content: "light dark",
+      },
+    },
+    {
       tagName: "link",
       attributes: {
         rel: "preconnect",

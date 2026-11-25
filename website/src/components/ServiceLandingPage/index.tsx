@@ -7,13 +7,6 @@ import React from "react";
 import Link from "@docusaurus/Link";
 import Layout from "@theme/Layout";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import BrowserOnly from "@docusaurus/BrowserOnly";
-import { useColorMode } from "@docusaurus/theme-common";
-import {
-  FluentProvider,
-  webLightTheme,
-  webDarkTheme,
-} from "@fluentui/react-components";
 import type { CatalogTemplate } from "@site/src/catalog/catalogTypes";
 import type { ServicePageConfig } from "@site/src/catalog/servicePages";
 import styles from "./styles.module.css";
@@ -65,22 +58,13 @@ function TemplateCard({ template }: { template: ServiceTemplate }) {
   );
 }
 
-function FluentWrapper({ children }: { children: React.ReactNode }) {
-  const { colorMode } = useColorMode();
-  return (
-    <FluentProvider theme={colorMode === "dark" ? webDarkTheme : webLightTheme}>
-      {children}
-    </FluentProvider>
-  );
-}
-
 function ServicePageContent({ servicePage }: { servicePage: ServicePageData }) {
   const { config, templates, templateCount } = servicePage;
   const icon = useBaseUrl(config.icon);
   const baseUrl = useBaseUrl("/templates");
   const hasMore = templateCount > templates.length;
 
-  const content = (
+  return (
     <main className={styles.page}>
       <section className={styles.hero}>
         <div className={styles.heroContent}>
@@ -148,14 +132,6 @@ function ServicePageContent({ servicePage }: { servicePage: ServicePageData }) {
         </div>
       </section>
     </main>
-  );
-
-  return (
-    <BrowserOnly fallback={content}>
-      {() => (
-        <FluentWrapper>{content}</FluentWrapper>
-      )}
-    </BrowserOnly>
   );
 }
 

@@ -1,0 +1,126 @@
+name: Update Repository Metrics Snapshot
+
+on:
+  schedule:
+    # Weekly on Monday at 17:00 UTC (09:00 Pacific Standard Time).
+    - cron: "0 17 * * 1"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: update-repository-metrics
+  cancel-in-progress: true
+
+jobs:
+  update-repository-metrics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.repository.default_branch }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1  # v7.1.0
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: website/package-lock.json
+
+      - name: Update bundled repository metrics
+        id: update
+        working-directory: website
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/update-repository-metrics-snapshot.js
+          if git diff --quiet -- src/catalog/repository-metrics.generated.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install website dependencies
+        if: steps.update.outputs.changed == 'true'
+        working-directory: website
+        run: npm ci
+
+      - name: Test updated snapshot
+        if: steps.update.outputs.changed == 'true'
+        working-directory: website
+        run: npm test -- --runInBand
+
+      - name: Build website
+        if: steps.update.outputs.changed == 'true'
+        working-directory: website
+        run: npm run build
+
+      # Pull requests opened with GITHUB_TOKEN do not trigger workflow runs,
+      # so validate the snapshot before opening or updating the PR.
+      - name: Create or update Pull Request
+        if: steps.update.outputs.changed == 'true'
+        shell: bash
+        env:
+          BASE_BRANCH: ${{ github.event.repository.default_branch }}
+          BRANCH: chore/update-repository-metrics-snapshot
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -C "$BRANCH"
+          git add website/src/catalog/repository-metrics.generated.json
+          git commit -m "chore: update repository metrics snapshot"
+
+          remote_sha=$(git ls-remote --heads origin "refs/heads/$BRANCH" | awk '{print $1}')
+          if [[ -n "$remote_sha" ]]; then
+            git push --force-with-lease="refs/heads/$BRANCH:$remote_sha" origin "HEAD:refs/heads/$BRANCH"
+          else
+            git push origin "HEAD:refs/heads/$BRANCH"
+          fi
+
+          cat > "$RUNNER_TEMP/repository-metrics-pr.md" <<'EOF'
+          ### Summary
+
+          Updates the bundled repository-star snapshot from the live backend.
+          This snapshot preserves the most-popular ordering when the browser
+          cannot load the live repository metrics JSON.
+
+          ### Testing
+
+          - Repository metrics tests passed.
+          - Production website build passed.
+          EOF
+
+          pr_number=$(gh pr list --repo "$GITHUB_REPOSITORY" --head "$BRANCH" --state open --json number --jq '.[0].number // empty')
+          if [[ -n "$pr_number" ]]; then
+            gh api --method PATCH "repos/$GITHUB_REPOSITORY/pulls/$pr_number" \
+              --raw-field title="chore: update repository metrics snapshot" \
+              --raw-field body="$(cat "$RUNNER_TEMP/repository-metrics-pr.md")" >/dev/null
+          else
+            gh pr create \
+              --repo "$GITHUB_REPOSITORY" \
+              --base "$BASE_BRANCH" \
+              --head "$BRANCH" \
+              --title "chore: update repository metrics snapshot" \
+              --body-file "$RUNNER_TEMP/repository-metrics-pr.md"
+          fi
+
+      - name: Close stale Pull Request
+        if: steps.update.outputs.changed == 'false'
+        shell: bash
+        env:
+          BRANCH: chore/update-repository-metrics-snapshot
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          pr_number=$(gh pr list --repo "$GITHUB_REPOSITORY" --head "$BRANCH" --state open --json number --jq '.[0].number // empty')
+          if [[ -n "$pr_number" ]]; then
+            gh api --method PATCH "repos/$GITHUB_REPOSITORY/pulls/$pr_number" \
+              --raw-field state=closed >/dev/null
+          fi

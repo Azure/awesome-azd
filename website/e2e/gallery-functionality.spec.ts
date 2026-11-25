@@ -13,6 +13,22 @@ async function resultCount(page: Page): Promise<number> {
 
 test.describe("Gallery functionality (deploy gate)", () => {
   test.beforeEach(async ({ page }) => {
+    await page.route(
+      "https://cachelp6qsotirqelc.z20.web.core.windows.net/**",
+      (route) =>
+        route.fulfill({
+          contentType: "application/json",
+          body: JSON.stringify({
+            schemaVersion: 2,
+            generatedAt: "2026-01-01T00:00:00.000Z",
+            repositories: {
+              "azure-samples/azure-search-openai-demo": {
+                stars: 12345,
+              },
+            },
+          }),
+        }),
+    );
     await page.goto("templates");
     await expect(resultsStatus(page)).toContainText("templates", {
       timeout: 15_000,
@@ -375,7 +391,7 @@ test.describe("Gallery functionality (deploy gate)", () => {
       page.locator("[data-repository-stars]"),
     ).toHaveAttribute(
       "aria-label",
-      "9,876 GitHub stars (snapshot)",
+      "12,345 GitHub stars",
     );
 
     const repositoryLink = page.getByRole("link", {
@@ -589,31 +605,63 @@ test.describe("Gallery functionality (deploy gate)", () => {
     page,
   }) => {
     const cards = page.locator("[data-template-card]");
-    await expect(cards.nth(0).locator("a[data-template-title]")).toHaveAttribute(
-      "data-template-title",
+    const titles = await cards
+      .locator("a[data-template-title]")
+      .evaluateAll((links) =>
+        links.map((link) => link.getAttribute("data-template-title") ?? ""),
+      );
+    const ragIndex = titles.indexOf(
       "RAG chat with Azure AI Search + Python",
     );
+    const chatIndex = titles.indexOf("Get Started with Chat");
+    const agentsIndex = titles.indexOf("Get started with AI agents");
+    const bicepIndex = titles.indexOf("Starter - Bicep");
+    for (const index of [
+      ragIndex,
+      chatIndex,
+      agentsIndex,
+      bicepIndex,
+    ]) {
+      expect(index).toBeGreaterThanOrEqual(0);
+    }
+    expect(ragIndex).toBeLessThan(chatIndex);
+    expect(chatIndex).toBeLessThan(agentsIndex);
+    expect(agentsIndex).toBeLessThan(bicepIndex);
+
+    const ragCard = cards.nth(ragIndex);
+    const ragStars = ragCard.getByRole("img", {
+      name: "12,345 GitHub stars",
+    });
+    await expect(ragStars).toBeVisible();
+    const ragTags = ragCard.locator("[data-template-tags]");
+    const ragMeta = ragStars.locator("..");
+    await expect(ragMeta).toHaveCSS("align-items", "flex-end");
+    const [tagBounds, starBounds, metaBounds] = await Promise.all([
+      ragTags.boundingBox(),
+      ragStars.boundingBox(),
+      ragMeta.boundingBox(),
+    ]);
+    expect(tagBounds).not.toBeNull();
+    expect(starBounds).not.toBeNull();
+    expect(metaBounds).not.toBeNull();
+    expect(starBounds!.y + starBounds!.height).toBeCloseTo(
+      tagBounds!.y + tagBounds!.height,
+      0,
+    );
+    expect(starBounds!.x + starBounds!.width).toBeCloseTo(
+      metaBounds!.x + metaBounds!.width,
+      0,
+    );
     await expect(
-      cards.nth(0).getByRole("img", { name: "9,876 GitHub stars" }),
+      cards.nth(chatIndex).getByRole("img", { name: "0 GitHub stars" }),
     ).toBeVisible();
-    await expect(cards.nth(1).locator("a[data-template-title]")).toHaveAttribute(
-      "data-template-title",
-      "Get Started with Chat",
-    );
     await expect(
-      cards.nth(1).getByRole("img", { name: "0 GitHub stars" }),
-    ).toBeVisible();
-    await expect(cards.nth(2).locator("a[data-template-title]")).toHaveAttribute(
-      "data-template-title",
-      "Get started with AI agents",
-    );
-    await expect(cards.nth(2).locator("[data-repository-stars]")).toHaveCount(0);
-    await expect(cards.nth(3).locator("a[data-template-title]")).toHaveAttribute(
-      "data-template-title",
-      "Starter - Bicep",
-    );
+      cards.nth(agentsIndex).locator("[data-repository-stars]"),
+    ).toHaveCount(0);
     await expect(
-      cards.nth(3).getByRole("img", { name: "50,000 GitHub stars" }),
+      cards
+        .nth(bicepIndex)
+        .getByRole("img", { name: "50,000 GitHub stars" }),
     ).toBeVisible();
 
     await page.goto(
@@ -629,6 +677,53 @@ test.describe("Gallery functionality (deploy gate)", () => {
     await expect(
       missingStarsCard.locator("[data-repository-stars]"),
     ).toHaveCount(0);
+  });
+
+  test("keeps the bundled popularity order when the public aggregate fails", async ({
+    page,
+  }) => {
+    const metricsUrl =
+      "https://cachelp6qsotirqelc.z20.web.core.windows.net/**";
+    await page.unroute(metricsUrl);
+    await page.route(metricsUrl, (route) =>
+      route.fulfill({ status: 503 }),
+    );
+    await page.reload();
+
+    const cards = page.locator("[data-template-card]");
+    const titles = await cards
+      .locator("a[data-template-title]")
+      .evaluateAll((links) =>
+        links.map((link) => link.getAttribute("data-template-title") ?? ""),
+      );
+    const ragIndex = titles.indexOf(
+      "RAG chat with Azure AI Search + Python",
+    );
+    const chatIndex = titles.indexOf("Get Started with Chat");
+    const agentsIndex = titles.indexOf("Get started with AI agents");
+    const bicepIndex = titles.indexOf("Starter - Bicep");
+    for (const index of [
+      ragIndex,
+      chatIndex,
+      agentsIndex,
+      bicepIndex,
+    ]) {
+      expect(index).toBeGreaterThanOrEqual(0);
+    }
+    expect(ragIndex).toBeLessThan(chatIndex);
+    expect(chatIndex).toBeLessThan(agentsIndex);
+    expect(agentsIndex).toBeLessThan(bicepIndex);
+
+    await expect(
+      cards.nth(ragIndex).getByRole("img", {
+        name: "9,876 GitHub stars",
+      }),
+    ).toBeVisible();
+    await expect(
+      cards
+        .nth(bicepIndex)
+        .getByRole("img", { name: "50,000 GitHub stars" }),
+    ).toBeVisible();
   });
 
   test("template details hide Models when metadata has none", async ({
@@ -955,20 +1050,14 @@ test.describe("Gallery functionality (deploy gate)", () => {
     });
   });
 
-  test("populated repository metrics do not trigger metadata requests", async ({
+  test("loads the public aggregate without GitHub API requests", async ({
     page,
   }) => {
-    const metadataRequests: string[] = [];
+    const githubRequests: string[] = [];
     page.on("request", (request) => {
       const url = new URL(request.url());
-      if (
-        url.hostname === "api.github.com" ||
-        url.pathname.endsWith("/repository-metrics.json") ||
-        url.href.startsWith(
-          "https://cachelp6qsotirqelc.z20.web.core.windows.net/",
-        )
-      ) {
-        metadataRequests.push(url.href);
+      if (url.hostname === "api.github.com") {
+        githubRequests.push(url.href);
       }
     });
 
@@ -979,7 +1068,12 @@ test.describe("Gallery functionality (deploy gate)", () => {
     );
     await page.waitForTimeout(250);
 
-    expect(metadataRequests).toEqual([]);
+    await expect(
+      page.getByRole("img", {
+        name: "12,345 GitHub stars",
+      }),
+    ).toBeVisible();
+    expect(githubRequests).toEqual([]);
   });
 
   test("language filtering narrows the gallery", async ({ page }) => {

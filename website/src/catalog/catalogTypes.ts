@@ -32,6 +32,7 @@ export type CatalogListingTemplate = {
   title: string;
   description: string;
   detailPath: string;
+  repository: string;
   authors: string[];
   legacyAuthors: string[];
   authorship: CatalogAuthorship;
@@ -54,7 +55,6 @@ export type CatalogListingTemplate = {
 export type CatalogTemplate = CatalogListingTemplate & {
   source: string;
   normalizedSource: string;
-  repository: string;
   authorUrls: string[];
   legacyTags: string[];
   services: string[];

@@ -23,10 +23,9 @@ test.beforeEach(async ({ page }) => {
     (route) =>
       route.fulfill({
         json: {
-          forks: 1,
-          stars: 1,
-          updatedOn: "2025-01-01T00:00:00.000Z",
-          score: 1,
+          schemaVersion: 2,
+          generatedAt: "2026-01-01T00:00:00.000Z",
+          repositories: {},
         },
       }),
   );

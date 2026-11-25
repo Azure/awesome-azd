@@ -408,7 +408,7 @@
 
 .cardMeta {
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   gap: 8px;
   padding-top: 6px;
   margin-top: auto;

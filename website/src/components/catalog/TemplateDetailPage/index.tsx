@@ -37,6 +37,7 @@ import type {
   CatalogResource,
   CatalogTemplateDetail,
 } from "../../../catalog/catalogTypes";
+import { useRuntimeRepositoryStars } from "../../../catalog/useRuntimeRepositoryMetrics";
 import { getGalleryReturnLocation } from "../../../utils/galleryNavigation";
 import { serializeStructuredData } from "../../../utils/structuredData";
 import { getOpenInVSCodeUrl } from "../../../utils/vscode";
@@ -161,7 +162,7 @@ function TemplateStarCount({
   const formattedStars = starFormatter.format(stars);
   const starLabel = `${formattedStars} GitHub ${
     stars === 1 ? "star" : "stars"
-  } (snapshot)`;
+  }`;
 
   return (
     <span
@@ -435,6 +436,10 @@ export default function TemplateDetailPage({
   templatePage: TemplatePageData;
 }): React.JSX.Element {
   const { template } = templatePage;
+  const stars = useRuntimeRepositoryStars(
+    template.repository,
+    template.stars,
+  );
   const history = useHistory();
   const location = useLocation();
   const isBrowser = useIsBrowser();
@@ -543,7 +548,7 @@ export default function TemplateDetailPage({
                       >
                         {owner} / {repositoryName}
                       </a>
-                      <TemplateStarCount stars={template.stars} />
+                      <TemplateStarCount stars={stars} />
                     </div>
                     <Text
                       as="h1"

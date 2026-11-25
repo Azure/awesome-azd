@@ -4628,6 +4628,7 @@
     "templateType": "extension.ai.agent",
     "extensionFramework": "LangGraph",
     "extensionTags": [
+      "LangChain",
       "LangGraph",
       "local tools",
       "multi-turn",
@@ -4636,7 +4637,7 @@
     ]
   },
   {
-    "title": "Deep Agents (Responses, LangGraph, Python)",
+    "title": "Deep Agents (Responses, LangChain/LangGraph, Python)",
     "description": "A LangGraph deep research agent that plans work, delegates focused research, uses managed web search, consolidates citations, and persists durable checkpoints on Foundry.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -4646,7 +4647,9 @@
     "templateType": "extension.ai.agent",
     "extensionFramework": "LangGraph",
     "extensionTags": [
+      "LangChain",
       "LangGraph",
+      "Deep Agents",
       "deep research",
       "Foundry Toolbox",
       "web search",
@@ -4654,7 +4657,7 @@
     ]
   },
   {
-    "title": "Foundry Toolbox (Responses, LangGraph, Python)",
+    "title": "Foundry Toolbox (Responses, LangChain/LangGraph, Python)",
     "description": "A LangGraph ReAct agent using a Foundry Toolbox for managed web search and Microsoft Learn MCP tools, including OAuth consent handling and schema sanitization.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -4664,6 +4667,7 @@
     "templateType": "extension.ai.agent",
     "extensionFramework": "LangGraph",
     "extensionTags": [
+      "LangChain",
       "LangGraph",
       "Foundry Toolbox",
       "MCP",
@@ -4671,7 +4675,7 @@
     ]
   },
   {
-    "title": "Foundry Toolbox with User Identity (Responses, LangGraph, Python)",
+    "title": "Foundry Toolbox with User Identity (Responses, LangChain/LangGraph, Python)",
     "description": "A LangGraph ReAct agent with a Foundry Toolbox that provisions WorkIQ Mail, WorkIQ Calendar, and GitHub MCP integrations using user identity and managed OAuth.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -4681,6 +4685,7 @@
     "templateType": "extension.ai.agent",
     "extensionFramework": "LangGraph",
     "extensionTags": [
+      "LangChain",
       "LangGraph",
       "Foundry Toolbox",
       "MCP",
@@ -4689,7 +4694,7 @@
     ]
   },
   {
-    "title": "Multi-Agent Workflows (Responses, LangGraph, Python)",
+    "title": "Multi-Agent Workflows (Responses, LangChain/LangGraph, Python)",
     "description": "A LangGraph StateGraph workflow that sequentially chains specialized slogan writer, legal reviewer, and formatter LLM nodes while returning only the final formatted result.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -4699,6 +4704,7 @@
     "templateType": "extension.ai.agent",
     "extensionFramework": "LangGraph",
     "extensionTags": [
+      "LangChain",
       "LangGraph",
       "multi-agent",
       "workflows",
@@ -4706,7 +4712,7 @@
     ]
   },
   {
-    "title": "File Handling (Responses, LangGraph, Python)",
+    "title": "File Handling (Responses, LangChain/LangGraph, Python)",
     "description": "A LangGraph agent that works with uploaded and bundled files using local filesystem tools plus a Foundry Toolbox code interpreter for managed calculations and data analysis.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -4716,6 +4722,7 @@
     "templateType": "extension.ai.agent",
     "extensionFramework": "LangGraph",
     "extensionTags": [
+      "LangChain",
       "LangGraph",
       "Foundry Toolbox",
       "code interpreter",
@@ -4724,7 +4731,7 @@
     ]
   },
   {
-    "title": "Human-in-the-Loop (Responses, LangGraph, Python)",
+    "title": "Human-in-the-Loop (Responses, LangChain/LangGraph, Python)",
     "description": "A LangGraph proposal workflow that pauses for human review and supports approval, revision with feedback, or rejection through Responses protocol approval and function-call channels.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -4734,6 +4741,7 @@
     "templateType": "extension.ai.agent",
     "extensionFramework": "LangGraph",
     "extensionTags": [
+      "LangChain",
       "LangGraph",
       "human-in-the-loop",
       "approval workflow",
@@ -4741,7 +4749,7 @@
     ]
   },
   {
-    "title": "Observability (Responses, LangGraph, Python)",
+    "title": "Observability (Responses, LangChain/LangGraph, Python)",
     "description": "An instrumented LangGraph agent that uses automatic GenAI OpenTelemetry tracing to emit node, model, and tool spans, metrics, and logs to Application Insights.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -4751,6 +4759,7 @@
     "templateType": "extension.ai.agent",
     "extensionFramework": "LangGraph",
     "extensionTags": [
+      "LangChain",
       "LangGraph",
       "observability",
       "OpenTelemetry",
@@ -4759,7 +4768,7 @@
     ]
   },
   {
-    "title": "Resilient Long Running Agent (Responses, LangGraph, Python)",
+    "title": "Resilient Long Running Agent (Responses, LangChain/LangGraph, Python)",
     "description": "A crash-resilient LangGraph trip-planning agent with durable checkpoints, background responses, replayable streaming, human approval, steering, recovery, and cancellation.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -4769,6 +4778,7 @@
     "templateType": "extension.ai.agent",
     "extensionFramework": "LangGraph",
     "extensionTags": [
+      "LangChain",
       "LangGraph",
       "background mode",
       "human-in-the-loop",
@@ -4778,7 +4788,7 @@
     ]
   },
   {
-    "title": "Custom Host (Responses, LangGraph, Python)",
+    "title": "Custom Host (Responses, LangChain/LangGraph, Python)",
     "description": "A location-aware LangGraph chat agent that uses a custom ResponsesHostServer to support locale headers and custom location messages while retaining standard Responses behavior.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -4788,6 +4798,7 @@
     "templateType": "extension.ai.agent",
     "extensionFramework": "LangGraph",
     "extensionTags": [
+      "LangChain",
       "LangGraph",
       "custom host",
       "custom input",
@@ -4795,7 +4806,7 @@
     ]
   },
   {
-    "title": "Basic Chat (Invocations, LangGraph, Python)",
+    "title": "Basic Chat (Invocations, LangChain/LangGraph, Python)",
     "description": "A multi-turn LangGraph chat agent with local time and calculator tools, hosted on Foundry over the Invocations protocol with session state backed by a LangGraph checkpointer.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -4805,6 +4816,7 @@
     "templateType": "extension.ai.agent",
     "extensionFramework": "LangGraph",
     "extensionTags": [
+      "LangChain",
       "LangGraph",
       "local tools",
       "multi-turn",
@@ -4812,7 +4824,7 @@
     ]
   },
   {
-    "title": "Resilient Long Running Agent (Invocations, LangGraph, Python)",
+    "title": "Resilient Long Running Agent (Invocations, LangChain/LangGraph, Python)",
     "description": "A crash-resilient LangGraph trip-planning agent with durable checkpoints, background invocations, multi-turn sessions, human approval, recovery, and cancellation.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -4822,6 +4834,7 @@
     "templateType": "extension.ai.agent",
     "extensionFramework": "LangGraph",
     "extensionTags": [
+      "LangChain",
       "LangGraph",
       "background mode",
       "human-in-the-loop",
@@ -4830,7 +4843,7 @@
     ]
   },
   {
-    "title": "Custom Host (Invocations, LangGraph, Python)",
+    "title": "Custom Host (Invocations, LangChain/LangGraph, Python)",
     "description": "A location-aware LangGraph chat agent that uses a custom InvocationsHostServer to support locale headers and custom location messages while retaining standard Invocations behavior.",
     "authorUrl": "https://github.com/microsoft-foundry",
     "author": "Microsoft Foundry Team",
@@ -4840,6 +4853,7 @@
     "templateType": "extension.ai.agent",
     "extensionFramework": "LangGraph",
     "extensionTags": [
+      "LangChain",
       "LangGraph",
       "custom host",
       "custom input",

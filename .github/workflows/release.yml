@@ -65,12 +65,9 @@ jobs:
       - name: Install website dependencies
         working-directory: website
         run: npm ci
-      - name: Prepare repository metrics
+      - name: Validate live repository metrics
         working-directory: website
-        env:
-          REPOSITORY_METRICS_URL: ${{ vars.AWESOME_AZD_REPOSITORY_METRICS_URL }}
-          REPOSITORY_METRICS_MAX_AGE_HOURS: "48"
-        run: node scripts/prepare-repository-metrics.js
+        run: node scripts/validate-repository-metrics.js
       - name: Build website
         working-directory: website
         run: npm run build

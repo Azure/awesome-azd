@@ -5,11 +5,14 @@
 const fs = require("fs");
 const path = require("path");
 const { randomUUID } = require("crypto");
+const repositoryMetricsConfig = require("../src/catalog/repository-metrics.config.json");
 
-const REPOSITORY_METRICS_SCHEMA_VERSION = 1;
-const DEFAULT_MAX_AGE_HOURS = 48;
+const REPOSITORY_METRICS_SCHEMA_VERSION = 2;
+const LEGACY_REPOSITORY_METRICS_SCHEMA_VERSION = 1;
+const DEFAULT_SOURCE_URL = repositoryMetricsConfig.url;
+const DEFAULT_MAX_AGE_HOURS = repositoryMetricsConfig.maxAgeHours;
 const REQUEST_TIMEOUT_MS = 15_000;
-const MAX_RESPONSE_BYTES = 5 * 1024 * 1024;
+const MAX_RESPONSE_BYTES = 1024 * 1024;
 
 function isPlainObject(value) {
   return (
@@ -34,14 +37,13 @@ function assertExactKeys(value, expectedKeys, field) {
   }
 
   const actualKeys = Object.keys(value).sort();
-  const sortedExpectedKeys = [...expectedKeys].sort();
-  const missing = sortedExpectedKeys.filter(
+  const expected = [...expectedKeys].sort();
+  const missing = expected.filter(
     (key) => !actualKeys.includes(key)
   );
   const unexpected = actualKeys.filter(
-    (key) => !sortedExpectedKeys.includes(key)
+    (key) => !expected.includes(key)
   );
-
   if (missing.length > 0 || unexpected.length > 0) {
     const details = [];
     if (missing.length > 0) {
@@ -50,7 +52,9 @@ function assertExactKeys(value, expectedKeys, field) {
     if (unexpected.length > 0) {
       details.push(`unexpected: ${formatValues(unexpected)}`);
     }
-    throw new Error(`${field} has invalid fields (${details.join("; ")}).`);
+    throw new Error(
+      `${field} has invalid fields (${details.join("; ")}).`
+    );
   }
 }
 
@@ -60,7 +64,10 @@ function readCanonicalIsoDate(value, field) {
   }
 
   const timestamp = Date.parse(value);
-  if (!Number.isFinite(timestamp) || new Date(timestamp).toISOString() !== value) {
+  if (
+    !Number.isFinite(timestamp) ||
+    new Date(timestamp).toISOString() !== value
+  ) {
     throw new Error(`${field} must be a canonical ISO date string.`);
   }
 
@@ -89,14 +96,23 @@ function normalizeRepositorySource(source) {
   const hostname = url.hostname.toLowerCase();
   if (
     url.protocol !== "https:" ||
-    (hostname !== "github.com" && hostname !== "www.github.com")
+    (hostname !== "github.com" && hostname !== "www.github.com") ||
+    url.username ||
+    url.password ||
+    url.port ||
+    url.search ||
+    url.hash
   ) {
-    throw new Error(`Template source must use https://github.com: ${source}`);
+    throw new Error(
+      `Template source must use a public https://github.com URL: ${source}`
+    );
   }
 
   const parts = url.pathname.split("/").filter(Boolean);
   if (parts.length < 2) {
-    throw new Error(`Template source must identify a GitHub repository: ${source}`);
+    throw new Error(
+      `Template source must identify a GitHub repository: ${source}`
+    );
   }
 
   const owner = parts[0].toLowerCase();
@@ -105,7 +121,9 @@ function normalizeRepositorySource(source) {
     !/^[a-z0-9](?:[a-z0-9-]{0,38})$/.test(owner) ||
     !/^[a-z0-9._-]+$/.test(repository)
   ) {
-    throw new Error(`Template source must identify one GitHub repository: ${source}`);
+    throw new Error(
+      `Template source must identify one GitHub repository: ${source}`
+    );
   }
 
   return `${owner}/${repository}`;
@@ -121,6 +139,12 @@ function getExpectedRepositorySlugs(templates) {
     if (!isPlainObject(template)) {
       throw new Error(`Template catalog entry ${index} must be an object.`);
     }
+    if (
+      typeof template.templateType === "string" &&
+      template.templateType.trim().length > 0
+    ) {
+      return;
+    }
 
     try {
       repositories.add(normalizeRepositorySource(template.source));
@@ -130,6 +154,12 @@ function getExpectedRepositorySlugs(templates) {
       );
     }
   });
+
+  if (repositories.size === 0) {
+    throw new Error(
+      "Template catalog must contain at least one website repository."
+    );
+  }
 
   return [...repositories].sort();
 }
@@ -141,6 +171,7 @@ function validateRepositoryMetricsAggregate(
 ) {
   const now = options.now ?? new Date();
   const maxAgeHours = options.maxAgeHours ?? DEFAULT_MAX_AGE_HOURS;
+  const onWarning = options.onWarning ?? (() => {});
 
   if (!(now instanceof Date) || !Number.isFinite(now.getTime())) {
     throw new Error("now must be a valid date.");
@@ -160,8 +191,11 @@ function validateRepositoryMetricsAggregate(
     ["schemaVersion", "generatedAt", "repositories"],
     "Repository metrics aggregate"
   );
-
-  if (aggregate.schemaVersion !== REPOSITORY_METRICS_SCHEMA_VERSION) {
+  if (
+    aggregate.schemaVersion !== REPOSITORY_METRICS_SCHEMA_VERSION &&
+    aggregate.schemaVersion !==
+      LEGACY_REPOSITORY_METRICS_SCHEMA_VERSION
+  ) {
     throw new Error(
       `Repository metrics schemaVersion must be ${REPOSITORY_METRICS_SCHEMA_VERSION}.`
     );
@@ -179,9 +213,12 @@ function validateRepositoryMetricsAggregate(
   const ageMs = nowTimestamp - generatedAtTimestamp;
   const maxAgeMs = maxAgeHours * 60 * 60 * 1000;
   if (ageMs > maxAgeMs) {
-    throw new Error(
-      `Repository metrics are stale: generatedAt is older than ${maxAgeHours} hours.`
-    );
+    const message =
+      `Repository metrics are stale: generatedAt is older than ${maxAgeHours} hours.`;
+    if (options.rejectStale) {
+      throw new Error(message);
+    }
+    onWarning(message);
   }
 
   if (!isPlainObject(aggregate.repositories)) {
@@ -190,46 +227,65 @@ function validateRepositoryMetricsAggregate(
 
   const expectedSlugs = [...new Set(expectedRepositorySlugs)].sort();
   const actualSlugs = Object.keys(aggregate.repositories).sort();
-  const missing = expectedSlugs.filter((slug) => !actualSlugs.includes(slug));
-  const unexpected = actualSlugs.filter((slug) => !expectedSlugs.includes(slug));
-  if (missing.length > 0 || unexpected.length > 0) {
-    const details = [];
-    if (missing.length > 0) {
-      details.push(`missing: ${formatValues(missing)}`);
-    }
-    if (unexpected.length > 0) {
-      details.push(`unexpected: ${formatValues(unexpected)}`);
-    }
-    throw new Error(
-      `Repository metrics coverage does not match templates.json (${details.join(
-        "; "
-      )}).`
-    );
-  }
-
-  const repositories = {};
-  for (const slug of expectedSlugs) {
+  for (const slug of actualSlugs) {
     if (
       normalizeRepositorySource(`https://github.com/${slug}`) !== slug
     ) {
       throw new Error(`Repository slug must be canonical: ${slug}.`);
     }
+  }
 
-    const metrics = aggregate.repositories[slug];
-    assertExactKeys(metrics, ["stars", "forks", "updatedOn"], slug);
-
-    const updatedOnTimestamp = readCanonicalIsoDate(
-      metrics.updatedOn,
-      `${slug}.updatedOn`
+  const missing = expectedSlugs.filter(
+    (slug) => !actualSlugs.includes(slug)
+  );
+  const unexpected = actualSlugs.filter(
+    (slug) => !expectedSlugs.includes(slug)
+  );
+  if (missing.length > 0) {
+    onWarning(
+      `Repository metrics are missing current templates: ${formatValues(
+        missing
+      )}.`
     );
-    if (updatedOnTimestamp > nowTimestamp) {
-      throw new Error(`${slug}.updatedOn must not be in the future.`);
+  }
+  if (unexpected.length > 0) {
+    onWarning(
+      `Repository metrics contain retired templates that will be ignored: ${formatValues(
+        unexpected
+      )}.`
+    );
+  }
+
+  const repositories = {};
+  for (const slug of expectedSlugs) {
+    const metrics = aggregate.repositories[slug];
+    if (metrics === undefined) {
+      continue;
+    }
+
+    if (
+      aggregate.schemaVersion ===
+      LEGACY_REPOSITORY_METRICS_SCHEMA_VERSION
+    ) {
+      assertExactKeys(
+        metrics,
+        ["stars", "forks", "updatedOn"],
+        slug
+      );
+      readNonNegativeInteger(metrics.forks, `${slug}.forks`);
+      const updatedOnTimestamp = readCanonicalIsoDate(
+        metrics.updatedOn,
+        `${slug}.updatedOn`
+      );
+      if (updatedOnTimestamp > nowTimestamp) {
+        throw new Error(`${slug}.updatedOn must not be in the future.`);
+      }
+    } else {
+      assertExactKeys(metrics, ["stars"], slug);
     }
 
     repositories[slug] = {
       stars: readNonNegativeInteger(metrics.stars, `${slug}.stars`),
-      forks: readNonNegativeInteger(metrics.forks, `${slug}.forks`),
-      updatedOn: metrics.updatedOn,
     };
   }
 
@@ -242,26 +298,28 @@ function validateRepositoryMetricsAggregate(
 
 function readMetricsUrl(value) {
   if (typeof value !== "string" || value.trim() === "") {
-    throw new Error("REPOSITORY_METRICS_URL is required.");
+    throw new Error("Repository metrics URL is required.");
   }
 
   let url;
   try {
     url = new URL(value.trim());
   } catch {
-    throw new Error("REPOSITORY_METRICS_URL must be a valid URL.");
+    throw new Error("Repository metrics URL must be valid.");
   }
 
   if (url.protocol !== "https:") {
-    throw new Error("REPOSITORY_METRICS_URL must use HTTPS.");
+    throw new Error("Repository metrics URL must use HTTPS.");
   }
   if (url.username || url.password || url.search || url.hash) {
     throw new Error(
-      "REPOSITORY_METRICS_URL must be a public URL without credentials, query parameters, or fragments."
+      "Repository metrics URL must be public and credential-free."
     );
   }
   if (!url.pathname.endsWith(".json")) {
-    throw new Error("REPOSITORY_METRICS_URL must identify a JSON file.");
+    throw new Error(
+      "Repository metrics URL must identify a JSON file."
+    );
   }
 
   return url.href;
@@ -269,7 +327,10 @@ function readMetricsUrl(value) {
 
 async function readResponseText(response) {
   const contentLength = Number(response.headers.get("content-length"));
-  if (Number.isFinite(contentLength) && contentLength > MAX_RESPONSE_BYTES) {
+  if (
+    Number.isFinite(contentLength) &&
+    contentLength > MAX_RESPONSE_BYTES
+  ) {
     throw new Error("Repository metrics response is too large.");
   }
 
@@ -347,6 +408,50 @@ async function downloadRepositoryMetrics(sourceUrl, fetchImpl = fetch) {
   }
 }
 
+async function readJsonFile(filePath) {
+  return JSON.parse(await fs.promises.readFile(filePath, "utf8"));
+}
+
+async function readExpectedRepositorySlugs(catalogPath) {
+  let templates;
+  try {
+    templates = await readJsonFile(catalogPath);
+  } catch (error) {
+    throw new Error(`Unable to read template catalog: ${error.message}`);
+  }
+  return getExpectedRepositorySlugs(templates);
+}
+
+async function validateRepositoryMetricsSource(options = {}) {
+  const catalogPath =
+    options.catalogPath ??
+    path.join(__dirname, "..", "static", "templates.json");
+  const expectedRepositorySlugs =
+    await readExpectedRepositorySlugs(catalogPath);
+  const aggregate = await downloadRepositoryMetrics(
+    options.sourceUrl ?? DEFAULT_SOURCE_URL,
+    options.fetchImpl
+  );
+  const sanitizedAggregate = validateRepositoryMetricsAggregate(
+    aggregate,
+    expectedRepositorySlugs,
+    {
+      maxAgeHours:
+        options.maxAgeHours ?? DEFAULT_MAX_AGE_HOURS,
+      now: options.now,
+      onWarning: options.onWarning ?? console.warn,
+      rejectStale: true,
+    }
+  );
+
+  return {
+    generatedAt: sanitizedAggregate.generatedAt,
+    repositoryCount: Object.keys(
+      sanitizedAggregate.repositories
+    ).length,
+  };
+}
+
 async function writeJsonAtomically(outputPath, value) {
   const directory = path.dirname(outputPath);
   const temporaryPath = `${outputPath}.${process.pid}.${randomUUID()}.tmp`;
@@ -355,7 +460,7 @@ async function writeJsonAtomically(outputPath, value) {
   try {
     await fs.promises.writeFile(
       temporaryPath,
-      `${JSON.stringify(value)}\n`,
+      `${JSON.stringify(value, null, 2)}\n`,
       {
         encoding: "utf8",
         flag: "wx",
@@ -385,27 +490,69 @@ async function prepareRepositoryMetrics(options = {}) {
     );
   const maxAgeHours =
     options.maxAgeHours ?? DEFAULT_MAX_AGE_HOURS;
+  const onWarning = options.onWarning ?? console.warn;
 
-  let templates;
-  try {
-    templates = JSON.parse(await fs.promises.readFile(catalogPath, "utf8"));
-  } catch (error) {
-    throw new Error(`Unable to read template catalog: ${error.message}`);
+  const expectedRepositorySlugs =
+    await readExpectedRepositorySlugs(catalogPath);
+  let sanitizedAggregate;
+  if (options.sourceUrl) {
+    try {
+      const aggregate = await downloadRepositoryMetrics(
+        options.sourceUrl,
+        options.fetchImpl
+      );
+      sanitizedAggregate = validateRepositoryMetricsAggregate(
+        aggregate,
+        expectedRepositorySlugs,
+        {
+          maxAgeHours,
+          now: options.now,
+          onWarning,
+          rejectStale: options.requireRemoteMetrics === true,
+        }
+      );
+    } catch (error) {
+      onWarning(
+        `Unable to use current repository metrics: ${error.message}`
+      );
+    }
+  } else {
+    onWarning("REPOSITORY_METRICS_URL is not configured.");
   }
 
-  const expectedRepositorySlugs = getExpectedRepositorySlugs(templates);
-  const aggregate = await downloadRepositoryMetrics(
-    options.sourceUrl,
-    options.fetchImpl
-  );
-  const sanitizedAggregate = validateRepositoryMetricsAggregate(
-    aggregate,
-    expectedRepositorySlugs,
-    {
-      maxAgeHours,
-      now: options.now,
+  if (
+    sanitizedAggregate === undefined &&
+    options.requireRemoteMetrics
+  ) {
+    throw new Error(
+      "Unable to load repository metrics from a configured remote source."
+    );
+  }
+
+  if (sanitizedAggregate === undefined) {
+    try {
+      const aggregate = await readJsonFile(moduleOutputPath);
+      sanitizedAggregate = validateRepositoryMetricsAggregate(
+        aggregate,
+        expectedRepositorySlugs,
+        {
+          maxAgeHours,
+          now: options.now,
+          onWarning,
+        }
+      );
+      onWarning("Using the existing local repository metrics snapshot.");
+    } catch {
+      onWarning(
+        "No last-known-good repository metrics snapshot is available; building without star counts."
+      );
+      sanitizedAggregate = {
+        schemaVersion: REPOSITORY_METRICS_SCHEMA_VERSION,
+        generatedAt: null,
+        repositories: {},
+      };
     }
-  );
+  }
 
   await Promise.all([
     writeJsonAtomically(outputPath, sanitizedAggregate),
@@ -432,11 +579,29 @@ function readMaxAgeHours(value) {
   return parsed;
 }
 
+function readBoolean(value, field) {
+  if (value == null || value === "") {
+    return false;
+  }
+  if (value === "true") {
+    return true;
+  }
+  if (value === "false") {
+    return false;
+  }
+  throw new Error(`${field} must be true or false.`);
+}
+
 if (require.main === module) {
   prepareRepositoryMetrics({
-    sourceUrl: process.env.REPOSITORY_METRICS_URL,
+    sourceUrl:
+      process.env.REPOSITORY_METRICS_URL || DEFAULT_SOURCE_URL,
     maxAgeHours: readMaxAgeHours(
       process.env.REPOSITORY_METRICS_MAX_AGE_HOURS
+    ),
+    requireRemoteMetrics: readBoolean(
+      process.env.REPOSITORY_METRICS_REQUIRE_REMOTE,
+      "REPOSITORY_METRICS_REQUIRE_REMOTE"
     ),
   })
     .then(({ outputPath, moduleOutputPath, repositoryCount }) => {
@@ -448,17 +613,22 @@ if (require.main === module) {
       );
     })
     .catch((error) => {
-      console.error(`Repository metrics preparation failed: ${error.message}`);
+      console.error(
+        `Repository metrics preparation failed: ${error.message}`
+      );
       process.exitCode = 1;
     });
 }
 
 module.exports = {
   DEFAULT_MAX_AGE_HOURS,
+  DEFAULT_SOURCE_URL,
   downloadRepositoryMetrics,
   getExpectedRepositorySlugs,
   normalizeRepositorySource,
   prepareRepositoryMetrics,
+  readMaxAgeHours,
   readMetricsUrl,
+  validateRepositoryMetricsSource,
   validateRepositoryMetricsAggregate,
 };

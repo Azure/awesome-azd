@@ -11,6 +11,7 @@ import useIsBrowser from "@docusaurus/useIsBrowser";
 import Layout from "@theme/Layout";
 import type { CatalogPageData } from "../../../catalog/catalogTypes";
 import { decodeCatalogPageData } from "../../../catalog/catalogWireFormat";
+import { useRuntimeRepositoryMetrics } from "../../../catalog/useRuntimeRepositoryMetrics";
 import CatalogPage from "../CatalogPage";
 
 export default function CatalogRoutePage({
@@ -21,10 +22,12 @@ export default function CatalogRoutePage({
   const history = useHistory();
   const location = useLocation();
   const isBrowser = useIsBrowser();
-  const templates = useMemo(
+  const bundledTemplates = useMemo(
     () => decodeCatalogPageData(catalogPage),
     [catalogPage],
   );
+  const templates =
+    useRuntimeRepositoryMetrics(bundledTemplates);
   const extensionsUrl = useBaseUrl("/extensions");
   const search = new URLSearchParams(isBrowser ? location.search : "");
   const isLegacyExtensionsUrl =

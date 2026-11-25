@@ -214,6 +214,7 @@ export function decodeCatalogPageData(
       title,
       description,
       detailPath,
+      repository,
       authors,
       legacyAuthors,
       authorship,

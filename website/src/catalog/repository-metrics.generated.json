@@ -1,0 +1,888 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-25T03:41:23.822Z",
+  "repositories": {
+    "arize-ai/phoenix-on-azure": {
+      "stars": 34
+    },
+    "azure-samples/aca-python-code-interpreter-session": {
+      "stars": 2
+    },
+    "azure-samples/agent-openai-java-banking-assistant": {
+      "stars": 167
+    },
+    "azure-samples/agent-openai-python-banking-assistant": {
+      "stars": 46
+    },
+    "azure-samples/ai-chat-aspire-meai-csharp": {
+      "stars": 35
+    },
+    "azure-samples/ai-chat-quickstart-csharp": {
+      "stars": 12
+    },
+    "azure-samples/aisearch-openai-rag-audio": {
+      "stars": 568
+    },
+    "azure-samples/aks-store-demo": {
+      "stars": 317
+    },
+    "azure-samples/apim-unified-ai-gateway-sample": {
+      "stars": 18
+    },
+    "azure-samples/app-service-javascript-sap-cap-quickstart": {
+      "stars": 14
+    },
+    "azure-samples/app-service-javascript-sap-cloud-sdk-quickstart": {
+      "stars": 16
+    },
+    "azure-samples/apptemplate-wordpress-on-aca": {
+      "stars": 35
+    },
+    "azure-samples/azd-ai-starter": {
+      "stars": 18
+    },
+    "azure-samples/azd-aistudio-starter": {
+      "stars": 34
+    },
+    "azure-samples/azd-deployment-environments": {
+      "stars": 10
+    },
+    "azure-samples/azd-functions-sharepoint-webhooks": {
+      "stars": 5
+    },
+    "azure-samples/azd-simple-fastapi-appservice": {
+      "stars": 6
+    },
+    "azure-samples/azd-simple-flask-appservice": {
+      "stars": 4
+    },
+    "azure-samples/azd-starter-bicep": {
+      "stars": 40
+    },
+    "azure-samples/azd-starter-terraform": {
+      "stars": 25
+    },
+    "azure-samples/azmcp-copilot-studio-aca-mi": {
+      "stars": 4
+    },
+    "azure-samples/azmcp-foundry-aca-mi": {
+      "stars": 6
+    },
+    "azure-samples/azure-ai-travel-agents": {
+      "stars": 484
+    },
+    "azure-samples/azure-appconfig-aks": {
+      "stars": 2
+    },
+    "azure-samples/azure-functions-flex-consumption-with-azure-files-os-mount-samples": {
+      "stars": 0
+    },
+    "azure-samples/azure-functions-java-flex-consumption-azd": {
+      "stars": 6
+    },
+    "azure-samples/azure-openai-assistant-javascript": {
+      "stars": 47
+    },
+    "azure-samples/azure-openai-chat-frontend": {
+      "stars": 72
+    },
+    "azure-samples/azure-openai-entity-extraction": {
+      "stars": 85
+    },
+    "azure-samples/azure-openai-keyless-go": {
+      "stars": 5
+    },
+    "azure-samples/azure-openai-keyless-js": {
+      "stars": 9
+    },
+    "azure-samples/azure-openai-keyless-python": {
+      "stars": 23
+    },
+    "azure-samples/azure-openai-rag-workshop-java": {
+      "stars": 21
+    },
+    "azure-samples/azure-postgres-pgvector-python": {
+      "stars": 27
+    },
+    "azure-samples/azure-redis-dalle-semantic-caching": {
+      "stars": 3
+    },
+    "azure-samples/azure-search-openai-demo": {
+      "stars": 7811
+    },
+    "azure-samples/azure-search-openai-demo-csharp": {
+      "stars": 846
+    },
+    "azure-samples/azure-search-openai-demo-java": {
+      "stars": 128
+    },
+    "azure-samples/azure-search-openai-demo-purviewdatasecurity": {
+      "stars": 23
+    },
+    "azure-samples/azure-sql-db-session-recommender-v2": {
+      "stars": 46
+    },
+    "azure-samples/bindings-dapr-csharp-cron-postgres": {
+      "stars": 12
+    },
+    "azure-samples/bindings-dapr-nodejs-cron-postgres": {
+      "stars": 8
+    },
+    "azure-samples/bindings-dapr-python-cron-postgres": {
+      "stars": 8
+    },
+    "azure-samples/blazor-azure-sql-vector-search": {
+      "stars": 2
+    },
+    "azure-samples/call-center-voice-agent-accelerator": {
+      "stars": 97
+    },
+    "azure-samples/cargotracker-liberty-aks-azd": {
+      "stars": 1
+    },
+    "azure-samples/chat-with-your-data-solution-accelerator": {
+      "stars": 1186
+    },
+    "azure-samples/contoso-creative-writer": {
+      "stars": 434
+    },
+    "azure-samples/cosmic-food-rag-app": {
+      "stars": 67
+    },
+    "azure-samples/doc-intelligence-in-a-box": {
+      "stars": 47
+    },
+    "azure-samples/document-reviewer": {
+      "stars": 1
+    },
+    "azure-samples/durable-functions-order-processing": {
+      "stars": 9
+    },
+    "azure-samples/durable-functions-order-processing-python": {
+      "stars": 5
+    },
+    "azure-samples/durable-functions-quickstart-dotnet-azd": {
+      "stars": 0
+    },
+    "azure-samples/durable-functions-quickstart-java-azd": {
+      "stars": 0
+    },
+    "azure-samples/durable-functions-quickstart-javascript-azd": {
+      "stars": 0
+    },
+    "azure-samples/durable-functions-quickstart-powershell-azd": {
+      "stars": 0
+    },
+    "azure-samples/durable-functions-quickstart-python-azd": {
+      "stars": 0
+    },
+    "azure-samples/durable-functions-quickstart-typescript-azd": {
+      "stars": 0
+    },
+    "azure-samples/dynamic-sessions-custom-container": {
+      "stars": 9
+    },
+    "azure-samples/functions-quickstart-dotnet-azd": {
+      "stars": 31
+    },
+    "azure-samples/functions-quickstart-dotnet-azd-cosmosdb": {
+      "stars": 1
+    },
+    "azure-samples/functions-quickstart-dotnet-azd-eventgrid-blob": {
+      "stars": 2
+    },
+    "azure-samples/functions-quickstart-dotnet-azd-eventhub": {
+      "stars": 0
+    },
+    "azure-samples/functions-quickstart-dotnet-azd-sql": {
+      "stars": 1
+    },
+    "azure-samples/functions-quickstart-dotnet-azd-tf": {
+      "stars": 0
+    },
+    "azure-samples/functions-quickstart-dotnet-azd-timer": {
+      "stars": 0
+    },
+    "azure-samples/functions-quickstart-java-azd-cosmosdb": {
+      "stars": 0
+    },
+    "azure-samples/functions-quickstart-java-azd-eventgrid-blob": {
+      "stars": 0
+    },
+    "azure-samples/functions-quickstart-java-azd-eventhub": {
+      "stars": 0
+    },
+    "azure-samples/functions-quickstart-java-azd-timer": {
+      "stars": 0
+    },
+    "azure-samples/functions-quickstart-javascript-azd": {
+      "stars": 4
+    },
+    "azure-samples/functions-quickstart-javascript-azd-cosmosdb": {
+      "stars": 0
+    },
+    "azure-samples/functions-quickstart-javascript-azd-eventgrid-blob": {
+      "stars": 0
+    },
+    "azure-samples/functions-quickstart-javascript-azd-eventhub": {
+      "stars": 0
+    },
+    "azure-samples/functions-quickstart-javascript-azd-timer": {
+      "stars": 0
+    },
+    "azure-samples/functions-quickstart-powershell-azd": {
+      "stars": 10
+    },
+    "azure-samples/functions-quickstart-powershell-azd-cosmosdb": {
+      "stars": 0
+    },
+    "azure-samples/functions-quickstart-powershell-azd-eventgrid-blob": {
+      "stars": 0
+    },
+    "azure-samples/functions-quickstart-powershell-azd-eventhub": {
+      "stars": 0
+    },
+    "azure-samples/functions-quickstart-powershell-azd-timer": {
+      "stars": 0
+    },
+    "azure-samples/functions-quickstart-python-azd-cosmosdb": {
+      "stars": 0
+    },
+    "azure-samples/functions-quickstart-python-azd-eventgrid-blob": {
+      "stars": 1
+    },
+    "azure-samples/functions-quickstart-python-azd-eventhub": {
+      "stars": 0
+    },
+    "azure-samples/functions-quickstart-python-azd-service-bus": {
+      "stars": 1
+    },
+    "azure-samples/functions-quickstart-python-azd-sql": {
+      "stars": 1
+    },
+    "azure-samples/functions-quickstart-python-azd-timer": {
+      "stars": 1
+    },
+    "azure-samples/functions-quickstart-python-http-azd": {
+      "stars": 30
+    },
+    "azure-samples/functions-quickstart-typescript-azd": {
+      "stars": 8
+    },
+    "azure-samples/functions-quickstart-typescript-azd-cosmosdb": {
+      "stars": 0
+    },
+    "azure-samples/functions-quickstart-typescript-azd-eventgrid-blob": {
+      "stars": 2
+    },
+    "azure-samples/functions-quickstart-typescript-azd-eventhub": {
+      "stars": 0
+    },
+    "azure-samples/functions-quickstart-typescript-azd-sql": {
+      "stars": 2
+    },
+    "azure-samples/functions-quickstart-typescript-azd-timer": {
+      "stars": 0
+    },
+    "azure-samples/get-started-with-ai-agents": {
+      "stars": 387
+    },
+    "azure-samples/get-started-with-ai-chat": {
+      "stars": 286
+    },
+    "azure-samples/gpt-video-analysis-in-a-box": {
+      "stars": 33
+    },
+    "azure-samples/healthcare-agent-orchestrator": {
+      "stars": 217
+    },
+    "azure-samples/hello-azd": {
+      "stars": 11
+    },
+    "azure-samples/hosted-skills-expense-processor": {
+      "stars": 3
+    },
+    "azure-samples/image-search-aisearch": {
+      "stars": 30
+    },
+    "azure-samples/indexadillo": {
+      "stars": 30
+    },
+    "azure-samples/java-on-aca": {
+      "stars": 15
+    },
+    "azure-samples/java-on-aca-quarkus": {
+      "stars": 4
+    },
+    "azure-samples/llama-index-javascript": {
+      "stars": 76
+    },
+    "azure-samples/llama-index-python": {
+      "stars": 60
+    },
+    "azure-samples/llama-index-vector-search-javascript": {
+      "stars": 15
+    },
+    "azure-samples/m365-inbox-serverless-agent-python": {
+      "stars": 11
+    },
+    "azure-samples/mcp-functions-long-running-tools": {
+      "stars": 1
+    },
+    "azure-samples/microhack-ask-analyze-act": {
+      "stars": 0
+    },
+    "azure-samples/msdocs-django-postgresql-sample-app": {
+      "stars": 71
+    },
+    "azure-samples/msdocs-flask-postgresql-sample-app": {
+      "stars": 53
+    },
+    "azure-samples/nlp-sql-in-a-box": {
+      "stars": 38
+    },
+    "azure-samples/openai-chat-app-quickstart": {
+      "stars": 254
+    },
+    "azure-samples/openai-chat-vision-quickstart": {
+      "stars": 224
+    },
+    "azure-samples/openai-secure-ui-js": {
+      "stars": 20
+    },
+    "azure-samples/pubsub-dapr-aks-java": {
+      "stars": 3
+    },
+    "azure-samples/pubsub-dapr-csharp-servicebus": {
+      "stars": 32
+    },
+    "azure-samples/pubsub-dapr-nodejs-servicebus": {
+      "stars": 12
+    },
+    "azure-samples/pubsub-dapr-python-servicebus": {
+      "stars": 11
+    },
+    "azure-samples/quote-of-the-day-dotnet": {
+      "stars": 5
+    },
+    "azure-samples/rag-postgres-openai-python": {
+      "stars": 512
+    },
+    "azure-samples/remote-mcp-apim-functions-python": {
+      "stars": 130
+    },
+    "azure-samples/remote-mcp-functions-dotnet": {
+      "stars": 134
+    },
+    "azure-samples/remote-mcp-functions-java": {
+      "stars": 2
+    },
+    "azure-samples/remote-mcp-functions-javascript": {
+      "stars": 0
+    },
+    "azure-samples/remote-mcp-functions-python": {
+      "stars": 125
+    },
+    "azure-samples/remote-mcp-functions-typescript": {
+      "stars": 59
+    },
+    "azure-samples/semantic-kernel-customer-assistant-demo-java": {
+      "stars": 3
+    },
+    "azure-samples/serverless-chat-langchainjs": {
+      "stars": 869
+    },
+    "azure-samples/serverless-chat-langchainjs-purview": {
+      "stars": 13
+    },
+    "azure-samples/signalr-ai-streaming": {
+      "stars": 15
+    },
+    "azure-samples/simple-foundry-hosted-agent-python-aigateway": {
+      "stars": 5
+    },
+    "azure-samples/snippy": {
+      "stars": 114
+    },
+    "azure-samples/sovereign-chat-experience-starter": {
+      "stars": 16
+    },
+    "azure-samples/spring-petclinic-java-mysql": {
+      "stars": 3
+    },
+    "azure-samples/springboot-petclinic-ai-chat-on-app-service": {
+      "stars": 1
+    },
+    "azure-samples/svc-invoke-dapr-csharp": {
+      "stars": 8
+    },
+    "azure-samples/svc-invoke-dapr-nodejs": {
+      "stars": 8
+    },
+    "azure-samples/svc-invoke-dapr-python": {
+      "stars": 5
+    },
+    "azure-samples/video-agents-foundry-solution": {
+      "stars": 10
+    },
+    "azure-samples/vite-chat-interface": {
+      "stars": 6
+    },
+    "azure/agent-landing-zone": {
+      "stars": 1204
+    },
+    "azure/apicenter-analyzer": {
+      "stars": 25
+    },
+    "azure/apicenter-portal-starter": {
+      "stars": 44
+    },
+    "azurecosmosdb/cosmosdb-nosql-copilot": {
+      "stars": 114
+    },
+    "azurecosmosdb/mcptoolkit": {
+      "stars": 26
+    },
+    "bderusha/azd-label-studio": {
+      "stars": 1
+    },
+    "benleane83/azure-swa-nextjs-postgres": {
+      "stars": 0
+    },
+    "bradygaster/rockpaperorleans": {
+      "stars": 48
+    },
+    "build5nines/azd-csharp-api-swagger": {
+      "stars": 2
+    },
+    "build5nines/azd-litellm": {
+      "stars": 8
+    },
+    "build5nines/azd-react-bootstrap-dashboard": {
+      "stars": 1
+    },
+    "cawams/eshop": {
+      "stars": 5
+    },
+    "cawams/gameleaderboard": {
+      "stars": 4
+    },
+    "cawams/outputcacheopenai": {
+      "stars": 5
+    },
+    "charliewei0716/blob-data-sharing": {
+      "stars": 3
+    },
+    "charliewei0716/on-your-data-with-streamlit": {
+      "stars": 9
+    },
+    "cmeeg/nextjs-aca": {
+      "stars": 27
+    },
+    "cmeeg/remix-aca": {
+      "stars": 4
+    },
+    "curityio/azd-ai-autonomous-agent": {
+      "stars": 3
+    },
+    "daverendon/azd-baseline-webapp": {
+      "stars": 1
+    },
+    "daverendon/azd-deepseek-r1-on-azure-container-apps": {
+      "stars": 2
+    },
+    "daverendon/azd-hardened-webapp": {
+      "stars": 1
+    },
+    "daverendon/azd-microsoft-sentinel": {
+      "stars": 2
+    },
+    "daverendon/azd-multiagent": {
+      "stars": 4
+    },
+    "daverendon/azd-private-link": {
+      "stars": 1
+    },
+    "daverendon/azd-service-endpoints-and-securing-storage": {
+      "stars": 1
+    },
+    "dbroeglin/azure-rails-starter": {
+      "stars": 8
+    },
+    "degero-examples/azure-akskedaprometheus-demo": {
+      "stars": 0
+    },
+    "dminkovski/agent-openai-banking-assistant-csharp": {
+      "stars": 7
+    },
+    "durga533/azure-landingzone-setup": {
+      "stars": 1
+    },
+    "erudinsky/azd-static-web-vuejs": {
+      "stars": 0
+    },
+    "estopacema/fastapi-postgres-aca": {
+      "stars": 1
+    },
+    "estopacema/quarkus-postgres-aca": {
+      "stars": 0
+    },
+    "fabio-marini/azd-aspire-basic": {
+      "stars": 1
+    },
+    "fboucher/aspireazstorage": {
+      "stars": 5
+    },
+    "fboucher/zipdeploy-azfunc": {
+      "stars": 2
+    },
+    "gordonby/servicebus-dotnet-functionapp": {
+      "stars": 15
+    },
+    "graemefoster/lockeddownchatbot": {
+      "stars": 4
+    },
+    "hengyl/nlweb-agent-demo": {
+      "stars": 2
+    },
+    "jasontaylordev/azd-blazor": {
+      "stars": 27
+    },
+    "jaychase/langchain-ag-ui-angular": {
+      "stars": 2
+    },
+    "jaychase/semantic-kernel-function-app": {
+      "stars": 2
+    },
+    "jmenne/azd-routingdemo": {
+      "stars": 2
+    },
+    "john0isaac/flask-webapp-mysql-db": {
+      "stars": 2
+    },
+    "john0isaac/rag-semantic-kernel-mongodb-vcore": {
+      "stars": 38
+    },
+    "john0isaac/simple-flask-app-terraform": {
+      "stars": 0
+    },
+    "jsburckhardt/docusaurus-aca": {
+      "stars": 3
+    },
+    "jsburckhardt/mcp-obo-aca": {
+      "stars": 0
+    },
+    "kareldewinter/tdd-azd-monitor": {
+      "stars": 3
+    },
+    "koenraadhaedens/azd-firewall-send-syslog-messages": {
+      "stars": 0
+    },
+    "koenraadhaedens/azd-infra-dev-containers": {
+      "stars": 6
+    },
+    "koenraadhaedens/azd-nestedhv-dc-rtr": {
+      "stars": 2
+    },
+    "koenraadhaedens/azd-sqlworloadsim": {
+      "stars": 0
+    },
+    "koenraadhaedens/azd-win11-dev-pc-docker": {
+      "stars": 1
+    },
+    "lopezleandro03/azd-devcenter": {
+      "stars": 12
+    },
+    "maartenvandiemen/azd-aca-demo": {
+      "stars": 3
+    },
+    "maartenvandiemen/azd-aci-demo": {
+      "stars": 1
+    },
+    "maartenvandiemen/azd-aks-demo": {
+      "stars": 1
+    },
+    "maartenvandiemen/azd-appconfiguration": {
+      "stars": 1
+    },
+    "maartenvandiemen/azd-loadtest": {
+      "stars": 1
+    },
+    "maartenvandiemen/azd-paas-demo": {
+      "stars": 3
+    },
+    "maartenvandiemen/azd-watermarkfunction": {
+      "stars": 2
+    },
+    "madebygps/azd-simple-fastapi-container-appservice": {
+      "stars": 1
+    },
+    "marnixcox/integration-hub": {
+      "stars": 3
+    },
+    "marnixcox/logicapp-ai-agent": {
+      "stars": 0
+    },
+    "marnixcox/logicapp-consumption": {
+      "stars": 4
+    },
+    "marnixcox/logicapp-standard-func": {
+      "stars": 5
+    },
+    "massimobonanni/azd-todolist": {
+      "stars": 0
+    },
+    "massimobonanni/dbsemanticsearch": {
+      "stars": 0
+    },
+    "michelmsft/goodfood": {
+      "stars": 2
+    },
+    "microsoft/agentic-applications-for-unified-data-foundation-solution-accelerator": {
+      "stars": 140
+    },
+    "microsoft/app-with-sharepoint-knowledge": {
+      "stars": 22
+    },
+    "microsoft/content-processing-solution-accelerator": {
+      "stars": 254
+    },
+    "microsoft/conversation-knowledge-mining-solution-accelerator": {
+      "stars": 481
+    },
+    "microsoft/customer-chatbot-solution-accelerator": {
+      "stars": 50
+    },
+    "microsoft/microsoft-iq-solution-accelerator": {
+      "stars": 104
+    },
+    "microsoft/modernize-your-code-solution-accelerator": {
+      "stars": 142
+    },
+    "microsoft/multi-agent-custom-automation-engine-solution-accelerator": {
+      "stars": 899
+    },
+    "microsoft/prior-authorization-multi-agent-solution-accelerator": {
+      "stars": 21
+    },
+    "microsoft/real-time-intelligence-operations-solution-accelerator": {
+      "stars": 36
+    },
+    "microsoft/release-manager-assistant": {
+      "stars": 29
+    },
+    "microsoft/unified-data-foundation-with-fabric-solution-accelerator": {
+      "stars": 50
+    },
+    "miguelelgallo/myfirstmcp-openai": {
+      "stars": 0
+    },
+    "miguelelgallo/simple-fastapi-snow-azd": {
+      "stars": 0
+    },
+    "miguelelgallo/simple-streamlit-azd": {
+      "stars": 3
+    },
+    "mohitmohan-innovator/sahaya": {
+      "stars": 0
+    },
+    "neondatabase/azure-tenant-ai-chat": {
+      "stars": 14
+    },
+    "neondatabase/rag-neon-postgres-openai-azure-python": {
+      "stars": 8
+    },
+    "pamelafox/django-quiz-app": {
+      "stars": 39
+    },
+    "pamelafox/fastapi-azure-function-apim": {
+      "stars": 60
+    },
+    "pamelafox/flask-charts-api-container-app": {
+      "stars": 6
+    },
+    "pamelafox/flask-db-quiz-example": {
+      "stars": 7
+    },
+    "pamelafox/flask-gallery-container-app": {
+      "stars": 4
+    },
+    "pamelafox/flask-surveys-container-app": {
+      "stars": 14
+    },
+    "pamelafox/simple-fastapi-container": {
+      "stars": 33
+    },
+    "pamelafox/simple-flask-api-container": {
+      "stars": 9
+    },
+    "pamelafox/staticmaps-function": {
+      "stars": 12
+    },
+    "pascalvanderheiden/ais-apim-odata-reactjs": {
+      "stars": 2
+    },
+    "passadis/ai-architect-webapp": {
+      "stars": 17
+    },
+    "passadis/azure-a2a-translation": {
+      "stars": 0
+    },
+    "paulyuk/serverless-repo-digest-agent": {
+      "stars": 0
+    },
+    "petender/azd-addsvm": {
+      "stars": 0
+    },
+    "petender/azd-ai-agent-service": {
+      "stars": 1
+    },
+    "petender/azd-apimwithconfapi": {
+      "stars": 1
+    },
+    "petender/azd-asrdemo": {
+      "stars": 0
+    },
+    "petender/azd-betternotes-ai": {
+      "stars": 0
+    },
+    "petender/azd-fdcdn": {
+      "stars": 2
+    },
+    "petender/azd-foundrysora": {
+      "stars": 0
+    },
+    "petender/azd-hubspoke": {
+      "stars": 1
+    },
+    "petender/azd-researcher": {
+      "stars": 2
+    },
+    "petender/azd-sentinel": {
+      "stars": 1
+    },
+    "petender/azd-site2sitevpn": {
+      "stars": 1
+    },
+    "petender/azd-sqlao": {
+      "stars": 0
+    },
+    "petender/azd-storaccnt": {
+      "stars": 1
+    },
+    "petender/azd-trafficmgr": {
+      "stars": 0
+    },
+    "petender/azd-vision-face": {
+      "stars": 0
+    },
+    "petender/azd-vmbackup": {
+      "stars": 0
+    },
+    "petender/azd-youtubesummarizer-openai": {
+      "stars": 0
+    },
+    "petender/conferenceapi": {
+      "stars": 2
+    },
+    "petender/demo-mcp-productcatalog": {
+      "stars": 3
+    },
+    "petender/issdata": {
+      "stars": 2
+    },
+    "petender/openaimultimodel": {
+      "stars": 1
+    },
+    "powergentic/azd-mcp-csharp": {
+      "stars": 1
+    },
+    "powergentic/azd-mcp-ts": {
+      "stars": 4
+    },
+    "rob-foulkrod/azd-apimwithconfapi-oauth": {
+      "stars": 0
+    },
+    "rob-foulkrod/badgemaker": {
+      "stars": 4
+    },
+    "rob-foulkrod/iaas2019": {
+      "stars": 2
+    },
+    "rob-foulkrod/machinelearningazd": {
+      "stars": 4
+    },
+    "rob-foulkrod/purviewenvironment-azd": {
+      "stars": 2
+    },
+    "rob-foulkrod/tdd-functions-e2e-http-to-eventhubs": {
+      "stars": 2
+    },
+    "rob-foulkrod/tollbooth": {
+      "stars": 3
+    },
+    "robertopc1/redis_llmmemory": {
+      "stars": 1
+    },
+    "ronaldbosma/azure-integration-services-quickstart": {
+      "stars": 9
+    },
+    "ronaldbosma/call-apim-backend-with-oauth": {
+      "stars": 2
+    },
+    "ronaldbosma/call-apim-with-managed-identity": {
+      "stars": 0
+    },
+    "ronaldbosma/mtls-with-apim-and-agw": {
+      "stars": 0
+    },
+    "ronaldbosma/protect-apim-with-oauth": {
+      "stars": 0
+    },
+    "ronaldbosma/track-availability-in-app-insights": {
+      "stars": 2
+    },
+    "ryanninodizon/azureserverlessapp-with-auth-for-dotnet-angular": {
+      "stars": 6
+    },
+    "sabbour/aks-app-template": {
+      "stars": 25
+    },
+    "sarahallali/azd-privatelink-pendpoint": {
+      "stars": 3
+    },
+    "savannahostrowski/jupyter-mercury-aca": {
+      "stars": 7
+    },
+    "seligj95/app-service-foundry-chat": {
+      "stars": 0
+    },
+    "sqltattoo/azd-az104-all-in-one": {
+      "stars": 8
+    },
+    "tataraba/musicbinder-azd": {
+      "stars": 1
+    },
+    "tonybaloney/django-on-azure": {
+      "stars": 18
+    },
+    "true-while/event-hub-azd": {
+      "stars": 1
+    },
+    "true-while/owasp-azd": {
+      "stars": 0
+    },
+    "true-while/pg-ai-azd": {
+      "stars": 0
+    },
+    "true-while/secure-data-solutions": {
+      "stars": 0
+    },
+    "zhenbzha/chainlit-agent": {
+      "stars": 12
+    },
+    "zubeyralmaho/rust-mcp-azure": {
+      "stars": 0
+    }
+  }
+}

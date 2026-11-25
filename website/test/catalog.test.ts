@@ -210,6 +210,7 @@ describe("unified catalog data", () => {
       id: template.id,
       title: template.title,
       detailPath: template.detailPath,
+      repository: template.repository,
       primaryService: template.primaryService,
     });
     expect(listing).not.toHaveProperty("source");
@@ -1290,7 +1291,7 @@ describe("unified catalog query", () => {
     );
   });
 
-  test("sorts featured templates first, then starred templates, then missing values", () => {
+  test("sorts featured templates first, then by descending stars", () => {
     const records = catalogTemplates.slice(0, 7).map((template, index) => ({
       ...template,
       normalizedSource: `https://github.com/example/template-${index}`,

@@ -3,7 +3,7 @@
 import { themes as prismThemes } from "prism-react-renderer";
 import { manageCookieLabel } from "./constants.js";
 
-/** @type {import('@docusaurus/types').PluginModule} */
+/** @param {import('@docusaurus/types').LoadContext} context */
 function firstPaintColorScheme({ siteStorage }) {
   // Docusaurus resolves data-theme in the body, after stylesheets in the head.
   // Apply explicit choices early; the color-scheme meta handles system mode.

@@ -36,6 +36,37 @@ test("the homepage canvas is dark before the site stylesheet loads", async ({
   expect(canvasColor).not.toBe("rgb(255, 255, 255)");
 });
 
+for (const { system, theme, query } of [
+  { system: "dark", theme: "light", query: "?docusaurus-theme=light" },
+  { system: "light", theme: "dark", query: "" },
+] as const) {
+  test(`the homepage uses the explicit ${theme} scheme with CSS still pending`, async ({
+    page,
+  }) => {
+    await page.emulateMedia({ colorScheme: system });
+    if (!query) {
+      await page.addInitScript(
+        (choice) => localStorage.setItem("theme", choice),
+        theme,
+      );
+    }
+    let releaseStylesheet!: () => void;
+    const stylesheetPending = new Promise<void>((resolve) => {
+      releaseStylesheet = resolve;
+    });
+    await page.route("**/*.css", async (route) => {
+      await stylesheetPending;
+      await route.abort();
+    });
+    try {
+      await page.goto(`./${query}`, { waitUntil: "commit" });
+      await expect(page.locator("html")).toHaveCSS("color-scheme", theme);
+    } finally {
+      releaseStylesheet();
+    }
+  });
+}
+
 for (const { name, query, theme, background } of [
   {
     name: "system dark mode",

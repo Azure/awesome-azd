@@ -3,6 +3,45 @@
 import { themes as prismThemes } from "prism-react-renderer";
 import { manageCookieLabel } from "./constants.js";
 
+/** @type {import('@docusaurus/types').PluginModule} */
+function firstPaintColorScheme({ siteStorage }) {
+  // Docusaurus resolves data-theme in the body, after stylesheets in the head.
+  // Apply explicit choices early; the color-scheme meta handles system mode.
+  return {
+    name: "first-paint-color-scheme",
+    injectHtmlTags() {
+      return {
+        headTags: [
+          {
+            tagName: "style",
+            innerHTML: `
+              html[data-theme="light"] { color-scheme: light; }
+              html[data-theme="dark"] { color-scheme: dark; }
+            `,
+          },
+          {
+            tagName: "script",
+            innerHTML: `
+              (() => {
+                let theme = new URLSearchParams(location.search).get("docusaurus-theme");
+                if (!theme) {
+                  try {
+                    theme = window[${JSON.stringify(siteStorage.type)}]
+                      .getItem(${JSON.stringify(`theme${siteStorage.namespace}`)});
+                  } catch {}
+                }
+                if (theme === "light" || theme === "dark") {
+                  document.documentElement.setAttribute("data-theme", theme);
+                }
+              })();
+            `,
+          },
+        ],
+      };
+    },
+  };
+}
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   customFields: {
@@ -197,6 +236,7 @@ const config = {
       },
     }),
   plugins: [
+    firstPaintColorScheme,
     require.resolve("./route_generator_plugin/catalogRouteGenerator"),
     [
       "@docusaurus/plugin-client-redirects",

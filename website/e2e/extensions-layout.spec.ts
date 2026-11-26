@@ -41,6 +41,20 @@ function sparseExtensionQuery() {
 }
 
 test.describe("Gallery card layout", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.route(
+      "https://cachelp6qsotirqelc.z20.web.core.windows.net/**",
+      (route) =>
+        route.fulfill({
+          json: {
+            schemaVersion: 2,
+            generatedAt: new Date().toISOString(),
+            repositories: {},
+          },
+        }),
+    );
+  });
+
   test("extension gallery is server-rendered with Fluent styles", async ({
     request,
   }) => {
@@ -252,9 +266,15 @@ test.describe("Gallery card layout", () => {
   test("extension cards use the templates card treatment", async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 1000 });
     await page.goto("extensions");
+    await expect(page.locator("html")).toHaveAttribute(
+      "data-has-hydrated",
+      "true",
+    );
 
     const extensionCard = page.locator("[data-extension-card]").first();
     const extensionTag = extensionCard.locator('[class*="cardBadge"]').first();
+    await expect(extensionCard).toBeVisible();
+    await expect(extensionTag).toBeVisible();
     const extensionStyles = await extensionCard.evaluate((element) => {
       const style = getComputedStyle(element);
       return {
@@ -275,31 +295,48 @@ test.describe("Gallery card layout", () => {
     });
 
     await page.goto("templates");
+    await expect(page.locator("html")).toHaveAttribute(
+      "data-has-hydrated",
+      "true",
+    );
     const templateCard = page
       .locator('[data-template-card]:not([class*="promotedCard"])')
       .first();
     const templateTag = templateCard.locator('[class*="tag"]').first();
-    const templateStyles = await templateCard.evaluate((element) => {
-      const style = getComputedStyle(element);
-      return {
-        backgroundColor: style.backgroundColor,
-        borderRadius: style.borderRadius,
-        borderTopWidth: style.borderTopWidth,
-        boxShadow: style.boxShadow,
-        padding: style.padding,
-      };
-    });
-    const templateTagStyles = await templateTag.evaluate((element) => {
-      const style = getComputedStyle(element);
-      return {
-        backgroundColor: style.backgroundColor,
-        borderRadius: style.borderRadius,
-        fontSize: style.fontSize,
-      };
-    });
-
-    expect(extensionStyles).toEqual(templateStyles);
-    expect(extensionTagStyles).toEqual(templateTagStyles);
+    await expect(templateCard).toBeVisible();
+    await expect(templateTag).toBeVisible();
+    await expect(templateCard).toHaveCSS(
+      "background-color",
+      extensionStyles.backgroundColor,
+    );
+    await expect(templateCard).toHaveCSS(
+      "border-radius",
+      extensionStyles.borderRadius,
+    );
+    await expect(templateCard).toHaveCSS(
+      "border-top-width",
+      extensionStyles.borderTopWidth,
+    );
+    await expect(templateCard).toHaveCSS(
+      "box-shadow",
+      extensionStyles.boxShadow,
+    );
+    await expect(templateCard).toHaveCSS(
+      "padding",
+      extensionStyles.padding,
+    );
+    await expect(templateTag).toHaveCSS(
+      "background-color",
+      extensionTagStyles.backgroundColor,
+    );
+    await expect(templateTag).toHaveCSS(
+      "border-radius",
+      extensionTagStyles.borderRadius,
+    );
+    await expect(templateTag).toHaveCSS(
+      "font-size",
+      extensionTagStyles.fontSize,
+    );
   });
 
   test("extension hero typography matches the templates hero", async ({

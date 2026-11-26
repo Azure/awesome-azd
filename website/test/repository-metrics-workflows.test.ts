@@ -75,7 +75,15 @@ describe("repository metrics workflows", () => {
     expect(validateIndex).toBeGreaterThan(-1);
     expect(
       deploy.steps[validateIndex].run,
-    ).toBe("node scripts/validate-repository-metrics.js");
+    ).toContain(
+      "if ! node scripts/validate-repository-metrics.js",
+    );
+    expect(
+      deploy.steps[validateIndex].run,
+    ).toContain("::warning::");
+    expect(
+      deploy.steps[validateIndex].run,
+    ).toContain("deploying with bundled star counts");
     expect(validateIndex).toBeLessThan(buildIndex);
     expect(buildIndex).toBeLessThan(deployIndex);
   });

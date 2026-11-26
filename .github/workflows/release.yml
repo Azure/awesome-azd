@@ -67,7 +67,10 @@ jobs:
         run: npm ci
       - name: Validate live repository metrics
         working-directory: website
-        run: node scripts/validate-repository-metrics.js
+        run: |
+          if ! node scripts/validate-repository-metrics.js; then
+            echo "::warning::Live repository metrics are unavailable or invalid; deploying with bundled star counts."
+          fi
       - name: Build website
         working-directory: website
         run: npm run build
